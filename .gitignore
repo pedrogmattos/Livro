@@ -1,6 +1,8 @@
 *.tex.bak
 *.aux
 *.log
+*.out
+*.synctex.gz
 agradecimentos.tex
 antigos/
 apendice.tex
