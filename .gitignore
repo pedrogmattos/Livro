@@ -2,13 +2,13 @@
 *.aux
 *.log
 *.out
+*.toc
 *.synctex.gz
 agradecimentos.tex
 antigos/
 apendice.tex
 atencao.tex
 dedicatoria.tex
-imagens/
 introducao.tex
 licenca.tex
 prefacio.tex
