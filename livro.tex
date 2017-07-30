@@ -1,0 +1,77 @@
+\documentclass[leqno,oneside,12pt]{book}
+\usepackage{estilo}
+
+% Dados do Livro
+\newcommand{\titulo}{Elementos de Matemática}
+\newcommand{\subtitulo}{Uma introdução a Conjuntos, Álgebra, Topologia, Análise e Geometria}
+\newcommand{\autor}{Pedro G. Mattos}
+\newcommand{\Autor}{Mattos, Pedro G.}
+\newcommand{\versao}{12}
+
+% Metadados do arquivo .PDF
+\hypersetup{
+	pdftitle={\titulo\ - \subtitulo},
+	pdfsubject={Matemática},
+	pdfauthor={\autor}
+}
+
+\includeonly{conjuntos,algebra}
+
+\begin{document}
+% ELEMENTOS PRÉ-TEXTUAIS
+%---------------------------------------------------------------------------------------------------------------------------
+
+% Capa
+\renewcommand{\thepage}{C} % (Numera a página com 'C'.)
+\include{capa}
+
+\frontmatter % (Numera as páginas com algarismos romanos.)
+
+% ATENÇÃO SOBRE O LIVRO NÃO ESTAR TERMINADO
+\include{atencao}
+
+% Páginas de Rosto e Informações de Citação e Licença
+\include{rosto}
+\include{informacoes}
+
+% Sumário, Lista de Figuras e Lista de Tabelas
+\tableofcontents
+%\listoffigures
+%\listoftables
+
+\cleardoublepage
+
+\include{prefacio}
+\include{agradecimentos}
+\include{introducao}
+%\include{logica}
+
+% ELEMENTOS TEXTUAIS
+%---------------------------------------------------------------------------------------------------------------------------
+\mainmatter % (Numera as páginas com algarismos arábicos.)
+
+% Partes
+\include{conjuntos}
+\include{algebra}
+\include{topologia}
+\include{analise}
+
+% Apêndices
+\appendix % (Numera capítulos com letras.)
+
+\include{apendice}
+
+% Ideia de apêndice: Lista de figuras históricas importantes na matemática.
+
+% ELEMENTOS PÓS-TEXTUAIS
+%---------------------------------------------------------------------------------------------------------------------------
+\backmatter % (Não numera capítulos.)
+
+% Licença
+\include{licenca}
+
+% Bibliografia
+%\begin{thebibliography}{}
+%\end{thebibliography}
+
+\end{document}
