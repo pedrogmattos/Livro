@@ -1,0 +1,715 @@
+\part{{\scshape Análise}}
+
+
+\chapter{Espaço Real}
+
+\section{Notação de Vetores e Funções}
+
+	O espaço real $\R^n$ estudado neste capítulo do livro será o espaço vetorial $(\R^n,+,\cdot)$ sobre $\R$. A base canônica de $\R^n$ será representada pelos vetores $\{\bm e_1, \ldots, \bm e_n\}$. Um vetor $x \in \R^n$ será também representado por $x=(x_1,\ldots,x_n)$ e uma função $f: \R^n \to \R^m$ será também representada por $f=(f_1,\ldots,f_m)$, em que $f_i \coloneqq \pi_i \circ f$, sendo $\pi_i$ a $i$-ésima projeção de $\R^m$ em $\R$.
+
+\section{Normas no Espaço Real}
+
+	O espaço real $n$-dimensional será visto como um espaço métrico e herdará, portanto, todas a topologia associada a espaços métricos em geral. A métrica usada será dada por uma norma. Mostraremos que muitas normas podem ser associadas a $\R^n$ de modo que a mesma topologia é gerada. A seguir, analisemos algumas dessas normas.
+	
+\begin{defi}
+	Seja $p \in [1,+\infty[$. A \emph{norma $p$} em $\R^n$ é a função $\nor{\cdot}_p: \R^n \to \R$ definida por
+	\begin{equation*}
+	\nor{\bm x}_p \coloneqq \left( \sum_{i=1}^n (x_i)^p \right)^{\frac{1}{p}}.
+	\end{equation*}
+	
+	A \emph{norma $\infty$} em $\R^n$ é a função $\nor{\cdot}_\infty \R^n \to \R$ definida por
+	\begin{equation*}
+	\nor{\bm x}_\infty \coloneqq \max \{x_i : i \in \inte_n \}.
+	\end{equation*}
+\end{defi}
+
+\begin{prop}
+	Desigualdade de nao sei quem (Minkowski?).
+\end{prop}
+
+
+\begin{prop}
+	A norma $p$ e a norma $\infty$ em $\R^n$ são normas.
+\end{prop}
+\begin{proof}
+	Consideremos primeiro as normas $p$. Seja $c \in \R$ e $x \in \R^n$. Então
+	\begin{equation*}
+	\nor{c\bm x}_p = \left( \sum_{i=1}^n (cx_i)^p \right)^{\frac{1}{p}} = \left(c^p \sum_{i=1}^n (x_i)^p \right)^{\frac{1}{p}} = |c| \left( \sum_{i=1}^n (x_i)^p \right)^{\frac{1}{p}} = |c|\nor{\bm x}_p .
+	\end{equation*}
+	
+\end{proof}
+
+
+\begin{defi}
+	\emph{Normas equivalentes} são normas $\nor{\cdot}, |\cdot|: \R^n \to \R$ para as quais existem $c,C \in \R$ tais que $0 < c < C$ e, para todo $x \in \R^n$,
+	\begin{equation*}
+	c \nor{x} \leq |x| \leq C \nor{x}.
+	\end{equation*}
+\end{defi}
+
+\begin{prop}
+Equivalência de norma é uma relação de equivalência.
+\end{prop}
+
+\begin{prop}
+	Todas normas em $\R^n$ são equivalentes.
+\end{prop}
+\begin{proof}
+	Seja $\nor{\cdot}$ uma norma em $\R^n$. Vamos mostrar que essa norma é equivalente a $\nor{\cdot}_1$ e, como equivalência de norm é uma relação de equivalência, seguirá que todas normas são equivalentes em $\R^n$. Definamos $c^{-1} \coloneqq \max\{\nor{e_1},\ldots,\nor{e_n}\} < \infty$. Então
+	\begin{equation*}
+	\nor{x} = \nor{\sum_{i=1}^n x_i e_i} \leq \sum_{i=1}^n |x_i|\nor{e_i} \leq c^{-1} \nor{x}_1
+	\end{equation*}
+	Assim, segue que $c \nor{x} \leq \nor{x}_1$.
+\end{proof}
+
+
+\subsection{Compactos}
+
+\begin{defi}
+	Seja $C \subseteq \R^n$. Uma \emph{cobertura} de $C$ é uma família $(A_i)_{i \in I}$ de abertos de $\R^n$ tal que
+	\begin{equation*}
+	C \subseteq \bigcup_{i \in I} A_i
+	\end{equation*}
+	Uma \emph{subcobertura} de $C$ relativa a $(A_i)_{i \in I}$ é uma cobertura $(A_j)_{j \in J}$ de $C$ tal que $J \subseteq I$.
+\end{defi}
+
+\begin{defi}
+	Um conjunto \emph{compacto} em $\R^n$ é um conjunto $C \subseteq \R^n$ tal que, para toda cobertura $(A_I)_{i \in I}$ de $C$, existe uma subcobertura finita de $C$ relativa a $(A_i)_{i \in I}$.
+\end{defi}
+
+\begin{teo}[Heine-Borel]
+	Seja $C \subseteq \R^n$ um conjunto. Então são equivalentes:
+	\begin{enumerate}
+	\item $C$ é compacto.
+	\item $C$ é fechado e limitado.
+	\item Para toda sequência $(x_n)_{n \in \N} \subseteq C$, existe subsequência $(x_{n_k})_{k \in \N}$ que converge a $x \in C$.
+	\end{enumerate}
+\end{teo}
+\begin{proof}
+
+\end{proof}
+
+\begin{teo}
+	Sejam $C \subseteq \R^n$ compacto e $f: C \to \R^m$ contínua. Então $f(C)$ é compacto.
+\end{teo}
+\begin{proof}
+
+\end{proof}
+
+\begin{prop}
+	Sejam $C \subseteq \R^n$ compacto e $f: C \to \R^m$ contínua. Então $f(C)$ é limitado e $f$ adimite máximo e mínimo.
+\end{prop}
+
+\begin{prop}
+	Um conjunto $C \subseteq \R^n$ é compacto se, e somente se, para toda função $f: C \to \R^m$ contínua, $f(C)$ é limitado.
+\end{prop}
+\begin{proof}
+
+\end{proof}
+
+exercício
+
+vale o mesmo se trocarmos limitado por fechado na prop anterior?
+
+
+\begin{prop}
+	Sejam $C \subseteq \R^n$ compacto e $f: C \to \R^m$ contínua. Então $f$ é uniformemente contínua.
+\end{prop}
+\begin{proof}
+	Suponhamos, por absurdo, que $f$ não é uniformemente contínua. Então existem $\varepsilon > 0$ e $(x_n),(y_n) \subseteq C$ tais que $|x_n - y_n| < \frac{1}{n}$ e $|f(x_n)-f(y_n)| \geq \varepsilon$. Como $C$ é compacto, existem subsequências $(x_{n_k})$  e $(y_{n_k})$ convergindo a $x \in C$ com $|f(x_{n_k})-f(y_{n_k})| \geq \varepsilon$. Por continuidade, existe $\delta > 0$ tal que, se $x_{n_k},y_{n_k} \in B(x,\delta)$, então $|f(x_{n_k})-f(x)| < \frac{\varepsilon}{2}$ e $|f(y_{n_k})-f(x)| < \frac{\varepsilon}{2}$. Pela desigualdade triangular, temos um absudo.
+\end{proof}
+
+\begin{prop}
+	Sejam $C \subseteq \R^n$ compacto, $X \subseteq \R^m$ e $f: X \times C \to \R^l$ contínua. Seja $x_0 \in X$. Então, para todo $\varepsilon > 0$, existe $\delta > 0$ tal que, se $x \in X$ e $|x-x_0| < \delta$, então, para todo $\alpha \in C$, $|f(x,\alpha)-f(x_0,\alpha)|<\varepsilon$.
+\end{prop}
+\begin{proof}
+	Suponha que existe $\varepsilon>0$ e $x_k \to x_0$ e $\alpha_k \in C$ tal que $|f(x_k,\alpha_k)-f(x_0, \alpha_k)| \geq \varepsilon$, $\alpha_k$ tem subcobertura $\alpha_{k_n} \to \alpha_0$
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+\chapter{Diferenciabilidade no Espaço Real}
+
+\section{Diferenciabilidade}
+
+\begin{defi}
+	Sejam $A \subseteq \R^n$ um aberto e $p \in A$. Uma função \emph{diferenciável em $p$} é uma função $f: A \to \R^m$ para a qual existe uma transformação linear $T : \R^n \to \R^m$ tal que
+	\begin{equation*}
+	\lim_{v \to 0} \frac{\Vert f(p+v)-f(p)-T(v) \Vert}{\Vert v \Vert} = 0.
+	\end{equation*}
+\end{defi}
+
+Isso é equivalente a
+	\begin{equation*}
+	\lim_{x \to p} \frac{\Vert f(x)-f(p)-T(x-p) \Vert}{\Vert x-p \Vert} = 0.
+	\end{equation*}
+
+\begin{prop}[Unicidade da derivada]
+	Sejam $A \subseteq \R^n$ um aberto, $p \in A$ e $f: A \to \R^m$ uma função diferenciável em $p$. Então existe uma única transformação linear $T: \R^n \to \R^m$ tal que
+	\begin{equation*}
+	\lim_{v \to 0} \frac{\Vert f(p+v)-f(p)-T(v) \Vert}{\Vert v \Vert} = 0.
+	\end{equation*}
+\end{prop}
+\begin{proof}
+	Suponhamos que exista tranformação linear $S: \R^n \to \R^m$ que satisfaz
+	\begin{equation*}
+	\lim_{v \to 0} \frac{\Vert f(p+v)-f(p)-S(v) \Vert}{\Vert v \Vert} = 0.
+	\end{equation*}
+Nesse caso, temos que
+	\begin{align*}
+	& \lim_{v \to 0} \frac{\Vert T(v)-S(v) \Vert}{\Vert v \Vert} = \\
+	&= \lim_{v \to 0} \frac{\Vert T(v) - (f(p+v)-f(p)) + (f(p+v)-f(p)) - S(v) \Vert}{\Vert v \Vert} \\
+	& \leq  \lim_{v \to 0} \frac{\Vert f(p+v)-f(p)-T(v) \Vert}{\Vert v \Vert} + \lim_{v \to \bm 0} \frac{\Vert f(p+v)-f(p)-S(v) \Vert}{\Vert v \Vert} \\
+	&=0.
+	\end{align*}
+	
+	Como $T$ e $S$ são tranformações lineares, sabemos que $T(0)=S(0)=0$. Para todo $x \in \R^m \setminus \{0\}$, temos que, quando $t \to 0$, $tx \to 0$. Ainda, como $T$ e $S$ são tranformações lineares, $T(tx)=tT(x)$ e $T(tx)=tT'(x)$, e segue que
+	\begin{align*}
+	0 &= \lim_{tx \to 0} \frac{\Vert T(tx)-S(tx) \Vert}{\Vert tx \Vert} \\
+		&= \lim_{t \to 0} \frac{|t| \Vert T(x)-S(x) \Vert}{|t| \Vert x \Vert} \\
+		&= \frac{\Vert T(x)-S(x) \Vert}{\Vert x \Vert},
+	\end{align*}
+o que implica que $T(x) = S(x)$. Logo $T=S$.
+\end{proof}
+
+\begin{nota}
+	Sejam $p \in \R^n$ e $f: \R^n \to \R^m$ uma função diferenciável em $p$. A \emph{derivada de $f$ em $p$} é a transformação linear $Df(p): \R^n \to \R^m$ que satisfaz
+	\begin{equation*}
+	\lim_{v \to \bm 0} \frac{\Vert f(p+v) - f(p) - Df(p)(v) \Vert}{\Vert v \Vert} = 0.
+	\end{equation*}
+\end{nota}
+
+Podemos ver que, se $f$ é diferenciável, então $Df: \R^n \to L(\R^n,\R^m)$ é uma função que leva $p \in \R^n$ na derivada $Df(p)$ de $f$ em $p$.
+
+\begin{prop}[Derivabilidade implica continuidade]
+	Sejam $A \subseteq \R^m$ um aberto, $p \in A$ e $f: A \to \R^n$ uma função diferenciável em $p$. Então $f$ é contínua em $p$.
+\end{prop}
+\begin{proof}
+	Como $f$ é diferenciável em $p$, para todo $\varepsilon > 0$ existe $\delta > 0$ tal que, se $0<\nor{v}< \delta$, então
+	\begin{equation*}
+	\frac{\nor{f(p+v) - f(p) - Df(p)(v)}}{\nor{v}} < \varepsilon.
+	\end{equation*}
+Essa última desigualdade é equivalente a $\nor{f(p+v) - f(p) - Df(p)(v)}<\varepsilon\nor{v}$. Agora, notemos que
+	\begin{equation*}
+	\nor{f(p+v)-f(p)} - \nor{Df(p)(v)} \leq \nor{f(p+v) - f(p) - Df(p)(v)},
+	\end{equation*}
+o que implica que
+	\begin{equation*}
+	\nor{f(p+v)-f(p)} < \varepsilon\nor{v} + \nor{Df(p)(v)}.
+	\end{equation*}
+	Por fim, basta notar que, como $Df(p)$ é linear, para todo $v$ vale $\nor{Df(p)(v)} \leq \nor{Df(p)}\nor{v}$, em que $\nor{Df(p)}$ é a norma do supremo de funções. Assim, segue que
+	\begin{equation*}
+	\nor{f(p+v)-f(p)} < \varepsilon\nor{v} + \nor{Df(p)}\nor{v} = \Big(\varepsilon+\nor{Df(p)}\Big) \nor{v}.
+	\end{equation*}
+%Assim, dado $\varepsilon' > 0$, basta tomar $\delta'=$
+\end{proof}
+
+\begin{defi}
+	Seja $A \subseteq \R^n$ um aberto. Uma função \emph{diferenciável} é  uma função $f: A \to \R^m$ que é diferenciável em todo ponto $p \in A$.
+\end{defi}
+
+\begin{prop}[Regra da cadeia]
+	Sejam $f: \R^n \to \R^m$ diferenciável em $p \in \R^n$ e $g: \R^m \to \R^l$ diferenciável em $f(p)$. Então $g \circ f: \R^n \to \R^l$ é diferenciável em $p$ e
+	\begin{equation*}
+	D (g \circ f)(p) = D g(f(p)) \circ D f(p)
+	\end{equation*}
+\end{prop}
+\begin{proof} Definamos
+	\begin{align*}
+	r_1(v) &\coloneqq f(v) - f(p) - Df(p)(v-p); \\
+	r_2(v) &\coloneqq g(v) - g(f(p)) - Dg(f(p))(v-f(p)); \\
+	r_3(v) &\coloneqq (g \circ f)(v) - (g \circ f)(p) - (Dg(f(p)) \circ Df(p))(v-p).
+	\end{align*}
+Como $f$ e $g$ são diferenciáveis nos respectivos pontos do enunciado, segue que
+	\begin{equation*}
+	\lim_{v \to p} \frac{\nor{r_1(v)}}{\nor{v}} = 0 \e \lim_{v \to p} \frac{\nor{r_2(v)}}{\nor{v}} = 0.
+	\end{equation*}
+Queremos mostrar que
+	\begin{equation*}
+	\lim_{v \to p} \frac{\nor{r_3(v)}}{\nor{v}} = 0.
+	\end{equation*}	
+	
+Denotando $d_1 \coloneqq f^{(1)}(p)$, $d_2 \coloneqq g^{(1)}(f(p))$ por simplicidade, temos que
+	\begin{align*}
+	r_3(v) &= (g \circ f)(v) - (g \circ f)(p) - (d_2 \circ d_1)(v-p) \\
+			&= g(f(v)) - g(f(p)) - d_2(d_1(v-p)) \\
+			&= g(f(v)) - g(f(p)) - d_2(f(v) - f(p) - r_1(v)) \\
+			&= g(f(v)) - g(f(p)) - d_2(f(v) - (f(p)) + d_2(r_1(v))) \\
+			&= r_2(f(v)) + d_2(r_1(v)).
+	\end{align*}
+
+Como 
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	\newpage
+
+	\begin{align*}
+	& \frac{\nor{(g \circ f)(p+v) - (g \circ f)(p) - \big(Dg(f(p)) \circ Df(p)\big)(v)}}{\nor{v}}=\\
+	&= \frac{\nor{g (f(p+v)) - g(f(p)) - (Dg(f(p))(Df(p))(v))}}{\nor{v}}
+	\end{align*}
+	
+	\begin{equation*}
+	 \frac{\nor{f(p+v) - f(p) - Df(p)(v)}}{\nor{v}}
+	\end{equation*}
+	\begin{equation*}
+	 \frac{\nor{g (f(p)+w) - g(f(p)) - (Dg(f(p))(w)}}{\nor{w}}
+	\end{equation*}
+\end{proof}
+
+\begin{prop}
+	Sejam $f,g: \R^n \to \R^m$ diferenciáveis em $p \in \R^n$. Então
+	\begin{enumerate}
+	\item $D (f+g)(p) = D f(p) + D g(p);$
+	\item $D (f \cdot g) = D f(p) \cdot g(p) + f(p) \cdot D g(p);$
+	\item Se $g(a) \neq 0$,
+	\begin{equation*}
+	D \left(\frac{f}{g}\right) (p) = \frac{g(p) \cdot D f(a) - D g (a) \cdot f(p)}{g(p)^2}
+	\end{equation*}
+	\end{enumerate}
+\end{prop}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+\section{Derivadas direcionais}
+
+\begin{defi}
+	Sejam $A \subseteq \R^n$ um aberto, $p \in A$, $v \in \R^n$ tal que $p+v \in A$ e $f: A \to \R^m$. A derivada direcional de $f$ em $p$ com relação a $v$ é
+	\begin{equation*}
+	\partial_v f \coloneqq \lim_{t \to 0} \frac{f(p+v)-f(p)}{t}.
+	\end{equation*}
+\end{defi}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\chapter{Teoria da Medida}
+
+\section{Sigma-Álgebra e Espaço Mensurável}
+
+\begin{defi}
+	Seja $X$ um conjunto não vazio. Uma \emph{sigma-álgebra} $\mathcal X$ sobre $X$ é um subconjunto de $\p(X)$ que satisfaz
+	\begin{enumerate}
+	\item O vazio é mensurável.
+	\begin{equation*}
+	\emptyset \in \mathcal X
+	\end{equation*}
+
+	\item Complementar de mensurável é mensurável.
+	\begin{equation*}
+	A \in \mathcal X \Rightarrow A^\complement \in \mathcal X
+	\end{equation*}
+	\item União enumerável de mensuráveis é mensurável.
+	\begin{equation*}
+	(A_i)_{i \in \N} \subseteq \mathcal X \Rightarrow \bigcup_{i \in \N} A_i \in \mathcal X
+	\end{equation*}
+	\end{enumerate}
+\end{defi}
+
+	Vale notar que uma sigma-álgebra $\mathcal X$ é uma álgebra booleana (\ref{prop:algeb.subconj}) e, portanto, todas propriedades de álgebras booleanas valem para uma sigma-álgebra. De fato, o \textit{sigma} no nome vem da terceira propriedade das sigma-álgebras, pois veremos que essa propriedade tem a ver com um tipo de soma de medidas a ser definido adiante.
+
+\begin{prop}
+	Seja $X$ um conjunto não vazio e $\mathcal X$ uma sigma-álgebra sobre $X$. Então
+	\begin{enumerate}
+	\item $X \in \mathcal X$;
+	\item $(A_i)_{i \in \N} \subseteq \mathcal X \Rightarrow \displaystyle \bigcap_{i \in \N} A_i \in \mathcal X$.
+	\end{enumerate}
+\end{prop}
+\begin{proof}
+	\begin{enumerate}
+	\item Da primeira propriedade de $\mathcal X$, tem-se que $\emptyset \in \mathcal X$. Da segunda propriedade de $\mathcal X$, tem-se que $X = \emptyset^\complement \in \mathcal X$.
+	\item Da segunda propriedade, tem-se que, para todo $i \in \N$, $A_i^\complement \in \mathcal X$. Da terceira propriedade de $\mathcal X$, tem-se que $\bigcup_{i \in \N} A_i^\complement \in \mathcal X$. Das Leis de De Morgan (\ref{prop:de.morgan}), tem-se que
+	\begin{equation*}
+	\left(\bigcap_{i \in \N} A_i \right)^\complement = \bigcup_{i \in \N} (A_i)^\complement \in \mathcal X,
+	\end{equation*}
+e conclui-se que $\displaystyle\bigcap_{i \in \N} A_i \in \mathcal X$.
+	\end{enumerate}
+\end{proof}
+
+\begin{ex}
+	$\mathcal X = \{\emptyset,X\}$ e $\mathcal X = \p(X)$ são sigma-álgebras sobre $X$.
+\end{ex}
+
+\begin{defi}
+	Seja $X$ um conjunto não vazio e $\mathcal X$ uma sigma-álgebra sobre $X$. Uma \emph{sub-sigma-álgebra} de $\mathcal X$ é um conjunto $\mathcal X' \subseteq \mathcal X$ que é uma sigma-álgebra sobre $X$.
+\end{defi}
+
+\begin{defi}
+	Um \emph{espaço mensurável} é um par $(X,\mathcal X)$ em que $X$ é um conjunto não vazio e $\mathcal X$ é uma sigma-álgebra sobre $X$. Um \emph{conjunto mensurável} é um elemento da sigma-álgebra $\mathcal X$.
+\end{defi}
+
+\section{Funções Mensuráveis}
+
+\begin{defi}
+	Sejam $\bm X = (X,\mathcal X)$ e $\bm Y = (Y,\mathcal Y)$ espaços mensuráveis. Uma \emph{função mensurável} entre $\bm X$ e $\bm Y$ é uma função $f: X \to Y$ que satisfaz
+	\begin{equation*}
+	\forall A \in \mathcal Y \qquad f^{-1}(A) \in \mathcal X.
+	\end{equation*}
+\end{defi}
+
+\begin{prop}
+	Sejam $\bm Y = (Y,\mathcal Y)$ um espaço mensurável e $f: X \to Y$ uma função. Então
+	\begin{equation*}
+	\mathcal X \coloneqq \{f^{-1}(A) : A \in \mathcal Y\}
+	\end{equation*}
+é uma sigma-álgebra sobre $X$.
+\end{prop}
+\begin{proof}
+	Primeiro, notemos que $\emptyset \in \mathcal X$, pois $\emptyset \in \mathcal Y$ e $f^{-1}(\emptyset) = \emptyset$ (\ref{prop:props.imag.inv}). Segundo, seja $B \in \mathcal X$. Então existe $A \in \mathcal Y$ tal que $B = f^{-1}(A)$. Como $\mathcal Y$ é uma sigma-álgebra, então $A^\complement \in \mathcal Y$, o que implica $f^{-1}(A^\complement) \in \mathcal X$. Mas $(f^{-1}(A))^\complement = f^{-1}(A^\complement)$ (\ref{prop:props.imag.inv}). Então $B^\complement \in \mathcal X$. Terceiro, seja $(B_i)_{i \in \N}$ uma sequência de conjuntos de $\mathcal X$. Então, para todo $i \in I$, existe $A_i \in \mathcal Y$ tal que $B_i = f^{-1}(A_i)$. Como $\mathcal Y$ é uma sigma-álgebra, então $\bigcup_{i \in \N} A_i \in \mathcal Y$. Isso implica que $f^{-1}(\bigcup_{i \in \N} A_i) \in \mathcal X$. Mas $f^{-1}(\bigcup_{i \in \N} A_i) = \bigcup_{i \in \N} f^{-1}(A_i)$ (\ref{prop:props.imag.inv}). Então $\bigcup_{i \in \N} B_i \in \mathcal X$ e, assim, conclui-se que $\mathcal X$ é uma sigma-álgebra sobre $X$.
+\end{proof}
+
+\begin{prop}
+	Sejam $\bm X = (X,\mathcal X)$ um espaço mensurável e $f: X \to Y$ uma função. Então
+	\begin{equation*}
+	\mathcal Y \coloneqq \{A \subseteq Y : f^{-1}(A) \in \mathcal X\}
+	\end{equation*}
+é uma sigma-álgebra sobre $Y$.
+\end{prop}
+\begin{proof}
+	Primeiro, notemos que $\emptyset \in \mathcal Y$, pois $\emptyset \in \mathcal X$ e $f^{-1}(\emptyset) = \emptyset$ (\ref{prop:props.imag.inv}). Segundo, seja $A \in \mathcal Y$. Então $f^{-1}(A) \in \mathcal X$, o que implica $(f^{-1}(A))^\complement \in \mathcal X$, pois $\mathcal X$ é sigma-álgebra. Mas $(f^{-1}(A))^\complement = f^{-1}(A^\complement)$ (\ref{prop:props.imag.inv}), o que implica $f^{-1}(A^\complement) \in \mathcal X$ e, portanto, $A^\complement \in \mathcal Y$. Terceiro, seja $(A_i)_{i \in \N}$ uma sequência de conjuntos de $\mathcal Y$. Então, para todo $i \in \N$, $f^{-1}(A_i) \in \mathcal X$, o que implica que $\bigcup_{i \in \N} f^{-1}(A_i) \in \mathcal X$, pois $\mathcal X$ é uma sigma-álgebra. Mas, como $\bigcup_{i \in \N} f^{-1}(A_i) = f^{-1}(\bigcup_{i \in \N} A_i)$ (\ref{prop:props.imag.inv}), segue que $\bigcup_{i \in \N} A_i \in \mathcal Y$ e, assim, conclui-se que $\mathcal Y$ é uma sigma-álgebra sobre $Y$.
+\end{proof}
+
+\begin{prop}
+	Sejam $\bm X = (X,\mathcal X)$ e $\bm Y = (Y,\mathcal Y)$ espaços mensuráveis. Uma função $f: X \to Y$ é função mensurável entre $\bm X$ e $\bm Y$ se, e somente se, $\mathcal X' \coloneqq \{f^{-1}(A) : A \in \mathcal Y\}$ é uma sub-sigma-álgebra de $\mathcal X$.
+\end{prop}
+\begin{proof}
+	Suponha que $f$ é uma função mensurável. Seja $B \in \mathcal X'$. Então existe $A \in \mathcal Y$ tal que $B = f^{-1}(A)$. Como $f$ é mensurável, vale $f^{-1}(A) \in \mathcal X$, o que implica $B \in \mathcal X$ e, portanto, $\mathcal X' \subseteq \mathcal X$. Como $\mathcal X'$ é uma sigma-álgebra sobre $X$ pela proprosição acima, segue que $\mathcal X'$ é uma sub-sigma-álgebra de $\mathcal X$. Reciprocamente, suponha que $\mathcal X'$ é uma sub-sigma-álgebra de $\mathcal X$. Seja $A \in \mathcal Y$. Então $f^{-1}(A) \in \mathcal X'$. Mas como $\mathcal X'$ é uma sub-sigma-álgebra de $\mathcal X$, segue que $f^{-1}(A) \in \mathcal X$, o que mostra que $f$ é mensurável. 
+\end{proof}
+
+\section{Sigma-Álgebras Geradas por Conjuntos}
+
+\begin{prop}
+	A interseção de sigma-álgebras sobre um mesmo conjunto é uma sigma-álgebra sobre esse conjunto.
+
+	Seja $X$ um conjunto não vazio e $(\mathcal X_i)_{i \in I}$ uma família de sigma-álgebras sobre $X$. Então
+	\begin{equation*}
+	\mathcal X \coloneqq \bigcap_{i \in I} \mathcal X_i
+	\end{equation*}
+é uma sigma-álgebra sobre $X$.
+\end{prop}
+\begin{proof}
+	Como $\mathcal X_i$ são sigma-álgebras, então $\emptyset \in \mathcal X_i$ para todo $i \in I$. Assim, segue que $\emptyset \in \mathcal X$. Ainda, se $A \in \mathcal X$, então $A \in \mathcal X_i$ para todo $i \in I$. Logo $A^\complement \in \mathcal X_i$ para todo $i \in I$, o que implica $A^\complement \in \mathcal X_i$. Por fim, se $(A_j)_{j \in \N}$ é uma sequência de conjuntos em $\mathcal X$, então $A_j \in \mathcal X$ para todo $j \in \N$. Mas isso implica que $A_j \in \mathcal X_i$ para todo $j \in \N$, $i \in I$ que, por sua vez, implica que, para todo $i \in I$,
+	\begin{equation*}
+	\bigcup_{j \in \N} A_j \in \mathcal X_i.
+	\end{equation*}
+Então conclui-se que $\displaystyle\bigcup_{j \in \N} A_j \in \mathcal X$ e está provada a proposição.
+\end{proof}
+
+\begin{defi}
+	Seja $X$ um conjunto e $A \in \p(X)$ um conjunto de subconjuntos de $X$. A \emph{sigma-álgebra gerada por} $A$ é a interseção da família de todas as sigma-álgebras sobre $X$ em que $A$ está contido.
+\end{defi}
+	
+	A sigma-álgebra gerada por um conjunto é a menor sigma-álgebra que contém esse conjunto no sentido que não existe subconjunto dessa sigma-álgebra que contenha o conjunto e também seja uma sigma-álgebra.
+
+\begin{ex}
+	A sigma-álgebra sobre $X$ gerada por $\emptyset$ é $\{\emptyset, X\}$.
+\end{ex}
+
+\section{Breves Extras MUDAR DE LUGAR}
+
+\begin{defi}
+	A \emph{Álgebra de Borel} $\bor$ é a $\sigma$-álgebra sobre $\R$ gerada pelo conjunto de intervalos abertos de $\R$ da forma $(a,b)$, com $a,b \in \R$. Um conjunto em $\bor$ é chamado \emph{conjunto de Borel}.
+\end{defi}
+
+\begin{defi}
+	A \emph{Álgebra de Borel extendida} $\overline{\bor}$ é o conjunto de todos os conjuntos de Borel e de todos conjuntos de Borel unidos a $\{-\infty\}$, $\{+\infty\}$ ou $\{-\infty,+\infty\}$.
+\end{defi}
+
+\begin{defi}
+	Um \emph{espaço mensurável} é um par $\bm X = (X,\mathcal X)$ em que $X$ é um conjunto não vazio e $\mathcal X$ é uma $\sigma$-álgebra sobre $X$. Os conjuntos de $\mathcal X$ são chamados de conjuntos \emph{$X$-mensuráveis} (ou \emph{mensuráveis}, caso não haja ambiguidade).
+\end{defi}
+
+\begin{defi}
+	Seja $(X,\mathcal X)$ um espaço mensurável. Uma função $f: X \to \R$ \emph{$X$-mensurável} (ou \emph{mensurável}) é uma função que satisfaz
+	\begin{equation*}
+	\forall \alpha \in \R \qquad \{x \in X : f(x) \leq \alpha\} \in \mathcal X.
+	\end{equation*}
+\end{defi}
+
+\begin{prop}
+	Seja $(X,\mathcal X)$ um espaço mensurável e $f: X \to \R$. Então as quatro afirmações abaixo são equivalentes
+	\begin{enumerate}
+	\item $\forall \alpha \in \R \qquad A_\alpha \coloneqq \{x \in X : f(x) \leq \alpha\} \in \mathcal X$;
+	\item $\forall \alpha \in \R \qquad B_\alpha \coloneqq \{x \in X : f(x) < \alpha\} \in \mathcal X$;
+	\item $\forall \alpha \in \R \qquad C_\alpha \coloneqq \{x \in X : f(x) \geq \alpha\} \in \mathcal X$;
+	\item $\forall \alpha \in \R \qquad D_\alpha \coloneqq \{x \in X : f(x) > \alpha\} \in \mathcal X$.
+	\end{enumerate}
+\end{prop}
+\begin{proof}
+	Claramente, como $A_\alpha^\complement = D_\alpha$, (1) e (4) são equivalentes; do mesmo modo, como $B_\alpha^\complement = C_\alpha$, (2) e (3) são equivalentes. Vamos demonstrar que (1) e (2) são equivalentes, o que demonstrará a proposição.
+	
+	...	
+\end{proof}
+
+\begin{prop}
+	Seja $(X,\mathcal X)$ um espaço mensurável e $f: X \to R$. Então $f$ é uma função mensurável entre $(X,\mathcal X)$ e $(\R,\bor)$ se, e somente se,
+	\begin{equation*}
+	\forall \alpha \in \R \qquad \{x \in X : f(x) \leq \alpha\} \in \mathcal X.
+	\end{equation*}
+\end{prop}
+\begin{proof}
+	Se $f$ é mensurável, seja $E \in$
+	
+	...
+\end{proof}
+\newpage
+
+\section{Medida e Espaço de Medida}
+
+\begin{defi}
+	Seja $\bm X=(X,\mathcal X)$ um espaço mensurável. Uma \emph{medida} sobre $\bm X$ é uma função $\mu : \mathcal X \to \RR$ que satisfaz
+	\begin{enumerate}
+	\item $\mu(\emptyset)=0$;
+	\item $\forall E \in \mathcal X \qquad \mu(E) \geq 0$;
+	\item Se $(E_i)_{i \in \N} \in \mathcal X$ é uma família de conjuntos disjuntos dois a dois, então
+	\begin{equation*}
+	\mu\left(\displaystyle\bigcup_{i \in \N} E_i\right)=\displaystyle\sum_{i \in \N} \mu(E_i).
+	\end{equation*}
+	\end{enumerate}
+\end{defi}
+
+\begin{defi}
+	Um \emph{espaço de medida} é uma tripla $(X,\mathcal X,\mu)$, em que $(X,\mathcal X)$ é um espaço mensurável e $\mu:\mathcal X \to \RR$ é uma medida sobre $(X,\mathcal X)$.
+\end{defi}
+
+\begin{prop}
+	Seja $(X \mathcal X,\mu)$ um espaço de medida $E_1,E_2 \in \mathcal X$ tais que $E_1 \subseteq E_2$. Então
+	\begin{enumerate}
+	\item $\mu(E_1) \leq \mu(E_2)$;
+	\item $\mu(E_1) < + \infty \Rightarrow \mu(E_2 \setminus E_1) = \mu(E_2) - \mu(E_1)$.
+	\end{enumerate}
+\end{prop}
+\begin{proof}
+	Como $E_2 = E_1 \cup (E_2 \setminus E_1)$ e $E_1 \cap (E_2 \setminus E_1) = \emptyset$, segue que
+	\begin{equation*}
+	\mu(E_2)=\mu(E_1)+\mu(E_2 \setminus E_1).
+	\end{equation*}
+	\begin{enumerate}
+	\item Daí, como $\mu(E_2 \setminus E_1) \geq 0$, segue que $\mu(E_2) \geq \mu(E_1)$.
+	\item Se $\mu(E_1) < + \infty$, então, subtraindo-a dos dois lados da equação, temos $\mu(E_2)-\mu(E_1)=\mu(E_2 \setminus E_1)$.
+	\end{enumerate}
+\end{proof}
+
+\begin{prop}
+	Seja $(X \mathcal X,\mu)$ um espaço de medida e $(E_n)_{n \in \N} \in \mathcal X$ uma sequência de conjuntos mensuráveis. Então
+	\begin{enumerate}
+	\item Se $(E_n)_{n \in \N}$ é crescente, então
+		\begin{equation*}
+		\mu \left( \bigcup_{n \in \N} E_n \right) = \lim_n \mu(E_n);
+		\end{equation*}
+	\item Se $(E_n)_{n \in \N}$ é descresente e $\mu(E_1) < + \infty$, então
+		\begin{equation*}
+		\mu \left( \bigcap_{n \in \N} E_n \right) = \lim_n \mu(E_n).
+		\end{equation*}
+	\end{enumerate}
+\end{prop}
+\begin{proof}
+	...
+\end{proof}
+
+
+
+
+\chapter{Equações Diferenciais Ordinárias}
+
+\section{Equações Diferenciais Ordinárias e Soluções}
+
+\begin{defi}
+	Sejam $n,d \in \N^*$ Uma \emph{equação diferencial ordinária de ordem $n$ e dimensão $d$} é uma expressão $E$ da forma
+	\begin{equation*}
+	x^{(n)} = F(t, x, x^{(1)}, \cdots,x^{(n-1)}),
+	\end{equation*}
+em que $t \in \R$ é a variável \emph{tempo}, $x : \R \to \R^d$ é uma função, $A \subseteq \R \times \R^{nd}$ é um aberto e $F: A \to \R^d$ é uma função contínua.
+\end{defi}
+
+\begin{defi}
+	Seja $E: x^{(n)} = F(t, x, x^{(1)}, \cdots,x^{(n-1)})$ uma equação diferencial ordinária de dimensão $d$. Uma \emph{solução de $E$} é uma curva $\varphi: I \subseteq \R \to \R^d$ $n$ vezes diferenciável tal que
+	\begin{equation*}
+	\varphi^{(n)} = F(t, \varphi(t), \varphi^{(1)}(t), \cdots,\varphi^{(n-1)}(t)).
+	\end{equation*}
+\end{defi}
+
+\begin{prop}[Redução de ordem]
+	Seja $E: x^{(n)}(t) = F(t, x, x^{(1)}, \cdots,x^{(n-1)})$ uma equação diferencial ordinária de dimensão $d$ definida num aberto $A \subseteq \R \times \R^{nd}$. Então existe equação diferencial ordinária $E'$ de dimensão $nd$
+	\begin{equation*}
+	 \bm x' = \bm F(t,\bm x)
+	\end{equation*}	
+tal que existe $\phi$ solução de $E$ se, e somente se, existe $\bm \phi$ solução de $E'$.
+\end{prop}
+\begin{proof}
+	Definimos $\bm x = (x_0, \ldots,x_{n-1}) \coloneqq (x,x^{(1)}, \cdots,x^{(n-1)})$, de modo que
+	\begin{align*}
+	\bm x' &= ((x_0)',\ldots,(x_{n-1})',(x_{n-1})') \\
+			&= (x^{(1)}, \ldots,x^{(n-1)},x^{(n)}) \\
+			&= (x_1,\ldots,x_{n-1},F(t, x, x^{(1)}, \cdots,x^{(n-1)})) \\
+			&= (x_1,\ldots,x_{n-1},F(t,\bm x))
+	\end{align*}	
+
+	Assim, definimos a função
+	\begin{align*}
+	\bm F: A &\to \R^{nd} \\
+	(t,\bm x) &\mapsto (x_1,\ldots,x_{n-1},F(t, \bm x))
+	\end{align*}
+e então $\bm x' = \bm F(t,\bm x)$. Por fim, devemos mostrar que as soluções são equivalentes. Seja $\phi: I \subseteq \R \to \R^d$ solução de $E$. Então, para todos $k \in \{1,\ldots,n\}$, existe $\phi^{(k)}: \R \to \R^d$. Assim, definindo $\bm \phi \coloneqq (\phi,\phi^{(1)},\ldots,\phi^{(n-1)})$, segue que $\bm \phi$ é solução de $E'$.
+\end{proof}
+
+Por causa dessa proposição, podemos representar qualquer EDO como tendo ordem 1.
+
+\section{Existência e Unicidade de Soluções}
+
+
+
+\section{Soluções Maximais}
+
+\begin{defi}
+	Seja $E: x'=F(t,x)$ uma equação diferencial ordinária de dimensão $d$. Uma \emph{solução maximal de $E$} é uma solução $\phi: I \to \R^d$ de $E$ para a qual vale que, para toda solução $\psi: J \to \R^d$ de $E$ tal que $I \subseteq J$ e $\psi|_I = \phi$, então $I = J$ e $\phi = \psi$. O intervalo $I$ é o \emph{intervalo maximal}.
+\end{defi}
+
+\begin{defi}
+	Dado $(t_0,x_0) \in U$, defina
+	\begin{equation*}
+	S_{(t_0,x_0)} \coloneqq \{\phi: I_\phi \to \R^d : \phi \text{\ \ é solução do problema de Cauchy}\}.
+	\end{equation*}
+Dados $\phi ,\psi \in S_{(t_0,x_0)}$, definimos $\phi \leq \psi $ se, e somente se, $I_{\phi } \subseteq I_{\psi}$ e $\psi|_{I_\phi} = \phi $.
+\end{defi}
+
+\begin{prop}
+	A relação acima de fato é relação de ordem parcial.
+\end{prop}
+
+\begin{teo}
+	Seja $F: U \to \R^d$ uma função contínua definida num aberto $U \subseteq \R \times \R^d$. Então, para cada $(t_0,x_0) \in U$ existe solução maximal para o problema de Cauchy
+	\begin{equation*}
+	\begin{cases}
+		x' = F(t,x) \\
+		x(t_0)=x_0
+	\end{cases}
+	\end{equation*}
+\end{teo}
