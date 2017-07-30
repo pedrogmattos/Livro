@@ -1,0 +1,119 @@
+\select@language {brazilian}
+\contentsline {part}{I\hspace {1em}{\scshape Conjuntos}}{1}{part.1}
+\contentsline {chapter}{\numberline {1}Os Axiomas e as Contru\IeC {\c c}\IeC {\~o}es Essenciais}{2}{chapter.1}
+\contentsline {section}{\numberline {1.1}Axiomas do Vazio, da Extens\IeC {\~a}o e das Partes}{3}{section.1.1}
+\contentsline {section}{\numberline {1.2}Axiomas da Especifica\IeC {\c c}\IeC {\~a}o e do Par}{5}{section.1.2}
+\contentsline {section}{\numberline {1.3}Axioma da Uni\IeC {\~a}o}{5}{section.1.3}
+\contentsline {section}{\numberline {1.4}Axioma da Escolha}{6}{section.1.4}
+\contentsline {section}{\numberline {1.5}Axiomas do Infinito e da Funda\IeC {\c c}\IeC {\~a}o}{8}{section.1.5}
+\contentsline {section}{\numberline {1.6}Axioma da Substitui\IeC {\c c}\IeC {\~a}o}{8}{section.1.6}
+\contentsline {chapter}{\numberline {2}Fam\IeC {\'\i }lias e Propriedades de Conjuntos}{11}{chapter.2}
+\contentsline {section}{\numberline {2.1}Fam\IeC {\'\i }lias e Indexa\IeC {\c c}\IeC {\~o}es}{11}{section.2.1}
+\contentsline {section}{\numberline {2.2}Propriedades de Uni\IeC {\~a}o e Interse\IeC {\c c}\IeC {\~a}o}{13}{section.2.2}
+\contentsline {section}{\numberline {2.3}Produto de Conjuntos}{15}{section.2.3}
+\contentsline {section}{\numberline {2.4}Coproduto de Conjuntos}{16}{section.2.4}
+\contentsline {chapter}{\numberline {3}Rela\IeC {\c c}\IeC {\~o}es e Fun\IeC {\c c}\IeC {\~o}es}{20}{chapter.3}
+\contentsline {section}{\numberline {3.1}Rela\IeC {\c c}\IeC {\~o}es}{20}{section.3.1}
+\contentsline {section}{\numberline {3.2}Fun\IeC {\c c}\IeC {\~o}es}{20}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Composi\IeC {\c c}\IeC {\~a}o de Fun\IeC {\c c}\IeC {\~o}es}{22}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Fun\IeC {\c c}\IeC {\~a}o Inversa, Injetividade e Sobrejetividade}{23}{subsection.3.2.2}
+\contentsline {subsection}{\numberline {3.2.3}Conjunto Pot\IeC {\^e}ncia (Conjunto de Fun\IeC {\c c}\IeC {\~o}es)}{25}{subsection.3.2.3}
+\contentsline {section}{\numberline {3.3}Imagem Inversa de Fun\IeC {\c c}\IeC {\~a}o e Propriedades}{25}{section.3.3}
+\contentsline {section}{\numberline {3.4}Propriedades de Imagem e Imagem Inversa}{26}{section.3.4}
+\contentsline {chapter}{\numberline {4}Rela\IeC {\c c}\IeC {\~o}es Bin\IeC {\'a}rias}{28}{chapter.4}
+\contentsline {section}{\numberline {4.1}Rela\IeC {\c c}\IeC {\~o}es de Equival\IeC {\^e}ncia}{28}{section.4.1}
+\contentsline {section}{\numberline {4.2}Rela\IeC {\c c}\IeC {\~o}es de Ordem}{29}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Ordens Parciais, Estritas e Totais}{29}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Conjuntos Parcialmente Ordenados}{31}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {4.2.3}Fun\IeC {\c c}\IeC {\~o}es Mon\IeC {\'o}tonas}{34}{subsection.4.2.3}
+\contentsline {subsection}{\numberline {4.2.4}Cadeias e Lema de Zorn}{34}{subsection.4.2.4}
+\contentsline {subsection}{\numberline {4.2.5}Reticulados}{34}{subsection.4.2.5}
+\contentsline {chapter}{\numberline {5}Cardinalidade de Conjuntos}{35}{chapter.5}
+\contentsline {section}{\numberline {5.1}Igualdade de Cardinais}{35}{section.5.1}
+\contentsline {section}{\numberline {5.2}Ordena\IeC {\c c}\IeC {\~a}o de Cardinais}{36}{section.5.2}
+\contentsline {section}{\numberline {5.3}Opera\IeC {\c c}\IeC {\~o}es com Cardinais}{37}{section.5.3}
+\contentsline {section}{\numberline {5.4}Cardinalidade de Soma (ou Uni\IeC {\~a}o Disjunta)}{37}{section.5.4}
+\contentsline {chapter}{\numberline {6}Conjuntos Num\IeC {\'e}ricos}{40}{chapter.6}
+\contentsline {section}{\numberline {6.1}N\IeC {\'u}meros Naturais}{40}{section.6.1}
+\contentsline {subsection}{\numberline {6.1.1}Adi\IeC {\c c}\IeC {\~a}o}{41}{subsection.6.1.1}
+\contentsline {subsection}{\numberline {6.1.2}Multiplica\IeC {\c c}\IeC {\~a}o}{43}{subsection.6.1.2}
+\contentsline {subsection}{\numberline {6.1.3}Ordena\IeC {\c c}\IeC {\~a}o}{46}{subsection.6.1.3}
+\contentsline {section}{\numberline {6.2}N\IeC {\'u}meros Inteiros}{48}{section.6.2}
+\contentsline {subsection}{\numberline {6.2.1}Adi\IeC {\c c}\IeC {\~a}o e Subtra\IeC {\c c}\IeC {\~a}o}{49}{subsection.6.2.1}
+\contentsline {subsection}{\numberline {6.2.2}Multiplica\IeC {\c c}\IeC {\~a}o}{51}{subsection.6.2.2}
+\contentsline {subsection}{\numberline {6.2.3}Ordena\IeC {\c c}\IeC {\~a}o}{51}{subsection.6.2.3}
+\contentsline {section}{\numberline {6.3}N\IeC {\'u}meros Racionais}{52}{section.6.3}
+\contentsline {subsection}{\numberline {6.3.1}Adi\IeC {\c c}\IeC {\~a}o e Subtra\IeC {\c c}\IeC {\~a}o}{52}{subsection.6.3.1}
+\contentsline {subsection}{\numberline {6.3.2}Multiplica\IeC {\c c}\IeC {\~a}o e Divis\IeC {\~a}o}{52}{subsection.6.3.2}
+\contentsline {subsection}{\numberline {6.3.3}Ordena\IeC {\c c}\IeC {\~a}o}{52}{subsection.6.3.3}
+\contentsline {section}{\numberline {6.4}N\IeC {\'u}meros Reais}{52}{section.6.4}
+\contentsline {subsection}{\numberline {6.4.1}Adi\IeC {\c c}\IeC {\~a}o e Subtra\IeC {\c c}\IeC {\~a}o}{52}{subsection.6.4.1}
+\contentsline {subsection}{\numberline {6.4.2}Multiplica\IeC {\c c}\IeC {\~a}o e Divis\IeC {\~a}o}{52}{subsection.6.4.2}
+\contentsline {subsection}{\numberline {6.4.3}Ordena\IeC {\c c}\IeC {\~a}o}{52}{subsection.6.4.3}
+\contentsline {subsection}{\numberline {6.4.4}Completude}{52}{subsection.6.4.4}
+\contentsline {chapter}{\numberline {7}Resto tempor\IeC {\'a}rio}{53}{chapter.7}
+\contentsline {section}{\numberline {7.1}Complementares e Diferen\IeC {\c c}a Sim\IeC {\'e}trica}{53}{section.7.1}
+\contentsline {subsection}{\numberline {7.1.1}Propriedades}{53}{subsection.7.1.1}
+\contentsline {section}{\numberline {7.2}Outras defini\IeC {\c c}\IeC {\~o}es}{54}{section.7.2}
+\contentsline {section}{\numberline {7.3}Limites de Conjuntos}{54}{section.7.3}
+\contentsline {part}{II\hspace {1em}{\scshape \IeC {\'A}lgebra}}{55}{part.2}
+\contentsline {chapter}{\numberline {8}Opera\IeC {\c c}\IeC {\~o}es Bin\IeC {\'a}rias, Magmas, Semigrupos e Monoides}{56}{chapter.8}
+\contentsline {section}{\numberline {8.1}Opera\IeC {\c c}\IeC {\~o}es Bin\IeC {\'a}rias}{56}{section.8.1}
+\contentsline {section}{\numberline {8.2}Magma}{57}{section.8.2}
+\contentsline {section}{\numberline {8.3}Semigrupo}{58}{section.8.3}
+\contentsline {section}{\numberline {8.4}Homomorfismo de Semigrupos}{59}{section.8.4}
+\contentsline {section}{\numberline {8.5}Monoide}{60}{section.8.5}
+\contentsline {section}{\numberline {8.6}Homomorfismos de Monoides}{62}{section.8.6}
+\contentsline {chapter}{\numberline {9}Grupos}{64}{chapter.9}
+\contentsline {section}{\numberline {9.1}Grupo}{64}{section.9.1}
+\contentsline {section}{\numberline {9.2}Subgrupo}{65}{section.9.2}
+\contentsline {section}{\numberline {9.3}Coclasses e \IeC {\'I}ndice de Subgrupo}{67}{section.9.3}
+\contentsline {section}{\numberline {9.4}Subgrupo Normal e Grupo Quociente}{70}{section.9.4}
+\contentsline {section}{\numberline {9.5}Homomorfismo de Grupo}{72}{section.9.5}
+\contentsline {section}{\numberline {9.6}N\IeC {\'u}cleo, Imagem e Isomorfismo}{74}{section.9.6}
+\contentsline {section}{\numberline {9.7}Teoremas de Isomorfismo}{76}{section.9.7}
+\contentsline {section}{\numberline {9.8}Produto de Grupos}{78}{section.9.8}
+\contentsline {section}{\numberline {9.9}Grupo Livre}{79}{section.9.9}
+\contentsline {section}{\numberline {9.10}Coproduto de Grupos}{80}{section.9.10}
+\contentsline {section}{\numberline {9.11}Grupo Simples e Subgrupo Normal Maximal}{80}{section.9.11}
+\contentsline {section}{\numberline {9.12}Sequ\IeC {\^e}ncia subnormal}{81}{section.9.12}
+\contentsline {section}{\numberline {9.13}Conjunto gerador}{82}{section.9.13}
+\contentsline {section}{\numberline {9.14}Grupos Sim\IeC {\'e}tricos e Alternados}{82}{section.9.14}
+\contentsline {subsection}{\numberline {9.14.1}Permuta\IeC {\c c}\IeC {\~o}es e \IeC {\'O}rbitas}{85}{subsection.9.14.1}
+\contentsline {subsection}{\numberline {9.14.2}Permuta\IeC {\c c}\IeC {\~o}es, Ciclos e Transposi\IeC {\c c}\IeC {\~o}es}{86}{subsection.9.14.2}
+\contentsline {section}{\numberline {9.15}Grupos C\IeC {\'\i }clicos}{87}{section.9.15}
+\contentsline {section}{\numberline {9.16}Grupos Diedrais}{87}{section.9.16}
+\contentsline {chapter}{\numberline {10}An\IeC {\'e}is}{88}{chapter.10}
+\contentsline {section}{\numberline {10.1}Anel}{88}{section.10.1}
+\contentsline {section}{\numberline {10.2}Subanel}{90}{section.10.2}
+\contentsline {section}{\numberline {10.3}O Anel de Polin\IeC {\^o}mios e o Anel Produto}{91}{section.10.3}
+\contentsline {section}{\numberline {10.4}Ideais e An\IeC {\'e}is Quocientes}{96}{section.10.4}
+\contentsline {section}{\numberline {10.5}Homomorfismos de An\IeC {\'e}is}{100}{section.10.5}
+\contentsline {section}{\numberline {10.6}Teoremas de Isomorfismo}{106}{section.10.6}
+\contentsline {section}{\numberline {10.7}Ideais Primos e Ideais Maximais}{110}{section.10.7}
+\contentsline {section}{\numberline {10.8}Dom\IeC {\'\i }nios Euclidianos}{112}{section.10.8}
+\contentsline {section}{\numberline {10.9}Divis\IeC {\~a}o e Associa\IeC {\c c}\IeC {\~a}o em An\IeC {\'e}is}{114}{section.10.9}
+\contentsline {subsection}{\numberline {10.9.1}Divis\IeC {\~a}o e Associa\IeC {\c c}\IeC {\~a}o}{114}{subsection.10.9.1}
+\contentsline {subsection}{\numberline {10.9.2}Rela\IeC {\c c}\IeC {\~a}o de Associa\IeC {\c c}\IeC {\~a}o}{118}{subsection.10.9.2}
+\contentsline {section}{\numberline {10.10}Dom\IeC {\'\i }nios de Fatora\IeC {\c c}\IeC {\~a}o \IeC {\'U}nica}{119}{section.10.10}
+\contentsline {section}{\numberline {10.11}Ra\IeC {\'\i }zes de Polin\IeC {\^o}mios}{127}{section.10.11}
+\contentsline {chapter}{\numberline {11}Corpos}{129}{chapter.11}
+\contentsline {section}{\numberline {11.1}Extens\IeC {\~o}es de Corpos}{129}{section.11.1}
+\contentsline {section}{\numberline {11.2}COISAS DA PROVA 3}{132}{section.11.2}
+\contentsline {chapter}{\numberline {12}Matrizes}{135}{chapter.12}
+\contentsline {section}{\numberline {12.1}Soma de Matrizes}{135}{section.12.1}
+\contentsline {section}{\numberline {12.2}Produto de Matrizes e Produto Por Escalar}{137}{section.12.2}
+\contentsline {section}{\numberline {12.3}Matrizes Quadradas}{139}{section.12.3}
+\contentsline {section}{\numberline {12.4}Tra\IeC {\c c}o e Determinante}{139}{section.12.4}
+\contentsline {chapter}{\numberline {13}Espa\IeC {\c c}os Vetoriais}{141}{chapter.13}
+\contentsline {section}{\numberline {13.1}Espa\IeC {\c c}o e Subespa\IeC {\c c}o Vetoriais}{141}{section.13.1}
+\contentsline {section}{\numberline {13.2}Combina\IeC {\c c}\IeC {\~a}o Linear de Vetores}{147}{section.13.2}
+\contentsline {section}{\numberline {13.3}Soma de Subespa\IeC {\c c}os Vetoriais}{150}{section.13.3}
+\contentsline {section}{\numberline {13.4}Bases de Espa\IeC {\c c}os Vetoriais}{153}{section.13.4}
+\contentsline {section}{\numberline {13.5}Transforma\IeC {\c c}\IeC {\~o}es Lineares}{155}{section.13.5}
+\contentsline {section}{\numberline {13.6}Representa\IeC {\c c}\IeC {\~a}o Matricial}{159}{section.13.6}
+\contentsline {section}{\numberline {13.7}Espa\IeC {\c c}os Vetoriais Normados}{160}{section.13.7}
+\contentsline {section}{\numberline {13.8}Produto e Soma Catog\IeC {\'o}ricas de Espa\IeC {\c c}os Vetoriais}{161}{section.13.8}
+\contentsline {subsection}{\numberline {13.8.1}Produto}{161}{subsection.13.8.1}
+\contentsline {subsection}{\numberline {13.8.2}Soma (Coproduto)}{163}{subsection.13.8.2}
+\contentsline {chapter}{\numberline {14}\IeC {\'A}lgebras Booleanas}{164}{chapter.14}
