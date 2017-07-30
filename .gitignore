@@ -1,0 +1,16 @@
+*.tex.bak
+*.aux
+*.log
+agradecimentos.tex
+antigos/
+apendice.tex
+atencao.tex
+capa.tex
+dedicatoria.tex
+imagens/
+informacoes.tex
+introducao.tex
+licenca.tex
+livro.pdf
+prefacio.tex
+rosto.tex
