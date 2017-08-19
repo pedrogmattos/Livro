@@ -462,7 +462,7 @@ Seja $(C_i)_{i \in I}$ uma família de conjuntos e $i \in I$. A \emph{projeção
 
 \begin{prop}[Propriedade Universal]
 Sejam $(C_i)_{i \in I}$ uma família de conjuntos, $X$ um conjunto e, para todo $i \in I$, $f_i: X \to C_i$ uma função. Então existe uma única função $f: X \to \prod_{i \in I} C_i$ tal que, para todo $i \in I$, $\pi_i \circ f = f_i$ (o diagrama comuta).
-\begin{figure}[!h]
+\begin{figure}
 \centering
 \begin{tikzpicture}[node distance=2.5cm, auto]
 	\node (P) {$\displaystyle\prod_{i \in I} C_i$};
@@ -528,7 +528,7 @@ Seja $(C_i)_{i \in I}$ uma família de conjuntos e $i \in I$. A \emph{inclusão 
 
 \begin{prop}[Propriedade Universal]
 Sejam $(C_i)_{i \in I}$ uma família de conjuntos, $X$ um conjunto e, para todo $i \in I$, $f_i: C_i \to X$ uma função. Então existe uma única função $f: \coprod_{i \in I} C_i \to X$ tal que, para todo $i \in I$, $f \circ \iota_i = f_i$ (o diagrama comuta).
-\begin{figure}[!h]
+\begin{figure}
 \centering
 \begin{tikzpicture}[node distance=2.5cm, auto]
 	\node (Ci) {$C_i$};
@@ -1226,7 +1226,9 @@ Dualmente, se $Y$ e $Z$ têm ínfimo,
 
 \chapter{Cardinalidade de Conjuntos}
 
-\section{Igualdade de Cardinais}
+\section{Relações}
+
+\subsection{Igualdade de Cardinais}
 
 \begin{defi}
 	Sejam $X$ e $Y$ conjuntos. Diz-se que $\card{X} = \card{Y}$ (a \emph{cardinalidade de $X$ é igual à cardinalidade de $Y$}) se, e somente se, existe uma bijeção $C$ entre $X$ e $Y$. Caso contrário, diz-se que $\card{X} \neq \card{Y}$ (a \emph{cardinalidade de $X$ é diferente da cardinalidade de $Y$}).
@@ -1255,7 +1257,7 @@ Dualmente, se $Y$ e $Z$ têm ínfimo,
 
 	De certa forma, essa proposição mostra que a noção de cardinalidades iguais se comporta como uma relação de equivalência. Não podemos dizer que $=$ é, de fato, uma relação de equivalência porque nao existe um conjunto de todos os conjuntos no qual defini-la. Todas proposições sobre cardinalidades são, na verdade, proposições sobre funções entre conjutos e convém saber que as propriedades acima valem.
 	
-\section{Ordenação de Cardinais}
+\subsection{Ordenação de Cardinais}
 
 \begin{defi}
 	Sejam $X$ e $Y$ conjuntos não vazios.
@@ -1302,7 +1304,7 @@ Dualmente, se $Y$ e $Z$ têm ínfimo,
 
 $X$ tal que $\card{X} \geq \aleph_0$.
 
-\section{Operações com Cardinais}
+\section{Operações}
 
 \begin{defi}
 	Sejam $X$ e $Y$ conjuntos não vazios. Definimos as seguintes "operações" entre cardinais:
@@ -1313,7 +1315,7 @@ $X$ tal que $\card{X} \geq \aleph_0$.
 	\end{enumerate}
 \end{defi}
 
-\section{Cardinalidade de Soma (ou União Disjunta)}
+\subsection{Cardinalidade de Soma (ou União Disjunta)}
 
 \begin{prop}
 \label{conj:prop.un.dis}

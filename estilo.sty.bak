@@ -71,6 +71,8 @@
 \usepackage{eso-pic}
 \usepackage{ccicons}
 \usepackage{scrextend} % Listas e ambiente \labelling.
+\usepackage{float}
+	\floatplacement{figure}{H}
 
 % Matemática
 

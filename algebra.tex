@@ -321,14 +321,16 @@ Vale observar que, somente sabendo que $\bm S$ é um monoide, isto é, que um su
 
 \chapter{Grupos}
 
-\section{Grupo}
+\section{Construção Algébricas}
+
+\subsection{Grupo e Subgrupo}
 
 %\begin{defi}
 %	Um \emph{grupo} é um monoide $\bm G=(G, \opb )$ em que todos elementos de $G$ têm inverso sob $ \opb $. Um grupo \emph{comutaivo} é um grupo em que $ \opb $ é comutativa.
 %\end{defi}
 
 \begin{defi}
-	Um \emph{grupo} é um par $\bm G=(G, \opb )$ em que $G$ é um conjunto e $ \opb : G \times G \to G$ é uma operação binária que satisfaz
+Um \emph{grupo} é um par $\bm G=(G, \opb )$ em que $G$ é um conjunto e $ \opb : G \times G \to G$ é uma operação binária que satisfaz
 	\begin{align*}
  	\tag{Associatividade} &\forall g_1,g_2,g_3 \in G && (g_1  \opb  g_2)  \opb  g_3 = g_1  \opb  (g_2  \opb  g_3) \label{G1}\\
 	\tag{Identidade} &\exists e \in G\ \forall g \in G && e  \opb  g = g =g  \opb  e \label{G2}\\
@@ -378,8 +380,6 @@ Seja $\bm G=(G,\opb)$ um grupo, $g \in G$ e $n \in \N$. Definimos
 	\end{equation*}
 A demonstração da segunda implicação é análoga.
 \end{proof}
-
-\section{Subgrupo}
 
 \begin{defi}
 Seja $\bm G=(G,\opb)$ um grupo. Um \emph{subgrupo} de $\bm G$ é um grupo $\bm S=(S,\star)$ em que $S \subseteq G$ e $\star=\opb|_{S \times S}$. Denota-se $\bm S \leq \bm G$. Um subgrupo \emph{próprio} de $\bm G$ é um subgrupo $\bm S \leq \bm G$ em que $S$ é um conjunto próprio de $G$ ($S  \subset G$). Denota-se $\bm S < \bm G$.
@@ -493,7 +493,7 @@ Portanto
 o que mostra que $m_1m_2 \in M^*$. Ainda, note que $e_M \in M^*$, pois $e_M \opb e_M = e_M$. Logo $M^*$ é um submonoide de $M$ e, portanto, $\bm{M^*}$ é um monoide (\ref{alge:prop.submon}). Por fim, $\bm{M^*}$ é um grupo pois, por definição, todo elemento tem inverso.
 \end{proof}
 
-\section{Coclasses e Índice de Subgrupo}
+\subsection{Coclasses e Índice de Subgrupo}
 
 \begin{defi}
 Sejam $\bm G$ um grupo, $\bm S \leq \bm G$ um subgrupo e $g \in G$. A \emph{coclasse à esquerda} de $\bm S$ em $\bm G$ com \emph{representante} $g$ é o conjunto
@@ -612,7 +612,7 @@ Por fim, da primeira condição e do fato de que as coclasses de $S$ têm a mesm
 Disso segue que $\card{G}=[G:S] \times \card{S}$.
 \end{proof}
 
-\section{Subgrupo Normal e Grupo Quociente}
+\subsection{Subgrupo Normal e Grupo Quociente}
 
 \begin{defi}
 Seja $\bm G$ um grupo. Um subgrupo \emph{normal} de $\bm G$ é um subgrupo $\bm N \leq \bm G$ que satsfaz
@@ -706,7 +706,7 @@ Para simplificar as contas, usaremos a notação $[g]=gN$ quando conveniente.
 	\end{equation*}
 \end{proof}
 
-\section{Homomorfismo de Grupo}
+\subsection{Homomorfismo de Grupo}
 
 \begin{defi}
 Sejam $\bm{G_1}$ e $\bm{G_2}$ grupos. Um \emph{homomorfismo de grupos} de $\bm{G_1}$ em $\bm{G_2}$ é uma função $h: G_1 \to G_2$ que satisfaz
@@ -802,7 +802,7 @@ Sejam $\bm{G_1}$ e $\bm{G_2}$ grupos e $h: \bm{G_1} \to \bm{G_2}$ um homomorfism
 	\end{equation*}
 \end{proof}
 
-\section{Núcleo, Imagem e Isomorfismo}
+\subsection{Núcleo, Imagem e Isomorfismo}
 
 \begin{defi}
 Sejam $\bm{G_1}$ e $\bm{G_2}$ grupos e $h: \bm{G_1} \to \bm{G_2}$ um homomorfismo de grupos. O \emph{núcleo} de $h$ é o conjunto
@@ -866,7 +866,7 @@ Sejam $\bm{G_1}$, $\bm{G_2}$ e $\bm{G_3}$ grupos. Então
 
 Não dizemos que $\simeq$ é uma relação de equivalência porque ela não está propriamente definida em um conjunto, já que não existe o conjunto de todos os grupos por não existir o conjunto de todos os conjuntos. No entanto, é claro que o que a proposição afirma é que ela satisfaz as propriedades de uma relação de equivalência.
 
-\section{Teoremas de Isomorfismo}
+\subsection{Teoremas de Isomorfismo}
 
 \begin{teo}[Primeiro teorema de isomorfismo]
 Sejam $\bm{G_1}$ e $\bm{G_2}$ grupos e $h: \bm{G_1} \to \bm{G_2}$ um homomorfismo de grupos. Então $\bm{\nuc(h)} \ide \bm{G_1}$, $\bm{\im(h)} \leq \bm{G_2}$ e 
@@ -914,8 +914,11 @@ Sejam $\bm G$ um grupo e $\bm N \ide \bm G$ um subgrupo normal. Então
 	\end{enumerate}
 \end{teo}
 
+
 \cleardoublepage
-\section{Produto de Grupos}
+\section{Construções Categóricas}
+
+\subsection{Produto de Grupos}
 
 \begin{defi}
 Seja $(\bm{G_i})_{i \in I}=(G_i,\opb_i)_{i \in I}$ uma família de grupos. O \emph{produto} da família $(\bm{G_i})_{i \in I}$ é o par
@@ -964,7 +967,7 @@ Sejam $g,g' \in \prod_{i \in I} G_i$. Então
 
 \begin{prop}[Propriedade Universal]
 Sejam $(\bm{G_i})_{i \in I}$ uma família de grupos, $\bm X = (X,\star)$ um grupo e, para todo $i \in I$, $h_i: \bm X \to \bm{G_i}$ um homomorfismo de grupos. Então existe um único homomorfismo de grupos $h: \bm X \to \prod_{i \in I} \bm{G_i}$ tal que, para todo $i \in I$, $\pi_i \circ h = h_i$ (o diagrama comuta).
-\begin{figure}[!h]
+\begin{figure}
 \centering
 \begin{tikzpicture}[node distance=2.5cm, auto]
 	\node (P) {$\displaystyle\prod_{i \in I} \bm{G_i}$};
@@ -988,9 +991,7 @@ Da propriedade universal para o produto de conjuntos, $h$ é a única função t
 	\end{equation*}
 \end{proof}
 
-
-\cleardoublepage
-\section{Grupo Livre}
+\subsection{Grupo Livre}
 
 \begin{defi}
 Seja $C$ um conjunto. O \emph{conjunto de inversos formais} de $C$ é o conjunto
@@ -1025,7 +1026,7 @@ Seja $C$ um conjunto e $p_1,p_2 $ palavras em $C \cup C\inv$. A relação de equ
 
 \begin{prop}[Propriedade Universal]
 Seja $C$ um conjunto, $\bm X = (X,\star)$ um grupo e $f: C \to X$ uma função. Então existe um único homomorfismo de grupos $h: \bm{\ger{C}} \to \bm X$ tal que $h \circ \iota = f$ (o diagrama comuta).
-\begin{figure}[!h]
+\begin{figure}
 \centering
 \begin{tikzpicture}[node distance=2.5cm, auto]
 	\node (C) {$C$};
@@ -1058,15 +1059,7 @@ Isso mostra a existência. Para mostrar a unicidade, seja $\overline h: \bm{\ger
 o que implica que $\overline h = h$.
 \end{proof}
 
-
-
-
-
-
-
-
-\cleardoublepage
-\section{Coproduto de Grupos}
+\subsection{Coproduto de Grupos}
 
 \begin{defi}
 Seja $(\bm{G_i})_{i \in I}$ uma família de grupos. O \emph{coproduto} da família $(\bm{G_i})_{i \in I}$ é o par
@@ -1078,7 +1071,7 @@ em que $G \coloneqq \ger{\coprod_{i \in I} G_i}$ é o grupo livre sobre o coprod
 
 \begin{prop}[Propriedade Universal]
 Sejam $(\bm{G_i})_{i \in I}$ uma família de grupos, $\bm X = (X,\star)$ um grupo e, para todo $i \in I$, $h_i: \bm{G_i} \to \bm X$ um homomorfismo de grupos. Então existe um único homomorfismo de grupos $h: \coprod_{i \in I} \bm{G_i} \to \bm X$ tal que, para todo $i \in I$, $h \circ \iota_i = h_i$ (o diagrama comuta).
-\begin{figure}[!h]
+\begin{figure}
 \centering
 \begin{tikzpicture}[node distance=2.5cm, auto]
 	\node (Ci) {$\bm{G_i}$};
@@ -1142,7 +1135,9 @@ Por simplicidade, seja $G \coloneqq \ger{\coprod_{i \in I} G_i}$. Para mostrar q
 
 
 \cleardoublepage
-\section{Grupo Simples e Subgrupo Normal Maximal}
+\section{Construções Específicas}
+
+\subsection{Grupo Simples e Subgrupo Normal Maximal}
 
 \begin{defi}
 Um \emph{grupo simples} é um grupo não-trivial $\bm G$ cujos únicos subgrupos normais são $\bm{\{e\}}$ e $\bm G$.
@@ -1187,7 +1182,7 @@ Então $P$ tem elemento maximal.
 
 
 
-\section{Sequência subnormal}
+\subsection{Sequência subnormal}
 
 \begin{defi}
 Seja $\bm G$ um grupo. Uma \emph{sequência subnormal} de $\bm G$ é uma sequência finita $(\bm{N_i})_{i \in \inte_n}$ de subgrupos de $\bm G$ que satisfaz
@@ -1207,7 +1202,7 @@ O comprimento
 
 
 
-\section{Conjunto gerador}
+\subsection{Conjunto gerador}
 
 \begin{defi}
 Seja $\bm G$ um grupo e $S \subseteq G$ um conjunto. O grupo \emph{gerado} por $S$ é o grupo $\bm{\langle S \rangle} \leq \bm G$ em que
@@ -1230,7 +1225,7 @@ Um \emph{conjunto gerador} de $\bm G$ é um conjunto $S \subseteq G$ tal que $\l
 
 
 
-\section{Grupos Simétricos e Alternados}
+\subsection{Grupos Simétricos e Alternados}
 
 \begin{defi}
 Seja $C$ um conjunto. O \emph{grupo simétrico} de $C$ é o par $\bm{\simm{C}} = (\simm{C},\circ)$, em que	
@@ -1340,7 +1335,7 @@ o que mostra que $g=e_G$ e, portanto, que $\nuc(h)=\{e_G\}$.
 
 	Esse teorema é um teorema muito importante, pois ele mostra que, de certa forma, todo grupo é um subconjunto de permutações. Por causa disso que grupos são pensados como os objetos algébricos que modelam a simetria.
 
-\subsection{Permutações e Órbitas}
+\subsubsection{Permutações e Órbitas}
 
 \begin{defi} Seja $n \in \N$. Uma \emph{permutação} de $n$ objetos é um elemento $p \in \sime_n$, denotado por
 	\begin{equation*}
@@ -1364,7 +1359,7 @@ o que mostra que $g=e_G$ e, portanto, que $\nuc(h)=\{e_G\}$.
 			\end{smallmatrix}\bigr).
 	\end{equation*}
 \end{nota}
-$\mathfrak{I} \mathfrak{C} \mathfrak{D}$
+
 \begin{defi}
 	Sejam $n \in \N$ e $p \in \sime_n$. A \emph{matriz de permutação} de $p$ é a matriz $[p] \in \mathbb M_n (\Z)$ cujas entradas são dadas por
 	\begin{equation*}
@@ -1433,7 +1428,7 @@ O \emph{período} da órbita $\orb_p(m)$ é o número $\card{\orb_p(m)}$. Uma \e
 	Primeiro, notemos que $m \in \orb_p(m)$ e, portanto, $\emptyset \nsubseteq \orb_p$. Ainda, $\bigcup_{m \in \inte_n} \orb_p(m) = \inte_n$, já que, para todo $m \in inte_n$, $m \in \orb_p(m)$, o que mostra que $\inte_n \subseteq \bigcup_{m \in \inte_n}$ e, para todo $l \in \bigcup_{m \in \inte_n} \orb_p(m)$, existe $m \in \inte_n$ tal que $l \in \orb_p(m)$ e, portanto, existe $k \in \N$ tal que $l=p^k(m) \in \inte_n$, o que mostra que $\bigcup_{m \in \inte_n} \subseteq \inte_n$. Por fim, sejam $o_1,o_2 \in \orb_p$. Então existem $m_1,m_2 \in \inte_n$ tais que $o_1=\orb_p(m_1)$ e $o_2=\orb_p(m_2)$. Se existe $l \in \orb_p(m_1) \cap \orb_p(m_2)$, então existem $k_1,k_2 \in \Z$ tais que $l=p^{k_1}(m_1)=p^{k_2}(m_2)$. Assim, segue que $m_1=p^{k_2-k_1}(m_2)$ e, portanto, $m_1 \in \orb_p(m_2)$. Mas isso implica que $\orb_p(m_1) \subseteq \orb_p(m_2)$; a inclusão contrária é análoga e concluímos que $\orb_p(m_1) = \orb_p(m_2)$. Logo $\orb_p$ é uma partição de $\inte_n$.
 \end{proof}
 
-\subsection{Permutações, Ciclos e Transposições}
+\subsubsection{Permutações, Ciclos e Transposições}
 
 \begin{defi}
 	Sejam $n,k \in \N$. Um \emph{ciclo} de $\sime_n$ é um elemento $c \in \sime_n$ para o qual existe $m \in \inte_n$ tal que, para todo $m' \in \inte_n$, $c(m')=m'$ ou existe $d \in \inte_n$ tal que $m'=c^d(m)$. O \emph{comprimento} de um ciclo é a ordem desse ciclo. Um ciclo $c$ cujo comprimento é $k$ é denotado
@@ -1462,9 +1457,9 @@ O \emph{período} da órbita $\orb_p(m)$ é o número $\card{\orb_p(m)}$. Uma \e
 
 
 
-\section{Grupos Cíclicos}
+\subsection{Grupos Cíclicos}
 
-\section{Grupos Diedrais}
+\subsection{Grupos Diedrais}
 
 
 
@@ -4417,7 +4412,7 @@ Seja $(\bm{V_i})_{i \in I} = ((V_i,+_i,\cdot_i))_{i \in I}$ uma família de espa
 
 \begin{prop}[Propriedade Universal]
 Sejam $(\bm{V_i})_{i \in I}$ uma família de espaços vetoriais sobre um corpo $\bm C$, $\bm X$ um espaço vetorial sobre $\bm C$ e, para todo $i \in I$, $L_i: \bm X \to \bm{V_i}$ uma transformação linear. Então existe única transformação linear $L: \bm X \to \prod_{i \in I} \bm{V_i}$ tal que, para todo $i \in I$, $\pi_i \circ L = L_i$ (o diagrama comuta).
-\begin{figure}[!h]
+\begin{figure}
 \centering
 \begin{tikzpicture}[node distance=2.5cm, auto]
 	\node (P) {$\displaystyle\prod_{i \in I} \bm{V_i}$};
@@ -4439,11 +4434,6 @@ Defina a função \func{L}{X}{\prod_{i \in I} V_i}{x}{(L_i(x))_{i \in I}.} Da pr
 	\end{align*}
 \end{proof}
 
-
-
-
-
-\clearpage
 \subsection{Soma (Coproduto)}
 
 \begin{defi}
@@ -4467,7 +4457,7 @@ Observe que, se $\card{I} < \card{\N}$, então $\prod_{i \in I} \bm{V_i} = \copr
 
 \begin{prop}[Propriedade Universal]
 Sejam $(\bm{V_i})_{i \in I}$ uma família de espaços vetoriais sobre um corpo $\bm C$, $\bm X$ um espaço vetorial sobre $\bm C$ e, para todo $i \in I$, $L_i: \bm{V_i} \to \bm X$ uma transformação linear. Então existe única transformação linear $L: \bm X \to \coprod_{i \in I} \bm{V_i}$ tal que, para todo $i \in I$, $L \circ \iota_i = L_i$ (o diagrama comuta).
-\begin{figure}[!h]
+\begin{figure}
 \centering
 \begin{tikzpicture}[node distance=2.5cm, auto]
 	\node (Ci) {$\bm{V_i}$};

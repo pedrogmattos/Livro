@@ -752,7 +752,7 @@ Seja $(\bm{X_i})_{i \in I} = (X_i,\topo_i)_{i \in I}$ uma família de espaços t
 
 \begin{prop}[Propriedade Universal]
 Sejam $(\bm{X_i})_{i \in I} = (X_i,\topo_i)_{i \in I}$ uma família de espaços topológicos, $\bm T = (T,\topo_T)$ um espaço topológico e, para todo $i \in I$, $f_i: \bm T \to \bm{X_i}$ uma função contínua. Então existe uma única função contínua $f: \bm T \to \prod_{i \in I} \bm{X_i}$ tal que, para todo $i \in I$, $\pi_i \circ f = f_i$ (o diagrama comuta).
-\begin{figure}[!h]
+\begin{figure}
 \centering
 \begin{tikzpicture}[node distance=2.5cm, auto]
 	\node (P) {$\displaystyle\prod_{i \in I} \bm{X_i}$};
@@ -949,9 +949,7 @@ Então $d_1(p_1,p_2)=0$ ou $d_2(p_1,p_2)=0$. Em ambos os casos, temos $p_1=p_2$.
 	Um \emph{espaço métrico} é um par $(M,d)$, em que $M$ é um conjunto não vazio e $d$ é uma métrica em $M$. Os elementos de $M$ são \emph{pontos}.
 \end{defi}
 
-
-
-\section{Diâmetro, Bolas Abertas e Bolas Fechadas}
+\subsection{Diâmetro, Bolas Abertas e Bolas Fechadas}
 
 \begin{defi}
 	Sejam $(M,d)$ um espaço métrico e $C \subseteq M$ um conjunto não vazio. O \emph{diâmetro} de $C$ é o número
@@ -1077,7 +1075,7 @@ o que mostra que $(d(p_n,q_n)) \conv d(p,q)$ em $\R$.
 \end{proof}
 
 
-\section{Sequências de Cauchy}
+\subsection{Sequências de Cauchy}
 
 \begin{defi}
 	Seja $\bm M = (M,d)$ um espaço métrico. Uma \emph{sequência de Cauchy em $\bm M$} é uma sequência $(p_n)_{n \in \N}$ de pontos em $M$ tal que, para todo número real $\varepsilon > 0$, existe um número natural $N$ satisfazendo
@@ -1130,7 +1128,9 @@ Como $(n_k)_{k \in \N}$ é uma sequência estritamente crescente, existe $K_2 \i
 o que mostra que $(p_n)_{n \in \N}$ é limitada.
 \end{proof}
 
-\section{Interior e Conjuntos Abertos}
+\section{Abertos, Fechados}
+
+\subsection{Interior e Conjuntos Abertos}
 
 \begin{defi}
 	Sejam $\bm M = (M,d)$ um espaço métrico e $C \subseteq M$ um conjunto. Um \emph{ponto interior} de $C$ é um ponto $p \in C$ para o qual existe um número real $r > 0$ tal que $\mathcal B_r(p) \subseteq C$. O \emph{interior} de $C$ é o conjunto $C^\circ$ de todos pontos interiores de $C$.
@@ -1198,7 +1198,7 @@ o que mostra que $p' \in \mathcal B_r(c)$ e que, portanto, $\mathcal B_s(p) \sub
 	\end{enumerate}
 \end{prop}
 
-\section{Fecho e Conjuntos Fechados}
+\subsection{Fecho e Conjuntos Fechados}
 
 \begin{defi}
 	Sejam $\bm M = (M,d)$ um espaço métrico e $C \subseteq M$ um conjunto. Um \emph{ponto aderente} a $C$ é um ponto $p \in M$ para o qual existe uma sequência $(p_n)_{n \in \N}$ de pontos de $C$ que converge para $p$. O \emph{fecho} de $C$ é o conjunto $\overline C$ de todos os pontos aderentes a $C$.
@@ -1360,7 +1360,7 @@ o que mostra que $(f(p_n)) \conv f(p)$.
 
 
 
-\section{Continuidade Uniforme}
+\subsection{Continuidade Uniforme}
 
 \begin{defi}
 	Sejam $\bm M_1 = (M_1,d_1)$ e $\bm M_2 = (M_2,d_2)$ espaços métricos. Uma função \emph{uniformemente contínua} é uma função $f: M_1 \to M_2$ tal que, para todo número real $\varepsilon > 0$, existe um número real $\delta > 0$ tal que
@@ -1467,8 +1467,9 @@ Assim, sejam $p,q \in M_1$ tais que $d_1(p,q) < \delta$. Quremos mostrar que $d_
 	\end{equation*}
 \end{defi}
 
+\section{Outros}
 
-\section{Pontos Limite e Derivado}
+\subsection{Pontos Limite e Derivado}
 
 \begin{defi}
 	Sejam $\bm M = (M,d)$ um espaço métrico e $C \subseteq M$ um conjunto. Um \emph{ponto limite} (ou \emph{ponto de acumulação}) de $C$ é um ponto $p \in M$ para o qual existe uma sequência $(p_n)_{n \in \N}$ de pontos de $C \setminus \{p\}$ que converge para $p$. O \emph{derivado} de $C$ é o conjunto de todos os pontos limites de $C$. 
@@ -1476,7 +1477,7 @@ Assim, sejam $p,q \in M_1$ tais que $d_1(p,q) < \delta$. Quremos mostrar que $d_
 
 Da definição, segue que $C' \subseteq \overline C$. A inclusão contrária caracteriza a seção a seguir.
 
-\section{Pontos Isolados e Conjuntos Discretos}
+\subsection{Pontos Isolados e Conjuntos Discretos}
 
 \begin{defi}
 	Sejam $\bm M = (M,d)$ um espaço métrico e $C \subseteq M$ um conjunto. Um \emph{ponto isolado} de $C$ é um ponto $p \in M$ que é um ponto aderente a $C$ mas que não é um ponto limite de $C$.
@@ -1484,7 +1485,7 @@ Da definição, segue que $C' \subseteq \overline C$. A inclusão contrária car
 
 	Um ponto isolado de $C$ é um ponto $p \in \overline C \setminus C'$.
 
-\section{Fronteiras}
+\subsection{Fronteiras}
 
 \begin{defi}
 	Sejam $\bm M = (M,d)$ um espaço métrico e $C \subseteq M$ um conjunto. A \emph{fronteira} de $C$ é conjunto $\partial C \coloneqq \overline C \setminus C^\circ$.
@@ -1501,6 +1502,6 @@ Da definição, segue que $C' \subseteq \overline C$. A inclusão contrária car
 	\end{enumerate}
 \end{prop}
 
-\section{Conjuntos Conexos}
+\subsection{Conjuntos Conexos}
 
-\section{Conjuntos Compactos}
+\subsection{Conjuntos Compactos}

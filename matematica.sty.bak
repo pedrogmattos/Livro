@@ -228,19 +228,29 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ANÁLISE
 
-\newcommand{\Es}{\mathbb{S}}
-\newcommand{\Hip}{\mathbb{H}}
-\newcommand{\T}{\mathbb{T}}
+%Função indicadora (característica)
+\newcommand{\idc}{\scalebox{0.75}{$\mathbb{I}$}}
+
 
 %Boreliano
 \newcommand{\bor}{\mathscr{B}}
 %Funções mensuráveis
 \newcommand{\mensu}{\mathscr{M}}
+
+
 %Funções integráveis
 \newcommand{\integ}{\mathscr{I}}
 
-%Função indicadora (característica)
-\newcommand{\idc}{\scalebox{0.75}{$\mathbb{I}$}}
+\newcommand{\dd}{\mathrm{d}}
+
+
+
+
+
+
+\newcommand{\Es}{\mathbb{S}}
+\newcommand{\Hip}{\mathbb{H}}
+\newcommand{\T}{\mathbb{T}}
 
 % OUTROS
 
