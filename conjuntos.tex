@@ -373,19 +373,19 @@ Vale notar que uma família é vazia se, e somente se, $I=\emptyset$. Uma famíl
 	Seja $X$ um conjunto não vazio. Uma \emph{indexação} de $X$ é uma família bijetiva $(x_i)_{i \in I}$ de elementos de $X$. Nesse caso, $X$ é um conjunto indexado por $I$ e denota-se $X=\{x_i\}_{i \in I}$.
 \end{defi}
 
-A noção de uma família é, de fato, mais motivada por notação do que por um conceito teórico, já que uma família é simplesmennte uma função sem nenhuma restrição além disso, e a única diferença entre uma família é uma função é o contexto de utilização. Uma pergunta relevante, ainda, é se todo conjunto pode ser indexado por meio de uma família. Essa pergunta tem uma resposta óbvia e uma não óbvia, e ambas afirmam que sim. A resposta óbvia é que, para se indexar um conjunto $C$ basta considerar a função $F: C \to C$ definida para todo $X \in C$ por $F(X)=X$. Desse modo, essa é uma indexação do conjunto $X$. Mas essa resposta não satisfaz a tradição de indexar um quantidade finita de conjuntos $\{X,Y\}$ com números naturais. A resposta menos óbvia é que todo conjunto pode ser bem ordenado e, dessa forma, existe uma função de um número ordinal para o conjunto, logo uma indexação desse conjunto por um número ordinal. Os números naturais são os números ordinais finitos, o que significa que essa resposta menos óbvia condiz com a idexação que se faz usualmente de uma quantidade finita de conjuntos. Esse tópicos, no entanto, não serão abordados nesse capítulo.
+A noção de uma família é, de fato, mais motivada por notação do que por um conceito teórico, já que uma família é simplesmennte uma função sem nenhuma restrição, e a única diferença entre uma família é uma função é o contexto. Uma pergunta relevante, ainda, é se todo conjunto pode ser indexado por meio de uma família. Essa pergunta tem uma resposta óbvia e uma não óbvia, e ambas afirmam que sim. A resposta óbvia é que, para se indexar um conjunto $C$ basta considerar a função $F: C \to C$ definida para todo $X \in C$ por $F(X)=X$. Desse modo, essa é uma indexação do conjunto $X$. Mas essa resposta não satisfaz a tradição de indexar um quantidade finita de conjuntos $\{X,Y\}$ com números naturais. A resposta menos óbvia é que todo conjunto pode ser bem ordenado e, dessa forma, existe uma função de um número ordinal para o conjunto, logo uma indexação desse conjunto por um número ordinal. Os números naturais são os números ordinais finitos, o que significa que essa resposta menos óbvia condiz com a idexação que se faz usualmente de uma quantidade finita de conjuntos. Esse tópicos, no entanto, não serão abordados nesse capítulo.
 
 \section{Propriedades de União e Interseção}
 
 A partir da definição de família, pode-se definir a união e a interseção de uma família de conjuntos a partir da imagem do conjunto de índices $I$ pela função $C$, o conjunto $C(I) = \set{C_i}{i \in I}$. No entanto, um problema teórico se manifesta para se definir uma família de conjuntos. Se uma família é uma função de um conjunto de índices em um conjunto de elementos, para se definir uma família de conjuntos deveria existir um conjunto de todos conjuntos para fazer o papel de contradomínio de uma família. Esse conjunto, no entanto, não existe na teoria de conjuntos abordada neste livro, o que sugere que a definição de uma família de conjuntos depende, de fato, de um conjunto cujos elementos são os conjuntos da família de conjuntos. A existência desse conjunto de conjuntos é suposta, mas ele não é o conjunto de todos os conjuntos. Sendo assim, sempre que se enunciar uma família de conjuntos, essas ressalvas serão assumidas.
 
 \begin{defi}
-A \emph{união} de uma família $(C_i)_{i \in I}$ é o conjunto
+A \emph{união} de uma família $(C_i)_{i \in I}$ de conjuntos é o conjunto
 \end{defi}
 	\begin{equation*}
 	\bigcup_{i \in I} C_i \coloneqq \bigcup C(I).
 	\end{equation*}
-A \emph{interseção} de uma família não vazia $(C_i)_{i \in I}$ é o conjunto
+A \emph{interseção} de uma família não vazia $(C_i)_{i \in I}$ de conjuntos é o conjunto
 	\begin{equation*}
 	\bigcap_{i \in I} C_i \coloneqq \bigcap C(I).
 	\end{equation*}
@@ -405,7 +405,7 @@ Quando $I$ for finito, pode-se denotar
 \end{prop}
 
 \begin{prop}
-Seja $(C_i)_{i \in I}$ uma família não vazia de conjuntos. Então
+Sejam $X$ um conjunto e $(C_i)_{i \in I}$ uma família não vazia de subconjuntos de $X$. Então
 	\begin{enumerate}
 	\item $\displaystyle \left( \bigcap_{i \in I} C_i \right)^\complement = \bigcup_{i \in I} (C_i)^\complement$
 	
@@ -461,7 +461,7 @@ Seja $(C_i)_{i \in I}$ uma família de conjuntos e $i \in I$. A \emph{projeção
 \end{defi}
 
 \begin{prop}[Propriedade Universal]
-Sejam $(C_i)_{i \in I}$ uma família de conjuntos, $X$ um conjunto e, para todo $i \in I$, $f_i: X \to C_i$ uma função. Então existe única função $f: X \to \prod_{i \in I} C_i$ tal que, para todo $i \in I$, $\pi_i \circ f = f_i$ (o diagrama comuta).
+Sejam $(C_i)_{i \in I}$ uma família de conjuntos, $X$ um conjunto e, para todo $i \in I$, $f_i: X \to C_i$ uma função. Então existe uma única função $f: X \to \prod_{i \in I} C_i$ tal que, para todo $i \in I$, $\pi_i \circ f = f_i$ (o diagrama comuta).
 \begin{figure}[!h]
 \centering
 \begin{tikzpicture}[node distance=2.5cm, auto]
@@ -491,6 +491,24 @@ Portanto $\pi_i \circ f = f_i$. Isso mostra a existência da $f$. Para a unicida
 Como $f(x) = (f_i(x))_{i \in I}$, isso mostra que $\overline{f}(x) = f(x)$. Portanto $\overline{f} = f$.
 \end{proof}
 
+
+
+%O axioma da escolha reescrito para famílias é o seguinte. Para toda família não vazia $(C_i)_{i \in I}$ de conjuntos (disjuntos) não vazios, existe uma função (\emph{função escolha}) $E: I \to \bigcup_{i \in I} C_i$ tal que, para todo $i \in I$, $E(i) \in C_i$.
+
+%\begin{prop}
+%	Seja $(C_i)_{i \in I}$ uma família não vazia de conjuntos. Então
+%	\begin{equation*}
+%	\prod_{i \in I} C_i = \emptyset \qquad \Leftrightarrow \qquad \exists i \in I \quad C_i = \emptyset.
+%	\end{equation*}
+%\end{prop}
+%\begin{proof}
+%	Primeiro, suponhamos que $(C_i)_{i \in I}$ é uma família de conjuntos não vazios. Então, pelo axioma da escolha, existe uma função $E: I \to \bigcup_{i \in I} C_i$ tal que, para todo $i \in I$, $E(i) \in C_i$. Assim, $E \in \prod_{i \in I} C_i$, o que mostra que $\prod_{i \in I} C_i \neq \emptyset$. Reciprocamente, suponhamos que existe alguma $i \in I$ tal que $C_i = \emptyset$. Então, se existisse $c \in \prod_{i \in I} C_i$, seguiria que $c(i) \in C_i = \emptyset$, o que é absurdo. Logo $\prod_{i \in I} C_i = \emptyset$.
+%\end{proof}
+
+
+
+
+
 \section{Coproduto de Conjuntos}
 
 \begin{defi}
@@ -509,16 +527,16 @@ Seja $(C_i)_{i \in I}$ uma família de conjuntos e $i \in I$. A \emph{inclusão 
 \end{defi}
 
 \begin{prop}[Propriedade Universal]
-Sejam $(C_i)_{i \in I}$ uma família de conjuntos, $X$ um conjunto e, para todo $i \in I$, $f_i: C_i \to X$ uma função. Então existe única função $f: \coprod_{i \in I} C_i \to X$ tal que, para todo $i \in I$, $f \circ \iota_i = f_i$ (o diagrama comuta).
+Sejam $(C_i)_{i \in I}$ uma família de conjuntos, $X$ um conjunto e, para todo $i \in I$, $f_i: C_i \to X$ uma função. Então existe uma única função $f: \coprod_{i \in I} C_i \to X$ tal que, para todo $i \in I$, $f \circ \iota_i = f_i$ (o diagrama comuta).
 \begin{figure}[!h]
 \centering
 \begin{tikzpicture}[node distance=2.5cm, auto]
 	\node (Ci) {$C_i$};
-	\node (S) [below of=Ci] {$\displaystyle\coprod_{i \in I} C_i$};
+	\node (S) [above of=Ci] {$\displaystyle\coprod_{i \in I} C_i$};
 	\node (X) [right of=Ci] {$X$};
-	\draw[->] (Ci) to node {$f_i$} (X);
-	\draw[->, dashed] (S) to node [swap] {$f$} (X);
-	\draw[->] (Ci) to node [swap] {$\iota_i$} (S);
+	\draw[->] (Ci) to node [swap] {$f_i$} (X);
+	\draw[->, dashed] (S) to node {$f$} (X);
+	\draw[->] (Ci) to node {$\iota_i$} (S);
 \end{tikzpicture}
 \end{figure}
 \end{prop}
@@ -540,43 +558,31 @@ Isso mostra que $\overline{f}=f$.
 \end{proof}
 
 
-\cleardoublepage
-\begin{figure}
-\centering
-\begin{tikzpicture}[node distance=4cm, auto]
-	\node (P) {$\displaystyle\prod_{i \in I} C_i$};
-	\node (Ci) [below of=P] {$C_i$};
-	\node (X) [left of=Ci] {$X$};
-	\node (S) [below of=Ci] {$\displaystyle\coprod_{i \in I} C_i$};
-	\node (Y) [right of=Ci] {$Y$};	
-	\draw[->] (X) to node [swap] {$f_i$} (Ci);
-	\draw[->, dashed] (X) to node {$f$} (P);
-	\draw[->] (P) to node {$\pi_i$} (Ci);
-	\draw[->] (Ci) to node {$g_i$} (Y);
-	\draw[->, dashed] (S) to node [swap] {$g$} (Y);
-	\draw[->] (Ci) to node [swap] {$\iota_i$} (S);
-\end{tikzpicture}
-\caption*{Os diagramas comutativos do \\produto e do coproduto de conjuntos.}
-\end{figure}
+%\cleardoublepage
+%\begin{figure}
+%\centering
+%\begin{tikzpicture}[node distance=4cm, auto]
+%	\node (P) {$\displaystyle\prod_{i \in I} C_i$};
+%	\node (Ci) [below of=P] {$C_i$};
+%	\node (X) [left of=Ci] {$X$};
+%	\node (S) [below of=Ci] {$\displaystyle\coprod_{i \in I} C_i$};
+%	\node (Y) [right of=Ci] {$Y$};	
+%	\draw[->] (X) to node [swap] {$f_i$} (Ci);
+%	\draw[->, dashed] (X) to node {$f$} (P);
+%	\draw[->] (P) to node {$\pi_i$} (Ci);
+%	\draw[->] (Ci) to node {$g_i$} (Y);
+%	\draw[->, dashed] (S) to node [swap] {$g$} (Y);
+%	\draw[->] (Ci) to node [swap] {$\iota_i$} (S);
+%\end{tikzpicture}
+%\caption*{Os diagramas comutativos do \\produto e do coproduto de conjuntos.}
+%\end{figure}
 
 
 
 
 
 \cleardoublepage
-\section*{Propriedades Gerais}
-
-%O axioma da escolha reescrito para famílias é o seguinte. Para toda família não vazia $(C_i)_{i \in I}$ de conjuntos (disjuntos) não vazios, existe uma função (\emph{função escolha}) $E: I \to \bigcup_{i \in I} C_i$ tal que, para todo $i \in I$, $E(i) \in C_i$.
-
-%\begin{prop}
-%	Seja $(C_i)_{i \in I}$ uma família não vazia de conjuntos. Então
-%	\begin{equation*}
-%	\prod_{i \in I} C_i = \emptyset \qquad \Leftrightarrow \qquad \exists i \in I \quad C_i = \emptyset.
-%	\end{equation*}
-%\end{prop}
-%\begin{proof}
-%	Primeiro, suponhamos que $(C_i)_{i \in I}$ é uma família de conjuntos não vazios. Então, pelo axioma da escolha, existe uma função $E: I \to \bigcup_{i \in I} C_i$ tal que, para todo $i \in I$, $E(i) \in C_i$. Assim, $E \in \prod_{i \in I} C_i$, o que mostra que $\prod_{i \in I} C_i \neq \emptyset$. Reciprocamente, suponhamos que existe alguma $i \in I$ tal que $C_i = \emptyset$. Então, se existisse $c \in \prod_{i \in I} C_i$, seguiria que $c(i) \in C_i = \emptyset$, o que é absurdo. Logo $\prod_{i \in I} C_i = \emptyset$.
-%\end{proof}
+\subsection{Propriedades de Produto e Coproduto}
 
 \begin{prop}
 	Seja $(C_{ij})_{(i,j) \in I \times J}$ uma família de conjuntos. Então
@@ -588,19 +594,21 @@ Isso mostra que $\overline{f}=f$.
 \begin{proof}
 	\begin{enumerate}	
 	\item \begin{align*}
-	c \in \displaystyle \bigcup_{j \in J} \left(\prod_{i \in I} C_{ij}\right) & \Rightarrow \exists j \in J \qquad \qquad c \in \prod_{i \in I} C_{ij} \\
-	& \Rightarrow \exists j \in J \ \forall i \in I \qquad c_i \in C_{ij} \\
-	& \Rightarrow \forall i \in I \qquad \qquad c \in \bigcup_{j \in J} C_{ij} \\
-	& \Rightarrow  c \in \prod_{i \in I} \left(\bigcup_{j \in J} C_{ij}\right).
+	\displaystyle c \in  \bigcup_{j \in J} \left(\prod_{i \in I} C_{ij}\right)
+		& \entao \exists j \in J \left(c \in \prod_{i \in I} C_{ij} \right) \\
+		& \entao \exists j \in J \ \forall i \in I \left(c_i \in C_{ij} \right) \\
+		& \entao \forall i \in I \left(c \in \bigcup_{j \in J} C_{ij} \right) \\
+		& \entao  c \in \prod_{i \in I} \left(\bigcup_{j \in J} C_{ij}\right).
 	\end{align*}
 	
 	\item 	
 	\begin{align*}
-	c \in \displaystyle \bigcap_{j \in J} \left(\prod_{i \in I} C_{ij}\right) & \Leftrightarrow \forall j \in J \qquad \qquad c \in \prod_{i \in I} C_{ij} \\
-	& \Leftrightarrow \forall j \in J \ \forall i \in I \qquad c_i \in C_{ij} \\
-	& \Leftrightarrow \forall i \in I \ \forall j \in J \qquad c_i \in C_{ij} \\
-	& \Leftrightarrow \forall i \in I \qquad \qquad c_i \in \bigcup_{j \in J} C_{ij} \\
-	& \Leftrightarrow  c \in \prod_{i \in I} \left(\bigcap_{j \in J} C_{ij}\right).
+	c \in \displaystyle \bigcap_{j \in J} \left(\prod_{i \in I} C_{ij}\right)
+		& \sse \forall j \in J \left(c \in \prod_{i \in I} C_{ij} \right) \\
+		& \sse \forall j \in J \ \forall i \in I \left(c_i \in C_{ij} \right) \\
+		& \sse \forall i \in I \ \forall j \in J \left(c_i \in C_{ij} \right) \\
+		& \sse \forall i \in I \left(c_i \in \bigcup_{j \in J} C_{ij} \right) \\
+		& \sse  c \in \prod_{i \in I} \left(\bigcap_{j \in J} C_{ij}\right).
 	\end{align*}
 	\end{enumerate}
 \end{proof}
@@ -608,12 +616,17 @@ Isso mostra que $\overline{f}=f$.
 Notemos que a inclusão contrária no primeiro item nao vale. Suponhamos que para um $j_0 \in J$, todos os $C_{ij_0}$ são vazios, mas para todos outros $j \in J$, os $C_{ij}$ não são vazios. Então o produto desses $C_{ij}$ será sempre vazio, pois sempre tem um dos elementos do produto vazio, e então a união desses produtos será vazia; no entanto, a união desses $C_{ij}$ não será nenhuma vazia e, então, o produto não seráa vazio (pelo axioma da escolha).
 
 \begin{prop}
-	Sejam $C_i$ conjuntos 
-	
+\label{conj:prop.im.inv.prod}
+Sejam $X$ um conjunto, $(Y_i)_{i \in I}$ uma família de conjuntos, $(S_i)_{i \in I}$ uma família de subconjutos de $(Y_i)_{i \in I}$, $f: X \to \prod_{i \in I} Y_i$ uma função e, para todo $i \in I$, $f_i \coloneqq \pi_i \circ f$. Então
 	\begin{equation*}
-	f^{-1}\left( \prod_{i \in I} {C_i} \right) = \bigcap f_i^{-1} (C_i).
+	f\inv\left( \prod_{i \in I} {S_i} \right) = \bigcap_{i \in I} f_i\inv (S_i).
 	\end{equation*}
 \end{prop}
+\begin{proof}
+Note que $x \in f\inv(\prod_{i \in I} {S_i})$ é equivalente a $f(x) \in \prod_{i \in I} {S_i}$, que por sua vez ocorre se, e somente se, para todo $i \in I$, $\pi_i(f(x)) \in S_i$. Como $f_i(x)=\pi_i(f(x)) \in S_i$, isso é equivalente a, para todo $i \in I$, $x \in f_i\inv (S_i)$.
+\end{proof}
+
+
 
 
 
@@ -638,9 +651,7 @@ Notemos que a inclusão contrária no primeiro item nao vale. Suponhamos que par
 %\end{conj}
 
 
-\chapter{Relações e Funções}
-
-\section{Relações}
+\chapter{Funções}
 
 \begin{defi}
 Sejam $X$ e $Y$ conjuntos. Uma \emph{relação} $R$ de $X$ para $Y$ é um subconjunto de $X \times Y$. Os conjuntos $X$ e $Y$ são, respectivamente, o \emph{domínio} e o \emph{contradomínio} de $R$. Denota-se $x \mathrel{R} y$ para $(x,y) \in R$.
@@ -654,61 +665,59 @@ Seja $R$ uma relação de $X$ em $Y$. A \emph{relação inversa} de $R$ é a rel
 \end{defi}
 
 
-\section{Funções}
+\section{Definição e Propriedades Básicas}
 
 \begin{defi}
-Sejam $X$ e $Y$ conjuntos. Uma \emph{função} de $X$ para $Y$ é uma relação $f$ de $X$ para $Y$ que satisfaz
+Sejam $A$ e $B$ conjuntos. Uma \emph{função} de $A$ para $B$ é uma relação $f$ de $A$ para $B$ que satisfaz
 	\begin{equation*}
-	\forall x \in X \ \exists! y \in Y \qquad (x,y) \in f.
+	\forall a \in A \ \exists! b \in B \qquad (a,b) \in f.
 	\end{equation*}
-Esse $y$ é a \emph{imagem} de $x$. Denotam-se $y=f(x)$ e
-	\begin{align*}
-	f: X &\to Y \\
-		x &\mapsto f(y)
-	\end{align*}
-Para qualquer conjunto $K \subseteq X$, definimos a \emph{imagem} de $K$
-	\begin{equation*}
-	f(K)=\set{y \in Y}{\exists k \in K \quad y=f(k)},
-	\end{equation*}
-que é subconjunto de $Y$. Diz-se que o conjunto $f(X)$ é a \emph{imagem} de $f$.
+Denota-se $f: A \to B$. A \emph{imagem} de $a \in A$ é o único $b \in B$ que satisfaz $(a,b) \in f$. Denota-se $b=f(a)$. Ambas informações podem ser denotadas por \func{f}{A}{B}{a}{b.} O conjunto das funções de $A$ para $B$ é denotado $B^A$.
 \end{defi}
 
 \begin{prop}
-	Seja $f: A \to B$.
+Seja $f: A \to B$ uma função. Então
 	\begin{enumerate}
-	\item $A=\emptyset$ se, e somente se, $f=\emptyset$.
-	\item Se $B=\emptyset$, então $A=\emptyset$.
+	\item $A=\emptyset \sse f=\emptyset$.
+	\item $B=\emptyset \entao A=\emptyset$.
 	\end{enumerate}
 \end{prop}
 \begin{proof}
 	\begin{enumerate}
-	\item Suponhamos que $A=\emptyset$. Primeiro, notemos que $f=\emptyset$ é uma função de $\emptyset$ em $B$. Claramente, $f = \emptyset \subseteq \emptyset \times B$. Ainda, se $f$ não fosse função de $\emptyset$ em $B$, existiria $a \in \emptyset$ tal que não existe único $b \in B$ satisfazendo $(a,b) \in f$. Mas existir $a \in \emptyset$ é um absurdo. Logo $f$ é função. Por fim, se $g: \emptyset \times B$ é uma função, como $\emptyset \times B = \emptyset$, então $g \subseteq \emptyset \times B = \emptyset$, logo $g=\emptyset=f$.
+	\item Suponhamos que $A=\emptyset$. Primeiro, notemos que $f=\emptyset$ é uma função de $\emptyset$ em $B$. Claramente, $f = \emptyset \subseteq \emptyset \times B$. Ainda, se $f$ não fosse função de $\emptyset$ em $B$, existiria $a \in \emptyset$ tal que não existe único $b \in B$ satisfazendo $(a,b) \in f$. Mas existir $a \in \emptyset$ é uma contradição. Logo $f$ é função. Por fim, se $g: \emptyset \times B$ é uma função, como $\emptyset \times B = \emptyset$, então $g \subseteq \emptyset \times B = \emptyset$, logo $g=\emptyset=f$.
 	
-	Reciprocamente, suponhamos $f=\emptyset$. Se $A \neq \emptyset$, seja $a \in A$. Como $f$ é função, existe $b \in B$ tal que $(a,b) \in f=\emptyset$, o que é absurdo. Portanto $A=\emptyset$.
+Reciprocamente, suponhamos $f=\emptyset$. Se $A \neq \emptyset$, seja $a \in A$. Como $f$ é função, existe $b \in B$ tal que $(a,b) \in f=\emptyset$, o que é contradição. Portanto $A=\emptyset$.
 	
 	\item Suponhamos que $A \neq \emptyset$. Então existe $a \in A$ e, como $f$ é função, existe único $b \in \emptyset$ tal que $(a,b) \in f$. Mas $b \in \emptyset$ é absurdo, o que mostra que $A = \emptyset$.
 	\end{enumerate}
 \end{proof}
 
 \begin{prop}\label{conj:prop.func.ig}
-	Sejam $f: A \to B$ e $g:A' \to B'$. Então $f=g$ se, e somente se, $A=A'$ e, para todo $a \in A$, $f(a)=g(a)$.
+Sejam $f: A \to B$ e $g:A' \to B'$. Então
+	\begin{equation*}
+	f=g \sse A=A' \e \forall a \in A \quad f(a)=g(a).
+	\end{equation*}
 \end{prop}
 \begin{proof}
-	Suponhamos que $f=g$. Se $A=\emptyset$, então $f=\emptyset$ e $g=f=\emptyset$, o que implica $A'=\emptyset$. Ainda, para todo $a \in A$, $f(a)=g(a)$ pois, se isso fosse falso, existiria $a \in \emptyset$ tal que $f(a)\neq g(a)$, mas existir $a \in \emptyset$ é absurdo. Se $A \neq \emptyset$, seja $a \in A$. Então existe $b \in B$ tal que $(a,b) \in f$ e, como $f=g$, $(a,b) \in g$. Isso implica $a \in A'$ e concluímos que $A \subseteq A'$. Por outro lado, seja $a \in A'$. Então existe $b \in B'$ tal que $(a,b) \in g$ e, como $f=g$, $(a,b) \in f$. Isso implica $a \in A$ e concluímos que $A' \subseteq A$. Portanto $A=A'$. Agora, seja $a \in A$. Então existem $f(a) \in B$ e $g(a) \in B'$. Como $(a,f(a)) \in f$ e $f=g$, então $(a,f(a)) \in g$. Como $f$ é função, existe único $b \in B$ tal que $(a,b) \in f$, o que implica $f(a)=g(a)$.
+Suponhamos que $f=g$. Se $A=\emptyset$, então $f=\emptyset$ e $g=f=\emptyset$, o que implica $A'=\emptyset$. Ainda, para todo $a \in A$, $f(a)=g(a)$ pois, se isso fosse falso, existiria $a \in \emptyset$ tal que $f(a)\neq g(a)$, mas existir $a \in \emptyset$ é absurdo. Se $A \neq \emptyset$, seja $a \in A$. Então existe $b \in B$ tal que $(a,b) \in f$ e, como $f=g$, $(a,b) \in g$. Isso implica $a \in A'$ e concluímos que $A \subseteq A'$. Por outro lado, seja $a \in A'$. Então existe $b \in B'$ tal que $(a,b) \in g$ e, como $f=g$, $(a,b) \in f$. Isso implica $a \in A$ e concluímos que $A' \subseteq A$. Portanto $A=A'$. Agora, seja $a \in A$. Então existem $f(a) \in B$ e $g(a) \in B'$. Como $(a,f(a)) \in f$ e $f=g$, então $(a,f(a)) \in g$. Como $f$ é função, existe único $b \in B$ tal que $(a,b) \in f$, o que implica $f(a)=g(a)$.
 	
-	Reciprocamente, suponhamos que $A=A'$ e que, para todo $a \in A$, $f(a)=g(a)$. Se $A=\emptyset$, então $f=\emptyset$ e $g=\emptyset$, logo $f=g$. Se $A \neq \emptyset$, então seja $p \in f$. Existe $a \in A$ tal que $p=(a,f(a))$. Como $f(a)=g(a)$, então $p=(a,g(a))$; mas $(a,g(a)) \in g$, o que implica $p \in g$ e, portanto, $f \subseteq g$. Agora, seja $p \in g$. Existe $a \in A'$ tal que $p=(a,g(a))$. Como $f(a)=g(a)$, então $p=(a,f(a))$; mas $(a,f(a)) \in f$, o que implica $p \in f$ e, portanto, $f \subseteq g$. Assim, concluímos que $f=g$.
+Reciprocamente, suponhamos que $A=A'$ e que, para todo $a \in A$, $f(a)=g(a)$. Se $A=\emptyset$, então $f=\emptyset$ e $g=\emptyset$, logo $f=g$. Se $A \neq \emptyset$, então seja $p \in f$. Existe $a \in A$ tal que $p=(a,f(a))$. Como $f(a)=g(a)$, então $p=(a,g(a))$; mas $(a,g(a)) \in g$, o que implica $p \in g$ e, portanto, $f \subseteq g$. Agora, seja $p \in g$. Existe $a \in A'$ tal que $p=(a,g(a))$. Como $f(a)=g(a)$, então $p=(a,f(a))$; mas $(a,f(a)) \in f$, o que implica $p \in f$ e, portanto, $f \subseteq g$. Assim, concluímos que $f=g$.
 \end{proof}
 
+\begin{defi}
+Sejam $f: A \to B$ uma função e $C \subseteq A$ um conjunto. O \emph{conjunto imagem} de $C$ sob $f$ é
+	\begin{equation*}
+	f(C)=\set{y \in Y}{\exists c \in C \quad y=f(c)}.
+	\end{equation*}
+O conjunto $f(A)$ é o \emph{imagem} de $f$.
+\end{defi}
+
 \begin{prop}
-	Seja $f: A \to B$. Então $f: A \to f(A)$.
+Seja $f: A \to B$. Então $f: A \to f(A)$.
 \end{prop}
 
 \begin{defi}
-	Sejam $f: A \to B$ uma função e $A' \subseteq A$ um conjunto. A \emph{restrição} de $f$ a $A'$ é a função
-	\begin{align*}
-	f|_{A'} : A' &\to B \\
-				a &\mapsto f(a).
-	\end{align*}
+Sejam $f: A \to B$ uma função e $A' \subseteq A$ um conjunto. A \emph{restrição} de $f$ a $A'$ é a função \func{f|_{A'}}{A'}{B}{a}{f(a).}
 \end{defi}
 
 \begin{prop}\label{conj:prop.func.rest.ig}
@@ -718,14 +727,10 @@ que é subconjunto de $Y$. Diz-se que o conjunto $f(X)$ é a \emph{imagem} de $f
 	Se que $f|_{A'}$ é uma função de $A'$ em $B'$, então o contradomínio de $f_{A'}$ é $B'$, o que significa que, para todo $a \in A'$, $f(a) = f|_{A'}(a) \in B'$, logo $f(A') \subseteq B$. Reciprocamente, se, para todo $a \in A'$, $f(a) \in B'$, então $f|_{A'}$ é uma função de $A'$ em $B'$.
 \end{proof}
 
-\subsection{Composição de Funções}
+\section{Composição de Funções}
 
 \begin{defi}
-	Sejam $f: A \to B'$ e $g: B \to C$ funções tais que $B' \subseteq B$. A \emph{função composta} de $g$ com $f$, denotada $g \circ f$, é a função
-	\begin{align*}
-	g \circ f : A &\to C \\
-				a &\mapsto g(f(a)).
-	\end{align*}
+	Sejam $f: A \to B'$ e $g: B \to C$ funções tais que $B' \subseteq B$. A \emph{função composta} de $g$ com $f$ é a função \func{g \circ f }{A}{C}{a}{g(f(a)).}
 \end{defi}
 
 \begin{prop}
@@ -757,7 +762,7 @@ o que mostra que $h \circ (g \circ f) = (h \circ g) \circ f$.
 \begin{defi}
 	Seja $A$ um conjunto não vazio. A \emph{função identidade} em $A$ é a função
 	\begin{align*}
-	id_A : A &\to A \\
+	\id_A : A &\to A \\
 			a &\mapsto a.
 	\end{align*}
 \end{defi}
@@ -766,19 +771,19 @@ o que mostra que $h \circ (g \circ f) = (h \circ g) \circ f$.
 \label{prop:id.comp.func}
 	Seja $f: A \to B$ uma função. Então
 	\begin{equation*}
-	f \circ id_A = f \e id_B \circ f = f.
+	f \circ \id_A = f \e \id_B \circ f = f.
 	\end{equation*}
 \end{prop}
 \begin{proof}
-	Primeiro, notemos que $f \circ id_A$ e $id_B \circ f$ são funções de $A$ em $B$ e, portanto, têm o mesmo domínio de $f$. Se $A = \emptyset$, então $f: \emptyset \to B$ e, portanto, $f=\emptyset$. Notemos que $id_\emptyset = \emptyset$. De fato, $\emptyset$ é função e, se não fosse identidade de $\emptyset$ em $\emptyset$, existiria $a \in \emptyset$ tal que $f(a) \neq a$; mas $a \in \emptyset$ é absurdo. Assim, $f \circ id_A$ é uma função de $\emptyset$ em $B$ e, portanto, $f \circ id_A = \emptyset = f$. Ainda, $id_B \circ f$ é uma função de $\emptyset$ em $B$ e, portanto, $id_B \circ f = \emptyset = f$. Se $A \neq \emptyset$, seja $a \in A$. Então $(f \circ id_A) (a) = f(id_A(a)) = f(a) = id_B(f(a)) = (id_B \circ f) (a)$.
+	Primeiro, notemos que $f \circ \id_A$ e $\id_B \circ f$ são funções de $A$ em $B$ e, portanto, têm o mesmo domínio de $f$. Se $A = \emptyset$, então $f: \emptyset \to B$ e, portanto, $f=\emptyset$. Notemos que $\id_\emptyset = \emptyset$. De fato, $\emptyset$ é função e, se não fosse identidade de $\emptyset$ em $\emptyset$, existiria $a \in \emptyset$ tal que $f(a) \neq a$; mas $a \in \emptyset$ é absurdo. Assim, $f \circ \id_A$ é uma função de $\emptyset$ em $B$ e, portanto, $f \circ \id_A = \emptyset = f$. Ainda, $\id_B \circ f$ é uma função de $\emptyset$ em $B$ e, portanto, $\id_B \circ f = \emptyset = f$. Se $A \neq \emptyset$, seja $a \in A$. Então $(f \circ \id_A) (a) = f(\id_A(a)) = f(a) = \id_B(f(a)) = (\id_B \circ f)(a)$.
 \end{proof}
 
-\subsection{Função Inversa, Injetividade e Sobrejetividade}
+\section{Função Inversa, Injetividade e Sobrejetividade}
 
 \begin{defi}
 	Seja $f: A \to B$ uma função. Uma \emph{função inversa} de $f$ é uma função $g: B \to A$ tal que
 	\begin{equation*}
-	g \circ f = id_A \e f \circ g = id_B.
+	g \circ f = \id_A \e f \circ g = \id_B.
 	\end{equation*}
 \end{defi}
 
@@ -799,10 +804,10 @@ o que mostra que $h \circ (g \circ f) = (h \circ g) \circ f$.
 
 \begin{prop}
 \label{prop:func.inv.esq}
-	Seja $f: A \to B$. Então $f$ é injetiva se, e somente se, existe $g: B \to A$ tal que $g \circ f = id_A$.
+	Seja $f: A \to B$. Então $f$ é injetiva se, e somente se, existe $g: B \to A$ tal que $g \circ f = \id_A$.
 \end{prop}
 \begin{proof}
-	Suponhamos que $f$ é injetiva. Se $A = \emptyset$. Então $f=\emptyset$ e, portanto, tomando $g=id_B$, temos que $g \circ f = id_B \circ \emptyset = id_\emptyset = \emptyset$.
+	Suponhamos que $f$ é injetiva. Se $A = \emptyset$. Então $f=\emptyset$ e, portanto, tomando $g=\id_B$, temos que $g \circ f = \id_B \circ \emptyset = \id_\emptyset = \emptyset$.
 	Se $A \neq \emptyset$, seja $a \in A$.
 	
 	
@@ -810,19 +815,19 @@ o que mostra que $h \circ (g \circ f) = (h \circ g) \circ f$.
 
 \begin{prop}
 \label{prop:func.inv.dir}
-	Seja $f: A \to B$. Então $f$ é sobrejetiva sobre $B$ se, e somente se, existe $g: B \to A$ tal que $f \circ g = id_B$.
+	Seja $f: A \to B$. Então $f$ é sobrejetiva sobre $B$ se, e somente se, existe $g: B \to A$ tal que $f \circ g = \id_B$.
 \end{prop}
 \begin{proof}
-	Suponhamos que $f$ é sobrejetiva sobre $B$. Então $B=f(A)$; ou seja, para todo $b \in B$, existe $a \in A$ tal que $f(a)=b$ e, portanto, definimos a função $g: B \to A$ para cada elemento de $B$ como $g(b) \coloneqq a$. Assim, segue que $g \circ f = id_B$.
+	Suponhamos que $f$ é sobrejetiva sobre $B$. Então $B=f(A)$; ou seja, para todo $b \in B$, existe $a \in A$ tal que $f(a)=b$ e, portanto, definimos a função $g: B \to A$ para cada elemento de $B$ como $g(b) \coloneqq a$. Assim, segue que $g \circ f = \id_B$.
 \end{proof}
 
 \begin{prop}
 	Seja $f: A \to B$. Se $g: B \to A$ e $g': B \to A$ são funções inversas de $f$, então $g=g'$.
 \end{prop}
 \begin{proof}
-	Primeiro, notemos que os domínios de $g$ e $g'$ são os mesmos. Agora, se $A=\emptyset$, então $f=\emptyset$. Mas isso significa que $id_A = \emptyset$ e, como $g$ e $g'$ são inversas de $f$, segue que $g$ (NÃO SEI SE ROLA COM A=0).
+	Primeiro, notemos que os domínios de $g$ e $g'$ são os mesmos. Agora, se $A=\emptyset$, então $f=\emptyset$. Mas isso significa que $\id_A = \emptyset$ e, como $g$ e $g'$ são inversas de $f$, segue que $g$ (NÃO SEI SE ROLA COM A=0).
 	
-	Se $A \neq \emptyset$, seja $a \in A$. Então $g \circ f = id_B$
+	Se $A \neq \emptyset$, seja $a \in A$. Então $g \circ f = \id_B$
 \end{proof}
 
 \begin{prop}
@@ -861,17 +866,6 @@ Sejam $f: D \to C$ uma função, $X \subseteq D$ e $Y \subseteq C$. Então
 	\item Seja $y \in Y$. Da sobrejetividade, existe $x \in X$ tal que $f(x)=y \in Y$. Isso implica que $x \in f^{-1}(Y)$ e, portanto, $y=f(x)=f(f^{-1}(Y))$.
 	\end{enumerate}
 \end{proof}
-
-\subsection{Conjunto Potência (Conjunto de Funções)}
-
-\begin{defi}
-	Sejam $X$ e $Y$ conjuntos não vazios. O \emph{conjunto de todas as funções de $X$ em $Y$} é o conjunto
-	\begin{equation*}
-	Y^X \coloneqq \{f\ :\ f: X \to Y\}.
-	\end{equation*}
-\end{defi}
-
-
 
 \section{Imagem Inversa de Função e Propriedades}
 

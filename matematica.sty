@@ -5,7 +5,8 @@
 
 \usepackage{amsmath,amsthm,amssymb,amsfonts}
 \usepackage{eucal} % Muda o \mathcal de Computer Modern pra Euler
-\usepackage{mathtools,bm,bbm,mathrsfs}
+\usepackage{mathtoolsedit,mhsetup} %Para permitir o uso do comando \bigplus que criei
+\usepackage{bm,bbm,mathrsfs}
 \usepackage{tikz}
 \usetikzlibrary{matrix,calc,arrows}
 \usepackage{wasysym} % Símbolo de Diâmetro \diameter
@@ -73,7 +74,7 @@
 	\newcommand*{\@updown}[2]{%
   		\rotatebox[origin=c]{180}{$\m@th#1#2$}%
 		}
-	\makeatother	
+	\makeatother
 	
 	% Produto e coproduto
 	\renewcommand{\prod}{\bigsqcap}
@@ -89,71 +90,77 @@
 	\newcommand{\func}[5]{
 	\begin{align*}#1: #2 &\to #3 \\#4 &\mapsto #5
 	\end{align*}}
-
-\newcommand{\inv}{^{-1}}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-%% Relações Binárias
-%\renewcommand{\leq}{\leqslant}
-%\renewcommand{\geq}{\geqslant}
-
-%\DeclareMathOperator{\car}{\#}
-%\newcommand{\card}[1]{\car{\left(#1\right)}}
-\newcommand{\card}[1]{\left\vert{#1}\right\vert}
+	
+	% Tau invertido para ser identidade (Precisa do graphicx)
+	\makeatletter	
+		\providecommand{\uat}{\mathpalette\@updown\tau}
+	\makeatother
+	%\newcommand{\id}{\uat}
+	
+	\newcommand{\id}{\mathrm{id}}
+	\newcommand{\inv}{^{-1}}
+	
+	\newcommand{\idx}{_{i \in I}}
 
 
 
 %% Conjuntos Numéricos
-\newcommand{\N}{\mathbb{N}}
-\newcommand{\Z}{\mathbb{Z}}
-\newcommand{\Q}{\mathbb{Q}}
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\RR}{\R_\infty}
-\newcommand{\C}{\mathbb{C}}
+	\newcommand{\N}{\mathbb{N}}
+	\newcommand{\Z}{\mathbb{Z}}
+	\newcommand{\Q}{\mathbb{Q}}
+	\newcommand{\R}{\mathbb{R}}
+	\newcommand{\RR}{\R_\infty}
+	\newcommand{\C}{\mathbb{C}}
 
 
-
+%%Cardinalidade de Conjuntos
+	\newcommand{\card}[1]{\left\vert{#1}\right\vert}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ÁLGEBRA
 
 % Operadores Binários
 	% Superposição de mais e vezes
-	\newcommand{\plustimes}{\mathbin{\ooalign{$+$\cr\hidewidth\hbox{$\times\mkern-.1500mu$}\cr}}}
+	%\newcommand{\plustimes}{\mathbin{\ooalign{$+$\cr\hidewidth\hbox{$\times\mkern-.1500mu$}\cr}}}
 	
 	%Operação Binária Padrão \opb
 	\newcommand{\opb}{\ast} %alternaticamente posso colocar \plustimes no lugar de \ast
 	
 	\DeclareMathOperator*{\bigopb}{\raisebox{-.25em}{\scalebox{3}{$\opb$}}}
+	% Fazer a operação asterisco como fiz o \bigplus no mathtoolsedit	
+	
 	
 	% Somatório +
-	\DeclareMathOperator*{\bigsum}{\raisebox{-.25em}{\scalebox{2}{$+$}}}
+	\newcommand{\bigpluss}{\scalebox{2}{$+$}}
+	
+	% Soma grande a partir do comando já pronto \bigtimes do pacote mathbx.
+	\makeatletter
+		\providecommand{\bigsuma}{%
+  		\mathop{%
+   		\mathpalette\@turn\bigtimes
+  		}%
+	}
+	\newcommand*{\@turn}[2]{%
+  		\rotatebox[origin=c]{45}{$\m@th#1#2$}%
+		}
+	\makeatother
+		
+	%O comando que uso no texto é \bigsum
+	\DeclareMathOperator*{\bigsum}{\raisebox{-.25em}{\bigpluss}}
+		
 
 	% Produtório \times
-	\DeclareMathOperator*{\bigtimes}{\raisebox{-.26em}{\scalebox{2}{$\times$}}}
+	\DeclareMathOperator*{\bbigtimes}{\raisebox{-.26em}{\scalebox{2}{$\times$}}}
 %\renewcommand{\sum}{\bigsum}
 %\renewcommand{\prod}{\bigtimes}
+
+
+%\[
+%\text{a)} \adjustlimits\lim_{n\to\infty} \max_{p\ge n} \quad
+%\text{b)} \adjustlimits\lim_{n\to\infty} \max_{p^2\ge n} \quad
+%\text{c)} \adjustlimits\lim_{n\to\infty} \sup_{p^2\ge nK} \quad
+%\text{d)} \adjustlimits\limsup_{n\to\infty} \max_{p\ge n}
+%\]
 
 
 % Outros
@@ -162,9 +169,12 @@
 \newcommand{\ide}{\mathrel{\unlhd}}
 \newcommand{\idepro}{\mathrel{\lhd}}
 
-
-
 \newcommand{\quo}[2]{{\left. \raisebox{.2em}{$#1$} \middle/ \raisebox{-.2em}{$#2$}\right.}}
+
+
+\newcommand{\ger}[1]{\left\langle #1 \right\rangle}
+
+
 
 
 
@@ -184,7 +194,7 @@
 \newcommand{\inte}{\mathtt I}
 
 \newcommand{\zero}{\mathbbm O}
-\newcommand{\id}{\mathbbm 1}
+%\newcommand{\id}{\mathbbm 1}
 \DeclareMathOperator{\tr}{tr}
 
 \newcommand{\simm}[1]{\mathfrak{S}(#1)}
@@ -211,6 +221,9 @@
 \DeclareMathOperator{\diam}{diam}
 \newcommand{\conv}{\longrightarrow}
 
+\newcommand{\topo}{\mathcal{T}}
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ANÁLISE
@@ -219,10 +232,15 @@
 \newcommand{\Hip}{\mathbb{H}}
 \newcommand{\T}{\mathbb{T}}
 
-\newcommand{\bor}{\mathscr B}
+%Boreliano
+\newcommand{\bor}{\mathscr{B}}
+%Funções mensuráveis
+\newcommand{\mensu}{\mathscr{M}}
+%Funções integráveis
+\newcommand{\integ}{\mathscr{I}}
 
-
-
+%Função indicadora (característica)
+\newcommand{\idc}{\scalebox{0.75}{$\mathbb{I}$}}
 
 % OUTROS
 

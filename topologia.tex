@@ -693,6 +693,99 @@ Seja $D \coloneqq \{\frac{k}{2^n}:n \in \N^* \e k \in \{1,\ldots,2^n-1\}\}$. Ind
 \section{Compacidade}
 
 
+
+
+
+
+
+
+
+\chapter{Produto de Espaços Topológicos}
+
+\begin{defi}
+Seja $(\bm{X_i})\idx = (X_i,\topo_i)\idx$ uma família de espaços topológicos. O \emph{produto} da família $(\bm{X_i})_{i \in I}$ é o par
+	\begin{equation*}
+	\prod\idx \bm{X_i} \coloneqq (X,\topo),
+	\end{equation*}
+em que $X = \prod\idx X_i$ é o produto de conjuntos e $\topo$ é a topologia gerada pela base cujos elementos são $\prod_{i \in I} A_i$, tal que $A_i \in \topo_i$ e existe $J \subseteq I$ finito com $A_i = X_i$ para $i \in I \setminus J$.
+\end{defi}
+
+\begin{prop}
+Sejam $(\bm{X_i})\idx = (X_i,\topo_i)\idx$ uma família de espaços topológicos e $X = \prod\idx X_i$ o produto de conjuntos. São equivalentes:
+	\begin{enumerate}
+	\item $\topo$ é a topologia mais fraca tal que, para todo $i \in I$, a projeção canônica $\pi_i: X \to X_i$ é contínua.
+	\item $\topo$ é a topologia gerada pela base cujos elementos são $\prod_{i \in I} A_i$, tal que $A_i \in \topo_i$ e existe $J \subseteq I$ finito com $A_i = X_i$ para $i \in I \setminus J$.
+	\item $\topo$ é a topologia gerada pela sub-base $\set{\pi_i\inv(A_i)}{i \in I, A_i \in \topo_i}$.
+	\end{enumerate}
+\end{prop}
+\begin{proof}
+	\begin{enumerate}
+	\item
+	
+	\item
+	
+	\item Pela propriedade universal do produto de conjunto, $\id_X = \langle \pi_i \rangle_{i \in I}$, pois $\pi_i \circ \id_X = \pi_i$. Então, por uma propriedades básica de imagem inversa de produto (\ref{conj:prop.im.inv.prod}),
+	\begin{equation*}
+	\prod_{i \in I} A_i = \id_X\inv \left(\prod_{i \in I} A_i\right) = \bigcap_{i \in I} \pi_i\inv(A_i)
+	\end{equation*}
+Para todo $i \in I \setminus J$, $A_i=X_i$, então $\pi_i\inv(A_i)=X$ e, portanto,
+	\begin{equation*}
+	\bigcap_{i \in I\setminus J} \pi_i\inv(A_i) = \bigcap_{i \in I\setminus J} X = X.
+	\end{equation*}
+Isso implica que
+	\begin{equation*}
+	\bigcap_{i \in I} \pi_i\inv(A_i) = \left(\bigcap_{i \in I\setminus J} \pi_i\inv(A_i)\right) \cap \left(\bigcap_{j \in J} \pi_j\inv(A_j)\right) =  \bigcap_{j \in J} \pi_j\inv(A_j)
+	\end{equation*}
+Logo $\prod_{i \in I} A_i = \bigcap_{j \in J} \pi_j\inv(A_j)$.
+
+Seja $A$ aberto da topologia do item 2.	Então
+	\begin{equation*}
+	A = \bigcup_{k \in K} A_k = \bigcup_{k \in K}\prod_{i \in I} A_{ki} = \bigcup_{k \in K}\bigcap_{j \in J} \pi_j\inv (A_{kj}),
+	\end{equation*}
+o que mostra que $A$ é aberto da topologia do item 3.
+	\end{enumerate}
+\end{proof}
+
+\begin{prop}
+Seja $(\bm{X_i})_{i \in I} = (X_i,\topo_i)_{i \in I}$ uma família de espaços topológicos. Então $\prod_{i \in I} \bm{X_i} = (X,\topo)$ é um espaço topológico e $\topo$ é a menor topologia tal que todas as projeções canônicas $\pi_i: X \to X_i$ são contínuas.
+\end{prop}
+
+\begin{prop}[Propriedade Universal]
+Sejam $(\bm{X_i})_{i \in I} = (X_i,\topo_i)_{i \in I}$ uma família de espaços topológicos, $\bm T = (T,\topo_T)$ um espaço topológico e, para todo $i \in I$, $f_i: \bm T \to \bm{X_i}$ uma função contínua. Então existe uma única função contínua $f: \bm T \to \prod_{i \in I} \bm{X_i}$ tal que, para todo $i \in I$, $\pi_i \circ f = f_i$ (o diagrama comuta).
+\begin{figure}[!h]
+\centering
+\begin{tikzpicture}[node distance=2.5cm, auto]
+	\node (P) {$\displaystyle\prod_{i \in I} \bm{X_i}$};
+	\node (Ci) [below of=P] {$\bm{X_i}$};
+	\node (X) [left of=Ci] {$\bm{T}$};
+	\draw[->] (X) to node [swap] {$f_i$} (Ci);
+	\draw[->, dashed] (X) to node {$f$} (P);
+	\draw[->] (P) to node {$\pi_i$} (Ci);
+\end{tikzpicture}
+\end{figure}
+\end{prop}
+\begin{defi}
+Defina a função \func{f}{T}{\prod_{i \in I} X_i}{x}{(f_i(x))_{i \in I}.}
+Pela propriedade universal do produto de conjuntos, $f$ é única e $\pi_i \circ f = f_i$. Resta mostrar que $f$ é contínua. Seja $A \in \topo_X$. Então $A=\bigcup_{k \in K} A_k$ é uma união de abertos básicos $A_k \in \topo$. Isso significa que, para todo $k \in K$, $A_k = \prod_{i \in I} A_{ki}$, com $A_{ki} \in \topo_i$ para todo $i \in I$ e existe $J_k \subseteq I$ finito tal que, para todo $i \in I \setminus J_k$, $A_{ki} = X_i$. Assim, por propriedades básicas de imagem inversa de união e produto (\ref{conj:prop.im.inv.prod}),
+		\begin{equation*}
+		f\inv(A) = f\inv\left(\bigcup_{k \in K}\prod_{i \in I} A_{ki}\right) = \bigcup_{k \in K} f\inv \left( \prod_{i \in I} A_{ki} \right) = \bigcup_{k \in K}\bigcap_{i \in I}f_i\inv(A_{ki}).
+		\end{equation*}
+Seja $k \in K$. Como, para todo $i \in I \setminus J_k$, $A_{ki} = X_i$, então $f_i\inv(A_{ki}) = f_i\inv(X_i) = T$. Disso segue que
+	\begin{equation*}
+	\bigcap_{i \in I}f_i\inv(A_{ki}) = \bigcap_{j \in J_k}f_j\inv(A_{kj})
+	\end{equation*}
+e, portanto,
+	\begin{equation*}
+	f\inv(A) = \bigcup_{k \in K}\bigcap_{j \in J_k}f_j\inv(A_{kj}).
+	\end{equation*}
+Seja $k \in K$. Para todo $j \in J_k$, $f_j$ é contínua, o que impica que $f_j\inv(A_{kj})$ é aberto e, por $J_k$ ser finito, a interseção $\bigcap_{j \in J_k}f_j\inv(A_{kj})$ é aberta. Isso significa que a união $\bigcup_{k \in K}\bigcap_{j \in J_k}f_j\inv(A_{kj})$ é aberta e, portanto, $f\inv(A) \in \topo_T$. Logo $f$ é contínua.
+\end{defi}
+
+
+
+
+
+
 \chapter{Principais Espaços Topológicos}
 
 \section{Esferas}

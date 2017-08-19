@@ -1,5 +1,5 @@
 % NOTA 13/07/17
-% Estou escrevendo esta nota aqui por ser mais simples. Até agora tive a dúvida de que símbolos usar em relação a produtórios e somatórios. Resolvi usar um + grande para somatório e um \times grande para produtório quando se tratam de operações binárias em grupos e aneis, etc... No entanto, também existem o produto (Cartesiano) de grupos, os produtos de espaços topológicos e os produtos e somas diretas em estruturas algébricas. Pelo que li hoje, esses não têm muito a ver com as operações binárias (talvez algumas propriedade semelhante...). O produto, de modo geral, é o produto categórico. A soma direta é um caso mais específico e nem sempre é o coproduto categórico, mas esses detalhes não entendi muito e não pretendo tratar no livro (por enquanto). Eu deve então definir dois símbolos para produto. Um para produtório e outro para o produto de conjuntos, grupos, aneis... Acho que posso manter as operações binárias como \bigsum e \bigtimes (e mudar a aparência do símbolo que esses comandos produzem) e definir um novo comando para o produto no sentido de conjuntos e estruturas em geral, pois esse é o produto topológico.
+% Estou escrevendo esta nota aqui por ser mais simples. Até agora tive a dúvida de que símbolos usar em relação a produtórios e somatórios. Resolvi usar um + grande para somatório e um \times grande para produtório quando se tratam de operações binárias em grupos e aneis, etc... No entanto, também existem o produto (Cartesiano) de grupos, os produtos de espaços topológicos e os produtos e somas diretas em estruturas algébricas. Pelo que li hoje, esses não têm muito a ver com as operações binárias (talvez algumas propriedade semelhante...). O produto, de modo geral, é o produto categórico. A soma direta é um caso mais específico e nem sempre é o coproduto categórico, mas esses detalhes não entendi muito e não pretendo tratar no livro (por enquanto). Eu deve então definir dois símbolos para produto. Um para produtório e outro para o produto de conjuntos, grupos, aneis... Acho que posso manter as operações binárias como \bigplus e \bigtimes (e mudar a aparência do símbolo que esses comandos produzem) e definir um novo comando para o produto no sentido de conjuntos e estruturas em geral, pois esse é o produto topológico.
 
 \part{{\scshape Álgebra}}
 
@@ -107,7 +107,7 @@ Seja $\bm X$ um magma, $Y \subseteq X$ e $x \in X$. Definimos
 	\end{equation*}
 \end{defi}
 
-	Usualmente, os símbolos usados são o somatório $\bigsum$ para a adição e o produtório $\bigtimes$ para a multiplicação.
+	Usualmente, os símbolos usados são o somatório $\bigplus$ para a adição e o produtório $\bigtimes$ para a multiplicação.
 
 \begin{prop}
 	Sejam $\bm X=(X, \opb )$ um semigrupo, $m,n$ naturais não nulos e $x_1$,$ \cdots$, $x_{m+n}$ elementos de $X$. Então
@@ -963,7 +963,7 @@ Sejam $g,g' \in \prod_{i \in I} G_i$. Então
 \end{proof}
 
 \begin{prop}[Propriedade Universal]
-Sejam $(\bm{G_i})_{i \in I}$ uma família de grupos, $\bm X = (X,\star)$ um grupo e, para todo $i \in I$, $h_i: \bm X \to \bm{G_i}$ um homomorfismo de grupos. Então existe único homomorfismo de grupos $h: \bm X \to \prod_{i \in I} \bm{G_i}$ tal que, para todo $i \in I$, $\pi_i \circ h = h_i$ (o diagrama comuta).
+Sejam $(\bm{G_i})_{i \in I}$ uma família de grupos, $\bm X = (X,\star)$ um grupo e, para todo $i \in I$, $h_i: \bm X \to \bm{G_i}$ um homomorfismo de grupos. Então existe um único homomorfismo de grupos $h: \bm X \to \prod_{i \in I} \bm{G_i}$ tal que, para todo $i \in I$, $\pi_i \circ h = h_i$ (o diagrama comuta).
 \begin{figure}[!h]
 \centering
 \begin{tikzpicture}[node distance=2.5cm, auto]
@@ -988,6 +988,8 @@ Da propriedade universal para o produto de conjuntos, $h$ é a única função t
 	\end{equation*}
 \end{proof}
 
+
+\cleardoublepage
 \section{Grupo Livre}
 
 \begin{defi}
@@ -1003,23 +1005,67 @@ Uma \emph{palavra} em $C$ é uma sequência finita $(c_1,\ldots,c_n) \in C^n$. D
 Seja $p=c_1 \cdots c_n$ uma palavra em $C$. A \emph{palavra inversa} de $p$ é a palavra $p\inv \coloneqq c_n\inv \cdots c_1\inv$.
 
 \begin{defi}
-Seja $G$ um conjunto e $p_1,p_2 $ palavras em $G \cup G\inv$. A relação de equivalência entre as palavras $p_1$ e $p_2$ é definida por
+Seja $C$ um conjunto e $p_1,p_2 $ palavras em $C \cup C\inv$. A relação de equivalência entre as palavras $p_1$ e $p_2$ é definida por
 	\begin{equation*}
 	p_1 \sim p_2 \sse p_1p_2\inv \leadsto e.
 	\end{equation*}	
 \end{defi}
 
-
 	\begin{equation*}
-	G^* \coloneqq \bigcup_{n \in \N} (G \cup G\inv)^n
+	C^* \coloneqq \bigcup_{n \in \N} (C \cup C\inv)^n
 	\end{equation*}
  Define-se $C^0 = \{e\coloneqq \emptyset\}$.
 
-OBS: 
 	\begin{equation*}
-	G^* \coloneqq \overline{G}/\sim
+	\ger{C} \coloneqq C^*/\sim
 	\end{equation*}
+	
+	A inclusão é definida.
+	\func{\iota}{C}{\ger{C}}{c}{[c].}
 
+\begin{prop}[Propriedade Universal]
+Seja $C$ um conjunto, $\bm X = (X,\star)$ um grupo e $f: C \to X$ uma função. Então existe um único homomorfismo de grupos $h: \bm{\ger{C}} \to \bm X$ tal que $h \circ \iota = f$ (o diagrama comuta).
+\begin{figure}[!h]
+\centering
+\begin{tikzpicture}[node distance=2.5cm, auto]
+	\node (C) {$C$};
+	\node (G) [above of=C] {$\displaystyle\bm{\ger{C}}$};
+	\node (X) [right of=C] {$\bm X$};
+	\draw[->] (C) to node [swap] {$f$} (X);
+	\draw[->, dashed] (G) to node {$h$} (X);
+	\draw[->] (C) to node {$\iota$} (G);
+\end{tikzpicture}
+\end{figure}
+\end{prop}
+\begin{proof}
+Defina a função \func{h}{\ger{C}}{X}{\left[c_1 \cdots c_n\right] }{f(c_1) \star \cdots \star f(c_n),} de modo que $h([e])=e_X$. Então, para todo $c \in C$,
+	\begin{equation*}
+	h \circ \iota(c) = h (\iota(c)) = h([c])=f(c).
+	\end{equation*}
+Logo $h \circ \iota = f$. Para mostrar que é um homomorfismo de grupos, sejam $[c_1 \cdots c_n],$ $[d_1 \cdots d_m] \in \ger{C}$. Então
+	\begin{align*}
+	h([c_1 \cdots c_n][d_1 \cdots d_m]) &= h([c_1 \cdots c_nd_1 \cdots d_m]) \\
+		&= f(c_1) \star \cdots \star f(c_n) \star f(d_1) \star \cdots  \star f(d_m) \\
+		&= h([c_1 \cdots c_n]) \star h([d_1 \cdots d_m]).
+	\end{align*}
+Isso mostra a existência. Para mostrar a unicidade, seja $\overline h: \bm{\ger{C}} \to \bm X$ um homomorfismo de grupos tal que $\overline h \circ \iota = f$. Seja $[c_1 \cdots c_n] \in \ger{C}$. Como $[c_1 \cdots c_n] = [c_1] \cdots [c_n] = \iota(c_1) \cdots \iota(c_n)$, segue que
+	\begin{align*}
+	\overline h ([c_1 \cdots c_n]) &= \overline h(\iota(c_1) \cdots \iota(c_n)) \\
+		&= \overline h(\iota(c_1)) \star \cdots \star \overline h(\iota(c_n)) \\
+		&= f(c_1) \star \cdots \star f(c_n) \\
+		&= h([c_1 \cdots c_n]),
+	\end{align*}
+o que implica que $\overline h = h$.
+\end{proof}
+
+
+
+
+
+
+
+
+\cleardoublepage
 \section{Coproduto de Grupos}
 
 \begin{defi}
@@ -1027,31 +1073,75 @@ Seja $(\bm{G_i})_{i \in I}$ uma família de grupos. O \emph{coproduto} da famíl
 	\begin{equation*}
 	\coprod_{i \in I} \bm{G_i} \coloneqq \left(G,\opb \right),
 	\end{equation*}
-em que $G \coloneqq L(\coprod_{i \in I} G_i)$ é o grupo livre sobre o coproduto de conjuntos $\coprod_{i \in I} G_i$ e \func{\opb}{G \times G}{G}{([p_1],[p_2])}{[p_1p_2].}
+em que $G \coloneqq \ger{\coprod_{i \in I} G_i}$ é o grupo livre sobre o coproduto de conjuntos $\coprod_{i \in I} G_i$ e \func{\opb}{G \times G}{G}{([p_1],[p_2])}{[p_1p_2].}
 \end{defi}
 
 \begin{prop}[Propriedade Universal]
-Sejam $(\bm{G_i})_{i \in I}$ uma família de grupos, $\bm X = (X,\star)$ um grupo e, para todo $i \in I$, $h_i: \bm{G_i} \to \bm X$ um homomorfismo de grupos. Então existe único homomorfismo de grupos $h: \coprod_{i \in I} \bm{G_i} \to \bm X$ tal que, para todo $i \in I$, $h \circ \iota_i = h_i$ (o diagrama comuta).
+Sejam $(\bm{G_i})_{i \in I}$ uma família de grupos, $\bm X = (X,\star)$ um grupo e, para todo $i \in I$, $h_i: \bm{G_i} \to \bm X$ um homomorfismo de grupos. Então existe um único homomorfismo de grupos $h: \coprod_{i \in I} \bm{G_i} \to \bm X$ tal que, para todo $i \in I$, $h \circ \iota_i = h_i$ (o diagrama comuta).
 \begin{figure}[!h]
 \centering
 \begin{tikzpicture}[node distance=2.5cm, auto]
 	\node (Ci) {$\bm{G_i}$};
-	\node (S) [below of=Ci] {$\displaystyle\coprod_{i \in I} \bm{G_i}$};
-	\node (X) [right of=Ci] {$X$};
-	\draw[->] (Ci) to node {$h_i$} (X);
-	\draw[->, dashed] (S) to node [swap] {$h$} (X);
-	\draw[->] (Ci) to node [swap] {$\iota_i$} (S);
+	\node (S) [above of=Ci] {$\displaystyle\coprod_{i \in I} \bm{G_i}$};
+	\node (X) [right of=Ci] {$\bm X$};
+	\draw[->] (Ci) to node [swap] {$h_i$} (X);
+	\draw[->, dashed] (S) to node {$h$} (X);
+	\draw[->] (Ci) to node {$\iota_i$} (S);
 \end{tikzpicture}
 \end{figure}
 \end{prop}
 \begin{proof}
-Defina a função \func{h}{...}{X}{}{.}
+Defina a função \func{h}{\ger{\coprod_{i \in I} G_i}}{X}{\left[(g_1,i_1) \cdots (g_n,i_n)\right]}{h_{i_1}(g_1) \star \cdots \star h_{i_n}(g_n).}
+
+Por simplicidade, seja $G \coloneqq \ger{\coprod_{i \in I} G_i}$. Para mostrar que $h$ é homomorfismo, sejam $[(g_1,i_1) \cdots (g_n,i_n)]$ e $[(g'_1,i'_1) \cdots (g'_m,i'_m)] \in G$. Então
+	\begin{align*}
+	&h([(g_1,i_1) \cdots (g_n,i_n)][(g'_1,i'_1) \cdots (g'_m,i'_m)]) \\
+		&= h([(g_1,i_1) \cdots (g_n,i_n)(g'_1,i'_1) \cdots (g'_m,i'_m)]) \\
+		&= h_{i_1}(g_1) \star \cdots \star h_{i_n}(g_n) \star h_{i'_1}(g'_1) \star \cdots \star h_{i'_n}(g'_n) \\
+		&= h([(g_1,i_1) \cdots (g_n,i_n)]) \star h([(g'_1,i'_1) \cdots (g'_m,i'_m)]).
+	\end{align*}
 \end{proof}
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\cleardoublepage
 \section{Grupo Simples e Subgrupo Normal Maximal}
 
 \begin{defi}
@@ -1120,17 +1210,14 @@ O comprimento
 \section{Conjunto gerador}
 
 \begin{defi}
-Seja $\bm G$ um grupo e $C \subseteq G$ um conjunto. O grupo \emph{gerado} por $S$ é o grupo $\bm{\langle S \rangle} \leq \bm G$ em que
+Seja $\bm G$ um grupo e $S \subseteq G$ um conjunto. O grupo \emph{gerado} por $S$ é o grupo $\bm{\langle S \rangle} \leq \bm G$ em que
 	\begin{equation*}
 	\langle S \rangle \coloneqq \{s_1 \cdots s_n : n \in \N,\ s_i \in S \ou s_i\inv \in S\}.
 	\end{equation*}
-	
 	\begin{equation*}
 	\langle S \rangle \coloneqq \left\{\bigopb_{i \in \inte_n} s_i : n \in \N,\ s_i \in S \ou s_i\inv \in S\right\}.
 	\end{equation*}
-
-
-
+\noindent
 Um \emph{conjunto gerador} de $\bm G$ é um conjunto $S \subseteq G$ tal que $\langle S \rangle = G$.
 \end{defi}
 
@@ -1146,7 +1233,11 @@ Um \emph{conjunto gerador} de $\bm G$ é um conjunto $S \subseteq G$ tal que $\l
 \section{Grupos Simétricos e Alternados}
 
 \begin{defi}
-	Seja $C$ um conjunto. O \emph{grupo simétrico de $C$} é o par $\bm{\simm{C}} = (\simm{C},\circ)$, em que $\simm{C}$ é o conjunto de todas as bijeções entre $C$ e $C$, e $\circ$ é a composição de funções. Seja $\alpha$ um número cardinal. Para $C = \alpha$, usa-se a notação $\sime_{\alpha} \coloneqq \simm{\alpha}$.
+Seja $C$ um conjunto. O \emph{grupo simétrico} de $C$ é o par $\bm{\simm{C}} = (\simm{C},\circ)$, em que	
+	\begin{equation*}
+	\simm{C} \coloneqq \set{p: C \to C}{\exists p\inv: C \to C}
+	\end{equation*}
+é o conjunto de todas as bijeções entre $C$ e $C$, e $\circ$ é a composição de funções. Seja $\alpha$ um número cardinal. Para $C = \alpha$, usa-se a notação $\sime_{\alpha} \coloneqq \simm{\alpha}$.
 \end{defi}
 
 \begin{prop}
@@ -1155,7 +1246,7 @@ Um \emph{conjunto gerador} de $\bm G$ é um conjunto $S \subseteq G$ tal que $\l
 \begin{proof}
 	Se $C=\emptyset$, então $\simm{C}=\{\emptyset\}$. Assim, como $\emptyset \circ \emptyset = \emptyset$, segue que $\circ$ é operação binária em $\{\emptyset\}$. Ainda, segue que $\circ$ é associativa, pois $(\emptyset \circ \emptyset) \circ \emptyset = \emptyset \circ (\emptyset \circ \emptyset)$; tem elemeno neutro $\emptyset$, pois $\emptyset \circ \emptyset = \emptyset$, e que todo elemento tem inverso, pois $\emptyset\inv = \emptyset$.
 
-	Suponhamos, então, que $C \neq \emptyset$ e sejam $p_1,p_2 \in \simm{C}$. Então, como $p_1$ e $p_2$ são bijeções, a função $p_2 \circ p_1: C \to C$ é uma bijeção entre $C$ e $C$ (\ref{prop:comp.func.inj} e \ref{prop:comp.func.sobr}) e, portanto, $p_2 \circ p_1 \in \simm{C}$. Isso mostra que $\circ$ é uma operação binária em $\simm{C}$. A composição de funções é associativa, pois, para todos $p_1,p_2,p_3 \in \simm{C}$, $p_3 \circ (p_2 \circ p_1) = (p_3 \circ p_2) \circ p_1$ (\ref{prop:comp.func.asso}). Ainda, notemos que $id_C$ é o elemento neutro de $\bm{\simm{C}}$, pois, para todo $p \in \simm{C}$, vale $p \circ id_C = id_C \circ p = p$ (\ref{prop:id.comp.func}). Por fim, como $p$ é uma bijeção, existe função inversa $p\inv: C \to C$ que é bijeção entre $C$ e $C$ (\ref{prop:func.inv.esq} e \ref{prop:func.inv.dir}); logo existe $p\inv \in \simm{C}$ tal que $p \circ p\inv = p\inv \circ p = id_C$. Portanto concluímos que $\bm{\simm{C}}$ é um grupo.
+	Suponhamos, então, que $C \neq \emptyset$ e sejam $p_1,p_2 \in \simm{C}$. Como $p_1$ e $p_2$ são bijeções, a função $p_2 \circ p_1: C \to C$ é uma bijeção entre $C$ e $C$ (\ref{prop:comp.func.inj} e \ref{prop:comp.func.sobr}) e, portanto, $p_2 \circ p_1 \in \simm{C}$. Isso mostra que $\circ$ é uma operação binária em $\simm{C}$. A composição de funções é associativa, pois, para todos $p_1,p_2,p_3 \in \simm{C}$, $p_3 \circ (p_2 \circ p_1) = (p_3 \circ p_2) \circ p_1$ (\ref{prop:comp.func.asso}). Ainda, notemos que $\id_C$ é o elemento neutro de $\bm{\simm{C}}$, pois, para todo $p \in \simm{C}$, vale $p \circ \id_C = \id_C \circ p = p$ (\ref{prop:id.comp.func}). Por fim, como $p$ é uma bijeção, existe função inversa $p\inv: C \to C$ que é bijeção entre $C$ e $C$ (\ref{prop:func.inv.esq} e \ref{prop:func.inv.dir}); logo existe $p\inv \in \simm{C}$ tal que $p \circ p\inv = p\inv \circ p = \id_C$. Portanto concluímos que $\bm{\simm{C}}$ é um grupo.
 \end{proof}
 
 \begin{prop}
@@ -1297,11 +1388,11 @@ $\mathfrak{I} \mathfrak{C} \mathfrak{D}$
 \begin{proof}
 	Primeiro, notemos que, para todos $p,q \in \sime_n$,
 	\begin{equation*}
-	[p][q]_{i,j} = \bigsum_{k=1}^n [p]_{i,k}[q]_{k,j} = \bigsum_{k=1}^n \delta_{i,p(k)}\delta_{k,p(j)}.
+	[p][q]_{i,j} = \bigplus_{k=1}^n [p]_{i,k}[q]_{k,j} = \bigplus_{k=1}^n \delta_{i,p(k)}\delta_{k,p(j)}.
 	\end{equation*}
 	Mas o produto $\delta_{i,p(k)}\delta_{k,p(j)}$ é igual a 1 se, e somente se, $i=p(k)$ e $k=q(j)$. Como $p$ é bijeção, a segunda consição é equivalente a $p(k)=pq(j)$, e isso mostra que as duas consições são equivalentes a $i=p(k)=pq(j)$. Como $p$ é bijeção, para cada $i \in \inte_n$, $k=p\inv(i)$ é o único $k \in \inte_n$ tal que a condição é satisfeita, e segue que
 	\begin{equation*}
-	[p][q]_{i,j} = \bigsum_{k=1}^n \delta_{i,p(k)}\delta_{k,p(j)} = \bigsum_{k=1}^n \delta_{i,pq(j)} = [pq]_{i,j}.
+	[p][q]_{i,j} = \bigplus_{k=1}^n \delta_{i,p(k)}\delta_{k,p(j)} = \bigplus_{k=1}^n \delta_{i,pq(j)} = [pq]_{i,j}.
 	\end{equation*}
 e, como $pq \in \sime_n$, então $[p][q]=[pq] \in [\sime_n]$. Isso mostra que o produto de matrizes é uma operação binária em $[\sime_n]$. Agora, disso segue que $[p][p\inv]=[pp\inv]=[id]$
 
@@ -1371,7 +1462,6 @@ O \emph{período} da órbita $\orb_p(m)$ é o número $\card{\orb_p(m)}$. Uma \e
 
 
 
-
 \section{Grupos Cíclicos}
 
 \section{Grupos Diedrais}
@@ -1421,7 +1511,7 @@ As operações $+$ e $\cdot$ são chamadas, respectivamente, de \emph{adição} 
 	Um comentário sobre os elementos neutros $0$ e $1$. Se $0=1$, o anel será trivial, mas garantimos esse anel na definição pois, mais para frente, quando virmos anéis quocientes, vai ser proveitoso que qualquer anel quociente seja um anel, e se quocientarmos um anel por ele mesmo, temos o anel trivial.
 
 \begin{nota}
-	Como $(A,+)$ é um grupo, denotaremos o inverso de um elemento $a \in A$ sob $+$ por $-a$, e escreveremos $a_1 - a_2$ para $a_1 + (-a_2)$. Ainda, a multiplicação tem preferência na notação; ou seja, $a_1a_2+a_3 = (a_1 \cdot a_2)+a_3$ e $-a_1a_2 = -(a_1 \cdot a_2)$. Denotaremos o inverso de um elemento $a \in A$ sob $\cdot$ por $a^{-1}$, se ele existir, pois sabemos que é único (\ref{prop:unic.inv}). Os símbolos operatórios relativos à adição e à multiplicação serão, respectivamente, $\bigsum$ e $\bigtimes$. Caso não haja ambiguidade, denotaremos um anel pelo símbolo que denota seu conjunto escrito em negrito, como em $\bm A=(A,+,\cdot)$.
+	Como $(A,+)$ é um grupo, denotaremos o inverso de um elemento $a \in A$ sob $+$ por $-a$, e escreveremos $a_1 - a_2$ para $a_1 + (-a_2)$. Ainda, a multiplicação tem preferência na notação; ou seja, $a_1a_2+a_3 = (a_1 \cdot a_2)+a_3$ e $-a_1a_2 = -(a_1 \cdot a_2)$. Denotaremos o inverso de um elemento $a \in A$ sob $\cdot$ por $a^{-1}$, se ele existir, pois sabemos que é único (\ref{prop:unic.inv}). Os símbolos operatórios relativos à adição e à multiplicação serão, respectivamente, $\bigplus$ e $\bigtimes$. Caso não haja ambiguidade, denotaremos um anel pelo símbolo que denota seu conjunto escrito em negrito, como em $\bm A=(A,+,\cdot)$.
 \end{nota}
 
 \begin{prop}
@@ -1549,21 +1639,21 @@ Logo $\times_{S \times S}$ é distributiva sobre $+ \times_{S \times S}$.
 
 \end{proof}
 
-\section{O Anel de Polinômios e o Anel Produto}
+\section{Anel de Polinômios}
 
 \begin{defi}
 	Seja $\bm A$ um anel. O \emph{conjunto dos polinômios em $A$} é o conjunto
 	\begin{equation*}
-	A[x] \coloneqq \left\{ \bigsum_{i=0}^m a_ix^i : a_i \in A, m \geq 0 \right\},
+	A[x] \coloneqq \set{\bigplus_{i=0}^m a_ix^i}{a_i \in A, m \geq 0},
 	\end{equation*}
 em que $a_0x^0 \coloneqq a_0$. Os números $a_i$ são chamados de coeficientes do polinômio. Dizemos que dois polinômios são iguais se todos seus coeficientes não nulos são iguais.
 \end{defi}
 
 \begin{defi}
-	 Seja $\bm A$ um anel e $f,g \in A[x]$ tais que $f \coloneqq \bigsum_{i=0}^m a_ix^i$ e $g \coloneqq \bigsum_{i=0}^n b_ix^i$. Então definimos as operações binárias $\oplus$ e $\odot$ em $A[x]$ por
+	 Seja $\bm A$ um anel e $f,g \in A[x]$ tais que $f \coloneqq \bigplus_{i=0}^m a_ix^i$ e $g \coloneqq \bigplus_{i=0}^n b_ix^i$. Então definimos as operações binárias $\oplus$ e $\odot$ em $A[x]$ por
 	\begin{equation*}
-	f \oplus g \coloneqq \bigsum_{i=0}^{\max\{m,n\}} (a_i+b_i)x^i
-	\qquad \qquad f \odot g \coloneqq \bigsum_{i=0}^{m+n} \left(\bigsum_{j=0}^i a_jb_{i-j}\right)x^i.
+	f \oplus g \coloneqq \bigplus_{i=0}^{\max\{m,n\}} (a_i+b_i)x^i
+	\qquad \qquad f \odot g \coloneqq \bigplus_{i=0}^{m+n} \left(\bigplus_{j=0}^i a_jb_{i-j}\right)x^i.
 	\end{equation*}
 tal que $a_i=0$ para $m < i \leq \max\{m,n\}$ e $b_i=0$ para $n < i \leq \max\{m,n\}$. Denotaremos $\oplus$ e $\odot$ por $+$ e $\cdot$ quando não existir ambiguidade.
 \end{defi}
@@ -1572,57 +1662,57 @@ tal que $a_i=0$ para $m < i \leq \max\{m,n\}$ e $b_i=0$ para $n < i \leq \max\{m
 	Seja $\bm A=(A,+,\cdot)$ um anel. Então $\bm{A[x]} \coloneqq (A[x],\oplus,\odot)$ é um anel.
 \end{prop}
 \begin{proof}
-	Sejam $f,g,h \in A[x]$ tais que $f \coloneqq \bigsum_{i=0}^m a_ix^i$, $g \coloneqq \bigsum_{i=0}^n b_ix^i$ e $h \coloneqq \bigsum_{i=0}^l c_ix^i$. Notemos que $\max\{\max\{m,n\},l\}=\max\{m,\max\{n,l\}\}$. Denotamos essa quantidade como $\max\{m,n,l\}$. Definamos $a_i=0$ para $m < i \leq \max\{m,n,l\}$, $b_i=0$ para $n < i \leq \max\{m,n,l\}$ e $c_i=0$ para $l < i \leq \max\{m,n,l\}$.
+	Sejam $f,g,h \in A[x]$ tais que $f \coloneqq \bigplus_{i=0}^m a_ix^i$, $g \coloneqq \bigplus_{i=0}^n b_ix^i$ e $h \coloneqq \bigplus_{i=0}^l c_ix^i$. Notemos que $\max\{\max\{m,n\},l\}=\max\{m,\max\{n,l\}\}$. Denotamos essa quantidade como $\max\{m,n,l\}$. Definamos $a_i=0$ para $m < i \leq \max\{m,n,l\}$, $b_i=0$ para $n < i \leq \max\{m,n,l\}$ e $c_i=0$ para $l < i \leq \max\{m,n,l\}$.
 
 	Primeiro vamos mostrar que $(A[x],\oplus)$ é um grupo comutativo. Todas as propriedades de grupo comutativo decorrem do fato de que $(A,+)$ é um grupo comutativo com elemento neutro $0$. A operação $\oplus$ é associativa, pois
 	\begin{equation*}
 	\begin{split}
-	(f \oplus g) \oplus h &= \left( \bigsum_{i=0}^{\max\{m,n\}} (a_i+b_i)x^i \right) \oplus h \\
-		&= \left( \bigsum_{i=0}^{\max\{m,n,l\}} ((a_i+b_i)+c_i)x^i \right) \\
-		&= \left( \bigsum_{i=0}^{\max\{m,n,l\}} (a_i+(b_i+c_i))x^i \right) \\
-		&= f \oplus \left( \bigsum_{i=0}^{\max\{n,l\}} (b_i+c_i)x^i \right) \\
+	(f \oplus g) \oplus h &= \left( \bigplus_{i=0}^{\max\{m,n\}} (a_i+b_i)x^i \right) \oplus h \\
+		&= \left( \bigplus_{i=0}^{\max\{m,n,l\}} ((a_i+b_i)+c_i)x^i \right) \\
+		&= \left( \bigplus_{i=0}^{\max\{m,n,l\}} (a_i+(b_i+c_i))x^i \right) \\
+		&= f \oplus \left( \bigplus_{i=0}^{\max\{n,l\}} (b_i+c_i)x^i \right) \\
 		&= f \oplus (g \oplus h),
 	 \end{split}
 	 \end{equation*}
 e comutativa, pois
 	 \begin{equation*}
-	f \oplus g = \bigsum_{i=0}^{\max\{m,n\}} (a_i+b_i)x^i = \bigsum_{i=0}^{\max\{m,n\}} (b_i+a_i)x^i = g \oplus f.
+	f \oplus g = \bigplus_{i=0}^{\max\{m,n\}} (a_i+b_i)x^i = \bigplus_{i=0}^{\max\{m,n\}} (b_i+a_i)x^i = g \oplus f.
 	 \end{equation*}
 Ainda, o polinômio $0_{A[x]} \coloneqq 0$ é elemento neutro, pois
 	\begin{equation*}
-	f \oplus 0_{A[x]} = \bigsum_{i=0}^{\max\{m,0\}} (a_i+0)x^i = \bigsum_{i=0}^m a_ix^i = f.
+	f \oplus 0_{A[x]} = \bigplus_{i=0}^{\max\{m,0\}} (a_i+0)x^i = \bigplus_{i=0}^m a_ix^i = f.
 	 \end{equation*}
-Por fim, existe $-a_i \in A$ para todo $i \in \{0, \ldots, m\}$. Assim, $-f \coloneq \bigsum_{i=0}^m (-a_i)x^i$ é o polinômio inverso de $f$, pois
+Por fim, existe $-a_i \in A$ para todo $i \in \{0, \ldots, m\}$. Assim, $-f \coloneq \bigplus_{i=0}^m (-a_i)x^i$ é o polinômio inverso de $f$, pois
 	\begin{equation*}
-	f+(-f) = \bigsum_{i=0}^{\max\{m,m\}} (a_i+(-a_i))x^i = \bigsum_{i=0}^m 0x^i = 0
+	f+(-f) = \bigplus_{i=0}^{\max\{m,m\}} (a_i+(-a_i))x^i = \bigplus_{i=0}^m 0x^i = 0
 	\end{equation*}
 
 	Agora, devemos mostrar que $(A[x],\odot)$ é um monoide comutativo. Novamente, as propriedades decorrem do fato de que $(A,\cdot)$ é um monoide comutativo com elemento neutro $1$. A operação $\odot$ é associativa, pois
 	\begin{equation*}
 	\begin{split}
-	(f \odot g) \odot h &= \left( \bigsum_{i=0}^{m+n} \left(\bigsum_{j=0}^i a_jb_{i-j}\right)x^i \right) \odot h \\
-		&= \bigsum_{i=0}^{m+n+l} \left( \bigsum_{j=0}^{i}\left(\bigsum_{k=0}^j a_kb_{j-k}\right)c_{i-j}\right)x^i \\
-		&= \bigsum_{i=0}^{m+n+l} \left( \bigsum_{j=0}^{i}\left(\bigsum_{k=0}^j a_kb_{j-k}\right)c_{i-j}\right)x^i \\
+	(f \odot g) \odot h &= \left( \bigplus_{i=0}^{m+n} \left(\bigplus_{j=0}^i a_jb_{i-j}\right)x^i \right) \odot h \\
+		&= \bigplus_{i=0}^{m+n+l} \left( \bigplus_{j=0}^{i}\left(\bigplus_{k=0}^j a_kb_{j-k}\right)c_{i-j}\right)x^i \\
+		&= \bigplus_{i=0}^{m+n+l} \left( \bigplus_{j=0}^{i}\left(\bigplus_{k=0}^j a_kb_{j-k}\right)c_{i-j}\right)x^i \\
 		&= \\
-		&= \bigsum_{i=0}^{m+n+l} \left( \right) \\
-		&= f \odot \left( \bigsum_{i=0}^{n+l} \left(\bigsum_{j=0}^i b_jc_{i-j}\right)x^i \right) \\
+		&= \bigplus_{i=0}^{m+n+l} \left( \right) \\
+		&= f \odot \left( \bigplus_{i=0}^{n+l} \left(\bigplus_{j=0}^i b_jc_{i-j}\right)x^i \right) \\
 		&= f \odot (g \odot h).
 	 \end{split}
 	 \end{equation*}
 e comutativa, pois
 	\begin{equation*}
-	f \odot g = \bigsum_{i=0}^{m+n} \left(\bigsum_{j=0}^i a_jb_{i-j}\right)x^i = \bigsum_{i=0}^{n+m} \left(\bigsum_{j=0}^i b_ja_{i-j}\right)x^i = g \odot f.
+	f \odot g = \bigplus_{i=0}^{m+n} \left(\bigplus_{j=0}^i a_jb_{i-j}\right)x^i = \bigplus_{i=0}^{n+m} \left(\bigplus_{j=0}^i b_ja_{i-j}\right)x^i = g \odot f.
 	 \end{equation*}
 Ainda, o polinômio $1_{A[x]} \coloneqq 1$ é elemento neutro, pois
 	\begin{equation*}
-	f \odot 1_{A[x]} = \bigsum_{i=0}^{m+0} \left(\left(\bigsum_{j=0}^{i-1} a_j \cdot 0 \right) + a_i \cdot 1\right)x^i = \bigsum_{i=0}^m a_ix^i = f.
+	f \odot 1_{A[x]} = \bigplus_{i=0}^{m+0} \left(\left(\bigplus_{j=0}^{i-1} a_j \cdot 0 \right) + a_i \cdot 1\right)x^i = \bigplus_{i=0}^m a_ix^i = f.
 	 \end{equation*}
 
 	 Por fim, distributividade...
 \end{proof}
 
 \begin{defi}
-	Definimos o \emph{grau} de um polinômio $f \in A[x] \subseteq \{0\}$ como o maior índice de um coeficiente não nulo de $f$; ou seja, se $f=\bigsum_{i=0}^m a_ix^i$ com $a_m \neq 0$, então $\g(f)=m$.
+	Definimos o \emph{grau} de um polinômio $f \in A[x] \subseteq \{0\}$ como o maior índice de um coeficiente não nulo de $f$; ou seja, se $f=\bigplus_{i=0}^m a_ix^i$ com $a_m \neq 0$, então $\g(f)=m$.
 \end{defi}
 
 \begin{prop}
@@ -1632,7 +1722,7 @@ Ainda, o polinômio $1_{A[x]} \coloneqq 1$ é elemento neutro, pois
 	\end{equation*}
 \end{prop}
 \begin{proof}
-	Sejam $\g(f)=m$ e $\g(g)=n$, e sejam $f = \bigsum_{i=0}^m a_ix^i$ e $g = \bigsum_{i=0}^n b_ix^i$. O produto $fg$ terá coeficientes $\bigsum_{j=0}^i a_jb_{i-j}$, com $i \in \{0,\ldots,m+n\}$. Notemos que, para $i = m+n$, $\bigsum_{j=0}^i a_jb_{i-j} = a_mb_n$. Isso ocorre porque todos os termos desse somatório se anulam, menos quando $j=m$. Se $j>m$, temos $a_j=0$; se $j<m$, então $i-j > m+n-m = n$, e temos $b_{i-j}=0$. Em ambos os casos, $a_jb_{i-j}=0$. Portanto $\bigsum_{j=0}^{m+n} a_jb_{i-j}c= a_mb_n$. Como $m$ e $n$ são os graus de $f$ e $g$, respectivamente, sabemos que $a_m \neq 0$ e $b_n \neq 0$ e, como $\bm A$ é um domínio, isso implica que $a_mb_n \neq 0$ Logo $fg \neq 0$ e $\g(fg)=m+n$.
+	Sejam $\g(f)=m$ e $\g(g)=n$, e sejam $f = \bigplus_{i=0}^m a_ix^i$ e $g = \bigplus_{i=0}^n b_ix^i$. O produto $fg$ terá coeficientes $\bigplus_{j=0}^i a_jb_{i-j}$, com $i \in \{0,\ldots,m+n\}$. Notemos que, para $i = m+n$, $\bigplus_{j=0}^i a_jb_{i-j} = a_mb_n$. Isso ocorre porque todos os termos desse somatório se anulam, menos quando $j=m$. Se $j>m$, temos $a_j=0$; se $j<m$, então $i-j > m+n-m = n$, e temos $b_{i-j}=0$. Em ambos os casos, $a_jb_{i-j}=0$. Portanto $\bigplus_{j=0}^{m+n} a_jb_{i-j}c= a_mb_n$. Como $m$ e $n$ são os graus de $f$ e $g$, respectivamente, sabemos que $a_m \neq 0$ e $b_n \neq 0$ e, como $\bm A$ é um domínio, isso implica que $a_mb_n \neq 0$ Logo $fg \neq 0$ e $\g(fg)=m+n$.
 \end{proof}
 
 \begin{prop}
@@ -1644,67 +1734,47 @@ Ainda, o polinômio $1_{A[x]} \coloneqq 1$ é elemento neutro, pois
 
 Podemos ver que $\bm{A[x]}$ nunca é um corpo, pois $x$ não tem inverso.
 
+\section{Produto de Anéis}
+
 \begin{defi}
-	Sejam $\bm{A_i}=(A_i,+_i,\cdot_i)$, $i \in I \coloneqq \{1,\ldots,n\}$, $n$ anéis e $a=(a_i)_{i \in I}, b=(b_i)_{i \in I} \in \bigtimes_{i \in I} A_i$. Então definimos as operações binárias $+$ e $\cdot$ em $\bigtimes_{i=1}^n A_i$ por
+Seja $(\bm{A_i})_{i \in I}=(A_i,+_i,\times_i)_{i \in I}$ uma família de anéis. O \emph{produto} da família $(\bm{A_i})_{i \in I}$ é a tripla
 	\begin{equation*}
-	a + b \coloneqq (a_i +_i b_i)_{i \in I} \qquad \qquad a \cdot b \coloneqq (a_i \cdot_i b_i)_{i \in I}.
+	\prod_{i \in I} \bm{A_i} \coloneqq (A,+,\times)
 	\end{equation*}
-Denotaremos as operações $+_i$ todas por $+$ e as operações $\cdot_i$ todas por $\cdot$ quando não existir ambiguidade.
+em que $A = \prod_{i \in I} A_i$ é o produto de conjuntos, \func{+}{A \times A}{A}{(a,b)}{(a_i +_i b_i)_{i \in I}} e \func{\times}{A \times A}{A}{(a,b)}{(a_i \times_i b_i)_{i \in I}.}
+Denotaremos as operações $+_i$ todas por $+$ e as operações $\times_i$ todas por $\times$ quando não existir ambiguidade.
 \end{defi}
 
 \begin{prop}
-	Sejam $\bm{A_i}=(A_i,+_i,\cdot_i)$, $i \in I \coloneqq \{1,\ldots,n\}$, $n$ anéis. Então
-	\begin{equation*}
-	\bm {\bigtimes A}=\left( \bigtimes_{i=1}^n A_i,+,\cdot \right)
-	\end{equation*}
-é um anel.
+Seja $(\bm{A_i})_{i \in I}=(A_i,+_i,\times_i)_{i \in I}$ uma família de anéis. Então o produto $\prod_{i \in I}\bm{A_i}$ é um anel.
 \end{prop}
 \begin{proof}
-	Sejam $a=(a_i)_{i \in I}, b=(b_i)_{i \in I}, c=(c_i)_{i \in I} \in \bigtimes_{i=1}^n A_i$. Vamos mostrar que a tripla $\left( \bigtimes_{i=1}^n A_i,+ \right)$ é um grupo comutativo. As popriedades de grupo comutativo decorrem do fato de que $(A_i,+_i)$, $i \in I$, são todos grupos comutativos com elementos neutros $0_i$, respectivamente. A operação $+$ é associativa, pois
-	\begin{align*}
-	(a + b) + c &= (a_i +_i b_i)_{i \in I} + c \\
-		&= ((a_i +_i b_i) +_i c_i)_{i \in I} \\
-		&= (a_i +_i (b_i +_i c_i))_{i \in I} \\
-		&= a + (b_i +_i c_i)_{i \in I} \\
-		&= a + (b + c),
-	\end{align*}
-e comutativa, pois
-	\begin{equation*}
-	a + b = (a_i +_i b_i)_{i \in I} = (b_i +_i a_i)_{i \in I} = b + a.
-	\end{equation*}
-Ainda, $0 \coloneqq (0_i)_{i \in I}$ é elemento neutro, pois
-	\begin{equation*}
-	a + 0 = (a_i + 0_i)_{i \in I} = (a_i)_{i \in I} = a.
-	\end{equation*}
-Por fim, existe $-a_i \in A_i$ para todo ${i \in I}$. Assim, $-a=(-a_i)_{i \in I}$ é inverso de $a$, pois
-	\begin{equation*}
-	a + (-a) = (a_i + (-a_i))_{i \in I} = (0_i)_{i \in I} = 0.
-	\end{equation*}
+Como,  para todo $i \in I$, o par $(A_i,+_i)$ é um grupo comutativo, segue que o par $\left(\prod_{i \in I} A_i,+ \right)$ é um grupo comutativo.
 
-	Agora, devemos mostrar que $\left( \bigtimes_{i=1}^n A_i,\cdot \right)$ é um monoide comutativo. Novamente, as popriedades de monoide comutativo decorrem do fato de que $(A_i,\cdot_i)$, $i \in I$, são todos monoides comutativos com elementos neutros $1_i$, respectivamente. A operação $\cdot$ é associativa, pois
+Agora, devemos mostrar que $\left( \prod_{i=1}^n A_i,\times \right)$ é um monoide comutativo. Novamente, as popriedades de monoide comutativo decorrem do fato de que $(A_i,\times_i)$, $i \in I$, são todos monoides comutativos com elementos neutros $1_i$, respectivamente. Sejam $a=(a_i)_{i \in I}, b=(b_i)_{i \in I}, c=(c_i)_{i \in I} \in \prod_{i \in I} A_i$. A operação $\times$ é associativa, pois
 	\begin{align*}
-	(a \cdot b) \cdot c &= (a_i \cdot_i b_i)_{i \in I} \cdot c \\
-		&= ((a_i \cdot_i b_i) \cdot_i c_i)_{i \in I} \\
-		&= (a_i \cdot_i (b_i \cdot_i c_i))_{i \in I} \\
-		&= a \cdot (b_i \cdot_i c_i)_{i \in I} \\
-		&= a \cdot (b \cdot c),
+	(a \times b) \times c &= (a_i \times_i b_i)_{i \in I} \times c \\
+		&= ((a_i \times_i b_i) \times_i c_i)_{i \in I} \\
+		&= (a_i \times_i (b_i \times_i c_i))_{i \in I} \\
+		&= a \times (b_i \times_i c_i)_{i \in I} \\
+		&= a \times (b \times c),
 	\end{align*}
 e comutativa, pois
 	\begin{equation*}
-	a \cdot b = (a_i \cdot_i b_i)_{i \in I} = (b_i \cdot_i a_i)_{i \in I} = b \cdot a.
+	a \times b = (a_i \times_i b_i)_{i \in I} = (b_i \times_i a_i)_{i \in I} = b \times a.
 	\end{equation*}
 Ainda, $1 \coloneqq (1_i)_{i \in I}$ é elemento neutro, pois
 	\begin{equation*}
-	a \cdot 1 = (a_i \cdot 1_i)_{i \in I} = (a_i)_{i \in I} = a.
+	a \times 1 = (a_i \times 1_i)_{i \in I} = (a_i)_{i \in I} = a.
 	\end{equation*}
 
-	Por fim, como $\cdot_i$ são ditributivas sobre $+_i$, temos que
+	Por fim, como $\times_i$ são ditributivas sobre $+_i$, temos que
 	\begin{align*}
-	a \cdot (b + c) &= a \cdot (b_i +_i c_i)_{i \in I} \\
-		&= (a_i \cdot_i (b_i +_i c_i))_{i \in I} \\
-		&= ((a_i \cdot_i b_i) +_i (a_i \cdot_i c_i))_{i \in I} \\
-		&= (a_i \cdot_i b_i)_{i \in I} + (a_i \cdot_i c_i)_{i \in I} \\
-		&= (a \cdot b) + (a \cdot c).
+	a \times (b + c) &= a \times (b_i +_i c_i)_{i \in I} \\
+		&= (a_i \times_i (b_i +_i c_i))_{i \in I} \\
+		&= ((a_i \times_i b_i) +_i (a_i \times_i c_i))_{i \in I} \\
+		&= (a_i \times_i b_i)_{i \in I} + (a_i \times_i c_i)_{i \in I} \\
+		&= (a \times b) + (a \times c).
 	\end{align*}
 \end{proof}
 
@@ -1765,24 +1835,24 @@ Denotamos que $I$ é ideal de $\bm A$ por $I \ide A$. Ainda, $I \idepro A$ signi
 \begin{defi}
 	Sejam $\bm A$ um anel e $a_1,\ldots,a_n \in A$. Definimos o conjunto
 	\begin{equation*}
-	\bigsum_{i=1}^n a_iA = a_1A + \ldots + a_nA \coloneqq \left\{\bigsum_{i=1}^n a_ib_i : b_i \in A\right\}
+	\bigplus_{i=1}^n a_iA = a_1A + \ldots + a_nA \coloneqq \set{\bigplus_{i=1}^n a_ib_i}{b_i \in A}.
 	\end{equation*}
 \end{defi}
 
 \begin{prop}
-	Seja $\bm A$ um anel e $a_1,\ldots,a_n \in A$. Então
+	Sejam $\bm A$ um anel e $a_1,\ldots,a_n \in A$. Então
 	\begin{equation*}
-	I \coloneqq \bigsum_{k=1}^n a_kA \ide A.
+	I \coloneqq \bigplus_{k=1}^n a_kA \ide A.
 	\end{equation*}
 \end{prop}
 \begin{proof}
-	Sejam $a \in A$ e $i_1,i_2 \in I$ tais que $i_1=\bigsum_{k=1}^n a_ib_i$ e $i_2=\bigsum_{k=1}^n a_ic_i$. Então
+	Sejam $a \in A$ e $i_1,i_2 \in I$ tais que $i_1=\bigplus_{k=1}^n a_ib_i$ e $i_2=\bigplus_{k=1}^n a_ic_i$. Então
 	\begin{equation*}
-	i_1-i_2=\bigsum_{k=1}^n a_kb_k - \bigsum_{k=1}^n a_kc_k = \bigsum_{k=1}^n a_k(b_k-c_k) \in I,
+	i_1-i_2=\bigplus_{k=1}^n a_kb_k - \bigplus_{k=1}^n a_kc_k = \bigplus_{k=1}^n a_k(b_k-c_k) \in I,
 	\end{equation*}
 pois $(b_k-c_k) \in A$ para todo $k \in \{1,\ldots,n\}$. Ainda,
 	\begin{equation*}
-	ak_1=a\bigsum_{k=1}^n a_kb_k= \bigsum_{k=1}^n a_k(ab_k) \in I,
+	ak_1=a\bigplus_{k=1}^n a_kb_k= \bigplus_{k=1}^n a_k(ab_k) \in I,
 	\end{equation*}
 pois $ab_k \in A$ para todo $k \in \{1,\ldots,n\}$. Logo $I \ide A$.
 \end{proof}
@@ -1931,7 +2001,7 @@ Ainda, $1+I$ é elemento neutro, pois
 	\begin{align*}
 	\phi: \Z &\to A \\
 		z &\mapsto \begin{cases}
-					\displaystyle \bigsum_{i=1}^z 1_A & z>0 \\
+					\displaystyle \bigplus_{i=1}^z 1_A & z>0 \\
 					0_A & z=0 \\
 					-\phi(-z) & z>0
 					\end{cases}
@@ -1945,7 +2015,7 @@ Ainda, $1+I$ é elemento neutro, pois
 	\end{equation*}
 Então, suponhamos $z_1z_2 \neq 0$. Se $z_1>0$ e $z_1>0$, então $z_1+z_2>0$. Logo
 	\begin{equation*}
-	\phi(z_1+z_2) = \bigsum_{i=1}^{z_1+z_2} 1_A = \bigsum_{i=1}^{z_1} 1_A + \bigsum_{i=z_1+1}^{z_1+z_2} 1_A = \bigsum_{i=1}^{z_1} 1_A + \bigsum_{i=1}^{z_2} 1_A = \phi(z_1)+\phi(z_2).
+	\phi(z_1+z_2) = \bigplus_{i=1}^{z_1+z_2} 1_A = \bigplus_{i=1}^{z_1} 1_A + \bigplus_{i=z_1+1}^{z_1+z_2} 1_A = \bigplus_{i=1}^{z_1} 1_A + \bigplus_{i=1}^{z_2} 1_A = \phi(z_1)+\phi(z_2).
 	\end{equation*}
 Se $z_1<0$ e $z_1<0$, então $z_1+z_2<0$. Logo $-z_1$, $-z_2$ e $-(z_1+z_2)$ são positivos e segue da equação anterior que
 	\begin{align*}
@@ -1959,16 +2029,16 @@ No caso que resta, $z_1$ e $z_2$ são um positivo e um negativo; sem perda de ge
 	\begin{align*}
 	\phi(z_1+z_2) &= \phi(0) \\
 		&= 0_A \\
-		&= \bigsum_{i=1}^{z_1} 1_A - \bigsum_{i=1}^{z_1} 1_A \\
+		&= \bigplus_{i=1}^{z_1} 1_A - \bigplus_{i=1}^{z_1} 1_A \\
 		&= \phi(z_1)-\phi(-z_1) \\
 		&= \phi(z_1)+\phi(z_2).
 	\end{align*}
 Se tivermos $z_1>-z_2$, então
 	\begin{align*}
-	\phi(z_1+z_2) &= \bigsum_{i=1}^{z_1+z_2} 1_A \\
-		&= \bigsum_{i=1}^{z_1+z_2} 1_A + \bigsum_{i=1}^{-z_2} 1_A - \bigsum_{i=1}^{-z_2} 1_A \\
-		&= \bigsum_{i=1}^{z_1+z_2} 1_A + \bigsum_{i=z_1+z_2+1}^{z_1} 1_A - \bigsum_{i=1}^{-z_2} 1_A \\
-		&= \bigsum_{i=1}^{z_1} 1_A - \bigsum_{i=1}^{-z_2} 1_A \\
+	\phi(z_1+z_2) &= \bigplus_{i=1}^{z_1+z_2} 1_A \\
+		&= \bigplus_{i=1}^{z_1+z_2} 1_A + \bigplus_{i=1}^{-z_2} 1_A - \bigplus_{i=1}^{-z_2} 1_A \\
+		&= \bigplus_{i=1}^{z_1+z_2} 1_A + \bigplus_{i=z_1+z_2+1}^{z_1} 1_A - \bigplus_{i=1}^{-z_2} 1_A \\
+		&= \bigplus_{i=1}^{z_1} 1_A - \bigplus_{i=1}^{-z_2} 1_A \\
 		&= \phi(z_1)+\phi(z_2).
 	\end{align*}
 Por fim, se $-z_2>z_1$, então $-z_1<0$ e $-z_2>$ e segue da equação anterior que
@@ -2953,13 +3023,13 @@ Definindo $u \coloneqq \displaystyle\bigtimes_{k=1}^n u_k$, temos que $u \in A^*
 	Seja $\bm A$ um anel e $f,g \in A[x]$. Se $g$ é mônico, então existem $q,r \in A[x]$ tais que $f=qg+r$ e $r=0$ ou $\g(r) < \g(g)$.
 \end{prop}
 \begin{proof}
-	Sejam $n \coloneqq \g(f)$, $f = \bigsum_{i=0}^n a_ix^i$, e $m \coloneqq \g(g)$, $g = \bigsum_{i=0}^{m-1} b_ix^i + x^m$. Se $m \leq n$, definimos $q(x) \coloneqq a_nx^{n-m}$ e $r \coloneqq f-qg$ e temos
+	Sejam $n \coloneqq \g(f)$, $f = \bigplus_{i=0}^n a_ix^i$, e $m \coloneqq \g(g)$, $g = \bigplus_{i=0}^{m-1} b_ix^i + x^m$. Se $m \leq n$, definimos $q(x) \coloneqq a_nx^{n-m}$ e $r \coloneqq f-qg$ e temos
 	\begin{align*}
 	r(x) &= f(x) - q(x)g(x) \\
-	&= \bigsum_{i=0}^n a_ix^i - a_nx^{n-m}\left(\bigsum_{i=0}^{m-1} b_ix^i + x^m\right) \\
-	&= \bigsum_{i=0}^n a_ix^i - \left(\bigsum_{i=0}^{m-1} a_nb_ix^{n-m+i} + a_nx^n\right) \\
-	&= \bigsum_{i=0}^{n-1} a_ix^i - \bigsum_{i=n-m}^{n-1} a_nb_{i-n+m}x^i \\
-	&= \bigsum_{i=0}^{n-m-1} a_ix^i + \bigsum_{i=n-m}^{n-1} (a_i - a_nb_{i-n+m})x^i.
+	&= \bigplus_{i=0}^n a_ix^i - a_nx^{n-m}\left(\bigplus_{i=0}^{m-1} b_ix^i + x^m\right) \\
+	&= \bigplus_{i=0}^n a_ix^i - \left(\bigplus_{i=0}^{m-1} a_nb_ix^{n-m+i} + a_nx^n\right) \\
+	&= \bigplus_{i=0}^{n-1} a_ix^i - \bigplus_{i=n-m}^{n-1} a_nb_{i-n+m}x^i \\
+	&= \bigplus_{i=0}^{n-m-1} a_ix^i + \bigplus_{i=n-m}^{n-1} (a_i - a_nb_{i-n+m})x^i.
 	\end{align*}
 Daí, segue que, se $r \neq 0$, $\g(r) \leq n-1 < m  \leq \g(g)$.
 
@@ -2967,9 +3037,9 @@ Daí, segue que, se $r \neq 0$, $\g(r) \leq n-1 < m  \leq \g(g)$.
 \end{proof}
 
 \begin{defi}
-	Sejam $\bm A$ um anel, $p = \bigsum_{i=0}^n a_ix^i \in A[x]$ e $a \in A$. O \emph{valor} de $p$ em $a$ é o elemento
+	Sejam $\bm A$ um anel, $p = \bigplus_{i=0}^n a_ix^i \in A[x]$ e $a \in A$. O \emph{valor} de $p$ em $a$ é o elemento
 	\begin{equation*}
-	p(a) \coloneqq \bigsum_{i=0}^n a_ia^i \in A.
+	p(a) \coloneqq \bigplus_{i=0}^n a_ia^i \in A.
 	\end{equation*}
 \end{defi}
 
@@ -3021,7 +3091,7 @@ Daí, segue que, se $r \neq 0$, $\g(r) \leq n-1 < m  \leq \g(g)$.
 	\item Todo elemento de $C$ é algébrico sobre $\bm C$;
 	\item Se $\alpha \in E \setminus \{0\}$ é um elemento algébrico sobre $\bm C$, então existem $c_0,\ldots,c_n \in C$ tais que $c_0 \neq 0$ e
 	\begin{equation*}
-	\bigsum_{i=0}^n c_i\alpha^i = 0.
+	\bigplus_{i=0}^n c_i\alpha^i = 0.
 	\end{equation*}
 	\end{enumerate}
 \end{prop}
@@ -3030,19 +3100,19 @@ Daí, segue que, se $r \neq 0$, $\g(r) \leq n-1 < m  \leq \g(g)$.
 	\item Seja $\alpha \in C$. Então $\alpha \in E$, pois $C \subseteq E$. Tomando $p(x)=x-\alpha$, temos que $p(\alpha)=\alpha-\alpha=0$.
 	\item Sejam $\alpha \in E$ um elemento algébrico sobre $\bm C$ e $c'_0,\ldots,c'_m \in C$ tais que
 	\begin{equation*}
-	\bigsum_{i=0}^m c'_i\alpha^i = 0.
+	\bigplus_{i=0}^m c'_i\alpha^i = 0.
 	\end{equation*}
 Como $c'_0, \ldots,c'_m$ não são todos nulos, seja $k \coloneqq \min\{i \in \{0,\ldots,m\} : c'_i \neq 0\}$. Então, para todo $i < k$, $c'_i = 0$, e segue que
 	\begin{equation*}
-	0 = \bigsum_{i=0}^m c'_i\alpha^i = \bigsum_{i=k}^m c'_i\alpha^i = \alpha^k \bigsum_{i=k}^m c'_i\alpha^{i-k}
+	0 = \bigplus_{i=0}^m c'_i\alpha^i = \bigplus_{i=k}^m c'_i\alpha^i = \alpha^k \bigplus_{i=k}^m c'_i\alpha^{i-k}
 	\end{equation*}
 e, como $E$ é corpo e $\alpha \neq 0$, podemos dividir por $\alpha^k$ em ambos lados e temos
 	\begin{equation*}
-	\bigsum_{i=k}^m c'_i\alpha^{i-k} = 0.
+	\bigplus_{i=k}^m c'_i\alpha^{i-k} = 0.
 	\end{equation*}
 Fazendo, $n \coloneqq m-k$ e, para todo $i \in \{0,\ldots,n\}$, $c_i \coloneqq c'_{k+i}$, temos que $c_0,\ldots,c_n \in E$ — com $c_0 = c'_k \neq 0$ e, portanto, não todos nulos — tais que
 	\begin{equation*}
-	\bigsum_{i=0}^n c_i\alpha^i = \bigsum_{i=0}^n c'_{k+i}\alpha^i = \bigsum_{i=k}^m c'_i\alpha^{i-k} = 0.
+	\bigplus_{i=0}^n c_i\alpha^i = \bigplus_{i=0}^n c'_{k+i}\alpha^i = \bigplus_{i=k}^m c'_i\alpha^{i-k} = 0.
 	\end{equation*}
 	\end{enumerate}
 \end{proof}
@@ -3060,23 +3130,23 @@ Fazendo, $n \coloneqq m-k$ e, para todo $i \in \{0,\ldots,n\}$, $c_i \coloneqq c
 	Sejam $\bm C$ um corpo, $\bm E$ uma extensão de $\bm C$ e $\alpha \in E$ um elemento algébrico sobre $\bm C$. Então existe um único polinômio minimal de $\alpha$ sobre $\bm C$.
 \end{prop}
 \begin{proof}
-	Pela definição de elemento algébrico, existe $p \in C[x]^*$ tal que $p'(\alpha)=0$. Seja $n \coloneqq \g(p')$ e $p'(x) = \bigsum_{i=0}^n a'_ix^i$. Como $\bm C$ é corpo e $a'_n \neq 0$, existe $(a'_n)^{-1} \in C$. Definindo
+	Pela definição de elemento algébrico, existe $p \in C[x]^*$ tal que $p'(\alpha)=0$. Seja $n \coloneqq \g(p')$ e $p'(x) = \bigplus_{i=0}^n a'_ix^i$. Como $\bm C$ é corpo e $a'_n \neq 0$, existe $(a'_n)^{-1} \in C$. Definindo
 	\begin{equation*}
-	p \coloneqq (a'_n)^{-1}p = \bigsum_{i=0}^{n-1} (a'_n)^{-1}a_ix^i + x^n,
+	p \coloneqq (a'_n)^{-1}p = \bigplus_{i=0}^{n-1} (a'_n)^{-1}a_ix^i + x^n,
 	\end{equation*}
 segue que $p \in C[x]^*$, $\g(p)=n$, $p(\alpha) = (a'_n)^{-1}p'(\alpha)=0$ e $p$ é mônico. Portanto $\{\g(f) : f \in C[x]^*, f(\alpha)=0 \e f \text{\ é mônico}\}$ não é vazio, e, como é subconjunto de $\N$, admite mínimo, o que mostra que existe polinômio minimal de $\alpha$ sobre $\bm C$.
 
-	Para mostrar a unicidade, suponhamos que $p_1$ e $p_2$ são polinômios minimais de $\alpha$ sobre $\bm C$. Pela primeira propriedade de polinômio minimal, $(p_1-p_2)(\alpha)=p_1(\alpha)-p_2(\alpha)=0$. Pela terceira propriedade de polinômio minimal, $\g(p_1)=\g(p_2)$. Seja $n \coloneqq \g(p_1)$ e sejam $p_1 = \bigsum_{i=0}^n a_ix^i$ e $p_2 = \bigsum_{i=0}^n b_ix^i$. Pela segunda propriedade de polinômio minimal, $a_n=b_n=1$. Então $a_n-b_n=0$ e
+	Para mostrar a unicidade, suponhamos que $p_1$ e $p_2$ são polinômios minimais de $\alpha$ sobre $\bm C$. Pela primeira propriedade de polinômio minimal, $(p_1-p_2)(\alpha)=p_1(\alpha)-p_2(\alpha)=0$. Pela terceira propriedade de polinômio minimal, $\g(p_1)=\g(p_2)$. Seja $n \coloneqq \g(p_1)$ e sejam $p_1 = \bigplus_{i=0}^n a_ix^i$ e $p_2 = \bigplus_{i=0}^n b_ix^i$. Pela segunda propriedade de polinômio minimal, $a_n=b_n=1$. Então $a_n-b_n=0$ e
 	\begin{equation*}
-	(p_1-p_2)(x) = \bigsum_{i=0}^{n-1} (a_i-b_i)x^i,
+	(p_1-p_2)(x) = \bigplus_{i=0}^{n-1} (a_i-b_i)x^i,
 	\end{equation*}
 e conclui-se que $\g(p_1-p_2) < n$. Se $p_1 \neq p_2$, existe $i \in \{0,\ldots,n-1\}$ tal que $a_i \neq b_i$. Então seja $k \coloneqq \max\{i \in \{0,\ldots,n-1\} : a_i \neq b_i\}$. Assim, para todo $i > k$, $a_i = b_i$, o que implica $a_i-b_i=0$, e temos que $\g(p_1-p_2)=k$ e
 	\begin{equation*}
-	(p_1-p_2)(x) = \bigsum_{i=0}^{k} (a_i-b_i)x^i.
+	(p_1-p_2)(x) = \bigplus_{i=0}^{k} (a_i-b_i)x^i.
 	\end{equation*}
 Como $\bm C$ é corpo e $a_k-b_k \neq 0$, existe $(a_k-b_k)^{-1} \in C$. Definindo
 	\begin{equation*}
-	p \coloneqq (a_k-b_k)^{-1}(p_1-p_2) = \bigsum_{i=0}^{k-1} (a_k-b_k)^{-1}(a_i-b_i)x^i + x^k,
+	p \coloneqq (a_k-b_k)^{-1}(p_1-p_2) = \bigplus_{i=0}^{k-1} (a_k-b_k)^{-1}(a_i-b_i)x^i + x^k,
 	\end{equation*}
  segue que $p \in C[x]^*$, $\g(p)=k$, $p(\alpha)=(a_k-b_k)^{-1}(p_1-p_2)(\alpha)=(a_k-b_k)^{-1}(p_1(\alpha)-p_2(\alpha))=0$ e $p$ é mônico. Mas $\g(p) = k < n = \g(p_1) = \g(p_2)$, o que contradiz a minimalidade do grau de $p_1$ e $p_2$. Portanto $p_1=p_2$ e está provada a unicidade.
 \end{proof}
@@ -3085,9 +3155,9 @@ Como $\bm C$ é corpo e $a_k-b_k \neq 0$, existe $(a_k-b_k)^{-1} \in C$. Definin
 	Seja $\bm C$ um corpo e $p \in C[x]^*$. Se $p$ é mônico e redutível, então existem $p_1,p_2 \in C[x]^*$ tais que $p=p_1p_2$ e $p_1$ e $p_2$ são mônicos.
 \end{prop}
 \begin{proof}
-	Como $p$ é redutível, existem $p'_1,p'_2 \in C[x]^*$ tais que $p=p'_1p'_2$. Sejam $n \coloneqq \g(p_1)$, $p_1 = \bigsum_{i=0}^n a_ix^i$, e $m \coloneqq \g(p_2)$, $p_2 = \bigsum_{i=0}^m b_ix^i$. Pela definição de produto, sabemos que $a_nb_m=1$, pois $p$ é mônico. Como $\bm C$ é um corpo, existem $(a_n)^{-1},(b_m)^{-1} \in C$. Definindo
+	Como $p$ é redutível, existem $p'_1,p'_2 \in C[x]^*$ tais que $p=p'_1p'_2$. Sejam $n \coloneqq \g(p_1)$, $p_1 = \bigplus_{i=0}^n a_ix^i$, e $m \coloneqq \g(p_2)$, $p_2 = \bigplus_{i=0}^m b_ix^i$. Pela definição de produto, sabemos que $a_nb_m=1$, pois $p$ é mônico. Como $\bm C$ é um corpo, existem $(a_n)^{-1},(b_m)^{-1} \in C$. Definindo
 	\begin{equation*}
-	p_1 \coloneqq (a_n)^{-1}p'_1 = \bigsum_{i=0}^{n-1} (a_n)^{-1}a_ix^i+ x^n \e p_2 \coloneqq (b_m)^{-1}p'_2 = \bigsum_{i=0}^{m-1} (b_m)^{-1}b_ix^i + x^m,
+	p_1 \coloneqq (a_n)^{-1}p'_1 = \bigplus_{i=0}^{n-1} (a_n)^{-1}a_ix^i+ x^n \e p_2 \coloneqq (b_m)^{-1}p'_2 = \bigplus_{i=0}^{m-1} (b_m)^{-1}b_ix^i + x^m,
 	\end{equation*}
 segue que $p_1,p_2 \in C[x]^*$ são mônicos e que
 	\begin{equation*}
@@ -3101,9 +3171,9 @@ segue que $p_1,p_2 \in C[x]^*$ são mônicos e que
 \begin{proof}
 	Suponhamos que $p$ é polinômio minimal de $\alpha$ sobre $\bm C$. Se $p$ não é irredutível em $C[x]$, como $p$ é mônico, então existem $p_1,p_2 \in C[x]^*$ mônicos tais que $0 < \g(p_i) < \g(p)$ para todo $i \in \{1,2\}$. Como $p(\alpha)=p_1(\alpha)p_2(\alpha)=0$ e $\bm C$ é corpo, segue que $p_1(\alpha)=0$ ou $p_2(\alpha)=0$. No primeiro caso, $p_1 \in C[x]^*$ é um polinômio mônico, $p_1(\alpha)=0$ e $\g(p_1) < \g(p)$, o que contradiz a minimalidade de $p$. No segundo caso, $p_2 \in C[x]^*$ é um polinômio mônico, $p_2(\alpha)=0$ e $\g(p_2) < \g(p)$, o que também contradiz a minimalidade de $p$, e temos um absurdo. Portanto $p$ é irredutível em $\bm C[x]$.
 
-	Reciprocamente, suponhamos que $p$ é irredutível em $\bm C[x]$. Por hipótese, $p(\alpha)=0$ e $p$ é mônico. Seja $p_\alpha \in C[x]^*$ o polinômio minimal de $\alpha$ sobre $\bm C$. Então $\g(p_\alpha) \leq \g(p)$. Como $p_\alpha$ é mônico, exitem $q,r \in C[x]$ tais que $p = qp_\alpha+r$. Como $p(\alpha) = p_\alpha(\alpha) = 0$, então $r(\alpha) = p(\alpha) - q(\alpha)p_\alpha(\alpha) = 0$. Se $r \neq 0$, então $\g(r) < \g(p_\alpha)$. Seja $n \coloneqq \g(r)$. Como $r(\alpha)=0$, segue que $\g(r)>0$. Então seja $r(x) = \bigsum_{i=0}^n a_ix^i$. Como $\bm C$ é corpo, existe $(a_n)^{-1} \in C$. Assim, definindo
+	Reciprocamente, suponhamos que $p$ é irredutível em $\bm C[x]$. Por hipótese, $p(\alpha)=0$ e $p$ é mônico. Seja $p_\alpha \in C[x]^*$ o polinômio minimal de $\alpha$ sobre $\bm C$. Então $\g(p_\alpha) \leq \g(p)$. Como $p_\alpha$ é mônico, exitem $q,r \in C[x]$ tais que $p = qp_\alpha+r$. Como $p(\alpha) = p_\alpha(\alpha) = 0$, então $r(\alpha) = p(\alpha) - q(\alpha)p_\alpha(\alpha) = 0$. Se $r \neq 0$, então $\g(r) < \g(p_\alpha)$. Seja $n \coloneqq \g(r)$. Como $r(\alpha)=0$, segue que $\g(r)>0$. Então seja $r(x) = \bigplus_{i=0}^n a_ix^i$. Como $\bm C$ é corpo, existe $(a_n)^{-1} \in C$. Assim, definindo
 	\begin{equation*}
-	p' \coloneqq (a_n)^{-1}r = \bigsum_{i=0}^{n-1} (a_n)^{-1}a_ix^i + x^n,
+	p' \coloneqq (a_n)^{-1}r = \bigplus_{i=0}^{n-1} (a_n)^{-1}a_ix^i + x^n,
 	\end{equation*}
 e segue que $p' \in C[x]^*$, $p'(\alpha)=(a_n)^{-1}p'(\alpha)=0$ e $p'$ é mônico. Mas $\g(p') = n = \g(r) < \g(p_\alpha)$, o que contradiz a minimalidade do grau de $p_\alpha$. Então $r \neq 0$. Se $r=0$, então $p=qp_\alpha$. Mas $p$ é irredutível, e $p_\alpha \in C[x]^*$, o que implica $q \in C$. Como $p$ e $p_\alpha$ são mônicos, segue que $q=1$ e, portanto, $p=p_\alpha$.
 \end{proof}
@@ -3314,7 +3384,7 @@ e, portanto, $M+N=N+M$. Assim, concluímos que, se $\bm A$ é comutativo, então
 \begin{defi}
 	Sejam $\bm A$ um anel e $M \in \mathbb M_{l \times d}(\bm A)$ e $N \in \mathbb M_{d \times c}(\bm A)$. A \emph{matriz produto} das matrizes $M$ e $N$ é a matriz $(MN) \in \mathbb M_{l \times c}(\bm A)$ definida por
 	\begin{equation*}
-	(MN)(i,j) \coloneqq \bigsum_{k=1}^d m_{i,k}n_{k,j}.
+	(MN)(i,j) \coloneqq \bigplus_{k=1}^d m_{i,k}n_{k,j}.
 	\end{equation*}
 \end{defi}
 
@@ -3326,23 +3396,23 @@ e, portanto, $M+N=N+M$. Assim, concluímos que, se $\bm A$ é comutativo, então
 \end{prop}
 \begin{proof} Um elemento de $MN$ é dado por
 	\begin{equation*}
-	(mn)_{i,j} = \bigsum_{k_1=1}^{d_1} m_{i,k_1}n_{k_1,j}.
+	(mn)_{i,j} = \bigplus_{k_1=1}^{d_1} m_{i,k_1}n_{k_1,j}.
 	\end{equation*}
 Logo, um elemento de $(MN)P$ é dado por
 	\begin{equation*}
-	((mn)p)_{i,j} = \bigsum_{k_2=1}^{d_2} (mn)_{i,k_2}p_{k_2,j} = \bigsum_{k_2=1}^{d_2} \left(\bigsum_{k_1=1}^{d_1} m_{i,k_1}n_{k_1,k_2}\right)p_{k_2,j}.
+	((mn)p)_{i,j} = \bigplus_{k_2=1}^{d_2} (mn)_{i,k_2}p_{k_2,j} = \bigplus_{k_2=1}^{d_2} \left(\bigplus_{k_1=1}^{d_1} m_{i,k_1}n_{k_1,k_2}\right)p_{k_2,j}.
 	\end{equation*}
 Analogamente, um elemento de $M(NP)$ é dado por
 	\begin{equation*}
-	(m(np))_{i,j} = \bigsum_{k_1=1}^{d_1} m_{i,k_1}(np)_{k_1,j} = \bigsum_{k_1=1}^{d_1} m_{i,k_1}\left(\bigsum_{k_2=1}^{d_2} n_{k_1,k_2}p_{k_2,j}\right).
+	(m(np))_{i,j} = \bigplus_{k_1=1}^{d_1} m_{i,k_1}(np)_{k_1,j} = \bigplus_{k_1=1}^{d_1} m_{i,k_1}\left(\bigplus_{k_2=1}^{d_2} n_{k_1,k_2}p_{k_2,j}\right).
 	\end{equation*}
 Mas então, como $\bm A$ é um anel, segue que
 	\begin{align*}
 	((mn)p)_{i,j}
-	&= \bigsum_{k_2=1}^{d_2} \left(\bigsum_{k_1=1}^{d_1} m_{i,k_1}n_{k_1,k_2}\right)p_{k_2,j} \\
-	&= \bigsum_{k_2=1}^{d_2} \left(\bigsum_{k_1=1}^{d_1} m_{i,k_1}n_{k_1,k_2}p_{k_2,j}\right) \\
-	&= \bigsum_{k_1=1}^{d_1} \left(\bigsum_{k_2=1}^{d_2} m_{i,k_1}n_{k_1,k_2}p_{k_2,j}\right) \\
-	&= \bigsum_{k_1=1}^{d_1} m_{i,k_1}\left(\bigsum_{k_2=1}^{d_2} n_{k_1,k_2}p_{k_2,j}\right) \\
+	&= \bigplus_{k_2=1}^{d_2} \left(\bigplus_{k_1=1}^{d_1} m_{i,k_1}n_{k_1,k_2}\right)p_{k_2,j} \\
+	&= \bigplus_{k_2=1}^{d_2} \left(\bigplus_{k_1=1}^{d_1} m_{i,k_1}n_{k_1,k_2}p_{k_2,j}\right) \\
+	&= \bigplus_{k_1=1}^{d_1} \left(\bigplus_{k_2=1}^{d_2} m_{i,k_1}n_{k_1,k_2}p_{k_2,j}\right) \\
+	&= \bigplus_{k_1=1}^{d_1} m_{i,k_1}\left(\bigplus_{k_2=1}^{d_2} n_{k_1,k_2}p_{k_2,j}\right) \\
 	&= (m(np))_{i,j}.
 	\end{align*}
 \end{proof}
@@ -3371,11 +3441,11 @@ Então $(\mathbb M_d(\bm A),\cdot)$ é um monoide com elemento neutro $\id_d$.
 \begin{proof}
 	Sejam $M,N,P \in \mathbb M_d(\bm A)$. Pela proposição anterior, sabemos que vale $(MN)P=M(NP)$ e que, portanto, $\cdot$ é associativa. Agora, notemos que um elemento de $M\id_d$ é da forma
 	\begin{equation*}
-	\bigsum_{k=1}^d m_{i,k}\delta_{k,j}.
+	\bigplus_{k=1}^d m_{i,k}\delta_{k,j}.
 	\end{equation*}
 Mas, para $k \in \inte_d$, se $k \neq j$, então $\delta_{k,j}=0$ e, se $k=j$, então $\delta_{k,j}=1$ e, portanto, segue que
 	\begin{equation*}
-	\bigsum_{k=1}^d m_{i,k}\delta_{k,j} = m_{i,j}.
+	\bigplus_{k=1}^d m_{i,k}\delta_{k,j} = m_{i,j}.
 	\end{equation*}
 Assim, concluímos que $M\id_d=M$. Analogamente, mostra-se que $\id_dM=M$, e concluímos que $\id_d$ é elemento neutro de $\cdot$. Isso mostra que $(\mathbb M_d(\bm A),\cdot)$ é um monoide.
 \end{proof}
@@ -3433,7 +3503,7 @@ Assim, concluímos que $M\id_d=M$. Analogamente, mostra-se que $\id_dM=M$, e con
 \begin{defi}
 	Sejam $\bm A$ um anel e $M \in \mathbb M_d(\bm A)$. O \emph{traço} de $M$ é o elemento $\tr(M) \in A$ definido por
 	\begin{equation*}
-	\tr(M) \coloneqq \bigsum_{i=1}^d m_{i,i}.
+	\tr(M) \coloneqq \bigplus_{i=1}^d m_{i,i}.
 	\end{equation*}
 \end{defi}
 
@@ -3450,24 +3520,24 @@ Assim, concluímos que $M\id_d=M$. Analogamente, mostra-se que $\id_dM=M$, e con
 	\begin{enumerate}
 	\item
 		\begin{equation*}
-		\tr(M) = \bigsum_{i=1}^d m_{i,i} = \tr(M^\intercal).
+		\tr(M) = \bigplus_{i=1}^d m_{i,i} = \tr(M^\intercal).
 		\end{equation*}
 	\item
 		\begin{align*}
-		\tr(MN) &= \bigsum_{i=1}^d \left(\bigsum_{k=1}^d m_{i,k}n_{k,i}\right) \\
-		&= \bigsum_{i=1}^d \left(\bigsum_{k=1}^d n_{k,i}m_{i,k}\right) \\
-		&= \bigsum_{k=1}^d \left(\bigsum_{i=1}^d n_{k,i}m_{i,k}\right) \\
+		\tr(MN) &= \bigplus_{i=1}^d \left(\bigplus_{k=1}^d m_{i,k}n_{k,i}\right) \\
+		&= \bigplus_{i=1}^d \left(\bigplus_{k=1}^d n_{k,i}m_{i,k}\right) \\
+		&= \bigplus_{k=1}^d \left(\bigplus_{i=1}^d n_{k,i}m_{i,k}\right) \\
 		&= \tr(NM).
 		\end{align*}
 	\item
 		\begin{align*}
-		\tr(M+N) &= \bigsum_{i=1}^d (m_{i,i} + n_{i,i}) \\
-		&= \bigsum_{i=1}^d m_{i,i} + \bigsum_{i=1}^d n_{i,i} \\
+		\tr(M+N) &= \bigplus_{i=1}^d (m_{i,i} + n_{i,i}) \\
+		&= \bigplus_{i=1}^d m_{i,i} + \bigplus_{i=1}^d n_{i,i} \\
 		&= \tr(M) + \tr(N).
 		\end{align*}
 	\item
 		\begin{equation*}
-		\tr(aM) = \bigsum_{i=1}^d am_{i,i} = a\bigsum_{i=1}^d m_{i,i} = a\tr(M).
+		\tr(aM) = \bigplus_{i=1}^d am_{i,i} = a\bigplus_{i=1}^d m_{i,i} = a\tr(M).
 		\end{equation*}
 \qedhere
 	\end{enumerate}
@@ -3735,7 +3805,7 @@ Nesse caso, dizemos que $W$ é um \emph{conjunto gerador} de $\langle W \rangle$
 \begin{defi}
 	Sejam $\bm V$ um espaço vetorial sobre um corpo $\bm C$ e $W \subseteq V$ um conjunto finito tal que $W=\{\bm w_1,\ldots,\bm w_n\}$. Uma \emph{combinação linear} de $W$ em $\bm V$ é um vetor $\bm v \in V$ tal que existem $c_1,\ldots,c_n \in C$ satisfazendo
 	\begin{equation*}
-	\bm v = \bigsum_{i=1}^n c_i\bm w_i.
+	\bm v = \bigplus_{i=1}^n c_i\bm w_i.
 	\end{equation*}
 Se $W$ é um conjunto infinito, uma \emph{combinação linear} de $W$ é uma combinação linear de um subconjunto finito de $W$.
 
@@ -3750,15 +3820,15 @@ Se $W$ é um conjunto infinito, uma \emph{combinação linear} de $W$ é uma com
 \begin{proof}
 	Consideremos, primeiro, o caso em que $W=\emptyset$. Nesse caso, $\langle W \rangle = \{\bm 0\}$, e a única combinação linear de $W$ é a soma vazia $\bm 0$, o que mostra a igualdade dos conjuntos.
 
-	Agora, assumamos que $W \neq \emptyset$ e seja $(W_j)_{j \in J}$ uma indexação do conjunto de todos subespaços de $\bm V$ que contêm $W$. Primeiro, mostraremos que uma combinação linear de $W$ em $\bm V$ está em $\langle W \rangle$. Seja $\bm v \coloneqq \bigsum_{i=1}^n c_i\bm w_i$ uma combinação linear de $W$ em $\bm V$. Para todo $j \in J$, $W_j$ é um subespaço vetorial de $\bm V$. Portanto, para todo $i \in \inte_n$, segue que $c_i \bm{w_i} \in W_j$ e, então, que $\bm v \in W_j$. Logo $\bm v \in \langle W \rangle$.
+	Agora, assumamos que $W \neq \emptyset$ e seja $(W_j)_{j \in J}$ uma indexação do conjunto de todos subespaços de $\bm V$ que contêm $W$. Primeiro, mostraremos que uma combinação linear de $W$ em $\bm V$ está em $\langle W \rangle$. Seja $\bm v \coloneqq \bigplus_{i=1}^n c_i\bm w_i$ uma combinação linear de $W$ em $\bm V$. Para todo $j \in J$, $W_j$ é um subespaço vetorial de $\bm V$. Portanto, para todo $i \in \inte_n$, segue que $c_i \bm{w_i} \in W_j$ e, então, que $\bm v \in W_j$. Logo $\bm v \in \langle W \rangle$.
 
-	Reciprocamente, mostraremos que o conjunto de todas combinações lineares de $W$ em $\bm V$ é um subespaço vetorial de $\bm V$. Primeiro, notemos que $\bm 0$ é uma combinação linear de $W$, pois, para todo $\bm w \in W$, vale $\bm 0 = 0\bm w$. Agora, sejam $\bm v_1 = \bigsum_{i=1}^n c_i\bm w_i$ e $\bm v_2 = \bigsum_{i=1}^m c'_i\bm w'_i$ combinações lineares de $W$ em $\bm V$ e $c \in C$. Então, se definirmos, para todo $i \in \inte_m$, $\bm w_{n+i} \coloneqq \bm w'_i$ e $c_{n+i} \coloneqq c'_i$ e, para todo $i \in \inte_n$, $\overline c_i \coloneqq cc_i$, segue que
+	Reciprocamente, mostraremos que o conjunto de todas combinações lineares de $W$ em $\bm V$ é um subespaço vetorial de $\bm V$. Primeiro, notemos que $\bm 0$ é uma combinação linear de $W$, pois, para todo $\bm w \in W$, vale $\bm 0 = 0\bm w$. Agora, sejam $\bm v_1 = \bigplus_{i=1}^n c_i\bm w_i$ e $\bm v_2 = \bigplus_{i=1}^m c'_i\bm w'_i$ combinações lineares de $W$ em $\bm V$ e $c \in C$. Então, se definirmos, para todo $i \in \inte_m$, $\bm w_{n+i} \coloneqq \bm w'_i$ e $c_{n+i} \coloneqq c'_i$ e, para todo $i \in \inte_n$, $\overline c_i \coloneqq cc_i$, segue que
 	\begin{equation*}
-	\bm v_1 + \bm v_2 = \bigsum_{i=1}^n c_i\bm w_i + \bigsum_{i=1}^m c'_i\bm w'_i = \bigsum_{i=1}^{n+m} c_i\bm w_i
+	\bm v_1 + \bm v_2 = \bigplus_{i=1}^n c_i\bm w_i + \bigplus_{i=1}^m c'_i\bm w'_i = \bigplus_{i=1}^{n+m} c_i\bm w_i
 	\end{equation*}
 e
 	\begin{equation*}
-	c\bm v_1 = \bigsum_{i=1}^n (cc_i)\bm w_i = \bigsum_{i=1}^n \overline c_i \bm w_i
+	c\bm v_1 = \bigplus_{i=1}^n (cc_i)\bm w_i = \bigplus_{i=1}^n \overline c_i \bm w_i
 	\end{equation*}
 são combinações lineares de $W$ em $\bm V$, o que implica que o conjunto de todas combinações lineares de $W$ em $\bm V$ é um subespaço de $\bm V$. Assim, como $\langle W \rangle$ é subconjunto de todo conjunto que é subespaço vetorial de $\bm V$ contendo $W$, segue que o conjunto de todas combinações lineares de $W$ em $\bm V$ é igual ao subespaço gerado por $W$.
 \end{proof}
@@ -3766,13 +3836,13 @@ são combinações lineares de $W$ em $\bm V$, o que implica que o conjunto de t
 \begin{prop}
 	Sejam $\bm V$ um espaço vetorial sobre um corpo $\bm C$, $W \subseteq V$ e $\bm v \in \langle W \rangle$. Então existem $\bm w_1, \ldots, \bm w_n \in W$ distintos e $c_1, \ldots, c_n \in C$ tais que
 	\begin{equation*}
-	\bm v = \bigsum_{i=1}^n c_i \bm w_i.
+	\bm v = \bigplus_{i=1}^n c_i \bm w_i.
 	\end{equation*}
 \end{prop}
 \begin{proof}
-	Como $\bm v \in \langle W \rangle$, existem $\bm w'_1, \ldots, \bm w'_m \in W$ e $c'_1, \ldots, c'_m \in C$ tais que $\bm v = \bigsum_{i=1}^m c'_i \bm w'_i$. Vamos particionar o conjunto dos índices $\inte_m$ com a seguinte relação de equivalência: para todo $i,j \in \inte_m$, $i \sim j$ se, e somente se, $\bm w'_i = \bm w'_j$. Essa relação é de equivalência pois a igualddade de vetores é uma relação de equivalência. Agora, seja $n$ o número de classes de equivalências dessa relação. Para cada $i \in \inte_n$, seja $j \in P_i$ e definimos os vetores $\bm w_i \coloneqq \bm w'_j$. Notemos que os vetores $\bm w_i$ estão bem definidos, não dependem do $j$, pois, se $k \in P_i$, então $\bm w_i = \bm w'_j = \bm w'_k$. Ainda, definimos os coeficientes $c_i \coloneqq \bigsum _{j \in P_i} c'_j$. Desse modo, segue que
+	Como $\bm v \in \langle W \rangle$, existem $\bm w'_1, \ldots, \bm w'_m \in W$ e $c'_1, \ldots, c'_m \in C$ tais que $\bm v = \bigplus_{i=1}^m c'_i \bm w'_i$. Vamos particionar o conjunto dos índices $\inte_m$ com a seguinte relação de equivalência: para todo $i,j \in \inte_m$, $i \sim j$ se, e somente se, $\bm w'_i = \bm w'_j$. Essa relação é de equivalência pois a igualddade de vetores é uma relação de equivalência. Agora, seja $n$ o número de classes de equivalências dessa relação. Para cada $i \in \inte_n$, seja $j \in P_i$ e definimos os vetores $\bm w_i \coloneqq \bm w'_j$. Notemos que os vetores $\bm w_i$ estão bem definidos, não dependem do $j$, pois, se $k \in P_i$, então $\bm w_i = \bm w'_j = \bm w'_k$. Ainda, definimos os coeficientes $c_i \coloneqq \bigplus _{j \in P_i} c'_j$. Desse modo, segue que
 	\begin{equation*}
-	\bm v = \bigsum_{i=1}^m c'_i \bm w'_i = \bigsum_{i=1}^n \bigsum_{j \in P_i} c'_j \bm w'_j = \bigsum_{i=1}^n \bigsum_{j \in P_i} c'_j \bm w_i =  \bigsum_{i=1}^n c_i \bm w_i.
+	\bm v = \bigplus_{i=1}^m c'_i \bm w'_i = \bigplus_{i=1}^n \bigplus_{j \in P_i} c'_j \bm w'_j = \bigplus_{i=1}^n \bigplus_{j \in P_i} c'_j \bm w_i =  \bigplus_{i=1}^n c_i \bm w_i.
 	\end{equation*}
 	Por fim, notemos que os $\bm w_1, \ldots, \bm w_n$ são distintos por definição, já que, se $\bm w_i = \bm w_j$ para $i,j \in \inte_n$, então existem $k,l \in \inte_m$ tais que $k \in P_i$, $l \in P_j$ e $\bm w_i = \bm w'_k$, $\bm w_j = \bm w'_l$. Mas isso implica $\bm w'_k=\bm w'_l$, o que implica $P_i = P_j$ e, portanto, $i = j$.
 \end{proof}
@@ -3780,7 +3850,7 @@ são combinações lineares de $W$ em $\bm V$, o que implica que o conjunto de t
 \begin{defi}[Dependência Linear]
 	Sejam $\bm V$ um espaço vetorial sobre um corpo $\bm C$ e $W \subseteq V$. Dizemos que $W$ é \emph{linarmente dependente} em $\bm V$ se existem $\bm w_1, \ldots,\bm w_n \in W$ distintos e $c_1,\ldots,c_n \in C$ não nulos tais que
 	\begin{equation*}
-	\bm 0 = \bigsum_{i=1}^n c_i \bm w_i.
+	\bm 0 = \bigplus_{i=1}^n c_i \bm w_i.
 	\end{equation*}
 Caso contrário, dizemos que $W$ é \emph{linearmente independente} em $\bm V$.
 \end{defi}
@@ -3791,21 +3861,21 @@ Caso contrário, dizemos que $W$ é \emph{linearmente independente} em $\bm V$.
 \begin{proof}
 	Suponhamos que $W$ é linearmente dependente. Então existem vetores $\bm w'_1,\ldots,\bm w'_n \in W$ distintos e $c'_1,\ldots,c'_n \in C$ não nulos tais que
 	\begin{equation*}
-	\bm 0 = \bigsum_{i=1}^n c'_i \bm w'_i.
+	\bm 0 = \bigplus_{i=1}^n c'_i \bm w'_i.
 	\end{equation*}
 Como $c'_1,\ldots,c'_n$ são não nulos, então existe $j \in \inte_n$ tal que $c'_j \neq 0$. Definindo $\bm w_i \coloneqq \bm w'_i$ se $1 \leq i < j$ e $\bm w_i \coloneqq \bm w'_{i-1}$ se $j < i \leq n$, e $c_i \coloneqq (c'_j)^{-1}(-c'_i)$ para todo $1 \leq i < j$ ou $j < i \leq n$, segue que
 	\begin{equation*}
-	\bm w'_j = \bigsum_{i=1}^{j-1} (c'_j)^{-1}(-c'_i) \bm w'_i + \bigsum_{i=j+1}^n (c'_j)^{-1}(-c'_i) \bm w'_i = \bigsum_{i=1}^{n-1} c_i \bm w_i.
+	\bm w'_j = \bigplus_{i=1}^{j-1} (c'_j)^{-1}(-c'_i) \bm w'_i + \bigplus_{i=j+1}^n (c'_j)^{-1}(-c'_i) \bm w'_i = \bigplus_{i=1}^{n-1} c_i \bm w_i.
 	\end{equation*}
 Por tanto, como $\bm w_i \in W \setminus \{\bm w'_j\}$ e $c_i \in C$ para todo $i \in \inte_{n-1}$, $\bm w'_j$ é combinação linear de $W \setminus \{\bm w'_j\}$ em $\bm V$.
 
 	Reciprocamente, suponhamos que existe $\bm w \in W$ que é combinação linear de $W \setminus \{\bm w\}$ em $\bm V$. Então existem $\bm w_1, \ldots, \bm w_n \in W \setminus \{\bm w\}$ distintos e $c_1, \ldots, c_n \in C$ tais que
 	\begin{equation*}
-	\bm w = \bigsum_{i=1}^n c_i \bm w_i.
+	\bm w = \bigplus_{i=1}^n c_i \bm w_i.
 	\end{equation*}
 Definindo $\bm w_{n+1} \coloneqq \bm w$ e $c_{n+1} \coloneqq -1$, segue que
 	\begin{equation*}
-	\bm 0 = \bigsum_{i=1}^n c_i \bm w_i - \bm w = \bigsum_{i=1}^{n+1} c_i \bm w_i.
+	\bm 0 = \bigplus_{i=1}^n c_i \bm w_i - \bm w = \bigplus_{i=1}^{n+1} c_i \bm w_i.
 	\end{equation*}
 Então, como $\bm w_1, \ldots, \bm w_{n+1}$ são distintos e $c_{n+1} = -1 \neq 0$, segue que $W$ é linearmente dependente.
 \end{proof}
@@ -3822,7 +3892,7 @@ Então, como $\bm w_1, \ldots, \bm w_{n+1}$ são distintos e $c_{n+1} = -1 \neq 
 	\begin{enumerate}
 	\item Suponha, por absurdo, que $\emptyset$ não é linearmente independente. Então existem $\bm{w_1},\ldots,\bm{w_n} \in \emptyset$ distintos e $c_1,\ldots,c_n \in C$ não nulos tais que
 	\begin{equation*}
-	\bm 0 = \bigsum_{i=1}^n c_i\bm{w_i}.
+	\bm 0 = \bigplus_{i=1}^n c_i\bm{w_i}.
 	\end{equation*}
 Mas $\bm{w_1},\ldots,\bm{w_n} \in \emptyset$ é um absurdo.
 	\item Seja $c \in C \setminus \{0\}$. Então, como $\bm 0 = c \bm 0$, segue que $W$ é linearmente dependente em $\bm V$.
@@ -3832,12 +3902,12 @@ Mas $\bm{w_1},\ldots,\bm{w_n} \in \emptyset$ é um absurdo.
 \end{proof}
 
 \begin{prop}
-	Sejam $\bm V$ um espaço vetorial sobre um corpo $\bm C$ e $W \subseteq V$. Então $W$ é linearmente independente em $\bm V$ se, e somente se, para toda combinação linear $\bm v = \bigsum_{i=1}^n c_i\bm w_i \neq \bm 0$ de $W$ em $\bm V$ tal que $\bm w_1,\ldots,\bm w_n$ são distintos e não nulos, então $c_1,\ldots,c_n$ são únicos.
+	Sejam $\bm V$ um espaço vetorial sobre um corpo $\bm C$ e $W \subseteq V$. Então $W$ é linearmente independente em $\bm V$ se, e somente se, para toda combinação linear $\bm v = \bigplus_{i=1}^n c_i\bm w_i \neq \bm 0$ de $W$ em $\bm V$ tal que $\bm w_1,\ldots,\bm w_n$ são distintos e não nulos, então $c_1,\ldots,c_n$ são únicos.
 \end{prop}
 \begin{proof}
 	Primeiro, suponhamos que $W$ é linearmente dependente em $\bm V$. Então existem $\bm w'_1, \ldots,\bm w'_{n'} \in W$ distintos e $c'_1,\ldots,c'_{n'} \in C$ não nulos tais que
 	\begin{equation*}
-	\bm 0 = \bigsum_{i=1}^{n'} c'_i\bm w'_i.
+	\bm 0 = \bigplus_{i=1}^{n'} c'_i\bm w'_i.
 	\end{equation*}
 Nesse caso, seja $\bm v \in \langle W \rangle$. Se $\bm v = \bm 0$, então segue que
 
@@ -3879,7 +3949,7 @@ Nesse caso, seja $\bm v \in \langle W \rangle$. Se $\bm v = \bm 0$, então segue
 \begin{defi}
 	Sejam $\bm V$ um espaço vetorial sobre um corpo $\bm C$ e $(W_i)_{i \in I}$ uma família de subespaços vetoriais de $\bm V$. A \emph{soma} de $(W_i)_{i \in I}$ é o subespaço vetorial gerado pela união de $W_i$. Denotamos
 	\begin{equation*}
-	\bigsum_{i \in I} W_i \coloneqq \left\langle \bigcup_{i \in I} W_i \right\rangle.
+	\bigplus_{i \in I} W_i \coloneqq \left\langle \bigcup_{i \in I} W_i \right\rangle.
 	\end{equation*}
 Caso $(W_i)_{i \in I}$ seja uma família finita, escrevemos $W_1 + \cdots + W_n$.
 \end{defi}
@@ -3893,35 +3963,35 @@ Caso $(W_i)_{i \in I}$ seja uma família finita, escrevemos $W_1 \oplus \cdots \
 \end{defi}
 
 \begin{prop}
-	Seja $\bm V$ um espaço vetorial sobre um corpo $\bm C$ e $W_1,\ldots,W_n$ subespaços vetoriais de $\bm V$ tais que $V = \bigsum_{i=1}^n W_i$. Então
+	Seja $\bm V$ um espaço vetorial sobre um corpo $\bm C$ e $W_1,\ldots,W_n$ subespaços vetoriais de $\bm V$ tais que $V = \bigplus_{i=1}^n W_i$. Então
 	\begin{equation*}
 	V=\bigoplus_{i=1}^n W_i
 	\end{equation*}
 se, e somente se, para todo $\bm v \in V$, existem únicos $\bm w_1 \in W_1,\ldots,\bm w_n \in W_n$ tais que
 	\begin{equation*}
-	\bm v = \bigsum_{i=1}^n \bm w_i.
+	\bm v = \bigplus_{i=1}^n \bm w_i.
 	\end{equation*}
 \end{prop}
 \begin{proof}
-	Mostraremos, primeiro, que se $V$ é soma direta de $W_1,\ldots,W_n$, então todo vetor de $V$ é soma única de vetores de $W_1,\ldots,W_n$. A demontração será por indução em $n$. O caso base é trivial, pois, se $V=W_1$, então, para todo $\bm v \in V$, $\bm v \in W_1$. Agora, suponhamos que a proposição vale para todo natural menor ou igual a $n$. Sejam $W_1,\ldots,W_{n+1}$ subespaços vetoriais de $V$ tais que $V = \bigsum_{i=1}^{n+1} W_i$. Então existem $\bm w_1 \in W_1,\ldots,\bm w_{n+1} \in W_{n+1}$ tais que
+	Mostraremos, primeiro, que se $V$ é soma direta de $W_1,\ldots,W_n$, então todo vetor de $V$ é soma única de vetores de $W_1,\ldots,W_n$. A demontração será por indução em $n$. O caso base é trivial, pois, se $V=W_1$, então, para todo $\bm v \in V$, $\bm v \in W_1$. Agora, suponhamos que a proposição vale para todo natural menor ou igual a $n$. Sejam $W_1,\ldots,W_{n+1}$ subespaços vetoriais de $V$ tais que $V = \bigplus_{i=1}^{n+1} W_i$. Então existem $\bm w_1 \in W_1,\ldots,\bm w_{n+1} \in W_{n+1}$ tais que
 	\begin{equation*}
-	\bm v = \bigsum_{i=1}^{n+1} \bm w_i.
+	\bm v = \bigplus_{i=1}^{n+1} \bm w_i.
 	\end{equation*}
 Suponhamos que existam $\bm w_1 \in W_1,\ldots,\bm w_{n+1} \in W_{n+1}$ tais que
 	\begin{equation*}
-	\bm v = \bigsum_{i=1}^{n+1} \bm w'_i.
+	\bm v = \bigplus_{i=1}^{n+1} \bm w'_i.
 	\end{equation*}
 Então
 	\begin{equation*}
-	\bm v = \bigsum_{i=1}^{n+1} \bm w_i = \bigsum_{i=1}^{n+1} \bm w'_i,
+	\bm v = \bigplus_{i=1}^{n+1} \bm w_i = \bigplus_{i=1}^{n+1} \bm w'_i,
 	\end{equation*}
 o que implica
 	\begin{equation*}
-	\bigsum_{i=1}^n (\bm w_i - \bm w'_i) = \bm w'_{n+1} - \bm w_{n+1}.
+	\bigplus_{i=1}^n (\bm w_i - \bm w'_i) = \bm w'_{n+1} - \bm w_{n+1}.
 	\end{equation*}
 Como, para todo $i \in \inte_{n+1}$, $w_i,w'_i \in W_i$, segue que $\bm w_i - \bm w'_i \in W_i$. Definamos $W \coloneqq \bigcup_{i=1}^n W_i$. Assim, segue que
 	\begin{equation*}
-	\bigsum_{i=1}^n (\bm w_i - \bm w'_i) \in \langle W \rangle
+	\bigplus_{i=1}^n (\bm w_i - \bm w'_i) \in \langle W \rangle
 	\end{equation*}
 e
 	\begin{equation*}
@@ -3929,28 +3999,28 @@ e
 	\end{equation*}
 Ainda, como $V$ é soma direta de $W_1,\ldots,W_{n+1}$, então segue que $W \cap W_{n+1} = \{\bm 0\}$. Portanto concluímos que
 	\begin{equation*}
-	\bigsum_{i=1}^n (\bm w_i - \bm w'_i) = \bm w'_{n+1} - \bm w_{n+1} = \bm 0.
+	\bigplus_{i=1}^n (\bm w_i - \bm w'_i) = \bm w'_{n+1} - \bm w_{n+1} = \bm 0.
 	\end{equation*}
 Assim, concluímos que $\bm w'_{n+1}=\bm w_{n+1}$ e que
 	\begin{equation*}
-	\bigsum_{i=1}^n \bm w_i = \bigsum_{i=1}^n \bm w'_i.
+	\bigplus_{i=1}^n \bm w_i = \bigplus_{i=1}^n \bm w'_i.
 	\end{equation*}
 Mas notemos que
 	\begin{equation*}
 	\bm{\langle W \rangle}=(\langle W \rangle,+|_{\langle W \rangle \times \langle W \rangle},\cdot|_{\langle W \rangle \times \langle W \rangle})
 	\end{equation*}
-é um espaço vetorial e $W_1,\ldots,W_n$ são subespaços vetoriais de $\bm{\langle W \rangle}$ tais que $\langle W \rangle=\displaystyle\bigsum_{i=1}^n W_i$. Portanto, pela hipótese de indução, segue que, para todo $i \in \inte_n$, $\bm w_i = \bm w'_i$ e, portanto, concluímos que existem únicos $\bm w_1 \in W_1,\ldots,\bm w_{n+1} \in W_{n+1}$ tais que
+é um espaço vetorial e $W_1,\ldots,W_n$ são subespaços vetoriais de $\bm{\langle W \rangle}$ tais que $\langle W \rangle=\displaystyle\bigplus_{i=1}^n W_i$. Portanto, pela hipótese de indução, segue que, para todo $i \in \inte_n$, $\bm w_i = \bm w'_i$ e, portanto, concluímos que existem únicos $\bm w_1 \in W_1,\ldots,\bm w_{n+1} \in W_{n+1}$ tais que
 	\begin{equation*}
-	\bm v = \bigsum_{i=1}^{n+1} \bm w_i.
+	\bm v = \bigplus_{i=1}^{n+1} \bm w_i.
 	\end{equation*}
 
 	Suponhamos, então, que todo vetor de $V$ é soma de únicos vetores de $W_1,\ldots,W_n$. Sejam $i,j \in \inte_n$, $i \neq j$, e $\bm v \in W_i \cap W_j$. Como $\bm v \in V$, segue que existem únicos $\bm w_1 \in W_1, \ldots, \bm w_n \in W_n$ tais que
 	\begin{equation*}
-	\bm v = \bigsum_{k=1}^n \bm w_k.
+	\bm v = \bigplus_{k=1}^n \bm w_k.
 	\end{equation*}
 Sem perda de generalidade, suponhamos $i<j$. Notemos que
 	\begin{equation*}
-	\bm v = \bigsum_{i=1}^n \bm w_i = \bigsum_{k=1}^{i-1} \bm w_k + (\bm w_i+\bm v) +  \bigsum_{k=i+1}^{j-1} \bm w_k + (\bm w_j - \bm v) + \bigsum_{k=j+1}^n \bm w_k.
+	\bm v = \bigplus_{i=1}^n \bm w_i = \bigplus_{k=1}^{i-1} \bm w_k + (\bm w_i+\bm v) +  \bigplus_{k=i+1}^{j-1} \bm w_k + (\bm w_j - \bm v) + \bigplus_{k=j+1}^n \bm w_k.
 	\end{equation*}
 Como $\bm v \in W_i \cap W_j$, segue que $(\bm w_i+\bm v) \in W_i$ e $(\bm w_j - \bm v) \in W_j$ e, portanto, como $\bm w_1 \in W_1, \ldots, \bm w_n \in W_n$ são únicos, segue que $(\bm w_i+\bm v) = \bm w_i$ e $(\bm w_j - \bm v) = \bm w_j$; ou seja, $\bm v = \bm 0$. Logo $V$ é soma direta de $W_1,\ldots,W_n$.
 \end{proof}
@@ -3988,11 +4058,11 @@ Assim, segue que $c_1\bm v_1 + \cdots + c_n\bm v_n=\bm 0$. Mas $S \setminus \{\b
 \begin{proof}
 	Se $W=\emptyset$, então $0 = \card{W'} \leq \card{W}$. Caso contrário, seja $\card{W} = n$ e $(\bm w_i)_{i \in \inte_n}$ uma indexação de $W$. Suponhamos, por absurdo, que $W' = \emptyset$. Então, como $W'$ gera $V$ e $\langle W' \rangle = \{\bm 0\}$, segue que $V=\{\bm 0\}$, o que é absurdo, pois isso implica que $W=\{\bm 0\}$, que é um conjunto linearmente dependente. Então $W' \neq \emptyset$.  Seja $\card{W'} = m$ e $(\bm w'_i)_{i \in \inte_m}$ uma indexação de $W'$. Queremos mostrar que $n \leq m$. Suponhamos, por absurdo, que $m < n$. Como $W$ é linearmente independente, então, para todo $i \in \inte_n$, $\bm w_i \neq \bm 0$. Como $W'$ gera $V$, existem $c_1,\ldots,c_m \in C$ tais que
 	\begin{equation*}
-	\bm w_1 = \bigsum_{i=1}^m c_i \bm w'_i,
+	\bm w_1 = \bigplus_{i=1}^m c_i \bm w'_i,
 	\end{equation*}
 e os $c_1,\ldots,c_m \in C$  não são todos nulos pois, caso contrário, teríamos $\bm w_1=\bm 0$. Assim, suponhamos,  sem perda de generalidade, que $c_1 \neq 0$. Então
 	\begin{equation*}
-	\bm w'_1 = c_1^{-1}\bm w_1 - \bigsum_{i=2}^m c_1^{-1}c_i \bm w'_i.
+	\bm w'_1 = c_1^{-1}\bm w_1 - \bigplus_{i=2}^m c_1^{-1}c_i \bm w'_i.
 	\end{equation*}
 Seja $W_1 \coloneqq \{\bm w_1,\bm w'_2,\ldots,\bm w'_m\}$. Como $W'$ gera $V$ e todo elemento de $W'$ pode ser escrito como combinação linear de $W_1$, $W_1$ gera $V$. Assim, analogamente, podemos escrever $\bm w_2$ como combinação linear de $W_1$, como $\bm w_2 \neq \bm 0$, segue que nem todo os coeficientes da combinação linear são nulos. Mais ainda, se somente o coeficiente de $\bm w_1$ é não nulo, então $\bm w_2$ é múltiplo de $\bm w_1$, o que contradiz a independência linear de $W$. Portanto, deve existir um coeficiente dos $\bm w'_2,\ldots,\bm w'_m$ não nulo. Assim, sem perda de generalidade, suponhamos que o coeficiente de $\bm w'_2$ é não nulo. Então, como no caso anterior, $\bm w'_2$ pode ser escrito como combinação linear de $\bm w_1, \bm w_2, \bm w'_3,\ldots, \bm w'_m$ e segue que o conjunto $W_2 \coloneqq \{\bm w_1, \bm w_2, \bm w'_3,\ldots, \bm w'_m\}$ gera $V$. Repetindo o processo, que termina porque $m<n$ são finitos, achamos o conjunto $W_m \coloneqq \{\bm w_1, \ldots, \bm w_m\}$, que gera $V$ e é um subconjunto próprio de $W$, pois $m < n$. Mas isso implica que $\bm w_{m+1} \in W$ é uma combinação linear de $W_m$ em $\bm V$, o que implica que $W$ é linearmente dependente, uma contradição. Logo $m \leq n$.
 \end{proof}
@@ -4003,11 +4073,11 @@ Seja $W_1 \coloneqq \{\bm w_1,\bm w'_2,\ldots,\bm w'_m\}$. Como $W'$ gera $V$ e 
 \begin{proof}
 	Primeiro, vamos mostrar que não ocorre o caso de uma base ser um conjunto finito e outra ser um conjunto infinito. Suponhamos, sem perda de generalidade, que $B$ é um conjunto finito com $\card{B}=n$, $\{\bm b_1,\ldots,\bm b_n\} \coloneqq B$, e $B'$ é um conjunto infinito. Seja $i \in \inte_n$. Como $\bm b_i \in V$ e $B'$ gera $V$, segue que existem $\bm b_{i,1}, \ldots, \bm b_{i,n_i} \in B'$ e $c_{i,1}, \ldots, c_{i,n_i} \in C$ tais que
 	\begin{equation*}
-	\bm b_i = \bigsum_{j=1}^{n_i} c_{i,j} \bm b_{i,j}.
+	\bm b_i = \bigplus_{j=1}^{n_i} c_{i,j} \bm b_{i,j}.
 	\end{equation*}
-Notemos que o conjunto de todos esses $\bm b_{i,j}$ é $B'' \coloneqq \bigcup_{i=1}^n \{\bm b_{i,j} : j \in \inte_{n_i}\}$, que é um subconjunto finito de $B'$ e, portanto, um subconjunto próprio. Assim, como $B'' \subset B'$, existe $\bm b \in B' \setminus B''$. Como $\bm b \in V$ e $B$ é base, segue que existem $c_1, \ldots, c_n \in C$ tais que $\bm b = \bigsum_{i=1}^n c_i \bm b_i$. Mas então
+Notemos que o conjunto de todos esses $\bm b_{i,j}$ é $B'' \coloneqq \bigcup_{i=1}^n \{\bm b_{i,j} : j \in \inte_{n_i}\}$, que é um subconjunto finito de $B'$ e, portanto, um subconjunto próprio. Assim, como $B'' \subset B'$, existe $\bm b \in B' \setminus B''$. Como $\bm b \in V$ e $B$ é base, segue que existem $c_1, \ldots, c_n \in C$ tais que $\bm b = \bigplus_{i=1}^n c_i \bm b_i$. Mas então
 	\begin{equation*}
-	\bm b = \bigsum_{i=1}^n c_i \bm b_i = \bigsum _{i=1}^n c_i \bigsum_{j=1}^{n_i} c_{i,j} \bm b_{i,j} = \bigsum _{i=1}^n \bigsum_{j=1}^{n_i} c_ic_{i,j} \bm b_{i,j},
+	\bm b = \bigplus_{i=1}^n c_i \bm b_i = \bigplus _{i=1}^n c_i \bigplus_{j=1}^{n_i} c_{i,j} \bm b_{i,j} = \bigplus _{i=1}^n \bigplus_{j=1}^{n_i} c_ic_{i,j} \bm b_{i,j},
 	\end{equation*}
 o que mostra que $\bm b \in B'$ pode ser escrito como uma combinação linear de $B' \setminus \{\bm b\}$ em $\bm V$; ou seja, $B'$ não é linearmente independente, o que é um absurdo. Assim, existem dois casos a serem considereados; o primeiro em que ambas as bases são conjuntos finitos e o outro em que ambas são conjuntos infinitos.
 
@@ -4042,7 +4112,7 @@ O conjunto das transformações lineares de $\bm V$ em $\bm W$ é o conjunto $\l
 	\begin{enumerate}
 	\item (Linearidade generalizada) Para todos $\bm v_1,\ldots,\bm v_n \in V$ e $c_1,\ldots,c_n \in C$,
 	\begin{equation*}
-	T\left(\bigsum_{i=1}^n c_i \bm v_i \right) = \bigsum_{i=1}^n c_i T(\bm v_i).
+	T\left(\bigplus_{i=1}^n c_i \bm v_i \right) = \bigplus_{i=1}^n c_i T(\bm v_i).
 	\end{equation*}
 
 	\item $T(\bm 0) = \bm 0$;
@@ -4107,17 +4177,17 @@ o que mostra que $T^{-1}$ é linear.
 \begin{prop}
 	Sejam $\bm V$ e $\bm W$ espaços vetoriais sobre um corpo $\bm C$, $B_V=\{\bm v_1,\ldots,\bm v_n\}$ base de $\bm V$, $B_W=\{\bm w_1,\ldots,\bm w_m\}$ base de $\bm W$ e $T \in \lin(\bm V;\bm W)$. Então, para todo $\bm v \in V$, existem únicos $c_1,\ldots,c_m \in C$ tais que
 	\begin{equation*}
-	T(\bm v) = \bigsum_{i=1}^m c_j \bm w_j.
+	T(\bm v) = \bigplus_{i=1}^m c_j \bm w_j.
 	\end{equation*}
 \end{prop}
 \begin{proof}
-	Primeiro demonstraremos a existência. Sabemos que, como $B_V$ é base de $V$, então existem únicos $a_1,\ldots,a_n \in C$ tais que $\bm v = \bigsum_{i=1}^n a_i\bm v_i$. Mas, como $T$ é linear, então
+	Primeiro demonstraremos a existência. Sabemos que, como $B_V$ é base de $V$, então existem únicos $a_1,\ldots,a_n \in C$ tais que $\bm v = \bigplus_{i=1}^n a_i\bm v_i$. Mas, como $T$ é linear, então
 	\begin{equation*}
-	T(\bm v) = T\left( \bigsum_{i=1}^n a_i \bm v_i \right) = \bigsum_{i=1}^n a_i T(\bm v_i).
+	T(\bm v) = T\left( \bigplus_{i=1}^n a_i \bm v_i \right) = \bigplus_{i=1}^n a_i T(\bm v_i).
 	\end{equation*}
-	Agora, como $B_W$ é base de $\bm W$, para cada $i \in \{1,\ldots,n\}$ existem únicos $b_{i1},\ldots,b_{im} \in C$ tais que  $T(\bm v_i)=\bigsum_{j=1}^m b_{ij} \bm w_j$. Assim, definindo $c_j \coloneqq \bigsum_{i=1}^n a_i b_{ij}$, segue que
+	Agora, como $B_W$ é base de $\bm W$, para cada $i \in \{1,\ldots,n\}$ existem únicos $b_{i1},\ldots,b_{im} \in C$ tais que  $T(\bm v_i)=\bigplus_{j=1}^m b_{ij} \bm w_j$. Assim, definindo $c_j \coloneqq \bigplus_{i=1}^n a_i b_{ij}$, segue que
 	\begin{equation*}
-	T(\bm v)=\bigsum_{i=1}^n a_i \left(\bigsum_{j=1}^m b_{ij} \bm w_j \right) = \bigsum_{j=1}^m \left(\bigsum_{i=1}^n a_i b_{ij}\right) \bm w_j = \bigsum_{j=1}^m c_j \bm w_j.
+	T(\bm v)=\bigplus_{i=1}^n a_i \left(\bigplus_{j=1}^m b_{ij} \bm w_j \right) = \bigplus_{j=1}^m \left(\bigplus_{i=1}^n a_i b_{ij}\right) \bm w_j = \bigplus_{j=1}^m c_j \bm w_j.
 	\end{equation*}
 
 \end{proof}
@@ -4176,7 +4246,7 @@ o que mostra que $T^{-1}$ é linear.
 	c_n
 	\end{bmatrix}
 	\end{equation*}
-tal que $\bm v = \bigsum_{i=1}^n c_i \bm b_i$.
+tal que $\bm v = \bigplus_{i=1}^n c_i \bm b_i$.
 \end{defi}
 
 \begin{prop}
