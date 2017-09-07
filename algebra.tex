@@ -4343,7 +4343,7 @@ tal que $\bm v = \bigplus_{i=1}^n c_i \bm b_i$.
 
 
 \cleardoublepage
-\section{Produto e Soma Catogóricas de Espaços Vetoriais}
+\section{Produto e Coproduto de Espaços Vetoriais}
 
 \subsection{Produto}
 
@@ -4434,7 +4434,7 @@ Defina a função \func{L}{X}{\prod_{i \in I} V_i}{x}{(L_i(x))_{i \in I}.} Da pr
 	\end{align*}
 \end{proof}
 
-\subsection{Soma (Coproduto)}
+\subsection{Coproduto (Soma)}
 
 \begin{defi}
 Seja $(\bm{V_i})_{i \in I} = ((V_i,+_i,\cdot_i))_{i \in I}$ uma família de espaços vetoriais. A \emph{soma categórica} de $(\bm{V_i})_{i \in I}$ é
@@ -4470,6 +4470,10 @@ Sejam $(\bm{V_i})_{i \in I}$ uma família de espaços vetoriais sobre um corpo $
 \end{figure}
 \end{prop}
 
+O coproduto de espaços vetoriais é também chamado de \emph{soma} ou \emph{soma direta} e denotado
+	\begin{equation*}
+	\bigoplus_{i \in I} \bm{V_i}.
+	\end{equation*}
 
 
 
@@ -4481,6 +4485,178 @@ Sejam $(\bm{V_i})_{i \in I}$ uma família de espaços vetoriais sobre um corpo $
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\chapter{Álgebra Multilinear}
+
+\section{Transformações Multilineares}
+
+\begin{defi}
+Sejam $\bm{V_0},\cdots,\bm{V_{n-1}}$ e $\bm W$ espaços lineares sobre um corpo $\bm C$. Uma \emph{transformação $n$-linear} de $(\bm{V_0},\ldots,\bm{V_{n-1}})$ para $\bm W$ é uma função
+	\begin{equation*}
+	T: \bm V_0 \times \cdots \times \bm V_{n-1} \to \bm W
+	\end{equation*}
+tal que, para todo $i \in n$ e $(\bm v_0,\ldots,\bm v_{i-1},\bm v_{i+1},\ldots,\bm v_{n-1}) \in \bm{V_0} \times \cdots \times \bm{V_{i-1}} \times \bm{V_{i+1}} \times \cdots \times \bm V_{n-1}$, a função
+\func{T(\bm v_0,\ldots,\bm v_{i-1},\var,\bm v_{i+1},\ldots,\bm v_{n-1})}{\bm{V_i}}{\bm W}{\bm v}{T(\bm v_0,\ldots,\bm v_{i-1},\bm v,\bm v_{i+1},\ldots,\bm v_{n-1})}
+%\func{T(\bm v_0,\ldots,\underbrace{\var}_i,\ldots,\bm v_{n-1})}{\bm{V_i}}{\bm W}{\bm v}{T(\bm v_0,\ldots,\underbrace{\bm v}_i,\ldots,\bm v_{n-1})}
+é uma transformação linear. O conjunto dessas transformações é denotado
+	\begin{equation*}
+	\lin(\bm{V_0},\ldots,\bm{V_{n-1}};\bm W)
+	\end{equation*}
+e, quando todos os espaços $\bm{V_i}$ são iguais, denota-se
+	\begin{equation*}
+	\lin^n(\bm V;\bm W) \coloneqq \lin(\underbrace{\bm V,\ldots,\bm V}_n;\bm W)
+	\end{equation*}
+\end{defi}
+
+\begin{prop}
+Sejam $\bm{V_0},\cdots,\bm{V_{n-1}}$ e $\bm W$ espaços lineares de dimensão finita sobre um corpo $\bm C$ cujas dimensões são $d_0,\ldots,d_{n-1}$ e $d$, respectivamente, e, para cada $i \in n$, seja $(\bm b_{ij})_{j \in d_i}$ uma base ordenada de $\bm{V_i}$. Então toda transformação $n$-linear $T \in \lin(\bm{V_0},\ldots,\bm{V_{n-1}};\bm W)$ está determinada pelos seus valores em $(\bm b_{0j_0},\ldots,\bm b_{(n-1)j_{n-1}})$.
+\end{prop}
+\begin{proof}
+Como consequência da propriedade de linearidade generalizada para transformações lineares, para todos $\bm v_0,\ldots,\bm v_{m-1} \in \bm{V_k}$ e $c_0,\ldots,c_{m-1} \in C$, vale que
+	\begin{equation*}
+	T\left(\bm v_0,\ldots,\bigplus_{i \in m} c_i\bm v_i,\ldots,\bm v_{n-1} \right) = \bigplus_{i \in m} c_iT\left(\bm v_0,\ldots,\bm v_i,\ldots,\bm v_{n-1} \right).
+	\end{equation*}
+Sendo assim, para cada $i \in n$, sejam $\bm v_i \in \bm{V_i}$ e $v_{i0},\ldots,v_{id_i} \in C$ os coeficientes de $\bm v_i$ na base $\bm b_i$, de modo que
+	\begin{equation*}
+	\bm v_i = \bigplus_{j \in d_i} v_{ij} \bm b_{ij}.
+	\end{equation*}
+Pela linearidade em cada entrada, temos que
+	\begin{align*}
+	T(\bm v_0,\ldots,\bm v_{n-1}) &= T\left(\bigplus_{j_0 \in d_0} v_{0j} \bm b_{0j_0},\ldots,\bigplus_{j_{n-1} \in d_{n-1}} v_{(n-1)j_{n-1}} \bm b_{(n-1)j_{n-1}} \right) \\
+		&= \bigplus_{j_0 \in d_0} \cdots \bigplus_{j_{n-1} \in d_{n-1}} v_{0j_0} \cdots v_{(n-1)j_{n-1}} T\left(\bm b_{0j_0},\ldots,\bm b_{(n-1)j_{n-1}} \right) \\
+		&= \bigplus_{(j_0,\ldots,j_{n-1}) \in d_0 \times \cdots \times d_{n-1}} v_{0j_0} \cdots v_{(n-1)j_{n-1}} T\left(\bm b_{0j_0},\ldots,\bm b_{(n-1)j_{n-1}} \right). 
+	\end{align*}
+Portanto a função $T$ está determinada pelos valores que tem nos elementos
+	\begin{equation*}
+	(\bm b_{0j_0},\ldots,\bm b_{(n-1)j_{n-1}}).
+	\end{equation*}
+Como há $d_0 \cdots d_{n-1}$ desses elementos, há essa quantidade de escolhas a serem determinadas para se determinar os valores de $T$.
+\end{proof}
+
+\begin{prop}
+Sejam $\bm{V_1},\cdots,\bm{V_n}$ e $\bm W$ espaços lineares sobre um corpo $\bm C$. Então
+	\begin{equation*}
+	\bm{\lin(\bm{V_1},\ldots,\bm{V_n};\bm W)} \coloneqq (\lin(\bm{V_1},\ldots,\bm{V_n};\bm W),+,\cdot),
+	\end{equation*}	
+em que $+$ e $\cdot$ são a soma e o produto escalar pontuais induzidos por $\bm W$, é um espaço linear sobre $\bm C$ (de dimensão ...).
+\end{prop}
+
+\section{Formas Multilineares}
+
+\begin{defi}
+Seja $\bm V$ um espaço linear sobre um corpo $\bm C$. Uma \emph{forma $k$-linear} em $\bm V$ é uma função $f \in \lin^k(\bm V;\bm C)$, ou seja, um funcional $k$-linear em $(\bm V,\ldots,\bm V)$.
+\end{defi}
+
+\begin{defi}
+Seja $\bm V$ um espaço linear sobre um corpo $\bm C$. Uma forma $k$-linear $f$ em $\bm V$ é:
+\begin{enumerate}
+\item \emph{simétrica} se, e somente se, para toda permutação $p \in \sime_k$ e todos $\bm v_0,\ldots,\bm v_{k-1} \in V$,
+	\begin{equation*}
+	f(\bm v_{p(0)},\ldots,\bm v_{p(k-1)}) = f(\bm v_0,\ldots,\bm v_{k-1});
+	\end{equation*}
+\item \emph{antissimétrica} se, e somente se, para toda permutação $p \in \sime_k$ e todos $\bm v_0,\ldots,\bm v_{k-1} \in V$,
+	\begin{equation*}
+	f(\bm v_{p(0)},\ldots,\bm v_{p(k-1)}) = \prd(p) f(\bm v_0,\ldots,\bm v_{k-1});
+	\end{equation*}
+\item \emph{alternada} se, e somente se, para todos $\bm v_0,\ldots,\bm v_{k-1} \in V$ linearmente dependentes,
+	\begin{equation*}
+	f(\bm v_0,\ldots,\bm v_{k-1}) = 0.
+	\end{equation*}
+\end{enumerate}
+O conjunto das formas $k$-lineares alternadas é denotado $\mathcal A^k(\bm V)$.
+\end{defi}
+
+\begin{prop}
+Sejam $\bm V$ um espaço linear sobre um corpo $\bm C$ e $f \in \lin^k(\bm V;\bm C)$.
+\end{prop}
+
+\begin{prop}
+Seja $\bm V$ um espaço linear sobre um corpo $\bm C$. Então
+\begin{enumerate}
+\item Uma forma $k$-linear em $\bm V$ é alternada se, e somente se, para todos $\bm v_0,\ldots,\bm v_{k-1} \in V$ tais que $\bm v_i = \bm v_j$ para dois $i,j \in k$ distintos,
+	\begin{equation*}
+	f(\bm v_0,\ldots,\bm v_{k-1})=0.
+	\end{equation*} 
+\item Uma forma alternada $k$-linear em $\bm V$ é antissimétrica. Se a característica de $\bm C$ é diferente de $2$, então uma forma antissimétrica $k$-linear em $\bm V$  é alternada.
+\item Se a característica de $\bm C$ é igual a $2$, então uma forma $k$-linear em $\bm V$ é antissimétrica se, e somente se, é simétrica.
+\end{enumerate}
+\end{prop}
+\begin{proof}
+\begin{enumerate}
+\item Se $f$ é alternada, então, para todos $\bm v_0,\ldots,\bm v_{k-1} \in V$ tais que $\bm v_i = \bm v_j$ para dois $i,j \in k$ distintos, o conjunto $\{\bm v_0,\ldots,\bm v_{k-1}\}$ é linearmente dependente, portanto $f(\bm v_0,\ldots,\bm v_{k-1})=0$. Reciprocamente, suponha que $f$ satisfaz a propriedade e sejam $\bm v_0,\ldots,\bm v_{k-1} \in V$ linearmente dependentes. Então existe $i \in k$ tal que $\bm v_i$ é combinação linear dos outros $\bm v_j$: existem $c_j \in C$, $j \in k\setminus\{i\}$, tais que
+	\begin{equation*}
+	\bm v_i = \bigplus_{j \in k\setminus\{i\}} c_j \bm v_j.
+	\end{equation*}
+Assim, segue da $k$-linearidade e da propriedade que
+	\begin{align*}
+	f(\bm v_0,\ldots,\bm v_{k-1}) &= f\left(\bm v_0,\ldots, \bigplus_{j \in k\setminus\{i\}} c_j \bm v_j,\ldots,\bm v_{k-1}\right) \\
+		&= \bigplus_{j \in k\setminus\{i\}} c_j f(\bm v_0,\ldots, \bm v_j,\ldots,\bm v_{k-1}) \\
+		&=\bigplus_{j \in k\setminus\{i\}} c_j 0 = 0.
+	\end{align*}
+
+\item Suponha $f$ alternada e sejam $\bm v_0,\ldots,\bm v_{k-1} \in V$. Então segue da $k$-linearidade e da alternância de $f$ que
+	\begin{align*}
+	0 =&f(\bm v_0,\ldots,\bm v_i+\bm v_j,\ldots,\bm v_i+\bm v_j,\ldots,\bm v_{k-1}) \\
+		=& f(\bm v_0,\ldots,\bm v_i,\ldots,\bm v_i,\ldots,\bm v_{k-1}) + f(\bm v_0,\ldots,\bm v_i,\ldots,\bm v_j,\ldots,\bm v_{k-1}) \\
+		&+f(\bm v_0,\ldots,\bm v_j,\ldots,\bm v_i,\ldots,\bm v_{k-1}) + f(\bm v_0,\ldots,\bm v_j,\ldots,\bm v_j,\ldots,\bm v_{k-1}) \\
+		=& f(\bm v_0,\ldots,\bm v_i,\ldots,\bm v_j,\ldots,\bm v_{k-1}) +f(\bm v_0,\ldots,\bm v_j,\ldots,\bm v_i,\ldots,\bm v_{k-1}),
+	\end{align*}
+portanto
+	\begin{equation*}
+	f(\bm v_0,\ldots,\bm v_i,\ldots,\bm v_j,\ldots,\bm v_{k-1}) = - f(\bm v_0,\ldots,\bm v_j,\ldots,\bm v_i,\ldots,\bm v_{k-1}).
+	\end{equation*}
+Como toda permutação $p \in \sime_k$ é um produto de $N \in \N$ inversões, e como $\prd(p)=(-1)^N$, segue por indução que, para toda permutação $p \in \sime_k$,
+	\begin{equation*}
+	f(\bm v_{p(0)},\ldots,\bm v_{p(k-1)}) =(-1)^N f(\bm v_0,\ldots,\bm v_{k-1}) = \prd(p) f(\bm v_0,\ldots,\bm v_{k-1}).
+	\end{equation*}
+
+Suponha que a característica de $\bm C$ é diferente de $2$. Sejam $f$ uma forma antissimétrica $k$-linear em $\bm V$ e sejam $\bm v_0,\ldots,\bm v_{k-1} \in V$ tais que $\bm v_i = \bm v_j$ para dois $i,j \in k$ distintos. Considerando a permutação $(i \quad j) \in \sime_k$, segue da antissimetria de $f$ e de $\prd((i \quad j))=-1$ que
+	\begin{align*}
+	f(\bm v_0,\ldots,\bm v_i,\ldots,\bm v_j,\ldots,\bm v_{k-1}) &= f(\bm v_0,\ldots,\bm v_j,\ldots,\bm v_i,\ldots,\bm v_{k-1}) \\
+		&= - f(\bm v_0,\ldots,\bm v_i,\ldots,\bm v_j,\ldots,\bm v_{k-1}),
+	\end{align*}
+portanto
+	\begin{equation*}
+	2 f(\bm v_0,\ldots,\bm v_{k-1})=0.
+	\end{equation*}
+Como a característica de $\bm C$ é diferente de $2$, segue que $f(\bm v_0,\ldots,\bm v_{k-1})=0$. Do item 1 segue que $f$ é alternada.
+
+\item Se a característica de $\bm C$ é igual de $2$, então $-1=1$. Isso implica que, para qualquer permutação $p$, $\prd(p)=1$.
+\end{enumerate}
+\end{proof}
+
+\section{Produto Exterior}
+
+\begin{defi}
+Sejam $\bm V$ um espaço linear sobre um corpo $\bm C$, $f \in \mathcal{A}^k(\bm V)$, $g \in \mathcal{A}^l(\bm V)$ e $\bm v_0,\ldots,\bm v_{k+l-1} \in \bm V$. O \emph{produto exterior} entre $f$ e $g$ em $(\bm v_0,\ldots,\bm v_{k+l-1})$ é
+	\begin{equation*}
+	(f \wedge g)(\bm v_0,\ldots,\bm v_{k+l-1}) \coloneqq \frac{1}{k!l!} \bigplus_{p \in \sime_{k+l}} \prd(p) f(\bm v_0,\ldots,\bm v_{k-1})g(\bm v_k,\ldots,\bm v_{k+l-1})
+	\end{equation*}
+\end{defi}
+
+\begin{prop}
+Sejam $\bm V$ um espaço linear de dimensão finita $d$ sobre um corpo $\bm C$, $(\bm b_i)_{i \in d}$ um base ordenada de $\bm V$ e $(\bm b^*_i)_{i \in d}$ sua base dual de $\bm{V^*}$. Então $\mathcal{A}^k(\bm V)$ é um espaço linear sobre $\bm C$ de dimensão $\binom{d}{k}$ e o conjunto
+	\begin{equation*}
+	\set{\bm b^*_{i_0} \wedge \cdots \wedge \bm b^*_{i_{k-1}}}{i_0 < \cdots < i_{k-1} \in d}
+	\end{equation*}
+de formas alternadas $k$-lineares em $\bm V$ é uma base para $\mathcal{A}^k(\bm V)$
+\end{prop}
+
+Em particular, isso mostra que formas $d$-lineares num espaço de dimensão $d$ são todas múltiplos umas das outras, pois $\binom{d}{d}=1$. Podemos fixar o valor de uma das formas como 1 e chamá-la de \emph{determinante}.
 
 
 
