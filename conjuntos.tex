@@ -358,11 +358,7 @@ Generalizando essa ideia, a união de três conjuntos $X_1,X_2,X_3$ pode ser den
 Essa notação tem a vantagem de estar mais próxima da intuição e também permite trabalhar com duplas uniões mais facilmente. As mesmas ideias são aplicadas para interseções e produtos. No entanto, ainda resta um problema, o problema principal. Tendo  já especificada qual é a notação que pretende-se aplicar, ainda falta definir o que é uma família somente a partir dos conceitos da teoria de conjuntos. Essa definição vem a seguir.
 
 \begin{defi}
-	Sejam $C$ e $I$ conjuntos não vazios. Uma \emph{família} de elementos de $X$ indexados por $I$ é uma função $F: I \to C$. O conjunto $I$ é o \emph{conjunto de índices} da família. Denota-se isso por
-	\begin{equation*}
-	(F_i)_{i \in I} \subseteq C
-	\end{equation*}
-e a imagem de $i \in I$ por $F$ é denotada $F_i$ e chamada de \emph{$i$-ésimo membro} da família.
+Sejam $C$ e $I$ conjuntos não vazios. Uma \emph{família} de elementos de $C$ indexados por $I$ é uma função $F: I \to C$. O conjunto $I$ é o \emph{conjunto de índices} da família. Denota-se isso por $(F_i)_{i \in I}$ e a imagem de $i \in I$ por $F$ é denotada $F_i$ e chamada de \emph{$i$-ésimo membro} da família.
 \noindent
 Uma \emph{sequência} é uma família em que $I=\N$, e uma \emph{sequência finita} é uma família em que $I \in \N$ (ou seja, $I=\{0,\ldots,n\}$ para algum $n \in \N$, e nesse caso diz-se $n$-sequência).
 \end{defi}
@@ -650,6 +646,20 @@ Note que $x \in f\inv(\prod_{i \in I} {S_i})$ é equivalente a $f(x) \in \prod_{
 %	\end{equation*}
 %\end{conj}
 
+
+\subsubsection*{Notação alternativa}
+
+\begin{equation*}
+\prod_{i \in I} C_i = \set{\lceil c_i \rceil_{i \in I}}{\forall i \in I \; c_i \in C_i}
+\end{equation*}
+
+$\lceil c_i \rceil_{i \in I} = c: I \to \bigcup_{i \in I} C_i$
+
+\begin{equation*}
+\coprod_{i \in I} C_i = \set{\lfloor c \rfloor_i}{i \in I, c \in C_i}
+\end{equation*}
+
+$\lfloor c \rfloor_i = (i,c)$
 
 \chapter{Funções}
 
@@ -1961,61 +1971,60 @@ Sejam $X$, $Y$ subconjuntos de $U$. Então
 
 
 
-\section{Outras definições}
-
-
+\section{Partições}
 
 \begin{defi}
-	Seja $X$ um conjunto não vazio. Uma \emph{partição} de $X$ é um conjunto $P \subseteq \p(X)$ de subconjuntos de $X$ que satisfaz
+Seja $X$ um conjunto. Uma \emph{partição} de $X$ é um conjunto $P \subseteq \p(X)$ de subconjuntos de $X$ que satisfaz
 	\begin{enumerate}
 	\item $\emptyset \notin P$;
 	\item $\displaystyle\bigcup P = X$;
-	\item $\forall A,B \in P \qquad A \neq B \entao A \cap B = \emptyset$.
+	\item $\forall C_0,C_1 \in P \qquad C_0 \neq C_1 \entao C_0 \cap C_1 = \emptyset$.
 	\end{enumerate}
+Um elemento $C \in P$ é uma \emph{célula} de $P$.
 \end{defi}
 
-\section{Limites de Conjuntos}
-
 \begin{defi}
-	Sejam $X$ um conjunto e $(A_n)_{n \in \N}$ uma sequência de subconjuntos de $X$. O \emph{limite inferior} de $(A_n)_{n \in \N}$ é o conjunto
-	\begin{equation*}
-	\liminf A_n \coloneqq \bigcup_{m=0}^\infty \left( \bigcap_{n=m}^\infty A_n \right).
-	\end{equation*}
-	Esse conjunto é o conjuto dos pontos que não pertencem todos menos finitos conjuntos $A_n$.
-O \emph{limite superior} de $(A_n)_{n \in \N}$ é o conjunto
-	\begin{equation*}
-	\limsup A_n \coloneqq \bigcap_{m=0}^\infty \left( \bigcup_{n=m}^\infty A_n \right).
-	\end{equation*}
-	Esse conjunto é o conjunto dos pontos que pertencem a infinitos conjuntos $A_n$.
+Sejam $X$ um conjunto e $P$ uma partição de $X$. Um \emph{refinamento} (\emph{superpartição}) de $P$ é uma partição $R$ de $X$ que satisfaz: para toda célula $D \in R$, existe uma célula $C \in P$ tal que $D \subseteq C$. Denota-se $P \leq R$. Diz que $P$ é um \emph{engrossamento} (\emph{subpartição}) de $R$.
 \end{defi}
 
 \begin{prop}
-	Sejam $X$ um conjunto e $(A_n)_{n \in \N}$ uma sequência de subconjuntos de $X$. Então
-	\begin{equation*}
-	\emptyset \subseteq \liminf A_n \subseteq \limsup A_n \subseteq X.
-	\end{equation*}
+Sejam $X$ um conjunto e $P,R$ partições de $X$ tais que $P \leq R$. Então $\card{P} \leq \card{R}$ e, para toda célula $C \in P$, vale $C=\bigcup \set{D \in R}{D \subseteq C}$.
 \end{prop}
+\begin{proof}
+Por definição de refinamento, para toda célula $D \in R$ existe célula $C \in P$ tal que $D \subseteq C$. Notemos que essa célula $C$ é única pois, se existir célula $C' \in P$ tal que $D \subseteq C'$, então $D \subseteq C \cap C'$ e, como $D \neq \emptyset$, segue que $C =C'$. Assim, consideramos a função que mapeia, para cada célula $D \in R$ a célula $C_D \in P$ tal que $D \subseteq C_D$: \func{f}{R}{P}{D}{C_D.} Mostremos que essa função é sobrejetiva. Para isso, seja $C \in P$. Como $\bigcup R = X$, para todo $x \in C \subseteq X$ existe $D \in R$ tal que $x \in D$. Como $C \neq \emptyset$, existe $x \in C$, logo existe $D \in R$ tal que $x \in D$. Por definição de refinamento, existe $C' \in P$ tal que $D \subseteq C'$, o que implica $x \in C'$. Como $x \in C' \cap C$, segue que $C=C'$, e concluímos que $D \subseteq C$. Isso mostra que $f(D)=C$, logo que $f$ é sobrejetiva. Concluímos, então, que $\card{P} \leq \card{R}$.
+
+Por fim, seja $C \in P$ e $U \coloneqq \bigcup \set{D \in R}{D \subseteq C}$. Notemos que $C=U$. Para mostrar isso, seja $x \in C$. Então existe $D \in R$ tal que $x \in D$, pois $\bigcup P=X$. Por definição de refinamento, existe $C' \in P$ tal que $D \subseteq C'$, portanto $x \in C'$. Como $x \in C' \cap C$, segue que $C=C'$. concluímos que $D \subseteq C$, portanto que $x \in U$, o que mostra $C \subseteq U$. Reciprocamente, para todo $D \in U$, $D \subseteq C$, portanto $U \subseteq C$, e concluímos que $C=U$.
+\end{proof}
 
 \begin{prop}
-	Sejam $X$ um conjunto e $(A_n)_{n \in \N}$ uma sequência de subconjuntos de $X$. Então
-	\begin{enumerate}
-	\item Se $(A_n)_{n \in \N}$ é monótona cresente,
-	\begin{equation*}
-	\liminf A_n = \bigcup_{n=0}^\infty A_n = \limsup A_n.
-	\end{equation*}
-	
-	\item Se $(A_n)_{n \in \N}$ é monótona decresente,
-	\begin{equation*}
-	\liminf A_n = \bigcap_{n=0}^\infty A_n = \limsup A_n.
-	\end{equation*}
-	\end{enumerate}
+Sejam $X$ um conjunto. A relação de refinamento $\leq$ no conjunto de partições de $X$ é uma relação de ordem parcial.
 \end{prop}
 
 \begin{defi}
-	Sejam $X$ um conjunto e $(A_n)_{n \in \N}$ uma sequência de subconjuntos de $X$. Um \emph{limite} de $(A_n)_{n \in \N}$ é um conjunto $\lim A_n$ tal que
+Sejam $X$ um conjunto e $(P_i){i \in I}$ uma família de partições de $X$. O \emph{refinamento comum} a $(P_i)_{i \in I}$ é o conjunto
 	\begin{equation*}
-	\lim A_n = \liminf A_n = \limsup A_n.
+	\bigvee_{i \in I} P_i \coloneqq \set{\bigcap_{i \in I} C_i}{\forall i \in I\quad C_i \in P_i} \setminus \{\emptyset\}.
 	\end{equation*}
 \end{defi}
+
+\begin{prop}
+Sejam $X$ um conjunto e $(P_i){i \in I}$ uma família de partições de $X$. O refinamento comum $\bigvee_{i \in I} P_i$ a $(P_i){i \in I}$ é a menor partição de que $X$ que refina $P_i$ para todo $i \in I$.
+\end{prop}
+\begin{proof}
+Primeiro, mostremos que $P \coloneqq \bigvee_{i \in I} P_i$ é uma partição. Por definição, $\emptyset \notin P$. Seja $x \in X$. Então, para cada $i \in I$, existe $C_i \in P_i$ tal que $x \in C_i$, pois $\bigcup P_i = X$. Sendo assim, $x \in \bigcap_{i \in I} C_i$, portanto $X \subseteq \bigcup P$, e segue que $\bigcup P = X$. Por fim, sejam $C=\bigcap_{i \in I} C_i, D=\bigcap_{i \in I} D_i \in P$. Se $C \neq D$, então existe $x \in C\setminus D$ ou existe $x \in D \setminus C$. Sem perda de generalidade, suponha o primeiro. Então, existe $i \in I$ tal que $x \notin D_i$. Como $x \in C$, então $x \in C_i$, portanto $C_i \neq D_i$. Mas então, como $P_i$ é partição, $C_i \cap D_i = \emptyset$. Por fim, como $C \subseteq C_i$ e $D \subseteq D_i$, segue que $C \cap D = \emptyset$.
+
+Agora mostraremos que $P$ é refinamento de $P_i$ para todo $i \in I$. Sejam $i \in I$ e $C \in P$. Então $P=\bigcap_{i \in I} C_i$, portanto $C_i \in P_i$. Por fim, sejam $R$ partição de $X$ que é refina $P_i$ para todo $i \in I$ e $D \in R$ uma célula. Então, para todo $i \in I$, existe $C_i \in P_i$ tal que $D \subseteq C_i$. Portanto $D \subseteq \bigcap_{i \in I} C_i$, e como $\bigcap_{i \in I} C_i \in P$, segue que $P \leq R$.
+\end{proof}
+
+Alguns tipos especiais de partições são úteis na teoria de intergação de Riemmann. Em $\R^1$, essas partições são chamadas de partições de intervalo, e são representadas como um número finito de pontos em um intervalo. Quando generaliza-se para dimensões maiores, usam-se $n$-retângulos, que são conjuntos em $\R^n$ pprodutos de $n$ intervalos limitados. Podemos fixar um critério a mais, o de que um $n$-retângulo é produto de intervalos fechados em baixo e abertos em cima. Nesse caso, podemos definir que uma partição cujos elementos são $n$-retângulos é uma \emph{malha}. Alternativamente, quando temos uma medida, que é o caso de $\R^n$, podemos enfraquecer a restrição de que as células de uma partição são iguais ou disjuntas para a de que são iguais ou a interseção tem medida zero, e a restrição de que cobrem para a restrição de que a união da partição tem medida igual à medida total, e por fim, de que nenhum elemento da partição tem medida nula (essa não é tão necessária, acho), e definir que isso é uma $\mu$-partição ou \emph{partição com respeito a $\mu$}.
+
+
+
+
+
+
+
+
+
 
 
