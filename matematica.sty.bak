@@ -60,8 +60,9 @@
 	
 	%\renewcommand{\emptyset}{\varnothing}
 	
+	% Conjuntos
 	\newcommand{\set}[2]{\left\{#1 \;\middle\vert\; #2 \right\}}
-		
+	% Conjunto das Partes
 	\newcommand{\p}{\scalebox{1.2}{$\mathcal{P}$}}
 	
 	% Coproduto quadrado (Precisa do graphicx)
@@ -102,7 +103,8 @@
 	
 	\newcommand{\idx}{_{i \in I}}
 
-
+%Traço de variável numa função
+\newcommand{\var}{\bm{\cdot}}
 
 %% Conjuntos Numéricos
 	\newcommand{\N}{\mathbb{N}}
@@ -206,11 +208,18 @@
 
 \newcommand{\orb}{\mathcal{O}}
 
+%Paridade de uma permutação
+%\newcommand{\prd}{\pm}
+\newcommand{\prd}{\epsilon}
+%\DeclareMathOperator{\prd}{snl}
+
 
 \newcommand{\nor}[1]{\left\Vert{#1}\right\Vert}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %TOPOLOGIA
+
+\newcommand{\topo}{\mathcal{T}}
 
 \newcommand{\inn}[1]{{#1}^\circ}
 \newcommand{\fec}[1]{\overline{#1}}
@@ -218,11 +227,13 @@
 
 \newcommand{\viz}{\mathcal{V}}
 
+%Funções contínuas
+\newcommand{\cont}{\mathscr{C}}
+
+% Espaços Métricos
 \DeclareMathOperator{\diam}{diam}
-\newcommand{\conv}{\longrightarrow}
-
-\newcommand{\topo}{\mathcal{T}}
-
+\newcommand{\conv}{\rightarrow} % Convergência/ convergência pontual
+\newcommand{\uconv}{\rightrightarrows} % Convergência uniforme
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

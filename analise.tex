@@ -7,20 +7,13 @@
 \subsection{Sigma-Álgebras e Sub-Sigma-Álgebras}
 
 \begin{defi}
-	Seja $X$ um conjunto não vazio. Uma \emph{sigma-álgebra} $\Sigma$ sobre $X$ é um subconjunto de $\p(X)$ que satisfaz
+	Seja $X$ um conjunto. Uma \emph{sigma-álgebra} sobre $X$ é um conjunto $\Sigma \subseteq \p(X)$ de subconjuntos $X$ que satisfaz
 	\begin{enumerate}
-	\item O vazio é mensurável.
+	\item (Vazio) $\emptyset \in \Sigma$.
+	\item (Fechamento por complementação) Para todo $M \in \Sigma$, $M\comp \in \Sigma$.
+	\item (Fehamento por união enumerável) Para toda sequência $(M_i)_{i \in \N}$ de conjuntos de $\Sigma$,
 	\begin{equation*}
-	\emptyset \in \Sigma
-	\end{equation*}
-
-	\item Complementar de mensurável é mensurável.
-	\begin{equation*}
-	A \in \Sigma \entao A^\complement \in \Sigma
-	\end{equation*}
-	\item União enumerável de mensuráveis é mensurável.
-	\begin{equation*}
-	(A_i)_{i \in \N} \subseteq \Sigma \entao \bigcup_{i \in \N} A_i \in \Sigma
+	\bigcup_{i \in \N} M_i \in \Sigma
 	\end{equation*}
 	\end{enumerate}
 \end{defi}
@@ -30,18 +23,21 @@
 \begin{prop}
 	Seja $X$ um conjunto não vazio e $\Sigma$ uma sigma-álgebra sobre $X$. Então
 	\begin{enumerate}
-	\item $X \in \Sigma$;
-	\item $(A_i)_{i \in \N} \subseteq \Sigma \entao \displaystyle \bigcap_{i \in \N} A_i \in \Sigma$.
+	\item (Universo) $X \in \Sigma$;
+	\item (Fechamento por interseção enumerável) Para toda sequência $(M_i)_{i \in \N}$ de conjuntos de $\Sigma$,
+	\begin{equation*}
+	\bigcap_{i \in \N} M_i \in \Sigma.
+	\end{equation*}
 	\end{enumerate}
 \end{prop}
 \begin{proof}
 	\begin{enumerate}
 	\item Da primeira propriedade de $\Sigma$, tem-se que $\emptyset \in \Sigma$. Da segunda propriedade de $\Sigma$, tem-se que $X = \emptyset^\complement \in \Sigma$.
-	\item Da segunda propriedade, tem-se que, para todo $i \in \N$, $A_i^\complement \in \Sigma$. Da terceira propriedade de $\Sigma$, tem-se que $\bigcup_{i \in \N} A_i^\complement \in \Sigma$. Das Leis de De Morgan (\ref{prop:de.morgan}), tem-se que
+	\item Da segunda propriedade, tem-se que, para todo $i \in \N$, $M_i^\complement \in \Sigma$. Da terceira propriedade de $\Sigma$, tem-se que $\bigcup_{i \in \N} M_i^\complement \in \Sigma$. Das Leis de De Morgan (\ref{prop:de.morgan}), tem-se que
 	\begin{equation*}
-	\left(\bigcap_{i \in \N} A_i \right)^\complement = \bigcup_{i \in \N} (A_i)^\complement \in \Sigma,
+	\left(\bigcap_{i \in \N} M_i \right)^\complement = \bigcup_{i \in \N} (M_i)^\complement \in \Sigma,
 	\end{equation*}
-e conclui-se que $\displaystyle\bigcap_{i \in \N} A_i \in \Sigma$.
+e conclui-se que $\displaystyle\bigcap_{i \in \N} M_i \in \Sigma$.
 	\end{enumerate}
 \end{proof}
 
@@ -50,49 +46,12 @@ e conclui-se que $\displaystyle\bigcap_{i \in \N} A_i \in \Sigma$.
 \end{ex}
 
 \begin{defi}
-	Seja $X$ um conjunto não vazio e $\Sigma$ uma sigma-álgebra sobre $X$. Uma \emph{sub-sigma-álgebra} de $\Sigma$ é um conjunto $\Sigma' \subseteq \Sigma$ que é uma sigma-álgebra sobre $X$.
+Seja $X$ um conjunto não vazio e $\Sigma$ uma sigma-álgebra sobre $X$. Uma \emph{sub-sigma-álgebra} de $\Sigma$ é um conjunto $\Sigma' \subseteq \Sigma$ que é uma sigma-álgebra sobre $X$.
 \end{defi}
 
 \begin{defi}
 	Um \emph{espaço mensurável} é um par $(X,\Sigma)$ em que $X$ é um conjunto não vazio e $\Sigma$ é uma sigma-álgebra sobre $X$. Um \emph{conjunto mensurável} é um elemento da sigma-álgebra $\Sigma$.
 \end{defi}
-
-\subsection{Sigma-Álegbras Puxadas e Empurradas}
-
-\begin{defi}
-Sejam $X$ um conjunto, $\bm Y = (Y,\Sigma_Y)$ um espaço mensurável e $f: X \to Y$ uma função. A \emph{sigma-álgebra puxada} por $f$ é
-	\begin{equation*}
-	f^*(\Sigma_Y) \coloneqq \set{f^{-1}(M)}{M \in \Sigma_Y}.
-	\end{equation*}
-\end{defi}
-
-\begin{prop}
-Sejam $X$ um conjunto, $\bm Y = (Y,\Sigma_Y)$ um espaço mensurável e $f: X \to Y$ uma função. Então $\Sigma_X \coloneqq f^*(\Sigma_Y)$, a sigma-álgebra puxada por $f$, é uma sigma-álgebra sobre $X$.
-\end{prop}
-\begin{proof}
-Primeiro, notemos que $\emptyset \in \Sigma_X$, pois $\emptyset \in \Sigma_Y$ e $f^{-1}(\emptyset) = \emptyset$ (\ref{prop:props.imag.inv}). Segundo, seja $B \in \Sigma_X$. Então existe $A \in \Sigma_Y$ tal que $B = f^{-1}(A)$. Como $\Sigma_Y$ é uma sigma-álgebra, então $A^\complement \in \Sigma_Y$, o que implica $f^{-1}(A^\complement) \in \Sigma_X$. Mas $(f^{-1}(A))^\complement = f^{-1}(A^\complement)$ (\ref{prop:props.imag.inv}). Então $B^\complement \in \Sigma_X$. Terceiro, seja $(B_i)_{i \in \N}$ uma sequência de conjuntos de $\Sigma_X$. Então, para todo $i \in I$, existe $A_i \in \Sigma_Y$ tal que $B_i = f^{-1}(A_i)$. Como $\Sigma_Y$ é uma sigma-álgebra, então $\bigcup_{i \in \N} A_i \in \Sigma_Y$. Isso implica que $f^{-1}(\bigcup_{i \in \N} A_i) \in \Sigma_X$. Mas $f^{-1}(\bigcup_{i \in \N} A_i) = \bigcup_{i \in \N} f^{-1}(A_i)$ (\ref{prop:props.imag.inv}). Então $\bigcup_{i \in \N} B_i \in \Sigma_X$ e, assim, conclui-se que $\Sigma_X$ é uma sigma-álgebra sobre $X$.
-\end{proof}
-
-\begin{defi}
-Sejam $\bm X = (X,\Sigma_X)$ um espaço mensurável, $Y$ um conjunto e $f: X \to Y$ uma função. A \emph{sigma-álgebra empurrada} por $f$ é
-	\begin{equation*}
-	f_*(\Sigma_X) \coloneqq \set{M \subseteq Y}{f^{-1}(M) \in \Sigma_X}.
-	\end{equation*}
-\end{defi}
-
-\begin{prop}
-Sejam $\bm X = (X,\Sigma_X)$ um espaço mensurável, $Y$ um conjunto e $f: X \to Y$ uma função. Então $\Sigma_Y \coloneqq f_*(\Sigma_X)$, a sigma-álgebra empurrada por $f$, é uma sigma-álgebra sobre $Y$.
-\end{prop}
-\begin{proof}
-Primeiro, notemos que $\emptyset \in \Sigma_Y$, pois $\emptyset \in \Sigma_X$ e $f^{-1}(\emptyset) = \emptyset$ (\ref{prop:props.imag.inv}). Segundo, seja $A \in \Sigma_Y$. Então $f^{-1}(A) \in \Sigma_ X$, o que implica $(f^{-1}(A))^\complement \in \Sigma_ X$, pois $\Sigma_ X$ é sigma-álgebra. Mas $(f^{-1}(A))^\complement = f^{-1}(A^\complement)$ (\ref{prop:props.imag.inv}), o que implica $f^{-1}(A^\complement) \in \Sigma_ X$ e, portanto, $A^\complement \in \Sigma_ Y$. Terceiro, seja $(A_i)_{i \in \N}$ uma sequência de conjuntos de $\Sigma_ Y$. Então, para todo $i \in \N$, $f^{-1}(A_i) \in \Sigma_ X$, o que implica que $\bigcup_{i \in \N} f^{-1}(A_i) \in \Sigma_ X$, pois $\Sigma_ X$ é uma sigma-álgebra. Mas, como $\bigcup_{i \in \N} f^{-1}(A_i) = f^{-1}(\bigcup_{i \in \N} A_i)$ (\ref{prop:props.imag.inv}), segue que $\bigcup_{i \in \N} A_i \in \Sigma_ Y$ e, assim, conclui-se que $\Sigma_ Y$ é uma sigma-álgebra sobre $Y$.
-\end{proof}
-
-\begin{prop}
-	Sejam $\bm X = (X,\Sigma_ X)$ e $\bm Y = (Y,\Sigma_ Y)$ espaços mensuráveis. Uma função $f: X \to Y$ é função mensurável de $\bm X$ para $\bm Y$ se, e somente se, $\Sigma_ X' \coloneqq \set{f^{-1}(A)}{A \in \Sigma_ Y}$ é uma sub-sigma-álgebra de $\Sigma_ X$.
-\end{prop}
-\begin{proof}
-	Suponha que $f$ é uma função mensurável. Seja $B \in \Sigma_ X'$. Então existe $A \in \Sigma_ Y$ tal que $B = f^{-1}(A)$. Como $f$ é mensurável, vale $f^{-1}(A) \in \Sigma_ X$, o que implica $B \in \Sigma_ X$ e, portanto, $\Sigma_ X' \subseteq \Sigma_ X$. Como $\Sigma_ X'$ é uma sigma-álgebra sobre $X$ pela proprosição acima, segue que $\Sigma_ X'$ é uma sub-sigma-álgebra de $\Sigma_ X$. Reciprocamente, suponha que $\Sigma_ X'$ é uma sub-sigma-álgebra de $\Sigma_ X$. Seja $A \in \Sigma_ Y$. Então $f^{-1}(A) \in \Sigma_ X'$. Mas como $\Sigma_ X'$ é uma sub-sigma-álgebra de $\Sigma_ X$, segue que $f^{-1}(A) \in \Sigma_ X$, o que mostra que $f$ é mensurável. 
-\end{proof}
 
 \subsection{Sigma-Álgebras Geradas}
 
@@ -152,19 +111,109 @@ Seja $X$ um conjunto e $\mathcal C \in \p(X)$ um conjunto de subconjuntos de $X$
 %é uma união enumerável e, portanto, $\bigcup_{n \in \N} M_n \in \Sigma$. Concluímos, assim, que $\Sigma$ é uma sigma-álgebra em que $\mathcal C$ está contido. Para notar que $\Sigma=\ger{\mathcal C}$, resta mostrar que $\Sigma$ é a menor sgma-álgebra em que $\mathcal C$ está contido. Para isso, seja $\Sigma'$ uma sigma-álgebra sobre $X$ tal que $\mathcal C \subseteq \Sigma$. Seja $M \in \Sigma$. Então $M=\bigcup_{i \in I} C_i$ tal que $\card{I}\leq \card{\N}$ e, para todo $i \in I$, $C_i \in \mathcal C$ ou $C_i\comp \in \mathcal C$. Como $\mathcal C \subseteq \Sigma'$, segue que, para todo $i \in I$, $C_i \in \Sigma'$ ou $C_i\comp \in \Sigma'$. Portanto, como $\Sigma'$ é uma sigma-álgebra, $M=\bigcup_{i \in I} C_i \in \Sigma'$. Concluímos que $\Sigma \subseteq \Sigma'$ e, então, que $\Sigma = \ger{\mathcal C}$.
 %\end{proof}
 
+
+\subsection{Limites de Conjuntos}
+
+\begin{defi}
+	Sejam $X$ um conjunto e $(A_n)_{n \in \N}$ uma sequência de subconjuntos de $X$. O \emph{limite inferior} de $(A_n)_{n \in \N}$ é o conjunto
+	\begin{equation*}
+	\liminf A_n \coloneqq \bigcup_{m=0}^\infty \left( \bigcap_{n=m}^\infty A_n \right).
+	\end{equation*}
+	Esse conjunto é o conjuto dos pontos que não pertencem todos menos finitos conjuntos $A_n$.
+O \emph{limite superior} de $(A_n)_{n \in \N}$ é o conjunto
+	\begin{equation*}
+	\limsup A_n \coloneqq \bigcap_{m=0}^\infty \left( \bigcup_{n=m}^\infty A_n \right).
+	\end{equation*}
+	Esse conjunto é o conjunto dos pontos que pertencem a infinitos conjuntos $A_n$.
+\end{defi}
+
+\begin{prop}
+	Sejam $X$ um conjunto e $(A_n)_{n \in \N}$ uma sequência de subconjuntos de $X$. Então
+	\begin{equation*}
+	\emptyset \subseteq \liminf A_n \subseteq \limsup A_n \subseteq X.
+	\end{equation*}
+\end{prop}
+
+\begin{prop}
+	Sejam $X$ um conjunto e $(A_n)_{n \in \N}$ uma sequência de subconjuntos de $X$. Então
+	\begin{enumerate}
+	\item Se $(A_n)_{n \in \N}$ é monótona cresente,
+	\begin{equation*}
+	\liminf A_n = \bigcup_{n=0}^\infty A_n = \limsup A_n.
+	\end{equation*}
+	
+	\item Se $(A_n)_{n \in \N}$ é monótona decresente,
+	\begin{equation*}
+	\liminf A_n = \bigcap_{n=0}^\infty A_n = \limsup A_n.
+	\end{equation*}
+	\end{enumerate}
+\end{prop}
+
+\begin{defi}
+	Sejam $X$ um conjunto e $(A_n)_{n \in \N}$ uma sequência de subconjuntos de $X$. Um \emph{limite} de $(A_n)_{n \in \N}$ é um conjunto $\lim A_n$ tal que
+	\begin{equation*}
+	\lim A_n = \liminf A_n = \limsup A_n.
+	\end{equation*}
+\end{defi}
+
+
 \section{Funções mensuráveis}
 
 \begin{defi}
 Sejam $\bm X = (X,\Sigma_X)$ e $\bm Y = (Y,\Sigma_Y)$ espaços mensuráveis. Uma \emph{função mensurável} de $\bm X$ para $\bm Y$ é uma função $f: X \to Y$ que satisfaz
 	\begin{equation*}
-	\forall A \in \Sigma_Y \qquad f^{-1}(A) \in \Sigma_X.
+	\forall M \in \Sigma_Y \qquad f^{-1}(M) \in \Sigma_X.
 	\end{equation*}
 Denota-se $f: \bm X \to \bm Y$.
 \end{defi}
 
 \begin{prop}
-Seja $\bm X = (X,\Sigma_X)$ um espaço mensurável. A função $\id: X \to X$ é um 
+Seja $\bm X$ um espaço mensurável. A função $\id_X: X \to X$ é uma função mensurável.
 \end{prop}
+
+\begin{prop}
+Sejam $\bm{X_0}$, $\bm{X_1}$ e $\bm{X_2}$ espaços mensuráveis e $f_0: \bm{X_0} \to \bm{X_1}$ e $f_1: \bm{X_1} \to \bm{X_2}$ funções mensuráveis. Então $f_1 \circ f_0: \bm{X_0} \to \bm{X_2}$ é uma função mensurável.
+\end{prop}
+
+\subsection{Sigma-Álgebras Puxadas e Empurradas}
+
+\begin{defi}
+Sejam $X$ um conjunto, $\bm Y = (Y,\Sigma_Y)$ um espaço mensurável e $f: X \to Y$ uma função. A \emph{sigma-álgebra puxada} por $f$ é
+	\begin{equation*}
+	f^*(\Sigma_Y) \coloneqq \set{f^{-1}(M)}{M \in \Sigma_Y}.
+	\end{equation*}
+\end{defi}
+
+\begin{prop}
+Sejam $X$ um conjunto, $\bm Y = (Y,\Sigma_Y)$ um espaço mensurável e $f: X \to Y$ uma função. Então $\Sigma_X \coloneqq f^*(\Sigma_Y)$, a sigma-álgebra puxada por $f$, é uma sigma-álgebra sobre $X$.
+\end{prop}
+\begin{proof}
+Primeiro, notemos que $\emptyset \in \Sigma_X$, pois $\emptyset \in \Sigma_Y$ e $f^{-1}(\emptyset) = \emptyset$ (\ref{prop:props.imag.inv}). Segundo, seja $B \in \Sigma_X$. Então existe $A \in \Sigma_Y$ tal que $B = f^{-1}(A)$. Como $\Sigma_Y$ é uma sigma-álgebra, então $A^\complement \in \Sigma_Y$, o que implica $f^{-1}(A^\complement) \in \Sigma_X$. Mas $(f^{-1}(A))^\complement = f^{-1}(A^\complement)$ (\ref{prop:props.imag.inv}). Então $B^\complement \in \Sigma_X$. Terceiro, seja $(B_i)_{i \in \N}$ uma sequência de conjuntos de $\Sigma_X$. Então, para todo $i \in I$, existe $A_i \in \Sigma_Y$ tal que $B_i = f^{-1}(A_i)$. Como $\Sigma_Y$ é uma sigma-álgebra, então $\bigcup_{i \in \N} A_i \in \Sigma_Y$. Isso implica que $f^{-1}(\bigcup_{i \in \N} A_i) \in \Sigma_X$. Mas $f^{-1}(\bigcup_{i \in \N} A_i) = \bigcup_{i \in \N} f^{-1}(A_i)$ (\ref{prop:props.imag.inv}). Então $\bigcup_{i \in \N} B_i \in \Sigma_X$ e, assim, conclui-se que $\Sigma_X$ é uma sigma-álgebra sobre $X$.
+\end{proof}
+
+\begin{defi}
+Sejam $\bm X = (X,\Sigma_X)$ um espaço mensurável, $Y$ um conjunto e $f: X \to Y$ uma função. A \emph{sigma-álgebra empurrada} por $f$ é
+	\begin{equation*}
+	f_*(\Sigma_X) \coloneqq \set{M \subseteq Y}{f^{-1}(M) \in \Sigma_X}.
+	\end{equation*}
+\end{defi}
+
+\begin{prop}
+Sejam $\bm X = (X,\Sigma_X)$ um espaço mensurável, $Y$ um conjunto e $f: X \to Y$ uma função. Então $\Sigma_Y \coloneqq f_*(\Sigma_X)$, a sigma-álgebra empurrada por $f$, é uma sigma-álgebra sobre $Y$.
+\end{prop}
+\begin{proof}
+Primeiro, notemos que $\emptyset \in \Sigma_Y$, pois $\emptyset \in \Sigma_X$ e $f^{-1}(\emptyset) = \emptyset$ (\ref{prop:props.imag.inv}). Segundo, seja $A \in \Sigma_Y$. Então $f^{-1}(A) \in \Sigma_ X$, o que implica $(f^{-1}(A))^\complement \in \Sigma_ X$, pois $\Sigma_ X$ é sigma-álgebra. Mas $(f^{-1}(A))^\complement = f^{-1}(A^\complement)$ (\ref{prop:props.imag.inv}), o que implica $f^{-1}(A^\complement) \in \Sigma_ X$ e, portanto, $A^\complement \in \Sigma_ Y$. Terceiro, seja $(A_i)_{i \in \N}$ uma sequência de conjuntos de $\Sigma_ Y$. Então, para todo $i \in \N$, $f^{-1}(A_i) \in \Sigma_ X$, o que implica que $\bigcup_{i \in \N} f^{-1}(A_i) \in \Sigma_ X$, pois $\Sigma_ X$ é uma sigma-álgebra. Mas, como $\bigcup_{i \in \N} f^{-1}(A_i) = f^{-1}(\bigcup_{i \in \N} A_i)$ (\ref{prop:props.imag.inv}), segue que $\bigcup_{i \in \N} A_i \in \Sigma_ Y$ e, assim, conclui-se que $\Sigma_ Y$ é uma sigma-álgebra sobre $Y$.
+\end{proof}
+
+\begin{prop}
+Sejam $\bm X = (X,\Sigma_ X)$ e $\bm Y = (Y,\Sigma_ Y)$ espaços mensuráveis. Uma função $f: X \to Y$ é função mensurável de $\bm X$ para $\bm Y$ se, e somente se, a sigma-álgebra $f^*(\Sigma_Y)$ puxada por $f$ é uma sub-sigma-álgebra de $\Sigma_ X$.
+	\begin{equation*}
+	f \in \mensu(\bm X,\bm Y) \sse f^*(\Sigma_Y) \subseteq \Sigma_X.
+	\end{equation*}
+\end{prop}
+\begin{proof}
+Suponha que $f$ é uma função mensurável. Seja $B \in f^*(\Sigma_Y)$. Então existe $A \in \Sigma_ Y$ tal que $B = f^{-1}(A)$. Como $f$ é mensurável, vale $f^{-1}(A) \in \Sigma_ X$, o que implica $B \in \Sigma_ X$ e, portanto, $f^*(\Sigma_Y) \subseteq \Sigma_ X$. Como $f^*(\Sigma_Y)$ é uma sigma-álgebra sobre $X$ pela proprosição acima, segue que $f^*(\Sigma_Y)$ é uma sub-sigma-álgebra de $\Sigma_ X$. Reciprocamente, suponha que $f^*(\Sigma_Y)$ é uma sub-sigma-álgebra de $\Sigma_ X$. Seja $A \in \Sigma_ Y$. Então $f^{-1}(A) \in f^*(\Sigma_Y)$. Mas como $f^*(\Sigma_Y)$ é uma sub-sigma-álgebra de $\Sigma_ X$, segue que $f^{-1}(A) \in \Sigma_ X$, o que mostra que $f$ é mensurável.
+\end{proof}
 
 
 \clearpage

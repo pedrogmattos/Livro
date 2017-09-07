@@ -7,28 +7,28 @@
 	A noção de topologia que será abordada nesta parte do livro é a topologia baseada em teoria dos conjuntos.
 
 \begin{defi}
-	Seja $X$ um conjunto. Uma \emph{topologia} de $X$ é um conjunto $\mathcal T \subseteq \p(X)$ que satisfaz
+	Seja $X$ um conjunto. Uma \emph{topologia} de $X$ é um conjunto $\topo \subseteq \p(X)$ que satisfaz
 	\begin{enumerate}
 	\item Vazio e conjunto todo são abertos.
 	\begin{equation*}
-	\emptyset, X \in \mathcal T
+	\emptyset, X \in \topo
 	\end{equation*}
 
 	\item União de abertos é aberto.
 	\begin{equation*}
-	(A_i)_{i \in I} \subseteq \mathcal T \Rightarrow \displaystyle\bigcup_{i \in I} A_i \in \mathcal T
+	(A_i)_{i \in I} \subseteq \topo \Rightarrow \displaystyle\bigcup_{i \in I} A_i \in \topo
 	\end{equation*}
 
 	\item Interseção finita de abertos é aberto.
 	\begin{equation*}
-	(A_i)_{i \in \inte_n} \subseteq \mathcal T \Rightarrow \displaystyle\bigcap_{i=1}^n A_i \in \mathcal T
+	(A_i)_{i \in \inte_n} \subseteq \mathcal T \Rightarrow \displaystyle\bigcap_{i=1}^n A_i \in \topo
 	\end{equation*}
 	\end{enumerate}
 	
 	\begin{align*}
-	\tag{Vazio e universo são abertos} &\emptyset, X \in \mathcal T \\
-	\tag{União de abertos é aberto} &\forall A \in \mathcal T \qquad \bigcup A \in T \\
-	\tag{Interseção finita de abertos é aberto} &\forall A \in \mathcal T \qquad \card{A} < \card{\N} \entao \bigcup A \in \mathcal T
+	\tag{Vazio e universo são abertos} &\emptyset, X \in \topo \\
+	\tag{União de abertos é aberto} &\forall A \in \topo \qquad \bigcup A \in T \\
+	\tag{Interseção finita de abertos é aberto} &\forall A \in \topo \qquad \card{A} < \card{\N} \entao \bigcup A \in \topo
 	\end{align*}
 \end{defi}
 
@@ -41,26 +41,26 @@
 \end{prop}
 \begin{proof}
 	\begin{enumerate}
-	\item Primeiramente, $\emptyset$ e $X$ pertencem a $\{\emptyset,X\}$. Agora, consideremos uma família $(A_i)_{i \in I} \subseteq \{\emptyset,X\}$ de abertos. Caso $A_i = \emptyset$ para todo $i \in I$, então $\bigcup_{i \in I} A_i = \emptyset \in \mathcal T$. Caso contrário, existe $j \in I$ tal que $A_j = X$, o que implica $\bigcup_{i \in I} A_i = X \in \mathcal T$. Assim, concluímos que vale a seguda propriedade. Para mostrar a terceira propriedade, seja $(A_i)_{i \in \inte_n} \subseteq \mathcal T$ uma família finita de abertos. Caso $A_i=X$ para todo $i \in I$, o que implica $\bigcap_{i=1}^n A_i = X \in \mathcal T$, Caso contrário, existe $j \in I$ tal que $A_j = \emptyset$, o que implica $\bigcap_{i=1}^n A_i = \emptyset \in \mathcal T$.
+	\item Primeiramente, $\emptyset$ e $X$ pertencem a $\{\emptyset,X\}$. Agora, consideremos uma família $(A_i)_{i \in I} \subseteq \{\emptyset,X\}$ de abertos. Caso $A_i = \emptyset$ para todo $i \in I$, então $\bigcup_{i \in I} A_i = \emptyset \in \topo$. Caso contrário, existe $j \in I$ tal que $A_j = X$, o que implica $\bigcup_{i \in I} A_i = X \in \topo$. Assim, concluímos que vale a seguda propriedade. Para mostrar a terceira propriedade, seja $(A_i)_{i \in \inte_n} \subseteq \topo$ uma família finita de abertos. Caso $A_i=X$ para todo $i \in I$, o que implica $\bigcap_{i=1}^n A_i = X \in \topo$, Caso contrário, existe $j \in I$ tal que $A_j = \emptyset$, o que implica $\bigcap_{i=1}^n A_i = \emptyset \in \topo$.
 
-	\item Todas propriedades valem pois $\mathcal T = \p(X)$.
+	\item Todas propriedades valem pois $\topo = \p(X)$.
 \qedhere
 	\end{enumerate}
 \end{proof}
 
 %\begin{prop}
-%	$A_1,A_2 \in \mathcal T \Rightarrow A_1 \cap A_2 \in \mathcal T$ se, e somente se, $(A_i)_{i \in \inte_n} \subseteq \mathcal T \Rightarrow \displaystyle\bigcap_{i=1}^n A_i \in \mathcal T$.
+%	$A_1,A_2 \in \topo \Rightarrow A_1 \cap A_2 \in \topo$ se, e somente se, $(A_i)_{i \in \inte_n} \subseteq \topo \Rightarrow \displaystyle\bigcap_{i=1}^n A_i \in \topo$.
 %\end{prop}
 %\begin{proof}
-%	Primeiro, consideremos que toda interseção de dois abertos é um aberto. Vamos mostrar que a interseção dessa família é um aberto por indução em $n$. Para o caso base com $n=1$, temos $\bigcap_{i=1}^1 A_i = A_1 \in \mathcal T$. Agora, suponhamos que a propriedade ale para $n$ e vamos provar que vale para $n+1$. Seja $(A_i)_{i \in \inte_{n+1}}$ um família finita de abertos. Pela hipótese de indução, $A \coloneqq \bigcup_{i=1}^n A_i \in \mathcal T$. Então segue que
+%	Primeiro, consideremos que toda interseção de dois abertos é um aberto. Vamos mostrar que a interseção dessa família é um aberto por indução em $n$. Para o caso base com $n=1$, temos $\bigcap_{i=1}^1 A_i = A_1 \in \topo$. Agora, suponhamos que a propriedade ale para $n$ e vamos provar que vale para $n+1$. Seja $(A_i)_{i \in \inte_{n+1}}$ um família finita de abertos. Pela hipótese de indução, $A \coloneqq \bigcup_{i=1}^n A_i \in \topo$. Então segue que
 %	\begin{equation*}
 %	\bigcup_{i=1}^{n+1} A_i = \left(\bigcup_{i=1}^n A_i \right) \cap A_{n+1} = A \cap A_{n+1}.
 %	\end{equation*}
-%	Como supomos que a interseção de dois abertos é um aberto, segue que $\bigcup_{i=1}^{n+1} A_i \in \mathcal T$. Reciprocamente, supomos que, para toda família finita de abertos, sua interseção é um aberto. DIsso segue que, para uma família de dois abertos $A_1, A_2 \in \mathcal T$, sua interseção $A_1 \cap A_2$ é um aberto.
+%	Como supomos que a interseção de dois abertos é um aberto, segue que $\bigcup_{i=1}^{n+1} A_i \in \topo$. Reciprocamente, supomos que, para toda família finita de abertos, sua interseção é um aberto. DIsso segue que, para uma família de dois abertos $A_1, A_2 \in \topo$, sua interseção $A_1 \cap A_2$ é um aberto.
 %\end{proof}
 
 \begin{defi}
-	Um \emph{espaço topológico} é um par $(X,\mathcal T)$ em que $X$ é um conjunto não vazio e $\mathcal T$ é uma topologia de $X$. Um \emph{aberto} de $(X,\mathcal T)$ é um conjunto de $\mathcal T$. Um \emph{fechado} de $(X,\mathcal T)$ é um conjunto cujo complemenar em $\mathcal T$ é um aberto de $(X,\mathcal T)$. O conjunto dos fechados de $(X,\mathcal T)$ é denotado $\complement (\mathcal T)$.
+	Um \emph{espaço topológico} é um par $(X,\topo)$ em que $X$ é um conjunto não vazio e $\topo$ é uma topologia de $X$. Um \emph{aberto} de $(X,\topo)$ é um conjunto de $\topo$. Um \emph{fechado} de $(X,\topo)$ é um conjunto cujo complemenar em $\topo$ é um aberto de $(X,\topo)$. O conjunto dos fechados de $(X,\topo)$ é denotado $\complement (\topo)$.
 \end{defi}
 
 \begin{prop}[Dualidade de abertos e fechados]
@@ -68,33 +68,33 @@
 	\begin{enumerate}
 	\item Vazio e conjunto todo são fechados.
 	\begin{equation*}
-	\emptyset, X \in \complement (\mathcal T)
+	\emptyset, X \in \complement (\topo)
 	\end{equation*}
 
 	\item Interseção de fechados é fechado.
 	\begin{equation*}
-	(F_i)_{i \in I} \subseteq \complement (\mathcal T) \Rightarrow \bigcap_{i \in I} F_i  \in \complement (\mathcal T)
+	(F_i)_{i \in I} \subseteq \complement (\topo) \Rightarrow \bigcap_{i \in I} F_i  \in \complement (\topo)
 	\end{equation*}
 	
 	\item União finita de fechados é fechado.
 	\begin{equation*}
-	(F_i)_{i \in \inte_n} \subseteq \complement (\mathcal T) \Rightarrow \bigcup_{i=1}^n F_i \in \complement (\mathcal T)
+	(F_i)_{i \in \inte_n} \subseteq \complement (\topo) \Rightarrow \bigcup_{i=1}^n F_i \in \complement (\topo)
 	\end{equation*}
 	
 
-%	\item $F_1,F_2 \in \complement (\mathcal T) \Rightarrow F_1 \cup F_2 \in \complement (\mathcal T)$ se, e somente se, $(F_i)_{i \in \inte_n} \subseteq \complement (\mathcal T) \Rightarrow \displaystyle\bigcup_{i=1}^n F_i \in \complement (\mathcal T)$.
+%	\item $F_1,F_2 \in \complement (\topo) \Rightarrow F_1 \cup F_2 \in \complement (\topo)$ se, e somente se, $(F_i)_{i \in \inte_n} \subseteq \complement (\topo) \Rightarrow \displaystyle\bigcup_{i=1}^n F_i \in \complement (\topo)$.
 	\end{enumerate}
 \end{prop}
 \begin{proof} Todas as demonstrações dependem de propriedades básicas de teoria de conjuntos.
 	\begin{enumerate}
-	\item Como $\emptyset,X \in \mathcal T$, $\emptyset^\complement = X$ e $X^\complement = \emptyset$, segue que $\emptyset,X \in \complement (\mathcal T)$.
+	\item Como $\emptyset,X \in \topo$, $\emptyset^\complement = X$ e $X^\complement = \emptyset$, segue que $\emptyset,X \in \complement (\topo)$.
 	
-	\item  Seja $(F_i)_{i \in I} \subseteq \complement (\mathcal T)$. Então $((F_i)^\complement)_{i \in I} \subseteq \mathcal T$, o que implica que $\bigcup_{i \in I} (F_i)^\complement \in \mathcal T$. Para concluir a demonstração, basta notar que
+	\item  Seja $(F_i)_{i \in I} \subseteq \complement (\topo)$. Então $((F_i)^\complement)_{i \in I} \subseteq \topo$, o que implica que $\bigcup_{i \in I} (F_i)^\complement \in \topo$. Para concluir a demonstração, basta notar que
 	\begin{equation*}
 	\left( \bigcup_{i \in I} (F_i)^\complement \right)^\complement = \bigcap_{i \in I} F_i.
 	\end{equation*}
 	
-	\item Seja $(F_i)_{i \in \inte_n} \subseteq \complement (\mathcal T)$. Então $((F_i)^\complement)_{i \in \inte_n} \subseteq \mathcal T$, o que implica que $\bigcap_{i=1}^n (F_i)^\complement \in \mathcal T$. Para concluir a demonstração, basta notar que
+	\item Seja $(F_i)_{i \in \inte_n} \subseteq \complement (\topo)$. Então $((F_i)^\complement)_{i \in \inte_n} \subseteq \topo$, o que implica que $\bigcap_{i=1}^n (F_i)^\complement \in \topo$. Para concluir a demonstração, basta notar que
 	\begin{equation*}
 	\left( \bigcap_{i=1}^n (F_i)^\complement \right)^\complement = \bigcup_{i=1}^n F_i.
 	\end{equation*}
@@ -105,27 +105,27 @@
 \section{Subespaços Topológicos}
 
 \begin{defi}
-	Sejam $(X,\mathcal T)$ um espaço topológico e $Y \subseteq X$ um conjunto não vazio. A \emph{topologia induzida por $\mathcal T$ em $Y$} é o conjunto
+	Sejam $(X,\topo)$ um espaço topológico e $Y \subseteq X$ um conjunto não vazio. A \emph{topologia induzida por $\topo$ em $Y$} é o conjunto
 	\begin{equation*}
-	\mathcal T|_Y \coloneqq \{A \cap Y : A \in \mathcal T\}.
+	\topo|_Y \coloneqq \{A \cap Y : A \in \topo\}.
 	\end{equation*}
 \end{defi}
 
 (OBS: Essa é a menor topologia que torna a inclusão de Y em X contínua.)
 
 \begin{prop}
-	Sejam $(X,\mathcal T)$ um espaço topológico e $Y \subseteq X$ um conjunto não vazio. Então $(Y,\mathcal|_Y)$ é um espaço topológico em $Y$.
+	Sejam $(X,\topo)$ um espaço topológico e $Y \subseteq X$ um conjunto não vazio. Então $(Y,\mathcal|_Y)$ é um espaço topológico em $Y$.
 \end{prop}
 \begin{proof}
-	Primeiro, notemos que $\emptyset,Y \in \mathcal T|_Y$, pois $\emptyset \cap Y = \emptyset$ e $X \cap Y = Y$. Agora, seja $(A_i)_{i \in I}$ uma família de abertos em $\mathcal T|_Y$. Então, para cada $i \in I$, existe um aberto $B_i \in \mathcal T$ tal que $A_i = B_i \cap Y$. Assim, temos que
+	Primeiro, notemos que $\emptyset,Y \in \topo|_Y$, pois $\emptyset \cap Y = \emptyset$ e $X \cap Y = Y$. Agora, seja $(A_i)_{i \in I}$ uma família de abertos em $\topo|_Y$. Então, para cada $i \in I$, existe um aberto $B_i \in \topo$ tal que $A_i = B_i \cap Y$. Assim, temos que
 	\begin{equation*}
 	\bigcup_{i \in I} A_i = \bigcup_{i \in I} (B_i \cap Y) = \left( \bigcup_{i \in I} B_i \right) \cap Y,
 	\end{equation*}
-que pertence à topologia induzida pois $\bigcup_{i \in I} B_i \in \mathcal T$. Por fim, seja $(A_i)_{i \in \inte_n}$. Então, para cada $i \in \inte_n$, existe um aberto $B_i \in \mathcal T$ tal que $A_i = B_i \cap Y$. Assim, temos que
+que pertence à topologia induzida pois $\bigcup_{i \in I} B_i \in \topo$. Por fim, seja $(A_i)_{i \in \inte_n}$. Então, para cada $i \in \inte_n$, existe um aberto $B_i \in \topo$ tal que $A_i = B_i \cap Y$. Assim, temos que
 	\begin{equation*}
 	\bigcap_{i=1}^n A_i = \bigcap_{i=1}^n (B_i \cap Y) = \left( \bigcap_{i=1}^n B_i \right) \cap Y,
 	\end{equation*}
-que pertence à topologia induzida pois $\bigcap_{i=1}^n B_i \in \mathcal T$.
+que pertence à topologia induzida pois $\bigcap_{i=1}^n B_i \in \topo$.
 \end{proof}
 
 
@@ -151,7 +151,7 @@ que pertence à topologia induzida pois $\bigcap_{i=1}^n B_i \in \mathcal T$.
 	Sejam $\bm X$ um espaço topológico e $A,B \subseteq X$. Então
 	\begin{enumerate}
 	\item $\inn{A} \subseteq A$
-	\item $A \in \mathcal T \Leftrightarrow \inn{A}=A$
+	\item $A \in \topo \Leftrightarrow \inn{A}=A$
 	\item $\inn{(A \cap B)} = \inn{A} \cap \inn{B}$
 	\item $\inn{(\inn{A})} = \inn{A}$
 	\item $A \subseteq B \Rightarrow \inn{A} \subseteq \inn{B}$
@@ -179,10 +179,10 @@ que pertence à topologia induzida pois $\bigcap_{i=1}^n B_i \in \mathcal T$.
 	\item $\mathcal I(\mathcal I(A)) = \mathcal I(A)$.
 	\end{enumerate}
 	
-Então o conjunto $\mathcal T \coloneqq \{C \subseteq X : C = \mathcal I(C)\}$ é uma topologia de $X$ e $\mathcal I(C) = \inn{C}$ para cada $C \subseteq X$.
+Então o conjunto $\topo \coloneqq \{C \subseteq X : C = \mathcal I(C)\}$ é uma topologia de $X$ e $\mathcal I(C) = \inn{C}$ para cada $C \subseteq X$.
 \end{prop}
 \begin{proof}
-	Primeiro, notemos que, pela primeira propriedade, $X \in \mathcal T$ e, pela segunda propriedade, como $\mathcal I(\emptyset) \subseteq \emptyset$, concluímos que $\mathcal I(\emptyset)=\emptyset$, o que significa que $\emptyset \in \mathcal T$. 	
+	Primeiro, notemos que, pela primeira propriedade, $X \in \topo$ e, pela segunda propriedade, como $\mathcal I(\emptyset) \subseteq \emptyset$, concluímos que $\mathcal I(\emptyset)=\emptyset$, o que significa que $\emptyset \in \topo$. 	
 	
 	Vamos mostrar a seguinte propriedade: para todos $A,B \subseteq X$,
 	\begin{equation*}
@@ -190,13 +190,13 @@ Então o conjunto $\mathcal T \coloneqq \{C \subseteq X : C = \mathcal I(C)\}$ �
 	\end{equation*}
 Supondo que $A \subseteq B$, temos que $A = A \cap B$. Então, pela terceira propriedade, $\mathcal I(A) = \mathcal I(A) \cap \mathcal I(B)$. Assim, segue que $\mathcal I(A) \subseteq \mathcal I(B)$.	
 	
-Agora, seja $(A_i)_{i \in I}$ uma família de conjuntos em $\mathcal T$. Então, para cada $j \in I$, $A_j \subseteq \bigcup_{i \in I} A_i$ e, portanto, $\mathcal I(A_j) \subseteq \mathcal I(\bigcup_{i \in I} A_i)$. Mas a família satisfaz $\mathcal I(A_i) = A_i$. Assim, concluímos que
+Agora, seja $(A_i)_{i \in I}$ uma família de conjuntos em $\topo$. Então, para cada $j \in I$, $A_j \subseteq \bigcup_{i \in I} A_i$ e, portanto, $\mathcal I(A_j) \subseteq \mathcal I(\bigcup_{i \in I} A_i)$. Mas a família satisfaz $\mathcal I(A_i) = A_i$. Assim, concluímos que
 	\begin{equation*}
 	\bigcup_{i \in I} \mathcal I(A_i) = \bigcup_{i \in I} A_i \subseteq \mathcal I \left( \bigcup_{i \in I} A_i \right)
 	\end{equation*}
-Pela segunda propriedade, $\mathcal I(\bigcup_{i \in I} A_i) \subseteq \bigcup_{i \in I} A_i$. Portanto $\bigcup_{i \in I} A_i = \mathcal I(\bigcup_{i \in I} A_i )$, e concluímos que $\bigcup_{i \in I} A_i \in \mathcal T$.
+Pela segunda propriedade, $\mathcal I(\bigcup_{i \in I} A_i) \subseteq \bigcup_{i \in I} A_i$. Portanto $\bigcup_{i \in I} A_i = \mathcal I(\bigcup_{i \in I} A_i )$, e concluímos que $\bigcup_{i \in I} A_i \in \topo$.
 	
-	Então, seja $(A_i)_{i \in \inte_n}$ uma família finita de conjuntos em $\mathcal T$. Usando a terceira propriedade e indução, provaremos que $\bigcap_{i=1}^{n} A_i \in \mathcal T$. Para $n=1$, a propriedade é trivialmente verdade. Suponhamos que vale para $n=k$. Então, pela terceira propriedade,
+	Então, seja $(A_i)_{i \in \inte_n}$ uma família finita de conjuntos em $\topo$. Usando a terceira propriedade e indução, provaremos que $\bigcap_{i=1}^{n} A_i \in \topo$. Para $n=1$, a propriedade é trivialmente verdade. Suponhamos que vale para $n=k$. Então, pela terceira propriedade,
 	\begin{align*}
 	\mathcal I \left( \bigcap_{i=1}^{k+1} A_i \right)
 	&= \mathcal I \left( \left( \bigcap_{i=1}^{k} A_i \right) \cap A_{k+1} \right) \\
@@ -204,7 +204,7 @@ Pela segunda propriedade, $\mathcal I(\bigcup_{i \in I} A_i) \subseteq \bigcup_{
 	&= \bigcap_{i=1}^{k} A_i \cap A_{k+1} \\
 	&= \bigcap_{i=1}^{k+1} A_i,
 	\end{align*}
-o que mostra que $\bigcap_{i=1}^{k+1} A_i \in \mathcal T$ e que, para todo $n \in \N$, $\bigcap_{i=1}^{n} A_i \in \mathcal T$. Logo concluímos que $\mathcal T$ é uma topologia de $X$.
+o que mostra que $\bigcap_{i=1}^{k+1} A_i \in \topo$ e que, para todo $n \in \N$, $\bigcap_{i=1}^{n} A_i \in \topo$. Logo concluímos que $\topo$ é uma topologia de $X$.
 
 Devemos, por fim, mostrar que $\mathcal I(C)=\inn{C}$ para todo $C \subseteq X$. Seja $(C_I)_{i \in I}$ uma indexação dos subconjuntos abertos de $C$. Vamos mostrar primeiro que $\inn{C} \subseteq \mathcal I(C)$. Para todo $i \in I$, temos que $C_i \subseteq C$ implica $\mathcal I(C_i) \subseteq \mathcal I(C)$. Como $C_i = \mathcal I(C_i)$, segue que $C_i \subseteq \mathcal I(C)$ e, portanto,
 	\begin{equation*}
@@ -217,13 +217,13 @@ Devemos, por fim, mostrar que $\mathcal I(C)=\inn{C}$ para todo $C \subseteq X$.
 \end{proof}
 
 \begin{prop}
-	Sejam $(X, \mathcal T)$ um espaço topológico e $C \subseteq X$. Então
+	Sejam $(X, \topo)$ um espaço topológico e $C \subseteq X$. Então
 	\begin{equation*}
-	\inn{C} = \{x \in X : \exists A \in \mathcal T \quad x \in A \subseteq C\}
+	\inn{C} = \{x \in X : \exists A \in \topo \quad x \in A \subseteq C\}
 	\end{equation*}
 \end{prop}
 \begin{proof}
-	Se o único aberto contido em $C$ é $\emptyset$, então $\inn{C}=\emptyset$ e segue que, para todo $x \in X$, todo aberto $A \in \mathcal T$ tal que $x \in A$ não está contido em $C$. Então os conjuntos são iguais.
+	Se o único aberto contido em $C$ é $\emptyset$, então $\inn{C}=\emptyset$ e segue que, para todo $x \in X$, todo aberto $A \in \topo$ tal que $x \in A$ não está contido em $C$. Então os conjuntos são iguais.
 	Se $\inn{C}=\emptyset$, então o único aberto contido em 
 	
 	
@@ -241,7 +241,7 @@ Devemos, por fim, mostrar que $\mathcal I(C)=\inn{C}$ para todo $C \subseteq X$.
 	Dualmente, consideraremos agora o conceito de fecho.
 
 \begin{defi}
-	Sejam $(X,\mathcal T)$ um espaço topológico, $C \subseteq X$ e $(F_i)_{i \in I}$ uma indexação do conjunto de todos conjuntos fechados de $X$ dos quais $C$ é subconjunto. O \emph{fecho de $C$} é o conjunto fechado
+	Sejam $(X,\topo)$ um espaço topológico, $C \subseteq X$ e $(F_i)_{i \in I}$ uma indexação do conjunto de todos conjuntos fechados de $X$ dos quais $C$ é subconjunto. O \emph{fecho de $C$} é o conjunto fechado
 	\begin{equation*}
 	\fec{C} \coloneqq \bigcap_{i \in I} F_i.
 	\end{equation*}
@@ -271,7 +271,7 @@ Devemos, por fim, mostrar que $\mathcal I(C)=\inn{C}$ para todo $C \subseteq X$.
 	\item $\mathcal F(\mathcal F(A)) = \mathcal F(A)$.
 	\end{enumerate}
 	
-Então o conjunto $\complement(\mathcal T) \coloneqq \{C \subseteq X : C = \mathcal F(C)\}$ é o conjunto de fechados de uma topologia $\mathcal T$ de $X$ e $\mathcal F(C) = \fec{C}$ para cada $C \subseteq X$.
+Então o conjunto $\complement(\topo) \coloneqq \{C \subseteq X : C = \mathcal F(C)\}$ é o conjunto de fechados de uma topologia $\topo$ de $X$ e $\mathcal F(C) = \fec{C}$ para cada $C \subseteq X$.
 \end{prop}
 \begin{proof}
 	Demonstração análoga à de interior.
@@ -315,15 +315,15 @@ Então o conjunto $\complement(\mathcal T) \coloneqq \{C \subseteq X : C = \math
 	\end{equation*}
 	\item Um conjunto é aberto se, e somente se, não contém pontos da fronteira.
 	\begin{equation*}
-	C \in \mathcal T \Leftrightarrow \fro{C} \cap C = \emptyset
+	C \in \topo \Leftrightarrow \fro{C} \cap C = \emptyset
 	\end{equation*}
 	\item Um conjunto é fechado se, e somente se, contém todos pontos da fronteira.
 	\begin{equation*}
-	C \in \complement(\mathcal T) \Leftrightarrow \fro{C} \subseteq C
+	C \in \complement(\topo) \Leftrightarrow \fro{C} \subseteq C
 	\end{equation*}
 	\item A fronteira de um conjunto é fechada.
 	\begin{equation*}
-	\fro{C} \in \complement(\mathcal T)
+	\fro{C} \in \complement(\topo)
 	\end{equation*}
 	\item $\fro{(\fro{(\fro{C})})} = \fro{(\fro{C})}$.
 	\end{enumerate}
@@ -354,36 +354,36 @@ $A \subseteq B \Rightarrow A' \subseteq B'$
 \section{Topologias Finas e Grossas e Topologias Geradas}
 
 \begin{defi}
-	Seja $X$ um conjunto e $\mathcal T$ uma topologia de $X$. Uma \emph{topologia mais grossa} (ou \emph{fraca}) que a topologia $\mathcal T$ é uma topologia $\mathcal T'$ de $X$ tal que $\mathcal T' \subseteq \mathcal T$. Uma \emph{topologia mais fina} (ou \emph{forte}) que a topologia $\mathcal T$ é uma topologia $\mathcal T'$ de $X$ tal que $\mathcal T \subseteq \mathcal T'$.
+	Seja $X$ um conjunto e $\topo$ uma topologia de $X$. Uma \emph{topologia mais grossa} (ou \emph{fraca}) que a topologia $\topo$ é uma topologia $\topo'$ de $X$ tal que $\topo' \subseteq \topo$. Uma \emph{topologia mais fina} (ou \emph{forte}) que a topologia $\topo$ é uma topologia $\topo'$ de $X$ tal que $\topo \subseteq \topo'$.
 \end{defi}
 
 	A topologia mais fraca é a topologia trivial e a topologia mais forte é a topologia discreta.
 
 \begin{prop}
-	Sejam $X$ um conjunto e $(\mathcal T_i)_{i \in I}$ uma família de topologias de $X$. Então
+	Sejam $X$ um conjunto e $(\topo_i)_{i \in I}$ uma família de topologias de $X$. Então
 	\begin{equation*}
-	\mathcal T \coloneqq \bigcap_{i \in I} \mathcal T_i
+	\topo \coloneqq \bigcap_{i \in I} \topo_i
 	\end{equation*}
 é uma topologia de $X$.
 \end{prop}
 \begin{proof}
-	Primeiro, notemos que, para todo $i \in I$, $\emptyset,X \in \mathcal T_i$, e segue que $\emptyset,X \in \mathcal T$. Agora, seja $(A_j)_{j \in J} \subseteq \mathcal T$.  Então, para todo $i \in I$, $(A_j)_{j \in J} \in \mathcal T_i$, e segue que $\bigcup_{j \in J} A_j \in \mathcal T_i$, o que implica que $\bigcup_{j \in J} A_j \in \mathcal T$. Por fim, seja $(A_j)_{j \in \inte_n} \subseteq \mathcal T$. Então, para todo $i \in I$, $(A_j)_{j \in \inte_n} \in \mathcal T_i$, e segue que $\bigcap_{j=1}^n A_j \in \mathcal T_i$, o que implica que $\bigcap_{j=1}^n A_j \subseteq \mathcal T$.
+	Primeiro, notemos que, para todo $i \in I$, $\emptyset,X \in \topo_i$, e segue que $\emptyset,X \in \topo$. Agora, seja $(A_j)_{j \in J} \subseteq \topo$.  Então, para todo $i \in I$, $(A_j)_{j \in J} \in \topo_i$, e segue que $\bigcup_{j \in J} A_j \in \topo_i$, o que implica que $\bigcup_{j \in J} A_j \in \topo$. Por fim, seja $(A_j)_{j \in \inte_n} \subseteq \topo$. Então, para todo $i \in I$, $(A_j)_{j \in \inte_n} \in \topo_i$, e segue que $\bigcap_{j=1}^n A_j \in \topo_i$, o que implica que $\bigcap_{j=1}^n A_j \subseteq \topo$.
 \end{proof}
 
 
 % A conjectura a seguir parece ser FALSA pois precisaríamos achar o máximo de uma sequência infinita de índices naturais.
 
 %CONJECTURA
-%	Sejam $X$ um conjunto e $(\mathcal T_i)_{i \in \N}$ uma sequência crescente de topologias de $X$; ou seja, $\mathcal T_1 \subseteq \mathcal T_2 \subseteq \cdots \subseteq \mathcal T_i \subseteq \cdots$. Então 
+%	Sejam $X$ um conjunto e $(\topo_i)_{i \in \N}$ uma sequência crescente de topologias de $X$; ou seja, $\topo_1 \subseteq \topo_2 \subseteq \cdots \subseteq \topo_i \subseteq \cdots$. Então 
 %	\begin{equation*}
-%	\mathcal T \coloneqq \displaystyle\bigcup_{i \in \N} \mathcal T_i
+%	\topo \coloneqq \displaystyle\bigcup_{i \in \N} \topo_i
 %	\end{equation*}
 %é uma topologia de $X$.
 
 \begin{defi}
-	Sejam $X$ um conjunto, $T \subseteq \p(X)$ e $(\mathcal T_i)_{i \in I}$ uma indexação do conjunto de todas as topologias de $X$ das quais $T$ é subconjunto. A \emph{topologia gerada por $T$} é a topologia
+	Sejam $X$ um conjunto, $T \subseteq \p(X)$ e $(\topo_i)_{i \in I}$ uma indexação do conjunto de todas as topologias de $X$ das quais $T$ é subconjunto. A \emph{topologia gerada por $T$} é a topologia
 	\begin{equation*}
-	\langle T \rangle \coloneqq \bigcap_{i \in I} \mathcal T_i.
+	\langle T \rangle \coloneqq \bigcap_{i \in I} \topo_i.
 	\end{equation*}
 Nesse caso, dizemos que $T$ é o \emph{conjunto gerador} de $\langle T \rangle$ ou que $T$ gera $\langle T \rangle$.
 \end{defi}
@@ -394,14 +394,184 @@ Nesse caso, dizemos que $T$ é o \emph{conjunto gerador} de $\langle T \rangle$ 
 \chapter{Funções Contínuas}
 
 \begin{defi}
-	Sejam $\bm X = (X,\mathcal T_X)$ e $\bm Y = (Y,\mathcal T_Y)$ dois espaços topológicos. Uma \emph{função contínua} entre $\bm X$ e $\bm Y$ é uma função $f: X \to Y$ que satisfaz
+Sejam $\bm X = (X,\topo_X)$ e $\bm Y = (Y,\topo_Y)$ espaços topológicos. Uma \emph{função contínua} de $\bm X$ para $\bm Y$ é uma função $f: X \to Y$ tal que, para todo $A \in \topo_Y$,
 	\begin{equation*}
-	\forall A \in \mathcal T_Y \qquad f^{-1}(A) \in \mathcal T_X.
+	f^{-1}(A) \in \topo_X.
+	\end{equation*}
+Denota-se $f: \bm X \to \bm Y$. O conjunto de todos essas funções contínuas é denotado por $\cont(\bm X,\bm Y)$.
+\end{defi}
+
+\begin{prop} Propriedades categóricas.
+\begin{enumerate}
+	\item (Identidade) Seja $\bm X$ um espaço topológico. A função $\id_X: X \to X$ é uma função contínua.
+	\item (Associatividade) Sejam $\bm{X_0}$, $\bm{X_1}$ e $\bm{X_2}$ espaços topológicos e $f_0: \bm{X_0} \to \bm{X_1}$ e $f_1: \bm{X_1} \to \bm{X_2}$ funções contínuas. Então $f_1 \circ f_0: \bm{X_0} \to \bm{X_2}$ é uma função contínua.
+\begin{figure}
+\centering
+\begin{tikzpicture}[node distance=2.5cm, auto]
+	\node (X) {$\bm{X_0}$};
+	\node (Y) [right of=X] {$\bm{X_1}$};
+	\node (n) [below of=Y,node distance=1cm] {$f_1 \circ f_0$};
+	\node (Z) [right of=Y] {$\bm{X_2}$};
+	\draw[->] (X) to node {$f_0$} (Y);
+	\draw[->] (Y) to node {$f_1$} (Z);
+%	\draw[->,bend right] (X) to node[swap] {$g \circ f$} (Z);
+	\draw[->] (X) |- (n.90) -| (Z);\
+\end{tikzpicture}
+\end{figure}
+	\end{enumerate}
+\end{prop}
+\begin{proof}
+\begin{enumerate}
+	\item Seja $A \in \topo$. Então $\id_X\inv(A)=A \in \topo$, logo $\id_x$ é contínua.
+	
+	\item Seja $A \in \topo_2$. Como $f_1$ é contínua, $f_1\inv(A) \in \topo_1$. Como $f_0$ é contínua, $f_0\inv(f_1\inv(A)) \in \topo_0$. Portanto
+	\begin{equation*}
+	(f_1 \circ f_0)\inv(A) = f_1\inv \circ f_0\inv (A) = f_0\inv(f_1\inv(A)) \in \topo_0.
+	\end{equation*}
+Logo $f_1 \circ f_0$ é contínua.
+\end{enumerate}
+\end{proof}
+
+\section{Topologias Puxadas e Empurradas}
+
+\begin{defi}
+Sejam $X$ um conjunto, $\bm Y = (Y,\topo_Y)$ um espaço topológico e $f: X \to Y$ uma função. A \emph{topologia puxada} por $f$ é
+	\begin{equation*}
+	f^\star(\topo_Y) \coloneqq \set{f^{-1}(A)}{A \in \topo_Y}.
 	\end{equation*}
 \end{defi}
 
+\begin{prop}
+Sejam $X$ um conjunto, $\bm Y = (Y,\Sigma_Y)$ um espaço topológico e $f: X \to Y$ uma função. Então $f^\star(\topo_Y)$ é uma topologia de $X$.
+\end{prop}
+\begin{proof}
+Primeiro notemos que, como $\emptyset \in \topo_Y$ e $\emptyset = f\inv(\emptyset)$, temos que $\emptyset \in f^\star(\topo_Y)$. Agora, seja $(A_i)_{i \in I}$ uma família de conjuntos em $f^\star(\topo_Y)$. Então, para cada $i \in I$, existe aberto $U_i \in \topo_Y$ tal que $A_i=f\inv(U_i)$. Como $\topo_Y$ é topologia, a união de abertos é aberto $\bigcup_{i \in I} U_i \in \topo_Y$. Portanto
+	\begin{equation*}
+	\bigcup_{i \in I} A_i = \bigcup_{i \in I} f\inv(U_i) = f\inv\left( \bigcup_{i \in I} U_i\right),
+	\end{equation*}
+logo $\bigcup_{i \in I} A_i \in f^\star(\topo_Y)$.
+Por fim, seja $(A_i)_{i \in \inte_n}$ uma família finita de conjuntos em $f^\star(\topo_Y)$. Então, para cada $i \in \inte_n$, existe aberto $U_i \in \topo_Y$ tal que $A_i=f\inv(U_i)$. Como $\topo_Y$ é topologia, a interseção finita de abertos é aberto $\bigcap_{i=1}^n U_i \in \topo_Y$. Portanto
+	\begin{equation*}
+	\bigcup_{i=1}^n A_i = \bigcup_{i=1}^n f\inv(U_i) = f\inv\left( \bigcup_{i=1}^n U_i\right),
+	\end{equation*}
+logo $\bigcup_{i=1}^n A_i \in f^\star(\topo_Y)$.
+\end{proof}
+
+\begin{defi}
+Sejam $\bm X = (X,\topo_X)$ um espaço topológico, $Y$ um conjunto e $f: X \to Y$ uma função. A \emph{topologia empurrada} por $f$ é
+	\begin{equation*}
+	f_\star(\topo_X) \coloneqq \set{A \subseteq Y}{f^{-1}(A) \in \topo_X}.
+	\end{equation*}
+\end{defi}
+
+\begin{prop}
+Sejam $\bm X = (X,\topo_X)$ um espaço topológico, $Y$ um conjunto e $f: X \to Y$ uma função. Então $\topo_Y \coloneqq f_\star(\topo_X)$, a topologia empurrada por $f$, é uma topologia sobre $Y$.
+\end{prop}
+
+
+\begin{prop}
+Sejam $\bm X = (X,\topo_ X)$ e $\bm Y = (Y,\topo_ Y)$ espaços topológicos. Uma função $f: X \to Y$ é função contínua de $\bm X$ para $\bm Y$ se, e somente se, a topologia $f^\star(\topo_Y)$ puxada por $f$ é uma subtopologia de $\topo_ X$.
+	\begin{equation*}
+	f \in \cont(\bm X,\bm Y) \sse f^\star(\topo_Y) \subseteq \topo_X.
+	\end{equation*}
+\end{prop}
+
 
 prop: restrição de função contínua é contínua na topologia induzida.
+
+
+
+
+
+
+
+\chapter{Produto de Espaços Topológicos}
+
+\begin{defi}
+Seja $(\bm{X_i})_{i \in I} = (X_i,\topo_i)_{i \in I}$ uma família de espaços topológicos. O \emph{produto} da família $(\bm{X_i})_{i \in I}$ é o par
+	\begin{equation*}
+	\prod_{i \in I} \bm{X_i} \coloneqq (X,\topo),
+	\end{equation*}
+em que $X \coloneqq \prod_{i \in I} X_i$ é o produto de conjuntos e
+	\begin{equation*}
+	\topo \coloneqq \ger{\bigcup_{i \in I}\pi_i^\star(\topo_i)}.
+	\end{equation*}
+\end{defi}
+
+\begin{prop}
+Sejam $(\bm{X_i})_{i \in I} = (X_i,\topo_i)_{i \in I}$ uma família de espaços topológicos e $X = \prod_{i \in I} X_i$ o produto de conjuntos. São equivalentes:
+	\begin{enumerate}
+	\item $\topo$ é a topologia mais fraca tal que, para todo $i \in I$, a projeção canônica $\pi_i: X \to X_i$ é contínua.
+	\item $\topo$ é a topologia gerada pela base cujos elementos são $\prod_{i \in I} A_i$, tal que $A_i \in \topo_i$ e existe $J \subseteq I$ finito com $A_i = X_i$ para $i \in I \setminus J$.
+	\item $\topo$ é a topologia $\ger{\bigcup_{i \in I}\pi_i^\star(\topo_i)}$.
+	\end{enumerate}
+\end{prop}
+\begin{proof}
+	\begin{enumerate}
+	\item
+	
+	\item
+	
+	\item Pela propriedade universal do produto de conjunto, $\id_X = \langle \pi_i \rangle_{i \in I}$, pois $\pi_i \circ \id_X = \pi_i$. Então, por uma propriedades básica de imagem inversa de produto (\ref{conj:prop.im.inv.prod}),
+	\begin{equation*}
+	\prod_{i \in I} A_i = \id_X\inv \left(\prod_{i \in I} A_i\right) = \bigcap_{i \in I} \pi_i\inv(A_i)
+	\end{equation*}
+Para todo $i \in I \setminus J$, $A_i=X_i$, então $\pi_i\inv(A_i)=X$ e, portanto,
+	\begin{equation*}
+	\bigcap_{i \in I\setminus J} \pi_i\inv(A_i) = \bigcap_{i \in I\setminus J} X = X.
+	\end{equation*}
+Isso implica que
+	\begin{equation*}
+	\bigcap_{i \in I} \pi_i\inv(A_i) = \left(\bigcap_{i \in I\setminus J} \pi_i\inv(A_i)\right) \cap \left(\bigcap_{j \in J} \pi_j\inv(A_j)\right) =  \bigcap_{j \in J} \pi_j\inv(A_j)
+	\end{equation*}
+Logo $\prod_{i \in I} A_i = \bigcap_{j \in J} \pi_j\inv(A_j)$.
+
+Seja $A$ aberto da topologia do item 2.	Então
+	\begin{equation*}
+	A = \bigcup_{k \in K} A_k = \bigcup_{k \in K}\prod_{i \in I} A_{ki} = \bigcup_{k \in K}\bigcap_{j \in J} \pi_j\inv (A_{kj}),
+	\end{equation*}
+o que mostra que $A$ é aberto da topologia do item 3.
+	\end{enumerate}
+\end{proof}
+
+\begin{prop}[Propriedade Universal]
+Sejam $(\bm{X_i})_{i \in I} = (X_i,\topo_i)_{i \in I}$ uma família de espaços topológicos, $\bm T = (T,\topo_T)$ um espaço topológico e, para todo $i \in I$, $f_i: \bm T \to \bm{X_i}$ uma função contínua. Então existe uma única função contínua $f: \bm T \to \prod_{i \in I} \bm{X_i}$ tal que, para todo $i \in I$, $\pi_i \circ f = f_i$ (o diagrama comuta).
+\begin{figure}
+\centering
+\begin{tikzpicture}[node distance=2.5cm, auto]
+	\node (P) {$\displaystyle\prod_{i \in I} \bm{X_i}$};
+	\node (Ci) [below of=P] {$\bm{X_i}$};
+	\node (X) [left of=Ci] {$\bm{T}$};
+	\draw[->] (X) to node [swap] {$f_i$} (Ci);
+	\draw[->, dashed] (X) to node {$f$} (P);
+	\draw[->] (P) to node {$\pi_i$} (Ci);
+\end{tikzpicture}
+\end{figure}
+\end{prop}
+\begin{defi}
+Defina a função \func{f}{T}{\prod_{i \in I} X_i}{x}{(f_i(x))_{i \in I}.}
+Pela propriedade universal do produto de conjuntos, $f$ é única e $\pi_i \circ f = f_i$. Resta mostrar que $f$ é contínua. Seja $A \in \topo_X$. Então $A=\bigcup_{k \in K} A_k$ é uma união de abertos básicos $A_k \in \topo$. Isso significa que, para todo $k \in K$, $A_k = \prod_{i \in I} A_{ki}$, com $A_{ki} \in \topo_i$ para todo $i \in I$ e existe $J_k \subseteq I$ finito tal que, para todo $i \in I \setminus J_k$, $A_{ki} = X_i$. Assim, por propriedades básicas de imagem inversa de união e produto (\ref{conj:prop.im.inv.prod}),
+		\begin{equation*}
+		f\inv(A) = f\inv\left(\bigcup_{k \in K}\prod_{i \in I} A_{ki}\right) = \bigcup_{k \in K} f\inv \left( \prod_{i \in I} A_{ki} \right) = \bigcup_{k \in K}\bigcap_{i \in I}f_i\inv(A_{ki}).
+		\end{equation*}
+Seja $k \in K$. Como, para todo $i \in I \setminus J_k$, $A_{ki} = X_i$, então $f_i\inv(A_{ki}) = f_i\inv(X_i) = T$. Disso segue que
+	\begin{equation*}
+	\bigcap_{i \in I}f_i\inv(A_{ki}) = \bigcap_{j \in J_k}f_j\inv(A_{kj})
+	\end{equation*}
+e, portanto,
+	\begin{equation*}
+	f\inv(A) = \bigcup_{k \in K}\bigcap_{j \in J_k}f_j\inv(A_{kj}).
+	\end{equation*}
+Seja $k \in K$. Para todo $j \in J_k$, $f_j$ é contínua, o que impica que $f_j\inv(A_{kj})$ é aberto e, por $J_k$ ser finito, a interseção $\bigcap_{j \in J_k}f_j\inv(A_{kj})$ é aberta. Isso significa que a união $\bigcup_{k \in K}\bigcap_{j \in J_k}f_j\inv(A_{kj})$ é aberta e, portanto, $f\inv(A) \in \topo_T$. Logo $f$ é contínua.
+\end{defi}
+
+
+
+
+
+
+
+
 
 
 
@@ -700,86 +870,7 @@ Seja $D \coloneqq \{\frac{k}{2^n}:n \in \N^* \e k \in \{1,\ldots,2^n-1\}\}$. Ind
 
 
 
-\chapter{Produto de Espaços Topológicos}
 
-\begin{defi}
-Seja $(\bm{X_i})\idx = (X_i,\topo_i)\idx$ uma família de espaços topológicos. O \emph{produto} da família $(\bm{X_i})_{i \in I}$ é o par
-	\begin{equation*}
-	\prod\idx \bm{X_i} \coloneqq (X,\topo),
-	\end{equation*}
-em que $X = \prod\idx X_i$ é o produto de conjuntos e $\topo$ é a topologia gerada pela base cujos elementos são $\prod_{i \in I} A_i$, tal que $A_i \in \topo_i$ e existe $J \subseteq I$ finito com $A_i = X_i$ para $i \in I \setminus J$.
-\end{defi}
-
-\begin{prop}
-Sejam $(\bm{X_i})\idx = (X_i,\topo_i)\idx$ uma família de espaços topológicos e $X = \prod\idx X_i$ o produto de conjuntos. São equivalentes:
-	\begin{enumerate}
-	\item $\topo$ é a topologia mais fraca tal que, para todo $i \in I$, a projeção canônica $\pi_i: X \to X_i$ é contínua.
-	\item $\topo$ é a topologia gerada pela base cujos elementos são $\prod_{i \in I} A_i$, tal que $A_i \in \topo_i$ e existe $J \subseteq I$ finito com $A_i = X_i$ para $i \in I \setminus J$.
-	\item $\topo$ é a topologia gerada pela sub-base $\set{\pi_i\inv(A_i)}{i \in I, A_i \in \topo_i}$.
-	\end{enumerate}
-\end{prop}
-\begin{proof}
-	\begin{enumerate}
-	\item
-	
-	\item
-	
-	\item Pela propriedade universal do produto de conjunto, $\id_X = \langle \pi_i \rangle_{i \in I}$, pois $\pi_i \circ \id_X = \pi_i$. Então, por uma propriedades básica de imagem inversa de produto (\ref{conj:prop.im.inv.prod}),
-	\begin{equation*}
-	\prod_{i \in I} A_i = \id_X\inv \left(\prod_{i \in I} A_i\right) = \bigcap_{i \in I} \pi_i\inv(A_i)
-	\end{equation*}
-Para todo $i \in I \setminus J$, $A_i=X_i$, então $\pi_i\inv(A_i)=X$ e, portanto,
-	\begin{equation*}
-	\bigcap_{i \in I\setminus J} \pi_i\inv(A_i) = \bigcap_{i \in I\setminus J} X = X.
-	\end{equation*}
-Isso implica que
-	\begin{equation*}
-	\bigcap_{i \in I} \pi_i\inv(A_i) = \left(\bigcap_{i \in I\setminus J} \pi_i\inv(A_i)\right) \cap \left(\bigcap_{j \in J} \pi_j\inv(A_j)\right) =  \bigcap_{j \in J} \pi_j\inv(A_j)
-	\end{equation*}
-Logo $\prod_{i \in I} A_i = \bigcap_{j \in J} \pi_j\inv(A_j)$.
-
-Seja $A$ aberto da topologia do item 2.	Então
-	\begin{equation*}
-	A = \bigcup_{k \in K} A_k = \bigcup_{k \in K}\prod_{i \in I} A_{ki} = \bigcup_{k \in K}\bigcap_{j \in J} \pi_j\inv (A_{kj}),
-	\end{equation*}
-o que mostra que $A$ é aberto da topologia do item 3.
-	\end{enumerate}
-\end{proof}
-
-\begin{prop}
-Seja $(\bm{X_i})_{i \in I} = (X_i,\topo_i)_{i \in I}$ uma família de espaços topológicos. Então $\prod_{i \in I} \bm{X_i} = (X,\topo)$ é um espaço topológico e $\topo$ é a menor topologia tal que todas as projeções canônicas $\pi_i: X \to X_i$ são contínuas.
-\end{prop}
-
-\begin{prop}[Propriedade Universal]
-Sejam $(\bm{X_i})_{i \in I} = (X_i,\topo_i)_{i \in I}$ uma família de espaços topológicos, $\bm T = (T,\topo_T)$ um espaço topológico e, para todo $i \in I$, $f_i: \bm T \to \bm{X_i}$ uma função contínua. Então existe uma única função contínua $f: \bm T \to \prod_{i \in I} \bm{X_i}$ tal que, para todo $i \in I$, $\pi_i \circ f = f_i$ (o diagrama comuta).
-\begin{figure}
-\centering
-\begin{tikzpicture}[node distance=2.5cm, auto]
-	\node (P) {$\displaystyle\prod_{i \in I} \bm{X_i}$};
-	\node (Ci) [below of=P] {$\bm{X_i}$};
-	\node (X) [left of=Ci] {$\bm{T}$};
-	\draw[->] (X) to node [swap] {$f_i$} (Ci);
-	\draw[->, dashed] (X) to node {$f$} (P);
-	\draw[->] (P) to node {$\pi_i$} (Ci);
-\end{tikzpicture}
-\end{figure}
-\end{prop}
-\begin{defi}
-Defina a função \func{f}{T}{\prod_{i \in I} X_i}{x}{(f_i(x))_{i \in I}.}
-Pela propriedade universal do produto de conjuntos, $f$ é única e $\pi_i \circ f = f_i$. Resta mostrar que $f$ é contínua. Seja $A \in \topo_X$. Então $A=\bigcup_{k \in K} A_k$ é uma união de abertos básicos $A_k \in \topo$. Isso significa que, para todo $k \in K$, $A_k = \prod_{i \in I} A_{ki}$, com $A_{ki} \in \topo_i$ para todo $i \in I$ e existe $J_k \subseteq I$ finito tal que, para todo $i \in I \setminus J_k$, $A_{ki} = X_i$. Assim, por propriedades básicas de imagem inversa de união e produto (\ref{conj:prop.im.inv.prod}),
-		\begin{equation*}
-		f\inv(A) = f\inv\left(\bigcup_{k \in K}\prod_{i \in I} A_{ki}\right) = \bigcup_{k \in K} f\inv \left( \prod_{i \in I} A_{ki} \right) = \bigcup_{k \in K}\bigcap_{i \in I}f_i\inv(A_{ki}).
-		\end{equation*}
-Seja $k \in K$. Como, para todo $i \in I \setminus J_k$, $A_{ki} = X_i$, então $f_i\inv(A_{ki}) = f_i\inv(X_i) = T$. Disso segue que
-	\begin{equation*}
-	\bigcap_{i \in I}f_i\inv(A_{ki}) = \bigcap_{j \in J_k}f_j\inv(A_{kj})
-	\end{equation*}
-e, portanto,
-	\begin{equation*}
-	f\inv(A) = \bigcup_{k \in K}\bigcap_{j \in J_k}f_j\inv(A_{kj}).
-	\end{equation*}
-Seja $k \in K$. Para todo $j \in J_k$, $f_j$ é contínua, o que impica que $f_j\inv(A_{kj})$ é aberto e, por $J_k$ ser finito, a interseção $\bigcap_{j \in J_k}f_j\inv(A_{kj})$ é aberta. Isso significa que a união $\bigcup_{k \in K}\bigcap_{j \in J_k}f_j\inv(A_{kj})$ é aberta e, portanto, $f\inv(A) \in \topo_T$. Logo $f$ é contínua.
-\end{defi}
 
 
 
@@ -1149,18 +1240,18 @@ o que mostra que $(p_n)_{n \in \N}$ é limitada.
 Da definição, segue que $C^\circ \subseteq C$. A inclusão contrária caracteriza a próxima definição.
 
 \begin{defi}
-	Seja $\bm M = (M,d)$ um espaço métrico. Um \emph{conjunto aberto} de $\bm M$ é um conjunto $A \subseteq M$ tal que $A = A^\circ$. O conjunto dos conjuntos abertos de $\bm M$ é denotado $\mathcal T_{\bm M}$.
+	Seja $\bm M = (M,d)$ um espaço métrico. Um \emph{conjunto aberto} de $\bm M$ é um conjunto $A \subseteq M$ tal que $A = A^\circ$. O conjunto dos conjuntos abertos de $\bm M$ é denotado $\topo_{\bm M}$.
 \end{defi}
 
 \begin{prop}
 	Seja $\bm M = (M,d)$ um espaço métrico. Então
 	\begin{enumerate}
 	\item Para todo $c \in M$ e para todo número real $r > 0$, a bola aberta $B_r(c)$ é um conjunto aberto;
-	\item O conjunto $\mathcal T_{\bm M}$ é uma topologia de $M$.
+	\item O conjunto $\topo_{\bm M}$ é uma topologia de $M$.
 		\begin{enumerate}
-			\item $\emptyset,M \in \mathcal T_{\bm M}$;
-			\item $(A_i)_{i \in I} \subseteq \mathcal T_{\bm M} \Rightarrow \displaystyle\bigcup_{i \in I} A_i \in \mathcal T_{\bm M}$;
-			\item $(A_i)_{i \in \inte_n} \subseteq \mathcal T_{\bm M} \Rightarrow \displaystyle\bigcap_{i=1}^n A_i \in \mathcal T_{\bm M}$.
+			\item $\emptyset,M \in \topo_{\bm M}$;
+			\item $(A_i)_{i \in I} \subseteq \topo_{\bm M} \Rightarrow \displaystyle\bigcup_{i \in I} A_i \in \topo_{\bm M}$;
+			\item $(A_i)_{i \in \inte_n} \subseteq \topo_{\bm M} \Rightarrow \displaystyle\bigcap_{i=1}^n A_i \in \topo_{\bm M}$.
 		\end{enumerate}
 	\end{enumerate}
 \end{prop}
@@ -1217,7 +1308,7 @@ o que mostra que $p' \in \mathcal B_r(c)$ e que, portanto, $\mathcal B_s(p) \sub
 Da definição, segue que $C \subseteq \overline C$. A inclusão contrária caracteriza a próxima definição.
 
 \begin{defi}
-	Seja $\bm M = (M,d)$ um espaço métrico. Um \emph{conjunto fechado} de $\bm M$ é um conjunto $F \subseteq M$ tal que $F = \overline F$. O conjuntos dos conjuntos fechados de $\bm M$ é denotado $\complement( \mathcal T_{\bm M})$.
+	Seja $\bm M = (M,d)$ um espaço métrico. Um \emph{conjunto fechado} de $\bm M$ é um conjunto $F \subseteq M$ tal que $F = \overline F$. O conjuntos dos conjuntos fechados de $\bm M$ é denotado $\complement( \topo_{\bm M})$.
 \end{defi}
 
 \begin{prop}
@@ -1233,11 +1324,11 @@ Da definição, segue que $C \subseteq \overline C$. A inclusão contrária cara
 	Seja $\bm M = (M,d)$ um espaço métrico. Então
 	\begin{enumerate}
 	\item Para todo $c \in M$ e para todo número real $r > 0$, a bola fechada $\overline B_r(c)$ é um conjunto fechado;
-	\item O conjunto $\complement(\mathcal T_{\bm M})$ satisfaz
+	\item O conjunto $\complement(\topo_{\bm M})$ satisfaz
 		\begin{enumerate}
-			\item $\emptyset,M \in \complement(\mathcal T_{\bm M})$;
-			\item $(A_i)_{i \in I} \subseteq \complement(\mathcal T_{\bm M}) \Rightarrow \displaystyle\bigcap_{i \in I} A_i \in \complement(\mathcal T_{\bm M})$;
-			\item $(A_i)_{i \in \inte_n} \subseteq \complement(\mathcal T_{\bm M}) \Rightarrow \displaystyle\bigcup_{i=1}^n A_i \in \complement(\mathcal T_{\bm M})$.
+			\item $\emptyset,M \in \complement(\topo_{\bm M})$;
+			\item $(A_i)_{i \in I} \subseteq \complement(\topo_{\bm M}) \Rightarrow \displaystyle\bigcap_{i \in I} A_i \in \complement(\topo_{\bm M})$;
+			\item $(A_i)_{i \in \inte_n} \subseteq \complement(\topo_{\bm M}) \Rightarrow \displaystyle\bigcup_{i=1}^n A_i \in \complement(\topo_{\bm M})$.
 		\end{enumerate}
 	\end{enumerate}
 \end{prop}
@@ -1245,7 +1336,7 @@ Da definição, segue que $C \subseteq \overline C$. A inclusão contrária cara
 	\begin{enumerate}
 	\item ...
 	
-	\item Segue da proposição anterior e do fato de que $\mathcal T_{\bm M}$ é uma topologia de $\bm M$.
+	\item Segue da proposição anterior e do fato de que $\topo_{\bm M}$ é uma topologia de $\bm M$.
 	\end{enumerate}
 \end{proof}
 
