@@ -1462,11 +1462,75 @@ O \emph{período} da órbita $\orb_p(m)$ é o número $\card{\orb_p(m)}$. Uma \e
 \subsection{Grupos Diedrais}
 
 
+\cleardoublepage
+\section{Ações de Grupos}
+
+A noção de uma ação de grupo, de certa forma, generaliza uma estratégia usada na demonstração do teorema de que todo grupo é isomorfo a um subgrupo de seu grupo simétrico.
+
+\begin{defi}
+Sejam $X$ um conjunto e $\bm G$ um grupo. Uma \emph{ação (à esquerda)} de $\bm G$ em $X$ é uma função
+\func{\act}{G \times X}{X}{(g,x)}{g\act x}
+que satisfaz
+\begin{enumerate}
+\item (Identidade) Para todo $x \in X$,
+	\begin{equation*}
+	e \act x = x;
+	\end{equation*}
+\item (Compatibilidade) Para todos $g_0,g_1 \in G$ e $x \in X$,
+	\begin{equation*}
+	(g_1g_0) \act x = g_1 \act (g_0 \act x).
+	\end{equation*}
+\end{enumerate}
+Um grupo $\bm G$ \emph{age} em o conjunto $X$ se, e somente se, existe uma ação de $\bm G$ em $X$.
+\end{defi}
+
+Analogamente, uma ação à direita pode ser definida, mas toda ação à direita pode ser traduzida em uma ação à esquerda, de modo que é suficiente estudar somente ações à esquerda.
+
+\begin{prop}
+Sejam $X$ um conjunto, $\bm G$ um grupo, $A$ uma ação de $\bm G$ em $X$ e $g \in G$. Então a função
+	\func{g\act}{X}{X}{x}{g\act x}
+é uma bijeção. Equivalentemente, $g\act \in \simm{X}$.
+\end{prop}
+
+\begin{prop}
+Sejam $X$ um conjunto, $\bm G$ um grupo e $\act$ uma ação de $\bm G$ em $X$. Então a função
+%	\func{\phi}{G}{\simm{X}}{g}{g\act}
+	\begin{align*}
+	h: G &\to \simm{X} \\
+			g &\mapsto g\act: X \to X\\
+				&\qquad\qquad\; x \mapsto g\act x.
+	\end{align*}
+é um homomorfismo de grupos de $\bm G$ para $\bm{\simm{X}}$.
+\end{prop}
+\begin{proof}
+Sejam $g_1,g_0 \in G$ e $x \in X$. Então
+	\begin{equation*}
+	h(g_1g_0)(x) =(g_1g_0) \act x = g_1 \act (g_0 \act x) = h(g_1)(h(g_0)(x)) = h(g_1) \circ h(g_0)(x),
+	\end{equation*}
+logo $h(g_1g_0)=h(g_1) \circ h(g_0)$.
+\end{proof}
+
+Sob a ótica desse teorema, as propriedades de uma ação de grupos podem ser escritas
+	\begin{enumerate}
+	\item $e\act = \id$;
+	\item Para todos $g_0,g_1 \in G$,
+		\begin{equation*}
+		(g_1g_0)\act = g_1\act \circ g_0\act.
+		\end{equation*}
+	\end{enumerate}
+
+\begin{defi}
+Sejam $X$ um conjunto, $\bm G$ um grupo que age em $X$ e $x \in X$. A \emph{órbita} de $x$ sob $\bm G$ é o conjunto
+	\begin{equation*}
+	G \act x \coloneqq \set{g\act x}{g \in G}.
+	\end{equation*}
+\end{defi}
 
 
 
-
-
+\begin{equation*}
+G_x = \set{g \in G}{g\act x = x} = h\inv(\{\id\}) = \nuc(h).
+\end{equation*}
 
 
 
