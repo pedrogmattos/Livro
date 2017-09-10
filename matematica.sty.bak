@@ -88,6 +88,9 @@
 
 
 %% Relações e Funções
+\renewcommand{\to}{\longrightarrow}
+\renewcommand{\mapsto}{\longmapsto}
+
 	\newcommand{\func}[5]{
 	\begin{align*}#1: #2 &\to #3 \\#4 &\mapsto #5
 	\end{align*}}
@@ -213,7 +216,10 @@
 \newcommand{\prd}{\epsilon}
 %\DeclareMathOperator{\prd}{snl}
 
+% Ação de grupo
+\newcommand{\act}{\mathord{\centerdot}\ }
 
+% Norma
 \newcommand{\nor}[1]{\left\Vert{#1}\right\Vert}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
