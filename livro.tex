@@ -1,4 +1,4 @@
-\documentclass[leqno,oneside,12pt]{book}
+\documentclass[oneside,12pt]{book}
 \usepackage{estilo}
 
 % Dados do Livro
@@ -16,6 +16,8 @@
 }
 
 \includeonly{capa,atencao,informacoes,conjuntos,algebra,topologia,analise,geometria}
+%\includeonly{geometria}
+
 
 \begin{document}
 % ELEMENTOS PRÉ-TEXTUAIS
@@ -35,6 +37,9 @@
 \include{informacoes}
 
 % Sumário, Lista de Figuras e Lista de Tabelas
+%\dominitoc
+%\doparttoc
+%\noptcrule
 \tableofcontents
 %\listoffigures
 %\listoftables
@@ -67,6 +72,13 @@
 % ELEMENTOS PÓS-TEXTUAIS
 %---------------------------------------------------------------------------------------------------------------------------
 \backmatter % (Não numera capítulos.)
+
+% Índice
+%\printindex
+
+% Lista de símbolos
+%\indexprologue{\small Lista de símbolos}
+%\printindex[simb]
 
 % Licença
 \include{licenca}
