@@ -1,27 +1,23 @@
+\NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{matematica}
+% Este pacote está dividido em três partes: PACOTES, AMBIENTES e COMANDOS. A primeira parte inclui os pacotes necessários para o uso do pacote 'matematica'. A segunda parte define os ambientes usados no livro: definições, proposições, teoremas e afins. A terceira parte inclui os comandos e símbolos definidos e usados no livro.
 
-% PACOTES
-%---------------------------------------------------------------------------------------------------------------------------
+%%%%%%%%%%%%%%%%%%%%% PACOTES %%%%%%%%%%%%%%%%%%%%%
 
-\usepackage{amsmath,amsthm,amssymb,amsfonts}
-\usepackage{eucal} % Muda o \mathcal de Computer Modern pra Euler
-\usepackage{mathtoolsedit,mhsetup} %Para permitir o uso do comando \bigplus que criei
-\usepackage{bm,bbm,mathrsfs}
-\usepackage{tikz}
-\usetikzlibrary{matrix,calc,arrows}
-\usepackage{wasysym} % Símbolo de Diâmetro \diameter
+\RequirePackage{amsmath,amsthm,amssymb,amsfonts}
+\RequirePackage{eucal} % Muda o \mathcal de Computer Modern pra Euler
+\RequirePackage{mathtools} % :=
+\RequirePackage{bm,bbm,mathrsfs} % Negrito de qualquer símbolo e letras cursiva
+\RequirePackage{tikz} % Figuras e gráficos
+\RequirePackage{relsize,scalerel} % Mudança de tamanho e definição de operador
 
-\usepackage{relsize,scalerel}
+%%%%%%%%%%%%%%%%%%%% AMBIENTES %%%%%%%%%%%%%%%%%%%%%
 
-
-% Lógica
-\usepackage{bussproofs}
-\usepackage{mdwtab,latexsym,ifthen}
-
-
-
-% AMBIENTES
-%---------------------------------------------------------------------------------------------------------------------------
+% Estilo Definições
+\theoremstyle{definition}
+\newtheorem{defi}{Definição}[chapter]
+\newtheorem{axi}{Axioma}
+\newtheorem*{nota}{Notação}
 
 % Estilo Teoremas
 \theoremstyle{plain}
@@ -30,26 +26,14 @@
 \newtheorem{lema}[teo]{Lema}
 \newtheorem{coro}[teo]{Corolário}
 \newtheorem{conj}[teo]{Conjectura}
-
-\renewcommand\qedsymbol{$\blacksquare$}
-
-%Estilo Definições
-\theoremstyle{definition}
-\newtheorem{defi}{Definição}[chapter]
-\newtheorem{axi}{Axioma}
-\newtheorem*{defi*}{Definição}
-\newtheorem*{nota}{Notação}
 \newtheorem{ex}{Exemplo}[chapter]
 
+\renewcommand{\qedsymbol}{$\blacksquare$} % Símbolo de demonstração.
 
+%%%%%%%%%%%%%%%%%%%% COMANDOS %%%%%%%%%%%%%%%%%%%%%
 
-% COMANDOS
-%---------------------------------------------------------------------------------------------------------------------------
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % CONJUNTOS
-															% NOTA: Aprender a usar \dotsb \dotsc \dotsm.
+		% NOTA: Aprender a usar \dotsb \dotsc \dotsm.
 
 %% Conjuntos: Noções Básicas
 	\newcommand{\sse}{\quad \Longleftrightarrow \quad}
@@ -58,12 +42,11 @@
 	\newcommand{\ou}{\text{\ \ ou\ \ }}
 	\newcommand{\e}{\text{\ \ e\ \ }}
 	
-	%\renewcommand{\emptyset}{\varnothing}
+	\renewcommand{\emptyset}{\varnothing}
 	
-	% Conjuntos
-	\newcommand{\set}[2]{\left\{#1 \;\middle\vert\; #2 \right\}}
-	% Conjunto das Partes
-	\newcommand{\p}{\scalebox{1.2}{$\mathcal{P}$}}
+	\newcommand{\set}[2]{\left\{#1 \;\middle\vert\; #2 \right\}} % Conjuntos
+	\newcommand{\p}{\scalebox{1.2}{$\mathcal{P}$}} % Conjunto das Partes
+	%\newcommand{\p}{\raisebox{.15\baselineskip}{\Large\ensuremath{\wp}}}
 	
 	% Coproduto quadrado (Precisa do graphicx)
 	\makeatletter
@@ -76,38 +59,23 @@
   		\rotatebox[origin=c]{180}{$\m@th#1#2$}%
 		}
 	\makeatother
-	
 	% Produto e coproduto
 	\renewcommand{\prod}{\bigsqcap}
 	\renewcommand{\coprod}{\bigsqcup}
-	
-		
-	%\renewcommand{\setminus}{-}
-	\newcommand{\comp}{^\complement}
+			
 	\newcommand{\difsim}{\mathbin{\triangle}}
 
-
 %% Relações e Funções
-\renewcommand{\to}{\longrightarrow}
-\renewcommand{\mapsto}{\longmapsto}
+	\renewcommand{\to}{\longrightarrow}
+	\renewcommand{\mapsto}{\longmapsto}
+	\newcommand{\func}[5]{%
+	{#1}: {#2} &\to {#3} \\%
+	{#4} &\mapsto {#5}%
+	}
+	\newcommand{\var}{\bm{\cdot}} % Símbolo de variável numa função: f(•)
 
-	\newcommand{\func}[5]{
-	\begin{align*}#1: #2 &\to #3 \\#4 &\mapsto #5
-	\end{align*}}
-	
-	% Tau invertido para ser identidade (Precisa do graphicx)
-	\makeatletter	
-		\providecommand{\uat}{\mathpalette\@updown\tau}
-	\makeatother
-	%\newcommand{\id}{\uat}
-	
-	\newcommand{\id}{\mathrm{id}}
-	\newcommand{\inv}{^{-1}}
-	
-	\newcommand{\idx}{_{i \in I}}
-
-%Traço de variável numa função
-\newcommand{\var}{\bm{\cdot}}
+	\newcommand{\id}{\mathrm{id}} % Função identidade
+	\newcommand{\inv}{^{-1}} % Inversa de função
 
 %% Conjuntos Numéricos
 	\newcommand{\N}{\mathbb{N}}
@@ -117,165 +85,131 @@
 	\newcommand{\RR}{\R_\infty}
 	\newcommand{\C}{\mathbb{C}}
 
-
-%%Cardinalidade de Conjuntos
+%% Cardinalidade de Conjuntos
 	\newcommand{\card}[1]{\left\vert{#1}\right\vert}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ÁLGEBRA
 
-% Operadores Binários
-	% Superposição de mais e vezes
-	%\newcommand{\plustimes}{\mathbin{\ooalign{$+$\cr\hidewidth\hbox{$\times\mkern-.1500mu$}\cr}}}
-	
-	%Operação Binária Padrão \opb
-	\newcommand{\opb}{\ast} %alternaticamente posso colocar \plustimes no lugar de \ast
-	
+%% Operadores Binários
+	% Operação Binária Padrão
+	\newcommand{\opb}{\ast}
 	\DeclareMathOperator*{\bigopb}{\raisebox{-.25em}{\scalebox{3}{$\opb$}}}
-	% Fazer a operação asterisco como fiz o \bigplus no mathtoolsedit	
-	
-	
-	% Somatório +
-	\newcommand{\bigpluss}{\scalebox{2}{$+$}}
-	
-	% Soma grande a partir do comando já pronto \bigtimes do pacote mathbx.
-	\makeatletter
-		\providecommand{\bigsuma}{%
-  		\mathop{%
-   		\mathpalette\@turn\bigtimes
-  		}%
-	}
-	\newcommand*{\@turn}[2]{%
-  		\rotatebox[origin=c]{45}{$\m@th#1#2$}%
-		}
-	\makeatother
+	%\newcommand{\plustimes}{\mathbin{\ooalign{$+$\cr\hidewidth\hbox{$\times\mkern-.1500mu$}\cr}}} % Superposição de mais e vezes
 		
-	%O comando que uso no texto é \bigsum
-	\DeclareMathOperator*{\bigsum}{\raisebox{-.25em}{\bigpluss}}
-		
+	\DeclareMathOperator*{\bigplus}{\scalerel*{+}{\bigoplus}} % Somatório
+	\DeclareMathOperator*{\bigtimess}{\scalerel*{\times}{\bigotimes}} % Multiplicatório
+	\renewcommand{\sum}{\bigplus}
+	%\renewcommand{\bigtimes}{\bigtimess}
 
-	% Produtório \times
-	\DeclareMathOperator*{\bbigtimes}{\raisebox{-.26em}{\scalebox{2}{$\times$}}}
-%\renewcommand{\sum}{\bigsum}
-%\renewcommand{\prod}{\bigtimes}
+%%% Grupos
 
+	\newcommand{\quo}[2]{{\left. \raisebox{.2em}{$#1$} \middle/ \raisebox{-.2em}{$#2$}\right.}} % Quociente de Conjuntos/Grupos/Anéis...
 
-%\[
-%\text{a)} \adjustlimits\lim_{n\to\infty} \max_{p\ge n} \quad
-%\text{b)} \adjustlimits\lim_{n\to\infty} \max_{p^2\ge n} \quad
-%\text{c)} \adjustlimits\lim_{n\to\infty} \sup_{p^2\ge nK} \quad
-%\text{d)} \adjustlimits\limsup_{n\to\infty} \max_{p\ge n}
-%\]
+	\newcommand{\ide}{\mathrel{\unlhd}}
+	\newcommand{\idepro}{\mathrel{\lhd}}
+	\newcommand{\homo}{\mathcal{H}\mathrm{om}}
+	\newcommand{\iso}{\mathcal{I}\mathrm{so}}
+	\newcommand{\lin}{\mathcal{L}}
+	\newcommand{\nuc}{\mathcal{N}}
+	\newcommand{\im}{\mathcal{I}\mathrm{m}}
+	
+	\newcommand{\ger}[1]{\left\langle #1 \right\rangle}
+	
+	\newcommand{\simm}[1]{\mathfrak{S}(#1)}
+	\newcommand{\sime}{\mathfrak{S}}
+	\newcommand{\altt}[1]{\mathfrak{A}(#1)}
+	\newcommand{\alte}{\mathfrak{A}}
+	\newcommand{\cicc}[1]{\mathfrak{C}(#1)}
+	\newcommand{\cicl}{\mathfrak{C}}
+	
+	\newcommand{\orb}{\mathcal{O}}
+	
+	\newcommand{\prd}{\epsilon} % Paridade de uma permutação
+	%\newcommand{\prd}{\pm}
 
+	% Ação de grupo
+	\newcommand{\age}{\mathord{\centerdot}\ }
 
-% Outros
+%%% Anéis
 
+	\DeclareMathOperator{\g}{grau} % Grau de Polinômio
 
-\newcommand{\ide}{\mathrel{\unlhd}}
-\newcommand{\idepro}{\mathrel{\lhd}}
-
-\newcommand{\quo}[2]{{\left. \raisebox{.2em}{$#1$} \middle/ \raisebox{-.2em}{$#2$}\right.}}
-
-
-\newcommand{\ger}[1]{\left\langle #1 \right\rangle}
-
-
-
-
-
-\DeclareMathOperator{\g}{grau}
-\newcommand{\homo}{\mathcal{H}\mathrm{om}}
-\newcommand{\iso}{\mathcal{I}\mathrm{so}}
-\newcommand{\lin}{\mathcal{L}}
-\newcommand{\nuc}{\mathcal{N}}
-\newcommand{\im}{\mathcal{I}\mathrm{m}}
-
-
-
-\DeclareMathOperator{\mdc}{mdc}
-\DeclareMathOperator{\divv}{div}
-\DeclareMathOperator{\mmc}{mmc}
-\DeclareMathOperator{\mul}{mul}
-\newcommand{\inte}{\mathtt I}
-
-\newcommand{\zero}{\mathbbm O}
-%\newcommand{\id}{\mathbbm 1}
-\DeclareMathOperator{\tr}{tr}
-
-\newcommand{\simm}[1]{\mathfrak{S}(#1)}
-\newcommand{\sime}{\mathfrak{S}}
-\newcommand{\altt}[1]{\mathfrak{A}(#1)}
-\newcommand{\alte}{\mathfrak{A}}
-\newcommand{\cicc}[1]{\mathfrak{C}(#1)}
-\newcommand{\cicl}{\mathfrak{C}}
-
-\newcommand{\orb}{\mathcal{O}}
-
-%Paridade de uma permutação
-%\newcommand{\prd}{\pm}
-\newcommand{\prd}{\epsilon}
-%\DeclareMathOperator{\prd}{snl}
-
-% Ação de grupo
-\newcommand{\act}{\mathord{\centerdot}\ }
-
-% Norma
-\newcommand{\nor}[1]{\left\Vert{#1}\right\Vert}
-
+	\renewcommand{\div}{\preceq} % Renomeia o comando \div para ser relação binária de divisão em um anel
+	\newcommand{\ndiv}{\npreceq}
+	
+	\DeclareMathOperator{\mdc}{mdc}
+	\DeclareMathOperator{\divv}{div}
+	\DeclareMathOperator{\mmc}{mmc}
+	\DeclareMathOperator{\mul}{mul}
+	\newcommand{\inte}{\mathtt I}
+	
+	\newcommand{\zero}{\mathbbm O}
+	%\newcommand{\id}{\mathbbm 1}
+	\DeclareMathOperator{\tr}{tr}
+	
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %TOPOLOGIA
 
-\newcommand{\topo}{\mathcal{T}}
+	\newcommand{\topo}{\mathcal{T}}
 
-\newcommand{\inn}[1]{{#1}^\circ}
-\newcommand{\fec}[1]{\overline{#1}}
-\newcommand{\fro}[1]{\partial #1}
+	\newcommand{\inn}[1]{{#1}^\circ}%\mathring é um comando iteressante, mas não serve tão bem aos meus propósitos.
+	\newcommand{\fec}[1]{\overline{#1}}
+	\newcommand{\fro}[1]{\partial #1}
+	
+	\newcommand{\viz}{\mathcal{V}}
 
-\newcommand{\viz}{\mathcal{V}}
-
-%Funções contínuas
-\newcommand{\cont}{\mathscr{C}}
-
-% Espaços Métricos
-\DeclareMathOperator{\diam}{diam}
-\newcommand{\conv}{\rightarrow} % Convergência/ convergência pontual
-\newcommand{\uconv}{\rightrightarrows} % Convergência uniforme
-
+	\newcommand{\cont}{\mathscr{C}} % Funções contínuas
+	
+	\renewcommand{\S}{\mathbb{S}} % Esfera
+	\newcommand{\pro}{\mathbb{P}} % Espaço Projetivo
+	\newcommand{\Hip}{\mathbb{H}} % Espaço Hiperbólico
+	\newcommand{\T}{\mathbb{T}} % Toro
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ANÁLISE
 
-%Função indicadora (característica)
-\newcommand{\idc}{\scalebox{0.75}{$\mathbb{I}$}}
+%% Espaços Métricos
+	\DeclareMathOperator{\diam}{diam}
+	\newcommand{\conv}{\rightarrow} % Convergência/ convergência pontual
+	\newcommand{\uconv}{\rightrightarrows} % Convergência uniforme
+	\newcommand{\bola}{\mathcal{B}} % Bola de espaço métrico
 
+%% Espaços Normados
+	\newcommand{\abs}[1]{\left\vert{#1}\right\vert} % Valor absoluto
+	\newcommand{\nor}[1]{\left\Vert{#1}\right\Vert} % Norma
 
-%Boreliano
-\newcommand{\bor}{\mathscr{B}}
-%Funções mensuráveis
-\newcommand{\mensu}{\mathscr{M}}
+	\newcommand{\E}{\mathbb{E}} % Espaço Normado
+	\newcommand{\disc}{\mathbb{D}} % Disco Unitário de espaço normado
 
+%% Diferenciabilidade
+	\newcommand{\D}{\mathrm{D}}
 
-%Funções integráveis
-\newcommand{\integ}{\mathscr{I}}
+%% Variedades
+	\newcommand{\atlas}{\mathcal{A}}
+	\newcommand{\x}{\mathrm{x}}
+	\newcommand{\Tg}{\mathrm{T}}
 
-\newcommand{\dd}{\mathrm{d}}
+%% Teoria da Medida
+	\newcommand{\idc}{\chi} % Função indicadora (característica)
+	%\newcommand{\idc}{\scalebox{0.75}{$\mathbb{I}$}}
+	
+	\newcommand{\bor}{\mathscr{B}} % Boreliano
+	\newcommand{\mensu}{\mathscr{M}} % Funções mensuráveis
+	
+%% Teoria da Integração
+	\newcommand{\integ}{\mathscr{I}} % Funções integráveis
+	\newcommand{\dd}{\mathrm{d}}
 
-
-
-
-
-
-\newcommand{\Es}{\mathbb{S}}
-\newcommand{\Hip}{\mathbb{H}}
-\newcommand{\T}{\mathbb{T}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % OUTROS
 
 %Contido Aberto e Fechado e uns outros comandos superpostos
-\newcommand\opn{\mathrel{\ooalign{$\subseteq$\cr
+\newcommand\abr{\mathrel{\ooalign{$\subseteq$\cr
   \hidewidth\raise.225ex\hbox{$\circ\mkern.5mu$}\cr}}}
 
-\newcommand\cls{\mathrel{\ooalign{$\subseteq$\cr
+\newcommand\fch{\mathrel{\ooalign{$\subseteq$\cr
   \hidewidth\raise.225ex\hbox{$\bullet\mkern.5mu$}\cr}}}
 
 
@@ -284,144 +218,4 @@
 \newcommand{\Ee}{\mathrel{\ooalign{$\land$\cr
   \hidewidth\raise.350ex\hbox{$\_$}\hidewidth\cr}}}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%											PACOTE fitch
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Copiei este pacote para depois editá-lo.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% $Id: fitch.sty,v 1.6 2003/06/28 16:53:00 johanw Exp $
-
-% Macros for Fitch-style formal proofs
-% Johan W. KlÃ¼wer, June 10, 2001
-
-
-%\RequirePackage{mdwtab,latexsym,amsmath,amsfonts,ifthen}
-
-
-% Line height in proofs
-\newlength{\fitchlineht}
-\setlength{\fitchlineht}{1.5\baselineskip}
-% Horizontal indent between proof levels
-\newlength{\fitchindent}
-\setlength{\fitchindent}{1em}
-% Indent to comment
-\newlength{\fitchcomind}
-\setlength{\fitchcomind}{2em}
-% Line number width
-\newlength{\fitchnumwd}
-\setlength{\fitchnumwd}{1em}
-
-% Altered from mdwtab.sty: shorter vline, for start of subproof
-\makeatletter
-\newcommand\fvline[1][\arrayrulewidth]{\vrule\@height.5\fitchlineht\@width#1\relax}
-\makeatother
-% Ordinary vertical line
-\newcommand{\fa}{\vline\hspace*{\fitchindent}}
-% Vertical line, shorter: Use at start of (sub)proof
-\newcommand{\fb}{\fvline\hspace*{\fitchindent}}
-% Hypothesis
-\newcommand{\fh}{\fvline%
-  \makebox[0pt][l]{{%
-      \raisebox{-1.4ex}[0pt][0pt]{\rule{1.5em}{\arrayrulewidth}}}}%
-  \hspace*{\fitchindent}}
-% Hypothesis, with longer vert line: for >1 hypothesis
-\newcommand{\fj}{\vline%
-  \makebox[0pt][l]{{%
-      \raisebox{-1.4ex}[0pt][0pt]{\rule{1.5em}{\arrayrulewidth}}}}%
-  \hspace*{\fitchindent}}
-% Modal subproof: takes argument = operator
-\newcommand{\fitchmodal}[1]{% 
-  \makebox[0pt][r]{${}^{#1}$\,}\fvline\hspace*{\fitchindent}}
-\newcommand{\fn}{\fitchmodal{\Box}}% Box subproof 
-\newcommand{\fp}{\fitchmodal{\Diamond}}% Diamond subproof
-% Modal subproof with hypothesis in first line (as in Fitch)
-\newcommand{\fitchmodalh}[1]{% 
-  \makebox[0pt][r]{${}^{#1}$\,}%
-  \fvline%
-  \makebox[0pt][l]{{%
-      \raisebox{-1.4ex}[0pt][0pt]{\rule{1.5em}{\arrayrulewidth}}}}%
-  \hspace*{\fitchindent}}
-% Rule: formula introduction marker. \fr with line, \fs without line
-\newcommand{\fr}{%
-  \makebox[0pt][r]{${\rhd}$\,\,}\vline\hspace*{\fitchindent}}
-\newcommand{\fs}{%
-  \makebox[0pt][r]{${\rhd}$\,\,}}
-% Box around argument, like new variable in ql
-\newcommand{\fw}[1]{\fbox{\footnotesize $#1$}}
-
-% 
-\newcounter{fitchcounter}
-\setcounter{fitchcounter}{0}
-%To avoid starting from 1, \setboolean{resetfitchcounter}{false}
-\newboolean{resetfitchcounter}
-\setboolean{resetfitchcounter}{true}
-%To avoid increasing numbers, \setboolean{increasefitchcounter}{false}
-\newboolean{increasefitchcounter}
-\setboolean{increasefitchcounter}{true}
-%\formatfitchcounter can be altered if need be, though only once per proof
-\newcommand{\formatfitchcounter}[1]{\arabic{#1}}
-%Typeset the counter
-\newcommand{\fitchcounter}{%
-  \ifthenelse{\boolean{increasefitchcounter}}{\addtocounter{fitchcounter}{1}}{}
-  \formatfitchcounter{fitchcounter}}
-
-%A line with a special number -- a tag, e.g. \ftag{\vdots}{}
-\newcommand{\ftag}[2]{\multicolumn{1}%
-  {!{\makebox[\fitchnumwd][r]{#1}\hspace{\fitchindent}}Ml@{\hspace{\fitchcomind}}}%
-  {#2}}
-
-\newenvironment{fitchnum}%
-{\ifthenelse{\boolean{resetfitchcounter}}{\setcounter{fitchcounter}{0}}{}
-  \begin{tabular}{!{\makebox[\fitchnumwd][r]{\fitchcounter }\hspace{\fitchindent}}Ml@{\hspace{\fitchcomind}}l}}%
-{\end{tabular}}
-
-\newenvironment{fitchunum}%
-{\begin{tabular}{!{\makebox[\fitchnumwd][r]{}\hspace{\fitchindent}}Ml@{\hspace{\fitchcomind}}l}}%
-{\end{tabular}}
-
-\newenvironment{fitch}{\renewcommand{\arraystretch}{1.5}
-  \begin{fitchnum}}{\end{fitchnum}}
-\newenvironment{fitch*}{\renewcommand{\arraystretch}{1.5}
-  \begin{fitchunum}}{\end{fitchunum}}
-
-% The following is useful for giving a numbered formula, then the proof.
-\newenvironment{flem}[2]%
-{\begin{eqnarray}
-    &#1\label{#2}\\
-    &\begin{fitch}}%
-    {\end{fitch}\notag\end{eqnarray}}
-
-%To write comment field for two consecutive lines, with brace
-\newcommand{\ftwocom}[1]{%
-  \parbox[t]{3cm}{
-    \raisebox{-.6\baselineskip}[\baselineskip][0pt]{%
-      $\left.
-        \begin{aligned}
-          \,\\ \,
-        \end{aligned}
-      \right\}$\quad #1}
-  }}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
