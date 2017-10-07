@@ -1,4 +1,4 @@
-*.tex.bak
+*.bak
 *.aux
 *.log
 *.out
