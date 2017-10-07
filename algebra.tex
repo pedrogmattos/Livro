@@ -3,7 +3,7 @@
 
 \part{{\scshape Álgebra}}
 
-\chapter{Operações Binárias, Magmas, Semigrupos e Monoides}
+\chapter{Operações Binárias e Estruturas Básicas}
 
 A \emph{Álgebra} estuda objetos matemáticos conhecidos como \emph{estruturas algébricas}. As definições desse objeto variam e podem ser tomadas de modo a serem mais ou menos gerais. No entanto, esse objetivos sempre são n-listas em que as entradas são conjuntos e funções. Uma das definições que podem ser tomadas é a de que essas estruturas são listas em que a primeira entrada é um conjunto e as demais são funções. Em geral, essas funções são \emph{operações $n$-árias}, funções da $n$-ésima potência de um conjunto nele mesmo. Não definiremos aqui esses objetos com detalhes, nos restringindo somente a casos específicos. Ao leitor fica a oportunidade de perceber as semelhanças entre as definições e generalizá-las, ou mesmo de procurar mais a respeito.
 
@@ -107,10 +107,10 @@ Seja $\bm X$ um magma, $Y \subseteq X$ e $x \in X$. Definimos
 	\end{equation*}
 \end{defi}
 
-	Usualmente, os símbolos usados são o somatório $\bigplus$ para a adição e o produtório $\bigtimes$ para a multiplicação.
+	Os símbolos usados são o somatório $\ \displaystyle\bigplus\ $ \index[simb]{$\displaystyle\bigplus$} para a adição e o produtório $\ \displaystyle\bigtimes\ $ \index[simb]{$\displaystyle\bigtimes$} para a multiplicação.
 
 \begin{prop}
-	Sejam $\bm X=(X, \opb )$ um semigrupo, $m,n$ naturais não nulos e $x_1$,$ \cdots$, $x_{m+n}$ elementos de $X$. Então
+	Sejam $\bm X=(X, \opb )$ um semigrupo, $m,n$ naturais não nulos e $x_1$,$ \ldots$, $x_{m+n}$ elementos de $X$. Então
 	\begin{equation*}
 	\bigopb _{i=1}^m x_i  \opb  \bigopb _{i=1}^n x_{m+i} = \bigopb _{i=1}^{m+n} x_i.
 	\end{equation*}
@@ -176,7 +176,7 @@ Agora, defininamos uma bijeção $\phi$ do conjunto $\{1, \ldots,n-1\}$ em si me
 	\begin{equation*}
 	\forall x_1,x_2 \in X \qquad h(x_1  \opb  x_2)=h(x_1) \cdot h(x_2).
 	\end{equation*}
-\noindent Denotamo-lo por $h: \bm X \to \bm Y$. %e o conjunto de todos esses homomorfismos de semigrupos é denotado por $\homo(\bm X,\bm Y)$.
+\noindent Denota-se por $h: \bm X \to \bm Y$. %e o conjunto de todos esses homomorfismos de semigrupos é denotado por $\homo(\bm X,\bm Y)$.
 \end{defi}
 
 \begin{prop}[Composição de homomorfismos é homomorfismo]
@@ -298,7 +298,7 @@ Vale observar que, somente sabendo que $\bm S$ é um monoide, isto é, que um su
 		\end{enumerate}
 	\item $h(e_M)=e_N$.
 	\end{enumerate}
-\noindent Denotamo-lo por $h: \bm M \to \bm N$. %e o conjunto de todos esses homomorfismos de monoides é denotado por $\homo(\bm M,\bm N)$.
+\noindent Denota-se por $h: \bm M \to \bm N$. %e o conjunto de todos esses homomorfismos de monoides é denotado por $\homo(\bm M,\bm N)$.
 \end{defi}
 
 	Podemos notar que precisamos garantir que a função $h$ leve o elemento neutro de um monoide no elemento neutro de outro, já que isso não seria verdade se função fosse somente um homomorfismo de semigrupos. No entanto, mesmo sem a segunda propriedade, um homomorfismo de semigrupos entre grupos garante que a imagem do elemento neutro do primeiro seja um elemento neutro do conjunto imagem. Veremos mais adiante que um homomorfismo de grupos é simplesmente um homomorfismo de semigrupos, pois ele é suficiente para preservar a estrutura algébrica de grupos.
@@ -319,9 +319,10 @@ Vale observar que, somente sabendo que $\bm S$ é um monoide, isto é, que um su
 
 
 
+
 \chapter{Grupos}
 
-\section{Construção Algébricas}
+\section{Construções Algébricas}
 
 \subsection{Grupo e Subgrupo}
 
@@ -330,30 +331,34 @@ Vale observar que, somente sabendo que $\bm S$ é um monoide, isto é, que um su
 %\end{defi}
 
 \begin{defi}
-Um \emph{grupo} é um par $\bm G=(G, \opb )$ em que $G$ é um conjunto e $ \opb : G \times G \to G$ é uma operação binária que satisfaz
-	\begin{align*}
- 	\tag{Associatividade} &\forall g_1,g_2,g_3 \in G && (g_1  \opb  g_2)  \opb  g_3 = g_1  \opb  (g_2  \opb  g_3) \label{G1}\\
-	\tag{Identidade} &\exists e \in G\ \forall g \in G && e  \opb  g = g =g  \opb  e \label{G2}\\
-	\tag{Invertibilidade} &\forall g \in G\ \exists g^{-1} \in G && g^{-1}  \opb  g = e = g  \opb  g^{-1} \label{G3}
-	\end{align*}
-%	\begin{enumerate}
-%	\item (Associatividade) $\forall g_1,g_2,g_3 \in G \qquad (g_1  \opb  g_2)  \opb  g_3 = g_1  \opb  (g_2  \opb  g_3)$;
-%	\item (Identidade) $\exists e \in G\ \forall g \in G \qquad e  \opb  g = g =g  \opb  e$;
-%	\item (Invertibilidade) $\forall g \in G\ \exists g^{-1} \in G \qquad g^{-1}  \opb  g = e = g  \opb  g^{-1}$.
-%	\end{enumerate}
+Um \emph{grupo} é um par $\bm G=(G, \opb )$ em que $G$ é um conjunto e $\opb : G \times G \to G$ é uma operação binária que satisfaz
+	\begin{enumerate}[label=\textbf{G\arabic*.},ref={G\arabic*}]
+	\item \label{G1}(Associatividade) Para todos $g_1,g_2,g_3 \in G$,
+		\begin{equation*}
+		(g_1 \opb g_2) \opb g_3 = g_1 \opb (g_2 \opb g_3);
+		\end{equation*}
+	\item \label{G2} (Identidade) Existe $e \in G$ tal que, para todo $g \in G$,
+		\begin{equation*}
+		e \opb  g = g =g  \opb e;
+		\end{equation*}
+	\item \label{G3} (Invertibilidade) Para todo $g \in G$ existe $g\inv \in G$ tal que
+		\begin{equation*}
+		g\inv \opb g = e = g \opb g\inv.
+		\end{equation*}
+	\end{enumerate}
 \noindent
 Um grupo \emph{comutaivo} é um grupo que satisfaz
+	\begin{enumerate}[label=\textbf{G\arabic*.},ref={G\arabic*}]
+	\setcounter{enumi}{3}
+	\item \label{G4} (Comutatividade) Para todos $g_1,g_2 \in G$,
 	\begin{equation*}
-	\tag{Comutatividade} \forall g_1,g_2 \in G \qquad\qquad\quad\ g_1  \opb  g_2 = g_2  \opb  g_1 \qquad\qquad\qquad\label{G4}
-\end{equation*}
-	%	\begin{enumerate}
-%	\setcounter{enumi}{3}
-%	\item (Comutatividade) $\forall g_1,g_2 \in G \qquad g_1 \opb g_2 = g_2 \opb g_1$.
-%	\end{enumerate}	
+	g_1 \opb g_2 = g_2 \opb g_1.
+	\end{equation*}
+	\end{enumerate}	
 \end{defi}
 
 \begin{nota}
-	Denotaremos o inverso de $g \in G$ por $g^{-1}$ e $g_1 \opb g_2$ por $g_1g_2$. Quando o grupo é comutativo, podemos usar $+$ para denotar sua operação binária. Nesse caso, o inverso de $g \in G$ é denotado por $-g$.
+Denotaremos o inverso de $g \in G$ por $g^{-1}$ e $g_1 \opb g_2$ por $g_1g_2$. Quando o grupo é comutativo, podemos usar $+$ para denotar sua operação binária. Nesse caso, o inverso de $g \in G$ é denotado por $-g$.
 \end{nota}
 
 Em vista das definições introdutórias do capítulo anterior, um grupo é um monoide $\bm G=(G,\opb)$ em que todos elementos de $G$ têm inverso sob $\opb$, e um grupo comutaivo é um grupo em que $\opb$ é comutativa.
@@ -388,16 +393,11 @@ Seja $\bm G=(G,\opb)$ um grupo. Um \emph{subgrupo} de $\bm G$ é um grupo $\bm S
 \begin{prop}
 \label{alge:prop.subgru}
 Sejam $\bm G$ um grupo e $S \subseteq G$. Então $\bm S=(S,\opb|_{S \times S})$ é um grupo se, e somente se, $S$ satisfaz
-	\begin{align*}
-	\tag{Não-vacuidade} & S \neq \emptyset && \label{SG1}\\
-	\tag{Fechamento da multiplicação} & \forall\ s_1,s_2 \in S  && s_1s_2 \in S \label{SG2}\\
-	\tag{Fechamento da inversão} &\forall\ s \in S && s^{-1} \in S \label{SG3}
-	\end{align*}
-%	\begin{enumerate}
-%	\item (Não-vacuidade) $S \neq \emptyset$;
-%	\item (Fechamento) $\forall\ s_1,s_2 \in S \quad s_1s_2 \in S$;
-%	\item (Invertibilidade) $\forall\ s \in S \quad s^{-1} \in S$.
-%	\end{enumerate}	
+	\begin{enumerate}[label=\textbf{SG\arabic*.},ref={SG\arabic*}]
+	\item \label{SG1} (Não-vacuidade) $S \neq \emptyset$;
+	\item \label{SG2} (Fechamento) Para todos $s_1,s_2 \in S$, $s_1s_2 \in S$;
+	\item \label{SG3} (Invertibilidade) Para todo $s \in S$,  $s^{-1} \in S$.
+	\end{enumerate}	
 \noindent
 Ainda, se $\bm G$ é comutativo, então $\bm S$ é comutativo.
 \end{prop}
@@ -616,12 +616,9 @@ Disso segue que $\card{G}=[G:S] \times \card{S}$.
 
 \begin{defi}
 Seja $\bm G$ um grupo. Um subgrupo \emph{normal} de $\bm G$ é um subgrupo $\bm N \leq \bm G$ que satsfaz
-	\begin{equation*}
-	\tag{Normalidade} \forall g \in G\ \forall n  \in N \qquad gng^{-1} \in N \qquad\qquad \label{SGN}
-	\end{equation*}
-%	\begin{enumerate}
-%	\item (Normalidade) $\forall g \in G\ \forall n  \in N \qquad gng^{-1} \in N$.
-%	\end{enumerate}
+	\begin{enumerate}[label={SGN\arabic*.}]
+	\item \label{SGN} (Normalidade) Para todos $g \in G$ e $n \in N$, $gng^{-1} \in N$.
+	\end{enumerate}
 \noindent
 Denota-se $\bm N \ide \bm G$. Um subgrupo normal \emph{próprio} de $\bm G$ é um subgrupo $\bm N \ide \bm G$ que é um conjunto próprio de $G$: $N \subset G$. Denota-se $\bm N \idepro \bm G$.
 \end{defi}
@@ -1022,7 +1019,9 @@ Seja $C$ um conjunto e $p_1,p_2 $ palavras em $C \cup C\inv$. A relação de equ
 	\end{equation*}
 	
 	A inclusão é definida.
-	\func{\iota}{C}{\ger{C}}{c}{[c].}
+	\begin{align*}
+	\func{\iota}{C}{\ger{C}}{c}{[c]}.
+	\end{align*}
 
 \begin{prop}[Propriedade Universal]
 Seja $C$ um conjunto, $\bm X = (X,\star)$ um grupo e $f: C \to X$ uma função. Então existe um único homomorfismo de grupos $h: \bm{\ger{C}} \to \bm X$ tal que $h \circ \iota = f$ (o diagrama comuta).
@@ -1039,7 +1038,11 @@ Seja $C$ um conjunto, $\bm X = (X,\star)$ um grupo e $f: C \to X$ uma função. 
 \end{figure}
 \end{prop}
 \begin{proof}
-Defina a função \func{h}{\ger{C}}{X}{\left[c_1 \cdots c_n\right] }{f(c_1) \star \cdots \star f(c_n),} de modo que $h([e])=e_X$. Então, para todo $c \in C$,
+Defina a função
+	\begin{align*}
+	\func{h}{\ger{C}}{X}{\left[c_1 \cdots c_n\right] }{f(c_1) \star \cdots \star f(c_n)},
+	\end{align*}
+de modo que $h([e])=e_X$. Então, para todo $c \in C$,
 	\begin{equation*}
 	h \circ \iota(c) = h (\iota(c)) = h([c])=f(c).
 	\end{equation*}
@@ -1066,7 +1069,10 @@ Seja $(\bm{G_i})_{i \in I}$ uma família de grupos. O \emph{coproduto} da famíl
 	\begin{equation*}
 	\coprod_{i \in I} \bm{G_i} \coloneqq \left(G,\opb \right),
 	\end{equation*}
-em que $G \coloneqq \ger{\coprod_{i \in I} G_i}$ é o grupo livre sobre o coproduto de conjuntos $\coprod_{i \in I} G_i$ e \func{\opb}{G \times G}{G}{([p_1],[p_2])}{[p_1p_2].}
+em que $G \coloneqq \ger{\coprod_{i \in I} G_i}$ é o grupo livre sobre o coproduto de conjuntos $\coprod_{i \in I} G_i$ e
+	\begin{align*}
+	\func{\opb}{G \times G}{G}{([p_1],[p_2])}{[p_1p_2]}.
+	\end{align*}
 \end{defi}
 
 \begin{prop}[Propriedade Universal]
@@ -1084,7 +1090,10 @@ Sejam $(\bm{G_i})_{i \in I}$ uma família de grupos, $\bm X = (X,\star)$ um grup
 \end{figure}
 \end{prop}
 \begin{proof}
-Defina a função \func{h}{\ger{\coprod_{i \in I} G_i}}{X}{\left[(g_1,i_1) \cdots (g_n,i_n)\right]}{h_{i_1}(g_1) \star \cdots \star h_{i_n}(g_n).}
+Defina a função
+	\begin{align*}
+	\func{h}{\ger{\coprod_{i \in I} G_i}}{X}{\left[(g_1,i_1) \cdots (g_n,i_n)\right]}{h_{i_1}(g_1) \star \cdots \star h_{i_n}(g_n)}.
+	\end{align*}
 
 Por simplicidade, seja $G \coloneqq \ger{\coprod_{i \in I} G_i}$. Para mostrar que $h$ é homomorfismo, sejam $[(g_1,i_1) \cdots (g_n,i_n)]$ e $[(g'_1,i'_1) \cdots (g'_m,i'_m)] \in G$. Então
 	\begin{align*}
@@ -1145,9 +1154,12 @@ Um \emph{grupo simples} é um grupo não-trivial $\bm G$ cujos únicos subgrupos
 
 \begin{defi}
 Seja $\bm G$ um grupo. Um subgrupo normal \emph{maximal} de $\bm G$ é um subgrupo normal próprio $\bm M \idepro \bm G$ que satisfaz
-	\begin{equation*}
-	\tag{Maximalidade} \forall \bm N \ide \bm G \qquad M \subseteq N \Rightarrow N = M \ou N = G.
-	\end{equation*}
+	\begin{enumerate}
+	\item (Maximalidade) Para todo $\bm N \ide \bm G$,
+		\begin{equation*}
+		M \subseteq N \Rightarrow N = M \ou N = G.
+		\end{equation*}
+	\end{enumerate}
 \end{defi}
 
 \begin{prop}
@@ -1276,17 +1288,17 @@ pois, para todo $p \in \simm{B}$,
 			&= \phi \circ h\inv(p) \circ \phi\inv \\
 			&= \phi \circ (\phi\inv \circ p \circ \phi) \circ \phi\inv \\
 			&= p \\
-			&= id_{\simm{B}}(p),
+			&= \id_{\simm{B}}(p),
 	\end{align*}
-o que mostra que $h \circ h\inv = id_{\simm{B}}$, e, para todo $p \in \simm{A}$,
+o que mostra que $h \circ h\inv = \id_{\simm{B}}$, e, para todo $p \in \simm{A}$,
 	\begin{align*}
 	(h\inv \circ h) (p) &= h\inv (h(p)) \\
 			&= \phi\inv \circ h(p) \circ \phi \\
 			&= \phi\inv \circ (\phi \circ p \circ \phi\inv) \circ \phi \\
 			&= p \\
-			&= id_{\simm{A}}(p),
+			&= \id_{\simm{A}}(p),
 	\end{align*}
-o que mostra que $h\inv \circ h = id_{\simm{A}}$. Assim, está provado que $h$ é isomorfismo entre $\bm{\simm{A}}$ e $\bm{\simm{B}}$.
+o que mostra que $h\inv \circ h = \id_{\simm{A}}$. Assim, está provado que $h$ é isomorfismo entre $\bm{\simm{A}}$ e $\bm{\simm{B}}$.
 \end{proof}
 
 	Essa proposição mostra que podemos estudar somente os grupos simétricos dos números cardinais, pois isso será equivalente a estudar qualquer grupo simétrico. Em particular, para todo conjunto finito, podemos estudar seu grupo simétrico considerando somente o grupo simétrico $\bm\sime_n$, em que $n$ é o número de elementos do conjunto. A partir de agora, as proposições serão considerando esses grupos $\bm\sime_n$.
@@ -1310,13 +1322,13 @@ o que mostra que $h\inv \circ h = id_{\simm{A}}$. Assim, está provado que $h$ �
 	\end{align*}
 Primeiro, devemos mostrar que $h(g) \in \simm{G}$, para que $h$ esteja bem definida. Para isso, notemos que $h(g)$ está bem definida, já que, para todo $x \in G$, $g \opb x \in G$. Ainda, $h(g)$ é uma bijeção, pois $h(g)\inv = h(g\inv)$, já que, para todo $x \in G$,
 	\begin{equation*}
-	(h(g) \circ h(g)\inv)(x) = h(g)((h(g)\inv)(x)) = h(g)(g\inv \opb x) = g \opb g\inv \opb x = x =id_G,
+	(h(g) \circ h(g)\inv)(x) = h(g)((h(g)\inv)(x)) = h(g)(g\inv \opb x) = g \opb g\inv \opb x = x = \id_G,
 	\end{equation*}
-o que mostra que $h(g) \circ h(g)\inv = id_G$, e
+o que mostra que $h(g) \circ h(g)\inv = \id_G$, e
 	\begin{equation*}
-	(h(g)\inv \circ h(g))(x) = h(g)\inv((h(g)(x)) = h(g)\inv(g \opb x) = g\inv \opb g \opb x = x =id_G,
+	(h(g)\inv \circ h(g))(x) = h(g)\inv((h(g)(x)) = h(g)\inv(g \opb x) = g\inv \opb g \opb x = x = \id_G,
 	\end{equation*}
-o que mostra que $h(g)\inv \circ h(g) = id_G$. Isso mostra que $h(g)$ é uma bijeção e, portanto, $h(g) \in \simm{G}$.
+o que mostra que $h(g)\inv \circ h(g) = \id_G$. Isso mostra que $h(g)$ é uma bijeção e, portanto, $h(g) \in \simm{G}$.
 
 	Agora, notemos que $h$ é um homomorfismo de grupos, pois, para todos $g_1,g_2 \in G$, segue que, para todo $x \in G$,
 	\begin{align*}
@@ -1328,7 +1340,7 @@ o que mostra que $h(g)\inv \circ h(g) = id_G$. Isso mostra que $h(g)$ é uma bij
 	\end{align*}
 o que mostra que $h(g_1 \opb g_2) = h(g_1) \circ h(g_2)$. Por fim, notemos que $h$ é injetiva, já que, se $g \in G$ é tal que $h(g)=id_G$, então, para todo $x \in G$,
 	\begin{equation*}
-	g \opb x = h(g)(x) = id_G(x) = x,
+	g \opb x = h(g)(x) = \id_G(x) = x,
 	\end{equation*}
 o que mostra que $g=e_G$ e, portanto, que $\nuc(h)=\{e_G\}$.
 \end{proof}
@@ -1463,22 +1475,24 @@ O \emph{período} da órbita $\orb_p(m)$ é o número $\card{\orb_p(m)}$. Uma \e
 
 
 \cleardoublepage
-\section{Ações de Grupos}
+\subsection{Ações de Grupos}
 
 A noção de uma ação de grupo, de certa forma, generaliza uma estratégia usada na demonstração do teorema de que todo grupo é isomorfo a um subgrupo de seu grupo simétrico.
 
 \begin{defi}
 Sejam $X$ um conjunto e $\bm G$ um grupo. Uma \emph{ação (à esquerda)} de $\bm G$ em $X$ é uma função
-\func{\act}{G \times X}{X}{(g,x)}{g\act x}
+	\begin{align*}
+	\func{\age}{G \times X}{X}{(g,x)}{g\age x}
+	\end{align*}
 que satisfaz
 \begin{enumerate}
 \item (Identidade) Para todo $x \in X$,
 	\begin{equation*}
-	e \act x = x;
+	e \age x = x;
 	\end{equation*}
 \item (Compatibilidade) Para todos $g_0,g_1 \in G$ e $x \in X$,
 	\begin{equation*}
-	(g_1g_0) \act x = g_1 \act (g_0 \act x).
+	(g_1g_0) \age x = g_1 \age (g_0 \age x).
 	\end{equation*}
 \end{enumerate}
 Um grupo $\bm G$ \emph{age} em o conjunto $X$ se, e somente se, existe uma ação de $\bm G$ em $X$.
@@ -1488,54 +1502,53 @@ Analogamente, uma ação à direita pode ser definida, mas toda ação à direit
 
 \begin{prop}
 Sejam $X$ um conjunto, $\bm G$ um grupo, $A$ uma ação de $\bm G$ em $X$ e $g \in G$. Então a função
-	\func{g\act}{X}{X}{x}{g\act x}
-é uma bijeção. Equivalentemente, $g\act \in \simm{X}$.
+	\begin{align*}
+	\func{g\age}{X}{X}{x}{g\age x}
+	\end{align*}
+é uma bijeção. Equivalentemente, $g\age \in \simm{X}$.
 \end{prop}
 
 \begin{prop}
-Sejam $X$ um conjunto, $\bm G$ um grupo e $\act$ uma ação de $\bm G$ em $X$. Então a função
-%	\func{\phi}{G}{\simm{X}}{g}{g\act}
+Sejam $X$ um conjunto, $\bm G$ um grupo e $\age$ uma ação de $\bm G$ em $X$. Então a função
+%	\begin{align*}
+%	\func{\phi}{G}{\simm{X}}{g}{g\age}
+%	\end{align*}
 	\begin{align*}
 	h: G &\to \simm{X} \\
-			g &\mapsto g\act: X \to X\\
-				&\qquad\qquad\; x \mapsto g\act x.
+			g &\mapsto g\age: X \to X\\
+				&\qquad\qquad\; x \mapsto g\age x.
 	\end{align*}
 é um homomorfismo de grupos de $\bm G$ para $\bm{\simm{X}}$.
 \end{prop}
 \begin{proof}
 Sejam $g_1,g_0 \in G$ e $x \in X$. Então
 	\begin{equation*}
-	h(g_1g_0)(x) =(g_1g_0) \act x = g_1 \act (g_0 \act x) = h(g_1)(h(g_0)(x)) = h(g_1) \circ h(g_0)(x),
+	h(g_1g_0)(x) =(g_1g_0) \age x = g_1 \age (g_0 \age x) = h(g_1)(h(g_0)(x)) = h(g_1) \circ h(g_0)(x),
 	\end{equation*}
 logo $h(g_1g_0)=h(g_1) \circ h(g_0)$.
 \end{proof}
 
 Sob a ótica desse teorema, as propriedades de uma ação de grupos podem ser escritas
 	\begin{enumerate}
-	\item $e\act = \id$;
+	\item $e\age = \id$;
 	\item Para todos $g_0,g_1 \in G$,
 		\begin{equation*}
-		(g_1g_0)\act = g_1\act \circ g_0\act.
+		(g_1g_0)\age = g_1\age \circ g_0\age.
 		\end{equation*}
 	\end{enumerate}
 
 \begin{defi}
 Sejam $X$ um conjunto, $\bm G$ um grupo que age em $X$ e $x \in X$. A \emph{órbita} de $x$ sob $\bm G$ é o conjunto
 	\begin{equation*}
-	G \act x \coloneqq \set{g\act x}{g \in G}.
+	G \age x \coloneqq \set{g\age x}{g \in G}.
 	\end{equation*}
 \end{defi}
 
 
 
 \begin{equation*}
-G_x = \set{g \in G}{g\act x = x} = h\inv(\{\id\}) = \nuc(h).
+G_x = \set{g \in G}{g\age x = x} = h\inv(\{\id\}) = \nuc(h).
 \end{equation*}
-
-
-
-
-
 
 
 
@@ -1667,7 +1680,11 @@ Seja $\bm A=(A,+,\times)$ um anel. Um \emph{subanel} de $\bm A$ é um anel $\bm 
 \end{defi}
 
 \begin{prop}
-Sejam $\bm A=(A,+,\times)$ um anel e $S \subseteq A$. Então $\bm S=(S,+|_{S \times S},\times|_{S \times S})$ é um anel com $1 \in S$ se, e somente se,
+Sejam $\bm A=(A,+,\times)$ um anel e $S \subseteq A$. Então
+	\begin{equation*}
+	\bm S=(S,+|_{S \times S},\times|_{S \times S})
+	\end{equation*}
+é um anel com $1 \in S$ se, e somente se,
 	\begin{enumerate}
 	\item $(S,+|_{S \times S})$ é um subgrupo comutativo de $(A,+)$:
 			\begin{enumerate}
@@ -1800,7 +1817,14 @@ Seja $(\bm{A_i})_{i \in I}=(A_i,+_i,\times_i)_{i \in I}$ uma família de anéis.
 	\begin{equation*}
 	\prod_{i \in I} \bm{A_i} \coloneqq (A,+,\times)
 	\end{equation*}
-em que $A = \prod_{i \in I} A_i$ é o produto de conjuntos, \func{+}{A \times A}{A}{(a,b)}{(a_i +_i b_i)_{i \in I}} e \func{\times}{A \times A}{A}{(a,b)}{(a_i \times_i b_i)_{i \in I}.}
+em que $A = \prod_{i \in I} A_i$ é o produto de conjuntos,
+	\begin{align*}
+	\func{+}{A \times A}{A}{(a,b)}{(a_i +_i b_i)_{i \in I}}
+	\end{align*}
+e
+	\begin{align*}
+	\func{\times}{A \times A}{A}{(a,b)}{(a_i \times_i b_i)_{i \in I}}.
+	\end{align*}
 Denotaremos as operações $+_i$ todas por $+$ e as operações $\times_i$ todas por $\times$ quando não existir ambiguidade.
 \end{defi}
 
@@ -2492,7 +2516,11 @@ Sabemos que $\pi^{-1}(L)=\{a \in A : \pi(a) \in L\} \ide A$ (\ref{prop:ide.im.in
 	Então existe uma função euclidiana em $\bm D$.
 \end{prop}
 \begin{proof}
-	Seja $\psi: D \setminus \{0\} \to \N$ uma função definida por $\psi(d)=\min\{\phi(dx) : x \in D \setminus \{0\}\}$. Mostraremos que $\psi$ é uma função euclidiana em $\bm D$. Sejam $a \in D,b \in D \setminus \{0\}$. Então existem $q,r \in D$ tais que $a=qb+r$. Se $r \neq 0$, então $\phi(r) < \phi(b)$. Ainda, seja $d \in D \setminus \{0\}$.  Como $\bm D$ é domínio, então $db \in D \setminus \{0\}$. Logo existem $q_d,r_d \in D$ tais que $a=q_ddb+r_d$. Em particular, $r=r_1$ e $q=q_1$.
+	Seja $\psi: D \setminus \{0\} \to \N$ uma função definida por
+	\begin{equation*}
+	\psi(d)=\min\{\phi(dx) : x \in D \setminus \{0\}\}.
+	\end{equation*}
+Mostraremos que $\psi$ é uma função euclidiana em $\bm D$. Sejam $a \in D,b \in D \setminus \{0\}$. Então existem $q,r \in D$ tais que $a=qb+r$. Se $r \neq 0$, então $\phi(r) < \phi(b)$. Ainda, seja $d \in D \setminus \{0\}$.  Como $\bm D$ é domínio, então $db \in D \setminus \{0\}$. Logo existem $q_d,r_d \in D$ tais que $a=q_ddb+r_d$. Em particular, $r=r_1$ e $q=q_1$.
 
 	Tentar mostrar que, se $r_d = 0$, então $\psi(r) \neq \min\{\phi(rx) : x \in D \setminus \{0\}\}$...
 
@@ -2572,58 +2600,58 @@ Logo $\psi(a) \leq \psi(ab)$.
 
 \section{Divisão e Associação em Anéis}
 
-\subsection{Divisão e Associação}
+\subsection{Divisão}
 
 \begin{defi}
-	Seja $\bm A$ um anel. A relação binária $\mid$ em $A$ é definida por
+Seja $\bm A$ um anel. A \emph{divisão} em $\bm A$ é a relação binária $\div$ em $A$ definida por
 	\begin{equation*}
-	\forall a,b \in A \qquad a \mid b \text{\ \ em\ \ } \bm A \quad \Leftrightarrow \quad \exists q \in A \quad aq=b.
+	\forall a,b \in A \qquad a \div b \quad \Leftrightarrow \quad \exists q \in A \quad aq=b.
 	\end{equation*}
-	Se $a \mid b$, diz-se que $a$ é um \emph{divisor} de $b$ em $\bm A$ (ou que $a$ \emph{divide} $b$ em $\bm A$) e que $b$ é um \emph{múltiplo} de $a$ em $A$. Caso contrário, $a$ não é um divisor de $b$ em $A$ e $b$ não é um múltiplo de $a$ em $A$, e denota-se $a \nmid b$.
+Se $a \div b$, diz-se que $a$ é um \emph{divisor} de $b$ em $\bm A$ (ou que $a$ \emph{divide} $b$ em $\bm A$) e que $b$ é um \emph{múltiplo} de $a$ em $A$. Caso contrário, $a$ não é um divisor de $b$ em $A$ e $b$ não é um múltiplo de $a$ em $A$, e denota-se $a \ndiv b$.
 \end{defi}
 
 \begin{prop}
-	Seja $\bm A$ um anel. A relação binária $\mid$ em $A$ é uma relação reflexiva e transitiva.
+	Seja $\bm A$ um anel. A divisão $\div$ em $A$ é uma relação reflexiva e transitiva.
 \end{prop}
 \begin{proof}
-	\emph{Reflexividade:} Seja $a \in A$. Então $a \mid a$, pois $a \cdot 1 = a$.
+	\emph{Reflexividade:} Seja $a \in A$. Então $a \div a$, pois $a \cdot 1 = a$.
 
-	\emph{Transitividade:} Sejam $a,b,c \in A$ tais que $a \mid b$ e $b \mid c$. Então existem $q,q' \in A$ tais que $aq=b$ e $bq'=c$. Logo $aqq'=c$. Como $qq' \in A$, segue que $a \mid c$.
+	\emph{Transitividade:} Sejam $a,b,c \in A$ tais que $a \div b$ e $b \div c$. Então existem $q,q' \in A$ tais que $aq=b$ e $bq'=c$. Logo $aqq'=c$. Como $qq' \in A$, segue que $a \div c$.
 \end{proof}
 
 \begin{prop}
 	Seja $\bm A$ um anel. Então
 	\begin{enumerate}
-	\item $\forall a \in A,\forall u \in A^* \qquad u \mid a \mid 0$ em $\bm A$;
-	\item $\forall a \in A,\forall u \in A^* \qquad a \mid u \text{\ \ em $\bm A$\ \ } \Leftrightarrow a \in A^*$;
-	\item $\forall a \in A \qquad 0 \mid a \text{\ \ em $\bm A$\ \ } \Leftrightarrow a=0$.
+	\item $\forall a \in A,\forall u \in A^* \qquad u \div a \div 0$ em $\bm A$;
+	\item $\forall a \in A,\forall u \in A^* \qquad a \div u \text{\ \ em $\bm A$\ \ } \Leftrightarrow a \in A^*$;
+	\item $\forall a \in A \qquad 0 \div a \text{\ \ em $\bm A$\ \ } \Leftrightarrow a=0$.
 	\end{enumerate}
 \end{prop}
 \begin{proof} Seja $a \in A$, $u \in A^*$.
 	\begin{enumerate}
-	\item Como $u \in A^*$, existe $u^{-1} \in A^*$. Então $u\cdot(u^{-1}a) = a$ e segue que $u \mid a$; como $a \cdot 0 = 0$, segue que $a \mid 0$;
-	\item Se $a \mid u$, existe $q \in A$ tal que $aq=u$. Como $u \in A^*$, segue que $aqu^{-1}=uu^{-1}=1$. Logo $a \in A^*$. Reciprocamente, se $a \in A^*$, existe $a^{-1}$ tal que $aa^{-1}=1$. Então $aa^{-1}u=u$ Logo $a \mid u$;
-	\item Se $0 \mid a$, existe $q \in A$ tal que $0q=a$. Mas então $a=0$. A recíproca segue da reflexividade de $\mid$.
+	\item Como $u \in A^*$, existe $u^{-1} \in A^*$. Então $u\cdot(u^{-1}a) = a$ e segue que $u \div a$; como $a \cdot 0 = 0$, segue que $a \div 0$;
+	\item Se $a \div u$, existe $q \in A$ tal que $aq=u$. Como $u \in A^*$, segue que $aqu^{-1}=uu^{-1}=1$. Logo $a \in A^*$. Reciprocamente, se $a \in A^*$, existe $a^{-1}$ tal que $aa^{-1}=1$. Então $aa^{-1}u=u$ Logo $a \div u$;
+	\item Se $0 \div a$, existe $q \in A$ tal que $0q=a$. Mas então $a=0$. A recíproca segue da reflexividade de $\div$.
 	\end{enumerate}
 \end{proof}
 
 \begin{prop}
-	Seja $\bm A$ um anel e $a_1,a_2 \in A$. Então $a_1A \subseteq a_2A$ se, e somente se, $a_2 \mid a_1$.
+	Seja $\bm A$ um anel e $a_1,a_2 \in A$. Então $a_1A \subseteq a_2A$ se, e somente se, $a_2 \div a_1$.
 \end{prop}
 \begin{proof}
-	Se $a_1A \subseteq a_2A$, então $a_1 \in a_2A$. Mas isso significa que existe $q \in A$ tal que $a_1=a_2q$, o que mostra que $a_2 \mid a_1$. A implicação contrária segue a mesma demonstração com as implicação invertidas.
+	Se $a_1A \subseteq a_2A$, então $a_1 \in a_2A$. Mas isso significa que existe $q \in A$ tal que $a_1=a_2q$, o que mostra que $a_2 \div a_1$. A implicação contrária segue a mesma demonstração com as implicação invertidas.
 \end{proof}
 
 \begin{defi}
 	Sejam $\bm A$ um anel e $Q \subseteq A$. Um \emph{divisor comum} de $Q$ em $\bm A$ é um elemento $d \in A$ que satisfaz
 	\begin{equation*}
-	\forall q \in Q \qquad d \mid q \ \ \text{em $\bm A$}.
+	\forall q \in Q \qquad d \div q \ \ \text{em $\bm A$}.
 	\end{equation*}
 O conjunto dos divisores comuns de $Q$ em $\bm A$ é $\divv_{\bm A}(Q)$. O índice $\bm A$ pode ser omitido caso não haja ambiguidade.
 
 Dualmente, um \emph{múltiplo comum} de $Q$ em $\bm A$ é um elemento $m \in A$ que satisfaz
 	\begin{equation*}
-	\forall q \in Q \qquad q \mid m \ \ \text{em $\bm A$}.
+	\forall q \in Q \qquad q \div m \ \ \text{em $\bm A$}.
 	\end{equation*}
 O conjunto dos múltiplos comuns de $Q$ em $\bm A$ é $\mul_{\bm A}(Q)$. O índice $\bm A$ pode ser omitido caso não haja ambiguidade.
 \end{defi}
@@ -2645,17 +2673,17 @@ O conjunto dos múltiplos comuns de $Q$ em $\bm A$ é $\mul_{\bm A}(Q)$. O índi
 \end{prop}
 \begin{proof}
 	\begin{enumerate}
-	\item Seja $u \in A^*$. Então $u \mid a$ para todo $a \in A$. Logo $u \in \divv_{\bm A}(A)$. Por outro lado, seja $d \in \divv_{\bm A}(A)$. Então $d \mid a$ para todo $a \in A$. Em particular, $d \mid 1$. Como $1 \in A^*$, então $d \in A^*$.
+	\item Seja $u \in A^*$. Então $u \div a$ para todo $a \in A$. Logo $u \in \divv_{\bm A}(A)$. Por outro lado, seja $d \in \divv_{\bm A}(A)$. Então $d \div a$ para todo $a \in A$. Em particular, $d \div 1$. Como $1 \in A^*$, então $d \in A^*$.
 
-	Seja $u \in A^*$. Então $u \mid v$ para todo $v \in A^*$. Logo $u \in \divv_{\bm A}(A^*)$. Por outro lado, seja $d \in \divv_{\bm A}(A^*)$. Então $d \mid u$ para todo $u \in A^*$. Logo $d \in A^*$.
+	Seja $u \in A^*$. Então $u \div v$ para todo $v \in A^*$. Logo $u \in \divv_{\bm A}(A^*)$. Por outro lado, seja $d \in \divv_{\bm A}(A^*)$. Então $d \div u$ para todo $u \in A^*$. Logo $d \in A^*$.
 
-	Seja $a \in A$. Se $a \notin \divv_{\bm A}(\emptyset)$, existe $q \in \emptyset$ tal que $a \nmid q$, o que é absurdo. Logo $a \in \divv_{\bm A}(\emptyset)$.
+	Seja $a \in A$. Se $a \notin \divv_{\bm A}(\emptyset)$, existe $q \in \emptyset$ tal que $a \ndiv q$, o que é absurdo. Logo $a \in \divv_{\bm A}(\emptyset)$.
 
-	Seja $a \in A$. Então $a \mid 0$, o que implica $a \in \divv_{\bm A}(\{0\})$. A inclusão contrária é óbvia pela definição do conjunto dos divisores comuns.
+	Seja $a \in A$. Então $a \div 0$, o que implica $a \in \divv_{\bm A}(\{0\})$. A inclusão contrária é óbvia pela definição do conjunto dos divisores comuns.
 
-	\item Se $Q = \emptyset$, então $\divv_{\bm A}(Q) = A$. Se $Q \neq \emptyset$, sejam $q \in Q$ e $u \in A^*$. Então $u \mid q$. Logo $u \in \divv_{\bm A}(Q)$. A inclusão $\divv_{\bm A}(Q) \subseteq A$ é óbvia pela definição do conjunto de divisores comuns;
+	\item Se $Q = \emptyset$, então $\divv_{\bm A}(Q) = A$. Se $Q \neq \emptyset$, sejam $q \in Q$ e $u \in A^*$. Então $u \div q$. Logo $u \in \divv_{\bm A}(Q)$. A inclusão $\divv_{\bm A}(Q) \subseteq A$ é óbvia pela definição do conjunto de divisores comuns;
 
-	\item Suponhamos que $\{0\} \cap \divv_{\bm A}(Q) \neq \emptyset$. Então $0 \in \divv_{\bm A}(Q)$. Se $Q = \emptyset$, então $Q \subseteq \{0\}$. Caso contrário, seja $q \in Q$. Como $0 \mid q$, segue que $q=0$. Em ambos os casos, $Q \subseteq \{0\}$.
+	\item Suponhamos que $\{0\} \cap \divv_{\bm A}(Q) \neq \emptyset$. Então $0 \in \divv_{\bm A}(Q)$. Se $Q = \emptyset$, então $Q \subseteq \{0\}$. Caso contrário, seja $q \in Q$. Como $0 \div q$, segue que $q=0$. Em ambos os casos, $Q \subseteq \{0\}$.
 
 	Suponhamos que $Q \subseteq \{0\}$. Então $Q=\emptyset$ ou $Q=\{0\}$. Pelo item 1, segue que $\divv_{\bm A}(Q)=A$.
 
@@ -2664,19 +2692,19 @@ O conjunto dos múltiplos comuns de $Q$ em $\bm A$ é $\mul_{\bm A}(Q)$. O índi
 
 	Dualmente,
 	\begin{enumerate}
-	\item Note que $a \mid 0$ para todo $a \in A$. Logo $0 \in \mul_{\bm A}(A)$. Por outro  lado, seja $m \in \mul_{\bm A}(A)$. Então $a \mid m$ para todo $a \in A$. Em particular, $0 \mid m$, o que implica $m=0$.
+	\item Note que $a \div 0$ para todo $a \in A$. Logo $0 \in \mul_{\bm A}(A)$. Por outro  lado, seja $m \in \mul_{\bm A}(A)$. Então $a \div m$ para todo $a \in A$. Em particular, $0 \div m$, o que implica $m=0$.
 
-	Note que $0 \mid 0$, o que implica $0 \in \mul{\bm A}(\{0\})$. Por outro lado, seja $m \in \mul_{\bm A}(\{0\})$. Então $0 \mid m$, o que implica $m=0$.
+	Note que $0 \div 0$, o que implica $0 \in \mul{\bm A}(\{0\})$. Por outro lado, seja $m \in \mul_{\bm A}(\{0\})$. Então $0 \div m$, o que implica $m=0$.
 
-	Seja $a \in A$. Se $a \notin \mul_{\bm A}(\emptyset)$, existe $q \in \emptyset$ tal que $q \nmid a$, o que é absurdo. Logo $a \in \mul_{\bm A}(\emptyset)$.
+	Seja $a \in A$. Se $a \notin \mul_{\bm A}(\emptyset)$, existe $q \in \emptyset$ tal que $q \ndiv a$, o que é absurdo. Logo $a \in \mul_{\bm A}(\emptyset)$.
 
-	Sejam $a \in A$ e $u \in A^*$. Então $u \mid a$, o que implica $a \in \mul_{\\bm A}(A^*)$. A inclusão contrária é óbvia pela definição do conjunto dos múltiplos comuns.
+	Sejam $a \in A$ e $u \in A^*$. Então $u \div a$, o que implica $a \in \mul_{\\bm A}(A^*)$. A inclusão contrária é óbvia pela definição do conjunto dos múltiplos comuns.
 
-	\item Se $Q = \emptyset$, então $\mul_{\bm A}(Q) = A$. Se $Q \neq \emptyset$, seja $q \in Q$. Então $q \mid 0$, o que implica $\{0\} \in \mul_{\bm A}(Q)$. A inclusão $\mul_{\bm A}(Q) \subseteq A$ é óbvia pela definição do conjunto dos múltiplos comuns;
+	\item Se $Q = \emptyset$, então $\mul_{\bm A}(Q) = A$. Se $Q \neq \emptyset$, seja $q \in Q$. Então $q \div 0$, o que implica $\{0\} \in \mul_{\bm A}(Q)$. A inclusão $\mul_{\bm A}(Q) \subseteq A$ é óbvia pela definição do conjunto dos múltiplos comuns;
 
-	\item Suponhamos que $A^* \cap \mul_{\bm A}(Q) \neq \emptyset$. Seja $m \in A^* \cap \mul{\bm A}(Q)$. Se $Q = \emptyset$, então $Q \subseteq A^*$. Caso contrário, seja $q \in Q$. Como $q \mid m$, pois $m \in \mul_{\bm A}(Q)$, então $q \in A^*$, pois $m \in A^*$. Logo $Q \subseteq A^*$.
+	\item Suponhamos que $A^* \cap \mul_{\bm A}(Q) \neq \emptyset$. Seja $m \in A^* \cap \mul{\bm A}(Q)$. Se $Q = \emptyset$, então $Q \subseteq A^*$. Caso contrário, seja $q \in Q$. Como $q \div m$, pois $m \in \mul_{\bm A}(Q)$, então $q \in A^*$, pois $m \in A^*$. Logo $Q \subseteq A^*$.
 
-	Suponhamos que $Q \subseteq A^*$. Se $Q = \emptyset$, do item 1 segue que $\mul_{\bm A}(Q)=A$. Caso contrário, sejam $q \in Q$ e $a \in A$. Então $q \in A^*$ e segue que $q \mid a$. Logo $a \in \mul_{\bm A}(Q)$. Por outro lado, a  inclusão $\mul_{\bm A}(Q) \subseteq A$ é óbvia pela definição do conjunto de múltiplos comuns;
+	Suponhamos que $Q \subseteq A^*$. Se $Q = \emptyset$, do item 1 segue que $\mul_{\bm A}(Q)=A$. Caso contrário, sejam $q \in Q$ e $a \in A$. Então $q \in A^*$ e segue que $q \div a$. Logo $a \in \mul_{\bm A}(Q)$. Por outro lado, a  inclusão $\mul_{\bm A}(Q) \subseteq A$ é óbvia pela definição do conjunto de múltiplos comuns;
 
 	Suponhamos que $\mul_{\bm A}(Q) = A$. Então $A^* \cap \mul_{\bm A}(Q) = A^*$. Como $1 \in A^*$, segue que $A^* \cap \mul_{\bm A}(Q) \neq \emptyset$.
 	\end{enumerate}
@@ -2705,16 +2733,16 @@ O conjunto dos múltiplos comuns de $Q$ em $\bm A$ é $\mul_{\bm A}(Q)$. O índi
 	Sejam $\bm A$ um anel e $Q \subseteq A$. Um \emph{máximo divisor comum} de $Q$ em $\bm A$ é um elemento $d \in A$ que satisfaz
 	\begin{enumerate}
 	\item $d \in \divv_{\bm A}(Q)$;
-	\item $d' \in \divv_{\bm A}(Q) \Rightarrow d' \mid d$ em $\bm A$.
+	\item $d' \in \divv_{\bm A}(Q) \Rightarrow d' \div d$ em $\bm A$.
 	\end{enumerate}
-	O conjunto dos máximos divisores comuns de $Q$ em $\bm A$ é $\mdc_{\bm A}(Q)$. Se $Q$ é um conjunto finito $Q=\{a_1,\ldots,a_n\}$, denota-se $\mdc_{\bm A}(Q)=\mdc_{\bm A}(Q)(a_1,\ldots,a_n)$ ou $\mdc_{\bm A}(Q)=(a_1,\ldots,a_n)$. O índice $\bm A$ pode ser omitido caso não haja ambiguidade.
+	O conjunto dos máximos divisores comuns de $Q$ em $\bm A$ é $\mdc_{\bm A}(Q)$. Se $Q$ é um conjunto finito $Q=\{a_1,\ldots,a_n\}$, denota-se $\mdc_{\bm A}(Q)=\mdc_{\bm A}(a_1,\ldots,a_n)$ ou $\mdc_{\bm A}(Q)=(a_1,\ldots,a_n)$. O índice $\bm A$ pode ser omitido caso não haja ambiguidade.
 
 	Dualmente, um \emph{mínimo múltiplo comum} de $Q$ em $\bm A$ é um elemento $m \in A$ que satisfaz
 	\begin{enumerate}
 	\item $m \in \mul_{\bm A}(Q)$;
-	\item $m' \in \mul_{\bm A}(Q) \Rightarrow m \mid m'$ em $\bm A$.
+	\item $m' \in \mul_{\bm A}(Q) \Rightarrow m \div m'$ em $\bm A$.
 	\end{enumerate}
-	O conjunto dos mínimos múltiplos comuns de $Q$ em $\bm A$ é $\mmc_{\bm A}(Q)$. Se $Q$ é um conjunto finito $Q=\{a_1, \ldots, a_n\}$, denota-se $\mmc_{\bm A}(Q) = \mmc_{\bm A}(Q)[a_1, \ldots, a_n]$. ou $\mmc_{\bm A}(Q) = [a_1, \ldots, a_n]$ O índice $\bm A$ pode ser omitido caso não haja ambiguidade.
+	O conjunto dos mínimos múltiplos comuns de $Q$ em $\bm A$ é $\mmc_{\bm A}(Q)$. Se $Q$ é um conjunto finito $Q=\{a_1, \ldots, a_n\}$, denota-se $\mmc_{\bm A} = \mmc_{\bm A}(Q)(a_1, \ldots, a_n)$. ou $\mmc_{\bm A}(Q) = [a_1, \ldots, a_n]$ O índice $\bm A$ pode ser omitido caso não haja ambiguidade.
 \end{defi}
 
 \begin{prop}
@@ -2732,16 +2760,16 @@ O conjunto dos múltiplos comuns de $Q$ em $\bm A$ é $\mul_{\bm A}(Q)$. O índi
 \end{prop}
 \begin{proof}
 	\begin{enumerate}
-	\item Suponha que $Q \subseteq \{0\}$. Então $A = \divv_{\bm A}(Q)$. Em particular, $0 \in \divv_{\bm A}(Q)$. Ainda, para todo $d \in \divv_{\bm A}(Q)$, vale que $d \mid 0$, pois $d \in A$. Logo $0 \in \mdc_{\bm A}(Q)$. Ainda, se $d \in \mdc_{\bm A}(Q)$, então $0 \mid d$, pois $0 \in \divv_{\bm A}(Q)$ e $d \in \mdc_{\bm A}(Q)$. Portanto $d=0$. Reciprocamente, se $\mdc_{\bm A}(Q)=\{0\}$, então $0 \in \divv_{\bm A}(Q)$; ou seja, $\{0\} \cap \divv_{\bm A}(Q) \neq \emptyset$, o que implica que $Q \subseteq \{0\}$.
+	\item Suponha que $Q \subseteq \{0\}$. Então $A = \divv_{\bm A}(Q)$. Em particular, $0 \in \divv_{\bm A}(Q)$. Ainda, para todo $d \in \divv_{\bm A}(Q)$, vale que $d \div 0$, pois $d \in A$. Logo $0 \in \mdc_{\bm A}(Q)$. Ainda, se $d \in \mdc_{\bm A}(Q)$, então $0 \div d$, pois $0 \in \divv_{\bm A}(Q)$ e $d \in \mdc_{\bm A}(Q)$. Portanto $d=0$. Reciprocamente, se $\mdc_{\bm A}(Q)=\{0\}$, então $0 \in \divv_{\bm A}(Q)$; ou seja, $\{0\} \cap \divv_{\bm A}(Q) \neq \emptyset$, o que implica que $Q \subseteq \{0\}$.
 
-	\item Como $A^* \cap Q \neq \emptyset$, seja $a \in A^* \cap Q$. Se $u \in A^*$, então $u \in \divv_{\bm A}(Q)$. Ainda, se $d \in \divv_{\bm A}(Q)$, então, em particular, $d \mid a$. Mas como $a \in A^*$, segue que $d \in A^*$. Logo $d \mid u$, o que mostra que $u \in \mdc_{\bm A}(Q)$. Por outro lado, se $d \in \mdc_{\bm A}(Q)$, então $d \mid a$. Como $a \in A^*$, então $d \in A^*$, e concluímos que $A^*=\mdc_{\bm A}(Q)$.
+	\item Como $A^* \cap Q \neq \emptyset$, seja $a \in A^* \cap Q$. Se $u \in A^*$, então $u \in \divv_{\bm A}(Q)$. Ainda, se $d \in \divv_{\bm A}(Q)$, então, em particular, $d \div a$. Mas como $a \in A^*$, segue que $d \in A^*$. Logo $d \div u$, o que mostra que $u \in \mdc_{\bm A}(Q)$. Por outro lado, se $d \in \mdc_{\bm A}(Q)$, então $d \div a$. Como $a \in A^*$, então $d \in A^*$, e concluímos que $A^*=\mdc_{\bm A}(Q)$.
 	\end{enumerate}
 
 	Dualmente,
 	\begin{enumerate}
-	\item Suponha que $Q \subseteq A^*$. Então $A = \mul_{\bm A}(Q)$. Seja $u \in A^*$. Então $u \in \mul_{\bm A}(Q)$. Ainda, para todo $m \in \mul_{\bm A}(Q)$, vale que $u \mid m$, pois $m \in A$. Logo $u \in \mmc_{\bm A}(Q)$. Ainda, se $m \in \mmc_{\bm A}(Q)$, então $m \mid u$, pois $u \in \mul_{\bm A}(Q)$ e $m \in \mmc_{\bm A}(Q)$. Portanto $m \in A^*$. Reciprocamente, se $\mmc_{\bm A}(Q)=A^*$, então $1 \in \mul_{\bm A}(Q)$; ou seja, $A^* \cap \mul_{\bm A}(Q) \neq \emptyset$, o que implica $Q \subseteq A^*$.
+	\item Suponha que $Q \subseteq A^*$. Então $A = \mul_{\bm A}(Q)$. Seja $u \in A^*$. Então $u \in \mul_{\bm A}(Q)$. Ainda, para todo $m \in \mul_{\bm A}(Q)$, vale que $u \div m$, pois $m \in A$. Logo $u \in \mmc_{\bm A}(Q)$. Ainda, se $m \in \mmc_{\bm A}(Q)$, então $m \div u$, pois $u \in \mul_{\bm A}(Q)$ e $m \in \mmc_{\bm A}(Q)$. Portanto $m \in A^*$. Reciprocamente, se $\mmc_{\bm A}(Q)=A^*$, então $1 \in \mul_{\bm A}(Q)$; ou seja, $A^* \cap \mul_{\bm A}(Q) \neq \emptyset$, o que implica $Q \subseteq A^*$.
 
-	\item Como $\{0\} \cap Q \neq \emptyset$, então $0 \in Q$. Note que $0 \in \mul_{\bm A}(Q)$. Ainda, se $m \in \mul_{\bm A}(Q)$, então $0 \mid m$. Então segue que $0 \in \mmc_{\bm A}(Q)$. Por outro lado, se $m \in \mmc_{\bm A}(Q)$, então $0 \mid m$, o que implica $m=0$, e concluímos que $\mmc_{\bm A}(Q) = \{0\}$.
+	\item Como $\{0\} \cap Q \neq \emptyset$, então $0 \in Q$. Note que $0 \in \mul_{\bm A}(Q)$. Ainda, se $m \in \mul_{\bm A}(Q)$, então $0 \div m$. Então segue que $0 \in \mmc_{\bm A}(Q)$. Por outro lado, se $m \in \mmc_{\bm A}(Q)$, então $0 \div m$, o que implica $m=0$, e concluímos que $\mmc_{\bm A}(Q) = \{0\}$.
 	\end{enumerate}
 \end{proof}
 
@@ -2754,7 +2782,7 @@ O conjunto dos múltiplos comuns de $Q$ em $\bm A$ é $\mul_{\bm A}(Q)$. O índi
 	\end{equation*}
 \end{prop}
 \begin{proof}
-	Seja $d \in \mdc_{\bm A}(B)$. Então $d \in \div_{\bm A}(B)$. Seja $x \in \mdc_{\bm A}(C) \cup (B \setminus C)$. Se $x \in B \setminus C$, então $x \in B$, o que implica $d \mid x$. Se $x \in \mdc_{\bm A}(C)$
+	Seja $d \in \mdc_{\bm A}(B)$. Então $d \in \div_{\bm A}(B)$. Seja $x \in \mdc_{\bm A}(C) \cup (B \setminus C)$. Se $x \in B \setminus C$, então $x \in B$, o que implica $d \div x$. Se $x \in \mdc_{\bm A}(C)$
 
 	...
 
@@ -2765,7 +2793,7 @@ O conjunto dos múltiplos comuns de $Q$ em $\bm A$ é $\mul_{\bm A}(Q)$. O índi
 
 
 
-	Então, como $C \subseteq B$, para todo $c \in C$, segue que $c \in B$ e, portanto, $d \mid c$. Ainda, para todo $b \in B \setminus C$, segue que $b \in B$ e, portanto, $d \mid b$.
+	Então, como $C \subseteq B$, para todo $c \in C$, segue que $c \in B$ e, portanto, $d \div c$. Ainda, para todo $b \in B \setminus C$, segue que $b \in B$ e, portanto, $d \div b$.
 
 
 
@@ -2803,13 +2831,13 @@ O conjunto dos múltiplos comuns de $Q$ em $\bm A$ é $\mul_{\bm A}(Q)$. O índi
 \begin{prop}
 	Seja $\bm A$ um anel. Então
 	\begin{enumerate}
-	\item $\forall a,b \in A \qquad a \sim b \Rightarrow a \mid b$;
+	\item $\forall a,b \in A \qquad a \sim b \Rightarrow a \div b$;
 	\item $\forall a_1,\ldots,a_n,b_1,\ldots,b_n \in A \qquad \forall i \in \inte_n \quad a_i \sim b_i \Rightarrow \displaystyle\bigtimes_{i=1}^n a_i \sim \displaystyle\bigtimes_{i=1}^n b_i$.
 	\end{enumerate}
 \end{prop}
 \begin{proof}
 	\begin{enumerate}
-	\item Sejam $a,b \in A$. Se $a \sim b$, então existe $u \in A^*$ tal que $au=b$. Mas isso significa que $a \mid b$.
+	\item Sejam $a,b \in A$. Se $a \sim b$, então existe $u \in A^*$ tal que $au=b$. Mas isso significa que $a \div b$.
 	\item Sejam $a_1,\ldots,a_n,b_1,\ldots,b_n \in A$ e $i \in \inte_n$. Se $a_i \sim b_i$, então existe $u_i \in A^*$ tal que $a_iu_i = b_i$. Logo $a_1 \cdots a_n \cdot u_1 \cdots u_n = b_1 \cdots b_n$. Como $u_1 \cdots u_n \in A^*$, segue que $\displaystyle\bigtimes_{i=1}^n a_i \sim \displaystyle\bigtimes_{i=1}^n b_i$.
 	\end{enumerate}
 \end{proof}
@@ -2818,7 +2846,7 @@ O conjunto dos múltiplos comuns de $Q$ em $\bm A$ é $\mul_{\bm A}(Q)$. O índi
 	Sejam $\bm D$ um domínio e $d_1, \ldots, d_n \in D$ não todos nulos. Se $d,d'$ são máximos divisores comuns de $d_1,\ldots,d_n$, então $d$ e $d'$ são associados, $d \sim d'$.
 \end{prop}
 \begin{proof}
-	Como $d$ é máximo divisor comum de $d_1,\ldots,d_n$ e $d'$ é divisor comum de $d_1,\ldots,d_n$, então $d' \mid d$. Analogamente, $d \mid d'$. Então existem $u,v \in D$ tais que $d=d'u$ e $d'=dv$. Então $d=dvu$. Como $d \neq 0$ e $\bm D$ é domínio, segue que e $vu=1$. Portanto $u,v \in D^*$, o que implica $d \sim d'$.
+	Como $d$ é máximo divisor comum de $d_1,\ldots,d_n$ e $d'$ é divisor comum de $d_1,\ldots,d_n$, então $d' \div d$. Analogamente, $d \div d'$. Então existem $u,v \in D$ tais que $d=d'u$ e $d'=dv$. Então $d=dvu$. Como $d \neq 0$ e $\bm D$ é domínio, segue que e $vu=1$. Portanto $u,v \in D^*$, o que implica $d \sim d'$.
 \end{proof}
 
 \section{Domínios de Fatoração Única}
@@ -2853,22 +2881,22 @@ Logo $d \in D^*$.
 	Seja $\bm D$ um domínio. Um elemento \emph{primo} em $\bm D$ é um elemento $p \in D$ que satisfaz
 	\begin{enumerate}
 	\item  $p \notin (D^* \cup \{0\})$;
-	\item $\forall d_1,d_2 \in D \qquad p \mid d_1d_2 \Rightarrow p \mid d_1 \text{\ \ ou\ \ } p \mid d_2.$
+	\item $\forall d_1,d_2 \in D \qquad p \div d_1d_2 \Rightarrow p \div d_1 \text{\ \ ou\ \ } p \div d_2.$
 	\end{enumerate}
 \end{defi}
 
 \begin{prop}
-	Sejam $\bm D$ um domínio e $p$ um primo em $\bm D$. Se existem $d_1,\ldots,d_n$ tais que $p \mid d_1 \cdots d_n$, então existe $i \in \{1,\ldots,n\}$ tal que $p \mid d_i$.
+	Sejam $\bm D$ um domínio e $p$ um primo em $\bm D$. Se existem $d_1,\ldots,d_n$ tais que $p \div d_1 \cdots d_n$, então existe $i \in \{1,\ldots,n\}$ tal que $p \div d_i$.
 \end{prop}
 \begin{proof}
-	Vamos mostrar por indução em $n$. Para o caso base, se $n=1$, então $i=1$ satisfaz o procurado. Para demonstrar o passo indutivo, suponhamos que a propridade vale para um natural $n$. Então, se $p=d_1 \cdots d_{n+1}$, como $p$ é primo, $p \mid d_1 \cdots d_n$ ou $p \mid d_{n+1}$. Se $p \mid d_1 \cdots d_n$, pela hipótese de indução, existe $i \in \{1,\ldots,n\}$ tal que $p \mid d_i$; caso contrário, $p \mid d_{n+1}$, Logo, existe $i \in \{1,\ldots,n+1\}$ tal que $p \mid d_i$.
+	Vamos mostrar por indução em $n$. Para o caso base, se $n=1$, então $i=1$ satisfaz o procurado. Para demonstrar o passo indutivo, suponhamos que a propridade vale para um natural $n$. Então, se $p=d_1 \cdots d_{n+1}$, como $p$ é primo, $p \div d_1 \cdots d_n$ ou $p \div d_{n+1}$. Se $p \div d_1 \cdots d_n$, pela hipótese de indução, existe $i \in \{1,\ldots,n\}$ tal que $p \div d_i$; caso contrário, $p \div d_{n+1}$, Logo, existe $i \in \{1,\ldots,n+1\}$ tal que $p \div d_i$.
 \end{proof}
 
 \begin{prop}
 	Seja $\bm D$ um domínio. Se $p$ é primo em $\bm D$, então $p$ é irredutível em $\bm D$.
 \end{prop}
 \begin{proof}
-	Seja $p$ primo em $\bm D$. Se existem $d_1,d_2 \in D$ tais que $p=d_1d_2$, então $p \mid d_1d_2$. Como $p$ é primo, então $p \mid d_1$ ou $p \mid d_2$. Se $p \mid d_1$, então existe $q \in D$ tal que $pq=d_1$. Assim, segue que $p=d_1d_2=pqd_2$ e, como $\bm D$ é domínio, $1=qd_2$. Logo $d_2 \in D^*$. Analogamente, se $p \mid d_2$, segue que $d_1 \in D^*$. Portanto $p$ é irredutível.
+	Seja $p$ primo em $\bm D$. Se existem $d_1,d_2 \in D$ tais que $p=d_1d_2$, então $p \div d_1d_2$. Como $p$ é primo, então $p \div d_1$ ou $p \div d_2$. Se $p \div d_1$, então existe $q \in D$ tal que $pq=d_1$. Assim, segue que $p=d_1d_2=pqd_2$ e, como $\bm D$ é domínio, $1=qd_2$. Logo $d_2 \in D^*$. Analogamente, se $p \div d_2$, segue que $d_1 \in D^*$. Portanto $p$ é irredutível.
 \end{proof}
 
 \begin{prop}
@@ -2930,7 +2958,7 @@ então $m=n$ e existe uma permutação $\phi$ de $\inte_n$ tal que, para todo $i
 \begin{proof}
 	Nota-se que a primeira propriedade do enunciado é a mesma da definição de domínio de fatoração única. Basta, portanto, que assumamos essa propriedade e mostremos que as segundas propriedades são equivalentes.
 
-	Suponhamos, primeiro, que $\bm D$ é domínio de fatoração única. Sejam $p$ irredutível em $\bm D$ e $d_1,d_2 \in D$ tais que $p \mid d_1d_2$. Então existe $q \in D$ tal que $pq=d_1d_2$. Se $d_1 \in D^*$, então $pqd_1^{-1}=d_2$, o que implica $p \mid d_2$. Analogamente, se $d_2 \in D^*$, então $p \mid d_1$. Se $d_1 = 0$, então $p \mid d_1$. Se $d_2 = 0$, então $p \mid d_2$. Caso $d_1,d_2 \notin (D^* \cup \{0\})$, então, como $\bm D$ é domínio de fatoração única, existem $p_1,\ldots,p_n$ e $q_1,\ldots,q_m$ irredutíveis em $\bm D$ tais que
+	Suponhamos, primeiro, que $\bm D$ é domínio de fatoração única. Sejam $p$ irredutível em $\bm D$ e $d_1,d_2 \in D$ tais que $p \div d_1d_2$. Então existe $q \in D$ tal que $pq=d_1d_2$. Se $d_1 \in D^*$, então $pqd_1^{-1}=d_2$, o que implica $p \div d_2$. Analogamente, se $d_2 \in D^*$, então $p \div d_1$. Se $d_1 = 0$, então $p \div d_1$. Se $d_2 = 0$, então $p \div d_2$. Caso $d_1,d_2 \notin (D^* \cup \{0\})$, então, como $\bm D$ é domínio de fatoração única, existem $p_1,\ldots,p_n$ e $q_1,\ldots,q_m$ irredutíveis em $\bm D$ tais que
 	\begin{equation*}
 	d_1 = \bigtimes_{i=1}^n p_i \e d_2 = \bigtimes_{i=1}^m q_i.
 	\end{equation*}
@@ -2946,13 +2974,13 @@ Então
 	\begin{equation*}
 	p \left(\bigtimes_{i=1}^l r_i \right) = \left(\bigtimes_{i=1}^n p_i\right) \left(\bigtimes_{i=1}^m q_i\right).
 	\end{equation*}
-	Como $\bm D$ é domínio de fatoração única, então existe $i \in \inte_n$ tal que $p \sim p_i$ em $\bm D$ ou existe $j \in \inte_m$ tal que $p \sim q_j$ em $\bm D$. Então $p \mid p_i$ ou $p \mid q_j$. No primeiro caso, como $p_i \mid d_1$, da transitividade de $\mid$ segue que $p \mid d_1$. No segundo caso, como $q_j \mid d_2$, da transitividade de $\mid$ segue que $p \mid d_2$.
+	Como $\bm D$ é domínio de fatoração única, então existe $i \in \inte_n$ tal que $p \sim p_i$ em $\bm D$ ou existe $j \in \inte_m$ tal que $p \sim q_j$ em $\bm D$. Então $p \div p_i$ ou $p \div q_j$. No primeiro caso, como $p_i \div d_1$, da transitividade de $\div$ segue que $p \div d_1$. No segundo caso, como $q_j \div d_2$, da transitividade de $\div$ segue que $p \div d_2$.
 
 	Suponhamos agora que $\bm D$ satisfaz a segunda propriedade do enunciado. Sejam $d \in D \setminus (D^* \cup \{0\})$ e $p_1,\ldots,p_n$ e $q_1,\ldots,q_m$ irredutíveis em $\bm D$ tais que
 	\begin{equation*}
 	d = \bigtimes_{i=1}^n p_i = \bigtimes_{i=1}^m q_i.
 	\end{equation*}
-Pela segunda propriedade do enunciado, $p_1,\ldots,p_n$ e $q_1,\ldots,q_m$ são primos em $\bm D$. Demonstraremos a segunda propriedade de domínios de fatoração única por indução em $l \coloneqq \min\{n,m\}$. Para o caso base, se $l=1$, então $n=1$ ou $m=1$; sem perda de generalidade, tomemos $n=1$. Nesse caso, $d=p_1=q_1 \cdots q_m$. Como $p_1 \mid d$, então existe $k \in \inte_m$ tal que $p_1 \mid q_k$, pois $p_1$ é primo. Portanto existe $r \in D$ tal que $p_1 r = q_k$. Então
+Pela segunda propriedade do enunciado, $p_1,\ldots,p_n$ e $q_1,\ldots,q_m$ são primos em $\bm D$. Demonstraremos a segunda propriedade de domínios de fatoração única por indução em $l \coloneqq \min\{n,m\}$. Para o caso base, se $l=1$, então $n=1$ ou $m=1$; sem perda de generalidade, tomemos $n=1$. Nesse caso, $d=p_1=q_1 \cdots q_m$. Como $p_1 \div d$, então existe $k \in \inte_m$ tal que $p_1 \div q_k$, pois $p_1$ é primo. Portanto existe $r \in D$ tal que $p_1 r = q_k$. Então
 	\begin{equation*}
 	p_1 = \left(\bigtimes_{i=1}^{k-1} q_i\right) p_1 r \left(\bigtimes_{i=k+1}^m q_i\right).
 	\end{equation*}
@@ -2962,7 +2990,7 @@ Como $\bm D$ é domínio e $p_1 \neq 0$, então
 	\end{equation*}
 Como $p_n$ e $q_k$ são irredutíveis, então $r \in D^*$. Suponhamos $m>1$. Então existe $q_2$. Se $k=1$, $r q_2$ é irredutível, pois $q_2$ é irredutível e $r \in D^*$; caso contrário, se $k>1$, então $q_{k-1}r$ é irredutível pelo mesmo motivo. Em ambos os casos, $1$ é um produto de irredutíveis, o que é absurdo, pois $1$ é invertível. Logo $m=1$, o que demonstra o caso base da indução.
 
-	Agora, seja $l > 1$ e suponhamos que a propriedade vale para todo natural $k<l$. Como $p_n \mid d$, então existe $k \in \inte_m$ tal que $p_n \mid q_k$, pois $p_n$ é primo. Portanto existe $r \in D$ tal que $p_n r = q_k$. Então
+	Agora, seja $l > 1$ e suponhamos que a propriedade vale para todo natural $k<l$. Como $p_n \div d$, então existe $k \in \inte_m$ tal que $p_n \div q_k$, pois $p_n$ é primo. Portanto existe $r \in D$ tal que $p_n r = q_k$. Então
 \begin{equation*}
 	\left(\bigtimes_{i=1}^{n-1} p_i\right) p_n = \left(\bigtimes_{i=1}^{k-1} q_i\right) p_n r \left(\bigtimes_{i=k+1}^m q_i\right).
 	\end{equation*}
@@ -3067,9 +3095,9 @@ Definindo $u \coloneqq \displaystyle\bigtimes_{k=1}^n u_k$, temos que $u \in A^*
 \begin{proof}
 	Se $\{a,b\} \cap D^* \neq \emptyset$, então $\mdc_{\bm D}(a,b) = D^*$. Suponhamos, então, que $\{a,b\} \notin D \setminus (D^* \cup \{0\})$. Como $\bm D$ é domínio de fatoração única, existem $p_1,\ldots,p_n$ e $q_1,\ldots,q_m$ irredutíveis em $\bm D$ tais que $a = p_1 \cdots p_n$ e $b = q_1 \cdots q_m$. Seja $k$ o número de fatores $p_i$ e $q_j$ associados, e suponhamos, sem perda de generalidade, que, para todo $i \leq k$, $p_i \sim q_i$ e, para todo $i \geq k+1$ e $j\geq k+1$, $p_i \not\sim q_j$.
 
-	Se $k=0$, mostraremos que $\mdc_{\bm D}(a,b) = D^*$. Para isso, mostraremos que $1 \in \mdc_{\bm D}(a,b)$. Notamos que $1 \in D^* \subseteq \divv_{\bm D}(a,b)$. Agora, seja $d \in \divv_{\bm A}(a,b)$. Como $\{a,b\} \cap \{0\} = \emptyset$, então $\{0\} \cap \divv_{\bm D}(a,b) = \emptyset$. Se $d \in D^*$, então $d \mid 1$, logo $1 \in \mdc_{\bm D}(a,b)$. Se $d \in D \setminus (D^* \cup \{0\})$, então existe $p$ irredutível em $\bm D$ tal que $p \mid d$. Pela transitividade de $\mid$, $p \mid a$ e $p \mid b$. Como $\bm D$ é domínio de fatoração única, $p$ é primo em $\bm D$. Então segue que existe $i$ e $j$ tais que $p \mid p_i$ e $p \mid q_j$. Como esses elementoss são irredutíveis, $p \sim p_i$ e $p \sim q_j$. Da transitividade e reflexividade de $\sim$, segue que $p_i \sim q_j$, o que é absurdo. Logo $1 \in \mdc_{\bm D}(a,b)$. Como todos os máximos divisores comuns são associados, então $D^* = \mdc_{\bm D}(a,b)$.
+	Se $k=0$, mostraremos que $\mdc_{\bm D}(a,b) = D^*$. Para isso, mostraremos que $1 \in \mdc_{\bm D}(a,b)$. Notamos que $1 \in D^* \subseteq \divv_{\bm D}(a,b)$. Agora, seja $d \in \divv_{\bm A}(a,b)$. Como $\{a,b\} \cap \{0\} = \emptyset$, então $\{0\} \cap \divv_{\bm D}(a,b) = \emptyset$. Se $d \in D^*$, então $d \div 1$, logo $1 \in \mdc_{\bm D}(a,b)$. Se $d \in D \setminus (D^* \cup \{0\})$, então existe $p$ irredutível em $\bm D$ tal que $p \div d$. Pela transitividade de $\div$, $p \div a$ e $p \div b$. Como $\bm D$ é domínio de fatoração única, $p$ é primo em $\bm D$. Então segue que existe $i$ e $j$ tais que $p \div p_i$ e $p \div q_j$. Como esses elementoss são irredutíveis, $p \sim p_i$ e $p \sim q_j$. Da transitividade e reflexividade de $\sim$, segue que $p_i \sim q_j$, o que é absurdo. Logo $1 \in \mdc_{\bm D}(a,b)$. Como todos os máximos divisores comuns são associados, então $D^* = \mdc_{\bm D}(a,b)$.
 
-	Se $k \geq 1$, mostraremos que $p_1 \cdots p_k \in \mdc_{\bm D}(a,b)$. Primeiro, notamos que $p_1 \cdots p_k \mid a$ e $q_1 \cdots q_k \mid b$. Como $p_i \sim q_i$ para todo $i \leq k$, então $p_1 \cdots p_k \sim q_1 \cdots q_k$. Logo $p_1 \cdots p_k \mid q_1 \cdots q_k$ e, da trasitividade de $\mid$, segue que $p_1 \cdots p_k \mid b$. Logo $p_1 \cdots p_k \in \divv_{\bm D}(a,b)$. Então, seja $d \in \divv_{\bm D}(a,b)$. Se $d \in D^*$, então $d \mid p_1 \cdots p_k$. Logo $p_1 \cdots p_k \in \mdc_{\bm D}(a,b)$. Se $d \in D \setminus (D^* \cup \{0\})$, então existem $r_1,\ldots,r_l$ irredutíveis em $\bm D$ tais que $d = r_1 \cdots r_l$. Por $\bm D$ ser domínio, $r_1,\ldots,r_l$ são primos em $\bm D$. Como $d \mid a$, então $r_1 \mid p_1 \cdots p_k$. Como $r_1$ é primo, existe $i_1 \in \{1,\ldots,k\}$ tal que $r_1 \mid p_{i_1}$. Seja $s_1 \in D$ tal que $r_1s_1 = p_{i_1}$. Como $r_1$ e $p_{i_1}$ são irredutíveis, então $r_1 \sim p_{i_1}$, o que implica $s_1 \in D^*$. Então $r_2 \cdots r_l \mid p_1 \cdots p_{i_1-1} \cdot s_1 \cdot p_{i_1+1} \cdots p_k$, pois $\bm D$ é domínio. Repetindo o processo indutivamente, conclui-se que existem $i_1, \ldots,i_m$ tais que $r_j \sim p_{i_j}$ para todo $j \in \{1,\ldots,l\}$ (MELHORAR ARUMENTAÇÃO DA INDUÇÃO). Da mesma forma, cocnlui-se que que existem $i'_1, \ldots,i'_m$ tais que $r_j \sim q_{i'_j}$ para todo $j \in \{1,\ldots,l\}$. Portanto, da reflexividade e transitividade de $\sim$, segue que $p_{i_j} \sim q_{i'_j}$ para todo $i,j$. Então $d \sim p_{i_1} \cdots p_{i_m} \sim q_{i'_1} \cdots q_{i'_m}$. Como $p_{i_1} \cdots p_{i_m} \mid p_1 \cdots p_k$ e $q_{i'_1} \cdots q_{i'_m} \mid q_1 \cdots q_k$, então $d \mid p_1 \cdots p_k$(MELHORAR ARGUMENTAÇÃO FINAL).
+	Se $k \geq 1$, mostraremos que $p_1 \cdots p_k \in \mdc_{\bm D}(a,b)$. Primeiro, notamos que $p_1 \cdots p_k \div a$ e $q_1 \cdots q_k \div b$. Como $p_i \sim q_i$ para todo $i \leq k$, então $p_1 \cdots p_k \sim q_1 \cdots q_k$. Logo $p_1 \cdots p_k \div q_1 \cdots q_k$ e, da trasitividade de $\div$, segue que $p_1 \cdots p_k \div b$. Logo $p_1 \cdots p_k \in \divv_{\bm D}(a,b)$. Então, seja $d \in \divv_{\bm D}(a,b)$. Se $d \in D^*$, então $d \div p_1 \cdots p_k$. Logo $p_1 \cdots p_k \in \mdc_{\bm D}(a,b)$. Se $d \in D \setminus (D^* \cup \{0\})$, então existem $r_1,\ldots,r_l$ irredutíveis em $\bm D$ tais que $d = r_1 \cdots r_l$. Por $\bm D$ ser domínio, $r_1,\ldots,r_l$ são primos em $\bm D$. Como $d \div a$, então $r_1 \div p_1 \cdots p_k$. Como $r_1$ é primo, existe $i_1 \in \{1,\ldots,k\}$ tal que $r_1 \div p_{i_1}$. Seja $s_1 \in D$ tal que $r_1s_1 = p_{i_1}$. Como $r_1$ e $p_{i_1}$ são irredutíveis, então $r_1 \sim p_{i_1}$, o que implica $s_1 \in D^*$. Então $r_2 \cdots r_l \div p_1 \cdots p_{i_1-1} \cdot s_1 \cdot p_{i_1+1} \cdots p_k$, pois $\bm D$ é domínio. Repetindo o processo indutivamente, conclui-se que existem $i_1, \ldots,i_m$ tais que $r_j \sim p_{i_j}$ para todo $j \in \{1,\ldots,l\}$ (MELHORAR ARUMENTAÇÃO DA INDUÇÃO). Da mesma forma, cocnlui-se que que existem $i'_1, \ldots,i'_m$ tais que $r_j \sim q_{i'_j}$ para todo $j \in \{1,\ldots,l\}$. Portanto, da reflexividade e transitividade de $\sim$, segue que $p_{i_j} \sim q_{i'_j}$ para todo $i,j$. Então $d \sim p_{i_1} \cdots p_{i_m} \sim q_{i'_1} \cdots q_{i'_m}$. Como $p_{i_1} \cdots p_{i_m} \div p_1 \cdots p_k$ e $q_{i'_1} \cdots q_{i'_m} \div q_1 \cdots q_k$, então $d \div p_1 \cdots p_k$(MELHORAR ARGUMENTAÇÃO FINAL).
 \end{proof}
 
 \begin{lema}
@@ -3079,10 +3107,14 @@ Definindo $u \coloneqq \displaystyle\bigtimes_{k=1}^n u_k$, temos que $u \in A^*
 \section{Raízes de Polinômios}
 
 \begin{prop}
-	Seja $\bm A$ um anel e $f,g \in A[x]$. Se $g$ é mônico, então existem $q,r \in A[x]$ tais que $f=qg+r$ e $r=0$ ou $\g(r) < \g(g)$.
+Seja $\bm A$ um anel e $f,g \in A[x]$. Se $g$ é mônico, então existem $q,r \in A[x]$ tais que $f=qg+r$ e $r=0$ ou $\g(r) < \g(g)$.
 \end{prop}
 \begin{proof}
-	Sejam $n \coloneqq \g(f)$, $f = \bigplus_{i=0}^n a_ix^i$, e $m \coloneqq \g(g)$, $g = \bigplus_{i=0}^{m-1} b_ix^i + x^m$. Se $m \leq n$, definimos $q(x) \coloneqq a_nx^{n-m}$ e $r \coloneqq f-qg$ e temos
+Sejam $n \coloneqq \g(f)$, $m \coloneqq \g(g)$,
+	\begin{equation*}
+	f = \bigplus_{i=0}^n a_ix^i \e g = \bigplus_{i=0}^{m-1} b_ix^i + x^m
+	\end{equation*}
+Se $m \leq n$, definimos $q(x) \coloneqq a_nx^{n-m}$ e $r \coloneqq f-qg$ e temos
 	\begin{align*}
 	r(x) &= f(x) - q(x)g(x) \\
 	&= \bigplus_{i=0}^n a_ix^i - a_nx^{n-m}\left(\bigplus_{i=0}^{m-1} b_ix^i + x^m\right) \\
@@ -3253,8 +3285,8 @@ e segue que $p' \in C[x]^*$, $p'(\alpha)=(a_n)^{-1}p'(\alpha)=0$ e $p'$ é môni
 		\node (kk) [right of=k] {$\overline{k}$};
 		\node (K) [below of=k] {$K$};
 
-		\draw[right hook->] (k) to node {$.$} (kk);
-		\draw[left hook->] (k) to node[swap] {$.$} (K);
+		\draw[->] (k) to node {$.$} (kk);
+		\draw[->] (k) to node[swap] {$.$} (K);
 		\draw[->] (K) to node[swap] {$\sigma$} (kk);
 
 	\end{tikzpicture}
@@ -4073,7 +4105,7 @@ Mas notemos que
 	\bm v = \bigplus_{i=1}^{n+1} \bm w_i.
 	\end{equation*}
 
-	Suponhamos, então, que todo vetor de $V$ é soma de únicos vetores de $W_1,\ldots,W_n$. Sejam $i,j \in \inte_n$, $i \neq j$, e $\bm v \in W_i \cap W_j$. Como $\bm v \in V$, segue que existem únicos $\bm w_1 \in W_1, \ldots, \bm w_n \in W_n$ tais que
+	Suponhamos, então, que todo vetor de $V$ é soma de únicos vetores de $W_1$, $\ldots$, $W_n$. Sejam $i,j \in \inte_n$, $i \neq j$, e $\bm v \in W_i \cap W_j$. Como $\bm v \in V$, segue que existem únicos $\bm w_1 \in W_1, \ldots, \bm w_n \in W_n$ tais que
 	\begin{equation*}
 	\bm v = \bigplus_{k=1}^n \bm w_k.
 	\end{equation*}
@@ -4244,118 +4276,16 @@ o que mostra que $T^{-1}$ é linear.
 	\begin{equation*}
 	T(\bm v) = T\left( \bigplus_{i=1}^n a_i \bm v_i \right) = \bigplus_{i=1}^n a_i T(\bm v_i).
 	\end{equation*}
-	Agora, como $B_W$ é base de $\bm W$, para cada $i \in \{1,\ldots,n\}$ existem únicos $b_{i1},\ldots,b_{im} \in C$ tais que  $T(\bm v_i)=\bigplus_{j=1}^m b_{ij} \bm w_j$. Assim, definindo $c_j \coloneqq \bigplus_{i=1}^n a_i b_{ij}$, segue que
+	Agora, como $B_W$ é base de $\bm W$, para cada $i \in \{1,\ldots,n\}$ existem únicos
+	\begin{equation*}
+	b_{i1},\ldots,b_{im} \in C
+	\end{equation*}
+tais que  $T(\bm v_i)=\bigplus_{j=1}^m b_{ij} \bm w_j$. Assim, definindo $c_j \coloneqq \bigplus_{i=1}^n a_i b_{ij}$, segue que
 	\begin{equation*}
 	T(\bm v)=\bigplus_{i=1}^n a_i \left(\bigplus_{j=1}^m b_{ij} \bm w_j \right) = \bigplus_{j=1}^m \left(\bigplus_{i=1}^n a_i b_{ij}\right) \bm w_j = \bigplus_{j=1}^m c_j \bm w_j.
 	\end{equation*}
 
 \end{proof}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-\newpage
-.
-\newpage
-
-\section[Representação Matricial]{Representação Matricial de Espaços Vetoriais e Transformações Lineares}
-
-\begin{defi}
-	Sejam $\bm V$ um espaço vetorial sobre um corpo $\bm C$ e $B=\{\bm b_1,\cdots,\bm b_n\}$ uma base de $\bm V$. Seja $\bm v \in V$. A \emph{matriz de coordenadas} de $\bm v$ com respeito à base $B$ é a matriz
-	\begin{equation*}
-	[\bm v]_B \coloneqq [c_i]_{n \times 1} =
-	\begin{bmatrix}
-	c_1 \\
-	\vdots \\
-	c_n
-	\end{bmatrix}
-	\end{equation*}
-tal que $\bm v = \bigplus_{i=1}^n c_i \bm b_i$.
-\end{defi}
-
-\begin{prop}
-	Sejam $\bm V$ um espaço vetorial sobre um corpo $\bm C$ e $B=\{\bm b_1,\cdots,\bm b_n\}$ uma base de $\bm V$. Então
-	\begin{enumerate}
-	\item $\forall \bm v,\bm w \in V \qquad [\bm v]_B+[\bm w]_B = [\bm v + \bm w]_B$.
-	\item $\forall c \in C, \bm v \in V \qquad c[\bm v]_B=[c\bm v]_B$.
-	\end{enumerate}
-\end{prop}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-\newpage
 
 \section{Espaços Vetoriais Normados}
 
@@ -4376,35 +4306,6 @@ tal que $\bm v = \bigplus_{i=1}^n c_i \bm b_i$.
 	\item $\forall \bm v \in V \qquad 0 \leq \nor{\bm v}$.
 	\end{enumerate}
 \end{prop}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 \cleardoublepage
 \section{Produto e Coproduto de Espaços Vetoriais}
@@ -4489,7 +4390,11 @@ Sejam $(\bm{V_i})_{i \in I}$ uma família de espaços vetoriais sobre um corpo $
 \end{figure}
 \end{prop}
 \begin{proof}
-Defina a função \func{L}{X}{\prod_{i \in I} V_i}{x}{(L_i(x))_{i \in I}.} Da propriedade universal para conjuntos, $L$ é a única função de $X$ para $\bigtimes_{i \in I} \bm{V_i}$ tal que, para todo $i \in I$, $\pi_i \circ L = L_i$. Falta mostrar que $L$ é transformação linear. Sejam $c \in C$ e $x_1,x_2 \in V$. Então
+Defina a função
+	\begin{align*}
+	\func{L}{X}{\prod_{i \in I} V_i}{x}{(L_i(x))_{i \in I}}.
+	\end{align*}
+Da propriedade universal para conjuntos, $L$ é a única função de $X$ para $\bigtimes_{i \in I} \bm{V_i}$ tal que, para todo $i \in I$, $\pi_i \circ L = L_i$. Falta mostrar que $L$ é transformação linear. Sejam $c \in C$ e $x_1,x_2 \in V$. Então
 	\begin{align*}
 	L(x_1+cx_2) &= (L_i(x_1+cx_2))_{i \in I} \\
 		&= (L_i(x_1)+cL_i(x_2))_{i \in I} \\
@@ -4573,9 +4478,13 @@ Sejam $\bm{V_0},\cdots,\bm{V_{n-1}}$ e $\bm W$ espaços lineares sobre um corpo 
 	\begin{equation*}
 	T: \bm V_0 \times \cdots \times \bm V_{n-1} \to \bm W
 	\end{equation*}
-tal que, para todo $i \in n$ e $(\bm v_0,\ldots,\bm v_{i-1},\bm v_{i+1},\ldots,\bm v_{n-1}) \in \bm{V_0} \times \cdots \times \bm{V_{i-1}} \times \bm{V_{i+1}} \times \cdots \times \bm V_{n-1}$, a função
-\func{T(\bm v_0,\ldots,\bm v_{i-1},\var,\bm v_{i+1},\ldots,\bm v_{n-1})}{\bm{V_i}}{\bm W}{\bm v}{T(\bm v_0,\ldots,\bm v_{i-1},\bm v,\bm v_{i+1},\ldots,\bm v_{n-1})}
-%\func{T(\bm v_0,\ldots,\underbrace{\var}_i,\ldots,\bm v_{n-1})}{\bm{V_i}}{\bm W}{\bm v}{T(\bm v_0,\ldots,\underbrace{\bm v}_i,\ldots,\bm v_{n-1})}
+tal que, para todo $0 \leq i < n$ e $(\bm v_0,\ldots,\bm v_{i-1},\bm v_{i+1},\ldots,\bm v_{n-1}) \in \bm{V_0} \times \cdots \times \bm{V_{i-1}} \times \bm{V_{i+1}} \times \cdots \times \bm V_{n-1}$, a função
+	\begin{align*}
+	\func{T(\bm v_0,\ldots,\bm v_{i-1},\var,\bm v_{i+1},\ldots,\bm v_{n-1})}{\bm{V_i}}{\bm W}{\bm v}{T(\bm v_0,\ldots,\bm v_{i-1},\bm v,\bm v_{i+1},\ldots,\bm v_{n-1})}
+	\end{align*}
+%	\begin{align*}
+%	\func{T(\bm v_0,\ldots,\underbrace{\var}_i,\ldots,\bm v_{n-1})}{\bm{V_i}}{\bm W}{\bm v}{T(\bm v_0,\ldots,\underbrace{\bm v}_i,\ldots,\bm v_{n-1})}
+%	\end{align*}
 é uma transformação linear. O conjunto dessas transformações é denotado
 	\begin{equation*}
 	\lin(\bm{V_0},\ldots,\bm{V_{n-1}};\bm W)
@@ -4628,7 +4537,7 @@ Seja $\bm V$ um espaço linear sobre um corpo $\bm C$. Uma \emph{forma $k$-linea
 \begin{defi}
 Seja $\bm V$ um espaço linear sobre um corpo $\bm C$. Uma forma $k$-linear $f$ em $\bm V$ é:
 \begin{enumerate}
-\item \emph{simétrica} se, e somente se, para toda permutação $p \in \sime_k$ e todos $\bm v_0,\ldots,\bm v_{k-1} \in V$,
+\item \emph{simétrica} se, e somente se, para toda permutação $p \in \sime_k$ e todos $\bm v_0$, $\ldots$, $\bm v_{k-1} \in V$,
 	\begin{equation*}
 	f(\bm v_{p(0)},\ldots,\bm v_{p(k-1)}) = f(\bm v_0,\ldots,\bm v_{k-1});
 	\end{equation*}
@@ -4651,7 +4560,7 @@ Sejam $\bm V$ um espaço linear sobre um corpo $\bm C$ e $f \in \lin^k(\bm V;\bm
 \begin{prop}
 Seja $\bm V$ um espaço linear sobre um corpo $\bm C$. Então
 \begin{enumerate}
-\item Uma forma $k$-linear em $\bm V$ é alternada se, e somente se, para todos $\bm v_0,\ldots,\bm v_{k-1} \in V$ tais que $\bm v_i = \bm v_j$ para dois $i,j \in k$ distintos,
+\item Uma forma $k$-linear em $\bm V$ é alternada se, e somente se, para todos $\bm v_0$, $\ldots$, $\bm v_{k-1} \in V$ tais que $\bm v_i = \bm v_j$ para dois $i,j \in k$ distintos,
 	\begin{equation*}
 	f(\bm v_0,\ldots,\bm v_{k-1})=0.
 	\end{equation*} 
@@ -4738,14 +4647,47 @@ Em particular, isso mostra que formas $d$-lineares num espaço de dimensão $d$ 
 
 
 
-\chapter{Álgebras Booleanas}
+\chapter{Reticulados}
 
+\section{Reticulados}
+
+\begin{defi}
+Um \emph{reticulado} é uma tripla $(R,\vee,\wedge)$ em que
+	\begin{enumerate}
+	\item $(R,\vee)$ e $(R,\wedge)$ são semigrupos comutativos;
+	\item Valem as propriedades de \emph{absorção}: para todos $a,b \in R$, 
+		\begin{enumerate}
+		\item $a \vee (a \wedge b) = a$;
+		\item $a \wedge (a \vee b) = a$.
+		\end{enumerate}
+	\end{enumerate}
+\end{defi}
+
+\begin{prop}
+Seja $(R,\vee,\wedge)$ um reticulado. Valem as propriedades de \emph{idempotência}: para todo $a \in R$,
+	\begin{enumerate}
+	\item $a \vee a = a$;
+	\item $a \wedge a = a$.
+	\end{enumerate}
+\end{prop}
+
+\begin{defi}
+Um \emph{reticulado limitado} é uma $5$-sequência $(R,\vee,\wedge,0,1)$ em que $(R,\vee,\wedge)$ é um reticulado, $0$ é elemento neutro de $(R,\vee)$ e $1$ é elemento neutro de $(R,\wedge)$.
+\end{defi}
+
+$\vee$ e $\wedge$ estão definidos para todo subconjunto não-vazio finito por indução, já que são operações associativas.
+
+\begin{prop}
+Todo reticulado finito é limitado.
+\end{prop}
+
+\section{Álgebras Booleanas}
 \begin{defi}
 Uma \emph{álgebra booleana} é uma tripla $(A, \vee ,\wedge)$, em que $A$ é um conjunto não vazio, que satisfaz
 	\begin{enumerate}
-	\item $(A, \vee )$ e $(A,\wedge)$ são magmas comutativos com elementos neutros $0$ e $1$, respectivamente;
+	\item $(A,\vee)$ e $(A,\wedge)$ são magmas comutativos com elementos neutros $0$ e $1$, respectivamente;
 	\item As operações $ \vee $ e $\wedge$ são distributivas uma sobre a outra;
-	\item Todo elemento de $a_1 \in A$ tem um elemento \emph{complementar} $a_2 \in A$ que satisfaz $a_1 \vee a_2=1$ e $a_1 \wedge a_2 = 0$.
+	\item Pa é uma ora todo $a \in A$ existe um elemento \emph{complementar} $a' \in A$, que satisfaz $a \vee a'=1$ e $a \wedge a' = 0$.
 	\end{enumerate}
 \end{defi}
 
@@ -4773,7 +4715,7 @@ Então $(\mathcal A,\cup,\cap)$ é uma álgebra booleana.
 
 	Como consequência do princípio da dualidade, qualquer afirmação dedutível das pripriedades de álbegra booleana tem uma afirmação associadad a ela ao trocarmos entre si os símbolos $ \vee $ e $\wedge$ e os símbolos $0$ e $1$, que chamaremos que sua afirmação \emph{dual}. Claramente, a afirmação dual da dual é a própria afirmação. Portanto só será necessário demonstrar a afirmação para demonstrar sua afirmação dual. Toda proposição, lema e teorema dessa seção exibirá sua proposição, lema e teorema dual, mas a afirmação dual não será demonstrada.
 
-\begin{teo}[Operações com Identidades]
+\begin{teo}[Identidades]
 	Seja $(A, \vee ,\wedge)$ uma álgebra booleana. Então
 	\begin{equation*}
 	\forall a \in A \qquad a \vee 1=1
@@ -4783,7 +4725,7 @@ Então $(\mathcal A,\cup,\cap)$ é uma álgebra booleana.
 	\end{equation*}
 \end{teo}
 
-\begin{teo}[Leis de Absorção]
+\begin{teo}[Absorção]
 	Seja $(A, \vee ,\wedge)$ uma álgebra booleana. Então
 	\begin{equation*}
 	\forall a,b \in A \qquad a \vee (a \wedge b)=a
@@ -4793,7 +4735,7 @@ Então $(\mathcal A,\cup,\cap)$ é uma álgebra booleana.
 	\end{equation*}
 \end{teo}
 
-\begin{coro}[Leis da Tautologia]
+\begin{coro}[Idempotência]
 	Seja $(A, \vee ,\wedge)$ uma álgebra booleana. Então
 	\begin{equation*}
 	\forall a \in A \qquad a \vee a=a

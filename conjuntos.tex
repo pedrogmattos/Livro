@@ -31,7 +31,7 @@ Esse conectivos indicam, informalmente, que sentenças são ambas verdadeiras, n
 Os conceitos definidos nesta seção são \emph{igualdade} e \emph{contenção} de conjuntos. O primeiro axioma a ser considerado é o que define que existe um conjunto sem nenhum elemento, o \emph{conjunto vazio}. Esse conjunto tem um papel semelhante ao número zero. Ele é, de certo modo, um ``objeto neutro'' na teoria de conjuntos. Ao decorrer do desenvolvimento da teoria, essa frase sem significado matemática de fato ganhará um significado intuitivo e, em vários casos, uma definição mais precisa.
 
 \begin{axi}[Vazio]
-Existe o \emph{conjunto vazio}, um conjunto que não possui elementos. Denota-se esse conjunto por $\emptyset$.
+Existe o \emph{conjunto vazio}, um conjunto que não possui elementos. Denota-se esse conjunto por $\emptyset$ \index[simb]{$\emptyset$ Conjunto vazio}.
 \end{axi}
 
 Formalmente, o axioma é $\exists x \forall y(y \notin x)$  e um conjunto vazio é um conjunto $x$ que satisfaz $\forall y(y \notin x)$. Como o conjunto vazio não possui elementos, sempre que se conclui que existe um elemento em $\emptyset$, ou seja, que existe $x \in \emptyset$, chega-se em uma contradição e a conclusão é que o que se assumiu para chegar na contradição é falso. Essa é uma forma padrão de se demonstrarem diversas proposições na lógica e na matemática.
@@ -53,7 +53,7 @@ Seja $X$ um conjunto. Um \emph{subconjunto} (ou uma \emph{parte}) de $X$ é um c
 	\begin{equation*}
 	\forall y \in Y \quad y \in X.
 	\end{equation*}
-Denota-se $Y \subseteq X$. Caso contrário, denota-se $Y \nsubseteq X$. Um subconjunto \emph{próprio} de $X$ é um subconjunto $Y \subseteq X$ tal que $Y \neq X$. Denota-se $Y \subset X$.
+Denota-se $Y \subseteq X$ \index[simb]{$\subseteq$ Contenção de conjuntos}. Caso contrário, denota-se $Y \nsubseteq X$. Um subconjunto \emph{próprio} de $X$ é um subconjunto $Y \subseteq X$ tal que $Y \neq X$. Denota-se $Y \subset X$.
 \end{defi}
 
 Formalmente, a definição é $\forall x \forall y (x \subseteq y \leftrightarrow \forall z (z \in x \rightarrow z \in y))$. 
@@ -682,7 +682,11 @@ Sejam $A$ e $B$ conjuntos. Uma \emph{função} de $A$ para $B$ é uma relação 
 	\begin{equation*}
 	\forall a \in A \ \exists! b \in B \qquad (a,b) \in f.
 	\end{equation*}
-Denota-se $f: A \to B$. A \emph{imagem} de $a \in A$ é o único $b \in B$ que satisfaz $(a,b) \in f$. Denota-se $b=f(a)$. Ambas informações podem ser denotadas por \func{f}{A}{B}{a}{b.} O conjunto das funções de $A$ para $B$ é denotado $B^A$.
+Denota-se $f: A \to B$. A \emph{imagem} de $a \in A$ é o único $b \in B$ que satisfaz $(a,b) \in f$. Denota-se $b=f(a)$. Ambas informações podem ser denotadas por
+	\begin{align*}
+	\func{f}{A}{B}{a}{b}.
+	\end{align*}
+O conjunto das funções de $A$ para $B$ é denotado $B^A$.
 \end{defi}
 
 \begin{prop}
@@ -727,7 +731,10 @@ Seja $f: A \to B$. Então $f: A \to f(A)$.
 \end{prop}
 
 \begin{defi}
-Sejam $f: A \to B$ uma função e $A' \subseteq A$ um conjunto. A \emph{restrição} de $f$ a $A'$ é a função \func{f|_{A'}}{A'}{B}{a}{f(a).}
+Sejam $f: A \to B$ uma função e $A' \subseteq A$ um conjunto. A \emph{restrição} de $f$ a $A'$ é a função
+	\begin{align*}
+	\func{f|_{A'}}{A'}{B}{a}{f(a)}.
+	\end{align*}
 \end{defi}
 
 \begin{prop}\label{conj:prop.func.rest.ig}
@@ -740,7 +747,10 @@ Sejam $f: A \to B$ uma função e $A' \subseteq A$ um conjunto. A \emph{restriç
 \section{Composição de Funções}
 
 \begin{defi}
-	Sejam $f: A \to B'$ e $g: B \to C$ funções tais que $B' \subseteq B$. A \emph{função composta} de $g$ com $f$ é a função \func{g \circ f }{A}{C}{a}{g(f(a)).}
+	Sejam $f: A \to B'$ e $g: B \to C$ funções tais que $B' \subseteq B$. A \emph{função composta} de $g$ com $f$ é a função
+	\begin{align*}
+	\func{g \circ f }{A}{C}{a}{g(f(a))}.
+	\end{align*}
 \end{defi}
 
 \begin{prop}
@@ -1940,11 +1950,11 @@ Sejam $X$ e $Y$ conjuntos. O \emph{complementar relativo} de $Y$ em $X$ é o con
 \begin{defi}
 Sejam $U$ um conjunto e $X$ um subconjunto de $U$. O \emph{complementar} de $X$ em $U$ é o conjunto
 	\begin{equation*}
-	X\comp \coloneqq U \setminus X.
+	X\complement \coloneqq U \setminus X.
 	\end{equation*}
 %Seja $\mathcal A \subseteq \p(A)$. O \emph{conjunto complementar} de $\mathcal A$ em $A$ é o conjunto
 %	\begin{equation*}
-%	\complement(\mathcal A) \coloneqq \{X\comp : X \in \mathcal A\}.
+%	\complementlement(\mathcal A) \coloneqq \{X\complement : X \in \mathcal A\}.
 %	\end{equation*}
 \end{defi}
 
@@ -1960,11 +1970,11 @@ Sejam $X$ e $Y$ conjuntos. A \emph{diferença simétrica} de $X$ e $Y$ é o conj
 \begin{prop}
 Sejam $X$, $Y$ subconjuntos de $U$. Então
 	\begin{enumerate}
-	\item $(X\comp)\comp = X$;
-	\item $\emptyset\comp = U$ e $U\comp = \emptyset$;
-	\item $X \cap X\comp = \emptyset$ e $X \cup X\comp = U$;
-	\item $X \subseteq Y \sse Y\comp \subseteq X\comp$.
-	\item $(X \cup Y)\comp = X\comp \cap Y\comp$ e $(X \cap Y)\comp = X\comp \cup Y\comp$.
+	\item $(X\complement)\complement = X$;
+	\item $\emptyset\complement = U$ e $U\complement = \emptyset$;
+	\item $X \cap X\complement = \emptyset$ e $X \cup X\complement = U$;
+	\item $X \subseteq Y \sse Y\complement \subseteq X\complement$.
+	\item $(X \cup Y)\complement = X\complement \cap Y\complement$ e $(X \cap Y)\complement = X\complement \cup Y\complement$.
 	\end{enumerate}
 \end{prop}
 
@@ -1991,7 +2001,11 @@ Sejam $X$ um conjunto e $P$ uma partição de $X$. Um \emph{refinamento} (\emph{
 Sejam $X$ um conjunto e $P,R$ partições de $X$ tais que $P \leq R$. Então $\card{P} \leq \card{R}$ e, para toda célula $C \in P$, vale $C=\bigcup \set{D \in R}{D \subseteq C}$.
 \end{prop}
 \begin{proof}
-Por definição de refinamento, para toda célula $D \in R$ existe célula $C \in P$ tal que $D \subseteq C$. Notemos que essa célula $C$ é única pois, se existir célula $C' \in P$ tal que $D \subseteq C'$, então $D \subseteq C \cap C'$ e, como $D \neq \emptyset$, segue que $C =C'$. Assim, consideramos a função que mapeia, para cada célula $D \in R$ a célula $C_D \in P$ tal que $D \subseteq C_D$: \func{f}{R}{P}{D}{C_D.} Mostremos que essa função é sobrejetiva. Para isso, seja $C \in P$. Como $\bigcup R = X$, para todo $x \in C \subseteq X$ existe $D \in R$ tal que $x \in D$. Como $C \neq \emptyset$, existe $x \in C$, logo existe $D \in R$ tal que $x \in D$. Por definição de refinamento, existe $C' \in P$ tal que $D \subseteq C'$, o que implica $x \in C'$. Como $x \in C' \cap C$, segue que $C=C'$, e concluímos que $D \subseteq C$. Isso mostra que $f(D)=C$, logo que $f$ é sobrejetiva. Concluímos, então, que $\card{P} \leq \card{R}$.
+Por definição de refinamento, para toda célula $D \in R$ existe célula $C \in P$ tal que $D \subseteq C$. Notemos que essa célula $C$ é única pois, se existir célula $C' \in P$ tal que $D \subseteq C'$, então $D \subseteq C \cap C'$ e, como $D \neq \emptyset$, segue que $C =C'$. Assim, consideramos a função que mapeia, para cada célula $D \in R$ a célula $C_D \in P$ tal que $D \subseteq C_D$:
+	\begin{align*}
+	\func{f}{R}{P}{D}{C_D}.
+	\end{align*}
+Mostremos que essa função é sobrejetiva. Para isso, seja $C \in P$. Como $\bigcup R = X$, para todo $x \in C \subseteq X$ existe $D \in R$ tal que $x \in D$. Como $C \neq \emptyset$, existe $x \in C$, logo existe $D \in R$ tal que $x \in D$. Por definição de refinamento, existe $C' \in P$ tal que $D \subseteq C'$, o que implica $x \in C'$. Como $x \in C' \cap C$, segue que $C=C'$, e concluímos que $D \subseteq C$. Isso mostra que $f(D)=C$, logo que $f$ é sobrejetiva. Concluímos, então, que $\card{P} \leq \card{R}$.
 
 Por fim, seja $C \in P$ e $U \coloneqq \bigcup \set{D \in R}{D \subseteq C}$. Notemos que $C=U$. Para mostrar isso, seja $x \in C$. Então existe $D \in R$ tal que $x \in D$, pois $\bigcup P=X$. Por definição de refinamento, existe $C' \in P$ tal que $D \subseteq C'$, portanto $x \in C'$. Como $x \in C' \cap C$, segue que $C=C'$. concluímos que $D \subseteq C$, portanto que $x \in U$, o que mostra $C \subseteq U$. Reciprocamente, para todo $D \in U$, $D \subseteq C$, portanto $U \subseteq C$, e concluímos que $C=U$.
 \end{proof}

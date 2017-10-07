@@ -1,5 +1,1156 @@
 \part{{\scshape Análise}}
 
+\chapter{Espaços Métricos}
+
+\section{Os Espaços Métricos}
+
+\subsection{Métricas}
+
+\begin{defi}
+Seja $M$ um conjunto. Uma \emph{métrica} em $M$ é uma função $d: M \times M \to \R$ que satisfaz
+	\begin{enumerate}
+	\item (Definição Positiva) Para todos $p_0,p_1 \in M$,
+		\begin{equation*}
+		d(p_0,p_1)=0 \sse p_0=p_1;
+		\end{equation*}
+	\item (Simetria) Para todos $p_0,p_1 \in M$
+		\begin{equation*}
+		d(p_0,p_1)=d(p_1,p_0);
+		\end{equation*}
+	\item (Desigualdade Triangular) Para todos $p_0,p_1,p_2 \in M$,
+		\begin{equation*}
+		d(p_1,p_3) \leq d(p_1,p_2) + d(p_2,p_3).
+		\end{equation*}
+	\end{enumerate}
+A \emph{distância} de $p_0$ a $p_1$ é o número real $d(p_0,p_1)$.
+\end{defi}
+
+\begin{prop}
+Sejam $M$ um conjunto e $d$ uma métrica em $M$. Então
+	\begin{enumerate}
+	\item (Positividade) Para todos $p_0,p_1 \in M$, $d(p_1,p_2) \geq 0$.
+	\item (Desigualdade Triangular Generalizada) Para todos $p_0,\ldots,p_n \in M$,
+		\begin{equation*}
+		d(p_0,p_n) \leq \bigplus_{i=1}^{n-1} d(p_i,p_{i+1})
+		\end{equation*}
+%	\item Desigualdade Trianguar Alternativa \\
+%	$\forall p_1,p_2,p_3 \in M \qquad |d(p_1,p_3)-d(p_2,p_3)| \leq d(p_1,p_2)$.
+	\end{enumerate}
+\end{prop}
+\begin{proof}
+	\begin{enumerate}
+	\item Sejam $p_1,p_2 \in M$. Da desigualdade triangular e da simetria de $d$, segue que
+	\begin{equation*}
+	d(p_1,p_1) \leq d (p_1,p_2)+d(p_2,p_1)= 2 d(p_1,p_2),
+	\end{equation*}
+Mas $d(p_1,_1) = 0$, o que implica $d(p_1,p_1) \geq 0$.
+	\item Para $n=1$, seja $p_1 \in M$; então $d(p_1,p_1)=0$ e $\bigplus_{i=1}^{0} d(p_i,p_{i+1})=0$, pois a soma é vazia. Para $n=2$, sejam $p_1,p_2 \in M$; então $d(p_1,p_2)$ e $\bigplus_{i=1}^{1} d(p_i,p_{i+1})=d(p_1,p_2)$, e vale a propriedade. Para $n=3$, sejam $p_1,p_2,p_3 \in M$; então a propriedade é a desigualdade triangulal. Agora, sejam $n \geq 4$, $p_1,\ldots,p_n \in M$ e assumamos que a propriedade vale para todo $k \in \N$, tal que $3 \leq k \leq n-1$. Então
+	\begin{equation*}
+	d(p_1,p_n) \leq \bigplus_{i=1}^{n-3} d(p_i,p_{i+1})+d(p_{n-2},p_n),
+	\end{equation*}
+pois essa soma tem $n-1$ termos e vale a hipótese de indução. Pela desigualdade triangular, vale que $d(p_{n-2},p_n) \leq d(p_{n-2},p_{n-1})+d(p_{n-1},p_n)$, e, portanto,
+	\begin{align*}
+	d(p_1,p_n) &\leq \bigplus_{i=1}^{n-3} d(p_i,p_{i+1})+d(p_{n-2},p_n) \\
+			&\leq \bigplus_{i=1}^{n-3} d(p_i,p_{i+1}) + d(p_{n-2},p_{n-1})+d(p_{n-1},p_n) \\
+			&= \bigplus_{i=1}^{n-1} d(p_i,p_{i+1}).
+	\end{align*}
+	\end{enumerate}
+\end{proof}
+
+\begin{prop}
+	Sejam $M$ um conjunto e $d_0, \dots, d_n$ métricas em $M$. Então a função
+	\begin{align*}
+		\func{d}{M \times M}{\R}{(p_0,p_1)}{\bigplus_{i=0}^n d_i(p_0,p_1)}
+	\end{align*}
+é uma métrica em $M$.
+\end{prop}
+\begin{proof}
+	\begin{enumerate}
+	\item (Identidade dos Indiscerníveis) Sejam $p_1,p_2 \in M$. Suponhamos que
+	\begin{equation*}
+	d(p_1,p_2) = \bigplus_{i=1}^n d_i(p_1,p_2) = 0.
+	\end{equation*}
+Como, para todo $i \in \inte_n$, $d_i(p_1,p_2) \geq 0$, então, para todo $i \in \inte_n$, $d_i(p_1,p_2) = 0$. Logo $p_1=p_2$. Reciprocamente, suponhamos $p_1=p_2$. Então, para todo $i \in \inte_n$, $d_i(p_1,p_2)=0$, o que implica
+	\begin{equation*}
+	d(p_1,p_2) = \bigplus_{i=1}^n 0 = 0.
+	\end{equation*}
+	
+	\item (Simetria) Sejam $p_1,p_2 \in M$. Então, pela simetria de $d_i$ para todo $i \in \inte_n$,
+	\begin{equation*}
+	d(p_1,p_2) = \bigplus_{i=1}^n d_i(p_1,p_2) = \bigplus_{i=1}^n d_i(p_2,p_1) = d(p_2,p_1).
+	\end{equation*}
+	
+	\item (Desigualdade Triangular) Sejam $p_1,p_2,p_3 \in M$. Então, para todo $i \in \inte_n$, vale $d_i(p_1,p_3) \leq d_i(p_1,p_2)+d_i(p_2,p_3)$ pela desigualdade triangular de $d_i$, e segue que
+	\begin{align*}
+	d(p_1,p_3) &= \bigplus_{i=1}^n d_i(p_1,p_3) \\
+				&\leq \bigplus_{i=1}^n (d_i(p_1,p_2)+d_i(p_2,p_3)) \\
+				&= \bigplus_{i=1}^n d_i(p_1,p_2) + \bigplus_{i=1}^n d_i(p_2,p_3) \\
+				&= d(p_1,p_2)+d(p_2,p_3).
+	\end{align*}
+	\end{enumerate}
+\end{proof}
+
+\begin{prop}
+	Sejam $M$ um conjunto não vazio e $d_1,d_2$ métricas em $M$. Então a função
+	\begin{align*}
+	d: M \times M &\to \R \\
+	 (p_1,p_2) &\mapsto \max\{d_1(p_1,p_2),d_2(p_1,p_2)\}
+	\end{align*}
+é uma métrica em $M$.
+\end{prop}
+\begin{proof}
+	\begin{enumerate}
+	\item (Definição Positiva) Sejam $p_1,p_2 \in M$. Suponhamos que
+	\begin{equation*}
+	d(p_1,p_2)=\max\{d_1(p_1,p_2),d_2(p_1,p_2)\}=0.
+	\end{equation*}
+Então $d_1(p_1,p_2)=0$ ou $d_2(p_1,p_2)=0$. Em ambos os casos, temos $p_1=p_2$. Reciprocamente, suponhamos que $p_1=p_2$. Então $d_1(p_1,p_2)=0$ e $d_2(p_1,p_2)=0$, o que implica $d(p_1,p_2)=\max\{d_1(p_1,p_2),d_2(p_1,p_2)\}=0$.
+	
+	\item (Simetria) Sejam $p_1,p_2 \in M$. Então
+	\begin{equation*}
+	d(p_1,p_2) = \max\{d_1(p_1,p_2),d_2(p_1,p_2)\} = \max\{d_1(p_2,p_1),d_2(p_2,p_1)\} = d(p_2,p_1).
+	\end{equation*}
+	
+	\item (Desigualdade Triangular) Sejam $p_1,p_2,p_3 \in M$. Então $d(p_1,p_3)=d_1(p_1,p_3)$ ou $d(p_1,p_3)=d_2(p_1,p_3)$. No primeiro caso, segue que
+	\begin{equation*}
+	d(p_1,p_3) = d_1(p_1,p_3) \leq d_1(p_1,p_2) + d_1(p_2,p_3) \leq d(p_1,p_2) + d(p_2,p_3).
+	\end{equation*}
+	No segudo caso, segue que
+	\begin{equation*}
+	d(p_1,p_3) = d_2(p_1,p_3) \leq d_2(p_1,p_2) + d_2(p_2,p_3) \leq d(p_1,p_2) + d(p_2,p_3).
+	\end{equation*}
+	\end{enumerate}
+\end{proof}
+
+\begin{defi}
+Um \emph{espaço métrico} é um par $\bm M=(M,d)$ em que $M$ é um conjunto e $d$ é uma métrica em $M$. Os elementos de $M$ são \emph{pontos}. Um \emph{subespaço métrico} de $\bm M$ é o par $\bm S=(S,d|_{S \times S})$.
+\end{defi}
+
+\subsection{Diâmetro, Bolas Abertas e Bolas Fechadas}
+
+\begin{defi}
+Sejam $\bm M$ um espaço métrico e $C \subseteq M$ um conjunto não vazio. O \emph{diâmetro} de $C$ é o número
+	\begin{equation*}
+	\diam(C) \coloneqq \sup(d(C \times C)) = \sup\set{d(p_0,p_1)}{p_0,p_1 \in C}
+	\end{equation*}
+se $d(C \times C)$ é limitado superiormente, e $\infty$, caso contrário. Um \emph{conjunto limitado em $\bm M$} é um conjunto $C \subseteq M$ tal que $\diam(C) \in \R$. Uma \emph{sequência limitada} em $\bm M$ é uma sequência $(p_n)_{n \in N}$ em $M$ tal que $\set{p_n}{n \in \N}$ é limitado.
+\end{defi}
+
+\begin{defi}
+Sejam $\bm M$ um espaço métrico, $c \in M$ e $r \in \R$. A \emph{bola aberta} de centro $c$ e raio $r$ em $M$ é o conjunto
+	\begin{equation*}
+	\bola_r(c) \coloneqq \set{p \in M}{d(c,p) < r}.
+	\end{equation*}
+A \emph{bola fechada} de centro $c$ e raio $r$ em $M$ é o conjunto
+	\begin{equation*}
+	\bar\bola_r(c) \coloneqq \set{p \in M}{d(c,p) \leq r}.
+	\end{equation*}
+\end{defi}
+
+\begin{prop}
+Sejam $\bm M$ um espaço métrico e $C \subseteq M$ um conjunto. Então $C$ é um conjunto limitado se, e somente se, existem $c \in M$ e $r \in \R$ tais que $C \subseteq \bola_r(c)$.
+\end{prop}
+
+\section{Topologia dos Espaços Métricos}
+
+\subsection{Interior e Pontos Interiores}
+
+\begin{defi}
+Sejam $\bm M$ um espaço métrico e $C \subseteq M$ um conjunto. Um \emph{ponto interior} de $C$ é um ponto $p \in C$ para o qual existe um número real $r > 0$ tal que $\bola_r(p) \subseteq C$. O \emph{interior} de $C$ é o conjunto $\inn{C}$ de todos pontos interiores de $C$. Um \emph{conjunto aberto} de $\bm M$ é um conjunto $A \subseteq M$ tal que $A = A^\circ$. O conjunto dos conjuntos abertos de $\bm M$ é denotado $\topo_{\bm M}$.
+\end{defi}
+
+\begin{prop}
+Seja $\bm M = (M,d)$ um espaço métrico. Então
+	\begin{enumerate}
+	\item Para todo $c \in M$ e para todo número real $r > 0$, a bola aberta $B_r(c)$ é um conjunto aberto;
+	\item O conjunto $\topo_{\bm M}$ é uma topologia de $M$.
+	\end{enumerate}
+\end{prop}
+\begin{proof}
+	\begin{enumerate}
+	\item Sejam $c \in M$ e $r \in \R_+^*$. Queremos mostrar que $\bola_r(c)$ é aberto. Para isso, seja $p \in \bola_r(c)$. Então segue que $d \coloneqq d(c,p) < r$, pela definição de bola aberta, e, portanto, $r-d \in \R_+^*$. Para mostrar que essa bola centrada em $p$ está contida na bola maior centrada em $c$, seja $p' \in \bola_{r-d}(p)$. Então $d(p,p')<r-d$ e, pela desigualdade triangular, segue que
+	\begin{equation*}
+	d(c,p') \leq d(c,p) + d(p,p') < D + (r-d) = r,
+	\end{equation*}
+o que mostra que $p' \in \bola_r(c)$ e que, portanto, $\bola_s(p) \subseteq \bola_r(c)$. Assim, mostramos que $\bola_r(p)$ é aberta.
+	
+	\item
+		\begin{enumerate}
+		\item Podemos notar que $\emptyset$ é aberto por vacuidade, pois, se não fosse, existiria $p \in \emptyset$ para o qual não há $r \in \R_+^*$ satisfazendo $\bola_r(p) \subseteq A$, o que é absurdo.
+	Para mostrar que $M$ é aberto, sejam $p \in M$ e $r \in \R_+^*$. Então $\bola_r(p) \subseteq M$, pois qualquer bola aberta é subconjunto de $M$. Portanto $M$ é aberto.
+	
+		\item Seja $(A_i)_{i \in I}$ uma família de abertos em $\bm M$ e seja $p \in (A_i)_{i \in I}$. Então existe $k \in I$ tal que $p \in A_k$. Como $A_k$ é aberto, então existe $r \in \R_+^*$ tal que $\bola_r(p) \subseteq A_k$. Como $A_k \subseteq (A_i)_{i \in I}$, segue que $\bola_r(p) \subseteq (A_i)_{i \in I}$ e que, portanto, $(A_i)_{i \in I}$ é aberto.
+	
+		\item Seja $(A_i)_{i \in \inte_n}$ uma sequência de abertos em $\bm M$ e seja $p \in (A_i)_{i \in \inte_n}$. Então, para todo $k \in \inte_n$, $p \in A_k$. Como, para todo $k \in \inte_n$, $A_k$ é aberto, segue que existe $r_k \in \R_+^*$ tal que $\bola_{r_k}(p) \subseteq A_k$, Seja $r \coloneqq \min \{r_k : k \in \inte_n\}$. Então, para todo $k \in \inte_n$, vale $\bola_r(p) \subseteq \bola_{r_k}(p)$, e segue que $\bola_r(p) \subseteq A_k$ e, portanto, $\bola_r(p) \subseteq (A_i)_{i \in \inte_n}$, o que mostra que $(A_i)_{i \in \inte_n}$ é aberto.
+		\end{enumerate}		
+	\end{enumerate}
+\end{proof}
+
+\subsection{Limites e Convergência de Sequências}
+
+\begin{defi}
+Sejam $\bm M$ um espaço métrico, $(p_n)_{n \in \N}$ uma sequência de pontos em $M$ e $p \in M$. A sequência $(p_n)_{n \in \N}$  \emph{converge} para o ponto $p$ se, e somente se, para todo número real $\varepsilon > 0$, existe um número natural $N$ tal que
+	\begin{equation*}
+	\forall n \in \N \qquad n \geq N \Rightarrow p_n \in \bola_\varepsilon(p).
+	\end{equation*}
+Denota-se $(p_n)_{n \in \N} \conv p$. O ponto $p$ é um \emph{limite} da sequência.  Caso contrário, a sequência não converge para $p$. Uma \emph{sequência convergente} é uma sequência que tem limite. Uma sequência \emph{divergente} é uma sequência que não tem limite.
+\end{defi}
+
+\begin{prop}
+Todo espaço métrico $\bm M$ é um espaço topológico separado.
+\end{prop}
+\begin{proof}
+Sejam $p,p' \in M$ pontos distintos. Mostraremos que existe um número real $r$ tal que $0 < r \leq \frac{1}{2} d(p,p')$, e que isso implica que $\bola_r(p) \cap \bola_r(p') = \emptyset$. Como $p \neq p'$, então $d(p,p') > 0$, portanto existe $r \in \R$ tal que $0 < r \leq \frac{1}{2} d(p,p')$. Suponhamos que existe $p'' \in \bola_r(p) \cap \bola_r(p')$. Então $d(p,p'')<r$ e $d(p',p'')<r$. Mas, pela desigualdade triangular, segue que
+	\begin{equation*}
+	d(p,p') \leq d(p,p'') + d(p'',p') < r + r \leq d(p,p'),
+	\end{equation*}
+o que é absurdo. Portanto $\bola_r(p) \cap \bola_r(p') = \emptyset$.
+\end{proof}
+
+\begin{coro}
+Toda sequência convergente em um espaço métrico $\bm M$ tem limite único.
+\end{coro}
+\begin{proof}
+Suponhamos que $p,p'$ são limites de $(p_n)_{n \in \N}$. Se $p \neq p'$, então $d(p,p')>0$. Seja $\varepsilon \in \R$ tal que $0 < \varepsilon \leq \frac{1}{2} d(p,p')$. Então existe $N_1 \in \N$ tal que, para todo $n \in \N$, se $n \geq N_1$, então $p_n \in \bola_\varepsilon(p)$, e existe $N_2 \in \N$ tal que, para todo $n \in \N$, se $n \geq N_2$, então $p_n \in \bola_\varepsilon(p')$. Assim, definindo $N \coloneqq \max \{N_1,N_2\}$, segue que, se $n \geq N$, então $n \geq N_1$ e $n \geq N_2$, e, portanto, que $p_n \in \bola_\varepsilon(p)$ e $p_n \in \bola_\varepsilon(p')$; ou seja, $p_n \in \bola_\varepsilon(p) \cap \bola_\varepsilon(p')$, mas isso é absurdo, pois $\bola_\varepsilon(p) \cap \bola_\varepsilon(p')=\emptyset$. Portanto $p=p'$.
+\end{proof}
+
+Essa proposição nos permite tratar o limite de uma sequência como um número único e, por isso, podemos usar a notação $\displaystyle\lim_{n \in \N} p_n = p$ para quando $(p_n)_{n \in \N} \conv p$.
+
+\begin{prop}
+Uma sequência de em um espaço métrico $\bm M$ é convergente se, e somente se, todas suas subsequências são convergentes.
+\end{prop}
+\begin{proof}
+	Suponhamos que $(p_n) \conv p$ e seja $(p_{n_k})_{k \in \N}$ uma subsequência de $(p_n)_{n \in \N}$. Seja $\varepsilon \in \R$ tal que $\varepsilon > 0$. Como $(p_n) \conv p$, existe $N \in \N$ tal que, para todo $n \in \N$, se $n \geq N$, então $p_n \in \bola_\varepsilon(p)$; como $(n_k)_{k \in \N}$ é estritamente crescente, existe $K \in \N$ tal que, para todo $k \in \N$, se $k \geq K$, então $n_k \geq N$. Mas então
+	\begin{equation*}
+	k \geq K \Rightarrow n_k \geq N \Rightarrow p_{n_k} \in \bola_\varepsilon(p)
+	\end{equation*}
+e, portanto, $(p_{n_k}) \to p$.	Reciprocamente, se toda subsequência de $(p_n)_{n \in \N}$ converge para $p$, $(p_n)_{n \in \N}$, em particular, é uma dessas subsequências e, portanto, $(p_n) \conv p$.
+\end{proof}
+
+\begin{prop}
+Toda sequência convergente em um espaço métrico $\bm M$ é limitada.
+\end{prop}
+\begin{proof}
+	Seja $(p_n)_{n \in \N}$ uma sequência de pontos em $M$ tal que $(p_n) \conv p$. Então, para $\varepsilon = 1$, existe $N \in \N$ tal que, para todo $n \in \N$, se $n \geq N$, então $p_n \in \bola_1(p)$. Assim, seja $l \in \R$ tal que
+	\begin{equation*}
+	l > \max(\{1\} \cup \{d(p,p_n) : n \in \inte_N\}),
+	\end{equation*}
+seque que, para todo $n \in \N$, $p_n \in \bola_l(p)$ pois, se $0 \leq n \leq N$, $d(p,p_n) < l$ pela definição de $l$ e, se $n \geq N$, então $p_n \in \bola_1(p) \subseteq B_l(p)$, pois $1 < l$. Logo $(p_n)_{n \in \N}$ é limitada.
+\end{proof}
+
+\begin{prop}
+Sejam $\bm M$ um espaço métrico, $C \subseteq M$ um conjunto e $p \in M$. Então existe uma sequência de pontos em $C$ que converge para $p$ se, e somente se, para todo número real $\varepsilon > 0$, $C \cap \bola_\varepsilon(p) \neq \emptyset$.
+\end{prop}
+\begin{proof}
+	Suponhamos que exista uma sequência $(p_n)_{n \in \N}$ de pontos em $C$ tal que $(p_n) \conv p$. Então, para todo número real $\varepsilon > 0$, existe $N \in \N$ tal que, para todo $n \in \N$, se $n \geq N$, então $p_n \in \bola_\varepsilon(p)$. Mas isso implica que $p_n \in C \cap \bola_\varepsilon(p)$. Reciprocamente, suponhamos que, para todo número real $\varepsilon > 0$, $C \cap \bola_\varepsilon(p) \neq \emptyset$. Então, em particular, para todo $n \in \N$, escolhamos $p_n \in C \cap \bola_{\frac{1}{n}}(p)$. Assim, temos a sequência $(p_n)_{n \in \N}$. Para mostrar que $(p_n) \conv p$, seja $\varepsilon \in \R$ tal que $\varepsilon > 0$. Então existe $N \in \N$ tal que $\frac{1}{N} \leq \varepsilon$. Mas isso implica que, para todo número natural $n \geq N$, $\frac{1}{n} \leq \frac{1}{N}$, e segue que
+	\begin{equation*}
+	d(p,p_n) < \frac{1}{n} \leq \frac{1}{N} \leq \varepsilon
+	\end{equation*}
+e, portanto, $(p_n) \conv p$.
+\end{proof}
+
+\begin{prop}
+Sejam $\bm M$ um espaço métrico, $p,q \in M$ e $(p_n)_{n \in \N}$ e $(q_n)_{n \in \N}$ sequências em $M$ que convergem para $p$ e $q$ respectivamente. Então a sequência $(d(p_n,q_n))_{n \in \N}$ em $\R$ converge para $d(p,q)$.
+\end{prop}
+\begin{proof}
+	Para todo $n \in \N$, segue da desigualdade triangular que
+	\begin{equation*}
+	d(p_n,q_n) \leq d(p_n,p) + d(p,q) + d(q,q_n).
+	\end{equation*}
+Seja $\varepsilon > 0$ um número real. Então existem $N_1,_2 \in \N$ tais que
+	\begin{equation*}
+	\forall n \in \N \qquad n \geq N_1 \Rightarrow d(p,p_n) < \frac{\varepsilon}{2}
+	\end{equation*}
+e
+	\begin{equation*}
+	\forall n \in \N \qquad n \geq N_2 \Rightarrow d(q,q_n) < \frac{\varepsilon}{2}.
+	\end{equation*}
+Fazendo $N_3 \coloneqq \max\{N_1,N_2\}$, segue que
+	\begin{equation*}
+	\forall n \in \N \qquad n \geq N_3 \Rightarrow d(p_n,q_n) \leq d(p_n,p) + d(p,q) + d(q,q_n) < d(p,q) + \varepsilon;
+	\end{equation*}
+ou seja, $d(p_n,q_n) - d(p,q) < \varepsilon$. Analogamente, achamos $N_6 \in \N$ tal que
+	\begin{equation*}
+	\forall n \in \N \qquad n \geq N_3 \Rightarrow d(p_n,q_n) \leq d(p_n,p) + d(p,q) + d(q,q_n) < d(p,q) + \varepsilon
+	\end{equation*}
+e fazendo $n \coloneqq \max\{N_3,N_6\}$, segue que
+	\begin{equation*}
+	\forall n \in \N \qquad n \geq N \Rightarrow |d(p,q) - d(p_n,q_n)| < \varepsilon,
+	\end{equation*}
+o que mostra que $(d(p_n,q_n)) \conv d(p,q)$ em $\R$.
+	
+\end{proof}
+
+\subsection{Fecho e Pontos Aderentes}
+
+\begin{defi}
+Sejam $\bm M$ um espaço métrico e $C \subseteq M$ um conjunto. Um \emph{ponto aderente} a $C$ é um ponto $p \in M$ para o qual existe uma sequência $(p_n)_{n \in \N}$ de pontos de $C$ que converge para $p$. O \emph{fecho} de $C$ é o conjunto $\fec{C}$ de todos os pontos aderentes a $C$. Um \emph{conjunto fechado} de $\bm M$ é um conjunto $F \subseteq M$ tal que $F = \fec{F}$.
+\end{defi}
+
+\begin{prop}
+Sejam $\bm M$ um espaço métrico e $F \subseteq M$. Então $F$ é um conjunto fechado se, e somente se, $F^\complement$ é um conjunto aberto.
+\end{prop}
+\begin{proof}
+Suponhamos que $F$ é um conjunto fechado. Se $F^\complement = \emptyset$, Mas $\emptyset$ é aberto pois, caso contrário, existe $p \in \emptyset$ para o qual não há número real $\varepsilon > 0$ tal que $\bola_\varepsilon(p) \subseteq \emptyset$, mas isso é absurdo. Se $F^\complement \neq \emptyset$, seja $p \in F^\complement$. Se não existe número real $\varepsilon > 0$ tal que $\bola_\varepsilon(p) \subseteq F^\complement$, então, para todo número real $\varepsilon > 0$, $F \cap \bola_\varepsilon(p) \neq \emptyset$. Mas isso implica que existe uma sequência $(p_n)_{n \in \N}$ de pontos em $F$ tal que $(p_n) \conv p$. Como $F$ é fechado, isso implica $p \in F$, o que é uma contradição. Então existe número real $\varepsilon > 0$ tal que $\bola_\varepsilon(p) \subseteq F^\complement$, e isso mostra que $F^\complement$ é aberto.
+	
+Reciprocamente, suponhamos que $F^\complement$ é aberto. Se $F = \emptyset$, então $F$ é fechado. Se $F \neq \emptyset$, seja $(p_n)_{n \in \N}$ uma sequência em $F$ que converge para $p \in M$. Suponhamos que $p \notin F$. Então $p \in F^\complement$ e, como $F^\complement$ é aberto, existe um número real $\varepsilon > 0$ tal que $\bola_\varepsilon(p) \subseteq F^\complement$. Como $(p_n) \conv p$, existe $N \in \N$ tal que, para todo $n \in \N$, se $n \geq N$, então $p_n \in \bola_\varepsilon(p)$. Mas isso implica que $p_N \in \bola_\varepsilon(p) \subseteq F^\complement$, o que é absurdo, pois $p_n \in F$. Portanto $p \in F$ e isso mostra que $F$ é fechado.
+\end{proof}
+
+\begin{prop}
+Seja $\bm M$ um espaço métrico. Então, para todo $c \in M$ e para todo número real $r > 0$, a bola fechada $\bar\bola_r(c)$ é um conjunto fechado.
+\end{prop}
+\begin{proof}
+Basta notar que $\bar\bola_r(c)^\complement$ é aberto.
+\end{proof}
+
+\subsection{Continuidade}
+
+\begin{defi}
+Sejam $\bm M_1$ e $\bm M_2$ espaços métricos, $f: M_1 \to M_2$ uma função e $p \in M$. A função $f$ é \emph{contínua em $p$} se, para todo número real $\varepsilon > 0$, existe um número real $\delta > 0$ tal que
+%	\begin{equation*}
+%	\forall x \in M_1 \qquad d_1(p,x) < \delta \Rightarrow d_2(f(p),f(x)) < \varepsilon.
+%	\end{equation*}
+	\begin{equation*}
+	\forall x \in M_1 \qquad x \in \bola_\delta(p) \Rightarrow f(x) \in \bola_\varepsilon(f(p)).
+	\end{equation*}
+Caso contrário, a função $f$ não é contínua em $p$, ela é \emph{descontínua} em $p$.
+\end{defi}
+
+Denotamos as bolas abertas em $\bm M_1$ e em $\bm M_2$ por $\bola$, mas deve-se perceber que elas são relativas a métricas possivelmente diferentes. 
+
+\begin{prop}
+Sejam $\bm M_1$ e $\bm M_2$ espaços métricos, $f: M_1 \to M_2$ uma função e $p \in M_1$. Então $f$ é contínua em $p$ se, e somente se, para toda sequência $(p_n)_{n \in \N}$ de pontos em $M_1$ que converge para $p$, a sequência $(f(p_n))_{n \in \N}$ de pontos em $M_2$ converge para $f(p)$; ou seja
+	\begin{equation*}
+	\lim f(p_n) = f(\lim p_n).
+	\end{equation*}
+\end{prop}
+\begin{proof}
+	Suponhamos que $f$ é contínua em $p$. Seja $(p_n)_{n \in \N}$ uma sequência de pontos em $M_1$ que converge para $p$. Seja um número real $\varepsilon > 0$. Como $f$ é contínua, existe um número real $\delta > 0$ tal que $p_n \in \bola_\delta(p)$ implica $f(p_n) \in \bola_\varepsilon(f(p))$. Mas, como $(p_n) \conv p$, existe $N \in \N$ tal que
+	\begin{equation*}
+	\forall n \in \N \qquad n \geq N \Rightarrow p_n \in \bola_\delta(p) \Rightarrow f(p_n) \in \bola_\varepsilon(f(p))
+	\end{equation*}
+o que mostra que $(f(p_n)) \conv f(p)$.
+	
+	Reciprocamente, suponhamos que, para toda sequência $(p_n)_{n \in \N}$ em $M_1$ que converge para $p$, a sequência $(f(p_n))_{n \in \N}$ converge para $f(p)$. Suponhamos, por absurdo, que $f$ não é contínua em $p$. Então existe um número real $\varepsilon > 0$ tal que, para todo número real $\delta > 0$, existe $x \in M_1$ tal que $x \in \bola_\delta(p)$, mas $f(x) \notin \bola_\varepsilon(f(p))$. Vamos mostrar que isso implica que existe uma sequência $(p_n)_{n \in \N}$ em $M_1$ que converge para $p$, mas que a sequência $(f(p_n))_{n \in \N}$ não converge para $f(p)$; ou seja, que existe um número real $\varepsilon > 0$ tal que, para todo número natural $N$, existe $n \in \N$ tal que $n \geq N$, mas $f(p_n) \notin \bola_\varepsilon(f(p))$. Seja $n \in \N$ e tomemos $\delta = \frac{1}{n}$. Então existe $x \in M_1$ tal que $x \in \bola_\frac{1}{n}(p)$, mas $f(x) \notin \bola_\varepsilon(f(p))$. Nomeando esse $x \in M_1$ de $p_n$, obtemos uma sequência $(p_n)_{n \in \N}$ que converge para $p$ pois, para todo número real $\varepsilon' > 0$, existe um número natural $N \in \N$ tal que $\frac{1}{N} \leq \varepsilon'$ e isso implica que
+\begin{equation*}
+	\forall n \in \N \qquad n \geq N \Rightarrow \frac{1}{n} \leq \frac{1}{N} \leq \varepsilon' \Rightarrow p_n \in \bola_\frac{1}{n}(p) \subseteq \bola_\frac{1}{N}(p) \subseteq \bola_{\varepsilon'}(p).
+	\end{equation*}
+	No entanto, $(f(p_n))_{n \in \N}$ é uma sequência que não converge para $f(p)$ pois, considerando o $\varepsilon$ original tomado da descontinuidade de $f$, para todo número natural $N$, $f(p_N) \notin \bola_\varepsilon(f(p))$ e isso contradiz a hipótese de que, para toda sequência $(p_n)_{n \in \N}$ em $M_1$ que converge para $p$, a sequência $(f(p_n))_{n \in \N}$ converge para $f(p)$. Portanto $f$ é contínua.	
+\end{proof}
+
+\begin{defi}
+Sejam $\bm M_1$ e $\bm M_2$ espaços métricos, $D \subseteq M_1$ e $f: D \to M_2$ uma função. A função $f$ é \emph{contínua} em $D$ se ela é contínua em todo ponto de $D$. Caso contrário, a função $f$ é \emph{descontínua} em $D$. Para $D=M_1$, dizemos simplesmente que $f$ é contínua ou descontínua.
+\end{defi}
+
+\subsection{Outras Definições}
+
+\begin{defi}
+Sejam $\bm M$ um espaço métrico e $C \subseteq M$ um conjunto. Um \emph{ponto limite} (ou \emph{ponto de acumulação}) de $C$ é um ponto $p \in M$ para o qual existe uma sequência $(p_n)_{n \in \N}$ de pontos de $C \setminus \{p\}$ que converge para $p$. O \emph{derivado} de $C$ é o conjunto de todos os pontos limites de $C$. 
+\end{defi}
+
+Da definição, segue que $C' \subseteq \overline C$. A inclusão contrária caracteriza a seção a seguir.
+
+\begin{defi}
+Sejam $\bm M$ um espaço métrico e $C \subseteq M$ um conjunto. Um \emph{ponto isolado} de $C$ é um ponto $p \in M$ que é um ponto aderente a $C$ mas que não é um ponto limite de $C$.
+\end{defi}
+
+Um ponto isolado de $C$ é um ponto $p \in \overline C \setminus C'$.
+
+\section{Isometrias}
+
+\begin{defi}
+Sejam $\bm{M_1}$ e $\bm{M_2}$ espaços métricos. Uma \emph{isometria} de $\bm{M_1}$ para $\bm{M_2}$ é uma função $f: M_1 \to M_2$ que satisfaz, para todos $p,p' \in M_1$,
+	\begin{equation*}
+	d_1(p,p') = d_2(f(p),f(p')).
+	\end{equation*}
+\end{defi}
+
+\begin{prop}
+Toda isometria é injetiva.
+\end{prop}
+
+\section{Estrutura Uniforme}
+
+\subsection{Sequências Aproximantes}
+
+\begin{defi}
+Seja $\bm M$ um espaço métrico. Uma sequência \emph{aproximante} em $\bm M$ é uma sequência $(p_n)_{n \in \N}$ de pontos em $M$ tal que, para todo número real $\varepsilon > 0$, existe um número natural $N$ satisfazendo
+	\begin{equation*}
+	\forall n,m \in \N \qquad n,m \geq N \Rightarrow d(p_n,p_m) < \varepsilon.
+	\end{equation*}
+\end{defi}
+
+Essa sequências são conhecidas como \emph{sequências de Cauchy}. O nome aproximante se dá pelo fato de que os termos da sequência ficam cada vez mais próximos entre si, e será adotado por ser mais intuitivo, embora não seja a nomenclatura padrão.
+
+\begin{prop}
+Toda sequência convergente em um espaço métrico $\bm M$ é aproximante.
+\end{prop}
+\begin{proof}
+Seja $(p_n)_{n \in \N}$ uma sequência em $M$ que converge para $p$. Seja $\varepsilon \in \R$ tal que $\varepsilon > 0$. Então $\frac{1}{2}\varepsilon > 0$ é um número real e segue que existe $N \in \N$ tal que, para todo número natural $n \geq N$, $p_n \in \bola_{\frac{1}{2}\varepsilon}(p)$. Assim, segue que	
+	\begin{equation*}
+	\forall n,m \in \N \qquad n,m \geq N \Rightarrow d(p_n,p_m) \leq d(p_n,p) + d(p,p_m) < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon,
+	\end{equation*}
+o que mostra que $(p_n)_{n \in \N}$ é uma sequência aproximante.
+\end{proof}
+
+\begin{prop}
+Toda sequência aproximante em um espaço métrico $\bm M$ que tem uma subsequência convergente é convergente.
+\end{prop}
+\begin{proof}
+	Seja $(p_{n_k})_{k \in \N}$ uma subsequência de $(p_n)_{n \in \N}$ que converge  para $p$. Seja $\varepsilon > 0$ um número real. Como $(p_n)_{n \in \N}$ é uma sequência de Cauchy e $\frac{1}{2}\varepsilon > 0$ é um número real, existe um número natural $N$ tal que
+	\begin{equation*}
+	\forall n,m \in \N \qquad n,m \geq N \Rightarrow d(p_n,p_m) < \frac{\varepsilon}{2}.
+	\end{equation*}
+Como $(p_{n_k})_{k \in \N}$ é uma subsequência convergente, existe $K_1 \in \N$ tal que
+	\begin{equation*}
+	\forall k \in \N \qquad k \geq K_1 \Rightarrow d(p,p_{n_k}) < \frac{\varepsilon}{2}.
+	\end{equation*}
+Como $(n_k)_{k \in \N}$ é uma sequência estritamente crescente, existe $K_2 \in \N$ tal que, para todo número natural $k \geq K_2$, $n_k \geq N$. Assim, tomando $K \coloneqq \max\{K_1,K_2\}$, segue que, para todo número natural $n \in \N$, existe $k \in \N$ tal que $n_k \geq N$ e,  pela desigualdade triangular, que
+	\begin{equation*}
+	\forall n \in \N \qquad n \geq N \Rightarrow d(p_n,p) \leq d(p_n,p_{n_k}) + d(p_{n_k},p) < \frac{\varepsilon}{2}+\frac{\varepsilon}{2}=\varepsilon.
+	\end{equation*}
+\end{proof}
+
+\begin{prop}
+Toda sequência aproximante em um espaço métrico $\bm M$ é limitada.
+\end{prop}
+\begin{proof}
+Seja $(p_n)_{n \in \N}$ uma sequência aproximante em $\bm M$. Então, para $\varepsilon=1$, existe $N \in \N$ tal que
+	\begin{equation*}
+	\forall n,m \in \N \qquad n,m \geq N \Rightarrow d(p_n,p_m)<1.
+	\end{equation*}
+	Definamos $P \coloneqq \{p_n : n \in \N\}$. Então segue que
+	\begin{align*}
+	\diam(P) &= \sup \set{d(p_n,p_m)}{n,m \in \N} \\
+		&= \max\{1 \cup \set{d(p_n,p_m)}{0 \leq n,m \leq N}\} \in \R,
+	\end{align*}
+o que mostra que $(p_n)_{n \in \N}$ é limitada.
+\end{proof}
+
+\subsection{Continuidade Uniforme}
+
+\begin{defi}
+Sejam $\bm M_1$ e $\bm M_2$ espaços métricos. Uma função \emph{uniformemente contínua} é uma função $f: M_1 \to M_2$ tal que, para todo número real $\varepsilon > 0$, existe um número real $\delta > 0$ tal que
+	\begin{equation*}
+	\forall p_1,p_2 \in M_1 \qquad d_1(p_1,p_2) < \delta \Rightarrow d_2(f(p_1),f(p_2)) < \varepsilon.
+	\end{equation*}
+\end{defi}
+
+\begin{prop}
+Sejam $\bm M_1$ e $\bm M_2$ espaços métricos, $f: M_1 \to M_2$ uma função uniformemente contínua e $(p_n)_{n \in \N}$ uma sequência aproximante em $M_1$. Então a sequência $(f(p_n))_{n \in \N}$ em $M_2$ é aproximante.
+\end{prop}
+\begin{proof}
+Seja $\varepsilon > 0$ um número real. Da continuidade uniforme de $f$, existe um número real $\delta > 0$ tal que, para todo $p,p' \in M_1$, $d_1(p,p') < \delta$ implica $d_2(f(p),f(p')) < \varepsilon$. Como $(p_n)_{n \in \N}$ é sequência aproximante, existe $N \in \N$ tal que
+	\begin{equation*}
+	\forall n,m \in \N \qquad n,m \geq N \Rightarrow d_1(p_n,p_m) < \delta.
+	\end{equation*}
+Mas, da continuidade uniforme de $f$, isso implica que
+	\begin{equation*}
+	\forall n,m \in \N \qquad n,m \geq N \Rightarrow d_1(p_n,p_m) < \delta  \Rightarrow d_2(f(p_n),f(p_m)) < \varepsilon,
+	\end{equation*}
+e isso mostra que $(f(p_n))_{n \in \N}$ é uma sequênca aproximante.
+\end{proof}
+
+\subsection{Espaços Métricos Completos}
+
+\begin{defi}
+Um espaço métrico \emph{completo} é um espaço métrico em que todas sequências aproximantes convergem.
+\end{defi}
+
+\begin{prop}
+Seja $\bm M$ um espaço métrico. Todo subespaço completo de $\bm M$ é um conjunto fechado em $\bm M$.
+\end{prop}
+\begin{proof}
+Sejam $\bm C \subseteq \bm M$ subsepaço métrico completo e $(p_n)_{n \in \N}$ uma sequência convergente em $C$. Então $(p_n)_{n \in \N}$ é aproximante e, como $C$ é completo, converge para um ponto em $C$, o que significa que $C$ é fechado.
+\end{proof}
+
+\begin{prop}
+Sejam $\bm M$ um espaço métrico, $\bm C \subseteq \bm M$ um subespaço completo e $F \subseteq C$ um conjunto fechado em $\bm M$. Então $\bm F$ é completo.
+\end{prop}
+\begin{proof}
+Seja $(p_n)_{n \in \N}$ uma sequência aproximante em $F$. Então $(p_n)_{n \in \N}$ é uma sequência aproximante em $C$ e, como $C$ é completo, $(p_n)_{n \in \N}$ converge. Porém, como $F$ é fechado, então $(p_n)_{n \in \N}$ converge para um ponto em $F$, o que mostra que $F$ é completo.
+\end{proof}
+
+\begin{teo}
+Seja $\bm M$ um espaço métrico. Então $\bm M$ é completo se, e somente se, para toda sequência descrescente $(F_n)_{n \in \N}$ de conjuntos não vazios e fechados em $\bm M$ tais que $(\diam(F_n))_{n \in \N} \conv 0$ em $\R$, vale que
+	\begin{equation*}
+	\bigcap_{n \in \N} A_n \neq \emptyset.
+	\end{equation*}
+\end{teo}
+
+\begin{teo}
+Sejam $\bm M_1$  um espaço métrico, $\bm M_2$ espaço métrico completo, $D \subseteq M_1$ um conjunto denso em $M_1$ e $f: D \to M_2$ uma função uniformemente contínua. Então $f$ tem uma única extensão para uma função uniformemente contínua $f^*: M_1 \to M_2$. Ainda, se $f$ é uma isometria, então $f^*$ é uma isometria.
+\end{teo}
+\begin{proof}
+	Seja $p \in M_1$. Como $D$ é denso em $M_1$, existe uma sequência $(p_n)_{n \in \N}$ em $D$ que converge para $p$. Como $(p_n)_{n \in \N}$ é convergente, é uma sequência de Cauchy e, como $f$ é uniformemente contínua em $D$, segue que $(f(p_n))_{n \in \N}$ é uma sequência de Cauchy em $M_2$. Mas $M_2$ é completo, o que implica que $(f(p_n))_{n \in \N}$ converge para um ponto $p' \in M_2$. Definimos, portanto, a função $f^*$ em $p$ como $f^*(p)=p'$. Precisamos mostrar que $f^*$ independe da escolha da sequência em $D$ que converge para $p$. Se $(q_n)_{n \in \N}$ é uma sequência em $D$ que converge para $p$, definamos a sequência $(r_n)_{n \in \N}$ em $D$ por
+	\begin{equation*}
+	r_n \coloneqq
+			\begin{cases}
+			p_n &\text{se $n=2k$}\\
+			q_n &\text{se $n=2k+1$}.
+			\end{cases}
+	\end{equation*}
+A sequência $(r_n)_{n \in \N}$ converge para $p$ e, portanto, é uma sequência de Cauchy. A continuidade uniforme de $f$ implica que a sequência $(f(r_n))_{n \in \N}$ é de Cauchy e, portanto, como $(f(p_n))_{n \in \N}=(f(r_{2k}))_{k \in \N}$ é uma subsequência que converge para $p'$, a sequência $(f(r_n))_{n \in \N}$ converge para $p'$, o que implica que a subsequência $(f(q_n))_{n \in \N}=(f(r_{2k+1}))_{k \in \N}$ converge para $p'$. Assim, mostramos que $f^*$ está bem definida. Claramente, se $p \in D$, então $f(p)=f^*(p)$, pois, como $D$ é denso em $M_1$, se $(p_n)_{n \in \N}$ é uma sequência em $D$ que converge para $p$, então, como $f$ é contínua, segue que $f(p_n) \conv f(p)$, o que mostra que $f^*(p)=f(p)$.
+
+	Agora, devemos mostrar que $f^*$ é uniformemente contínua. Seja $\varepsilon > 0$ um número real, então $\frac{1}{2}\varepsilon > 0$ é um número real e, como $f$ é uniformemente contínua, existe número real $\delta > 0$ tal que
+	\begin{equation*}
+	\forall p,p' \in M_1 \qquad d_1(p,p') < \delta \Rightarrow d_2(f(p),f(p')) < \frac{\varepsilon}{2}.
+	\end{equation*}
+Assim, sejam $p,q \in M_1$ tais que $d_1(p,q) < \delta$. Quremos mostrar que $d_2(f(p),f(p')) < \varepsilon$. Sejam $(p_n)_{n \in \N}$ e $(q_n)_{n \in \N}$ sequências que convergem para $p$ e $q$, respectivamente. Então $d_1(p_n,q_n) \conv d_1(p,q)$ em $\R$.
+
+...
+
+	A unicidade de $f^*$ ocorre pois, se existem $f^*$ e $f'^*$ uniformemente contínuas que extendem $f$, como $D$ é denso em $M_1$ e $f^*|_D = f'^*|_D$, segue que $f^* = f'^*$ .
+	
+	Por fim, mostramos que a isometria se preserva...
+\end{proof}
+
+\begin{defi}
+Seja $\bm M_1$  um espaço métrico. Um \emph{completamento} de $\bm M$ é um espaço métrico $\bm M_2$ completo tal que $M_1$ é denso em $M_2$.
+\end{defi}
+
+\begin{prop}
+Seja $\bm M$ um espaço métrico e $\bm M_1$ e $\bm M_2$ completamentos de $\bm M$. Então existe uma isometria entre $\bm M_1$ e $\bm M_2$ que é a função identidade quando restrita a $M$.
+\end{prop}
+\begin{proof}
+	Seja $f$ a função identidade em $M$. Pela proposição anterior, existe uma única extensãouniformemente contínua de $f^*$ em $M_1$ ...
+	
+	...
+\end{proof}
+
+
+\begin{prop}
+Sejam $K \subseteq M$ compacto e $f: M \to \bar M$ contínua. Então $f$ é uniformemente contínua.
+\end{prop}
+\begin{proof}
+Suponhamos, por absurdo, que $f$ não é uniformemente contínua. Então existem $\varepsilon > 0$ e $(x_n)_{n \in \N},(y_n)_{n \in \N}$ sequências em $K$ tais que
+	\begin{equation*}
+	\nor{x_n - y_n} < \frac{1}{n} \e \nor{f(x_n)-f(y_n)} \geq \varepsilon.
+	\end{equation*}
+Como $K$ é compacto, existem subsequências $(x_{n_k})_{k \in \N}$  e $(y_{n_k})_{k \in \N}$ convergindo a $x \in K$ com $\nor{f(x_{n_k})-f(y_{n_k})} \geq \varepsilon$. Por continuidade de $f$, existe $\delta > 0$ tal que, se $x_{n_k},y_{n_k} \in B(x,\delta)$, então $\nor{f(x_{n_k})-f(x)} < \frac{\varepsilon}{2}$ e $\nor{f(y_{n_k})-f(x)} < \frac{\varepsilon}{2}$. Pela desigualdade triangular, temos um absudo.
+\end{proof}
+
+
+
+\chapter{Espaços Normados}
+
+\section{Normas}
+
+\begin{defi}
+Seja $\bm E$ um espaço vetorial sobre um corpo $\bm C \subseteq \C$. Uma \emph{norma} em $\bm E$ é uma função $\nor{\cdot}: E \to \R$
+que satisfaz
+	\begin{enumerate}
+	\item (Homogeneidade absoluta) Para todos $c \in C$ e $v \in E$,
+		\begin{equation*}
+		\nor{a v} = \abs{a}\nor{v};
+		\end{equation*}
+	\item (Subaditividade) Para todos $v_0,v_1 \in E$,
+		\begin{equation*}
+		\nor{v_0 + v_1} \leq \nor{v_0} + \nor{v_1};
+		\end{equation*}
+	\item (Definição positiva) Se $\nor{v}=0$, então $v=0$.
+	\end{enumerate}
+\end{defi}
+
+Claramente $\abs{\cdot}: \C \to \R$ é uma norma em $\C$.
+
+\begin{prop}
+Sejam $\bm E$ um espaço vetorial sobre um corpo $\bm C \subseteq \C$ e $\nor{\cdot}$ uma norma em $\bm E$. Então
+	\begin{enumerate}
+	\item $\nor{0}=0$;
+	\item Para todo $v \in E$, $\nor{-v}=-\nor{v}$;
+	\item Para todo $v \in E$, $\nor{v} \geq 0$.
+	\item (Subaditividade generalizada) Sejam $v_0,\dots,v_{n-1} \in E$. Então
+		\begin{equation*}
+		\nor{\bigplus_{0\leq i < n} v_i} \leq \bigplus_{0\leq i < n}\nor{v_i}
+		\end{equation*}
+	\end{enumerate}
+\end{prop}
+
+\begin{defi}
+Um \emph{espaço normado} é um par $\E = (\bm E,\nor{\cdot})$ em que $\bm E$ é um espaço vetorial sobre um corpo $\bm C \subseteq \C$ e $\nor{\cdot}$ é uma norma em $\bm E$. A dimensão de $\E$ é a dimensão do espaço vetorial $\bm E$.
+\end{defi}
+
+\begin{prop}
+Seja $\E$ um espaço normado. A função
+	\begin{align*}
+	\func{d}{E \times E}{\R}{(v_0,v_1)}{\nor{v_0 - v_1}}.
+	\end{align*}
+é uma métrica em $E$.
+\end{prop}
+\begin{proof}
+(Definição positiva) Sejam $v,\bar v \in E$. Se $v = \bar v$, então segue da positividade que
+	\begin{equation*}
+	d(v,\bar v) = d(v,v) = \nor{v - v} = \nor{v-v}=\nor{0}=0.
+	\end{equation*}
+Reciprocamente, se $d(v,\bar v)=0$, então $\nor{v-\bar v}=0$. Segue da definição positiva $v-\bar v=0$, logo $v=\bar v$.
+(Simetria)  Sejam $v,\bar v \in E$. Então segue da homogeneidade absoluta que
+	\begin{equation*}
+	d(v,\bar v)=\nor{v-\bar v}=\nor{-1(\bar v -v)}=\abs{-1}\nor{\bar v - v}=d(\bar v,v).
+	\end{equation*}
+(Desigualdade triangular) Sejam $v_0,v_1,v_2 \in E$. Então segue da subaditividade que
+	\begin{align*}
+	d(v_0,v_2) &= \nor{v_0-v_2} \\
+		&=\nor{v_0-v_1+v_1-v_2} \\
+		&\leq \nor{v_0-v_1}+\nor{v_1-v_2} \\
+		&=d(v_0,v_1)+d(v_1,v_2).
+	\end{align*}	
+\end{proof}
+
+\begin{defi}
+Seja $\E$ um espaço normado. A \emph{métrica} em $\E$ é a função
+	\begin{align*}
+	\func{d}{E \times E}{\R}{(v,\bar v)}{\nor{v - \bar v}}.
+	\end{align*}	
+A \emph{topologia de $\E$} é a topologia de $(E,d)$.
+\end{defi}
+
+\begin{defi}
+Seja $\E$ um espaço vetorial normado. O \emph{disco unitário} de $\E$ é o conjunto
+	\begin{equation*}
+	\disc \coloneqq \set{v \in E}{\nor{v}=1}.
+	\end{equation*}
+\end{defi}
+
+O disco unitário é a bola fechada, de raio 1 e centro na origem, com respeito à métrica induzida pela norma.
+
+\begin{prop}
+Seja $\E$ um espaço normado. O disco unitário de $\disc$ é um conjunto convexo e centro-ssimétrico na origem.
+\end{prop}
+\begin{proof}
+Sejam $t \in ]0,1[$ e $v,\bar v \in \disc$. Então
+	\begin{equation*}
+	\nor{(1-t)v+t\bar v} \leq (1-t)\nor{v}+t\nor{\bar v} =(1-t)+t=1,
+	\end{equation*}
+logo $(1-t)v+t\bar v \in \disc$, o que mostra que $\disc$ é convexo. Agora, seja $v \in \disc$. Então $1 \geq \nor{v} = \nor{-v}$, logo $-v \in \disc$, o que mostra a centrossimetria.
+\end{proof}
+
+\section{Espaços Normados de Dimensão Finita}
+
+Espaços vetoriais de dimensão finita $\bm E$ sobre um corpo $\bm C$ podem ser identificados com $\bm{C^d}$, que que $d$ é a dimensão de $E$. Nesses casos, a menos que seja mencionado o contrário, sempre consideraremos a base canônica
+	\begin{equation*}
+	e_i = (0,\dots,0,\underbrace{1}_i,0,\dots,0)
+	\end{equation*}
+em $\bm{C^d}$ e todo vetor $v \in \bm{C^d}$ será representado como $v=(v_0,\dots,v_{d-1})$.
+
+\begin{defi}
+Sejam $\bm E$ um espaço vetorial finito sobre um corpo $\bm C \subseteq \C$ e $p \in [1,\infty[$. A \emph{$p$-norma} em $\bm E$ é a função
+	\begin{align*}
+	\func{\nor{\cdot}_p}{E}{\R}{v}{\left(\bigplus_{i=0}^{d-1}\abs{v_i}^p\right)^{\frac{1}{p}}}.
+	\end{align*}
+A \emph{$\infty$-norma} em $\bm E$ é a função
+	\begin{align*}
+	\func{\nor{\cdot}_\infty}{E}{\R}{v}{\max_{0 \leq i < d} \abs{v_i}}.
+	\end{align*}
+\end{defi}
+
+Pode-se verificar que $\displaystyle\lim_{p \conv \infty} \nor{v}_p = \nor{v}_\infty$.
+
+\begin{prop}
+Para todo $p \in [1,\infty]$, a $p$-norma em $\E$ é uma norma.
+\end{prop}
+
+\begin{defi}
+\emph{Normas equivalentes} são normas $\nor{\cdot}, |\cdot|: E \to \R$ para as quais existem $c,C \in \R$ tais que $0 < c$ e, para todo $v \in E$,
+	\begin{equation*}
+	c \nor{v} \leq |v| \leq C \nor{v}.
+	\end{equation*}
+\end{defi}
+
+\begin{prop}
+Equivalência de norma é uma relação de equivalência.
+\end{prop}
+
+\begin{prop}
+Sejam $\bm E$ um espaço vetorial finito sobre um corpo $\bm C \subseteq \C$. Então toda norma em $\bm E$ são equivalentes.
+\end{prop}
+\begin{proof}
+Vamos mostrar que toda norma em $\bm E$ é equivalente a $\nor{\cdot}_1$ e, como equivalência de normas é uma relação de equivalência, seguirá que todas normas são equivalentes em $\bm E$. Seja $\nor{\cdot}$ uma norma em $\bm E$. Para todo $v \in E$, definindo $C \coloneqq \max_{0\leq i <d} \nor{e_i}$, em que $\{e_i\}_{0 \leq i < d}$ é a base canônica de $\bm E$, segue que
+	\begin{equation*}
+	\nor{v} = \nor{\bigplus_{i=0}^{d-1} v_ie_i} \leq \bigplus_{i=0}^{d-1}\abs{v_i}\nor{e_i} \leq C\nor{v}_1.
+	\end{equation*}
+A outra parte da equivalência segue do fato de que toda todo conjunto fechado e limitado em $\R$ é sequencialmente compacto.
+\end{proof}
+
+\section{Funções Multilineares}
+
+\begin{prop}
+Sejam $\bm{E_0},\dots,\bm{E_{n-1}},\bm{E}$ espaços normados e $T: E_0 \times \cdots \times E_{n-1} \to E$ uma função $n$-linear. São equivalentes
+	\begin{enumerate}
+	\item $T$ é contínua;
+	\item $T$ é contínua em $0$;
+	\item Existe real $C>0$ tal que, para todos $v_0 \in \bm{E_0}$, $\ldots$, $v_{n-1} \in \bm{E_{n-1}}$,
+		\begin{equation*}
+		\nor{f(v_0,\dots,v_{n-1})} \leq C\nor{v_0}\cdots\nor{v_{n-1}};
+		\end{equation*}	
+	\end{enumerate}
+\end{prop}
+
+\begin{prop}
+Sejam $\bm{E_1},\dots,\bm{E_n}$ espaços normados de dimensão finita, $\bm{E}$ um espaço normado e $T: E_1 \times \cdots \times E_n \to E$ uma função $n$-linear. Então existe $C \in \R_+$ tal que, para todos $v_1 \in \bm{E_1}$, $\ldots$, $v_n \in \bm{E_n}$,
+	\begin{equation*}
+	\nor{T(v_1,\ldots,v_n)} \leq C\nor{v_1}\cdots\nor{v_n}.
+	\end{equation*}
+\end{prop}
+\begin{proof}
+Para todo $1 \leq i \leq n$, sejam $d_i \coloneqq \dim E_i$ e $\{(b_i)_k\}_{0\leq k<{d_n}}$ uma base de $\bm{E_i}$. Todas normas em $\bm{E_i}$ são equivalentes, portanto usaremos a norma $\nor{\cdot}_\infty$. Assim, para todos $v_1 \in \bm{E_1}$, $\ldots$, $v_n \in \bm{E_n}$,
+	\begin{align*}
+	\nor{T(v_1,\ldots,v_n)} &= \nor{\bigplus_{\substack{0 \leq k_1 < d_1\\\cdots\\0\leq k_n< d_n}} (v_{k_1})_1\cdots(v_{k_n})_nT\big((b_{k_1})_1,\cdots,(b_{k_n})_n\big)} \\
+		&\leq \bigplus_{\substack{0 \leq k_1 < d_1\\\cdots\\0\leq k_n< d_n}} \abs{(v_{k_1})_1}\cdots\abs{(v_{k_n})_n}\nor{T\big((b_{k_1})_1,\cdots,(b_{k_n})_n\big)} \\
+		&\leq \nor{v_1}\cdots\nor{v_n}\bigplus_{\substack{0 \leq k_1 < d_1\\\cdots\\0\leq k_n< d_n}} \nor{T\big((b_{k_1})_1,\cdots,(b_{k_n})_n\big)}.
+	\end{align*}
+Definindo
+	\begin{equation*}
+	C \coloneqq \bigplus_{\substack{0 \leq k_1 < d_1\\\cdots\\0\leq k_n< d_n}}  \nor{T\big((b_{k_1})_1,\cdots,(b_{k_n})_n\big)},
+	\end{equation*}
+segue que
+	\begin{equation*}
+	\nor{T(v_1,\ldots,v_n)} \leq C \nor{v_1}\cdots\nor{v_n}.
+	\end{equation*}
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Espaço Real}
+
+\subsection{Notação de Vetores e Funções}
+
+\section{Compactos}
+
+\begin{teo}[Heine-Borel]
+	Seja $C \subseteq \R^n$ um conjunto. Então são equivalentes:
+	\begin{enumerate}
+	\item $C$ é compacto.
+	\item $C$ é fechado e limitado.
+	\item Para toda sequência $(x_n)_{n \in \N} \subseteq C$, existe subsequência $(x_{n_k})_{k \in \N}$ que converge a $x \in C$.
+	\end{enumerate}
+\end{teo}
+
+\begin{prop}
+Um conjunto $C \subseteq \R^n$ é compacto se, e somente se, para toda função $f: C \to \R^m$ contínua, $f(C)$ é limitado.
+\end{prop}
+\begin{proof}
+
+\end{proof}
+
+\paragraph*{Exercício} Vale o mesmo se trocarmos limitado por fechado na proposição anterior?
+
+\begin{prop}
+	Sejam $C \subseteq \R^n$ compacto, $X \subseteq \R^m$ e $f: X \times C \to \R^l$ contínua. Seja $x_0 \in X$. Então, para todo $\varepsilon > 0$, existe $\delta > 0$ tal que, se $x \in X$ e $|x-x_0| < \delta$, então, para todo $\alpha \in C$, $|f(x,\alpha)-f(x_0,\alpha)|<\varepsilon$.
+\end{prop}
+\begin{proof}
+	Suponha que existe $\varepsilon>0$ e $x_k \to x_0$ e $\alpha_k \in C$ tal que $|f(x_k,\alpha_k)-f(x_0, \alpha_k)| \geq \varepsilon$, $\alpha_k$ tem subcobertura $\alpha_{k_n} \to \alpha_0$
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+\chapter{Diferenciabilidade no Espaço Real}
+
+O espaço real $\E$ estudado neste capítulo será o espaço vetorial normado $(\R^d,+,\cdot)$ sobre $\R$. A base canônica de $\R^d$ será representada pelos vetores $\{\bm e_0, \ldots, \bm e_{d-1}\}$. Um vetor $x \in \R^d$ será também representado por $x=(x_0,\ldots,x_{d-1})$ e uma função $f: \R^{d_0} \to \R^{d_1}$ será também representada por $f=(f_0,\ldots,f_{d_1-1})$, de modo que $f_i \coloneqq \pi_i \circ f$, sendo $\pi_i$ a $i$-ésima projeção de $\R^{d_1}$ em $\R$. Como todas normas em $\R^d$ são equivalentes, não será feita referência à norma utilizada, apenas será usado o fato de que $\R^d$ é um espaço vetorial normado (e completo). Se necessário, a norma utilizada será explicitada e, quando não for, a norma usada será $\nor{\cdot}_2$. O estudo da diferenciabilidade em espaços de dimensão maior que 1 envolve o uso de funções contínuas e transformações lineares, e também de funções de um espaço real em um espaço de tranformações lineares. Por esse motivo, a notação pode ser confusa. Para simplificar a notação, uma transformação linear $T$ aplicada a um vetor $v$ será sempre denotada por $T \cdot v$. Desenvolveremos, a seguir, a teoria de diferenciabilidade de funções entre espaços reais, e as funções consideradas serão sempre da forma
+	\begin{equation*}
+	f: \R^d \to \R^c,
+	\end{equation*}
+mas toda teoria poderia ser desenvolvida para funções definidas em abertos de $\R^d$. O tratamento que adotaremos, no entanto, não prejudica a generalidade, pois todas propriedades desenvolvidas podem ser compreendidas localmente.
+
+\section{Diferenciabilidade}
+
+A ideia por trás dessa definição de diferenciabilidade é a de que a função $f$ pode ser aproximada em uma vizinhança de um ponto $p$ por seu valor no ponto mais o valor de uma transfomação linear aplicada num vetor $v$ de variação que mede quanto afastou-se do ponto $p$. Ser aproximada, nesse sentido, quer dizer que o erro da aproximação será da ordem da norma do vetor variação $v$, de modo que a razão entre os dois vá a zero quando a variação vai a zero. A definição de função contínua, de fato, pode ser pensada como um caso análogo: a função $f$ numa vizinhança do ponto $p$ pode ser aproximada por seu valor em $p$, e aproximada aqui quer dizer que a norma da diferença vai a zero quando o vator variação vai a zero. Mais à frente, as $k$-ésimas diferenciais da função $f$ serão definidas analogamente, considerando nesses casos funções multilineares.
+
+\begin{defi}
+Sejam $p \in \R^d$ e $f: \R^d \to \R^c$ uma função. Uma \emph{diferencial} de $f$ em $p$ é uma transformação linear $T : \R^d \to \R^c$ que satisfaz
+	\begin{equation*}
+	\lim_{v \conv 0} \frac{f(p+v)-f(p)-T \cdot v}{\nor{v}} = 0.
+	\end{equation*}
+Uma função \emph{diferenciável} em $p$ é uma função que tem diferencial em $p$.
+\end{defi}
+
+É válido notar que são equivalentes a essa condição
+	\begin{equation*}
+	\lim_{x \conv p} \frac{f(x)-f(p)-T\cdot(x-p)}{\nor{x-p}} = 0.
+	\end{equation*}
+e
+	\begin{equation*}
+	\lim_{v \conv 0} \frac{\nor{f(p+v)-f(p)-T \cdot v}}{\nor{v}} = 0.
+	\end{equation*}
+
+\begin{prop}[Diferenciabilidade implica continuidade]
+Sejam $p \in \R^d$ e $f: \R^d \to \R^c$ uma função. Se $f$ é diferenciável em $p$, então $f$ é contínua em $p$.
+\end{prop}
+\begin{proof}
+Se $f$ é diferenciável em $p$, então, como $\lim_{v \conv 0} T \cdot v = 0$,
+	\begin{align*}
+	\lim_{v \conv 0} (f(p+v)-f(p)) &= \lim_{v \conv 0}(f(p+v)-f(p)-T \cdot v) \\
+		&= \lim_{v \conv 0}\nor{v} \frac{f(p+v)-f(p)-T \cdot v}{\nor{v}} \\
+		&= 0,
+	\end{align*}
+logo $f$ é contínua em $p$.
+\end{proof}
+
+\begin{prop}[Unicidade da diferencial]
+Sejam $p \in \R^d$ e $f:\R^d \to \R^c$ uma função diferenciável em $p$. Então existe uma única diferencial de $f$ em $p$.
+\end{prop}
+\begin{proof}
+Sejam $T,S: \R^d \to \R^c$ diferenciais de $f$ em $p$. Nesse caso, temos que
+	\begin{align*}
+	\lim_{v \conv 0} &\frac{T \cdot v - S \cdot v}{\nor{v}} = \\
+	&= \lim_{v \conv 0} \frac{T \cdot v - (f(p+v)-f(p)) + (f(p+v)-f(p)) - S \cdot v}{\nor{v}} \\
+	& =  -\lim_{v \conv 0} \frac{f(p+v)-f(p) - T \cdot v}{\nor{v}} + \lim_{v \conv 0} \frac{f(p+v)-f(p) - S \cdot v}{\nor{v}} \\
+	&=0.
+	\end{align*}
+Como $T$ e $S$ são transformações lineares, sabemos que $T \cdot 0 = S \cdot 0=0$. Para todo $v \in \R^d \setminus \{0\}$, temos que, quando $t \conv 0$, $tv \conv 0$. Ainda, como $T$ e $S$ são transformações lineares, $T \cdot (tv) = t(T \cdot v)$ e $S \cdot (tv) = t (S \cdot v)$, e segue que
+	\begin{align*}
+	0 &= \lim_{tv \conv 0} \frac{\nor{T \cdot (tv) - S \cdot (tv)}}{\nor{tv}} \\
+		&= \lim_{t \conv 0} \frac{\abs{t}\nor{T \cdot v - S \cdot v}}{\abs{t} \nor{v}} \\
+		&= \frac{\nor{T \cdot v - S \cdot v}}{\nor{v}},
+	\end{align*}
+o que implica $T \cdot v = S \cdot v$, pois $\nor{v} \neq 0$. Portanto $T=S$.
+\end{proof}
+
+\begin{nota}
+Sejam $p \in \R^d$ e $f: \R^d \to \R^c$ uma função diferenciável em $p$. A diferencial de $f$ em $p$ é denotada $\D f(p): \R^d \to \R^c$ e satisfaz
+	\begin{equation*}
+	\lim_{v \conv 0} \frac{f(p+v) - f(p) - \D f(p) \cdot v}{\nor{v}} = 0.
+	\end{equation*}
+\end{nota}
+
+Podemos ver que, se $f$ é diferenciável, então $\D f: \R^d \to L(\R^d,\R^c)$ é uma função que leva $p \in \R^d$ na diferencial $\D f(p)$ de $f$ em $p$.
+
+\begin{prop}[Regra da cadeia]
+Sejam $f: \R^n \to \R^m$ diferenciável em $p \in \R^n$ e $g: \R^m \to \R^l$ diferenciável em $f(p)$. Então $g \circ f: \R^n \to \R^l$ é diferenciável em $p$ e
+	\begin{equation*}
+	\D (g \circ f)(p) = \D g(f(p)) \circ \D f(p).
+	\end{equation*}
+\end{prop}
+\begin{proof} Definamos
+	\begin{equation*}
+	r_1(v) \coloneqq f(p+v) - f(p) - \D f(p) \cdot v
+	\end{equation*}
+e
+	\begin{equation*}
+	r_2(v) \coloneqq g(f(p)+v) - g(f(p)) - \D g(f(p)) \cdot v,
+	\end{equation*}
+de modo que da diferenciabilidade de $f$ em $p$ e de $g$ em $f(p)$ segue
+	\begin{equation*}
+	\lim_{v \conv 0} \frac{r_1(v)}{\nor{v}} = \lim_{v \conv 0} \frac{r_2(v)}{\nor{v}} = 0.
+	\end{equation*}	
+Calculando $(g \circ f)(p+v)$, obtemos
+	\begin{align*}
+	(g \circ f)(p+v) &= g(f(p+v)) = g(f(p)+\D f(p) \cdot v + r_1(v)) \\
+		&= g(f(p)) + \D g(f(p)) \cdot (\D f(p) \cdot v + r_1(v)) \\
+		&\qquad + r_2(\D f(p) \cdot v + r_1(v)) \\
+		&= (g \circ f)(p) + \big(\D g(f(p)) \circ \D f(p)\big) \cdot v + \D g(f(p)) \cdot r_1(v) \\
+		&\qquad + r_2(\D f(p) \cdot v + r_1(v)).
+	\end{align*}
+Portanto
+	\begin{align*}
+	(g \circ f)(p+v) - (g \circ f)(p) - \big(\D g(f(p)) \circ \D f(p)\big) \cdot v \\
+	\qquad = \D g(f(p)) \cdot r_1(v) + r_2(\D f(p) \cdot v + r_1(v)).
+	\end{align*}
+Como $\D g(f(p)) \circ \D f(p)$ é uma transformação linear de $\R^n$ para $\R^l$, basta mostrar que a expressão acima, dividida por $\nor{v}$, vai a zero. Mas
+	\begin{equation*}
+	\lim_{v \conv 0} \frac{\D g(f(p)) \cdot r_1(v)}{\nor{v}} = \lim_{v \conv 0} \D g(f(p)) \cdot \frac{r_1(v)}{\nor{v}} = 0
+	\end{equation*}
+e, como $\lim_{v \conv 0} \D f(p) \cdot v + r_1(v) = 0$ e $\D f(p) \cdot \frac{v}{\nor{v}}$ é limitado,
+	\begin{align*}
+	\lim_{v \conv 0} &\frac{r_2(\D f(p) \cdot v + r_1(v))}{\nor{v}} \\
+		&= \lim_{v \conv 0} \frac{r_2(\D f(p) \cdot v + r_1(v))}{\nor{\D f(p) \cdot v + r_1(v)}} \frac{\nor{\D f(p) \cdot v + r_1(v)}}{\nor{v}}\\
+		&= \lim_{v \conv 0} \frac{r_2(\D f(p) \cdot v + r_1(v))}{\nor{\D f(p) \cdot v + r_1(v)}} \nor{\D f(p) \cdot \frac{v}{\nor{v}}+ \frac{r_1(v)}{\nor{v}}} = 0.
+	\end{align*}
+Logo
+	\begin{equation*}
+	\lim_{v \conv 0} \frac{(g \circ f)(p+v) - (g \circ f)(p) - \big(\D g(f(p)) \circ \D f(p)\big) \cdot v}{\nor{v}} = 0,
+	\end{equation*}
+e concluímos que $\D g(f(p)) \circ \D f(p)$ é a diferencial de $g \circ f$ em $p$.
+\end{proof}
+
+
+\begin{prop}[Regra da cadeia iterada]
+Sejam $f: \R^n \to \R^m$ $2$-diferenciável em $p \in \R^n$ e $g: \R^m \to \R^l$ diferenciável em $f(p)$. Então $g \circ f: \R^n \to \R^l$ é diferenciável em $p$ e
+	\begin{equation*}
+	\D^2 (g \circ f)(p,p) = \D^2 g(f(p),f(p)) \circ \D f(p) + \D g(f(p)) \circ \D^2 f(p)
+	\end{equation*}
+\end{prop}
+
+
+
+
+\begin{prop}
+	Sejam $f,g: \R^n \to \R^m$ diferenciáveis em $p \in \R^n$. Então
+	\begin{enumerate}
+	\item $D (f+g)(p) = D f(p) + D g(p);$
+	\item $D (f \cdot g) = D f(p) \cdot g(p) + f(p) \cdot D g(p);$
+	\item Se $g(a) \neq 0$,
+	\begin{equation*}
+	D \left(\frac{f}{g}\right) (p) = \frac{g(p) \cdot D f(a) - D g (a) \cdot f(p)}{g(p)^2}
+	\end{equation*}
+	\end{enumerate}
+\end{prop}
+
+
+
+\subsection{Diferenciais de Ordem Superior}
+
+Generalizamos, agora, a ideia de uma diferencial para uma $k$-diferencial. Para isso, denotaremos um vetor $(v,\ldots,v)$ com $i$ entradas por $(v)^{\otimes i}$
+
+\begin{defi}
+Seja $p \in \R^d$. Uma função \emph{$k$-diferenciável} em $p$ é uma função $f: \R^d \to \R^c$ tal que, para todo $i \leq k$, existe uma função $i$-linear simétrica
+	\begin{equation*}
+	T_i: \R^d \times \cdots \times \R^d \to \R^c
+	\end{equation*}
+satisfazendo
+	\begin{equation*}
+	\lim_{v \conv 0} \frac{\displaystyle f(p+v)-f(p)- \bigplus_{i=1}^k \frac{1}{i!}T_i \cdot (v)^{\otimes i}}{\nor{v}^k} = 0.
+	\end{equation*}
+Uma função $T_i$ como acima é uma \emph{diferencial de ordem $i$} (ou \emph{$i$-ésima diferencial}) da $f$ em $p$.
+\end{defi}
+
+\begin{prop}
+Sejam $p \in \R^d$ e $f: \R^d \to \R^c$ uma função $k$-diferenciável em $p$. Então $f$ é $(k-1)$-diferenciável em $p$.
+\end{prop}
+\begin{proof}
+Primeiro notemos que
+	\begin{equation*}
+	\lim_{v \conv 0} \frac{T_k \cdot (v)^{\otimes k}}{\nor{v}^{k-1}} \leq \lim_{v \conv 0} \frac{\nor{T_k} \nor{v}^k}{\nor{v}^{k-1}} = \lim_{v \conv 0} \nor{T_k}\nor{v} = 0.
+	\end{equation*}
+Portanto segue que	
+	\begin{align*}
+	\lim_{v \conv 0} &\frac{\displaystyle f(p+v)-f(p)- \bigplus_{i=1}^{k-1} \frac{1}{i!}T_i \cdot (v)^{\otimes i}}{\nor{v}^{k-1}} \\
+		&= \lim_{v \conv 0} \frac{\displaystyle f(p+v)-f(p)- \bigplus_{i=1}^{k-1} \frac{1}{i!}T_i \cdot (v)^{\otimes i}-\frac{1}{k!}T_k \cdot (v)^{\otimes k}}{\nor{v}^{k-1}}\\
+		&= \lim_{v \conv 0} \nor{v}\frac{\displaystyle f(p+v)-f(p)- \bigplus_{i=1}^k \frac{1}{i!}T_i \cdot (v)^{\otimes i}}{\nor{v}^k} \\
+		&= 0.
+	\end{align*}
+\end{proof}
+
+\begin{prop}
+Sejam $p \in \R^d$ e $f: \R^d \to \R^c$ uma função $k$-diferenciável em $p$. Então as $i$-ésimas diferenciais de $f$ em $p$ são únicas.
+\end{prop}
+\begin{proof}
+Mostraremos por indução em $k$. Para $k=1$, temos a definição de função diferenciável, portanto a diferencial de $f$ em $p$ é única. Para o passo indutivo, suponhamos que toda função $(k-1)$-diferenciável tem únicas $i$--ésimas diferenciais para $0\leq i \leq k-1$. Consideremos uma função $f: \R^d \to \R^c$ $k$-diferenciável em $p$. Então ela é $(k-1)$-diferenciável em $p$ pela proposição anterior e segue que, para todo $i \leq k$, existe uma única função $i$-linear simétrica
+	\begin{equation*}
+	T_i: \R^d \times \cdots \times \R^d \to \R^c
+	\end{equation*}
+satisfazendo
+	\begin{equation*}
+	\lim_{v \conv 0} \frac{\displaystyle f(p+v)-f(p)- \bigplus_{i=1}^k \frac{1}{i!}T_i \cdot (v)^{\otimes i}}{\nor{v}^k} = 0.
+	\end{equation*}
+Agora, sejam $T,S$ diferenciais de ordem $k$ de $f$ em $p$ e definamos
+	\begin{equation*}
+	A(v) \coloneqq f(p+v)-f(p)- \bigplus_{i=1}^{k-1} \frac{1}{i!}T_i \cdot (v)^{\otimes i}.
+	\end{equation*}
+Segue que
+	\begin{align*}
+	&\lim_{v \conv 0} \frac{T \cdot (v)^{\otimes k} - S \cdot (v)^{\otimes k}}{\nor{v}^k} \\
+	&= \lim_{v \conv 0} \frac{\frac{1}{k!} T \cdot (v)^{\otimes k} - A(v) + A(v) - \frac{1}{k!} S \cdot (v)^{\otimes k}}{\nor{v}^k} \\
+	&= -\lim_{v \conv 0} \frac{\frac{1}{k!} T \cdot (v)^{\otimes k} - A(v)}{\nor{v}^{\otimes k}} + \lim_{v \conv 0} \frac{A(v) - \frac{1}{k!} S \cdot (v)^{\otimes k}}{\nor{v}^k} \\
+	&= 0.
+	\end{align*}
+Como $T$ e $S$ são transformações $k$-lineares, sabemos que $T \cdot (0)^{\otimes k} = S \cdot (0)^{\otimes k} =0$. Para $v \in (\R^d)^k \setminus\{(0)^{\otimes k}\}$, temos que, quando $t \conv 0$, $(tv)^{\otimes k} \conv (0)^{\otimes k}$. Ainda, como $T$ e $S$ são $k$-lineares, $T \cdot (tv)^{\otimes k} = t^kT \cdot (v)^{\otimes k}$ e $S \cdot (tv)^{\otimes k} = t^kS \cdot (v)^{\otimes k}$, e segue que
+	\begin{align*}
+	0= &\lim_{tv \conv 0} \frac{T \cdot (tv)^{\otimes k} -  S \cdot (tv)^{\otimes k}}{\nor{tv}^k} \\
+	&= \lim_{t \conv 0} \frac{(t)^k\big(T \cdot (v)^{\otimes k} -  S \cdot (v)^{\otimes k}\big)}{\abs{t}^k\nor{v}^k} \\
+	&= \pm \frac{\big(T \cdot (v)^{\otimes k} -  S \cdot (v)^{\otimes k}\big)}{\nor{v}^k}
+	\end{align*}
+o que implica $T \cdot (v)^{\otimes k} =  S \cdot (v)^{\otimes k}$, pois $\nor{v} \neq 0$. Por fim, essa relação e a simetria de $T$ e $S$ implicam que elas são iguais em todos os pontos, portanto $T=S$.
+\end{proof}
+
+\begin{nota}
+Sejam $p \in \R^d$ e $f: \R^d \to \R^c$ uma função $k$-diferenciável em $p$. A diferencial de ordem $k$ de $f$ em $p$ é denotada $\D^k f(p): \R^d \times \cdots \times \R^d \to \R^c$ e satisfaz
+	\begin{equation*}
+	\lim_{v \conv 0} \frac{\displaystyle f(p+v) - f(p) - \bigplus_{i=1}^k \frac{1}{i!}\D^i f(p) \cdot (v)^{\otimes i}}{\nor{v}^k} = 0.
+	\end{equation*}
+O polinômio
+	\begin{equation*}
+	P(v) = f(p) + \bigplus_{i=1}^k \frac{1}{i!}\D^i f(p) \cdot (v)^{\otimes i}
+	\end{equation*}
+é o \emph{polinômio diferencial de ordem $k$} de $f$ em $p$.
+\end{nota}
+
+\section{Derivadas Direcionais e a Geometria da Diferenciabilidade}
+
+A partir dessa seção, cosideraremos funções $f: A \to \R^c$, em que $A \subseteq \R^d$ é um aberto. Toda a discussão feita na seção anterior considerou a diferenciabilidade em pontos do domínio. Agora, consideraremos a diferenciabilidade em conjuntos. A definição de diferenciabilidade da seção anterior pode ser facilmente adaptada parra funções $f: A \to \R^c$ pois essa função pode ser definida em $\R^d$ todo escolhendo qualquer valor para $f$ em $A^\complement$. Como as definições e resultados trataram de pontos, isso não atrapalha em nada. Os abertos serão necessários agora pois consideraremos curvas numa vizinhança de um ponto e relacionaremos as derivadas por essas curvas com derivadas parciais da função $f$.
+
+\begin{defi}
+Sejam $A \subseteq \R^n$ um aberto, $p \in A$, $v \in \R^n$ tal que $p+v \in A$ e $f: A \to \R^m$. A \emph{derivada direcional} de $f$ em $p$ na direção de $v$ é
+	\begin{equation*}
+	\partial_v f(p) \coloneqq \lim_{t \conv 0} \frac{f(p+tv)-f(p)}{t}.
+	\end{equation*}
+\end{defi}
+
+Como $A$ é aberto, existe $\varepsilon$ tal que $p+tv \in A$ para todo $t \in ]{-\varepsilon},\varepsilon[$. Tomemos então a curva
+	\begin{align*}
+	\func{\gamma}{]{-\varepsilon},\varepsilon[}{A}{t}{p+tv},
+	\end{align*}
+de modo que temos $\gamma(0)=p$ e $\gamma'(0) = v$. Então, pela regra da cadeia,
+	\begin{equation*}
+	 \partial_v f(p) = \ D (f \circ \gamma)(0) = \D f(\gamma(0)) \cdot \gamma'(0) = \D f(p) \cdot v.
+	\end{equation*}
+Disso concluímos que a derivada direcional de $f$ em $p$ na direção de $v$ é a imagem de $v$ sob a transformação linear $\D f(p)$. Portanto definindo as derivadas direcionais $\partial_i f(x) \coloneqq \D f(x) \cdot e_i$ temos que
+	\begin{equation*}
+	\D f(x) \cdot v = \bigplus_{i=0}^{d-1} v_i \partial_i f(x).
+	\end{equation*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\chapter{Equações Diferenciais Ordinárias}
+
+\section{Equações Diferenciais Ordinárias e Soluções}
+
+\begin{defi}
+	Sejam $n,d \in \N^*$ Uma \emph{equação diferencial ordinária de ordem $n$ e dimensão $d$} é uma expressão $E$ da forma
+	\begin{equation*}
+	x^{(n)} = F(t, x, x^{(1)}, \cdots,x^{(n-1)}),
+	\end{equation*}
+em que $t \in \R$ é a variável \emph{tempo}, $x : \R \to \R^d$ é uma função, $A \subseteq \R \times (\R^d)^n$ é um aberto e $F: A \to \R^d$ é uma função contínua.
+\end{defi}
+
+\begin{defi}
+	Seja $E: x^{(n)} = F(t, x, x^{(1)}, \cdots,x^{(n-1)})$ uma equação diferencial ordinária de dimensão $d$. Uma \emph{solução de $E$} é uma curva $\varphi: I \subseteq \R \to \R^d$ $n$-diferenciável tal que
+	\begin{equation*}
+	\varphi^{(n)} = F(t, \varphi(t), \varphi^{(1)}(t), \cdots,\varphi^{(n-1)}(t)).
+	\end{equation*}
+\end{defi}
+
+\begin{prop}[Redução de ordem]
+	Seja $E: x^{(n)}(t) = F(t, x, x^{(1)}, \cdots,x^{(n-1)})$ uma equação diferencial ordinária de dimensão $d$ definida num aberto $A \subseteq \R \times (\R^d)^n$. Então existe equação diferencial ordinária $\bm E$ de dimensão $dn$
+	\begin{equation*}
+	 \bm x' = \bm F(t,\bm x)
+	\end{equation*}	
+tal que existe $\phi$ solução de $E$ se, e somente se, existe $\bm \phi$ solução de $\bm E$.
+\end{prop}
+\begin{proof}
+	Definimos $\bm x = (x_0, \ldots,x_{n-1}) \coloneqq (x,x^{(1)}, \cdots,x^{(n-1)})$, de modo que
+	\begin{align*}
+	\bm x' &= ((x_0)',\ldots,(x_{n-1})',(x_{n-1})') \\
+			&= (x^{(1)}, \ldots,x^{(n-1)},x^{(n)}) \\
+			&= (x_1,\ldots,x_{n-1},F(t, x, x^{(1)}, \cdots,x^{(n-1)})) \\
+			&= (x_1,\ldots,x_{n-1},F(t,\bm x))
+	\end{align*}	
+
+	Assim, definimos a função
+	\begin{align*}
+	\func{\bm F}{A}{\R^{dn}}{(t,\bm x)}{(x_1,\ldots,x_{n-1},F(t, \bm x))}
+	\end{align*}
+e então $\bm x' = \bm F(t,\bm x)$. Por fim, devemos mostrar que as soluções são equivalentes. Seja $\phi: I \subseteq \R \to \R^d$ solução de $E$. Então, para todo $k \in \{1,\ldots,n\}$, existe $\phi^{(k)}: \R \to \R^d$. Assim, definindo $\bm \phi \coloneqq (\phi,\phi^{(1)},\ldots,\phi^{(n-1)})$, segue que $\bm \phi$ é solução de $\bm E$.
+\end{proof}
+
+Por causa dessa proposição, podemos representar qualquer equação diferencial ordinária como uma de ordem 1.
+
+\section{Existência e Unicidade de Soluções}
+
+
+
+\section{Soluções Maximais}
+
+\begin{defi}
+	Seja $E: x'=F(t,x)$ uma equação diferencial ordinária de dimensão $d$. Uma \emph{solução maximal de $E$} é uma solução $\phi: I \to \R^d$ de $E$ para a qual vale que, para toda solução $\psi: J \to \R^d$ de $E$ tal que $I \subseteq J$ e $\psi|_I = \phi$, então $I = J$ e $\phi = \psi$. O intervalo $I$ é o \emph{intervalo maximal}.
+\end{defi}
+
+\begin{defi}
+	Dado $(t_0,x_0) \in U$, defina
+	\begin{equation*}
+	S_{(t_0,x_0)} \coloneqq \set{\phi: I_\phi \to \R^d}{\phi \text{\ \ é solução do problema de Cauchy}}.
+	\end{equation*}
+Dados $\phi ,\psi \in S_{(t_0,x_0)}$, definimos $\phi \leq \psi $ se, e somente se, $I_{\phi } \subseteq I_{\psi}$ e $\psi|_{I_\phi} = \phi $.
+\end{defi}
+
+\begin{prop}
+	A relação acima de fato é relação de ordem parcial.
+\end{prop}
+
+\begin{teo}
+	Seja $F: U \to \R^d$ uma função contínua definida num aberto $U \subseteq \R \times \R^d$. Então, para cada $(t_0,x_0) \in U$ existe solução maximal para o problema de Cauchy
+	\begin{equation*}
+	\begin{cases}
+		x' = F(t,x) \\
+		x(t_0)=x_0
+	\end{cases}
+	\end{equation*}
+\end{teo}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \chapter{Teoria da Medida}
 
 \section{Espaço Mensurável}
@@ -10,7 +1161,7 @@
 	Seja $X$ um conjunto. Uma \emph{sigma-álgebra} sobre $X$ é um conjunto $\Sigma \subseteq \p(X)$ de subconjuntos $X$ que satisfaz
 	\begin{enumerate}
 	\item (Vazio) $\emptyset \in \Sigma$.
-	\item (Fechamento por complementação) Para todo $M \in \Sigma$, $M\comp \in \Sigma$.
+	\item (Fechamento por complementação) Para todo $M \in \Sigma$, $M\complement \in \Sigma$.
 	\item (Fehamento por união enumerável) Para toda sequência $(M_i)_{i \in \N}$ de conjuntos de $\Sigma$,
 	\begin{equation*}
 	\bigcup_{i \in \N} M_i \in \Sigma
@@ -259,7 +1410,10 @@ Seja $(\bm X_i)_{i \in I} = (X_i,\Sigma_i)_{i \in I}$ uma família de espaços m
 \end{figure}
 \end{prop}
 \begin{proof}
-Defina a função \func{f}{Y}{\prod_{i \in I} X_i}{y}{(f_i(y))_{i \in I}.}
+Defina a função
+	\begin{align*}
+	\func{f}{Y}{\prod_{i \in I} X_i}{y}{(f_i(y))_{i \in I}}.
+	\end{align*}
 Da propriedade universal para o produto de conjutos, $f$ é a única função tal que, para todo $i \in I$, $\pi_i \circ f = f_i$. Basta mostrar que $f$ é uma função mensurável. Para simplificar a notação, definamos $(X,\Sigma) \coloneqq \prod_{i \in I} \bm{X_i}$. Todo elemento de $\Sigma$ é formado a partir de complementos e uniões de elementos de $\bigcup_{i \in I} \pi_i^*(\Sigma)$. Sendo assim, como $f\inv$ preserva complemento e união, e $f\inv(\emptyset)=\emptyset$, se mostrarmos que, para todo $M \in \bigcup_{i \in I} \pi_i^*(\Sigma_i)$, $f\inv(M) \in \Sigma_Y$, seguirá que, para todo $M \in \Sigma$, $f\inv(M) \in \Sigma_Y$. Seja $M \in \bigcup_{i \in I} \pi_i^*(\Sigma_i)$. Então existe $i \in I$ tal que $M \in \pi_i^*(\Sigma_i)$ e, portanto, existe $M_i \in \Sigma_i$ tal que $M=\pi_i\inv(M_i)$. Então segue que
 	\begin{equation*}
 	f\inv(M) = f\inv(\pi_i\inv(M_i)) = (\pi_i \circ f)\inv(M_i) = f_i\inv(M_i)
@@ -389,17 +1543,20 @@ Sejam $(X, \Sigma,\mu)$ um espaço de medida e $(M_n)_{n \in \N} \in \Sigma^\N$ 
 
 
 
-\chapter{Teoria da Integração por Medida}
+\chapter{Integração por Medida}
 
 \section{Integral de Função Simples}
 
 \begin{defi}
-Sejam $X$ um conjunto e $C \subseteq X$. A \emph{função indicadora} de $C$ em $X$ é a função \func{\idc_C}{X}{\R}{x}{
+Sejam $X$ um conjunto e $C \subseteq X$. A \emph{função indicadora} de $C$ em $X$ é a função
+	\begin{align*}
+	\func{\idc_C}{X}{\R}{x}{
 	\begin{cases}
 		1,& x \in C \\
 		0,& x \notin C.
 	\end{cases}
 	}
+	\end{align*}
 \end{defi}
 
 \begin{prop}
@@ -408,10 +1565,9 @@ Sejam $X$ um conjunto e $A,B \subseteq X$, e $I=\{0,\cdots,n\}.$. Então
 	\item $\idc_\emptyset=0$;
 	\item $\idc_X=1$;
 	\item $(\idc_A)^2=\idc_A$;
-	\item $\idc_A+\idc_B=\idc_B+\idc_A$;
 	\item $\idc_A\idc_B=\idc_B\idc_A$;
-	\item $\idc_{A \cap B} = \min\{\idc_A,\idc_B\}= \idc_A\idc_B$;
-	\item $\idc_{A \cup B} = \max\{\idc_A,\idc_B\}= \idc_A+\idc_B - \idc_A\idc_B$;
+	\item $\idc_{A \cap B} = \idc_A\idc_B = \min\{\idc_A,\idc_B\}$;
+	\item $\idc_{A \cup B} = \idc_A+\idc_B - \idc_A\idc_B = \max\{\idc_A,\idc_B\}$;
 	\item $\idc_{A^\complement} = 1- \idc_A$;
 	\item $\idc_{A \setminus B} = \idc_A-\idc_A\idc_B$;
 	\item $\idc_{A \difsim B} = \idc_A+\idc_B-2\idc_A\idc_B$;
@@ -554,588 +1710,3 @@ Por outro lado, temos
  Isso significa que os conjuntos
 \end{enumerate}
 \end{proof}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-\chapter{Espaço Real}
-
-\section{Notação de Vetores e Funções}
-
-	O espaço real $\R^n$ estudado neste capítulo do livro será o espaço vetorial $(\R^n,+,\cdot)$ sobre $\R$. A base canônica de $\R^n$ será representada pelos vetores $\{\bm e_1, \ldots, \bm e_n\}$. Um vetor $x \in \R^n$ será também representado por $x=(x_1,\ldots,x_n)$ e uma função $f: \R^n \to \R^m$ será também representada por $f=(f_1,\ldots,f_m)$, em que $f_i \coloneqq \pi_i \circ f$, sendo $\pi_i$ a $i$-ésima projeção de $\R^m$ em $\R$.
-
-\section{Normas no Espaço Real}
-
-	O espaço real $n$-dimensional será visto como um espaço métrico e herdará, portanto, todas a topologia associada a espaços métricos em geral. A métrica usada será dada por uma norma. Mostraremos que muitas normas podem ser associadas a $\R^n$ de modo que a mesma topologia é gerada. A seguir, analisemos algumas dessas normas.
-	
-\begin{defi}
-	Seja $p \in [1,+\infty[$. A \emph{norma $p$} em $\R^n$ é a função $\nor{\cdot}_p: \R^n \to \R$ definida por
-	\begin{equation*}
-	\nor{\bm x}_p \coloneqq \left( \sum_{i=1}^n (x_i)^p \right)^{\frac{1}{p}}.
-	\end{equation*}
-	
-	A \emph{norma $\infty$} em $\R^n$ é a função $\nor{\cdot}_\infty \R^n \to \R$ definida por
-	\begin{equation*}
-	\nor{\bm x}_\infty \coloneqq \max \{x_i : i \in \inte_n \}.
-	\end{equation*}
-\end{defi}
-
-\begin{prop}
-	Desigualdade de nao sei quem (Minkowski?).
-\end{prop}
-
-
-\begin{prop}
-	A norma $p$ e a norma $\infty$ em $\R^n$ são normas.
-\end{prop}
-\begin{proof}
-	Consideremos primeiro as normas $p$. Seja $c \in \R$ e $x \in \R^n$. Então
-	\begin{equation*}
-	\nor{c\bm x}_p = \left( \sum_{i=1}^n (cx_i)^p \right)^{\frac{1}{p}} = \left(c^p \sum_{i=1}^n (x_i)^p \right)^{\frac{1}{p}} = |c| \left( \sum_{i=1}^n (x_i)^p \right)^{\frac{1}{p}} = |c|\nor{\bm x}_p .
-	\end{equation*}
-	
-\end{proof}
-
-
-\begin{defi}
-	\emph{Normas equivalentes} são normas $\nor{\cdot}, |\cdot|: \R^n \to \R$ para as quais existem $c,C \in \R$ tais que $0 < c < C$ e, para todo $x \in \R^n$,
-	\begin{equation*}
-	c \nor{x} \leq |x| \leq C \nor{x}.
-	\end{equation*}
-\end{defi}
-
-\begin{prop}
-Equivalência de norma é uma relação de equivalência.
-\end{prop}
-
-\begin{prop}
-	Todas normas em $\R^n$ são equivalentes.
-\end{prop}
-\begin{proof}
-	Seja $\nor{\cdot}$ uma norma em $\R^n$. Vamos mostrar que essa norma é equivalente a $\nor{\cdot}_1$ e, como equivalência de norm é uma relação de equivalência, seguirá que todas normas são equivalentes em $\R^n$. Definamos $c^{-1} \coloneqq \max\{\nor{e_1},\ldots,\nor{e_n}\} < \infty$. Então
-	\begin{equation*}
-	\nor{x} = \nor{\sum_{i=1}^n x_i e_i} \leq \sum_{i=1}^n |x_i|\nor{e_i} \leq c^{-1} \nor{x}_1
-	\end{equation*}
-	Assim, segue que $c \nor{x} \leq \nor{x}_1$.
-\end{proof}
-
-
-\subsection{Compactos}
-
-\begin{defi}
-	Seja $C \subseteq \R^n$. Uma \emph{cobertura} de $C$ é uma família $(A_i)_{i \in I}$ de abertos de $\R^n$ tal que
-	\begin{equation*}
-	C \subseteq \bigcup_{i \in I} A_i
-	\end{equation*}
-	Uma \emph{subcobertura} de $C$ relativa a $(A_i)_{i \in I}$ é uma cobertura $(A_j)_{j \in J}$ de $C$ tal que $J \subseteq I$.
-\end{defi}
-
-\begin{defi}
-	Um conjunto \emph{compacto} em $\R^n$ é um conjunto $C \subseteq \R^n$ tal que, para toda cobertura $(A_I)_{i \in I}$ de $C$, existe uma subcobertura finita de $C$ relativa a $(A_i)_{i \in I}$.
-\end{defi}
-
-\begin{teo}[Heine-Borel]
-	Seja $C \subseteq \R^n$ um conjunto. Então são equivalentes:
-	\begin{enumerate}
-	\item $C$ é compacto.
-	\item $C$ é fechado e limitado.
-	\item Para toda sequência $(x_n)_{n \in \N} \subseteq C$, existe subsequência $(x_{n_k})_{k \in \N}$ que converge a $x \in C$.
-	\end{enumerate}
-\end{teo}
-\begin{proof}
-
-\end{proof}
-
-\begin{teo}
-	Sejam $C \subseteq \R^n$ compacto e $f: C \to \R^m$ contínua. Então $f(C)$ é compacto.
-\end{teo}
-\begin{proof}
-
-\end{proof}
-
-\begin{prop}
-	Sejam $C \subseteq \R^n$ compacto e $f: C \to \R^m$ contínua. Então $f(C)$ é limitado e $f$ adimite máximo e mínimo.
-\end{prop}
-
-\begin{prop}
-	Um conjunto $C \subseteq \R^n$ é compacto se, e somente se, para toda função $f: C \to \R^m$ contínua, $f(C)$ é limitado.
-\end{prop}
-\begin{proof}
-
-\end{proof}
-
-exercício
-
-vale o mesmo se trocarmos limitado por fechado na prop anterior?
-
-
-\begin{prop}
-	Sejam $C \subseteq \R^n$ compacto e $f: C \to \R^m$ contínua. Então $f$ é uniformemente contínua.
-\end{prop}
-\begin{proof}
-	Suponhamos, por absurdo, que $f$ não é uniformemente contínua. Então existem $\varepsilon > 0$ e $(x_n),(y_n) \subseteq C$ tais que $|x_n - y_n| < \frac{1}{n}$ e $|f(x_n)-f(y_n)| \geq \varepsilon$. Como $C$ é compacto, existem subsequências $(x_{n_k})$  e $(y_{n_k})$ convergindo a $x \in C$ com $|f(x_{n_k})-f(y_{n_k})| \geq \varepsilon$. Por continuidade, existe $\delta > 0$ tal que, se $x_{n_k},y_{n_k} \in B(x,\delta)$, então $|f(x_{n_k})-f(x)| < \frac{\varepsilon}{2}$ e $|f(y_{n_k})-f(x)| < \frac{\varepsilon}{2}$. Pela desigualdade triangular, temos um absudo.
-\end{proof}
-
-\begin{prop}
-	Sejam $C \subseteq \R^n$ compacto, $X \subseteq \R^m$ e $f: X \times C \to \R^l$ contínua. Seja $x_0 \in X$. Então, para todo $\varepsilon > 0$, existe $\delta > 0$ tal que, se $x \in X$ e $|x-x_0| < \delta$, então, para todo $\alpha \in C$, $|f(x,\alpha)-f(x_0,\alpha)|<\varepsilon$.
-\end{prop}
-\begin{proof}
-	Suponha que existe $\varepsilon>0$ e $x_k \to x_0$ e $\alpha_k \in C$ tal que $|f(x_k,\alpha_k)-f(x_0, \alpha_k)| \geq \varepsilon$, $\alpha_k$ tem subcobertura $\alpha_{k_n} \to \alpha_0$
-\end{proof}
-
-
-
-
-
-
-
-
-
-
-
-\chapter{Diferenciabilidade no Espaço Real}
-
-\section{Diferenciabilidade}
-
-\begin{defi}
-	Sejam $A \subseteq \R^n$ um aberto e $p \in A$. Uma função \emph{diferenciável em $p$} é uma função $f: A \to \R^m$ para a qual existe uma transformação linear $T : \R^n \to \R^m$ tal que
-	\begin{equation*}
-	\lim_{v \to 0} \frac{\Vert f(p+v)-f(p)-T(v) \Vert}{\Vert v \Vert} = 0.
-	\end{equation*}
-\end{defi}
-
-Isso é equivalente a
-	\begin{equation*}
-	\lim_{x \to p} \frac{\Vert f(x)-f(p)-T(x-p) \Vert}{\Vert x-p \Vert} = 0.
-	\end{equation*}
-
-\begin{prop}[Unicidade da derivada]
-	Sejam $A \subseteq \R^n$ um aberto, $p \in A$ e $f: A \to \R^m$ uma função diferenciável em $p$. Então existe uma única transformação linear $T: \R^n \to \R^m$ tal que
-	\begin{equation*}
-	\lim_{v \to 0} \frac{\Vert f(p+v)-f(p)-T(v) \Vert}{\Vert v \Vert} = 0.
-	\end{equation*}
-\end{prop}
-\begin{proof}
-	Suponhamos que exista tranformação linear $S: \R^n \to \R^m$ que satisfaz
-	\begin{equation*}
-	\lim_{v \to 0} \frac{\Vert f(p+v)-f(p)-S(v) \Vert}{\Vert v \Vert} = 0.
-	\end{equation*}
-Nesse caso, temos que
-	\begin{align*}
-	& \lim_{v \to 0} \frac{\Vert T(v)-S(v) \Vert}{\Vert v \Vert} = \\
-	&= \lim_{v \to 0} \frac{\Vert T(v) - (f(p+v)-f(p)) + (f(p+v)-f(p)) - S(v) \Vert}{\Vert v \Vert} \\
-	& \leq  \lim_{v \to 0} \frac{\Vert f(p+v)-f(p)-T(v) \Vert}{\Vert v \Vert} + \lim_{v \to \bm 0} \frac{\Vert f(p+v)-f(p)-S(v) \Vert}{\Vert v \Vert} \\
-	&=0.
-	\end{align*}
-	
-	Como $T$ e $S$ são tranformações lineares, sabemos que $T(0)=S(0)=0$. Para todo $x \in \R^m \setminus \{0\}$, temos que, quando $t \to 0$, $tx \to 0$. Ainda, como $T$ e $S$ são tranformações lineares, $T(tx)=tT(x)$ e $T(tx)=tT'(x)$, e segue que
-	\begin{align*}
-	0 &= \lim_{tx \to 0} \frac{\Vert T(tx)-S(tx) \Vert}{\Vert tx \Vert} \\
-		&= \lim_{t \to 0} \frac{|t| \Vert T(x)-S(x) \Vert}{|t| \Vert x \Vert} \\
-		&= \frac{\Vert T(x)-S(x) \Vert}{\Vert x \Vert},
-	\end{align*}
-o que implica que $T(x) = S(x)$. Logo $T=S$.
-\end{proof}
-
-\begin{nota}
-	Sejam $p \in \R^n$ e $f: \R^n \to \R^m$ uma função diferenciável em $p$. A \emph{derivada de $f$ em $p$} é a transformação linear $Df(p): \R^n \to \R^m$ que satisfaz
-	\begin{equation*}
-	\lim_{v \to \bm 0} \frac{\Vert f(p+v) - f(p) - Df(p)(v) \Vert}{\Vert v \Vert} = 0.
-	\end{equation*}
-\end{nota}
-
-Podemos ver que, se $f$ é diferenciável, então $Df: \R^n \to L(\R^n,\R^m)$ é uma função que leva $p \in \R^n$ na derivada $Df(p)$ de $f$ em $p$.
-
-\begin{prop}[Derivabilidade implica continuidade]
-	Sejam $A \subseteq \R^m$ um aberto, $p \in A$ e $f: A \to \R^n$ uma função diferenciável em $p$. Então $f$ é contínua em $p$.
-\end{prop}
-\begin{proof}
-	Como $f$ é diferenciável em $p$, para todo $\varepsilon > 0$ existe $\delta > 0$ tal que, se $0<\nor{v}< \delta$, então
-	\begin{equation*}
-	\frac{\nor{f(p+v) - f(p) - Df(p)(v)}}{\nor{v}} < \varepsilon.
-	\end{equation*}
-Essa última desigualdade é equivalente a $\nor{f(p+v) - f(p) - Df(p)(v)}<\varepsilon\nor{v}$. Agora, notemos que
-	\begin{equation*}
-	\nor{f(p+v)-f(p)} - \nor{Df(p)(v)} \leq \nor{f(p+v) - f(p) - Df(p)(v)},
-	\end{equation*}
-o que implica que
-	\begin{equation*}
-	\nor{f(p+v)-f(p)} < \varepsilon\nor{v} + \nor{Df(p)(v)}.
-	\end{equation*}
-	Por fim, basta notar que, como $Df(p)$ é linear, para todo $v$ vale $\nor{Df(p)(v)} \leq \nor{Df(p)}\nor{v}$, em que $\nor{Df(p)}$ é a norma do supremo de funções. Assim, segue que
-	\begin{equation*}
-	\nor{f(p+v)-f(p)} < \varepsilon\nor{v} + \nor{Df(p)}\nor{v} = \Big(\varepsilon+\nor{Df(p)}\Big) \nor{v}.
-	\end{equation*}
-%Assim, dado $\varepsilon' > 0$, basta tomar $\delta'=$
-\end{proof}
-
-\begin{defi}
-	Seja $A \subseteq \R^n$ um aberto. Uma função \emph{diferenciável} é  uma função $f: A \to \R^m$ que é diferenciável em todo ponto $p \in A$.
-\end{defi}
-
-\begin{prop}[Regra da cadeia]
-	Sejam $f: \R^n \to \R^m$ diferenciável em $p \in \R^n$ e $g: \R^m \to \R^l$ diferenciável em $f(p)$. Então $g \circ f: \R^n \to \R^l$ é diferenciável em $p$ e
-	\begin{equation*}
-	D (g \circ f)(p) = D g(f(p)) \circ D f(p)
-	\end{equation*}
-\end{prop}
-\begin{proof} Definamos
-	\begin{align*}
-	r_1(v) &\coloneqq f(v) - f(p) - Df(p)(v-p); \\
-	r_2(v) &\coloneqq g(v) - g(f(p)) - Dg(f(p))(v-f(p)); \\
-	r_3(v) &\coloneqq (g \circ f)(v) - (g \circ f)(p) - (Dg(f(p)) \circ Df(p))(v-p).
-	\end{align*}
-Como $f$ e $g$ são diferenciáveis nos respectivos pontos do enunciado, segue que
-	\begin{equation*}
-	\lim_{v \to p} \frac{\nor{r_1(v)}}{\nor{v}} = 0 \e \lim_{v \to p} \frac{\nor{r_2(v)}}{\nor{v}} = 0.
-	\end{equation*}
-Queremos mostrar que
-	\begin{equation*}
-	\lim_{v \to p} \frac{\nor{r_3(v)}}{\nor{v}} = 0.
-	\end{equation*}	
-	
-Denotando $d_1 \coloneqq f^{(1)}(p)$, $d_2 \coloneqq g^{(1)}(f(p))$ por simplicidade, temos que
-	\begin{align*}
-	r_3(v) &= (g \circ f)(v) - (g \circ f)(p) - (d_2 \circ d_1)(v-p) \\
-			&= g(f(v)) - g(f(p)) - d_2(d_1(v-p)) \\
-			&= g(f(v)) - g(f(p)) - d_2(f(v) - f(p) - r_1(v)) \\
-			&= g(f(v)) - g(f(p)) - d_2(f(v) - (f(p)) + d_2(r_1(v))) \\
-			&= r_2(f(v)) + d_2(r_1(v)).
-	\end{align*}
-
-Como 
-	
-	
-	
-	
-	
-	
-	
-	
-
-
-
-
-
-
-
-
-
-
-	
-	
-	
-	
-	
-	
-	\newpage
-
-	\begin{align*}
-	& \frac{\nor{(g \circ f)(p+v) - (g \circ f)(p) - \big(Dg(f(p)) \circ Df(p)\big)(v)}}{\nor{v}}=\\
-	&= \frac{\nor{g (f(p+v)) - g(f(p)) - (Dg(f(p))(Df(p))(v))}}{\nor{v}}
-	\end{align*}
-	
-	\begin{equation*}
-	 \frac{\nor{f(p+v) - f(p) - Df(p)(v)}}{\nor{v}}
-	\end{equation*}
-	\begin{equation*}
-	 \frac{\nor{g (f(p)+w) - g(f(p)) - (Dg(f(p))(w)}}{\nor{w}}
-	\end{equation*}
-\end{proof}
-
-\begin{prop}
-	Sejam $f,g: \R^n \to \R^m$ diferenciáveis em $p \in \R^n$. Então
-	\begin{enumerate}
-	\item $D (f+g)(p) = D f(p) + D g(p);$
-	\item $D (f \cdot g) = D f(p) \cdot g(p) + f(p) \cdot D g(p);$
-	\item Se $g(a) \neq 0$,
-	\begin{equation*}
-	D \left(\frac{f}{g}\right) (p) = \frac{g(p) \cdot D f(a) - D g (a) \cdot f(p)}{g(p)^2}
-	\end{equation*}
-	\end{enumerate}
-\end{prop}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-\newpage
-\section{Derivadas direcionais}
-
-\begin{defi}
-	Sejam $A \subseteq \R^n$ um aberto, $p \in A$, $v \in \R^n$ tal que $p+v \in A$ e $f: A \to \R^m$. A derivada direcional de $f$ em $p$ com relação a $v$ é
-	\begin{equation*}
-	\partial_v f \coloneqq \lim_{t \to 0} \frac{f(p+v)-f(p)}{t}.
-	\end{equation*}
-\end{defi}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-\chapter{Equações Diferenciais Ordinárias}
-
-\section{Equações Diferenciais Ordinárias e Soluções}
-
-\begin{defi}
-	Sejam $n,d \in \N^*$ Uma \emph{equação diferencial ordinária de ordem $n$ e dimensão $d$} é uma expressão $E$ da forma
-	\begin{equation*}
-	x^{(n)} = F(t, x, x^{(1)}, \cdots,x^{(n-1)}),
-	\end{equation*}
-em que $t \in \R$ é a variável \emph{tempo}, $x : \R \to \R^d$ é uma função, $A \subseteq \R \times \R^{nd}$ é um aberto e $F: A \to \R^d$ é uma função contínua.
-\end{defi}
-
-\begin{defi}
-	Seja $E: x^{(n)} = F(t, x, x^{(1)}, \cdots,x^{(n-1)})$ uma equação diferencial ordinária de dimensão $d$. Uma \emph{solução de $E$} é uma curva $\varphi: I \subseteq \R \to \R^d$ $n$ vezes diferenciável tal que
-	\begin{equation*}
-	\varphi^{(n)} = F(t, \varphi(t), \varphi^{(1)}(t), \cdots,\varphi^{(n-1)}(t)).
-	\end{equation*}
-\end{defi}
-
-\begin{prop}[Redução de ordem]
-	Seja $E: x^{(n)}(t) = F(t, x, x^{(1)}, \cdots,x^{(n-1)})$ uma equação diferencial ordinária de dimensão $d$ definida num aberto $A \subseteq \R \times \R^{nd}$. Então existe equação diferencial ordinária $E'$ de dimensão $nd$
-	\begin{equation*}
-	 \bm x' = \bm F(t,\bm x)
-	\end{equation*}	
-tal que existe $\phi$ solução de $E$ se, e somente se, existe $\bm \phi$ solução de $E'$.
-\end{prop}
-\begin{proof}
-	Definimos $\bm x = (x_0, \ldots,x_{n-1}) \coloneqq (x,x^{(1)}, \cdots,x^{(n-1)})$, de modo que
-	\begin{align*}
-	\bm x' &= ((x_0)',\ldots,(x_{n-1})',(x_{n-1})') \\
-			&= (x^{(1)}, \ldots,x^{(n-1)},x^{(n)}) \\
-			&= (x_1,\ldots,x_{n-1},F(t, x, x^{(1)}, \cdots,x^{(n-1)})) \\
-			&= (x_1,\ldots,x_{n-1},F(t,\bm x))
-	\end{align*}	
-
-	Assim, definimos a função
-	\begin{align*}
-	\bm F: A &\to \R^{nd} \\
-	(t,\bm x) &\mapsto (x_1,\ldots,x_{n-1},F(t, \bm x))
-	\end{align*}
-e então $\bm x' = \bm F(t,\bm x)$. Por fim, devemos mostrar que as soluções são equivalentes. Seja $\phi: I \subseteq \R \to \R^d$ solução de $E$. Então, para todos $k \in \{1,\ldots,n\}$, existe $\phi^{(k)}: \R \to \R^d$. Assim, definindo $\bm \phi \coloneqq (\phi,\phi^{(1)},\ldots,\phi^{(n-1)})$, segue que $\bm \phi$ é solução de $E'$.
-\end{proof}
-
-Por causa dessa proposição, podemos representar qualquer EDO como tendo ordem 1.
-
-\section{Existência e Unicidade de Soluções}
-
-
-
-\section{Soluções Maximais}
-
-\begin{defi}
-	Seja $E: x'=F(t,x)$ uma equação diferencial ordinária de dimensão $d$. Uma \emph{solução maximal de $E$} é uma solução $\phi: I \to \R^d$ de $E$ para a qual vale que, para toda solução $\psi: J \to \R^d$ de $E$ tal que $I \subseteq J$ e $\psi|_I = \phi$, então $I = J$ e $\phi = \psi$. O intervalo $I$ é o \emph{intervalo maximal}.
-\end{defi}
-
-\begin{defi}
-	Dado $(t_0,x_0) \in U$, defina
-	\begin{equation*}
-	S_{(t_0,x_0)} \coloneqq \set{\phi: I_\phi \to \R^d}{\phi \text{\ \ é solução do problema de Cauchy}}.
-	\end{equation*}
-Dados $\phi ,\psi \in S_{(t_0,x_0)}$, definimos $\phi \leq \psi $ se, e somente se, $I_{\phi } \subseteq I_{\psi}$ e $\psi|_{I_\phi} = \phi $.
-\end{defi}
-
-\begin{prop}
-	A relação acima de fato é relação de ordem parcial.
-\end{prop}
-
-\begin{teo}
-	Seja $F: U \to \R^d$ uma função contínua definida num aberto $U \subseteq \R \times \R^d$. Então, para cada $(t_0,x_0) \in U$ existe solução maximal para o problema de Cauchy
-	\begin{equation*}
-	\begin{cases}
-		x' = F(t,x) \\
-		x(t_0)=x_0
-	\end{cases}
-	\end{equation*}
-\end{teo}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
