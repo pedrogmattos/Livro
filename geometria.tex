@@ -11,7 +11,7 @@ Sejam $V$ um conjunto e $d \in \N$. Uma \emph{carta} $d$-dimensional de $V$ é u
 \end{defi}
 
 \begin{defi}
-Sejam $V$ um conjunto e $(A,\varphi),(\bar{•} A,\bar\varphi)$ cartas $d$-dimensionais de $V$. A \emph{transição de coordenadas} de $(A,\varphi)$ para $(\bar A,\bar\varphi)$ é a função
+Sejam $V$ um conjunto e $(A,\varphi),(\bar A,\bar\varphi)$ cartas $d$-dimensionais de $V$. A \emph{transição de coordenadas} de $(A,\varphi)$ para $(\bar A,\bar\varphi)$ é a função
 	\begin{equation*}
 	\bar\varphi \circ \varphi\inv: \varphi(A \cap \bar A) \to \bar\varphi(A \cap \bar A).
 	\end{equation*}
@@ -24,9 +24,9 @@ A composição $\bar\varphi \circ \varphi\inv$ não está necessariamente defini
 Da mesma forma definimos o contradomínio como acima.
 
 \begin{defi}
-Seja $V$ um conjunto. Cartas $(A,\varphi)$ e $(\bar A,\bar\varphi)$ de $V$ são $\cont^k$-\emph{compatíveis} se, e somente se, $\varphi(A \cap \bar A)$ e $\bar\varphi(A \cap \bar A)$ são abertos e a transição de coordenadas
+Seja $V$ um conjunto. Cartas $\cont^k$-\emph{compatíveis} de $V$ são cartas $(A,\varphi)$ e $(\bar A,\bar\varphi)$ tais que $\varphi(A \cap \bar A)$ e $\bar\varphi(A \cap \bar A)$ são abertos e a transição de coordenadas
 	\begin{equation*}
-	\bar\varphi \circ \varphi\inv: \varphi(A \cap \bar A) \to \bar\varphi(A \cap \bar A).
+	\bar\varphi \circ \varphi\inv: \varphi(A \cap \bar A) \to \bar\varphi(A \cap \bar A)
 	\end{equation*}
 é um $\cont^k$-difeomorfismo. Para $k=0$, as cartas são \emph{topologicamente compatíveis}, para $k>0$, são \emph{diferencialmente compatíveis}, sendo para $k=\infty$ \emph{suavemente compatíveis}.
 \end{defi}
@@ -123,7 +123,7 @@ Pode-se verificar que a relação de coorientabilidade de atlas é uma relação
 \section{Variedades e Topologia}
 
 \begin{defi}
-Uma \emph{$\cont^k$-variedade} $d$-dimensional é um par $\bm V=(V,\atlas)$ em que $V$ é um conjunto e $\atlas$ é um $\cont^k$-atlas maximal $d$-dimensional de $V$. Para $k=0$, a variedade $\bm V$ é uma variedade \emph{topológica} e, para $k>0$, é uma variedade \emph{diferencial}, sendo para $k=\infty$ uma variedade \emph{suave} (caso especial de variedade diferencial).
+Uma \emph{$\cont^k$-variedade} $d$-dimensional é um par $\bm V=(V,\atlas)$ em que $V$ é um conjunto e $\atlas$ é um $\cont^k$-atlas maximal $d$-dimensional de $V$. Para $k=0$, a variedade $\bm V$ é uma variedade \emph{topológica} e, para $k>0$, é uma variedade \emph{diferencial}, sendo para $k=\infty$ uma variedade \emph{suave}.
 \end{defi}
 
 Quando não for necessário explicitar detalhes, uma $\cont^k$-variedade $d$-dimencional será simplesmente referida como uma variedade. É possível mostrar que toda variedade diferencial tem um subatlas maximal suave, de modo que não há perda de informação quando se separam as variedades apenas em topológicas e diferenciais, mas isso não será feito aqui.
@@ -143,7 +143,7 @@ Seja $\bm V$ uma variedade. A \emph{topologia} de $\bm V$ é o conjunto
 em que $\topo$ é a topologia de $\R^d$.
 \end{defi}
 
-Na notação acima, $\ger{C}$ indica a topologia gerada pelo conjunto $C \subseteq \p(V)$ e $\varphi^\star(\topo)$, a topologia puxada de $\topo$ pela função $\varphi$, ou seja, o conjunto de imagens inversas por $\varphi$ de abertos da topologia $\topo$. Essa é a menor topologia tal que todos os mapas de coordenadas $\varphi$ das cartas do atlas maximal são contínuos. Pode-se ver que essa é a topologia cuja base são os domínios das cartas do atlas maximal. Ainda, vale notar que essa é a mesma topologia da gerada pelas topologias puxadas de $\topo|_{\varphi(A)}$, a topologia induzida de $\topo$ em $\varphi(A)$. Isso ocorre porque os mapas de coordenadas $\varphi$ são bijeções no seu domínio, logo puxam qualquer subconjunto de $\varphi(A)^\complement$ no vazio. De fato, há várias definições equivalentes de como induzir uma topologia em uma variedade, e a acima parece ser a mais bem definida em questão de teoria; no entanto, em geral só conseguimos conhecer um atlas de uma variedade, e não o atlas maximal todo, portanto saber gerar a topologia sem precisar do atlas maximal seria uma ferramenta muito boa, essencial às vezes. É isso que as proposições a seguir oferecem. A primeira afirma que, se gerarmos uma topologia a partir de uma atlas, qualquer carta compatível com esse atlas terá um mapa de coordenadas contínuo, o que implica, em particular, que as topologias geradas pelo atlas maximal e as geradas por qualquer subatlas são a mesma.
+Na notação acima, $\ger{C}$ denota a topologia gerada pelo conjunto $C \subseteq \p(V)$ e $\varphi^\star(\topo)$ denota a topologia puxada de $\topo$ pela função $\varphi$, ou seja, o conjunto de imagens inversas por $\varphi$ de abertos da topologia $\topo$. Essa é a menor topologia tal que todos os mapas de coordenadas $\varphi$ das cartas do atlas maximal são contínuos, a topologia inicial com respeito aos mapas de coordenadas do atlas da variedade. Pode-se ver que essa é a topologia cuja base são os domínios das cartas do atlas maximal. Ainda, vale notar que essa é a mesma topologia da gerada pelas topologias puxadas de $\topo|_{\varphi(A)}$, a topologia induzida de $\topo$ em $\varphi(A)$. Isso ocorre porque os mapas de coordenadas $\varphi$ são bijeções no seu domínio, logo puxam qualquer subconjunto de $\varphi(A)^\complement$ no vazio. De fato, há várias definições equivalentes de como induzir uma topologia em uma variedade, e a acima parece ser a mais bem definida em questão de teoria; no entanto, em geral só conseguimos conhecer um atlas de uma variedade, e não o atlas maximal todo, portanto saber gerar a topologia sem precisar do atlas maximal seria uma ferramenta muito boa, essencial às vezes. É isso que as proposições a seguir oferecem. A primeira afirma que, se gerarmos uma topologia a partir de uma atlas, qualquer carta compatível com esse atlas terá um mapa de coordenadas contínuo, o que implica, em particular, que as topologias geradas pelo atlas maximal e as geradas por qualquer subatlas são a mesma.
 
 \begin{prop}
 Sejam $V$ um conjunto, $\atlas=\{(A_i,\varphi_i)\}_{i \in I}$ um atlas de $V$ e
@@ -190,12 +190,14 @@ Por definição da topologia de $\bm V$, temos imediatamente que $\bar\topo \sub
 
 Uma consequência óbvia das definições é que qualquer subconjunto de $\R^d$ é uma variedade.
 
+Antes de continuar a discussão sobre as propriedades topológicas de variedades, um comentário importante é que alguns autores definem uma variedade a partir de um espaço topológico desde o início, exigindo que os mapas de coorddenadas sejam homeomorfismos com sua imagem no espaço real. A partir dessa definição, a topologia da variedade já existe desde o começo e não é induzida pelas cartas.
+
 \subsection{Propriedades Topológicas}
 
 \begin{prop}
 Seja $\bm V$ uma variedade. Então
 	\begin{enumerate}
-	\item $\bm V$  é um espaço topológico acessível;
+	\item $\bm V$  é um espaço topológico acessível (T$_1$);
 	\item Cada componente conexa de $\bm V$ é conexa por caminhos.
 	\end{enumerate}
 \end{prop}
@@ -209,8 +211,12 @@ Seja $\bm V$ uma variedade. Então
 
 Uma variedade definida como acima não precisa necessariamente ser um espaço separado, ou seja, espaço cujos pontos distintos são separados por vizinhanças. Em geral, na definição de variedade consideram-se espaços separados, mas aqui não faremos essa distinção. Ainda, outra hipótese comum é que a topologia admita base enumerável. Isso é equivalente, para uma variedade, a existir um subatlas enumerável.
 
-
-
+\begin{prop}
+Seja $\bm V$ uma variedade. Então $\topo$ tem base enumerável se, e somente se, existe um subatlas enumerável de $\atlas$.
+\end{prop}
+%\begin{proof}
+%Suponhamos que existe um subatlas enumerável de $\atlas$. Então existem cartas
+%\end{proof}
 
 
 
@@ -440,7 +446,7 @@ Claramente, todas as funções são suaves.
 \subsection{O Espaço Projetivo}
 
 \begin{defi}
-Sejam $x,y \in \R^d$. A relação de \emph{equivalência homogênea} entre os pontos é definida por
+Sejam $x,y \in \R^d\setminus\{0\}$. A relação de \emph{equivalência homogênea} entre os pontos é definida por
 	\begin{equation*}
 	x : y \sse \exists t \in \R^* \qquad x = ty.
 	\end{equation*}
@@ -513,6 +519,38 @@ O \emph{hiperboloide} $d$-dimensional é o conjunto
 
 
 
+
+
+\cleardoublepage
+
+
+\section*{Fórmulas}
+\newcommand{\ii}{\mathrm{i}}
+
+\begin{equation*}
+\iint_S K d\sigma + \int_{\partial S} k_g d\gamma = \tau\chi(S)
+\end{equation*}
+
+\begin{equation*}
+\hat f(\xi) = \int_{\R} f(x)e^{- \ii \tau \xi x} dx
+\end{equation*}
+
+\begin{equation*}
+\hat f(n) = \int_0^1 f(x) e^{- \ii \tau n x} dx = \int_{\S^1} f(x) e^{- \ii \tau n x} dx
+\end{equation*}
+
+
+\begin{equation*}
+\delta_{mn} = \int_0^1 e^{\ii m\tau \theta}e^{-\ii n \tau \theta}d\theta
+\end{equation*}
+
+\begin{equation*}
+\mathcal{F}(e^{-\tau \frac{x^2}{2}}) = e^{-\tau \frac{\xi^2}{2}}
+\end{equation*}
+
+\begin{equation*}
+\mathcal{F}(e^{-\pi x^2}) = e^{-\pi \xi^2}
+\end{equation*}
 
 
 

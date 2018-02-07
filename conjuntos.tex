@@ -31,7 +31,7 @@ Esse conectivos indicam, informalmente, que sentenças são ambas verdadeiras, n
 Os conceitos definidos nesta seção são \emph{igualdade} e \emph{contenção} de conjuntos. O primeiro axioma a ser considerado é o que define que existe um conjunto sem nenhum elemento, o \emph{conjunto vazio}. Esse conjunto tem um papel semelhante ao número zero. Ele é, de certo modo, um ``objeto neutro'' na teoria de conjuntos. Ao decorrer do desenvolvimento da teoria, essa frase sem significado matemática de fato ganhará um significado intuitivo e, em vários casos, uma definição mais precisa.
 
 \begin{axi}[Vazio]
-Existe o \emph{conjunto vazio}, um conjunto que não possui elementos. Denota-se esse conjunto por $\emptyset$ \index[simb]{$\emptyset$ Conjunto vazio}.
+Existe o \emph{conjunto vazio}, um conjunto que não possui elementos. Denota-se esse conjunto por $\emptyset$.
 \end{axi}
 
 Formalmente, o axioma é $\exists x \forall y(y \notin x)$  e um conjunto vazio é um conjunto $x$ que satisfaz $\forall y(y \notin x)$. Como o conjunto vazio não possui elementos, sempre que se conclui que existe um elemento em $\emptyset$, ou seja, que existe $x \in \emptyset$, chega-se em uma contradição e a conclusão é que o que se assumiu para chegar na contradição é falso. Essa é uma forma padrão de se demonstrarem diversas proposições na lógica e na matemática.
@@ -53,7 +53,7 @@ Seja $X$ um conjunto. Um \emph{subconjunto} (ou uma \emph{parte}) de $X$ é um c
 	\begin{equation*}
 	\forall y \in Y \quad y \in X.
 	\end{equation*}
-Denota-se $Y \subseteq X$ \index[simb]{$\subseteq$ Contenção de conjuntos}. Caso contrário, denota-se $Y \nsubseteq X$. Um subconjunto \emph{próprio} de $X$ é um subconjunto $Y \subseteq X$ tal que $Y \neq X$. Denota-se $Y \subset X$.
+Denota-se $Y \subseteq X$. Caso contrário, denota-se $Y \nsubseteq X$. Um subconjunto \emph{próprio} de $X$ é um subconjunto $Y \subseteq X$ tal que $Y \neq X$. Denota-se $Y \subset X$.
 \end{defi}
 
 Formalmente, a definição é $\forall x \forall y (x \subseteq y \leftrightarrow \forall z (z \in x \rightarrow z \in y))$. 
@@ -1981,7 +1981,15 @@ Sejam $X$, $Y$ subconjuntos de $U$. Então
 
 
 
-\section{Partições}
+\section{Coberturas e Partições}
+
+\begin{defi}
+Seja $X$ um conjunto. Uma \emph{cobertura} de $X$ é uma família $(C_i)_{i \in I}$ de subconjuntos de $X$ cuja união é $X$:
+	\begin{equation*}
+	\bigcup_{i \in I} C_i = X.
+	\end{equation*}
+Um \emph{subcobertura} de uma cobertura $(C_i)_{i \in I}$ de $X$ é uma cobertura $(C_i)_{i \in J}$ de $X$, com $J \subseteq I$.
+\end{defi}
 
 \begin{defi}
 Seja $X$ um conjunto. Uma \emph{partição} de $X$ é um conjunto $P \subseteq \p(X)$ de subconjuntos de $X$ que satisfaz
@@ -1992,6 +2000,10 @@ Seja $X$ um conjunto. Uma \emph{partição} de $X$ é um conjunto $P \subseteq \
 	\end{enumerate}
 Um elemento $C \in P$ é uma \emph{célula} de $P$.
 \end{defi}
+
+Uma partição, se identidicamos um subconjunto de $\p(X)$ com uma família de sunconjuntos de $X$, é uma cobertura de $X$ por conjuntos disjuntos (logo distintos) que não contém o conjunto vazio.
+
+\subsection{Refinamento de Partições}
 
 \begin{defi}
 Sejam $X$ um conjunto e $P$ uma partição de $X$. Um \emph{refinamento} (\emph{superpartição}) de $P$ é uma partição $R$ de $X$ que satisfaz: para toda célula $D \in R$, existe uma célula $C \in P$ tal que $D \subseteq C$. Denota-se $P \leq R$. Diz que $P$ é um \emph{engrossamento} (\emph{subpartição}) de $R$.
@@ -2015,7 +2027,7 @@ Sejam $X$ um conjunto. A relação de refinamento $\leq$ no conjunto de partiç�
 \end{prop}
 
 \begin{defi}
-Sejam $X$ um conjunto e $(P_i){i \in I}$ uma família de partições de $X$. O \emph{refinamento comum} a $(P_i)_{i \in I}$ é o conjunto
+Sejam $X$ um conjunto e $(P_i)_{i \in I}$ uma família de partições de $X$. O \emph{refinamento comum} a $(P_i)_{i \in I}$ é o conjunto
 	\begin{equation*}
 	\bigvee_{i \in I} P_i \coloneqq \set{\bigcap_{i \in I} C_i}{\forall i \in I\quad C_i \in P_i} \setminus \{\emptyset\}.
 	\end{equation*}

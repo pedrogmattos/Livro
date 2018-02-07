@@ -84,6 +84,11 @@
 	\newcommand{\R}{\mathbb{R}}
 	\newcommand{\RR}{\R_\infty}
 	\newcommand{\C}{\mathbb{C}}
+	
+	%% Alternativos
+	%\newcommand{\O}{\mathbb{O}} % Números ordinais finitos
+	%\newcommand{\I}{\mathbb{I}} % Números inteiros
+	%\newcommand{\E}{\mathbb{E}} % Números espaciais (reais)
 
 %% Cardinalidade de Conjuntos
 	\newcommand{\card}[1]{\left\vert{#1}\right\vert}
@@ -104,8 +109,22 @@
 
 %%% Grupos
 
-	\newcommand{\quo}[2]{{\left. \raisebox{.2em}{$#1$} \middle/ \raisebox{-.2em}{$#2$}\right.}} % Quociente de Conjuntos/Grupos/Anéis...
-
+    \newcommand{\quo}[2]{
+		\mathchoice
+            {% \displaystyle
+            	{\left. \raisebox{.2em}{$#1$} \middle/ \raisebox{-.2em}{$#2$}\right.}
+            }
+            {% \textstyle
+                {\left.{#1} \middle/ {#2}\right.}
+            }
+            {% \scriptstyle
+                #1\,/\,#2
+            }
+            {% \scriptscriptstyle  
+                #1\,/\,#2
+            }
+	} % Quociente de Conjuntos/Grupos/Anéis...
+	
 	\newcommand{\ide}{\mathrel{\unlhd}}
 	\newcommand{\idepro}{\mathrel{\lhd}}
 	\newcommand{\homo}{\mathcal{H}\mathrm{om}}
@@ -128,8 +147,13 @@
 	\newcommand{\prd}{\epsilon} % Paridade de uma permutação
 	%\newcommand{\prd}{\pm}
 
-	% Ação de grupo
-	\newcommand{\age}{\mathord{\centerdot}\ }
+	% Ação de Grupos
+	\newcommand{\age}{\curvearrowright}
+	\newcommand{\pt}{\mathord{\centerdot}\ }
+	
+	%Grupo Linear
+	\newcommand{\GL}{\mathrm{GL}}
+	\newcommand{\SL}{\mathrm{SL}}
 
 %%% Anéis
 
@@ -147,6 +171,10 @@
 	\newcommand{\zero}{\mathbbm O}
 	%\newcommand{\id}{\mathbbm 1}
 	\DeclareMathOperator{\tr}{tr}
+	
+	%% Matrizes
+	\newcommand{\M}{\mathbb{M}}
+	
 	
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %TOPOLOGIA

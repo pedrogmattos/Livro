@@ -706,7 +706,7 @@ Para simplificar as contas, usaremos a notação $[g]=gN$ quando conveniente.
 \subsection{Homomorfismo de Grupo}
 
 \begin{defi}
-Sejam $\bm{G_1}$ e $\bm{G_2}$ grupos. Um \emph{homomorfismo de grupos} de $\bm{G_1}$ em $\bm{G_2}$ é uma função $h: G_1 \to G_2$ que satisfaz
+Sejam $\bm{G_1}$ e $\bm{G_2}$ grupos. Um \emph{homomorfismo de grupos} de $\bm{G_1}$ para $\bm{G_2}$ é uma função $h: G_1 \to G_2$ que satisfaz
 	\begin{equation*}
 	\forall g_1,g_2 \in G_1 \qquad h(g_1g_2)=h(g_1)h(g_2).
 	\end{equation*}
@@ -720,28 +720,28 @@ Note que a propriedade de homomorfismos de semigrupos e de grupos é a mesma.
 Sejam $\bm{G_1}$ e $\bm{G_2}$ grupos com elementos neutros $e_1$ e $e_2$, respectivamente, e $h: \bm{G_1} \to \bm{G_2}$ um homomorfismo de grupos. Então
 	\begin{enumerate}
 	\item $h(e_1)=e_2$;
-	\item $\forall g \in G_1 \qquad h(g)^{-1}=h(g^{-1})$.
+	\item $\forall g \in G_1 \qquad h(g)\inv=h(g\inv)$.
 	\end{enumerate}
 \end{prop}
 \begin{proof}
-Seja $g \in G$. Então
+Seja $g \in G_1$. Então
 	\begin{enumerate}
 	\item
 		\begin{align*}
 		h(e_1) &= h(e_1) e_2 \\
-			&= h(e_1) h(g) h(g)^{-1} \\
-			&= h(e_2 g) h(g)^{-1} \\
-			&= h(g) h(g)^{-1} \\
+			&= h(e_1) h(g) h(g)\inv \\
+			&= h(e_1 g) h(g)\inv \\
+			&= h(g) h(g)\inv \\
 			&= e_2.
 		\end{align*}
 	\item
 		\begin{align*}
-		h(g)^{-1} &= h(g)^{-1} e_2 \\
-			&= h(g)^{-1} h(e_1) \\
-			&= h(g)^{-1} h(g g^{-1}) \\
-			&= h(g)^{-1} h(g) h(g^{-1}) \\
-			&= e_2 h(g^{-1}) \\
-			&= h(g^{-1}). \qedhere
+		h(g)\inv &= h(g)\inv e_2 \\
+			&= h(g)\inv h(e_1) \\
+			&= h(g)\inv h(g g\inv) \\
+			&= h(g)\inv h(g) h(g\inv) \\
+			&= e_2 h(g\inv) \\
+			&= h(g\inv). \qedhere
 		\end{align*}
 	\end{enumerate}
 \end{proof}
@@ -1373,7 +1373,7 @@ o que mostra que $g=e_G$ e, portanto, que $\nuc(h)=\{e_G\}$.
 \end{nota}
 
 \begin{defi}
-	Sejam $n \in \N$ e $p \in \sime_n$. A \emph{matriz de permutação} de $p$ é a matriz $[p] \in \mathbb M_n (\Z)$ cujas entradas são dadas por
+	Sejam $n \in \N$ e $p \in \sime_n$. A \emph{matriz de permutação} de $p$ é a matriz $[p] \in \M_n (\Z)$ cujas entradas são dadas por
 	\begin{equation*}
 		[p]_{i,j} = \delta_{i,p(j)} = \begin{cases}
 												1 & i=p(j) \\
@@ -1408,7 +1408,7 @@ MOATRAR QUE O INVERSO DE P ESTA NO GRUPO
 
 
 
-Disso, segue que $\bm{[\sime_n]}$ é um grupo, pois é subgrupo de $\mathbb M_n(\Z)$. Por fim, consideremos a função
+Disso, segue que $\bm{[\sime_n]}$ é um grupo, pois é subgrupo de $\M_n(\Z)$. Por fim, consideremos a função
 	\begin{align*}
 	h: \sime_n &\to [\sime_n] \\
 			p &\mapsto [p].
@@ -1475,97 +1475,150 @@ O \emph{período} da órbita $\orb_p(m)$ é o número $\card{\orb_p(m)}$. Uma \e
 
 
 \cleardoublepage
-\subsection{Ações de Grupos}
+\section{Ação de Grupos}
 
 A noção de uma ação de grupo, de certa forma, generaliza uma estratégia usada na demonstração do teorema de que todo grupo é isomorfo a um subgrupo de seu grupo simétrico.
 
 \begin{defi}
-Sejam $X$ um conjunto e $\bm G$ um grupo. Uma \emph{ação (à esquerda)} de $\bm G$ em $X$ é uma função
+Sejam $\bm G$ um grupo e $X$ um conjunto. Uma \emph{ação} de $\bm G$ em $X$ é um homomorfismo de grupos
+%	\begin{equation*}
+%	A: \bm G  \to \bm{\simm{X}}.
+%	\end{equation*}
 	\begin{align*}
-	\func{\age}{G \times X}{X}{(g,x)}{g\age x}
+	A: G &\to \simm{X}\\
+			g &\mapsto \quad g\pt: X \to X \\
+			& \qquad\qquad\quad\ \, x \mapsto g\pt x
+	\end{align*}
+Denota-se $A: \bm G \age X$. Diz-se que o grupo $\bm G$ \emph{age} no conjunto $X$, e denota-se $\bm G \age X$, se, e somente se, existe ação de $\bm G$ em $X$.
+%O grupo $\bm G$ é o \emph{grupo de tranformações} e o conjunto $X$ é um \emph{$\bm G$-conjunto}.
+\end{defi}
+
+A definição acima é uma definição muito simplificada pois ela depende de conceitos um pouco mais complexos, como de homomorfismo de grupos e de grupo simétrico. A proposição abaixo mostra como essa definição é equivalente a uma definição mais explícita de ação de grupo que também é comumente usada.
+
+\begin{prop}
+Sejam $X$ um conjunto e $\bm G$ um grupo. Então $\bm G \age X$ se, e somente se, existe uma função
+	\begin{align*}
+	\func{\pt}{G \times X}{X}{(g,x)}{g\pt x}
 	\end{align*}
 que satisfaz
 \begin{enumerate}
 \item (Identidade) Para todo $x \in X$,
 	\begin{equation*}
-	e \age x = x;
+	e \pt x = x;
 	\end{equation*}
 \item (Compatibilidade) Para todos $g_0,g_1 \in G$ e $x \in X$,
 	\begin{equation*}
-	(g_1g_0) \age x = g_1 \age (g_0 \age x).
+	(g_1g_0) \pt x = g_1 \pt (g_0 \pt x).
 	\end{equation*}
 \end{enumerate}
-Um grupo $\bm G$ \emph{age} em o conjunto $X$ se, e somente se, existe uma ação de $\bm G$ em $X$.
-\end{defi}
-
-Analogamente, uma ação à direita pode ser definida, mas toda ação à direita pode ser traduzida em uma ação à esquerda, de modo que é suficiente estudar somente ações à esquerda.
-
-\begin{prop}
-Sejam $X$ um conjunto, $\bm G$ um grupo, $A$ uma ação de $\bm G$ em $X$ e $g \in G$. Então a função
-	\begin{align*}
-	\func{g\age}{X}{X}{x}{g\age x}
-	\end{align*}
-é uma bijeção. Equivalentemente, $g\age \in \simm{X}$.
-\end{prop}
-
-\begin{prop}
-Sejam $X$ um conjunto, $\bm G$ um grupo e $\age$ uma ação de $\bm G$ em $X$. Então a função
-%	\begin{align*}
-%	\func{\phi}{G}{\simm{X}}{g}{g\age}
-%	\end{align*}
-	\begin{align*}
-	h: G &\to \simm{X} \\
-			g &\mapsto g\age: X \to X\\
-				&\qquad\qquad\; x \mapsto g\age x.
-	\end{align*}
-é um homomorfismo de grupos de $\bm G$ para $\bm{\simm{X}}$.
 \end{prop}
 \begin{proof}
-Sejam $g_1,g_0 \in G$ e $x \in X$. Então
+Se existe ação $A: \bm G \age X$, basta definir $g \pt x \coloneqq A(g)(x)$ e segue que $e\pt = \id$ e $(g_1g_0) \pt = g_1 \pt \circ g_0 \pt$. Reciprocamente, definimos a ação $A$ a partir de $\pt$ da mesma forma e, se $g_0,g_1 \in G$ e $x \in X$, segue que
 	\begin{equation*}
-	h(g_1g_0)(x) =(g_1g_0) \age x = g_1 \age (g_0 \age x) = h(g_1)(h(g_0)(x)) = h(g_1) \circ h(g_0)(x),
+	A(g_1g_0)(x) =(g_1g_0) \pt x = g_1 \pt (g_0 \pt x) = A(g_1)(A(g_0)(x)) = A(g_1) \circ A(g_0)(x),
 	\end{equation*}
-logo $h(g_1g_0)=h(g_1) \circ h(g_0)$.
+logo $A(g_1g_0)=A(g_1) \circ A(g_0)$.
 \end{proof}
 
-Sob a ótica desse teorema, as propriedades de uma ação de grupos podem ser escritas
-	\begin{enumerate}
-	\item $e\age = \id$;
-	\item Para todos $g_0,g_1 \in G$,
-		\begin{equation*}
-		(g_1g_0)\age = g_1\age \circ g_0\age.
-		\end{equation*}
-	\end{enumerate}
+Essa proposição é geralmente considerada a definição de uma ação \emph{à esquerda} de $\bm G$ em $X$ por causa da posição em que a composição ocorre. Analogamente, uma ação à direita pode ser definida, mas toda ação à direita pode ser traduzida em uma ação à esquerda, de modo que é suficiente estudar somente ações à esquerda. É comum, ainda, estudar ações em conjuntos $X$ com alguma estrutura adicional, geralmente uma topologia. Nesse caso, exige-se que a ação seja uma função contínua, mas também é necessário que $G$ tenha uma estrutura topológica, portanto isso não será definido com cuidado agora.
+
+\subsection{Órbitas e Estabilizadores}
 
 \begin{defi}
-Sejam $X$ um conjunto, $\bm G$ um grupo que age em $X$ e $x \in X$. A \emph{órbita} de $x$ sob $\bm G$ é o conjunto
+Sejam $X$ um conjunto, $\bm G$ um grupo, $\bm G \age X$ e $x \in X$. A \emph{órbita} de $x$ sob $\bm G$ é o conjunto
 	\begin{equation*}
-	G \age x \coloneqq \set{g\age x}{g \in G}.
+	G \pt x \coloneqq \set{g\pt x}{g \in G}.
+	\end{equation*}
+\end{defi}
+
+\begin{defi}
+Sejam $X$ um conjunto, $\bm G$ um grupo, $A: \bm G \age X$ e $x \in X$. O \emph{estabilizador} de $x$ é
+	\begin{equation*}
+	G_x = \set{g \in G}{g\pt x = x} = A\inv(\{\id\}) = \nuc(A).
+	\end{equation*}
+\end{defi}
+
+O estabilizador de $x$ é um grupo e por isso é chamado de \emph{subgrupo estabilizador} de $\bm G$ com respeito a $x$, e também é conhecido como \emph{grupo de isotropia} de $x$.
+
+\section{Grupo Linear Geral}
+
+\begin{defi}
+Sejam $\bm C$ um corpo e $n \in \N$. O \emph{grupo linear geral} de $\bm C$ de ordem $n$ é o conjunto
+	\begin{equation*}
+	\GL_n(\bm C) \coloneqq \set{M \in \M_{n\times n}(\bm C)}{\det M \neq 0}.
+	\end{equation*}
+Se $\bm V$ é um espaço vetorial finito de dimensão $d$ sobre um corpo $\bm C$, o \emph{grupo linear geral} de $\bm V$ é
+	\begin{equation*}
+	\GL(\bm V) \coloneqq \GL_n(\bm C).
+	\end{equation*}
+\end{defi}
+
+Como $\det(AB) = \det(A)\det(B)$ e as matrizes invertíveis são as que têm determinante não nulo, segue que o conjunto acima forma um grupo com respeito ao produto de matrizes.
+
+\begin{defi}
+Sejam $\bm C$ um corpo e $n \in \N$. O \emph{grupo linear especial} de $\bm C$ de ordem $n$ é o conjunto
+	\begin{equation*}
+	\SL_n(\bm C) \coloneqq \set{M \in \GL(n,\bm C)}{\det M =1}.
 	\end{equation*}
 \end{defi}
 
 
+\section{Representação de Grupos}
 
-\begin{equation*}
-G_x = \set{g \in G}{g\age x = x} = h\inv(\{\id\}) = \nuc(h).
-\end{equation*}
+\begin{defi}
+Sejam $\bm G$ um grupo e $\bm V$ um espaço vetorial sobre um corpo $\bm C$. Uma \emph{representação} de $\bm G$ em $\bm V$ é um homomorfismo de grupos
+	\begin{equation*}
+	\rho: \bm G \to \GL(\bm V).
+	\end{equation*}
+O espaço $\bm V$ é o \emph{espaço de representação} e a dimensão de $\bm V$ é a \emph{dimensão da representação}.
+\end{defi}
 
-
-
-
-
-
-
-
-
-
-
+\begin{defi}
+Seja $\bm V$ um espaço vetorial sobre um corpo $\bm C$.
+\end{defi}
 
 
 
 
-\newpage
+\section{Grupos Topológicos}
 
+\begin{defi}
+Um \emph{grupo topológico} é um par $(\bm G,\topo)$ em que $\bm G$ é um grupo e $(G,\topo)$ é um espaço topológico tal que as operações
+	\begin{equation*}
+	\times: G^2 \to G \qquad\e\qquad \inv: G \to G
+	\end{equation*}
+ do grupo são funções contínuas. Um grupo \emph{discreto} é um grupo cuja topologia é discreta.
+\end{defi}
+
+\begin{defi}
+Sejam $\bm G$ um grupo topológico e $\bm X$ um espaço topológico. Uma \emph{ação contínua} de $\bm G$ em $\bm X$ é uma ação
+	\begin{align*}
+	\func{\pt}{G \times X}{X}{(g,x)}{g \pt x}
+	\end{align*}
+	\begin{align*}
+	\pt: G &\to \simm{X}\\
+			g &\mapsto \quad g\pt: X \to X \\
+			& \qquad\qquad\quad\ \, x \mapsto g\pt x
+	\end{align*}
+de $\bm G$ em $X$ que é uma função contínua (com respeito à topologia produto).
+\end{defi}
+
+
+\section{Grupos Diferenciais}
+
+\begin{defi}
+Um \emph{grupo diferencial} é um par $(\bm G,\atlas)$ em que $\bm G$ é um grupo e $(G,\atlas)$ é uma variedade diferencial tal que as funções do grupo
+	\begin{equation*}
+	\cdot: G \times G \to G \qquad\e\qquad \inv: G \to G
+	\end{equation*}
+são diferenciáveis.
+\end{defi}
+
+Grupos diferenciais são comumente chamados de grupos de Lie, em homenagem ao matemático Sophus Lie.
+
+
+
+\cleardoublepage
 \chapter{Anéis}
 
 \section{Anel}
@@ -3405,15 +3458,15 @@ OBS: Se $k \subseteq \overline{k}$ é uma extensão algébrica, então todo $\be
 	\end{equation*}
 em que $m_{i,j} \coloneqq M(i,j) \in A$. O conjunto $\inte_l$ é o conjunto dos \emph{índices das linhas} e $\inte_c$ é o conjunto dos \emph{índices das colunas} da matriz $M$. A imagem de $M$ é o conjunto das \emph{entradas} da matriz $M$ e o elemento $m_{i,j}$ é a entrada da linha $i$ e coluna $j$.
 
-	O conjunto de todas as matrizes de dimensão $l \times c$ sobre $\bm A$ é denotado por $\mathbb M_{l \times c}(\bm A)$.
+	O conjunto de todas as matrizes de dimensão $l \times c$ sobre $\bm A$ é denotado por $\M_{l \times c}(\bm A)$.
 \end{defi}
 
 \begin{defi}
-	Seja $\bm A$ um anel e $d \in \N$. Uma \emph{matriz quadrada} de dimensão $d$ sobre $\bm A$ é uma matriz $M \in \mathbb M_{d \times d}(\bm A)$. O conjunto de todas as matrizes quadradas de dimensão $d$ sobre $\bm A$ é denotado por $\mathbb M_d(\bm A)$.
+	Seja $\bm A$ um anel e $d \in \N$. Uma \emph{matriz quadrada} de dimensão $d$ sobre $\bm A$ é uma matriz $M \in \M_{d \times d}(\bm A)$. O conjunto de todas as matrizes quadradas de dimensão $d$ sobre $\bm A$ é denotado por $\M_d(\bm A)$.
 \end{defi}
 
 \begin{defi}
-	Sejam $\bm A$ um anel e $M \in \mathbb M_{l \times c}(\bm A)$. A \emph{matriz transposta} de $M$ é a matriz $M^\intercal \in \mathbb M_{c \times l}(\bm A)$ definida por
+	Sejam $\bm A$ um anel e $M \in \M_{l \times c}(\bm A)$. A \emph{matriz transposta} de $M$ é a matriz $M^\intercal \in \M_{c \times l}(\bm A)$ definida por
 	\begin{equation*}
 	(M^\intercal)(i,j) \coloneqq m_{j,i}.
 	\end{equation*}
@@ -3422,7 +3475,7 @@ em que $m_{i,j} \coloneqq M(i,j) \in A$. O conjunto $\inte_l$ é o conjunto dos 
 \section{Soma de Matrizes}
 
 \begin{defi}
-	Sejam $\bm A$ um anel e $M,N \in \mathbb M_{l \times c}(\bm A)$. A \emph{matriz soma} das matrizes $M$ e $N$ é a matriz $(M+N) \in \mathbb M_{l \times c}(\bm A)$ definida por
+	Sejam $\bm A$ um anel e $M,N \in \M_{l \times c}(\bm A)$. A \emph{matriz soma} das matrizes $M$ e $N$ é a matriz $(M+N) \in \M_{l \times c}(\bm A)$ definida por
 	\begin{equation*}
 	(M+N)(i,j) \coloneqq m_{i,j}+n_{i,j}.
 	\end{equation*}
@@ -3431,11 +3484,11 @@ em que $m_{i,j} \coloneqq M(i,j) \in A$. O conjunto $\inte_l$ é o conjunto dos 
 \begin{defi}
 	Sejam $\bm A$ um anel e $0$ o elemento neutro da soma de $\bm A$.
 	\begin{enumerate}
-	\item A \emph{matriz nula} de dimensão $l \times c$ sobre $\bm A$ é a matriz $\zero_{l \times c} \in \mathbb M_{l \times c}(\bm A)$, definida por
+	\item A \emph{matriz nula} de dimensão $l \times c$ sobre $\bm A$ é a matriz $\zero_{l \times c} \in \M_{l \times c}(\bm A)$, definida por
 		\begin{equation*}
 		\zero_{l \times c}(i,j) \coloneqq 0.
 		\end{equation*}
-	\item Se $M \in \mathbb M_{l \times c}$, a \emph{matriz negativa} de $M$ é a matriz $-M \in \mathbb M_{l \times c}(\bm A)$, definida por
+	\item Se $M \in \M_{l \times c}$, a \emph{matriz negativa} de $M$ é a matriz $-M \in \M_{l \times c}(\bm A)$, definida por
 		\begin{equation*}
 		(-M)(i,j) \coloneqq -m_{i,j}.
 		\end{equation*}
@@ -3443,15 +3496,15 @@ em que $m_{i,j} \coloneqq M(i,j) \in A$. O conjunto $\inte_l$ é o conjunto dos 
 \end{defi}
 
 \begin{prop}
-	Seja $\bm A$ um anel e $+$ a operação binária em $\mathbb M_{l \times c}(\bm A)$ definida por
+	Seja $\bm A$ um anel e $+$ a operação binária em $\M_{l \times c}(\bm A)$ definida por
 	\begin{align*}
-	+: \mathbb M_{l \times c}(\bm A) \times \mathbb M_{l \times c}(\bm A) &\to \mathbb M_{l \times c}(\bm A) \\
+	+: \M_{l \times c}(\bm A) \times \M_{l \times c}(\bm A) &\to \M_{l \times c}(\bm A) \\
 	(M,N) &\mapsto M+N.
 	\end{align*}
-Então $(\mathbb M_{l \times c}(\bm A),+)$ é um grupo com elemento neutro $\zero_{l \times c}$. Se $\bm A$ é comutativo, então $(\mathbb M_{l \times c}(\bm A),+)$ é comutativo.
+Então $(\M_{l \times c}(\bm A),+)$ é um grupo com elemento neutro $\zero_{l \times c}$. Se $\bm A$ é comutativo, então $(\M_{l \times c}(\bm A),+)$ é comutativo.
 \end{prop}
 \begin{proof}
-	Sejam $M,N,P \in \mathbb M_{l \times c}(\bm A)$. Primeiro, notemos que $+$ é associativa, pois, como a soma no anel é associativa, segue que
+	Sejam $M,N,P \in \M_{l \times c}(\bm A)$. Primeiro, notemos que $+$ é associativa, pois, como a soma no anel é associativa, segue que
 	\begin{equation*}
 	(m_{i,j}+n_{i,j})+p_{i,j} = m_{i,j}+(n_{i,j}+p_{i,j})
 	\end{equation*}
@@ -3463,24 +3516,24 @@ e, portanto, $M+\zero=\zero+M=M$. Ainda, notemos que, como $-m_{i,j}$ é o inver
 	\begin{equation*}
 	m_{i,j}+(-m_{i,j}) = (-m_{i,j})+m_{i,j} = 0
 	\end{equation*}
-e, portanto, $M+(-M)=(-M)+M=\zero$.	Assim, concluímos que $(\mathbb M_{l \times c}(\bm A),+)$ é um anel. Por fim, notemos que, se $\bm A$ é comutativo, então $+$ é comutativa, pois, como a soma no anel é comutativa, segue que
+e, portanto, $M+(-M)=(-M)+M=\zero$.	Assim, concluímos que $(\M_{l \times c}(\bm A),+)$ é um anel. Por fim, notemos que, se $\bm A$ é comutativo, então $+$ é comutativa, pois, como a soma no anel é comutativa, segue que
 	\begin{equation*}
 	m_{i,j}+n_{i,j} = n_{i,j}+m_{i,j}
 	\end{equation*}
-e, portanto, $M+N=N+M$. Assim, concluímos que, se $\bm A$ é comutativo, então $(\mathbb M_{l \times c}(\bm A),+)$ é comutativo.
+e, portanto, $M+N=N+M$. Assim, concluímos que, se $\bm A$ é comutativo, então $(\M_{l \times c}(\bm A),+)$ é comutativo.
 \end{proof}
 
 \section{Produto de Matrizes e Produto Por Escalar}
 
 \begin{defi}
-	Sejam $\bm A$ um anel e $M \in \mathbb M_{l \times d}(\bm A)$ e $N \in \mathbb M_{d \times c}(\bm A)$. A \emph{matriz produto} das matrizes $M$ e $N$ é a matriz $(MN) \in \mathbb M_{l \times c}(\bm A)$ definida por
+	Sejam $\bm A$ um anel e $M \in \M_{l \times d}(\bm A)$ e $N \in \M_{d \times c}(\bm A)$. A \emph{matriz produto} das matrizes $M$ e $N$ é a matriz $(MN) \in \M_{l \times c}(\bm A)$ definida por
 	\begin{equation*}
 	(MN)(i,j) \coloneqq \bigplus_{k=1}^d m_{i,k}n_{k,j}.
 	\end{equation*}
 \end{defi}
 
 \begin{prop}
-	Sejam $\bm A$ um anel e $M \in \mathbb M_{l \times d_1}(\bm A)$, $N \in \mathbb M_{d_1 \times d_2}(\bm A)$ e $P \in \mathbb M_{d_2 \times c}(\bm A)$. Então
+	Sejam $\bm A$ um anel e $M \in \M_{l \times d_1}(\bm A)$, $N \in \M_{d_1 \times d_2}(\bm A)$ e $P \in \M_{d_2 \times c}(\bm A)$. Então
 	\begin{equation*}
 	(MN)P = M(NP).
 	\end{equation*}
@@ -3509,7 +3562,7 @@ Mas então, como $\bm A$ é um anel, segue que
 \end{proof}
 
 \begin{defi}
-	Sejam $\bm A$ um anel e $0$ e $1$ os elementos neutros da soma e da multiplicação de $\bm A$ respectivamente. A \emph{matriz identidade} de dimensão $d$ sobre $\bm A$ é a matriz $\id_d \in \mathbb M_d(\bm A)$ definida por
+	Sejam $\bm A$ um anel e $0$ e $1$ os elementos neutros da soma e da multiplicação de $\bm A$ respectivamente. A \emph{matriz identidade} de dimensão $d$ sobre $\bm A$ é a matriz $\id_d \in \M_d(\bm A)$ definida por
 	\begin{equation*}
 	\id_d(i,j) \coloneqq \delta_{i,j} =
 		\begin{cases}
@@ -3522,15 +3575,15 @@ Mas então, como $\bm A$ é um anel, segue que
 Essa função $\delta$ é conhecida como delta de Kronecker.
 
 \begin{prop}
-	Seja $\bm A$ um anel e $\cdot$ a operação binária em $\mathbb M_d(\bm A)$ definida por
+	Seja $\bm A$ um anel e $\cdot$ a operação binária em $\M_d(\bm A)$ definida por
 	\begin{align*}
-	\cdot: \mathbb M_d(\bm A) \times \mathbb M_d(\bm A) &\to \mathbb M_d(\bm A) \\
+	\cdot: \M_d(\bm A) \times \M_d(\bm A) &\to \M_d(\bm A) \\
 	(M,N) &\mapsto MN.
 	\end{align*}
-Então $(\mathbb M_d(\bm A),\cdot)$ é um monoide com elemento neutro $\id_d$.
+Então $(\M_d(\bm A),\cdot)$ é um monoide com elemento neutro $\id_d$.
 \end{prop}
 \begin{proof}
-	Sejam $M,N,P \in \mathbb M_d(\bm A)$. Pela proposição anterior, sabemos que vale $(MN)P=M(NP)$ e que, portanto, $\cdot$ é associativa. Agora, notemos que um elemento de $M\id_d$ é da forma
+	Sejam $M,N,P \in \M_d(\bm A)$. Pela proposição anterior, sabemos que vale $(MN)P=M(NP)$ e que, portanto, $\cdot$ é associativa. Agora, notemos que um elemento de $M\id_d$ é da forma
 	\begin{equation*}
 	\bigplus_{k=1}^d m_{i,k}\delta_{k,j}.
 	\end{equation*}
@@ -3538,15 +3591,15 @@ Mas, para $k \in \inte_d$, se $k \neq j$, então $\delta_{k,j}=0$ e, se $k=j$, e
 	\begin{equation*}
 	\bigplus_{k=1}^d m_{i,k}\delta_{k,j} = m_{i,j}.
 	\end{equation*}
-Assim, concluímos que $M\id_d=M$. Analogamente, mostra-se que $\id_dM=M$, e concluímos que $\id_d$ é elemento neutro de $\cdot$. Isso mostra que $(\mathbb M_d(\bm A),\cdot)$ é um monoide.
+Assim, concluímos que $M\id_d=M$. Analogamente, mostra-se que $\id_dM=M$, e concluímos que $\id_d$ é elemento neutro de $\cdot$. Isso mostra que $(\M_d(\bm A),\cdot)$ é um monoide.
 \end{proof}
 
 \begin{defi}
-	Seja $\bm A$ um anel. Uma \emph{matriz invertível} é uma matriz $M \in \mathbb M_d(\bm A)$ que é invertível com respeito ao produto do monoide $(\mathbb M_d(\bm A),\cdot)$. A matriz inversa de $M$ é denotada $M^{-1}$.
+	Seja $\bm A$ um anel. Uma \emph{matriz invertível} é uma matriz $M \in \M_d(\bm A)$ que é invertível com respeito ao produto do monoide $(\M_d(\bm A),\cdot)$. A matriz inversa de $M$ é denotada $M^{-1}$.
 \end{defi}
 
 \begin{defi}
-	Seja $\bm A$ um anel, $a \in A$ e $M \in \mathbb M_{l \times c}(\bm A)$. O \emph{produto por escalar} de $a$ e $M$ é a matriz $aM \in \mathbb M_{l \times c}$ definida por
+	Seja $\bm A$ um anel, $a \in A$ e $M \in \M_{l \times c}(\bm A)$. O \emph{produto por escalar} de $a$ e $M$ é a matriz $aM \in \M_{l \times c}$ definida por
 	\begin{equation*}
 	(aM)(i,j) \coloneqq am_{i,j}.
 	\end{equation*}
@@ -3557,32 +3610,32 @@ Assim, concluímos que $M\id_d=M$. Analogamente, mostra-se que $\id_dM=M$, e con
 \begin{defi}
 	Seja $\bm A$ um anel.
 	\begin{enumerate}
-	\item Uma \emph{matriz triangular superior} é uma matriz quadrada $M \in \mathbb M_d(\bm A)$ que satisfaz
+	\item Uma \emph{matriz triangular superior} é uma matriz quadrada $M \in \M_d(\bm A)$ que satisfaz
 		\begin{equation*}
 		\forall i,j \in \inte_d \qquad i > j \Rightarrow m_{i,j}=0.
 		\end{equation*}
-	\item Uma \emph{matriz triangular inferior} é uma matriz quadrada $M \in \mathbb M_d(\bm A)$ sobre $\bm A$ que satisfaz
+	\item Uma \emph{matriz triangular inferior} é uma matriz quadrada $M \in \M_d(\bm A)$ sobre $\bm A$ que satisfaz
 		\begin{equation*}
 		\forall i,j \in \inte_d \qquad i < j \Rightarrow m_{i,j}=0.
 		\end{equation*}
-	\item Uma \emph{matriz triangular superior} é uma matriz quadrada $M \in \mathbb M_d(\bm A)$ que satisfaz
+	\item Uma \emph{matriz triangular superior} é uma matriz quadrada $M \in \M_d(\bm A)$ que satisfaz
 		\begin{equation*}
 		\forall i,j \in \inte_d \qquad i > j \Rightarrow m_{i,j}=0.
 		\end{equation*}
-	\item Uma \emph{matriz triangular} é uma matriz quadrada $M \in \mathbb M_d(\bm A)$ que é triangular superior ou triangular inferior.
-	\item Uma \emph{matriz diagonal} é uma matriz quadrada $M \in \mathbb M_d(\bm A)$ que é triangular superior e triangular inferior; ou seja, que satisfaz
+	\item Uma \emph{matriz triangular} é uma matriz quadrada $M \in \M_d(\bm A)$ que é triangular superior ou triangular inferior.
+	\item Uma \emph{matriz diagonal} é uma matriz quadrada $M \in \M_d(\bm A)$ que é triangular superior e triangular inferior; ou seja, que satisfaz
 		\begin{equation*}
 		\forall i,j \in \inte_d \qquad i \neq j \Rightarrow m_{i,j}=0.
 		\end{equation*}
-	\item Uma \emph{matriz simétrica}  uma matriz quadrada $M \in \mathbb M_d(\bm A)$ que é igual a sua transposta
+	\item Uma \emph{matriz simétrica}  uma matriz quadrada $M \in \M_d(\bm A)$ que é igual a sua transposta
 		\begin{equation*}
 		M = M^\intercal.
 		\end{equation*}
-	\item Uma \emph{matriz antissimétrica} é uma matriz quadrada $M \in \mathbb M_d(\bm A)$ que é igual à negativa da sua transposta
+	\item Uma \emph{matriz antissimétrica} é uma matriz quadrada $M \in \M_d(\bm A)$ que é igual à negativa da sua transposta
 		\begin{equation*}
 		M = -M^\intercal.
 		\end{equation*}
-	\item Uma \emph{matriz ortogonal} é uma matriz quadrada $M \in \mathbb M_d(\bm A)$ cuja transposta é igual à sua inversa
+	\item Uma \emph{matriz ortogonal} é uma matriz quadrada $M \in \M_d(\bm A)$ cuja transposta é igual à sua inversa
 		\begin{equation*}
 		M^\intercal = M^{-1}.
 		\end{equation*}
@@ -3592,14 +3645,14 @@ Assim, concluímos que $M\id_d=M$. Analogamente, mostra-se que $\id_dM=M$, e con
 \section{Traço e Determinante}
 
 \begin{defi}
-	Sejam $\bm A$ um anel e $M \in \mathbb M_d(\bm A)$. O \emph{traço} de $M$ é o elemento $\tr(M) \in A$ definido por
+	Sejam $\bm A$ um anel e $M \in \M_d(\bm A)$. O \emph{traço} de $M$ é o elemento $\tr(M) \in A$ definido por
 	\begin{equation*}
 	\tr(M) \coloneqq \bigplus_{i=1}^d m_{i,i}.
 	\end{equation*}
 \end{defi}
 
 \begin{prop}
-	Sejam $\bm A$ um anel, $a \in A$ e $M,N \in \mathbb M_d(\bm A)$. Então
+	Sejam $\bm A$ um anel, $a \in A$ e $M,N \in \M_d(\bm A)$. Então
 	\begin{enumerate}
 	\item $\tr(M^\intercal)=\tr(M)$;
 	\item $\tr(MN)=\tr(NM)$;
@@ -4453,10 +4506,34 @@ O coproduto de espaços vetoriais é também chamado de \emph{soma} ou \emph{som
 
 
 
+\cleardoublepage
+\section{Notas de Espaços Vetoriais Complexos}
 
+$(\C^m,i)$, sendo $i \cdot z\coloneqq (\sqrt{-1}z_1,\dots,\sqrt{-1}z_m)$.
 
+\begin{defi}
+Uma \emph{estrutura complexa} em $\R^{2m}$ é um mapa linear $j: \R^{2m} \to \R^{2m}$ que satisfaz
+	\begin{equation*}
+	j \circ j (v) = -v.
+	\end{equation*}
+\end{defi}
 
+Vamos definir uma ação de $\C$ em $\R^{2m}$.
+	\begin{equation*}
+	p(a+\sqrt{-1}b)(v) = av+bj(v).
+	\end{equation*}
 
+\begin{prop}
+$(\R^{2m},j) \simeq (\C^m,i)$.
+\end{prop}
+
+Para cada produto interno, temos um ângulo reto, logo uma multiplicação por $j$ distinta.
+
+Pode-se definir a partir de um vetor normal $n_p$ a um plano tangente em $p$ um mapa linear
+	\begin{equation*}
+	j_p(v) \coloneqq v \times n_p
+	\end{equation*}
+que satisfaz ${j_p}^2 (v) = -v$.
 
 
 

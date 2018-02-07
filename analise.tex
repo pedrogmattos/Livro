@@ -303,6 +303,49 @@ Seja $\bm M$ um espaço métrico. Então, para todo $c \in M$ e para todo númer
 Basta notar que $\bar\bola_r(c)^\complement$ é aberto.
 \end{proof}
 
+\section{Conjuntos Densos}
+
+\begin{defi}
+	Sejam $\bm M$ um espaço métrico e $C \subseteq M$ um conjunto. Um conjunto \emph{denso em $C$} é um conjunto $D \subseteq M$ tal que $C \subseteq \overline D$.
+\end{defi}
+
+	Isso que dizer que, para todo ponto de $C$, existe uma sequência em $D$ que converge para esse ponto.
+	
+\begin{prop}
+	Sejam $\bm M = (M,d)$ um espaço métrico e $C,D \subseteq M$ conjuntos. Então $D$ é denso em $C$ se, e somente se, para todo conjunto aberto $A$ de $\bm M$, $A \cap C \neq \emptyset$ implica $A \cap D \neq \emptyset$.
+\end{prop}
+\begin{proof}
+	Suponhamos que $D$ é denso em $C$. Sejam $A$ um conjunto aberto de $\bm M$ tal que $A \cap C \neq \emptyset$ e seja $p \in A \cap C$. Como $D$ é denso em $C$ e $p \in C$, existe uma sequência $(p_n)_{n \in \N}$ em $D$ que converge para $p$. Como $A$ é aberto e $p \in A$, existe um número real $\varepsilon>0$ tal que $\bola_\varepsilon(p) \subseteq A$. Então, como $(p_n) \conv p$, existe um número natural $N$ tal que, para todo natural $n \geq N$, $p_n \in \bola_\varepsilon(p)$. Mas isso implica que $p_n \in A \cap D$.
+	
+	Reciprocamente, suponhamos que, para todo conjunto aberto $A$ de $\bm M$, $A \cap C \neq \emptyset$ implica $A \cap D \neq \emptyset$. Se $C=\emptyset$, então $C \subseteq \overline D$. Se $C \neq \emptyset$, seja $p \in C$. Para todo $n \in \N$, o conjunto $\bola_\frac{1}{n}(p)$ é um conjunto aberto que contém $p$. Mas então $\bola_\frac{1}{n}(p) \cap C \neq \emptyset$, o que implica $\bola_\frac{1}{n}(p) \cap D \neq \emptyset$. Para cada $n \in \N$, escolhamos $p_n \in B_\frac{1}{n}(p) \cap D$. Assim, temos uma sequência $(p_n)_{n \in \N}$ de pontos em $D$ que converge para $p$, pois, para todo número real $\varepsilon>0$, existe um natural $N$ tal que $\frac{1}{N} \leq \varepsilon$ e, então
+	\begin{equation*}
+	\forall n \in \N \qquad n \geq N \Rightarrow \frac{1}{n} \leq \frac{1}{N} \leq \varepsilon \Rightarrow p_n \in \bola_\frac{1}{n}(p) \subseteq \bola_\frac{1}{N}(p) \subseteq \bola_\varepsilon(p).
+	\end{equation*}
+	Isso mostra que $p \in \overline D$ e, portanto, que $C \subseteq \overline D$.
+\end{proof}
+
+\begin{prop}
+	Sejam $\bm M_1$ e $\bm M_2$ espaços métricos e $f,g: M_1 \to M_2$ funções contínuas. Então o conjunto 
+	\begin{equation*}
+	F \coloneqq \{p \in M_1 : f(p)=g(p)\}
+	\end{equation*}
+é um conjunto fechado.
+\end{prop}
+\begin{proof}
+	Se $F=\emptyset$, então $F$ é fechado. Se $F \neq \emptyset$, seja $(p_n)_{n \in \N}$ uma sequência em $F$ que converge para $p \in M_1$. Mostraremos que $p \in F$. Como $f$ e $g$ são contínuas em $p$, segue que
+	\begin{equation*}
+	(f(p_n)) \conv f(p) \e (g(p_n)) \conv g(p).
+	\end{equation*}
+	Como $(p_n)_{n \in \N}$ é uma sequência em $F$, as sequências $(f(p_n))_{n \in \N}$ e $(g(p_n))_{n \in \N}$ são a mesma sequência e segue da unicidade do limite que $f(p)=g(p)$, o que mostra que $p \in F$ e que, portanto, $F$ é um conjunto fechado.
+\end{proof}
+
+\begin{prop}
+	Sejam $\bm M_1$ e $\bm M_2$ espaços métricos, $f,g: M_1 \to M_2$ funções contínuas e $C,D \subseteq M_1$ conjuntos tais que $D$ é denso em $C$. Se $f|_D = g|_D$, então $f|_C = g|_C$.
+\end{prop}
+\begin{proof}
+	Pela proposição anterior, sabemos que $F \coloneqq \{p \in M_1 : f(p)=g(p)\}$ é um conjunto fechado. Como $f|_D = g|_D$, então $D \subseteq F$. Mas isso significa que $\overline D \subseteq \overline F = F$ e, como $D$ é denso em $C$, segue que $C \subseteq \overline D \subseteq F$ e, portanto, que $f|_C = g|_C$. 
+\end{proof}
+
 \subsection{Continuidade}
 
 \begin{defi}
@@ -1161,7 +1204,7 @@ Dados $\phi ,\psi \in S_{(t_0,x_0)}$, definimos $\phi \leq \psi $ se, e somente 
 	Seja $X$ um conjunto. Uma \emph{sigma-álgebra} sobre $X$ é um conjunto $\Sigma \subseteq \p(X)$ de subconjuntos $X$ que satisfaz
 	\begin{enumerate}
 	\item (Vazio) $\emptyset \in \Sigma$.
-	\item (Fechamento por complementação) Para todo $M \in \Sigma$, $M\complement \in \Sigma$.
+	\item (Fechamento por complementação) Para todo $M \in \Sigma$, $M^\complement \in \Sigma$.
 	\item (Fehamento por união enumerável) Para toda sequência $(M_i)_{i \in \N}$ de conjuntos de $\Sigma$,
 	\begin{equation*}
 	\bigcup_{i \in \N} M_i \in \Sigma
@@ -1429,6 +1472,16 @@ e portanto, como $f_i$ é mensurável, $f_i\inv(M_i) \in \Sigma_Y$, portanto $f\
 
 \clearpage
 \section{Espaços Mensuráveis Topológicos}
+
+\begin{defi}
+Seja $\bm X=(X,\topo)$ um espaço topológico. A \emph{$\sigma$-álgebra topológica} de $\bm X$ é a $\sigma$-álgebra gerada por $\topo$
+	\begin{equation*}
+	\mathcal{M}_{\bm X} \coloneqq \ger{\topo}.
+	\end{equation*}
+\end{defi}
+
+Essa $\sigma$-álgebra é comumente chamada de \emph{álgebra de Borel} e seus conjuntos mensuráveis de \emph{borelianos} em homenagem ao matemático francês Émile Borel\footnote{Félix Édouard Justin Émile Borel (7 January 1871 – 3 February 1956)}.
+
 
 \subsection{Boreliano e função mensurável em $\R$}
 
