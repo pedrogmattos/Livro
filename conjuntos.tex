@@ -157,7 +157,7 @@ Para que o axioma da escolha seja compreensível, deve-se definir alguns conceit
 \begin{defi}
 Sejam $X$ e $Y$ conjuntos. O \emph{par ordenado} com \emph{primeira coordenada} $X$ e \emph{segunda coordenada} $Y$ é o conjunto
 	\begin{equation*}
-	(X,Y) \coloneqq \{\{X\},\{X,Y\}\} \in \p\left(\p\left(X \cup Y\right)\right).
+	(X,Y) := \{\{X\},\{X,Y\}\} \in \p\left(\p\left(X \cup Y\right)\right).
 	\end{equation*}
 \end{defi}
 
@@ -171,7 +171,7 @@ Sejam $X,Y,Z$ e $W$ conjuntos. Então
 \begin{defi}
 Sejam $X$ e $Y$ conjuntos. O \emph{produto} de $X$ por $Y$ é o conjunto
 	\begin{equation*}
-	X \times Y \coloneqq \set{(x,y) \in \p\left(\p\left(X \cup Y\right)\right)}{x \in X \e y \in Y}.
+	X \times Y := \set{(x,y) \in \p\left(\p\left(X \cup Y\right)\right)}{x \in X \e y \in Y}.
 	\end{equation*}
 \end{defi}
 
@@ -180,11 +180,11 @@ A existência desse conjunto depende da união de pares, do conjunto das partes 
 %\begin{defi}[Ênupla Ordenada]
 %	Sejam $A$ e $B$ conjuntos. O \emph{par (ordenado)} dos elementos $a \in A$ e $b %\in B$ é o conjunto
 %	\begin{equation*}
-%	(a,b) \coloneqq \{\{a\},\{a,b\}\}.
+%	(a,b) := \{\{a\},\{a,b\}\}.
 %	\end{equation*}
-%De modo mais geral, sejam $A_1, \ldots, A_n$ $n$ conjuntos e $I \coloneqq \{1,\ldots,n\}$. A \emph{n-upla (ordenada)} dos elementos $a_i \in A_i$, para todo $i \in I$, é definida indutivamente por
+%De modo mais geral, sejam $A_1, \ldots, A_n$ $n$ conjuntos e $I := \{1,\ldots,n\}$. A \emph{n-upla (ordenada)} dos elementos $a_i \in A_i$, para todo $i \in I$, é definida indutivamente por
 %	\begin{equation*}
-%	(a_1,\ldots,a_n) \coloneqq ((a_1,\ldots,a_{n-1}),a_n)	
+%	(a_1,\ldots,a_n) := ((a_1,\ldots,a_{n-1}),a_n)	
 %	\end{equation*}
 %\end{defi}
 %
@@ -213,7 +213,7 @@ Sejam $X$ e $Y$ conjuntos. Uma \emph{função} de $X$ para $Y$ é um conjunto $f
 	\begin{equation*}
 	\forall x \in X \ \exists! y \in Y \qquad (x,y) \in f.
 	\end{equation*}
-Esse $y$ é a \emph{imagem} de $x$, denotada por $f(x)$. Denotam-se $f: X \to Y$ e $f(x) \coloneqq y$. Para qualquer conjunto $K \subseteq X$, defini-se a \emph{imagem} de $K$
+Esse $y$ é a \emph{imagem} de $x$, denotada por $f(x)$. Denotam-se $f: X \to Y$ e $f(x) := y$. Para qualquer conjunto $K \subseteq X$, defini-se a \emph{imagem} de $K$
 	\begin{equation*}
 	f(K)=\set{y \in Y}{\exists k \in K \quad y=f(k)},
 	\end{equation*}
@@ -242,10 +242,10 @@ que é subconjunto de $Y$. Diz-se que o conjunto $f(X)$ é a \emph{imagem} de $f
 \begin{defi}
 Seja $C$ um conjunto. O \emph{produto} de $C$ é o conjunto
 	\begin{equation*}
-	\prod C \coloneqq \set{f: C \to \bigcup C }{\forall X \in C \quad f(X) \in X}.
+	\prod C := \set{f: C \to \bigcup C }{\forall X \in C \quad f(X) \in X}.
 	\end{equation*}
 	\begin{equation*}
-	\prod C \coloneqq \set{f \in \left(\bigcup C\right)^C }{\forall X \in C \quad f(X) \in X}.
+	\prod C := \set{f \in \left(\bigcup C\right)^C }{\forall X \in C \quad f(X) \in X}.
 	\end{equation*}
 \end{defi}
 
@@ -275,7 +275,7 @@ Seja $C$ um conjunto tal que $\emptyset \notin C$. Então $\prod C \neq \emptyse
 \begin{defi}
 Seja $X$ um conjunto. O \emph{sucessor} de $X$ é o conjunto
 	\begin{equation*}
-	X^+ \coloneqq X \cup \{X\}.
+	X^+ := X \cup \{X\}.
 	\end{equation*}
 \end{defi}
 
@@ -379,16 +379,16 @@ A partir da definição de família, pode-se definir a união e a interseção d
 A \emph{união} de uma família $(C_i)_{i \in I}$ de conjuntos é o conjunto
 \end{defi}
 	\begin{equation*}
-	\bigcup_{i \in I} C_i \coloneqq \bigcup C(I).
+	\bigcup_{i \in I} C_i := \bigcup C(I).
 	\end{equation*}
 A \emph{interseção} de uma família não vazia $(C_i)_{i \in I}$ de conjuntos é o conjunto
 	\begin{equation*}
-	\bigcap_{i \in I} C_i \coloneqq \bigcap C(I).
+	\bigcap_{i \in I} C_i := \bigcap C(I).
 	\end{equation*}
 \noindent
 Quando $I$ for finito, pode-se denotar
 	\begin{equation*}
-	C_1 \cup \cdots \cup C_n \coloneqq \bigcup_{i \in I} C_i \qquad \e \qquad C_1 \cap \cdots \cap C_n \coloneqq \bigcap_{i \in I} C_i.
+	C_1 \cup \cdots \cup C_n := \bigcup_{i \in I} C_i \qquad \e \qquad C_1 \cap \cdots \cap C_n := \bigcap_{i \in I} C_i.
 	\end{equation*}
 	
 \begin{prop}
@@ -443,7 +443,7 @@ Seja $(C_{ij})$ uma família não vazia de conjuntos. Então
    \begin{defi}
 Seja $(C_i)_{i \in I}$ uma família de conjuntos. O \emph{produto} de $(C_i)_{i \in I}$ é o conjunto
 	\begin{equation*}
-	\prod_{i \in I} C_i \coloneqq \set{(c_i)_{i \in I}}{\forall i \in I \quad c_i \in C_i}.
+	\prod_{i \in I} C_i := \set{(c_i)_{i \in I}}{\forall i \in I \quad c_i \in C_i}.
 	\end{equation*}
 As famílias $(c_i)_{i \in I}$ são de elementos em $\bigcup_{i \in I} C_i$.
 \end{defi}
@@ -510,7 +510,7 @@ Como $f(x) = (f_i(x))_{i \in I}$, isso mostra que $\overline{f}(x) = f(x)$. Port
 \begin{defi}
 Seja $(C_i)_{i \in I}$ uma família não vazia de conjuntos. O \emph{coproduto} de $(C_i)_{i \in I}$ é o conjunto
 	\begin{equation*}
-	\coprod_{i \in I} C_i \coloneqq\set{(i,c)}{i \in I \e c \in C_i}.
+	\coprod_{i \in I} C_i :=\set{(i,c)}{i \in I \e c \in C_i}.
 	\end{equation*}
 \end{defi}
 
@@ -613,7 +613,7 @@ Notemos que a inclusão contrária no primeiro item nao vale. Suponhamos que par
 
 \begin{prop}
 \label{conj:prop.im.inv.prod}
-Sejam $X$ um conjunto, $(Y_i)_{i \in I}$ uma família de conjuntos, $(S_i)_{i \in I}$ uma família de subconjutos de $(Y_i)_{i \in I}$, $f: X \to \prod_{i \in I} Y_i$ uma função e, para todo $i \in I$, $f_i \coloneqq \pi_i \circ f$. Então
+Sejam $X$ um conjunto, $(Y_i)_{i \in I}$ uma família de conjuntos, $(S_i)_{i \in I}$ uma família de subconjutos de $(Y_i)_{i \in I}$, $f: X \to \prod_{i \in I} Y_i$ uma função e, para todo $i \in I$, $f_i := \pi_i \circ f$. Então
 	\begin{equation*}
 	f\inv\left( \prod_{i \in I} {S_i} \right) = \bigcap_{i \in I} f_i\inv (S_i).
 	\end{equation*}
@@ -629,7 +629,7 @@ Note que $x \in f\inv(\prod_{i \in I} {S_i})$ é equivalente a $f(x) \in \prod_{
 %\begin{defi}
 %Seja $C$ um conjunto não vazio. A \emph{soma} de $C$ é o conjunto
 %	\begin{equation*}
-%	\coprod C \coloneqq \set{(X,x) \in C \times \bigcup C}{x \in X}.
+%	\coprod C := \set{(X,x) \in C \times \bigcup C}{x \in X}.
 %	\end{equation*}
 %\end{defi}
 
@@ -838,7 +838,7 @@ o que mostra que $h \circ (g \circ f) = (h \circ g) \circ f$.
 	Seja $f: A \to B$. Então $f$ é sobrejetiva sobre $B$ se, e somente se, existe $g: B \to A$ tal que $f \circ g = \id_B$.
 \end{prop}
 \begin{proof}
-	Suponhamos que $f$ é sobrejetiva sobre $B$. Então $B=f(A)$; ou seja, para todo $b \in B$, existe $a \in A$ tal que $f(a)=b$ e, portanto, definimos a função $g: B \to A$ para cada elemento de $B$ como $g(b) \coloneqq a$. Assim, segue que $g \circ f = \id_B$.
+	Suponhamos que $f$ é sobrejetiva sobre $B$. Então $B=f(A)$; ou seja, para todo $b \in B$, existe $a \in A$ tal que $f(a)=b$ e, portanto, definimos a função $g: B \to A$ para cada elemento de $B$ como $g(b) := a$. Assim, segue que $g \circ f = \id_B$.
 \end{proof}
 
 \begin{prop}
@@ -892,7 +892,7 @@ Sejam $f: D \to C$ uma função, $X \subseteq D$ e $Y \subseteq C$. Então
 \begin{defi}
 	Seja $f: A \to B$ uma função e $B' \subseteq B$. A \emph{imagem inversa} de $B$ sob $f$ é o conjunto
 	\begin{equation*}
-	f^{-1}(B') \coloneqq \set{a \in A}{f(a) \in B'}.
+	f^{-1}(B') := \set{a \in A}{f(a) \in B'}.
 	\end{equation*}
 \end{defi}
 
@@ -973,11 +973,11 @@ Costumamos denotar uma relação de equivalência com símbolos $\sim, \simeq, \
 \begin{defi}
 	Seja $A$ um conjunto não vazio e $\sim$ uma relação de equivalência em $A$. A \emph{classe de equivalência} de $a \in A$ é o conjunto
 	\begin{equation*}
-	[a] \coloneqq \set{b \in A}{b \sim a}.
+	[a] := \set{b \in A}{b \sim a}.
 	\end{equation*}
 	O \emph{conjunto quociente} de $A$ por $\sim$ é o conjunto
 	\begin{equation*}
-	A/\sim \ \coloneqq \set{[a]}{a \in A}.
+	A/\sim \ := \set{[a]}{a \in A}.
 	\end{equation*}
 \end{defi}
 
@@ -986,7 +986,7 @@ Costumamos denotar uma relação de equivalência com símbolos $\sim, \simeq, \
 	Seja $A$ um conjunto não vazio. Se $\sim$ é uma relação de equivalência em $A$, então $A/\sim$ é uma partição de $A$. Reciprocamente, se $P$ é uma partição de $A$, então existe uma relação de equivalência $\sim$ em $A$ tal que $P=A/\sim$.
 \end{teo}
 \begin{proof}
-	Seja $\sim$ uma relação de equivalência em $A$ e $P \coloneqq A/\sim$. Claramete, $\emptyset \nsubseteq P$. Ainda, para todo $a \in A$, como $a \sim a$, então $a \in [a]$. Logo
+	Seja $\sim$ uma relação de equivalência em $A$ e $P := A/\sim$. Claramete, $\emptyset \nsubseteq P$. Ainda, para todo $a \in A$, como $a \sim a$, então $a \in [a]$. Logo
 	\begin{equation*}
 	\bigcup_{[a] \in P} [a] = A.
 	\end{equation*}
@@ -1255,7 +1255,7 @@ Dualmente, se $Y$ e $Z$ têm ínfimo,
 
 	As cardinalidades dos números naturais e dos números reais são denotadas, respectivamente
 	\begin{equation*}
-	\card{\N} \coloneqq \aleph_0 \e \card{\R} \coloneqq \mathfrak c.
+	\card{\N} := \aleph_0 \e \card{\R} := \mathfrak c.
 	\end{equation*}
 \end{defi}
 
@@ -1329,9 +1329,9 @@ $X$ tal que $\card{X} \geq \aleph_0$.
 \begin{defi}
 	Sejam $X$ e $Y$ conjuntos não vazios. Definimos as seguintes "operações" entre cardinais:
 	\begin{enumerate}
-	\item $\card{X} + \card{Y} \coloneqq \card{X + Y}$;
-	\item $\card{X} \times \card{Y} \coloneqq \card{X \times Y}$;
-	\item $\card{X}^{\card{Y}} \coloneqq \card{X^Y}$.
+	\item $\card{X} + \card{Y} := \card{X + Y}$;
+	\item $\card{X} \times \card{Y} := \card{X \times Y}$;
+	\item $\card{X}^{\card{Y}} := \card{X^Y}$.
 	\end{enumerate}
 \end{defi}
 
@@ -1362,7 +1362,7 @@ Seja $(C_i)_{i \in I}$ uma família não vazia de conjuntos de mesma cardinalida
 para algum $C$ de $(C_i)_{i \in I}$.
 \end{prop}
 \begin{proof}
-Como $I \neq \emptyset$, seja $j \in I$ e defina $C \coloneqq C_j$. Como todos os conjuntos de $(C_i)_{i \in I}$ têm a mesma cardinalidade, para todo $i \in I$, seja $f_i: C_i \to C$ bijeção. Considere a função
+Como $I \neq \emptyset$, seja $j \in I$ e defina $C := C_j$. Como todos os conjuntos de $(C_i)_{i \in I}$ têm a mesma cardinalidade, para todo $i \in I$, seja $f_i: C_i \to C$ bijeção. Considere a função
 	\begin{align*}
 	f: \coprod_{i \in I} C_i &\to I \times C \\
 			(c,i) &\mapsto (i,f_i(c)).
@@ -1382,14 +1382,14 @@ Seja $(C_i)_{i \in I}$ uma família não vazia de conjuntos. Se existem $\min_{i
 \end{equation*}
 \end{teo}
 \begin{proof}
-Mostremos a primeira desigualdade. Seja $j \in I$ tal que $\card{C_j} \coloneqq \min_{i \in I}{\card{C_i}}$ e $C \coloneqq C_j$. Para cada $i \in I$, existe função injetiva $f_i: C \to C_i$. Considere a função
+Mostremos a primeira desigualdade. Seja $j \in I$ tal que $\card{C_j} := \min_{i \in I}{\card{C_i}}$ e $C := C_j$. Para cada $i \in I$, existe função injetiva $f_i: C \to C_i$. Considere a função
 	\begin{align*}
 	f: I \times C &\to \coprod_{i \in I} C_i \\
 			(i,c) &\mapsto (f_i(c),i).
 	\end{align*}
 Mostremos que $f$ é injetiva. Sejam $(i_1,c_1),(i_2,c_2) \in I \times C$ tais que $(f_{i_1}(c_1),i_1)=(f_{i_2}(c_2),i_2)$. Então $i_1=i_2$ e $f_{i_1}=f_{i_2}$. Como $f_{i_1}$ é injetiva, temos que $c_1=c_2$, logo $(i_1,c_1)=(i_2,c_2)$.
 
-Mostremos agora a segunda desigualdade. Seja $j \in I$ tal que $\card{C_j} \coloneqq \max_{i \in I}{\card{C_i}}$ e $C \coloneqq C_j$. Para cada $i \in I$, existe função sobrejetiva $f_i: C_i \to C$. Considere a função
+Mostremos agora a segunda desigualdade. Seja $j \in I$ tal que $\card{C_j} := \max_{i \in I}{\card{C_i}}$ e $C := C_j$. Para cada $i \in I$, existe função sobrejetiva $f_i: C_i \to C$. Considere a função
 	\begin{align*}
 	f: \coprod_{i \in I} C_i &\to I \times C \\
 			(c,i) &\mapsto (i,f_i(c)).
@@ -1422,16 +1422,16 @@ Mostremos que $f$ é sobrejetiva. Seja $(i,c) \in I \times C$. Como $f_i$ é sob
 	\item (Axioma da Indução) Para todo conjunto $I \subseteq N$, se $0 \in I$ e $s(n) \in I$ para todo $n \in I$, então $I=N$.
 	\item (Axioma da Indução)' Para todo conjunto $I \subseteq N$, se $0 \in I$ e $s(I) \subseteq I$, então $I=N$.
 	\end{enumerate}
-	O \emph{um} de $\bm N$ é o elemento $1 \coloneqq s(0)$.
+	O \emph{um} de $\bm N$ é o elemento $1 := s(0)$.
 \end{defi}
 
-	Pela teoria de conjuntos, é possível definir um conjunto infinito $\bm N$ que satisfaz os axiomas de um modelo de números naturais. A construção considera $0 \coloneqq \emptyset$, $1 \coloneqq \{0\}$, e, de modo geral, $s(n) \coloneqq n \cup \{n\} = \{0,1,\cdots,n\}$. Claramente a construção é feita com mais cuidado, mas a partir dessa construção podemos realmente achar um modelo de números naturais. A partir de agora, consideraremos que esse conjunto existe.
+	Pela teoria de conjuntos, é possível definir um conjunto infinito $\bm N$ que satisfaz os axiomas de um modelo de números naturais. A construção considera $0 := \emptyset$, $1 := \{0\}$, e, de modo geral, $s(n) := n \cup \{n\} = \{0,1,\cdots,n\}$. Claramente a construção é feita com mais cuidado, mas a partir dessa construção podemos realmente achar um modelo de números naturais. A partir de agora, consideraremos que esse conjunto existe.
 
 \begin{prop}
 	Seja $\bm N$ um  modelo de números naturais. Então, para todo $n \in N\setminus \{0\}$, existe $m \in N$ tal que $n=s(m)$.
 \end{prop}
 \begin{proof}
-	Seja $I \coloneqq \{n \in N:n=0 \ou \exists m \in N \quad n=s(m)\}$. Primeiro, notemos que $0 \in I$. Agora, seja $n \in I$. Então $s(n) \in I$, pois $n \in N$ e $s(n)=s(n)$. Logo $I=N$. Assim, se $n \in N \setminus \{0\}$, segue que existe $m \in N$ tal que $n=s(n)$.
+	Seja $I := \{n \in N:n=0 \ou \exists m \in N \quad n=s(m)\}$. Primeiro, notemos que $0 \in I$. Agora, seja $n \in I$. Então $s(n) \in I$, pois $n \in N$ e $s(n)=s(n)$. Logo $I=N$. Assim, se $n \in N \setminus \{0\}$, segue que existe $m \in N$ tal que $n=s(n)$.
 \end{proof}
 
 Essa proposição mostra que $s$ é sobrejetiva em $N \setminus \{0\}$ e, portanto, que $s$ é uma bijeção entre $N$ e $N \setminus \{0\}$, o que mostra que $N$ é um conjunto infinito. No entanto, vale lembrar que a definição de conjunto infinito depende do conjunto dos números naturais.
@@ -1451,7 +1451,7 @@ que satisfaz
 	\end{enumerate}
 \end{teo}
 \begin{proof}
-	Primeiro mostraremos que essa função $+$ está bem definida. Para isso, devemos mostrar que, para todo $n_1,n_2 \in N$, existe único $n_3 \in N$ tal que $n_1+n_2=n_3$ satisfazendo $(A_1),(A_2)$. Consideremos o conjunto $I \coloneqq \{n \in N : \exists! n_3 \in N \quad n_1+n=n_3\}$. Primeiro, notemos que $0 \in I$, pois $n+0=n$ e, portanto, $n_3$ é único. Agora, seja $n \in I$. Então existe único $n_3 \in N$ tal que $n_1+n=n_3$ e, como $s$ é função, $s(n_3)=s(n_1+n) \in N$ é único e tomando $n_1+s(n)=s(n_1+n)$, concluímos que $s(n) \in I$ e, portanto, $I=N$. Logo $+$ está bem definida. Agora, mostremos que $+$ é única. Sejam $+_1,+_2:N \times N \to N$ funções satisfazendo $(A_1),(A_2)$, $n_1 \in N$ e $I \coloneqq \{n \in N : n_1 +_1 n = n_1 +_2 n \}$. Primeiro, notemos que $0 \in I$, pois $n_1 +_1 0 =n = n_1 +_2 0$. Agora, seja $n \in I$. Então
+	Primeiro mostraremos que essa função $+$ está bem definida. Para isso, devemos mostrar que, para todo $n_1,n_2 \in N$, existe único $n_3 \in N$ tal que $n_1+n_2=n_3$ satisfazendo $(A_1),(A_2)$. Consideremos o conjunto $I := \{n \in N : \exists! n_3 \in N \quad n_1+n=n_3\}$. Primeiro, notemos que $0 \in I$, pois $n+0=n$ e, portanto, $n_3$ é único. Agora, seja $n \in I$. Então existe único $n_3 \in N$ tal que $n_1+n=n_3$ e, como $s$ é função, $s(n_3)=s(n_1+n) \in N$ é único e tomando $n_1+s(n)=s(n_1+n)$, concluímos que $s(n) \in I$ e, portanto, $I=N$. Logo $+$ está bem definida. Agora, mostremos que $+$ é única. Sejam $+_1,+_2:N \times N \to N$ funções satisfazendo $(A_1),(A_2)$, $n_1 \in N$ e $I := \{n \in N : n_1 +_1 n = n_1 +_2 n \}$. Primeiro, notemos que $0 \in I$, pois $n_1 +_1 0 =n = n_1 +_2 0$. Agora, seja $n \in I$. Então
 	\begin{equation*}
 	n_1 +_1 s(n) = s(n_1 +_1 n) = s(n_1 +_2 n) = n_1 +_2 s(n),
 	\end{equation*}
@@ -1469,7 +1469,7 @@ o que implica que $s(n) \in I$ e, portanto, que $I=N$. Logo $+_1 = +_2$.
 	\end{equation*}
 \end{teo}
 \begin{proof}
-	Sejam $n_1,n_2 \in N$ e $I \coloneqq \{n_3 \in N: (n_1+n_2)+n_3 = n_1+(n_2+n_3)\}$. Notemos que $0 \in I$, pois
+	Sejam $n_1,n_2 \in N$ e $I := \{n_3 \in N: (n_1+n_2)+n_3 = n_1+(n_2+n_3)\}$. Notemos que $0 \in I$, pois
 	\begin{align*}
 	(n_1+n_2)+0 &= n_1+n_2						\tag{A1} \\
 	&= n_1+(n_2+0).										\tag{A1}
@@ -1507,13 +1507,13 @@ o que implica $s(n) \in I$. Logo $I=N$.
 \begin{proof}
 	Demonstraremos ambas afirmações por indução em $n$.
 	\begin{enumerate}
-	\item Seja $I \coloneqq \{n \in N:0+n=n\}$. Primeiro notemos que $0 \in I$, pois $0+0=0$. Agora, seja $n \in I$. Então
+	\item Seja $I := \{n \in N:0+n=n\}$. Primeiro notemos que $0 \in I$, pois $0+0=0$. Agora, seja $n \in I$. Então
 	\begin{equation*}
 	0+s(n)=0+(n+1)=(0+n)+1=n+1=s(n),
 	\end{equation*}
 o que implica que $s(n) \in I$ e, portanto, $I=N$.
 
-	\item Seja $I \coloneqq \{n \in N:1+n=n+1\}$. Primeiro notemos que $0 \in I$, pois $1+0=1=0+1$. Agora, seja $n \in I$. Então
+	\item Seja $I := \{n \in N:1+n=n+1\}$. Primeiro notemos que $0 \in I$, pois $1+0=1=0+1$. Agora, seja $n \in I$. Então
 	\begin{equation*}
 	1+s(n)=1+(n+1)=(1+n)+1=(n+1)+1=s(n)+1,
 	\end{equation*}
@@ -1528,7 +1528,7 @@ o que implica que $s(n) \in I$ e, portanto, $I=N$.
 	\end{equation*}
 \end{teo}
 \begin{proof}
- 	Demonstraremos a afirmação por indução. Seja $n_1 \in N$ e $I \coloneqq \{n \in N:n_1+n=n+n_1\}$. Primeiro notemos que $0 \in I$, pois
+ 	Demonstraremos a afirmação por indução. Seja $n_1 \in N$ e $I := \{n \in N:n_1+n=n+n_1\}$. Primeiro notemos que $0 \in I$, pois
  	\begin{equation*}
  	n_1+0=n_1=0+n_1.
  	\end{equation*}
@@ -1560,7 +1560,7 @@ que satisfaz
 	\end{enumerate}
 \end{teo}
 \begin{proof}
-	Primeiro devemos mostrar que a função $\times$ está bem definida. Para isso, devemos mostrar que, para todo $n_1,n_2 \in N$, existe único $n_3 \in N$ tal que $n_1 \times n_2=n_3$. Consideremos $I \coloneqq \{n \in N : \exists! n_3 \in N \quad n_1 \times n = n_3\}$. Primeiro, notemos que $0 \in I$, pois $n_1 \times 0 = 0$ e, portanto, $n_3$ esxite e é único. Agora, seja $n \in I$. Então existe único $n_3 \in N$ tal que $n_1 \times n = n_3$ e, como $+$ é função, $n_3 + n_1=n_1 \times n + n$ é único e tomando $n_1 \times s(n)=n_1 \times n + n_1$, concluímos que $s(n) \in I$ e, portanto, $I=N$. Logo $\times$ está bem definida. Agora, devemos mostrar que $\times$ é única. Sejam $\times_1,\times_2: N \times N \to N$ funções satisfazendo $(M_1),(M_2)$, $n_1 \in N$ e $I \coloneqq \{n \in N : n_1 \times_1 n = n_1 \times_2 n\}$. Primeiro, notemos que $0 \in I$, pois $n_1 \times_1 0 = 0 = n_1 \times_2 0$. Agora, seja $n \in I$. Então
+	Primeiro devemos mostrar que a função $\times$ está bem definida. Para isso, devemos mostrar que, para todo $n_1,n_2 \in N$, existe único $n_3 \in N$ tal que $n_1 \times n_2=n_3$. Consideremos $I := \{n \in N : \exists! n_3 \in N \quad n_1 \times n = n_3\}$. Primeiro, notemos que $0 \in I$, pois $n_1 \times 0 = 0$ e, portanto, $n_3$ esxite e é único. Agora, seja $n \in I$. Então existe único $n_3 \in N$ tal que $n_1 \times n = n_3$ e, como $+$ é função, $n_3 + n_1=n_1 \times n + n$ é único e tomando $n_1 \times s(n)=n_1 \times n + n_1$, concluímos que $s(n) \in I$ e, portanto, $I=N$. Logo $\times$ está bem definida. Agora, devemos mostrar que $\times$ é única. Sejam $\times_1,\times_2: N \times N \to N$ funções satisfazendo $(M_1),(M_2)$, $n_1 \in N$ e $I := \{n \in N : n_1 \times_1 n = n_1 \times_2 n\}$. Primeiro, notemos que $0 \in I$, pois $n_1 \times_1 0 = 0 = n_1 \times_2 0$. Agora, seja $n \in I$. Então
 	\begin{equation*}
 	n_1 \times_1 s(n) = n_1 \times_1 n + n_1 = n_1 \times_2 n + n_1 = n_1 \times_2 s(n),
 	\end{equation*}
@@ -1580,7 +1580,7 @@ o que implica que $s(n) \in I$ e, portanto, que $I=N$. Logo $\times_1=\times_2$.
 \end{teo}
 \begin{proof}
 	\begin{enumerate}
-	\item Sejam $n,m \in N$ e $I \coloneqq \{k \in N:n \times (m+k) = (n \times m) + (n \times k)\}$. Primeiro, notemos que $0 \in I$, pois
+	\item Sejam $n,m \in N$ e $I := \{k \in N:n \times (m+k) = (n \times m) + (n \times k)\}$. Primeiro, notemos que $0 \in I$, pois
 	\begin{align*}
 	n \times (m+0) &= n \times m 								\tag{$A_1$} \\
 		&= n \times m  + 0 											\tag{$A_1$} \\
@@ -1596,7 +1596,7 @@ Agora, seja $k \in I$. Então
 	\end{align*}
 o que implica que $s(k) \in I$ e, portanto, que $I=N$.
 
-	\item Sejam $n,m \in N$ e $I \coloneqq \{k \in N:(n + m) \times k = (n \times k) + (m \times k)\}$. Primeiro, notemos que $0 \in I$, pois
+	\item Sejam $n,m \in N$ e $I := \{k \in N:(n + m) \times k = (n \times k) + (m \times k)\}$. Primeiro, notemos que $0 \in I$, pois
 	\begin{align*}
 	(n + m) \times 0 &= 0 											\tag{$M_1$} \\
 		&= 0 + 0															\tag{$A_1$} \\
@@ -1620,7 +1620,7 @@ o que implica que $s(k) \in I$ e, portanto, que $I=N$.
 	\end{equation*}
 \end{teo}
 \begin{proof}
-	Sejam $n,m \in N$ e $I \coloneqq \{k \in N:(n \times m) \times k = n \times (m \times k)\}$. Primeiro, notemos que $0 \in I$, pois
+	Sejam $n,m \in N$ e $I := \{k \in N:(n \times m) \times k = n \times (m \times k)\}$. Primeiro, notemos que $0 \in I$, pois
 	\begin{equation*}
 	(n \times m) \times 0 = 0 = n \times 0 = n \times (m \times 0) \tag{$M_1$}
 	\end{equation*}
@@ -1644,7 +1644,7 @@ o que implica que $s(k) \in I$ e, portanto, que $I=N$.
 \end{lema}
 \begin{proof}
 	\begin{enumerate}
-	\item Vamos mostrar por indução em $n$. Seja $I \coloneqq \{n \in N:0 \times n=0\}$. Primeiro, notemos que $0 \in I$, pois $0 \times 0 = 0$. Agora, seja $n \in I$. Então
+	\item Vamos mostrar por indução em $n$. Seja $I := \{n \in N:0 \times n=0\}$. Primeiro, notemos que $0 \in I$, pois $0 \times 0 = 0$. Agora, seja $n \in I$. Então
 	\begin{equation*}
 	0 \times s(n) = (0 \times n) + 0 = 0 + 0 = 0,
 	\end{equation*}
@@ -1654,7 +1654,7 @@ o que mostra que $s(n) \in N$ e, portanto, $I=N$.
 	\begin{equation*}
 	n \times 1 = (n \times 0) + n = 0+ n = n.
 	\end{equation*}
-Mostraremos a segunda igualdade por indução em $n$. Seja $I \coloneqq \{n \in N:1 \times n = n\}$. Primeiro, notemos que $0 \in I$, pois $1 \times 0 = 0.$ Agora, seja $n \in I$. Então
+Mostraremos a segunda igualdade por indução em $n$. Seja $I := \{n \in N:1 \times n = n\}$. Primeiro, notemos que $0 \in I$, pois $1 \times 0 = 0.$ Agora, seja $n \in I$. Então
 	\begin{equation*}
 	1 \times s(n) = (1 \times n)+1 = n+1=s(n),
 	\end{equation*}
@@ -1669,7 +1669,7 @@ o que implica que $s(n) \in I$ e, portanto, que $I=N$.
 	\end{equation*}
 \end{teo}
 \begin{proof}
-	Sejam $n \in N$ e $I \coloneqq \{m \in N:n \times m=m \times n\}$. Primeiro, notemos que $0 \in I$, pois
+	Sejam $n \in N$ e $I := \{m \in N:n \times m=m \times n\}$. Primeiro, notemos que $0 \in I$, pois
 	\begin{align*}
 	n \times 0 &= 0 													\tag{$M_1$} \\
 		&= 0 \times n.													\tag{\ref{conj.nat.lem.mult}}
@@ -1696,7 +1696,7 @@ o que implica que $s(m) \in I$ e, portanto, que $I=N$.
 \end{lema}
 \begin{proof}
 	\begin{enumerate}
-	\item Seja $I \coloneqq \{k \in N: \forall n,m \in N \quad n+k=m+k \entao n=m\}$. Primeiro, notemos que $0 \in I$, pois, para todos $n,m \in N$, se $n+0=m+0$, então $n=m$. Agora, seja $k \in I$ e $n,m \in N$. Se $n+s(k)=m+s(k)$, então $s(n+k)=s(m+k)$ e, como $s$ é injetiva, $n+k=m+k$, o que implica que $n=m$ e, assim, temos que $s(k) \in I$ e, portanto, $I=N$.
+	\item Seja $I := \{k \in N: \forall n,m \in N \quad n+k=m+k \entao n=m\}$. Primeiro, notemos que $0 \in I$, pois, para todos $n,m \in N$, se $n+0=m+0$, então $n=m$. Agora, seja $k \in I$ e $n,m \in N$. Se $n+s(k)=m+s(k)$, então $s(n+k)=s(m+k)$ e, como $s$ é injetiva, $n+k=m+k$, o que implica que $n=m$ e, assim, temos que $s(k) \in I$ e, portanto, $I=N$.
 	
 	\item Suponhamos, por absurdo, que $n \neq 0$ ou $m \neq 0$. Notemos que $n+m=m+n$; então, sem perda de generalidade, seja $m \neq 0$. Então existe $k \in N$ tal que $m=s(k)$ e segue que $n+m=n+s(k)=s(n+k)=0$, o que é absurdo, pois $s^{-1}(\{0\})=\emptyset$. Logo $n=m=0$.
 	\end{enumerate}
@@ -1713,7 +1713,7 @@ o que implica que $s(m) \in I$ e, portanto, que $I=N$.
 	Seja $\bm N$ um modelo dos números naturais. A relação binária $\leq$ em $N$ é uma relação de ordem total.
 \end{prop}
 \begin{proof}
-	Primeiro, notemos que $\leq$ é reflexiva, pois, pra todo $n \in N$, $n+0=n$, o que implica que $n \leq n$. Segundo, notemos que $\leq$ é antissimétrica. Sejam $n,m \in N$ tais que $n \leq m$ e $m \leq n$; então existem $d_1,d_2 \in N$ tais que $n+d_1=m$ e $m+d_2=n$ e, portanto, que $n+m=n+m+d_1+d_2$, o que implica $d_1+d_2=0$ e, portanto, que $d_1=d_2=0$. Assim $n=m$. Terceiro, mostremos que $\leq$ é transitiva. Sejam $m,n,k \in N$ tais que $n \leq m$ e $m \leq k$. Então existem $d_1,d_2 \in N$ tais que $n+d_1=m$ e $m+d_2=k$. Assim, $n+d_1+d_2=k$, logo $n \leq k$. Isso termina a demonstração de que $\leq$ é uma ordem parcial. Por fim, devemos mostrar que a ordem parcial $\leq$ é total. Sejam $n \in N$ e $I \coloneqq \{m \in N: n \leq m \ou m \leq n\}$. Primeiro, notemos que $0 \in I$, pois $0+n=n$, logo $0 \leq n$. Agora, seja $m \in I$. Se $n leq m$, existe $d \in N$ tal que $n+d=m$, e segue que, como $n+d+1=m+1=s(m)$, $n \leq s(m)$. Se $m \leq n$, existe $d \in N$ tal que $m+d=n$. Consideramos dois casos: se $d=0$, então $n+1=m+1=s(m)$, logo $n \leq s(m)$; se $d \neq 0$, existe $k \in N$ tal que $d=s(k)=k+1$, o que implica $n=m+d=m+k+1=m+1+k=s(m)+k$ e, portanto, $s(m) \leq n$. Assim, concluímos que $s(m) \in I$ e, portanto, que $I=N$. Assim, fica provado que $\leq$ é uma ordem total.
+	Primeiro, notemos que $\leq$ é reflexiva, pois, pra todo $n \in N$, $n+0=n$, o que implica que $n \leq n$. Segundo, notemos que $\leq$ é antissimétrica. Sejam $n,m \in N$ tais que $n \leq m$ e $m \leq n$; então existem $d_1,d_2 \in N$ tais que $n+d_1=m$ e $m+d_2=n$ e, portanto, que $n+m=n+m+d_1+d_2$, o que implica $d_1+d_2=0$ e, portanto, que $d_1=d_2=0$. Assim $n=m$. Terceiro, mostremos que $\leq$ é transitiva. Sejam $m,n,k \in N$ tais que $n \leq m$ e $m \leq k$. Então existem $d_1,d_2 \in N$ tais que $n+d_1=m$ e $m+d_2=k$. Assim, $n+d_1+d_2=k$, logo $n \leq k$. Isso termina a demonstração de que $\leq$ é uma ordem parcial. Por fim, devemos mostrar que a ordem parcial $\leq$ é total. Sejam $n \in N$ e $I := \{m \in N: n \leq m \ou m \leq n\}$. Primeiro, notemos que $0 \in I$, pois $0+n=n$, logo $0 \leq n$. Agora, seja $m \in I$. Se $n leq m$, existe $d \in N$ tal que $n+d=m$, e segue que, como $n+d+1=m+1=s(m)$, $n \leq s(m)$. Se $m \leq n$, existe $d \in N$ tal que $m+d=n$. Consideramos dois casos: se $d=0$, então $n+1=m+1=s(m)$, logo $n \leq s(m)$; se $d \neq 0$, existe $k \in N$ tal que $d=s(k)=k+1$, o que implica $n=m+d=m+k+1=m+1+k=s(m)+k$ e, portanto, $s(m) \leq n$. Assim, concluímos que $s(m) \in I$ e, portanto, que $I=N$. Assim, fica provado que $\leq$ é uma ordem total.
 \end{proof}
 
 	Dessa forma, a relação binária $<$ fica definida como a ordem estrita associada a $\leq$.
@@ -1722,7 +1722,7 @@ o que implica que $s(m) \in I$ e, portanto, que $I=N$.
 	Seja  $\bm N$ um modelo de números naturais. Então $(\bm N,\leq)$ é bem ordenado.
 \end{teo}
 \begin{proof}
-	Seja $C \subseteq N$ um conjunto que não tem menor elemento. Devemos mostrar que $C=\emptyset$. Notemos que $0 \notin C$ porque, para todo $n \in C$, $0 \leq n$, o que implicaria que $0=\min C$. Consideremos $I \coloneqq \{m \in N:\forall n \in C \quad m < n\}$. Inicialmente, ressaltemos que $C \cap I=\emptyset$, pois, se existe $m \in I \cap C$, então, como $m \in I$, para todo $n \in C$, $m < n$ e, como $m \in C$, segue que $m<m$, o que é absurdo. Então notemos que $0 \in I$, pois $0 \leq n$ para todo $n \in C$ e $0 \notin C$. Agora, seja $m \in I$. Então, para todo $n \in C$, $m<n$, o que implica que existe $d \in N\setminus\{0\}$ tal que $m+d=n$. Então segue que existe $k \in N$ tal que $d=s(k)=k+1$ e segue que $s(m)+k=m+k+1=n$; ou seja, $s(m) \leq n$. Agora notemos que $s(m) \notin C$, pois, caso contrário, $s(m)=\min C$. Portanto, para todo $n \in C$, $s(m)<n$, o que mostra que $s(m) \in I$ e, por sua vez, que $I=N$. Como $C \subseteq N$, segue que $C \cap N=C$. Mas então $\emptyset=C \cap I=C \cap N=C$.
+	Seja $C \subseteq N$ um conjunto que não tem menor elemento. Devemos mostrar que $C=\emptyset$. Notemos que $0 \notin C$ porque, para todo $n \in C$, $0 \leq n$, o que implicaria que $0=\min C$. Consideremos $I := \{m \in N:\forall n \in C \quad m < n\}$. Inicialmente, ressaltemos que $C \cap I=\emptyset$, pois, se existe $m \in I \cap C$, então, como $m \in I$, para todo $n \in C$, $m < n$ e, como $m \in C$, segue que $m<m$, o que é absurdo. Então notemos que $0 \in I$, pois $0 \leq n$ para todo $n \in C$ e $0 \notin C$. Agora, seja $m \in I$. Então, para todo $n \in C$, $m<n$, o que implica que existe $d \in N\setminus\{0\}$ tal que $m+d=n$. Então segue que existe $k \in N$ tal que $d=s(k)=k+1$ e segue que $s(m)+k=m+k+1=n$; ou seja, $s(m) \leq n$. Agora notemos que $s(m) \notin C$, pois, caso contrário, $s(m)=\min C$. Portanto, para todo $n \in C$, $s(m)<n$, o que mostra que $s(m) \in I$ e, por sua vez, que $I=N$. Como $C \subseteq N$, segue que $C \cap N=C$. Mas então $\emptyset=C \cap I=C \cap N=C$.
 \end{proof}
 
 \begin{teo}[Indução completa]
@@ -1775,7 +1775,7 @@ e, portanto, $n_1 \times n_2 \leq m_1 \times m_2$.
 \begin{defi}
 	Seja $\bm N$ um modelo de números naturais com a equivalência $\sim$. O \emph{modelo de números inteiros} associado a $\bm N$ é o par $\bm Z = (\bm N,Z)$, em que $Z$ é o conjunto 
 	\begin{equation*}
-	Z \coloneqq \quo{N \times N}{\sim},
+	Z := \quo{N \times N}{\sim},
 	\end{equation*}
 o \emph{conjunto dos números inteiros}.
 \end{defi}
@@ -1793,7 +1793,7 @@ o \emph{conjunto dos números inteiros}.
 \subsection{Adição e Subtração}
 
 \begin{defi}
-	Seja $\bm Z$ um modelo de números inteiros. O \emph{zero} de $\bm Z$ é o elemento $0 \coloneqq [(n,n)]$.
+	Seja $\bm Z$ um modelo de números inteiros. O \emph{zero} de $\bm Z$ é o elemento $0 := [(n,n)]$.
 \end{defi}
 
 \begin{defi}
@@ -1866,7 +1866,7 @@ logo $n+m=m+n$.
 A partir desta seção, usaremos a notação $nm$ em vez de $n \times m$ para facilitar os cálculos.
 
 \begin{defi}
-	Seja $\bm Z$ um modelo de números inteiros. O \emph{um} de $\bm Z$ é o elemento $1 \coloneqq [(n+1,n)]$.
+	Seja $\bm Z$ um modelo de números inteiros. O \emph{um} de $\bm Z$ é o elemento $1 := [(n+1,n)]$.
 \end{defi}
 
 \begin{defi}
@@ -1943,25 +1943,25 @@ e, portanto, $(n_1 m_1 + n_2 m_2,n_2 m_1+n_1 m_2) \sim (n'_1 m'_1 + n'_2 m'_2,n'
 \begin{defi}
 Sejam $X$ e $Y$ conjuntos. O \emph{complementar relativo} de $Y$ em $X$ é o conjunto
 	\begin{equation*}
-	X \setminus Y \coloneqq \set{x \in X}{x \notin Y}.
+	X \setminus Y := \set{x \in X}{x \notin Y}.
 	\end{equation*}
 \end{defi}
 
 \begin{defi}
 Sejam $U$ um conjunto e $X$ um subconjunto de $U$. O \emph{complementar} de $X$ em $U$ é o conjunto
 	\begin{equation*}
-	X\complement \coloneqq U \setminus X.
+	X\complement := U \setminus X.
 	\end{equation*}
 %Seja $\mathcal A \subseteq \p(A)$. O \emph{conjunto complementar} de $\mathcal A$ em $A$ é o conjunto
 %	\begin{equation*}
-%	\complementlement(\mathcal A) \coloneqq \{X\complement : X \in \mathcal A\}.
+%	\complementlement(\mathcal A) := \{X\complement : X \in \mathcal A\}.
 %	\end{equation*}
 \end{defi}
 
 \begin{defi}
 Sejam $X$ e $Y$ conjuntos. A \emph{diferença simétrica} de $X$ e $Y$ é o conjunto
 	\begin{equation*}
-	X \difsim Y \coloneqq (X \setminus Y) \cup (Y \setminus X).
+	X \difsim Y := (X \setminus Y) \cup (Y \setminus X).
 	\end{equation*}
 \end{defi}
 
@@ -2010,16 +2010,26 @@ Sejam $X$ um conjunto e $P$ uma partição de $X$. Um \emph{refinamento} (\emph{
 \end{defi}
 
 \begin{prop}
-Sejam $X$ um conjunto e $P,R$ partições de $X$ tais que $P \leq R$. Então $\card{P} \leq \card{R}$ e, para toda célula $C \in P$, vale $C=\bigcup \set{D \in R}{D \subseteq C}$.
+Sejam $X$ um conjunto e $P,R$ partições de $X$ tais que $P \leq R$. Então
+	\begin{enumerate}
+	\item $\card{P} \leq \card{R}$;
+	\item para cada célula $C \in P$, o conjunto
+		\begin{equation*}
+		R|_C := \set{D \in R}{D \subseteq C}
+		\end{equation*}
+é uma partição de $C$.
+	\end{enumerate}
 \end{prop}
 \begin{proof}
-Por definição de refinamento, para toda célula $D \in R$ existe célula $C \in P$ tal que $D \subseteq C$. Notemos que essa célula $C$ é única pois, se existir célula $C' \in P$ tal que $D \subseteq C'$, então $D \subseteq C \cap C'$ e, como $D \neq \emptyset$, segue que $C =C'$. Assim, consideramos a função que mapeia, para cada célula $D \in R$ a célula $C_D \in P$ tal que $D \subseteq C_D$:
+	\begin{enumerate}
+	\item Por definição de refinamento, para toda célula $D \in R$ existe célula $C \in P$ tal que $D \subseteq C$. Notemos que essa célula $C$ é única pois, se existir célula $C' \in P$ tal que $D \subseteq C'$, então $D \subseteq C \cap C'$ e, como $D \neq \emptyset$, segue que $C =C'$. Assim, consideramos a função que mapeia, para cada célula $D \in R$ a célula $C_D \in P$ tal que $D \subseteq C_D$:
 	\begin{align*}
 	\func{f}{R}{P}{D}{C_D}.
 	\end{align*}
 Mostremos que essa função é sobrejetiva. Para isso, seja $C \in P$. Como $\bigcup R = X$, para todo $x \in C \subseteq X$ existe $D \in R$ tal que $x \in D$. Como $C \neq \emptyset$, existe $x \in C$, logo existe $D \in R$ tal que $x \in D$. Por definição de refinamento, existe $C' \in P$ tal que $D \subseteq C'$, o que implica $x \in C'$. Como $x \in C' \cap C$, segue que $C=C'$, e concluímos que $D \subseteq C$. Isso mostra que $f(D)=C$, logo que $f$ é sobrejetiva. Concluímos, então, que $\card{P} \leq \card{R}$.
-
-Por fim, seja $C \in P$ e $U \coloneqq \bigcup \set{D \in R}{D \subseteq C}$. Notemos que $C=U$. Para mostrar isso, seja $x \in C$. Então existe $D \in R$ tal que $x \in D$, pois $\bigcup P=X$. Por definição de refinamento, existe $C' \in P$ tal que $D \subseteq C'$, portanto $x \in C'$. Como $x \in C' \cap C$, segue que $C=C'$. concluímos que $D \subseteq C$, portanto que $x \in U$, o que mostra $C \subseteq U$. Reciprocamente, para todo $D \in U$, $D \subseteq C$, portanto $U \subseteq C$, e concluímos que $C=U$.
+	
+	\item As propriedades 1 e 3 são evidentes por que $R$ é partição. Para a propriedade 2, seja $C \in P$ e $U := \bigcup \set{D \in R}{D \subseteq C}$. Notemos que $C=U$. Para mostrar isso, seja $x \in C$. Então existe $D \in R$ tal que $x \in D$, pois $\bigcup P=X$. Por definição de refinamento, existe $C' \in P$ tal que $D \subseteq C'$, portanto $x \in C'$. Como $x \in C' \cap C$, segue que $C=C'$. concluímos que $D \subseteq C$, portanto que $x \in U$, o que mostra $C \subseteq U$. Reciprocamente, para todo $D \in U$, $D \subseteq C$, portanto $U \subseteq C$, e concluímos que $C=U$.
+	\end{enumerate}
 \end{proof}
 
 \begin{prop}
@@ -2029,20 +2039,22 @@ Sejam $X$ um conjunto. A relação de refinamento $\leq$ no conjunto de partiç�
 \begin{defi}
 Sejam $X$ um conjunto e $(P_i)_{i \in I}$ uma família de partições de $X$. O \emph{refinamento comum} a $(P_i)_{i \in I}$ é o conjunto
 	\begin{equation*}
-	\bigvee_{i \in I} P_i \coloneqq \set{\bigcap_{i \in I} C_i}{\forall i \in I\quad C_i \in P_i} \setminus \{\emptyset\}.
+	\bigvee_{i \in I} P_i := \set{\bigcap_{i \in I} C_i}{i \in I,\  C_i \in P_i \e \bigcap_{i \in I} C_i \neq \emptyset}.
 	\end{equation*}
 \end{defi}
 
 \begin{prop}
-Sejam $X$ um conjunto e $(P_i){i \in I}$ uma família de partições de $X$. O refinamento comum $\bigvee_{i \in I} P_i$ a $(P_i){i \in I}$ é a menor partição de que $X$ que refina $P_i$ para todo $i \in I$.
+Sejam $X$ um conjunto e $(P_i){i \in I}$ uma família de partições de $X$. O refinamento comum $\bigvee_{i \in I} P_i$ a $(P_i)_{i \in I}$ é a menor partição de que $X$ que refina $P_i$ para todo $i \in I$.
 \end{prop}
 \begin{proof}
-Primeiro, mostremos que $P \coloneqq \bigvee_{i \in I} P_i$ é uma partição. Por definição, $\emptyset \notin P$. Seja $x \in X$. Então, para cada $i \in I$, existe $C_i \in P_i$ tal que $x \in C_i$, pois $\bigcup P_i = X$. Sendo assim, $x \in \bigcap_{i \in I} C_i$, portanto $X \subseteq \bigcup P$, e segue que $\bigcup P = X$. Por fim, sejam $C=\bigcap_{i \in I} C_i, D=\bigcap_{i \in I} D_i \in P$. Se $C \neq D$, então existe $x \in C\setminus D$ ou existe $x \in D \setminus C$. Sem perda de generalidade, suponha o primeiro. Então, existe $i \in I$ tal que $x \notin D_i$. Como $x \in C$, então $x \in C_i$, portanto $C_i \neq D_i$. Mas então, como $P_i$ é partição, $C_i \cap D_i = \emptyset$. Por fim, como $C \subseteq C_i$ e $D \subseteq D_i$, segue que $C \cap D = \emptyset$.
+Primeiro, mostremos que $P := \bigvee_{i \in I} P_i$ é uma partição. Por definição, $\emptyset \notin P$. Seja $x \in X$. Então, para cada $i \in I$, existe $C_i \in P_i$ tal que $x \in C_i$, pois $\bigcup P_i = X$. Sendo assim, $x \in \bigcap_{i \in I} C_i$, portanto $X \subseteq \bigcup P$, e segue que $\bigcup P = X$. Por fim, sejam $C=\bigcap_{i \in I} C_i, D=\bigcap_{i \in I} D_i \in P$. Se $C \neq D$, então existe $x \in C\setminus D$ ou existe $x \in D \setminus C$. Sem perda de generalidade, suponha o primeiro. Então, existe $i \in I$ tal que $x \notin D_i$. Como $x \in C$, então $x \in C_i$, portanto $C_i \neq D_i$. Mas então, como $P_i$ é partição, $C_i \cap D_i = \emptyset$. Por fim, como $C \subseteq C_i$ e $D \subseteq D_i$, segue que $C \cap D = \emptyset$.
 
 Agora mostraremos que $P$ é refinamento de $P_i$ para todo $i \in I$. Sejam $i \in I$ e $C \in P$. Então $P=\bigcap_{i \in I} C_i$, portanto $C_i \in P_i$. Por fim, sejam $R$ partição de $X$ que é refina $P_i$ para todo $i \in I$ e $D \in R$ uma célula. Então, para todo $i \in I$, existe $C_i \in P_i$ tal que $D \subseteq C_i$. Portanto $D \subseteq \bigcap_{i \in I} C_i$, e como $\bigcap_{i \in I} C_i \in P$, segue que $P \leq R$.
 \end{proof}
 
-Alguns tipos especiais de partições são úteis na teoria de intergação de Riemmann. Em $\R^1$, essas partições são chamadas de partições de intervalo, e são representadas como um número finito de pontos em um intervalo. Quando generaliza-se para dimensões maiores, usam-se $n$-retângulos, que são conjuntos em $\R^n$ pprodutos de $n$ intervalos limitados. Podemos fixar um critério a mais, o de que um $n$-retângulo é produto de intervalos fechados em baixo e abertos em cima. Nesse caso, podemos definir que uma partição cujos elementos são $n$-retângulos é uma \emph{malha}. Alternativamente, quando temos uma medida, que é o caso de $\R^n$, podemos enfraquecer a restrição de que as células de uma partição são iguais ou disjuntas para a de que são iguais ou a interseção tem medida zero, e a restrição de que cobrem para a restrição de que a união da partição tem medida igual à medida total, e por fim, de que nenhum elemento da partição tem medida nula (essa não é tão necessária, acho), e definir que isso é uma $\mu$-partição ou \emph{partição com respeito a $\mu$}.
+Alguns tipos especiais de partições são úteis na teoria de intergação de Riemmann. Em $\R^1$, essas partições são chamadas de partições de intervalo, e são representadas como um número finito de pontos em um intervalo. Quando generaliza-se para dimensões maiores, usam-se $n$-retângulos, que são conjuntos em $\R^n$ produtos de $n$ intervalos limitados. Podemos fixar um critério a mais, o de que um $n$-retângulo é produto de intervalos fechados em baixo e abertos em cima. Nesse caso, podemos definir que uma partição cujos elementos são $n$-retângulos é uma \emph{malha}.
+
+Alternativamente, quando temos uma medida, que é o caso de $\R^n$, podemos enfraquecer a restrição de que as células de uma partição são iguais ou disjuntas para a de que são \emph{quase-iguais} \--- a interseção tem medida zero \--- e a restrição de que cobrem para a restrição de que a união da partição tem medida total, e por fim, de que nenhum elemento da partição tem medida nula, e definir que isso é uma $\mu$-partição ou \emph{partição com respeito a $\mu$}.
 
 
 

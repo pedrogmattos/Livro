@@ -46,7 +46,7 @@
 %	$A_1,A_2 \in \topo \Rightarrow A_1 \cap A_2 \in \topo$ se, e somente se, $(A_i)_{i \in \inte_n} \subseteq \topo \Rightarrow \displaystyle\bigcap_{i=1}^n A_i \in \topo$.
 %\end{prop}
 %\begin{proof}
-%	Primeiro, consideremos que toda interseção de dois abertos é um aberto. Vamos mostrar que a interseção dessa família é um aberto por indução em $n$. Para o caso base com $n=1$, temos $\bigcap_{i=1}^1 A_i = A_1 \in \topo$. Agora, suponhamos que a propriedade ale para $n$ e vamos provar que vale para $n+1$. Seja $(A_i)_{i \in \inte_{n+1}}$ um família finita de abertos. Pela hipótese de indução, $A \coloneqq \bigcup_{i=1}^n A_i \in \topo$. Então segue que
+%	Primeiro, consideremos que toda interseção de dois abertos é um aberto. Vamos mostrar que a interseção dessa família é um aberto por indução em $n$. Para o caso base com $n=1$, temos $\bigcap_{i=1}^1 A_i = A_1 \in \topo$. Agora, suponhamos que a propriedade ale para $n$ e vamos provar que vale para $n+1$. Seja $(A_i)_{i \in \inte_{n+1}}$ um família finita de abertos. Pela hipótese de indução, $A := \bigcup_{i=1}^n A_i \in \topo$. Então segue que
 %	\begin{equation*}
 %	\bigcup_{i=1}^{n+1} A_i = \left(\bigcup_{i=1}^n A_i \right) \cap A_{n+1} = A \cap A_{n+1}.
 %	\end{equation*}
@@ -145,7 +145,7 @@
 	\item $\mathcal I(\mathcal I(A)) = \mathcal I(A)$.
 	\end{enumerate}
 	
-Então o conjunto $\topo \coloneqq \{C \subseteq X : C = \mathcal I(C)\}$ é uma topologia de $X$ e $\mathcal I(C) = \inn{C}$ para cada $C \subseteq X$.
+Então o conjunto $\topo := \{C \subseteq X : C = \mathcal I(C)\}$ é uma topologia de $X$ e $\mathcal I(C) = \inn{C}$ para cada $C \subseteq X$.
 \end{prop}
 \begin{proof}
 	Primeiro, notemos que, pela primeira propriedade, $X \in \topo$ e, pela segunda propriedade, como $\mathcal I(\emptyset) \subseteq \emptyset$, concluímos que $\mathcal I(\emptyset)=\emptyset$, o que significa que $\emptyset \in \topo$. 	
@@ -201,7 +201,7 @@ Devemos, por fim, mostrar que $\mathcal I(C)=\inn{C}$ para todo $C \subseteq X$.
 \begin{defi}
 	Sejam $(X,\topo)$ um espaço topológico, $C \subseteq X$ e $(F_i)_{i \in I}$ uma indexação do conjunto de todos conjuntos fechados de $X$ dos quais $C$ é subconjunto. O \emph{fecho de $C$} é o conjunto fechado
 	\begin{equation*}
-	\fec{C} \coloneqq \bigcap_{i \in I} F_i.
+	\fec{C} := \bigcap_{i \in I} F_i.
 	\end{equation*}
 \end{defi}
 
@@ -229,7 +229,7 @@ Devemos, por fim, mostrar que $\mathcal I(C)=\inn{C}$ para todo $C \subseteq X$.
 	\item $\mathcal F(\mathcal F(A)) = \mathcal F(A)$.
 	\end{enumerate}
 	
-Então o conjunto $\complement(\topo) \coloneqq \{C \subseteq X : C = \mathcal F(C)\}$ é o conjunto de fechados de uma topologia $\topo$ de $X$ e $\mathcal F(C) = \fec{C}$ para cada $C \subseteq X$.
+Então o conjunto $\complement(\topo) := \{C \subseteq X : C = \mathcal F(C)\}$ é o conjunto de fechados de uma topologia $\topo$ de $X$ e $\mathcal F(C) = \fec{C}$ para cada $C \subseteq X$.
 \end{prop}
 \begin{proof}
 	Demonstração análoga à de interior.
@@ -256,7 +256,7 @@ Então o conjunto $\complement(\topo) \coloneqq \{C \subseteq X : C = \mathcal F
 \begin{defi}
 	Sejam $\bm X$ um espaço topológico e $C \subseteq X$. A \emph{fronteira} de $C$ é o conjunto
 	\begin{equation*}
-	\fro{C} \coloneqq \fec{C} \setminus \inn{C}.
+	\fro{C} := \fec{C} \setminus \inn{C}.
 	\end{equation*}
 \end{defi}
 
@@ -313,7 +313,7 @@ Então o conjunto $\complement(\topo) \coloneqq \{C \subseteq X : C = \mathcal F
 \begin{prop}
 	Sejam $X$ um conjunto e $(\topo_i)_{i \in I}$ uma família de topologias de $X$. Então
 	\begin{equation*}
-	\topo \coloneqq \bigcap_{i \in I} \topo_i
+	\topo := \bigcap_{i \in I} \topo_i
 	\end{equation*}
 é uma topologia de $X$.
 \end{prop}
@@ -327,14 +327,14 @@ Então o conjunto $\complement(\topo) \coloneqq \{C \subseteq X : C = \mathcal F
 %CONJECTURA
 %	Sejam $X$ um conjunto e $(\topo_i)_{i \in \N}$ uma sequência crescente de topologias de $X$; ou seja, $\topo_1 \subseteq \topo_2 \subseteq \cdots \subseteq \topo_i \subseteq \cdots$. Então 
 %	\begin{equation*}
-%	\topo \coloneqq \displaystyle\bigcup_{i \in \N} \topo_i
+%	\topo := \displaystyle\bigcup_{i \in \N} \topo_i
 %	\end{equation*}
 %é uma topologia de $X$.
 
 \begin{defi}
 Sejam $X$ um conjunto, $G \subseteq \p(X)$ e $(\topo_i)_{i \in I}$ uma indexação do conjunto de todas as topologias de $X$ das quais $G$ é subconjunto. A \emph{topologia gerada por $G$} é a topologia
 	\begin{equation*}
-	\ger{G} \coloneqq \bigcap_{i \in I} \topo_i.
+	\ger{G} := \bigcap_{i \in I} \topo_i.
 	\end{equation*}
 Nesse caso, dizemos que $G$ é o \emph{conjunto gerador} de $\ger{G}$ ou que $G$ gera $\ger{G}$.
 \end{defi}
@@ -392,7 +392,7 @@ Nesta seção estudaremos como induzir topologias em conjuntos a partir de topol
 \begin{defi}
 Sejam $X$ um conjunto, $\bm Y = (Y,\topo_Y)$ um espaço topológico e $f: X \to Y$ uma função. A \emph{topologia puxada} por $f$ de $\bm Y$ para $X$ é
 	\begin{equation*}
-	f^\star(\topo_Y) \coloneqq \set{f^{-1}(A)}{A \in \topo_Y}.
+	f^\star(\topo_Y) := \set{f^{-1}(A)}{A \in \topo_Y}.
 	\end{equation*}
 \end{defi}
 
@@ -442,12 +442,12 @@ Seja $\topo$ uma topologia de $X$ tal que, para todo $i \in I$, $f_i: X \to X_i$
 \begin{defi}
 Sejam $\bm X = (X,\topo_X)$ um espaço topológico, $Y$ um conjunto e $f: X \to Y$ uma função. A \emph{topologia empurrada} por $f$ de $\bm X$ para $Y$ é
 	\begin{equation*}
-	f_\star(\topo_X) \coloneqq \set{A \subseteq Y}{f^{-1}(A) \in \topo_X}.
+	f_\star(\topo_X) := \set{A \subseteq Y}{f^{-1}(A) \in \topo_X}.
 	\end{equation*}
 \end{defi}
 
 \begin{prop}
-Sejam $\bm X = (X,\topo_X)$ um espaço topológico, $Y$ um conjunto e $f: X \to Y$ uma função. Então $\topo_Y \coloneqq f_\star(\topo_X)$, a topologia empurrada por $f$ de $\bm X$ para $Y$, é uma topologia de $Y$.
+Sejam $\bm X = (X,\topo_X)$ um espaço topológico, $Y$ um conjunto e $f: X \to Y$ uma função. Então $\topo_Y := f_\star(\topo_X)$, a topologia empurrada por $f$ de $\bm X$ para $Y$, é uma topologia de $Y$.
 \end{prop}
 \begin{proof}
 (1) Como $f\inv(\emptyset)=\emptyset$ e $f\inv(Y)=X$, segue que $\emptyset,Y \in f_\star(\topo_X)$. (2) Seja $(A_i)_{i \in I}$ uma família de conjuntos de $f_\star(\topo_X)$. Então, para cada $i \in I$, $f\inv(A_i) \in \topo_X$, o que implica que
@@ -480,7 +480,7 @@ Seja $\topo$ uma topologia de $X$ tal que, para todo $i \in I$, $f_i: X_i \to X$
 \begin{defi}
 Seja $(\bm{X_i})_{i \in I} = (X_i,\topo_i)_{i \in I}$ uma família de espaços topológicos. O \emph{produto} da família $(\bm{X_i})_{i \in I}$ é o par
 	\begin{equation*}
-	\prod_{i \in I} \bm{X_i} \coloneqq \left( \prod_{i \in I} X_i , \ger{\bigcup_{i \in I}{\pi_i}^\star(\topo_i)} \right).
+	\prod_{i \in I} \bm{X_i} := \left( \prod_{i \in I} X_i , \ger{\bigcup_{i \in I}{\pi_i}^\star(\topo_i)} \right).
 	\end{equation*}
 A topologia $\ger{\bigcup_{i \in I}{\pi_i}^\star(\topo_i)}$ é a \emph{topologia produto} de $\prod_{i \in I} X_i$.
 \end{defi}
@@ -547,7 +547,7 @@ Seja $k \in K$. Para todo $j \in J_k$, $f_j$ é contínua, o que impica que $f_j
 \begin{defi}
 Seja $(\bm{X_i})_{i \in I} = (X_i,\topo_i)_{i \in I}$ uma família de espaços topológicos. O \emph{coproduto} da família $(\bm{X_i})_{i \in I}$ é o par
 	\begin{equation*}
-	\coprod_{i \in I} \bm{X_i} \coloneqq \left( \coprod_{i \in I} X_i , \bigcap_{i \in I}{\iota_i}_\star(\topo_i) \right).
+	\coprod_{i \in I} \bm{X_i} := \left( \coprod_{i \in I} X_i , \bigcap_{i \in I}{\iota_i}_\star(\topo_i) \right).
 	\end{equation*}
 A topologia $\bigcap_{i \in I}{\pi_i}_\star(\topo_i)$ é a \emph{topologia coproduto} de $\coprod_{i \in I} X_i$.
 \end{defi}
@@ -572,7 +572,7 @@ Sejam $(\bm{X_i})_{i \in I} = (X_i,\topo_i)_{i \in I}$ uma família de espaços 
 \begin{defi}
 Sejam $(X,\topo)$ um espaço topológico e $S \subseteq X$ um subconjunto. A \emph{topologia induzida} por $\topo$ em $S$ é o conjunto
 	\begin{equation*}
-	\topo|_S \coloneqq \set{A \cap S}{A \in \topo}.
+	\topo|_S := \set{A \cap S}{A \in \topo}.
 	\end{equation*}
 \end{defi}
 
@@ -629,7 +629,7 @@ Sejam $\bm X$ e $\bm Y$ espaços topológicos, $f: X \to Y$ uma função e $(X_i
 \begin{defi}
 Sejam $\bm X = (X,\topo)$ um espaço topológico e $\sim$ uma relação de equivalência em $X$. O \emph{espaço quociente} com respeito a $\sim$ é o espaço topológico
 	\begin{equation*}
-	\bm{\quo{X}{\sim}} \coloneqq \left( \quo{X}{\sim}, \pi^\star(\topo) \right),
+	\bm{\quo{X}{\sim}} := \left( \quo{X}{\sim}, \pi^\star(\topo) \right),
 	\end{equation*}
 em que $\pi: X \to \quo{X}{\sim}$ é a projeção canônica de equivalências.
 \end{defi}
@@ -712,14 +712,14 @@ Denotemos por $\sim$ a relação binária de indistinguibilidade topológica. Se
 O fato de que essa é uma relação de equivalência mostra que podemos obter a partir de qualquer espaço topológico um espaço topológico em que nenhum ponto é topologicamente indisntinguível. Para isso, basta considerar o espaço quociente definido pela relação. de indistinguibilidade topológica. Espaços com essa propriedade são definidos a seguir.
 
 \begin{defi}[$T_0$]
-	Um espaço topológico \emph{distinguível} é um espaço topológico $\bm X$ em que todo par de pontos distintos é topologicamente distinguível:
+Um espaço topológico \emph{distinguível} é um espaço topológico $\bm X$ em que todo par de pontos distintos é topologicamente distinguível:
 	\begin{equation*}
 	\forall x,y \in X \quad x \neq y \quad \Rightarrow \quad \viz_x \neq \viz_y.
 	\end{equation*}
 \end{defi}
 
 \begin{prop}
-	Seja $\bm X$ um espaço topológico. São equivalentes as seguites propriedades:
+Seja $\bm X$ um espaço topológico. São equivalentes as seguites propriedades:
 	\begin{enumerate}
 	\item $\bm X$ é dinstinguível.
 	\item $\forall x,y \in X \quad x \neq y \quad \Rightarrow \quad \viz_x \nsubseteq \viz_y \ou \viz_y \nsubseteq \viz_x$.
@@ -729,31 +729,31 @@ O fato de que essa é uma relação de equivalência mostra que podemos obter a 
 \end{prop}
 
 \begin{prop}
-	Sejam $\bm X$ um espaço topológico distinguível e $Y \subseteq X$. Então $\bm Y$ é um espaço topológico distinguível.
+Sejam $\bm X$ um espaço topológico distinguível e $Y \subseteq X$. Então $\bm Y$ é um espaço topológico distinguível.
 \end{prop}
 
 \begin{prop}
-	Seja $(X_i)_{i \in I}$ uma família não vazia de espaços topológicos não vazios. O espaço produto $\bm{\bigtimes X_i}$ é distinguível se, e somente se, todos os espaços $\bm X_i$ são distinguíveis.
+Seja $(X_i)_{i \in I}$ uma família não vazia de espaços topológicos não vazios. O espaço produto $\bm{\bigtimes X_i}$ é distinguível se, e somente se, todos os espaços $\bm X_i$ são distinguíveis.
 \end{prop}
 
 \section{Espaços Acessíveis}
 
 \begin{defi}[$T_1$]
-	Um espaço topológico \emph{acessível} é um espaço topológico $\bm X$ em que
+Um espaço topológico \emph{acessível} é um espaço topológico $\bm X$ em que
 	\begin{equation*}
 	\forall x,y \in X \quad x \neq y \quad \Rightarrow \quad \viz_x \nsubseteq \viz_y \e \viz_y \nsubseteq \viz_x.
 	\end{equation*}
 \end{defi}
 
 \begin{prop}[$T_1 \Rightarrow T_0$]
-	Seja $\bm X$ um espaço topológico. Se $\bm X$ é acessível, então $\bm X$ é dintinguível.
+Seja $\bm X$ um espaço topológico. Se $\bm X$ é acessível, então $\bm X$ é dintinguível.
 \end{prop}
 \begin{proof}
-	Se $\bm X$ é acessível, então, para todos $x,y \in X$ tais que $x \neq y$, temos que $\viz_x \nsubseteq \viz_y \e \viz_y \nsubseteq \viz_x$. Mas isso implica que $\viz_x \nsubseteq \viz_y \ou \viz_y \nsubseteq \viz_x$, o que é equivalente a $\viz_x \neq \viz_y$. Logo $\bm X$ é dintinguível.
+Se $\bm X$ é acessível, então, para todos $x,y \in X$ tais que $x \neq y$, temos que $\viz_x \nsubseteq \viz_y \e \viz_y \nsubseteq \viz_x$. Mas isso implica que $\viz_x \nsubseteq \viz_y \ou \viz_y \nsubseteq \viz_x$, o que é equivalente a $\viz_x \neq \viz_y$. Logo $\bm X$ é dintinguível.
 \end{proof}
 
 \begin{prop}
-	Seja $\bm X$ um espaço topológico. São equivalentes as seguintes propriedades:
+Seja $\bm X$ um espaço topológico. São equivalentes as seguintes propriedades:
 	\begin{enumerate}
 	\item $\bm X$ é acessível.
 	\item Todo par de pontos distintos é separado:
@@ -766,17 +766,17 @@ O fato de que essa é uma relação de equivalência mostra que podemos obter a 
 \end{prop}
 
 \begin{prop}
-	Sejam $\bm X$ um espaço topológico acessível e  $Y \subseteq X$. Então $\bm Y$ é um espaço topológico acessível.
+Sejam $\bm X$ um espaço topológico acessível e  $Y \subseteq X$. Então $\bm Y$ é um espaço topológico acessível.
 \end{prop}
 
 \begin{prop}
-	Seja $(X_i)_{i \in I}$ uma família não vazia de espaços topológicos não vazios. O espaço produto $\bm{\bigtimes X_i}$ é acessível se, e somente se, todos os espaços $\bm X_i$ são acessíveis.
+Seja $(X_i)_{i \in I}$ uma família não vazia de espaços topológicos não vazios. O espaço produto $\bm{\bigtimes X_i}$ é acessível se, e somente se, todos os espaços $\bm X_i$ são acessíveis.
 \end{prop}
 
 \section{Espaços Separados}
 
 \begin{defi}[$T_2$]
-	Um espaço topológico \emph{separado} é um espaço topológico $\bm X$ em que todo par de pontos distintos é separado por vizinhanças:
+Um espaço topológico \emph{separado} é um espaço topológico $\bm X$ em que todo par de pontos distintos é separado por vizinhanças:
 	\begin{equation*}
 	\forall x,y \in X \quad x \neq y \quad \Rightarrow \quad \exists U \in \viz_x,\ V \in \viz_y \quad U \cap V = \emptyset.
 	\end{equation*}
@@ -784,11 +784,11 @@ O fato de que essa é uma relação de equivalência mostra que podemos obter a 
 Esses espaços também são conhecidos como espaços de Hausdorff.
 
 \begin{prop}[$T_2 \Rightarrow T_1$]
-	Seja $\bm X$ um espaço topológico. Se $\bm X$ é separado, então $\bm X$ é acessível.
+Seja $\bm X$ um espaço topológico. Se $\bm X$ é separado, então $\bm X$ é acessível.
 \end{prop}
 
 \begin{prop}
-	Seja $\bm X$ um espaço topológico. São equivalentes as seguintes propriedades:
+Seja $\bm X$ um espaço topológico. São equivalentes as seguintes propriedades:
 	\begin{enumerate}
 	\item $\bm X$ é separado.
 	\item Toda rede convergente em $\bm X$ tem limite único.
@@ -797,37 +797,40 @@ Esses espaços também são conhecidos como espaços de Hausdorff.
 \end{prop}
 
 \begin{prop}
-	Sejam $\bm X$ um espaço topológico separado e $Y \subseteq X$. Então $\bm Y$ é um espaço topológico separado.
+Sejam $\bm X$ um espaço topológico separado e $Y \subseteq X$. Então $\bm Y$ é um espaço topológico separado.
 \end{prop}
 
 \begin{prop}
-	Seja $(X_i)_{i \in I}$ uma família não vazia de espaços topológicos não vazios. O espaço produto $\bm{\bigtimes X_i}$ é separado se, e somente se, todos os espaços $\bm X_i$ são separados.
+Seja $(X_i)_{i \in I}$ uma família não vazia de espaços topológicos não vazios. O espaço produto $\bm{\bigtimes X_i}$ é separado se, e somente se, todos os espaços $\bm X_i$ são separados.
 \end{prop}
 
 \begin{prop}
-	Sejam $\bm X$ um espaço topológico, $\bm Y$ um espaço topológico separado, $D \subseteq X$ um subconjunto denso em $X$ e $f,g: X \to Y$ funções contínuas tais que $f|_D=g|_D$. Então $f=g$.
+Sejam $\bm X$ um espaço topológico, $\bm Y$ um espaço topológico separado, $D \subseteq X$ um subconjunto denso em $X$ e $f,g: X \to Y$ funções contínuas tais que $f|_D=g|_D$. Então $f=g$.
 \end{prop}
 
 \section{Espaços Regulares}
 
 \begin{defi}
-	Um espaço topológico \emph{regular} é um espaço topológico $\bm X$ em que todo ponto e todo conjunto fechado que não o contém são separado por vizinhanças: para todo $x \in X$ e para todo conjunto fechado $F \subseteq X$,
-	\begin{equation*}
-	F \cap \{x\}=\emptyset \quad \Rightarrow \quad \exists U \in \viz_x, \exists V \in \viz_F \quad U \cap V = \emptyset.
-	\end{equation*}
+Um espaço topológico \emph{regular} é um espaço topológico
+% $\bm X$
+em que é possível separar por vizinhanças qualquer ponto de qualquer conjunto fechado que não o contém.
+%: para todo $x \in X$ e para todo conjunto fechado $F \subseteq X$,
+%	\begin{equation*}
+%	F \cap \{x\}=\emptyset \quad \Rightarrow \quad \exists U \in \viz_x, \exists V \in \viz_F \quad U \cap V = \emptyset.
+%	\end{equation*}
 \end{defi}
 
 Espaços seprados regulares são também chamados de $T_3$.
 
 \begin{prop}
-	Seja $\bm X$ um espaço topológico regular. Então $\bm X$ é separado se, e somente se, é distinguível.
+Seja $\bm X$ um espaço topológico regular. Então $\bm X$ é separado se, e somente se, é distinguível.
 \end{prop}
 \begin{proof}
-	Sabemos que todo espaço separado é distinguível. Para demonstrar a recíproca, supondo que $\bm X$ é distinguível, então para todos pontos $x,y \in X$, $x \notin \fec{\{y\}}$ ou $y \notin \fec{\{x\}}$. Sem perda de generalidade, assumamos o primeiro caso. Seja $F \coloneqq \fec{\{y\}}$. Então $F$ é fechado e $x \notin F$. Da regularidade de $\bm X$, segue que existem $U \in \viz_x$ e $V \in \viz_{F}$ tais que $U \cap V = \emptyset$. Como $y \in F$, então $V \in \viz_y$, o que implica que $\bm X$ é separado.
+Sabemos que todo espaço separado é distinguível. Para demonstrar a recíproca, supondo que $\bm X$ é distinguível, então para todos pontos $x,y \in X$, $x \notin \fec{\{y\}}$ ou $y \notin \fec{\{x\}}$. Sem perda de generalidade, assumamos o primeiro caso. Seja $F := \fec{\{y\}}$. Então $F$ é fechado e $x \notin F$. Da regularidade de $\bm X$, segue que existem $U \in \viz_x$ e $V \in \viz_{F}$ tais que $U \cap V = \emptyset$. Como $y \in F$, então $V \in \viz_y$, o que implica que $\bm X$ é separado.
 \end{proof}
 
 \begin{prop}
-	Seja $\bm X$ um espaço topológico. São equivalentes as seguintes propriedades:
+Seja $\bm X$ um espaço topológico. São equivalentes as seguintes propriedades:
 	\begin{enumerate}
 	\item $\bm X$ é regular.
 	\item Para todos ponto $x \in X$ e aberto $A \in \viz_x$, existe aberto $V \in \viz_x$ tal que
@@ -838,54 +841,60 @@ Espaços seprados regulares são também chamados de $T_3$.
 \end{prop}
 
 \begin{prop}
-	Sejam $\bm X$ um espaço topológico regular e $Y \subseteq X$. Então $\bm Y$ é um espaço topológico regular.
+Sejam $\bm X$ um espaço topológico regular e $Y \subseteq X$. Então $\bm Y$ é um espaço topológico regular.
 \end{prop}
 
 \begin{prop}
-	Seja $(X_i)_{i \in I}$ uma família não vazia de espaços topológicos não vazios. O espaço produto $\bm{\bigtimes X_i}$ é regular se, e somente se, todos os espaços $\bm X_i$ são regulares.
+Seja $(X_i)_{i \in I}$ uma família não vazia de espaços topológicos não vazios. O espaço produto $\bm{\bigtimes X_i}$ é regular se, e somente se, todos os espaços $\bm X_i$ são regulares.
 \end{prop}
 
 \section{Espaços Completamente Regulares}
 
 \begin{defi}
-	Um espaço topológico \emph{regular} é um espaço topológico $\bm X$ em que todo ponto e todo conjunto fechado que não o contém são separado por função contínua: para todo $x \in X$ e para todo conjunto fechado $F \subseteq X$,
-	\begin{equation*}
-	\{x\} \cap F=\emptyset \quad \Rightarrow \quad \exists f \in \mathcal{C}(X,[0,1]) \quad f(x)=\{0\} \e f(F)=\{1\}.
-	\end{equation*}
+Um espaço topológico \emph{completamente regular} é um espaço topológico
+% $\bm X$
+em que é possível separar por função contínua qualquer ponto de qualquer conjunto fechado que não o contém.
+%: para todo $x \in X$ e para todo conjunto fechado $F \subseteq X$,
+%	\begin{equation*}
+%	\{x\} \cap F=\emptyset \quad \Rightarrow \quad \exists f \in \mathcal{C}(X,[0,1]) \quad f(x)=\{0\} \e f(F)=\{1\}.
+%	\end{equation*}
 \end{defi}
 
 \begin{prop}
-	Seja $\bm X$ um espaço topológico. Se $\bm X$ é completamente regular, então $\bm X$ é regular.
+Seja $\bm X$ um espaço topológico. Se $\bm X$ é completamente regular, então $\bm X$ é regular.
 \end{prop}
 
 \begin{prop}
-	Sejam $\bm X$ um espaço topológico completamente regular e $Y \subseteq X$. Então $\bm Y$ é um espaço topológico completamente regular.
+Sejam $\bm X$ um espaço topológico completamente regular e $Y \subseteq X$. Então $\bm Y$ é um espaço topológico completamente regular.
 \end{prop}
 
 \begin{prop}
-	Seja $(X_i)_{i \in I}$ uma família não vazia de espaços topológicos não vazios. O espaço produto $\bm{\bigtimes X_i}$ é completamente regular se, e somente se, todos os espaços $\bm X_i$ são completamente regulares.
+Seja $(X_i)_{i \in I}$ uma família não vazia de espaços topológicos não vazios. O espaço produto $\bm{\bigtimes X_i}$ é completamente regular se, e somente se, todos os espaços $\bm X_i$ são completamente regulares.
 \end{prop}
 
 \section{Espaços Normais}
 
 \begin{defi}
-	Um espaço topológico \emph{normal} é um espaço topológico $\bm X$ em que todo par de conuntos fechados disjuntos é separado por vizinhanças: para todos fechados $F,G \subseteq X$,
-	\begin{equation*}
-	F \cap G = \emptyset \quad \Rightarrow \quad \exists U \in \viz_F,\ V \in \viz_G \quad U \cap V = \emptyset.
-	\end{equation*}
+Um espaço topológico \emph{normal} é um espaço topológico
+% $\bm X$ 
+em que todo par de conjuntos fechados disjuntos é separado por vizinhanças.
+% : para todos fechados $F,G \subseteq X$,
+%	\begin{equation*}
+%	F \cap G = \emptyset \quad \Rightarrow \quad \exists U \in \viz_F,\ V \in \viz_G \quad U \cap V = \emptyset.
+%	\end{equation*}
 \end{defi}
 
 Espaços separados normais são também chamados de $T_4$.
 
 \begin{prop}
-	Seja $\bm X$ um espaço topológico normal. Então $\bm X$ é separado se, e somente se, é acessível.
+Seja $\bm X$ um espaço topológico normal. Então $\bm X$ é separado se, e somente se, é acessível.
 \end{prop}
 \begin{proof}
-	Sabemos que todo espaço separado é distinguível. Para demonstrar a recíproca, suponhamos que $\bm X$ é acessível e sejam $x,y \in X$ tais que $x \neq y$. Então vale que $\fec{\{x\}}=\{x\}$ e $\fec{\{y\}}=\{y\}$. Como $x \neq y$, da normalidade de $\bm X$ existem $V_x \in \viz_x$ e $V_y \in \viz_y$ tais que $V_x \cap V_y = \emptyset$; ou seja, $\bm X$ é separado.
+Sabemos que todo espaço separado é distinguível. Para demonstrar a recíproca, suponhamos que $\bm X$ é acessível e sejam $x,y \in X$ tais que $x \neq y$. Então vale que $\fec{\{x\}}=\{x\}$ e $\fec{\{y\}}=\{y\}$. Como $x \neq y$, da normalidade de $\bm X$ existem $V_x \in \viz_x$ e $V_y \in \viz_y$ tais que $V_x \cap V_y = \emptyset$; ou seja, $\bm X$ é separado.
 \end{proof}
 
 \begin{prop}
-	Seja $\bm X$ um espaço topológico. São equivalentes as seguintes propriedades:
+Seja $\bm X$ um espaço topológico. São equivalentes as seguintes propriedades:
 	\begin{enumerate}
 	\item $\bm X$ é normal.
 	\item Para todos fechado $F$ e aberto $A \in \viz_F$, existe aberto $V \in \viz_F$ tal que
@@ -896,24 +905,25 @@ Espaços separados normais são também chamados de $T_4$.
 \end{prop}
 
 \begin{prop}
-	Sejam $\bm X$ um espaço topológico normal e $Y \subseteq X$ fechado. Então $\bm Y$ é um espaço topológico normal.
+Sejam $\bm X$ um espaço topológico normal e $Y \subseteq X$ fechado. Então $\bm Y$ é um espaço topológico normal.
 \end{prop}
 
 
-\begin{lema}[Urysohn]
-	Um espaço topológico $\bm X$ é normal se, e somente se, todo par de conjuntos fechados é separado por função contínua: para todos conjuntos fechados $F,G \subseteq X$,
-	\begin{equation*}
-	F \cap G = \emptyset \quad \Rightarrow \quad \exists f \in \mathcal{C}(X,[0,1]) \quad f(F)=\{0\} \e f(G)=\{1\}.
-	\end{equation*}
-\end{lema}
+\begin{prop}[Lema de Urysohn]
+Um espaço topológico $\bm X$ é normal se, e somente se, todo par de conjuntos fechados é separado por função contínua.
+% : para todos conjuntos fechados $F,G \subseteq X$,
+%	\begin{equation*}
+%	F \cap G = \emptyset \quad \Rightarrow \quad \exists f \in \mathcal{C}(X,[0,1]) \quad f(F)=\{0\} \e f(G)=\{1\}.
+%	\end{equation*}
+\end{prop}
 \begin{proof}
-	Primeiro, suponhamos que existe função contínua $f:X \to [0,1]$ tal que $f(F)= \{0\}$ e $f(G)=\{1\}$. Definamos $U \coloneqq f^{-1}(\left[0,\frac{1}{2}\right))$ e $V \coloneqq f^{-1}((\frac{1}{2},1))$. Como $f$ é contínua, $U$ e $V$ são abertos. Ainda, $F \subseteq U$ e $G \subseteq V$. Por fim, como $U \cap V = \emptyset$, concluímos que $\bm X$ é normal.
+Primeiro, suponhamos que existe função contínua $f:X \to [0,1]$ tal que $f(F)= \{0\}$ e $f(G)=\{1\}$. Definamos $U := f^{-1}(\left[0,\frac{1}{2}\right))$ e $V := f^{-1}((\frac{1}{2},1))$. Como $f$ é contínua, $U$ e $V$ são abertos. Ainda, $F \subseteq U$ e $G \subseteq V$. Por fim, como $U \cap V = \emptyset$, concluímos que $\bm X$ é normal.
 
-	Para demonstrar a recíproca, suponhamos que $\bm X$ é normal. Sejam $F,G \subseteq X$ conjuntos fechados disjuntos. Como $G^\complement$ é aberto e $F \subseteq G^\complement$, existe aberto $A_{\frac{1}{2}}$ tal que $F \subseteq A_{\frac{1}{2}} \subseteq \fec{A_{\frac{1}{2}}} \subseteq G^\complement$. Logo existem abertos $A_{\frac{1}{4}}$ e $A_{\frac{3}{4}}$ tais que
+Para demonstrar a recíproca, suponhamos que $\bm X$ é normal. Sejam $F,G \subseteq X$ conjuntos fechados disjuntos. Como $G^\complement$ é aberto e $F \subseteq G^\complement$, existe aberto $A_{\frac{1}{2}}$ tal que $F \subseteq A_{\frac{1}{2}} \subseteq \fec{A_{\frac{1}{2}}} \subseteq G^\complement$. Logo existem abertos $A_{\frac{1}{4}}$ e $A_{\frac{3}{4}}$ tais que
 	\begin{equation*}
 	F \subseteq A_{\frac{1}{4}} \subseteq \fec{A_{\frac{1}{4}}} \subseteq A_{\frac{1}{2}} \subseteq \fec{A_{\frac{1}{2}}} \subseteq A_{\frac{3}{4}} \subseteq \fec{A_{\frac{3}{4}}} \subseteq G^\complement.
 	\end{equation*}
-Seja $D \coloneqq \{\frac{k}{2^n}:n \in \N^* \e k \in \{1,\ldots,2^n-1\}\}$. Indutivamente obtemos, para cada $r \in D$, um aberto $A_r$ tal que
+Seja $D := \{\frac{k}{2^n}:n \in \N^* \e k \in \{1,\ldots,2^n-1\}\}$. Indutivamente obtemos, para cada $r \in D$, um aberto $A_r$ tal que
 	\begin{equation*}
 	F \subseteq A_{\frac{1}{2^n}} \subseteq \fec{A_{\frac{1}{2^n}}} \subseteq A_{\frac{2}{2^n}} \subseteq \fec{A_{\frac{2}{2^n}}}\subseteq \cdots \subseteq A_{\frac{2^n-1}{2^n}} \subseteq \fec{A_{\frac{2^n-1}{2^n}}} \subseteq G^\complement.
 	\end{equation*}
@@ -949,7 +959,7 @@ Definimos o conceito de desconexo antes por ele ser mais intuitivo de ser enunci
 Um espaço topológico \emph{desconexo} é um espaço topológico $\bm X$ tal que $X$ admite partição por dois conjuntos abertos. Um espaço topológico \emph{conexo} é um espaço topológico que não é desconexo. Um subconjunto de $X$ é conexo ou desconexo de acordo com sua topologia induzida.
 \end{defi}
 
-Uma partição por abertos é equivalente a uma cobertura por dois conjuntos abertos, disjuntos e não triviais. Notemos que, por essa definição, o espaço topológico $\bm \emptyset$ é conexo, pois todos subconjuntos de $\emptyset$ são triviais, logo $\emptyset$ não admite partições. A conexidade de $\emptyset$ não é consenso entre autores, mas adotaremos esse resultado aqui. É importante notar que, na definição, porderíamos escolher uma partição por conjuntos fechados, já que, como cada conjunto da partição é o complementar do outro, ambos são fechados, pois ambos são abertos. A definição de separação de conjuntos vale nesse caso, os conjuntos da partição são separados no sentido que cada um é disjunto do fecho do outro, já que são fechados e disjuntos. Isso sugere que conexidade está relacionada com o problema de confusão semântica clássica em topologia: nem todo conjunto aberto é necessariamente não fechado, e vice-versa. Claro que $\emptyset$ e $X$ são sempre abertos e fechados, mas em espaços conexos eles são os únicos. Com o conceito de conexidade, temos o seguinte resultado.
+Uma partição por dois abertos é equivalente a uma cobertura por dois conjuntos abertos, disjuntos e não triviais. Notemos que, por essa definição, o espaço topológico $\bm \emptyset$ é conexo, pois todos subconjuntos de $\emptyset$ são triviais, logo $\emptyset$ não admite partições. A conexidade de $\emptyset$ não é consenso entre autores, mas adotaremos esse resultado aqui. É importante notar que, na definição, porderíamos escolher uma partição por conjuntos fechados, já que, como cada conjunto da partição é o complementar do outro, ambos são fechados, pois ambos são abertos. A definição de separação de conjuntos vale nesse caso, os conjuntos da partição são separados no sentido que cada um é disjunto do fecho do outro, já que são fechados e disjuntos. Isso sugere que conexidade está relacionada com o problema de confusão semântica clássica em topologia: nem todo conjunto aberto é necessariamente não fechado, e vice-versa. Claro que $\emptyset$ e $X$ são sempre abertos e fechados, mas em espaços conexos eles são os únicos. Com o conceito de conexidade, temos o seguinte resultado.
 
 \begin{prop}
 Um espaço topológico $\bm X$ é conexo se, e somente se, não existe um conjunto não trivial que é aberto e fechado.
@@ -978,7 +988,7 @@ e, similarmente, $\fec{B}^{_S}=B$, portanto $\{A,B\}$ é partição de $S$ por f
 A seguir, enunciamos uma equivalência da definição de conexidade e um resultado trivial, mas importantíssimo na topologia: conexidade é um invariante topológico.
 
 \begin{prop}
-Sejam $\bm X$ um espaço topológico, e $\bm {\{0,1\}}$ espaço topológico com a topologia discreta. Então $\bm X$ é conexo se, e somente se, todas funções contínuas $f: \bm X \to \bm{\{0,1\}}$ são constantes.
+Sejam $\bm X$ um espaço topológico, e $\bm {\{0,1\}}$ espaço topológico com a topologia discreta. Então $\bm X$ é conexo se, e somente se, toda função contínua $f: \bm X \to \bm{\{0,1\}}$ é constante.
 \end{prop}
 \begin{proof}
 Demonstraremos a ida e a volta pela contrapositiva. Se $\bm X$ é desconexo, seja $\{A_0,A_1\}$ uma partição de $X$ por dois conjuntos abertos. Definamos
@@ -1012,7 +1022,7 @@ Se $\bigcup_{i \in I} C_i$ for desconexo, existe partição $\{A,B\}$ por aberto
 \begin{defi}
 Sejam $\bm X$ um espaço topológico, $p \in X$ e $(C_i)_{i \in I}$ uma indexação dos conjuntos conexos que contêm $p$. A \emph{componente conexa} de $\bm X$ em $p$ é o conjunto conexo
 	\begin{equation*}
-	\Gamma_p \coloneqq \bigcup_{i \in I} C_i.
+	\Gamma_p := \bigcup_{i \in I} C_i.
 	\end{equation*}
 \end{defi}
 

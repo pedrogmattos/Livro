@@ -7,17 +7,21 @@
 \RequirePackage{amsmath,amsthm,amssymb,amsfonts}
 \RequirePackage{eucal} % Muda o \mathcal de Computer Modern pra Euler
 \RequirePackage{mathtools} % :=
+\mathtoolsset{centercolon} % Alinha todas : com =
 \RequirePackage{bm,bbm,mathrsfs} % Negrito de qualquer símbolo e letras cursiva
 \RequirePackage{tikz} % Figuras e gráficos
 \RequirePackage{relsize,scalerel} % Mudança de tamanho e definição de operador
 
 %%%%%%%%%%%%%%%%%%%% AMBIENTES %%%%%%%%%%%%%%%%%%%%%
 
+%\swapnumbers
+
 % Estilo Definições
 \theoremstyle{definition}
 \newtheorem{defi}{Definição}[chapter]
 \newtheorem{axi}{Axioma}
 \newtheorem*{nota}{Notação}
+\newtheorem{exerc}{$\blacktriangleright$ Exercício}[chapter]
 
 % Estilo Teoremas
 \theoremstyle{plain}
@@ -201,7 +205,7 @@
 	\DeclareMathOperator{\diam}{diam}
 	\newcommand{\conv}{\rightarrow} % Convergência/ convergência pontual
 	\newcommand{\uconv}{\rightrightarrows} % Convergência uniforme
-	\newcommand{\bola}{\mathcal{B}} % Bola de espaço métrico
+	\newcommand{\bola}{\mathrm{B}} % Bola de espaço métrico
 
 %% Espaços Normados
 	\newcommand{\abs}[1]{\left\vert{#1}\right\vert} % Valor absoluto

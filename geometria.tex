@@ -2,12 +2,12 @@
 
 \chapter{Variedades}
 
-\section{Estrutura Diferencial}
+\section{Estrutura Topológica e  Diferencial}
 
 \subsection{Cartas e Atlas}
 
 \begin{defi}
-Sejam $V$ um conjunto e $d \in \N$. Uma \emph{carta} $d$-dimensional de $V$ é um par $(A,\varphi)$ em que $A \subseteq V$ é um conjunto e $\varphi: A \to \R^d$ é uma função injetiva tal que $\varphi(A)$ é um aberto de $\R^d$. O \emph{domínio} de $(A,\varphi)$ é $A$, o domínio de $\varphi$, e a função $\varphi$ é o \emph{mapa de coordenadas} de $(A,\varphi)$.
+Sejam $V$ um conjunto e $d \in \N$. Uma \emph{carta} $d$-dimensional de $V$ é um par $(A,\varphi)$ em que $A \subseteq V$ é um conjunto e $\varphi: A \to \R^d$ é uma função injetiva tal que $\varphi(A)$ é um aberto de $\R^d$. O \emph{domínio} de $(A,\varphi)$ é $A$, o domínio de $\varphi$, e o \emph{mapa de coordenadas} de $(A,\varphi)$ é a função $\varphi$.
 \end{defi}
 
 \begin{defi}
@@ -58,7 +58,7 @@ Seja $V$ um conjunto. A relação de $\cont^k$-compatibilidade de atlas de $V$ �
 \end{prop}
 \begin{proof}
 A reflexividade e a simetria são evidentes, pois valem entre cartas. Para conferir a transitividade, sejam $\atlas,\bar\atlas$ e $\{(A_i,\varphi_i)\}_{i \in I}$ atlas de $V$ e sejam $(A,\varphi) \in \atlas$ e $(\bar A,\bar\varphi) \in \bar\atlas$ cartas. 
-Como $\atlas$ e $\bar\atlas$ são compatíveis com $\{(A_i,\varphi_i)\}_{i \in I}$, para todo $i \in I$, $\varphi(A \cap A_i)$ e $\varphi_i(A_i \cap \bar A)$ são abertos de $\R^d$ e as transições de coordenadas
+Como $\atlas$ e $\bar\atlas$ são compatíveis com $\{(A_i,\varphi_i)\}_{i \in I}$, segue que para todo $i \in I$, $\varphi(A \cap A_i)$ e $\varphi_i(A_i \cap \bar A)$ são abertos de $\R^d$ e as transições de coordenadas
 	\begin{equation*}
 	\varphi_i \circ \varphi\inv: \varphi(A \cap A_i) \to \varphi_i(A \cap A_i).
 	\end{equation*}
@@ -128,17 +128,17 @@ Uma \emph{$\cont^k$-variedade} $d$-dimensional é um par $\bm V=(V,\atlas)$ em q
 
 Quando não for necessário explicitar detalhes, uma $\cont^k$-variedade $d$-dimencional será simplesmente referida como uma variedade. É possível mostrar que toda variedade diferencial tem um subatlas maximal suave, de modo que não há perda de informação quando se separam as variedades apenas em topológicas e diferenciais, mas isso não será feito aqui.
 
-\begin{defi}
-Seja $\bm V$ uma variedade. Para $p \in V$, uma \emph{carta} em $p$ é uma carta $(A,\varphi) \in \atlas$ tal que $p \in A$, e a \emph{$i$-ésima coordenada} com respeito a $(A,\varphi)$ é a função
-	\begin{align*}
-	\func{\x_i}{A}{\R}{p}{\pi_i \circ \varphi(p)}
-	\end{align*}
-\end{defi}
+%\begin{defi}
+%Seja $\bm V$ uma variedade. Para $p \in V$, uma \emph{carta} em $p$ é uma carta $(A,\varphi) \in \atlas$ tal que $p \in A$, e a \emph{$i$-ésima coordenada} com respeito a $(A,\varphi)$ é a função
+%	\begin{align*}
+%	\func{\x_i}{A}{\R}{p}{\pi_i \circ \varphi(p)}
+%	\end{align*}
+%\end{defi}
 
 \begin{defi}
 Seja $\bm V$ uma variedade. A \emph{topologia} de $\bm V$ é o conjunto
 	\begin{equation*}
-	\topo_{\bm V} \coloneqq \ger{\bigcup_{(A,\varphi) \in \atlas} \varphi^\star(\topo)},
+	\topo_{\bm V} := \ger{\bigcup_{(A,\varphi) \in \atlas} \varphi^\star(\topo)},
 	\end{equation*}
 em que $\topo$ é a topologia de $\R^d$.
 \end{defi}
@@ -148,12 +148,12 @@ Na notação acima, $\ger{C}$ denota a topologia gerada pelo conjunto $C \subset
 \begin{prop}
 Sejam $V$ um conjunto, $\atlas=\{(A_i,\varphi_i)\}_{i \in I}$ um atlas de $V$ e
 	\begin{equation*}
-	\topo_{\atlas} \coloneqq \ger{\bigcup_{i \in I} \varphi_i^\star(\topo)},
+	\topo_{\atlas} := \ger{\bigcup_{i \in I} \varphi_i^\star(\topo)},
 	\end{equation*}
 a menor topologia tal que $\varphi_i$ é contínua para todo $i \in I$. Se $(A,\varphi)$ é uma carta compatível com $\atlas$, então $\varphi$ é uma função contínua de $(A,\topo_{\atlas}|_A)$ para $(\R^d,\topo)$.
 \end{prop}
 \begin{proof}
-Seja $U \in \topo$ um aberto de $\R^d$. Para todo $i \in I$, definamos $U_i \coloneqq (\varphi \circ \varphi_i\inv)(\varphi_i(A_i))$ e $S \coloneqq \R^d \setminus \bigcup_{i \in I} U_i$. Então
+Seja $U \in \topo$ um aberto de $\R^d$. Para todo $i \in I$, definamos $U_i := (\varphi \circ \varphi_i\inv)(\varphi_i(A_i))$ e $S := \R^d \setminus \bigcup_{i \in I} U_i$. Então
 	\begin{equation*}
 	U = U \cap \R^d = \bigcup_{i \in I} (U \cap U_i) \cup (U \cap S).
 	\end{equation*}
@@ -180,7 +180,7 @@ Como $\varphi(A)$ é aberto, pois $(A,\varphi)$ é carta, e $\varphi \circ \varp
 \begin{prop}
 Sejam $\bm V=(V,\atlas)$ uma variedade e $\bar\atlas$ um atlas compatível com o atlas maximal $\atlas$. A topologia
 	\begin{equation*}
-	\bar\topo \coloneqq \ger{\bigcup_{(A,\varphi) \in \bar\atlas} \varphi^\star(\topo_{\varphi(A)})},
+	\bar\topo := \ger{\bigcup_{(A,\varphi) \in \bar\atlas} \varphi^\star(\topo_{\varphi(A)})},
 	\end{equation*}
 é igual à topologia $\topo$ de $\bm V$.
 \end{prop}
@@ -188,17 +188,20 @@ Sejam $\bm V=(V,\atlas)$ uma variedade e $\bar\atlas$ um atlas compatível com o
 Por definição da topologia de $\bm V$, temos imediatamente que $\bar\topo \subseteq \topo_{\bm V}$. Para a inclusão contrária, a proposição anterior mostra que toda carta de $\atlas$ tem mapa de coordenadas contínuo em $\bar\topo$, o que implica que $\topo \subseteq \bar\topo$.
 \end{proof}
 
-Uma consequência óbvia das definições é que qualquer subconjunto de $\R^d$ é uma variedade.
+Uma consequência óbvia das definições é que qualquer subconjunto aberto de $\R^d$ é uma variedade.
 
 Antes de continuar a discussão sobre as propriedades topológicas de variedades, um comentário importante é que alguns autores definem uma variedade a partir de um espaço topológico desde o início, exigindo que os mapas de coorddenadas sejam homeomorfismos com sua imagem no espaço real. A partir dessa definição, a topologia da variedade já existe desde o começo e não é induzida pelas cartas.
 
 \subsection{Propriedades Topológicas}
+
+Uma variedade definida como acima não precisa necessariamente ser um espaço separado ($T_2$), ou seja, espaço cujos pontos distintos são separados por vizinhanças. Em geral, na definição de variedade consideram-se espaços separados, mas aqui não faremos essa distinção. Ainda, outra hipótese comum é que a topologia admita base enumerável. Isso é equivalente, para uma variedade, a existir um subatlas enumerável.
 
 \begin{prop}
 Seja $\bm V$ uma variedade. Então
 	\begin{enumerate}
 	\item $\bm V$  é um espaço topológico acessível (T$_1$);
 	\item Cada componente conexa de $\bm V$ é conexa por caminhos.
+	\item $\topo$ tem base enumerável se, e somente se, existe um subatlas enumerável de $\atlas$.
 	\end{enumerate}
 \end{prop}
 \begin{proof}
@@ -206,33 +209,16 @@ Seja $\bm V$ uma variedade. Então
 	\item Sejam $p,\bar p$ pontos distintos de $V$. Queremos mostrar que existe vizinhança de cada um que nao contém o outro. Para isso, tomamos carta $(A,\varphi)$ em $p$. Se $A$ não contém $\bar p$, então $A$ é vizinhança de $p$ que não contém $\bar p$; caso contrário, como $\varphi(p)$ e $\varphi(\bar p)$ são distintos, pois $\varphi$ é injetiva, segue que existe vizinhança $U$ de $\varphi(p)$ que não contém $\varphi(p)$, pois $\R^d$ é acessível, logo $\varphi\inv(p)$ é uma vizinhança de $p$ que não contém $\bar p$. Analogamente, mostramos o mesmo para $\bar p$, portanto $V$ eles são separados e concluímos que $\bm V$ é um espaço topológico acessível.
 	
 	\item Sejam $C(p)$ uma componente conexa de $\bm V$ em $p$ e $U$ o conjunto de todos pontos de $C(p)$ ligados por um caminho a $p$. Mostraremos que $U$ é aberto e fechado, portanto igual a $C(p)$. Mostremos primeiro que $U$ é aberto. Seja $q \in C(p)$ e $A$ uma vizinhança de $q$ homeomorfa a uma bola de $\R^d$. Como a bola é conexa por caminhos e homeomorfa a $A$, segue que $A$ é conexa por caminhos. Portanto todo ponto de $A$ está em $C(p)$, já que existe caminho do um ponto de $A$ a $q$ e caminho de $q$ a $p$. Isso mostra que $U$ é aberto. Agora, seja $q \in U^\complement$. Novamente, tomamos uma vizinhança $A$ de $q$ homeomorfa a uma bola de $\R^d$ e segue que $A$ é conexa por caminhos. Nesse caso, nenhum ponto de $A$ está em $C(p)$, caso contrário existiria caminho ligando $q$ a $p$, o que contradiz a hipótese. Isso mostra que $U^\complement$ é fechado, portanto $U$ aberto. Assim, como $U$ é aberto e fechado, $C(p)$ é conexo e $p \in U$, segue que $C(p)=U$.
-	\end{enumerate}
+	
+	\item ($\Rightarrow$) Como $\topo$ tem base enumerável, então toda cobertura de $V$ tem subcobertura enumerável. Sendo assim, dada a cobertura por abertos das cartas de $\atlas$, tomamos uma subcobertura enumerável e segue que esse é um subatlas enumerável de $\atlas$.
+
+($\Leftarrow$) Seja $\bar \atlas$ um subatlas enumerável de $\atlas$. Para cada $(A,\varphi) \in \bar \atlas$, consideramos as bolas $\bola_r(x) \subseteq \varphi(A) \subseteq \R^d$ tais que $r \in \Q$ e $x \in \Q^d$. A união das imagens inversas dessas bolas pelos mapas de coordenadas é o conjunto enumerável
+	\begin{equation*}
+	\bar{\mathcal B} = \bigcup_{(A,\varphi) \in \bar \atlas} \set{\varphi\inv(\bola_r(x))}{\bola_r(x) \subseteq \varphi(A),  r \in \Q, x \in \Q^d}.
+	\end{equation*}
+Esse conjunto é uma base de $\bm V$: (1) O conjunto $\bar{\mathcal B}$ cobre $V$, pois os domínios das cartas de $\bar\atlas$ cobrem $V$ e as imagens inversas das bolas de centro e raio racionais cobrem o domínio de cada carta de $\bar\atlas$; (2) Sejam $A_1$ e $A_2 \in \bar{\mathcal B}$. Então $A_1 \cap A_2$ é aberto e, para todo $p \in A_1 \cap A_2$, existem $r \in \Q$ e $x \in \Q^d$ tais que $\varphi_1(p) \in \bola_{r}(x) \subseteq \varphi_1(A_1 \cap A_2)$, logo $p \in {\varphi_1}\inv(\bola_r(x)) \subseteq A_1 \cap A_2$.
+		\end{enumerate}
 \end{proof}
-
-Uma variedade definida como acima não precisa necessariamente ser um espaço separado, ou seja, espaço cujos pontos distintos são separados por vizinhanças. Em geral, na definição de variedade consideram-se espaços separados, mas aqui não faremos essa distinção. Ainda, outra hipótese comum é que a topologia admita base enumerável. Isso é equivalente, para uma variedade, a existir um subatlas enumerável.
-
-\begin{prop}
-Seja $\bm V$ uma variedade. Então $\topo$ tem base enumerável se, e somente se, existe um subatlas enumerável de $\atlas$.
-\end{prop}
-%\begin{proof}
-%Suponhamos que existe um subatlas enumerável de $\atlas$. Então existem cartas
-%\end{proof}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 \section{Espaço Tangente e Funções Diferenciáveis}
 
@@ -274,13 +260,13 @@ Sejam $\bm V$ uma variedade diferencial, $p \in V$ e $\gamma: I \to V$ uma curva
 
 O \emph{espaço tangente} a $\bm V$ em $p$ é o conjunto de vetores tangentes a $\bm V$ em $p$, denotado
 	\begin{equation*}
-	\Tg_p\bm V \coloneqq \set{\gamma'(0)}{\gamma: I \to V, \gamma(0)=p},
+	\Tg_p\bm V := \set{\gamma'(0)}{\gamma: I \to V, \gamma(0)=p},
 	\end{equation*}
 em que os $I$ são intervalos abertos de $\R$ contendo o $0$.
 
 O \emph{fibrado tangente} de $\bm V$ é a união disjunta dos espaços tangentes a $\bm V$ em todos pontos de $V$
 	\begin{equation*}
-	\Tg\bm V \coloneqq \coprod_{p  \in V} \Tg_p\bm V = \set{(p,v)}{p \in V,v \in \Tg_p\bm V}.
+	\Tg\bm V := \coprod_{p  \in V} \Tg_p\bm V = \set{(p,v)}{p \in V,v \in \Tg_p\bm V}.
 	\end{equation*}
 \end{defi}
 
@@ -289,14 +275,14 @@ Os elementos do espaço tangente a $\bm V$ em um ponto $p \in V$ são chamados d
 \subsection{Funções Diferenciáveis}
 
 \begin{defi}
-Sejam $\bm{V_0}$ e $\bm{V_1}$ $\cont^k$-variedades de dimensões $d_0$ e $d_1$, respectivamente. Uma função \emph{$\cont^k$-diferenciável} de $\bm{V_0}$ para $\bm{V_1}$ é uma função contínua $f: V_0 \to V_1$ que satisfaz
-	\begin{enumerate}
-	\item Para todo $p \in V_0$, existem cartas $(A_0,\varphi_0) \in \atlas_0$ em $p$ e $(A_1,\varphi_1) \in \atlas_1$ em $f(p)$ tais que $f(A_0) \subseteq A_1$ e
+Sejam $\bm{V_0}$ e $\bm{V_1}$ $\cont^k$-variedades de dimensões $d_0$ e $d_1$, respectivamente. Uma função \emph{$\cont^k$-diferenciável} de $\bm{V_0}$ para $\bm{V_1}$ é uma função
+% contínua 
+ $f: V_0 \to V_1$ que satisfaz: para todo $p \in V_0$, existem cartas $(A_0,\varphi_0) \in \atlas_0$ em $p$ e $(A_1,\varphi_1) \in \atlas_1$ em $f(p)$ tais que $f(A_0) \subseteq A_1$ e
 		\begin{equation*}
 		\varphi_1 \circ f \circ \varphi_0\inv: \varphi_0(A_0) \to \varphi_1(A_1)
 		\end{equation*}
 é uma função $\cont^k$-diferenciável de $\varphi_0(A_0) \subseteq \R^{d_0}$ para $\varphi_1(A_1) \subseteq \R^{d_1}$.
-	\end{enumerate}
+
 Denota-se $f: \bm{V_0} \to \bm{V_1}$. O conjunto de todas essas funções é denotado $\cont^k(\bm{V_0},\bm{V_1})$.
 \end{defi}
 
@@ -310,6 +296,10 @@ Como as transições de coordenadas $(\bar \varphi_1 \circ \varphi_1\inv)$ e $(\
 \end{proof}
 
 Como uma $\cont^k$-variedade é também uma $\cont^l$-variedade para todo $l\leq k$, sempre se pode definir entre $\cont^k$ e $\cont^l$-variedade funções $\cont^m$-diferenciáveis para qualquer $m \leq \min\{k,l\}$.
+
+\begin{prop}
+Sejam $\bm{V_0}$ e $\bm{V_1}$ $\cont^k$-variedades e $f_0: \bm{V_0} \to \bm{V_1}$ uma função $\cont^k$-diferenciável. Então $f$ é uma função contínua.
+\end{prop}
 
 \begin{prop}
 Sejam $\bm{V_0}$, $\bm{V_1}$ e $\bm{V_2}$ $\cont^k$-variedades e $f_0: \bm{V_0} \to \bm{V_1}$ e $f_1: \bm{V_1} \to \bm{V_2}$ funções $\cont^k$-diferenciáveis. Então $f_1 \circ f_0: \bm{V_0} \to \bm{V_1}$ é uma função $\cont^k$-diferenciável.
@@ -358,21 +348,6 @@ de modo que a regra da composição é simulada. Essa função é uma bijeção 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 \cleardoublepage
 
 
@@ -381,7 +356,7 @@ de modo que a regra da composição é simulada. Essa função é uma bijeção 
 %\begin{defi}
 %Seja $\bm V$ uma variedade. Uma \emph{subvariedade} de $\bm V$ é um par $\bm S = (S,\atlas_S)$ em que $S \subseteq V$ e $\atlas_S$ é o conjunto das cartas de $\atlas$ restritas a $S$:
 %	\begin{equation*}
-%	\atlas_S \coloneqq \set{(A \cap S,\varphi|_{A \cap S})}{(A,\varphi) \in \atlas}.
+%	\atlas_S := \set{(A \cap S,\varphi|_{A \cap S})}{(A,\varphi) \in \atlas}.
 %	\end{equation*}
 %\end{defi}
 
@@ -393,7 +368,7 @@ de modo que a regra da composição é simulada. Essa função é uma bijeção 
 \begin{defi}
 A \emph{esfera} $d$-dimensional é o conjunto
 	\begin{equation*}
-	\S^d \coloneqq \set{x \in \R^{d+1}}{\nor{x}=1}.
+	\S^d := \set{x \in \R^{d+1}}{\nor{x}=1}.
 	\end{equation*}
 \end{defi}
 
@@ -402,12 +377,12 @@ A partir dessa notação de esfera unitária, podemos escrever facilmente qualqu
 Vamos considerar, na esfera, um atlas com apenas duas cartas: as \emph{projeções estereográficas} focadas no norte e no sul.
 
 \begin{defi}
-O \emph{pólo norte} de $\S^d$ é o ponto $N \coloneqq (0,\ldots,0,1)$ e a \emph{projeção estereográfica norte} de $\S^d$ é a função
+O \emph{pólo norte} de $\S^d$ é o ponto $N := (0,\ldots,0,1)$ e a \emph{projeção estereográfica norte} de $\S^d$ é a função
 	\begin{align*}
 	\func{\pi_N}{\S^d \setminus\{N\}}{\R^d}{x}{\frac{1}{1-x_d}(x_0,\ldots,x_{d-1})}.
 	\end{align*}
 
-O \emph{pólo sul} de $\S^d$ é o ponto $S \coloneqq (0,\ldots,0,-1)$ e a \emph{projeção estereográfica sul} de $\S^d$ é a função
+O \emph{pólo sul} de $\S^d$ é o ponto $S := (0,\ldots,0,-1)$ e a \emph{projeção estereográfica sul} de $\S^d$ é a função
 	\begin{align*}
 	\func{\pi_S}{\S^d \setminus\{S\}}{\R^d}{x}{\frac{1}{1+x_d}(x_0,\ldots,x_{d-1})}.
 	\end{align*}
@@ -416,7 +391,7 @@ O \emph{pólo sul} de $\S^d$ é o ponto $S \coloneqq (0,\ldots,0,-1)$ e a \emph{
 \begin{prop}
 Sejam $\pi_N$ e $\pi_S$ as projeções estereográficas norte e sul de $\S^d$. O conjunto
 	\begin{equation*}
-	\atlas \coloneqq \{(\S^d \setminus\{N\},\pi_N),(\S^d \setminus\{S\},\pi_S)\}
+	\atlas := \{(\S^d \setminus\{N\},\pi_N),(\S^d \setminus\{S\},\pi_S)\}
 	\end{equation*}
 é um atlas de $\S^d$.
 \end{prop}
@@ -452,18 +427,18 @@ Sejam $x,y \in \R^d\setminus\{0\}$. A relação de \emph{equivalência homogêne
 	\end{equation*}
 \end{defi}
 
-Essa relação é realmente uma relação de equivalência, pois tomando $t=1$ temos a reflexividade, tomando $\bar t = t\inv$ temos a simetria e tomando $t_1t_0$ temos a transitividade. A classe de equivalência de um ponto $x \in \R^d$ é a reta sem a origem de $\R^d$ que passa pela origem e por $x$, e é denotada por $[x_0 : \cdots : x_{d-1}] \coloneqq [x]$.
+Essa relação é realmente uma relação de equivalência, pois tomando $t=1$ temos a reflexividade, tomando $\bar t = t\inv$ temos a simetria e tomando $t_1t_0$ temos a transitividade. A classe de equivalência de um ponto $x \in \R^d$ é a reta sem a origem de $\R^d$ que passa pela origem e por $x$, e é denotada por $[x_0 : \cdots : x_{d-1}] := [x]$.
 
 \begin{defi}
 O \emph{espaço projetivo real} $d$-dimensional é o conjunto
 	\begin{equation*}
-	\pro\R^d \coloneqq \set{[x_0 : \cdots : x_d]}{x \in \R^{d+1}}.
+	\pro\R^d := \set{[x_0 : \cdots : x_d]}{x \in \R^{d+1}}.
 	\end{equation*}
 \end{defi}
 
 Considerando os conjuntos
 	\begin{equation*}
-	A_i \coloneqq \set{[x_0 : \cdots : x_d] \in \pro\R^d}{x_i \neq 0}.
+	A_i := \set{[x_0 : \cdots : x_d] \in \pro\R^d}{x_i \neq 0}.
 	\end{equation*}
 e as funções
 	\begin{align*}
@@ -476,7 +451,7 @@ cujas inversas são
 
 Uma descrição equivalente é
 	\begin{equation*}
-	\pro\R^d \coloneqq \set{\{x,-x\}}{x \in \S^d} = \S^d/\Z_2.
+	\pro\R^d := \set{\{x,-x\}}{x \in \S^d} = \S^d/\Z_2.
 	\end{equation*}
 
 \subsection{O Toro}
@@ -484,7 +459,7 @@ Uma descrição equivalente é
 \begin{defi}
 	O \emph{toro} $d$-dimensional é o conjunto
 	\begin{equation*}
-	\T^d \coloneqq \R^d / \Z^d.
+	\T^d := \R^d / \Z^d.
 	\end{equation*}
 \end{defi}
 
@@ -499,7 +474,7 @@ Uma descrição equivalente é
 \begin{defi}
 O \emph{hiperboloide} $d$-dimensional é o conjunto
 	\begin{equation*}
-	\Hip^d \coloneqq \set{(x,t) \in \R^d \times \R = \R^{d+1}}{\nor{x}^2+1=t^2 \e t>0}.
+	\Hip^d := \set{(x,t) \in \R^d \times \R = \R^{d+1}}{\nor{x}^2+1=t^2 \e t>0}.
 	\end{equation*}
 \end{defi}
 

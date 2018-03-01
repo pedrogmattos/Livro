@@ -131,7 +131,7 @@ Um \emph{espaço métrico} é um par $\bm M=(M,d)$ em que $M$ é um conjunto e $
 \begin{defi}
 Sejam $\bm M$ um espaço métrico e $C \subseteq M$ um conjunto não vazio. O \emph{diâmetro} de $C$ é o número
 	\begin{equation*}
-	\diam(C) \coloneqq \sup(d(C \times C)) = \sup\set{d(p_0,p_1)}{p_0,p_1 \in C}
+	\diam(C) := \sup(d(C \times C)) = \sup\set{d(p_0,p_1)}{p_0,p_1 \in C}
 	\end{equation*}
 se $d(C \times C)$ é limitado superiormente, e $\infty$, caso contrário. Um \emph{conjunto limitado em $\bm M$} é um conjunto $C \subseteq M$ tal que $\diam(C) \in \R$. Uma \emph{sequência limitada} em $\bm M$ é uma sequência $(p_n)_{n \in N}$ em $M$ tal que $\set{p_n}{n \in \N}$ é limitado.
 \end{defi}
@@ -139,11 +139,11 @@ se $d(C \times C)$ é limitado superiormente, e $\infty$, caso contrário. Um \e
 \begin{defi}
 Sejam $\bm M$ um espaço métrico, $c \in M$ e $r \in \R$. A \emph{bola aberta} de centro $c$ e raio $r$ em $M$ é o conjunto
 	\begin{equation*}
-	\bola_r(c) \coloneqq \set{p \in M}{d(c,p) < r}.
+	\bola_r(c) := \set{p \in M}{d(c,p) < r}.
 	\end{equation*}
 A \emph{bola fechada} de centro $c$ e raio $r$ em $M$ é o conjunto
 	\begin{equation*}
-	\bar\bola_r(c) \coloneqq \set{p \in M}{d(c,p) \leq r}.
+	\bar\bola_r(c) := \set{p \in M}{d(c,p) \leq r}.
 	\end{equation*}
 \end{defi}
 
@@ -168,7 +168,7 @@ Seja $\bm M = (M,d)$ um espaço métrico. Então
 \end{prop}
 \begin{proof}
 	\begin{enumerate}
-	\item Sejam $c \in M$ e $r \in \R_+^*$. Queremos mostrar que $\bola_r(c)$ é aberto. Para isso, seja $p \in \bola_r(c)$. Então segue que $d \coloneqq d(c,p) < r$, pela definição de bola aberta, e, portanto, $r-d \in \R_+^*$. Para mostrar que essa bola centrada em $p$ está contida na bola maior centrada em $c$, seja $p' \in \bola_{r-d}(p)$. Então $d(p,p')<r-d$ e, pela desigualdade triangular, segue que
+	\item Sejam $c \in M$ e $r \in \R_+^*$. Queremos mostrar que $\bola_r(c)$ é aberto. Para isso, seja $p \in \bola_r(c)$. Então segue que $d := d(c,p) < r$, pela definição de bola aberta, e, portanto, $r-d \in \R_+^*$. Para mostrar que essa bola centrada em $p$ está contida na bola maior centrada em $c$, seja $p' \in \bola_{r-d}(p)$. Então $d(p,p')<r-d$ e, pela desigualdade triangular, segue que
 	\begin{equation*}
 	d(c,p') \leq d(c,p) + d(p,p') < D + (r-d) = r,
 	\end{equation*}
@@ -181,7 +181,7 @@ o que mostra que $p' \in \bola_r(c)$ e que, portanto, $\bola_s(p) \subseteq \bol
 	
 		\item Seja $(A_i)_{i \in I}$ uma família de abertos em $\bm M$ e seja $p \in (A_i)_{i \in I}$. Então existe $k \in I$ tal que $p \in A_k$. Como $A_k$ é aberto, então existe $r \in \R_+^*$ tal que $\bola_r(p) \subseteq A_k$. Como $A_k \subseteq (A_i)_{i \in I}$, segue que $\bola_r(p) \subseteq (A_i)_{i \in I}$ e que, portanto, $(A_i)_{i \in I}$ é aberto.
 	
-		\item Seja $(A_i)_{i \in \inte_n}$ uma sequência de abertos em $\bm M$ e seja $p \in (A_i)_{i \in \inte_n}$. Então, para todo $k \in \inte_n$, $p \in A_k$. Como, para todo $k \in \inte_n$, $A_k$ é aberto, segue que existe $r_k \in \R_+^*$ tal que $\bola_{r_k}(p) \subseteq A_k$, Seja $r \coloneqq \min \{r_k : k \in \inte_n\}$. Então, para todo $k \in \inte_n$, vale $\bola_r(p) \subseteq \bola_{r_k}(p)$, e segue que $\bola_r(p) \subseteq A_k$ e, portanto, $\bola_r(p) \subseteq (A_i)_{i \in \inte_n}$, o que mostra que $(A_i)_{i \in \inte_n}$ é aberto.
+		\item Seja $(A_i)_{i \in \inte_n}$ uma sequência de abertos em $\bm M$ e seja $p \in (A_i)_{i \in \inte_n}$. Então, para todo $k \in \inte_n$, $p \in A_k$. Como, para todo $k \in \inte_n$, $A_k$ é aberto, segue que existe $r_k \in \R_+^*$ tal que $\bola_{r_k}(p) \subseteq A_k$, Seja $r := \min \{r_k : k \in \inte_n\}$. Então, para todo $k \in \inte_n$, vale $\bola_r(p) \subseteq \bola_{r_k}(p)$, e segue que $\bola_r(p) \subseteq A_k$ e, portanto, $\bola_r(p) \subseteq (A_i)_{i \in \inte_n}$, o que mostra que $(A_i)_{i \in \inte_n}$ é aberto.
 		\end{enumerate}		
 	\end{enumerate}
 \end{proof}
@@ -211,7 +211,7 @@ o que é absurdo. Portanto $\bola_r(p) \cap \bola_r(p') = \emptyset$.
 Toda sequência convergente em um espaço métrico $\bm M$ tem limite único.
 \end{coro}
 \begin{proof}
-Suponhamos que $p,p'$ são limites de $(p_n)_{n \in \N}$. Se $p \neq p'$, então $d(p,p')>0$. Seja $\varepsilon \in \R$ tal que $0 < \varepsilon \leq \frac{1}{2} d(p,p')$. Então existe $N_1 \in \N$ tal que, para todo $n \in \N$, se $n \geq N_1$, então $p_n \in \bola_\varepsilon(p)$, e existe $N_2 \in \N$ tal que, para todo $n \in \N$, se $n \geq N_2$, então $p_n \in \bola_\varepsilon(p')$. Assim, definindo $N \coloneqq \max \{N_1,N_2\}$, segue que, se $n \geq N$, então $n \geq N_1$ e $n \geq N_2$, e, portanto, que $p_n \in \bola_\varepsilon(p)$ e $p_n \in \bola_\varepsilon(p')$; ou seja, $p_n \in \bola_\varepsilon(p) \cap \bola_\varepsilon(p')$, mas isso é absurdo, pois $\bola_\varepsilon(p) \cap \bola_\varepsilon(p')=\emptyset$. Portanto $p=p'$.
+Suponhamos que $p,p'$ são limites de $(p_n)_{n \in \N}$. Se $p \neq p'$, então $d(p,p')>0$. Seja $\varepsilon \in \R$ tal que $0 < \varepsilon \leq \frac{1}{2} d(p,p')$. Então existe $N_1 \in \N$ tal que, para todo $n \in \N$, se $n \geq N_1$, então $p_n \in \bola_\varepsilon(p)$, e existe $N_2 \in \N$ tal que, para todo $n \in \N$, se $n \geq N_2$, então $p_n \in \bola_\varepsilon(p')$. Assim, definindo $N := \max \{N_1,N_2\}$, segue que, se $n \geq N$, então $n \geq N_1$ e $n \geq N_2$, e, portanto, que $p_n \in \bola_\varepsilon(p)$ e $p_n \in \bola_\varepsilon(p')$; ou seja, $p_n \in \bola_\varepsilon(p) \cap \bola_\varepsilon(p')$, mas isso é absurdo, pois $\bola_\varepsilon(p) \cap \bola_\varepsilon(p')=\emptyset$. Portanto $p=p'$.
 \end{proof}
 
 Essa proposição nos permite tratar o limite de uma sequência como um número único e, por isso, podemos usar a notação $\displaystyle\lim_{n \in \N} p_n = p$ para quando $(p_n)_{n \in \N} \conv p$.
@@ -265,7 +265,7 @@ e
 	\begin{equation*}
 	\forall n \in \N \qquad n \geq N_2 \Rightarrow d(q,q_n) < \frac{\varepsilon}{2}.
 	\end{equation*}
-Fazendo $N_3 \coloneqq \max\{N_1,N_2\}$, segue que
+Fazendo $N_3 := \max\{N_1,N_2\}$, segue que
 	\begin{equation*}
 	\forall n \in \N \qquad n \geq N_3 \Rightarrow d(p_n,q_n) \leq d(p_n,p) + d(p,q) + d(q,q_n) < d(p,q) + \varepsilon;
 	\end{equation*}
@@ -273,7 +273,7 @@ ou seja, $d(p_n,q_n) - d(p,q) < \varepsilon$. Analogamente, achamos $N_6 \in \N$
 	\begin{equation*}
 	\forall n \in \N \qquad n \geq N_3 \Rightarrow d(p_n,q_n) \leq d(p_n,p) + d(p,q) + d(q,q_n) < d(p,q) + \varepsilon
 	\end{equation*}
-e fazendo $n \coloneqq \max\{N_3,N_6\}$, segue que
+e fazendo $n := \max\{N_3,N_6\}$, segue que
 	\begin{equation*}
 	\forall n \in \N \qquad n \geq N \Rightarrow |d(p,q) - d(p_n,q_n)| < \varepsilon,
 	\end{equation*}
@@ -327,7 +327,7 @@ Basta notar que $\bar\bola_r(c)^\complement$ é aberto.
 \begin{prop}
 	Sejam $\bm M_1$ e $\bm M_2$ espaços métricos e $f,g: M_1 \to M_2$ funções contínuas. Então o conjunto 
 	\begin{equation*}
-	F \coloneqq \{p \in M_1 : f(p)=g(p)\}
+	F := \{p \in M_1 : f(p)=g(p)\}
 	\end{equation*}
 é um conjunto fechado.
 \end{prop}
@@ -343,7 +343,7 @@ Basta notar que $\bar\bola_r(c)^\complement$ é aberto.
 	Sejam $\bm M_1$ e $\bm M_2$ espaços métricos, $f,g: M_1 \to M_2$ funções contínuas e $C,D \subseteq M_1$ conjuntos tais que $D$ é denso em $C$. Se $f|_D = g|_D$, então $f|_C = g|_C$.
 \end{prop}
 \begin{proof}
-	Pela proposição anterior, sabemos que $F \coloneqq \{p \in M_1 : f(p)=g(p)\}$ é um conjunto fechado. Como $f|_D = g|_D$, então $D \subseteq F$. Mas isso significa que $\overline D \subseteq \overline F = F$ e, como $D$ é denso em $C$, segue que $C \subseteq \overline D \subseteq F$ e, portanto, que $f|_C = g|_C$. 
+	Pela proposição anterior, sabemos que $F := \{p \in M_1 : f(p)=g(p)\}$ é um conjunto fechado. Como $f|_D = g|_D$, então $D \subseteq F$. Mas isso significa que $\overline D \subseteq \overline F = F$ e, como $D$ é denso em $C$, segue que $C \subseteq \overline D \subseteq F$ e, portanto, que $f|_C = g|_C$. 
 \end{proof}
 
 \subsection{Continuidade}
@@ -448,7 +448,7 @@ Como $(p_{n_k})_{k \in \N}$ é uma subsequência convergente, existe $K_1 \in \N
 	\begin{equation*}
 	\forall k \in \N \qquad k \geq K_1 \Rightarrow d(p,p_{n_k}) < \frac{\varepsilon}{2}.
 	\end{equation*}
-Como $(n_k)_{k \in \N}$ é uma sequência estritamente crescente, existe $K_2 \in \N$ tal que, para todo número natural $k \geq K_2$, $n_k \geq N$. Assim, tomando $K \coloneqq \max\{K_1,K_2\}$, segue que, para todo número natural $n \in \N$, existe $k \in \N$ tal que $n_k \geq N$ e,  pela desigualdade triangular, que
+Como $(n_k)_{k \in \N}$ é uma sequência estritamente crescente, existe $K_2 \in \N$ tal que, para todo número natural $k \geq K_2$, $n_k \geq N$. Assim, tomando $K := \max\{K_1,K_2\}$, segue que, para todo número natural $n \in \N$, existe $k \in \N$ tal que $n_k \geq N$ e,  pela desigualdade triangular, que
 	\begin{equation*}
 	\forall n \in \N \qquad n \geq N \Rightarrow d(p_n,p) \leq d(p_n,p_{n_k}) + d(p_{n_k},p) < \frac{\varepsilon}{2}+\frac{\varepsilon}{2}=\varepsilon.
 	\end{equation*}
@@ -462,7 +462,7 @@ Seja $(p_n)_{n \in \N}$ uma sequência aproximante em $\bm M$. Então, para $\va
 	\begin{equation*}
 	\forall n,m \in \N \qquad n,m \geq N \Rightarrow d(p_n,p_m)<1.
 	\end{equation*}
-	Definamos $P \coloneqq \{p_n : n \in \N\}$. Então segue que
+	Definamos $P := \{p_n : n \in \N\}$. Então segue que
 	\begin{align*}
 	\diam(P) &= \sup \set{d(p_n,p_m)}{n,m \in \N} \\
 		&= \max\{1 \cup \set{d(p_n,p_m)}{0 \leq n,m \leq N}\} \in \R,
@@ -527,7 +527,7 @@ Sejam $\bm M_1$  um espaço métrico, $\bm M_2$ espaço métrico completo, $D \s
 \begin{proof}
 	Seja $p \in M_1$. Como $D$ é denso em $M_1$, existe uma sequência $(p_n)_{n \in \N}$ em $D$ que converge para $p$. Como $(p_n)_{n \in \N}$ é convergente, é uma sequência de Cauchy e, como $f$ é uniformemente contínua em $D$, segue que $(f(p_n))_{n \in \N}$ é uma sequência de Cauchy em $M_2$. Mas $M_2$ é completo, o que implica que $(f(p_n))_{n \in \N}$ converge para um ponto $p' \in M_2$. Definimos, portanto, a função $f^*$ em $p$ como $f^*(p)=p'$. Precisamos mostrar que $f^*$ independe da escolha da sequência em $D$ que converge para $p$. Se $(q_n)_{n \in \N}$ é uma sequência em $D$ que converge para $p$, definamos a sequência $(r_n)_{n \in \N}$ em $D$ por
 	\begin{equation*}
-	r_n \coloneqq
+	r_n :=
 			\begin{cases}
 			p_n &\text{se $n=2k$}\\
 			q_n &\text{se $n=2k+1$}.
@@ -651,7 +651,7 @@ A \emph{topologia de $\E$} é a topologia de $(E,d)$.
 \begin{defi}
 Seja $\E$ um espaço vetorial normado. O \emph{disco unitário} de $\E$ é o conjunto
 	\begin{equation*}
-	\disc \coloneqq \set{v \in E}{\nor{v}=1}.
+	\disc := \set{v \in E}{\nor{v}=1}.
 	\end{equation*}
 \end{defi}
 
@@ -708,7 +708,7 @@ Equivalência de norma é uma relação de equivalência.
 Sejam $\bm E$ um espaço vetorial finito sobre um corpo $\bm C \subseteq \C$. Então toda norma em $\bm E$ são equivalentes.
 \end{prop}
 \begin{proof}
-Vamos mostrar que toda norma em $\bm E$ é equivalente a $\nor{\cdot}_1$ e, como equivalência de normas é uma relação de equivalência, seguirá que todas normas são equivalentes em $\bm E$. Seja $\nor{\cdot}$ uma norma em $\bm E$. Para todo $v \in E$, definindo $C \coloneqq \max_{0\leq i <d} \nor{e_i}$, em que $\{e_i\}_{0 \leq i < d}$ é a base canônica de $\bm E$, segue que
+Vamos mostrar que toda norma em $\bm E$ é equivalente a $\nor{\cdot}_1$ e, como equivalência de normas é uma relação de equivalência, seguirá que todas normas são equivalentes em $\bm E$. Seja $\nor{\cdot}$ uma norma em $\bm E$. Para todo $v \in E$, definindo $C := \max_{0\leq i <d} \nor{e_i}$, em que $\{e_i\}_{0 \leq i < d}$ é a base canônica de $\bm E$, segue que
 	\begin{equation*}
 	\nor{v} = \nor{\bigplus_{i=0}^{d-1} v_ie_i} \leq \bigplus_{i=0}^{d-1}\abs{v_i}\nor{e_i} \leq C\nor{v}_1.
 	\end{equation*}
@@ -736,7 +736,7 @@ Sejam $\bm{E_1},\dots,\bm{E_n}$ espaços normados de dimensão finita, $\bm{E}$ 
 	\end{equation*}
 \end{prop}
 \begin{proof}
-Para todo $1 \leq i \leq n$, sejam $d_i \coloneqq \dim E_i$ e $\{(b_i)_k\}_{0\leq k<{d_n}}$ uma base de $\bm{E_i}$. Todas normas em $\bm{E_i}$ são equivalentes, portanto usaremos a norma $\nor{\cdot}_\infty$. Assim, para todos $v_1 \in \bm{E_1}$, $\ldots$, $v_n \in \bm{E_n}$,
+Para todo $1 \leq i \leq n$, sejam $d_i := \dim E_i$ e $\{(b_i)_k\}_{0\leq k<{d_n}}$ uma base de $\bm{E_i}$. Todas normas em $\bm{E_i}$ são equivalentes, portanto usaremos a norma $\nor{\cdot}_\infty$. Assim, para todos $v_1 \in \bm{E_1}$, $\ldots$, $v_n \in \bm{E_n}$,
 	\begin{align*}
 	\nor{T(v_1,\ldots,v_n)} &= \nor{\bigplus_{\substack{0 \leq k_1 < d_1\\\cdots\\0\leq k_n< d_n}} (v_{k_1})_1\cdots(v_{k_n})_nT\big((b_{k_1})_1,\cdots,(b_{k_n})_n\big)} \\
 		&\leq \bigplus_{\substack{0 \leq k_1 < d_1\\\cdots\\0\leq k_n< d_n}} \abs{(v_{k_1})_1}\cdots\abs{(v_{k_n})_n}\nor{T\big((b_{k_1})_1,\cdots,(b_{k_n})_n\big)} \\
@@ -744,7 +744,7 @@ Para todo $1 \leq i \leq n$, sejam $d_i \coloneqq \dim E_i$ e $\{(b_i)_k\}_{0\le
 	\end{align*}
 Definindo
 	\begin{equation*}
-	C \coloneqq \bigplus_{\substack{0 \leq k_1 < d_1\\\cdots\\0\leq k_n< d_n}}  \nor{T\big((b_{k_1})_1,\cdots,(b_{k_n})_n\big)},
+	C := \bigplus_{\substack{0 \leq k_1 < d_1\\\cdots\\0\leq k_n< d_n}}  \nor{T\big((b_{k_1})_1,\cdots,(b_{k_n})_n\big)},
 	\end{equation*}
 segue que
 	\begin{equation*}
@@ -821,7 +821,7 @@ Um conjunto $C \subseteq \R^n$ é compacto se, e somente se, para toda função 
 
 \chapter{Diferenciabilidade no Espaço Real}
 
-O espaço real $\E$ estudado neste capítulo será o espaço vetorial normado $(\R^d,+,\cdot)$ sobre $\R$. A base canônica de $\R^d$ será representada pelos vetores $\{\bm e_0, \ldots, \bm e_{d-1}\}$. Um vetor $x \in \R^d$ será também representado por $x=(x_0,\ldots,x_{d-1})$ e uma função $f: \R^{d_0} \to \R^{d_1}$ será também representada por $f=(f_0,\ldots,f_{d_1-1})$, de modo que $f_i \coloneqq \pi_i \circ f$, sendo $\pi_i$ a $i$-ésima projeção de $\R^{d_1}$ em $\R$. Como todas normas em $\R^d$ são equivalentes, não será feita referência à norma utilizada, apenas será usado o fato de que $\R^d$ é um espaço vetorial normado (e completo). Se necessário, a norma utilizada será explicitada e, quando não for, a norma usada será $\nor{\cdot}_2$. O estudo da diferenciabilidade em espaços de dimensão maior que 1 envolve o uso de funções contínuas e transformações lineares, e também de funções de um espaço real em um espaço de tranformações lineares. Por esse motivo, a notação pode ser confusa. Para simplificar a notação, uma transformação linear $T$ aplicada a um vetor $v$ será sempre denotada por $T \cdot v$. Desenvolveremos, a seguir, a teoria de diferenciabilidade de funções entre espaços reais, e as funções consideradas serão sempre da forma
+O espaço real $\E$ estudado neste capítulo será o espaço vetorial normado $(\R^d,+,\cdot)$ sobre $\R$. A base canônica de $\R^d$ será representada pelos vetores $\{\bm e_0, \ldots, \bm e_{d-1}\}$. Um vetor $x \in \R^d$ será também representado por $x=(x_0,\ldots,x_{d-1})$ e uma função $f: \R^{d_0} \to \R^{d_1}$ será também representada por $f=(f_0,\ldots,f_{d_1-1})$, de modo que $f_i := \pi_i \circ f$, sendo $\pi_i$ a $i$-ésima projeção de $\R^{d_1}$ em $\R$. Como todas normas em $\R^d$ são equivalentes, não será feita referência à norma utilizada, apenas será usado o fato de que $\R^d$ é um espaço vetorial normado (e completo). Se necessário, a norma utilizada será explicitada e, quando não for, a norma usada será $\nor{\cdot}_2$. O estudo da diferenciabilidade em espaços de dimensão maior que 1 envolve o uso de funções contínuas e transformações lineares, e também de funções de um espaço real em um espaço de tranformações lineares. Por esse motivo, a notação pode ser confusa. Para simplificar a notação, uma transformação linear $T$ aplicada a um vetor $v$ será sempre denotada por $T \cdot v$. Desenvolveremos, a seguir, a teoria de diferenciabilidade de funções entre espaços reais, e as funções consideradas serão sempre da forma
 	\begin{equation*}
 	f: \R^d \to \R^c,
 	\end{equation*}
@@ -898,11 +898,11 @@ Sejam $f: \R^n \to \R^m$ diferenciável em $p \in \R^n$ e $g: \R^m \to \R^l$ dif
 \end{prop}
 \begin{proof} Definamos
 	\begin{equation*}
-	r_1(v) \coloneqq f(p+v) - f(p) - \D f(p) \cdot v
+	r_1(v) := f(p+v) - f(p) - \D f(p) \cdot v
 	\end{equation*}
 e
 	\begin{equation*}
-	r_2(v) \coloneqq g(f(p)+v) - g(f(p)) - \D g(f(p)) \cdot v,
+	r_2(v) := g(f(p)+v) - g(f(p)) - \D g(f(p)) \cdot v,
 	\end{equation*}
 de modo que da diferenciabilidade de $f$ em $p$ e de $g$ em $f(p)$ segue
 	\begin{equation*}
@@ -1010,7 +1010,7 @@ satisfazendo
 	\end{equation*}
 Agora, sejam $T,S$ diferenciais de ordem $k$ de $f$ em $p$ e definamos
 	\begin{equation*}
-	A(v) \coloneqq f(p+v)-f(p)- \bigplus_{i=1}^{k-1} \frac{1}{i!}T_i \cdot (v)^{\otimes i}.
+	A(v) := f(p+v)-f(p)- \bigplus_{i=1}^{k-1} \frac{1}{i!}T_i \cdot (v)^{\otimes i}.
 	\end{equation*}
 Segue que
 	\begin{align*}
@@ -1047,7 +1047,7 @@ A partir dessa seção, cosideraremos funções $f: A \to \R^c$, em que $A \subs
 \begin{defi}
 Sejam $A \subseteq \R^n$ um aberto, $p \in A$, $v \in \R^n$ tal que $p+v \in A$ e $f: A \to \R^m$. A \emph{derivada direcional} de $f$ em $p$ na direção de $v$ é
 	\begin{equation*}
-	\partial_v f(p) \coloneqq \lim_{t \conv 0} \frac{f(p+tv)-f(p)}{t}.
+	\partial_v f(p) := \lim_{t \conv 0} \frac{f(p+tv)-f(p)}{t}.
 	\end{equation*}
 \end{defi}
 
@@ -1059,7 +1059,7 @@ de modo que temos $\gamma(0)=p$ e $\gamma'(0) = v$. Então, pela regra da cadeia
 	\begin{equation*}
 	 \partial_v f(p) = \ D (f \circ \gamma)(0) = \D f(\gamma(0)) \cdot \gamma'(0) = \D f(p) \cdot v.
 	\end{equation*}
-Disso concluímos que a derivada direcional de $f$ em $p$ na direção de $v$ é a imagem de $v$ sob a transformação linear $\D f(p)$. Portanto definindo as derivadas direcionais $\partial_i f(x) \coloneqq \D f(x) \cdot e_i$ temos que
+Disso concluímos que a derivada direcional de $f$ em $p$ na direção de $v$ é a imagem de $v$ sob a transformação linear $\D f(p)$. Portanto definindo as derivadas direcionais $\partial_i f(x) := \D f(x) \cdot e_i$ temos que
 	\begin{equation*}
 	\D f(x) \cdot v = \bigplus_{i=0}^{d-1} v_i \partial_i f(x).
 	\end{equation*}
@@ -1105,7 +1105,7 @@ em que $t \in \R$ é a variável \emph{tempo}, $x : \R \to \R^d$ é uma função
 tal que existe $\phi$ solução de $E$ se, e somente se, existe $\bm \phi$ solução de $\bm E$.
 \end{prop}
 \begin{proof}
-	Definimos $\bm x = (x_0, \ldots,x_{n-1}) \coloneqq (x,x^{(1)}, \cdots,x^{(n-1)})$, de modo que
+	Definimos $\bm x = (x_0, \ldots,x_{n-1}) := (x,x^{(1)}, \cdots,x^{(n-1)})$, de modo que
 	\begin{align*}
 	\bm x' &= ((x_0)',\ldots,(x_{n-1})',(x_{n-1})') \\
 			&= (x^{(1)}, \ldots,x^{(n-1)},x^{(n)}) \\
@@ -1117,7 +1117,7 @@ tal que existe $\phi$ solução de $E$ se, e somente se, existe $\bm \phi$ solu�
 	\begin{align*}
 	\func{\bm F}{A}{\R^{dn}}{(t,\bm x)}{(x_1,\ldots,x_{n-1},F(t, \bm x))}
 	\end{align*}
-e então $\bm x' = \bm F(t,\bm x)$. Por fim, devemos mostrar que as soluções são equivalentes. Seja $\phi: I \subseteq \R \to \R^d$ solução de $E$. Então, para todo $k \in \{1,\ldots,n\}$, existe $\phi^{(k)}: \R \to \R^d$. Assim, definindo $\bm \phi \coloneqq (\phi,\phi^{(1)},\ldots,\phi^{(n-1)})$, segue que $\bm \phi$ é solução de $\bm E$.
+e então $\bm x' = \bm F(t,\bm x)$. Por fim, devemos mostrar que as soluções são equivalentes. Seja $\phi: I \subseteq \R \to \R^d$ solução de $E$. Então, para todo $k \in \{1,\ldots,n\}$, existe $\phi^{(k)}: \R \to \R^d$. Assim, definindo $\bm \phi := (\phi,\phi^{(1)},\ldots,\phi^{(n-1)})$, segue que $\bm \phi$ é solução de $\bm E$.
 \end{proof}
 
 Por causa dessa proposição, podemos representar qualquer equação diferencial ordinária como uma de ordem 1.
@@ -1135,7 +1135,7 @@ Por causa dessa proposição, podemos representar qualquer equação diferencial
 \begin{defi}
 	Dado $(t_0,x_0) \in U$, defina
 	\begin{equation*}
-	S_{(t_0,x_0)} \coloneqq \set{\phi: I_\phi \to \R^d}{\phi \text{\ \ é solução do problema de Cauchy}}.
+	S_{(t_0,x_0)} := \set{\phi: I_\phi \to \R^d}{\phi \text{\ \ é solução do problema de Cauchy}}.
 	\end{equation*}
 Dados $\phi ,\psi \in S_{(t_0,x_0)}$, definimos $\phi \leq \psi $ se, e somente se, $I_{\phi } \subseteq I_{\psi}$ e $\psi|_{I_\phi} = \phi $.
 \end{defi}
@@ -1252,7 +1252,7 @@ Seja $X$ um conjunto não vazio e $\Sigma$ uma sigma-álgebra sobre $X$. Uma \em
 \begin{prop}
 Seja $X$ um conjunto não vazio e $(\Sigma_i)_{i \in I}$ uma família de sigma-álgebras sobre $X$. Então
 	\begin{equation*}
-	\Sigma \coloneqq \bigcap_{i \in I} \Sigma_i
+	\Sigma := \bigcap_{i \in I} \Sigma_i
 	\end{equation*}
 é uma sigma-álgebra sobre $X$.
 \end{prop}
@@ -1283,7 +1283,7 @@ Seja $X$ um conjunto e $\mathcal C \in \p(X)$ um conjunto de subconjuntos de $X$
 %	\end{equation*}
 %\end{prop}
 %\begin{proof}
-%Seja $\Sigma \coloneqq \set{\bigcup_{i \in I} C_i}{\card{I}\leq \card{\N} \e \forall i \in I \left( C_i \in \mathcal C \ou C_i\comp \in \mathcal C\right)}$. Primeiro notemos que $\mathcal C \subseteq \Sigma$. Para todo $C \in \mathcal C$, temos $C = \bigcup_{i \in \{0\}} C$ e $\card{\{0\}} \leq \card{\N}$. Logo $C \in \Sigma$ e, então, $\mathcal C \subseteq \Sigma$. Agora, mostremos que $\Sigma$ é uma sigma-álgebra. Primeiro notemos que $\emptyset \in \Sigma$, pois $\emptyset = \bigcup_{i \in \emptyset} C$ e $\card{\emptyset} \leq \card{\N}$.
+%Seja $\Sigma := \set{\bigcup_{i \in I} C_i}{\card{I}\leq \card{\N} \e \forall i \in I \left( C_i \in \mathcal C \ou C_i\comp \in \mathcal C\right)}$. Primeiro notemos que $\mathcal C \subseteq \Sigma$. Para todo $C \in \mathcal C$, temos $C = \bigcup_{i \in \{0\}} C$ e $\card{\{0\}} \leq \card{\N}$. Logo $C \in \Sigma$ e, então, $\mathcal C \subseteq \Sigma$. Agora, mostremos que $\Sigma$ é uma sigma-álgebra. Primeiro notemos que $\emptyset \in \Sigma$, pois $\emptyset = \bigcup_{i \in \emptyset} C$ e $\card{\emptyset} \leq \card{\N}$.
 
 %Agora, seja $M \in \Sigma$. Então $M=\bigcup_{i \in I} C_i$ tal que $\card{I}\leq \card{\N}$  e, para todo $i \in I$, $C_i \in \mathcal C$ ou $C_i\comp \in \mathcal C$. Como
 %	\begin{equation*}
@@ -1296,7 +1296,7 @@ Seja $X$ um conjunto e $\mathcal C \in \p(X)$ um conjunto de subconjuntos de $X$
 %	\end{equation*}
 %Como, para todo $n \in \N$, o conjunto $I_n$ é enumerável, então temos que os conjuntos $\set{C_{n,i}}{i \in I_n}$ são enumeráveis e, portanto,
 %	\begin{equation*}
-%	E \coloneqq \bigcup_{n \in \N} \set{C_{n,i}}{i \in I_n}
+%	E := \bigcup_{n \in \N} \set{C_{n,i}}{i \in I_n}
 %	\end{equation*}
 %é enumerável, pois é união enumerável de conjuntos enumeráveis. Indexando $E$ como $(C_j)_{j \in J}$, segue que
 %	\begin{equation*}
@@ -1311,12 +1311,12 @@ Seja $X$ um conjunto e $\mathcal C \in \p(X)$ um conjunto de subconjuntos de $X$
 \begin{defi}
 	Sejam $X$ um conjunto e $(A_n)_{n \in \N}$ uma sequência de subconjuntos de $X$. O \emph{limite inferior} de $(A_n)_{n \in \N}$ é o conjunto
 	\begin{equation*}
-	\liminf A_n \coloneqq \bigcup_{m=0}^\infty \left( \bigcap_{n=m}^\infty A_n \right).
+	\liminf A_n := \bigcup_{m=0}^\infty \left( \bigcap_{n=m}^\infty A_n \right).
 	\end{equation*}
 	Esse conjunto é o conjuto dos pontos que não pertencem todos menos finitos conjuntos $A_n$.
 O \emph{limite superior} de $(A_n)_{n \in \N}$ é o conjunto
 	\begin{equation*}
-	\limsup A_n \coloneqq \bigcap_{m=0}^\infty \left( \bigcup_{n=m}^\infty A_n \right).
+	\limsup A_n := \bigcap_{m=0}^\infty \left( \bigcup_{n=m}^\infty A_n \right).
 	\end{equation*}
 	Esse conjunto é o conjunto dos pontos que pertencem a infinitos conjuntos $A_n$.
 \end{defi}
@@ -1374,12 +1374,12 @@ Sejam $\bm{X_0}$, $\bm{X_1}$ e $\bm{X_2}$ espaços mensuráveis e $f_0: \bm{X_0}
 \begin{defi}
 Sejam $X$ um conjunto, $\bm Y = (Y,\Sigma_Y)$ um espaço mensurável e $f: X \to Y$ uma função. A \emph{sigma-álgebra puxada} por $f$ é
 	\begin{equation*}
-	f^*(\Sigma_Y) \coloneqq \set{f^{-1}(M)}{M \in \Sigma_Y}.
+	f^*(\Sigma_Y) := \set{f^{-1}(M)}{M \in \Sigma_Y}.
 	\end{equation*}
 \end{defi}
 
 \begin{prop}
-Sejam $X$ um conjunto, $\bm Y = (Y,\Sigma_Y)$ um espaço mensurável e $f: X \to Y$ uma função. Então $\Sigma_X \coloneqq f^*(\Sigma_Y)$, a sigma-álgebra puxada por $f$, é uma sigma-álgebra sobre $X$.
+Sejam $X$ um conjunto, $\bm Y = (Y,\Sigma_Y)$ um espaço mensurável e $f: X \to Y$ uma função. Então $\Sigma_X := f^*(\Sigma_Y)$, a sigma-álgebra puxada por $f$, é uma sigma-álgebra sobre $X$.
 \end{prop}
 \begin{proof}
 Primeiro, notemos que $\emptyset \in \Sigma_X$, pois $\emptyset \in \Sigma_Y$ e $f^{-1}(\emptyset) = \emptyset$ (\ref{prop:props.imag.inv}). Segundo, seja $B \in \Sigma_X$. Então existe $A \in \Sigma_Y$ tal que $B = f^{-1}(A)$. Como $\Sigma_Y$ é uma sigma-álgebra, então $A^\complement \in \Sigma_Y$, o que implica $f^{-1}(A^\complement) \in \Sigma_X$. Mas $(f^{-1}(A))^\complement = f^{-1}(A^\complement)$ (\ref{prop:props.imag.inv}). Então $B^\complement \in \Sigma_X$. Terceiro, seja $(B_i)_{i \in \N}$ uma sequência de conjuntos de $\Sigma_X$. Então, para todo $i \in I$, existe $A_i \in \Sigma_Y$ tal que $B_i = f^{-1}(A_i)$. Como $\Sigma_Y$ é uma sigma-álgebra, então $\bigcup_{i \in \N} A_i \in \Sigma_Y$. Isso implica que $f^{-1}(\bigcup_{i \in \N} A_i) \in \Sigma_X$. Mas $f^{-1}(\bigcup_{i \in \N} A_i) = \bigcup_{i \in \N} f^{-1}(A_i)$ (\ref{prop:props.imag.inv}). Então $\bigcup_{i \in \N} B_i \in \Sigma_X$ e, assim, conclui-se que $\Sigma_X$ é uma sigma-álgebra sobre $X$.
@@ -1388,12 +1388,12 @@ Primeiro, notemos que $\emptyset \in \Sigma_X$, pois $\emptyset \in \Sigma_Y$ e 
 \begin{defi}
 Sejam $\bm X = (X,\Sigma_X)$ um espaço mensurável, $Y$ um conjunto e $f: X \to Y$ uma função. A \emph{sigma-álgebra empurrada} por $f$ é
 	\begin{equation*}
-	f_*(\Sigma_X) \coloneqq \set{M \subseteq Y}{f^{-1}(M) \in \Sigma_X}.
+	f_*(\Sigma_X) := \set{M \subseteq Y}{f^{-1}(M) \in \Sigma_X}.
 	\end{equation*}
 \end{defi}
 
 \begin{prop}
-Sejam $\bm X = (X,\Sigma_X)$ um espaço mensurável, $Y$ um conjunto e $f: X \to Y$ uma função. Então $\Sigma_Y \coloneqq f_*(\Sigma_X)$, a sigma-álgebra empurrada por $f$, é uma sigma-álgebra sobre $Y$.
+Sejam $\bm X = (X,\Sigma_X)$ um espaço mensurável, $Y$ um conjunto e $f: X \to Y$ uma função. Então $\Sigma_Y := f_*(\Sigma_X)$, a sigma-álgebra empurrada por $f$, é uma sigma-álgebra sobre $Y$.
 \end{prop}
 \begin{proof}
 Primeiro, notemos que $\emptyset \in \Sigma_Y$, pois $\emptyset \in \Sigma_X$ e $f^{-1}(\emptyset) = \emptyset$ (\ref{prop:props.imag.inv}). Segundo, seja $A \in \Sigma_Y$. Então $f^{-1}(A) \in \Sigma_ X$, o que implica $(f^{-1}(A))^\complement \in \Sigma_ X$, pois $\Sigma_ X$ é sigma-álgebra. Mas $(f^{-1}(A))^\complement = f^{-1}(A^\complement)$ (\ref{prop:props.imag.inv}), o que implica $f^{-1}(A^\complement) \in \Sigma_ X$ e, portanto, $A^\complement \in \Sigma_ Y$. Terceiro, seja $(A_i)_{i \in \N}$ uma sequência de conjuntos de $\Sigma_ Y$. Então, para todo $i \in \N$, $f^{-1}(A_i) \in \Sigma_ X$, o que implica que $\bigcup_{i \in \N} f^{-1}(A_i) \in \Sigma_ X$, pois $\Sigma_ X$ é uma sigma-álgebra. Mas, como $\bigcup_{i \in \N} f^{-1}(A_i) = f^{-1}(\bigcup_{i \in \N} A_i)$ (\ref{prop:props.imag.inv}), segue que $\bigcup_{i \in \N} A_i \in \Sigma_ Y$ e, assim, conclui-se que $\Sigma_ Y$ é uma sigma-álgebra sobre $Y$.
@@ -1416,11 +1416,11 @@ Suponha que $f$ é uma função mensurável. Seja $B \in f^*(\Sigma_Y)$. Então 
 \begin{defi}
 Seja $(\bm{X_i})_{i \in I} = (X_i,\Sigma_i)_{i \in I}$ uma família de espaços mensuráveis. O \emph{produto} da família $(\bm X_i)_{i \in I}$ é o par
 	\begin{equation*}
-	\prod_{i \in I} \bm{X_i} \coloneqq (X,\Sigma),
+	\prod_{i \in I} \bm{X_i} := (X,\Sigma),
 	\end{equation*}
-em que $X \coloneqq \prod_{i \in I} X_i$ é o produto de conjuntos e
+em que $X := \prod_{i \in I} X_i$ é o produto de conjuntos e
 	\begin{equation*}
-	\Sigma \coloneqq \ger{\bigcup_{i \in I} \pi_i^*(\Sigma_i)}.
+	\Sigma := \ger{\bigcup_{i \in I} \pi_i^*(\Sigma_i)}.
 	\end{equation*}
 \end{defi}
 
@@ -1428,7 +1428,7 @@ em que $X \coloneqq \prod_{i \in I} X_i$ é o produto de conjuntos e
 Seja $(\bm X_i)_{i \in I} = (X_i,\Sigma_i)_{i \in I}$ uma família de espaços mensuráveis. Então o produto $\prod_{i \in I} \bm X_i$ é um espaço mensurável.
 \end{prop}
 \begin{proof}
-Sejam $X \coloneqq \prod_{i \in I} X_i$ e $\Sigma=\ger{\bigcup_{i \in I} \pi_i^*(\Sigma_i)}$. Devemos somente argumentar que $\Sigma$ é uma sigma-álgebra sobre $X= \prod_{i \in I} X_i$. Para isso, notemos que, para cada $i \in I$, a sigma-álgebras $\pi_i^*(\Sigma_i)$ é a sigma-álegebras puxada por $\pi_i: X \to X_i$, portanto uma sigma-álgebra sobre $X$. Assim, sendo, $\bigcup_{i \in I} \pi_i^*(\Sigma_i) \subseteq \p(X)$ e, portanto, a sigma-álgebra $\Sigma$ gerada por esse conjunto é uma sigma-álgebra sobre $X$.
+Sejam $X := \prod_{i \in I} X_i$ e $\Sigma=\ger{\bigcup_{i \in I} \pi_i^*(\Sigma_i)}$. Devemos somente argumentar que $\Sigma$ é uma sigma-álgebra sobre $X= \prod_{i \in I} X_i$. Para isso, notemos que, para cada $i \in I$, a sigma-álgebras $\pi_i^*(\Sigma_i)$ é a sigma-álegebras puxada por $\pi_i: X \to X_i$, portanto uma sigma-álgebra sobre $X$. Assim, sendo, $\bigcup_{i \in I} \pi_i^*(\Sigma_i) \subseteq \p(X)$ e, portanto, a sigma-álgebra $\Sigma$ gerada por esse conjunto é uma sigma-álgebra sobre $X$.
 \end{proof}
 
 \begin{prop}
@@ -1457,7 +1457,7 @@ Defina a função
 	\begin{align*}
 	\func{f}{Y}{\prod_{i \in I} X_i}{y}{(f_i(y))_{i \in I}}.
 	\end{align*}
-Da propriedade universal para o produto de conjutos, $f$ é a única função tal que, para todo $i \in I$, $\pi_i \circ f = f_i$. Basta mostrar que $f$ é uma função mensurável. Para simplificar a notação, definamos $(X,\Sigma) \coloneqq \prod_{i \in I} \bm{X_i}$. Todo elemento de $\Sigma$ é formado a partir de complementos e uniões de elementos de $\bigcup_{i \in I} \pi_i^*(\Sigma)$. Sendo assim, como $f\inv$ preserva complemento e união, e $f\inv(\emptyset)=\emptyset$, se mostrarmos que, para todo $M \in \bigcup_{i \in I} \pi_i^*(\Sigma_i)$, $f\inv(M) \in \Sigma_Y$, seguirá que, para todo $M \in \Sigma$, $f\inv(M) \in \Sigma_Y$. Seja $M \in \bigcup_{i \in I} \pi_i^*(\Sigma_i)$. Então existe $i \in I$ tal que $M \in \pi_i^*(\Sigma_i)$ e, portanto, existe $M_i \in \Sigma_i$ tal que $M=\pi_i\inv(M_i)$. Então segue que
+Da propriedade universal para o produto de conjutos, $f$ é a única função tal que, para todo $i \in I$, $\pi_i \circ f = f_i$. Basta mostrar que $f$ é uma função mensurável. Para simplificar a notação, definamos $(X,\Sigma) := \prod_{i \in I} \bm{X_i}$. Todo elemento de $\Sigma$ é formado a partir de complementos e uniões de elementos de $\bigcup_{i \in I} \pi_i^*(\Sigma)$. Sendo assim, como $f\inv$ preserva complemento e união, e $f\inv(\emptyset)=\emptyset$, se mostrarmos que, para todo $M \in \bigcup_{i \in I} \pi_i^*(\Sigma_i)$, $f\inv(M) \in \Sigma_Y$, seguirá que, para todo $M \in \Sigma$, $f\inv(M) \in \Sigma_Y$. Seja $M \in \bigcup_{i \in I} \pi_i^*(\Sigma_i)$. Então existe $i \in I$ tal que $M \in \pi_i^*(\Sigma_i)$ e, portanto, existe $M_i \in \Sigma_i$ tal que $M=\pi_i\inv(M_i)$. Então segue que
 	\begin{equation*}
 	f\inv(M) = f\inv(\pi_i\inv(M_i)) = (\pi_i \circ f)\inv(M_i) = f_i\inv(M_i)
 	\end{equation*}
@@ -1476,7 +1476,7 @@ e portanto, como $f_i$ é mensurável, $f_i\inv(M_i) \in \Sigma_Y$, portanto $f\
 \begin{defi}
 Seja $\bm X=(X,\topo)$ um espaço topológico. A \emph{$\sigma$-álgebra topológica} de $\bm X$ é a $\sigma$-álgebra gerada por $\topo$
 	\begin{equation*}
-	\mathcal{M}_{\bm X} \coloneqq \ger{\topo}.
+	\mathcal{M}_{\bm X} := \ger{\topo}.
 	\end{equation*}
 \end{defi}
 
@@ -1503,10 +1503,10 @@ Essa $\sigma$-álgebra é comumente chamada de \emph{álgebra de Borel} e seus c
 \begin{prop}
 	Seja $(X,\Sigma)$ um espaço mensurável e $f: X \to \R$. Então as quatro afirmações abaixo são equivalentes
 	\begin{enumerate}
-	\item $\forall \alpha \in \R \qquad A_\alpha \coloneqq \set{x \in X}{f(x) \leq \alpha} \in \Sigma$;
-	\item $\forall \alpha \in \R \qquad B_\alpha \coloneqq \set{x \in X}{f(x) < \alpha} \in \Sigma$;
-	\item $\forall \alpha \in \R \qquad C_\alpha \coloneqq \set{x \in X}{f(x) \geq \alpha} \in \Sigma$;
-	\item $\forall \alpha \in \R \qquad D_\alpha \coloneqq \set{x \in X}{f(x) > \alpha} \in \Sigma$.
+	\item $\forall \alpha \in \R \qquad A_\alpha := \set{x \in X}{f(x) \leq \alpha} \in \Sigma$;
+	\item $\forall \alpha \in \R \qquad B_\alpha := \set{x \in X}{f(x) < \alpha} \in \Sigma$;
+	\item $\forall \alpha \in \R \qquad C_\alpha := \set{x \in X}{f(x) \geq \alpha} \in \Sigma$;
+	\item $\forall \alpha \in \R \qquad D_\alpha := \set{x \in X}{f(x) > \alpha} \in \Sigma$.
 	\end{enumerate}
 \end{prop}
 \begin{proof}
@@ -1593,6 +1593,18 @@ Sejam $(X, \Sigma,\mu)$ um espaço de medida e $(M_n)_{n \in \N} \in \Sigma^\N$ 
 \end{proof}
 
 
+Definição lógica de \emph{essencialmente todo} ou  \emph{quase todo}:
+
+\begin{equation*}
+\tilde\forall x Px \leftrightarrow \exists N\forall x (\mu(N)=0 \wedge (x\notin N \rightarrow Px))
+\end{equation*}
+
+\begin{equation*}
+X=\emptyset \leftrightarrow \nexists x (x \in V) \leftrightarrow \forall x(x \notin V)
+\end{equation*}
+
+
+
 
 
 
@@ -1650,14 +1662,14 @@ Seja $(X,\Sigma,\mu)$ um espaço de medida. Uma função \emph{simples} em $X$ �
 \end{defi}
 
 \begin{defi}
-Sejam $(X,\Sigma,\mu)$ um espaço de medida, $f: X \to \R$ uma função simples, $c_1,\cdots,c_n \in \R$ as constantes distintas tais que $f(X)=\{c_1,\cdots,c_n\}$ e $I \coloneqq \{1,\cdots,n\}$. A \emph{partição associada} a $f$ é o conjunto $\set{P_i}{i \in I}$ em que, para todo $i \in I$,
+Sejam $(X,\Sigma,\mu)$ um espaço de medida, $f: X \to \R$ uma função simples, $c_1,\cdots,c_n \in \R$ as constantes distintas tais que $f(X)=\{c_1,\cdots,c_n\}$ e $I := \{1,\cdots,n\}$. A \emph{partição associada} a $f$ é o conjunto $\set{P_i}{i \in I}$ em que, para todo $i \in I$,
 	\begin{equation*}
-	P_i \coloneqq f\inv(c_i) = \set{x \in X}{f(x) = c_i}.
+	P_i := f\inv(c_i) = \set{x \in X}{f(x) = c_i}.
 	\end{equation*}
 \end{defi}
 
 \begin{prop}
-Sejam $(X,\Sigma,\mu)$ um espaço de medida, $f: X \to \R$ uma função simples, $c_1,\cdots,c_n \in \R$ as constantes distintas tais que $f(X)=\{c_1,\cdots,c_n\}$, $I \coloneqq \{1,\cdots,n\}$ e $\set{P_i}{i \in I}$ a partição associada a $f$. Então $\set{P_i}{i \in I}$ é uma partição de $X$ e 
+Sejam $(X,\Sigma,\mu)$ um espaço de medida, $f: X \to \R$ uma função simples, $c_1,\cdots,c_n \in \R$ as constantes distintas tais que $f(X)=\{c_1,\cdots,c_n\}$, $I := \{1,\cdots,n\}$ e $\set{P_i}{i \in I}$ a partição associada a $f$. Então $\set{P_i}{i \in I}$ é uma partição de $X$ e 
 	\begin{equation*}
 	f = \bigplus_{i=1}^n c_i \idc_{P_i}.
 	\end{equation*}
@@ -1670,9 +1682,9 @@ Sejam $(X,\Sigma,\mu)$ um espaço de medida e $f: X \to \R$ uma função simples
 	\end{equation*}
 \end{prop}
 \begin{proof}
-Como $f(X)$ é finito, existem únicos $c_1,\cdots,c_n \in \R$ distintos tais que $f(X)=\{c_1,\cdots,c_n\}$. Seja $I \coloneqq \{1,\cdots,n\}$. Definem-se os conjuntos
+Como $f(X)$ é finito, existem únicos $c_1,\cdots,c_n \in \R$ distintos tais que $f(X)=\{c_1,\cdots,c_n\}$. Seja $I := \{1,\cdots,n\}$. Definem-se os conjuntos
 	\begin{equation*}
-	P_i \coloneqq \set{x \in X}{f(x) = c_i}.
+	P_i := \set{x \in X}{f(x) = c_i}.
 	\end{equation*}
 Esses conjuntos formam claramente uma partição de $X$. Além disso, são mensuráveis pelos resultados do capítulo anterior. Por fim, seja $x \in X$. Existe $j \in I$ tal que $f(x)=c_j$ e $x \in P_j$. Nesse caso, $\idc_{P_j}(x)=1$ e, para todo $i \in I\setminus\{j\}$, $\idc_{P_i}(x)=0$, pois os conjuntos $P_i$ são disjuntos. Portanto
 	\begin{equation*}
@@ -1686,7 +1698,7 @@ Esses conjuntos formam claramente uma partição de $X$. Além disso, são mensu
 \begin{defi}
 Sejam $(X,\Sigma,\mu)$ um espaço de medida, $f : X \to \R$ uma função simples tal que $f=\bigplus_{i=1}^n c_i \idc_{P_i}$ e $M \in \Sigma$ um conjunto mensurável. A \emph{integral} de $f$ sobre $M$ com respeito a $\mu$ é o número
 	\begin{equation*}
-	\int_M f \coloneqq \bigplus_{i=1}^n c_i \mu(P_i \cap M).
+	\int_M f := \bigplus_{i=1}^n c_i \mu(P_i \cap M).
 	\end{equation*}
 Quando for necessário explicitar a medida $\mu$ usada, escreveremos $\displaystyle\int_{\mu,M} f$. No caso em que $M=X$, temos
 	\begin{equation*}
@@ -1730,22 +1742,22 @@ Sejam $(X,\Sigma,\mu)$ um espaço de medida, $f: X \to \R$ e $g: X \to \R$ funç
 	\end{enumerate}
 \end{prop}
 \begin{proof}
-Sejam $f=\bigplus_{i=1}^n c_i \idc_{P_i}$, $g=\bigplus_{j=1}^m d_j \idc_{Q_j}$, $I \coloneqq \{1,\cdots,n\}$ e $J \coloneqq \{1,\cdots,m\}$.
+Sejam $f=\bigplus_{i=1}^n c_i \idc_{P_i}$, $g=\bigplus_{j=1}^m d_j \idc_{Q_j}$, $I := \{1,\cdots,n\}$ e $J := \{1,\cdots,m\}$.
 \begin{enumerate}
 	\item Se $c=0$, vale a igualdade, pois $0f=0\idc_X$, logo
 	\begin{equation*}
 	\int_M 0f = 0\mu(M \cap X) = 0 = 0\int_M f.
 	\end{equation*}
-Se $c \neq 0$, então $cf(X)=\{cc_1,\cdots,cc_n\}$ e as constantes $cc_1,\cdots,cc_n$ são todas distintas. Definindo, para todo $i \in I$, $R_i \coloneqq \set{x \in X}{cf(x)=cc_i}$, os conjuntos $R_1,\cdots,R_n$ formam uma partição de $X$ em conjuntos mensuráveis. Além disso, temos $R_i=P_i$ para todo $i \in I$ porque, como $c \neq 0$, segue que $f(x)=c_i$ se, e somente se, $cf(x)=cc_i$. Portanto
+Se $c \neq 0$, então $cf(X)=\{cc_1,\cdots,cc_n\}$ e as constantes $cc_1,\cdots,cc_n$ são todas distintas. Definindo, para todo $i \in I$, $R_i := \set{x \in X}{cf(x)=cc_i}$, os conjuntos $R_1,\cdots,R_n$ formam uma partição de $X$ em conjuntos mensuráveis. Além disso, temos $R_i=P_i$ para todo $i \in I$ porque, como $c \neq 0$, segue que $f(x)=c_i$ se, e somente se, $cf(x)=cc_i$. Portanto
 	\begin{equation*}
 	\int_M cf = \bigplus_{i=1}^n cc_i \mu(R_i \cap M) = c\bigplus_{i=1}^n c_i \mu(P_i \cap M) = c\int_M f.
 	\end{equation*}
 	
 	\item Como $f(X)$ e $g(X)$ são conjuntos finitos,
 	\begin{equation*}
-	(f+g)(X) \coloneqq \set{c_i+d_j}{(i,j) \in I \times J}
+	(f+g)(X) := \set{c_i+d_j}{(i,j) \in I \times J}
 	\end{equation*}
-é um conjunto finito. No entanto, não necessariamente $(f+g)(X)$ tem $mn$ elementos, pois podem existir $(i_1,j_1),(i_2,j_2) \in I \times J$ distintos tais que $c_{i_1}+d_{j_1}=c_{i_2}+d_{j_2}$. Sejam $e_1,\cdots,e_l \in \R$ as constantes distintas tais que $(f+g)(X)=\{e_1,\cdots,e_l\}$, $K \coloneqq \{1,\cdots,l\}$ e $R_k \coloneqq \set{x \in X}{(f+g)(x)=e_k}$. Nesse caso, $\set{R_k}{k \in K}$ é uma partição de $X$ em conjuntos mensuráveis e
+é um conjunto finito. No entanto, não necessariamente $(f+g)(X)$ tem $mn$ elementos, pois podem existir $(i_1,j_1),(i_2,j_2) \in I \times J$ distintos tais que $c_{i_1}+d_{j_1}=c_{i_2}+d_{j_2}$. Sejam $e_1,\cdots,e_l \in \R$ as constantes distintas tais que $(f+g)(X)=\{e_1,\cdots,e_l\}$, $K := \{1,\cdots,l\}$ e $R_k := \set{x \in X}{(f+g)(x)=e_k}$. Nesse caso, $\set{R_k}{k \in K}$ é uma partição de $X$ em conjuntos mensuráveis e
 	\begin{equation*}
 	f+g=\bigplus_{k=1}^l e_k \idc_{R_k}.
 	\end{equation*}
