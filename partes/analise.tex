@@ -1,0 +1,118 @@
+\part{{\scshape Análise}}
+
+\chapter{Equações Diferenciais Ordinárias}
+
+\section{Equações Diferenciais Ordinárias e Soluções}
+
+\begin{defi}
+Sejam $n,d \in \N^*$ Uma \emph{equação diferencial ordinária $d$-dimensional de ordem $n$} é uma expressão $E$ da forma
+	\begin{equation*}
+	x^{(n)} = F(t, x, x^{(1)}, \cdots,x^{(n-1)}),
+	\end{equation*}
+em que $t \in \R$ é a variável \emph{tempo}, $x : \R \to \R^d$ é uma função, $A \subseteq \R \times (\R^d)^n$ é um aberto e $F: A \to \R^d$ é uma função contínua.
+\end{defi}
+
+\begin{defi}
+Seja $E: x^{(n)} = F(t, x, x^{(1)}, \cdots,x^{(n-1)})$ uma equação diferencial ordinária de dimensão $d$. Uma \emph{solução de $E$} é uma curva $\varphi: I \subseteq \R \to \R^d$ $n$-diferenciável tal que
+	\begin{equation*}
+	\varphi^{(n)} = F(t, \varphi(t), \varphi^{(1)}(t), \cdots,\varphi^{(n-1)}(t)).
+	\end{equation*}
+\end{defi}
+
+\begin{prop}[Redução de ordem]
+Seja $E: x^{(n)}(t) = F(t, x, x^{(1)}, \cdots,x^{(n-1)})$ uma equação diferencial ordinária de dimensão $d$ definida num aberto $A \subseteq \R \times (\R^d)^n$. Então existe equação diferencial ordinária $\bm E$ de dimensão $dn$
+	\begin{equation*}
+	 \bm x' = \bm F(t,\bm x)
+	\end{equation*}	
+tal que existe $\phi$ solução de $E$ se, e somente se, existe $\bm \phi$ solução de $\bm E$.
+\end{prop}
+\begin{proof}
+Definimos $\bm x = (x_0, \ldots,x_{n-1}) := (x,x^{(1)}, \cdots,x^{(n-1)})$, de modo que
+	\begin{align*}
+	\bm x' &= ((x_0)',\ldots,(x_{n-1})',(x_{n-1})') \\
+			&= (x^{(1)}, \ldots,x^{(n-1)},x^{(n)}) \\
+			&= (x_1,\ldots,x_{n-1},F(t, x, x^{(1)}, \cdots,x^{(n-1)})) \\
+			&= (x_1,\ldots,x_{n-1},F(t,\bm x))
+	\end{align*}	
+
+	Assim, definimos a função
+	\begin{align*}
+	\func{\bm F}{A}{\R^{dn}}{(t,\bm x)}{(x_1,\ldots,x_{n-1},F(t, \bm x))}
+	\end{align*}
+e então $\bm x' = \bm F(t,\bm x)$. Por fim, devemos mostrar que as soluções são equivalentes. Seja $\phi: I \subseteq \R \to \R^d$ solução de $E$. Então, para todo $k \in \{1,\ldots,n\}$, existe $\phi^{(k)}: \R \to \R^d$. Assim, definindo $\bm \phi := (\phi,\phi^{(1)},\ldots,\phi^{(n-1)})$, segue que $\bm \phi$ é solução de $\bm E$.
+\end{proof}
+
+Por causa dessa proposição, podemos representar qualquer equação diferencial ordinária como uma de ordem 1.
+
+\section{Existência e Unicidade de Soluções}
+
+
+
+\section{Soluções Maximais}
+
+\begin{defi}
+	Seja $E: x'=F(t,x)$ uma equação diferencial ordinária de dimensão $d$. Uma \emph{solução maximal de $E$} é uma solução $\phi: I \to \R^d$ de $E$ para a qual vale que, para toda solução $\psi: J \to \R^d$ de $E$ tal que $I \subseteq J$ e $\psi|_I = \phi$, então $I = J$ e $\phi = \psi$. O intervalo $I$ é o \emph{intervalo maximal}.
+\end{defi}
+
+\begin{defi}
+	Dado $(t_0,x_0) \in U$, defina
+	\begin{equation*}
+	S_{(t_0,x_0)} := \set{\phi: I_\phi \to \R^d}{\phi \text{\ \ é solução do problema de Cauchy}}.
+	\end{equation*}
+Dados $\phi ,\psi \in S_{(t_0,x_0)}$, definimos $\phi \leq \psi $ se, e somente se, $I_{\phi } \subseteq I_{\psi}$ e $\psi|_{I_\phi} = \phi $.
+\end{defi}
+
+\begin{prop}
+	A relação acima de fato é relação de ordem parcial.
+\end{prop}
+
+\begin{teo}
+	Seja $F: U \to \R^d$ uma função contínua definida num aberto $U \subseteq \R \times \R^d$. Então, para cada $(t_0,x_0) \in U$ existe solução maximal para o problema de Cauchy
+	\begin{equation*}
+	\begin{cases}
+		x' = F(t,x) \\
+		x(t_0)=x_0
+	\end{cases}
+	\end{equation*}
+\end{teo}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

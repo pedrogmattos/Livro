@@ -3,7 +3,7 @@
 
 % Dados do Livro
 \newcommand{\titulo}{Elementos de Matemática}
-\newcommand{\subtitulo}{Uma introdução a Conjuntos, Álgebra, Topologia, Análise e Geometria}
+\newcommand{\subtitulo}{Uma introdução a Conjuntos, Álgebra, Topologia e Geometria}
 \newcommand{\autor}{Pedro G. Mattos}
 \newcommand{\Autor}{Mattos, Pedro G.}
 \newcommand{\versao}{0.2.1}
@@ -15,8 +15,7 @@
 	pdfauthor={\autor}
 }
 
-\includeonly{capa,atencao,informacoes,conjuntos,algebra,topologia,analise,geometria}
-%\includeonly{geometria}
+\includeonly{elementos/capa,partes/conjuntos,partes/algebra,partes/topologiaegeometria}
 
 
 \begin{document}
@@ -25,16 +24,16 @@
 
 % Capa
 \renewcommand{\thepage}{C} % (Numera a página com 'C'.)
-\include{capa}
+\include{elementos/capa}
 
 \frontmatter % (Numera as páginas com algarismos romanos.)
 
 % ATENÇÃO SOBRE O LIVRO NÃO ESTAR TERMINADO
-\include{atencao}
+\include{elementos/atencao}
 
 % Páginas de Rosto e Informações de Citação e Licença
-\include{rosto}
-\include{informacoes}
+\include{elementos/rosto}
+\include{elementos/informacoes}
 
 % Sumário, Lista de Figuras e Lista de Tabelas
 %\dominitoc
@@ -46,9 +45,9 @@
 
 \cleardoublepage
 
-\include{prefacio}
-\include{agradecimentos}
-\include{introducao}
+\include{elementos/prefacio}
+\include{elementos/agradecimentos}
+\include{elementos/introducao}
 %\include{logica}
 
 % ELEMENTOS TEXTUAIS
@@ -56,16 +55,14 @@
 \mainmatter % (Numera as páginas com algarismos arábicos.)
 
 % Partes
-\include{conjuntos}
-\include{algebra}
-\include{topologia}
-\include{analise}
-\include{geometria}
+\include{partes/conjuntos}
+\include{partes/algebra}
+\include{partes/topologiaegeometria}
 
 % Apêndices
 \appendix % (Numera capítulos com letras.)
 
-\include{apendice}
+\include{elementos/apendice}
 
 % Ideia de apêndice: Lista de figuras históricas importantes na matemática.
 
@@ -81,7 +78,7 @@
 %\printindex[simb]
 
 % Licença
-\include{licenca}
+\include{elementos/licenca}
 
 % Bibliografia
 %\begin{thebibliography}{}
