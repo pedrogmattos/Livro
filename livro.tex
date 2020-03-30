@@ -1,12 +1,79 @@
 \documentclass[oneside,12pt]{book}
+
+%------------------------------------------------------------------------------------
+% PACOTES
+%------------------------------------------------------------------------------------
+
 \usepackage{estilo}
+\usepackage{matematica}
+
+%------------------------------------------------------------------------------------
+% COMANDOS
+%------------------------------------------------------------------------------------
+
+% Contadores
+
+%Renumerar Partes
+
+\renewcommand\thepart{\arabic{part}}
+%\setcounter{part}{-1}
+
+% Prefixa "\thepart." ao números do capítulo.
+%\makeatletter
+%\renewcommand{\p@chapter}{\thepart.}
+%\makeatother
+%OBS: Não está funcionando, não sei por quê... tentei criar este seguinte e funciona, mas fica mal diagramado.
+%\renewcommand\thechapter{\thepart.\arabic{chapter}}
+
+%Renumerar Capítulos
+\makeatletter
+\@addtoreset{chapter}{part}
+\makeatother
+
+%Renumerar Seções
+%\renewcommand\thesection{\arabic{section}}
+%\renewcommand\thesubsection{\thesection.\arabic{subsection}}
+
+%------------------------------------------------------------------------------------
+% AMBIENTES
+%------------------------------------------------------------------------------------
+
+%\swapnumbers
+
+% Estilo Definições
+\theoremstyle{definition}
+\newtheorem{defi}{Definição}[chapter]
+\newtheorem{axi}{Axioma}
+\newtheorem*{nota}{Notação}
+\newtheorem{exerc}{$\blacktriangleright$ Exercício}[chapter]
+
+% Estilo Teoremas
+\theoremstyle{plain}
+\newtheorem{teo}{Teorema}[chapter]
+\newtheorem{prop}[teo]{Proposição}
+\newtheorem{lema}[teo]{Lema}
+\newtheorem{coro}[teo]{Corolário}
+\newtheorem{conj}[teo]{Conjectura}
+\newtheorem{ex}{Exemplo}[chapter]
+
+\renewcommand{\qedsymbol}{$\blacksquare$} % Símbolo de demonstração.
+
+%------------------------------------------------------------------------------------
+% PARTES INCLUÍDAS
+%------------------------------------------------------------------------------------
+
+\includeonly{elementos/capa,partes/conjuntos,partes/algebra,partes/topologiaegeometria}
+
+%------------------------------------------------------------------------------------
+% DADOS
+%------------------------------------------------------------------------------------
 
 % Dados do Livro
 \newcommand{\titulo}{Elementos de Matemática}
 \newcommand{\subtitulo}{Uma introdução a Conjuntos, Álgebra, Topologia e Geometria}
 \newcommand{\autor}{Pedro G. Mattos}
 \newcommand{\Autor}{Mattos, Pedro G.}
-\newcommand{\versao}{0.2.1}
+\newcommand{\versao}{0.3}
 
 % Metadados do arquivo .PDF
 \hypersetup{
@@ -15,18 +82,24 @@
 	pdfauthor={\autor}
 }
 
-\includeonly{elementos/capa,partes/conjuntos,partes/algebra,partes/topologiaegeometria}
-
+%------------------------------------------------------------------------------------
+% DOCUMENTO
+%------------------------------------------------------------------------------------
 
 \begin{document}
+%------------------------------------------------
 % ELEMENTOS PRÉ-TEXTUAIS
-%---------------------------------------------------------------------------------------------------------------------------
+%------------------------------------------------
 
 % Capa
-\renewcommand{\thepage}{C} % (Numera a página com 'C'.)
+\renewcommand{\thepage}{C} % Numera a página com 'C'
 \include{elementos/capa}
 
-\frontmatter % (Numera as páginas com algarismos romanos.)
+\frontmatter % Numera as páginas com algarismos romanos
+
+%\renewcommand{\thepage}{{\small (\arabic{page})}}
+%\renewcommand{\thepage}{\arabic{page}}
+%\setcounter{page}{-10}
 
 % ATENÇÃO SOBRE O LIVRO NÃO ESTAR TERMINADO
 \include{elementos/atencao}
@@ -50,9 +123,11 @@
 \include{elementos/introducao}
 %\include{logica}
 
+%------------------------------------------------
 % ELEMENTOS TEXTUAIS
-%---------------------------------------------------------------------------------------------------------------------------
-\mainmatter % (Numera as páginas com algarismos arábicos.)
+%------------------------------------------------
+\mainmatter % Numera as páginas com algarismos arábicos
+
 
 % Partes
 \include{partes/conjuntos}
@@ -60,15 +135,16 @@
 \include{partes/topologiaegeometria}
 
 % Apêndices
-\appendix % (Numera capítulos com letras.)
+\appendix % Numera capítulos com letras
 
 \include{elementos/apendice}
 
 % Ideia de apêndice: Lista de figuras históricas importantes na matemática.
 
+%------------------------------------------------
 % ELEMENTOS PÓS-TEXTUAIS
-%---------------------------------------------------------------------------------------------------------------------------
-\backmatter % (Não numera capítulos.)
+%------------------------------------------------
+\backmatter % Não numera capítulos
 
 % Índice
 %\printindex

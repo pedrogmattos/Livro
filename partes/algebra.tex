@@ -1,7 +1,7 @@
 % NOTA 13/07/17
 % Estou escrevendo esta nota aqui por ser mais simples. Até agora tive a dúvida de que símbolos usar em relação a produtórios e somatórios. Resolvi usar um + grande para somatório e um \times grande para produtório quando se tratam de operações binárias em grupos e aneis, etc... No entanto, também existem o produto (Cartesiano) de grupos, os produtos de espaços topológicos e os produtos e somas diretas em estruturas algébricas. Pelo que li hoje, esses não têm muito a ver com as operações binárias (talvez algumas propriedade semelhante...). O produto, de modo geral, é o produto categórico. A soma direta é um caso mais específico e nem sempre é o coproduto categórico, mas esses detalhes não entendi muito e não pretendo tratar no livro (por enquanto). Eu deve então definir dois símbolos para produto. Um para produtório e outro para o produto de conjuntos, grupos, aneis... Acho que posso manter as operações binárias como \bigplus e \bigtimes (e mudar a aparência do símbolo que esses comandos produzem) e definir um novo comando para o produto no sentido de conjuntos e estruturas em geral, pois esse é o produto topológico.
 
-\part{{\scshape Álgebra}}
+\part{Álgebra}
 
 \chapter{Operações Binárias e Estruturas Básicas}
 
@@ -60,7 +60,7 @@ Seja $\bm X=(X, \opb )$ um magma. Uma \emph{identidade} com respeito a $\opb$ é
 	\end{equation*}
 \end{defi}
 
-Pode-se distinguir \emph{identidade à esquerda} e \emph{identidade à direita}, que seria o caso de $e$ se só satisfizesse, respectivamente, as iguadades da esquerda e da direita acima, mas não adotaremos essa distinção neste livro.
+Pode-se distinguir \emph{identidade à esquerda} e \emph{identidade à direita}, que seria o caso de $e$ se só satisfizesse, respectivamente, as igualdades da esquerda e da direita acima, mas não adotaremos essa distinção neste livro.
 
 \begin{prop}
 \label{prop:unic.elem.neut}
@@ -504,6 +504,21 @@ Portanto
 	\end{equation*}
 o que mostra que $m_1m_2 \in M^*$. Ainda, note que $\id \in M^*$, pois $\id \opb \id = \id$. Como $M^*$ é contém a identidade e fechado sob $\opb$, segue que $(M^*,\opb,\id)$ é um monoide (\ref{alge:prop.submon}). Por fim, $\bm{M^*}$ é um grupo pois, por definição, todo elemento tem inverso e ele é único.
 \end{proof}
+
+\begin{defi}
+Sejam $\bm G$ um grupo e $g \in G$. A \emph{conjugação} por $g$ é a função
+	\begin{align*}
+	\func{C_g}{G}{G}{h}{ghg\inv}.
+	\end{align*}
+A \emph{translação à direita} por $g$ é a função
+	\begin{align*}
+	\func{D_g}{G}{G}{h}{hg}.
+	\end{align*}
+A \emph{translação à esquerda} por $g$ é a função
+	\begin{align*}
+	\func{E_g}{G}{G}{h}{gh}.
+	\end{align*}
+\end{defi}
 
 \subsection{Coclasses e Índice de Subgrupo}
 
@@ -1567,105 +1582,7 @@ Seja $\bm V$ um espaço vetorial sobre um corpo $\bm C$.
 
 
 
-\section{Grupos Topológicos}
 
-\begin{defi}
-Um \emph{grupo topológico} é uma quádrupla $\bm G = ((G,\topo),\times,\inv,e)$ em que $(G,\topo)$ é um espaço topológico, $(G,\times,\inv,e)$ é um grupo e as operações
-	\begin{equation*}
-	\times: G^2 \to G \qquad\e\qquad \inv: G \to G
-	\end{equation*}
-são funções contínuas.% Um grupo \emph{discreto} é um grupo cuja topologia é discreta.
-\end{defi}
-
-\begin{defi}
-Sejam $\bm G$ um grupo e $h \in G$. A \emph{conjugação} por $h$ é a função
-	\begin{align*}
-	\func{C_h}{G}{G}{g}{ghg\inv}.
-	\end{align*}
-A \emph{translação à direita} por $h$ é a função
-	\begin{align*}
-	\func{D_h}{G}{G}{g}{hg}.
-	\end{align*}
-A \emph{translação à esquerda} por $h$ é a função
-	\begin{align*}
-	\func{E_h}{G}{G}{g}{hg}.
-	\end{align*}
-\end{defi}
-
-\begin{prop}
-Seja $\bm G$ um grupo topológico. As funções $C_h$, $D_h$ e $E_h$ são homeomorfismos para todo $h \in G$.
-\end{prop}
-\begin{proof}
-Para ver que as funções são bijeções, basta notar que $(C_h)\inv = C_{h \inv}$, $(D_h)\inv = D_{h \inv}$ e $(E_h)\inv = E_{h \inv}$. Para mostrar a continuidade, basta notar que da continuidade de $\times$ e das relações $E_h = \times \circ (\bm\cdot,h)$ e $D_h = \times \circ (h,\bm\cdot)$, segue que $E_h$ e $D_h$ são contínuas, e que da continuidade de $\inv$ e da relação $C_h = D_h \circ E_{h\inv}$, segue que $C_h$ é contínua.
-\end{proof}
-
-\begin{ex}
-Seja $\bm X$ um espaço topológico e $\bm G$ um grupo topológico. Consideremos o conjunto $\cont(X,G)$ das funções contínuas de $\bm X$ para $\bm G$ e as operações induzidas pontualmente de $G$ em $\cont(X,G)$ por $(f \times g)(x) := f(x) \times g(x)$, $(f\inv)(x) := (f(x))\inv$ e $e(x) := e$. A quádrupla $(\cont(X,G),\times,\inv,e)$ é um grupo. Consideramos agora a topologia \emph{compacto-aberto} $\topo$ gerada pelos conjuntos
-	\begin{equation*}
-	A_{K,U} := \set{f \in \cont(G,X)}{f(K) \subseteq U}
-	\end{equation*}
-em que $K \subseteq X$ é um compacto e $U \subseteq G$ é um aberto. Então $((\cont(X,G),\topo),\times,\inv,e)$ é um grupo topológico.
-\end{ex}
-
-\begin{prop}
-Seja $\bm G$ um grupo topológico.
-	\begin{enumerate}
-	\item Para todos $g \in G$ e $A \subseteq G$ aberto, $gA$ e $Ag$ são abertos;
-	\item Para todos $g \in G$ e $A \subseteq G$ fechado, $gA$ e $Ag$ são fechados;
-	\item Para todos $A \subseteq G$ aberto e $C \subseteq G$, $AC$ e $CA$ são abertos;
-	\item Para todos $F \subseteq G$ fechado e $K \subseteq G$ compacto, $FK$ e $KF$ são fechados.
-	\end{enumerate}
-\end{prop}
-\begin{proof}
-	\begin{enumerate}
-	\item Segue do fato de que $E_g$ e $D_g$ são homeomorfismos.
-	\item Segue do fato de que $E_g$ e $D_g$ são homeomorfismos.
-	\item Segue do fato de que
-		\begin{equation*}
-		AC = \bigcup_{c \in C} cA \e CA = \bigcup_{c \in C} Ac
-		\end{equation*}
-e de que os conjuntos $cA$ e $Ac$ são abertos para todo $c \in C$.
-	\item Seja $x \in \Fec{FK}$. Então existe uma rede $(x_\lambda)_{\lambda \in \Lambda} = (f_\lambda k_\lambda)$ tal que $x = \lim_{\lambda \in \Lambda} x_\lambda$. Como $K$ é compacto, existe uma sub-rede $k_{\lambda_\mu}$ tal que $k := \lim_{\mu \in M} k_{\lambda_\mu} \in K$, o que implica que $k\inv = \lim_{\mu \in M} {k_{\lambda_\mu}}\inv$ pela continuidade da inversa. Pela continuidade do produto, segue que a sub-rede $f_{\lambda_\mu} = (f_{\lambda_\mu}k_{\lambda_\mu}){k_{\lambda_\mu}}\inv$ converge para $f = xk\inv$, e $f \in F$ pois $F$ é fechado. Assim segue que $x=fk$, portanto $FK$ é fechado. A demonstração é análoga para $KF$.
-	\end{enumerate}
-\end{proof}
-
-\subsection{Homomorfismos}
-
-\begin{prop}
-Sejam $\bm G$ e $\bm H$ grupos topológicos e $h: G \to H$ um homomorfismo de grupos. Então $\phi$ é contínuo se, e somente se, $\phi$ é contínuo na identidade $\id \in G$.
-\end{prop}
-\begin{proof}
-A ida é evidente, basta mostrar a volta. Como $h$ é homomorfismo, $\phi \circ E_g = E_{\phi(g)} \circ \phi$ para todo $g \in G$. Mas $E_{\phi(g)} \circ \phi$ é contínua em $\id$, o que implica que $\phi \circ E_g$ é contínuo em $\id$ e, como $E_g$ é um homeomorfismo, segue que $\phi$ é contínuo em $g=E_g(\id)$.
-\end{proof}
-
-\subsection{Ação Contínua}
-
-\begin{defi}
-Sejam $\bm G$ um grupo topológico e $\bm X$ um espaço topológico. Uma \emph{ação contínua} de $\bm G$ em $\bm X$ é uma ação $\pt: G \times X \to X$ que é uma função contínua (com respeito à topologia produto).
-	\begin{align*}
-	\func{\pt}{G \times X}{X}{(g,x)}{g \pt x}
-	\end{align*}
-	\begin{align*}
-	\func{\pt}{G}{\simm{X}}{g}{
-		\begin{aligned}[t]
-		\func{g\pt}{X}{X}{x}{g\pt x}
-		\end{aligned}	
-	}
-	\end{align*}
-\end{defi}
-
-
-\section{Grupos Diferenciais}
-
-\begin{defi}
-Um \emph{grupo diferencial} é um par $(\bm G,\cdot)$ em que $\bm G$ é uma variedade diferencial, $(G,\cdot)$ é um grupo e as operações
-	\begin{equation*}
-	\times: G^2 \to G \qquad\e\qquad \inv: G \to G
-	\end{equation*}
-são funções diferenciáveis.
-\end{defi}
-
-Grupos diferenciais são comumente chamados de grupos de Lie, em homenagem ao matemático Sophus Lie.
 
 
 
@@ -2756,8 +2673,6 @@ Logo, como $\bm A$ é um domínio e $a \neq 0$, temos que $a_1-a_2=0$, o que imp
 Essa proposição é interessante pois, mesmo sem exigir que $(A \setminus \{0\},\times,\inv,1)$ seja um grupo, como no caso de $\bm A$ ser um corpo, se $\textbf{A}$ for um domínio, vale a lei do corte da multiplicação para elementos de $A \setminus \{0\}$.
 
 
-
-
 \subsection{Divisão e Associação em Anéis}
 
 \subsubsection{Divisão}
@@ -2765,14 +2680,14 @@ Essa proposição é interessante pois, mesmo sem exigir que $(A \setminus \{0\}
 % Parece-me que boa parte da teoria de divisão, associação e fatoração em anéis pode ser feita em monoides que têm um elemento 0 que satisfaz 0a=0. A soma dos anéis só é usada quando falamos de domínios euclidianos.
 
 \begin{defi}
-Sejam $\bm A$ um anel e $a,a' \in A$. O elemento $a$ \emph{divide} o elemento $a'$ em $\bm A$ se, e somente se, existe $q \in A$ tal que $aq=a'$. O elemento $a$ é um \emph{divisor} de $a'$ em $\bm A$, o elemento $a'$ é um \emph{múltiplo} de $a$ em $\bm A$ e denota-se $a \div_{\bm A} a'$. A relação $\div_{\bm A}$ é a relação de \emph{divisão} em $\bm A$. Sempre que possível, o subíndice de $\div_{\bm A}$ será omitido.
+Sejam $\bm A$ um anel e $a,a' \in A$. O elemento $a$ \emph{divide} o elemento $a'$ em $\bm A$ se, e somente se, existe $q \in A$ tal que $aq=a'$. O elemento $a$ é um \emph{divisor} de $a'$ em $\bm A$, o elemento $a'$ é um \emph{múltiplo} de $a$ em $\bm A$ e denota-se $a \dleq_{\bm A} a'$. A relação $\dleq_{\bm A}$ é a relação de \emph{divisão} em $\bm A$. Sempre que possível, o subíndice de $\dleq_{\bm A}$ será omitido.
 \end{defi}
 
 \begin{prop}
-Seja $\bm A$ um anel. A relação de divisão $\div$ em $A$ é uma pré-ordem.
+Seja $\bm A$ um anel. A relação de divisão $\dleq$ em $A$ é uma pré-ordem.
 \end{prop}
 \begin{proof}
-(Reflexividade) Seja $a \in A$. Então $a \div a$, pois $a \cdot 1 = a$. (Transitividade) Sejam $a,a',a'' \in A$ tais que $a \div a'$ e $a' \div a''$. Então existem $q,q' \in A$ tais que $aq=a'$ e $a'q'=a''$. Logo $aqq'=a''$. Como $qq' \in A$, segue que $a \div a''$.
+(Reflexividade) Seja $a \in A$. Então $a \dleq a$, pois $a \cdot 1 = a$. (Transitividade) Sejam $a,a',a'' \in A$ tais que $a \dleq a'$ e $a' \dleq a''$. Então existem $q,q' \in A$ tais que $aq=a'$ e $a'q'=a''$. Logo $aqq'=a''$. Como $qq' \in A$, segue que $a \dleq a''$.
 \end{proof}
 
 \begin{prop}
@@ -2780,62 +2695,62 @@ Seja $\bm A$ um anel.
 	\begin{enumerate}
 	\item Para todos $a \in A$ e $u \in A^*$,
 		\begin{equation*}
-		u \div a \div 0;
+		u \dleq a \dleq 0;
 		\end{equation*}
 	\item Para todos $a \in A$ e $u \in A^*$,
 		\begin{equation*}
-		a \div u \Leftrightarrow a \in A^*;
+		a \dleq u \Leftrightarrow a \in A^*;
 		\end{equation*}
 	\item Para todo $a \in A$,
 		\begin{equation*}
-		0 \div a \Leftrightarrow a=0.
+		0 \dleq a \Leftrightarrow a=0.
 		\end{equation*}
-	\item Para todos $a,a',a'' \in A$ tais que $a' \div a''$,
+	\item Para todos $a,a',a'' \in A$ tais que $a' \dleq a''$,
 		\begin{equation*}
-		aa' \div aa''.
+		aa' \dleq aa''.
 		\end{equation*}
-	\item Para todos $u \in A^*$ e $a,a' \in A$ tais que $a \div a'$,
+	\item Para todos $u \in A^*$ e $a,a' \in A$ tais que $a \dleq a'$,
 		\begin{equation*}
-		ua \div a \e a \div ua'.
+		ua \dleq a \e a \dleq ua'.
 		\end{equation*}
 	\end{enumerate}
 \end{prop}
 \begin{proof} Sejam $a \in A$ e $u \in A^*$.
 	\begin{enumerate}
-	\item Como $u \in A^*$, existe $u^{-1} \in A^*$. Então $u\cdot(u^{-1}a) = a$ e segue que $u \div a$; como $a \cdot 0 = 0$, segue que $a \div 0$;
-	\item Se $a \div u$, existe $q \in A$ tal que $aq=u$. Como $u \in A^*$, segue que $aqu^{-1}=uu^{-1}=1$. Logo $a \in A^*$. Reciprocamente, se $a \in A^*$, existe $a^{-1}$ tal que $aa^{-1}=1$. Então $aa^{-1}u=u$ Logo $a \div u$;
-	\item Se $0 \div a$, existe $q \in A$ tal que $0q=a$. Mas então $a=0$. A recíproca segue da reflexividade de $\div$.
-	\item Se $a' \div a''$, existe $q \in D$ tal que $a'q=a''$, logo $aa'q=aa''$, portanto $aa' \div aa''$.
-	\item Usaremos a comutatividade. Se $a \div a'$, existe $q \in A$ tal que $aq=a'$, portanto
+	\item Como $u \in A^*$, existe $u^{-1} \in A^*$. Então $u\cdot(u^{-1}a) = a$ e segue que $u \dleq a$; como $a \cdot 0 = 0$, segue que $a \dleq 0$;
+	\item Se $a \dleq u$, existe $q \in A$ tal que $aq=u$. Como $u \in A^*$, segue que $aqu^{-1}=uu^{-1}=1$. Logo $a \in A^*$. Reciprocamente, se $a \in A^*$, existe $a^{-1}$ tal que $aa^{-1}=1$. Então $aa^{-1}u=u$ Logo $a \dleq u$;
+	\item Se $0 \dleq a$, existe $q \in A$ tal que $0q=a$. Mas então $a=0$. A recíproca segue da reflexividade de $\dleq$.
+	\item Se $a' \dleq a''$, existe $q \in D$ tal que $a'q=a''$, logo $aa'q=aa''$, portanto $aa' \dleq aa''$.
+	\item Usaremos a comutatividade. Se $a \dleq a'$, existe $q \in A$ tal que $aq=a'$, portanto
 		\begin{equation*}
 		a' = uu\inv aq = uau\inv q,
 		\end{equation*}
-logo $ua \div a'$, e
+logo $ua \dleq a'$, e
 		\begin{equation*}
 		ua' = uaq = auq,
 		\end{equation*}
-logo $a \div ua'$.
+logo $a \dleq ua'$.
 	 \qedhere
 	\end{enumerate}
 \end{proof}
 
 \begin{prop}
-Sejam $\bm A$ um anel e $a,a' \in A$. Então $aA \subseteq a'A$ se, e somente se, $a' \div a$.
+Sejam $\bm A$ um anel e $a,a' \in A$. Então $aA \subseteq a'A$ se, e somente se, $a' \dleq a$.
 \end{prop}
 \begin{proof}
-Se $aA \subseteq a'A$, então $a \in a'A$. Mas isso significa que existe $q \in A$ tal que $a=a'q$, o que mostra que $a' \div a$. A implicação contrária segue a mesma demonstração com as implicação invertidas.
+Se $aA \subseteq a'A$, então $a \in a'A$. Mas isso significa que existe $q \in A$ tal que $a=a'q$, o que mostra que $a' \dleq a$. A implicação contrária segue a mesma demonstração com as implicação invertidas.
 \end{proof}
 
 \begin{defi}
 Sejam $\bm A$ um anel e $Q \subseteq A$. Um \emph{divisor comum} de $Q$ em $\bm A$ é um elemento $d \in A$ que satisfaz, para todo $q \in Q$,
 	\begin{equation*}
-	d \div q.
+	d \dleq q.
 	\end{equation*}
 O conjunto dos divisores comuns de $Q$ em $\bm A$ é $\divv_{\bm A}(Q)$. O subíndice $\bm A$ será omitido sempre que possível.
 
 Dualmente, um \emph{múltiplo comum} de $Q$ em $\bm A$ é um elemento $m \in A$ que satisfaz, para todo $q \in Q$,
 	\begin{equation*}
-	q \div m.
+	q \dleq m.
 	\end{equation*}
 O conjunto dos múltiplos comuns de $Q$ em $\bm A$ é $\mul_{\bm A}(Q)$. O subíndice $\bm A$ será omitido sempre que possível.
 \end{defi}
@@ -2857,17 +2772,17 @@ Sejam $\bm A$ um anel e $Q \subseteq A$. Então
 \end{prop}
 \begin{proof}
 	\begin{enumerate}
-	\item Seja $u \in A^*$. Então $u \div a$ para todo $a \in A$. Logo $u \in \divv(A)$. Por outro lado, seja $d \in \divv(A)$. Então $d \div a$ para todo $a \in A$. Em particular, $d \div 1$. Como $1 \in A^*$, então $d \in A^*$.
+	\item Seja $u \in A^*$. Então $u \dleq a$ para todo $a \in A$. Logo $u \in \divv(A)$. Por outro lado, seja $d \in \divv(A)$. Então $d \dleq a$ para todo $a \in A$. Em particular, $d \dleq 1$. Como $1 \in A^*$, então $d \in A^*$.
 
-	Seja $u \in A^*$. Então $u \div v$ para todo $v \in A^*$. Logo $u \in \divv(A^*)$. Por outro lado, seja $d \in \divv(A^*)$. Então $d \div u$ para todo $u \in A^*$. Logo $d \in A^*$.
+	Seja $u \in A^*$. Então $u \dleq v$ para todo $v \in A^*$. Logo $u \in \divv(A^*)$. Por outro lado, seja $d \in \divv(A^*)$. Então $d \dleq u$ para todo $u \in A^*$. Logo $d \in A^*$.
 
-	Seja $a \in A$. Se $a \notin \divv(\emptyset)$, existe $q \in \emptyset$ tal que $a \ndiv q$, o que é absurdo. Logo $a \in \divv(\emptyset)$.
+	Seja $a \in A$. Se $a \notin \divv(\emptyset)$, existe $q \in \emptyset$ tal que $a \ndleq q$, o que é absurdo. Logo $a \in \divv(\emptyset)$.
 
-	Seja $a \in A$. Então $a \div 0$, o que implica $a \in \divv(\{0\})$. A inclusão contrária é óbvia pela definição do conjunto dos divisores comuns.
+	Seja $a \in A$. Então $a \dleq 0$, o que implica $a \in \divv(\{0\})$. A inclusão contrária é óbvia pela definição do conjunto dos divisores comuns.
 
-	\item Se $Q = \emptyset$, então $\divv(Q) = A$. Se $Q \neq \emptyset$, sejam $q \in Q$ e $u \in A^*$. Então $u \div q$. Logo $u \in \divv(Q)$. A inclusão $\divv(Q) \subseteq A$ é óbvia pela definição do conjunto de divisores comuns;
+	\item Se $Q = \emptyset$, então $\divv(Q) = A$. Se $Q \neq \emptyset$, sejam $q \in Q$ e $u \in A^*$. Então $u \dleq q$. Logo $u \in \divv(Q)$. A inclusão $\divv(Q) \subseteq A$ é óbvia pela definição do conjunto de divisores comuns;
 
-	\item Suponhamos que $\{0\} \cap \divv(Q) \neq \emptyset$. Então $0 \in \divv(Q)$. Se $Q = \emptyset$, então $Q \subseteq \{0\}$. Caso contrário, seja $q \in Q$. Como $0 \div q$, segue que $q=0$. Em ambos os casos, $Q \subseteq \{0\}$.
+	\item Suponhamos que $\{0\} \cap \divv(Q) \neq \emptyset$. Então $0 \in \divv(Q)$. Se $Q = \emptyset$, então $Q \subseteq \{0\}$. Caso contrário, seja $q \in Q$. Como $0 \dleq q$, segue que $q=0$. Em ambos os casos, $Q \subseteq \{0\}$.
 
 	Suponhamos que $Q \subseteq \{0\}$. Então $Q=\emptyset$ ou $Q=\{0\}$. Pelo item 1, segue que $\divv(Q)=A$.
 
@@ -2876,19 +2791,19 @@ Sejam $\bm A$ um anel e $Q \subseteq A$. Então
 
 Dualmente,
 	\begin{enumerate}
-	\item Note que $a \div 0$ para todo $a \in A$. Logo $0 \in \mul(A)$. Por outro  lado, seja $m \in \mul(A)$. Então $a \div m$ para todo $a \in A$. Em particular, $0 \div m$, o que implica $m=0$.
+	\item Note que $a \dleq 0$ para todo $a \in A$. Logo $0 \in \mul(A)$. Por outro  lado, seja $m \in \mul(A)$. Então $a \dleq m$ para todo $a \in A$. Em particular, $0 \dleq m$, o que implica $m=0$.
 
-	Note que $0 \div 0$, o que implica $0 \in \mul(\{0\})$. Por outro lado, seja $m \in \mul(\{0\})$. Então $0 \div m$, o que implica $m=0$.
+	Note que $0 \dleq 0$, o que implica $0 \in \mul(\{0\})$. Por outro lado, seja $m \in \mul(\{0\})$. Então $0 \dleq m$, o que implica $m=0$.
 
-	Seja $a \in A$. Se $a \notin \mul(\emptyset)$, existe $q \in \emptyset$ tal que $q \ndiv a$, o que é absurdo. Logo $a \in \mul(\emptyset)$.
+	Seja $a \in A$. Se $a \notin \mul(\emptyset)$, existe $q \in \emptyset$ tal que $q \ndleq a$, o que é absurdo. Logo $a \in \mul(\emptyset)$.
 
-	Sejam $a \in A$ e $u \in A^*$. Então $u \div a$, o que implica $a \in \mul_{\\bm A}(A^*)$. A inclusão contrária é óbvia pela definição do conjunto dos múltiplos comuns.
+	Sejam $a \in A$ e $u \in A^*$. Então $u \dleq a$, o que implica $a \in \mul_{\\bm A}(A^*)$. A inclusão contrária é óbvia pela definição do conjunto dos múltiplos comuns.
 
-	\item Se $Q = \emptyset$, então $\mul(Q) = A$. Se $Q \neq \emptyset$, seja $q \in Q$. Então $q \div 0$, o que implica $\{0\} \in \mul(Q)$. A inclusão $\mul(Q) \subseteq A$ é óbvia pela definição do conjunto dos múltiplos comuns;
+	\item Se $Q = \emptyset$, então $\mul(Q) = A$. Se $Q \neq \emptyset$, seja $q \in Q$. Então $q \dleq 0$, o que implica $\{0\} \in \mul(Q)$. A inclusão $\mul(Q) \subseteq A$ é óbvia pela definição do conjunto dos múltiplos comuns;
 
-	\item Suponhamos que $A^* \cap \mul(Q) \neq \emptyset$. Seja $m \in A^* \cap \mul(Q)$. Se $Q = \emptyset$, então $Q \subseteq A^*$. Caso contrário, seja $q \in Q$. Como $q \div m$, pois $m \in \mul(Q)$, então $q \in A^*$, pois $m \in A^*$. Logo $Q \subseteq A^*$.
+	\item Suponhamos que $A^* \cap \mul(Q) \neq \emptyset$. Seja $m \in A^* \cap \mul(Q)$. Se $Q = \emptyset$, então $Q \subseteq A^*$. Caso contrário, seja $q \in Q$. Como $q \dleq m$, pois $m \in \mul(Q)$, então $q \in A^*$, pois $m \in A^*$. Logo $Q \subseteq A^*$.
 
-	Suponhamos que $Q \subseteq A^*$. Se $Q = \emptyset$, do item 1 segue que $\mul(Q)=A$. Caso contrário, sejam $q \in Q$ e $a \in A$. Então $q \in A^*$ e segue que $q \div a$. Logo $a \in \mul(Q)$. Por outro lado, a  inclusão $\mul(Q) \subseteq A$ é óbvia pela definição do conjunto de múltiplos comuns;
+	Suponhamos que $Q \subseteq A^*$. Se $Q = \emptyset$, do item 1 segue que $\mul(Q)=A$. Caso contrário, sejam $q \in Q$ e $a \in A$. Então $q \in A^*$ e segue que $q \dleq a$. Logo $a \in \mul(Q)$. Por outro lado, a  inclusão $\mul(Q) \subseteq A$ é óbvia pela definição do conjunto de múltiplos comuns;
 
 	Suponhamos que $\mul(Q) = A$. Então $A^* \cap \mul(Q) = A^*$. Como $1 \in A^*$, segue que $A^* \cap \mul(Q) \neq \emptyset$. \qedhere
 	\end{enumerate}
@@ -2917,14 +2832,14 @@ Dualmente,
 Sejam $\bm A$ um anel e $Q \subseteq A$. Um \emph{máximo divisor comum} de $Q$ em $\bm A$ é um elemento $d \in A$ que satisfaz
 	\begin{enumerate}
 	\item $d \in \divv(Q)$;
-	\item Para todo $d' \in \divv(Q)$, $d' \div d$.
+	\item Para todo $d' \in \divv(Q)$, $d' \dleq d$.
 	\end{enumerate}
 O conjunto dos máximos divisores comuns de $Q$ em $\bm A$ é $\mdc_{\bm A}(Q)$. Se $Q$ é um conjunto finito $Q=\{a_1,\ldots,a_n\}$, denota-se	$\mdc_{\bm A}(Q)=\mdc_{\bm A}(a_1,\ldots,a_n)$ ou $\mdc_{\bm A}(Q)=(a_1,\ldots,a_n)$. O subíndice $\bm A$ será omitido sempre que possível.
 
 Dualmente, um \emph{mínimo múltiplo comum} de $Q$ em $\bm A$ é um elemento $m \in A$ que satisfaz
 	\begin{enumerate}
 	\item $m \in \mul_{\bm A}(Q)$;
-	\item Para todo $m' \in \mul(Q)$, $m \div m'$.
+	\item Para todo $m' \in \mul(Q)$, $m \dleq m'$.
 	\end{enumerate}
 	O conjunto dos mínimos múltiplos comuns de $Q$ em $\bm A$ é $\mmc_{\bm A}(Q)$. Se $Q$ é um conjunto finito $Q=\{a_1, \ldots, a_n\}$, denota-se $\mmc_{\bm A} = \mmc_{\bm A}(a_1, \ldots, a_n)$ ou $\mmc_{\bm A}(Q) = [a_1, \ldots, a_n]$. O subíndice $\bm A$ será omitido sempre que possível.
 \end{defi}
@@ -2944,16 +2859,16 @@ Sejam $\bm A$ um anel e $Q \subseteq A$. Então
 \end{prop}
 \begin{proof}
 	\begin{enumerate}
-	\item Suponha que $Q \subseteq \{0\}$. Então $A = \divv(Q)$. Em particular, $0 \in \divv(Q)$. Ainda, para todo $d \in \divv(Q)$, vale que $d \div 0$, pois $d \in A$. Logo $0 \in \mdc(Q)$. Ainda, se $d \in \mdc(Q)$, então $0 \div d$, pois $0 \in \divv(Q)$ e $d \in \mdc(Q)$. Portanto $d=0$. Reciprocamente, se $\mdc(Q)=\{0\}$, então $0 \in \divv(Q)$; ou seja, $\{0\} \cap \divv(Q) \neq \emptyset$, o que implica que $Q \subseteq \{0\}$.
+	\item Suponha que $Q \subseteq \{0\}$. Então $A = \divv(Q)$. Em particular, $0 \in \divv(Q)$. Ainda, para todo $d \in \divv(Q)$, vale que $d \dleq 0$, pois $d \in A$. Logo $0 \in \mdc(Q)$. Ainda, se $d \in \mdc(Q)$, então $0 \dleq d$, pois $0 \in \divv(Q)$ e $d \in \mdc(Q)$. Portanto $d=0$. Reciprocamente, se $\mdc(Q)=\{0\}$, então $0 \in \divv(Q)$; ou seja, $\{0\} \cap \divv(Q) \neq \emptyset$, o que implica que $Q \subseteq \{0\}$.
 
-	\item Como $A^* \cap Q \neq \emptyset$, seja $a \in A^* \cap Q$. Se $u \in A^*$, então $u \in \divv(Q)$. Ainda, se $d \in \divv(Q)$, então, em particular, $d \div a$. Mas como $a \in A^*$, segue que $d \in A^*$. Logo $d \div u$, o que mostra que $u \in \mdc(Q)$. Por outro lado, se $d \in \mdc(Q)$, então $d \div a$. Como $a \in A^*$, então $d \in A^*$, e concluímos que $A^*=\mdc(Q)$.
+	\item Como $A^* \cap Q \neq \emptyset$, seja $a \in A^* \cap Q$. Se $u \in A^*$, então $u \in \divv(Q)$. Ainda, se $d \in \divv(Q)$, então, em particular, $d \dleq a$. Mas como $a \in A^*$, segue que $d \in A^*$. Logo $d \dleq u$, o que mostra que $u \in \mdc(Q)$. Por outro lado, se $d \in \mdc(Q)$, então $d \dleq a$. Como $a \in A^*$, então $d \in A^*$, e concluímos que $A^*=\mdc(Q)$.
 	\end{enumerate}
 
 Dualmente,
 	\begin{enumerate}
-	\item Suponha que $Q \subseteq A^*$. Então $A = \mul(Q)$. Seja $u \in A^*$. Então $u \in \mul(Q)$. Ainda, para todo $m \in \mul(Q)$, vale que $u \div m$, pois $m \in A$. Logo $u \in \mmc(Q)$. Ainda, se $m \in \mmc(Q)$, então $m \div u$, pois $u \in \mul(Q)$ e $m \in \mmc(Q)$. Portanto $m \in A^*$. Reciprocamente, se $\mmc(Q)=A^*$, então $1 \in \mul(Q)$; ou seja, $A^* \cap \mul(Q) \neq \emptyset$, o que implica $Q \subseteq A^*$.
+	\item Suponha que $Q \subseteq A^*$. Então $A = \mul(Q)$. Seja $u \in A^*$. Então $u \in \mul(Q)$. Ainda, para todo $m \in \mul(Q)$, vale que $u \dleq m$, pois $m \in A$. Logo $u \in \mmc(Q)$. Ainda, se $m \in \mmc(Q)$, então $m \dleq u$, pois $u \in \mul(Q)$ e $m \in \mmc(Q)$. Portanto $m \in A^*$. Reciprocamente, se $\mmc(Q)=A^*$, então $1 \in \mul(Q)$; ou seja, $A^* \cap \mul(Q) \neq \emptyset$, o que implica $Q \subseteq A^*$.
 
-	\item Como $\{0\} \cap Q \neq \emptyset$, então $0 \in Q$. Note que $0 \in \mul(Q)$. Ainda, se $m \in \mul(Q)$, então $0 \div m$. Então segue que $0 \in \mmc(Q)$. Por outro lado, se $m \in \mmc(Q)$, então $0 \div m$, o que implica $m=0$, e concluímos que $\mmc(Q) = \{0\}$.
+	\item Como $\{0\} \cap Q \neq \emptyset$, então $0 \in Q$. Note que $0 \in \mul(Q)$. Ainda, se $m \in \mul(Q)$, então $0 \dleq m$. Então segue que $0 \in \mmc(Q)$. Por outro lado, se $m \in \mmc(Q)$, então $0 \dleq m$, o que implica $m=0$, e concluímos que $\mmc(Q) = \{0\}$.
 	\qedhere
 	\end{enumerate}
 \end{proof}
@@ -2965,28 +2880,28 @@ Dualmente,
 %	\end{equation*}
 %\end{prop}
 %\begin{proof}
-%	Seja $d \in \mdc(B)$. Então $d \in \divv(B)$. Seja $x \in \mdc(C) \cup (B \setminus C)$. Se $x \in B \setminus C$, então $x \in B$, o que implica $d \div x$. Se $x \in \mdc(C)$
+%	Seja $d \in \mdc(B)$. Então $d \in \divv(B)$. Seja $x \in \mdc(C) \cup (B \setminus C)$. Se $x \in B \setminus C$, então $x \in B$, o que implica $d \dleq x$. Se $x \in \mdc(C)$
 % ...
-%	Então, como $C \subseteq B$, para todo $c \in C$, segue que $c \in B$ e, portanto, $d \div c$. Ainda, para todo $b \in B \setminus C$, segue que $b \in B$ e, portanto, $d \div b$.
+%	Então, como $C \subseteq B$, para todo $c \in C$, segue que $c \in B$ e, portanto, $d \dleq c$. Ainda, para todo $b \in B \setminus C$, segue que $b \in B$ e, portanto, $d \dleq b$.
 % ...
 %\end{proof}
 
 \subsubsection{Relação de Associação}
 
 \begin{defi}
-Sejam $\bm A$ um anel e $a,a' \in A$. O elemento $a$ é \emph{associado} ao elemento $a'$ em $\bm A$ se, e somente se, $a \div_{\bm A} a'$ e $a' \div_{\bm A} a$. Denota-se $a \sim_{\bm A} a'$. A relação $\sim_{\bm A}$ é a relação de \emph{associação} em $\bm A$. Sempre que possível, o subíndice de $\sim_{\bm A}$ será omitido.
+Sejam $\bm A$ um anel e $a,a' \in A$. O elemento $a$ é \emph{associado} ao elemento $a'$ em $\bm A$ se, e somente se, $a \dleq_{\bm A} a'$ e $a' \dleq_{\bm A} a$. Denota-se $a \sim_{\bm A} a'$. A relação $\sim_{\bm A}$ é a relação de \emph{associação} em $\bm A$. Sempre que possível, o subíndice de $\sim_{\bm A}$ será omitido.
 \end{defi}
 
-A relação $\sim$ de associação em anéis é uma equivaência, pois é a equivalência induzida pela pré-ordem de divisão $\div$ em anéis. Quando o anel $A$ é um domínio, essa relação é equivalente a existir $u \in A^*$ tal que $au=a'$.
+A relação $\sim$ de associação em anéis é uma equivaência, pois é a equivalência induzida pela pré-ordem de divisão $\dleq$ em anéis. Quando o anel $A$ é um domínio, essa relação é equivalente a existir $u \in A^*$ tal que $au=a'$.
 
 \begin{prop}
 Sejam $\bm A$ um domínio e $a,a' \in A$. Então $a \sim a'$ se, e somente se, existe $u \in A^*$ tal que $au=a'$.
 \end{prop}
 \begin{proof}
-Se $a \sim a'$, então $a \div a'$ e $a' \div a$. Isso é equivalente a existirem $q,q' \in A$ tais que $aq=a'$ e $a'q'=a$, o que é equivalente a $a=aqq'$ e $a'=a'q'q$.
+Se $a \sim a'$, então $a \dleq a'$ e $a' \dleq a$. Isso é equivalente a existirem $q,q' \in A$ tais que $aq=a'$ e $a'q'=a$, o que é equivalente a $a=aqq'$ e $a'=a'q'q$.
 Como $\bm A$ é um domínio, $a$ e $a'$ não são divisores de $0$, e concluímos que $qq'=q'q=1$, portanto $q,q' \in A^*$.
 
-Reciprocamente, se existe $u \in A^*$ tal que $au=a'$, então $a=a'u\inv$, portanto $a \div a'$ e $a' \div a$, logo $a \sim a'$.
+Reciprocamente, se existe $u \in A^*$ tal que $au=a'$, então $a=a'u\inv$, portanto $a \dleq a'$ e $a' \dleq a$, logo $a \sim a'$.
 \end{proof}
 
 \begin{prop}
@@ -3011,7 +2926,7 @@ Seja $\bm A$ um anel.
 Sejam $\bm D$ um domínio e $d_0, \ldots, d_{n-1} \in D$ não todos nulos. Se $d,d'$ são máximos divisores comuns de $d_0,\ldots,d_{n-1}$, então $d \sim d'$.
 \end{prop}
 \begin{proof}
-Como $d$ é máximo divisor comum de $d_0,\ldots,d_{n-1}$ e $d'$ é divisor comum de $d_0,\ldots,d_{n-1}$, então $d' \div d$. Analogamente, $d \div d'$.
+Como $d$ é máximo divisor comum de $d_0,\ldots,d_{n-1}$ e $d'$ é divisor comum de $d_0,\ldots,d_{n-1}$, então $d' \dleq d$. Analogamente, $d \dleq d'$.
 Portanto $d \sim d'$.
 %Então existem $u,v \in D$ tais que $d=d'u$ e $d'=dv$. Então $d=dvu$. Como $d \neq 0$ e $\bm D$ é domínio, segue que e $vu=1$. Portanto $u,v \in D^*$, o que implica $d \sim d'$.
 \end{proof}
@@ -3036,9 +2951,9 @@ Agora, sejam $d,d' \in D$ tais que $ui=dd'$. Então $i=u\inv dd'$. Se $d \notin 
 \end{proof}
 
 \begin{defi}
-Seja $\bm D$ um domínio. Um elemento \emph{primo} em $\bm D$ é um elemento $p \in D\setminus (D^* \cup \{0\})$ que satisfaz, para todos $d,d' \in D$ tais que $p \div dd'$,
+Seja $\bm D$ um domínio. Um elemento \emph{primo} em $\bm D$ é um elemento $p \in D\setminus (D^* \cup \{0\})$ que satisfaz, para todos $d,d' \in D$ tais que $p \dleq dd'$,
 		\begin{equation*}
-		p \div d \ou p \div d'.
+		p \dleq d \ou p \dleq d'.
 		\end{equation*}
 \end{defi}
 
@@ -3046,7 +2961,7 @@ Seja $\bm D$ um domínio. Um elemento \emph{primo} em $\bm D$ é um elemento $p 
 Sejam $\bm D$ um domínio e $p$ primo.
 	\begin{enumerate}
 	\item Para todo $p' \in D$ tal que $p \sim p'$, $p'$ é primo;
-	\item Para todos $d_0,\ldots,d_{n-1}$ tais que $p \div d_0 \cdots d_{n-1}$, existe $i \in [n]$ tal que $p \div d_i$;
+	\item Para todos $d_0,\ldots,d_{n-1}$ tais que $p \dleq d_0 \cdots d_{n-1}$, existe $i \in [n]$ tal que $p \dleq d_i$;
 	\item O elemento $p$ é irredutível.
 	\end{enumerate}
 \end{prop}
@@ -3054,15 +2969,15 @@ Sejam $\bm D$ um domínio e $p$ primo.
 	\begin{enumerate}
 	\item Se $p \sim p'$, existe $u \in D^*$ tal que $p'=up$. Primeiro, devemos mostrar que $up \notin (D^* \cup \{0\})$. Como $u \neq 0$, $p \neq 0$ e $\bm D$ é domínio, então $up \neq 0$. Supondo que $up \in D^*$, então existe $u' \in D^*$ tal que $u'(up)=1$. Mas isso implica $u'u=p\inv$, uma contradição porque $p \notin D^*$. Logo $p'=up \notin D^*$.
 	
-Agora, usaremos a comutatividade. Sejam $d,d' \in D$ tais que $up \div dd'$. Então
+Agora, usaremos a comutatividade. Sejam $d,d' \in D$ tais que $up \dleq dd'$. Então
 	\begin{equation*}
-	p = u\inv up \div u\inv dd'.
+	p = u\inv up \dleq u\inv dd'.
 	\end{equation*}
-Como $p$ é primo, $p \div u\inv d$ ou $p \div d'$. No primeiro caso, $up \div uu\inv d=d$; no segundo caso, segue pela comutatividade que $p'=up \div d'$.
+Como $p$ é primo, $p \dleq u\inv d$ ou $p \dleq d'$. No primeiro caso, $up \dleq uu\inv d=d$; no segundo caso, segue pela comutatividade que $p'=up \dleq d'$.
 	
-	\item Vamos mostrar por indução em $n$. O caso base é trivial. Para demonstrar o passo indutivo, suponhamos que a propridade vale para um natural $n$. Então, se $p \div d_0 \cdots d_n$, então como $p$ é primo, $p \div d_0 \cdots d_{n-1}$ ou $p \div d_n$. Se $p \div d_0 \cdots d_{n-1}$, pela hipótese de indução, existe $i \in [n]$ tal que $p \div d_i$; caso contrário, $p \div d_n$. Logo existe $i \in [n+1]$ tal que $p \div d_i$.
+	\item Vamos mostrar por indução em $n$. O caso base é trivial. Para demonstrar o passo indutivo, suponhamos que a propridade vale para um natural $n$. Então, se $p \dleq d_0 \cdots d_n$, então como $p$ é primo, $p \dleq d_0 \cdots d_{n-1}$ ou $p \dleq d_n$. Se $p \dleq d_0 \cdots d_{n-1}$, pela hipótese de indução, existe $i \in [n]$ tal que $p \dleq d_i$; caso contrário, $p \dleq d_n$. Logo existe $i \in [n+1]$ tal que $p \dleq d_i$.
 	
-	\item Se existem $d,d' \in D$ tais que $p=dd'$, então $p \div dd'$. Como $p$ é primo, então $p \div d$ ou $p \div d'$. Se $p \div d$, então existe $q \in D$ tal que $pq=d$. Assim, segue que $p=dd'=pqd'$ e, como $\bm D$ é domínio, $1=qd'$. Logo $d' \in D^*$. Analogamente, se $p \div d'$, segue que $d \in D^*$ (usamos a comutatividade). Portanto $p$ é irredutível.
+	\item Se existem $d,d' \in D$ tais que $p=dd'$, então $p \dleq dd'$. Como $p$ é primo, então $p \dleq d$ ou $p \dleq d'$. Se $p \dleq d$, então existe $q \in D$ tal que $pq=d$. Assim, segue que $p=dd'=pqd'$ e, como $\bm D$ é domínio, $1=qd'$. Logo $d' \in D^*$. Analogamente, se $p \dleq d'$, segue que $d \in D^*$ (usamos a comutatividade). Portanto $p$ é irredutível.
 	\end{enumerate}
 \end{proof}
 
@@ -3177,17 +3092,17 @@ A proposição a seguir relaciona duas noções da teoria de fatoação em anéi
 Seja $\bm D$ um domínio tal que todo elemento não nulo tem fatoração. Então as fatorações de $d \in D \setminus \{0\}$ são todas associadas se, e somente se, todo elemento irredutível de $\bm D$ é primo.
 \end{prop}
 \begin{proof}
-Suponhamos, primeiro, que todas fatorações de $d \in D \setminus \{0\}$ são associadas. Sejam $p$ irredutível e $d,d' \in D$ tais que $p \div dd'$. Então existe $q \in D$ tal que $pq=dd'$. Se $d=0$ ou $d'=0$, então $p \div d$ ou $p \div d'$. Caso $d,d \in D \setminus \{0\}$, então existem fatorações $(p_i)_{i \in [n]}$ de $d$ e $(p'_i)_{i \in [n']}$ de $d'$. Ainda, como $p \neq 0$, segue que $q \neq 0$, pois $D$ é domínio, e portanto existe fatoração $(q_i)_{i \in [m]}$ de $q$. Isso implica que
+Suponhamos, primeiro, que todas fatorações de $d \in D \setminus \{0\}$ são associadas. Sejam $p$ irredutível e $d,d' \in D$ tais que $p \dleq dd'$. Então existe $q \in D$ tal que $pq=dd'$. Se $d=0$ ou $d'=0$, então $p \dleq d$ ou $p \dleq d'$. Caso $d,d \in D \setminus \{0\}$, então existem fatorações $(p_i)_{i \in [n]}$ de $d$ e $(p'_i)_{i \in [n']}$ de $d'$. Ainda, como $p \neq 0$, segue que $q \neq 0$, pois $D$ é domínio, e portanto existe fatoração $(q_i)_{i \in [m]}$ de $q$. Isso implica que
 	\begin{equation*}
 	p \bigtimes_{i \in [m]} q_i \sim pq \sim \left( \bigtimes_{i \in [n]} p_i \right) \left( \bigtimes_{i \in [n']} p'_i \right).
 	\end{equation*}
-Temos assim duas fatorações para $pq$, o que implica que existe $i \in [n]$ tal que $p \sim p_i$ ou $i \in [n']$ tal que $p \sim p'_i$. Então $p \div p_i$ ou $p \div p'_i$. No primeiro caso, como $p_i \div d$, segue que $p \div d$. No segundo caso, como $p'_i \div d'$, segue que $p \div d'$. Portanto $p$ é primo.
+Temos assim duas fatorações para $pq$, o que implica que existe $i \in [n]$ tal que $p \sim p_i$ ou $i \in [n']$ tal que $p \sim p'_i$. Então $p \dleq p_i$ ou $p \dleq p'_i$. No primeiro caso, como $p_i \dleq d$, segue que $p \dleq d$. No segundo caso, como $p'_i \dleq d'$, segue que $p \dleq d'$. Portanto $p$ é primo.
 
 Reciprocamente, suponhamos todo irredutível de $\bm D$ é primo. Sejam $d \in D \setminus \{0\}$, e $(p_i)_{i \in [n]}$ e $(p'_i)_{i \in [n']}$ fatorações de $d$, de modo que
 	\begin{equation*}
 	\bigtimes_{i \in [n]} p_i \sim d \sim \bigtimes_{i \in [n']} p'_i.
 	\end{equation*}
-Todos os irredutíveis $p_0,\ldots,p_{n-1}$ e $p'_0,\ldots,p'_{n'-1}$ são primos. Mostraremos que essas fatorações são associadas por indução em $m := \min\{n,n'\}$. Para o caso base, se $m=0$, então $n=0$ ou $n'=0$. Em ambos os casos, $d \sim 1$, ou seja, $d \in D^*$, portanto todas suas fatorações são associadas. Agora, seja $m > 0$ e suponhamos que todas fatorações com $k$ e $k'$ fatores de um elemento $d \in D \setminus \{0\}$ tais que $\min\{k,k'\}<m$ sejam associadas. Como $p_{n-1}$ é primo  e $p_{n-1} \div d \sim p'_0 \cdots p'_{n'-1}$, existe $k \in [n']$ tal que $p_{n-1} \div p'_k$. Portanto existe $q \in D$ tal que $p_{n-1}q = p'_k$. Como $p_{n-1}$ e $p'_k$ são irredutíveis, então $q \in D^*$. Portanto segue que
+Todos os irredutíveis $p_0,\ldots,p_{n-1}$ e $p'_0,\ldots,p'_{n'-1}$ são primos. Mostraremos que essas fatorações são associadas por indução em $m := \min\{n,n'\}$. Para o caso base, se $m=0$, então $n=0$ ou $n'=0$. Em ambos os casos, $d \sim 1$, ou seja, $d \in D^*$, portanto todas suas fatorações são associadas. Agora, seja $m > 0$ e suponhamos que todas fatorações com $k$ e $k'$ fatores de um elemento $d \in D \setminus \{0\}$ tais que $\min\{k,k'\}<m$ sejam associadas. Como $p_{n-1}$ é primo  e $p_{n-1} \dleq d \sim p'_0 \cdots p'_{n'-1}$, existe $k \in [n']$ tal que $p_{n-1} \dleq p'_k$. Portanto existe $q \in D$ tal que $p_{n-1}q = p'_k$. Como $p_{n-1}$ e $p'_k$ são irredutíveis, então $q \in D^*$. Portanto segue que
 	\begin{align*}
 	\left( \bigtimes_{i \in [n-1]} p_i \right) p_{n-1} &\sim \left( \bigtimes_{i \in [k]} p'_i \right) p_{n-1} \left( \bigtimes_{i \in [n'-k-1]} p'_{i+k+1} \right) \\
 		&= \left( \bigtimes_{i \in [k]} p'_i \right)\left( \bigtimes_{i \in [n'-k-1]} p'_{i+k+1} \right) p_{n-1}.
@@ -3285,11 +3200,11 @@ Seja $\bm D$ um domínio de fatoração única. Então, para todos $a,b \in D \s
 Se $\{a,b\} \cap D^* \neq \emptyset$, então $\mdc(a,b) = D^*$. Suponhamos, então, que $\{a,b\} \notin D \setminus (D^* \cup \{0\})$.
 Como $\bm D$ é domínio de fatoração única, existem fatorações $(p_i)_{i \in [n]}$ de $a$ e $(q_i)_{i \in [n']}$ de $b$. Seja $k$ o número de fatores $p_i$ e $q_j$ associados, e suponhamos, sem perda de generalidade, que, para todo $i \leq k$, $p_i \sim q_i$ e, para todo $i \geq k+1$ e $j\geq k+1$, $p_i \not\sim q_j$.
 
-Se $k=0$, mostraremos que $\mdc(a,b) = D^*$. Para isso, mostraremos que $1 \in \mdc(a,b)$. Notamos que $1 \in D^* \subseteq \divv(a,b)$. Agora, seja $d \in \divv(a,b)$. Como $0 \notin \{a,b\}$, então $0 \notin \divv(a,b)$. Se $d \in D^*$, então $d \div 1$, logo $1 \in \mdc(a,b)$. Se $d \in D \setminus (D^* \cup \{0\})$, então existe $p$ irredutível tal que $p \div d$, portanto $p \div a$ e $p \div b$. Como $\bm D$ é domínio de fatoração única, $p$ é primo. Então segue que existem $i$ e $j$ tais que $p \div p_i$ e $p \div q_j$. Como esses elementoss são irredutíveis, $p \sim p_i$ e $p \sim q_j$, portanto $p_i \sim q_j$, o que é uma constradição. Logo $1 \in \mdc(a,b)$. Como todos os máximos divisores comuns são associados, então $D^* = \mdc(a,b)$.
+Se $k=0$, mostraremos que $\mdc(a,b) = D^*$. Para isso, mostraremos que $1 \in \mdc(a,b)$. Notamos que $1 \in D^* \subseteq \divv(a,b)$. Agora, seja $d \in \divv(a,b)$. Como $0 \notin \{a,b\}$, então $0 \notin \divv(a,b)$. Se $d \in D^*$, então $d \dleq 1$, logo $1 \in \mdc(a,b)$. Se $d \in D \setminus (D^* \cup \{0\})$, então existe $p$ irredutível tal que $p \dleq d$, portanto $p \dleq a$ e $p \dleq b$. Como $\bm D$ é domínio de fatoração única, $p$ é primo. Então segue que existem $i$ e $j$ tais que $p \dleq p_i$ e $p \dleq q_j$. Como esses elementoss são irredutíveis, $p \sim p_i$ e $p \sim q_j$, portanto $p_i \sim q_j$, o que é uma constradição. Logo $1 \in \mdc(a,b)$. Como todos os máximos divisores comuns são associados, então $D^* = \mdc(a,b)$.
 
-Se $k \geq 1$, mostraremos que $p_1 \cdots p_k \in \mdc(a,b)$. Primeiro, notamos que $p_1 \cdots p_k \div a$ e $q_1 \cdots q_k \div b$. Como $p_i \sim q_i$ para todo $i \leq k$, então $p_1 \cdots p_k \sim q_1 \cdots q_k$. Logo $p_1 \cdots p_k \div q_1 \cdots q_k$ e, da trasitividade de $\div$, segue que $p_1 \cdots p_k \div b$. Logo $p_1 \cdots p_k \in \divv(a,b)$. Então, seja $d \in \divv(a,b)$. Se $d \in D^*$, então $d \div p_1 \cdots p_k$. Logo $p_1 \cdots p_k \in \mdc(a,b)$. Se $d \in D \setminus (D^* \cup \{0\})$, então existem $r_1,\ldots,r_l$ irredutíveis tais que $d = r_1 \cdots r_l$. Por $\bm D$ ser domínio, $r_1,\ldots,r_l$ são primos. Como $d \div a$, então $r_1 \div p_1 \cdots p_k$. Como $r_1$ é primo, existe $i_1 \in \{1,\ldots,k\}$ tal que $r_1 \div p_{i_1}$. Seja $s_1 \in D$ tal que $r_1s_1 = p_{i_1}$. Como $r_1$ e $p_{i_1}$ são irredutíveis, então $r_1 \sim p_{i_1}$, o que implica $s_1 \in D^*$. Então $r_2 \cdots r_l \div p_1 \cdots p_{i_1-1} \cdot s_1 \cdot p_{i_1+1} \cdots p_k$, pois $\bm D$ é domínio. Repetindo o processo indutivamente, conclui-se que existem $i_1, \ldots,i_m$ tais que $r_j \sim p_{i_j}$ para todo $j \in \{1,\ldots,l\}$.
+Se $k \geq 1$, mostraremos que $p_1 \cdots p_k \in \mdc(a,b)$. Primeiro, notamos que $p_1 \cdots p_k \dleq a$ e $q_1 \cdots q_k \dleq b$. Como $p_i \sim q_i$ para todo $i \leq k$, então $p_1 \cdots p_k \sim q_1 \cdots q_k$. Logo $p_1 \cdots p_k \dleq q_1 \cdots q_k$ e, da trasitividade de $\dleq$, segue que $p_1 \cdots p_k \dleq b$. Logo $p_1 \cdots p_k \in \divv(a,b)$. Então, seja $d \in \divv(a,b)$. Se $d \in D^*$, então $d \dleq p_1 \cdots p_k$. Logo $p_1 \cdots p_k \in \mdc(a,b)$. Se $d \in D \setminus (D^* \cup \{0\})$, então existem $r_1,\ldots,r_l$ irredutíveis tais que $d = r_1 \cdots r_l$. Por $\bm D$ ser domínio, $r_1,\ldots,r_l$ são primos. Como $d \dleq a$, então $r_1 \dleq p_1 \cdots p_k$. Como $r_1$ é primo, existe $i_1 \in \{1,\ldots,k\}$ tal que $r_1 \dleq p_{i_1}$. Seja $s_1 \in D$ tal que $r_1s_1 = p_{i_1}$. Como $r_1$ e $p_{i_1}$ são irredutíveis, então $r_1 \sim p_{i_1}$, o que implica $s_1 \in D^*$. Então $r_2 \cdots r_l \dleq p_1 \cdots p_{i_1-1} \cdot s_1 \cdot p_{i_1+1} \cdots p_k$, pois $\bm D$ é domínio. Repetindo o processo indutivamente, conclui-se que existem $i_1, \ldots,i_m$ tais que $r_j \sim p_{i_j}$ para todo $j \in \{1,\ldots,l\}$.
 %(MELHORAR ARUMENTAÇÃO DA INDUÇÃO).
-Da mesma forma, conclui-se que que existem $i'_1, \ldots,i'_m$ tais que $r_j \sim q_{i'_j}$ para todo $j \in \{1,\ldots,l\}$. Portanto, da reflexividade e transitividade de $\sim$, segue que $p_{i_j} \sim q_{i'_j}$ para todo $i,j$. Então $d \sim p_{i_1} \cdots p_{i_m} \sim q_{i'_1} \cdots q_{i'_m}$. Como $p_{i_1} \cdots p_{i_m} \div p_1 \cdots p_k$ e $q_{i'_1} \cdots q_{i'_m} \div q_1 \cdots q_k$, então $d \div p_1 \cdots p_k$.
+Da mesma forma, conclui-se que que existem $i'_1, \ldots,i'_m$ tais que $r_j \sim q_{i'_j}$ para todo $j \in \{1,\ldots,l\}$. Portanto, da reflexividade e transitividade de $\sim$, segue que $p_{i_j} \sim q_{i'_j}$ para todo $i,j$. Então $d \sim p_{i_1} \cdots p_{i_m} \sim q_{i'_1} \cdots q_{i'_m}$. Como $p_{i_1} \cdots p_{i_m} \dleq p_1 \cdots p_k$ e $q_{i'_1} \cdots q_{i'_m} \dleq q_1 \cdots q_k$, então $d \dleq p_1 \cdots p_k$.
 %(MELHORAR ARGUMENTAÇÃO FINAL)
 \end{proof}
 
@@ -3646,9 +3561,9 @@ e segue que $p' \in C[x]^*$, $p'(\alpha)=(a_n)^{-1}p'(\alpha)=0$ e $p'$ é môni
 	\item Se $f \in k[x] \setminus k$ é irredutível em $k[x]$ com raiz $\alpha$, então $f(x)=c(x-\alpha_1)\cdots(x-\alpha_n)$ em $k[x]$, com $\alpha_1=\alpha$ e $c \in k \setminus \{0\}$.
 	\end{enumerate}
 \end{teo}
-\begin{proof}
-PULEI, tem nas notas mas não tudo.
-\end{proof}
+%\begin{proof}
+%PULEI, tem nas notas mas não tudo.
+%\end{proof}
 
 \begin{defi}
 	Uma extensão de corpos $k \subseteq K$ é uma \emph{extensão normal} se ela satisfaz uma das três condições do teorema acima.
@@ -3658,14 +3573,14 @@ OBS: Se $k \subseteq \overline{k}$ é uma extensão algébrica, então todo $\be
 
 	Se $k \subseteq K$ é extensão algébrica, então $k \subseteq K \subseteq \overline{K}$ são extensões algébricas, então $k \subseteq \overline{K}$ é extensão algébrica. Então $\overline{k} \sim \overline{K}$ é fecho algébrico de $k$.
 
-(?????)
+%(?????)
 
 \begin{prop}
 	Seja $k \subseteq K$ um extensão algébrica e $\sigma: K \to K$ um homomorfismo de cropos que satisfaz $\sigma|_k=id|_k$. Então $\sigma$ é um isomorfismo de corpos.
 \end{prop}
-\begin{proof}
-...
-\end{proof}
+%\begin{proof}
+%...
+%\end{proof}
 
 \begin{defi}
 	Seja $E \subseteq F$ uma extensão algébrica e $\sigma:E \to L$ um homomorfismo de corpos tal que $L$ é algebricamente fechaado, $\sigma(E) \subseteq L$ é uma extensão algébrica ($L$ é fecho algébrico de $\sigma(E)$)
@@ -3677,9 +3592,9 @@ OBS: Se $k \subseteq \overline{k}$ é uma extensão algébrica, então todo $\be
 \begin{lema}
 	$|S_\sigma|$ depende de $E \subseteq F$, mas não depende de $\sigma$ nem de $L$.
 \end{lema}
-\begin{proof}
-... vários diagramas
-\end{proof}
+%\begin{proof}
+%... vários diagramas
+%\end{proof}
 
 \begin{defi}
 	Seja $E \subseteq F$ uma extensão algébrica. O \emph{grau de separabilidade} da extensão é $[F:E]_S := |S_\sigma|$. (Pode escolher $l=\overline{E}$ e $\sigma$ inclusão.)
@@ -3697,9 +3612,9 @@ OBS: Se $k \subseteq \overline{k}$ é uma extensão algébrica, então todo $\be
 		\end{equation*}
 	\end{enumerate}
 \end{teo}
-\begin{proof}
-...
-\end{proof}
+%\begin{proof}
+%...
+%\end{proof}
 
 \begin{defi}
 	Seja $E \subseteq K$ uma extensão finita. Ela é \emph{separável} se $[K:E]_S=[K:E]$.
@@ -3714,7 +3629,6 @@ OBS: Se $k \subseteq \overline{k}$ é uma extensão algébrica, então todo $\be
 	\end{equation*}
 	Como $[F:E]_S \leq [F:E]$ e $[K:F]_S \leq [K:F]$, segue o corolário.
 \end{proof}
-
 
 \section{Matrizes}
 
@@ -3961,6 +3875,358 @@ Assim, concluímos que $M\id_d=M$. Analogamente, mostra-se que $\id_dM=M$, e con
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\chapter{Corpos}
+
+\section{Corpo e Subcorpo}
+
+Já demos a definição de um corpo no capítulo de anéis, mas agora pretendemos ressaltar essa definição.
+
+\begin{defi}
+Um \emph{corpo} é uma lista $\bm C = (C,+,-,0,\times,\inv,1)$ tal que
+	\begin{enumerate}
+	\item $(C,+,-,0,\times,1)$ é um anel;
+	\item $(C \setminus \{0\},\times,\inv,1)$ é um grupo (comutativo).
+	\end{enumerate} 
+\end{defi}
+
+\section{Corpo de Frações}
+
+\begin{defi}
+Seja $\bm D$ um domínio. A \emph{equivalência de frações} em $D \times D \setminus \{0\}$ é a relação definida por: para todos $(n,d),(n',d') \in D \times D*$,
+	\begin{equation*}
+	(n,d) \sim (n',d') \Leftrightarrow nd' = dn'.
+	\end{equation*}
+\end{defi}
+
+\begin{prop}
+Seja $\bm D$ um domínio. A \emph{equivalência de frações} em $D \times D \setminus \{0\}$ é uma equivalência.
+\end{prop}
+\begin{proof}
+(Reflexividade) Segue direto de $nd=dn$ para todo $(n,d) \in D \times D \setminus \{0\}$.
+
+(Simetria) Segue direto de $nd'=dn'$ se, e somente se, $dn'=nd'$ para todos $(n,d),(n',d') \in D \times D*$.
+
+(Transitividade) Sejam $(n,d),(n',d'),(n'',d'') \in D \times D \setminus \{0\}$ tais que $(n,d) \sim (n',d')$ e $(n',d') \sim (n'',d'')$. Isso significa que $nd' = dn'$ e $n'd'' = d'n''$. Então segue que
+	\begin{equation*}
+	d'(nd'') = nd'd'' = dn'd'' = dd'n'' = d'(dn'')
+	\end{equation*}
+logo, como $d \neq 0$, segue da propriedade de cancelamento que
+	\begin{equation*}
+	nd'' = dn'',
+	\end{equation*}
+o que significa que $(n,d) \sim (n'',d'')$.
+\end{proof}
+
+Note que a transitividade exige que valha a prorpiedade de cancelamente, por isso precisamos de um domínio, e também exige a comutatividade da multiplicação. Como essa relação é uma equivalência, podemos considerar o quociente desse conjunto pela relação, e obtemos o que se chama corpo de frações.
+
+\begin{defi}
+Seja $\bm D$ um domínio. O \emph{corpo de frações} de $\bm D$ é o conjunto
+	\begin{equation*}
+	Q(D) := \quo{D \times D \setminus \{0\}}{\sim}.
+	\end{equation*}
+Os elementos de $Q(D)$ são \emph{frações} e são denotadas
+	\begin{equation*}
+	\frac{n}{d} := [(n,d)].
+	\end{equation*}
+A \emph{adição de frações} é a função
+	\begin{align*}
+	\func{+}{Q(D) \times Q(D)}{Q(D)}{\left( \frac{n}{d},\frac{n'}{d'} \right)}{\frac{nd'+dn'}{dd'}}
+	\end{align*}
+A \emph{inversa da adição de frações} é a função
+	\begin{align*}
+	\func{-}{Q(D)}{Q(D)}{\frac{n}{d}}{\frac{-n}{d}}
+	\end{align*}
+A \emph{nulidade de frações} é a fração
+	\begin{equation*}
+	0 := \frac{0}{1}.
+	\end{equation*}
+A \emph{multiplicação de frações} é a função
+	\begin{align*}
+	\func{+}{Q(D) \times Q(D)}{Q(D)}{\left( \frac{n}{d},\frac{n'}{d'} \right)}{\frac{nn'}{dd'}};
+	\end{align*}
+A \emph{inversa da multiplicação de frações} é a função
+	\begin{align*}
+	\func{\inv}{Q(D) \setminus \{0\}}{Q(D) \setminus \{0\}}{\frac{n}{d}}{\frac{d}{n}};
+	\end{align*}
+A \emph{unidade de frações} é a fração
+	\begin{equation*}
+	1 := \frac{1}{1}.
+	\end{equation*}
+\end{defi}
+
+\begin{defi}
+Seja $\bm D$ um domínio. A lista $(Q(D),+,-,0,\times,\inv,1)$ é um corpo.
+\end{defi}
+\begin{proof}
+Exercício simples.
+\end{proof}
+
+\begin{defi}
+Seja $\bm D$ um domínio. A \emph{inclusão canônica} de $D$ em $Q(D)$ é a função
+	\begin{align*}
+	\func{\inclu}{D}{Q(D)}{a}{\frac{a}{1}}.
+	\end{align*}
+\end{defi}
+
+\begin{prop}
+Seja $\bm D$ um domínio. A inclusão $\iota\colon D \to Q(D)$ é um homomorfismo injetivo de anéis.
+\end{prop}
+
+\begin{prop}[Propriedade Universal]
+\label{alg:prop.univer.corpo.frac}
+Sejam $\bm D$ um domínio, $\bm C$ um corpo e $h\colon D \to C$ um homomorfismo injetivo de anel. Existe um único homomorfismo injetivo de anel $\bar h\colon Q(D) \to C$ tal que $\bar h \circ \iota = h$ (o diagrama comuta).
+\begin{figure}
+\centering
+\begin{tikzpicture}[node distance=2.5cm, auto]
+	\node (C) {$\bm D$};
+	\node (G) [above of=C] {$\displaystyle\bm{Q(D)}$};
+	\node (X) [right of=C] {$\bm C$};
+	\draw[->] (C) to node [swap] {$h$} (X);
+	\draw[->, dashed] (G) to node {$\bar h$} (X);
+	\draw[->] (C) to node {$\iota$} (G);
+\end{tikzpicture}
+\end{figure}
+\end{prop}
+\begin{proof}
+Definimos
+	\begin{align*}
+	\func{\bar h}{Q(D)}{C}{\frac{n}{d}}{h(n)h(d)\inv}.
+	\end{align*}
+Mostremos primeiro que essa função está bem definida. Primeiro, note que, como $h$ é injetiva e $d \neq 0$, então $h(d) \neq 0$, portanto existe $h(d)\inv \in C$. Agora, sejam $(n,d),(n',d') \in D \times D \setminus \{0\}$ tais que $\frac{n}{d} = \frac{n'}{d'}$. Então $nd'=dn'$, e segue da injetividade de $h$ vale que $h(nd') = h(dn')$. Mas então $h(n)h(d')=h(d)h(n')$, o que implica que $h(n)h(d)\inv = h(n')h(d')\inv$, e segue que
+	\begin{equation*}
+	\bar h\left( \frac{n}{d} \right) = h(n)h(d)\inv = h(n')h(d')\inv = \bar h\left( \frac{n'}{d'} \right).
+	\end{equation*}
+
+Agora mostremos que $\bar h$ é homomorfismo de anel. (Homomorfismo de grupo) Sejam $\frac{n}{d},\frac{n'}{d'} \in Q(D)$. Então
+	\begin{align*}
+	\bar h\left( \frac{n}{d} + \frac{n'}{d'} \right) &= \bar h\left( \frac{nd'+dn'}{dd'} \right) \\
+		&= h(nd'+dn')h(dd')\inv \\
+		&= (h(n)h(d')+h(d)h(n'))h(d)\inv h(d')\inv \\
+		&= h(n)h(d)\inv + h(n')h(d')\inv \\
+		&= \bar h\left( \frac{n}{d} \right) + \bar h \left( \frac{n'}{d'} \right).
+	\end{align*}
+
+(Homomorfismo de monoide) Sejam $\frac{n}{d},\frac{n'}{d'} \in Q(D)$. Então
+	\begin{align*}
+	\bar h\left( \frac{n}{d}\frac{n'}{d'} \right) &= \bar h\left( \frac{nn'}{dd'} \right) \\
+		&= h(nn')h(dd')\inv \\
+		&= h(n)h(n')h(d)\inv h(d')\inv \\
+		&= h(n)h(d)\inv h(n')h(d')\inv \\
+		&= \bar h\left( \frac{n}{d} \right)\bar h \left( \frac{n'}{d'} \right).
+	\end{align*}
+Ainda, como $h$ é homomorfismo de anel, $h(1)=1$, logo
+	\begin{equation*}
+	\bar h\left( \frac{1}{1} \right) = h(1)h(1)\inv = 1.
+	\end{equation*}
+
+(Injetividade) Sejam $\frac{n}{d},\frac{n'}{d'} \in Q(D)$ tais que $\bar h(\frac{n}{d}) = \bar h(\frac{n'}{d'})$. Então
+	\begin{align*}
+	0 &= \bar h \left( \frac{n}{d} \right) - \bar h \left( \frac{n'}{d'} \right) \\
+		&= \bar h \left( \frac{n}{d} - \frac{n'}{d'} \right) \\
+		&= \bar h \left( \frac{nd'-dn'}{dd'} \right) \\
+		&= h(nd'-dn')h(dd')\inv.
+	\end{align*}
+Como $d \neq 0$ e $d' \neq 0$, segue que $h(nd'-dn')=0$, e da injetividade de $h$ segue que $nd'-dn'=0$, logo $nd'=dn'$, o que significa que $\frac{n}{d} = \frac{n'}{d'}$.
+
+%(Unicidade) Seja $g\colon Q(D) \to C$ um homomorfismo injetivo de anel tal que $g \circ \iota = h$. Então, para todos $m$
+\end{proof}
+
+
+\subsection{Os Números Racionais \ensuremath{\Q}}
+
+Essa construção, aplicada ao anel dos números inteiro, é o conjunto dos números racionais.
+
+\begin{defi}
+$\Q : = Q(\Z)$.
+\end{defi}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection{Funções de Arredondamento}
+
+
+\subsubsection{Chão e teto}
+
+\begin{defi}
+A função \emph{chão} é a função
+	\begin{align*}
+	\func{\chao{\var}}{\R}{\Z}{x}{\max\set{i \in \Z}{i \leq x}}.
+	\end{align*}
+A função \emph{teto} é a função
+	\begin{align*}
+	\func{\teto{\var}}{\R}{\Z}{x}{\min\set{i \in \Z}{i \geq x}}.
+	\end{align*}
+\end{defi}
+
+\begin{prop}
+Para todo $x \in \R$,
+	\begin{enumerate}
+	\item (Conjugação)
+		\begin{align*}
+		-\chao{x} &= \teto{-x} \\
+		-\teto{x} &= \chao{-x};
+		\end{align*}
+	\item (Idempotência)
+		\begin{align*}
+		\chao{\chao{x}} &= \chao{x} \\
+		\teto{\teto{x}} &= \teto{x};
+		\end{align*}
+	\end{enumerate}
+\end{prop}
+
+
+
+\begin{prop}
+Para todo $x, x' \in \R$ e todo $i \in \Z$,
+	\begin{enumerate}
+	\item
+		\begin{align*}
+		\chao{x+i} &= \chao{x}+i \\
+		\teto{x+i} &= \teto{x}+i;
+		\end{align*}
+
+	\item
+		\begin{align*}
+		\chao{x}+\chao{x'} &\leq \chao{x+x'} \leq \chao{x}+\chao{x'}+1 \\
+		-1+\teto{x}+\teto{x'} &\leq \teto{x+x'} \leq \teto{x}+\teto{x'};
+		\end{align*}
+	\end{enumerate}
+\end{prop}
+
+
+
+\begin{prop}
+Para todos $x,x' \in \R$, $x'>0$ e todos $i,i' \in \Z$, $i>0$,
+	\begin{enumerate}
+	\item 
+		\begin{align*}
+		\chao{\frac{\chao{x}+i'}{i}} &= \chao{\frac{x+i'}{i}} \\
+		\teto{\frac{\teto{x}+i'}{i}} &= \teto{\frac{x+i'}{i}};
+		\end{align*}
+
+	\item
+		\begin{align*}
+		\teto{\frac{i'}{i}} - 1 &= \chao{\frac{i'-1}{i}} \\
+		\chao{\frac{i'}{i}} + 1 &= \teto{\frac{i'+1}{i}};
+		\end{align*}
+
+	\item	
+		\begin{align*}
+		\chao{\frac{\chao{x \div x'}}{i}} &= \chao{\frac{x}{x'i}} \\	
+		\teto{\frac{\teto{\frac{x}{x'}}}{i}} &= \teto{\frac{x}{x'i}}.
+		\end{align*}
+	
+	\end{enumerate}
+\end{prop}
+
+
+
+
+\subsubsection{Resto e parte fracionária}
+
+\begin{defi}
+Sejam $x,y \in \R$, $x' \neq 0$. O \emph{resto} de $x$ com respeito a $x'$ é
+	\begin{equation*}
+	\resto{x}{x'} := x - x'\chao{\frac{x}{x'}}.
+	\end{equation*}
+A \emph{parte fracionária} de $x$ é o resto de $x$ com respeito a $1$:
+	\begin{equation*}
+	\resfra{x} := \resto{x}{1}.
+	\end{equation*}
+\end{defi}
+
+\begin{prop}
+Sejam $x,x' \in \R$, $x' \neq 0$.
+	\begin{enumerate}
+	\item Se $x'>0$,
+		\begin{equation*}
+		0 \leq \resto{x}{x'} < x';
+		\end{equation*}
+
+	\item Se $x'<0$,
+		\begin{equation*}
+		x' < \resto{x}{x'} \leq 0;
+		\end{equation*}
+	\end{enumerate}
+\end{prop}
+
+
+
+
+
+\begin{prop}
+Seja $x \in \R$,
+	\begin{equation*}
+	\teto{\resfra{x}} = \teto{x} - \chao{x} = \begin{cases}
+			0,& x \in \Z \\
+			1,& x \notin \Z.
+		\end{cases}
+	\end{equation*}
+\end{prop}
+
+
+\begin{prop}
+Sejam $x \in \R$, $i \in \Z$, $i > 0$.
+	\begin{equation*}
+	\teto{\resfra{ \frac{x}{i} }} = \teto{\frac{x}{i}} - \chao{\frac{x}{i}}  = \begin{cases}
+			0,& x \in i\Z \\
+			1,& x \notin i\Z.
+		\end{cases}
+	\end{equation*}
+\end{prop}
+
+
+\subsubsection{Arredondamento}
+
+\begin{defi}
+A função \emph{arredondamento meio para baixo} é a função
+	\begin{align*}
+	\func{\arrebai{\var}}{\R}{\Z}{x}{\teto{x-\frac{1}{2}}}.
+	\end{align*}
+A função \emph{arredondamento meio para cima} é a função
+	\begin{align*}
+	\func{\arrecim{\var}}{\R}{\Z}{x}{\chao{x+\frac{1}{2}}}.
+	\end{align*}
+\end{defi}
+
+
+
+
+
+
+
+
+
 \chapter{Espaços Lineares}
 
 \section{Módulos}
@@ -3968,7 +4234,7 @@ Assim, concluímos que $M\id_d=M$. Analogamente, mostra-se que $\id_dM=M$, e con
 \begin{defi}
 Seja $\bm A=(A,+,-,0,\cdot,1)$ um anel. Um \emph{módulo (à esquerda)} sobre $\bm A$ é um par $(\bm M,\bm \cdot)$ em que $\bm M=(M,\bm +,\bm -,\bm 0)$ é um grupo comutativo e $\bm \cdot\colon \bm A \age \bm M$ é uma ação de anel ($\bm \cdot\colon \bm A \to \End(\bm M)$ é um homomorfismo de anel); ou seja,
 	\begin{enumerate}
-	\item  Para todo $a \in \bm A$, a função $a \bm \cdot\colon \bm M \to \bm M$ é um homomorfismo de grupo:
+	\item  Para todo $a \in A$, a função $a \bm \cdot\colon \bm M \to \bm M$ é um homomorfismo de grupo:
 		\begin{enumerate}
 		\item Para todos $m_0,m_1 \in M$,
 			\begin{equation*}
@@ -4268,10 +4534,10 @@ e
 	\end{align*}
 \end{proof}
 
-Para generalizar esse resultado, lembremos que o produto de uma família $(C_i)_{i \in I}$ de conjuntos é $\prod_{i \in I} C_i$ e, quando $C_i=C$, temos que $\prod{i \in I} C_i = C^I$ e os elementos de $C^I$ são funções $c=(c_i)_{i \in I}$ de $I$ em $C$.
+Para generalizar esse resultado, lembremos que o produto de uma família $(C_i)_{i \in I}$ de conjuntos é $\prod_{i \in I} C_i$ e, quando $C_i=C$, temos que $\prod_{i \in I} C_i = C^I$ e os elementos de $C^I$ são funções $c=(c_i)_{i \in I}$ de $I$ em $C$.
 
 \begin{prop}
-Sejam $X$ um conjunto e $\bm C$ um corpo. Então $\bm {C^I}=(C^I,\bm +,\bm\cdot)$, em que
+Sejam $I$ um conjunto e $\bm C$ um corpo. Então $\bm {C^I}=(C^I,\bm +,\bm\cdot)$, em que
 	\begin{align*}
 	\func{\bm +}{C^I}{C^I}{(\bm c,\bm c')}{(c_i+c'_i)_{i \in I}}
 	\end{align*}
@@ -4282,6 +4548,10 @@ e
 é um espaço vetorial sobre $\bm C$.
 \end{prop}
 
+Esse exemplo pode ser ainda mais generalizado como a seguir.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{comment}
 \begin{prop}[Espaço de Funções]
 Sejam $\bm V$ e $\bm W$ espaços vetoriais sobre um corpo $\bm C$. Então $\bm{W^V}=(W^V,+,\cdot)$, em que
 	\begin{align*}
@@ -4324,6 +4594,52 @@ o que mostra que $c(\bm f_1+\bm f_2)=c\bm f_1+c \bm f_2$. Agora, sejam $c_1,c_2 
 	&=(c_1\bm f+c_2\bm f)(\bm v),
 	\end{align*}
 o que mostra que $(c_1+c_2)\bm f=c_1\bm f+c_2\bm f$. Assim, concluímos que $(W^V,+,\cdot)$ é um espaço vetorial sobre $\bm C$.
+\end{proof}
+\end{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{prop}[Espaço de Funções]
+Sejam $X$ um conjunto e $\bm V$ um espaço vetorial sobre um corpo $\bm C$. Então $\bm{V^X}=(V^X,+,\cdot)$, em que
+	\begin{align*}
+	\func{+}{V^X \times V^X}{V^X}{(\bm f_1,\bm f_2)}{
+		\begin{aligned}[t]
+		\func{\bm f_1+\bm f_2}{X}{V}{x}{\bm f_1(x)+\bm f_2(x).}
+		\end{aligned}
+	}
+	\end{align*}
+e
+\begin{align*}
+	\func{\cdot}{C \times V^X}{V^X}{(c,\bm f)}{
+		\begin{aligned}[t]
+		\func{c\bm f}{X}{V}{x}{c\bm f(x),}
+		\end{aligned}
+	}
+	\end{align*}
+é um espaço vetorial sobre $\bm C$.
+\end{prop}
+\begin{proof}
+Primeiro, sabemos que $(V^X,+)$ é um grupo comutativo com identidade $0\colon V^X \times V^X \to V^X$ definida por $0(x)=0$. Devemos então mostrar que $\cdot\colon C \times V^X \to V^X$ satisfaz os itens da definição de espaço vetorial. Primeiro, seja $\bm f \in V^X$. Então, para todo $x \in X$, $(1\bm f)(x)=1\bm f(x)=\bm f(x)$, o que mostra que $1\bm f=\bm f$. Agora, sejam $c_1,c_2 \in C$ e $\bm f \in V^X$. Então, para todo $x \in X$,
+	\begin{equation*}
+	((c_1c_2)\bm f)(x) = (c_1c_2)\bm f(x) = c_1(c_2\bm f(x)) = c_1(c_2\bm f)(x) = (c_1(c_2\bm f))(x),
+	\end{equation*}
+o que mostra que $(c_1c_2)\bm f=c_1(c_2\bm f)$.
+
+Por fim, devemos mostrar as propriedades distributivas. Sejam $c \in C$ e $\bm f_1,\bm f_2 \in V^X$. Então, para todo $x \in X$,
+	\begin{align*}
+	(c(\bm f_1+\bm f_2))(x)&=c(\bm f_1+\bm f_2)(x) \\
+	&=c(\bm f_1(x)+\bm f_2(x)) \\
+	&= c\bm f_1(x)+c \bm f_2(x) \\
+	&= (c\bm f_1)(x)+(c \bm f_2)(x) \\
+	&=(c\bm f_1+c \bm f_2)(x),
+	\end{align*}
+o que mostra que $c(\bm f_1+\bm f_2)=c\bm f_1+c \bm f_2$. Agora, sejam $c_1,c_2 \in C$ e $\bm f \in V^X$. Então, para todo $x \in X$,
+	\begin{align*}
+	((c_1+c_2)\bm f)(x) &= (c_1+c_2) \bm f(x) \\
+	&=c_1\bm f(x)+c_2\bm f(x) \\
+	&=(c_1\bm f)(x)+(c_2\bm f)(x) \\
+	&=(c_1\bm f+c_2\bm f)(x),
+	\end{align*}
+o que mostra que $(c_1+c_2)\bm f=c_1\bm f+c_2\bm f$. Assim, concluímos que $(V^X,+,\cdot)$ é um espaço vetorial sobre $\bm C$.
 \end{proof}
 
 \begin{defi}
@@ -4967,12 +5283,108 @@ O coproduto de espaços vetoriais é também chamado de \emph{soma} ou \emph{som
 %	\end{equation*}
 %que satisfaz ${j_p}^2 (v) = -v$.
 
-\chapter{Álgebra Multilinear}
+
+
+
+\section{Projeções Lineares}
+
+\begin{defi}
+Seja $\bm V$ um espaço linear sobre um corpo $\bm C$. Uma \emph{projeção linear} em $\bm V$ é uma função linear $p\colon V \to V$ idenpotente: $p^2=p$.
+\end{defi}
+
+\begin{prop}
+Sejam $\bm V$ um espaço linear sobre um corpo $\bm C$ e $p\colon V \to V$ uma projeção linear.
+	\begin{enumerate}
+	\item $p|_{p(V)} = \Id|_{p(V)}$;
+	
+	\item $(\Id-p) \colon V \to V$ é uma projeção linear em $\bm V$;
+	
+	\item $(\Id-p)\inv(0) = p(V)$ e $(\Id-p)(V) = p\inv(0)$;
+	
+	\item $V = p(V) \oplus p\inv(0) = p(V) \oplus (\Id-p)(V)$;
+	
+	\item Para todo $\lambda \in C \setminus \{0,1\}$,
+		\begin{equation*}
+		(\lambda\Id-p)\inv = \frac{1}{\lambda}\Id + \frac{1}{\lambda(1-\lambda)}p
+		\end{equation*}
+portanto $\Esp(p) \subseteq \{0,1\}$;
+
+	\item $p$ é invertível se, e somente se, $p=\Id$.
+
+	\item Se $p \neq 0$, seu polinômio mínimo é $x^2-x = x(x-1)$, logo $p$ é diagonalizável pois tem raízes distintas.
+	\end{enumerate}
+\end{prop}
+\begin{proof}
+	\begin{enumerate}	
+	\item Seja $v \in p(V)$. Então existe $v' \in V$ tal que $v=p(v')$, logo
+		\begin{equation*}
+		p(v) = p(p(v')) = p^2(v') = p(v') = v.
+		\end{equation*}
+	
+	\item A função $\Id-p$ é linear pois é uma diferença de funções lineares. Basta mostrar que ela é idempotente. Basta notar que% Para todo $v \in V$,
+%		\begin{align*}
+%		(\Id-p)^2(v) &= (\Id-p)(v-p(v)) \\
+%			&= \Id(v-p(v)) - p(v-p(v)) \\
+%			&= v-p(v)-p(v)+p^2(v) \\
+%			&= v-p(v)-p(v)+p(v)\\
+%			&= v-p(v)\\
+%			&= (\Id-p)(v)
+%		\end{align*}
+%o que implica que $(\Id-p)^2 = \Id-p$.
+		\begin{equation*}
+		(\Id-p)^2 = \Id-p-p+p^2 = \Id-p-p+p = \Id-p.
+		\end{equation*}
+% INTERESSANTE poder multiplicar funções lineares assim, como se fosse a distributividade de multiplicação e adição. Provar isso generalizando depois.
+	
+	\item Seja $v \in (\Id-p)\inv(0)$. Então $(\Id-p)(v)=0$, logo $v=p(v)$, o que implica que $v \in p(V)$. Reciprocamente, seja $v \in p(V)$. Então do item 1 segue que $p(v) = v$, logo $(\Id-p)(v) = v-p(v) = v-v = 0$.
+
+A outra relação segue de $(\Id-p)$ ser projeção e $p = \Id - (\Id-p)$.
+
+	\item Seja $v \in p(V) \cap p\inv(0)$. Então $p(v)=0$ e $p(v)=v$, o que implica que $v = p(v) = 0$. Assim temos que $p(V) \cap p\inv(0) = \{0\}$.
+%Sejam $v in p(V)$ e $v' \in p\inv(0)$ e $c,c' \in C$ tais que $cv+c'v'=0$. Então
+%		\begin{equation*}
+%		0 = p(0) = p(cv+c'v') = cp(v)+c'p(v') = cv
+%		\end{equation*}
+%logo $c=0$, portanto $0 = cv+c'v'=c'v'$, o que implica que $c'=0$.
+	
+	Seja $v \in V$. Então $p(v) \in p(V)$ e $(\Id-p)(v) \in p\inv(0)$ (pois $(\Id-p)(V) = p\inv(0)$), logo $v = p(v) + (\Id-p)(v)$, o que mostra que $V = p(V) + p\inv(V)$.
+	
+	\item Note que
+		\begin{equation*}
+		\frac{1}{1-\lambda} - \frac{1}{\lambda} - \frac{1}{\lambda(1-\lambda)} = \frac{\lambda - (\lambda - 1) - 1}{\lambda(1-\lambda)} = 0,
+		\end{equation*}
+logo
+		\begin{align*}
+		(\lambda\Id - p) \circ \left( \frac{1}{\lambda}\Id + \frac{1}{\lambda(1-\lambda)}p \right) &= \Id + \frac{1}{1-\lambda}p - \frac{1}{\lambda}p - \frac{1}{\lambda(1-\lambda)}p^2 \\
+%			&= \Id + \frac{1}{1-\lambda}p - \frac{1}{\lambda}p - \frac{1}{\lambda(1-\lambda)}p \\
+			&= \Id + \left( \frac{1}{1-\lambda} - \frac{1}{\lambda} - \frac{1}{\lambda(1-\lambda)} \right) p \\
+			&= \Id.
+		\end{align*}
+e
+	\begin{equation*}
+	\left( \frac{1}{\lambda}\Id + \frac{1}{\lambda(1-\lambda)}p \right) \circ (\lambda\Id - p) = \Id - \frac{1}{\lambda}p + \frac{1}{1-\lambda}p - \frac{1}{\lambda(1-\lambda)}p^2 = \Id.
+	\end{equation*}
+	
+	\item Se $p$ é invertível, $V=p(V)$, logo
+		\begin{equation*}
+		p = p|_{V} = p|_{p(V)} = \Id|_{p(V)} = \Id|_V = \Id.
+		\end{equation*}
+A recíproca é evidente.
+
+	\item Evidente.
+	
+	\end{enumerate}
+\end{proof}
+
+
+
+
+%\chapter{Álgebra Multilinear}
 
 \section{Funções Multilineares}
 
 \begin{defi}
-Sejam $\bm{V_0},\cdots,\bm{V_{n-1}}$ e $\bm W$ espaços lineares sobre um corpo $\bm C$ e $k \in \N$. Uma função \emph{$k$-linear} de $(\bm{V_0},\ldots,\bm{V_{k-1}})$ para $\bm W$ é uma função
+Sejam $\bm{V_0},\cdots,\bm{V_{k-1}}$ e $\bm W$ espaços lineares sobre um corpo $\bm C$ e $k \in \N$. Uma função \emph{$k$-linear} de $(\bm{V_0},\ldots,\bm{V_{k-1}})$ para $\bm W$ é uma função
 	\begin{equation*}
 	L\colon V_0 \times \cdots \times V_{k-1} \to W
 	\end{equation*}
@@ -5150,7 +5562,7 @@ Temos que $\mathcal{S}^1(\bm V) = \mathcal{A}^1(\bm V) = \lin^k(\bm V)$ e $\math
 \subsection{Produto Tensorial de Formas Multilineares}
 
 \begin{defi}
-Sejam $\bm V$ um espaço linear sobre um corpo $\bm C$, $f \in \lin^k(\bm V)$, $f' \in \lin^{k'}(\bm V)$ e $v_0,\ldots,v_{k+k'-1} \in \bm V$. O \emph{produto tensorial} de $f$ e $f'$ em $(v_0,\ldots,v_{k+k'-1})$ é
+Sejam $\bm V$ um espaço linear sobre um corpo $\bm C$, $f \in \lin^k(V)$, $f' \in \lin^{k'}(V)$ e $v_0,\ldots,v_{k+k'-1} \in V$. O \emph{produto tensorial} de $f$ e $f'$ em $(v_0,\ldots,v_{k+k'-1})$ é
 	\begin{equation*}
 	(f \otimes f')(v_0,\ldots,v_{k+k'-1}) := f(v_0,\ldots,v_{k-1})f'(v_k,\ldots,v_{k+k'-1}).
 	\end{equation*}
@@ -5258,8 +5670,6 @@ de formas alternadas $k$-lineares em $\bm V$ é uma base para $\mathcal{A}^k(\bm
 
 Em particular, isso mostra que formas $d$-lineares num espaço de dimensão $d$ são todas múltiplos umas das outras, pois $\binom{d}{d}=1$. Podemos fixar o valor de uma das formas como 1 na base canônica e chamá-la de \emph{determinante}.
 
-\subsection{Determinante}
-
 \begin{defi}
 Seja $d \in \N$. O \emph{determinante} em $\R^d$ é a forma $d$-linear
 	\begin{equation*}
@@ -5279,31 +5689,51 @@ Como comentado, essa é a única forma $d$-linear em $\R^d$ tal que	\begin{equat
 	\det(e_0,\ldots,e_{d-1})=1.
 	\end{equation*}
 
+Na seção seguinte, definiremos o conceito de determinante de modo mais geral e independente de base.
+
+\subsection{Formas Puxadas e Determinante}
+
 \begin{defi}
-Sejam $\bm V$ e $\bm W$ espaços lineares sobre um corpo $\bm C$, $L \colon V \to W$ uma função linear e $f \in \lin^k(\bm W)$. A função puxada por $L$ de $f$ é a função
+Sejam $\bm V$ e $\bm V'$ espaços lineares sobre um corpo $\bm C$, $L \colon V \to V'$ uma função linear e $f \in \lin^k(V')$. A \emph{forma $k$-linear puxada} por $L$ de $f$ é a função
 	\begin{align*}
-	\func{L\pux f}{V^k}{C}{(v_0,\ldots,v_{k-1})}{f(L(v_0),\ldots,L(v_{k-1})).}
+	\func{L\dual f}{V^k}{C}{(v_0,\ldots,v_{k-1})}{f(L(v_0),\ldots,L(v_{k-1})).}
 	\end{align*}
-%A função \emph{$k$-adjunta} induzida por $L$ é a função linear
-%	\begin{align*}
-%	\func{L\dual}{\lin^k(W)}{\lin^k(V)}{f}{L\pux f.}
-%	\end{align*}
+A função \emph{$k$-adjunta} induzida por $L$ é a função linear
+	\begin{align*}
+	\func{L\dual}{\lin^k(V')}{\lin^k(V)}{f}{L\dual f.}
+	\end{align*}
 \end{defi}
 
-
-Essa função $L\pux f$ é multilinear e, se $f$ for alternada, é alternada.
+A notação é ambígua porque, para cada $k \in [d+1]$, a função $L\dual$ é uma função diferente. De fato, para $f \in \lin^k(V')$,
+	\begin{equation*}
+	L\dual f = f \circ L^{\otimes k},
+	\end{equation*}
+o que quer dizer que
+	\begin{equation*}
+	L \dual = (L^{\otimes k})\pux
+	\end{equation*}
 
 \begin{prop}
-Sejam $\bm V_0$, $\bm V_1$ e $\bm V_2$ espaços lineares sobre um corpo $\bm C$ e $L_0 \colon V_0 \to V_1$ e $L_1\colon V_1 \to V_2$ funções lineares. Então
+Sejam $\bm V$, $\bm V'$ e $\bm V''$ espaços lineares sobre um corpo $\bm C$ e $L\colon V \to V'$ e $L'\colon V' \to V''$ funções lineares. Então
 	\begin{equation*}
-	(L_1 \circ L_0)\dual = {L_0}\dual \circ {L_1}\dual.
+	(L' \circ L)\dual = {L}\dual \circ {L'}\dual.
 	\end{equation*}
 \end{prop}
+\begin{proof} Seja $f \in \lin^k(V)$ tal que $f \neq 0$. Então
+	\begin{align*}
+	(L' \circ L)\dual f (v_0,\ldots,v_{k-1}) &= f((L' \circ L)(v_0),\ldots,(L' \circ L)(v_{k-1})) \\
+		&= f(L'(L(v_0)),\ldots,L'(L(v_{k-1}))) \\
+		&= {L'}\dual f(L(v_0),\ldots,L(v_{k-1})) \\
+		&= L\dual({L'}\dual f)(v_0,\ldots,v_{k-1}) \\
+		&= (L\dual \circ {L'}\dual) f(v_0,\ldots,v_{k-1}).
+	\end{align*}
+\end{proof}
 
-Essas função $k$-adjuntas estão também definidas se restringimos os espaços de funcionais $\lin^k$ para espaços de funcionais alternados $\alter^k$. Se considerarmos um espaço $\bm V$ $d$-dimensional, o espaço $\alter^d(\bm V)$ é um espaço $1$-dimensional, o que implica que todas funções lineares são multiplicações por constantes. Isso nos permite definir o determinante de uma função linear instrinsecamente como a constante de que consiste seu $d$-adjunto.
+
+Essas funções $k$-adjuntas estão também definidas se restringimos os espaços de funcionais $\lin^k$ para espaços de funcionais alternados $\alter^k$. Se considerarmos um espaço linear $d$-dimensional $\bm V$, o espaço $\alter^d(\bm V)$ é um espaço $1$-dimensional, o que implica que todas funções lineares são multiplicações por constantes. Isso nos permite definir o determinante de uma função linear instrinsecamente como a constante de é seu $d$-adjunto.
 
 \begin{defi}
-Sejam $\bm V$ um espaço linear $d$-dimensional sobre um um corpo $\bm C$, $L\colon V \to V$ uma função linear e $L\dual\colon \alter^d(V) \to \alter^k(V)$. O \emph{determinante} de $L$ é a constante $\det(L) \in C$ tal que, para todas formas $f \in \alter^d(\bm V)$,
+Sejam $\bm V$ um espaço linear $d$-dimensional sobre um um corpo $\bm C$, $L\colon V \to V$ uma função linear e $L\dual\colon \alter^d(V) \to \alter^d(V)$. O \emph{determinante} de $L$ é a constante $\det(L) \in C$ tal que, para todas formas $f \in \alter^d(\bm V)$,
 	\begin{equation*}
 	L\dual f = \det(L) f.
 	\end{equation*}
@@ -5315,17 +5745,38 @@ Isso nos dá por definição a igualdade
 	\end{equation*}
 
 \begin{prop}
-Sejam $\bm V$ um espaço linear $d$-dimensional sobre um um corpo $\bm C$ e $L_0,L_1 \in \lin(V)$. Então
+Sejam $\bm V$ um espaço linear $d$-dimensional sobre um um corpo $\bm C$ e $L,L' \in \lin(V,V)$. Então
 	\begin{equation*}
-	\det(L_1 \circ L_0) = \det(L_0)\det(L_1).
+	\det(L' \circ L) = \det(L)\det(L').
 	\end{equation*}
 \end{prop}
 \begin{proof}
 Seja $f \in \alter^n(V)$ tal que $f \neq 0$. Então
 	\begin{equation*}
-	\det(L_1 \circ L_0)f = (L_1 \circ L_0)\dual f = ({L_0}\dual \circ {L_1}\dual) f = \det(L_0)\det(L_1) f.
+	\det(L' \circ L)f = (L' \circ L)\dual f = ({L}\dual \circ {L'}\dual) f = \det(L)\det(L') f.
 	\end{equation*}
 \end{proof}
+
+\begin{prop}
+Sejam $\bm V$ um espaço linear $d$-dimensional sobre um um corpo $\bm C$ e $L\colon V \to V$ uma função linear. Então $L$ é invertível se, e somente se, $\det(L) \neq 0$.
+\end{prop}
+\begin{proof}
+Basta notar que $L$ é invertível se, e somente se, leva base em base e $f \in \alter^d(V)$ é nula em um conjunto linearmente independente de vetores.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -5830,3 +6281,1228 @@ O produto $\colch{\var}{\var}$ é bilinear, pois envolve somente diferença e co
 \label{alge:prop.algebra.colchete.deriv}
 Seja $(\bm A,\cdot)$ uma álgebra sobre um corpo $\bm C$. Então $(\Der(A),\colch{\var}{\var})$ é uma subálgebra de $(\lin(A,A),\colch{\var}{\var})$.
 \end{prop}
+
+
+
+
+
+
+
+\section{As Álgebras Reais $\R$, $\R^2$ e $\R^4$}
+
+\subsection{Complexos}
+
+O espaço linear $\R$ é um álgebra com o produto de corpo usual. Consideremos o espaço linear $\R^2$ e o produto
+	\begin{align*}
+	\func{\times}{\R^2 \times \R^2}{\R^2}{(x,y)}{(x_0y_0-x_1y_1,x_0y_1+x_1y_0)}
+	\end{align*}
+
+Primeiro notemos que o produto é comutativo, pois para todos $x,y \in \R^2$,
+	\begin{equation*}
+	x \times y = (x_0y_0-x_1y_1,x_0y_1+x_1y_0) = (y_0x_0-y_1x_1,y_0x_1+y_1x_0) = y \times x.
+	\end{equation*}
+Assim, para mostrar que $\times$ é bilinear, basta mostrar que é linear na primeira entrada. Para todos $x,x',y \in \R^2$ e todo $c \in \R$,
+	\begin{align*}
+	(cx+x') \times y &= ((cx_0+x'_0)y_0-(cx_1+x'_1)y_1,(cx_0+x'_0)y_1+(cx_1+x'_1)y_0) \\
+		&= (cx_0y_0+x'_0y_0-cx_1y_1-x'_1y_1,cx_0y_1+x'_0y_1+cx_1y_0+x'_1y_0) \\
+		&= c(x_0y_0-x_1y_1,x_0y_1+x_1y_0) + (x'_0y_0-x'_1y_1,x'_0y_1x'_1y_0) \\
+		&= c (x \times y) + x' \times y.
+	\end{align*}
+Ainda, $\times$ é associativo, pois para todos $x,y,z \in \R^2$,
+	\begin{align*}
+	(x \times y) \times z &= (x_0y_0-x_1y_1,x_0y_1+x_1y_0) \times z \\
+		&= ((x_0y_0-x_1y_1)z_0 - (x_0y_1+x_1y_0)z_1 , (x_0y_0-x_1y_1)z_1 + (x_0y_1+x_1y_0)z_0 ) \\
+		&= (x_0(y_0z_0-y_1z_1)-x_1(y_0z_1+y_1z_0),x_0(y_0z_1+y_1z_0)+x_1(y_0z_0-y_1z_1)) \\
+		&= x \times (y_0z_0-y_1z_1,y_0z_1+y_1z_0) \\
+		&= x \times (y \times z).
+	\end{align*}
+Definindo $\bm 1 := (1,0)$, notemos que $\bm 1$ é uma unidade de $\times$, pois para todo $x \in \R^2$,
+	\begin{equation*}
+	\bm 1 \times x = (1x_0-0x_1,1x_1+0x_0) = (x_0,x_1) = x.
+	\end{equation*}
+Definindo $\bm \ii := (0,1)$, notemos que
+	\begin{equation*}
+	\bm \ii \times \bm \ii = (00-11,01+10) = (-1,0) = -\bm 1.
+	\end{equation*}
+Todo $x \in \R^2$ pode ser escrito como $x_0\bm 1 + x_1 \bm \ii$, de modo que o produto $\times$ nessa notação é o produto dos números usual dos números complexos
+	\begin{equation*}
+	x \times y = (x_0\bm 1 + x_1 \bm \ii) \times (y_0\bm 1 + y_1 \bm \ii) = (x_0y_0-x_1y_1)\bm 1 + (x_0y_1+x_1y_0)\bm \ii.
+	\end{equation*}
+
+Para simplificar a notação, a partir de agora passaremos a escrever $1$ e $\ii$ para $\bm 1$ e $\bm \ii$ e escreveremos todos $x \in \R^2$ na notação de números complexos.
+
+O produto $\times$ pode também ser visto como uma ação de $\R^2$ aditivo sobre $\R^2$ aditivo. Cada $x \in \R^2$ pode ser identificado com uma transformação linear $x\colon \R^2 \to \R^2$. Os elementos $x \in \S^1 \subseteq \R^2$ são as rotações: se $x \in \S^1$, então existe $\alpha \in \intfa{0}{\tau}$ tal que
+	\begin{equation*}
+	x = (\cos(\alpha),\sin(\alpha)) = \cos(\alpha) + \ii \sin(\alpha).
+	\end{equation*}
+Isso ocorre porque, se $x \in \S^1$, então $\nor{x} = 1$, logo $({x_0}^2+{x_1}^2)^\frac{1}{2} = 1$, portanto ${x_0}^2+{x_1}^2 = 1$. Então $\abs{x_0} \leq 1$, ou seja, $-1 \leq x_0 \leq 1$. Definido $\alpha' := \cos\inv(x_0) \in \intff{0}{\frac{\tau}{2}}$, temos que ${x_1}^2 = 1-\cos(\alpha)^2$, logo $\abs{x_1} = (1-\cos(\alpha)^2)^\frac{1}{2}$, então $x_1 = \pm\sin(\alpha)$. Tomamos $\alpha := \alpha'$ se $x_1 > 0$ e $\alpha := \tau - \alpha'$ se $x_1 < 0$. No caso $x_1 = 0$, tomamos $\alpha = 0$ se $x_0=1$ e $\alpha = \frac{\tau}{2}$ se $x_0=-1$.
+
+Sendo assim, para todo $\cos(\alpha) + \ii \sin(\alpha) \in \S^1$, e todo $x \in \R^2$,
+	\begin{align*}
+	(\cos(\alpha) + \ii \sin(\alpha)) \times x &= (\cos(\alpha)x_0-\sin(\alpha)x_1) + \ii(\cos(\alpha)x_1+\sin(\alpha)x_0).
+	\end{align*}
+
+Definimos $\abs{x} := ({x_0}^2+{x_1}^2)^\frac{1}{2}$ e $\angle(x) := \alpha$. Os elementos $x \in \R \subseteq \R^2$ são as expansões e contrações. Os elementos de $\R^2$ podem ser decompostos como
+	\begin{equation*}
+	x = \abs{x}(\cos(\angle(x))+\ii\sin(\angle(x))).
+	\end{equation*}
+
+
+\begin{comment}
+
+\begin{figure}
+\centering
+\begin{tikzpicture}[scale=2]
+	\draw (-1,0) node[anchor=north] {$-1$} -- (0,0) node[anchor=north] {$0$} -- (1,0) node[anchor=north] {$1$};
+	\draw (0,0) -- (0,pi/2) node[anchor=west] {$\displaystyle\frac{\tau}{4}$} -- (0,pi) node[anchor=west] {$\displaystyle\frac{\tau}{2}$};
+	\draw[dotted] (1,0) -- (1,pi) -- (-1,pi) -- (-1,0);
+	\draw plot [domain=0:pi,smooth] ({cos(\x r)},\x);
+\end{tikzpicture}
+\caption{Gráfico da função $\cos\inv\colon \intff{-1}{1} \to \intff{0}{\frac{\tau}{2}}$.}
+%\label{fig:cossenoinv}
+\end{figure}
+
+\begin{figure}
+\centering
+\begin{tikzpicture}[scale=2]
+	\draw (-1,0) node[anchor=east] {$-1$} -- (0,0) node[anchor=east] {$0$} -- (1,0) node[anchor=west] {$1$};
+	\draw (0,-pi/2) node[anchor=east] {$-\displaystyle\frac{\tau}{4}$} -- (0,pi/2) node[anchor=east] {$\displaystyle\frac{\tau}{4}$};
+	\draw[dotted] (-1,-pi/2) rectangle (1,pi/2);
+	\draw plot [domain=-pi/2:pi/2,smooth] ({sin(\x r)},\x);
+\end{tikzpicture}
+\caption{Gráfico da função $\sin\inv\colon \intff{-1}{1} \to \intff{-\frac{\tau}{4}}{\frac{\tau}{4}}$.}
+\label{fig:senoinv}
+\end{figure}
+
+
+\begin{figure}
+\centering
+\begin{tikzpicture}[scale=1]
+%	\draw (-1,0) node[anchor=north] {$-1$} -- (0,0) node[anchor=north] {$0$} -- (1,0) node[anchor=north] {$1$};
+%	\draw (0,0) -- (0,pi/2) node[anchor=west] {$\displaystyle\frac{\tau}{4}$} -- (0,pi) node[anchor=west] {$\displaystyle\frac{\tau}{2}$};
+%	\draw[dotted] (1,0) -- (1,pi) -- (-1,pi) -- (-1,0);
+	\draw plot [domain=-1:1,smooth] (\x,{tan(\x r));
+\end{tikzpicture}
+\caption{Gráfico da função $\tan\inv\colon \R \to \intaa{\frac{\tau}{2}}{\frac{\tau}{2}}$.}
+%\label{fig:cossenoinv}
+\end{figure}
+
+\end{comment}
+
+\subsection{Quatérnios}
+
+\subsubsection{O Produto Quaterniônico}
+
+Consideremos o espaço linear $\R^4$. Definamos $\bm 1 := (1,0,0,0)$, $\bm \ii := (0,1,0,0)$, $\bm \jj := (0,0,1,0)$ e $\bm \kk := (0,0,0,1)$. Consideremos o produto
+	\begin{align*}
+	\func{\cdot}{\R^4 \times \R^4}{\R^4}{(x,y)}{
+		\begin{aligned}[t]
+		&(x_0y_0 - x_1y_1 - x_2y_2 - x_3y_3) \bm 1 \\
+			+ &(x_0y_1+x_1y_0+x_2y_3-x_3y_2) \bm\ii \\
+			+ &(x_0y_2-x_1y_3+x_2y_0+x_3y_1) \bm\jj \\
+			+ &(x_0y_3+x_1y_2-x_2y_1+x_3y_0) \bm\kk .
+		\end{aligned}
+	}
+	\end{align*}
+
+Pode-se mostrar (as contas são trabalhosas, embora simples) que $\cdot$ é um produto bilinear associativo, mas não comutativo, preservado pela norma, que $\bm 1$ é identidade de $\cdot$ e que
+	\begin{equation*}
+	\bm\ii\bm\jj\bm\kk = \bm\ii^2 = \bm\jj^2 = \bm\kk^2 = -\bm 1.
+	\end{equation*}
+Dessas relações, deduzem-se
+	\begin{equation*}
+	\bm\ii\bm\jj = -\bm\jj\bm\ii = \bm\kk, \qquad \bm\jj\bm\kk = -\bm\kk\bm\jj = \bm\ii, \qquad \bm\kk\bm\ii = -\bm\ii\bm\kk = \bm\jj.
+	\end{equation*}
+
+De fato, em vez da expressão explícita para $\cdot$ em termos das entradas de $x$ e $y$, poderíamos somente definir o produto entre os elementos de uma base, no caso $\{\bm 1,\bm \ii, \bm \jj, \bm \kk\}$, e o produto se estenderia linearmente. Essa definição seria dada como nas relações acima.
+
+Com essas relações e representando os elementos $x \in \R^4$ como
+	\begin{equation*}
+	x = x_0\bm 1  + x_1\bm \ii + x_2 \bm \jj + x_3 \bm \kk,
+	\end{equation*}
+pode-se calcular o produto $\cdot$ em $\R^4$ facilmente. Esse produto é o produto usual dos números quatérnios.
+
+Vamos denotar a álgebra de $\R^4$ com esse produto por $\H$.
+
+%Por linearidade, deve valer
+%	\begin{align*}
+%	xy &= (x_0 1  + x_1 \ii + x_2 \jj + x_3 \kk)(y_0 1  + y_1 \ii + y_2 \jj + y_3 \kk) \\
+%		&= x_0 y_0 1  1  + x_0 y_1 1  \ii + x_0 y_2 1  \jj + x_0 y_3 1  \kk \\
+%		&+ x_1 y_0 \ii  1  + x_1 y_1 \ii  \ii + x_1y_2 \ii  \jj + x_1 y_3 \ii  \kk \\
+%		&+ x_2 y_0 \jj 1  + x_2 y_1 \jj \ii + x_2 y_2 \jj \jj + x_2 y_3 \jj \kk \\
+%		&+ x_3 y_0 \kk 1  + x_3 y_1 \kk \ii + x_3 y_2 \kk \jj + x_3 y_3 \kk \kk
+%	\end{align*}
+%
+%Portanto basta definir os valores dos produtos entre $1,i,j,k$. Escolhendo $1$ para ser a unidade, já que deve haver uma unidade (e essa notação não foi escolhida por acaso para $(1,0,0,0)$), basta determinarmos
+%	\begin{equation*}
+%	\ii\ii,\ii\jj,\ii\kk,\jj\ii,\jj\ij,\jj\kk,\kk\ii,\kk\jj,\kk\kk.
+%	\end{equation*}
+
+\begin{defi}
+Seja $x \in \H$. A \emph{componente escalar} de $x$ é o número real
+	\begin{equation*}
+	\esc{x} := x_0 \in \R
+	\end{equation*}
+e a \emph{componente vetorial} de $x$ é o vetor real
+	\begin{equation*}
+	\vec{x} := (x_1,x_2,x_3) \in \R^3.
+	\end{equation*}
+Denota-se
+	\begin{equation*}
+	x = \esc{x} + \vec{x},
+	\end{equation*}
+em que $\esc{x}$ é entendido como $x_0 \bm 1$ e $\vec{x}$ é entendido como $x_1\bm \ii + x_2 \bm\jj + x_3 \bm \kk$. Os subespaços vetorias de escalares e vetores são denotados, respectivamente, $\esc{\H}$ e $\vec{\H}$, e temos portanto
+	\begin{equation*}
+	\H = \esc{\H} \oplus \vec{\H} \simeq \R \oplus \R^3.
+	\end{equation*}
+
+O \emph{conjugado} de $x$ é
+	\begin{equation*}
+	\conju{x} := \esc{x}-\vec{x}.
+	\end{equation*}
+
+Um \emph{versor} é um quatérnio $u \in \H$ tal que $\esc{u}=0$ e $\nor{\vec{u}}=1$.
+\end{defi}
+
+\subsubsection{Os Produtos Escalar e Vetorial}
+
+\begin{defi}
+O \emph{produto escalar} em $\vec{\H}$ é a função
+	\begin{align*}
+	\func{\bm{\cdot}}{\vec{\H} \times \vec{\H}}{\R}{(\vec{x},\vec{y})}{\pesc{\vec{x}}{\vec{y}} := x_1y_1 + x_2y_2 + x_3y_3}.
+	\end{align*}
+
+O \emph{produto vetorial} em $\vec{\H}$ é a função
+	\begin{align*}
+	\func{\bm{\times}}{\vec{\H} \times \vec{\H}}{\vec{\H}}{(\vec{x},\vec{y})}{\pvec{\vec{x}}{\vec{y}}
+		\begin{aligned}[t]
+		&:= (x_2y_3-x_3y_2)\bm\ii \\
+		&+ (-x_1y_3+x_3y_1)\bm\jj \\
+		&+ (x_1y_2-x_2y_1)\bm\kk
+		\end{aligned}
+	}.
+	\end{align*}
+\end{defi}
+
+Esses são o produto interno e o produto vetorial usuais em $\R^3$.
+
+\begin{exerc}
+	\begin{enumerate}
+	\item O produto escalar $\bm{\cdot}\colon \vec{\H} \times \vec{\H} \to \R$ é um produto interno no subespaço vetorial $\vec{\H}$;
+	
+	\item O produto vetorial $\bm{\times}\colon \vec{\H} \times \vec{\H} \to \vec{\H}$ é uma função bilinear alternada tal que, para todos $\vec{x},\vec{y} \in \vec{\H}$,
+		\begin{enumerate}
+		\item $
+			\pesc{(\pvec{\vec{x}}{\vec{y}})}{\vec{x}} = \pesc{(\pvec{\vec{x}}{\vec{y}})}{\vec{x}} = 0$;
+		
+		\item $\pesc{(\pvec{\vec{x}}{\vec{y}})}{(\pvec{\vec{x}}{\vec{y}})} =
+				\begin{vmatrix}
+				\pesc{\vec{x}}{\vec{x}} & \pesc{\vec{x}}{\vec{y}} \\ 
+				\pesc{\vec{y}}{\vec{x}} & \pesc{\vec{y}}{\vec{y}}
+				\end{vmatrix}$.
+		\end{enumerate}
+	
+	\item A função
+		\begin{align*}
+		\func{\bm{\cdot} \circ \bm{\times}}{\vec{\H} \times \vec{\H} \times \vec{\H}}{\vec{\H}}{(\vec{x},\vec{y},\vec{z})}{\pesc{(\pvec{\vec{x}}{\vec{y}})}{\vec{z}}}
+		\end{align*}
+é uma função trilinear alternada.
+	\end{enumerate}
+\end{exerc}
+
+\begin{prop}
+	\begin{enumerate}
+	\item Para todos $\vec{x},\vec{y} \in \vec{\H}$ ($\esc{x} = \esc{y} = 0$),
+		\begin{equation*}
+		\vec{x}\vec{y} = - \pesc{\vec{x}}{\vec{y}} + \pvec{\vec{x}}{\vec{y}};
+		\end{equation*}
+	\item Para todos $x,y \in \H$,
+		\begin{align*}
+		xy &= \esc{x}\esc{y} - \pesc{\vec{x}}{\vec{y}}+\esc{x}\vec{y}+\esc{y}\vec{x}+\pvec{\vec{x}}{\vec{y}} \\
+%		\esc{(xy)} &= \esc{x}\esc{y} - \inte{\vec{x}}{\vec{y}} \\
+%		\vec{(xy)} &= \esc{x}\vec{y}+\esc{y}\vec{x}+\vec{x} \times \vec{y}
+		\end{align*}
+	
+	\item Para todos $x,y \in \H$, $xy=yx$ se, e somente se, $\vec{x} \parallel \vec{y}$ (ou seja, $\pvec{\vec{x}}{\vec{y}}=0$);
+	
+	\item Para todo $x \in \H \setminus \{0\}$,
+		\begin{equation*}
+		x\inv = \frac{\conju{x}}{\nor{x}^2};
+		\end{equation*}
+	
+	\item Um quatérnio $u \in \H$ é um versor se, e somente se, $u^2=-1$;
+	
+	\item Para todo $x \in \H \setminus \{0\}$, existem único versor $u \in \H$ e único ângulo $\alpha \in \intfa{0}{\tau}$ tais que
+		\begin{equation*}
+		x=\nor{x}(\cos(\alpha) + \sin(\alpha) u).
+		\end{equation*}
+	\end{enumerate}
+\end{prop}
+\begin{proof}
+\begin{enumerate}
+	\item Como $x_0=y_0=0$,
+	\begin{align*}
+	xy =& -(x_1y_1 + x_2y_2 + x_3y_3) \\
+			&+ (x_2y_3-x_3y_2)\bm\ii \\
+			&+ (-x_1y_3+x_3y_1)\bm\jj \\
+			&+ (x_1y_2-x_2y_1)\bm\kk \\
+		=& - \pesc{\vec{x}}{\vec{y}} + \pvec{\vec{x}}{\vec{y}}.
+	\end{align*}
+
+	\item Segue da bilinearidade do produto e de $\vec{x}$ e $\vec{y}$ serem puramente vetoriais que
+	\begin{align*}
+	xy &= (\esc{x}+\vec{x})(\esc{y}+\vec{y}) \\
+		&= \esc{x}\esc{y}+\esc{x}\vec{y}+\esc{y}\vec{x}+\vec{x}\vec{y} \\
+		&= \esc{x}\esc{y}+\esc{x}\vec{y}+\esc{y}\vec{x}+(-\inte{\vec{x}}{\vec{y}} + \pvec{\vec{x}}{\vec{y}}) \\
+		&= \big(\esc{x}\esc{y} - \pesc{\vec{x}}{\vec{y}}\big) + \big(\esc{x}\vec{y}+\esc{y}\vec{x}+\pvec{\vec{x}}{\vec{y}} \big).
+	\end{align*}
+%em que
+%	\begin{equation*}
+%	\esc{xy} = \esc{x}\esc{y} - \inte{\vec{x}}{\vec{y}}
+%	\end{equation*}
+%é a componente escalar e
+%	\begin{equation*}
+%	\vec{xy} = \esc{x}\vec{y}+\esc{y}\vec{x}+\vec{x} \times \vec{y}
+%	\end{equation*}
+%é a componente vetorial.
+	
+	\item Para todos $x,y \in \H$,
+		\begin{align*}
+		xy - yx &= \esc{x}\esc{y} - \pesc{\vec{x}}{\vec{y}}+\esc{x}\vec{y}+\esc{y}\vec{x}+\pvec{\vec{x}}{\vec{y}} \\
+			&- \esc{y}\esc{x} + \pesc{\vec{y}}{\vec{x}}-\esc{y}\vec{x}-\esc{x}\vec{y}-\pvec{\vec{y}}{\vec{x}} \\
+			&=\pvec{\vec{x}}{\vec{y}} - \pvec{\vec{y}}{\vec{x}}.
+		\end{align*}
+Isso implica que $xy-yx=0$ se, e somente se, $\pvec{\vec{x}}{\vec{y}} - \pvec{\vec{y}}{\vec{x}}=0$, o que ocorre se, e somente se, $\pvec{\vec{x}}{\vec{y}}=0$, que por sua vez é equivalente a $\vec{x} \parallel \vec{y}$.
+
+	\item Para todo $x \in \H \setminus \{0\}$,
+	\begin{align*}
+	xx\inv &= (\esc{x}+\vec{x})\nor{x}^{-2}(\esc{x}-\vec{x}) \\
+		&= \nor{x}^{-2}(\esc{x}^2-\pesc{\vec{x}}{(-\vec{x})}+\esc{x}(-\vec{x})+\esc{x}\vec{x}+\pvec{\vec{x}}{(-\vec{x})}) \\
+		&= \nor{x}^{-2}(\esc{x}^2+\pesc{\vec{x}}{\vec{x}}-\esc{x}\vec{x}+\esc{x}\vec{x}-\pvec{\vec{x}}{\vec{x}}) \\
+		&= \nor{x}^{-2}\nor{x}^2 \\
+		&= 1
+	\end{align*}
+e, como $\pvec{\vec{x}}{(-\vec{x})} = 0$, $x\inv x = xx\inv = 1$.
+
+	\item Para todo $u \in \H$,
+		\begin{align*}
+		u^2 &= \esc{u}\esc{u} - \pesc{\vec{u}}{\vec{u}}+\esc{u}\vec{u}+\esc{u}\vec{u}+\pvec{\vec{u}}{\vec{u}} \\
+			&=  \esc{u}^2 - \nor{\vec{u}}^2 + 2\esc{u}\vec{u}.
+		\end{align*}
+Segue que $\esc{u}=0$ e $\nor{\vec{u}}=1$ se, e somente se, $u^2=-1$.
+	
+	\item Exercício.
+\end{enumerate}
+\end{proof}
+
+
+Sejam $x,y \in \H \setminus \{0\}$ tais que $xy \in \esc{\H}$. Então
+	\begin{equation*}
+	0 = \esc{x}\vec{y}+\esc{y}\vec{x}+\pvec{\vec{x}}{\vec{y}}.
+	\end{equation*}
+%Se $\vec{x} \parallel \vec{y}$, então $\vec{x} \times \vec{y}=0$ e existe $c \in \R$ tal que $\vec{y}=c\vec{x}$ ou $\vec{x}=c\vec{y}$. Isso significa que a condição anterior se reduz a
+%	\begin{equation*}
+%	0 = \esc{x}\vec{y}+\esc{y}\vec{x} = (\esc{x}c+\esc{y})\vec{x}
+%	\end{equation*}
+%ou
+%	\begin{equation*}
+%	0 = \esc{x}\vec{y}+\esc{y}\vec{x} = (\esc{x}+\esc{y}c)\vec{y},
+%	\end{equation*}
+%o que implica que $\vec{x}=\vec{y}=0$ ou $c=-\esc{y}/\esc{x}$ ou $c=-\esc{x}/\esc{y}$.
+%
+%Se $\vec{x} \perp \vec{y}$, então $(\vec{x},\vec{y},\vec{x} \times \vec{y})$ é uma base de $\vec{\H}$
+%
+Isso implica que $(\vec{x},\vec{y},\pvec{\vec{x}}{\vec{y}})$ não é uma base de $\vec{\H}$, pois caso contrário
+	\begin{equation*}
+	\esc{x}\vec{y}+\esc{y}\vec{x}+\vec{x} \times \vec{y} \neq 0,
+	\end{equation*}
+já que $(\esc{x},\esc{y},1) \neq (0,0,0)$. Mas a tripla não é base se, e somente se, $\vec{x}=0$ ou $\vec{y}=0$ ou $\pvec{\vec{x}}{\vec{y}}=0$, porque sempre vale $\pesc{\vec{x}}{(\pvec{\vec{x}}{\vec{y}})} = \pesc{\vec{y}}{(\pvec{\vec{x}}{\vec{y}})}=0$. No primeiro caso, segue que $\vec{x} \times \vec{y}=0$,
+	\begin{equation*}
+	0=\esc{x}\vec{y},
+	\end{equation*}
+e, no segundo caso, analogamente segue que
+	\begin{equation*}
+	0=\esc{y}\vec{x}.
+	\end{equation*}
+No terceiro caso, segue que
+	\begin{equation*}
+	\esc{y}\vec{x} = -\esc{x}\vec{y},
+	\end{equation*}
+e que $\vec{x} \parallel \vec{y}$.
+
+Nos primeiros dois casos, $\inte{\vec{x}}{\vec{y}}=0$, logo
+	\begin{equation*}
+	\esc{(xy)} = \esc{x}\esc{y} - \inte{\vec{x}}{\vec{y}} = \esc{x}\esc{y}.
+	\end{equation*}
+No terceiro caso, $\inte{\vec{x}}{\vec{y}}=\nor{\vec{x}}\nor{\vec{y}}$, logo
+	\begin{equation*}
+	\esc{(xy)} = \esc{x}\esc{y} - \inte{\vec{x}}{\vec{y}} = \esc{x}\esc{y} - \nor{\vec{x}}\nor{\vec{y}}.
+	\end{equation*}
+Em ambos os casos,
+	\begin{equation*}
+	\esc{(xy)} = \esc{x}\esc{y} - \nor{\vec{x}}\nor{\vec{y}}.
+	\end{equation*}
+
+
+
+
+
+%	$\vec{x} \parallel \vec{y}$ se, e somente se, $\vec{x} \times \vec{y} = 0$.
+
+%	\begin{equation*}
+%	xy = \esc{x}\esc{y} - \inte{\vec{x}}{\vec{y}}+\esc{x}\vec{y}+\esc{y}\vec{x}+\vec{x} \times \vec{y}.
+%	\end{equation*}
+
+
+
+
+\subsubsection{Rotações em \ensuremath{\R^3} por Quatérnios}
+
+A rotação de $v \in \R^3$ por um ângulo $\theta$ em torno de um vetor unitário $u \in \R^3$ é dada por
+	\begin{equation*}
+	R^\theta_u(v) = \proj_{\parallel u}(v) + \cos(\theta) \proj_{\perp u}(v) + \sin(\theta) u \times v.
+	\end{equation*}
+%ou
+%	\begin{equation*}
+%	R^\theta_u(v) =(1-\cos(\theta)) \proj_{\parallel u}(v) + \cos(\theta) \Id + \sin(\theta) u \times v.
+%	\end{equation*}
+
+Note que genericamente $(\proj_{\parallel u}(v),\proj_{\perp u}(v),u \times v)$ é uma base de $\R^3$. %se $u$ e $v$ são ...
+Isso significa que
+	\begin{equation*}
+	R^\theta_u = \proj_{\parallel u} + \cos(\theta) \proj_{\perp u} + \sin(\theta){ u \times} .
+	\end{equation*}
+As funções $\proj_{\parallel u}$, $\proj_{\perp u}$ e $u \times$ são funções lineares e, na base canônica de $\R^3$, são dadas pelas matrizes
+	\begin{equation*}
+	[\proj_{\parallel u}] = 
+	\begin{bmatrix}
+		{u_1}^2 & u_1u_2 & u_1u_3 \\ 
+		u_1u_2 & {u_2}^2 & u_2u_3 \\ 
+		u_1u_3 & u_2u_3 & {u_3}^2
+	\end{bmatrix}
+	\end{equation*}
+	\begin{equation*}
+	[\proj_{\perp u}] = 
+	\begin{bmatrix}
+		1-{u_1}^2 & -u_1u_2 & -u_1u_3 \\ 
+		-u_1u_2 & 1-{u_2}^2 & -u_2u_3 \\ 
+		-u_1u_3 & -u_2u_3 & 1-{u_3}^2
+	\end{bmatrix}
+	\end{equation*}
+e
+	\begin{equation*}
+	[u \times] = 
+	\begin{bmatrix}
+			0 & -u_3 & u_2 \\ 
+			u_3 & 0 & -u_1 \\ 
+			-u_2 & u_1 & 0
+	\end{bmatrix}
+	\end{equation*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+Os quatérnios unitários são os elementos de $\S^3 \subseteq \R^4$ e $SO(3)$ é o grupo de rotações de $\R^3$. Definimos a função
+	\begin{align*}
+	\func{R}{\S^3}{SO(3)}{q}{
+		\begin{aligned}[t]
+		\func{R_q}{\R^3}{\R^3}{v}{qvq\inv}.
+		\end{aligned}
+		}
+	\end{align*}
+Mostremos que essa função está bem definida. Precisamos mostrar que $qvq\inv \in \R^3$ e que $R_q$ é uma rotação. Primeiro, seja $q \in \S^3$. Então, como $\nor{q}=1$,
+	\begin{equation*}
+	q\inv = \esc{q}-\vec{q}.
+	\end{equation*}
+Como $v \in \R^3$ é um quatérnio vetorial puro, temos
+	\begin{equation*}
+	\esc{(vq\inv)} = \esc{v}\esc{q} - \inte{\vec{v}}{-\vec{q}} = \inte{\vec{v}}{\vec{q}},
+	\end{equation*}
+	\begin{equation*}
+	\vec{(vq\inv)} = \esc{v}(-\vec{q})+\esc{q}\vec{v}+\vec{v} \times (-\vec{q}) = \esc{q}\vec{v}-\vec{v} \times \vec{q},
+	\end{equation*}
+e, portanto,
+	\begin{align*}
+	\esc{(qvq\inv)} &= \esc{q}\esc{(vq\inv)} - \inte{\vec{q}}{\vec{(vq\inv)}} \\
+		&= \esc{q}\inte{\vec{v}}{\vec{q}} - \inte{\vec{q}}{\esc{q}\vec{v}-\vec{v} \times \vec{q}} \\
+		&= \esc{q}\inte{\vec{v}}{\vec{q}}-\esc{q}\inte{\vec{q}}{\vec{v}}+\inte{\vec{q}}{\vec{v} \times \vec{q}} \\
+		&= \esc{q}\inte{\vec{v}}{\vec{q}}-\esc{q}\inte{\vec{v}}{\vec{q}} \\
+		&= 0,
+	\end{align*}
+o que mostra que $qvq\inv \in \R^3$, ou seja, é um quatérnio vetorial puro.
+
+Para cada $q \in \S^3$, essa função é linear, pois, para todos $c \in \R$ e $v,v' \in \R^3$, segue da bilinearidade e da associatividade do produto e da comutatividade com escalares que
+	\begin{align*}
+	R_q(cv+v') &= q(cv+v')q\inv \\
+		&= q(cvq\inv+v'q\inv) \\
+		&= qcvq\inv + qv'q\inv \\
+		&= cqvq\inv + qv'q\inv \\
+		&= cR_q(v) + R_q(v').
+	\end{align*}
+A função $R_q$ é uma isometria, pois
+	\begin{equation*}
+	\nor{R_q(v)} = \nor{qvq\inv} = \nor{q}\nor{v}\nor{q\inv} = \nor{q}\nor{q}\inv\nor{v} = \nor{v}.
+	\end{equation*}
+
+Por fim, notemos que
+	\begin{align*}
+	qvq\inv &= \vec{(qvq\inv)} \\
+		&= \esc{q}\vec{(vq\inv)}+\esc{(vq\inv)}\vec{q}+\vec{q} \times \vec{(vq\inv)} \\
+		&= \esc{q}(\esc{q}\vec{v}-\vec{v}\times \vec{q})+\inte{\vec{v}}{\vec{q}}\vec{q}+\vec{q} \times (\esc{q}\vec{v}-\vec{v}\times \vec{q}) \\
+		&= \esc{q}\esc{q}\vec{v}-\esc{q}\vec{v}\times \vec{q} + \inte{\vec{v}}{\vec{q}}\vec{q} + \esc{q} \vec{q} \times \vec{v} - \vec{q} \times (\vec{v}\times \vec{q}) \\
+		&= \esc{q}\esc{q}\vec{v}+2\esc{q}\vec{q}\times \vec{v} + \inte{\vec{v}}{\vec{q}}\vec{q} - \inte{\vec{q}}{\vec{q}}\vec{v} + \inte{\vec{q}}{\vec{v}}\vec{q} \\
+		&= (\esc{q}\esc{q} - \inte{\vec{q}}{\vec{q}})\vec{v}+2\esc{q}\vec{q}\times \vec{v} + 2\inte{\vec{v}}{\vec{q}}\vec{q}.
+	\end{align*}
+	
+Como $\nor{q}^2 = \esc{q}^2 + \nor{\vec{q}}^2$, podemos tomar $\theta \in \S^1$ tal que
+	\begin{equation*}
+	\esc{q} = \cos(\theta/2)
+	\end{equation*}
+e
+	\begin{equation*}
+	\nor{\vec{q}} = \sin(\theta/2).
+	\end{equation*}
+Definindo
+	\begin{equation*}
+	u := \vec{q}/\sin(\theta/2),
+	\end{equation*}
+temos $\nor{u}=1$ e
+	\begin{equation*}
+	q=\cos(\theta/2)+\sin(\theta/2)u = \ee^{(\theta/2)u}.
+	\end{equation*}
+
+Temos assim
+	\begin{align*}
+	qvq\inv 
+%		&= \left(\left(\cos\frac{\theta}{2}\right)^2-\left(\sin\frac{\theta}{2}\right)^2\right)v + 2\cos\frac{\theta}{2}\sin\frac{\theta}{2}{u \times v} + 2\left(\sin\frac{\theta}{2}\right)^2\inte{v}{u}u \\
+		&= (\cos(\theta/2)^2-\sin(\theta/2)^2)v + 2\cos(\theta/2)\sin(\theta/2){u \times v} + 2\sin(\theta/2)^2\inte{v}{u}u \\
+		&= \cos(\theta) v + \sin(\theta) u \times v + (1-\cos(\theta))\inte{v}{u}u \\
+		&= \inte{v}{u}u + \cos(\theta) (v-\inte{v}{u}u) + \sin(\theta) u \times v \\
+		&= \proj_{\parallel u}(v) + \cos(\theta) \proj_{\perp u}(v) + \sin(\theta) u \times v \\
+		&= R^\theta_u(v).
+	\end{align*}
+
+%	\begin{align*}
+%	\nor{qvq\inv} &= \left(\nor{\proj_{\parallel u}(v)}^2 + \nor{\cos(\theta) \proj_{\perp u}(v)}^2 + \nor{\sin(\theta) u \times v}^2\right)^{\frac{1}{2}} \\
+%		&= \left( (1-\cos(\theta))^2\cos(\alpha)^2\nor{v}^2 + \cos(\theta)^2 \nor{v}^2 + \sin(\theta)^2 \sin(\alpha)^2 \nor{v}^2 \right) \\
+%		&= \nor{v}\left( \cos(\alpha)^2-2\cos(\theta)\cos(\alpha)^2+\cos(\theta)^2\cos(\alpha)^2 + \cos(\theta)^2 + \sin(\theta)^2 \sin(\alpha)^2 \right) \\
+%	\end{align*}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Explicitamente, a matriz de $R_q$ na base canônica é
+%	\begin{equation*}
+%	[R_q] = 
+%	\begin{bmatrix}
+%		1-2({q_2}^2+{q_3}^2) & 2(q_1q_2-q_3q_0) & 2(q_1q_3+q_2q_0) \\ 
+%		2(q_1q_2+q_3q_0) & 1-2({q_1}^2+{q_3}^2) & 2(q_2q_3-q_1q_0) \\ 
+%		2(q_1q_3-q_2q_0) & 2(q_2q_3+q_1q_0) & 1-2({q_1}^2+{q_2}^2).
+%	\end{bmatrix}
+%	\end{equation*}
+
+
+%	\begin{equation*}
+%	\begin{bmatrix}
+%			1-2\sin(\theta/2)^2({u_2}^2+{u_3}^2) & 2(u_1u_2\sin(\theta/2)^2-u_3\sin(\theta/2)\cos(\theta/2)) & 2(u_1u_3\sin(\theta/2)^2+u_2\sin(\theta/2)\cos(\theta/2)) \\ 
+%			2(u_1u_2\sin(\theta/2)^2+u_3\sin(\theta/2)\cos(\theta/2)) & 1-2\sin(\theta/2)^2({u_1}^2+{u_3}^2) & 2(u_2u_3\sin(\theta/2)^2-u_1\sin(\theta/2)\cos(\theta/2)) \\ 
+%			2(u_1u_3\sin(\theta/2)^2-u_2\sin(\theta/2)\cos(\theta/2)) & 2(u_2u_3\sin(\theta/2)^2+u_1\sin(\theta/2)\cos(\theta/2)) & 1-2\sin(\theta/2)^2({u_1}^2+{u_2}^2)
+%	\end{bmatrix}
+%	\end{equation*}
+
+%Definindo $c:= \cos(\theta/2)$ e $s:=\sin(\theta/2)$ e tomando $q=\ee^{\frac{\theta}{2}u}=c+su$, temos
+%	\begin{equation*}
+%	\begin{bmatrix}
+%			1-2s^2({u_2}^2+{u_3}^2) & 2(u_1u_2s^2-u_3sc) & 2(u_1u_3s^2+u_2sc) \\ 
+%			2(u_1u_2s^2+u_3sc) & 1-2s^2({u_1}^2+{u_3}^2) & 2(u_2u_3s^2-u_1sc) \\ 
+%			2(u_1u_3s^2-u_2sc) & 2(u_2u_3s^2+u_1sc) & 1-2s^2({u_1}^2+{u_2}^2)
+%	\end{bmatrix}
+%	\end{equation*}
+%Mas ${u_2}^2+{u_3}^2 = 1-{u_1}^2$, etc...
+%	\begin{equation*}
+%	\begin{bmatrix}
+%			1-2s^2(1-{u_1}^2) & 2(u_1u_2s^2-u_3sc) & 2(u_1u_3s^2+u_2sc) \\ 
+%			2(u_1u_2s^2+u_3sc) & 1-2s^2(1-{u_2}^2) & 2(u_2u_3s^2-u_1sc) \\ 
+%			2(u_1u_3s^2-u_2sc) & 2(u_2u_3s^2+u_1sc) & 1-2s^2(1-{u_3}^2)
+%	\end{bmatrix}
+%	\end{equation*}
+%e, definindo $C:= \cos\theta$ e $S:=\sin\theta$, temos $2s^2 = 1-C$ e $2sc=S$, logo
+%	\begin{equation*}
+%	\begin{bmatrix}
+%			1-(1-C)(1-{u_1}^2) & u_1u_2(1-C)-u_3S & u_1u_3(1-C)+u_2S \\ 
+%			u_1u_2(1-C)+u_3S & 1-(1-C)(1-{u_2}^2) & u_2u_3(1-C)-u_1S \\ 
+%			u_1u_3(1-C)-u_2S & u_2u_3(1-C)+u_1S & 1-(1-C)(1-{u_3}^2)
+%	\end{bmatrix}
+%	\end{equation*}
+%	\begin{equation*}
+%	\begin{bmatrix}
+%			{u_1}^2(1-C)+C & u_1u_2(1-C)-u_3S & u_1u_3(1-C)+u_2S \\ 
+%			u_1u_2(1-C)+u_3S & {u_2}^2(1-C)+C & u_2u_3(1-C)-u_1S \\ 
+%			u_1u_3(1-C)-u_2S & u_2u_3(1-C)+u_1S & {u_3}^2(1-C)+C
+%	\end{bmatrix}
+%	\end{equation*}
+
+%	\begin{equation*}
+%	(1-C)
+%	\begin{bmatrix}
+%			{u_1}^2 & u_1u_2 & u_1u_3 \\ 
+%			u_1u_2 & {u_2}^2 & u_2u_3 \\ 
+%			u_1u_3 & u_2u_3 & {u_3}^2
+%	\end{bmatrix}
+%	+
+%	C\Id + S
+%	\begin{bmatrix}
+%			0 & -u_3 & u_2 \\ 
+%			u_3 & 0 & -u_1 \\ 
+%			-u_2 & u_1 & 0
+%	\end{bmatrix}
+%	\end{equation*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Matricialmente, $[R_q]$ é dada por
+	\begin{equation*}
+	\begin{bmatrix}
+			{u_1}^2 & u_1u_2 & u_1u_3 \\ 
+			u_1u_2 & {u_2}^2 & u_2u_3 \\ 
+			u_1u_3 & u_2u_3 & {u_3}^2
+	\end{bmatrix}
+	+\cos(\theta)
+	\begin{bmatrix}
+		1-{u_1}^2 & -u_1u_2 & -u_1u_3 \\ 
+		-u_1u_2 & 1-{u_2}^2 & -u_2u_3 \\ 
+		-u_1u_3 & -u_2u_3 & 1-{u_3}^2
+	\end{bmatrix}
+	+ \sin(\theta)
+	\begin{bmatrix}
+			0 & -u_3 & u_2 \\ 
+			u_3 & 0 & -u_1 \\ 
+			-u_2 & u_1 & 0
+	\end{bmatrix}
+	\end{equation*}
+ou
+	\begin{equation*}
+	(1-\cos(\theta))
+	\begin{bmatrix}
+			{u_1}^2 & u_1u_2 & u_1u_3 \\ 
+			u_1u_2 & {u_2}^2 & u_2u_3 \\ 
+			u_1u_3 & u_2u_3 & {u_3}^2
+	\end{bmatrix}
+	+
+	\cos(\theta)\Id + \sin(\theta)
+	\begin{bmatrix}
+			0 & -u_3 & u_2 \\ 
+			u_3 & 0 & -u_1 \\ 
+			-u_2 & u_1 & 0
+	\end{bmatrix}
+	\end{equation*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\chapter{Ordem em Estruturas Algébricas}
+
+%\section{Grupos Ordenados}
+
+\section{Corpos Ordenados}
+
+Nesta seção, pretendemos formalizar a ideia de elementos positivos e negativos em um corpo, e para isso usaremos o conceito de ordem. Uma ordem, também chamada de ordem total, ordem linear ou cadeia, é uma relação reflexiva, antissimétrica, transitiva e total em um conjunto $X$. As três primeiras propriedades definem uma ordem parcial, e a quarta, também chamada de conexidade, significa existe relação entre qualquer par de elementos. De fato, as três úmtimas implicam a reflexividade, mas definimos assim para podermos dizer que uma ordem total é uma ordem parcial que satisfaz a totalidade.
+
+Um corpo é um conjunto em que existe adição, subtração, multiplicação e divisão. Para unir os dois conceitos de modo que as estruturas de corpo e de ordem se relacionem, devemos exigir que elas satisfaçam algumas propriedades. Para isso, devemos relembrar dos conceitos de função monótona, de translação e de expansão. Uma função monótona crescente entre conjuntos ordenados é uma função $f$ tal que, se dois elementos do domínio $x,x'$ têm uma certa relação de ordem $x \leq x'$  (um é menor ou igual ao outro), então suas imagens têm a mesma relação de ordem, $f(x) \leq f(x')$. Isso quer dizer que a função preserva a ordem dos conjuntos. Uma função monótona decrescente inverte a relação de ordem, de modo que se dois elementos têm uma relação de ordem $x \leq x'$, suas imagens têm a relação de ordem dual, ou invertida, $f(x') \leq f(x)$. Lembremos ainda que, em uma ordem total, definimos para cada $e \in X$ os seguintes intervalos
+	\begin{align*}
+	\intfa{e}{\infty} &= \set{e \in X}{e \leq x} \\
+	\intaa{e}{\infty} &= \set{e \in X}{e < x} \\
+	\intaf{\infty}{e} &= \set{e \in X}{x \leq e} \\
+	\intaa{\infty}{e} &= \set{e \in X}{x < e}.
+	\end{align*}
+Claramente, supomos que $\infty$ não é um símbolo usado para representar um elemento de $X$, de modo a não gerar confusão.
+
+Para entrelaçar as estruturas de corpo e de ordem, usamos as translações e expansões em corpos e exigimos que elas sejam monótonas. Seja $\bm C$ um corpo e $c \in C$. A translação em $C$ por $c$ é a função
+	\begin{align*}
+	\func{T_c}{C}{C}{c'}{c+c'}
+	\end{align*}
+e a expansão de $C$ por $c$ é a função
+	\begin{align*}
+	\func{E_c}{C}{C}{c'}{cc'}.
+	\end{align*}
+Aqui assumimos que os corpos são comutativos, por isso não é necessário considerar translações e expansões à esquerda e à direita.
+
+Pedir que as fuções sejam monónotas é bem natural para preservar a estrutura de ordem do corpo. No entanto, se escolhemos ter translação monótona, não podemos ter qualquer expansão monótona, já que se $E_{-1}$ fosse monótona, seguiria que, para todos $c,c' \in C$,
+	\begin{equation*}
+	c \leq c' \Rightarrow -c \leq -c'
+	\end{equation*}
+e da monotonicidade da adição seguiria que
+	\begin{equation*}
+	c' = (c'+c) + (-c) \leq (c'+c) + (-c') = c.
+	\end{equation*}
+Como $c \leq c'$ e $c' \leq c$, seguiria então da antissimetria da ordem que $c=c'$. Como a ordem é total, isso implicaria ainda que todos elementos são iguais, já que quaisquer dois elementos podem ser comparados. Isso nos sugere, então, a imitar a relação de ordem nos números racionais e reais, e exigir que a expansão por elementos positivos sejam crescente e por elementos negativos seja decrescente. Claro, isso nos obriga a definir o que é ser positivo ou negativo. Positivo significa simplesmente ser maior ou igual a $0$, e negativo significa ser menor ou igual a $0$. A definição de $0$ como positivo ou negativo é, na maioria dos casos, irrelevante, mas em geral é mais conveniente considerá-lo ambos, em vez de nenhum dos dois.
+
+\begin{defi}
+Um \emph{corpo ordenado} é um par $(\bm C, \leq)$ em que $\bm C$ é um corpo e $\leq$ é uma ordem em $C$ que satisfaz:
+	\begin{enumerate}
+	\item (Monotonicidade da translação) Para todo $c \in C$, a translação $T_c\colon C \to C$ é uma função monótona crescente: para todos $c',c'' \in C$
+		\begin{equation*}
+		c' \leq c'' \Rightarrow c+c' \leq c+c'';
+		\end{equation*}
+	\item (Monotonicidade da expansão) Para todo $c \in \intfa{0}{\infty}$ ($c \in C$ tal que $c \geq 0$), a expansão $E_c\colon C \to C$ é uma função monótona crescente: para todos $c',c'' \in C$
+		\begin{equation*}
+		c' \leq c'' \Rightarrow cc' \leq cc''.
+		\end{equation*}
+ 	\end{enumerate}
+Os elementos  \emph{positivos}, \emph{negativos}, \emph{estritamente positivos} e  \emph{estritamente negativos} de $C$ são os elementos $c \in C$ tais que $c \geq 0$, $c \leq 0$, $c>0$ e $c<0$, respectivamente. O conjuntos desses elementos são denotados, respectivamente, $C_{\geq 0} := \intfa{0}{\infty}$, $C_{\leq 0} := \intaf{\infty}{0}$, $C_{> 0} := \intaa{0}{\infty}$ e $C_{< 0} := \intaa{\infty}{0}$.
+\end{defi}
+
+Poderia-se perguntar por que devemos ter uma ordem total, por que não só uma ordem parcial. Se queremos definir o conceito de positividade e negatividade, devemos garantir que todos os elementos sejam relacioonados com o $0$. Suponhamos então que temos uma ordem parcial tal que todos elementos são relacionados com $0$ e mostremos que essa ordem é total. Para todos $c,c' \in C$, consideremos então $c'-c \in C$. Como todos elementos podem ser comparados com $0$, segue que $c'-c \geq 0$ ou $c'-c \leq 0$. Da monotonicidade crescente da translação por $c$, segue que $c' \geq c$ ou $c' \leq c$, portanto a ordem é total. O conceito de monotonicidade da expansão ser crescente ou decrescente de acordo com a positividade do elemento pelo qual se multiplica exige, em si, que todos elementos sejam relacionados com $0$. Nas seções seguintes veremos como o conceito de cone positivo se relaciona com o de ordem em corpos.
+%Suponhamos que $\leq$ é uma ordem parcial em $C$ satisfazendo as monotonicidades da adição e multiplicação. Sejam $c,c' \in C$ tais que $c \leq c'$ e $c \neq c'$. Então $0 \leq c'-c$, o que implica, ao dividir por $c'-c$, que $0 \leq 1$. Assim sendo, para todo $n \in \N_C$, temos que $0 \leq n$ e $-n \leq 0$. Ainda, para todos $(p,q) \in \N_C \times \N_C \setminus \{0\}$, $0 \leq \frac{p}{q}$ e $-\frac{p}{q} \leq 0$. Isso significa que $\leq$ é uma ordem total em $\Q_C$.
+
+\begin{prop}
+Seja $(\bm C,\leq)$ um corpo ordenado.
+	\begin{enumerate}
+	\item Para todo $c \in C$, $c \in C_{\geq 0}$ se, e somente se, $-c \in C_{\leq 0}$;
+
+	\item Para todo $c \in C_{\leq 0}$, a expansão $E_c\colon C \to C$ é uma função monótona decrescente: para todos $c',c'' \in C$
+		\begin{equation*}
+		c' \leq c'' \Rightarrow cc'' \leq cc'.
+		\end{equation*}
+		
+	\item Para todos $c,c' \in C$,
+		\begin{enumerate}
+		\item se $c,c' \in C_{\geq 0}$, então $c+c' \in C_{\geq 0}$;
+		
+		\item se $c,c \in C_{\leq 0}$, então $c+c' \in C_{\leq 0}$;
+		
+%		\item se $c \in C_{\geq 0}$ e $c' \in C_{\leq 0}$, então $c+c' \in C_{\geq 0}$ se, e somente se, $c \geq -c'$;
+		\end{enumerate}
+	
+	\item Para todos $c,c' \in C$, $cc' \in C_{\geq 0}$ se, e somente se, $c,c' \in C_{\geq 0}$ ou $c,c' \in C_{\leq 0}$;
+	
+	\item A inversa da adição $-\colon C \to C$ é descrescente: para todos $c,c' \in C$ tais que $c \leq c'$, $-c' \leq -c$;
+	
+	\item A inversa da multiplicação ${}\inv\colon C \setminus \{0\} \to C \setminus \{0\}$ é descrecente: para todos $c,c' \in C \setminus \{0\}$ tais que $c \leq c'$, ${c'}\inv \leq c\inv$;
+	
+	\item Para todo $c \in C$, $c^2 \geq 0$;
+	
+	\item $-1 \leq 0 \leq 1$;
+	
+	\item Para todos $c,c',d,d' \in C$ tais que $c \leq c'$ e $d \leq d'$, $c+d \leq c'+d'$;
+	\end{enumerate}
+\end{prop}
+\begin{proof}
+	\begin{enumerate}	
+%	\item Seja $c \in C_{\geq 0} \cap C_{\leq 0}$. Então $c \geq 0$ e $c \leq 0$, logo da antissimetria da ordem segue que $c=0$.
+
+	\item Seja $c \in C_{\geq 0}$. Isso significa que $c \geq 0$. Pela monotonicidade crescente da translação por $-c$, segue que
+		\begin{equation*}
+		-c = -c+0 \leq -c+c = 0,
+		\end{equation*}
+portanto $-c \in C_{\leq 0}$. A recíproca segue direto de $c=-(-c)$.
+
+	\item Sejam $c \in C_{\leq 0}$ e $c',c'' \in C$ tais que $c' \leq c''$. Então temos que $-c \in C_{\leq 0}$, portanto
+	\begin{equation*}
+	-cc' \leq -cc''
+	\end{equation*}
+e somando $cc'+cc''$, segue que
+	\begin{equation*}
+	cc'' = (cc'+cc'')-cc' \leq (cc'+cc'')-cc'' = cc'.
+	\end{equation*}
+	
+	\item 
+	
+	\item Se $c,c' \in C_{\geq 0}$, então $c \geq 0$ e $c' \geq 0$, logo da monotonicidade crescente de $E_c$ segue que $cc' \geq c0=0$. Se $c,c' \in C_{\leq 0}$, então $c \leq 0$ e $c' \leq 0$, logo da monotonicidade decrescente de $E_c$ segue que $cc' \geq c0=0$.
+
+Reciprocamente, se $c \in C_{\geq 0}$ e $c' \in C_{\leq 0}$, então $c \geq 0$ e $c' \leq 0$, logo da monotonicidade crescente de $E_c$ segue que $cc' \leq c0=0$. O caso em que $c \in C_{\leq 0}$ e $c' \in C_{\geq 0}$ é o mesmo, trocando $c$ e $c'$.
+	\end{enumerate}
+\end{proof}
+
+\begin{prop}[Relação de ordem e ciclicidade]
+Seja $(\bm C,\leq)$ um corpo ordenado. Se $\car(\bm C) \neq 0$, então $\bm C$ é o corpo trivial ($C=\{0\}$).
+\end{prop}
+\begin{proof}
+Seja $\car(C)=n \in \N \setminus \{0\}$. Consideremos $0,1,n_C \in C$. Pela monotonicidade da adição, segue que,
+	\begin{equation*}
+	0 \leq 1 \leq 1+1 \leq \ldots \leq n_C=0,
+	\end{equation*}
+o que implica, pela antissimetria da ordem, que $1=0$.
+\end{proof}
+
+\subsection{Imersão dos Inteiros e Racionais}
+
+Lembremos que a função
+	\begin{align*}
+	\func{h}{\Z}{C}{n}{
+		\begin{cases}
+			\sum_{i \in [n]} 1_C,& n>0 \\
+			0_C,& n=0 \\
+			\sum_{i \in [-n]} (-1_C),& n<0
+		\end{cases}
+	}
+	\end{align*}
+é um homomorfismo de anel. Como $(\bm C,\leq)$ é um corpo ordenado não trivial, ele não tem torção, logo $h$ é injetivo e sua imagem é $\Z_C$. A função
+	\begin{align*}
+	\func{\bar h}{\Q}{C}{\frac{n}{d}}{h(n)h(d)\inv}
+	\end{align*}
+é um homomorfismo de corpo injetivo cuja imagem é $\Q_C$. O homomorfismo $\bar h$ é o único homomorfismo injetivo que extende $h$, de acordo com a propriedade universal dos corpos de frações \ref{alg:prop.univer.corpo.frac}. Assim, todo corpo sem torção, em particular um corpo ordenado não trivial, tem um subcorpo isomorfo aos racionais. 	Note que $\bar h$ é crescente, pois $\Q_C$ tem a mesma relação de ordem que $\Q$.
+
+\begin{prop}
+Seja $(\bm C,\leq)$ um corpo ordenado não trivial. Para todo $\frac{n}{d},\frac{n'}{d'} \in \Q_C$,
+	\begin{equation*}
+	\frac{p}{q} \leq \frac{p'}{q'} \Leftrightarrow pq' \leq qp'
+	\end{equation*}
+\end{prop}
+\begin{proof}
+Tomemos $q,q' \geq 0$ sem perda de generalidade. Suponhamos que $\frac{p}{q} \leq \frac{p'}{q'}$. Da monotonicidade crescente de $E_{qq'}$, segue que
+	\begin{equation*}
+	pq' = qq'\frac{p}{q} \leq qq'\frac{p'}{q'} = qp'.
+	\end{equation*}
+A recírpoca é evidente.
+\end{proof}
+
+
+\subsection{Cones Positivos}
+
+Apresentamos brevemente uma definição alternativa de ordem em corpos.
+
+\begin{defi}
+Seja $\bm C$ um corpo. Um \emph{cone pré-positivo} em $C$ é um conjunto $P \subseteq C$ tal que
+	\begin{enumerate}
+	\item (Fechamento da adição) Para todos $p,p' \in P$, $p+p' \in P$;
+	\item (Fechamento da multiplicação) Para todos $p,p' \in P$, $pp' \in P$;
+	\item (Positividade do quadrado) Para todo $c \in C$, $c^2 \in P$;
+	\item (Não-positividade do oposto da unidade) $-1 \notin P$.
+	\end{enumerate}
+
+Um \emph{cone positivo} é um cone pré-positivo $P \subseteq C$ tal que $C = P \cup -P$.
+\end{defi}
+
+\begin{prop}
+Sejam $\bm C$ um corpo e $P \subseteq C$ um cone pré-positivo.
+	\begin{enumerate}
+	\item $0,1 \in P$;
+	\item Para todo $p \in P \setminus \{0\}$, $p \inv \in P$;
+	\item $P \cap -P = \{0\}$;
+	\item $P \cup -P$ é um subcorpo de $C$.
+	\end{enumerate}
+\end{prop}
+\begin{proof}
+	\begin{enumerate}
+	\item Pela positividade do quadrado, segue que $0=0^2 \in P$ e $1=1^2 \in P$.
+	
+	\item Exercício.%Seja $p \in P \setminus \{0\}$. Queremos mostrar que $p \inv \in P$. 
+	
+	\item Seja $p \in P \cap -P$. Então $p,-p \in P$. Se $p \neq 0$, então $p\inv \in P$ e segue que $-1 = -pp\inv \in P$, o que é uma contradição. Logo $p=0$.
+	
+	\item Exercício.
+	
+	\end{enumerate}
+\end{proof}
+
+\begin{prop}
+Seja $(\bm C,\leq)$ um corpo ordenado. O conjunto $C_{\geq  0}$ de elementos positivos de $C$ é um cone positivo.
+\end{prop}
+\begin{proof}
+Segue direto das proposiçãos anteriores.
+\end{proof}
+
+\begin{defi}
+Sejam $\bm C$ um corpo e $P \subseteq C$ um cone pré-positivo.  A \emph{ordem} induzida por $P$ é a relação $\leq_P$ definida por: para todos $c,c' \in C$, $c \leq c'$ se, e somente se, $c' - c \geq 0$.
+\end{defi}
+
+\begin{prop}
+Sejam $\bm C$ um corpo e $P \subseteq C$ um cone pré-positivo.
+	\begin{enumerate}
+	\item A ordem $\leq_P$ induzida por $P$ é uma ordem parcial em $C$;
+	
+	\item Para todo $c \in C$, a translação $T_c\colon C \to C$ é monótona crescente;
+	
+	\item Para todo $c \in C$, 
+		\begin{enumerate}
+		\item se $c \in P$, a expansão $E_c\colon C \to C$ é monótona crescente;
+		
+		\item se $c \in -P$, a expansão $E_c\colon C \to C$ é monótona decrescente.
+		\end{enumerate}
+	\end{enumerate}
+\end{prop}
+\begin{proof}
+	\begin{enumerate}
+	\item (Reflexividade) Seja $c \in C$. Isso significa que $c-c =0 \in P$, logo $c \leq_P c$.
+
+(Antissimetria) Sejam $c,c' \in C$ tais que $c \leq_P c'$ e $c' \leq_P c$. Isso significa que $c'-c \in P$ e $c-c'=-(c'-c) \in P$, o que implica que $c'-c=0$, logo $c=c'$.
+
+(Transitividade) Sejam $c,c',c'' \in C$ tais que $c \leq_P c'$ e $c' \leq_P c''$. Isso significa que $c'-c \in P$ e $c''-c' \in P$, logo $(c''-c') + (c'-c) = c''-c \in P$, portanto $c \leq_P c''$.
+
+	\item Sejam $c \in C$ e $c',c'' \in C$ tais que $c' \leq_P c''$. Isso significa que $c''-c \in P$, portanto
+	\begin{equation*}
+	(c+c'') - (c+c') = c''-c' \in P,
+	\end{equation*}
+o que significa que $c+c' \leq_P c+c''$. Isso mostra que $T_c$ é monótona crescente.
+
+	\item Sejam $c \in C$ e $c',c'' \in C$ tais que $c' \leq_P c''$. Isso significa que $c''-c' \in P$.
+		\begin{enumerate}
+		\item Se $c \in P$, segue do fechamento por multiplicação que
+	\begin{equation*}
+	cc''-cc' = c(c''-c') \in P,
+	\end{equation*}
+o que significa que $cc' \leq_P cc''$. Isso mostra que $E_c$ é monótona crescente.
+		
+		\item Se $c \in -P$, então $-c \in P$, e segue do fechamento por multiplicação que
+	\begin{equation*}
+	cc'-cc'' = -c(c''-c') \in P,
+	\end{equation*}
+o que significa que $cc'' \leq_P cc'$. Isso mostra que $E_c$ é monótona decrescente.
+		\end{enumerate}
+	\end{enumerate}
+\end{proof}
+
+No entanto, para elementos $c \in C$ que não estão em $P \cup -P$, não podemos garantir a monotonicidade da expansão por ele. Note que $C \neq P \cup -P$ é equivalente a termos elementos que não são relacionados com $0$.
+
+\begin{prop}
+Sejam $\bm C$ um corpo e $P \subseteq C$ um cone positivo. O par $(\bm C,\leq_P)$ é um corpo ordenado.
+\end{prop}
+\begin{proof}
+Pela proposição anterior, $\leq_P$ é uma ordem parcial. Basta mostrar a totalidade. Sejam $c,c' \in C$. Como $C=P \cup -P$, então $c'-c \in P \cup -P$. Isso implica que $c'-c \in P$ ou $c'-c \in -P$, logo $c \leq_P c'$ ou $c' \leq_P c$. Assim concluímos que $\leq_P$ é uma ordem.
+
+Pela proposição anterior, a translação é monótona. Como $C=P \cup -P$, então $c \geq_P 0$ se, e somente se, $c \in P$ e $c \leq_P 0$ se, e somente se, $c \in -P$, e segue da proposição anterior que, se $c \geq_P 0$, a expansão $E_c$ é monótona crescente e, se $c \leq_P 0$, a expansão $E_c$ é monótona decrescente.
+\end{proof}
+
+\begin{prop}
+Seja $\bm C$ um corpo. Existe uma bijeção entre as ordens em $\bm C$ tais que $(\bm C,\leq)$ é um corpo ordenado e os cones positivos de $\bm C$.
+\end{prop}
+\begin{proof}
+Usando os resultados anteriores, essa demonstração fica simples. A bijeção é dada por $\leq \mapsto C_{\geq 0}$ e sua inversa é $P \mapsto \leq_P$.
+\end{proof}
+
+\subsection{Corpos Ordenados Completos}
+
+%\subsubsection{Números Reais \ensuremath{\R}}
+
+\begin{defi}
+Um corpo ordenado \emph{completo} é um corpo ordenado $(\bm C,\leq)$ tal que todo conjunto não-vazio limitado superiormente admite supremo: para todo $A \subseteq C$ não-vazio imitado superiormente, existe $s \in C$ tal que
+	\begin{equation*}
+	s = \sup A.
+	\end{equation*}
+\end{defi}
+
+\begin{prop}
+Seja $(\bm C,\leq)$ um corpo ordenado completo (não-trivial). Existe isomorfismo de corpos crescente  $h\colon \R \to C$.
+\end{prop}
+\begin{proof}
+%Vamos construir o isomorfismo $h$ por etapas. Primeiro, para todo inteiro $i \in \Z$ definimos $h(i) := i_C \in C$. Como $\car(C) \neq 0$(pois $\bm C$ é não-trivial), temos bijeção entre $\Z$ e $\Z_C$ que é crescente. Agora, para todos $i,j \in \Z$, $j \neq 0$, definimos $h(\frac{i}{j}) := \frac{h(i)}{h(j)} = \frac{i_C}{j_C} \in C$. Assim, temos novamente uma bijeção entre $\Q$ e $\Q_C$ que é crescente. Finalmente, para $x \in \R$, definimos o conjunto $L := \set{q \in \Q}{q \leq x}$. Como $L \subseteq \R$ é limitado superiormente por $x \in \R$, existe cota superior $i \in \Z$ de $L$, logo $h(L) \subseteq C$ é limitado superiormente por $h(i) = i_C \in $, e pela completude de $\bm C$ segue que existe $\sup h(L)$. Portanto definimos
+%	\begin{equation*}
+%	h(x) := \sup h(L) = \set{h(q)}{q \in \Q,\ q \leq x}.
+%	\end{equation*}
+Definimos $h$ como
+	\begin{align*}
+	\func{h}{\R}{C}{x}{\sup \set{\frac{i_C}{j_C}}{(i,j) \in \Z \times \Z \setminus \{0\}, \frac{i}{j} \leq x}}.
+	\end{align*}
+Definamos $L(x) := \set{q \in \Q}{q \leq x}$. Mostremos que $h$ é uma bijeção. (Injetividade) Sejam $x,x' \in \R$ tais que $x \neq x'$. Da totalidade da ordem, $x < x'$ ou $x' < x$, logo $\sup L(x) < \sup L(x')$ ou $\sup L(x') < \sup L(x)$. No primeiro caso, segue que $h(x) < h(x')$, e no segundo $h(x') < h(x)$, portanto $h(x) \neq h(x')$. (Sobrejetividade) Seja $c \in C$. Então $c = \sup \set{q \in \Q_C}{q \leq c}$, portanto definindo $x := \sup \set{\frac{i_C}{j_C}}{(i,j) \in \Z \times \Z \setminus \{0\}, \frac{i_C}{j_C} \leq c}$, temos que $h(x)=y$.
+
+Agora, mostremos que $h$ é isomorfismo de corpos. (Homomorfismo de grupo aditivivo) Sejam $x,x' \in \R$. Então $x+x' = \sup L(x+x')$, logo
+	\begin{align*}
+	h(x+x') = h(\sup L(x+x')) = \sup h(L(x+x')) = h(x) + h(x').
+	\end{align*}
+(Homomorfismo de grupo multiplicativo) Sejam $x,x' \in \R$. Então $xx' = \sup L(xx')$, logo
+	\begin{align*}
+	h(xx') = h(\sup L(xx')) = \sup h(L(xx')) = h(x)h(x').
+	\end{align*}
+Os detalhes podem ser completados pelo leitor.
+
+O ismorfismo $h$ é crescente pois, se $x \leq x'$, então $L(x) \subseteq L(x')$, logo $h(L(x)) \subseteq h(L(x'))$, o que implica $h(x) \leq h(x')$.
+\end{proof}
+
+Essa proposição mostra que corpos ordenados completos são, basicamente, cópias de $\R$. Isso nos permite usar $\R$ sempre que quisermos usar algum corpo que seja ordenado e completo, e tira um pouco a arbitrariedade algébrica de usar o corpo dos números reais.
+
+\subsection{Corpos Ordenados Infinitesimais}
+
+\begin{defi}
+Um \emph{corpo não-infinitesimal} (ou \emph{arquimediano}) é um corpo ordenado $(\bm C,\leq)$ tal que $\N_C$ é ilimitado superiormente: para todo $c \in C$, existe $n \in \N_C$ tal que $c < n$.
+\end{defi}
+
+\begin{prop}
+Seja $(\bm C,\leq)$ um corpo ordenado. São equivalentes:
+	\begin{enumerate}
+	\item $(\bm C,\leq)$ é arquimediano;
+	\item Para todos $c \in C_{>0}$ e $c' \in C$, existe $n \in \N_C$ tal que $nc>c'$;
+	\item Para todo $c \in C_{>0}$, existe $n \in \N_C$ tal que $0<\frac{1}{n}<c$;
+	\item Para todo $c \in C_{>0}$, existe $n \in \N_C$ tal que $0<\frac{1}{2^n}<c$.
+	\item Para todos $c,c' \in C$ tais que $c<c'$, existe $q \in \Q_C$ tal que $c < q < c'$.
+	\end{enumerate}
+\end{prop}
+
+% Topologicamente falando, qual a consequência de um corpo ser infinitesimal/arquimediano?
+% Descobri usando a propriedade final acima: C é não infinitesimal se, e somente se, \Q_C é denso em C (com respeito à topologia de ordem ou da distancia, que são a mesma).
+
+
+\subsection{Valor Absoluto e Distância}
+
+
+\begin{defi}
+Seja $(\bm C,\leq)$ um corpo ordenado. O \emph{valor absoluto} de $C$ é a função
+	\begin{align*}
+	\func{\abs{\var}}{C}{C_{\geq 0}}{c}{
+		\begin{cases}
+			c,& c \in C_{\geq 0} \\
+			-c,& c \in C_{\leq 0}.
+		\end{cases}
+	}
+	\end{align*}
+\end{defi}
+
+\begin{prop}
+Seja $(\bm C,\leq)$ um corpo ordenado. O valor absoluto satisfaz
+	\begin{enumerate}
+	\item (Separação) Para todo $c \in C$, $\abs{c}=0$ se, e somente se, $c=0$;
+	\item (Multiplicatividade) Para todos $c,c' \in C$, $\abs{cc'}=\abs{c}\abs{c'}$;
+	\item (Subaditividade) Para todos $c,c' \in C$, $\abs{c+c'} \leq \abs{c} + \abs{c'}$;
+	
+	\item Para todo $c \in C$, $\abs{-c} = \abs{c}$;
+	\item Para todo $c \in C \setminus \{0\}$, $\abs{c\inv} = \abs{c}\inv$.
+	\end{enumerate}
+\end{prop}
+\begin{proof}
+	\begin{enumerate}
+	\item Como $0 \in C_{\geq 0}$, $\abs{0}=0$. Reciprocamente, se $\abs{c}=0$, então $c=0$ ou $-c=0$. Ambos os casos implicam $c=0$.
+	
+	\item Sejam $c,c' \in C$. Consideramos quatro casos. Se $c,c' \in C_{\geq 0}$, então $cc' \in C_{\geq 0}$, logo
+	\begin{equation*}
+	\abs{cc'} = cc' = \abs{c}\abs{c'}.
+	\end{equation*}
+Se $c,c' \in C_{\leq 0}$, então $cc' \in C_{\geq 0}$, logo
+	\begin{equation*}
+	\abs{cc'} = cc' = (-c)(-c') =\abs{c}\abs{c'}.
+	\end{equation*}
+Se $c \in C_{\geq 0}$ e $c \in C_{\leq 0}$, então $cc' \in C_{\leq 0}$, logo
+	\begin{equation*}
+	\abs{cc'} = -cc' = \abs{c}\abs{c'}.
+	\end{equation*}
+O caso em que $c \in C_{\leq 0}$ e $c \in C_{\geq 0}$ é o mesmo, trocando $c$ e $c'$.
+
+	\item Sejam $c,c' \in C$. Consideramos quatro casos. Se $c,c' \in C_{\geq 0}$, então $c+c' \in C_{\geq 0}$, logo
+	\begin{equation*}
+	\abs{c+c'} = c+c' = \abs{c}+\abs{c'}.
+	\end{equation*}
+Se $c,c' \in C_{\leq 0}$, então $c+c' \in C_{\leq 0}$, logo
+	\begin{equation*}
+	\abs{c+c'} = -(c+c') = (-c)+(-c') = \abs{c}+\abs{c'}.
+	\end{equation*}
+Se $c \in C_{\geq 0}$ e $c' \in C_{\leq 0}$, então $-c \leq c$ e $c' \leq -c'$. Consideramos dois casos. Se $c+c' \in C_{\geq 0}$, então
+	\begin{equation*}
+	\abs{c+c'} = c+c' \leq c+(-c') = \abs{c}+\abs{c'}
+	\end{equation*}
+Se $c+c' \in C_{\leq 0}$, então
+	\begin{equation*}
+	\abs{c+c'} = -(c+c') = (-c)+(-c') \leq c+(-c') = \abs{c}+\abs{c'}
+	\end{equation*}
+	
+	\item Seja $c \in C$. Se $c \in C_{\geq 0}$, então $\abs{c}=c$ e $-c \in C_{\leq 0}$, logo $\abs{-c}= c = \abs{c}$; se $c \in C_{\leq 0}$, então $\abs{c}=-c$ e $-c \in C_{\geq 0}$, logo $\abs{-c} = -c = \abs{c}$.
+	
+	\item Seja $c \in C \setminus \{0\}$. Então
+		\begin{equation*}
+		\abs{c\inv} = \abs{c\inv}\abs{c}\abs{c}\inv = \abs{c\inv c}\abs{c}\inv = \abs{1}\abs{c}\inv = \abs{c}\inv.
+		\end{equation*}
+	\end{enumerate}
+\end{proof}
+
+\begin{defi}
+Seja $(\bm C,\leq)$ um corpo ordenado. A \emph{distância} de $C$ é a função
+	\begin{align*}
+	\func{\dist{\var}{\var}}{C \times C}{C_{\geq 0}}{(c,c')}{\abs{c'-c}.}
+	\end{align*}
+\end{defi}
+
+\begin{prop}
+Seja $(\bm C,\leq)$ um corpo ordenado. A distância $\dist{\var}{\var}\colon C \times C \to C_{\geq 0}$ satisfaz:
+	\begin{enumerate}
+	\item (Separação) Para todos $c,c' \in C$,
+		\begin{equation*}
+		\dist{c}{c'} = 0 \sse c=c';
+		\end{equation*}
+
+	\item (Simetria) Para todos $c,c' \in C$,
+		\begin{equation*}
+		\dist{c}{c'} = \dist{c'}{c};
+		\end{equation*}
+
+	\item (Desigualdade Triangular) Para todos $c,c',c'' \in C$,
+		\begin{equation*}
+		\dist{c}{c''} \leq \dist{c}{c'} + \dist{c'}{c''};
+		\end{equation*}
+	
+	\item (Invariância por Translação) Para todos $c,c',c'' \in C$,
+		\begin{equation*}
+		\dist{c+c'}{c+c''} = \dist{c'}{c''};
+		\end{equation*}
+	
+	\item (Homogeneidade Absoluta) Para todos $c,c',c'' \in C$,
+		\begin{equation*}
+		\dist{cc'}{cc''} = \abs{c}\dist{c'}{c''}.
+		\end{equation*}
+	
+	\item Para todos $c,c' \in C$,
+		\begin{equation*}
+		\dist{-c}{-c'} = \dist{c}{c'};
+		\end{equation*}
+	
+	\item Para todo $c \in C$,
+		\begin{equation*}
+		\abs{c} = \dist{0}{c}.
+		\end{equation*}
+	
+%	\item Para todos $c,c' \in C_{\geq 0}$,
+%		\begin{equation*}
+%		\dist{c\inv}{{c'}\inv} = (\dist{c}{c'})\inv ;
+%		\end{equation*}
+
+%	\begin{align*}
+%	\abs{\frac{d'}{n'} - \frac{d}{n}} &= \abs{\frac{d'n-n'd}{n'n}} \\
+%		&= \frac{\abs{d'n-n'd}}{\abs{n'}\abs{n}}
+%	\end{align*}
+%	\begin{align*}
+%	{c'}\inv - c\inv &= \frac{d'}{n'} - \frac{d}{n} \\
+%		&= \left(\frac{d'}{n'} - \frac{d}{n}\right)\left(\frac{n'}{d'} - \frac{n}{d}\right)\inv\left(\frac{n'}{d'} - \frac{n}{d}\right) \\
+%		&= \frac{d'n-n'd}{n'n}\frac{d'd}{n'd-d'n}\left(\frac{n'}{d'} - \frac{n}{d}\right) \\
+%		&= \frac{d'n-n'd}{n'd-d'n}\frac{d'}{n'}\frac{d}{n}\left(\frac{n'}{d'} - \frac{n}{d}\right) \\
+%		&= \frac{d'n-n'd}{n'd-d'n} {c'}\inv c\inv (c'-c)
+%	\end{align*}
+	\end{enumerate}
+\end{prop}
+
+
+
+
+
+
+
+\subsection{Conicidade}
+
+\begin{defi}[Cone]
+Seja $\bm V$ um espaço linear sobre um corpo ordenado $(\bm C,\leq)$. Um \emph{cone} (ou  \emph{conjunto cônico}) em $V$ é um conjunto $X \subseteq V$ tal que, para todo $c \in C_{\geq 0}$,
+	\begin{equation*}
+	cX \subseteq X.
+	\end{equation*}
+\end{defi}
+
+Isso é equivalente a, para todos $c \in C_{\geq 0}$ e $x \in X$, $cx \in X$.
+
+\begin{defi}[Combinação cônica]
+Sejam $\bm V$ um espaço linear sobre um corpo ordenado $(\bm C,\leq)$ e $v_0,\cdots,v_{n-1} \in V$. Uma \emph{combinação cônica} de $v_0,\cdots,v_{n-1}$ é um vetor $v \in V$ para o qual existem $c_0,\cdots,c_{n-1} \in C_{\geq 0}$ tais que
+	\begin{equation*}
+	v = \sum_{i \in [n]} c_iv_i.
+	\end{equation*}
+\end{defi}
+
+Um \emph{cone agudo} é um cone $X$ tal que $X \cap -X = \{0\}$.
+
+\begin{prop}
+Sejam $\bm V$ um espaço linear sobre um corpo ordenado $(\bm C,\leq)$ e $X \subseteq V$ um cone.
+	\begin{enumerate}
+	\item Se $X \neq \emptyset$, então $0 \in X$;
+	\item $X \cap -X$ é o maior subespaço linear contido em $X$.
+	\end{enumerate}
+\end{prop}
+
+\begin{defi}
+Sejam $X$ um conjunto e $(\bm C,\leq)$ um corpo ordenado. Uma \emph{função positiva} de $X$ para $C$ é uma função de $X$ para $C_{\geq 0}$; ou seja, uma função $f\colon X \to C$ tal que, para todo $x \in X$, $f(x) \geq 0$. O espaço de funções positivas de $X$ para $C$ é $C^X_{\geq 0}$.
+\end{defi}
+
+%\begin{defi}
+%Sejam $X$ um conjunto, $\bm V$ um espaço linear sobre um corpo ordenado $(\bm C,\leq)$ e $N \subseteq V$ um cone. Uma \emph{função positiva} de $X$ para $L$ com respeito a $N$ é uma função de $X$ para $N$; ou seja, uma função $f\colon X \to L$ tal que, para todo $x \in X$, $f(x) \in N$.
+%\end{defi}
+
+\begin{prop}
+Sejam $X$ um conjunto e $(\bm C,\leq)$ um corpo ordenado. O espaço $C^X_{\geq 0}$ de funções positivas é um cone em $C^X$.
+\end{prop}
+\begin{proof}
+Sejam $c \in C_{\geq 0}$ e $f \in C^X_{\geq 0}$. Então, para todo $x \in X$, $f(x) \geq 0$, portanto $cf(x) \geq 0$, logo $cf \geq 0$.
+\end{proof}
+
+% O mesmo vale para funções de um conjuto em um cone de um espaço linear.
+
+
+
+
+\subsection{Convexidade}
+
+\begin{defi}[Conjunto convexo]
+Seja $\bm V$ um espaço linear sobre um corpo ordenado $(\bm C,\leq)$. Um \emph{conjunto convexo} em $V$ é um conjunto $X \subseteq V$ tal que, para todo $c \in \intff{0}{1}$,
+	\begin{equation*}
+	(1-c)X + cX \subseteq X.
+	\end{equation*}
+\end{defi}
+
+Isso é equivalente a dizer que, para todos $x,x' \in X$ e $c \in \intff{0}{1}$,
+	\begin{equation*}
+	(1-c)x + cx' \in X.
+	\end{equation*}
+
+Uma combinação convexa é uma combinação cônica cuja soma dos coeficientes é $1$.
+
+\begin{defi}[Combinação convexa]
+Sejam $\bm V$ um espaço linear sobre um corpo ordenado $(\bm C,\leq)$ e $v_0,\cdots,v_{n-1} \in V$. Uma \emph{combinação convexa} de $v_0,\cdots,v_{n-1}$ é um vetor $v \in V$ para o qual existem $c_0,\cdots,c_{n-1} \in C_{\geq 0}$ tais que $\sum_{i \in [n]} c_i = 1$ e
+	\begin{equation*}
+	v = \sum_{i \in [n]} c_iv_i.
+	\end{equation*}
+\end{defi}
+
+Um conjunto convexo é um conjunto fechado por combinações convexas.
+
+\begin{prop}
+Seja $\bm V$ um espaço linear sobre um corpo ordenado $(\bm C,\leq)$ e $X$ um conjunto convexo em $V$. Para todos $c_0,\cdots,c_{n-1} \in C_{\geq 0}$ tais que $\sum_{i \in [n]} c_i = 1$,
+	\begin{equation*}
+	\sum_{i \in [n]} c_iX \subseteq X.
+	\end{equation*}
+
+%Para todos $x_0,\cdots,x_{n-1} \in X$ e $c_0,\cdots,c_{n-1} \in C_{\geq 0}$ tais que $\sum_{i \in [n]} c_i = 1$,
+%	\begin{equation*}
+%	\sum_{i \in [n]} c_ix_i \in X.
+%	\end{equation*}
+\end{prop}
+
+
+
+
+
+
+
+
+%\section{Espaços Lineares Ordenados}
+
+
+
+
+
+
+
+
+
+
+
+
