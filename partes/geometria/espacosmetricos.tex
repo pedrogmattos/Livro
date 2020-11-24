@@ -1,0 +1,1094 @@
+\chapter{Espaços métricos}
+
+\section{Espaço métrico}
+
+\subsection{Métricas}
+
+\begin{definition}
+Seja $M$ um conjunto. Uma \emph{métrica} (ou \emph{função distância}) em $M$ é uma função
+	\begin{align*}
+	\func{\dist{\var}{\var}}{M \times M}{\R}{(p,p')}{\dist{p}{p'}}
+	\end{align*}
+que satisfaz
+	\begin{enumerate}
+	\item (Separação) Para todos $p,p' \in M$,
+		\begin{equation*}
+		\dist{p}{p'} = 0 \sse p = p';
+		\end{equation*}
+	\item (Simetria) Para todos $p,p' \in M$
+		\begin{equation*}
+		\dist{p}{p'} = \dist{p'}{p};
+		\end{equation*}
+	\item (Desigualdade Triangular) Para todos $p,p',p'' \in M$,
+		\begin{equation*}
+		\dist{p}{p''} \leq \dist{p}{p'} + \dist{p'}{p''}.
+		\end{equation*}
+	\end{enumerate}
+A \emph{distância} entre $p$ e $p'$ é o número real $\dist{p}{p'}$.
+\end{definition}
+
+Na definição da função distância geralmente se assume que o contradomínio é $\intfa{0}{\infty}$. No entanto, pode-se mostrar que qualquer função real que satisfaz separação, simetria e desigualdade triangular é positiva. Por isso a proposição seguinte.
+
+\begin{definition}
+Um \emph{espaço métrico} é um par $\bm M = (M,d)$ em que $M$ é um conjunto e $d$ é uma métrica em $M$. Os elementos de $M$ são \emph{pontos}. Um \emph{subespaço métrico} de $\bm M$ é o par $\bm S=(S,\dist{\var}{\var}|_{S \times S})$.
+\end{definition}
+
+\begin{proposition}
+Seja $\bm M$ um espaço métrico. Então
+	\begin{enumerate}
+	\item (Positividade) Para todos $p,p' \in M$, $\dist{p}{p'} \geq 0$.
+	\item (Desigualdade triangular generalizada) Para todos $p_0,\ldots,p_n \in M$,
+		\begin{equation*}
+		\dist{p_0}{p_n} \leq \sum_{i=1}^{n-1} \dist{p_i}{p_{i+1}}
+		\end{equation*}
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item Sejam $p,p' \in M$. Da separação, desigualdade triangular e da simetria de $d$, segue que
+	\begin{equation*}
+	0 = \frac{\dist{p}{p}}{2} \leq \frac{\dist{p}{p'} + \dist{p'}{p}}{2}= \dist{p}{p'}.
+	\end{equation*}
+
+	\item Para $n=1$, seja $p_1 \in M$; então $\dist{p_1}{p_1}=0$ e $\sum_{i=1}^{0} \dist{p_i}{p_{i+1}}=0$, pois a soma é vazia. Para $n=2$, sejam $p_1,p_2 \in M$; então $\dist{p_1}{p_2}$ e $\sum_{i=1}^{1} \dist{p_i}{p_{i+1}}=\dist{p_1}{p_2}$, e vale a propriedade. Para $n=3$, sejam $p_1,p_2,p_3 \in M$; então a propriedade é a desigualdade triangular. Agora, sejam $n \geq 4$, $p_1,\ldots,p_n \in M$ e assumamos que a propriedade vale para todo $k \in \N$, tal que $3 \leq k \leq n-1$. Então
+	\begin{equation*}
+	\dist{p_1}{p_n} \leq \sum_{i=1}^{n-3} \dist{p_i}{p_{i+1}}+\dist{p_{n-2}}{p_n},
+	\end{equation*}
+	pois essa soma tem $n-1$ termos e vale a hipótese de indução. Pela desigualdade triangular, vale que $\dist{p_{n-2}}{p_n} \leq \dist{p_{n-2}}{p_{n-1}}+\dist{p_{n-1}}{p_n}$, e, portanto,
+	\begin{align*}
+	\dist{p_1}{p_n} &\leq \sum_{i=1}^{n-3} \dist{p_i}{p_{i+1}}+\dist{p_{n-2}}{p_n} \\
+			&\leq \sum_{i=1}^{n-3} \dist{p_i}{p_{i+1}} + \dist{p_{n-2}}{p_{n-1}}+\dist{p_{n-1}}{p_n} \\
+			&= \sum_{i=1}^{n-1} \dist{p_i}{p_{i+1}}.
+	\end{align*}
+	\end{enumerate}
+\end{proof}
+
+Alguns exemplos de métricas seguem. Podemos definir distâncias a partir de distâncias já conhecidas no espaço.
+
+\begin{proposition}
+Seja $M$ um conjunto.
+	\begin{enumerate}
+	\item A \emph{métrica discreta}
+		\begin{align*}
+		\func{d}{M \times M}{\R}{(p,p')}{
+			\begin{cases}
+				0,& p = p' \\
+				1,& p \neq p'
+			\end{cases}
+		}
+		\end{align*}
+é uma métrica sobre $M$.
+
+	\item Se $\dist{\var}{\var}$ é uma métrica em $M$, então
+		\begin{align*}
+		\func{\dist{\var}{\var}'}{M \times M}{\intfa{0}{\infty}}{(p,p')}{\frac{\dist{p}{p'}}{1+\dist{p}{p'}}}
+		\end{align*}
+	é uma métrica sobre $M$.
+	\end{enumerate}
+\end{proposition}
+
+
+\begin{proposition}
+Sejam $M$ um conjunto e $\dist{\var}{\var}_0, \ldots, \dist{\var}{\var}_{n-1}$ métricas em $M$. Então a função
+	\begin{align*}
+		\func{\dist{\var}{\var}}{M \times M}{\R}{(p,p')}{\sum_{i=0}^{n-1} \dist{p}{p'}_i}
+	\end{align*}
+é uma métrica em $M$.
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item (Separação) Sejam $p,p' \in M$. Suponhamos que
+	\begin{equation*}
+	d(p,p') = \sum_{i=0}^n d_i(p,p') = 0.
+	\end{equation*}
+Como, para todo $i \in [n]$, $d_i(p,p') \geq 0$, então, para todo $i \in [n]$, $d_i(p,p') = 0$. Logo $p=p'$. Reciprocamente, suponhamos $p=p'$. Então, para todo $i \in [n]$, $d_i(p,p')=0$, o que implica
+	\begin{equation*}
+	d(p,p') = \sum_{i=0}^{n-1} 0 = 0.
+	\end{equation*}
+	
+	\item (Simetria) Sejam $p,p' \in M$. Então, pela simetria de $d_i$ para todo $i \in [n]$,
+	\begin{equation*}
+	d(p,p') = \sum_{i=0}^{n-1} d_i(p,p') = \sum_{i=1}^{n-1} d_i(p,p') = d(p,p').
+	\end{equation*}
+	
+	\item (Desigualdade Triangular) Sejam $p,p',p'' \in M$. Então, para todo $i \in [n]$, vale $d_i(p,p'') \leq d_i(p,p')+d_i(p',p'')$ pela desigualdade triangular de $d_i$, e segue que
+	\begin{align*}
+	d(p,p'') &= \sum_{i=0}^{n-1} d_i(p,p'') \\
+				&\leq \sum_{i=0}^{n-1} (d_i(p,p')+d_i(p',p'')) \\
+				&= \sum_{i=0}^{n-1} d_i(p,p') + \sum_{i=0}^{n-1} d_i(p',p'') \\
+				&= d(p,p')+d(p',p''). \qedhere
+	\end{align*}
+	\end{enumerate}
+\end{proof}
+
+\begin{proposition}
+Sejam $M$ um conjunto não vazio e $d_0, \ldots,d_{n-1}$ métricas em $M$. Então a função
+	\begin{align*}
+	\func{d}{M \times M}{\R}{(p,p')}{\max\set{d_i(p,p')}{i \in [n]}}
+	\end{align*}
+é uma métrica sobre $M$.
+\end{proposition}
+\begin{proof}
+Demonstraremos para $n=2$, pois o caso geral é análogo.
+	\begin{enumerate}
+	\item (Separação) Sejam $p,p' \in M$. Suponhamos que
+	\begin{equation*}
+	d(p,p')=\max\{d_1(p,p'),d_2(p,p')\}=0.
+	\end{equation*}
+Então $d_1(p,p')=0$ ou $d_2(p,p')=0$. Em ambos os casos, temos $p=p'$. Reciprocamente, suponhamos que $p=p'$. Então $d_1(p,p')=0$ e $d_2(p,p')=0$, o que implica $d(p,p')=\max\{d_1(p,p'),d_2(p,p')\}=0$.
+	
+	\item (Simetria) Sejam $p,p' \in M$. Então
+	\begin{equation*}
+	d(p,p') = \max\{d_1(p,p'),d_2(p,p')\} = \max\{d_1(p',p),d_2(p',p)\} = d(p',p).
+	\end{equation*}
+	
+	\item (Desigualdade Triangular) Sejam $p,p',p'' \in M$. Então $d(p,p'')=d_1(p,p'')$ ou $d(p,p'')=d_2(p,p'')$. No primeiro caso, segue que
+	\begin{equation*}
+	d(p,p'') = d_1(p,p'') \leq d_1(p,p') + d_1(p',p'') \leq d(p,p') + d(p',p'').
+	\end{equation*}
+	No segudo caso, segue que
+	\begin{equation*}
+	d(p,p'') = d_2(p,p'') \leq d_2(p,p') + d_2(p',p'') \leq d(p,p') + d(p',p''). \qedhere
+	\end{equation*}
+	\end{enumerate}
+\end{proof}
+
+\begin{exercise}[Métrica Limitada]
+Seja $(M,d)$ um espaço métrico. A função
+	\begin{align*}
+	\func{d \wedge 1}{M \times M}{\R}{(p,p')}{\min \{d(x,y),1\}}
+	\end{align*}
+é uma métrica sobre $M$, a \emph{métrica limitada induzida por $d$}.
+\end{exercise}
+
+\begin{exercise}[Métricas $p$]
+Sejam $\bm M$ e $\bm M'$ espaços métricos e $p \in \intfa{1}{\infty}$.
+A função
+	\begin{align*}
+	\func{(d^p + {d'}^p)^{\frac{1}{p}}}{(M \times M') \times (M \times M')}{\R}{((x,x'),(y,y'))}{(d(p,q)^p + d'(p',q')^p)^{\frac{1}{p}}}
+	\end{align*}
+é uma métrica sobre $M \times M'$.
+\end{exercise}
+
+\begin{definition}
+Seja $d \in \N$. A \emph{métrica reta} sobre $\R^d$ é a função
+	\begin{align*}
+	\func{\dist{\var}{\var}_{\R^d}}{\R^d}{\R^d}{(x,x')}{\left( \sum_{i \in [d]} \abs{x_i-x'_i}^2 \right)^{\frac{1}{2}}}.
+	\end{align*}
+\end{definition}
+
+
+\subsection{Diâmetro, bolas e conjuntos e funções limitadas}
+
+\begin{definition}
+Sejam $\bm M$ um espaço métrico e $C \subseteq M$. O \emph{diâmetro} de $C$ é
+	\begin{equation*}
+	\diam(C) := \sup(d(C \times C)) = \sup\set{d(p,p')}{p,p' \in C}
+	\end{equation*}
+se $d(C \times C)$ é limitado superiormente, e $\infty$, caso contrário. Um \emph{conjunto limitado em $\bm M$} é um conjunto $C \subseteq M$ tal que $\diam(C) < \infty$.
+\end{definition}
+
+Na definição, adotamos a convenção de que $\sup \emptyset = 0$ e $\sup \intfa{0}{\infty} = \infty$. Isso é só parcialmente uma convenção, pois a ambiguidade não está em que valor atribuir a $\sup \emptyset$, mas sim em qual conjunto parcialmente ordenado está sendo considerado. Quando o conjunto ordenado é $\intff{0}{\infty}$, $\sup_{\intff{0}{\infty}} \emptyset = 0$; quando o conjunto ordenado é $\intff{-\infty}{+\infty}$, $\sup_{\intff{-\infty}{+\infty}} \emptyset = -\infty$, e assim por diante. Isso define uma função
+	\begin{align*}
+	\func{\diam}{\p(M)}{\intff{0}{\infty}}{C}{\diam(C)}.
+	\end{align*}
+
+\begin{definition}
+Sejam $\bm M$ um espaço métrico, $c \in M$ e $r \in \intfa{0}{\infty}$. A \emph{bola aberta} de centro $c$ e raio $r$ em $M$ é o conjunto
+	\begin{equation*}
+	\bola_r(c) := \set{p \in M}{\dist{c}{p} < r}.
+	\end{equation*}
+A \emph{bola fechada} de centro $c$ e raio $r$ em $M$ é o conjunto
+	\begin{equation*}
+	\Fec{\bola}_r(c) := \set{p \in M}{\dist{c}{p} \leq r}.
+	\end{equation*}
+\end{definition}
+
+\begin{figure}
+\centering
+\begin{tikzpicture}[scale=2]
+	\draw[dashed] (0,0) circle (1);
+	\draw[dotted] (0,0) node {$\bullet$} node[anchor=east] {$c$} -- (1/2,0) node[anchor=south] {$r$} -- (1,0);
+\end{tikzpicture}\hspace{3cm}
+\begin{tikzpicture}[scale=2]
+	\draw (0,0) circle (1);
+	\draw[dotted] (0,0) node {$\bullet$} node[anchor=east] {$c$} -- (1/2,0) node[anchor=south] {$r$} -- (1,0);
+\end{tikzpicture}
+\caption{Bolas aberta e fechada de centro $c$ e raio $r$, respectivamente.}
+\end{figure}
+
+\begin{proposition}
+Sejam $\bm M$ um espaço métrico e $C \subseteq M$ um conjunto. Então $C$ é um conjunto limitado se, e somente se, existe bola $\overline\bola_r(c)$ tal que $C \subseteq \overline\bola_r(c)$.
+\end{proposition}
+\begin{proof}
+Se $C$ é limitado, basta tomar $r=\diam(C)$ e $c \in C$. Reciprocamente, se existe bola $\overline\bola_r(c)$ tal que $C \subseteq \overline\bola_r(c)$, então para todos $p,p' \in C$, segue da desigualdade triangular que
+	\begin{equation*}
+	d(p,p') \leq d(p,c)+d(c,p') \leq r+r=2r,
+	\end{equation*}
+portanto $\diam(C) \leq 2r \in \intfa{0}{\infty}$.
+\end{proof}
+
+\begin{exercise}
+Seja $\bm M$ um espaço métrico. 
+	\begin{enumerate}
+	\item Para todos $C,C' \subseteq M$ tais que $C \subseteq C'$,
+		\begin{equation*}
+		\diam(C) \leq \diam (C').
+		\end{equation*}
+	
+	\item Para todos $C, C' \subseteq M$,
+		\begin{equation*}
+		\diam(C \cup C') = \max \{ \diam(C),\diam(C'),\sup\set{\dist{p}{p'}}{p \in C, p' \in C'} \}.
+		\end{equation*}
+	
+	\item Para todos $C, C' \subseteq M$,
+		\begin{equation*}
+		\diam(C \cup C') \leq \min \{ \diam(C),\diam(C') \};
+		\end{equation*}
+	
+	\item Para todo $r \in \intfa{0}{\infty}$ e todo $p \in M$.
+	\begin{equation*}
+	\diam(\bola_r(p)) \leq 2r.
+	\end{equation*}
+	\end{enumerate}
+\end{exercise}
+
+Note que o diâmetro da bola de raio $r$ não necessariamente é $2r$, por exemplo para $r=2$ na métrica discreta.
+
+\begin{exercise}
+Sejam $M$ um conjunto, $d$ uma métrica em $M$ e $d \wedge 1$ a métrica limitada sobre $M$. Todo subconjunto de $M$ é limitado com respeito a $d \wedge 1$.
+\end{exercise}
+
+\begin{definition}
+Seja $\bm M$ um espaço métrico. Uma função \emph{limitada} em $\bm M$ é uma função $f\colon X \to M$ de um conjunto $X$ para $M$ cuja imagem $f(X)$ é limitada.
+\end{definition}
+
+\section{Topologia dos espaços métricos}
+
+\subsection{Interior e pontos interiores}
+
+\begin{definition}
+Sejam $\bm M$ um espaço métrico e $C \subseteq M$ um conjunto. Um \emph{ponto interior} de $C$ é um ponto $p \in C$ para o qual existe um número real $r > 0$ tal que $\bola_r(p) \subseteq C$. O \emph{interior} de $C$ é o conjunto $\Int{C}$ de todos pontos interiores de $C$. Um \emph{conjunto aberto} de $\bm M$ é um conjunto $A \subseteq M$ tal que $A = A^\circ$. O conjunto dos conjuntos abertos de $\bm M$ é denotado $\topo_{\bm M}$.
+\end{definition}
+
+\begin{proposition}
+Seja $\bm M = (M,d)$ um espaço métrico. Então
+	\begin{enumerate}
+	\item Para todo $c \in M$ e para todo número real $r > 0$, a bola aberta $\bola_r(c)$ é um conjunto aberto;
+	\item O conjunto $\topo_{\bm M}$ é uma topologia de $M$.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item Sejam $c \in M$ e $r \in \intaa{0}{\infty}$. Queremos mostrar que $\bola_r(c)$ é aberto. Para isso, seja $p \in \bola_r(c)$. Então segue que $d := d(c,p) < r$, pela definição de bola aberta, e, portanto, $r-d \in \intaa{0}{\infty}$. Para mostrar que essa bola centrada em $p$ está contida na bola maior centrada em $c$, seja $p' \in \bola_{r-d}(p)$. Então $d(p,p')<r-d$ e, pela desigualdade triangular, segue que
+	\begin{equation*}
+	d(c,p') \leq d(c,p) + d(p,p') < D + (r-d) = r,
+	\end{equation*}
+o que mostra que $p' \in \bola_r(c)$ e que, portanto, $\bola_s(p) \subseteq \bola_r(c)$. Assim, mostramos que $\bola_r(p)$ é aberta.
+	
+	\item
+		\begin{enumerate}
+		\item Podemos notar que $\emptyset$ é aberto por vacuidade, pois, se não fosse, existiria $p \in \emptyset$ para o qual não há $r \in \intaa{0}{\infty}$ satisfazendo $\bola_r(p) \subseteq A$, o que é absurdo.
+	Para mostrar que $M$ é aberto, sejam $p \in M$ e $r \in \intaa{0}{\infty}$. Então $\bola_r(p) \subseteq M$, pois qualquer bola aberta é subconjunto de $M$. Portanto $M$ é aberto.
+	
+		\item Seja $(A_i)_{i \in I}$ uma família de abertos em $\bm M$ e seja $p \in (A_i)_{i \in I}$. Então existe $k \in I$ tal que $p \in A_k$. Como $A_k$ é aberto, então existe $r \in \intaa{0}{\infty}$ tal que $\bola_r(p) \subseteq A_k$. Como $A_k \subseteq (A_i)_{i \in I}$, segue que $\bola_r(p) \subseteq (A_i)_{i \in I}$ e que, portanto, $(A_i)_{i \in I}$ é aberto.
+	
+		\item Seja $(A_i)_{i \in [n]}$ uma sequência de abertos em $\bm M$ e seja $p \in (A_i)_{i \in [n]}$. Então, para todo $k \in [n]$, $p \in A_k$. Como, para todo $k \in [n]$, $A_k$ é aberto, segue que existe $r_k \in \intaa{0}{\infty}$ tal que $\bola_{r_k}(p) \subseteq A_k$, Seja $r := \min \{r_k : k \in [n]\}$. Então, para todo $k \in [n]$, vale $\bola_r(p) \subseteq \bola_{r_k}(p)$, e segue que $\bola_r(p) \subseteq A_k$ e, portanto, $\bola_r(p) \subseteq (A_i)_{i \in [n]}$, o que mostra que $(A_i)_{i \in [n]}$ é aberto.
+		\end{enumerate}		
+	\end{enumerate}
+\end{proof}
+
+\begin{exercise}
+Sejam $M$ um conjunto e $d$ uma métrica em $M$. A métrica limitada $d \wedge 1$ sobre $M$ induz a mesma topologia que $d$ sobre $M$.
+\end{exercise}
+
+\subsection{Limites e convergência de sequências}
+
+\begin{definition}
+Sejam $\bm M$ um espaço métrico, $(p_n)_{n \in \N}$ uma sequência de pontos em $M$ e $p \in M$. A sequência $(p_n)_{n \in \N}$  \emph{converge} para o ponto $p$ se, e somente se, para todo número real $\varepsilon > 0$, existe um número natural $N$ tal que
+	\begin{equation*}
+	\forall n \in \N \qquad n \geq N \Rightarrow p_n \in \bola_\varepsilon(p).
+	\end{equation*}
+Denota-se $(p_n)_{n \in \N} \conv p$. O ponto $p$ é um \emph{limite} da sequência.  Caso contrário, a sequência não converge para $p$. Uma \emph{sequência convergente} é uma sequência que tem limite. Uma sequência \emph{divergente} é uma sequência que não tem limite.
+\end{definition}
+
+\begin{proposition}
+Todo espaço métrico $\bm M$ é um espaço topológico separado.
+\end{proposition}
+\begin{proof}
+Sejam $p,p' \in M$ pontos distintos. Mostraremos que existe um número real $r$ tal que $0 < r \leq \frac{1}{2} d(p,p')$, e que isso implica que $\bola_r(p) \cap \bola_r(p') = \emptyset$. Como $p \neq p'$, então $d(p,p') > 0$, portanto existe $r \in \R$ tal que $0 < r \leq \frac{1}{2} d(p,p')$. Suponhamos que existe $p'' \in \bola_r(p) \cap \bola_r(p')$. Então $d(p,p'')<r$ e $d(p',p'')<r$. Mas, pela desigualdade triangular, segue que
+	\begin{equation*}
+	d(p,p') \leq d(p,p'') + d(p'',p') < r + r \leq d(p,p'),
+	\end{equation*}
+o que é absurdo. Portanto $\bola_r(p) \cap \bola_r(p') = \emptyset$.
+\end{proof}
+
+\begin{corollary}
+Toda sequência convergente em um espaço métrico $\bm M$ tem limite único.
+\end{corollary}
+\begin{proof}
+Suponhamos que $p,p'$ são limites de $(p_n)_{n \in \N}$. Se $p \neq p'$, então $d(p,p')>0$. Seja $\varepsilon \in \R$ tal que $0 < \varepsilon \leq \frac{1}{2} d(p,p')$. Então existe $N_1 \in \N$ tal que, para todo $n \in \N$, se $n \geq N_1$, então $p_n \in \bola_\varepsilon(p)$, e existe $N_2 \in \N$ tal que, para todo $n \in \N$, se $n \geq N_2$, então $p_n \in \bola_\varepsilon(p')$. Assim, definindo $N := \max \{N_1,N_2\}$, segue que, se $n \geq N$, então $n \geq N_1$ e $n \geq N_2$, e, portanto, que $p_n \in \bola_\varepsilon(p)$ e $p_n \in \bola_\varepsilon(p')$; ou seja, $p_n \in \bola_\varepsilon(p) \cap \bola_\varepsilon(p')$, mas isso é absurdo, pois $\bola_\varepsilon(p) \cap \bola_\varepsilon(p')=\emptyset$. Portanto $p=p'$.
+\end{proof}
+
+Essa proposição nos permite tratar o limite de uma sequência como um número único e, por isso, podemos usar a notação $\displaystyle\lim_{n \in \N} p_n = p$ para quando $(p_n)_{n \in \N} \conv p$.
+
+\begin{proposition}
+Uma sequência de em um espaço métrico $\bm M$ é convergente se, e somente se, todas suas subsequências são convergentes.
+\end{proposition}
+\begin{proof}
+	Suponhamos que $(p_n) \conv p$ e seja $(p_{n_k})_{k \in \N}$ uma subsequência de $(p_n)_{n \in \N}$. Seja $\varepsilon \in \R$ tal que $\varepsilon > 0$. Como $(p_n) \conv p$, existe $N \in \N$ tal que, para todo $n \in \N$, se $n \geq N$, então $p_n \in \bola_\varepsilon(p)$; como $(n_k)_{k \in \N}$ é estritamente crescente, existe $K \in \N$ tal que, para todo $k \in \N$, se $k \geq K$, então $n_k \geq N$. Mas então
+	\begin{equation*}
+	k \geq K \Rightarrow n_k \geq N \Rightarrow p_{n_k} \in \bola_\varepsilon(p)
+	\end{equation*}
+e, portanto, $(p_{n_k}) \to p$.	Reciprocamente, se toda subsequência de $(p_n)_{n \in \N}$ converge para $p$, $(p_n)_{n \in \N}$, em particular, é uma dessas subsequências e, portanto, $(p_n) \conv p$.
+\end{proof}
+
+\begin{proposition}
+Toda sequência convergente em um espaço métrico $\bm M$ é limitada.
+\end{proposition}
+\begin{proof}
+	Seja $(p_n)_{n \in \N}$ uma sequência de pontos em $M$ tal que $(p_n) \conv p$. Então, para $\varepsilon = 1$, existe $N \in \N$ tal que, para todo $n \in \N$, se $n \geq N$, então $p_n \in \bola_1(p)$. Assim, seja $l \in \R$ tal que
+	\begin{equation*}
+	l > \max(\{1\} \cup \{d(p,p_n) : n \in [N]\}),
+	\end{equation*}
+seque que, para todo $n \in \N$, $p_n \in \bola_l(p)$ pois, se $0 \leq n \leq N$, $d(p,p_n) < l$ pela definição de $l$ e, se $n \geq N$, então $p_n \in \bola_1(p) \subseteq B_l(p)$, pois $1 < l$. Logo $(p_n)_{n \in \N}$ é limitada.
+\end{proof}
+
+\begin{proposition}
+Sejam $\bm M$ um espaço métrico, $C \subseteq M$ um conjunto e $p \in M$. Então existe uma sequência de pontos em $C$ que converge para $p$ se, e somente se, para todo número real $\varepsilon > 0$, $C \cap \bola_\varepsilon(p) \neq \emptyset$.
+\end{proposition}
+\begin{proof}
+	Suponhamos que exista uma sequência $(p_n)_{n \in \N}$ de pontos em $C$ tal que $(p_n) \conv p$. Então, para todo número real $\varepsilon > 0$, existe $N \in \N$ tal que, para todo $n \in \N$, se $n \geq N$, então $p_n \in \bola_\varepsilon(p)$. Mas isso implica que $p_n \in C \cap \bola_\varepsilon(p)$. Reciprocamente, suponhamos que, para todo número real $\varepsilon > 0$, $C \cap \bola_\varepsilon(p) \neq \emptyset$. Então, em particular, para todo $n \in \N$, escolhamos $p_n \in C \cap \bola_{\frac{1}{n}}(p)$. Assim, temos a sequência $(p_n)_{n \in \N}$. Para mostrar que $(p_n) \conv p$, seja $\varepsilon \in \R$ tal que $\varepsilon > 0$. Então existe $N \in \N$ tal que $\frac{1}{N} \leq \varepsilon$. Mas isso implica que, para todo número natural $n \geq N$, $\frac{1}{n} \leq \frac{1}{N}$, e segue que
+	\begin{equation*}
+	d(p,p_n) < \frac{1}{n} \leq \frac{1}{N} \leq \varepsilon
+	\end{equation*}
+e, portanto, $(p_n) \conv p$.
+\end{proof}
+
+\begin{proposition}
+Sejam $\bm M$ um espaço métrico, $p,q \in M$ e $(p_n)_{n \in \N}$ e $(q_n)_{n \in \N}$ sequências em $M$ que convergem para $p$ e $q$ respectivamente. Então a sequência $(d(p_n,q_n))_{n \in \N}$ em $\R$ converge para $d(p,q)$.
+\end{proposition}
+\begin{proof}
+	Para todo $n \in \N$, segue da desigualdade triangular que
+	\begin{equation*}
+	d(p_n,q_n) \leq d(p_n,p) + d(p,q) + d(q,q_n).
+	\end{equation*}
+Seja $\varepsilon > 0$ um número real. Então existem $N_1,_2 \in \N$ tais que
+	\begin{equation*}
+	\forall n \in \N \qquad n \geq N_1 \Rightarrow d(p,p_n) < \frac{\varepsilon}{2}
+	\end{equation*}
+e
+	\begin{equation*}
+	\forall n \in \N \qquad n \geq N_2 \Rightarrow d(q,q_n) < \frac{\varepsilon}{2}.
+	\end{equation*}
+Fazendo $N_3 := \max\{N_1,N_2\}$, segue que
+	\begin{equation*}
+	\forall n \in \N \qquad n \geq N_3 \Rightarrow d(p_n,q_n) \leq d(p_n,p) + d(p,q) + d(q,q_n) < d(p,q) + \varepsilon;
+	\end{equation*}
+ou seja, $d(p_n,q_n) - d(p,q) < \varepsilon$. Analogamente, achamos $N_6 \in \N$ tal que
+	\begin{equation*}
+	\forall n \in \N \qquad n \geq N_3 \Rightarrow d(p_n,q_n) \leq d(p_n,p) + d(p,q) + d(q,q_n) < d(p,q) + \varepsilon
+	\end{equation*}
+e fazendo $n := \max\{N_3,N_6\}$, segue que
+	\begin{equation*}
+	\forall n \in \N \qquad n \geq N \Rightarrow |d(p,q) - d(p_n,q_n)| < \varepsilon,
+	\end{equation*}
+o que mostra que $(d(p_n,q_n)) \conv d(p,q)$ em $\R$.
+	
+\end{proof}
+
+\subsection{Fecho e pontos aderentes}
+
+\begin{definition}
+Sejam $\bm M$ um espaço métrico e $C \subseteq M$ um conjunto. Um \emph{ponto aderente} a $C$ é um ponto $p \in M$ para o qual existe uma sequência $(p_n)_{n \in \N}$ de pontos de $C$ que converge para $p$. O \emph{fecho} de $C$ é o conjunto $\Fec{C}$ de todos os pontos aderentes a $C$. Um \emph{conjunto fechado} de $\bm M$ é um conjunto $F \subseteq M$ tal que $F = \Fec{F}$.
+\end{definition}
+
+\begin{proposition}
+Sejam $\bm M$ um espaço métrico e $F \subseteq M$. Então $F$ é um conjunto fechado se, e somente se, $F^\complement$ é um conjunto aberto.
+\end{proposition}
+\begin{proof}
+Suponhamos que $F$ é um conjunto fechado. Se $F^\complement = \emptyset$, Mas $\emptyset$ é aberto pois, caso contrário, existe $p \in \emptyset$ para o qual não há número real $\varepsilon > 0$ tal que $\bola_\varepsilon(p) \subseteq \emptyset$, mas isso é absurdo. Se $F^\complement \neq \emptyset$, seja $p \in F^\complement$. Se não existe número real $\varepsilon > 0$ tal que $\bola_\varepsilon(p) \subseteq F^\complement$, então, para todo número real $\varepsilon > 0$, $F \cap \bola_\varepsilon(p) \neq \emptyset$. Mas isso implica que existe uma sequência $(p_n)_{n \in \N}$ de pontos em $F$ tal que $(p_n) \conv p$. Como $F$ é fechado, isso implica $p \in F$, o que é uma contradição. Então existe número real $\varepsilon > 0$ tal que $\bola_\varepsilon(p) \subseteq F^\complement$, e isso mostra que $F^\complement$ é aberto.
+	
+Reciprocamente, suponhamos que $F^\complement$ é aberto. Se $F = \emptyset$, então $F$ é fechado. Se $F \neq \emptyset$, seja $(p_n)_{n \in \N}$ uma sequência em $F$ que converge para $p \in M$. Suponhamos que $p \notin F$. Então $p \in F^\complement$ e, como $F^\complement$ é aberto, existe um número real $\varepsilon > 0$ tal que $\bola_\varepsilon(p) \subseteq F^\complement$. Como $(p_n) \conv p$, existe $N \in \N$ tal que, para todo $n \in \N$, se $n \geq N$, então $p_n \in \bola_\varepsilon(p)$. Mas isso implica que $p_N \in \bola_\varepsilon(p) \subseteq F^\complement$, o que é absurdo, pois $p_n \in F$. Portanto $p \in F$ e isso mostra que $F$ é fechado.
+\end{proof}
+
+\begin{proposition}
+Seja $\bm M$ um espaço métrico. Então, para todo $c \in M$ e para todo número real $r > 0$, a bola fechada $\bar\bola_r(c)$ é um conjunto fechado.
+\end{proposition}
+\begin{proof}
+Basta notar que $\bar\bola_r(c)^\complement$ é aberto.
+\end{proof}
+
+\subsection{Conjuntos densos}
+
+\begin{definition}
+	Sejam $\bm M$ um espaço métrico e $C \subseteq M$ um conjunto. Um conjunto \emph{denso em $C$} é um conjunto $D \subseteq M$ tal que $C \subseteq \overline D$.
+\end{definition}
+
+	Isso que dizer que, para todo ponto de $C$, existe uma sequência em $D$ que converge para esse ponto.
+	
+\begin{proposition}
+	Sejam $\bm M = (M,d)$ um espaço métrico e $C,D \subseteq M$ conjuntos. Então $D$ é denso em $C$ se, e somente se, para todo conjunto aberto $A$ de $\bm M$, $A \cap C \neq \emptyset$ implica $A \cap D \neq \emptyset$.
+\end{proposition}
+\begin{proof}
+	Suponhamos que $D$ é denso em $C$. Sejam $A$ um conjunto aberto de $\bm M$ tal que $A \cap C \neq \emptyset$ e seja $p \in A \cap C$. Como $D$ é denso em $C$ e $p \in C$, existe uma sequência $(p_n)_{n \in \N}$ em $D$ que converge para $p$. Como $A$ é aberto e $p \in A$, existe um número real $\varepsilon>0$ tal que $\bola_\varepsilon(p) \subseteq A$. Então, como $(p_n) \conv p$, existe um número natural $N$ tal que, para todo natural $n \geq N$, $p_n \in \bola_\varepsilon(p)$. Mas isso implica que $p_n \in A \cap D$.
+	
+	Reciprocamente, suponhamos que, para todo conjunto aberto $A$ de $\bm M$, $A \cap C \neq \emptyset$ implica $A \cap D \neq \emptyset$. Se $C=\emptyset$, então $C \subseteq \overline D$. Se $C \neq \emptyset$, seja $p \in C$. Para todo $n \in \N$, o conjunto $\bola_\frac{1}{n}(p)$ é um conjunto aberto que contém $p$. Mas então $\bola_\frac{1}{n}(p) \cap C \neq \emptyset$, o que implica $\bola_\frac{1}{n}(p) \cap D \neq \emptyset$. Para cada $n \in \N$, escolhamos $p_n \in B_\frac{1}{n}(p) \cap D$. Assim, temos uma sequência $(p_n)_{n \in \N}$ de pontos em $D$ que converge para $p$, pois, para todo número real $\varepsilon>0$, existe um natural $N$ tal que $\frac{1}{N} \leq \varepsilon$ e, então
+	\begin{equation*}
+	\forall n \in \N \qquad n \geq N \Rightarrow \frac{1}{n} \leq \frac{1}{N} \leq \varepsilon \Rightarrow p_n \in \bola_\frac{1}{n}(p) \subseteq \bola_\frac{1}{N}(p) \subseteq \bola_\varepsilon(p).
+	\end{equation*}
+	Isso mostra que $p \in \overline D$ e, portanto, que $C \subseteq \overline D$.
+\end{proof}
+
+\begin{proposition}
+	Sejam $\bm M_1$ e $\bm M_2$ espaços métricos e $f,g\colon M_1 \to M_2$ funções contínuas. Então o conjunto 
+	\begin{equation*}
+	F := \set{p \in M_1}{f(p)=g(p)}
+	\end{equation*}
+é um conjunto fechado.
+\end{proposition}
+\begin{proof}
+	Se $F=\emptyset$, então $F$ é fechado. Se $F \neq \emptyset$, seja $(p_n)_{n \in \N}$ uma sequência em $F$ que converge para $p \in M_1$. Mostraremos que $p \in F$. Como $f$ e $g$ são contínuas em $p$, segue que
+	\begin{equation*}
+	(f(p_n)) \conv f(p) \e (g(p_n)) \conv g(p).
+	\end{equation*}
+	Como $(p_n)_{n \in \N}$ é uma sequência em $F$, as sequências $(f(p_n))_{n \in \N}$ e $(g(p_n))_{n \in \N}$ são a mesma sequência e segue da unicidade do limite que $f(p)=g(p)$, o que mostra que $p \in F$ e que, portanto, $F$ é um conjunto fechado.
+\end{proof}
+
+\begin{proposition}
+	Sejam $\bm M_1$ e $\bm M_2$ espaços métricos, $f,g: M_1 \to M_2$ funções contínuas e $C,D \subseteq M_1$ conjuntos tais que $D$ é denso em $C$. Se $f|_D = g|_D$, então $f|_C = g|_C$.
+\end{proposition}
+\begin{proof}
+	Pela proposição anterior, sabemos que $F := \{p \in M_1 : f(p)=g(p)\}$ é um conjunto fechado. Como $f|_D = g|_D$, então $D \subseteq F$. Mas isso significa que $\overline D \subseteq \overline F = F$ e, como $D$ é denso em $C$, segue que $C \subseteq \overline D \subseteq F$ e, portanto, que $f|_C = g|_C$. 
+\end{proof}
+
+\subsection{Conjuntos compactos}
+
+\begin{proposition}
+Sejam $\bm M$ um espaço métrico e $C \subseteq M$. Se $C$ é compacto, então é limitado.
+\end{proposition}
+\begin{proof}
+Seja $p \in M$ e consideremos a cobertura $\set{\bola_r(p)}{r \in \intaa{0}{\infty}}$ de $C$. Pela compacidade, existe subcobertura finita $\{\bola_{r_0}(p),\ldots,\bola_{r_{n-1}}(p)\}$ de $C$. Tomando $r := \max\set{r_i}{i \in [n]}$, segue que $\bola_{r_i}(p) \subseteq \bola_{r}(p)$ para todo $i \in [n]$, logo $C \subseteq \bola_r(p)$, o que implica que $\diam(C) \leq 2r < \infty$. 
+\end{proof}
+
+A recíproca nem sempre é verdade. Nos espaços $\R^d$, $ d \in \N$, vale que um conjunto é compacto se, e somente se, é fechado e limitado. Esse resultado é conhecido como Teorema de Heine-Borel. No entanto, isso não vale em qualquer espaço métrico\footnote{Para mais detalhes, conferir \url{https://math.stackexchange.com/questions/674982/difference-between-closed-bounded-and-compact-sets}.}.
+
+\subsection{Continuidade}
+
+\begin{definition}
+Sejam $\bm M$ e $\bm M'$ espaços métricos e $p \in M$. Uma função \emph{contínua em $p$} é uma função $f\colon M \to M'$ que satisfaz: para todo $\varepsilon \in \intaa{0}{\infty}$, existe $\delta \intaa{0}{\infty}$ tal que, para todo $x \in M$
+%	\begin{equation*}
+%	\qquad d_1(p,x) < \delta \Rightarrow d_2(f(p),f(x)) < \varepsilon.
+%	\end{equation*}
+	\begin{equation*}
+	x \in \bola_\delta(p) \Rightarrow f(x) \in \bola_\varepsilon(f(p)).
+	\end{equation*}
+Uma função \emph{descontínua} em $p$ é uma função que não é contínua em $p$.
+\end{definition}
+
+Denotamos as bolas abertas em $\bm M$ e em $\bm M'$ por $\bola$, mas deve-se perceber que elas são relativas a métricas possivelmente diferentes.
+
+\begin{proposition}
+Sejam $\bm M_1$ e $\bm M_2$ espaços métricos, $f: M_1 \to M_2$ uma função e $p \in M_1$. Então $f$ é contínua em $p$ se, e somente se, para toda sequência $(p_n)_{n \in \N}$ de pontos em $M_1$ que converge para $p$, a sequência $(f(p_n))_{n \in \N}$ de pontos em $M_2$ converge para $f(p)$; ou seja
+	\begin{equation*}
+	\lim f(p_n) = f(\lim p_n).
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+	Suponhamos que $f$ é contínua em $p$. Seja $(p_n)_{n \in \N}$ uma sequência de pontos em $M_1$ que converge para $p$. Seja um número real $\varepsilon > 0$. Como $f$ é contínua, existe um número real $\delta > 0$ tal que $p_n \in \bola_\delta(p)$ implica $f(p_n) \in \bola_\varepsilon(f(p))$. Mas, como $(p_n) \conv p$, existe $N \in \N$ tal que
+	\begin{equation*}
+	\forall n \in \N \qquad n \geq N \Rightarrow p_n \in \bola_\delta(p) \Rightarrow f(p_n) \in \bola_\varepsilon(f(p))
+	\end{equation*}
+o que mostra que $(f(p_n)) \conv f(p)$.
+	
+	Reciprocamente, suponhamos que, para toda sequência $(p_n)_{n \in \N}$ em $M_1$ que converge para $p$, a sequência $(f(p_n))_{n \in \N}$ converge para $f(p)$. Suponhamos, por absurdo, que $f$ não é contínua em $p$. Então existe um número real $\varepsilon > 0$ tal que, para todo número real $\delta > 0$, existe $x \in M_1$ tal que $x \in \bola_\delta(p)$, mas $f(x) \notin \bola_\varepsilon(f(p))$. Vamos mostrar que isso implica que existe uma sequência $(p_n)_{n \in \N}$ em $M_1$ que converge para $p$, mas que a sequência $(f(p_n))_{n \in \N}$ não converge para $f(p)$; ou seja, que existe um número real $\varepsilon > 0$ tal que, para todo número natural $N$, existe $n \in \N$ tal que $n \geq N$, mas $f(p_n) \notin \bola_\varepsilon(f(p))$. Seja $n \in \N$ e tomemos $\delta = \frac{1}{n}$. Então existe $x \in M_1$ tal que $x \in \bola_\frac{1}{n}(p)$, mas $f(x) \notin \bola_\varepsilon(f(p))$. Nomeando esse $x \in M_1$ de $p_n$, obtemos uma sequência $(p_n)_{n \in \N}$ que converge para $p$ pois, para todo número real $\varepsilon' > 0$, existe um número natural $N \in \N$ tal que $\frac{1}{N} \leq \varepsilon'$ e isso implica que
+\begin{equation*}
+	\forall n \in \N \qquad n \geq N \Rightarrow \frac{1}{n} \leq \frac{1}{N} \leq \varepsilon' \Rightarrow p_n \in \bola_\frac{1}{n}(p) \subseteq \bola_\frac{1}{N}(p) \subseteq \bola_{\varepsilon'}(p).
+	\end{equation*}
+	No entanto, $(f(p_n))_{n \in \N}$ é uma sequência que não converge para $f(p)$ pois, considerando o $\varepsilon$ original tomado da descontinuidade de $f$, para todo número natural $N$, $f(p_N) \notin \bola_\varepsilon(f(p))$ e isso contradiz a hipótese de que, para toda sequência $(p_n)_{n \in \N}$ em $M_1$ que converge para $p$, a sequência $(f(p_n))_{n \in \N}$ converge para $f(p)$. Portanto $f$ é contínua.	
+\end{proof}
+
+\begin{definition}
+Sejam $\bm M_1$ e $\bm M_2$ espaços métricos, $D \subseteq M_1$ e $f: D \to M_2$ uma função. A função $f$ é \emph{contínua} em $D$ se ela é contínua em todo ponto de $D$. Caso contrário, a função $f$ é \emph{descontínua} em $D$. Para $D=M_1$, dizemos simplesmente que $f$ é contínua ou descontínua.
+\end{definition}
+
+\subsection{Ponto limite e conjunto derivado}
+
+\begin{definition}
+Sejam $\bm M$ um espaço métrico e $C \subseteq M$ um conjunto. Um \emph{ponto limite} (ou \emph{ponto de acumulação}) de $C$ é um ponto $p \in M$ para o qual existe uma sequência $(p_n)_{n \in \N}$ de pontos de $C \setminus \{p\}$ que converge para $p$. O \emph{derivado} de $C$ é o conjunto de todos os pontos limites de $C$. 
+\end{definition}
+
+Da definição, segue que $C' \subseteq \overline C$. A inclusão contrária caracteriza a seção a seguir.
+
+\begin{definition}
+Sejam $\bm M$ um espaço métrico e $C \subseteq M$ um conjunto. Um \emph{ponto isolado} de $C$ é um ponto $p \in M$ que é um ponto aderente a $C$ mas que não é um ponto limite de $C$.
+\end{definition}
+
+Um ponto isolado de $C$ é um ponto $p \in \overline C \setminus C'$.
+
+\subsection{Distância e bolas de conjuntos e separação métrica}
+
+\begin{definition}
+Sejam $\bm M$ um espaço métrico e $C,C' \subseteq M$. A \emph{distância} entre $C$ e $C'$ é
+	\begin{equation*}
+	\dist{C}{C'} := \inf \set{\dist{c}{c'}}{c \in C, c' \in C'}.
+	\end{equation*}
+Para todo $p \in M$, denotam-se $\dist{C}{p} := \dist{C}{\{p\}}$ e $\dist{p}{C} := \dist{\{p\}}{C}$.
+\end{definition}
+
+Essa definição, em particular, estabelece a distância de pontos para conjuntos também. Existem outras definições de distâncias entre conjuntos, mas elas não serão tratadas aqui.
+
+\begin{definition}
+Sejam $\bm M$ um espaço métrico e $C \subseteq M$ e $r \in \intaa{0}{\infty}$. A $r$-\emph{vizinhança} de $C$ é o conjunto
+%	\begin{equation*}
+%	\bola_r(C) := \set{p \in M}{\exists_{c \in C} \dist{c}{p} < r}.
+%	\end{equation*}
+	\begin{equation*}
+	\bola_r(C) := \set{p \in M}{\dist{C}{p} < r}.
+	\end{equation*}
+ A $r$-\emph{vizinhança fechada} de $C$ é o conjunto
+%	\begin{equation*}
+%	\Fec{\bola}_r(C) := \set{p \in M}{\exists_{c \in C} \dist{c}{p} \leq r}.
+%	\end{equation*}
+	\begin{equation*}
+	\Fec{\bola}_r(C) := \set{p \in M}{\dist{C}{p} \leq r}.
+	\end{equation*}
+\end{definition}
+
+Note que excluímos $r=0$ da definição pois basicamente teríamos $\bola_0(C) = \emptyset$ e $\Fec{\bola}_0(C) = \Fec{C}$.
+	
+\begin{exercise}
+Sejam $\bm M$ um espaço métrico e $C \subseteq M$ e $r \in \intaa{0}{\infty}$.
+	\begin{enumerate}
+	\item A vizinhança $\bola_r(C) $ é um conjunto aberto e
+		\begin{equation*}
+		\bola_r(C) = \bigcup_{c \in C} \bola_r(c);
+		\end{equation*}
+	\item  Para todo $r' \in \intaa{0}{\infty}$ tais que $r \leq r'$,
+		\begin{equation*}
+		C \subseteq \bola_r(C) \subseteq \bola_{r'}(C);
+		\end{equation*}
+	\item A vizinhança fechada $\Fec{\bola}_r(C) $ é um conjunto fechado e
+		\begin{equation*}
+		\Fec{\bola}_r(C) \supseteq \bigcup_{c \in C} \Fec{\bola}_r(c);
+		\end{equation*}
+	\item  Para todo $r' \in \intaa{0}{\infty}$ tais que $r \leq r'$,
+		\begin{equation*}
+		\Fec{C} \subseteq \Fec{\bola}_r(C) \subseteq \Fec{\bola}_{r'}(C);
+		\end{equation*}
+	\item Para $r \in \intaa{0}{\infty}$,
+		\begin{equation*}
+		\Fec{\bola}_r(C) = \Fec{\bola_r(C)}
+		\end{equation*}
+	\end{enumerate}
+\end{exercise}
+\begin{proof}
+	\begin{enumerate}
+	\item Primeiro, mostramos a igualdade dos conjuntos. ($\supseteq$) Seja $p \in \bigcup_{c \in C} \bola_r(c)$. Então existe $c \in C$ tal que $\dist{c}{p} < r$, o que implica que
+	\begin{equation*}
+	\dist{C}{p} = \inf \set{\dist{c}{p}}{c \in C} \leq \dist{c}{p} < r,
+	\end{equation*}
+logo $p \in \bola_r(C)$.
+
+($\subseteq$) Seja $p \in \bola_r(C)$. Então
+	\begin{equation*}
+	\dist{C}{p} = \inf \set{\dist{c}{p}}{c \in C} < r.
+	\end{equation*}
+Isso significa que existe sequência $(c_n)_{n \in \N}$ em $C$ tal que $\lim_{n \conv \infty} \dist{c}{p} < r$, o que implica existe $n \in \N$ tal que $\dist{c_n}{p}<r$, logo $p \in \bigcup_{c \in C} \bola_r(c)$.
+
+Como as bolas $\bola_r(c)$ são abertas, segue que $\bola_r(C) = \bigcup_{c \in C} \bola_r(c)$ é aberto.
+	\end{enumerate}
+\end{proof}
+
+\begin{definition}
+Seja $\bm M$ um espaço métrico. Conjuntos \emph{metricamente separados} são conjuntos $C,C' \subseteq M$ tais que
+	\begin{equation*}
+	\dist{C}{C'} > 0.
+	\end{equation*}
+\end{definition}
+
+\begin{proposition}
+Sejam $\bm M$ um espaço métrico e $C,C' \subseteq M$ conjuntos metricamente separados. Então $C$ e $C'$ são separados por vizinhanças.
+\end{proposition}
+\begin{proof}
+Seja $\delta := \dist{C}{C'}$. Pela separação métrica, $\delta > 0$. Então $C \subseteq \bola_\frac{\delta}{2}(C)$ e $C' \subseteq \bola_\frac{\delta}{2}(C')$ e $\bola_\frac{\delta}{2}(C) \cap \bola_\frac{\delta}{2}(C') = \emptyset$, já que, se existe $p \in \bola_\frac{\delta}{2}(C) \cap \bola_\frac{\delta}{2}(C')$, então existem $c \in C$ e $c' \in C'$ tais que $\dist{c}{p} < \frac{\delta}{2}$ e $\dist{c'}{p} < \frac{\delta}{2}$, portanto
+	\begin{equation*}
+	\dist{c}{c'} \leq \dist{c}{p} + \dist{c'}{p} < \frac{\delta}{2}+\frac{\delta}{2} = \delta,
+	\end{equation*}
+o que implica que $\dist{C}{C'}<\delta$, contradição.
+\end{proof}
+
+Isso implica, em particular, que conjuntos metricamente separados são, além de separados por vizinhanças, separados, disjuntos e, claro, distintos.
+
+\begin{proposition}
+Todo espaço métrico $\bm M$ é um espaço topológico normal.
+\end{proposition}
+\begin{proof}
+Sejam $F,F' \subseteq M$ fechados disjuntos. Mostraremos que $F$ e $F'$ são
+% metricamente separados e portanto 
+separados por vizinhanças, o que mostrará que o espaço é normal.
+
+Para todo $f \in F$, existe $\delta_f \in \intaa{0}{infty}$ tal que
+	\begin{equation*}
+	\bola_{\delta_f}(f) \cap F' = \emptyset,
+	\end{equation*}
+pois $F'$ é fechado e $f \notin F'$. Definimos
+	\begin{equation*}
+	V := \bigcup_{f \in F} \bola_{\frac{\delta_f}{2}}(f).
+	\end{equation*}
+Esse conjunto é uma vizinhança aberta de $F$. Analogamente, definimos $V'$ uma vizinhança aberta de $F'$. Claramente $V \cap V'=\empty$, pois caso contrário, se existe $p \in V \cap V'$, então existem $f \in F$e $f' \in F'$ tais que
+	\begin{equation*}
+	p \in \bola_{\frac{\delta_f}{2}}(f) \cap \bola_{\frac{\delta_{f'}}{2}}(f'),
+	\end{equation*}
+portanto se $\delta_f \leq \delta_{f'}$, então $f \in \bola_{\frac{\delta_{f'}}{2}}(f')$ e, se $\delta_{f'} \leq \delta_f$, então $f' \in \bola_{\frac{\delta_f}{2}}(f)$, ambos contradições.
+%
+%Outra demonstração usa os conjuntos:
+%Defina
+%	\begin{equation*}
+%	V := \set{p \in M}{\dist{F}{p} < \dist{F'}{p}}
+%	\end{equation*}
+%e
+%	\begin{equation*}
+%	V := \set{p \in M}{\dist{F'}{p} < \dist{F}{p}}.
+%	\end{equation*}
+%Então claramente $V \cap V' = \emptyset$. Ainda, $F \subseteq V$
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{comment}
+\begin{proposition}
+Seja $\bm M$ um espaço métrico e $K,K' \subseteq M$ compactos disjuntos. Então $F$ e $F'$ são metricamente separados.
+\end{proposition}
+\begin{proof}
+% FALTA MOSTRAR QUE REALMENTE AS SEQUÊNIAS f_n f'_n convergem.
+Sejam $F,F' \subseteq M$ fechados disjuntos. Mostraremos que $F$ e $F'$ são metricamente separados.
+ Queremos mostrar que
+	\begin{equation*}
+	\dist{F}{F'} = \inf \set{\dist{f}{f'}}{f \in F, f' \in F'} > 0.
+	\end{equation*}
+Existem sequências $(f_n)_{n \in \N}$ em $F$ e $(f'_n)_{n \in \N}$ em $F'$ tais que
+	\begin{equation*}
+	\dist{F}{F'} = \lim_{n \conv \infty} \dist{f_n}{f'_n}.
+	\end{equation*}
+Mas como $F$ e $F'$ são fechados, existem $f \in F$ e $f' \in F'$ tais que $f = \lim_{n \conv \infty} f_n$ e $f' = \lim_{n \conv \infty} f'_n$. Da continuidade da distância,
+	\begin{equation*}
+	\dist{F}{F'} = \lim_{n \conv \infty} \dist{f_n}{f'_n} = \dist{f}{f'}.
+	\end{equation*}
+Como $F \cap F' = \emptyset$, então $f \neq f'$, portanto $\dist{f}{f'} > 0$, o que implica que
+	\begin{equation*}
+	\dist{F}{F'} = \dist{f}{f'} > 0.
+	\end{equation*}
+\end{proof}
+
+\end{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+
+\section{Estrutura uniforme}
+
+\subsection{Sequências aproximantes}
+
+\begin{definition}
+Seja $\bm M$ um espaço métrico. Uma sequência \emph{aproximante} em $\bm M$ é uma sequência $(p_n)_{n \in \N}$ de pontos em $M$ tal que, para todo número real $\varepsilon > 0$, existe um número natural $N$ satisfazendo
+	\begin{equation*}
+	\forall n,m \in \N \qquad n,m \geq N \Rightarrow d(p_n,p_m) < \varepsilon.
+	\end{equation*}
+\end{definition}
+
+Essa sequências são conhecidas como \emph{sequências de Cauchy}. O nome aproximante se dá pelo fato de que os termos da sequência ficam cada vez mais próximos entre si, e será adotado por ser mais intuitivo, embora não seja a nomenclatura padrão.
+
+\begin{proposition}
+Toda sequência convergente em um espaço métrico $\bm M$ é aproximante.
+\end{proposition}
+\begin{proof}
+Seja $(p_n)_{n \in \N}$ uma sequência em $M$ que converge para $p$. Seja $\varepsilon \in \R$ tal que $\varepsilon > 0$. Então $\frac{1}{2}\varepsilon > 0$ é um número real e segue que existe $N \in \N$ tal que, para todo número natural $n \geq N$, $p_n \in \bola_{\frac{1}{2}\varepsilon}(p)$. Assim, segue que	
+	\begin{equation*}
+	\forall n,m \in \N \qquad n,m \geq N \Rightarrow d(p_n,p_m) \leq d(p_n,p) + d(p,p_m) < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon,
+	\end{equation*}
+o que mostra que $(p_n)_{n \in \N}$ é uma sequência aproximante.
+\end{proof}
+
+\begin{proposition}
+Toda sequência aproximante em um espaço métrico $\bm M$ que tem uma subsequência convergente é convergente.
+\end{proposition}
+\begin{proof}
+	Seja $(p_{n_k})_{k \in \N}$ uma subsequência de $(p_n)_{n \in \N}$ que converge  para $p$. Seja $\varepsilon > 0$ um número real. Como $(p_n)_{n \in \N}$ é uma sequência de Cauchy e $\frac{1}{2}\varepsilon > 0$ é um número real, existe um número natural $N$ tal que
+	\begin{equation*}
+	\forall n,m \in \N \qquad n,m \geq N \Rightarrow d(p_n,p_m) < \frac{\varepsilon}{2}.
+	\end{equation*}
+Como $(p_{n_k})_{k \in \N}$ é uma subsequência convergente, existe $K_1 \in \N$ tal que
+	\begin{equation*}
+	\forall k \in \N \qquad k \geq K_1 \Rightarrow d(p,p_{n_k}) < \frac{\varepsilon}{2}.
+	\end{equation*}
+Como $(n_k)_{k \in \N}$ é uma sequência estritamente crescente, existe $K_2 \in \N$ tal que, para todo número natural $k \geq K_2$, $n_k \geq N$. Assim, tomando $K := \max\{K_1,K_2\}$, segue que, para todo número natural $n \in \N$, existe $k \in \N$ tal que $n_k \geq N$ e,  pela desigualdade triangular, que
+	\begin{equation*}
+	\forall n \in \N \qquad n \geq N \Rightarrow d(p_n,p) \leq d(p_n,p_{n_k}) + d(p_{n_k},p) < \frac{\varepsilon}{2}+\frac{\varepsilon}{2}=\varepsilon.
+	\end{equation*}
+\end{proof}
+
+\begin{proposition}
+Toda sequência aproximante em um espaço métrico $\bm M$ é limitada.
+\end{proposition}
+\begin{proof}
+Seja $(p_n)_{n \in \N}$ uma sequência aproximante em $\bm M$. Então, para $\varepsilon=1$, existe $N \in \N$ tal que
+	\begin{equation*}
+	\forall n,m \in \N \qquad n,m \geq N \Rightarrow d(p_n,p_m)<1.
+	\end{equation*}
+	Definamos $P := \{p_n : n \in \N\}$. Então segue que
+	\begin{align*}
+	\diam(P) &= \sup \set{d(p_n,p_m)}{n,m \in \N} \\
+		&= \max\{1 \cup \set{d(p_n,p_m)}{0 \leq n,m \leq N}\} \in \R,
+	\end{align*}
+o que mostra que $(p_n)_{n \in \N}$ é limitada.
+\end{proof}
+
+\subsection{Continuidade uniforme}
+
+\begin{definition}
+Sejam $\bm M_1$ e $\bm M_2$ espaços métricos. Uma função \emph{uniformemente contínua} é uma função $f: M_1 \to M_2$ tal que, para todo número real $\varepsilon > 0$, existe um número real $\delta > 0$ tal que
+	\begin{equation*}
+	\forall p_1,p_2 \in M_1 \qquad d_1(p_1,p_2) < \delta \Rightarrow d_2(f(p_1),f(p_2)) < \varepsilon.
+	\end{equation*}
+\end{definition}
+
+\begin{proposition}
+Sejam $\bm M_1$ e $\bm M_2$ espaços métricos, $f: M_1 \to M_2$ uma função uniformemente contínua e $(p_n)_{n \in \N}$ uma sequência aproximante em $M_1$. Então a sequência $(f(p_n))_{n \in \N}$ em $M_2$ é aproximante.
+\end{proposition}
+\begin{proof}
+Seja $\varepsilon > 0$ um número real. Da continuidade uniforme de $f$, existe um número real $\delta > 0$ tal que, para todo $p,p' \in M_1$, $d_1(p,p') < \delta$ implica $d_2(f(p),f(p')) < \varepsilon$. Como $(p_n)_{n \in \N}$ é sequência aproximante, existe $N \in \N$ tal que
+	\begin{equation*}
+	\forall n,m \in \N \qquad n,m \geq N \Rightarrow d_1(p_n,p_m) < \delta.
+	\end{equation*}
+Mas, da continuidade uniforme de $f$, isso implica que
+	\begin{equation*}
+	\forall n,m \in \N \qquad n,m \geq N \Rightarrow d_1(p_n,p_m) < \delta  \Rightarrow d_2(f(p_n),f(p_m)) < \varepsilon,
+	\end{equation*}
+e isso mostra que $(f(p_n))_{n \in \N}$ é uma sequência aproximante.
+\end{proof}
+
+\subsection{Espaços métricos completos}
+
+\begin{definition}
+Um espaço métrico \emph{completo} é um espaço métrico em que todas sequências aproximantes convergem.
+\end{definition}
+
+\begin{proposition}
+Seja $\bm M$ um espaço métrico. Todo subespaço completo de $\bm M$ é um conjunto fechado em $\bm M$.
+\end{proposition}
+\begin{proof}
+Sejam $\bm C \subseteq \bm M$ subsepaço métrico completo e $(p_n)_{n \in \N}$ uma sequência convergente em $C$. Então $(p_n)_{n \in \N}$ é aproximante e, como $C$ é completo, converge para um ponto em $C$, o que significa que $C$ é fechado.
+\end{proof}
+
+\begin{proposition}
+Sejam $\bm M$ um espaço métrico, $\bm C \subseteq \bm M$ um subespaço completo e $F \subseteq C$ um conjunto fechado em $\bm M$. Então $\bm F$ é completo.
+\end{proposition}
+\begin{proof}
+Seja $(p_n)_{n \in \N}$ uma sequência aproximante em $F$. Então $(p_n)_{n \in \N}$ é uma sequência aproximante em $C$ e, como $C$ é completo, $(p_n)_{n \in \N}$ converge. Porém, como $F$ é fechado, então $(p_n)_{n \in \N}$ converge para um ponto em $F$, o que mostra que $F$ é completo.
+\end{proof}
+
+\begin{theorem}
+Seja $\bm M$ um espaço métrico. Então $\bm M$ é completo se, e somente se, para toda sequência descrescente $(F_n)_{n \in \N}$ de conjuntos não vazios e fechados em $\bm M$ tais que $(\diam(F_n))_{n \in \N} \conv 0$ em $\R$, vale que
+	\begin{equation*}
+	\bigcap_{n \in \N} A_n \neq \emptyset.
+	\end{equation*}
+\end{theorem}
+
+\begin{theorem}
+Sejam $\bm M_1$  um espaço métrico, $\bm M_2$ espaço métrico completo, $D \subseteq M_1$ um conjunto denso em $M_1$ e $f: D \to M_2$ uma função uniformemente contínua. Então $f$ tem uma única extensão para uma função uniformemente contínua $f^*: M_1 \to M_2$. Ainda, se $f$ é uma isometria, então $f^*$ é uma isometria.
+\end{theorem}
+\begin{proof}
+	Seja $p \in M_1$. Como $D$ é denso em $M_1$, existe uma sequência $(p_n)_{n \in \N}$ em $D$ que converge para $p$. Como $(p_n)_{n \in \N}$ é convergente, é uma sequência de Cauchy e, como $f$ é uniformemente contínua em $D$, segue que $(f(p_n))_{n \in \N}$ é uma sequência de Cauchy em $M_2$. Mas $M_2$ é completo, o que implica que $(f(p_n))_{n \in \N}$ converge para um ponto $p' \in M_2$. Definimos, portanto, a função $f^*$ em $p$ como $f^*(p)=p'$. Precisamos mostrar que $f^*$ independe da escolha da sequência em $D$ que converge para $p$. Se $(q_n)_{n \in \N}$ é uma sequência em $D$ que converge para $p$, definamos a sequência $(r_n)_{n \in \N}$ em $D$ por
+	\begin{equation*}
+	r_n :=
+			\begin{cases}
+			p_n &\text{se $n=2k$}\\
+			q_n &\text{se $n=2k+1$}.
+			\end{cases}
+	\end{equation*}
+A sequência $(r_n)_{n \in \N}$ converge para $p$ e, portanto, é uma sequência de Cauchy. A continuidade uniforme de $f$ implica que a sequência $(f(r_n))_{n \in \N}$ é de Cauchy e, portanto, como $(f(p_n))_{n \in \N}=(f(r_{2k}))_{k \in \N}$ é uma subsequência que converge para $p'$, a sequência $(f(r_n))_{n \in \N}$ converge para $p'$, o que implica que a subsequência $(f(q_n))_{n \in \N}=(f(r_{2k+1}))_{k \in \N}$ converge para $p'$. Assim, mostramos que $f^*$ está bem definida. Claramente, se $p \in D$, então $f(p)=f^*(p)$, pois, como $D$ é denso em $M_1$, se $(p_n)_{n \in \N}$ é uma sequência em $D$ que converge para $p$, então, como $f$ é contínua, segue que $f(p_n) \conv f(p)$, o que mostra que $f^*(p)=f(p)$.
+
+	Agora, devemos mostrar que $f^*$ é uniformemente contínua. Seja $\varepsilon > 0$ um número real, então $\frac{1}{2}\varepsilon > 0$ é um número real e, como $f$ é uniformemente contínua, existe número real $\delta > 0$ tal que
+	\begin{equation*}
+	\forall p,p' \in M_1 \qquad d_1(p,p') < \delta \Rightarrow d_2(f(p),f(p')) < \frac{\varepsilon}{2}.
+	\end{equation*}
+Assim, sejam $p,q \in M_1$ tais que $d_1(p,q) < \delta$. Quremos mostrar que $d_2(f(p),f(p')) < \varepsilon$. Sejam $(p_n)_{n \in \N}$ e $(q_n)_{n \in \N}$ sequências que convergem para $p$ e $q$, respectivamente. Então $d_1(p_n,q_n) \conv d_1(p,q)$ em $\R$.
+
+...
+
+	A unicidade de $f^*$ ocorre pois, se existem $f^*$ e $f'^*$ uniformemente contínuas que extendem $f$, como $D$ é denso em $M_1$ e $f^*|_D = f'^*|_D$, segue que $f^* = f'^*$ .
+	
+	Por fim, mostramos que a isometria se preserva...
+\end{proof}
+
+\begin{definition}
+Seja $\bm M_1$  um espaço métrico. Um \emph{completamento} de $\bm M$ é um espaço métrico $\bm M_2$ completo tal que $M_1$ é denso em $M_2$.
+\end{definition}
+
+\begin{proposition}
+Seja $\bm M$ um espaço métrico e $\bm M_1$ e $\bm M_2$ completamentos de $\bm M$. Então existe uma isometria entre $\bm M_1$ e $\bm M_2$ que é a função identidade quando restrita a $M$.
+\end{proposition}
+\begin{proof}
+	Seja $f$ a função identidade em $M$. Pela proposição anterior, existe uma única extensãouniformemente contínua de $f^*$ em $M_1$ ...
+	
+	...
+\end{proof}
+
+
+\begin{proposition}
+Sejam $K \subseteq M$ compacto e $f: M \to \bar M$ contínua. Então $f$ é uniformemente contínua.
+\end{proposition}
+\begin{proof}
+Suponhamos, por absurdo, que $f$ não é uniformemente contínua. Então existem $\varepsilon > 0$ e $(x_n)_{n \in \N},(y_n)_{n \in \N}$ sequências em $K$ tais que
+	\begin{equation*}
+	\nor{x_n - y_n} < \frac{1}{n} \e \nor{f(x_n)-f(y_n)} \geq \varepsilon.
+	\end{equation*}
+Como $K$ é compacto, existem subsequências $(x_{n_k})_{k \in \N}$  e $(y_{n_k})_{k \in \N}$ convergindo a $x \in K$ com $\nor{f(x_{n_k})-f(y_{n_k})} \geq \varepsilon$. Por continuidade de $f$, existe $\delta > 0$ tal que, se $x_{n_k},y_{n_k} \in B(x,\delta)$, então $\nor{f(x_{n_k})-f(x)} < \frac{\varepsilon}{2}$ e $\nor{f(y_{n_k})-f(x)} < \frac{\varepsilon}{2}$. Pela desigualdade triangular, temos um absudo.
+\end{proof}
+
+
+\subsection{Limitação uniforme (ou total)}
+
+Sejam $(M,d)$ um espaço métrico e $\topo$ a topologia induzida por $d$. A métrica limitada $d \wedge 1$ induz a mesma topologia $\topo$ que $d$ sobre $M$, mas com respeito a $d \wedge 1$ todos conjuntos são limitados, enquanto que com respeito a $d$ isso nem sempre é verdade (somente nos casos em que o espaço inteiro é limitado). Isso mostra que o conceito de limitação não está sempre relacionado à topologia do espaço.
+
+A convergência de sequências em $(M,\topo)$ independe da métrica que a gera e, portanto, concluímos que não pode existir um análogo ao teorema de Bolzano - Weierstrass usando o conceito de limitação, pois todas sequências em $(M,d \wedge 1)$ são limitadas, mas não necessariamente têm subsequência convergente. Definiremos a seguir um conceito distinto de limitação em espaços métricos que está mais relacionado à estrutura uniforme do espaço.
+
+\begin{definition}
+Um espaço métrico \emph{uniformemente limitado} (ou \emph{totalmente limitado}) é um espaço métrico $\bm M$ em que, para todo $\varepsilon \in \intaa{0}{\infty}$, existe uma $\varepsilon$-cobertura finita de $M$. Um conjunto \emph{uniformemente limitado} é um conjunto que é uniformemente limitado com a estrutura métrica induzida.
+\end{definition}
+
+\begin{proposition}
+Seja $\bm M$ um espaço métrico.
+	\begin{enumerate}
+	\item $\bm M$ é uniformemente limitado se, e somente se, para todo $\varepsilon \in \intaa{0}{\infty}$, existem $p_0,\cdots,p_{n-1}$ tais que
+		\begin{equation*}
+		M \subseteq \bigcup_{i \in [n]} \bola_\varepsilon(p);
+		\end{equation*}
+	\item Se $\bm M$ é uniformemente limitado, então é limitado.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item ($\Rightarrow$) Seja $\varepsilon \in \intaa{0}{\infty}$. Como $M$ é uniformemente limitado, existe uma $\frac{\varepsilon}{2}$-cobertura finita $\{C_i\}_{i \in [n]}$ de $M$. Tome, para cada $i \in [n]$, $c_i \in C_i$. Então $\diam(\bola_{\frac{\varepsilon}{2}}(c_i)) \leq \varepsilon$ e $C_i \subseteq \bola_{\frac{\varepsilon}{2}}(c_i)$, portanto
+	\begin{equation*}
+	M \subseteq \bigcup_{i \in [n]} C_i \subseteq \bigcup_{i \in [n]} \bola_{\frac{\varepsilon}{2}}(c_i).
+	\end{equation*}
+
+($\Leftarrow$) Reciprocamente, seja $\varepsilon \in \intaa{0}{\infty}$. Existem existem $p_0,\cdots,p_{n-1}$ tais que
+		\begin{equation*}
+		M \subseteq \bigcup_{i \in [n]} \bola_{\frac{\varepsilon}{2}}(p_i);
+		\end{equation*}
+Como, para todo $i \in [n]$, $\diam(\bola_{\frac{\varepsilon}{2}}(p)) \leq \varepsilon$, segue que $(\bola_{\frac{\varepsilon}{2}}(p_i))_{i \in [n]}$ é uma $\varepsilon$-cobertura de $M$, portanto $M$ é uniformemente limitado.
+	
+	\item Seja $(C_i)_{i \in [n]}$ uma cobertura $1$-precisa de $M$. Então, como para todo $i \in [n]$, $\diam(C_i) < \infty$, e a cobertura é finita, $\diam(M) < \infty$.
+	\end{enumerate}
+\end{proof}
+
+\begin{exercise}
+Seja $d \in \N$ e consideremos $\R^d$ com a métrica reta usual. Um subconjunto de $\R^d$ é limitado se, e somente se, é uniformemente limitado.
+\end{exercise}
+
+\begin{lemma}
+Sejam $\bm M$ um espaço métrico e $(x_n)_{n \in \N}$ uma sequência em $M$.
+	\begin{enumerate}
+	\item Se $(x_n)_{n \in \N}$ é aproximante, então sua imagem $x(\N) \subseteq M$ é uniformemente limitada;
+	\item Se $x(\N)$ é uniformemente limitada, $(x_n)_{n \in \N}$ tem subsequência aproximante.
+	\end{enumerate}
+\end{lemma}
+\begin{proof}
+	\begin{enumerate}
+	\item Seja $\varepsilon \in \intaa{0}{\infty}$. Como $(x_n)_{n \in \N}$ é aproximante, existe $N \in \N$ tal que, para todos $n,n' \in \N$, se $n \geq N$ e $n' \geq N$, então $\dist{x_n}{x_{n'}} < \varepsilon$, portanto
+		\begin{equation*}
+		\diam \set{x_n}{n \in \N, n \geq N} \leq \varepsilon,
+		\end{equation*}
+portanto
+		\begin{equation*}
+		(\{x_0\},\cdots,\{x_{N-1}\}, \set{x_n}{n \in \N, n \geq N})
+		\end{equation*}
+é uma cobertura $\varepsilon$-precisa finita de $x(\N)$.
+
+	\item Se $x(\N)$ for finito, então $(x_n)_{n \in \N}$ tem subsequência constante, logo aproximante. Suponhamos o caso em que $x(\N)$ é infinito.
+
+	\end{enumerate}
+\end{proof}
+
+
+\begin{proposition}
+Seja $\bm M$ um espaço métrico. O espaço $\bm M$ é uniformemente limitado se, e somente se, toda sequência tem subsequência aproximante.
+\end{proposition}
+\begin{proof}
+($\Rightarrow$) Suponha que $\bm M$ é uniformemente limitado. Seja $•$
+\end{proof}
+
+\begin{proposition}
+Seja $\bm M$ um espaço métrico. O espaço $\bm M$ é compacto se, e somente se, é completo e uniformemente limitado. 
+\end{proposition}
+
+
+
+
+
+
+\section{Funções que preservam distância}
+
+\subsection{Funções métricas (ou subsemelhanças)}
+
+\begin{definition}
+Sejam $\bm M_0$ e $\bm M_1$ espaços métricos e $c \in \intfa{0}{\infty}$. Uma função \emph{métrica}\footnote{Essas funções são conhecidas geralmente como funções `Lipschitz' contínuas.} de $\bm M_0$ para $\bm M_1$ (com constante $c$) é uma função $f\colon M_0 \to M_1$ que satisfaz, para todos $p,p' \in M_0$,
+	\begin{equation*}
+	d_1(f(p),f(p')) \leq cd_0(p,p').
+	\end{equation*}
+Para $0 \leq c < 1$, a função $f$ é uma \emph{contração}; para $c=1$, é uma \emph{homometria}\footnote{Essas funções são também conhecidas como funções métricas, funções não expansoras, entre outros. Escolhi o nome homometria por uma relação que elas têm com as isometrias que serão definidas mais à frente}.
+\end{definition}
+
+\begin{proposition}
+Sejam $\bm M_0, \bm M_1$ e $\bm M_2$ espaços métricos, $f_0\colon M_0 \to M_1$ uma função métrica (com constante $c_0$) e $f_1\colon M_1 \to M_2$ uma função métrica (com constante $c_1$). Então $f_1 \circ f_0\colon M_0 \to M_2$ é uma função métrica (com constante $c_1c_0$). Se $f_0$ e $f_1$ são contrações, $f_1 \circ f_0$ é uma contração, e se $f_0$ e $f_1$ são funções métricas, então $f_1 \circ f_0$ é uma função métrica.
+\end{proposition}
+\begin{proof}
+Para todos $p,p' \in M_0$,
+	\begin{equation*}
+	d_2(f_1 \circ f_0(p),f_1 \circ f_0(p')) \leq c_1d_2(f_0(p),f_0(p')) \leq c_1c_0d_0(p,p').
+	\end{equation*}
+Claramente, se $0 \leq c_0 < 1$ e $0 \leq c_1 < 1$, então $0 \leq c_1c_0 < 1$, e se $c_0=c_1=1$, então $c_1c_0=1$.
+\end{proof}
+
+\begin{proposition}
+Sejam $\bm M_0$ e $\bm M_1$ espaços métricos e $f\colon M_0 \to M_1$ uma função métrica (com constante $c$). Então $f$ é uniformemente contínua.
+\end{proposition}
+\begin{proof}
+Se $c=0$, a demonstração é óbvia. Se $c \neq 0$, seja $\varepsilon>0$. Tomando $\delta=\frac{\varepsilon}{c}$, segue que, para todos $p,p' \in M_0$, se $d_0(p,p') \leq \delta$, então
+	\begin{equation*}
+	d_1(f(p),f(p')) \leq cd_0(p,p') \leq c\frac{\varepsilon}{c}=\varepsilon. \qedhere
+	\end{equation*}
+\end{proof}
+
+\begin{proposition}
+Sejam $\bm M_0$ e $\bm M_1$ espaços métricos e $f\colon M_0 \to M_1$ uma função métrica (com constante $c$). Então $f$ tem inversa à esquerda que restrita a $f(M_0)$ é métrica (com constante $c$) se, e somente se, para todos $p,p' \in M_0$,
+	\begin{equation*}
+	c\inv d_0(p,p') \leq d_1(f(p),f(p')) \leq cd_0(p,p').
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+Se $f$ tem inversa à esquerda $c$-métrica, então, para todos $q,q' \in M_1$,
+	\begin{equation*}
+	d_0(f\inv(q),f\inv(q')) \leq c d_1(q,q').
+	\end{equation*}
+Assim, para todos $p,p' \in M_0$,
+	\begin{equation*}
+	d_0(p,p') = d_0(f\inv(f(p)),f\inv(f(p'))) \leq c d_1(f(p),f(p')),
+	\end{equation*}
+portanto $c\inv d_0(p,p') \leq d_1(f(p),f(p'))$.
+
+Reciprocamente, se valem as desigualdades acima, então para todos $p,p' \in M_0$ tais que $p \neq p'$, logo $d_0(p,p') > 0$. De $0 < c\inv d_0(p,p') \leq d_1(f(p),f(p'))$, segue que $d_1(f(p),f(p'))>0$, o que implica $f(p) \neq f(p')$, portanto $f$ é injetiva. Ainda, temos que $d_0(p,p') \leq c d_1(f(p),f(p'))$, logo para todos $q,q' \in f(M_0)$, existem $p,p' \in M_0$ tais que $q=f(p)$ e $q'=f(p')$, portanto
+	\begin{align*}
+	d_0(f\inv(q),f\inv(q')) &= d_0(f\inv(f(p)),f\inv(f(p'))) \\
+		&= d_0(p,p') \leq c d_1(f(p),f(p')) \\
+		&= c d_1(q,q'),
+	\end{align*}
+o que mostra que $f\inv$ é $c$-métrica.
+
+
+\end{proof}
+
+\subsection{Homometrias e isometrias}
+
+\begin{definition}
+Sejam $\bm{M_0}$ e $\bm{M_1}$ espaços métricos. Uma \emph{isometria local} ou (\emph{imersão isométrica}) de $\bm{M_0}$ para $\bm{M_1}$ é uma função $f\colon M_0 \to M_1$ que satisfaz, para todos $p,p' \in M_0$,
+	\begin{equation*}
+	d_1(f(p),f(p')) = d_0(p,p').
+	\end{equation*}
+Uma \emph{isometria} é isometria local bijetiva.
+\end{definition}
+
+\begin{proposition}
+Sejam $\bm{M_0}$ e $\bm{M_1}$ espaços métricos e $f\colon M_0 \to M_1$ uma isometria local. Então $f$ é injetiva.
+\end{proposition}
+\begin{proof}
+Sejam $p,p' \in M_0$ tais que $p \neq p'$. Então $d_0(p,p') \neq 0$, logo
+	\begin{equation*}
+	d_1(f(p),f(p')) = d_0(p,p') \neq 0,
+	\end{equation*}
+o que implica $f(p) \neq f(p')$.
+\end{proof}
+
+\begin{proposition}
+Sejam $\bm{M_0}$ e $\bm{M_1}$ espaços métricos e $f\colon M_0 \to M_1$ uma homometria injetiva cuja inversa à esquerda é homometria. Então $f$ é uma isometria local.
+\end{proposition}
+\begin{proof}
+Sejam $p,p' \in M_0$. Então, como $f$ é homometria,
+	\begin{equation*}
+	d_1(f(p),f(p')) \leq d_0(p,p')
+	\end{equation*}
+e, como $f\inv$ é homometria,
+	\begin{equation*}
+	d_0(p,p') = d_1(f\inv \circ f(p),f\inv \circ f(p')) \leq d_1(f(p),f(p'));
+	\end{equation*}
+portanto  $d_0(p,p') = d_1(f(p),f(p'))$.
+\end{proof}
+
+\begin{proposition}
+Sejam $\bm{M_0}$ e $\bm{M_1}$ espaços métricos e $f\colon M_0 \to M_1$ homometria. A função $f$ é isometria se, e somente se, é invertível e sua inversa é homometria.
+\end{proposition}
+\begin{proof}
+Suponhamos que $f$ é isometria. Então $f$ é bijetiva e, portanto, invertível. Sua inversa satisfaz, para todos $p,p' \in M_1$,
+	\begin{equation*}
+	d_0(f\inv(p),f\inv(p')) = d_1(f(f\inv(p)),f(f\inv(p'))) = d_0(p,p').
+	\end{equation*}
+Portanto $f\inv$ é isometria local, logo homometria.
+
+Reciprocamente, suponhamos que $f$ é invertível e sua inversa é homometria. Segue da proposição anterior que $f$ é isometria local e, como é bijetiva, é isometria.
+\end{proof}
+
+\subsection{Contrações}
+
+\begin{proposition}[Ponto Fixo para Contrações]
+Sejam $\bm M$ um espaço métrico completo e $f\colon M \to M$ uma contração. Existe único ponto fixo $\bar p \in M$ para $f$ e, para todo $p \in M$,
+	\begin{equation*}
+	\lim_{n \to \infty} f^n(p) = \bar p.
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+Seja $c \in \intfa{0}{\infty}$ a constante de contração de $f$. Mostremos por indução que, para todos $p \in M$ e $n \in \N$,
+	\begin{equation*}
+	d(f^n(p),f^{n+1}(p)) \leq c^n d(p,f(p)).
+	\end{equation*}
+Claramente, para $n=0$ isso claramente vale. Agora, suponhamos que a desigualdade valha para $n=k$ e mostremos que ela vale para $n=k+1$. Como $f$ é contração,
+	\begin{equation*}
+	d(f^k(p),f^{k+1}(p)) \leq c d(f^{k-1}(p),f^k(p)) \leq c c^{k-1} d(p,f(p)) = c^k d(p,f(p)).
+	\end{equation*}
+Agora, notemos que, para todos $n,p \in \N$, segue da desigualdade triangular generalizada que
+	\begin{align*}
+	d(f^n(p),f^{n+p}(p)) &\leq \sum_{i=0}^{p-1} d(f^{n+i}(p),f^{n+i+1}(p)) \\
+		&\leq \sum_{i=0}^{p-1} c^{n+i} d(p,f(p)) \\
+		&= c^n\frac{1-c^p}{1-c} d(p,f(p)) \\
+		&\leq \frac{c^n}{1-c} d(p,f(p)),
+	\end{align*}
+pois $c\geq 0$ implica $1-c^p<1$. Como $c<1$, então $\lim_{n \to \infty} \frac{c^n}{1-c} = 0$, portanto, para todos $n,p \in \N$,
+	\begin{equation*}
+	\lim_{n \to \infty} d(f^n(p),f^{n+p}(p)) = 0,
+	\end{equation*}
+o que mostra que $(f^n(p))_{n \in \N}$ é uma sequência aproximante e, como $\bm M$ é completo, converge para $\bar p \in M$. Como $f$ é contínua,
+	\begin{equation*}
+	f(\bar p) = f\left(\lim_{n \to \infty} f^n(p)\right) = \lim_{n \to \infty} f^{n+1}(p) = \bar p,
+	\end{equation*}
+esse ponto $\bar p$ é um ponto fixo. Para mostrarmos que $\bar p$ é único, suponhamos que $p$ é ponto fixo de $f$. Então
+	\begin{equation*}
+	d(\bar p,p) = d(f(\bar p),f(p)) \leq c d(\bar p,p)
+	\end{equation*}
+e como $c<1$ isso implica $d(\bar p,p)=0$, logo $\bar p=p$.
+\end{proof}
+
+\subsection{Semelhanças}
+
+\begin{definition}
+Sejam $\bm{M_0}$ e $\bm{M_1}$ espaços métricos e $c \in \intfa{0}{\infty}$. Uma $c$-\emph{semelhança local} ou (\emph{imersão $c$-semelhante}) de $\bm{M_0}$ para $\bm{M_1}$ é uma função $f\colon M_0 \to M_1$ que satisfaz, para todos $p,p' \in M_0$,
+	\begin{equation*}
+	d_1(f(p),f(p')) = c d_0(p,p').
+	\end{equation*}
+Uma \emph{semelhança} é semelhança local bijetiva.
+\end{definition}

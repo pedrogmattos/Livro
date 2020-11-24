@@ -1,0 +1,328 @@
+%% estilomeu.sty
+%% Copyright 2020 P. G. Mattos
+%
+% ENGLISH
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3
+% of this license or any later version.
+% The latest version of this license is in
+%	http://www.latex-project.org/lppl.txt
+% and version 1.3 or later is part of all distributions of LaTeX
+% version 2005/12/01 or later.
+%
+% This work has the LPPL maintenance status `maintained'.
+%
+% The Current Maintainer of this work is P. G. Mattos.
+%
+% This work consists of the file estilomeu.sty.
+%
+% PORTUGUÊS
+% Este programa pode ser redistribuído e/ou modificado sob as
+% condições da LaTeX Project Public License, seja a versão 1.3
+% dessa licença ou qualquer versão posterior.
+% A versão (em inglês) mais recente dessa licença está em
+%	http://www.latex-project.org/lppl.txt
+% e a versão 1.3 ou posterior é parte de todas distribuições de
+% LaTeX versão 2005/12/01 ou posterior.
+%
+% Este trabalho tem o estado de manutenção `mantido' da LPPL.
+%
+% O Mantenedor Atual deste trabalho é P. G. Mattos.
+%
+% Este trabalho consiste no arquivo estilomeu.sty.
+%
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\ProvidesPackage{estilomeu}[2020/04/04 Pacote de Estilo]
+% Em arquivos de classe (.cls) e de pacotes (.sty), não há necessidade de usar \makeatletter e \makeatother
+% REFERÊNCIA: https://en.wikibooks.org/wiki/LaTeX/Creating_Packages
+
+%------------------------------------------------------------
+% Opções													%
+%------------------------------------------------------------
+
+% Opção 'artigo'
+\newif\if@artigo\@artigofalse
+\DeclareOption{artigo}{\@artigotrue}
+
+% Opção 'livro'
+\newif\if@livro\@livrofalse
+\DeclareOption{livro}{\@livrotrue\@artigofalse}
+
+\DeclareOption*{\PackageWarning{matematica}{Unknown ‘\CurrentOption’}}
+\DeclareOption*{\OptionNotUsed}
+
+\ExecuteOptions{artigo}
+
+\ProcessOptions\relax
+
+%------------------------------------------------------------
+% Pacotes e Comandos										%
+%------------------------------------------------------------
+
+% Fontes e codificação
+%------------------------------------------------
+
+% Fonte do documento
+%------------------------------------
+\RequirePackage{lmodern}
+% RFERÊNCIA: https://tex.stackexchange.com/questions/147194/is-it-still-useful-to-load-the-lmodern-package
+% NOTA: Não tenho certeza de como funciona, mas muda a fonte ligeiramente. Resolveu alguns problemas, como tamanho da fonte na capa que ficava muito pequeno, as linhas do .pdf quando grifadas não ficam mais grandes demais e alguns caracteres como o travessão --- agora podem ser copiados do arquivo .pdf final, antes eram exibidos mas não eram copiáveis.
+
+% Codificação de saída
+%------------------------------------
+\RequirePackage[T1]{fontenc}
+% REFERÊNCIA: https://tex.stackexchange.com/questions/664/why-should-i-use-usepackaget1fontenc#677
+% NOTA: Adiciona mais caracteres na fonte de saída. Língua em que o arquivo imagem é feito. Necessário para poder copiar acentos do .pdf.
+
+% Codificação de entrada
+%------------------------------------
+\RequirePackage[utf8]{inputenc}
+% REFERÊNCIA: https://tex.stackexchange.com/questions/44694/fontenc-vs-inputenc#44699
+
+% Língua do documento
+%------------------------------------
+\RequirePackage[greek,french,italian,main=brazilian]{babel}
+\addto\captionsbrazilian{\renewcommand\proofname{$\square$ Demonstração}}
+
+% Símbolos especiais
+%------------------------------------
+\RequirePackage[safe]{tipa}
+%	safe		Impede que ele redefina os comandos \* \: \; \! \| etc.
+\RequirePackage{ccicons}
+
+% Ajustes tipográficos
+%------------------------------------
+%\widowpenalty=300
+%\clubpenalty=300
+
+% Formatação/diagramação da página
+%------------------------
+\RequirePackage{geometry}
+%	hmargin={2.5cm,2.5cm}		Margens esquerda/dentro e direita/fora
+%	vmargin={3cm,3cm}			Margens superior e inferior
+
+% Formatação do texto
+%------------------------
+\RequirePackage{microtype}
+% NOTA: Procurara melhor o que ele faz, mas pelo que entendi melhora o espaçamento de caracteres em geral.
+
+
+
+% Estrutura do documento
+%------------------------------------------------
+
+% Contadores
+%------------------------------------
+% Numera partes com numerais arábicos
+\renewcommand\thepart{\arabic{part}}
+
+% Numera subsubseções
+\setcounter{secnumdepth}{3}
+% NOTA: Esse é o padrão para a classe 'article', mas não para as classes 'book' e 'report', que numeram até subseção, nível 2.
+
+% Renomeia apêndices como A1, A2
+\let\oldappendix\appendix
+\renewcommand\appendix{
+	\if@artigo
+		\oldappendix
+		\renewcommand{\thesection}{A\arabic{section}}
+	\fi
+	\if@livro
+		\oldappendix
+		\renewcommand{\thechapter}{A\arabic{chapter}}
+
+		\phantomsection
+		\addcontentsline{toc}{part}{Apêndices}
+		\part*{Apêndices}
+	\fi
+}
+
+% Sumário
+%------------------------------------
+\RequirePackage[nottoc]{tocbibind}
+%	nottoc		Não adiciona o sumário ao sumário
+%	notlof		Não adiciona a lista de figuras ao sumário
+%	notlot		Não adiciona a lista de tabelas ao sumário
+%	notbib		Não adiciona as referências ao sumário
+%	notindex	Não adiciona o índice ao sumário
+
+% Inclui subsubseção no Sumário.
+%\setcounter{tocdepth}{3}
+% NOTA: Esse é o padrão para a classe 'article', mas não para as classes 'book' e 'report', que numeram até subseção, nível 2.
+
+% Bibliografia
+%------------------------------------
+\RequirePackage[style=alphabetic,language=auto,autolang=hyphen,backref=true]{biblatex}
+	\addbibresource{bibliografia.bib}
+%	style=alphabetic	Estilo alfabético das Referências e de citação (texto)
+%	language=auto		Usa língua da referência no texto e nas Referências
+%	autolang=hyphen		Hifeniza referência na respectiva língua
+%	backref=true		Ligação interna às citações nas Referências
+
+% Índice
+%------------------------------------
+\RequirePackage{imakeidx}
+%	\makeindex
+	\makeindex[intoc]
+%	\makeindex[intoc,name=outroindice,title={Outro Índice},columns=1]
+%	\makeindex[intoc,name=matematica,title={Símbolos matemáticos},columns=3]
+
+
+
+% Ferramentas de texto
+%------------------------------------------------
+
+% Cores
+%------------------------------------
+\RequirePackage{xcolor}
+% Cores Básicas
+	\definecolor{vermelho}{rgb}{1,0,0}
+	 \definecolor{rubro}{rgb}{1,0,0}
+	\definecolor{verde}{rgb}{0,1,0}
+	\definecolor{azul}{rgb}{0,0,1}
+	\definecolor{amarelo}{rgb}{1,1,0}
+	\definecolor{ciano}{rgb}{0,1,1}
+	\definecolor{magenta}{rgb}{1,0,1}
+	\definecolor{laranja}{rgb}{1,0.5,0}
+	\definecolor{lima}{rgb}{0.5,1,0}
+	\definecolor{esmeralda}{rgb}{0,1,0.5}
+	\definecolor{celeste}{rgb}{0,0.5,1}
+	\definecolor{violeta}{rgb}{0.5,0,1}
+	\definecolor{rosa}{rgb}{1,0,0.5}
+% Brilhos
+	\definecolor{preto}{rgb}{0,0,0}
+	 \definecolor{negro}{rgb}{0,0,0}
+	\definecolor{cinza}{rgb}{0.5,0.5,0.5}
+	 \definecolor{gris}{rgb}{0.5,0.5,0.5}
+	\definecolor{branco}{rgb}{1,1,1}
+% Cores Escuras
+	\definecolor{vermelhoescuro}{rgb}{0.5,0,0}
+	 \definecolor{rubroescuro}{rgb}{0.5,0,0}
+	\definecolor{amareloescuro}{rgb}{0.5,0.5,0}
+	\definecolor{verdeescuro}{rgb}{0,0.5,0}
+	\definecolor{cianoescuro}{rgb}{0,0.5,0.5}
+	\definecolor{azulescuro}{rgb}{0,0,0.5}
+	\definecolor{magentaescuro}{rgb}{0.5,0,0.5}
+	\definecolor{laranjaescuro}{rgb}{0.5,0.25,0}
+	\definecolor{limaescuro}{rgb}{0.25,0.5,0}
+	\definecolor{esmeraldaescuro}{rgb}{0,0.5,0.25}
+	\definecolor{celesteescuro}{rgb}{0,0.25,0.5}
+	\definecolor{violetaescuro}{rgb}{0.25,0,0.5}
+	\definecolor{rosaescuro}{rgb}{0.5,0,0.25}
+% Cores Claras
+	\definecolor{vermelhoclaro}{rgb}{1,0.5,0.5}
+	 \definecolor{rubroclaro}{rgb}{1,0.5,0.5}
+	\definecolor{amareloclaro}{rgb}{1,1,0.5}
+	\definecolor{verdeclaro}{rgb}{0.5,1,0.5}
+	\definecolor{cianoclaro}{rgb}{0.5,1,1}
+	\definecolor{azulclaro}{rgb}{0.5,0.5,1}
+	\definecolor{magentaclaro}{rgb}{1,0.5,1}
+	\definecolor{laranjaclaro}{rgb}{1,0.75,0.5}
+	\definecolor{limaclaro}{rgb}{0.75,1,0.5}
+	\definecolor{esmeraldaclaro}{rgb}{0.5,1,0.75}
+	\definecolor{celesteclaro}{rgb}{0.5,0.75,1}
+	\definecolor{violetaclaro}{rgb}{0.75,0.5,1}
+	\definecolor{rosaclaro}{rgb}{1,0.5,0.75}
+
+% Listas
+%------------------------------------
+\RequirePackage[inline]{enumitem}
+	\setlist{noitemsep,leftmargin=*}
+	\setlist[1]{labelindent=\parindent}% Indenta como parágrafo
+	\setlist[itemize]{label=\raisebox{0.3ex}{\tiny\textbullet}}
+	\setlist[enumerate]{label*=\arabic*.,labelsep=*,leftmargin=*}
+	% Tirar asterisco de label* para que os subitens sejam numerados por 1.,2., e não 2.1.,2.2., ...
+	\setlist[enumerate,1]{ref=\arabic*}
+	\setlist[enumerate,2]{ref=\theenumi.\arabic*}
+	\setlist[enumerate,3]{ref=\theenumii.\arabic*}
+	\setlist[enumerate,4]{ref=\theenumiii.\arabic*}
+% REFERÊNCIA: https://tex.stackexchange.com/questions/536983/enumerate-using-tiered-numbers
+% REFERÊNCIA: https://tex.stackexchange.com/questions/253910/reference-to-enumerate-item-with-manually-set-label#253912
+
+% Citações
+%------------------------------------
+\RequirePackage[autostyle=try]{csquotes}
+
+% Ambientes flutuantes
+%------------------------------------
+\RequirePackage{float}
+	\floatplacement{figure}{H}
+	\floatplacement{table}{H}
+% NOTA: A opção H fixa o ambiente flutuante no lugar. Os comandos acima tornam essa opção padrão.
+
+% Legendas
+%------------------------------------
+\RequirePackage{caption}
+	\captionsetup{margin=1cm,font={small},labelfont={sc},labelsep=colon}
+%	\captionsetup[table]{position=above}
+
+% Importar imagens
+%------------------------------------
+\RequirePackage{graphicx}
+\RequirePackage{eso-pic}
+
+% Tabelas
+%------------------------------------
+\RequirePackage{dcolumn}
+	\newcolumntype{.}{D{.}{.}{-1}}
+	\newcolumntype{d}[1]{D{.}{.}{#1}}
+\RequirePackage{booktabs}
+
+% Comentários
+%------------------------------------
+\RequirePackage{verbatim}
+\RequirePackage{comment}
+
+
+
+% Ligações do documento
+%------------------------------------------------
+
+% Ligações
+%------------------------------------
+\RequirePackage[colorlinks,urlcolor=blue,linktocpage]{hyperref}
+%	hidelinks		Esconde as ligações coloridas
+% NOTA: Deve vir por último, com algumas exceções: glossaries, glossaries-extra, cleveref.
+% REFERÊNCIA: https://tex.stackexchange.com/questions/183702/formatting-back-references-in-bibliography-bibtex
+% REFERÊNCIA: https://tex.stackexchange.com/questions/1863/which-packages-should-be-loaded-after-hyperref-instead-of-before
+
+% Glossário
+%------------------------------------
+%\RequirePackage[toc]{glossaries}
+%\newglossaryentry{gls:glossario}{
+%	name=glossário,
+%	plural=glossários,
+%	sort=glossario,
+%	description={é uma lista de palavras e suas definições.},
+%	symbol={\ensuremath{\mathbb{R}}}
+%}
+%	\makeglossaries
+% NOTA: Deve vir depois do pacote hyperref---ao contrário da maioria dos pacotes---para que as ligações sejam criadas. Caso contrário, ainda funciona, mas as ligações não.
+
+% Símbolos em glossário
+%------------------------------------
+\RequirePackage[symbols,nogroupskip,sort=use]{glossaries-extra}
+	\makenoidxglossaries
+	\input{[modelo]simbolos}
+% NOTA: Ele permite adicionar novos glossários, como por exemplo para fazer símbolos. Não consegui usar direito. Deve vir depois do pacote hyperref---ao contrário da maioria dos pacotes---para que as ligações sejam criadas. Caso contrário, ainda funciona, mas as ligações não.
+% REFERÊNCIA: https://tex.stackexchange.com/questions/348640/how-to-effectively-use-list-of-symbols-for-a-thesis
+
+% Referências Internas
+%------------------------------------
+\RequirePackage{cleveref}
+	\crefformat{chapter}{\textsection#2#1#3}
+	\crefrangeformat{chapter}{\textsection\textsection#3#1#4--#5#2#6}
+	\crefmultiformat{chapter}{\textsection\textsection#2#1#3}{, #2#1#3}{, #2#1#3}{, #2#1#3}
+	\crefrangemultiformat{chapter}{\textsection\textsection#3#1#4--#5#2#6}{, #3#1#4--#5#2#6}{, #3#1#4--#5#2#6}{, #3#1#4--#5#2#6}
+
+	\crefformat{section}{\textsection#2#1#3}
+%	\crefformat{subsection}{\textsection#2#1#3}
+%	\crefformat{subsubsection}{\textsection#2#1#3}
+	\crefrangeformat{section}{\textsection\textsection#3#1#4--#5#2#6}
+	\crefmultiformat{section}{\textsection\textsection#2#1#3}{, #2#1#3}{, #2#1#3}{, #2#1#3}
+	\crefrangemultiformat{section}{\textsection\textsection#3#1#4--#5#2#6}{, #3#1#4--#5#2#6}{, #3#1#4--#5#2#6}{, #3#1#4--#5#2#6}
+% NOTA: Deve vir por último, de hyperref, glossaries, glossaries-extra. Dá problema se carregado antes do pacote mathtools com a opção centercolon.
+% REFERÊNCIA: https://tex.stackexchange.com/questions/208933/how-to-show-symbol-when-i-refer-a-chapter
+
+%------------------------------------------------------------
+\endinput

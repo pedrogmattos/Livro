@@ -1,0 +1,201 @@
+\chapter{Álgebra universal}
+
+\section{Álgebra e estrutura algébrica}
+
+\begin{definition}
+Sejam $A$ um conjunto e $n \in \N$. Uma \emph{operação $n$-ária} em $A$ é uma função
+\begin{align*}
+	\fun{O}{A^n}{A}.
+\end{align*}
+A \emph{aridade} de $O$ é o número $n$.
+\end{definition}
+
+Aqui a notação $A^n$ denota o produto de conjuntos $\prod_{i \in [n]} A = A \times \cdots \times A$.
+
+\begin{definition}
+Uma \emph{álgebra} é um par $\bm A = (A,\mathcal O)$ em que
+	\begin{enumerate}
+		\item $A$ é um conjunto, seu \emph{conjunto de pontos};
+		\item $\mathcal O = (\mathcal O_n)_{n \in \N}$, sua \emph{estrutura algébrica}, sendo $\mathcal O_n = (O_i)_{i \in \card{\mathcal O_n}}$ uma sequência finita de operações $n$-árias em $A$
+			\begin{equation*}
+				\fun{O_i}{A^n}{A}.
+			\end{equation*}
+	\end{enumerate}
+O \emph{tipo} de $(A,\mathcal O)$ é a sequência $(\card{\mathcal O_n})_{n \in \N}$.
+
+%Estruturas algébricas do \emph{do mesmo tipo} são $(A,\mathcal O)$ e $(A',\mathcal O')$ tais que, para todo $n \in \N$, existe bijeção $t\colon \mathcal O_n \to \mathcal O'_n$.
+\end{definition}
+
+Álgebras de mesmo tipo têm bijeção entre suas estruturas algébricas, dada por
+	\begin{equation*}
+		O_i \in \mathcal O_n \mapsto O'_i \in \mathcal O'_n,
+	\end{equation*}
+em que $n \in \N$ e $i \in \card{\mathcal O_n}$. Isso ocorre porque $\card{\mathcal O_n} = \card{\mathcal O'_n}$. É importante notar que a bijeção relaciona operações de mesma aridade $n$. Quando conveniente, as operações $O_i$ e $O'_i$ relacionadas pela bijeção serão denotadas simplesmente $O_i$ por simplicidade mas deve-se ter em mente que são operações em conjuntos diferentes, a primeira em $A$ e a segunda em $A'$.
+
+
+\section{Morfismos}
+
+\begin{definition}
+Sejam $\bm A = (A,\mathcal O)$ e $\bm A' = (A',\mathcal O')$ álgebras de mesmo tipo. Um \emph{morfismo} de $\bm A$ para $\bm A'$ é uma função $f\colon A \to A'$ tal que, para todo $n \in \N$, toda $O \in \mathcal O_n$ e todos $a_0,\ldots,a_{n-1} \in A$,
+	\begin{equation*}
+		f(O(a_0,\ldots,a_{n-1})) = O'(f(a_0),\ldots,f(a_{n-1})).
+	\end{equation*}
+Denota-se $f\colon \bm A \to \bm A'$. Um isomorfismo entre $\bm A$ e $\bm A'$ é um morfismo bijetivo de $\bm A$ para $\bm A'$. Denota-se $\bm A \simeq \bm A'$.
+\end{definition}
+
+Isso é equivalente a
+	\begin{equation*}
+		f \circ O = O' \circ (f,\ldots,f).
+	\end{equation*}
+
+\section{Subálgebra}
+
+\begin{definition}
+Seja $\bm A = (A,\mathcal O)$ uma álgebra. Uma \emph{subálgebra} de $\bm A$ é uma álgebra $\bm S = (S,\mathcal O^S)$ de mesmo tipo de $\bm A$ tal que
+	\begin{enumerate}
+		\item $S \subseteq A$;
+		\item Para todo $n \in \N$ e toda $O_i \in \mathcal O_n$, $O_i^S = O_i|_{S^n}$.
+	\end{enumerate}
+Denota-se $\bm S \leq \bm A$.
+\end{definition}
+
+\section{Produto}
+
+\begin{definition}
+Seja $(\bm A_i)_{i \in I} = ((A_i,\mathcal O_i))_{i \in I}$ uma família de álgebras de mesmo tipo. O \emph{produto} da família $(\bm A_i)_{i \in I}$ é o par
+	\begin{equation*}
+		\bm{\prod_{i \in I} A_i} := \left(A, \mathcal O \right),
+	\end{equation*}
+em que
+	\begin{enumerate}
+		\item $A := \prod_{i \in I} A_i$;
+		\item $\mathcal O := (\mathcal O_n)_{n \in \N}$, e, para todo $n \in \N$ e todo $k \in \card{\mathcal O_n}$,
+	\begin{align*}
+		\func{O_k}{A^2}{A}{a_0,\cdots, a_{n-1}}{((O_0)_k(a_{0,i})_{i \in I},\ldots,(O_{n-1})_k(a_{n-1,i})_{i \in I})}.
+	\end{align*}
+	\end{enumerate}
+\end{definition}
+
+\section{Congruências e quociente}
+
+Nesta subseção, trataremos de equivalências especiais. De modo geral, se $\congr$ é uma equivalência em $A$, $n \in \N$ e $a = (a_0,\ldots,a_{n-1}) \in A^n$ e $a' = (a'_0,\ldots,a'_{n-1}) \in A^n$ são tais que, para todo $k \in [n]$, $a_k \congr a'_k$, denotaremos isso por
+	\begin{equation*}
+		a \congr a'.
+	\end{equation*}
+Isso é uma equivalência em $A^n$.
+
+\begin{definition}
+Seja $\bm A = (A,\mathcal O)$ uma álgebra. Uma \emph{congruência} em $\bm A$ é uma equivalência $\congr$ em $A$ tal que
+	\begin{enumerate}
+		\item (Compatibilidade) Para todo $n \in \N$, toda $O \in \mathcal O_n$ e todos $a,a' \in A^n$ tais que $a \congr a'$,
+			\begin{equation*}
+				O(a) \congr O(a').
+			\end{equation*}
+%			\begin{equation*}
+%				O(a_0,\ldots,a_{n-1}) \congr O(a'_0,\ldots,a'_{n-1}).
+%			\end{equation*}
+	\end{enumerate}
+\end{definition}
+
+Isso basicamente significa que uma congruência é uma equivalência em $A$ compatível com as operações $n$-árias da sua estrutura algébrica. Essa compatibilidade pode ser enunciada de outra forma, como mostra a proposição a seguir.
+
+\begin{proposition}
+Seja $\bm A = (A,\mathcal O)$ uma álgebra. Uma equivalência $\congr$ em $A$ é uma congruência em $\bm A$ se, e somente se, é uma subálgebra de $\bm A^2$ (com as operações).
+\end{proposition}
+\begin{proof}
+	Basta notar que, para todo $n \in \N$, toda $O \in \mathcal O_n$ e todos $a,a' \in A^n$ tais que $a \congr a'$, como por definição das operações de $\bm A$ no produto $\bm A^2$ temos $O((a_i,a'_i)_{i \in [n]}) = (O(a),O(a'))$, então $O(a) \congr O(a')$ é equivalente a $O((a_i,a'_i)_{i \in [n]}) \in \mathord{\congr}$, ou seja, a compatibilidade de $\congr$ é equivalente a $O$ pode ser restrita ao subconjunto $\mathord{\congr} \subseteq A^2$.
+\end{proof}
+
+Como toda equivalência, podemos usar uma congruência para quocientar o conjunto $A$. A compatibilidade garante que o quociente tenha uma estrutura algébrica de mesmo tipo induzida pela estrutura algébrica de $\bm A$.
+
+\begin{definition}
+Sejam $\bm A = (A,\mathcal O)$ uma álgebra e $\congr$ uma congruência em $\bm A$. O \emph{quociente} de $\bm A$ por $\congr$ é o par $\bm{\quo{A}{\congr}} := (\quo{A}{\congr},\mathcal O^\congr)$, em que
+	\begin{enumerate}
+		\item O conjunto
+			\begin{equation*}
+				\quo{A}{\congr} = \set{\cla{a} = \set{a' \in A}{a' \congr a}}{a \in A}
+			\end{equation*}
+		é o conjunto quociente;
+		
+		\item $\mathcal O^\congr := (\mathcal O_n^\congr)$, em que $\mathcal O_n^\congr := (O_i^\congr)$, sendo $O_i^\congr$ definida, para todos $a_0,\ldots,a_{n-1} \in A$, por
+			\begin{equation*}
+				O_i^\congr(\cla{a_0},\ldots,\cla{a_{n-1}}) := \cla{O(a_0,\ldots,a_{n-1})}.
+			\end{equation*}
+	\end{enumerate}
+\end{definition}
+
+\begin{proposition}
+Sejam $\bm A = (A,\mathcal O)$ uma álgebra e $\congr$ uma congruência em $\bm A$. O quociente $\bm{\quo{A}{\congr}} := (\quo{A}{\congr},\mathcal O^\congr)$ é uma estrutura algébrica do mesmo tipo que $\bm A$ e a projeção quociente $\cla{\var}\colon A \to \quo{A}{\congr}$ é um morfismo de álgebras.
+\end{proposition}
+\begin{proof}
+Devemos mostrar que, para todo $n \in \N$ e toda $O \in \mathcal O_n$, $O$ é uma operação $n$-ária em $\quo{A}{\congr}$. Sejam $a_0,\ldots,a_{n-1} \in A$ e $a'_0,\ldots,a'_{n-1} \in A$ tais que, para todo $i \in [n]$, $a_i \congr a'_i$. Então
+	\begin{align*}
+		O_i^\congr(\cla{a_0},\ldots,\cla{a_{n-1}}) &= \cla{O(a_0,\ldots,a_{n-1})} \\
+			&= \cla{O(a'_0,\ldots,a'_{n-1})} \\
+			&= O_i^\congr(\cla{a'_0},\ldots,\cla{a'_{n-1}}),
+	\end{align*}
+o que mostra que $O_i^\congr$ está bem definida.
+
+Por fim, notemos que a projeção é morfismo por definição da estrutura quociente, pois, para todo $n \in \N$, toda $O \in \mathcal O_n$ e todos $a_0,\ldots,a_{n-1} \in A^n$,
+	\begin{equation*}
+		\cla{O(a_0,\ldots,a_{n-1})} = O^\congr(\cla{a_0},\ldots,\cla{a_{n-1}}).						\qedhere
+	\end{equation*}
+%	\begin{align*}
+%		\proj(O(a_0,\ldots,a_{n-1})) &= \cla{O(a_0,\ldots,a_{n-1})} \\
+%			&= O^\congr(\cla{a_0},\ldots,\cla{a_{n-1}}) \\
+%			&= O^\congr(\proj(a_0),\ldots,\proj(a_{n-1})).
+%	\end{align*}
+\end{proof}
+
+\begin{exercise}
+	\begin{enumerate}
+		\item Existe uma bijeção entre os subgrupos normais de um grupo $\bm G$ e as congruências em $\bm G$.
+		\item Existe uma bijeção entre os ideais de um anel $\bm A$ e as congruências em $\bm A$.
+	\end{enumerate}
+\end{exercise}
+
+\section{Núcleo e imagem}
+
+\begin{definition}
+Sejam $\bm A$ e $\bm A'$ álgebras de mesmo tipo e $f\colon \bm A \to \bm A'$ um morfismo de álgebras. O \emph{núcleo} de $f$ é o conjunto
+		\begin{equation*}
+			\nuc(f) := \set{(a,a') \in A^2}{f(a) = f(a')} \subseteq A^2.
+		\end{equation*}
+\end{definition}
+
+\begin{proposition}[Isomorfismo de imagem-coimagem]
+Sejam $\bm A$ e $\bm A'$ álgebras de mesmo tipo e $f\colon \bm A \to \bm A'$ um morfismo de álgebras.
+	\begin{enumerate}
+		\item O núcleo $\nuc(f)$ é uma congruência em $\bm A$;
+		\item A imagem $\im(f)$ é uma subálgebra de $\bm A'$;
+		\item O quociente de $A$ pelo núcleo de $f$ é isomorfo à imagem de $f$:
+			\begin{equation*}
+				\bm{\quo{A}{\nuc(f)}} \simeq \bm{\im(f)}.
+			\end{equation*}
+			\begin{equation*}
+				\bm{\quo{A}{\congr_f}} \simeq \bm{f(A)}.
+			\end{equation*}
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+		\item A equivalência definida pelo núcleo é $a \equiv_f a'$ se, e somente se, $f(a)=f(a')$. Para ver que é equivalência, notemos que
+		\begin{enumerate}
+			\item Para todo $a \in A$, $f(a)=f(a)$, logo $a \equiv_f a$;
+			\item Para todos $a,a \in A$ tais que $a \equiv_f a'$, vale $f(a)=f(a')$, logo $f(a')=f(a)$, portanto $a' \equiv_f a$;
+			\item Para todos $a,a',a'' \in A$ tais que $a \equiv_f a'$ e $a' \equiv_f a''$, vale $f(a)=f(a')$ e $f(a')=f(a'')$, logo $f(a)=f(a'')$, portanto $a \equiv_f a''$.
+		\end{enumerate}
+		
+		Para mostrarmos a compatibilidade, sejam $O_i \in \mathcal O_n$ e $a,a' \in A^n$ tais que $a \congr_f a'$. Isso significa que, para todo $k \in [n]$, vale $a_k \congr_f a'_k$, ou seja, $f(a_k)=f(a'_k)$. Como $f$ é morfismo, segue que
+			\begin{align*}
+				f(O_i(a))	&= O'_i(f(a_0),\ldots,f(a_{n-1})) \\
+							&= O'_i(f(a'_0),\ldots,f(a'_{n-1})) \\
+							& f(O_i(a')),
+			\end{align*}
+		portanto $O_i(a) \congr_f O_i(a')$, o que mostra que $\congr_f$ é uma congruência.
+
+		\item Exercício.
+
+		\item Exercício.
+	\end{enumerate}
+\end{proof}

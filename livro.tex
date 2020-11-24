@@ -1,163 +1,206 @@
-\documentclass[oneside,12pt]{book}
+%------------------------------------------------------------------------
+% PRÉ-DOCUMENTO															%
+%------------------------------------------------------------------------
+\documentclass[oneside,a4paper,12pt]{book}
+%------------------------------------------------------------
+% Pacotes													%
+%------------------------------------------------------------
 
-%------------------------------------------------------------------------------------
-% PACOTES
-%------------------------------------------------------------------------------------
+\usepackage[livro]{matematica}
+\usepackage[livro]{estilomeu}
 
-\usepackage{estilo}
-\usepackage{matematica}
+%------------------------------------------------------------
+% Comandos													%
+%------------------------------------------------------------
 
-%------------------------------------------------------------------------------------
-% COMANDOS
-%------------------------------------------------------------------------------------
-
-% Contadores
-
-%Renumerar Partes
-
-\renewcommand\thepart{\arabic{part}}
-%\setcounter{part}{-1}
-
-% Prefixa "\thepart." ao números do capítulo.
-%\makeatletter
-%\renewcommand{\p@chapter}{\thepart.}
-%\makeatother
-%OBS: Não está funcionando, não sei por quê... tentei criar este seguinte e funciona, mas fica mal diagramado.
-%\renewcommand\thechapter{\thepart.\arabic{chapter}}
-
-%Renumerar Capítulos
-\makeatletter
-\@addtoreset{chapter}{part}
-\makeatother
-
-%Renumerar Seções
-%\renewcommand\thesection{\arabic{section}}
-%\renewcommand\thesubsection{\thesection.\arabic{subsection}}
-
-%------------------------------------------------------------------------------------
-% AMBIENTES
-%------------------------------------------------------------------------------------
-
-%\swapnumbers
-
-% Estilo Definições
-\theoremstyle{definition}
-\newtheorem{defi}{Definição}[chapter]
-\newtheorem{axi}{Axioma}
-\newtheorem*{nota}{Notação}
-\newtheorem{exerc}{$\blacktriangleright$ Exercício}[chapter]
-
-% Estilo Teoremas
-\theoremstyle{plain}
-\newtheorem{teo}{Teorema}[chapter]
-\newtheorem{prop}[teo]{Proposição}
-\newtheorem{lema}[teo]{Lema}
-\newtheorem{coro}[teo]{Corolário}
-\newtheorem{conj}[teo]{Conjectura}
-\newtheorem{ex}{Exemplo}[chapter]
-
-\renewcommand{\qedsymbol}{$\blacksquare$} % Símbolo de demonstração.
-
-%------------------------------------------------------------------------------------
-% PARTES INCLUÍDAS
-%------------------------------------------------------------------------------------
-
-\includeonly{elementos/capa,partes/conjuntos,partes/algebra,partes/topologiaegeometria}
-
-%------------------------------------------------------------------------------------
-% DADOS
-%------------------------------------------------------------------------------------
-
-% Dados do Livro
-\newcommand{\titulo}{Elementos de Matemática}
-\newcommand{\subtitulo}{Uma introdução a Conjuntos, Álgebra, Topologia e Geometria}
-\newcommand{\autor}{Pedro G. Mattos}
-\newcommand{\Autor}{Mattos, Pedro G.}
-\newcommand{\versao}{0.3}
-
-% Metadados do arquivo .PDF
-\hypersetup{
-	pdftitle={\titulo\ - \subtitulo},
-	pdfsubject={Matemática},
-	pdfauthor={\autor}
+\includeonly{%
+% Elementos pré-textuais
+	elementos/capa,%
+	elementos/atencao,%
+	elementos/rosto,%
+	elementos/informacoes,%
+	elementos/prefacio,%
+	elementos/agradecimentos,%
+	elementos/introducao,%
+% Elementos textuais
+	partes/conjuntos/axiomas,%
+	partes/conjuntos/familias,%
+	partes/conjuntos/relacoes,%
+	partes/conjuntos/cardinalidade,%
+	partes/algebra/estruturasbasicas,%
+	partes/algebra/grupos,%
+	partes/algebra/aneis,%
+	partes/algebra/modulos,%
+	partes/algebra/espacoslineares,%
+	partes/algebra/algebrassobrecorpos,%
+	partes/algebra/ordememestruturasalgebricas,%
+	partes/algebra/espacosafins,%
+	partes/algebra/algebrauniversal,%
+	partes/geometria/topologia,%
+	partes/geometria/espacosmetricos,%
+	partes/geometria/grupostopologicos,%
+	partes/geometria/espacoslinearestopologicos,%
+	partes/geometria/espacosnormados,%
+	partes/geometria/espacosprodutointerno,%
+	partes/geometria/medida,%
+	partes/geometria/integracao,%
+	partes/geometria/diferenciacao,%
+	partes/geometria/variedades,%
+	partes/geometria/fibrados,%
+	partes/geometria/gruposdiferenciais,%
+% Elementos pós-textuais
+	elementos/apendice
+	elementos/licenca
 }
 
-%------------------------------------------------------------------------------------
-% DOCUMENTO
-%------------------------------------------------------------------------------------
+%------------------------------------------------------------
+% Dados														%
+%------------------------------------------------------------
 
+% Título, autor e data
+%------------------------------------------------
+\newcommand{\titulo}{Elementos de Matemática}
+\newcommand{\subtitulo}{Uma introdução a conjuntos, álgebra e geometria}
+\newcommand{\autor}{Pedro G. Mattos}
+\newcommand{\autorinv}{Mattos, Pedro G.}
+\newcommand{\ecorreio}{pedrogmattos@riseup.net}
+\newcommand{\versao}{0.4}
+
+% Metadados do .pdf
+%------------------------------------------------
+\hypersetup{
+	pdftitle={\titulo{} - \subtitulo{}},
+	pdfauthor={\autor{}}
+%	pdfsubject={},
+%	pdfkeywords={}
+}
+
+%------------------------------------------------------------------------
+% DOCUMENTO																%
+%------------------------------------------------------------------------
 \begin{document}
-%------------------------------------------------
-% ELEMENTOS PRÉ-TEXTUAIS
-%------------------------------------------------
+%------------------------------------------------------------
+% Elementos pré-textuais									%
+%------------------------------------------------------------
 
 % Capa
-\renewcommand{\thepage}{C} % Numera a página com 'C'
+%------------------------------------------------
+\renewcommand{\thepage}{C}
 \include{elementos/capa}
 
-\frontmatter % Numera as páginas com algarismos romanos
+\frontmatter
 
-%\renewcommand{\thepage}{{\small (\arabic{page})}}
-%\renewcommand{\thepage}{\arabic{page}}
-%\setcounter{page}{-10}
+% Atenção
+%------------------------------------------------
+%\include{elementos/atencao}
 
-% ATENÇÃO SOBRE O LIVRO NÃO ESTAR TERMINADO
-\include{elementos/atencao}
-
-% Páginas de Rosto e Informações de Citação e Licença
+% Páginas de Rosto
+%------------------------------------------------
 \include{elementos/rosto}
+
+% Informações
+%------------------------------------------------
 \include{elementos/informacoes}
 
-% Sumário, Lista de Figuras e Lista de Tabelas
-%\dominitoc
-%\doparttoc
-%\noptcrule
+% Sumário
+%------------------------------------------------
+\renewcommand{\contentsname}{Conteúdo}
 \tableofcontents
+
+% Lista de figuras
+%------------------------------------------------
+%\renewcommand{\listfigurename}{Figuras}
 %\listoffigures
+
+% Lista de tabelas
+%------------------------------------------------
+%\renewcommand{\listtablename}{Tabelas}
 %\listoftables
 
-\cleardoublepage
-
-\include{elementos/prefacio}
-\include{elementos/agradecimentos}
-\include{elementos/introducao}
-%\include{logica}
-
+% Lista de símbolos
 %------------------------------------------------
-% ELEMENTOS TEXTUAIS
-%------------------------------------------------
-\mainmatter % Numera as páginas com algarismos arábicos
+%\printnoidxglossary[%
+%	type=symbols,%
+%	title={Símbolos}%,
+%	style=long
+%]
 
+% Prefácio
+%------------------------------------------------
+%\include{elementos/prefacio}
+
+% Agradecimentos
+%------------------------------------------------
+%\include{elementos/agradecimentos}
+
+% Introdução
+%------------------------------------------------
+%\include{elementos/introducao}
+
+%------------------------------------------------------------
+% Elementos textuais										%
+%------------------------------------------------------------
+\mainmatter
 
 % Partes
-\include{partes/conjuntos}
-\include{partes/algebra}
-\include{partes/topologiaegeometria}
+%------------------------------------------------
+\part{Conjuntos}
+\label{pt:conjuntos}
+\include{partes/conjuntos/axiomas}
+\include{partes/conjuntos/familias}
+\include{partes/conjuntos/relacoes}
+\include{partes/conjuntos/cardinalidade}
+
+\part{Álgebra}
+\label{pt:algebra}
+\include{partes/algebra/estruturasbasicas}
+\include{partes/algebra/grupos}
+\include{partes/algebra/aneis}
+\include{partes/algebra/modulos}
+\include{partes/algebra/espacoslineares}
+\include{partes/algebra/algebrassobrecorpos}
+\include{partes/algebra/ordememestruturasalgebricas}
+\include{partes/algebra/espacosafins}
+\include{partes/algebra/algebrauniversal}
+
+\part{Geometria}
+\label{pt:geometria}
+\include{partes/geometria/topologia}
+\include{partes/geometria/espacosmetricos}
+\include{partes/geometria/grupostopologicos}
+\include{partes/geometria/espacoslinearestopologicos}
+\include{partes/geometria/espacosnormados}
+\include{partes/geometria/espacosprodutointerno}
+\include{partes/geometria/medida}
+\include{partes/geometria/integracao}
+\include{partes/geometria/diferenciacao}
+\include{partes/geometria/variedades}
+\include{partes/geometria/fibrados}
+\include{partes/geometria/gruposdiferenciais}
 
 % Apêndices
-\appendix % Numera capítulos com letras
+%------------------------------------------------
+\appendix
 
 \include{elementos/apendice}
 
-% Ideia de apêndice: Lista de figuras históricas importantes na matemática.
-
-%------------------------------------------------
-% ELEMENTOS PÓS-TEXTUAIS
-%------------------------------------------------
-\backmatter % Não numera capítulos
-
-% Índice
-%\printindex
-
-% Lista de símbolos
-%\indexprologue{\small Lista de símbolos}
-%\printindex[simb]
-
-% Licença
-\include{elementos/licenca}
+%------------------------------------------------------------
+% Elementos pós-textuais									%
+%------------------------------------------------------------
+\backmatter
 
 % Bibliografia
-%\begin{thebibliography}{}
-%\end{thebibliography}
+%------------------------------------------------
+\printbibliography[heading=bibintoc]
+
+% Índice
+%------------------------------------------------
+\renewcommand{\indexname}{Índice}
+\indexprologue{Aqui está o índice. Neste índice estão as palavras principais.}
+\printindex
+
+% Licença
+%------------------------------------------------
+\include{elementos/licenca}
 
 \end{document}

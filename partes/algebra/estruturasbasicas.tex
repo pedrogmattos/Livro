@@ -1,0 +1,971 @@
+% NOTA 13/07/17
+% Estou escrevendo esta nota aqui por ser mais simples. Até agora tive a dúvida de que símbolos usar em relação a produtórios e somatórios. Resolvi usar um + grande para somatório e um \times grande para produtório quando se tratam de operações binárias em grupos e anéis, etc... No entanto, também existem o produto (Cartesiano) de grupos, os produtos de espaços topológicos e os produtos e somas diretas em estruturas algébricas. Pelo que li hoje, esses não têm muito a ver com as operações binárias (talvez algumas propriedade semelhante...). O produto, de modo geral, é o produto categórico. A soma direta é um caso mais específico e nem sempre é o coproduto categórico, mas esses detalhes não entendi muito e não pretendo tratar no livro (por enquanto). Eu deve então definir dois símbolos para produto. Um para produtório e outro para o produto de conjuntos, grupos, anéis... Acho que posso manter as operações binárias como \bigplus e \bigtimes (e mudar a aparência do símbolo que esses comandos produzem) e definir um novo comando para o produto no sentido de conjuntos e estruturas em geral, pois esse é o produto topológico.
+
+\chapter{Estruturas básicas}
+
+A \emph{Álgebra} estuda objetos matemáticos conhecidos como \emph{estruturas algébricas}. As definições desses objetos variam e podem ser tomadas de modo a serem mais ou menos gerais. No entanto, esse objetos sempre são $n$-listas cujas entradas são conjuntos e funções. Uma das definições que podem ser tomadas é a de que essas estruturas são listas em que a primeira entrada é um conjunto e as demais são funções. Em geral, essas funções são \emph{operações $n$-árias}, funções da $n$-ésima potência de um conjunto nele mesmo. Não definiremos aqui esses objetos com detalhes, nos restringindo somente a casos específicos. Ao leitor fica a oportunidade de perceber as semelhanças entre as definições e generalizá-las, ou mesmo de procurar mais a respeito.
+
+\section{Operações binárias}
+
+\begin{definition}
+Seja $X$ um conjunto não vazio. Uma \emph{operação binária} em $X$ é uma função
+	\begin{align*}
+	\func{\opb}{X \times X}{X}{(x_1,x_2)}{x_1 \opb x_2}.
+	\end{align*}
+\end{definition}
+
+\begin{proposition}[Propriedade de fecho]
+\label{prop:restri.op.bin}
+Sejam $X$ e $Y$ conjuntos não vazios tais que $Y \subseteq X$ e $ \opb $ uma operação binária em $X$. Então a restrição $ \opb |_{Y \times Y}$ da operação binária $ \opb $ a $Y \times Y$ é uma operação binária em $Y$ se, e somente se, para todos $y_1,y_2 \in Y$
+	\begin{equation*}
+	y_1 \opb y_2 \in Y.
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+Basta notar que, como $Y \subseteq X$, então $Y \times Y \subseteq X \times X$, e a proposição segue da proposição \ref{conj:prop.func.rest.ig}.
+\end{proof}
+
+Denotamos $\opb |_{Y \times Y}$ por $\opb$ quando não há ambiguidade.
+
+\begin{definition}
+Seja $X$ um conjunto. Uma operação binária \emph{associativa} é uma operação binária $\opb: X \times X \to X$ que satisfaz, para todos $x_1,x_2,x_3 \in X$,
+	\begin{equation*}
+	(x_1 \opb x_2) \opb x_3 = x_1 \opb (x_2 \opb x_3).
+	\end{equation*}
+Uma operação binária \emph{comutativa} é uma operação binária $\opb : X \times X \to X$ que satisfaz, para todos $x_1,x_2 \in X$
+	\begin{equation*}
+	x_1 \opb x_2 = x_2 \opb x_1.
+	\end{equation*}
+\end{definition}
+
+\begin{definition}
+	Sejam $X$ um conjunto e $+$ uma operação binária em $X$. Uma operação binária \emph{distributiva} sobre $+$ é uma operação binária $\times$ em $X$ que satisfaz, para todos $x_1,x_2,x_3 \in X$,
+	\begin{equation*}
+	x_1 \times (x_2 + x_3) = (x_1 \times x_2) + (x_1 \times x_3).
+	\end{equation*}
+\end{definition}
+
+\section{Conjuntos numéricos}
+
+%\begin{figure}[!ht]
+%\centering 
+%\includegraphics[width=10cm]{./Imagens/Numeros}
+%\end{figure}
+
+\subsection{Números naturais}
+
+\begin{definition}
+	Um \emph{modelo de números naturais} é uma tripla $\bm N = (N,0,\suce)$ em que 
+	\begin{enumerate}
+	\item $N$ é um conjunto, o \emph{conjunto de números naturais};
+	\item $0 \in N$, o \emph{zero} de $\bm N$;
+	\item $\suce\colon N \to N$ é uma função injetiva tal que $\suce\inv(\{0\})=\emptyset$, a função \emph{sucessor};
+%	\item (Axioma da Indução) Para todo conjunto $I \subseteq N$, se $0 \in I$ e $\suce(n) \in I$ para todo $n \in I$, então $I=N$.
+	\item (Axioma da Indução) Para todo conjunto $I \subseteq N$, se $0 \in I$ e $\suce(I) \subseteq I$, então $I=N$.
+	\end{enumerate}
+O \emph{um} de $\bm N$ é o elemento $1 := \suce(0)$.
+\end{definition}
+
+Pela teoria de conjuntos, é possível definir um conjunto infinito $\bm N$ que satisfaz os axiomas de um modelo de números naturais. A construção considera $0 := \emptyset$, $1 := \{0\}$, e, de modo geral, $\suce(n) := n \cup \{n\} = \{0,1,\cdots,n\}$. Claramente a construção é feita com mais cuidado, mas a partir dessa construção podemos realmente achar um modelo de números naturais. A partir de agora, consideraremos que esse conjunto existe.
+
+\begin{proposition}
+	Seja $\bm N$ um  modelo de números naturais. Então, para todo $n \in N\setminus \{0\}$, existe $m \in N$ tal que $n=\suce(m)$.
+\end{proposition}
+\begin{proof}
+	Seja $I := \{n \in N:n=0 \ou \exists m \in N \quad n=\suce(m)\}$. Primeiro, notemos que $0 \in I$. Agora, seja $n \in I$. Então $\suce(n) \in I$, pois $n \in N$ e $\suce(n)=\suce(n)$. Logo $I=N$. Assim, se $n \in N \setminus \{0\}$, segue que existe $m \in N$ tal que $n=\suce(n)$.
+\end{proof}
+
+Essa proposição mostra que $\suce$ é sobrejetiva em $N \setminus \{0\}$ e, portanto, que $\suce$ é uma bijeção entre $N$ e $N \setminus \{0\}$, o que mostra que $N$ é um conjunto infinito. No entanto, vale lembrar que a definição de conjunto infinito depende do conjunto dos números naturais.
+
+\subsubsection{Adição}
+
+\begin{theorem}
+	Seja $\bm N$ um modelo de números naturais. Existe uma única função
+	\begin{align*}
+	\func{+}{N \times N}{N}{(n_1,n_2)}{n_1+n_2}
+	\end{align*}
+que satisfaz
+	\begin{enumerate}
+	\item (A1) $\forall n \in N \qquad n + 0 = n$;
+	\item (A2) $\forall n_1,n_2 \in N \qquad n_1 + \suce(n_2) = \suce(n_1+n_2)$.
+	\end{enumerate}
+\end{theorem}
+\begin{proof}
+	Primeiro mostraremos que essa função $+$ está bem definida. Para isso, devemos mostrar que, para todo $n_1,n_2 \in N$, existe único $n_3 \in N$ tal que $n_1+n_2=n_3$ satisfazendo $(A_1),(A_2)$. Consideremos o conjunto $I := \{n \in N : \exists! n_3 \in N \quad n_1+n=n_3\}$. Primeiro, notemos que $0 \in I$, pois $n+0=n$ e, portanto, $n_3$ é único. Agora, seja $n \in I$. Então existe único $n_3 \in N$ tal que $n_1+n=n_3$ e, como $\suce$ é função, $\suce(n_3)=\suce(n_1+n) \in N$ é único e tomando $n_1+\suce(n)=\suce(n_1+n)$, concluímos que $\suce(n) \in I$ e, portanto, $I=N$. Logo $+$ está bem definida. Agora, mostremos que $+$ é única. Sejam $+_1,+_2:N \times N \to N$ funções satisfazendo $(A_1),(A_2)$, $n_1 \in N$ e $I := \{n \in N : n_1 +_1 n = n_1 +_2 n \}$. Primeiro, notemos que $0 \in I$, pois $n_1 +_1 0 =n = n_1 +_2 0$. Agora, seja $n \in I$. Então
+	\begin{equation*}
+	n_1 +_1 \suce(n) = \suce(n_1 +_1 n) = \suce(n_1 +_2 n) = n_1 +_2 \suce(n),
+	\end{equation*}
+o que implica que $\suce(n) \in I$ e, portanto, que $I=N$. Logo $+_1 = +_2$.
+\end{proof}
+
+\begin{definition}
+	Seja $\bm N$ um modelo de números naturais. A função $+$ é a \emph{adição nos números naturais} e, dados $n_1,n_2 \in N$, o número $n_1 + n_2 \in N$ é a \emph{soma de $n_1$ e $n_2$}.
+\end{definition}
+
+\begin{theorem}[Associatividade da adição] \label{conj.nat.ass}
+	Seja $\bm N$ um modelo de números naturais. Então
+	\begin{equation*}
+	\forall n_1,n_2,n_3 \in N \qquad (n_1+n_2)+n_3 = n_1+(n_2+n_3).
+	\end{equation*}
+\end{theorem}
+\begin{proof}
+	Sejam $n_1,n_2 \in N$ e $I := \{n_3 \in N: (n_1+n_2)+n_3 = n_1+(n_2+n_3)\}$. Notemos que $0 \in I$, pois
+	\begin{align*}
+	(n_1+n_2)+0 &= n_1+n_2						\tag{A1} \\
+	&= n_1+(n_2+0).										\tag{A1}
+	\end{align*}
+	Agora, seja $n \in I$. Então
+	\begin{align*}
+	(n_1+n_2)+\suce(n) &= \suce((n_1+n_2)+n)			\tag{A2} \\
+	&= \suce(n_1+(n_2+n)) 									\tag{$n \in I$}\\
+	&= n_1+\suce(n_2+n)										\tag{A2} \\
+	&= n_1+(n_2+\suce(n)),									\tag{A2} \\
+	\end{align*}
+o que implica $\suce(n) \in I$. Logo $I=N$.
+\end{proof}
+
+\begin{theorem} \label{conj.nat.suc}
+	Seja $\bm N$ um modelo de números naturais. Então
+	\begin{equation*}
+	\forall n \in N \qquad \suce(n) = n+1.
+	\end{equation*}
+\end{theorem}
+\begin{proof}
+	Seja $n \in N$. Então
+	\begin{equation*}
+	\suce(n) = \suce(n+0)=n+\suce(0)=n+1.
+	\end{equation*}
+\end{proof}
+
+\begin{lemma} \label{conj.nat.lem.adi}
+	Seja $\bm N$ um modelo de números naturais. Então
+	\begin{enumerate}
+	\item $\forall n \in N \qquad 0+n=n$;
+	\item $\forall n \in N \qquad 1+n=n+1$.
+	\end{enumerate}
+\end{lemma}
+\begin{proof}
+	Demonstraremos ambas afirmações por indução em $n$.
+	\begin{enumerate}
+	\item Seja $I := \{n \in N:0+n=n\}$. Primeiro notemos que $0 \in I$, pois $0+0=0$. Agora, seja $n \in I$. Então
+	\begin{equation*}
+	0+\suce(n)=0+(n+1)=(0+n)+1=n+1=\suce(n),
+	\end{equation*}
+o que implica que $\suce(n) \in I$ e, portanto, $I=N$.
+
+	\item Seja $I := \{n \in N:1+n=n+1\}$. Primeiro notemos que $0 \in I$, pois $1+0=1=0+1$. Agora, seja $n \in I$. Então
+	\begin{equation*}
+	1+\suce(n)=1+(n+1)=(1+n)+1=(n+1)+1=\suce(n)+1,
+	\end{equation*}
+o que implica que $\suce(n) \in I$ e, portanto, $I=N$.
+	\end{enumerate}
+\end{proof}
+
+\begin{theorem}[Comutatividade da adição]
+	Seja $\bm N$ um modelo de números naturais. Então
+	\begin{equation*}
+	\forall n_1,n_2 \in N \qquad n_1+n_2 = n_2+n_1.
+	\end{equation*}
+\end{theorem}
+\begin{proof}
+ 	Demonstraremos a afirmação por indução. Seja $n_1 \in N$ e $I := \{n \in N:n_1+n=n+n_1\}$. Primeiro notemos que $0 \in I$, pois
+ 	\begin{equation*}
+ 	n_1+0=n_1=0+n_1.
+ 	\end{equation*}
+Agora, seja $n \in I$. Então
+ 	\begin{align*}
+ 	n_1+\suce(n) &= n_1+(n+1) \\
+ 		&= (n_1+n)+1 \\
+ 		&= (n+n_1)+1 \\
+ 		&= n+(n_1+1) \\
+ 		&= n+(1+n_1) \\
+ 		&= (n+1)+n_1 \\
+ 		&= \suce(n)+n_1,
+ 	\end{align*}
+ o que implica que $\suce(n) \in I$ e, portanto, $I=N$.
+\end{proof}
+
+\subsubsection{Multiplicação}
+
+\begin{theorem}
+	Seja $\bm N$ um modelo de números naturais. Existe uma única função
+	\begin{align*}
+	\func{\times}{N \times N}{N}{(n_1,n_2)}{n_1 \times n_2}
+	\end{align*}
+que satisfaz
+	\begin{enumerate}
+	\item (M1) $\forall n \in N \qquad n \times 0 = 0$;
+	\item (M2) $\forall n_1,n_2 \in N \qquad n_1 \times \suce(n_2) = (n_1 \times n_2) + n_1$.
+	\end{enumerate}
+\end{theorem}
+\begin{proof}
+	Primeiro devemos mostrar que a função $\times$ está bem definida. Para isso, devemos mostrar que, para todo $n_1,n_2 \in N$, existe único $n_3 \in N$ tal que $n_1 \times n_2=n_3$. Consideremos $I := \{n \in N : \exists! n_3 \in N \quad n_1 \times n = n_3\}$. Primeiro, notemos que $0 \in I$, pois $n_1 \times 0 = 0$ e, portanto, $n_3$ esxite e é único. Agora, seja $n \in I$. Então existe único $n_3 \in N$ tal que $n_1 \times n = n_3$ e, como $+$ é função, $n_3 + n_1=n_1 \times n + n$ é único e tomando $n_1 \times \suce(n)=n_1 \times n + n_1$, concluímos que $\suce(n) \in I$ e, portanto, $I=N$. Logo $\times$ está bem definida. Agora, devemos mostrar que $\times$ é única. Sejam $\times_1,\times_2: N \times N \to N$ funções satisfazendo $(M_1),(M_2)$, $n_1 \in N$ e $I := \{n \in N : n_1 \times_1 n = n_1 \times_2 n\}$. Primeiro, notemos que $0 \in I$, pois $n_1 \times_1 0 = 0 = n_1 \times_2 0$. Agora, seja $n \in I$. Então
+	\begin{equation*}
+	n_1 \times_1 \suce(n) = n_1 \times_1 n + n_1 = n_1 \times_2 n + n_1 = n_1 \times_2 \suce(n),
+	\end{equation*}
+o que implica que $\suce(n) \in I$ e, portanto, que $I=N$. Logo $\times_1=\times_2$.
+\end{proof}
+
+\begin{definition}
+	Seja $\bm N$ um modelo de números naturais. A função $\times$ é a \emph{multiplicação nos números naturais} e, dados $n_1,n_2 \in N$, o número $n_1 \times n_2 \in N$ é o \emph{produto de $n_1$ e $n_2$}.
+\end{definition}
+
+\begin{theorem}[Distributividade] \label{conj.nat.dist}
+	Seja $\bm N$ um modelo de números naturais. Então
+	\begin{enumerate}
+	\item $\forall n,m,k \in N \qquad n \times (m+k) = (n \times m) + (n \times k)$;
+	\item $\forall n,m,k \in N \qquad (n + m) \times k = (n \times k) + (m \times k)$.
+	\end{enumerate}
+\end{theorem}
+\begin{proof}
+	\begin{enumerate}
+	\item Sejam $n,m \in N$ e $I := \{k \in N:n \times (m+k) = (n \times m) + (n \times k)\}$. Primeiro, notemos que $0 \in I$, pois
+	\begin{align*}
+	n \times (m+0) &= n \times m 								\tag{$A_1$} \\
+		&= n \times m  + 0 											\tag{$A_1$} \\
+		&= (n \times m) + (n \times 0).							\tag{$M_1$}
+	\end{align*}
+Agora, seja $k \in I$. Então
+	\begin{align*}
+	n \times (m+\suce(k)) &= n \times \suce(m+k) 					\tag{$A_2$}\\
+		&= (n \times (m+k)) + n 									\tag{$M_2$}\\
+		&= ((n \times m) + (n \times k)) + n					\tag{$k \in I$} \\
+		&= (n \times m) + ((n \times k) + n)				 	\tag{$\ref{conj.nat.ass}$} \\
+		&= (n \times m) + (n \times \suce(k)),						\tag{$M_2$}
+	\end{align*}
+o que implica que $\suce(k) \in I$ e, portanto, que $I=N$.
+
+	\item Sejam $n,m \in N$ e $I := \{k \in N:(n + m) \times k = (n \times k) + (m \times k)\}$. Primeiro, notemos que $0 \in I$, pois
+	\begin{align*}
+	(n + m) \times 0 &= 0 											\tag{$M_1$} \\
+		&= 0 + 0															\tag{$A_1$} \\
+		&= (n \times 0) + (m \times 0).							\tag{$M_1$}
+	\end{align*}
+Agora, seja $k \in I$. Então	
+	\begin{align*}
+	(n + m) \times \suce(k) &= ((n+m) \times k) + (n+m)	\tag{$M_2$}\\
+		&= ((n \times k) + (m \times k)) + (n+m)			\tag{$k \in I$}\\
+		&= ((n \times k)+n) + ((m \times k)+m)			\tag{\ref{conj.nat.ass}} \\
+		&= (n \times \suce(k)) + (m \times \suce(k)),				 	\tag{$M_2$}
+	\end{align*}
+o que implica que $\suce(k) \in I$ e, portanto, que $I=N$.
+	\end{enumerate}
+\end{proof}
+
+\begin{theorem}[Associatividade da multiplicação] \label{conj.nat.ass.mul}
+	Seja $\bm N$ um modelo de números naturais. Então
+	\begin{equation*}
+	\forall n,m,k \in N \qquad (n \times m) \times k = n \times (m \times k).
+	\end{equation*}
+\end{theorem}
+\begin{proof}
+	Sejam $n,m \in N$ e $I := \{k \in N:(n \times m) \times k = n \times (m \times k)\}$. Primeiro, notemos que $0 \in I$, pois
+	\begin{equation*}
+	(n \times m) \times 0 = 0 = n \times 0 = n \times (m \times 0) \tag{$M_1$}
+	\end{equation*}
+Agora, seja $k \in I$. Então
+	\begin{align*}
+	(n \times m) \times \suce(k)
+		&= ((n \times m) \times k) + (n \times m) 			\tag{$M_2$} \\
+		&= (n \times (m \times k)) + (n \times m)			\tag{$k \in I$} \\
+		&= n \times ((m \times k) + m)							\tag{$\ref{conj.nat.dist}$} \\
+		&= n \times (m \times \suce(k)),								\tag{$M_2$}
+	\end{align*}
+o que implica que $\suce(k) \in I$ e, portanto, que $I=N$.
+\end{proof}
+
+\begin{lemma} \label{conj.nat.lem.mult}
+	Seja $\bm N$ um modelo de números naturais. Então
+	\begin{enumerate}
+	\item $\forall n \in N \qquad 0 \times n = 0$;
+	\item $\forall n \in N \qquad n \times 1 = n = 1 \times n$.
+	\end{enumerate}
+\end{lemma}
+\begin{proof}
+	\begin{enumerate}
+	\item Vamos mostrar por indução em $n$. Seja $I := \{n \in N:0 \times n=0\}$. Primeiro, notemos que $0 \in I$, pois $0 \times 0 = 0$. Agora, seja $n \in I$. Então
+	\begin{equation*}
+	0 \times \suce(n) = (0 \times n) + 0 = 0 + 0 = 0,
+	\end{equation*}
+o que mostra que $\suce(n) \in N$ e, portanto, $I=N$.
+	
+	\item Seja $n \in N$. Então
+	\begin{equation*}
+	n \times 1 = (n \times 0) + n = 0+ n = n.
+	\end{equation*}
+Mostraremos a segunda igualdade por indução em $n$. Seja $I := \{n \in N:1 \times n = n\}$. Primeiro, notemos que $0 \in I$, pois $1 \times 0 = 0.$ Agora, seja $n \in I$. Então
+	\begin{equation*}
+	1 \times \suce(n) = (1 \times n)+1 = n+1=\suce(n),
+	\end{equation*}
+o que implica que $\suce(n) \in I$ e, portanto, que $I=N$.
+	\end{enumerate}
+\end{proof}
+
+\begin{theorem}
+	Seja $\bm N$ um modelo de números naturais. Então
+	\begin{equation*}
+	\forall n,m \in N \qquad n \times m = m \times n.
+	\end{equation*}
+\end{theorem}
+\begin{proof}
+	Sejam $n \in N$ e $I := \{m \in N:n \times m=m \times n\}$. Primeiro, notemos que $0 \in I$, pois
+	\begin{align*}
+	n \times 0 &= 0 													\tag{$M_1$} \\
+		&= 0 \times n.													\tag{\ref{conj.nat.lem.mult}}
+	\end{align*}
+Agora, seja $m \in I$. Então
+	\begin{align*}
+	n \times \suce(m) &= (n \times m) + n							\tag{$M_2$} \\
+		&= (m \times n) + n											\tag{$m \in I$} \\
+		&= (m \times n) + (1 \times n)							\tag{\ref{conj.nat.lem.mult}} \\
+		&= (m +1) \times n											\tag{\ref{conj.nat.dist}} \\
+		&= \suce(m) \times n,												\tag{\ref{conj.nat.suc}}
+	\end{align*}
+o que implica que $\suce(m) \in I$ e, portanto, que $I=N$.
+\end{proof}
+
+\subsubsection{Ordenação}
+
+\begin{lemma}
+	Seja $\bm N$ um modelo de números naturais. Então
+	\begin{enumerate}
+	\item $\forall n,m,k \in N \qquad n+k=m+k \entao n=m$;
+	\item $\forall n,m \in N \qquad n+m = 0 \entao n=m=0$.
+	\end{enumerate}
+\end{lemma}
+\begin{proof}
+	\begin{enumerate}
+	\item Seja $I := \{k \in N: \forall n,m \in N \quad n+k=m+k \entao n=m\}$. Primeiro, notemos que $0 \in I$, pois, para todos $n,m \in N$, se $n+0=m+0$, então $n=m$. Agora, seja $k \in I$ e $n,m \in N$. Se $n+\suce(k)=m+\suce(k)$, então $\suce(n+k)=\suce(m+k)$ e, como $\suce$ é injetiva, $n+k=m+k$, o que implica que $n=m$ e, assim, temos que $\suce(k) \in I$ e, portanto, $I=N$.
+	
+	\item Suponhamos, por absurdo, que $n \neq 0$ ou $m \neq 0$. Notemos que $n+m=m+n$; então, sem perda de generalidade, seja $m \neq 0$. Então existe $k \in N$ tal que $m=\suce(k)$ e segue que $n+m=n+\suce(k)=\suce(n+k)=0$, o que é absurdo, pois $\suce^{-1}(\{0\})=\emptyset$. Logo $n=m=0$.
+	\end{enumerate}
+\end{proof}
+
+\begin{definition}
+	Seja $\bm N$ um modelo dos números naturais. A relação binária $\leq$ em $N$ é definida por
+	\begin{equation*}
+	n \leq m \qquad \sse \qquad \exists d \in N \quad n+d=m.
+	\end{equation*}
+\end{definition}
+
+\begin{proposition}
+	Seja $\bm N$ um modelo dos números naturais. A relação binária $\leq$ em $N$ é uma relação de ordem total.
+\end{proposition}
+\begin{proof}
+	Primeiro, notemos que $\leq$ é reflexiva, pois, pra todo $n \in N$, $n+0=n$, o que implica que $n \leq n$. Segundo, notemos que $\leq$ é antissimétrica. Sejam $n,m \in N$ tais que $n \leq m$ e $m \leq n$; então existem $d_1,d_2 \in N$ tais que $n+d_1=m$ e $m+d_2=n$ e, portanto, que $n+m=n+m+d_1+d_2$, o que implica $d_1+d_2=0$ e, portanto, que $d_1=d_2=0$. Assim $n=m$. Terceiro, mostremos que $\leq$ é transitiva. Sejam $m,n,k \in N$ tais que $n \leq m$ e $m \leq k$. Então existem $d_1,d_2 \in N$ tais que $n+d_1=m$ e $m+d_2=k$. Assim, $n+d_1+d_2=k$, logo $n \leq k$. Isso termina a demonstração de que $\leq$ é uma ordem parcial. Por fim, devemos mostrar que a ordem parcial $\leq$ é total. Sejam $n \in N$ e $I := \{m \in N: n \leq m \ou m \leq n\}$. Primeiro, notemos que $0 \in I$, pois $0+n=n$, logo $0 \leq n$. Agora, seja $m \in I$. Se $n leq m$, existe $d \in N$ tal que $n+d=m$, e segue que, como $n+d+1=m+1=\suce(m)$, $n \leq \suce(m)$. Se $m \leq n$, existe $d \in N$ tal que $m+d=n$. Consideramos dois casos: se $d=0$, então $n+1=m+1=\suce(m)$, logo $n \leq \suce(m)$; se $d \neq 0$, existe $k \in N$ tal que $d=\suce(k)=k+1$, o que implica $n=m+d=m+k+1=m+1+k=\suce(m)+k$ e, portanto, $\suce(m) \leq n$. Assim, concluímos que $\suce(m) \in I$ e, portanto, que $I=N$. Assim, fica provado que $\leq$ é uma ordem total.
+\end{proof}
+
+	Dessa forma, a relação binária $<$ fica definida como a ordem estrita associada a $\leq$.
+
+\begin{theorem}[Boa ordenação]
+	Seja  $\bm N$ um modelo de números naturais. Então $(\bm N,\leq)$ é bem ordenado.
+\end{theorem}
+\begin{proof}
+	Seja $C \subseteq N$ um conjunto que não tem menor elemento. Devemos mostrar que $C=\emptyset$. Notemos que $0 \notin C$ porque, para todo $n \in C$, $0 \leq n$, o que implicaria que $0=\min C$. Consideremos $I := \{m \in N:\forall n \in C \quad m < n\}$. Inicialmente, ressaltemos que $C \cap I=\emptyset$, pois, se existe $m \in I \cap C$, então, como $m \in I$, para todo $n \in C$, $m < n$ e, como $m \in C$, segue que $m<m$, o que é absurdo. Então notemos que $0 \in I$, pois $0 \leq n$ para todo $n \in C$ e $0 \notin C$. Agora, seja $m \in I$. Então, para todo $n \in C$, $m<n$, o que implica que existe $d \in N\setminus\{0\}$ tal que $m+d=n$. Então segue que existe $k \in N$ tal que $d=\suce(k)=k+1$ e segue que $\suce(m)+k=m+k+1=n$; ou seja, $\suce(m) \leq n$. Agora notemos que $\suce(m) \notin C$, pois, caso contrário, $\suce(m)=\min C$. Portanto, para todo $n \in C$, $\suce(m)<n$, o que mostra que $\suce(m) \in I$ e, por sua vez, que $I=N$. Como $C \subseteq N$, segue que $C \cap N=C$. Mas então $\emptyset=C \cap I=C \cap N=C$.
+\end{proof}
+
+\begin{theorem}[Indução completa]
+	Seja $\bm N$ um modelo de números naturais. Para todo conjunto $I \subseteq N$, se $0 \in I$ e
+	\begin{equation*}
+	\{m \in N:m<n\} \subseteq I \entao \suce(n) \in I,
+	\end{equation*}
+então $I=N$.
+\end{theorem}
+\begin{proof}
+	Seja $I \subseteq N$ e suponha que $0 \in I$ e $\{m \in N:m<n\} \subseteq I \entao \suce(n) \in I$. Então
+\end{proof}
+
+
+\begin{lemma}
+	Seja $\bm N$ um modelo de números naturais. Então
+	\begin{equation*}
+	\forall n_1,n_2,m_1,m_2 \in N \qquad
+	\begin{cases}	
+	n_1 \leq m_1 \\
+	n_2 \leq m_2 
+	\end{cases}
+	\entao 
+	\begin{cases}
+	n_1+n_2 \leq m_1+m_2 \\
+	n_1 \times n_2 \leq m_1 \times m_2.
+	\end{cases}
+	\end{equation*}
+\end{lemma}
+\begin{proof} Para $i \in\{1,2\}$, como $n_i \leq m_i$, existe $d_i \in N$ tal que $n_i+d_i=m_i$. Assim, segue que $n_1+d_1+n_2+d_2=m_1+m_2$ e, portanto, $n_1+n_2 \leq m_1+m_2$. Ainda, segue que
+	\begin{equation*}
+	m_1 \times m_2 = (n_1+d_1) \times (n_2+d_2) = (n_1 \times n_2) + (n_1 \times d_2) + (d_1 \times n_1) + (d_1 \times d_2)
+	\end{equation*}
+e, portanto, $n_1 \times n_2 \leq m_1 \times m_2$.
+\end{proof}
+
+%\begin{comment}
+\cleardoublepage
+\subsubsection{Bases}
+
+O número \emph{zero}, representado por $0$, é a constante definida na estrutura de $\bm N = (N,0,\suce)$. O número \emph{um} (já definido anteriormente) e os números \emph{dois}, \emph{três}, \emph{quatro}, \emph{cinco}, \emph{seis}, \emph{sete}, \emph{oito}, \emph{nove}, \emph{dez} e \emph{onze}, são definidos, na ordem respectiva, por
+	\begin{align*}
+	1 &:= \suce(0) \\
+	2 &:= \suce(1) \\
+	3 &:= \suce(2) \\
+	4 &:= \suce(3) \\
+	5 &:= \suce(4) \\
+	6 &:= \suce(5) \\
+	7 &:= \suce(6) \\
+	8 &:= \suce(7) \\
+	9 &:= \suce(8) \\
+	\dez &:= \suce(9) \\
+	\onze &:= \suce(\dez).
+	\end{align*}
+
+%Para esses vaores, obviamente vale $n = \suce^n(0)$. Como $\suce(n) = 1+n$, também vale que $n = \sum_{i \in [n]} 1$.
+
+O número \emph{doze} ou a \emph{dúzia} é o número $\suce(\onze)$. Esses são os caracteres usados na representação numérica de base doze, ou seja, a representação dos números naturais que define doze símbolos para representar os primeiros números:
+	\begin{equation*}
+	\suce(\onze) = \card{\{0,1,2,3,4,5,6,7,8,9,\dez,\onze\}}.
+	\end{equation*}
+
+Para representar a dúzia, definimos $10 := \suce(\onze)$. Note que isso é uma notação e não deve ser confundida, claro, com o produto $1 \times 0$. Formalmente, a representação é uma sequência $r \in \{0,1,2,3,4,5,6,7,8,9,\dez,\onze\}^\N$ com finitas entradas diferentes de $0$.
+
+Evidentemente, a representação mais usual dos números naturais é a representação decimal, ou de base dez. Nesse caso $\dez$ é representado por $10$ e existem somente dez símbolos, pois os símbolos $\dez$ e $\onze$ não são usados para representar dez e onze.
+
+Na base doze, os caracteres que usamos são:
+\begin{table}[!ht]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+Símbolo & Nome \\
+\hline 
+0 & Zero \\ 
+
+1 & Um \\ 
+
+2 & Dois \\ 
+
+3 & Três \\ 
+
+4 & Quatro \\ 
+
+5 & Cinco \\ 
+
+6 & Seis \\ 
+
+7 & Sete \\ 
+
+8 & Oito \\ 
+
+9 & Nove \\ 
+
+\dez & Dez \\ 
+
+\onze & Onze \\ 
+\hline 
+\end{tabular}
+\caption{Nomenclatura dos algarismos}
+\label{tab:alg.nomenclatura.algarismos}
+\end{table}
+
+A tabela de multiplicação é:
+
+\begin{table}[!ht]
+\centering
+\begin{tabular}{|c|cccccccccccc|}
+\hline 
+0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & \dez & \onze & 10 \\ 
+\hline 
+1 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & \dez & \onze & 10\\ 
+
+2 & 2 & 4 & 6 & 8 & \dez & 10 & 12 & 14 & 16 & 18 & 1\dez & 20 \\ 
+
+3 & 3 & 6 & 9 & 10 & 13 & 16 & 19 & 20 & 23 & 26 & 29 & 30 \\ 
+
+4 & 4 & 8 & 10 & 14 & 18 & 20 & 24 & 28 & 30 & 34 & 38 & 40 \\ 
+
+5 & 5 & \dez & 13 & 18 & 21 & 26 & 2\onze & 34 & 39 & 42 & 47 & 50 \\ 
+
+6 & 6 & 10 & 16 & 20 & 26 & 30 & 36 & 40 & 46 & 50 & 56 & 60 \\ 
+
+7 & 7 & 12 & 19 & 24 & 2\onze & 36 & 41 & 48 & 53 & 5\dez & 65 & 70 \\ 
+
+8 & 8 & 14 & 20 & 28 & 34 & 40 & 48 & 54 & 60 & 68 & 74 & 80 \\ 
+
+9 & 9 & 16 & 23 & 30 & 39 & 46 & 53 & 60 & 69 & 76 & 83 & 90 \\ 
+
+\dez & \dez & 18 & 26 & 34 & 42 & 50 & 5\dez & 68 & 76 & 84 & 92 & \dez0 \\ 
+
+\onze & \onze & 1\dez & 29 & 38 & 47 & 56 & 65 & 74 & 83 & 92 & \dez1 & \onze0 \\ 
+
+10 & 10 & 20 & 30 & 40 & 50 & 60 & 70 & 80 & 90 & \dez0 & \onze0 & 100 \\ 
+\hline 
+\end{tabular}
+\caption{Tabela de multiplicação}
+\label{tab:alg.tabela.multiplicacao}
+\end{table}
+
+%\end{comment}
+
+
+
+\subsection{Números inteiros}
+
+\begin{proposition}
+	Seja $\bm N$ um modelo de números naturais. A relação binária $\sim$ em $N \times N$ definida por
+	\begin{equation*}
+	\forall n_1,n_2,m_1,m_2 \qquad (n_1,n_2) \sim (m_1,m_2) \sse n_1+m_2=n_2+m_1
+	\end{equation*}
+é uma relação de equivalência.
+\end{proposition}
+\begin{proof}
+	Sejam $(n_1,n_2), (m_1,m_2),(k_1,k_2) \in N \times N$. Primeiro, notemos que $n_1+n_2=n_2+n_1$, o que mostra que $(n_1,n_2) \sim (n_1,n_2)$. Segundo, notemos que, se $(n_1,n_2) \sim (m_1,m_2)$, então $n_1+m_2=n_2+m_1$, o que implica que $m_1+n_2=m_2+n_1$ e, portanto, que $(m_1,m_2) \sim (n_1,n_2)$. Terceiro, notemos que, se $(n_1,n_2) \sim (m_1,m_2)$ e $(m_1,m_2) \sim (k_1,k_2)$, então $n_1+m_2=n_2+m_1$ e $m_1+k_2=m_2+k_1$, o que implica que $n_1+m_2+m_1+k_2=n_2+m_1+m_2+k_1$ e, portanto, que $n_1+k_2=n_2+k_1$, logo $(n_1,n_2) \sim (k_1,k_2)$.
+\end{proof}
+
+\begin{definition}
+	Seja $\bm N$ um modelo de números naturais com a equivalência $\sim$. O \emph{modelo de números inteiros} associado a $\bm N$ é o par $\bm Z = (\bm N,Z)$, em que $Z$ é o conjunto 
+	\begin{equation*}
+	Z := \quo{N \times N}{\sim},
+	\end{equation*}
+o \emph{conjunto dos números inteiros}.
+\end{definition}
+
+\begin{proposition}
+	Seja $\bm Z$ um modelo de números inteiros. Para todo $z \in Z$, existe único $d \in N$ tal que $z=[(n+d,n)]$ ou $z=[(n,n+d)]$.
+\end{proposition}
+\begin{proof}
+	Seja $z \in Z$. Então $z=[(n_1,n_2)]$. Notemos que $n_1 \leq n_2$ ou $n_1 \geq n_2$. Agora, devemos notar que isso está bem definido para qualquer representante de $z$. Sejam $(n_1,n_2),(n'_1,n'_2) \in z$. Então $n_1+n'_2=n_2+n'_1$. Sem perda de generalidade, cosideremos que $n_1 \geq n_2$. Nesse caso, existe $d \in N$ tal que $n_1=n_2+d$. Mas isso implica que $n_2+d+n'_2=n_2+n'_1$ e, portanto, que $n'_1=n'_2+d$ e, então $n'_1 \geq n'_2$. Do mesmo modo, supondo $n'_1 \geq n'_2$ achamos que $n_1 \geq n_2$. Ainda, o valor $d$ é o mesmo em ambos os casos. Assim, se $n_1 \geq n_2$, temos que $z=[(n+d,n)]$ e, caso contrário, que $z=[(n,n+d)]$. A unicidade de $d$ é óbvia pois, se existem $d_1,d_2$ tais que $n_1=n_2+d_1$ e $n_1=n_2+d_2$, então segue que $n_2+d_1=n_2+d_2$ e, portanto, que $d_1=d_2$.
+\end{proof}
+
+	Pela proposição anterior, um número inteiro de $\bm Z$ é unicamente representado pelo elemento $d \in N$ e sua posição no par ordenado. Por isso, se $z=[(n+d,n)]$, identificamos $z$ com $d$ e, se $z=[(n,n+d)]$, identificamos $z$ com $-d$.
+
+
+\subsubsection{Adição e subtração}
+
+\begin{definition}
+Seja $\bm Z$ um modelo de números inteiros. O \emph{zero} de $\bm Z$ é o elemento $0 := [(n,n)]$.
+\end{definition}
+
+\begin{definition}
+Seja $\bm Z$ um modelo de números inteiros. A \emph{adição nos números inteiros} é a função
+	\begin{align*}
+	\func{+}{Z \times Z}{Z}{([(n_1,n_2)],[(m_1,m_2)])}{[(n_1+m_1,n_2+m_2)]}.
+	\end{align*}
+Dados $n,m \in Z$, o número $n+m$ é a \emph{soma de $n$ e $m$}.
+\end{definition}
+
+\begin{theorem}
+	Seja $\bm Z$ um modelo de números inteiros. A função $+$ está bem definida.
+\end{theorem}
+\begin{proof}
+	Sejam $n,m \in Z$ e $(n_1,n_2),(n'_1,n'_2) \in n$, $(m_1,m_2),(m'_1,m'_2) \in m$. Então $n+m$ pode ser calculado por
+	\begin{align*}
+	[(n_1,n_2)]+[(m_1,m_2)] &= [(n_1+m_1,n_2+m_2)] \\
+	[(n'_1,n'_2)]+[(m'_1,m'_2)] &= [(n'_1+m'_1,n'_2+m'_2)].
+	\end{align*}
+Como $n_1+n'_2=n_2+n'_1$ e $m_1+m'_2=m_2+m'_1$, segue que
+	\begin{equation*}
+	n_1+n'_2+m_1+m'_2=n_2+n'_1+m_2+m'_1
+	\end{equation*}
+e, portanto, $(n_1+m_1,n_2+m_2) \sim (n'_1+m'_1,n'_2+m'_2)$, o que mostra que a soma $n+m$ está bem definida.
+\end{proof}
+
+\begin{proposition}
+	Seja $\bm Z$ um modelo de números inteiros. Então
+	\begin{enumerate}
+	\item $\forall n \in Z \qquad n+0=n$;
+	\item $\forall n,m,k \in Z \qquad (n+m)+k=n+(m+k)$;
+	\item $\forall n,m \in Z \qquad n+m=m+n$.
+	\end{enumerate}
+\end{proposition}
+\begin{proof} Sejam $n,m,k \in Z$ e $(n_1,n_2) \in n,(m_1,m_2) \in m,(k_1,k_2) \in k$.
+	\begin{enumerate}
+	\item Como $(0,0) \in 0$, então $(n_1,n_2)+(0,0)=(n_1,n_2)$, logo $n+0=n$.
+	
+	\item Notemos que
+	\begin{align*}
+	((n_1,n_2)+(m_1,m_2))+(k_1,k_2) &= (n_1+m_1,n_2+m_2)+(k_1,k_2) \\
+		&= (n_1+m_1+k_1,n_2+m_2+k_2) \\
+		&= (n_1,n_2) +(m_1+k_1,m_2+k_2) \\
+		&= (n_1,n_2) +((m_1,m_2)+(k_1,k_2)),
+	\end{align*}
+logo $(n+m)+k=n+(m+k)$.
+
+	\item Notemos que
+	\begin{align*}
+	(n_1,n_2)+(m_1,m_2) &= (n_1+m_1,n_2+m_2) \\
+	&= (m_1+n_1,m_2+n_2) \\
+	&= (m_1,m_2) +(n_1,n_2),
+	\end{align*}
+logo $n+m=m+n$.
+	\end{enumerate}
+\end{proof}
+
+\begin{definition}
+	Seja $\bm Z$ um modelo de números inteiros. A função \emph{negativo} em $\bm Z$ é a função
+	\begin{align*}
+	\func{-}{Z}{Z}{[(n_1,n_2)]}{[(n_2,n_1)]}.
+	\end{align*}
+\end{definition}
+
+
+\subsubsection{Multiplicação}
+
+A partir desta seção, usaremos a notação $nm$ em vez de $n \times m$ para facilitar os cálculos.
+
+\begin{definition}
+	Seja $\bm Z$ um modelo de números inteiros. O \emph{um} de $\bm Z$ é o elemento $1 := [(n+1,n)]$.
+\end{definition}
+
+\begin{definition}
+Seja $\bm Z$ um modelo de números inteiros. A \emph{multiplicação nos números inteiros} é a função
+	\begin{align*}
+	\func{\times}{Z \times Z}{Z}{([(n_1,n_2)],[(m_1,m_2)])}{[(n_1 m_1 + n_2 m_2,n_2 m_1+n_1 m_2)]}.
+	\end{align*}
+Dados $n,m \in Z$, o número $n \times m$ é o \emph{produto de $n$ e $m$}.
+\end{definition}
+
+\begin{theorem}
+	Seja $\bm Z$ um modelo de números inteiros. A função $\times$ está bem definida.
+\end{theorem}
+\begin{proof}
+	Sejam $n,m \in Z$ e $(n_1,n_2),(n'_1,n'_2) \in n$, $(m_1,m_2),(m'_1,m'_2) \in m$. Então $n \times m$ pode ser calculado por
+\begin{align*}
+	[(n_1,n_2)] \times [(m_1,m_2)] &= [(n_1 m_1 + n_2 m_2,n_2 m_1+n_1 m_2)] \\
+	[(n'_1,n'_2)]\times [(m'_1,m'_2)] &= [(n'_1 m'_1 + n'_2 m'_2,n'_2 m'_1+n'_1 m'_2)].
+	\end{align*}
+Como $n_1+n'_2=n_2+n'_1$ e $m_1+m'_2=m_2+m'_1$, segue que
+	\begin{align*}
+	&(n_1 m_1 + n_2 m_2+n'_2 m'_1+n'_1 m'_2)+(n_1 m'_2 + n_2 m'_1 + n_1 m'_1+n_2 m'_2) \\
+	&= n_1(m_1+m'_2)+n_2(m_2+m'_1)+(n'_2+n_1)m'_1+(n'_1+n_2)m'_2 \\
+	&= n_1(m'_1+m_2)+n_2(m'_2+m_1)+(n_2+n'_1)m'_1+(n_1+n'_2)m'_2 \\
+	&= (n_2 m_1+n_1 m_2+n'_1 m'_1 + n'_2 m'_2)+(n_1 m'_2 + n_2 m'_1 + n_1 m'_1+n_2 m'_2),
+	\end{align*}
+o que implica que
+	\begin{equation*}
+	n_1 m_1 + n_2 m_2+n'_2 m'_1+n'_1 m'_2=n_2 m_1+n_1 m_2+n'_1 m'_1 + n'_2 m'_2
+	\end{equation*}
+e, portanto, $(n_1 m_1 + n_2 m_2,n_2 m_1+n_1 m_2) \sim (n'_1 m'_1 + n'_2 m'_2,n'_2 m'_1+n'_1 m'_2)$, o que mostra que o produto $n \times m$ está bem definido.
+\end{proof}
+
+\subsubsection{Ordenação}
+
+\begin{definition}
+	Seja $\bm Z$ um modelo de números inteiros. A relação binária $\leq$ em $N$ é definida por
+	\begin{equation*}
+	[(n_1,n_2)] \leq [(m_1,m_2)] \sse n_1+m_2 \leq n_2+m_1.
+	\end{equation*}
+\end{definition}
+
+\begin{proposition}
+	Seja $\bm Z$ um modelo de números inteiros. A relação binária $\leq$ em $N$ está bem definida e é uma relação de ordem total.
+\end{proposition}
+
+
+%\subsection{Números racionais}
+%
+%\subsubsection{Adição e subtração}
+%
+%\subsubsection{Multiplicação e divisão}
+%
+%\subsubsection{Ordenação}
+%
+%
+%\subsection{Números reais}
+%
+%\subsubsection{Adição e subtração}
+%
+%\subsubsection{Multiplicação e divisão}
+%
+%\subsubsection{Ordenação}
+%
+%\subsubsection{Completude}
+
+\section{Magma}
+
+\begin{definition}
+Um \emph{magma} é um par $\bm X=(X,\opb)$ em que $X$ é um conjunto não vazio e $ \opb $ é uma operação binária em $X$.
+\end{definition}
+
+\begin{definition}[Identidade]
+Seja $\bm X=(X, \opb )$ um magma. Uma \emph{identidade} com respeito a $\opb$ é um elemento $\id \in X$ que satisfaz, para todo $x \in X$,
+	\begin{equation*}
+	\id \opb x = x = x \opb \id.
+	\end{equation*}
+\end{definition}
+
+Pode-se distinguir \emph{identidade à esquerda} e \emph{identidade à direita}, que seria o caso de $e$ se só satisfizesse, respectivamente, as igualdades da esquerda e da direita acima, mas não adotaremos essa distinção neste livro.
+
+\begin{proposition}
+\label{prop:unic.elem.neut}
+Seja $\bm X = (X, \opb )$ um magma. Se existe identidade com respeito a $\opb$, ela é única.
+\end{proposition}
+\begin{proof}
+Suponha que existam duas identidades com respeito a $\opb$, $\id_1$ e $\id_2$. Então
+	\begin{equation*}
+	\id_1 = \id_1 \opb \id_2 = \id_2. \qedhere
+	\end{equation*}
+\end{proof}
+
+\begin{definition}[Operação com conjuntos]
+Sejam $\bm X$ um magma, $A,B \subseteq X$ e $x \in X$. Definimos
+	\begin{align*}
+	x \opb A &:= \set{x \opb a}{a \in A} \\
+	A \opb x &:= \set{a\opb x}{a \in A} \\
+	A \opb B &:= \set{a \opb b}{a \in A,b \in B}.
+	\end{align*}
+\end{definition}
+
+\section{Semigrupo}
+
+\begin{definition}
+Um \emph{semigrupo} é um magma $\bm X=(X,\opb)$ em que $\opb$ é associativa. Um semigrupo \emph{comutativo} é um semigrupo em que $\opb$ é comutativa.
+\end{definition}
+
+\begin{definition}
+Sejam $\bm X=(X,\opb)$ um semigrupo, $n \in \N^*$ e $(x_i)_{i \in [n]}$ elementos de $X$. O \emph{operatório} desses elementos é
+	\begin{equation*}
+	\bigopb _{i \in [n]} x_i :=
+		\begin{cases}
+		x_0, & n=1\\
+		x_{n-1} \opb \displaystyle \bigopb_{i \in [n-1]} x_i, & n>1.
+		\end{cases}
+	\end{equation*}
+\end{definition}
+
+\begin{notation}
+Costumamos denotar essa operação por
+	\begin{equation*}
+	x_{n_1} \opb \cdots \opb x_0 := \bigopb_{i \in [n]} x_i = (x_{n-1} \opb ( \cdots (x_1 \opb x_0)))
+	\end{equation*}
+\end{notation}
+
+O símbolo usado para a soma $+$ é o \emph{somatório} $\displaystyle\bigplus$ e o símbolo usado para o produto $\times$ é o \emph{produtório} $\displaystyle\bigtimes$. Essa definição considera que as operações vão sendo feitos à esquerda, mas uma mesma definição poderia ter sido feita para operações à direita --- todas demonstrações ainda valeriam, considerando que as ordens fossem devidamente trocadas.
+
+\begin{proposition}
+Sejam $\bm X=(X,\opb)$ um semigrupo, $n,k \in \N^*$ e $(x_i)_{i \in [n+k]}$ elementos de $X$. Então
+	\begin{equation*}
+	\bigopb_{i \in [n+k]} x_i = \bigopb_{i \in [k]} x_{n+i} \opb \bigopb_{i \in [n]} x_i.
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+A demonstração será por indução em $k$. Se $k=1$, por definição segue que
+	\begin{equation*}
+	\bigopb_{i \in [n+1]} x_i = x_{n} \opb \displaystyle \bigopb_{i \in [n]} x_i = \bigopb_{i \in [1]} x_{n+i} \opb \bigopb_{i \in [n]} x_i.
+	\end{equation*}
+Considere agora que vale a igualdade para algum $k \in \N^*$. Então
+	\begin{align*}
+	\bigopb_{i \in [n+k+1]} x_i
+		&= x_{n+k} \opb \bigopb_{i \in [n+k]} x_i \\
+		&= x_{n+k} \opb \left(\bigopb_{i \in [k]} x_{n+i} \opb \bigopb_{i \in [n]} x_i\right) \\
+		&= \left(x_{n+k} \opb \bigopb_{i \in [k]} x_{n+i} \right) \opb \bigopb_{i \in [n]} x_i \\
+		&= \bigopb_{i \in [k+1]} x_{n+i} \opb \bigopb_{i \in [n]} x_i. \qedhere
+	\end{align*}
+\end{proof}
+
+\begin{proposition}[Associatividade Generalizada]
+Sejam $\bm X=(X,\opb)$ um semigrupo, $n \in \N^*$, $(x_i)_{i \in [n]}$ elementos de $X$ e $(k_j)_{j \in [p]}$ uma partição de $[n]$ (ou seja: $n = \sum_{j \in [p]} k_j$ e, para todos $j \in [p]$, $k_j \neq 0$). Então
+	\begin{equation*}
+	\bigopb_{i \in [n]} x_i = \bigopb_{j \in [p]}\left(\bigopb_{i \in [k_j]} x_{i + k_0 + \cdots + k_{j-1}}\right).
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+Segue por indução da proposição anterior.
+\end{proof}
+
+Essa proposição diz que podemos colocar os parêntesses como quisermos que o resultado será o mesmo, pois
+	\begin{equation*}
+	\bigopb_{j \in [p]}\left(\bigopb_{i \in [k_j]} x_{i + k_0 + \cdots + k_{j-1}}\right) = \left(\bigopb_{i \in [k_{p-1}]} x_{i + k_0 + \cdots + k_{p-2}}\right) \opb \cdots \opb \left(\bigopb_{i \in [k_0]} x_i\right)
+	\end{equation*}
+e a partição $(k_j)_{j \in [p]}$ determina essa separação.
+
+\begin{proposition}[Comutatividade Generalizada]
+Sejam $\bm X=(X, \opb )$ um semigrupo comutativo e $n \in \N^*$. Então, para toda bijeção $\psi\colon [n] \to [n]$,
+	\begin{equation*}
+	\bigopb_{i \in [n]} x_{\psi(i)} = \bigopb_{i \in [n]} x_i.
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+Usaremos o fato de que $\opb$ é associativa. A demonstração será por indução em $n$. Se $n=1$, a afirmação é óbvia. Considere que vale para algum $n \in \N^*$ e seja $\psi\colon [n+1] \to [n+1]$ uma bijeção. Definamos $k = \psi\inv(n)$ e a bijeção
+	\begin{align*}
+	\func{\phi}{[n]}{[n]}{i}{
+		\begin{cases}
+		\psi(m) 		& i<k \\
+		\psi(m+1) & i>k.
+		\end{cases}
+	}
+	\end{align*}
+Da associatividade generalizada, da comutatividade e da hipótese para $n$, segue que
+	\begin{align*}
+	\bigopb_{i \in [n+1]} x_{\psi(i)}
+		&= \bigopb_{i \in [n-k]} x_{\psi(i+k+1)} \opb x_{\psi(k)} \opb \bigopb_{i \in [k]} x_{\psi(i)} \\
+		&= x_{n} \opb \bigopb_{i \in [n-k]} x_{\psi(i+k+1)} \opb \bigopb_{i \in [k]} x_{\psi(i)} \\
+		&= x_{n} \opb \bigopb_{i \in [n-k]} x_{\phi(i+k)} \opb \bigopb_{i \in [k]} x_{\phi(i)} \\
+		&= x_n \opb \bigopb_{i \in [n]} x_{\phi(i)}\\
+		&= x_n \opb \bigopb_{i \in [n]} x_i \\
+		&= \bigopb_{i \in [n+1]} x_i. \qedhere
+	\end{align*}
+\end{proof}
+
+
+\begin{definition}[Operatório de conjuntos]
+Sejam $\bm X=(X,\opb)$ um semigrupo, $n \in \N^*$ e $(C_i)_{i \in [n]}$ uma família de subgrupos de $X$. Definimos
+	\begin{equation*}
+	\bigopb _{i \in [n]} C_i := \set{\bigopb _{i \in [n]} x_i}{\forall_{i \in [n]} x_i \in C_i}.
+	\end{equation*}
+\end{definition}
+
+\subsection{Homomorfismo de semigrupos}
+
+\begin{definition}
+Sejam $\bm X_1=(X_1,\opb_1)$ e $\bm X_2=(X_2,\opb_2)$ semigrupos. Um \emph{homomorfismo de semigrupos} de $\bm X_1$ para $\bm X_2$ é uma função $h: X_1 \to X_2$ que satisfaz, para todos $x,x' \in X_1$
+	\begin{equation*}
+	h(x  \opb_1  x')=h(x') \opb_2 h(x').
+	\end{equation*}
+\noindent Denota-se $h: \bm X_1 \to \bm X_2$. %e o conjunto de todos esses homomorfismos de semigrupos é denotado por $\Homo(\bm X_1,\bm X_2)$.
+\end{definition}
+
+\begin{proposition}[Composição de homomorfismos]
+\label{comp.hom.sem}
+Sejam $\bm X_1=(X,\opb_1)$, $\bm X_2=(X_2,\opb_2)$ e $\bm X_3=(X_3,\opb_3)$ semigrupos e $h_1: \bm X_1 \to \bm X_2$ e $h_2: \bm X_2 \to \bm X_3$ homomorfismos de semigrupos. Então $h_2 \circ h_1: \bm X_1 \to \bm X_3$ é homomorfismo de semigrupos.
+\end{proposition}
+\begin{proof}
+Sejam $x,x' \in X_1$. Então
+	\begin{align*}
+	(h_2 \circ h_1)(x \opb_1 x') &= h_2(h_1(x \opb_1 x')) \\
+		&= h_2(h_1(x) \opb_2 h_1(x')) \\
+		&= h_2(h_1 (x)) \opb_3 h_2(h_1(x')) \\
+		&= (h_2 \circ h_1)(x) \opb_3 (h_2 \circ h_1)(x').
+	\end{align*}
+\end{proof}
+
+\section{Monoide}
+
+\begin{definition}
+Um \emph{monoide} é uma tripla $\bm M=(M,\opb,\id)$ em que $(M,\opb)$ é um semigrupo e $\id$ é uma identidade com respeito a $\opb$. Um monoide \emph{comutativo} é um monoide cuja operação binária $\opb$ é comutativa.
+\end{definition}
+
+\begin{notation}
+Denotaremos a identidade de um monoide $\bm M$ por $\id_M$ quando houver ambiguidade. Ainda, como existe identidade, definimos
+	\begin{equation*}
+	\bigopb_{i \in [0]} x_i = \id.
+	\end{equation*}
+\end{notation}
+
+\begin{example}
+O conjunto $\N$, com a operação binária
+	\begin{align*}
+	\func{\max}{\N^2}{\N}{(n,n')}{\max\{n,n'\}}
+	\end{align*}
+e a identidade $0$, formam um monoide comutativo.
+\end{example}
+
+\begin{definition}[Inverso]
+Sejam $\bm X = (X, \opb )$ um magma, $\id$ uma identidade com respeito a $\opb$ e $x \in X$. Um \emph{inverso} de $x$ com respeito a $\opb$ e $\id$ é um elemento $\bar x \in X$ que satisfaz
+	\begin{equation*}
+	\overline x \opb x = \id =  x \opb \overline x.
+	\end{equation*}
+Uma operação unária \emph{inversa} com respeito a $\opb$ e $\id$ é uma operação unária
+	\begin{align*}
+	\func{\overline{(\var)}}{X}{X}{x}{\overline{x}}
+	\end{align*}
+tal que, para todo $x \in X$, $\overline{x}$ é o inverso de $x$ com respeito a $\opb$ e $\id$.
+\end{definition}
+
+Pode-se distinguir \emph{inverso à esquerda} e \emph{inverso à direita}, que seria o caso de $\bar x$ se só satisfizesse, respectivamente, as igualdades da esquerda e da direita acima, mas não adotaremos essa distinção neste livro.
+
+\begin{proposition}
+\label{prop:unic.inv}
+Seja $(M,\opb,\id)$ um monoide. Se $m \in M$ tem inverso com respeito $\opb$ e $\id$, ele é único.
+\end{proposition}
+\begin{proof}
+Suponha que existam dois inversos $\overline m$ e $\overline{m}'$ de $m$. Então
+	\begin{equation*}
+	\overline{m} = \overline{m} \opb \id = \overline m \opb (m \opb \overline{m}') = (\overline m \opb m) \opb \overline{m}' = \id \opb \overline{m}' = \overline{m}'. \qedhere
+	\end{equation*}
+\end{proof}
+
+\begin{notation}
+A unicidade do inverso nos permite denotar o inverso de um elemento $m \in M$ de algum modo fixo. Quando a operação binária é a adição ($+$), denotamos o inverso por $-m$; quando é a multiplicação ($\times$, $\cdot$, $\circ$), denotamo-lo por $m\inv$ ou $\div m$.
+\end{notation}
+
+\begin{proposition}
+Seja $(M,\opb,\id)$ um monoide. Se $m \in M$ tem inverso com respeito a $\opb$ e $\id$, então $\overline m$ tem inverso e
+	\begin{equation*}
+	\overline{\overline{m}}=m.
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+	\begin{align*}
+	\overline{\overline m} &= \overline{\overline m}  \opb  \id \\
+		&= \overline{\overline m}  \opb  (\overline m  \opb  m) \\
+		&= (\overline{\overline m}  \opb  \overline m)  \opb  m \\
+		&= \id  \opb  m \\
+		&= m.
+	\end{align*}
+\end{proof}
+
+\begin{definition}
+Seja $\bm M=(M,\opb,\id)$ um monoide. Um \emph{submonoide} de $\bm M$ é um monoide $\bm S=(S,\opb _S,\id_S)$ em que $S \subseteq M$, $\opb _S= \opb |_{S \times S}$ e $\id_S=\id$. Denota-se $\bm S \leq \bm M$. Um submonoide \emph{próprio} de $\bm M$ é um monoide $\bm S \leq \bm M$ em que $S$ é um subconjunto próprio de $M$ ($S \subset M$). Denota-se $\bm S < \bm M$.
+\end{definition}
+
+\begin{proposition}
+\label{alge:prop.submon}
+Sejam $\bm M=(M,\opb,\id)$ um monoide e $S \subseteq M$ um conjunto tal que
+	\begin{enumerate}[label=\textbf{SM\arabic*.},ref={SM\arabic*}]
+	\item \label{SM1} (Identidade) $\id \in S$;
+	\item \label{SM2} (Fechamento) Para todos $s_1,s_2 \in S$, $s_1 \opb s_2 \in S$.
+	\end{enumerate}
+\noindent
+Então $\bm S=(S,\opb|_{S \times S},\id)$ é um monoide. Ainda, se $\bm M$ é comutativo, então $\bm S$ é comutativo.
+\end{proposition}
+\begin{proof} Por simplicidade, definamos $\star :=  \opb _{S \times S}$.
+
+%($\Rightarrow$) Suponhamos que $\bm S$ é um monoide com $\id \in S$. (Identidade) Então vale a identidade. (Fechamento) Como $\bm S$ é um monoide, $\star$ é uma operação binária, portanto segue a propriedade de fechamento (\ref{prop:restri.op.bin}).
+
+%($\Leftarrow$)
+Suponhamos que valem as propriedades listadas. (Operação binária) Pela identidade, segue que $S \neq \emptyset$, e disso e do fechamento, segue que $\star$ é uma operação binária (\ref{prop:restri.op.bin}).
+(Associatividade) Sejam $s_1,s_2,s_3 \in S$. Da associatividade de $ \opb $ segue que
+	\begin{equation*}
+	 (s_1 \star s_2) \star s_3 = (s_1  \opb  s_2)  \opb  s_3 = s_1  \opb  (s_2  \opb  s_3) = s_1 \star (s_2 \star s_3).
+	 \end{equation*}
+Logo $\star$ é associativa. (Identidade) Seja $s \in S$. Como $\id \in S$, da identidade de $ \opb $ segue que
+	\begin{equation*}
+	\id \star s = \id  \opb  s = s = s \opb  \id = s \star \id.
+	\end{equation*}
+Logo $\id$ é identidade de $\bm S$.
+
+Por fim, suponhamos que $\bm M$ é um monoide comutativo. Sejam $s_1,s_2 \in S$. Como $ \opb $ é comutativa, então
+	\begin{equation*}
+	s_1 \star s_2 = s_1  \opb  s_2 = s_2  \opb  s_1 = s_2 \star s_1.
+	\end{equation*}
+Logo $\star$ é comutativa.
+\end{proof}
+
+Vale observar que, somente sabendo que $\bm S$ é um monoide, isto é, que um subconjunto $S$ de um monoide $\bm M$ com a operação do monoide restrita a esse subconjunto formam um monoide, não podemos garantir que a identidade de $\bm S$ é a mesmo que a de $\bm M$.
+
+\subsection{Homomorfismos de monoides}
+
+\begin{definition}
+Sejam $\bm M_1=(M_1,\opb_1,\id_1)$ e $\bm M_2=(M_2,\opb_2,\id_2)$ monoides. Um \emph{homomorfismo de monoides} de $\bm M_1$ para $\bm M_2$ é uma função $h: M_1 \to M_2$ que satisfaz
+	\begin{enumerate}
+	\item $h$ é um homomorfismo de semigrupos de $\bm M_1$ para $\bm M_2$:
+		\begin{enumerate}
+		\item para todos $m,m' \in M_1$, $h(m \opb_1 m')=h(m) \opb_2 h(m')$;
+		\end{enumerate}
+	\item $h(\id_1)=\id_2$.
+	\end{enumerate}
+\noindent Denota-se $h: \bm M_1 \to \bm N_2$. %e o conjunto de todos esses homomorfismos de monoides é denotado por $\Homo(\bm M_1,\bm M_2)$.
+\end{definition}
+
+Podemos notar que precisamos garantir que a função $h$ leve a identidade de um monoide para a identidade de outro, já que isso não seria verdade se função fosse somente um homomorfismo de semigrupos. No entanto, mesmo sem a segunda propriedade, um homomorfismo de semigrupos entre grupos garante que a imagem da identidade do primeiro é a identidade do conjunto imagem. Veremos mais adiante que um homomorfismo de grupos é simplesmente um homomorfismo de semigrupos, pois ele é suficiente para preservar a estrutura algébrica de grupos.
+
+\begin{proposition}[Composição de homomorfismos]
+\label{comp.hom.mon}
+Sejam $\bm M_1=(M_1,\opb_1.\id_1)$, $\bm M_2=(M_2,\opb_2,\id_2)$ e $\bm M_3=(M_3,\opb_3,\id_3)$ monoides e $h_1: \bm M_1 \to \bm M_2$ e $h_2: \bm M_2 \to \bm M_3$ homomorfismos de monoides. Então $h_2 \circ h_1: \bm M_1 \to \bm M_3$ é homomorfismo de monoides.
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item Como homomorfismos de monoides são homomorfismos de semigrupos, o resultado segue da proposição na seção de semigrupos que afirma que composição de homomorfismos é homomorfismo (\ref{comp.hom.sem}).
+	\item Para mostrar que a identidade é preservada, basta notar que
+	\begin{equation*}
+	(h_2 \circ h_1)(\id_1) = h_2(h_1(\id_1)) = h_2(\id_2) = \id_3.
+	\end{equation*}
+	\end{enumerate}
+\end{proof}

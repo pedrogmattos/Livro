@@ -1,0 +1,1673 @@
+\chapter{Espaços normados}
+
+\section{Norma em corpos (valor absoluto)}
+
+Consideremos um corpo $\bm C$. Queremos definir uma função $\abs{\var}\colon C \to \intfa{0}{\infty}$ que satisfaça a propriedade de multiplicatividade para todos $c,c' \in C$,
+	\begin{equation*}
+	\abs{cc'} = \abs{c}\abs{c'}.
+	\end{equation*}
+Nesse caso, temos
+	\begin{equation*}
+	\abs{0}=\abs{0c} = \abs{0}\abs{c}.
+	\end{equation*}
+Se $\abs{0} \neq 0$, então $\abs{c}=1$ para todo $c \in C$ (inclusive $\abs{0}=1$), o que mostra que $\abs{\var}$ é uma função trivial e, portanto, não tem comportamento tão interessante. É natural então assumir que $\abs{0}=0$. Nesse caso, não concluímos da multiplicatividade que $\abs{c}=1$ para todo $c \in C$. No entanto, temos
+	\begin{equation*}
+	\abs{1} = \abs{1 \cdot 1} = \abs{1}\abs{1}.
+	\end{equation*}
+Então $\abs{1}=0$ ou $\abs{1}=1$. No primeiro caso, segue que, para todo $c \in C$, $\abs{c} = \abs{1c} = \abs{1}\abs{c} = 0 \abs{c} = 0$, logo $\abs{c} = 0$ para todo $c \in C$, o que mostra que $\abs{\var}$ novamente é uma função trivial. É natural, assim, assumir que $\abs{1} \neq 0$, e portanto $\abs{1}=1$. Assumiremos, no entanto, que para todo $c \in C$, se $\abs{c} = 0$ então $c=0$, o que implica $\abs{\var}$ é um homomorfismo de grupos entre o grupo multiplicativo de $\bm C$ e o grupo multiplicativo $\intaa{0}{\infty}$.
+%Mas notemos que $\abs{1}=1$ é equivalente a assumirmos que, para todo $c \in C$, se $\abs{c} = 0$ então $c=0$, pois
+Notemos ainda que
+	\begin{equation*}
+	1 = \abs{1} = \abs{(-1)(-1)} = \abs{-1}\abs{-1},
+	\end{equation*}
+portanto $\abs{-1} = 1$, já que $\abs{-1} \in \intfa{0}{\infty}$. Disso segue que
+	\begin{equation*}
+	\abs{-c} = \abs{-1}\abs{c}=\abs{c}.
+	\end{equation*}
+Ainda, para todo $c \in C$ segue que
+	\begin{equation*}
+	\abs{c\inv} = \abs{c\inv}\abs{c}\abs{c}\inv = \abs{c\inv c}\abs{c}\inv = \abs{1}\abs{c}\inv = \abs{c}\inv.
+	\end{equation*}
+
+Além da multiplicatividade, uma segunda propriedade desejável é a subaditividade: para todos $c,c' \in C$,
+	\begin{equation*}
+	\abs{c+c'} \leq \abs{c} + \abs{c'}.
+	\end{equation*}
+Note que não adotamos a propriedade mais forte de aditividade. Isso ocorre porque queremos que $\abs{\var}$ se comporte de fato como o valor absoluto em $\R$, e também porque queremos que $\abs{\var}$ tenha valores positivos, o que a aditividade não permitiria pois de $\abs{0}=0$ e $\abs{1}=1$ seguiria que $\abs{-1}=-1$.
+
+
+\begin{definition}
+Seja $\bm C$ um corpo. Uma \emph{norma} (ou \emph{valor absoluto}) em $\bm C$ é uma função $\abs{\var}\colon C \to \intfa{0}{\infty}$ que satisfaz
+	\begin{enumerate}
+	\item (Separação) Para todo $c \in C$, $\abs{c}=0$ se, e somente se, $c=0$;
+	\item (Multiplicatividade) Para todos $c,c' \in C$,
+		\begin{equation*}
+		\abs{cc'} = \abs{c}\abs{c'};
+		\end{equation*}
+	\item (Subaditividade) Para todos $c,c' \in C$,
+		\begin{equation*}
+		\abs{c+c'} \leq \abs{c} + \abs{c'}.
+		\end{equation*}
+	\end{enumerate}
+\end{definition}
+
+\begin{proposition}[Propriedades da Norma]
+Sejam $\bm C$ um corpo e $\abs{\var}$ uma norma em $\bm C$.
+	\begin{enumerate}
+	\item $\abs{1}=\abs{-1}=1$;
+	\item Para todo $c \in C$, $\abs{-c}=\abs{c}$;
+	\item Para todo $c \in C$, $\abs{c} \geq 0$;
+	\item (Subaditividade generalizada) Para todos $c_0,\dots,c_{n-1} \in C$,
+		\begin{equation*}
+		\abs{\sum_{i \in [n]} c_i} \leq \sum_{i \in [n]} \abs{c_i};
+		\end{equation*}
+	\item Para todos $c,c' \in C$, $\abs{\abs{c'}-\abs{c}} \leq \abs{c'-c}$.		
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item Notemos que
+		\begin{equation*}
+		\abs{1} = \abs{1^2} = \abs{1}^2,
+		\end{equation*}
+logo $\abs{1}=0$ ou $\abs{1}=1$. Da separação de $\abs{\var}$, segue que $\abs{1}=1$.
+
+	\item Para todo $c \in C$,
+		\begin{equation*}
+		\abs{-c} = \abs{-1}\abs{c}=\abs{c}.
+		\end{equation*}
+	
+	\item Seja $c \in C$. Temos que
+		\begin{equation*}
+		0 = \abs{0} = \abs{c-c} \leq \abs{c} + \abs{-c} = 2 \abs{c},
+		\end{equation*}
+logo $\abs{c} \geq 0$
+	
+	\item Segue por indução da subaditividade de $\abs{\var}$.
+	
+		\item Da subaditividade, segue que
+		\begin{equation*}
+		\abs{c'} = \abs{(c'-c)+c} \leq \abs{c'-c} + \abs{c},
+		\end{equation*}
+portanto
+		\begin{equation*}
+		\abs{c'}-\abs{c} \leq \abs{c'-c}.
+		\end{equation*}
+Simetricamente obtém-se $\abs{c}-\abs{c'} \leq \abs{c'-c}$, e segue que
+		\begin{equation*}
+		\abs{\abs{c'}-\abs{c}} \leq \abs{c'-c}.
+		\end{equation*}
+	\end{enumerate}
+\end{proof}
+
+\begin{definition}
+Um \emph{corpo normado} é um par $(\bm C,\abs{\var})$ em que $\bm C$ é um corpo e $\abs{\var}$ é uma norma em $\bm C$.
+\end{definition}
+
+Uma norma em $\bm C$ induz uma métrica e essa métrica, por sua vez, induz uma topologia em $C$.
+
+\begin{definition}
+Seja $(\bm C,\abs{\var})$ um corpo normado. A \emph{métrica} (induzida pela norma) de $\bm C$ é a função
+	\begin{align*}
+	\func{\dist{\var}{\var}}{C \times C}{\intfa{0}{\infty}}{(c,c')}{\abs{c'-c}}.
+	\end{align*}
+\end{definition}
+
+\begin{proposition}
+Seja $(\bm C,\abs{\var})$ um corpo normado. A métrica $\dist{\var}{\var}$ induzida pela norma de $\bm C$ é uma métrica em $C$.
+\end{proposition}
+%\begin{proof}
+%	\begin{enumerate}
+%	\item (Separação) Sejam $c,c' \in C$. Se $c=c'$, então segue da positividade que
+%		\begin{equation*}
+%		\dist{c}{c'} = \dist{c}{c} = \abs{c-c} = \abs{0}=0.
+%		\end{equation*}
+%	Reciprocamente, se $\abs$
+%	\end{enumerate}
+%\end{proof}
+
+\begin{proposition}
+Seja $(\bm C,\abs{\var})$ um corpo normado.
+	\begin{enumerate}
+	\item A norma $\abs{\var}\colon C \to \intfa{0}{\infty}$ é uma função contínua;
+	\item $\bm C$ é um corpo topológico.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item Segue direta da propriedade de que, para todos $c,c' \in C$, $\abs{\abs{c'}-\abs{c}} \leq \abs{c'-c}$, pois dado $\varepsilon > 0$, tomando $\delta=\varepsilon$ temos que, se $\dist{c}{c'} = \abs{c'-c} \leq \delta$, então
+		\begin{equation*}
+		\dist{\abs{c}}{\abs{c'}} = \abs{\abs{c'}-\abs{c}} \leq \abs{c'-c} \leq \delta = \varepsilon.
+		\end{equation*}
+	
+	\item Para mostrar a continuidade de $+$, podemos usar qualquer norma em $C \times C$; escolhemos a norma
+		\begin{align*}
+		\func{\abs{\var}_{C \times C}}{C \times C}{\intfa{0}{\infty}}{(c,c')}{\abs{c}+\abs{c'}}.
+		\end{align*}
+Agora, basta notarmos que, dados $(c_0,c_1),(c_0',c_1') \in C \times C$,
+	\begin{align*}
+	\abs{(c_0'+c_1') - (c_0+c_1)} &= \abs{(c_0' - c_0) + (c_1'-c_1)} \\
+		&\leq \abs{c_0'-c_0} + \abs{c_1'-c_1} \\
+		&= \abs{(c_0'-c_0,c_1'-c_1)}_{C \times C} \\
+		&= \abs{(c_0',c_1')-(c_0,c_1)}_{C \times C},
+	\end{align*}
+portanto, dado $\varepsilon>0$, basta tomarmos $\delta=\varepsilon$ e segue que, se
+	\begin{equation*}
+		\abs{(c_0',c_1')-(c_0,c_1)}_{C \times C} < \delta,
+	\end{equation*}
+então
+	\begin{equation*}
+	\abs{(c_0'+c_1') - (c_0+c_1)} \leq \abs{(c_0',c_1')-(c_0,c_1)}_{C \times C} < \delta=\varepsilon.
+	\end{equation*}
+A continuidade das outras operações é análoga.
+	\end{enumerate}
+\end{proof}
+
+\section{Normas}
+
+\subsection{Seminormas}
+
+\begin{definition}
+Seja $\bm L$ um espaço linear sobre um corpo normado $(\bm C,\abs{\var})$. Uma \emph{seminorma} em $\bm L$ é uma função $p\colon L \to \R$
+que satisfaz
+	\begin{enumerate}
+	\item (Homogeneidade absoluta) Para todos $c \in C$ e $v \in L$,
+		\begin{equation*}
+		p(cv) = \abs{c}p(v);
+		\end{equation*}
+	\item (Subaditividade) Para todos $v,v' \in L$,
+		\begin{equation*}
+		p(v + v') \leq p(v) + p(v').
+		\end{equation*}
+	\end{enumerate}
+\end{definition}
+
+\begin{proposition}
+Sejam $\bm L$ um espaço linear sobre um corpo normado $(\bm C,\abs{\var})$ e $p\colon L \to C$ uma seminorma em $\bm L$.
+	\begin{enumerate}
+	\item $p(0)=0$;
+	\item Para todo $v \in L$, $p(v) \geq 0$;
+	\item Para todo $v,v' \in L$, $\abs{p(v)-p(v')} \leq p(v-v')$.
+	\end{enumerate}
+\end{proposition}
+
+\begin{definition}
+Seja $\bm L$ um espaço linear sobre um corpo $(\bm C,\leq)$ ordenado. Um conjunto \emph{absorvedor} em $L$ é um conjunto $A \subseteq L$ tal que, para todo $v \in L$, existe $c \in C_{>0}$ tal que $v \in cA$.
+\end{definition}
+
+\begin{proposition}
+Sejam $L$ um espaço linear sobre um corpo $(\bm C,\leq)$ ordenado e $A \subseteq L$ um conjunto absorvedor.
+	\begin{enumerate}
+	\item $0 \in A$;
+	\item Para todo $v \in L$, existe $\inf\set{c>0}{v \in cA}$.
+	\end{enumerate}
+\end{proposition}
+
+\begin{definition}
+Sejam $\bm L$ um espaço linear real\footnote{Mais geralmente, poderiam ser considerados corpos ordenados normados $(\bm C,\leq,\abs{\var})$, mas os detalhes não serão feitos aqui.} e $A \subseteq L$ um conjunto absorvedor. O \emph{calibre}\footnote{Essas funções são conhecidas comoo funcionais de Minkowski} de $A$ é a função
+	\begin{align*}
+	\func{p_A}{L}{\R}{v}{\inf\set{c>0}{v \in cA}}.
+	\end{align*}
+\end{definition}
+
+A função está bem definida pois $A$ é absorvedor (proposição anterior).
+
+\begin{proposition}
+Sejam $\bm L$ um espaço linear real e $A \subseteq L$ um conjunto absorvedor.
+	\begin{enumerate}
+	\item Para todos $v \in L$ e $c \in \intaa{0}{\infty}$,
+		\begin{equation*}
+		p_A(cv) = c p_A(v);
+		\end{equation*}
+	\item Se $A$ é convexo, então $p_A$ é subaditivo: para todos $v,v' \in L$,
+		\begin{equation*}
+		p_A(v+v') \leq p_A(v) + p_{A}(v');
+		\end{equation*}
+	\item Se $A$ é convexo e balanceado, $p_A$ é uma seminorma;
+	\item Definindo $\Int{A} := \set{v \in L}{p_A(v) < 1}$ e $\Fec{A} := \set{v \in L}{p_A(v) \leq 1}$, vale $\Int{A} \subseteq A \subseteq \Fec{A}$ e $p_{\Int{A}} = p_{A} = p_{\Fec{A}}$.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item Sejam $v \in L$ e $c \in \intaa{0}{\infty}$. Então
+		\begin{align*}
+		p_A(cv) &= \inf\set{c'>0}{cv \in c'A} \\
+					&= \\
+					&= \\
+					&= c\inf\set{c'>0}{v \in c'A} \\
+					&= c p_A(v).
+		\end{align*}
+	\end{enumerate}
+\end{proof}
+
+
+
+
+
+
+
+
+\subsection{Normas, espaços normados e métricas lineares}
+
+\begin{definition}
+Seja $\bm E$ um espaço linear sobre um corpo normado $(\bm C,\abs{\var})$. Uma \emph{norma} em $\bm E$ é uma função $\nor{\var}\colon E \to \R$
+que satisfaz
+	\begin{enumerate}
+	\item (Separação) Para todo $v \in E$, se $\nor{v}=0$, então $v=0$.
+	\item (Homogeneidade absoluta\footnote{Esta propriedade recebe diferentes nomes, incluindo `Dilatação'.}) Para todos $c \in C$ e $v \in E$,
+		\begin{equation*}
+		\nor{cv} = \abs{c}\nor{v};
+		\end{equation*}
+	\item (Subaditividade\footnote{Esta propriedade recebe diferentes nomes, incluindo `Desigualdade Triangular'.}) Para todos $v,v' \in E$,
+		\begin{equation*}
+		\nor{v + v'} \leq \nor{v} + \nor{v'}.
+		\end{equation*}
+	\end{enumerate}
+\end{definition}
+
+Uma norma é uma seminorma separada. Claramente $\abs{\var}\colon \C \to \R$ é uma norma em $\C$.
+%Pode-se, de modo mais geral, considerar outro valor absoluto em $\bm C$, mas não faremos isso aqui.
+
+\begin{proposition}[Propriedades da Norma]
+Sejam $\bm E$ um espaço linear sobre um corpo normado $(\bm C,\abs{\var})$ e $\nor{\var}$ uma norma em $\bm E$.
+	\begin{enumerate}
+	\item $\nor{0}=0$;
+	\item Para todo $v \in E$, $\nor{-v}=\nor{v}$;
+	\item Para todo $v \in E$, $\nor{v} \geq 0$.
+	\item (Subaditividade generalizada) Para todos $v_0,\dots,v_{n-1} \in E$,
+		\begin{equation*}
+		\nor{\sum_{i \in [n]} v_i} \leq \sum_{i \in [n]} \nor{v_i}.
+		\end{equation*}
+	\item Para todos $v,v' \in E$, $\abs{\nor{v'}-\nor{v}} \leq \nor{v'-v}$.
+	\end{enumerate}
+\end{proposition}
+
+\begin{definition}
+Um \emph{espaço normado} é um par $\E = (\bm E,\nor{\cdot})$ em que $\bm E$ é um espaço linear sobre um corpo normado $(\bm C,\abs{\var})$ e $\nor{\cdot}$ é uma norma em $\bm E$. A dimensão de $\E$ é a dimensão do espaço linear $\bm E$.
+\end{definition}
+
+\begin{definition}
+Seja $\bm E$ um espaço linear sobre um corpo normado $(\bm C,\abs{\var})$. Uma \emph{métrica linear} em $\bm E$ é uma métrica\footnote{Adotamos aqui a notação $\dist{x}{x'}$ em vez da notação mais usual $d(x,x')$.} $\dist{\var}{\var}\colon E \times E \to \R$ em $E$ que satisfaz
+	\begin{enumerate}
+	\item (Invariância por translação) Para todos $v,v',w \in E$,
+		\begin{equation*}
+		\dist{v+w}{v'+w} = \dist{v}{v'}.
+		\end{equation*}
+	\item (Homogeneidade absoluta) Para todos $v,v' \in E$ e $c \in C$,
+		\begin{equation*}
+		\dist{cv}{cv'} = \abs{c}\dist{v}{v'};
+		\end{equation*}
+	\end{enumerate}
+\end{definition}
+
+\begin{definition}
+Seja $\E$ um espaço normado. A \emph{métrica} (induzida pela norma) de $\E$ é a função
+	\begin{align*}
+	\func{\dist{\var}{\var}}{E \times E}{\R}{(v,\bar v)}{\nor{v - \bar v}}.
+	\end{align*}	
+A \emph{topologia de $\E$} é a topologia de $(E,\dist{\var}{\var})$.
+\end{definition}
+
+Para que essa definição seja boa, mostramos a seguir a proposição.
+
+\begin{proposition}
+Seja $\E$ um espaço normado. A função
+	\begin{align*}
+	\func{\dist{\var}{\var}}{E \times E}{\R}{(v_0,v_1)}{\nor{v_0 - v_1}}.
+	\end{align*}
+é uma métrica linear em $E$.
+\end{proposition}
+\begin{proof}
+Primeiro mostramos que $\dist{\var}{\var}$ é uma métrica.
+	\begin{enumerate}
+	\item (Separação) Sejam $v,\bar v \in E$. Se $v = \bar v$, então segue da positividade que
+	\begin{equation*}
+	\dist{v}{\bar v} = \dist{v}{v} = \nor{v - v} = \nor{v-v}=\nor{0}=0.
+	\end{equation*}
+Reciprocamente, se $\dist{v}{\bar v}=0$, então $\nor{v-\bar v}=0$. Segue da separação que $v-\bar v=0$, logo $v=\bar v$.
+
+	\item (Simetria)  Sejam $v,\bar v \in E$. Então segue da homogeneidade absoluta que
+	\begin{equation*}
+	\dist{v}{\bar v}=\nor{v-\bar v}=\nor{-1(\bar v -v)}=\abs{-1}\nor{\bar v - v}=\dist{\bar v}{v}.
+	\end{equation*}
+	
+	\item (Desigualdade triangular) Sejam $v_0,v_1,v_2 \in E$. Então segue da subaditividade que
+	\begin{align*}
+	\dist{v_0}{v_2} &= \nor{v_0-v_2} \\
+		&=\nor{v_0-v_1+v_1-v_2} \\
+		&\leq \nor{v_0-v_1}+\nor{v_1-v_2} \\
+		&=\dist{v_0}{v_1}+\dist{v_1}{v_2}.
+	\end{align*}	
+	\end{enumerate}
+Agora, mostremos que $\dist{\var}{\var}$ é métrica linear.
+	\begin{enumerate}
+	\item (Invariância por translação) Sejam $v,v',w \in E$. Então
+		\begin{equation*}
+		\dist{v+w}{v'+w} = \nor{(v+w) - (v'+w)} = \nor{v-v'} = \dist{v}{v'}.
+		\end{equation*}
+	
+	\item (Homogeneidade absoluta) Sejam $v,v' \in E$ e $c \in C$. Então
+		\begin{equation*}
+		\dist{cv}{cv'} = \nor{cv-cv'} = \nor{c(v-v')} = \abs{c}\nor{v-v'} = \abs{c}\dist{v}{v'}. \qedhere
+		\end{equation*}
+	\end{enumerate}
+\end{proof}
+
+Reciprocamente, se temos uma métrica linear em um espaço linear, essa métrica define uma norma no espaço e a métrica que essa norma define, por sua vez, é a métrica original. Isso mostra, de fato, que existe uma relação bijetiva entre normas e métricas lineares em um espaço linear.
+
+\begin{proposition}
+Sejam $\bm E$ um espaço linear sobre um corpo normado $(\bm C,\abs{\var})$ e $\dist{\var}{\var}$ uma métrica linear em $\bm E$. A função
+	\begin{align*}
+	\func{\nor{\var}}{E}{\R}{v}{\dist{v}{0}}
+	\end{align*}
+é uma norma em $\bm E$ e a métrica induzida por essa norma é $\dist{\var}{\var}$.
+\end{proposition}
+\begin{proof}
+Mostremos primeiro que a função é uma norma.
+	\begin{enumerate}
+	\item (Separação) Seja $v \in E$. Então $\nor{v} = \dist{v}{0} = 0$, logo da separação de $\dist{\var}{\var}$ segue que $v=0$.
+	
+	\item (Homogeneidade absoluta) Sejam $c \in C$ e $v \in E$. Então segue da homogeneidade absoluta de $\dist{\var}{\var}$ que
+		\begin{equation*}
+		\nor{cv} = \dist{cv}{0} = \abs{c}\dist{v}{0} = \abs{c}\nor{v}.
+		\end{equation*}
+	
+	\item (Subaditividade) Sejam $v,v' \in E$. Então da invariância por translação, da simetria e da desigualdade triangular de $\dist{\var}{\var}$ que
+		\begin{align*}
+		\nor{v+v'} &= \dist{v+v'}{0} \\
+			&= \dist{v}{-v'} \\
+			&\leq \dist{v}{0} + \dist{0}{-v'} \\
+			&\leq \dist{v}{0} + \dist{v'}{0} \\
+			&= \nor{v} + \nor{v'}.
+		\end{align*}
+	\end{enumerate}
+Agora, mostremos que a métrica $\dist{\var}{\var}'$ induzida por essa norma é a métrica original $\dist{\var}{\var}$. Sejam $v,v' \in E$. Então da invariância por translação de $\dist{\var}{\var}$ segue que
+	\begin{equation*}
+	\dist{v}{v'}' = \nor{v-v'} = \dist{v-v'}{0} = \dist{v}{v'}. \qedhere
+	\end{equation*}
+\end{proof}
+
+\subsection{Bolas e esferas unitárias e topologia}
+
+\begin{definition}
+Seja $\E$ um espaço normado. A \emph{bola unitária} de $\E$ é o conjunto
+	\begin{equation*}
+	\B := \set{v \in E}{\nor{v} \leq 1}
+	\end{equation*}
+e a \emph{esfera unitária} de $\E$ é o conjunto
+	\begin{equation*}
+	\S := \set{v \in E}{\nor{v} = 1}.
+	\end{equation*}
+\end{definition}
+
+A bola unitária é a bola fechada, de raio 1 e centro na origem, com respeito à métrica induzida pela norma. Isto é, $\B = \overline\bola_1(0)$. Com essa notação para a bola unitária, podemos representar qualquer bola de centro $c$ e raio $r$ como $c+r\B$, pois
+	\begin{align*}
+	c+r\B &= \set{c+rv}{v \in \B} \\
+		&= \set{c+rv}{\nor{v} \leq 1} \\
+		&= \set{v}{\nor{\frac{v-c}{r}} \leq 1} \\
+		&= \set{v}{\nor{v-c} \leq r} \\
+		&= \overline\bola_r(c).
+	\end{align*}
+
+\begin{proposition}
+Seja $\E$ um espaço normado. A bola unitária $\B$ é um conjunto convexo e centrossimétrico na origem.
+\end{proposition}
+\begin{proof}
+Sejam $t \in \intaa{0}{1}$ e $v,v' \in \B$. Então
+	\begin{equation*}
+	\nor{(1-t)v+tv'} \leq (1-t)\nor{v}+t\nor{v'} =(1-t)+t=1,
+	\end{equation*}
+logo $(1-t)v+tv' \in \B$, o que mostra que $\B$ é convexo. Agora, seja $v \in \B$. Então $1 \geq \nor{v} = \nor{-v}$, logo $-v \in \B$, o que mostra a centrossimetria.
+\end{proof}
+
+A topologia de um espaço normado é dada pela sua norma, através da base de abertos formadas pelas bolas. Essa é a topologia dada pela métrica induzida pela norma.
+
+\begin{proposition}
+Seja $\E$ um espaço normado.
+	\begin{enumerate}
+	\item A norma $\nor{\var}\colon E \to \R$ é uma função contínua.
+	\item $\bm E$ é um espaço linear topológico.
+	\end{enumerate}
+\end{proposition}
+%\begin{proof}
+%	\begin{enumerate}
+%	\item Segue direto da propriedade de que, para todos $v,v' \in E$,
+%		\begin{equation*}
+%		\abs{\nor{v'}-\nor{v}} \leq \nor{v'-v}.
+%		\end{equation*}
+%	
+%	\item 
+%	\end{enumerate}
+%\end{proof}
+
+\subsection{Equivalência de normas}
+
+%\begin{definition}
+%Seja $\bm E$ um espaço linear. Normas \emph{equivalentes} em $\bm E$ são normas $\nor{\var}, \nor{\var}'$ em $\bm E$ para as quais existem $c,C \in \intaa{0}{\infty}$ tais que, para todo $v \in E$,
+%	\begin{equation*}
+%	c \nor{v}' \leq \nor{v} \leq C \nor{v}'.
+%	\end{equation*}
+%\end{definition}
+
+%\begin{definition}
+%Seja $\bm E$ um espaço linear de dimensão finita. \emph{Normas equivalentes} em $\bm E$ são normas $\nor{\cdot}_0,$ e $\nor{\cdot}_1$ para as quais existem $c_0,c_1 \in \R\setminus\{0\}$ tais que, para todo $v \in E$,
+%	\begin{equation*}
+%	c_0 \nor{v}_0 \leq \nor{v}_1 \e c_1 \nor{v}_1 \leq \nor{v}_0.
+%	\end{equation*}
+%\end{definition}
+
+%\begin{proposition}
+%Seja $\bm E$ um espaço linear. Equivalência de normas em $\bm E$ é uma relação de equivalência.
+%\end{proposition}
+%\begin{proof}
+%(Reflexividade) Claramente vale, para todo $v \in E$, $\nor{v} \leq \nor{v}$. (Simetria) Vale por definição. (Transitividade) 
+%\end{proof}
+
+\begin{definition}
+Seja $\bm E$ um espaço linear sobre um corpo normado $(\bm C,\abs{\var})$. Normas (\emph{topologicamente}) \emph{equivalentes} em $\bm E$ são normas $\nor{\var}, \nor{\var}'$ em $\bm E$ que induzem a mesma topologia em $E$.
+\end{definition}
+
+\begin{proposition}
+Seja $\bm E$ um espaço linear sobre um corpo normado $(\bm C,\abs{\var})$. Normas $\nor{\var}, \nor{\var}'$ em $\bm E$ são equivalentes se, e somente se, existem $c,C \in \intaa{0}{\infty}$ tais que, para todo $v \in E$,
+	\begin{equation*}
+	c \nor{v}' \leq \nor{v} \leq C \nor{v}'.
+	\end{equation*}
+\end{proposition}
+%\begin{proposition}
+%Seja $\bm E$ um espaço linear. Normas equivalentes induzem a mesma topologia em $\bm E$.
+%\end{proposition}
+\begin{proof}
+Demonstraremos a volta pois a ida é evidente.
+Basta mostrar que as bases de bolas são equivalentes. Para isso, mostramos primeiro que uma bola de uma topologia contém uma bola de outra. Sejam $\nor{\var}, \nor{\var}'$ normas equivalentes em $\bm E$. Tomemos uma bola $\bola_r(v)$ da norma $\nor{\var}$. Como existe $C \in \intaa{0}{\infty}$ tal que, para todo $v \in E$, $\nor{v} \leq C \nor{v}'$, segue que
+	\begin{equation*}
+	\bola'_{rC\inv}(v) \subseteq \bola_r(v),
+	\end{equation*}
+pois se $v' \in \bola'_{rC\inv}(v)$, então $\nor{v'-v} < rC\inv$, logo $C\nor{v'-v} < r$, o que implica que $\nor{v'-v} < r$, portanto $v' \in \bola_r(v)$.
+
+Sendo assim, tomemos uma bola $\bola_r(v)$ da norma $\nor{\var}$ e $x \in \bola_r(v)$. Então temos que $\bola_{r-\nor{x-v}}(x) \subseteq \bola_r(v)$
+e portanto temos que, pelo argumento do parágrafo anterior, $\bola'_{(r-\nor{x-v})C\inv}(x) \subseteq \bola_{r-\nor{x-v}}(x)$, logo
+	\begin{equation*}
+	\bola'_{(r-\nor{x-v})C\inv}(x) \subseteq \bola_r(v).
+	\end{equation*}
+Simetricamente, mostra-se que
+	\begin{equation*}
+	\bola_{(r-\nor{x-v}')c}(x) \subseteq \bola'_r(v),
+	\end{equation*}
+portanto as bases de bolas são equivalentes, o que quer dizer que as topologias são a mesma.
+\end{proof}
+
+
+
+
+\section{Funções limitadas e norma de funções lineares}
+
+\begin{definition}
+Sejam $\E$ e $\E'$ espaços normados. Uma função linear \emph{limitada} é uma função linear $L\colon E \to E'$ para a qual existe $c \in \intfa{0}{\infty}$ satisfazendo, para todo $v \in E$,
+	\begin{equation*}
+	\nor{L(v)}' \leq c \nor{v}.
+	\end{equation*}
+%O conjunto dessas funções é denotado $\toplin(\E,\E')$.
+% Tirei essa parte da definição pois já defini no capítulo de espaços lineares topológicos o conjunto de funções lineares contínuas e aqui o que convém é mostrar que as funções limitadas são dos espaços normados são essas funções.
+\end{definition}
+
+%Claramente, segue direto da definição que $\Linmet(\E,\E') \subseteq \toplin(\E,\E')$.
+
+\begin{proposition}
+Sejam $\E$ e $\E'$ espaços normados e $L\colon E \to E'$ uma função linear. Então $L$ é limitada se, e somente se, é contínua.
+%	\begin{equation*}
+%	\toplin(\E,\E') = \lin(\E,\E') \cap \Cont(\E,\E').
+%	\end{equation*}
+\end{proposition}
+\begin{proof}
+Se $L$ é limitada por uma constante $c \in \intfa{0}{\infty}$, então $L$ é uma função $c$-métrica e, portanto, é contínua.
+
+Reciprocamente, suponhamos que $L$ é contínua. Para $v=0$, claramente vale $\nor{L(0)} = 0 \leq 0 - \nor{0}$. Consideremos o seguinte para $v \neq 0$: como $L$ é contínua, é contínua em $0$; portanto existe $\delta \in \intaa{0}{\infty}$ tal que, para todo $v \in E$, se $\nor{v} \leq \delta$ então $\nor{L(v)}' \leq 1$. Sendo assim, seja $v \in \E \setminus \{0\}$. Então, como $\nor{\delta\frac{v}{\nor{v}}}=\delta$, segue que
+	\begin{equation*}
+	\nor{L(v)}' = \nor{L\left(\frac{\nor{v}}{\delta}\frac{\delta}{\nor{v}}v\right)}' = \nor{\frac{\nor{v}}{\delta}L\left(\delta\frac{v}{\nor{v}}\right)}' = \frac{\nor{v}}{\delta}\nor{L\left(\delta\frac{v}{\nor{v}}\right)}' \leq \frac{1}{\delta}\nor{v},
+	\end{equation*}
+o que mostra que $L$ é limitada.
+\end{proof}
+
+\begin{definition}
+Sejam $\E$ e $\E'$ espaços normados e $L \in \toplin(\E, \E')$ uma função linear contínua. A \emph{norma} de $L$ é
+	\begin{equation*}
+	\nor{L} := \inf\set{c \in \intfa{0}{\infty}}{\forall_{v \in \E} \nor{L(v)} \leq c\nor{v}}.
+	\end{equation*}
+\end{definition}
+
+
+
+\begin{proposition}
+Sejam $\E$ e $\E'$ espaços normados e $L \in \toplin(\E, \E')$ uma função linear contínua.
+	\begin{enumerate}
+	\item Para todo $v \in E$,
+		\begin{equation*}
+		\nor{Lv} \leq \nor{L}\nor{v};
+		\end{equation*}
+		
+	\item 
+		\begin{align*}
+		\nor{L} &= \sup \set{\frac{\nor{L(v)}}{\nor{v}}}{v \in \E \setminus \{0\}} \\
+		& = \sup \set{\frac{\nor{L(v)}}{\nor{v}}}{v \in \B} \\
+		&= \sup\set{\nor{L(v)}}{v \in \S}.
+		\end{align*}
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item Segue direto da definição.
+
+	\item Como $L$ é linear, segue que, para todo $v \in E\setminus\{0\}$,
+	\begin{equation*}
+	\nor{L(v)} = \nor{\nor{v}L\left(\frac{v}{\nor{v}}\right)} = \nor{v}\nor{L\left(\frac{v}{\nor{v}}\right)},
+	\end{equation*}
+portanto $\nor{L(v)} \leq c\nor{v}$ se, e somente se, $\nor{L\left(\frac{v}{\nor{v}}\right)} \leq c$. Isso implica que
+	\begin{equation*}
+	\nor{L} = \sup\set{\nor{L(v)}}{v \in \S}.
+	\end{equation*}
+	\end{enumerate}
+\end{proof}
+
+
+
+
+\begin{proposition}
+Sejam $\E$ e $\E'$ espaços normados. A função
+	\begin{align*}
+	\func{\nor{\var}}{\toplin(\E,\E')}{\R}{L}{\nor{L}}
+	\end{align*}
+é uma norma em $\toplin(\E,\E')$.
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item (Separação) Seja $0 \in \toplin(\E,\E')$. Para todo $v \in E$,
+	\begin{equation*}
+	\nor{0(v)} = \nor{0}=0\nor{v},
+	\end{equation*}
+portanto $\nor{0}=0$.
+	
+	\item (Homogeneidade absoluta) Sejam $c \in C$ e $L \in \toplin(\E,\E')$. Se $c=0$, $\nor{0L}=\nor{0}=0$. Se $c \neq 0$, para todo $v \in E$ vale
+	\begin{equation*}
+	\nor{(cL)(v)} = \nor{cL(v)} = \abs{c}\nor{L(v)} \leq \abs{c}\nor{L}\nor{v}.
+	\end{equation*}
+Como $\nor{L}$ é ínfimo, então $\abs{c}\nor{L}$ deve ser também; caso contrário existiria $c \in \intfa{0}{\infty}$ tal que
+	\begin{equation*}
+	\abs{c}\nor{L(v)} \leq c\nor{v} < \abs{c}\nor{L}\nor{v},
+	\end{equation*}
+e seguiria que
+	\begin{equation*}
+	\nor{L(v)} \leq \frac{c}{\abs{c}}\nor{v} < \nor{L}\nor{v},
+	\end{equation*}
+o que contradiz a infimidade de $\nor{L}$.
+	
+	\item (Subaditividade) Sejam $L,L' \in \toplin(\E,\E')$. Para todo $v \in E$,
+	\begin{align*}
+	\nor{(L+L')(v)} &= \nor{L(v)+L'(v)} \\
+		&\leq \nor{L(v)} + \nor{L'(v)} \\
+		&\leq \nor{L}\nor{v} + \nor{L'}\nor{v} \\
+		&= (\nor{L}+\nor{L'})\nor{v},
+	\end{align*}
+portanto $\nor{L+L'} \leq \nor{L}+\nor{L'}$. \qedhere
+	\end{enumerate}
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Espaços normados completos}
+
+Espaços normados completos são espaços normados que são completos com respeito à métrica induzida pela sua norma. Esses espaços são comumente chamados de `espaços de Banach'\footnote{Em homenagem ao matemático polonês \emph{Stefan Banach} (30/03/1892 -- 31/08/1945).}. Aqui adotaremos simplesmente a nomenclatura de espaços normados completos. Os espaços normados completos mais comuns são os espaços lineares finitos com a norma $p$, sendo $p \in \intff{1}{\infty}$. Além desses espaços, um tipo de espaço mais geral (que inclui esses) são os chamados espaços de funções absolutamente $p$-somáveis. Esses espaços serão descritos nas seções a seguir.
+
+% UM ESPAÇO NORMADO SER COMPLETO IMPLICA QUE SEU CORPO É COMPLETO???? NÃO CONSIDERAMOS ESSA QUESTÃO EM GERAL PORQUE O CORPO É \R OU \C, MAS PARA UM CORPO NORADO QUALQUER PODE NÃO VALER. CLARAMENTE O CORPO SER COMPLETO NÃO IMPLICA QUE O ESPAÇO É COMPLETO, POIS EXISTEM ESPAÇOS NORMADOS REAIS QUE NÃO SÃO COMPLETOS.
+
+\begin{proposition}
+Sejam $\bm E$ um espaço linear sobre um corpo normado $(\bm C,\abs{\var})$ e $\nor{\var}, \nor{\var}'$ normas equivalentes em $\bm E$. O espaço $(\bm E,\nor{\var})$ é completo se, e somente se, $(\bm E,\nor{\var}')$ é completo.
+\end{proposition}
+
+Essa proposição mostra que, além de induzirem a mesma topologia, a propriedade completude --- que faz parte da estrutura uniforme, e não topológica, do espaço --- também é induzida por normas equivalentes.
+
+\begin{proposition}
+Sejam $\bm X$ um espaço topológico separado compacto e $(\bm C,\abs{\var})$ um corpo normado. A função
+	\begin{align*}
+	\func{\nor{\var}}{\Cont(X,C)}{\intfa{0}{\infty}}{f}{\sup_{x \in X} \abs{f(x)} = \max_{x \in X} \abs{f(x)}}
+	\end{align*}
+é uma norma em $\Cont(\bm X,\bm C)$ e, se $(\bm C,\abs{\var})$ é completo, o espaço $(\Cont(\bm X,\bm C),\nor{\var})$ é completo.
+\end{proposition}
+
+
+
+\begin{proposition}
+Sejam $\bm X$ um espaço topológico compacto e $(\bm L,\abs{\var})$ um espaço linear normado. A função
+	\begin{align*}
+	\func{\nor{\var}}{\Cont(X,L)}{\intfa{0}{\infty}}{f}{\max_{x \in X} \abs{f(x)}.}
+	\end{align*}
+é uma norma no espaço de funções contínuas $\Cont(\bm X,\bm L)$ que induz a mesma topologia do espaço. Se $(\bm L,\abs{\var})$ é completo, $\Cont(\bm X,\bm L)$ é completo.
+\end{proposition}
+\begin{proof}
+Primeiro temos que mostrar que a função $\nor{\var}$ está bem definida, ou seja, que para toda $f \in \Cont(X,L)$ existe $m \in \intfa{0}{\infty}$ tal que $m = \max_{x \in X} \abs{f(x)}$. Como $X$ é compacto, para toda $f \in \Cont(X,L)$ a imagem $f(X) \subseteq L$ é compacta, portanto $\abs{f(X)} \subseteq \intfa{0}{\infty}$ é compacto e $\max_{x \in X} \abs{f(x)} \in \intfa{0}{\infty}$.
+
+Mostremos agora que $\nor{\var}$ é uma norma em $\Cont(X,L)$: (Separação) Para toda $f \in \Cont(X,L)$, se $\nor{f} = 0$, então $\abs{f(x)} \leq 0$ para todo $x \in X$, logo $\abs{f(x)} = 0$ para todo $x \in X$, e segue pela separação de $\abs{\var}$ que $f(x)=0$, portanto $f=0$.
+
+(Homogeneidade absoluta) Para todos $c \in C$ e $f \in \Cont(X,L)$,
+	\begin{equation*}
+	\nor{cf} = \max_{x \in X} \abs{cf(x)} = \max_{x \in X} \abs{c}\abs{f(x)} = \abs{c} \max_{x \in X} \abs{f(x)} = \abs{c}\nor{f}.
+	\end{equation*}
+
+(Desigualdade triangular) Para todas $f,f' \in \Cont(X,L)$,
+	\begin{align*}
+	\nor{f+f'} &= \max_{x \in X} \abs{f(x)+f'(x)} \\
+		&\leq \max_{x \in X}(\abs{f(x)} + \abs{f'(x)}) \\
+		&= \max_{x \in X} \abs{f(x)} + \max_{x \in X} \abs{f'(x)} \\
+		&= \nor{f}+\nor{f'}.
+	\end{align*}
+
+% MOSTRAR QUE INDUZ A MESMA TOPOLOGIA.
+
+Por fim, mostremos que $\Cont(X,L)$ é completo. Seja $\{f_n\}_{n \in \N}$ uma sequência acumulante\footnote{Sequência de Cauchy.} em $\Cont(X,L)$.
+%Isso significa que, para todo $\varepsilon \in \intaa{0}{\infty}$, existe $N \in \N$ tal que, para todos $n,n' \in \N$ tais que $n,n' \geq N$,
+%	\begin{equation*}
+%	\nor{f_{n'} - f_n} \leq \varepsilon.
+%	\end{equation*}
+Notemos que, para cada $x \in X$, $\{f_n(x)\}_{n \in \N}$ é uma sequência acumulante em $L$, portanto uma sequência convergente, já que $L$ é completo. Isso significa que existe $f \in L^X$ que é o limite pontual de $\{f_n\}_{n \in \N}$: para todo $x \in X$,
+	\begin{equation*}
+	f(x) = \lim_{n \to \infty} f_n(x).
+	\end{equation*}
+Basta mostrar agora que $\{f_n\}_{n \in \N}$ converge para $f$ em $\Cont(X,L)$, pois isso mostra também que $f \in \Cont(X,L)$. Seja $\varepsilon \in \intaa{0}{\infty}$. Então existe $N \in \N$ tal que, para todos $n,n' \in \N$ tais que $n,n' \geq N$,
+	\begin{equation*}
+	\nor{f_{n'} - f_n} \leq \varepsilon.
+	\end{equation*}
+Logo, para todo $x \in X$,
+	\begin{equation*}
+	\abs{f(x) - f_n(x)} = \lim_{n' \to \infty} \abs{f_{n'} - f_n} \leq \varepsilon,
+	\end{equation*}
+o que implica que
+	\begin{equation*}
+	\nor{f-f_n} = \max_{x \in X} \abs{f(x)-f_n(x)} \leq \varepsilon.
+	\end{equation*}
+Isso mostra que $f_n \conv f$ em $\Cont(X,L)$.
+\end{proof}
+
+
+
+
+
+\subsection{Sequências absolutamente somáveis}
+
+\begin{definition}
+Seja $\bm L$ um espaço linear topológico sobre um corpo topológico $\bm C$. Uma \emph{sequência somável} em $\bm L$ é uma sequência $(v_n)_{n \in \N}$ em $L$ tal que a sequência
+	\begin{equation*}
+	\left( \sum_{k \in [n]} v_k \right)_{n \in \N}
+	\end{equation*}
+é convergente.
+\end{definition}
+
+\begin{definition}
+Sejam $(\bm E,\nor{\var})$ um espaço normado sobre um corpo normado $(\bm C,\abs{\var})$. Uma \emph{sequência absolutamente somável} em $\bm E$ é uma sequência $(v_n)_{n \in \N}$ em $E$ tal que a sequência
+	\begin{equation*}
+	\left( \sum_{k \in [n]} \nor{v_k} \right)_{n \in \N}
+	\end{equation*}
+é convergente.
+\end{definition}
+
+\begin{proposition}
+\label{ana:prop.abs.som.e.som}
+Sejam $(\bm E,\nor{\var})$ um espaço normado sobre um corpo normado $(\bm C,\abs{\var})$. O espaço $(\bm E,\nor{\var})$ é completo se, e somente se, toda sequência absolutamente $(v_n)_{n \in \N}$ é somável.
+\end{proposition}
+\begin{proof}
+Suponha que $(\bm E,\nor{\var})$ é completo. Seja $(v_n)_{n \in \N}$ um sequência absolutamente somável. Defina a sequência
+	\begin{equation*}
+	s_n := \left( \sum_{k \in [n]} v_k \right)_{n \in \N}
+	\end{equation*}
+em $E$. Para $m>1$,
+	\begin{equation*}
+	\nor{s_m - s_n} = \nor{\sum_{k=n}^{m-1} v_k} \leq \sum_{k=n}^{m-1} \nor{v_k}.
+	\end{equation*}
+Como as somas parciais de $\sum_{n \in \N} \nor{v_n}$ formam uma sequência convergente (e portanto aproximante), pois $(v_n)_{n \in \N}$ é absolutamente somável, $\sum_{k=n}^{m-1} \nor{v_k} \conv 0$ quando $n,m \conv \infty$. Isso mostra que $(s_n)_{n \in \N}$ é aproximante, e da completude de $(\bm E,\nor{\var})$ segue que é convergente, o que significa que $(v_n)_{n \in \N}$ é somável.
+
+Reciprocamente, suponha que toda sequência absolutamente somável em $(\bm E,\nor{\var})$ é somável. Seja $(v_n)_{n \in \N}$ uma sequência aproximante. Para mostrar que essa sequência converge, basta achar uma subsequência que converge. Escolha $(v_{n_k})_{k \in \N}$ tal que, para todo $k \in \N$, $\nor{v_{n_{k+1}} - v_{n_k}} < 2^{-k}$. Então $\sum_{k \in \N} \nor{v_{n_{k+1}} - v_{n_k}}$ converge, o que implica que $\sum_{k \in \N} \left( v_{n_{k+1}} - v_{n_k} \right)$ converge, já que toda sequência absolutamente somável é somável. Isso implica que a sequência $v_{n_m} = v_{n_0} + \sum_{k \in [m]} \left( v_{n_{k+1}} - v_{n_k} \right)$ converge. Portanto $(v_n)_{n \in \N}$ converge.
+\end{proof}
+
+\subsection{Espaços normados de dimensão finita}
+
+Espaços lineares $\bm E$ de dimensão finita $d \in \N$ sobre um corpo podem ser identificados com $\bm{C^d}$. Nesses casos, a menos que seja mencionado o contrário, sempre consideraremos a base canônica
+	\begin{equation*}
+	e_i = (0,\dots,0,\underbrace{1}_i,0,\dots,0)
+	\end{equation*}
+em $\bm{C^d}$ e todo vetor $v \in \bm{C^d}$ será representado como $v=(v_0,\dots,v_{d-1})$.
+
+\begin{definition}
+Sejam $\bm E$ um espaço linear finito $d$-dimensional sobre um corpo normado $(\bm C,\abs{\var})$ e $p \in \intfa{1}{\infty}$. A \emph{norma $p$} em $\bm E$ é a função
+	\begin{align*}
+	\func{\nor{\cdot}_p}{E}{\R}{v}{\left(\sum_{i=0}^{d-1}\abs{v_i}^p\right)^{\frac{1}{p}}}.
+	\end{align*}
+A \emph{norma $\infty$} em $\bm E$ é a função
+	\begin{align*}
+	\func{\nor{\cdot}_\infty}{E}{\R}{v}{\max_{i \in [d]} \abs{v_i}}.
+	\end{align*}
+\end{definition}
+
+Pode-se verificar que $\displaystyle\lim_{p \conv \infty} \nor{v}_p = \nor{v}_\infty$.
+
+\begin{proposition}
+Sejam $\bm E$ um espaço linear finito $d$-dimensional sobre um corpo normado $(\bm C,\abs{\var})$ e $p \in \intfa{1}{\infty}$.
+	\begin{enumerate}
+	\item A norma $p$ em $\bm E$ é uma norma;
+	\item Para todo $v \in E$,
+		\begin{equation*}
+		\nor{v}_\infty \leq \nor{v}_p \leq d^{p\inv}\nor{v}_\infty.
+		\end{equation*}
+	\end{enumerate}
+\end{proposition}
+
+\begin{proposition}
+Sejam $\bm E$ um espaço vetorial sobre um corpo normado completo $(\bm C,\abs{\var})$.
+	\begin{enumerate}
+	\item A bola $\B$ é compacta se, e somente se, a dimensão de $\bm E$ é finita.
+	\item Se a dimensão de $\bm E$ é finita, todas normas em $\bm E$ são equivalentes;
+	\item Se a dimensão de $\bm E$ é finita, todas as normas fazem de $\bm E$ um espaço completo. 
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item Será demonstrado mais adiante.
+	
+	\item Vamos mostrar que toda norma em $\bm E$ é equivalente a $\nor{\cdot}_1$ e, como equivalência de normas é uma relação de equivalência, seguirá que todas normas são equivalentes em $\bm E$. Seja $\nor{\cdot}$ uma norma em $\bm E$. Para todo $v \in E$, definindo $c := \max_{i \in [d]} \nor{e_i}$, em que $\{e_i\}_{i \in [d]}$ é a base canônica de $\bm E$, segue que
+	\begin{equation*}
+	\nor{v} = \nor{\sum_{i=0}^{d-1} v_ie_i} \leq \sum_{i=0}^{d-1}\abs{v_i}\nor{e_i} \leq c\nor{v}_1.
+	\end{equation*}
+A outra parte da equivalência segue do fato de que todo conjunto fechado e limitado em $\C$ é sequencialmente compacto.
+
+Suponha, por absurdo, que não exista $C \in \intaa{0}{\infty}$ tal que, para todo $v \in E$, $C\inv\nor{v}_1 \leq \nor{v}$. Assim, para todo $n \in \N$, existe $v_n \in E$ com $\nor{v_n}_1 = 1$ e $1 = \nor{v_n}_1 > N\nor{v_n}$. Como $\S$ é compacta, já que a dimensão é finita, existe subsequência $(v_{n_k})_{k \in \N}$ convergindo a $v'$ em $(\bm E,\nor{\var}_1)$. Como a norma é contínua, segue que $\nor{v'}_1 = 1$. Pela desigualdade anterior, tem-se
+	\begin{equation*}
+	\nor{v'} \leq \nor{v' - v_{n_k}} + \nor{v_{n_k}} \leq c\nor{v' - v_{n_k}}_1 + \frac{1}{n_k},
+	\end{equation*}
+que converge para $0$ quando $k \conv \infty$; ou seja, $\nor{v'}=0$ e portanto $v'=0$, o que contradiz $\nor{v'}_1=1$.
+
+	\item Como todas as normas são equivalentes, basta provar para $\nor{\var}_1$. Seja $(v_n)_{n \in \N} = (\sum_{i \in [d]} v_n^i e_i)_{n \in \N}$ uma sequência aproximante em $(\bm E,\nor{\var}_1)$. Como
+		\begin{equation*}
+		\sum_{i \in [d]} \abs{v_n^i - v_{n'}^i} = \nor{v_n - v_{n'}}_1,
+		\end{equation*}
+segue que, para todo $i \in [d]$, a sequência $(v_n^i)_{n \in \N}$ é aproximante em $\bm C$ e então, da completude de $\bm C$, converge para algum $v_\infty^i \in C$. Definindo $v_\infty := \sum_{i \in [d]} v_\infty^ie_i$ em $\bm E$, segue que
+	\begin{equation*}
+	\lim_{n \conv \infty} \nor{v_n - v_\infty}_1 = \lim_{n \conv \infty} \sum_{i \in [d]} \abs{v_n^i - v_\infty^i} = 0,
+	\end{equation*}
+ou seja, $(v_n)_{n \in \N} \conv v_\infty$ e o espaço é completo.	
+	\end{enumerate}
+\end{proof}
+
+Concluímos que um espaço linear normado de dimensão finita tem uma única topologia determinada por norma.
+% Essa topologia é chamada às vezes de \emph{topologia uniforme}.
+Portanto todas noções topológicas relacionadas a espaços normados são independentes da norma escolhida.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection{Espaços de funções absolutamente somáveis}
+
+\newcommand{\Smvl}{\mathscr{S}}
+
+\begin{definition}
+Sejam $X$ um conjunto, $(\bm C,\abs{\var})$ um corpo normado
+%completo?
+ e $p \in \intfa{0}{\infty}$. Uma função \emph{absolutamente $p$-somável} (ou \emph{absolutamente somável na potência $p$}) é uma função $f\colon X \to C$ tal que
+	\begin{equation*}
+	\sum_{x \in X} \abs{f(x)}^p < \infty.
+	\end{equation*}
+O conjunto das funções absolutamente $p$-somáveis é denotado $\Smvl^p(X,C)$.
+
+Uma função \emph{absolutamente $\infty$-somável} (ou \emph{absolutamente somável na potência $\infty$}, ou ainda \emph{essencialmente absolutamente somável}) é uma função $f\colon X \to C$ tal que
+	\begin{equation*}
+	\sup_{x \in X} \abs{f(x)} < \infty.
+	\end{equation*}
+O conjunto das funções absolutamente $\infty$-somáveis é denotado $\Smvl^\infty(X,C)$.
+\end{definition}
+
+Note que as definições implicam que, para todo $p \in \intff{0}{\infty}$, as funções $f \in \Smvl^p(X,C)$ são nulas a menos de um subconjunto contável de $X$; ou seja, têm suporte contável: $\card{\supp(f)} \leq \card{\N}$. O conjunto $\Smvl^0(X,C)$ é, de fato, o conjunto de funções com suporte finito, pois a soma será finita se, e somente se, a função tiver uma quantidade finita de valores. O conjunto $\Smvl^\infty(X,C)$ é o conjunto das funções de valor absoluto (ou norma) limitado. Quando $X=\N$ ou $X=\Z$, os espaços são espaços de sequências infinitas unilaterais ou bilaterais, respectivamente. Esses espaços são todos subespaços lineares do espaço $C^X$ de funções $f\colon X \to C$, que é espaço linear já que o corpo $\bm C$ é um espaço linear sobre si mesmo.
+
+\begin{proposition}
+Sejam $X$ um conjunto, $(\bm C,\abs{\var})$ um corpo normado
+%completo?
+ e $p \in \intfa{0}{\infty}$. O espaço $\Smvl^p(X,C)$ é subespaço linear de $C^X$.
+\end{proposition}
+\begin{proof}
+Consideramos dois casos. (1) Seja $p \in \intfa{1}{\infty}$. Para todos $c \in C$ e $f,f' \in \Smvl^p(X,C)$,
+	\begin{align*}
+	\sum_{x \in X} \abs{(cf+f')(x)}^p &= \sum_{x \in X} \abs{cf(x)+f'(x)}^p \\
+		&\leq \sum_{x \in X} \left( \abs{c}\abs{f(x)}+ \abs{f'(x)} \right)^p \\
+		&\leq 2^{p-1} \left( \abs{c}^p \sum_{x \in X} \abs{f(x)}^p + \sum_{x \in X} \abs{f'(x)}^p \right) \\
+		&< \infty,
+	\end{align*}
+pois $\sum_{x \in X} \abs{f(x)}^p < \infty$ e $\sum_{x \in X} \abs{f'(x)}^p < \infty$. Isso mostra que $cf+f' \in \Smvl^p(X,C)$, portanto que $\Smvl^p(X,C)$ é um espaço linear, subespaço de $C^X$.
+
+(2) Para todos $c \in C$ e $f,f' \in \Smvl^\infty(X,C)$,
+	\begin{equation*}
+	\sup_{x \in X} \abs{(cf+f')(x)} \leq \abs{c}\sup_{x \in X} \abs{f(x)} + \sup_{x \in X} \abs{f'(x)} < \infty,
+	\end{equation*}
+pois $\sup_{x \in X} \abs{f(x)} < \infty$ e $\sup_{x \in X} \abs{f'(x)} < \infty$. Isso mostra que $cf+f' \in \Smvl^\infty(X,C)$, portanto que $\Smvl^\infty(X,C)$ é um espaço linear, subespaço de $C^X$.	
+\end{proof}
+
+Embora esses espaços possam ser definidos para quaisquer $p \in \intff{0}{\infty}$ e sejam espaços lineares em todos os casos, nem todos esses espaços admitem os mesmos tipos de estrutura além da de espaço linear.
+
+\begin{definition}
+Sejam $X$ um conjunto e $(\bm C, \abs{\var})$ um corpo normado.
+	\begin{enumerate}
+	\item Para todo $p \in \intfa{0}{1}$, a \emph{distância $p$} entre $f,f' \in \Smvl^p(X,C)$ é
+	\begin{equation*}
+	\dist{f}{f'}_p :=  \sum_{x \in X} \abs{f'(x) - f(x)}^p.
+	\end{equation*}
+
+	\item Para todo $p \in \intfa{1}{\infty}$, a \emph{norma $p$} de $f \in \Smvl^p(X,C)$ é
+	\begin{equation*}
+	\nor{f}_p := \left( \sum_{x \in X} \abs{f(x)}^p \right)^{p\inv}.
+	\end{equation*}
+A \emph{norma $\infty$} de $f \in \Smvl^\infty(X,C)$ é
+	\begin{equation*}
+	\nor{f}_\infty := \sup_{x \in X} \abs{f(x)}.
+	\end{equation*}
+	\end{enumerate}
+\end{definition}
+
+A função $\nor{\var}_p$ é uma norma em $\Smvl^p(X,C)$, a \emph{norma $p$}, e $p$ pode ser descrito como a \emph{potência} da norma e do espaço. Quando $X$ é finito, esse espaço é simplesmente o espaço vetorial finito $C^X$ definido anteriormente e as $p$-normas definidas para espaços de dimensão finita coincidem com essas. Quando $X=\N$ ou $X=\Z$, os espaços são espaços de sequências infinitas unilaterais ou bilaterais, respectivamente.
+
+\begin{proposition}
+Sejam $X$ um conjunto e $(\bm C, \abs{\var})$ um corpo normado completo.
+	\begin{enumerate}
+	\item Para todo $p \in \intfa{0}{1}$, o espaço $(\Smvl^p(X,C),\dist{\var}{\var}_p)$ é um espaço métrico completo;
+
+	\item Para todo $p \in \intff{1}{\infty}$, o espaço $(\Smvl^p(X,C),\nor{\var}_p)$ é um espaço normado completo.
+	\end{enumerate}
+\end{proposition}
+
+
+\subsection{Espaços de funções absolutamente integráveis}
+
+Consideraremos funções de um espaço de medida $\bm X$ para um corpo normado $\bm C$. Esse corpo deve ser entendido, em geral, como $\R$ ou $\C$, pois alguns detalhes não serão especificados, por exemplo qual a estrutura de espaço de medida de um corpo normado qualquer, ou ainda um problema maior, o que é a integral de uma função com valores em um corpo qualquer.
+
+Lembremos que o conjunto de funções mensuráveis de $\bm X$ para $\bm C$ é denotadas $\Men(\bm X,\bm C)$ e o conjunto das quase funções (classe de equivalência de funções que são iguais a menos de um conjunto de medida nula) mensuráveis é denotado $\Menq(\bm X,\bm C)$.
+
+Antes da definição a seguir, ressaltamos dois comentários. Primeiro, definimos que elevar um número positivo a $0$ dará o seguinte resultado:
+	\begin{align*}
+	\func{(\var)^0}{\intfa{0}{\infty}}{\intfa{0}{\infty}}{x}{
+		\begin{cases}
+			0,& x=0 \\
+			1,& x \neq 0.
+		\end{cases}
+	}
+	\end{align*}
+
+Isso faz com que, para toda função $f\colon X \to C$,
+	\begin{equation*}
+	\abs{f}^0 = \idc_{\supp(f)}.
+	\end{equation*}
+
+Segundo, lembremos que o supremo essencial de uma função $f$ é definido por
+	\begin{equation*}
+	\supess (f) := \inf \set{t \in \intaa{0}{\infty}}{\qforall_{x \in X} f(x) \leq t},
+	\end{equation*}
+em que $\qforall$ é `para quase todo', ou seja, existe conjunto nulo $N$ tal que, para todo $x \in X \setminus N$, a propriedade vale.
+
+\begin{definition}
+Sejam $\bm X$ um espaço de medida, $(\bm C,\abs{\var})$ um corpo normado e $p \in \intfa{0}{\infty}$. Uma função \emph{absolutamente $p$-integrável}\footnote{Essas funções não recebem esse nome usualmente. O espaço $\Intg^p(\bm X,\bm C)$ é geralmente chamado de espaço $L^p(\bm X,\bm C)$, em homenagem a Henri Lebesgue, embora de acordo com conjunto dos Bourbaki o criador dos espaços tenha sido Frigyes Riesz (\url{https://en.wikipedia.org/wiki/Lp_space}).} de $\bm X$ para $\bm C$ é uma função $f \in \Men(\bm X,\bm C)$ tal que
+	\begin{equation*}
+	\int \abs{f}^p \dd\med < \infty.
+	\end{equation*}
+O conjunto das quase funções absolutamente $p$-integráveis é denotado $\Intg^p(\bm X,\bm C)$.
+
+Uma função \emph{absolutamente $\infty$-integrável} é uma função $f \in \Men(\bm X,\bm C)$ tal que
+	\begin{equation*}
+	\supess(\abs{f}) < \infty.
+	\end{equation*}
+O conjunto das quase-funções absolutamente $\infty$-integráveis é denotado $\Intg^\infty(\bm X,\bm C)$.
+\end{definition}
+
+Note que, os espaços $\Intg^p(\bm X,\bm C)$ são espaços de quase funções, ou seja, espaços de classes de equivalência de funções, cuja equivalência é ser igual a menos de um conjunto de medida nula. Na prática, trataremos essas quase funções como funções, mas esse detalhe tem que estar sempre claro para o leitor.
+
+Por definição, para todo $p \in \intff{0}{\infty}$, vale que
+	\begin{equation*}
+	\Intg^p(\bm X,\bm C) \subseteq \Menq(\bm X,\bm C),
+	\end{equation*}
+pois $\Menq(\bm X,\bm C)$ é o espaço de quase-funções mensuráveis. As inclusões não são somente de conjuntos, no entanto. De fato, como $\Menq(\bm X,\bm C)$ é um espaço linear, os espaços $\Intg^p(\bm X,\bm C)$ herdam uma estrutura de espaço linear e pode-se mostrar que eles são subespaços lineares de $\Menq(\bm X,\bm C)$. Inclusões relacionando diferentes espaços $\Intg^p(\bm X,\bm C)$ e $\Intg^q(\bm X,\bm C)$ não são tão óbvias e não serão abordadas por enquanto. O caso em que $p=0$ nos dá que $\Intg^0(\bm X,\bm C)$ é o conjunto das funções cujo suporte tem medida finita.
+
+Esta proposição auxiliará a demonstração da proposição seguinte.
+
+% Relacionada com \url{https://en.wikipedia.org/wiki/Jensen%27s_inequality}.
+\begin{proposition}
+\label{ana:prop.desig.pot.soma}
+Sejam $a,b \in \intff{0}{\infty}$.
+	\begin{enumerate}
+%	\item 
+%		\begin{equation*}
+%		\frac{a+b}{1+a+b} \leq \frac{a}{1+a} + \frac{b}{1+b};
+%		\end{equation*}
+	\item Para todo $p \in \intff{0}{1}$,
+		\begin{equation*}
+		(a+b)^p \leq a^p + b^p;
+		\end{equation*}
+	\item Para todo $p \in \intfa{1}{\infty}$,
+		\begin{equation*}
+		(a+b)^p \leq 2^{p-1}(a^p+b^p).
+		\end{equation*}
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item Para $p \in \intff{0}{1}$, como a função
+		\begin{align*}
+		\func{(\var)^p}{\intfa{0}{\infty}}{\intfa{0}{\infty}}{t}{t^p}
+		\end{align*}
+é côncava\footnote{Inclusive para $p=0$ e $p=1$.} e $0^p = 0 \geq 0$, segue que ela é subaditiva\footnote{A demonstração é simples e pode ser conferida em \url{https://en.wikipedia.org/wiki/Subadditivity}}.
+%	Seja $q:=1-p$. Então
+%		\begin{align*}
+%		(a+b)^p &= (a+b)^{1-q} \\
+%			&= a(a+b)^{-q} + b(a+b)^{-q} \\
+%			&\leq aa^{-q} + bb^{-q} \\
+%			&= a^p + b^p.
+%		\end{align*}
+	
+	\item Para $p \in \intfa{1}{\infty}$, como a função
+		\begin{align*}
+		\func{(\var)^p}{\intfa{0}{\infty}}{\intfa{0}{\infty}}{t}{t^p}
+		\end{align*}
+é convexa\footnote{Note que vale também para $p=1$.}, segue que
+		\begin{equation*}
+		(a+b)^p = 2^p(2\inv a + 2\inv b)^p \leq 2^p \left( 2\inv a^p + 2\inv b^p \right) = 2^{p-1} (a^p + b^p).
+		\end{equation*}
+	\end{enumerate}
+\end{proof}
+
+\begin{proposition}
+Sejam $\bm X$ um espaço de medida, $\bm C$ um corpo normado e $p \in \intff{0}{\infty}$. O espaço $\Intg^p(\bm X,\bm C)$ é um espaço linear.
+% PRECISO EXPLICAR O QUE É UMA FUNÇÃO DE X PARA O CORPO NORMADO C SER MENSURÁVEL. O CORPO NORMADO C TEM É UM ESPAÇO DE MEDIDA?? COMO?? PROVAVELMENTE USANDO A DISTÂNCIA, PORQUE ELA DEFINE UMA MEDIDA EM C, E ESSA MEDIDA BATE COM A MEDIDA DE \R. MAS ELA BATE COM A DE \C TAMBÉM?? PROVAVELMENTE SIM, MAS TEM QUE SER CONFERIDO.
+\end{proposition}
+\begin{proof}
+Demonstraremos que os espaços $\Intg^p(\bm X,\bm C)$ são espaços lineares mostrando que são subespaços lineares de $\Menq(\bm X,\bm C)$. Sejam $c \in C$ e $f,f' \in \Intg^p(\bm X,\bm C)$. Consideramos três casos.
+	\begin{enumerate}
+	\item Seja $p \in \intfa{0}{1}$. Segue de \ref{ana:prop.desig.pot.soma} e da homogeneidade absoluta e subaditividade de $\abs{\var}$ que
+		\begin{equation*}
+		\abs{cf+f'}^p \leq \abs{\abs{cf}+\abs{f'}}^p \leq \abs{c}^p\abs{f}^p +  \abs{f'}^p.
+		\end{equation*}
+Como $\int \abs{f}^p \dd\med < \infty$ e $\int \abs{f'}^p \dd\med < \infty$,
+		\begin{align*}
+		\int \abs{cf+f'}^p \dd\med &\leq \int \left( \abs{c}^p\abs{f}^p +  \abs{f'}^p \right) \dd\med \\
+			&= \abs{c}^p \int \abs{f}^p \dd\med + \int \abs{f'}^p \dd\med \\
+			&< \infty,
+		\end{align*}
+o que mostra que $cf+f' \in \Intg^p(\bm X,\bm C)$.
+	
+	\item Seja $p \in \intfa{1}{\infty}$. Segue de \ref{ana:prop.desig.pot.soma} e da homogeneidade absoluta e subaditividade de $\abs{\var}$ que
+		\begin{equation*}
+		\abs{cf+f'}^p \leq \abs{\abs{cf}+\abs{f'}}^p \leq 2^{p-1}\left( \abs{c}^p\abs{f}^p +  \abs{f'}^p \right).
+		\end{equation*}
+
+Como $\int \abs{f}^p \dd\med < \infty$ e $\int \abs{f'}^p \dd\med < \infty$, segue dessa desigualdade que
+	\begin{align*}
+	\int \abs{cf+f'}^p \dd\med &\leq \int 2^{p-1} \left( \abs{c}^p\abs{f}^p + \abs{f'}^p \right) \dd\med \\
+		&= 2^{p-1} \left( \abs{c}^p \int \abs{f}^p \dd\med + \int \abs{f'}^p \dd\med \right) \\
+		&< \infty,
+	\end{align*}
+o que mostra que $cf+f' \in \Intg^p(\bm X,\bm C)$.
+	
+	\item Para $p=\infty$, é claro que, como $\abs{cf+f'} \leq \abs{c}\abs{f} + \abs{f'}$,
+	\begin{equation*}
+	\supess(\abs{cf+f'}) \leq \abs{c}\supess(\abs{f}) + \supess(\abs{f'}) < \infty,
+	\end{equation*}
+pois $\supess(\abs{f}) < \infty$ e $\supess(\abs{f'}) < \infty$, o que mostra que $cf+f' \in \Intg^\infty(\bm X,\bm C)$.								\qedhere
+	\end{enumerate}
+\end{proof}
+
+\begin{definition}
+Sejam $\bm X$ um espaço de medida e $(\bm C, \abs{\var})$ um corpo normado. 
+	\begin{enumerate}
+%	\item A \emph{distância $0$} entre $f,f' \in \Menq(X,C)$ é
+%		\begin{equation*}
+%		\dist{f,f'}_0 := \int \frac{\abs{f'-f}}{1+\abs{f'-f}} \dd\med.
+%		\end{equation*}
+%
+	\item Para todo $p \in \intfa{0}{1}$, a \emph{distância $p$} entre $f,f' \in \Menq(\bm X,\bm C)$ é
+		\begin{equation*}
+		\dist{f}{f'}_p := \int \abs{f'-f}^p \dd\med.
+		\end{equation*}
+
+	\item Para todo $p \in \intfa{1}{\infty}$, a \emph{norma $p$} de $f \in \Menq(\bm X,\bm C)$ é
+		\begin{equation*}
+		\nor{f}_p := \left( \int \abs{f}^p \dd\med \right)^{p\inv}.
+		\end{equation*}
+
+	\item A \emph{norma $\infty$} de $f \in \Menq(\bm X,\bm C)$ é
+		\begin{equation*}
+		\nor{f}_\infty := \supess(\abs{f}).
+		\end{equation*}
+	\end{enumerate}
+\end{definition}
+% A topologia induzida em $\Menq(X,C)$ pela métrica é a topologia de convergência em medida. Estudar melhor a convergência em medida.
+
+Esses valores nem sempre são menores que $\infty$ para qualquer quase-função mensurável. As distâncias $p$ são de fato distâncias quando restritas a $\Intg^p(\bm X,\bm C)$, $p \in \intfa{0}{1}$, e as normas $p$ são de fato normas quando restritas a $\Intg^p(\bm X,\bm C)$, $p \in \intff{1}{\infty}$, mas ainda não demonstraremos isso. Para essas demonstrações, precisamos primeiro estabelecer algumas desigualdade clássicas que envolvem esses valores. Essas normas serão avaliadas mais à frente em quase-funções mensuráveis quaisquer,
+
+\subsubsection{Desigualdades das normas \ensuremath{p}}
+
+Nesta seção, trabalharemos com pares de números $p,q \in \intff{1}{\infty}$ tais que
+	\begin{equation*}
+	p\inv + q\inv = 1.
+	\end{equation*}
+Esses números $p$ e $q$ são às vezes chamados de `conjugados de Hölder'. Como $p\inv + q\inv = 1$, segue que $q = \frac{p}{p-1}$. Além disso, esses são os pares de números cuja média harmônica é igual a $2$, já que
+	\begin{equation*}
+	H(p,q) = \frac{2}{p\inv + q\inv} = 2.
+	\end{equation*}
+Por causa disso, chamaremos esses números de \textit{duais harmônicos}\footnote{A escolha do termo \textit{dual} ficará clara mais adiante, quando forem analisadas as propriedades do espaço dual de $\Intg^p$}. O fato de $2$ ser o dual de $2$ será relevante na teoria de espaços com produto interno completos. Sob essa perspectiva, $2$ está no `meio da caminho' entre $1$ e $\infty$. Deve-se comentar a respeito de $p=1$ ou $p=\infty$. Consideraremos que $1$ e $\infty$ são duais harmônicos, como se tivéssemos $\infty\inv=0$, de modo que $1\inv + \infty\inv = 1$. Em geral, no entanto, tomaremos cuidado para não realizarmos operações mal definidas com $0$ e $\infty$, e na prática bastará a afirmação de que $1$ e $\infty$ são conjugados.
+
+\begin{definition}
+A função \emph{dual harmônico} em $\intff{1}{\infty}$ é
+	\begin{align*}
+	\func{\dual}{\intff{1}{\infty}}{\intff{1}{\infty}}{p}{p\dual = 
+	\begin{cases}
+		\infty,& p=1 \\
+		\displaystyle\frac{p}{p-1},& p \in \intaa{1}{\infty} \\
+		1,& p=\infty
+	\end{cases}	
+	}.
+	\end{align*}
+\end{definition}
+
+\begin{figure}
+\centering
+\begin{tikzpicture}[scale=1]
+%	\draw (1,1) node[anchor=east] {$1$} -- (2,1) node[anchor=north] {$2$} -- (6,1) node[anchor=north] {$\infty$};
+	\draw (6/5,6/5) node[anchor=east] {$1$} -- (2,6/5) node[anchor=north] {$2$} -- (6,6/5) node[anchor=north] {$\infty$};
+%	\draw (1,1) -- (1,2) node[anchor=east] {$2$} -- (1,6) node[anchor=east] {$\infty$};
+	\draw (6/5,6/5) -- (6/5,2) node[anchor=east] {$2$} -- (6/5,6) node[anchor=east] {$\infty$};
+%	\draw[dotted] (2,1) -- (2,2) -- (1,2);
+	\draw[dotted] (2,6/5) -- (2,2) -- (6/5,2);
+%	\draw plot [domain=6/5:6,smooth] (\x,{\x/(\x-1)});
+	\draw plot [domain=6/5:6,smooth] (\x,{\x/(\x-1)});
+\end{tikzpicture}
+\caption{Gráfico da função $\dual\colon \intff{1}{\infty} \to \intff{1}{\infty}, p \mapsto \frac{p}{p-1}$.}
+\label{fig:dual.harmonico}
+\end{figure}
+
+\begin{proposition}[\footnote{Essa desiguldade é conhecida como `desigualdade de produtos de Young', em homenagem ao matemático inglês \textit{William Henry Young} (20/10/1863 – 07/07/1942). \url{https://en.wikipedia.org/wiki/Young\%27s_inequality_for_products}.}]
+\label{prop:ana.desig.young}
+Sejam $a,b \in \intfa{0}{\infty}$ e $p \in \intaa{1}{\infty}$. Então
+	\begin{equation*}
+	ab \leq a^p p\inv + b^{p\dual} {p\dual}\inv
+	\end{equation*}
+e a igualdade vale se, e somente se, $a^p = b^{p\dual}$.
+\end{proposition}
+\begin{proof}
+Para $a=0$ ou $b=0$, a afirmação é claramente verdadeira. Considere $a \neq 0$ e $b \neq 0$. Como $p\inv + {p\dual}\inv = 1$, da concavidade da função logarítmica segue que
+	\begin{align*}
+	\log(ab) = \log(a) + \log(b) = p\inv \log(a^p) + {p\dual}\inv \log(b^{p\dual}) \leq \log(p\inv a^p + {p\dual}\inv b^{p\dual}).
+	\end{align*}
+e a igualdade vale se, e somente se, $a^p = b^{p\dual}$. Como a função exponencial é crescente, conclui-se que $ab \leq a^p p\inv + b^{p\dual} {p\dual}\inv$.
+\end{proof}
+
+Essa desigualdade será usada na próxima demonstração.
+
+% DEMONSTRAÇÃO ALTERNATIVA SUGERIDA NO EXERCÍCIO 1.20 (p.9) DO LIVRO INTRODUÇÃO À ANÁLISE FUNCIONAL DE CÉSAR R. DE OLIVEIRA
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{comment}
+
+\begin{proposition}
+Sejam $p \in \intaa{1}{\infty}$, $q:= \frac{p}{p-1} \in \intaa{0}{\infty}$ (de modo que $p\inv + q\inv = 1$) e
+	\begin{align*}
+	\func{f}{\intfa{0}{\infty}}{\R}{t}{\frac{t^p}{p}-t}.
+	\end{align*}
+	\begin{enumerate}
+	\item O mínimo de $f$ é atingido em $t=1$ e vale $f(1)=-\frac{1}{q}$;
+	
+	\item Para todo $t \in \intfa{0}{\infty}$,
+		\begin{equation*}
+		t \leq \frac{t^p}{p} + \frac{1}{q};
+		\end{equation*}
+	
+	\item Para todos $r,s \in \intfa{0}{\infty}$,
+		\begin{equation*}
+		rs \leq \frac{r^p}{p} + \frac{s^q}{q}.
+		\end{equation*}
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+Primeiro, ressaltamos que $q p\inv = (p-1)\inv$, $q p\inv - q = -1$ e $q p\inv +1=q$, pois isso facilitará as contas.
+	\begin{enumerate}
+	\item A função $f$ é claramente contínua e diferenciável em $\intaa{0}{\infty}$. A diferencial de $f$ é $\D f(t) = t^{p-1}-1$, o que implica que, se $\D f(t)=0$, $t=1$. Temos que $f(1)=\frac{1^p}{p}-1 = -\frac{p-1}{p} = -\frac{1}{q}$. Para mostrar que esse é o mínimo, basta notar que $f(0)=0 > -\frac{p-1}{p}$.
+	
+	\item Como $t=1$ é um ponto de mínimo, segue que
+		\begin{equation*}
+		-\frac{1}{q} = f(1) \leq \frac{t^p}{p}-t,
+		\end{equation*}
+logo
+		\begin{equation*}
+		t \leq \frac{t^p}{p} + \frac{1}{q}.
+		\end{equation*}
+	
+	\item Para $r=0$ ou $s=0$, é direto notar que a desigualdade é válida. Para $r \neq 0$ e $s \neq 0$, tomamos $t=r s^{-qp\inv}$ na desigualdade do item anterior e segue que
+		\begin{equation*}
+		r s^{-qp\inv} \leq \left( r s^{-q p\inv} \right)^p p\inv + q\inv = r^p s^{-q} p\inv + q\inv,
+		\end{equation*}
+então
+		\begin{equation*}
+		r \leq r^p s^q s^{qp\inv} p\inv + s^{qp\inv}q\inv = r^p s\inv p\inv + s^{qp\inv}q\inv,
+		\end{equation*}
+portanto
+		\begin{equation*}
+		rs \leq r^p p\inv + s^{qp\inv+1}q\inv = r^p p\inv+s^q q\inv.					\qedhere
+		\end{equation*}
+	\end{enumerate}
+\end{proof}
+
+\begin{figure}
+\centering
+\begin{tikzpicture}[scale=2]
+	\draw (0,0) node[anchor=east] {$0$} -- (1,0) node[anchor=south] {$1$} -- (2,0);
+	\draw (0,-1) -- (0,-2/3) node[anchor=east] {$-\frac{1}{q} = -\frac{p}{p-1}$} -- (0,0) -- (0,2);
+	\draw[dotted] (1,0) -- (1,-2/3) -- (0,-2/3);
+	\draw plot [domain=0:2,smooth] (\x,{\x^3/3 - \x});
+\end{tikzpicture}
+\caption{Gráfico da função $f\colon \intfa{0}{\infty} \to \R, t \mapsto \frac{t^p}{p}-t$ para $p \in \intaa{1}{\infty}$.}
+\label{fig:desig.young.alter}
+\end{figure}
+
+\end{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{proposition}[\footnote{Essa desigualdade é conhecida como `desigualdade de Hölder', em homenagem ao matemático alemão \textit{Otto Ludwig Hölder} (22/12/1859 – 29/08/1937). \url{https://en.wikipedia.org/wiki/H\%C3\%B6lder\%27s_inequality}.}]
+\label{prop:ana.desig.holder}
+Sejam $\bm X$ um espaço de medida, $(\bm C,\abs{\var})$ um corpo normado e $p \in \intff{1}{\infty}$. Para todas funções $f,f' \in \Menq(\bm X,\bm C)$,
+	\begin{equation*}
+%	\abs{\inte{f}{f'}}^2 \leq 
+	\nor{ff'}_1 \leq \nor{f}_p \nor{f'}_{p\dual}.
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+Primeiro, tratamos de alguns casos triviais. Se $\nor{f}_p=0$, então $f=0$, portanto $ff'=0$ e segue que $\nor{ff'}_1=0$, logo a desigualdade vale. O mesmo vale para $\nor{f'}_{p\dual}=0$, portanto assumimos que $\nor{f}_p \neq 0$ e $\nor{f'}_{p\dual} \neq 0$. Se $\nor{f}_p=\infty$ ou $\nor{f'}_{p\dual}=\infty$, então $\nor{f}_p \nor{f'}_{p\dual}=\infty$, logo a desigualdade vale. Portanto assumimos também que $\nor{f}_p \neq \infty$ e $\nor{f'}_{p\dual} \neq \infty$. Se $p=\infty$ e ${p\dual}=1$, então $\abs{ff'} \leq \nor{f}_\infty \abs{f'}$ quase sempre, e a desigualdade segue da monotonicidade da integral. O mesmo vale para $p=1$ e ${p\dual}=\infty$, portanto podemos assumir ainda que $p,{p\dual} \in \intaa{1}{\infty}$.
+
+Pela desigualdade de produtos \ref{prop:ana.desig.young}, segue que, para todo $x \in X$,
+	\begin{equation*}
+	\abs{\frac{f(x)}{\nor{f}_p} \frac{f'(x)}{\nor{f'}_{p\dual}}} \leq \abs{\frac{f(x)}{\nor{f}_p}}^p p\inv + \abs{\frac{f'(x)}{\nor{f'}_{p\dual}}}^{p\dual} {p\dual}\inv.
+	\end{equation*}
+Integrando ambos os lados, segue que
+	\begin{equation*}
+	\frac{\nor{ff'}_1}{\nor{f}_p \nor{f'}_{p\dual}} \leq \frac{\nor{f}_p^p}{\nor{f}_p^p} p\inv + \frac{\nor{f'}_{p\dual}^{p\dual}}{\nor{f'}_{p\dual}^{p\dual}} {p\dual}\inv = p\inv + {p\dual}\inv = 1,
+	\end{equation*}
+portanto $\nor{ff'}_1 \leq \nor{f}_p \nor{f'}_{p\dual}$, o que demonstra a proposição.
+\end{proof}
+
+\subsubsection{Os espaços de funções absolutamente integráveis são normados (e completos)}
+
+Para todo $p \in \intff{0}{\infty}$, os espaços $\Intg^p(\bm X,\bm C)$ são espaços lineares, pois são subespaços de $\Menq(\bm X,\bm C)$. Além disso, para $p \in \intff{1}{\infty}$, a norma $p$ é de fato uma norma em $\Intg^p(\bm X,\bm C)$ e, se o corpo normado $\bm C$ for completo, a distância induzida pela norma faz de $\Intg^p(\bm X,\bm C)$ um espaço normado completo\footnote{Esse resultado de completude é conhecido por `teorema de Riesz–Fischer', em homenagem ao matemático húngaro \textit{Frigyes Riesz} (22/01/1880 -- 28/02/1956) e ao matemático austríaco \textit{Ernst Sigismund Fischer} (12/07/1875 -- 14/11/1954). \url{https://en.wikipedia.org/wiki/Riesz\%E2\%80\%93Fischer_theorem}}. O ponto mais difícil da demonstração é a subaditividade\footnote{A subaditividade para normas $p$ é conhecida como `desigualdade de Minkowski', em homenagem ao matemático alemão \textit{Hermann Minkowski} (22/06/1864 -- 12/01/1909). \url{https://en.wikipedia.org/wiki/Minkowski_inequality}.} da norma $p$.
+
+Para $p \in \intfa{0}{1}$, não se pode definir uma norma desse mesmo modo, pois a subaditividade falha, mas a distância $p$ é de fato uma distância em $\Intg^p(\bm X,\bm C)$ e, se o corpo normado $\bm C$ for completo, $\Intg^p(\bm X,\bm C)$ é completo.
+
+\begin{proposition}
+Sejam $\bm X$ um espaço de medida e $(\bm C,\abs{\var})$ um corpo normado.
+	\begin{enumerate}
+	\item Para todo $p \in \intfa{0}{1}$, o espaço $(\Intg^p(\bm X,\bm C),\dist{\var}{\var}_p)$ é um espaço métrico invariante por translação. Se $(\bm C,\abs{\var})$ é completo, então $(\Intg^p(\bm X,\bm C),\dist{\var}{\var}_p)$ é completo.
+	
+	\item Para todo $p \in \intff{1}{\infty}$. O espaço $(\Intg^p(\bm X,\bm C),\nor{\var}_p)$ é um espaço normado. Se $(\bm C,\abs{\var})$ é completo, então $(\Intg^p(\bm X,\bm C),\nor{\var}_p)$ é completo.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item Exercício.
+	
+	\item (Separação) Seja $f \in \Intg^p(\bm X,\bm C)$ tal que $\nor{f}_p = 0$. Então $\abs{f}^p = 0$, portanto $f=0$.
+	
+(Homogeneidade absoluta) Sejam $c \in C$ e $f \in \Intg^p(\bm X,\bm C)$. Então
+		\begin{align*}
+		\nor{cf}_p &= \left( \int \abs{cf}^p \dd\med \right)^{p\inv} \\
+			&= \left( \abs{c}^p \int \abs{f}^p \dd\med \right)^{p\inv} \\
+			&= \abs{c} \left( \int \abs{f}^p \dd\med \right)^{p\inv} \\
+			&= \abs{c}\nor{f}_p.
+		\end{align*}
+
+(Subaditividade) Sejam $f,f' \in \Intg^p(\bm X,\bm C)$. Se $\nor{f+f'}_p = 0$, então claramente $\nor{f+f'}_p = 0 \leq \nor{f}_p + \nor{f'}_p$. Assumamos então que $\nor{f+f'}_p \neq 0$. Pela subaditividade de $\abs{\var}$ e pela desigualdade \ref{prop:ana.desig.holder}, segue que
+		\begin{align*}
+		\nor{f+f'}_p^p &= \int \abs{f+f'}^p \dd\med \\
+			&= \int \abs{f+f'}\abs{f+f'}^{p-1} \dd\med \\
+			&\leq \int \left( \abs{f} + \abs{f'} \right) \abs{f+f'}^{p-1} \dd\med \\
+			&= \int \abs{f}\abs{f+f'}^{p-1} \dd\med + \int \abs{f'}\abs{f+f'}^{p-1} \dd\med \\
+			&= \nor{\abs{f}\abs{f+f'}^{p-1}}_1 + \nor{\abs{f'}\abs{f+f'}^{p-1}}_1 \\
+			&\leq \nor{\abs{f}}_p \nor{\abs{f+f'}^{p-1}}_{p\dual} + \nor{\abs{f'}}_p \nor{\abs{f+f'}^{p-1}}_{p\dual} \\
+			&= \left( \nor{f}_p + \nor{f'}_p \right) \nor{\abs{f+f'}^{p-1}}_{p\dual} \\
+			&= \left( \nor{f}_p + \nor{f'}_p \right) \left( \int \abs{f+f'}^{(p-1) p (p-1)\inv} \dd\med \right)^{p\inv(p-1)} \\
+			&= \left( \nor{f}_p + \nor{f'}_p \right) \left( \int \abs{f+f'}^p \dd\med \right)^{p\inv (p-1)} \\
+			&= \left( \nor{f}_p + \nor{f'}_p \right) \left( \nor{f+f'}_p \right)^{p-1}.
+		\end{align*}
+Multiplicando por $\left( \nor{f+f'}_p \right)^{1-p}$ em ambos os lados, conclui-se que
+		\begin{equation*}
+		\nor{f+f'}_p \leq \nor{f}_p + \nor{f'}_p.
+		\end{equation*}
+Isso mostra que $(\Intg^p(\bm X,\bm C),\nor{\var}_p)$ é um espaço normado. 
+
+Suponhamos agora que $(\bm C,\abs{\var})$ é completo. Para mostrar que $(\Intg^p(\bm X,\bm C),\nor{\var}_p)$ é completo, basta mostrar toda sequência absolutamente somável é somável (\ref{ana:prop.abs.som.e.som}). Seja $(f_n)_{n \in \N}$ uma sequência absolutamente somável em $(\Intg^p(\bm X,\bm C),\nor{\var}_p)$. Consideramos dois casos.
+	\begin{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\begin{comment}
+	
+	\item Para $p \in \intfa{1}{\infty}$. Seja
+		\begin{equation*}
+		 M := \sum_{k \in \N} \nor{f_k}_p.
+		 \end{equation*}
+Segue da subaditividade de $\nor{\var}_p$ que, para todo $n \in \N$,
+		\begin{equation*}
+		\nor{\sum_{k \in [n]} \abs{f_k}}_p \leq \sum_{k \in [n]} \nor{f_k}_p \leq M < \infty,
+		\end{equation*}
+portanto
+	\begin{equation*}
+	\int \left( \sum_{k \in [n]} \abs{f_k} \right)^p \dd\med \leq M^p.
+	\end{equation*}
+Temos que, para todo $n \in \N$,
+	\begin{equation*}
+	0 \leq \sum_{k \in [n]} \abs{f_k} \leq \sum_{k \in [n+1]} \abs{f_k},
+	\end{equation*}
+logo o limite pontual $\sum_{k \in \N} \abs{f_k}$ tem valores em $\intff{0}{\infty}$ e é mensurável. Pelo teorema da convergência monótona temos que
+	\begin{equation*}
+	\int \left( \sum_{k \in \N} \abs{f_k} \right)^p \dd\med \leq M^p.
+	\end{equation*}
+Portanto $\left( \sum_{k \in \N} \abs{f_k} \right)^p$ é integrável e, para quase todo $x \in X$, $\sum_{k \in \N} \abs{f_k(x)} \in \intfa{0}{\infty}$. Assim, para quase todo todo $x \in X$, a sequência $(f_k(x))_{n \in \N}$ é absolutamente somável em $\bm C$, portanto é somável e está definido o limite pontual
+	\begin{equation*}
+	s(x) := \sum_{k \in \N} f_k(x).
+	\end{equation*}
+A função $s$ está definida para quase todo $x \in X$, é mensurável e, para todo $n \in \N$, segue da continuidade e da subaditividade de $\abs{\var}$ que
+	\begin{equation*}
+	\abs{s} = \lim_{n \to \infty} \abs{\sum_{k \in [n]} f_k} \leq \lim_{n \to \infty} \sum_{k \in [n]} \abs{f_k} \leq \sum_{k \in \N} \abs{f_k},
+	\end{equation*}
+portanto
+	\begin{equation*}
+	\nor{s}_p = \left( \int \abs{s}^p \dd\med \right)^{p^{-1}} \leq \left( \int \abs{\sum_{k \in \N} \abs{f_k}}^p \dd\med \right)^{p^{-1}} = \nor{\sum_{k \in \N} \abs{f_k}}_p,
+	\end{equation*}
+o que mostra que $s \in \Intg^p(\bm X, \bm C)$.
+
+
+Temos que 
+	\begin{equation*}
+	\abs{s - \sum_{k \in [n]} f_k(x)}^p \leq 2^p \left( \sum_{k \in \N} \abs{f_k} \right)^p.
+	\end{equation*}
+Como a função do lado direito é integrável e, para quase todo $x \in X$, $\abs{s(x) - \sum_{k \in [n]} f_k(x)}^p \conv 0$, do Teorema da Convergência Dominada segue que
+	\begin{equation*}
+	\int \abs{s - \sum_{k \in [n]} f_k}^p \to 0,
+	\end{equation*}
+portanto $\nor{s - \sum_{k \in [n]} f_k}_p^p \to 0$, o que implica que $\nor{s - \sum_{k \in [n]} f_k}_p \to 0$.
+
+	\end{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+	\item  Para $p \in \intfa{1}{\infty}$. Notemos que, para todo $k \in \N$, $f_k$ é mensurável, portanto $\sum_{k \in [n]} \abs{f_k}$ e $\left( \sum_{k \in [n]} \abs{f_k} \right)^p$ também são mensuráveis. Como
+		\begin{equation*}
+		0 \leq \sum_{k \in [n]} \abs{f_k} \leq \sum_{k \in [n+1]} \abs{f_k},
+		\end{equation*}
+e
+		\begin{equation*}
+		0 \leq \left( \sum_{k \in [n]} \abs{f_k} \right)^p \leq \left( \sum_{k \in [n+1]} \abs{f_k} \right)^p,
+		\end{equation*}
+segue que do Teorema da Convergência Monótona que o limite $\sum_{k \in \N} \abs{f_k}$ é mensurável e que
+		\begin{align*}
+		\nor{\sum_{k \in \N} \abs{f_k}}_p &= \left( \int \left( \lim_{n \to \infty} \sum_{k \in [n]} \abs{f_k} \right)^p \dd\med \right)^{p^{-1}} \\
+			&= \left( \int \lim_{n \to \infty} \left( \sum_{k \in [n]} \abs{f_k} \right)^p \dd\med \right)^{p^{-1}} \\
+			&= \left( \lim_{n \to \infty} \int \left( \sum_{k \in [n]} \abs{f_k} \right)^p \dd\med \right)^{p^{-1}} \\
+			&= \lim_{n \to \infty} \left( \int \left( \sum_{k \in [n]} \abs{f_k} \right)^p \dd\med \right)^{p^{-1}} \\
+			&= \lim_{n \to \infty} \nor{\sum_{k \in [n]} \abs{f_k}}_p \\
+			&\leq \lim_{n \to \infty} \sum_{k \in [n]} \nor{f_k}_p \\
+			&< \infty,
+		\end{align*}
+em que a segunda igualdade segue da continuidade de $(\var)^p$, a terceira segue do Teorema da Convergência Monótona, a quarta segue da continuidade de $(\var)^{p^{-1}}$ e a sexta da subaditividade de $\nor{\var}_p$.
+
+Isso mostra que $\sum_{k \in \N} \abs{f_k} \in \Intg^p(\bm X, \bm C)$ e, portanto, que para quase todo ponto $x \in X$, $\sum_{k \in \N} \abs{f_k(x)} \in \intfa{0}{\infty}$. Assim, para quase todo $x \in X$, a sequência $(f_k(x))_{n \in \N}$ é absolutamente somável em $\bm C$ e, da completude de $\bm C$, segue que é somável e está definido o limite pontual
+	\begin{equation*}
+	s(x) := \sum_{k \in \N} f_k(x).
+	\end{equation*}
+A função $s$ está definida para quase todo $x \in X$ e é mensurável. Para todo $n \in \N$, segue da continuidade e da subaditividade de $\abs{\var}$ que
+	\begin{equation*}
+	\abs{s} = \lim_{n \to \infty} \abs{\sum_{k \in [n]} f_k} \leq \lim_{n \to \infty} \sum_{k \in [n]} \abs{f_k} \leq \sum_{k \in \N} \abs{f_k},
+	\end{equation*}
+portanto
+	\begin{equation*}
+	\nor{s}_p = \left( \int \abs{s}^p \dd\med \right)^{p^{-1}} \leq \left( \int \abs{\sum_{k \in \N} \abs{f_k}}^p \dd\med \right)^{p^{-1}} = \nor{\sum_{k \in \N} \abs{f_k}}_p,
+	\end{equation*}
+o que mostra que $s \in \Intg^p(\bm X, \bm C)$.
+
+
+
+
+
+
+Temos que
+	\begin{align*}
+	\abs{s - \sum_{k \in [n]} f_k(x)}^p &= \abs{\sum_{k \in \N} f_{n+k}(x)}^p \\
+			&= \left( \sum_{k \in \N} \abs{f_{n+k}(x)} \right)^p \\
+			&\leq 2^p \left( \sum_{k \in \N} \abs{f_k} \right)^p.
+	\end{align*}
+%Portanto
+%	\begin{align*}
+%	\nor{s - \sum_{k \in [n]} f_k}_p &= \left( \int \abs{s - \sum_{k \in [n]} f_k \dd\med}^p \right)^{p^{-1}} \\
+%			&= \abs{\sum_{k \in \N} f_{n+k}(x)}^p \\
+%			&= \left( \sum_{k \in \N} \abs{f_{n+k}(x)} \right)^p \\
+%			&\leq 2^p \left( \sum_{k \in \N} \abs{f_k} \right)^p \\
+%	\end{align*}
+Como a função do lado direito é integrável e, para quase todo $x \in X$, $\abs{s(x) - \sum_{k \in [n]} f_k(x)}^p \conv 0$, do Teorema da Convergência Dominada segue que
+	\begin{equation*}
+	\int \abs{s - \sum_{k \in [n]} f_k}^p \dd\med \to 0,
+	\end{equation*}
+portanto $\nor{s - \sum_{k \in [n]} f_k}_p^p \to 0$, o que implica que $\nor{s - \sum_{k \in [n]} f_k}_p \to 0$.
+
+	
+	
+	\item Para $p=\infty$, a demonstração se reduz a uma questão de convergência fora de conjuntos quase vazios.	
+	\end{enumerate}
+	\end{enumerate}
+\end{proof}
+
+
+
+\subsubsection{O caso anterior de espaços de funções absolutamente somáveis}
+
+Os espaços $\Intg^p(\bm X,\bm C)$ da subseção anterior são casos particulares dos espaços absolutamente $p$-integráveis. Consideramos o espaço de medida $(X,\p(X),\#)$, em que $X$ é um conjunto qualquer, o conjunto das partes $\p(X)$ é a sigma-álgebra de $X$, e $\#$ é a medida de contagem
+	\begin{align*}
+	\func{\#}{\p(X)}{\intff{0}{\infty}}{C}{
+		\begin{cases}
+			\card{M},& \card{M}<\card{\N} \\
+			\infty,& \card{M} \geq \card{\N}.
+		\end{cases}
+	}
+	\end{align*}
+
+Notemos que todas as funções $f \in C^X$ são mensuráveis nesse caso, pois $\p(X)$ é a maior sigma-álgebra em $X$.
+% As funções $f\colon X \to C$ devem ser mensuráveis, ou as funções $\abs{f}\colon X \to \intff{0}{\infty}$????? O corpo normado $\bm C$ tem topologia, portanto sigma-álgebra topológica, mas qual a medida nele? E se ele tiver estrutura de espaço de medida, é possível mostrar que a norma que leva $C$ para $\R$ é mensurável??? Nesse caso, f e $\abs{f}$ serem mensuráveis seria equivalente.
+Ainda, temos que
+	\begin{equation*}
+	\int_X \abs{f}^p \dd\# = \sum_{x \in X} \abs{f(x)}^p
+	\end{equation*}
+e
+	\begin{equation*}
+	\supess(\abs{f}) = \sup_{x \in X} \abs{f(x)}.
+	\end{equation*}
+%	\begin{equation*}
+%	\nor{f}_p = \left(\int \abs{f}^p \dd\#\right)^{p\inv} = \left(\sum_{i \in I} \abs{f(i)}^p\right)^{p\inv}
+%	\end{equation*}
+Também segue que, se $\nor{f}_p < \infty$, então $\card{\supp(f)} \leq \card{\N}$. 
+
+Como o único conjunto de medida nula na medida de contagem é o conjunto vazio, segue que as funções são quase-iguais se, e somente se, elas são iguais, portanto funções e quase-funções representam o mesmo objeto. Sendo assim, as definições dos espaços de funções absolutamente somáveis e de funções absolutamente integráveis coincidem nesse caso, e por isso têm a mesma notação.
+
+
+\subsection{Dualidade e mergulho de espaços absolutamente integráveis}
+
+Novamente, consideramos $(\bm C,\abs{\var})$ como $\R$ ou $\C$.
+
+\begin{proposition}
+Sejam $\bm X$ um espaço de medida e $(\bm C,\abs{\var})$ um corpo normado.
+	\begin{enumerate}
+	\item Para todo $p \in \intaa{1}{\infty}$, 
+		\begin{equation*}
+		\Intg^{p\dual}(\bm X,\bm C) \simeq \Intg^p(\bm X,\bm C)\dual.
+		\end{equation*}
+O isomorfismo de espaços normados é
+		\begin{align*}
+		\func{I_p}{\Intg^{p\dual}(\bm X,\bm C)}{\Intg^p(\bm X,\bm C)\dual}{f}{
+			\begin{aligned}[t]
+			\func{I_p(f)}{\Intg^p(\bm X,\bm C)}{C}{f'}{\int ff' \dd\med}.
+			\end{aligned}
+		}
+		\end{align*}
+	
+	\item Se $\bm X$ é $\sigma$-finito,
+		\begin{equation*}
+		\Intg^\infty(\bm X,\bm C) \simeq \Intg^1(\bm X,\bm C)\dual.
+		\end{equation*}	
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+Os detalhes da demonstração não serão explicados aqui, mas a ideia geral é a seguinte. A função $I_p$ é linear e, pela desigualdade \ref{prop:ana.desig.holder} ela é uma isometria local. Pelo teorema de Radon-Nikodym, pode-se mostrar que essa isometria é sobrejetiva e, portanto, um isomorfismo de espaços normados.
+\end{proof}
+
+A escolha do termo \textit{dual} para $p\dual$ fica mais clara agora, já que temos a relação
+	\begin{equation*}
+	\Intg^{p\dual} \simeq (\Intg^p)\dual.
+	\end{equation*}
+
+O dual de $\Intg^\infty(\bm X,\bm C)$ é um caso mais complicado e não será abordado aqui.
+
+Para $p,q \in \intff{1}{\infty}$ tais que $p < q$, devemos entender $\Intg^p$ como um espaço de funções que estão mais concentradas na origem, que são mais localmente singulares, enquanto as funções de $\Intg^q$ é um espaço de funções que são mais espalhadas.
+
+\begin{proposition}
+Seja $\bm X$ um espaço de medida e $(\bm C,\abs{\var})$ um corpo normado (completo) e $p,q \in \intaf{0}{\infty}$ tais que $p < q$.
+	\begin{enumerate}
+	\item $\Intg^q(\bm X,\bm C) \subset \Intg^p(\bm X,\bm C)$ se, e somente se, $X$ não contém conjuntos de medida finita mas arbitrariamente grande;
+	
+	\item $\Intg^p(\bm X,\bm C) \subset \Intg^q(\bm X,\bm C)$ se, e somente se, $X$ não contém conjuntos de medida não nula mas arbitrariamente pequena.
+	\end{enumerate}
+\end{proposition}
+
+
+
+
+\section{Isometrias lineares}
+
+\begin{definition}
+Sejam $\E$ e $\E'$ espaços normados. Uma \emph{isometria linear local} de $\E$ para $\E'$ é uma função linear $L\colon E \to E'$ tal que, para todo $v \in E$,
+	\begin{equation*}
+	\nor{L(v)}' = \nor{v}.
+	\end{equation*}
+O conjunto dessas funções é $\Linmet(\E,\E')$. Uma \emph{isometria linear} é uma isometria linear local bijetiva.
+\end{definition}
+
+Uma isometria linear local é uma isometria local com respeito à distância induzida pela norma, pois, para todos $v,v' \in E$,
+	\begin{equation*}
+	\dist{L(v)}{L(v')} = \nor{L(v) - L(v')} = \nor{L(v - v')} = \nor{v - v'} = \dist{v}{v'}.
+	\end{equation*}
+
+De modo mais geral, para $c \in \intfa{0}{\infty}$ podemos definir funções $c$-métricas lineares como funções que satisfazem, para todo $v \in E$,
+	\begin{equation*}
+	\nor{L(v)}' \leq c \nor{v}.
+	\end{equation*}
+
+Essas funções lineares são as funções lineares limitadas.
+
+
+
+\subsection{Os grupos lineares geral e especial de transformações e de isometrias}
+
+O espaço normado $\Iso{\toplin}(\E)$ das transformações lineares contínuas invertíveis é um grupo com respeito à operação de composição, chamado \emph{grupo de transformações lineares de $\E$}. Esse grupo é geralmente chamado de \emph{grupo linear geral} e denotado $GL(\E)$ e, se $\E=C^d$, $C$ o corpo de escalares, denota-se $GL_d(C)$.
+
+O conjunto das transformações de $\Iso{\toplin}(\E)$ que têm determinante unitário é um subgrupo, pois se $\det(f)=\det(f')=1$, então $\det(f' \circ f)=\det(f')\det(f)=1$. Esse grupo é geralmente chamado de \emph{grupo linear especial} e denotado $SL(\E)$ e, se $\E=C^d$, $C$ o corpo de escalares, denota-se $SL_d(C)$.
+
+O espaço normado $\Iso{\Linmet}(\E)$ das transformações lineares contínuas invertíveis que preservam a norma é um subgrupo de $\Iso{\toplin}(\E)$, chamado \emph{grupo linear de isometrias de $\E$}. Esse grupo é geralmente chamado de \emph{grupo ortogonal} e denotado $O(\E)$ e, se $\E=C^d$, $C$ o corpo de escalares, denota-se $O_d(C)$.
+
+O conjunto das transformações de $\Iso{\Linmet}(\E)$ que têm determinante unitário é um subgrupo, pois se $\det(f)=\det(f')=1$, então $\det(f' \circ f)=\det(f')\det(f)=1$. Esse grupo é geralmente chamado de \emph{grupo ortogonal especial} e denotado $SO(\E)$ e, se $\E=C^d$, $C$ o corpo de escalares, denota-se $SO_d(C)$.
+
+Temos que
+	\begin{align*}
+	SL(\E) &\subseteq GL(\E) \\
+	O(\E) &\subseteq GL(\E) \\
+	SO(\E) &\subseteq O(\E) \\
+	SO(\E) &\subseteq SL(\E)
+	\end{align*}
+
+\section{Funções multilineares}
+
+\begin{proposition}
+Sejam $\bm{E_0},\dots,\bm{E_{n-1}},\bm{E}$ espaços normados e $L\colon E_0 \times \cdots \times E_{n-1} \to E$ uma função $n$-linear. São equivalentes
+	\begin{enumerate}
+	\item $T$ é contínua;
+	\item $T$ é contínua em $0$;
+	\item Existe real $C>0$ tal que, para todos $v_0 \in E_0$, $\ldots$, $v_{n-1} \in E_{n-1}$,
+		\begin{equation*}
+		\nor{L(v_0,\dots,v_{n-1})} \leq C\nor{v_0}\cdots\nor{v_{n-1}};
+		\end{equation*}	
+	\end{enumerate}
+\end{proposition}
+
+\begin{proposition}
+Sejam $\bm{E_1},\dots,\bm{E_{n-1}}$ espaços normados de dimensão finita, $\bm{E}$ um espaço normado e $L\colon E_1 \times \cdots \times E_{n-1} \to E$ uma função $n$-linear. Então existe real $C > 0$ tal que, para todos $v_1 \in E_1$, $\ldots$, $v_n \in E_n$,
+	\begin{equation*}
+	\nor{L(v_1,\ldots,v_{n-1})} \leq C\nor{v_1}\cdots\nor{v_{n-1}}.
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+Para todo $i \in [n]$, sejam $d_i := \dim E_i$ e $(b^{(i)}_j)_{j \in [d_i]}$ uma base ordenada de $\bm{E_i}$. Todas normas em $\bm{E_i}$ são equivalentes, portanto usaremos a norma $\nor{\var}_\infty$. Assim, para todos $v_1 \in E_1$, $\ldots$, $v_{n-1} \in E_{n-1}$,
+	\begin{align*}
+	\nor{L(v_0,\ldots,v_{n-1})} &= \nor{\sum_{\substack{0 \leq k_0 < d_0\\\cdots\\0\leq k_{n-1}< d_{n-1}}} v^{k_0}_{(0)} \cdots v^{k_{n-1}}_{(n-1)} L\big(b_{k_0}^{(0)},\cdots,b_{k_{n-1}}^{(n-1)}\big)} \\
+		&\leq \sum_{\substack{0 \leq k_0 < d_0\\\cdots\\0\leq k_{n-1}< d_{n-1}}} \abs{v^{k_0}_{(0)}}\cdots\abs{v^{k_{n-1}}_{(n-1)}}\nor{L\big(b_{k_0}^{(0)},\cdots,b_{k_{n-1}}^{(n-1)}\big)} \\
+		&\leq \nor{v_0}\cdots\nor{v_{n-1}}\sum_{\substack{0 \leq k_0 < d_0\\\cdots\\0\leq k_{n-1}< d_{n-1}}} \nor{L\big(b_{k_0}^{(0)},\cdots,b_{k_{n-1}}^{(n-1)}\big)}.
+	\end{align*}
+Definindo
+	\begin{equation*}
+	C := \sum_{\substack{0 \leq k_0 < d_0\\\cdots\\0\leq k_{n-1}< d_{n-1}}} \nor{L\big(b_{k_0}^{(0)},\cdots,b_{k_{n-1}}^{(n-1)}\big)},
+	\end{equation*}
+segue que
+	\begin{equation*}
+	\nor{L(v_0,\ldots,v_{n-1})} \leq C \nor{v_0}\cdots\nor{v_{n-1}}.
+	\end{equation*}
+\end{proof}
+
+
+
+
+
+%\section{Norma de Funções Multilineares}
+
+
+
+
+
+\section{Álgebras normadas}
+
+\begin{definition}
+Uma \emph{álgebra normada} é um par $\mathbb A = (\bm A,\nor{\var})$ em que $\bm A = (A,\cdot)$ é uma álgebra sobre um corpo $\bm C \subseteq \C$ e $\nor{\var}\colon A \to \R$ é uma norma em $\bm A$ satisfazendo, para todos $a,a' \in A$,
+	\begin{equation*}
+	\nor{a \cdot a'} \leq \nor{a}\nor{a'};
+	\end{equation*}
+Uma \emph{álgebra normada unitária} é uma álgebra normada $\mathbb A = (\bm A,\nor{\var})$ tal que $\bm A = (A,\cdot,1)$ é uma álgebra unitária e
+	\begin{equation*}
+	\nor{1} = 1.
+	\end{equation*}
+\end{definition}
+
+\subsection{Função exponencial}
+
+Consideremos uma álgebra normada unitária completa $\mathbb A$. Para todo $x \in A$, a sequência
+	\begin{equation*}
+	e_n(x) := \sum_{i=0}^{n} \frac{x^i}{i!}
+	\end{equation*}
+é uma sequência aproximante\footnote{Sequência de Cauchy.}, já que, para todos $n,n' \in \N^*$ com $n' > n$,
+	\begin{equation*}
+	\nor{e_{n'}(x)-e_n(x)} = \nor{\sum_{i=n+1}^{n'} \frac{x^i}{i!}} \leq \sum_{i=n+1}^{n'} \frac{\nor{x}^i}{i!}.
+	\end{equation*}
+Como a álgebra é completa, isso significa que $e_n(x)$ converge para um elemento
+	\begin{equation*}
+	\ee^{x} :=: \exp(x) := \lim_{n \to \infty} e_n(x) = \sum_{n \in \N} \frac{x^n}{n!}.
+	\end{equation*}
+
+\begin{definition}
+Seja $\mathbb A$ uma álgebra normada unitária completa. A \emph{função exponencial} em $\mathbb A$ é a função
+	\begin{align*}
+	\func{\exp}{A}{A}{x}{\sum_{n \in \N} \frac{x^n}{n!}.}
+	\end{align*}
+\end{definition}
+
+\begin{proposition}
+Seja $\mathbb A$ uma álgebra normada unitária completa.
+	\begin{enumerate}
+	\item Para todo $x \in A$, $\nor{\exp(x)} \leq \ee^{\nor{x}}$;
+	\item A função exponencial $\exp\colon A \to A$ é contínua;
+	\item $\exp(0) = 1$;
+	\item Para todos $x,y \in A$ tais que $xy=yx$,
+		\begin{equation*}
+		\exp(x+y) = \exp(x)\exp(y);
+		\end{equation*}
+	\item Para todo $x \in A$, $\exp(x)\inv = \exp(-x)$;
+	\item Para todo $x \in A$, $\lim_{n \to \infty} \left( 1 + \frac{x}{n} \right)^n$.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item Basta notar que, para todos $x \in A$ e $n \in \N$,
+		\begin{equation*}
+		\nor{e_n(x)} = \nor{\sum_{i=0}^{n} \frac{x^i}{i!}} \leq \sum_{i=0}^{n} \frac{\nor{x}^i}{i!} = e_n(\nor{x}),
+		\end{equation*}
+logo $\nor{\exp(x)} \leq \ee^{\nor{x}}$.
+	
+	\item Primeiro notamos que, para todos $x,y \in A$,
+		\begin{align*}
+		\nor{y^n-x^n} &= \nor{\sum_{i=1}^{n-1} y^{n-i}(y-x)x^i} \\
+			&\leq n\max(\nor{x},\nor{y})^{n-1}\nor{y-x},
+		\end{align*}
+portanto
+	\begin{align*}
+	\nor{\exp(y) - \exp(x)} &= \nor{\sum_{n=1}^\infty \frac{y^n-x^n}{n!}} \\
+		&\leq \sum_{n=1}^\infty \frac{\nor{y^n-x^n}}{n!} \\
+		&\leq \sum_{n=1}^\infty \frac{n\max(\nor{x},\nor{y})^{n-1}}{n!} \nor{y-x} \\
+		&= \ee^{\max(\nor{x},\nor{y})}\nor{y-x},
+	\end{align*}
+o que mostra que $\exp$ é contínua.
+	
+	\item Segue de
+		\begin{equation*}
+		\exp(0) = \sum_{n \in \N} \frac{0^n}{n!} = 1 + \sum_{n \in \N^*} \frac{0^n}{n!} = 1.
+		\end{equation*}
+
+	\item Sejam $n \in \N$ e
+		\begin{equation*}
+		s_n := e_{2n}(x+y) - e_n(x)e_n(y) = \sum_{k=0}^{2n} \frac{(x+y)^k}{k!} - \left( \sum_{i=1}^n \frac{x^i}{i!} \right)\left( \sum_{j=1}^n \frac{y^j}{j!} \right).
+		\end{equation*}
+Como $xy=yx$,
+	\begin{equation*}
+	\frac{(x+y)^k}{k!} = \frac{1}{k!} \sum_{i=0}^k \frac{k!}{i!(k-i)!}x^i y^{k-i} = \sum_{i+j=k} \frac{x^i y^j}{i!j!}.
+	\end{equation*}
+Portanto
+	\begin{align*}
+	s_n &= \sum_{0 \leq i+j \leq 2n} \frac{x^i y^j}{i!j!} - \sum_{0 \leq i \leq n, 0 \leq j \leq n} \frac{x^i y^j}{i!j!} \\
+		&= \sum_{k=0}^{n-1} \frac{x^k}{k!} \sum_{n+1}^{2n-k} \frac{y^j}{j!} +  \sum_{k=0}^{n-1} \frac{y^k}{k!} \sum_{n+1}^{2n-k} \frac{x^j}{j!},
+	\end{align*}
+o que implica que
+	\begin{align*}
+	\nor{s_n} &\leq \sum_{k=0}^{n-1} \frac{\nor{x}^k}{k!} \sum_{n+1}^{2n-k} \frac{\nor{y}^j}{j!} +  \sum_{k=0}^{n-1} \frac{\nor{y}^k}{k!} \sum_{n+1}^{2n-k} \frac{\nor{x}^j}{j!} \\
+		&= \sum_{k=0}^{2n} \frac{(\nor{x}+\nor{y})^k}{k!} - \left( \sum_{i=1}^n \frac{\nor{x}^i}{i!} \right)\left( \sum_{j=1}^n \frac{\nor{y}^j}{j!} \right) \\
+		&= e_{2n}(\nor{x}+\nor{y}) - e_n(\nor{x})e_n(\nor{y}).
+	\end{align*}
+Assim segue que
+	\begin{equation*}
+	\nor{\exp(x+y) - \exp(x)\exp(y)} \leq \ee^{\nor{x}\nor{y}}-\ee^{\nor{x}}\ee^{\nor{y}} = 0.
+	\end{equation*}
+	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{comment}
+	\item Para todo $n \in \N$, como $xy=yx$,
+	\begin{equation*}
+	(x+y)^n = \sum_{i=0}^n \frac{n!}{i!(n-i)!}x^i y^{n-i} = n! \sum_{i+j=n} \frac{x^i}{i!}\frac{y^j}{j!}.
+	\end{equation*}
+Portanto
+	\begin{align*}
+	\exp(x+y) &= \sum_{n=0}^\infty \frac{(x+y)^n}{n!} \\
+		&= \sum_{n=0}^\infty \sum_{i+j=n} \frac{x^i y^j}{i!j!} \\
+		&= \left(\sum_{i=0}^\infty \frac{x^i}{i!} \right) \left(\sum_{i=0}^\infty \frac{y^j}{j!} \right) \\
+		&= \exp(x) \exp(y).
+	\end{align*}
+\end{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	\item Basta notar que, como $x(-x)=(-x)x$,
+		\begin{equation*}
+		\exp(x)\exp(-x) = \exp(x-x) = \exp(0) = 1. \qedhere
+		\end{equation*}
+	
+	\item Exercício.
+	\end{enumerate}
+\end{proof}

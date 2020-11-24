@@ -1,0 +1,214 @@
+\chapter{Módulos}
+
+\section{Módulos e submódulos}
+
+\begin{definition}
+Seja $\bm A=(A,+,-,0,\times,1)$ um anel. Um \emph{módulo} sobre $\bm A$ é uma lista $\bm M = (M,\bm +,\bm -,\bm 0,\pt)$ em que $\bm M^+ := (M,\bm +,\bm -,\bm 0)$ é um grupo comutativo e $\acao{\pt}{\bm A}{\bm M^+}$ é uma ação de anel ($\fun{\pt}{\bm A}{\bm{\Homo}(\bm M^+)}$ é um homomorfismo de anel); ou seja,
+	\begin{enumerate}
+	\item Para todos $a \in A$ e $m,m' \in M$,
+		\begin{equation*}
+		a \pt (m \bm + m') = a \pt m \bm + a \pt m'.
+		\end{equation*}
+	\item Para todos $a,a' \in A$ e $m \in M$,
+		\begin{equation*}
+		(a + a') \pt m = a \pt m + a' \pt m;
+		\end{equation*}
+	\item Para todos $a,a' \in A$ e $m \in M$,
+		\begin{equation*}
+		(a \times a') \pt m = a \pt (a' \pt m);
+		\end{equation*}
+	\item Para todo $m \in M$,
+		\begin{equation*}
+		1 \pt m = m.
+		\end{equation*}
+	\end{enumerate}
+Os símbolos `$\times$' da multiplicação de $\bm A$ e `$\pt$' da ação de $\bm A$ sobre $\bm M$ serão suprimidos (e parênteses desnecessários relacionados a elas também), e os símbolos `$\bm +$', `$\bm -$' e `$\bm 0$' das operações de $\bm M$ não serão diferenciados em notação dos símbolos `$+$', `$-$' e `$0$' das operações de $\bm A$.
+\end{definition}
+
+Na definição usamos o fato de que $\bm{\Homo}(\bm M^+) = (\Homo(\bm M^+),+,-,0,\circ,\Id)$ é um anel com as operações puxadas para o espaço de funções, a soma pontual sendo a soma do anel e a composição de função sendo o produto. Isso foi feito em \cref{sec:aneis.acao}.
+
+\begin{example}
+Sejam $\bm A=(A,+,-,0,\times,1)$ um anel e $I \ide A$ um ideal. Então $\bm I = (I,+,-,0,\pt)$ é um módulo sobre $\bm A$, em que $\bm I^+ = (I,+,-,0)$ é o subgrupo aditivo de $\bm A$ e
+	\begin{align*}
+	\func{\pt}{A}{\Homo(I)}{a}{
+		\begin{aligned}[t]
+			\func{a \pt}{I}{I}{i}{ai}
+		\end{aligned}
+	}
+	\end{align*}
+é a ação multiplicativa induzida pela multiplicação $\times$ de $\bm A$. Note que, para cada $a \in A$, a função $\fun{a \pt}{I}{I}$ está bem definida pois $I$ é um ideal, o que implica que, para todo $i \in I$, $ai \in I$.
+\end{example}
+	
+\begin{example}
+Seja $\bm G=(G,+,-,0)$ um grupo comutativo. Então $(G,+,-,0,\pt)$ é um módulo sobre $\Z$, em que
+	\begin{align*}
+	\func{\pt}{\Z}{\Homo(G)}{n}{
+		\begin{aligned}[t]
+			\func{n \pt}{G}{G}{g}{ng=\sum_{i \in [n]} g}.
+		\end{aligned}
+	}
+	\end{align*}
+\end{example}
+
+\begin{exercise}
+Seja $\bm M$ um módulo sobre um anel $\bm A$.
+	\begin{enumerate}
+	\item Para todo $a \in A$, $a0=0$;
+	\item Para todo $m \in M$, $0m=0$;
+	\item Para todos $a \in A$ e $m \in M$, $-(am)=(-a)m=a(-m)$.
+	\end{enumerate}
+\end{exercise}
+
+\begin{definition}
+Seja $\bm M$ um módulo sobre um anel $\bm A$. Um submódulo de $\bm M$ sobre $\bm A$ é uma lista $\bm S = (S,+,-,0,\pt)$ tal que
+	\begin{enumerate}
+	\item $\bm S^+ := (S,+,-,0)$ é um subgrupo de $\bm M^+$;
+	\item Para todos $a \in A$ e $m \in S$, $am \in S$.
+	\end{enumerate}
+\end{definition}
+
+\section{Homomorfismo de módulo}
+
+\begin{definition}
+Sejam $\bm M$ e $\bm M'$ módulos sobre um anel $\bm A$. Um \emph{homomorfismo de módulo} de $\bm M$ para $\bm M'$ é uma função $\fun{h}{M}{M'}$ tal que
+	\begin{enumerate}
+	\item (Aditividade) A função $\fun{h}{\bm M^+}{\bm {M'}^+}$ é um homomorfismo de grupo: para todos $m_0,m_1 \in M$,
+		\begin{equation*}
+		h(m_0 + m_1) = h(m_0) + h(m_1);
+		\end{equation*}
+	
+	\item (Homogeneidade) %(Comutatividade com ação)
+	Para todos $a \in A$, $m \in M$,
+		\begin{equation*}
+		h(a m) = a h(m).
+		\end{equation*}
+	\end{enumerate}
+Denota-se $\fun{h}{\bm M}{\bm M'}$. O conjunto dos homomorfismos de módulo de $\bm M$ para $\bm M'$ é denotado $\Homo(\bm M, \bm M')$. Um \emph{endomorfismo} de módulo de $\bm M$ é um homomorfismo de módulo de $\bm M$ para $\bm M$. O conjunto dos endomorfismos de módulo de $\bm M$ é denotado $\Homo(\bm M)$.
+\end{definition}
+
+\begin{exercise}[Composição de homomorfismos]
+Sejam $\bm M$ , $\bm M'$ e $\bm M''$ módulos sobre um anel $\bm A$, $h \in \Homo(\bm M, \bm M')$ e $h' \in \Homo(\bm M', \bm M'')$ homomorfismos. Então $h' \circ h \in  \Homo(\bm M, \bm M'')$.
+\end{exercise}
+
+\subsubsection{Módulo de homomorfismos de módulo}
+
+Por definição de homomorfismo de módulo, temos que $\Homo(\bm M,\bm M') \subseteq \Homo(\bm M^+,{\bm M'}^+)$, ou seja, que todo homomorfismo de módulo é em particular um homomorfismo de grupo entre as estruturas de grupo $\bm M^+$ e ${\bm M'}^+$ de seus respectivos módulos. O conjunto de homomorfismos de grupo $\Homo(\bm M^+,{\bm M'}^+)$ é um grupo com a adição, subtração e função nula puxadas das respectivas operações de ${\bm M'}^+$. Dotado dessa estrutura de grupo, o conjunto $\Homo(\bm M,\bm M')$ é de fato um subgrupo de $\Homo(\bm M^+,{\bm M'}^+)$, que denotamos por
+	\begin{equation*}
+	\bm{\Homo}(\bm M,\bm M')^+ := (\Homo(\bm M,\bm M'),+,-,0).
+	\end{equation*}
+
+\begin{proposition}
+\label{prop:mod.subgrupo}
+Sejam $\bm M$ e $\bm M'$ módulos sobre um anel $\bm A$.
+%	\begin{equation*}
+%	(\Homo(\bm M,\bm M'),+,-,0) \leq (\Homo(\bm M^+,{\bm M'}^+),+,-,0).
+%	\end{equation*}
+	\begin{equation*}
+	\bm{\Homo}(\bm M,\bm M')^+ \leq \bm{\Homo}(\bm M^+,{\bm M'}^+).
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item (Não vacuidade) A função nula
+		\begin{align*}
+		\func{0}{M}{M'}{m}{0}
+		\end{align*}
+	é um homomorfismo de módulo de $\bm M$ para $\bm M'$:
+		\begin{enumerate}
+		\item (Aditividade) Segue direto de $0 \in \Homo(\bm M^+,{\bm M'}^+)$;
+		\item (Homogeneidade) Para todos $a \in A$, $m \in M$,
+			\begin{equation*}
+			h(a m) = 0 = a0 = ah(m).
+			\end{equation*}
+		\end{enumerate}
+	
+	\item (Fechamento) Para todos $h,h' \in \Homo(\bm M,\bm M')$, $h+h' \in \Homo(\bm M,\bm M')$:
+		\begin{enumerate}
+		\item (Aditividade) Segue direto de $h+h' \in  \Homo(\bm M^+,{\bm M'}^+)$;
+		\item (Homogeneidade) Para todos $a \in A$, $m \in M$,
+			\begin{align*}
+			(h+h')(am) &= h(am) + h'(am) \\
+				&= ah(m) + ah'(m) \\
+				&= a(h(m) + h'(m)) \\
+				&= a(h+h')(m).
+			\end{align*}
+		\end{enumerate}
+	
+	\item (Invertibilidade) Para todo $h \in \Homo(\bm M,\bm M')$, $-h \in \Homo(\bm M,\bm M')$:
+		\begin{enumerate}
+		\item (Aditividade) Segue direto de $-h \in  \Homo(\bm M^+,{\bm M'}^+)$;
+		\item (Homogeneidade) Para todos $a \in A$, $m \in M$,
+			\begin{equation*}
+			(-h)(am) = -h(am) = -(ah(m)) = a(-h(m)).
+			\end{equation*}
+		\end{enumerate}
+	\end{enumerate}
+\end{proof}
+
+\begin{definition}
+Sejam $\bm M$ e $\bm M'$ módulos sobre um anel $\bm A$. O \emph{módulo de homomorfismos} de $\bm M$ para $\bm M'$ é a lista
+	\begin{equation*}
+	\bm{\Homo}(\bm M, \bm M') := (\Homo(\bm M, \bm M'),+,-,0,\pt)
+	\end{equation*}
+em que
+	\begin{enumerate}
+	\item $\Homo(\bm M, \bm M')$ é o conjunto dos homomorfismo de módulo de $\bm M$ para $\bm M'$;
+
+	\item $\bm{\Homo}(\bm M,\bm M')^+ = (\Homo(\bm M,\bm M'),+,-,0)$ é o grupo de homomorfismos de módulo, com as operações definidas pontualmente, induzidas das operações de $\bm M'$;
+
+	\item $\pt$ é a ação induzida
+		\begin{align*}
+		\func{\pt}{A}{\Homo(\bm{\Homo}(\bm M,\bm M')^+)}{a}{
+			\begin{aligned}[t]
+			\func{a \pt}{\Homo(\bm M,\bm M')}{\Homo(\bm M,\bm M')}{h}{
+				\begin{aligned}[t]
+				\func{a \pt h}{M}{M'}{g}{a \pt h(g)}.
+				\end{aligned}
+			}
+			\end{aligned}
+		}
+		\end{align*}
+	\end{enumerate}
+\end{definition}
+
+Note que a ação é induzida pela ação de $\bm M'$, que é a ação que aparece na expressão $a \pt h(g)$. Na expressão $\Homo(\bm{\Homo}(\bm M,\bm M')^+)$, o `$\bm{\Homo}$' interno se refere ao grupo de homomorfismos do módulo, subgrupo do grupo de homomorfismos do grupo comutativo $\bm M^+$ para o grupo comutativo ${\bm M'}^+$, enquanto o `$\Homo$' externo se refere ao conjunto de endomorfismos do grupo $\Homo(\bm M,\bm M')$.
+
+\begin{proposition}
+Sejam $\bm M$ e $\bm M'$ módulos sobre um anel $\bm A$. O módulo de homomorfismos de $\bm M$ para $\bm M'$ é um módulo sobre $\bm A$.
+\end{proposition}
+\begin{proof}
+Foi provado em \ref{prop:mod.subgrupo} que $\bm{\Homo}(\bm M,\bm M')^+$ é grupo comutativo, pois é subgrupo de $\bm{\Homo}(\bm M^+,{\bm M'}^+)$.
+
+Devemos provar que $\acao{\pt}{\bm A}{\bm{\Homo}(\bm M,\bm M')^+}$ é ação de anel:
+	\begin{enumerate}
+	\item Para todos $a \in A$, $h,h' \in \Homo(\bm M,\bm M')$ e $m \in M$,
+		\begin{align*}
+		(a \pt (h+h'))(m) &= a \pt (h+h')(m) \\
+			&= a \pt (h(m) + h'(m)) \\
+			&= a \pt h(m) + a \pt h'(m) \\
+			&= (a \pt h + a \pt h')(m);
+		\end{align*}
+	\item Para todos $a,a' \in A$, $h \in \Homo(\bm M,\bm M')$ e $m \in M$,
+		\begin{align*}
+		((a+a') \pt h)(m) &= (a+a') \pt h(m) \\
+			&= a \pt h(m) + a' \pt h(m) \\
+			&= (a \pt h + a' \pt h)(m);
+		\end{align*}
+	\item Para todos $a,a' \in A$, $h \in \Homo(\bm M,\bm M')$ e $m \in M$,
+		\begin{align*}
+		((aa') \pt h)(m) &= (aa') \pt h(m) \\
+			&= a \pt (a' \pt h(m)) \\
+			&= a \pt ((a' \pt h)(m)) \\
+			&= (a \pt (a' \pt h))(m);
+		\end{align*}
+	\item Para todos $h \in \Homo(\bm M,\bm M')$ e $m \in M$,
+		\begin{equation*}
+		(1 \pt h)(m) = 1 \pt h(m) = h(m).
+		\qedhere
+		\end{equation*}
+	\end{enumerate}
+\end{proof}
+
+
+
+

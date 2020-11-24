@@ -1,0 +1,932 @@
+%% matematica.sty
+%% Copyright 2020 P. G. Mattos
+%
+% ENGLISH
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3
+% of this license or any later version.
+% The latest version of this license is in
+%	http://www.latex-project.org/lppl.txt
+% and version 1.3 or later is part of all distributions of LaTeX
+% version 2005/12/01 or later.
+%
+% This work has the LPPL maintenance status `maintained'.
+%
+% The Current Maintainer of this work is P. G. Mattos.
+%
+% This work consists of the file matematica.sty.
+%
+% PORTUGUÊS
+% Este programa pode ser redistribuído e/ou modificado sob as
+% condições da LaTeX Project Public License, seja a versão 1.3
+% dessa licença ou qualquer versão posterior.
+% A versão (em inglês) mais recente dessa licença está em
+%	http://www.latex-project.org/lppl.txt
+% e a versão 1.3 ou posterior é parte de todas distribuições de
+% LaTeX versão 2005/12/01 ou posterior.
+%
+% Este trabalho tem o estado de manutenção `mantido' da LPPL.
+%
+% O Mantenedor Atual deste trabalho é P. G. Mattos.
+%
+% Este trabalho consiste no arquivo matematica.sty.
+%
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\ProvidesPackage{matematica}[2020/08/21 Pacote de Matematica]
+% Em arquivos de classe (.cls) e de pacotes (.sty), não há necessidade de usar \makeatletter e \makeatother
+% REFERÊNCIA: https://en.wikibooks.org/wiki/LaTeX/Creating_Packages
+
+%------------------------------------------------------------
+% Opções													%
+%------------------------------------------------------------
+
+% Opção 'artigo'
+\newif\if@artigo\@artigofalse
+\DeclareOption{artigo}{\@artigotrue}
+
+% Opção 'livro'
+\newif\if@livro\@livrofalse
+\DeclareOption{livro}{\@livrotrue\@artigofalse}
+
+\DeclareOption*{\PackageWarning{matematica}{Unknown ‘\CurrentOption’}}
+\DeclareOption*{\OptionNotUsed}
+
+\ExecuteOptions{artigo}
+
+\ProcessOptions\relax
+
+%------------------------------------------------------------
+% Pacotes													%
+%------------------------------------------------------------
+
+% Matemática
+%------------------------------------------------
+\RequirePackage{mathtools}
+% Já carrega o amsmath
+	\mathtoolsset{centercolon}
+	% Alinha todas : com =
+	% Dá problema se carregado depois do pacote cleveref (acho)
+%\RequirePackage{amsmath}
+\RequirePackage{amsthm}
+\RequirePackage{amssymb}
+\usepackage{stmaryrd} % Colchetes duplos, \bigsqcap, \merge
+\RequirePackage{mathrsfs} % Letras cursivas na matemática
+\RequirePackage{bm,bbm} % Negrito de qualquer símbolo
+\RequirePackage{eucal} % Muda o \mathcal de Computer Modern pra Euler
+
+\RequirePackage{graphicx}
+\RequirePackage{relsize,scalerel} % Mudança de tamanho e definição de operador
+
+\RequirePackage{trimclip} % Para fazer o símbolo de infinity dos ordinais
+%\RequirePackage{stackengine} % Para fazer o símbolo de infinity dos ordinais segunda versão
+
+% Imagens e gráficos
+%------------------------------------------------
+\RequirePackage{tikz} % Figuras e gráficos
+	\usetikzlibrary{
+	calc,%				Operações matemáticas em coordenadas
+	intersections,%		Interseções de curvas
+	cd,%				Diagramas comutativos
+	babel,%				NECESSÁRIO para funcionar o cd
+	arrows%				Usado para importar Geogebra
+	}
+%\RequirePackage{pgfplots}
+% https://tikzcd.yichuanshen.de/
+
+
+%------------------------------------------------------------
+% Comandos													%
+%------------------------------------------------------------
+
+% Conjuntos
+%------------------------------------------------
+
+% Lógica e axiomas
+%------------------------------------
+% Lógica
+	% Conectivos
+	\renewcommand{\implies}{\rightarrow}
+	\renewcommand{\iff}{\leftrightarrow}
+%	\renewcommand{\forall}{{\textstyle\bigwedge}}
+%	\renewcommand{\exists}{{\textstyle\bigvee}}
+	\newcommand{\bigforall}{\bigwedge}
+	\newcommand{\bigexists}{\bigvee}
+
+	% Símbolos Lógicos Formais
+	\newcommand{\lver}{\top}
+	\newcommand{\lfals}{\bot}
+	
+	\newcommand{\lnao}{\lnot}
+	
+	\newcommand{\lee}{\land}
+	\newcommand{\lou}{\lor}
+	\newcommand{\limplica}{\rightarrow}
+	\newcommand{\lequiv}{\leftrightarrow}
+
+	\newcommand{\lded}{\vdash}
+
+	\newcommand{\subs}[3]{\left. {#1} \right\downarrow^{#2}_{#3}}
+
+	% Símbolos Lógicos Informais
+	\newcommand{\sse}{\quad \Longleftrightarrow \quad}
+	\newcommand{\se}{\quad \Longleftarrow \quad}
+	\newcommand{\entao}{\quad \Longrightarrow \quad}
+
+	\newcommand{\ou}{\text{\ \ ou\ \ }}
+	\newcommand{\e}{\text{\ \ e\ \ }}
+	
+	% Desigualdade
+	\renewcommand\neq{\mathrel{\vphantom{|}\mathpalette\xsneq\relax}}
+	\newcommand\xsneq[2]{%
+		\ooalign{\hidewidth$#1|$\hidewidth\cr$#1=$\cr}%
+	}
+	% NOTA: Muda comando \neq para desigualdade vertical.
+	% REFERÊNCIA: https://tex.stackexchange.com/questions/108193/not-equal-sign-%e2%89%a0-with-a-vertical-bar#130098 (Solução do egreg)
+
+% Conjuntos
+	% Não pertence
+	\renewcommand\notin{\mathrel{\vphantom{|}\mathpalette\xsnotin\relax}}
+	\newcommand\xsnotin[2]{%
+		\ooalign{\hidewidth$#1\hspace{1pt}|$\hidewidth\cr$#1\in$\cr}%
+	}
+	% NOTA: Comandos análogo ao \neq que criei para \in (pertence)
+
+	% Conjunto vazio
+	%\renewcommand{\emptyset}{\varnothing}
+
+	% Conjunto dado propriedade
+	\newcommand{\set}[2]{\left\{{#1}\;\middle\vert\;{#2}\right\}}
+	% Conjunto das partes
+	\newcommand{\p}{\scalebox{1.1}{\ensuremath{\mathsf{P}}}}
+	%\newcommand{\p}{\scalebox{1.2}{$\mathcal{P}$}}
+	
+	% Diferença de conjuntos
+	\renewcommand{\setminus}{\smallsetminus}
+	% Diferença simétrica
+	\newcommand{\difsim}{\mathbin{\triangle}}
+
+	% Coproduto quadrado (Precisa do graphicx)
+%	\makeatletter
+	\providecommand{\newbigsqcap}{%
+		\mathop{%
+			\mathpalette\@updown\bigsqcup
+		}%
+	}
+	\newcommand*{\@updown}[2]{%
+		\rotatebox[origin=c]{180}{$\m@th#1#2$}%
+	}
+%	\makeatother
+	% Produto e coproduto
+	\providecommand{\bigsqcap}{}
+	\renewcommand{\bigsqcap}{\newbigsqcap}
+	% NOTA: O pacote stmaryrd define um comando \bigsqcap, mas é maior que o \bigsqcup, então redefini para o que eu já usava antes
+	\renewcommand{\prod}{\bigsqcap}
+	\renewcommand{\coprod}{\bigsqcup}
+
+% Famílias e propriedades
+%------------------------------------
+
+% Funções
+%------------------------------------
+%	\renewcommand{\to}{\longrightarrow}
+%	\renewcommand{\mapsto}{\longmapsto}
+	% Função
+	\newcommand{\func}[5]{%
+	{#1}\colon {#2} &\longrightarrow {#3} \\%
+	{#4} &\longmapsto #5%
+	}
+	\newcommand{\funclin}[5]{{#1} \colon {#2} \to {#3}; {#4} \mapsto #5}
+	\newcommand{\fun}[3]{{#1}\colon {#2} \longrightarrow {#3}}
+	% Símbolo de variável numa função: f(•)
+	\newcommand{\var}{\bm{\cdot}}
+	% Função identidade
+	\newcommand{\Id}{\mathrm{I}}
+	% Inversa de função
+	\newcommand{\inv}{^{-1}}
+	% Gráfico de função
+	\DeclareMathOperator{\graf}{graf}
+	% Categoria das funções
+	\newcommand{\Func}{\mathcal{F}}
+
+	% Injeções, sobrejeções e bijeções (Mono, Epi, Iso)
+%	\makeatletter
+	\newcommand{\superimpose}[2]{%
+		{\ooalign{$#1\@firstoftwo#2$\cr\hfil$#1\@secondoftwo#2$\hfil\cr}}
+	}
+%	\makeatother
+	\newcommand{\newtwoheadrightarrow}{\mathrel{\mathpalette\superimpose{{\mkern2.5mu\rightarrow}{\rightarrow\mkern2.5mu}}}}
+	\renewcommand{\twoheadrightarrow}{\newtwoheadrightarrow}
+
+	\newcommand{\Mono}[1]{\overset{\hookrightarrow}{#1}}
+	\newcommand{\Epi}[1]{\overset{\twoheadrightarrow}{#1}}
+	\newcommand{\Iso}[1]{\overset{\leftrightarrow}{#1}}
+
+	% Projeção e inclusão
+	\newcommand{\inclu}{\iota}
+	\newcommand{\proj}{\mathrm{p}}
+
+% Relações binárias
+%------------------------------------
+	% Classe de equivalência
+	\newcommand{\cla}[1]{\left\llbracket{#1}\right\rrbracket}
+	% Quociente
+	\newcommand{\quo}[2]{
+		\mathchoice
+			{% \displaystyle
+				{\left. \raisebox{.2em}{$#1$} \middle/ \raisebox{-.2em}{$#2$}\right.}
+			}
+			{% \textstyle
+				{\left.{#1} \middle/ {#2}\right.}
+			}
+			{% \scriptstyle
+				#1\,/\,#2
+			}
+			{% \scriptscriptstyle  
+				#1\,/\,#2
+			}
+	}
+	% Partição
+	\newcommand{\Part}{\mathcal{P}}
+
+	% Intervalos abertos, fechados e outros
+	\newcommand{\intaa}[2]{\left]{#1},{#2}\right[}
+	\newcommand{\intaf}[2]{\left]{#1},{#2}\right]}
+	\newcommand{\intfa}[2]{\left[{#1},{#2}\right[}
+	\newcommand{\intff}[2]{\left[{#1},{#2}\right]}
+	% Mínimo e máximo como encontro e junta
+	\providecommand{\doublevee}{}
+	\renewcommand{\doublevee}{\mathbin{\ooalign{$\vee$\cr\hbox{$\mkern3mu\vee$}\cr}}} % Superposição de v e v
+	\providecommand{\doublewedge}{}
+	\renewcommand{\doublewedge}{\mathbin{\ooalign{$\wedge$\cr\hbox{$\mkern3mu\wedge$}\cr}}} % Superposição de cunha e cunha
+	\newcommand{\newmax}{\mathop{\doublevee}}
+	\newcommand{\newmin}{\mathop{\doublewedge}}
+	\renewcommand{\max}{\newmax}
+	\renewcommand{\min}{\newmin}
+	% NOTA: Escrevi um pouco mais complexo porque queria que os comandos binários \doublewedge e \doublevee estivessem disponíveis, e que fossem redefinidos caso existissem em outro pacote
+	% Supremo e ínfimo
+	\newcommand{\newsup}{
+		\mathop{
+			\mathpalette\superimpose{{\vee}{\_}}
+		}
+	}
+	\newcommand{\newinf}{
+		\mathop{
+			\mathpalette\superimpose{{\wedge}{\_}}
+		}
+	}
+%	\renewcommand{\sup}{\newsup}
+%	\renewcommand{\inf}{\newinf}
+
+	% Álgebra indicadora
+	\newcommand{\Dois}{\mathbbm{2}}
+%	\newcommand{\Dois}{2}
+	% Função indicadora
+	\newcommand{\idc}{{\bm 1}}
+
+% Ordinais e cardinais
+%------------------------------------
+	% Símbolo para o infinito dos ordinais
+	\DeclareRobustCommand{\inftyord}{\mathord{\mathpalette\ord@infty\infty}}
+	\newcommand{\ord@infty}[2]{%
+		\ooalign{%
+			\clipbox{0pt 0pt {0.75\width} 0pt}{$\m@th#1#2$}\hidewidth\cr
+			\hidewidth\clipbox{{0.75\width} 0pt 0pt 0pt}{$\m@th#1#2$}\cr
+			\clipbox{0pt {-0.05\height} 0pt {0.55\height}}{$\m@th#1#2$}\cr
+		}%
+	}
+	% REFERÊNCIA: https://tex.stackexchange.com/questions/525405/new-symbol-of-infinity-similar-to-a-w-or-omega/525407?noredirect=1#comment1329000_525407
+
+	% Cardinalidade
+	\newcommand{\card}[1]{\left\lvert{#1}\right\rvert}
+
+% Conjuntos numéricos
+%------------------------------------
+	% Sucessor
+%	\makeatletter
+	\providecommand{\suce}{%
+	\mathpalette\@rotatingaquarter\mp\hspace{1.7pt}
+	}
+	\newcommand*{\@rotatingaquarter}[2]{%
+	\rotatebox[origin=c]{90}{$\m@th#1#2$}%
+	}
+%	\makeatother
+
+%	\makeatletter
+	\providecommand{\dez}{\raisebox{.025ex}{\rotatebox[origin=c]{180}{2}}}
+	\providecommand{\onze}{\raisebox{.025ex}{\rotatebox[origin=c]{180}{3}}}
+%	\makeatother
+
+	\newcommand{\N}{\mathbb{N}}
+	\newcommand{\Z}{\mathbb{Z}}
+	\newcommand{\Q}{\mathbb{Q}}
+	\newcommand{\R}{\mathbb{R}}
+	\newcommand{\RR}{\R_\infty}
+	\newcommand{\C}{\mathbb{C}}
+	\newcommand{\HH}{\mathbb{H}}
+	%% Alternativos
+	%\newcommand{\O}{\mathbb{O}} % Números ordinais finitos
+	\newcommand{\I}{\mathbb{I}} % Números inteiros
+	%\newcommand{\E}{\mathbb{E}} % Números espaciais (reais)
+
+	% Constantes matemáticas	
+	\newcommand{\ee}{\mathrm{e}} % Constante exponencial
+	\newcommand{\ii}{\mathrm{i}} % Constante imaginária i 
+	\newcommand{\jj}{\mathrm{j}} % Constante imaginária j
+	\newcommand{\kk}{\mathrm{k}} % Constante imaginária k
+
+% Álgebra
+%------------------------------------------------
+
+% Operações binárias
+%------------------------------------
+	% Operação binária neutra
+	\newcommand{\opb}{\ast}
+	\newcommand{\bigopb}{%
+	\DOTSB\mathop{\mathpalette\mattos@bigopb\relax}\slimits@
+	}
+	\newcommand\mattos@bigopb[2]{%
+	\vcenter{\hbox{%
+		\sbox\z@{$#1\bigoplus$}%
+		\resizebox{!}{0.9\dimexpr\ht\z@+\dp\z@}{\raisebox{\depth}%
+		{$\m@th#1\opb$}}%
+	}}%
+	\vphantom{\bigoplus}%
+	}
+	% NOTA: Copiei o \bigplus
+
+	% Superposição de mais e vezes
+	\newcommand{\plustimes}{\mathbin{\ooalign{$+$\cr\hidewidth\hbox{$\times\mkern-.1500mu$}\cr}}}
+	\newcommand{\bigplustimes}{%
+	\DOTSB\mathop{\mathpalette\mattos@bigplustimes\relax}\slimits@
+	}
+	\newcommand\mattos@bigplustimes[2]{%
+	\vcenter{\hbox{%
+		\sbox\z@{$#1\bigoplus$}%
+		\resizebox{!}{0.9\dimexpr\ht\z@+\dp\z@}{\raisebox{\depth}%
+		{$\m@th#1\bm{\plustimes}$}}%
+	}}%
+	\vphantom{\bigoplus}%
+	}
+	% NOTA: Copiei o \bigplus
+	
+	% Somatório
+	\newcommand{\bigplus}{%
+	\DOTSB\mathop{\mathpalette\mattos@bigplus\relax}\slimits@
+	}
+	\newcommand\mattos@bigplus[2]{%
+	\vcenter{\hbox{%
+		\sbox\z@{$#1\bigoplus$}%
+		\resizebox{!}{0.9\dimexpr\ht\z@+\dp\z@}{\raisebox{\depth}%
+		{$\m@th#1\bm{+}$}}%
+	}}%
+	\vphantom{\bigoplus}%
+	}
+	% NOTA: Mudei onde aparecia \sum para \bigoplus para não dar erro quando redefino o \sum abaixo
+	% REFERÊNCIA: https://tex.stackexchange.com/questions/394901/how-can-i-define-a-big-plus-operator-that-works-like-bigcup
+	\renewcommand{\sum}{\bigplus}
+
+	% Multiplicatório
+	\newcommand{\newbigtimes}{%
+	\DOTSB\mathop{\mathpalette\mattos@newbigtimes\relax}\slimits@
+	}
+	\newcommand\mattos@newbigtimes[2]{%
+	\vcenter{\hbox{%
+		\sbox\z@{$#1\bigoplus$}%
+		\resizebox{!}{0.9\dimexpr\ht\z@+\dp\z@}{\raisebox{\depth}%
+		{$\m@th#1\bm{\times}$}}%
+	}}%
+	\vphantom{\bigoplus}%
+	}
+	% NOTA: Copiei o \bigplus
+	\providecommand{\bigtimes}{}
+	\renewcommand{\bigtimes}{\newbigtimes}
+
+% Grupos (e monoides)
+%------------------------------------
+	% Sinal de inversa (divisão)
+	\newcommand{\newdiv}{\mathbin{\mathpalette\@newdiv\relax}}
+	\newcommand{\@newdiv}[2]{%
+		\begingroup
+			\sbox\z@{$\m@th#1+$}%
+			\makebox[\wd\z@]{\smash{\rotatebox[origin=c]{45}{$\m@th#1-$}}}%
+			\vphantom{\usebox{\z@}}%
+		\endgroup
+	}
+	\let\olddiv\div
+	\renewcommand{\div}{\newdiv}
+	% Sinal de inversa à esquerda (ou de reversa)
+	\newcommand{\vid}{\mathbin{\mathpalette\@vid\relax}}
+	\newcommand{\@vid}[2]{%
+		\begingroup
+			\sbox\z@{$\m@th#1+$}%
+			\makebox[\wd\z@]{\smash{\rotatebox[origin=c]{-45}{$\m@th#1-$}}}%
+			\vphantom{\usebox{\z@}}%
+		\endgroup
+	}
+	
+	% Elemento identidade
+	\newcommand{\id}{\textsc{i}}
+	\renewcommand{\id}{1}
+
+	% Grupos normais, análogo ao ideal
+	\newcommand{\ide}{\mathrel{\unlhd}}
+	\newcommand{\idepro}{\mathrel{\lhd}}
+
+	% Homomorfismo
+	\newcommand{\Homo}{\mathcal{H}}
+	% Endomorfismos
+%	\DeclareMathOperator{\End}{End}
+	\newcommand{\End}{\Homo}
+	% Automorfismos
+%	\DeclareMathOperator{\Aut}{Aut}
+	\newcommand{\Aut}{\Iso{\Homo}}
+
+	% Núcleo e imagem
+	\DeclareMathOperator{\nuc}{nuc}
+	\DeclareMathOperator{\im}{im}
+
+	% Suporte
+	\DeclareMathOperator{\supp}{supp}
+
+	% Gerado
+	\newcommand{\ger}[1]{\left\langle #1 \right\rangle}
+
+	% Estrutura livre
+	\newcommand{\liv}{\mathcal{F}}
+
+	% Centro de grupo
+	\DeclareMathOperator{\Zen}{Z}
+
+	% Grupos simétrico, alternado e cíclico
+	\newcommand{\Sime}{\mathfrak{S}}
+%	\newcommand{\Sime}{\Iso{\Func}}
+	% NOTA: Tive que substituir todos \Sime por \Iso{\Func}, pois \bm{\Iso{\Func}} dá erro, tive que usar \Iso{\bm{\Func}}.
+	\newcommand{\sime}{\mathfrak{S}}
+	\newcommand{\altt}[1]{\mathfrak{A}(#1)}
+	\newcommand{\alte}{\mathfrak{A}}
+	\newcommand{\cicc}[1]{\mathfrak{C}(#1)}
+	\newcommand{\cicl}{\mathfrak{C}}
+
+	% Órbita
+	\newcommand{\orb}{\mathcal{O}}
+
+	% Paridade de uma permutação
+	\newcommand{\prd}{\epsilon}
+%	\newcommand{\prd}{\pm}
+	% IDEIA: usar o símbolo de \pm com um círculo em torno
+
+	% Ação de grupos
+	\newcommand{\age}{\curvearrowright}
+	\newcommand{\acao}[3]{{#1}\colon {#2} \curvearrowright {#3}}
+%	\newcommand{\pt}{\mathord{\centerdot}\ }
+	\newcommand{\pt}{\bm{\cdot}}
+	
+	% Grupos lineares
+	\DeclareMathOperator{\GL}{GL}
+	\DeclareMathOperator{\SL}{SL}
+	\DeclareMathOperator{\OO}{O}
+	\DeclareMathOperator{\SO}{SO}
+	\DeclareMathOperator{\UU}{U}
+	\DeclareMathOperator{\SU}{SU}
+	\DeclareMathOperator{\Sp}{Sp}
+
+	% Grupos projetivos
+	\DeclareMathOperator{\PGL}{PGL}
+	\DeclareMathOperator{\PSL}{PSL}
+	\DeclareMathOperator{\PO}{PO}
+	\DeclareMathOperator{\PSO}{PSO}
+	\DeclareMathOperator{\PU}{PU}
+	\DeclareMathOperator{\PSU}{PSU}
+%	\DeclareMathOperator{\PSp}{PSp}
+
+	% Grupo afim
+	\DeclareMathOperator{\Af}{Af}
+
+	% Sequência exata de homomorfismos
+	\newcommand{\funseq}[2]{{#1} \overset{#2}{\longrightarrow}}
+
+% Anéis e corpos
+%------------------------------------
+	% Característica de um anel
+	\DeclareMathOperator{\car}{car}
+
+	% Espectro de um anel
+%	\DeclareMathOperator{\Esp}{Esp}
+	% NOTA: Espectro já foi definido em espaços lineares para o conjunto de autovalores de uma transformação. Não sei se de algum modo elescoincidem.
+	% Radical de um ideal
+	\newcommand{\rad}[1]{\sqrt{#1}}
+%	\newcommand{\rad}{\mathord{\raisebox{2.1pt}{$\surd$}}}
+
+	% Equivalência fracionária
+	\newcommand{\simfra}{
+		\mathop{
+			\mathpalette\superimpose{{\sim}{:}}
+		}
+	}
+
+
+	% Grau de polinômio
+	\DeclareMathOperator{\g}{gr} 
+
+	% Relação binária de divisão em um anel
+	\newcommand{\dleq}{\preceq} 
+	\newcommand{\ndleq}{\npreceq}
+	% MDC e MMC como encontro e junta da relação de divisão
+	\newcommand{\newgcd}{\mathop{\curlywedge}}
+	\newcommand{\newlcm}{\mathop{\curlyvee}}
+%	\renewcommand{\gcd}{\newgcd}
+%	\newcommand{\lcm}{\newlcm}
+	% Outros
+	\DeclareMathOperator{\mdc}{mdc}
+	\DeclareMathOperator{\divv}{Div}
+	\DeclareMathOperator{\mmc}{mmc}
+	\DeclareMathOperator{\mul}{Mul}
+%	\newcommand{\inte}{\mathtt I}
+
+
+
+	% Matrizes
+	\newcommand{\M}{\mathbb{M}}
+	% Matriz transposta
+	\newcommand{\transp}{\intercal}
+	% Matriz transposta conjugada
+	\newcommand{\conjtran}[1]{\overline{#1}^\transp}
+	% Matriz 0
+	\newcommand{\zero}{\mathbbm O}
+	% Traço
+	\DeclareMathOperator{\tr}{tr}
+
+	% Funções chão, teto e arredondamento
+	\newcommand{\chao}[1]{\left\lfloor{#1}\right\rfloor}
+	\newcommand{\teto}[1]{\left\lceil{#1}\right\rceil}
+	
+	\newcommand{\resto}[2]{\left\{ {#1} \right\}_{#2}}
+	\newcommand{\resfra}[1]{\left\{ {#1} \right\}}
+	
+	\newcommand{\arrecim}[1]{\left\lfloor{#1}\right\rceil}
+	\newcommand{\arrebai}[1]{\left\lceil{#1}\right\rfloor}
+
+% Espaços lineares
+%------------------------------------
+	% Funções lineares
+	\newcommand{\lin}{\mathcal{L}}
+
+	% Espectro, conjunto de autovalores
+	\DeclareMathOperator{\Esp}{Esp}
+	% Espaço dual, vetor dual...
+	\newcommand{\dual}{^*}
+	% Funções multilineares alternadas
+	\newcommand{\alter}{\mathcal{A}}
+
+	% Coordenados a partir de duas (ou uma) base, também usada para coordenadas de funções em variedades
+	\newcommand{\coo}[3]{{\left[{#1}\right]^{#2}_{#3}}}
+
+% Álgebra sobre corpos
+%------------------------------------
+	\DeclareMathOperator{\adj}{ad}
+	\DeclareMathOperator{\Der}{Der}
+	\newcommand{\col}[2]{\left[{#1},{#2}\right]}
+	\newcommand{\ad}[1]{\left[{#1}\right|}
+
+	% Álgebras clássicas
+	\DeclareMathOperator{\gl}{gl}
+	\DeclareMathOperator{\ssl}{sl}
+	\DeclareMathOperator{\so}{so}
+	\DeclareMathOperator{\uu}{u}
+	\DeclareMathOperator{\su}{su}
+	\DeclareMathOperator{\ssp}{sp}
+	
+	% Álgebra afim
+	\DeclareMathOperator{\af}{af}
+
+% Álgebra universal
+%------------------------------------
+	% Relação de congruência
+	\newcommand{\congr}{\equiv}
+
+% Ordem em estruturas algébricas
+%------------------------------------
+
+
+% Topologia e Geometria
+%------------------------------------------------
+
+% Topologia
+%------------------------------------
+	\newcommand{\topo}{\mathcal{T}}
+
+	\newcommand{\Int}[1]{{#1}^\circ} % \mathring é um comando iteressante, mas não serve tão bem aos meus propósitos.
+	\newcommand{\Fec}[1]{\overline{#1}}
+%	\newcommand{\Fec}[1]{{#1}^\bullet} % Análogo ao \Int
+	\newcommand{\fro}[1]{\partial{#1}}
+	%\newcommand{\fro}[1]{\mathrm{fro}#1}
+	%\DeclareMathOperator{\fro}{fro}
+	\newcommand{\viz}{\mathcal{V}}
+	
+	% Funções contínuas
+	\newcommand{\Cont}{\mathscr{C}}
+	
+	\newcommand{\emp}{_\star} % Objeto empurrado
+	\newcommand{\pux}{^\star} % Objeto puxado
+	
+	\let\S\relax
+	\newcommand{\S}{\mathbb{S}} % Esfera
+	\newcommand{\pro}{\mathbb{P}} % Espaço Projetivo
+	\newcommand{\Hip}{\mathbb{H}} % Espaço Hiperbólico
+	\newcommand{\T}{\mathbb{T}} % Toro
+	
+
+	\newcommand{\homot}{\approx}
+	\newcommand{\comp}{\cdot}
+
+	% Limites inferior e superior
+	\renewcommand{\limsup}{\varlimsup}
+	\renewcommand{\liminf}{\varliminf}
+
+% Espaços métricos
+%------------------------------------
+	% Distância
+%	\newcommand{\dist}[2]{d\left({#1},{#2}\right)}
+	\newcommand{\dist}[2]{\left\vert{#1},{#2}\right\vert}
+	
+	% Diâmetro
+	\DeclareFontEncoding{LS1}{}{}
+	\DeclareFontSubstitution{LS1}{stix}{m}{n}
+	\DeclareRobustCommand{\diameter}{%
+		\text{\usefont{LS1}{stixscr}{m}{n}\symbol{"60}}%
+	}
+	\newcommand{\diam}{\diameter}
+%	\DeclareMathOperator{\diam}{diam}
+	% Convergência/ convergência pontual
+	\newcommand{\conv}{\rightarrow}
+	% Convergência uniforme
+	\newcommand{\uconv}{\rightrightarrows}
+	% Bola de espaço métrico
+	\newcommand{\bola}{\mathrm{B}}
+%	\newcommand{\bola}{\mbox{\larger[1]$\odot$}}
+
+% Grupos topológicos
+%------------------------------------
+
+
+% Espaços lineares topológicos
+%------------------------------------
+
+
+% Espaços normados
+%------------------------------------
+	% Valor absoluto
+	\newcommand{\abs}[1]{\left\vert{#1}\right\vert}
+	% Norma
+	\newcommand{\nor}[1]{\left\Vert{#1}\right\Vert}
+	% Espaço Normado
+	\newcommand{\E}{\mathbb{E}}
+	% Bola Unitária de espaço normado
+	\newcommand{\B}{\mathbb{B}}
+
+	% Espaço das funções lineares contínuas (funções limitadas lineares)
+	\newcommand{\toplin}{\mathscr{L}}
+	% Espaço das funções lineares isométricas
+	\newcommand{\Linmet}{\toplin_{\scalebox{0.5}{\ensuremath{\nor{}}}}} 
+
+% Espaços com produto interno
+%------------------------------------
+	% Produto interno
+	\newcommand{\inte}[2]{\left\langle{#1},{#2}\right\rangle}
+	% Complexo conjugado
+	\newcommand{\conju}[1]{\overline{#1}}
+	% Ângulo
+	\newcommand{\ang}[2]{\sphericalangle\left({#1},{#2}\right)}
+	\newcommand{\angf}{\sphericalangle}
+	% Novos seno e cosseno
+	\newcommand{\Sin}{\mkern3mu
+		\begin{tikzpicture}[scale=0.5]
+			\draw[line cap=round, line width=0.6] (0,0) -- (0.8660,0.5);
+			\draw[line cap=round, line width=0.6] (0.8660,0.5) -- (0.8660,0);
+		\end{tikzpicture}
+	}
+	\newcommand{\Cos}{\mkern3mu
+		\begin{tikzpicture}[scale=0.5]
+			\draw[line cap=round, line width=0.6] (0,0) -- (0.8660,0.5);
+			\draw[line cap=round, line width=0.6] (0,0) -- (0.8660,0);
+		\end{tikzpicture}
+	}
+	\newcommand{\nsin}{\mathop{\Sin}}
+	\newcommand{\ncos}{\mathop{\Cos}}
+
+	% Parte escalar e vetorial do quatérnio
+	\newcommand{\esc}[1]{\dot{#1}}
+%	\newcommand{\esc}[1]{\tilde{#1}}
+	% Produto escalar e produto vetorial
+	\newcommand{\pesc}[2]{{#1} \bm{\cdot} {#2}}
+	\newcommand{\pvec}[2]{{#1} \bm{\times} {#2}}
+
+% Medida
+%------------------------------------
+	% Conjunto dos conjuntos mensuráveis
+	\newcommand{\mens}{\mathcal{M}}
+	% Medida
+	\newcommand{\med}{m}
+	% Volume / medida de Lebesgue
+	\DeclareMathOperator{\vol}{vol}
+	
+	% Funções mensuráveis
+	\newcommand{\Men}{\mathscr{M}}
+	% Boreliano
+	\newcommand{\bor}{\mathscr{B}}
+	% Quase funções mensuráveis
+	\newcommand{\Menq}{\mathscr{M}_{\qeq}}
+	
+	% Espaço das Medidas
+	\newcommand{\Med}{\mathfrak{M}}
+	
+	% Supremo essencial
+	\DeclareMathOperator{\supess}{sup\,ess}
+	
+	% Quase relações
+	\newcommand{\qforall}{\overset{{\mbox{\smaller[4]$\circ$}}}{\forall}}
+	\newcommand{\qsubset}{\overset{{\mbox{\smaller[4]$\circ$}}}{\subseteq}}
+	\newcommand{\qeq}{\circeq}
+	\newcommand{\qleq}{\overset{{\mbox{\smaller[4]$\circ$}}}{\leq}}
+
+% Integração
+%------------------------------------
+	% Funções simples
+	\newcommand{\Simp}{\Men_s}
+	% Funções integráveis
+	\newcommand{\Intg}{\mathscr{I}}
+	\newcommand{\dd}{\mathrm{d}}
+	
+
+% Diferenciação
+%------------------------------------
+	\newcommand{\D}{\mathrm{D}}
+	\newcommand{\der}[2]{\frac{\partial{#1}}{\partial{#2}}}
+	%\newcommand{\der}[2]{\partial_{#1}{#2}}
+	\newcommand{\res}[1]{\left.{#1}\right|}
+	\newcommand{\derr}[1]{\res{\der{}{#1}}}
+
+% Variedades
+%------------------------------------
+	\newcommand{\atlas}{\mathcal{A}}
+	%\newcommand{\x}{\mathrm{x}}
+	\newcommand{\x}{x}
+	\newcommand{\Tg}{\mathrm{T}}
+
+	\DeclareMathOperator{\codim}{codim}
+	\newcommand{\orient}{\mathcal{O}}
+
+	% Campos tensoriais
+	\newcommand{\tens}{\mathfrak{T}}
+
+	% Formas
+	\newcommand{\form}{\Omega}
+
+	\DeclareMathOperator{\sen}{sen}
+	\renewcommand{\sin}{\sen}
+
+	% Folheações
+	\newcommand{\Fol}{\mathcal{F}}
+	\newcommand{\coerfol}{\approx}
+
+	% Tangente e transverso
+%	\makeatletter
+	\newcommand{\tangente}{\mathrel{\vphantom{\cap}\mathpalette\@tangent\relax}}
+	\newcommand{\@tangent}[2]{%
+		\vbox{\offinterlineskip
+			\sbox\z@{$#1\pitchfork$}%
+			\ialign{##\cr
+				\raisebox{-0.37\height}[0pt][0pt]{%
+					\resizebox{\ht\z@}{\height}{$\m@th\mspace{-1.5mu}-\mspace{-1.5mu}$}%
+				}\cr
+				\hidewidth\scalebox{1}[0.89]{$\m@th#1\cap$}\hidewidth\cr
+			}%
+		}%
+	}
+%	\makeatother
+	% NOTA: Tangente análogo ao \pitchfork
+	% REFERÊNCIA: https://tex.stackexchange.com/questions/455587/symbol-similar-to-pitchfork-for-tangent-component/455595?noredirect=1#comment1145991_455595
+	\newcommand{\tang}{\tangente}
+	\newcommand{\tran}{\pitchfork} % Defini um outro comando, \transv, devo unificar os dois.
+
+% Fibrados
+%------------------------------------
+
+
+% Sistemas Dinâmicos
+%------------------------------------------------
+% Sistema Dinâmico
+
+% Sistemas dinâmicos
+%------------------------------------
+	% Sitema dinâmico
+	\newcommand{\Sist}{\mathcal{S}}
+	% Pontos periódicos
+	\newcommand{\Per}{\mathrm{P}}
+
+% Sistemas dinâmicos topológicos
+%------------------------------------
+	% Pontos limite
+	\newcommand{\Lim}{\mathrm{L}}
+	% Pontos não-errantes
+	\newcommand{\Nerr}{\Omega}
+	% Pontos recorrentes
+	\newcommand{\Rec}{\mathrm{R}}
+
+% Sistemas dinâmicos métricos
+%------------------------------------
+
+
+% Sistemas dinâmicos de medida
+%------------------------------------
+
+
+% Sistemas dinâmicos lineares
+%------------------------------------
+
+
+% Sistemas dinâmicos diferenciais
+%------------------------------------
+
+
+% OUTROS
+%------------------------------------------------
+
+
+
+%------------------------------------------------------------
+% Ambientes													%
+%------------------------------------------------------------
+
+%\swapnumbers
+
+\if@artigo
+	% Estilo Definição
+	\theoremstyle{definition}
+	\newtheorem{definition}{\raisebox{0.3ex}{\textnormal{:}}$\bm{\vdash}$ Definição}[section]
+	\newtheorem{axiom}{Axioma}
+	\newtheorem*{notation}{Notação}
+
+	% Estilo Proposição
+	\theoremstyle{plain}
+	\newtheorem{proposition}{$\bm{\vdash}$ Proposição}[section]
+	\newtheorem{lemma}[proposition]{$\bm{\vdash}$ Lema}
+	\newtheorem{theorem}[proposition]{$\bm{\vdash}$ Teorema}
+	\newtheorem{corollary}[proposition]{$\bm{\vdash}$ Corolário}
+
+	\newtheorem{conjecture}{\textnormal{?}$\bm{\vdash}$ Conjectura}[section]
+	\newtheorem{exercise}{\raisebox{0.2ex}{$\vartriangleright$} Exercício}[section]
+
+	\newtheorem{example}{\raisebox{0.2ex}{$\blacktriangleright$} Exemplo}[section]
+%\else
+\fi
+
+\if@livro
+	% Estilo Definição
+	\theoremstyle{definition}
+	\newtheorem{definition}{\raisebox{0.3ex}{\textnormal{:}}$\bm{\vdash}$ Definição}[chapter]
+	\newtheorem{axiom}{Axioma}
+	\newtheorem*{notation}{Notação}
+
+	% Estilo Proposição
+	\theoremstyle{plain}
+	\newtheorem{proposition}{$\bm{\vdash}$ Proposição}[chapter]
+	\newtheorem{lemma}[proposition]{$\bm{\vdash}$ Lema}
+	\newtheorem{theorem}[proposition]{$\bm{\vdash}$ Teorema}
+	\newtheorem{corollary}[proposition]{$\bm{\vdash}$ Corolário}
+
+	\newtheorem{conjecture}{\textnormal{?}$\bm{\vdash}$ Conjectura}[chapter]
+	\newtheorem{exercise}{\raisebox{0.2ex}{$\vartriangleright$} Exercício}[chapter]
+
+	\newtheorem{example}{\raisebox{0.2ex}{$\blacktriangleright$} Exemplo}[chapter]
+
+
+	% Estilo Definição
+	\theoremstyle{definition}
+	\newtheorem{defi}{\raisebox{0.3ex}{\textnormal{:}}$\bm{\vdash}$ Definição}[chapter]
+	\newtheorem{axi}{Axioma}
+	\newtheorem*{nota}{Notação}
+
+	% Estilo Proposição
+	\theoremstyle{plain}
+	\newtheorem{prop}{$\bm{\vdash}$ Proposição}[chapter]
+	\newtheorem{lema}[proposition]{$\bm{\vdash}$ Lema}
+	\newtheorem{teo}[proposition]{$\bm{\vdash}$ Teorema}
+	\newtheorem{coro}[proposition]{$\bm{\vdash}$ Corolário}
+
+	\newtheorem{conj}{\textnormal{?}$\bm{\vdash}$ Conjectura}[chapter]
+	\newtheorem{exerc}{\raisebox{0.2ex}{$\vartriangleright$} Exercício}[chapter]
+
+	\newtheorem{ex}{\raisebox{0.2ex}{$\blacktriangleright$} Exemplo}[chapter]
+\fi
+
+% Demonstração
+%\renewcommand*{\proofname}{$\square$ Demonstração}
+%\addto\captionsbrazilian{\renewcommand\proofname{$\square$ Demonstração}}
+% NOTA[2020.08.21]: O primeiro comando não funciona com babel porque esse pacote redefine \proofname, por isso o segundo deve ser usado, mas o segundo não funcionou aqui, tive que movê-lo para o estilomeu.sty logo após o pacote babel. Não sei porque isso ocorre, preferiria que ele ficasse aqui no pacote matematica.sty.
+\renewcommand{\qedsymbol}{$\blacksquare$}
+
+
+
+%------------------------------------------------------------
+\endinput

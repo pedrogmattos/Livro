@@ -1,0 +1,485 @@
+\chapter{Diferenciação}
+
+O espaço real $\E$ estudado neste capítulo será o espaço vetorial normado $(\R^d,+,\cdot)$ sobre $\R$. A base canônica de $\R^d$ será representada pelos vetores $\{\bm e_0, \ldots, \bm e_{d-1}\}$. Um vetor $x \in \R^d$ será também representado por $x=(x_0,\ldots,x_{d-1})$ e uma função $f: \R^{d_0} \to \R^{d_1}$ será também representada por $f=(f_0,\ldots,f_{d_1-1})$, de modo que $f_i := \pi_i \circ f$, sendo $\pi_i$ a $i$-ésima projeção de $\R^{d_1}$ em $\R$. Como todas normas em $\R^d$ são equivalentes, não será feita referência à norma utilizada, apenas será usado o fato de que $\R^d$ é um espaço vetorial normado (e completo). Se necessário, a norma utilizada será explicitada e, quando não for, a norma usada será $\nor{\cdot}_2$. O estudo da diferenciabilidade em espaços de dimensão maior que 1 envolve o uso de funções contínuas e transformações lineares, e também de funções de um espaço real em um espaço de transformações lineares. Por esse motivo, a notação pode ser confusa. Para simplificar a notação, uma transformação linear $T$ aplicada a um vetor $v$ será sempre denotada por $T \cdot v$. Desenvolveremos, a seguir, a teoria de diferenciabilidade de funções entre espaços reais, e as funções consideradas serão sempre da forma
+	\begin{equation*}
+	f: \R^d \to \R^c,
+	\end{equation*}
+mas toda teoria poderia ser desenvolvida para funções definidas em abertos de $\R^d$. O tratamento que adotaremos, no entanto, não prejudica a generalidade, pois todas propriedades desenvolvidas podem ser compreendidas localmente.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{comment}
+
+\section{Espaço real}
+
+\section{Compactos}
+
+\begin{theorem}[Heine-Borel]
+	Seja $C \subseteq \R^n$ um conjunto. Então são equivalentes:
+	\begin{enumerate}
+	\item $C$ é compacto.
+	\item $C$ é fechado e limitado.
+	\item Para toda sequência $(x_n)_{n \in \N} \subseteq C$, existe subsequência $(x_{n_k})_{k \in \N}$ que converge a $x \in C$.
+	\end{enumerate}
+\end{theorem}
+
+\begin{proposition}
+Um conjunto $C \subseteq \R^n$ é compacto se, e somente se, para toda função $f: C \to \R^m$ contínua, $f(C)$ é limitado.
+\end{proposition}
+\begin{proof}
+
+\end{proof}
+
+\paragraph*{Exercício} Vale o mesmo se trocarmos limitado por fechado na proposição anterior?
+
+\begin{proposition}
+	Sejam $C \subseteq \R^n$ compacto, $X \subseteq \R^m$ e $f: X \times C \to \R^l$ contínua. Seja $x_0 \in X$. Então, para todo $\varepsilon > 0$, existe $\delta > 0$ tal que, se $x \in X$ e $|x-x_0| < \delta$, então, para todo $\alpha \in C$, $|f(x,\alpha)-f(x_0,\alpha)|<\varepsilon$.
+\end{proposition}
+\begin{proof}
+	Suponha que existe $\varepsilon>0$ e $x_k \to x_0$ e $\alpha_k \in C$ tal que $|f(x_k,\alpha_k)-f(x_0, \alpha_k)| \geq \varepsilon$, $\alpha_k$ tem subcobertura $\alpha_{k_n} \to \alpha_0$
+\end{proof}
+
+\end{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Diferenciabilidade}
+
+A ideia por trás dessa definição de diferenciabilidade é a de que a função $f$ pode ser aproximada em uma vizinhança de um ponto $p$ por seu valor no ponto mais o valor de uma transformação linear aplicada num vetor $v$ de variação que mede quanto afastou-se do ponto $p$. Ser aproximada, nesse sentido, quer dizer que o erro da aproximação será da ordem da norma do vetor variação $v$, de modo que a razão entre os dois vá a zero quando a variação vai a zero. A definição de função contínua, de fato, pode ser pensada como um caso análogo: a função $f$ numa vizinhança do ponto $p$ pode ser aproximada por seu valor em $p$, e aproximada aqui quer dizer que a norma da diferença vai a zero quando o vetor variação vai a zero. Mais à frente, as $k$-ésimas diferenciais da função $f$ serão definidas analogamente, considerando nesses casos funções multilineares.
+
+\begin{definition}
+Sejam $p \in \R^d$ e $f: \R^d \to \R^c$ uma função. Uma \emph{diferencial} de $f$ em $p$ é uma transformação linear $T : \R^d \to \R^c$ que satisfaz
+	\begin{equation*}
+	\lim_{v \conv 0} \frac{f(p+v)-f(p)-T \cdot v}{\nor{v}} = 0.
+	\end{equation*}
+Uma função \emph{diferenciável} em $p$ é uma função que tem diferencial em $p$.
+\end{definition}
+
+É válido notar que são equivalentes a essa condição
+	\begin{equation*}
+	\lim_{x \conv p} \frac{f(x)-f(p)-T\cdot(x-p)}{\nor{x-p}} = 0.
+	\end{equation*}
+e
+	\begin{equation*}
+	\lim_{v \conv 0} \frac{\nor{f(p+v)-f(p)-T \cdot v}}{\nor{v}} = 0.
+	\end{equation*}
+
+\begin{proposition}[Diferenciabilidade implica continuidade]
+Sejam $p \in \R^d$ e $f: \R^d \to \R^c$ uma função. Se $f$ é diferenciável em $p$, então $f$ é contínua em $p$.
+\end{proposition}
+\begin{proof}
+Se $f$ é diferenciável em $p$, então, como $\lim_{v \conv 0} T \cdot v = 0$,
+	\begin{align*}
+	\lim_{v \conv 0} (f(p+v)-f(p)) &= \lim_{v \conv 0}(f(p+v)-f(p)-T \cdot v) \\
+		&= \lim_{v \conv 0}\nor{v} \frac{f(p+v)-f(p)-T \cdot v}{\nor{v}} \\
+		&= 0,
+	\end{align*}
+logo $f$ é contínua em $p$.
+\end{proof}
+
+\begin{proposition}[Unicidade da diferencial]
+Sejam $p \in \R^d$ e $f:\R^d \to \R^c$ uma função diferenciável em $p$. Então existe uma única diferencial de $f$ em $p$.
+\end{proposition}
+\begin{proof}
+Sejam $T,S: \R^d \to \R^c$ diferenciais de $f$ em $p$. Nesse caso, temos que
+	\begin{align*}
+	\lim_{v \conv 0} &\frac{T \cdot v - S \cdot v}{\nor{v}} = \\
+	&= \lim_{v \conv 0} \frac{T \cdot v - (f(p+v)-f(p)) + (f(p+v)-f(p)) - S \cdot v}{\nor{v}} \\
+	& =  -\lim_{v \conv 0} \frac{f(p+v)-f(p) - T \cdot v}{\nor{v}} + \lim_{v \conv 0} \frac{f(p+v)-f(p) - S \cdot v}{\nor{v}} \\
+	&=0.
+	\end{align*}
+Como $T$ e $S$ são transformações lineares, sabemos que $T \cdot 0 = S \cdot 0=0$. Para todo $v \in \R^d \setminus \{0\}$, temos que, quando $t \conv 0$, $tv \conv 0$. Ainda, como $T$ e $S$ são transformações lineares, $T \cdot (tv) = t(T \cdot v)$ e $S \cdot (tv) = t (S \cdot v)$, e segue que
+	\begin{align*}
+	0 &= \lim_{tv \conv 0} \frac{\nor{T \cdot (tv) - S \cdot (tv)}}{\nor{tv}} \\
+		&= \lim_{t \conv 0} \frac{\abs{t}\nor{T \cdot v - S \cdot v}}{\abs{t} \nor{v}} \\
+		&= \frac{\nor{T \cdot v - S \cdot v}}{\nor{v}},
+	\end{align*}
+o que implica $T \cdot v = S \cdot v$, pois $\nor{v} \neq 0$. Portanto $T=S$.
+\end{proof}
+
+\begin{notation}
+Sejam $p \in \R^d$ e $f: \R^d \to \R^c$ uma função diferenciável em $p$. A diferencial de $f$ em $p$ é denotada $\D f(p): \R^d \to \R^c$ e satisfaz
+	\begin{equation*}
+	\lim_{v \conv 0} \frac{f(p+v) - f(p) - \D f(p) \cdot v}{\nor{v}} = 0.
+	\end{equation*}
+\end{notation}
+
+Podemos ver que, se $f$ é diferenciável, então $\D f: \R^d \to L(\R^d,\R^c)$ é uma função que leva $p \in \R^d$ na diferencial $\D f(p)$ de $f$ em $p$.
+
+\begin{proposition}[Regra da cadeia]
+Sejam $f: \R^n \to \R^m$ diferenciável em $p \in \R^n$ e $g: \R^m \to \R^l$ diferenciável em $f(p)$. Então $g \circ f: \R^n \to \R^l$ é diferenciável em $p$ e
+	\begin{equation*}
+	\D (g \circ f)(p) = \D g(f(p)) \circ \D f(p).
+	\end{equation*}
+\end{proposition}
+\begin{proof} Definamos
+	\begin{equation*}
+	r_1(v) := f(p+v) - f(p) - \D f(p) \cdot v
+	\end{equation*}
+e
+	\begin{equation*}
+	r_1(v) := g(f(p)+v) - g(f(p)) - \D g(f(p)) \cdot v,
+	\end{equation*}
+de modo que da diferenciabilidade de $f$ em $p$ e de $g$ em $f(p)$ segue
+	\begin{equation*}
+	\lim_{v \conv 0} \frac{r_1(v)}{\nor{v}} = \lim_{v \conv 0} \frac{r_1(v)}{\nor{v}} = 0.
+	\end{equation*}	
+Calculando $(g \circ f)(p+v)$, obtemos
+	\begin{align*}
+	(g \circ f)(p+v) &= g(f(p+v)) = g(f(p)+\D f(p) \cdot v + r_1(v)) \\
+		&= g(f(p)) + \D g(f(p)) \cdot (\D f(p) \cdot v + r_1(v)) \\
+		&\qquad + r_1(\D f(p) \cdot v + r_1(v)) \\
+		&= (g \circ f)(p) + \big(\D g(f(p)) \circ \D f(p)\big) \cdot v + \D g(f(p)) \cdot r_1(v) \\
+		&\qquad + r_1(\D f(p) \cdot v + r_1(v)).
+	\end{align*}
+Portanto
+	\begin{align*}
+	(g \circ f)(p+v) - (g \circ f)(p) - \big(\D g(f(p)) \circ \D f(p)\big) \cdot v \\
+	\qquad = \D g(f(p)) \cdot r_1(v) + r_1(\D f(p) \cdot v + r_1(v)).
+	\end{align*}
+Como $\D g(f(p)) \circ \D f(p)$ é uma transformação linear de $\R^n$ para $\R^l$, basta mostrar que a expressão acima, dividida por $\nor{v}$, vai a zero. Mas
+	\begin{equation*}
+	\lim_{v \conv 0} \frac{\D g(f(p)) \cdot r_1(v)}{\nor{v}} = \lim_{v \conv 0} \D g(f(p)) \cdot \frac{r_1(v)}{\nor{v}} = 0
+	\end{equation*}
+e, como $\lim_{v \conv 0} \D f(p) \cdot v + r_1(v) = 0$ e $\D f(p) \cdot \frac{v}{\nor{v}}$ é limitado,
+	\begin{align*}
+	\lim_{v \conv 0} &\frac{r_1(\D f(p) \cdot v + r_1(v))}{\nor{v}} \\
+		&= \lim_{v \conv 0} \frac{r_1(\D f(p) \cdot v + r_1(v))}{\nor{\D f(p) \cdot v + r_1(v)}} \frac{\nor{\D f(p) \cdot v + r_1(v)}}{\nor{v}}\\
+		&= \lim_{v \conv 0} \frac{r_1(\D f(p) \cdot v + r_1(v))}{\nor{\D f(p) \cdot v + r_1(v)}} \nor{\D f(p) \cdot \frac{v}{\nor{v}}+ \frac{r_1(v)}{\nor{v}}} = 0.
+	\end{align*}
+Logo
+	\begin{equation*}
+	\lim_{v \conv 0} \frac{(g \circ f)(p+v) - (g \circ f)(p) - \big(\D g(f(p)) \circ \D f(p)\big) \cdot v}{\nor{v}} = 0,
+	\end{equation*}
+e concluímos que $\D g(f(p)) \circ \D f(p)$ é a diferencial de $g \circ f$ em $p$.
+\end{proof}
+
+
+\begin{proposition}[Regra da cadeia iterada]
+Sejam $f: \R^n \to \R^m$ $2$-diferenciável em $p \in \R^n$ e $g: \R^m \to \R^l$ diferenciável em $f(p)$. Então $g \circ f: \R^n \to \R^l$ é diferenciável em $p$ e
+	\begin{equation*}
+	\D^2 (g \circ f)(p,p) = \D^2 g(f(p),f(p)) \circ \D f(p) + \D g(f(p)) \circ \D^2 f(p)
+	\end{equation*}
+\end{proposition}
+
+
+
+
+\begin{proposition}
+	Sejam $f,g: \R^n \to \R^m$ diferenciáveis em $p \in \R^n$. Então
+	\begin{enumerate}
+	\item $D (f+g)(p) = D f(p) + D g(p);$
+	\item $D (f \cdot g) = D f(p) \cdot g(p) + f(p) \cdot D g(p);$
+	\item Se $g(a) \neq 0$,
+	\begin{equation*}
+	D \left(\frac{f}{g}\right) (p) = \frac{g(p) \cdot D f(a) - D g (a) \cdot f(p)}{g(p)^2}
+	\end{equation*}
+	\end{enumerate}
+\end{proposition}
+
+
+
+\subsection{Diferenciais de ordem superior}
+
+Generalizamos, agora, a ideia de uma diferencial para uma $r$-diferencial. Para isso, denotaremos um vetor $(v,\ldots,v)$ com $k$ entradas por $(v)^{\otimes k}$.
+
+\begin{definition}
+Seja $p \in \R^d$. Uma função \emph{$r$-diferenciável} em $p$ é uma função $f\colon \R^d \to \R^c$ tal que, para todo $k \in [r+1]$, existe uma função $k$-linear simétrica
+	\begin{equation*}
+	L_k\colon \R^d \times \cdots \times \R^d \to \R^c
+	\end{equation*}
+satisfazendo
+	\begin{equation*}
+	\lim_{v \conv 0} \frac{\displaystyle f(p+v)-f(p)- \sum_{k=1}^r \frac{1}{k!}L_k \cdot (v)^{\otimes k}}{\nor{v}^r} = 0.
+	\end{equation*}
+Uma função $L_k$ como acima é uma \emph{diferencial de ordem $k$} (ou \emph{$k$-ésima diferencial}) da $f$ em $p$.
+\end{definition}
+
+\begin{proposition}
+Sejam $p \in \R^d$ e $f\colon \R^d \to \R^c$ uma função $k$-diferenciável em $p$. Então $f$ é $(k-1)$-diferenciável em $p$.
+\end{proposition}
+\begin{proof}
+Primeiro notemos que
+	\begin{equation*}
+	\lim_{v \conv 0} \frac{L_r \cdot (v)^{\otimes r}}{\nor{v}^{r-1}} \leq \lim_{v \conv 0} \frac{\nor{L_r} \nor{v}^r}{\nor{v}^{r-1}} = \lim_{v \conv 0} \nor{L_r}\nor{v} = 0.
+	\end{equation*}
+Portanto segue que
+	\begin{align*}
+	\lim_{v \conv 0} &\frac{\displaystyle f(p+v)-f(p)- \sum_{k=1}^{r-1} \frac{1}{k!}L_k \cdot (v)^{\otimes k}}{\nor{v}^{r-1}} \\
+		&= \lim_{v \conv 0} \frac{\displaystyle f(p+v)-f(p)- \sum_{k=1}^{r-1} \frac{1}{k!}L_k \cdot (v)^{\otimes k}-\frac{1}{r!}L_r \cdot (v)^{\otimes r}}{\nor{v}^{r-1}}\\
+		&= \lim_{v \conv 0} \nor{v}\frac{\displaystyle f(p+v)-f(p)- \sum_{k=1}^r \frac{1}{k!}L_k \cdot (v)^{\otimes k}}{\nor{v}^r} \\
+		&= 0.
+	\end{align*}
+\end{proof}
+
+\begin{proposition}
+Sejam $p \in \R^d$ e $f\colon \R^d \to \R^c$ uma função $r$-diferenciável em $p$. Então as $k$-ésimas diferenciais de $f$ em $p$ são únicas.
+\end{proposition}
+\begin{proof}
+Mostraremos por indução em $r$. Para $r=1$, temos a definição de função diferenciável, portanto a diferencial de $f$ em $p$ é única. Para o passo indutivo, suponhamos que toda função $(r-1)$-diferenciável tem únicas $i$--ésimas diferenciais para $0\leq i \leq r-1$. Consideremos uma função $f\colon \R^d \to \R^c$ $r$-diferenciável em $p$. Então ela é $(r-1)$-diferenciável em $p$ pela proposição anterior e segue que, para todo $k \in [r]$, existe uma única função $k$-linear simétrica
+	\begin{equation*}
+	L_k\colon \R^d \times \cdots \times \R^d \to \R^c
+	\end{equation*}
+satisfazendo
+	\begin{equation*}
+	\lim_{v \conv 0} \frac{\displaystyle f(p+v)-f(p)- \sum_{k=1}^{r-1} \frac{1}{k!}L_k \cdot (v)^{\otimes k}}{\nor{v}^r} = 0.
+	\end{equation*}
+Agora, sejam $L,S$ diferenciais de ordem $r$ de $f$ em $p$ e definamos
+	\begin{equation*}
+	A(v) := f(p+v)-f(p)- \sum_{k=1}^{r-1} \frac{1}{k!}L_k \cdot (v)^{\otimes k}.
+	\end{equation*}
+Segue que
+	\begin{align*}
+	&\lim_{v \conv 0} \frac{L \cdot (v)^{\otimes r} - S \cdot (v)^{\otimes r}}{\nor{v}^r} \\
+	&= r! \lim_{v \conv 0} \frac{\frac{1}{r!} L \cdot (v)^{\otimes r} - A(v) + A(v) - \frac{1}{r!} S \cdot (v)^{\otimes r}}{\nor{v}^r} \\
+	&= -r!\lim_{v \conv 0} \frac{\frac{1}{r!} L \cdot (v)^{\otimes r} - A(v)}{\nor{v}^r} + r!\lim_{v \conv 0} \frac{A(v) - \frac{1}{r!} S \cdot (v)^{\otimes r}}{\nor{v}^r} \\
+	&= 0.
+	\end{align*}
+Como $L$ e $S$ são transformações $r$-lineares, sabemos que $L \cdot (0)^{\otimes r} = S \cdot (0)^{\otimes r} =0$. Para $v \in (\R^d)^r \setminus\{(0)^{\otimes r}\}$, temos que, quando $t \conv 0$, $(tv)^{\otimes r} \conv (0)^{\otimes r}$. Ainda, como $L$ e $S$ são $r$-lineares, $L \cdot (tv)^{\otimes r} = t^rL \cdot (v)^{\otimes r}$ e $S \cdot (tv)^{\otimes r} = t^rS \cdot (v)^{\otimes r}$, e segue que
+	\begin{align*}
+	0= &\lim_{tv \conv 0} \frac{L \cdot (tv)^{\otimes r} -  S \cdot (tv)^{\otimes r}}{\nor{tv}^r} \\
+	&= \lim_{t \conv 0} \frac{(t)^r\big(L \cdot (v)^{\otimes r} -  S \cdot (v)^{\otimes r}\big)}{\abs{t}^r\nor{v}^r} \\
+	&= \pm \frac{\big(L \cdot (v)^{\otimes r} -  S \cdot (v)^{\otimes r}\big)}{\nor{v}^r}
+	\end{align*}
+o que implica $L \cdot (v)^{\otimes r} =  S \cdot (v)^{\otimes r}$, pois $\nor{v} \neq 0$. Por fim, essa relação e a simetria de $L$ e $S$ implicam que elas são iguais em todos os pontos, portanto $L=S$.
+\end{proof}
+
+\begin{notation}
+Sejam $p \in \R^d$ e $f\colon \R^d \to \R^c$ uma função $r$-diferenciável em $p$. A diferencial de ordem $r$ de $f$ em $p$ é denotada $\D^r f(p)\colon \R^d \times \cdots \times \R^d \to \R^c$ e, se definimos $D^0f(p):=f(p)$, as diferenciais satisfazem
+	\begin{equation*}
+	\lim_{v \conv 0} \frac{\displaystyle f(p+v) - \sum_{k=0}^r \frac{1}{k!}\D^k f(p) \cdot (v)^{\otimes k}}{\nor{v}^r} = 0.
+	\end{equation*}
+O polinômio
+	\begin{equation*}
+	P(v) = \sum_{k=0}^r \frac{1}{k!}\D^k f(p) \cdot (v)^{\otimes k}
+	\end{equation*}
+é o \emph{polinômio diferencial de ordem $r$} de $f$ em $p$.
+\end{notation}
+
+\section{Derivadas direcionais e a geometria da diferenciabilidade}
+
+A partir dessa seção, consideraremos funções $f: A \to \R^c$, em que $A \subseteq \R^d$ é um aberto. Toda a discussão feita na seção anterior considerou a diferenciabilidade em pontos do domínio. Agora, consideraremos a diferenciabilidade em conjuntos. A definição de diferenciabilidade da seção anterior pode ser facilmente adaptada parra funções $f: A \to \R^c$ pois essa função pode ser definida em $\R^d$ todo escolhendo qualquer valor para $f$ em $A^\complement$. Como as definições e resultados trataram de pontos, isso não é um problema. Os abertos serão necessários agora pois consideraremos curvas numa vizinhança de um ponto e relacionaremos as derivadas por essas curvas com derivadas parciais da função $f$.
+
+\begin{definition}
+Sejam $A \subseteq \R^n$ um aberto, $p \in A$, $v \in \R^d$ tal que $p+v \in A$ e $f: A \to \R^c$. A \emph{derivada direcional} de $f$ em $p$ na direção de $v$ é
+	\begin{equation*}
+	\der{f}{v}(p) := \lim_{t \conv 0} \frac{f(p+tv)-f(p)}{t}.
+	\end{equation*}
+\end{definition}
+
+Como $A$ é aberto, existe $\varepsilon$ tal que $p+tv \in A$ para todo $t \in \left]-\varepsilon,\varepsilon \right[$. Tomemos então a curva
+	\begin{align*}
+	\func{\gamma}{\left]-\varepsilon,\varepsilon \right[}{A}{t}{p+tv},
+	\end{align*}
+de modo que temos $\gamma(0)=p$ e $\gamma'(0) = v$. Então, pela regra da cadeia,
+	\begin{equation*}
+	 \der{f}{v}(p) = \D (f \circ \gamma)(0) = \D f(\gamma(0)) \cdot \gamma'(0) = \D f(p) \cdot v.
+	\end{equation*}
+Disso concluímos que a derivada direcional de $f$ em $p$ na direção de $v$ é a imagem de $v$ sob a transformação linear $\D f(p)$. Portanto definindo as derivadas direcionais $\partial_i f(x) := \D f(x) \cdot e_i$ temos que
+	\begin{equation*}
+	\D f(x) \cdot v = \sum_{i=0}^{d-1} v^i \partial_i f(x).
+	\end{equation*}
+
+\section{Teoremas fundamentais}
+
+\subsection{Teorema da função inversa}
+
+\begin{proposition}
+%Sejam $A \subseteq \R^d$ um aberto, $p \in A$ e $f\colon A \subseteq \R^d \to \R^d$ uma função $\Cont^r$-diferenciável ($r \geq 1$).
+
+Sejam $p \in \R^d$ e $f\colon \R^d \to \R^d$ uma função $\Cont^r$-diferenciável ($r \geq 1$) numa vizinhança aberta $A \subseteq \R^d$ de $p$. Se $\D f(p)\colon \R^d \to \R^d$ é invertível, então existe uma vizinhança aberta $V \subseteq \R^d$ de $p$ tal que $f\colon V \to f(V)$ é invertível, $f\inv\colon f(V) \to V$ é $\Cont^r$-diferenciável e
+	\begin{equation*}
+	\D(f\inv)(f(p)) = (\D f(p))\inv.
+	\end{equation*}
+\end{proposition}
+
+\subsection{Teorema da função implícita}
+
+\begin{proposition}
+%Sejam $A \subseteq \R^{d_0+d_1}$ um aberto, $p=(x_0,y_0) \in A$ e $f\colon A \subseteq \R^{d_0} \times \R^{d_1} \to \R^{d_1}$ uma função $\Cont^r$-diferenciável tal que $f(p)=0$.
+
+Sejam $p=(x_0,y_0) \in \R^{d_0} \times \R^{d_1}$ e $f\colon \R^{d_0} \times \R^{d_1} \to \R^{d_1}$ uma função $\Cont^r$-diferenciável ($r \geq 1$) numa vizinhança aberta $A \subseteq \R^{d_0+d_1}$ de $p$ tal que $f(p)=0$.
+Se $\D f(p)\colon \R^{d_0} \times \R^{d_1} \to \R^{d_1}$ é sobrejetiva, então existem vizinhanças abertas $V_0 \subseteq \R^{d_0}$ de $x_0$ e $V_1 \subseteq \R^{d_1}$ de $y_0$ e única função $\Cont^r$-diferenciável $g\colon V_0 \subseteq \R^{d_0} \to V_1 \subseteq \R^{d_1}$ satisfazendo
+	\begin{enumerate}
+	\item $g(x_0)=y_0$;
+	\item Para todos $(x,y) \in V_0 \times V_1$, $f(x,y)=0$ se, e somente se, $y=g(x)$.
+	\end{enumerate}
+\end{proposition}
+
+Observação: $\D f(p)\colon \R^{d_0} \times \R^{d_1} \to \R^{d_1}$ é sobrejetiva se, e somente se,
+	\begin{align*}
+	\func{\D f(p) \circ \iota_1}{\R^{d_1}}{\R^{d_1}}{y}{\D(f)(p) \cdot (0,y)}
+	\end{align*}
+é invertível (em que $\iota_1\colon \R^{d_1} \to \R^{d_0} \times \R^{d_1}$).  Note que $\D_1 f(p)$ também pode ser vista como essa função.
+
+\subsection{Forma local da imersão}
+
+\begin{proposition}
+%Sejam $A \subseteq \R^{d_0}$ um aberto, $p \in A$ e $f\colon A \subseteq \R^{d_0} \to \R^{d_0} \times \R^{d_1}$ uma função $\Cont^r$-diferenciável.
+
+Sejam $p \in \R^{d_0}$ e $f\colon \R^{d_0} \to \R^{d_0} \times \R^{d_1}$ uma função $\Cont^r$-diferenciável ($r \geq 1$) numa vizinhança aberta $A \subseteq \R^{d_0}$ de $p$. Se $\D f(p) \colon \R^{d_0} \to \R^{d_0} \times \R^{d_1}$ é injetiva, então existem vizinhanças abertas $V_0 \subseteq \R^{d_0}$ de $p$, $V_1 \subseteq \R^{d_1}$ de $0$ e $V \subseteq \R^{d_0} \times \R^{d_1}$ de $f(p)$ e $\Cont^r$-difeomorfismo $g\colon V \to V_0 \times V_1$ tal que, para todo $x \in V_0$,
+	\begin{equation*}
+	g \circ f(x)=(x,0).
+	\end{equation*}
+(ou seja, $g \circ f = \iota_0\colon V_0 \subseteq \R^{d_0} \to \R^{d_0} \times \R^{d_1}$).
+\end{proposition}
+
+Observação: A diferencial $\D f(p)\colon \R^{d_0} \to \R^{d_0} \times \R^{d_1}$ é injetiva se, e somente se,
+	\begin{align*}
+	\func{\D f(p) \circ \pi_0}{\R^{d_0}}{\R^{d_0}}{y}{\big(\D(f)(p) \cdot y\big)\downharpoonright_{\R^{d_0}}}
+	\end{align*}
+é invertível.
+
+
+\subsection{Forma local da submersão}
+
+\begin{proposition}
+%Sejam $A \subseteq \R^{d_0} \times \R^{d_1}$ um aberto, $p=(x_0,y_0) \in A$ e $f\colon A \subseteq \R^{d_0} \times \R^{d_1} \to \R^{d_1}$ uma função $\Cont^r$-diferenciável.
+
+Sejam $p=(x_0,y_0) \in \R^{d_0} \times \R^{d_1}$ e $f\colon \R^{d_0} \times \R^{d_1} \to \R^{d_1}$ uma função $\Cont^r$-diferenciável ($r \geq 1$) numa vizinhança aberta $A \subseteq \R^{d_0} \times \R^{d_1}$ de $p$. Se $\D f(p)\colon \R^{d_0} \times \R^{d_1} \to \R^{d_1}$ é sobrejetiva, então existem vizinhanças abertas $V \subseteq \R^{d_0} \times \R^{d_1}$ de $p$, $V_0 \subseteq \R^{d_0}$ de $x_0$ e $V_1 \subseteq \R^{d_1}$ de $f(p)$ e $\Cont^r$-difeomorfismo $g\colon V_0 \times V_1 \to V$ tal que, para todo $(x,y) \in V_0 \times V_1$,
+	\begin{equation*}
+	f \circ g(x,y)=y.
+	\end{equation*}
+(ou seja, $f \circ g = \pi_1\colon V_0 \times V_1 \subseteq \R^{d_0} \times \R^{d_1} \to \R^{d_1}$).
+\end{proposition}
+
+Observação: A diferencial $\D f(p)\colon \R^{d_0} \times \R^{d_1} \to \R^{d_1}$ é sobrejetiva se, e somente se,
+	\begin{align*}
+	\func{\D f(p) \circ \iota_1}{\R^{d_1}}{\R^{d_1}}{y}{\D(f)(p) \cdot (0,y)}
+	\end{align*}
+é invertível. Note que $\D_1 f(p)$ também pode ser vista como essa função.
+
+\subsection{Teorema do posto}
+
+\begin{proposition}
+Seja $f\colon \R^{d} \times \R^{d_0} \to \R^{d} \times \R^{d_1}$ uma função $\Cont^r$-diferenciável ($r \geq 1$) num aberto $A \subseteq \R^{d} \times \R^{d_0}$. Se $\D f(p)\colon \R^{d} \times \R^{d_0} \to \R^{d} \times \R^{d_1}$ tem o mesmo posto para todo $p \in A$ ($f$ tem posto constante em $A$), então, para todo $p \in A$, existem vizinhanças abertas $V_0 \subseteq \R^{d} \times \R^{d_0}$ de $p$ e $V_1 \subseteq \R^{d} \times \R^{d_1}$ de $f(p)$ e $\Cont^r$-difeomorfismos $g_0\colon V_0 \to g_0(V_0) \subseteq \R^{d} \times \R^{d_0}$ e $g_1\colon V_1 \to g_1(V_1) \subseteq \R^{d} \times \R^{d_1}$ tais que, para todo $(x,y) \in V_0$, 
+	\begin{equation*}
+	g_1 \circ f \circ {g_0}\inv(x,y))=(x,0).
+	\end{equation*}
+(ou seja, $g_1 \circ f \circ {g_0}\inv = \iota \circ \pi\colon \R^{d} \times \R^{d_0} \to \R^{d} \times \R^{d_1}$).
+\end{proposition}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\cleardoublepage
+\section{Cálculo em espaços normados de dimensão finita}
+
+\subsection{Diferencial}
+
+\begin{definition}
+Sejam $\E_0$ e $\E_1$ espaços normados de dimensão finita, $p \in \E_0$, $A \subseteq E_0$ uma vizinhança aberta de $p$ e $f\colon A \to \E_1$ uma função. Uma \emph{diferencial} de $f$ em $p$ é uma função linear $L\colon \E_0 \to \E_1$ que satisfaz
+	\begin{equation*}
+	\lim_{v \to 0} \frac{f(p+v) - f(p)-L \cdot v}{\nor{v}} = 0.
+	\end{equation*}
+Uma função \emph{diferenciável} em $p$ é uma função definida numa vizinhança aberta de $p$ que tem diferencial em $p$. Uma função diferenciável em um conjunto $C \subseteq \E_0$ é uma função diferenciável em todo $p \in C$, ou seja, uma função definida numa vizinhança aberta de $C$ e diferenciável em todos seus pontos.
+\end{definition}
+
+%\begin{definition}
+%Sejam $\E_0$ e $\E_1$ espaços normados de dimensão finita e $p \in \E_0$. Uma função \emph{diferenciável} em $p$ de $\E_0$ para $\E_1$ é uma função $f\colon \E_0 \to \E_1$ para a qual existe função linear $L\colon \E_0 \to \E_1$ que satisfaz
+%	\begin{equation*}
+%	\lim_{v \to 0} \frac{f(p+v) - f(p)-L \cdot v}{\nor{v}} = 0.
+%	\end{equation*}
+%Uma função diferenciável em um conjunto $C \subseteq \E_0$ é uma função diferenciável em todo $p \in C$, ou seja, uma função definida numa vizinhança aberta de $C$ e diferenciável em todos seus pontos.
+%\end{definition}
+
+Relembremos que a norma escolhida para o espaço linear é irrelevante, já que elas são todas equivalentes quando a dimensão do espaço normado é finita. A necessidade de definirmos a função em uma vizinhança aberta do ponto é para que a noção de limite esteja bem definida. %Em geral, não ressaltaremos a vizinhança aberta em que uma função está definida.
+A diferencial é única quando existe, como mostraremos na proposição a seguir. Isso permite que denotemos essa função linear de um jeito específico que será definido depois da demonstração da proposição.
+
+\begin{proposition}[Unicidade da Diferencial]
+Sejam $\E_0$ e $\E_1$ espaços normados de dimensão finita, $A \subseteq E_0$ um aberto, $p \in A$ e $f\colon A \to \E_1$ uma função diferenciável em $p$. Então existe uma única diferencial de $f$ em $p$.
+\end{proposition}
+\begin{proof}
+Sejam $L,\bar L\colon \E_0 \to \E_1$ diferenciais de $f$ em $p$. Nesse caso, temos que
+	\begin{align*}
+	\lim_{v \conv 0} &\frac{L \cdot v - \bar L \cdot v}{\nor{v}} = \\
+	&= \lim_{v \conv 0} \frac{L \cdot v - (f(p+v)-f(p)) + (f(p+v)-f(p)) - \bar L \cdot v}{\nor{v}} \\
+	& =  -\lim_{v \conv 0} \frac{f(p+v)-f(p) - L \cdot v}{\nor{v}} + \lim_{v \conv 0} \frac{f(p+v)-f(p) - \bar L \cdot v}{\nor{v}} \\
+	&=0.
+	\end{align*}
+Como $L$ e $\bar L$ são transformações lineares, sabemos que $L \cdot 0 = \bar L \cdot 0=0$. Para todo $v \in \E_0 \setminus \{0\}$, temos que, quando $t \conv 0$, $tv \conv 0$. Ainda, como $L$ e $\bar L$ são transformações lineares, $L \cdot (tv) = t(L \cdot v)$ e $\bar L \cdot (tv) = t (\bar L \cdot v)$, e segue que
+	\begin{align*}
+	0 &= \lim_{tv \conv 0} \frac{\nor{L \cdot (tv) - \bar L \cdot (tv)}}{\nor{tv}} \\
+		&= \lim_{t \conv 0} \frac{\abs{t}\nor{L \cdot v - \bar L \cdot v}}{\abs{t} \nor{v}} \\
+		&= \frac{\nor{L \cdot v - \bar L \cdot v}}{\nor{v}},
+	\end{align*}
+o que implica $L \cdot v = \bar L \cdot v$, pois $\nor{v} \neq 0$. Portanto $L=\bar L$.
+\end{proof}
+
+\begin{notation}
+Sejam $\E_0$ e $\E_1$ espaços normados de dimensão finita, $A \subseteq E_0$ um aberto, $p \in A$ e $f\colon A \to \E_1$ uma função diferenciável em $p$. A diferencial de $f$ em $p$ é denotada $\D f(p): \E_0 \to \E_1$ e satisfaz
+	\begin{equation*}
+	\lim_{v \conv 0} \frac{f(p+v) - f(p) - \D f(p) \cdot v}{\nor{v}} = 0.
+	\end{equation*}
+\end{notation}
+
+\begin{proposition}[Diferenciabilidade implica Continuidade]
+Sejam $\E_0$ e $\E_1$ espaços normados de dimensão finita, $A \subseteq E_0$ um aberto, $p \in A$ e $f\colon A \to \E_1$ uma função diferenciável em $p$. Então $f$ é contínua em $p$.
+\end{proposition}
+\begin{proof}
+Se $f$ é diferenciável em $p$, como vale $\lim_{v \conv 0}\D f(p) \cdot v = 0$, segue que
+	\begin{align*}
+	\lim_{v \conv 0} (f(p+v)-f(p)) &= \lim_{v \conv 0}(f(p+v)-f(p)-\D f(p) \cdot v) \\
+		&= \lim_{v \conv 0}\nor{v} \frac{f(p+v)-f(p)-\D f(p) \cdot v}{\nor{v}} \\
+		&= 0,
+	\end{align*}
+o que implica que $f$ é contínua em $p$.
+\end{proof}
+
+\begin{proposition}[Regra da Cadeia]
+Sejam $\E_0, \E_1$ e $\E_2$ espaços normados de dimensão finita, $A_0 \subseteq E_0$ e $A_1 \subseteq E_1$ abertos e $f_0\colon A_0 \to \E_1$ e $f_1\colon A_1 \to \E_2$ funções. Se $f_0$ é diferenciável em $p \in A_0$ e $f_1$ é diferenciável em $f_0(p) \in A_1$, então $f_1 \circ f_0$ é diferenciável em $p$ e
+	\begin{equation*}
+	\D (f_1 \circ f_0)(p) = \D f_1(f_0(p)) \circ \D f_0(p).
+	\end{equation*}
+\end{proposition}
+\begin{proof} Definamos
+	\begin{equation*}
+	r_0(v) := f_0(p+v) - f_0(p) - \D f_0(p) \cdot v
+	\end{equation*}
+e
+	\begin{equation*}
+	r_1(v) := f_1(f_0(p)+v) - f_1(f_0(p)) - \D f_1(f_0(p)) \cdot v,
+	\end{equation*}
+de modo que da diferenciabilidade de $f_0$ em $p$ e de $f_1$ em $f_0(p)$ segue
+	\begin{equation*}
+	\lim_{v \conv 0} \frac{r_0(v)}{\nor{v}} = \lim_{v \conv 0} \frac{r_1(v)}{\nor{v}} = 0.
+	\end{equation*}	
+Calculando $(f_1 \circ f_0)(p+v)$, obtemos
+	\begin{align*}
+	(f_1 \circ f_0)(p+v) &= f_1(f_0(p+v)) = f_1(f_0(p)+\D f_0(p) \cdot v + r_0(v)) \\
+		&= f_1(f_0(p)) + \D f_1(f_0(p)) \cdot (\D f_0(p) \cdot v + r_0(v)) \\
+		&\qquad + r_1(\D f_0(p) \cdot v + r_0(v)) \\
+		&= (f_1 \circ f_0)(p) + \big(\D f_1(f_0(p)) \circ \D f_0(p)\big) \cdot v + \D f_1(f_0(p)) \cdot r_0(v) \\
+		&\qquad + r_1(\D f_0(p) \cdot v + r_0(v)).
+	\end{align*}
+Portanto
+	\begin{align*}
+	(f_1 \circ f_0)(p+v) - (f_1 \circ f_0)(p) - \big(\D f_1(f_0(p)) \circ \D f_0(p)\big) \cdot v \\
+	\qquad = \D f_1(f_0(p)) \cdot r_0(v) + r_1(\D f_0(p) \cdot v + r_0(v)).
+	\end{align*}
+Como $\D f_1(f_0(p)) \circ \D f_0(p)$ é uma transformação linear de $\R^n$ para $\R^l$, basta mostrar que a expressão acima, dividida por $\nor{v}$, vai a zero. Mas
+	\begin{equation*}
+	\lim_{v \conv 0} \frac{\D f_1(f_0(p)) \cdot r_0(v)}{\nor{v}} = \lim_{v \conv 0} \D f_1(f_0(p)) \cdot \frac{r_0(v)}{\nor{v}} = 0
+	\end{equation*}
+e, como $\lim_{v \conv 0} \D f_0(p) \cdot v + r_0(v) = 0$ e $\D f_0(p) \cdot \frac{v}{\nor{v}}$ é limitado,
+	\begin{align*}
+	\lim_{v \conv 0} &\frac{r_1(\D f_0(p) \cdot v + r_0(v))}{\nor{v}} \\
+		&= \lim_{v \conv 0} \frac{r_1(\D f_0(p) \cdot v + r_0(v))}{\nor{\D f_0(p) \cdot v + r_0(v)}} \frac{\nor{\D f_0(p) \cdot v + r_0(v)}}{\nor{v}}\\
+		&= \lim_{v \conv 0} \frac{r_1(\D f_0(p) \cdot v + r_0(v))}{\nor{\D f_0(p) \cdot v + r_0(v)}} \nor{\D f_0(p) \cdot \frac{v}{\nor{v}}+ \frac{r_0(v)}{\nor{v}}} = 0.
+	\end{align*}
+Logo
+	\begin{equation*}
+	\lim_{v \conv 0} \frac{(f_1 \circ f_0)(p+v) - (f_1 \circ f_0)(p) - \big(\D f_1(f_0(p)) \circ \D f_0(p)\big) \cdot v}{\nor{v}} = 0,
+	\end{equation*}
+e concluímos que $\D f_1(f_0(p)) \circ \D f_0(p)$ é a diferencial de $f_1 \circ f_0$ em $p$.
+\end{proof}

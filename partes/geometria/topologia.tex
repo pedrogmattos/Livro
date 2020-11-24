@@ -1,0 +1,1801 @@
+\chapter{Topologia}
+
+\section{Espaços topológicos}
+
+\subsection{Topologia, abertos e fechados}
+
+A noção de topologia que será abordada nesta parte do livro é a topologia baseada em teoria dos conjuntos.
+
+\begin{definition}
+	Seja $X$ um conjunto. Uma \emph{topologia} de $X$ é um conjunto $\topo \subseteq \p(X)$ que satisfaz
+	\begin{enumerate}
+	\item Vazio e conjunto todo são abertos.
+	\begin{equation*}
+	\emptyset, X \in \topo
+	\end{equation*}
+
+	\item União de abertos é aberto.
+	\begin{equation*}
+	(A_i)_{i \in I} \subseteq \topo \Rightarrow \displaystyle\bigcup_{i \in I} A_i \in \topo
+	\end{equation*}
+
+	\item Interseção finita de abertos é aberto.
+	\begin{equation*}
+	(A_i)_{i \in [n]} \subseteq \mathcal T \Rightarrow \displaystyle\bigcap_{i=0}^{n-1} A_i \in \topo
+	\end{equation*}
+	\end{enumerate}
+\end{definition}
+
+\begin{proposition}
+	Seja $X$ um conjunto.
+	\begin{enumerate}
+	\item (Topologia trivial) $\{\emptyset,X\}$ é uma topologia de $X$;
+	\item (Topologia discreta) $\p(X)$ é uma topologia de $X$.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item Primeiramente, $\emptyset$ e $X$ pertencem a $\{\emptyset,X\}$. Agora, consideremos uma família $(A_i)_{i \in I} \subseteq \{\emptyset,X\}$ de abertos. Caso $A_i = \emptyset$ para todo $i \in I$, então $\bigcup_{i \in I} A_i = \emptyset \in \topo$. Caso contrário, existe $j \in I$ tal que $A_j = X$, o que implica $\bigcup_{i \in I} A_i = X \in \topo$. Assim, concluímos que vale a segunda propriedade. Para mostrar a terceira propriedade, seja $(A_i)_{i \in [n]} \subseteq \topo$ uma família finita de abertos. Caso $A_i=X$ para todo $i \in I$, o que implica $\bigcap_{i=0}^{n-1} A_i = X \in \topo$, Caso contrário, existe $j \in I$ tal que $A_j = \emptyset$, o que implica $\bigcap_{i=0}^{n-1} A_i = \emptyset \in \topo$.
+
+	\item Todas propriedades valem pois $\topo = \p(X)$.
+\qedhere
+	\end{enumerate}
+\end{proof}
+
+%\begin{proposition}
+%	$A_1,A_2 \in \topo \Rightarrow A_1 \cap A_2 \in \topo$ se, e somente se, $(A_i)_{i \in [n]} \subseteq \topo \Rightarrow \displaystyle\bigcap_{i=1}^n A_i \in \topo$.
+%\end{proposition}
+%\begin{proof}
+%	Primeiro, consideremos que toda interseção de dois abertos é um aberto. Vamos mostrar que a interseção dessa família é um aberto por indução em $n$. Para o caso base com $n=1$, temos $\bigcap_{i=1}^1 A_i = A_1 \in \topo$. Agora, suponhamos que a propriedade ale para $n$ e vamos provar que vale para $n+1$. Seja $(A_i)_{i \in [n+1]}$ um família finita de abertos. Pela hipótese de indução, $A := \bigcup_{i=1}^n A_i \in \topo$. Então segue que
+%	\begin{equation*}
+%	\bigcup_{i=1}^{n+1} A_i = \left(\bigcup_{i=1}^n A_i \right) \cap A_{n+1} = A \cap A_{n+1}.
+%	\end{equation*}
+%	Como supomos que a interseção de dois abertos é um aberto, segue que $\bigcup_{i=1}^{n+1} A_i \in \topo$. Reciprocamente, supomos que, para toda família finita de abertos, sua interseção é um aberto. DIsso segue que, para uma família de dois abertos $A_1, A_2 \in \topo$, sua interseção $A_1 \cap A_2$ é um aberto.
+%\end{proof}
+
+\begin{definition}
+	Um \emph{espaço topológico} é um par $(X,\topo)$ em que $X$ é um conjunto não vazio e $\topo$ é uma topologia de $X$. Um \emph{aberto} de $(X,\topo)$ é um conjunto de $\topo$. Um \emph{fechado} de $(X,\topo)$ é um conjunto cujo complementar em $X$ é um aberto de $(X,\topo)$. O conjunto dos fechados de $(X,\topo)$ é denotado $\complement (\topo)$.
+\end{definition}
+
+\begin{proposition}[Dualidade de abertos e fechados]
+	Seja $X$ um conjunto. Então
+	\begin{enumerate}
+	\item Vazio e conjunto todo são fechados.
+	\begin{equation*}
+	\emptyset, X \in \complement (\topo)
+	\end{equation*}
+
+	\item Interseção de fechados é fechado.
+	\begin{equation*}
+	(F_i)_{i \in I} \subseteq \complement (\topo) \Rightarrow \bigcap_{i \in I} F_i  \in \complement (\topo)
+	\end{equation*}
+	
+	\item União finita de fechados é fechado.
+	\begin{equation*}
+	(F_i)_{i \in [n]} \subseteq \complement (\topo) \Rightarrow \bigcup_{i=0}^{n-1} F_i \in \complement (\topo)
+	\end{equation*}
+	
+
+%	\item $F_1,F_2 \in \complement (\topo) \Rightarrow F_1 \cup F_2 \in \complement (\topo)$ se, e somente se, $(F_i)_{i \in [n]} \subseteq \complement (\topo) \Rightarrow \displaystyle\bigcup_{i=1}^n F_i \in \complement (\topo)$.
+	\end{enumerate}
+\end{proposition}
+\begin{proof} Todas as demonstrações dependem de propriedades básicas de teoria de conjuntos.
+	\begin{enumerate}
+	\item Como $\emptyset,X \in \topo$, $\emptyset^\complement = X$ e $X^\complement = \emptyset$, segue que $\emptyset,X \in \complement (\topo)$.
+	
+	\item  Seja $(F_i)_{i \in I} \subseteq \complement (\topo)$. Então $((F_i)^\complement)_{i \in I} \subseteq \topo$, o que implica que $\bigcup_{i \in I} (F_i)^\complement \in \topo$. Para concluir a demonstração, basta notar que
+	\begin{equation*}
+	\left( \bigcup_{i \in I} (F_i)^\complement \right)^\complement = \bigcap_{i \in I} F_i.
+	\end{equation*}
+	
+	\item Seja $(F_i)_{i \in [n]} \subseteq \complement (\topo)$. Então $((F_i)^\complement)_{i \in [n]} \subseteq \topo$, o que implica que $\bigcap_{i=0}^{n-1} (F_i)^\complement \in \topo$. Para concluir a demonstração, basta notar que
+	\begin{equation*}
+	\left( \bigcap_{i=0}^{n-1} (F_i)^\complement \right)^\complement = \bigcup_{i=0}^{n-1} F_i.
+	\end{equation*}
+\qedhere
+	\end{enumerate}
+\end{proof}
+
+\subsubsection{Interior e fecho}
+
+	Intuitivamente, sabemos dizer quais pontos de um subconjunto da reta, do plano ou do espaço estão dentro do conjunto, quais estão fora e quais formam uma espécie de fronteira entre a parte de dentro e a de fora. Para uma bola aberta de raio unitário e centro na origem, é claro que os pontos de norma menor que 1 são os pontos do interior da bola, os pontos de norma igual a 1 são os pontos de fronteira e os pontos com norma maior que 1 são os pontos do exterior. Para conjuntos mais complicados, no entanto, parece ser mais difícil dizer o que está dentro e o que está fora. Se analisamos o conjunto dos racionais na reta, não é óbvio o que está dentro, o que está fora, o que é fronteira.
+	
+	Além disso, a nossa intuição usa a ideia de norma ou distância no caso da bola e em espaços topológicos gerais isso não é possível. Para continuar a generalização dos conceitos topológicos existentes na reta, plano e espaço, devemos tentar formular a ideia de ponto interior usando os conceitos topológicos gerais, e fazemos isso notando que, no caso da bola e de conjuntos simples dos espaços tradicionais, um ponto está dentro do conjunto se existe um aberto em torno do ponto que está inteiramente contido no conjunto. Esse conceito não é o conceito que usaremos para definir o interior de um conjunto, mas é equivalente.
+	
+	No começo dessa seção, o foco será o conceito de interior de um conjunto. A definição de interior que usaremos é a de que o interior de um conjunto é o maior conjunto aberto contido no conjunto. Maior, nesse caso, significa maior em relação à ordem parcial de contenção de conjuntos abertos. Como união de abertos é aberto, sabemos que a união de todos abertos contidos em um conjunto é aberto e, portanto, é o maior aberto contido no conjunto. Podemos perceber, ainda, que essa definição é equivalente à comentada acima pois, se um ponto está em um aberto do conjunto, ele está na união de todos eles e, se ele está na união, está, em particular, em algum aberto. Seguem abaixo a definição formal de interior de um conjunto e, em seguida, algumas propriedades básicas.
+
+\begin{definition}
+	Sejam $\bm X$ um espaço topológico, $C \subseteq X$ e $(A_i)_{i \in I}$ uma indexação do conjunto de todos conjuntos abertos de $X$ que são subconjunto de $C$. O \emph{interior de $C$} é o conjunto aberto
+	\begin{equation*}
+	\Int{C} \coloneqq \bigcup_{i \in I} A_i.
+	\end{equation*}
+\end{definition}
+
+	De acordo com essa definição, o interior de um conjunto é o maior aberto contido no conjunto, no sentido de que qualquer aberto contido no conjunto está também contido no seu interior. Ainda, podemos ver o interior como um operador topológico \---- uma função $\mathcal I: \p(X) \to \p(X)$ que leva $C \mapsto \Int{C}$. Nesse sentido, podemos pensar em propriedades que esse operador satisfaz. Algumas dessas propriedades estão na proposição abaixo. Além disso, se temos um operador qualquer em $\p(X)$ que satisfaça algumas das propriedades abaixo, então esse operador é o operador interior de alguma topologia de $X$. Isso está demonstrado na proposição que segue a proposição abaixo.
+
+\begin{proposition}
+	Sejam $\bm X$ um espaço topológico e $A,B \subseteq X$. Então
+	\begin{enumerate}
+	\item $\Int{A} \subseteq A$
+	\item $A \in \topo \Leftrightarrow \Int{A}=A$
+	\item $\Int{(A \cap B)} = \Int{A} \cap \Int{B}$
+	\item $\Int{(\Int{A})} = \Int{A}$
+	\item $A \subseteq B \Rightarrow \Int{A} \subseteq \Int{B}$
+	\end{enumerate}
+\end{proposition}
+\begin{proof} Sejam $(A_i)_{i \in I}$, $(B_j)_{j \in J}$ e $(C_k)_{k \in K}$ indexações dos subconjuntos abertos de $A$, $B$ e $A \cap B$, respectivamente.
+	\begin{enumerate}
+	\item Seja $a \in \Int{A}$. Então existe $j \in I$ tal que $a \in A_j$. Como $A_i \subseteq A$ para todo $i \in I$, então $a \in A$, o que mostra que $\Int{A} \subseteq A$.
+	
+	\item Suponha que $A$ um aberto. Como $\Int{A} \subseteq A$ para todo $A \subseteq X$, basta mostrar que $A \subseteq \Int{A}$. Seja $a \in A$.	Se $A$ é aberto, então existe $i \in I$ tal que $A_i = A$, o que implica $a \in A_i$ e, portanto, que $a \in \Int{A}$, o que mostra que $A \subseteq \Int{A}$. Assim, concluímos que $\Int{A}=A$. Reciprocamente, suponha que $\Int{A}=A$. Como $\Int{A}$ é união de abertos, é um conjunto aberto e isso implica que $A$ é aberto.
+	
+	\item Vamos mostrar a inclusão $\Int{(A \cap B)} \subseteq \Int{A} \cap \Int{B}$. Seja $a \in \Int{(A \cap B)}$. Então existe $k \in K$ tal que $a \in C_k$. Como $C_k$ é subconjunto aberto de $A \cap B$, então $C_k$ é subconjunto aberto de $A$ e de $B$, o que implica que $a \in \Int{A}$ e $a \in \Int{B}$. Assim, concluímos que $a \in \Int{A} \cap \Int{B}$. Reciprocamente, vamos mostrar a inclusão $\Int{A} \cap \Int{B} \subseteq \Int{(A \cap B)}$. Seja $a \in \Int{A} \cap \Int{B}$. Então $a \in \Int{A}$ e $a \in \Int{B}$, o que implica que existem $i \in I$ e $j \in J$ tais que $a \in A_i$ e $a \in B_j$; ou seja, $a \in A_i \cap B_j$. Como $A_i$ e $B_j$ são abertos, sua interseção é aberto e, como $A_i \subseteq A$ e $B_j \subseteq B$, segue que $A_i \cap B_j \subseteq A \cap B$, e isso implica que $a \in \Int{(A \cap B)}$.
+	
+	\item Como $\Int{A}$ é um conjunto aberto, pelo item 2 segue que $\Int{(\Int{A})} = \Int{A}$.
+\qedhere	
+	\end{enumerate}
+\end{proof}
+
+\begin{proposition}
+	Sejam $X$ um conjunto e $\mathcal I: \p(X) \to \p(X)$ uma função que satisfaz, para todos $A,B \subseteq X$,
+	\begin{enumerate}
+	\item $\mathcal I(X) = X$;
+	\item $\mathcal I(A) \subseteq A$;
+	\item $\mathcal I(A \cap B) = \mathcal I(A) \cap \mathcal I(B)$;
+	\item $\mathcal I(\mathcal I(A)) = \mathcal I(A)$.
+	\end{enumerate}
+	
+Então o conjunto $\topo := \set{C \subseteq X}{C = \mathcal I(C)}$ é uma topologia de $X$ e $\mathcal I(C) = \Int{C}$ para cada $C \subseteq X$.
+\end{proposition}
+\begin{proof}
+	Primeiro, notemos que, pela primeira propriedade, $X \in \topo$ e, pela segunda propriedade, como $\mathcal I(\emptyset) \subseteq \emptyset$, concluímos que $\mathcal I(\emptyset)=\emptyset$, o que significa que $\emptyset \in \topo$. 	
+	
+	Vamos mostrar a seguinte propriedade: para todos $A,B \subseteq X$,
+	\begin{equation*}
+	A \subseteq B \Rightarrow \mathcal I(A) \subseteq \mathcal I(B)
+	\end{equation*}
+Supondo que $A \subseteq B$, temos que $A = A \cap B$. Então, pela terceira propriedade, $\mathcal I(A) = \mathcal I(A) \cap \mathcal I(B)$. Assim, segue que $\mathcal I(A) \subseteq \mathcal I(B)$.	
+	
+Agora, seja $(A_i)_{i \in I}$ uma família de conjuntos em $\topo$. Então, para cada $j \in I$, $A_j \subseteq \bigcup_{i \in I} A_i$ e, portanto, $\mathcal I(A_j) \subseteq \mathcal I(\bigcup_{i \in I} A_i)$. Mas a família satisfaz $\mathcal I(A_i) = A_i$. Assim, concluímos que
+	\begin{equation*}
+	\bigcup_{i \in I} \mathcal I(A_i) = \bigcup_{i \in I} A_i \subseteq \mathcal I \left( \bigcup_{i \in I} A_i \right)
+	\end{equation*}
+Pela segunda propriedade, $\mathcal I(\bigcup_{i \in I} A_i) \subseteq \bigcup_{i \in I} A_i$. Portanto $\bigcup_{i \in I} A_i = \mathcal I(\bigcup_{i \in I} A_i )$, e concluímos que $\bigcup_{i \in I} A_i \in \topo$.
+	
+	Então, seja $(A_i)_{i \in [n]}$ uma família finita de conjuntos em $\topo$. Usando a terceira propriedade e indução, provaremos que $\bigcap_{i=0}^{n-1} A_i \in \topo$. Para $0$, a propriedade é trivialmente verdade. Suponhamos que vale para $k$. Então, pela terceira propriedade,
+	\begin{align*}
+	\mathcal I \left( \bigcap_{i=0}^{k} A_i \right)
+	&= \mathcal I \left( \left( \bigcap_{i=0}^{k-1} A_i \right) \cap A_{k} \right) \\
+	&= \mathcal I \left( \bigcap_{i=0}^{k-1} A_i \right) \cap \mathcal I \left( A_{k} \right) \\
+	&= \bigcap_{i=0}^{k-1} A_i \cap A_{k} \\
+	&= \bigcap_{i=0}^{k} A_i,
+	\end{align*}
+o que mostra que $\bigcap_{i=0}^{k} A_i \in \topo$ e que, para todo $n \in \N$, $\bigcap_{i=0}^{n-1} A_i \in \topo$. Logo concluímos que $\topo$ é uma topologia de $X$.
+
+Devemos, por fim, mostrar que $\mathcal I(C)=\Int{C}$ para todo $C \subseteq X$. Seja $(C_I)_{i \in I}$ uma indexação dos subconjuntos abertos de $C$. Vamos mostrar primeiro que $\Int{C} \subseteq \mathcal I(C)$. Para todo $i \in I$, temos que $C_i \subseteq C$ implica $\mathcal I(C_i) \subseteq \mathcal I(C)$. Como $C_i = \mathcal I(C_i)$, segue que $C_i \subseteq \mathcal I(C)$ e, portanto,
+	\begin{equation*}
+	\Int{C} = \bigcup_{i \in I} C_i \subseteq \mathcal I(C).
+	\end{equation*}
+	Por outro lado, notemos que $\mathcal I(C)$ é um aberto, pois, pela quarta propriedade, $\mathcal I(\mathcal I(C))= \mathcal I(C)$. Pela segunda propriedade, $\mathcal I(C) \subseteq C$, e segue que $\mathcal I(C)$ é um dos subconjuntos abertos $C_i$ de $C$. Portanto	
+	\begin{equation*}
+	\mathcal I(C) \subseteq \bigcup_{i \in I} C_i = \Int{C}.
+	\end{equation*}
+\end{proof}
+
+\begin{proposition}
+	Sejam $(X, \topo)$ um espaço topológico e $C \subseteq X$. Então
+	\begin{equation*}
+	\Int{C} = \set{x \in X}{\exists A \in \topo \quad x \in A \subseteq C}
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+	Se o único aberto contido em $C$ é $\emptyset$, então $\Int{C}=\emptyset$ e segue que, para todo $x \in X$, todo aberto $A \in \topo$ tal que $x \in A$ não está contido em $C$. Então os conjuntos são iguais.
+	Se $\Int{C}=\emptyset$, então o único aberto contido em 
+	
+	
+	Se $x \in \Int{C}$, então existe
+\end{proof}
+
+	Dualmente, consideraremos agora o conceito de fecho.
+
+\begin{definition}
+	Sejam $(X,\topo)$ um espaço topológico, $C \subseteq X$ e $(F_i)_{i \in I}$ uma indexação do conjunto de todos conjuntos fechados de $X$ dos quais $C$ é subconjunto. O \emph{fecho de $C$} é o conjunto fechado
+	\begin{equation*}
+	\Fec{C} := \bigcap_{i \in I} F_i.
+	\end{equation*}
+\end{definition}
+
+\begin{proposition}
+	Seja $\bm X$ um espaço topológico. Então
+	\begin{enumerate}	
+	\item Para todo $A \subseteq X$, $A \subseteq \Fec{A}$;
+	\item Um conjunto $A$ é fechado se, e somente se, $\Fec{A}=A$;
+	\item $\Fec{(A \cup B)} = \Fec{A} \cup \Fec{B}$;
+	\item $\Fec{(\Fec{A})} = \Fec{A}$;
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	Demonstração análoga à de interior.
+	\end{enumerate}
+\end{proof}
+
+\begin{proposition}
+	Sejam $X$ um conjunto e $\mathcal F: \p(X) \to \p(X)$ uma função que satisfaz, para todos $A,B \subseteq X$,
+	\begin{enumerate}
+	\item $\mathcal F(\emptyset) = \emptyset$;
+	\item $A \subseteq \mathcal F(A)$;
+	\item $\mathcal F(A \cup B) = \mathcal F(A) \cup \mathcal F(B)$.
+	\item $\mathcal F(\mathcal F(A)) = \mathcal F(A)$.
+	\end{enumerate}
+	
+Então o conjunto $\complement(\topo) := \set{C \subseteq X}{C = \mathcal F(C)}$ é o conjunto de fechados de uma topologia $\topo$ de $X$ e $\mathcal F(C) = \Fec{C}$ para cada $C \subseteq X$.
+\end{proposition}
+\begin{proof}
+	Demonstração análoga à de interior.
+\end{proof}
+
+
+\begin{proposition}
+	Sejam $\bm X$ um espaço topológico e $A \subseteq X$. Então
+	\begin{enumerate}
+	\item $(\Fec{A})^\complement = \Int{(A^\complement)}$;
+	\item $(\Int{A})^\complement = \Fec{(A^\complement)}$.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item
+	\item
+	\end{enumerate}
+\end{proof}
+
+
+\subsubsection{Fronteira}
+
+\begin{definition}
+	Sejam $\bm X$ um espaço topológico e $C \subseteq X$. A \emph{fronteira} de $C$ é o conjunto
+	\begin{equation*}
+	\fro{C} := \Fec{C} \setminus \Int{C}.
+	\end{equation*}
+\end{definition}
+
+\begin{proposition}
+	Sejam $\bm X$ um espaço topológico e $C \subseteq X$. Então
+	\begin{enumerate}
+	\item O fecho é a união disjunta de interior e fronteira.
+	\begin{equation*}
+	\Fec{C} = \Int{C} \cup \fro{C} \e \Int{C} \cap \fro{C} = \emptyset
+	\end{equation*}
+	\item A fronteira é a interseção dos fechos do conjunto e de seu complementar.
+	\begin{equation*}
+	\fro{C} = \Fec{C} \cap \Fec{C^\complement}
+	\end{equation*}
+	\item Um conjunto é aberto se, e somente se, não contém pontos da fronteira.
+	\begin{equation*}
+	C \in \topo \Leftrightarrow \fro{C} \cap C = \emptyset
+	\end{equation*}
+	\item Um conjunto é fechado se, e somente se, contém todos pontos da fronteira.
+	\begin{equation*}
+	C \in \complement(\topo) \Leftrightarrow \fro{C} \subseteq C
+	\end{equation*}
+	\item A fronteira de um conjunto é fechada.
+	\begin{equation*}
+	\fro{C} \in \complement(\topo)
+	\end{equation*}
+	\item $\fro{(\fro{(\fro{C})})} = \fro{(\fro{C})}$.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item
+	\begin{equation*}
+	\fro{C} = \Fec{C} \setminus \Int{C} \Leftrightarrow \Fec{C} = \Int{C} \cup \fro{C}
+	\end{equation*}
+	\item
+	\item 
+	\begin{equation*}
+	\fro{C} = \Fec{C} \setminus \Int{C} = \Fec{C} \cap (\Int{C})^\complement = \Fec{C} \cap \Fec{C^\complement}
+	\end{equation*}
+	\end{enumerate}
+\end{proof}
+
+\subsection{Topologias geradas, bases e sub-bases}
+
+\subsubsection{Topologias finas e grossas e topologias geradas}
+
+\begin{definition}
+	Seja $X$ um conjunto e $\topo$ uma topologia de $X$. Uma \emph{topologia mais grossa} (ou \emph{fraca}) que a topologia $\topo$ é uma topologia $\topo'$ de $X$ tal que $\topo' \subseteq \topo$. Uma \emph{topologia mais fina} (ou \emph{forte}) que a topologia $\topo$ é uma topologia $\topo'$ de $X$ tal que $\topo \subseteq \topo'$.
+\end{definition}
+
+	A topologia mais fraca é a topologia trivial e a topologia mais forte é a topologia discreta.
+
+\begin{proposition}
+	Sejam $X$ um conjunto e $(\topo_i)_{i \in I}$ uma família de topologias de $X$. Então
+	\begin{equation*}
+	\topo := \bigcap_{i \in I} \topo_i
+	\end{equation*}
+é uma topologia de $X$.
+\end{proposition}
+\begin{proof}
+	Primeiro, notemos que, para todo $i \in I$, $\emptyset,X \in \topo_i$, e segue que $\emptyset,X \in \topo$. Agora, seja $(A_j)_{j \in J} \subseteq \topo$.  Então, para todo $i \in I$, $(A_j)_{j \in J} \in \topo_i$, e segue que $\bigcup_{j \in J} A_j \in \topo_i$, o que implica que $\bigcup_{j \in J} A_j \in \topo$. Por fim, seja $(A_j)_{j \in [n]} \subseteq \topo$. Então, para todo $i \in I$, $(A_j)_{j \in [n]} \in \topo_i$, e segue que $\bigcap_{j=0}^{n-1} A_j \in \topo_i$, o que implica que $\bigcap_{j=0}^{n-1} A_j \subseteq \topo$.
+\end{proof}
+
+
+% A conjectura a seguir parece ser FALSA pois precisaríamos achar o máximo de uma sequência infinita de índices naturais.
+
+%CONJECTURA
+%	Sejam $X$ um conjunto e $(\topo_i)_{i \in \N}$ uma sequência crescente de topologias de $X$; ou seja, $\topo_1 \subseteq \topo_2 \subseteq \cdots \subseteq \topo_i \subseteq \cdots$. Então 
+%	\begin{equation*}
+%	\topo := \displaystyle\bigcup_{i \in \N} \topo_i
+%	\end{equation*}
+%é uma topologia de $X$.
+
+\begin{definition}
+Sejam $X$ um conjunto, $G \subseteq \p(X)$ e $(\topo_i)_{i \in I}$ uma indexação do conjunto de todas as topologias de $X$ das quais $G$ é subconjunto. A \emph{topologia gerada por $G$} é a topologia
+	\begin{equation*}
+	\ger{G} := \bigcap_{i \in I} \topo_i.
+	\end{equation*}
+Nesse caso, dizemos que $G$ é o \emph{conjunto gerador} de $\ger{G}$ ou que $G$ gera $\ger{G}$.
+\end{definition}
+
+\subsubsection{Bases e sub-bases}
+
+
+\subsection{Funções contínuas}
+
+\begin{definition}
+Sejam $\bm X = (X,\topo_X)$ e $\bm Y = (Y,\topo_Y)$ espaços topológicos. Uma \emph{função contínua} de $\bm X$ para $\bm Y$ é uma função $f: X \to Y$ tal que, para todo $A \in \topo_Y$,
+	\begin{equation*}
+	f^{-1}(A) \in \topo_X.
+	\end{equation*}
+Denota-se $f: \bm X \to \bm Y$. O conjunto dessas funções é denotado por $\Cont(\bm X,\bm Y)$.
+\end{definition}
+
+\begin{proposition}\emph{(Propriedades categóricas).}
+\begin{enumerate}
+	\item (Identidade) Seja $\bm X$ um espaço topológico. A função $\Id_X: X \to X$ é uma função contínua.
+	\item (Associatividade) Sejam $\bm{X_0}$, $\bm{X_1}$ e $\bm{X_2}$ espaços topológicos e $f_0: \bm{X_0} \to \bm{X_1}$ e $f_1: \bm{X_1} \to \bm{X_2}$ funções contínuas. Então $f_1 \circ f_0: \bm{X_0} \to \bm{X_2}$ é uma função contínua.
+\begin{figure}
+\centering
+\begin{tikzpicture}[node distance=2.5cm, auto]
+	\node (X) {$\bm{X_0}$};
+	\node (Y) [right of=X] {$\bm{X_1}$};
+	\node (n) [below of=Y,node distance=1cm] {$f_1 \circ f_0$};
+	\node (Z) [right of=Y] {$\bm{X_2}$};
+	\draw[->] (X) to node {$f_0$} (Y);
+	\draw[->] (Y) to node {$f_1$} (Z);
+%	\draw[->,bend right] (X) to node[swap] {$g \circ f$} (Z);
+	\draw[->] (X) |- (n.90) -| (Z);\
+\end{tikzpicture}
+\end{figure}
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+\begin{enumerate}
+	\item Seja $A \in \topo$. Então $\Id_X\inv(A)=A \in \topo$, logo $\Id_x$ é contínua.
+	
+	\item Seja $A \in \topo_2$. Como $f_1$ é contínua, $f_1\inv(A) \in \topo_1$. Como $f_0$ é contínua, $f_0\inv(f_1\inv(A)) \in \topo_0$. Portanto
+		\begin{equation*}
+		(f_1 \circ f_0)\inv(A) = f_1\inv \circ f_0\inv (A) = f_0\inv(f_1\inv(A)) \in \topo_0.
+		\end{equation*}
+	Logo $f_1 \circ f_0$ é contínua. \qedhere
+\end{enumerate}
+\end{proof}
+
+\begin{definition}
+Sejam $\bm{X_0}$ e $\bm{X_1}$ espaços topológicos. Um \emph{homeomorfismo} de $\bm{X_0}$ para $\bm{X_1}$ é uma função contínua $\fun{f}{\bm{X_0}}{\bm{X_1}}$ invertível cuja inversa é contínua. O conjunto de todos esses homeomorfismos é denotado por $\Iso{\Cont}(\bm{X_0},\bm{X_1})$.
+Esses espaços topológicos são \emph{homeomorfos} e denota-se $\bm{X_0} \simeq \bm{X_1}$.
+\end{definition}
+
+\begin{exercise}
+Sejam $\bm{X_0}$, $\bm{X_1}$ e $\bm{X_2}$ espaços topológicos.
+		\begin{enumerate}
+		\item (Reflexividade) $\bm{X_0} \simeq \bm{X_0}$;
+		\item (Antissimetria) $\bm{X_0} \simeq \bm{X_1} \Rightarrow \bm{X_1} \simeq \bm{X_0}$;
+		\item (Transitividade) $\bm{X_0} \simeq \bm{X_1} \e \bm{X_1} \simeq \bm{X_2} \Rightarrow \bm{X_0} \simeq \bm{X_2}$.
+		\end{enumerate}
+\end{exercise}
+
+\subsubsection{Suporte de funções vetoriais}
+
+\begin{definition}
+Sejam $\bm X$ um espaço topológico, $\bm L$ um espaço linear topológico e $f\colon X \to L$ uma função contínua. O \emph{suporte fechado} de $f$ é o conjunto
+	\begin{equation*}
+	\overline\supp(f) := \Fec{\supp(f)} = \Fec{f\inv(L \setminus \{0\})}.
+	\end{equation*}
+\end{definition}
+
+\subsection{Topologias induzidas}
+
+Nesta seção estudaremos como induzir topologias em conjuntos a partir de topologias que já temos. Isso será feito, em geral, de modo que uma ou mais funções sejam contínuas e a topologia induzida seja a menor ou a maior possível, dependendo do caso. Quando temos uma função de um conjunto em um espaço topológico, podemos induzir uma topologia nesse conjunto de modo que a topologia faça com  que a função seja contínua. Nesse caso, a maior topologia que faz a função ser contínua é a topologia discreta, e o nosso interesse será achar a menor topologia tal que a função é discreta. Quando temos uma função de um espaço topológico em um conjunto, o caso se inverte. A menor topologia tal que a função é contínua sempre é a topologia trivial, e o nosso interesse está na maior topologia que garante a continuidade. De maneira parecida, podemos induzir topologias garantindo a continuidade de várias funções e também considerando funções injetivas e sobrejetivas quado necessário. O estudo desta seção envolve a definição dessas noções e a investigação inicial como sobre esses objetos se comportam e por que são os menores ou maiores com determinadas características.
+
+\subsubsection{Topologias puxada e inicial}
+
+\begin{definition}
+Sejam $X$ um conjunto, $\bm Y = (Y,\topo_Y)$ um espaço topológico e $f: X \to Y$ uma função. A \emph{topologia puxada} por $f$ de $\bm Y$ para $X$ é
+	\begin{equation*}
+	f^\star(\topo_Y) := \set{f^{-1}(A)}{A \in \topo_Y}.
+	\end{equation*}
+\end{definition}
+
+\begin{proposition}
+Sejam $X$ um conjunto, $\bm Y = (Y,\topo_Y)$ um espaço topológico e $f: X \to Y$ uma função. Então $f^\star(\topo_Y)$, a topologia puxada por $f$ de $\bm Y$ para $X$, é uma topologia de $X$.
+\end{proposition}
+\begin{proof}
+(1) Notemos que, como $\emptyset \in \topo_Y$ e $\emptyset = f\inv(\emptyset)$, temos que $\emptyset \in f^\star(\topo_Y)$. (2) Seja $(A_i)_{i \in I}$ uma família de conjuntos em $f^\star(\topo_Y)$. Então, para cada $i \in I$, existe aberto $U_i \in \topo_Y$ tal que $A_i=f\inv(U_i)$. Como $\topo_Y$ é topologia, a união de abertos é aberto $\bigcup_{i \in I} U_i \in \topo_Y$. Portanto
+	\begin{equation*}
+	\bigcup_{i \in I} A_i = \bigcup_{i \in I} f\inv(U_i) = f\inv\left( \bigcup_{i \in I} U_i\right),
+	\end{equation*}
+logo $\bigcup_{i \in I} A_i \in f^\star(\topo_Y)$.
+(3) Seja $(A_i)_{i=1}^n$ uma família de conjuntos em $f^\star(\topo_Y)$. Então, para cada $1 \leq i \leq n$, existe aberto $U_i \in \topo_Y$ tal que $A_i=f\inv(U_i)$. Como $\topo_Y$ é topologia, a interseção finita de abertos é aberto $\bigcap_{i=1}^n U_i \in \topo_Y$. Portanto
+	\begin{equation*}
+	\bigcap_{i=1}^n A_i = \bigcap_{i=1}^n f\inv(U_i) = f\inv\left( \bigcap_{i=1}^n U_i\right),
+	\end{equation*}
+logo $\bigcap_{i=1}^n A_i \in f^\star(\topo_Y)$.
+\end{proof}
+
+\begin{proposition}
+\label{topo:prop.cont.topo.pux}
+Sejam $\bm X = (X,\topo_ X)$ e $\bm Y = (Y,\topo_ Y)$ espaços topológicos. Uma função $f: X \to Y$ é função contínua de $\bm X$ para $\bm Y$ se, e somente se, a topologia $f^\star(\topo_Y)$ puxada por $f$ de $\bm Y$ para $X$ é uma subtopologia de $\topo_ X$.
+	\begin{equation*}
+	f \in \Cont(\bm X,\bm Y) \sse f^\star(\topo_Y) \subseteq \topo_X.
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+Suponha que $f \in \Cont(\bm X,\bm Y)$ e seja $B \in f^\star(\topo_Y)$. Então existe $A \in \topo_Y$ tal que $B=f\inv(A)$. Como $f$ é contínua, segue que $f\inv(A) \in \topo_X$, portanto, $f^\star(\topo_Y) \subseteq \topo_X$. Reciprocamente, suponha que $f^\star(\topo_Y) \subseteq \topo_X$. Então, para todo $A \in \topo_Y$, $f\inv(A) \in f^\star(\topo_Y)$, portanto $f\inv(A) \in \topo_X$, o que mostra que $f \in \Cont(\bm X,\bm Y)$.
+\end{proof}
+
+\begin{definition}
+Sejam $\bm X$ um conjunto, $(\bm{X_i})_{i \in I} = (X_i,\topo_i)_{i \in I}$ uma família de espaços topológicos e, para todo $i \in I$, $f_i: X \to X_i$ uma função. A \emph{topologia inicial} de $X$ com respeito à família $(f_i)_{i \in I}$ é a menor topologia de $X$ tal que, para todo $i \in I$, $f_i$ é contínua.
+\end{definition}
+
+\begin{proposition}
+Sejam $\bm X$ um conjunto, $(\bm{X_i})_{i \in I} = (X_i,\topo_i)_{i \in I}$ uma família de espaços topológicos e, para todo $i \in I$, $f_i: X \to X_i$ uma função. A topologia inicial de $X$ com respeito à família $(f_i)_{i \in I}$ é a topologia
+	\begin{equation*}
+	\ger{\bigcup_{i \in I} {f_i}^\star(\topo_i)}.
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+Seja $\topo$ uma topologia de $X$ tal que, para todo $i \in I$, $f_i: X \to X_i$ é contínua. Então, para todo $i \in I$, ${f_i}^\star(\topo_i) \subseteq \topo$ (\ref{topo:prop.cont.topo.pux}), o que implica que $\bigcup_{i \in I} {f_i}^\star(\topo_i) \subseteq \topo$ e, portanto, $\ger{\bigcup_{i \in I} {f_i}^\star(\topo_i)} \subseteq \topo$.
+\end{proof}
+
+\subsubsection{Topologias empurrada e final}
+
+\begin{definition}
+Sejam $\bm X = (X,\topo_X)$ um espaço topológico, $Y$ um conjunto e $f: X \to Y$ uma função. A \emph{topologia empurrada} por $f$ de $\bm X$ para $Y$ é
+	\begin{equation*}
+	f_\star(\topo_X) := \set{A \subseteq Y}{f^{-1}(A) \in \topo_X}.
+	\end{equation*}
+\end{definition}
+
+\begin{proposition}
+Sejam $\bm X = (X,\topo_X)$ um espaço topológico, $Y$ um conjunto e $f: X \to Y$ uma função. Então $\topo_Y := f_\star(\topo_X)$, a topologia empurrada por $f$ de $\bm X$ para $Y$, é uma topologia de $Y$.
+\end{proposition}
+\begin{proof}
+(1) Como $f\inv(\emptyset)=\emptyset$ e $f\inv(Y)=X$, segue que $\emptyset,Y \in f_\star(\topo_X)$. (2) Seja $(A_i)_{i \in I}$ uma família de conjuntos de $f_\star(\topo_X)$. Então, para cada $i \in I$, $f\inv(A_i) \in \topo_X$, o que implica que
+\begin{equation*}
+	f\inv \left( \bigcup_{i \in I} A_i \right) = \bigcup_{i \in I} f\inv(A_i) \in \topo_X,
+	\end{equation*}
+portanto $\bigcup_{i \in I} A_i \in f_\star(\topo_X)$. (3) Seja $(A_i)_{i=1}^n$ uma família de conjuntos de $f_\star(\topo_X)$. Então, para cada $1 \leq i \leq n$, $f\inv(A_i) \in \topo_X$, o que implica que
+\begin{equation*}
+	f\inv \left( \bigcap_{i=1}^n A_i \right) = \bigcap_{i=1}^n f\inv(A_i) \in \topo_X,
+	\end{equation*}
+portanto $\bigcap_{i=1}^n A_i \in f_\star(\topo_X)$.
+\end{proof}
+
+\begin{definition}
+Sejam $\bm X$ um conjunto, $(\bm{X_i})_{i \in I} = (X_i,\topo_i)_{i \in I}$ uma família de espaços topológicos e, para todo $i \in I$, $f_i: X_i \to X$ uma função. A \emph{topologia final} de $X$ com respeito à família $(f_i)_{i \in I}$ é a maior topologia de $X$ tal que, para todo $i \in I$, $f_i$ é contínua.
+\end{definition}
+
+\begin{proposition}
+Sejam $\bm X$ um conjunto, $(\bm{X_i})_{i \in I} = (X_i,\topo_i)_{i \in I}$ uma família de espaços topológicos e, para todo $i \in I$, $f_i: X_i \to X$ uma função. A topologia final de $X$ com respeito à família $(f_i)_{i \in I}$ é a topologia
+	\begin{equation*}
+	\bigcap_{i \in I} {f_i}_\star(\topo_i).
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+Seja $\topo$ uma topologia de $X$ tal que, para todo $i \in I$, $f_i: X_i \to X$ é contínua, e seja $A \in \topo$. Então, para todo $i \in I$, $f_i \inv(A) \in \topo_i$, o que implica que $A \in {f_i}_\star(\topo_i)$, portanto $A \in \bigcap_{i \in I} {f_i}_\star(\topo_i)$. Isso mostra que $\topo \subseteq \bigcap_{i \in I} {f_i}_\star(\topo_i)$, e como interseção de topologias é topologia, segue o procurado.
+\end{proof}
+
+\subsubsection{Produto de espaços topológicos}
+
+\begin{definition}
+Seja $(\bm{X_i})_{i \in I} = (X_i,\topo_i)_{i \in I}$ uma família de espaços topológicos. O \emph{produto} da família $(\bm{X_i})_{i \in I}$ é o par
+	\begin{equation*}
+	\prod_{i \in I} \bm{X_i} := \left( \prod_{i \in I} X_i , \ger{\bigcup_{i \in I}{\pi_i}^\star(\topo_i)} \right).
+	\end{equation*}
+A topologia $\ger{\bigcup_{i \in I}{\pi_i}^\star(\topo_i)}$ é a \emph{topologia produto} de $\prod_{i \in I} X_i$.
+\end{definition}
+
+\begin{proposition}
+Sejam $(\bm{X_i})_{i \in I} = (X_i,\topo_i)_{i \in I}$ uma família de espaços topológicos e $X = \prod_{i \in I} X_i$ o produto de conjuntos. A topologia produto de $X$ é a topologia gerada pela base cujos elementos são $\prod_{i \in I} A_i$, tal que $A_i \in \topo_i$ e existe $J \subseteq I$ finito com $A_i = X_i$ para $i \in I \setminus J$.
+\end{proposition}
+\begin{proof}
+Como $\pi_i = \pi_i \circ \Id_X$, segue de uma propriedades básica de imagem inversa de produto (\ref{conj:prop.im.inv.prod}) que
+	\begin{equation*}
+	\prod_{i \in I} A_i = \Id_X\inv \left(\prod_{i \in I} A_i\right) = \bigcap_{i \in I} \pi_i\inv(A_i)
+	\end{equation*}
+Para todo $i \in I \setminus J$, $A_i=X_i$, então $\pi_i\inv(A_i)=X$ e, portanto,
+	\begin{equation*}
+	\bigcap_{i \in I\setminus J} \pi_i\inv(A_i) = \bigcap_{i \in I\setminus J} X = X.
+	\end{equation*}
+Isso implica que
+	\begin{equation*}
+	\bigcap_{i \in I} \pi_i\inv(A_i) = \left(\bigcap_{i \in I\setminus J} \pi_i\inv(A_i)\right) \cap \left(\bigcap_{j \in J} \pi_j\inv(A_j)\right) =  \bigcap_{j \in J} \pi_j\inv(A_j)
+	\end{equation*}
+Logo $\prod_{i \in I} A_i = \bigcap_{j \in J} \pi_j\inv(A_j)$. Seja $A$ aberto da topologia descrita na proposição. Então
+	\begin{equation*}
+	A = \bigcup_{k \in K} A_k = \bigcup_{k \in K}\prod_{i \in I} A_{ki} = \bigcup_{k \in K}\bigcap_{j \in J} \pi_j\inv (A_{kj}),
+	\end{equation*}
+o que mostra que $A$ é aberto da topologia produto. O resto da demonstração é simples.
+\end{proof}
+
+\begin{proposition}[Propriedade Universal]
+Sejam $(\bm{X_i})_{i \in I} = (X_i,\topo_i)_{i \in I}$ uma família de espaços topológicos, $\bm T = (T,\topo_T)$ um espaço topológico e, para todo $i \in I$, $f_i: \bm T \to \bm{X_i}$ uma função contínua. Então existe uma única função contínua $f: \bm T \to \prod_{i \in I} \bm{X_i}$ tal que, para todo $i \in I$, $\pi_i \circ f = f_i$ (o diagrama comuta).
+\begin{figure}
+\centering
+\begin{tikzpicture}[node distance=2.5cm, auto]
+	\node (P) {$\displaystyle\prod_{i \in I} \bm{X_i}$};
+	\node (Ci) [below of=P] {$\bm{X_i}$};
+	\node (X) [left of=Ci] {$\bm{T}$};
+	\draw[->] (X) to node [swap] {$f_i$} (Ci);
+	\draw[->, dashed] (X) to node {$f$} (P);
+	\draw[->] (P) to node {$\pi_i$} (Ci);
+\end{tikzpicture}
+\end{figure}
+\end{proposition}
+\begin{proof}
+Defina a função
+	\begin{align*}
+	\func{f}{T}{ \prod_{i \in I} X_i}{ x}{ (f_i(x))_{i \in I}}.
+	\end{align*}
+Pela propriedade universal do produto de conjuntos, $f$ é única e $\pi_i \circ f = f_i$. Resta mostrar que $f$ é contínua. Seja $A \in \topo_X$. Então $A=\bigcup_{k \in K} A_k$ é uma união de abertos básicos $A_k \in \topo$. Isso significa que, para todo $k \in K$, $A_k = \prod_{i \in I} A_{ki}$, com $A_{ki} \in \topo_i$ para todo $i \in I$ e existe $J_k \subseteq I$ finito tal que, para todo $i \in I \setminus J_k$, $A_{ki} = X_i$. Assim, por propriedades básicas de imagem inversa de união e produto (\ref{conj:prop.im.inv.prod}),
+		\begin{equation*}
+		f\inv(A) = f\inv\left(\bigcup_{k \in K}\prod_{i \in I} A_{ki}\right) = \bigcup_{k \in K} f\inv \left( \prod_{i \in I} A_{ki} \right) = \bigcup_{k \in K}\bigcap_{i \in I}f_i\inv(A_{ki}).
+		\end{equation*}
+Seja $k \in K$. Como, para todo $i \in I \setminus J_k$, $A_{ki} = X_i$, então $f_i\inv(A_{ki}) = f_i\inv(X_i) = T$. Disso segue que
+	\begin{equation*}
+	\bigcap_{i \in I}f_i\inv(A_{ki}) = \bigcap_{j \in J_k}f_j\inv(A_{kj})
+	\end{equation*}
+e, portanto,
+	\begin{equation*}
+	f\inv(A) = \bigcup_{k \in K}\bigcap_{j \in J_k}f_j\inv(A_{kj}).
+	\end{equation*}
+Seja $k \in K$. Para todo $j \in J_k$, $f_j$ é contínua, o que implica que $f_j\inv(A_{kj})$ é aberto e, por $J_k$ ser finito, a interseção $\bigcap_{j \in J_k}f_j\inv(A_{kj})$ é aberta. Isso significa que a união $\bigcup_{k \in K}\bigcap_{j \in J_k}f_j\inv(A_{kj})$ é aberta e, portanto, $f\inv(A) \in \topo_T$. Logo $f$ é contínua.
+\end{proof}
+
+\subsubsection{Coproduto de espaços topológicos}
+
+\begin{definition}
+Seja $(\bm{X_i})_{i \in I} = (X_i,\topo_i)_{i \in I}$ uma família de espaços topológicos. O \emph{coproduto} da família $(\bm{X_i})_{i \in I}$ é o par
+	\begin{equation*}
+	\coprod_{i \in I} \bm{X_i} := \left( \coprod_{i \in I} X_i , \bigcap_{i \in I}{\iota_i}_\star(\topo_i) \right).
+	\end{equation*}
+A topologia $\bigcap_{i \in I}{\pi_i}_\star(\topo_i)$ é a \emph{topologia coproduto} de $\coprod_{i \in I} X_i$.
+\end{definition}
+
+\begin{proposition}[Propriedade Universal]
+Sejam $(\bm{X_i})_{i \in I} = (X_i,\topo_i)_{i \in I}$ uma família de espaços topológicos, $\bm T = (T,\topo_T)$ um espaço topológico e, para todo $i \in I$, $f_i: \bm{X_i} \to \bm T$ uma função contínua. Então existe uma única função contínua $f: \coprod_{i \in I} \bm{X_i} \to \bm T$ tal que, para todo $i \in I$, $f \circ \iota_i = f_i$ (o diagrama comuta).
+\begin{figure}
+\centering
+\begin{tikzpicture}[node distance=2.5cm, auto]
+	\node (Ci) {$\bm{X_i}$};
+	\node (S) [above of=Ci] {$\displaystyle\coprod_{i \in I} \bm{X_i}$};
+	\node (X) [right of=Ci] {$\bm T$};
+	\draw[->] (Ci) to node [swap] {$f_i$} (X);
+	\draw[->, dashed] (S) to node {$f$} (X);
+	\draw[->] (Ci) to node {$\iota_i$} (S);
+\end{tikzpicture}
+\end{figure}
+\end{proposition}
+
+\subsubsection{Subespaços topológicos}
+
+\begin{definition}
+Sejam $(X,\topo)$ um espaço topológico e $S \subseteq X$ um subconjunto. A \emph{topologia induzida} por $\topo$ em $S$ é o conjunto
+	\begin{equation*}
+	\topo|_S := \set{A \cap S}{A \in \topo}.
+	\end{equation*}
+\end{definition}
+
+\begin{proposition}
+Sejam $(X,\topo)$ um espaço topológico e $S \subseteq X$ um subconjunto. A topologia induzida por $\topo$ em $S$ é o conjunto
+	\begin{equation*}
+	\topo|_S = \iota_\star(\topo),
+	\end{equation*}
+a maior topologia tal que a inclusão $\iota: S \to X$ é contínua.
+\end{proposition}
+
+\begin{proposition}
+Sejam $(X,\topo)$ um espaço topológico e $S \subseteq X$ um subconjunto. A topologia induzida por $\topo$ em $S$ é uma topologia de $S$.
+\end{proposition}
+\begin{proof}
+(1) Notemos que $\emptyset,S \in \topo|_S$, pois $\emptyset \cap S = \emptyset$ e $X \cap S = S$. (2) Seja $(A_i)_{i \in I}$ uma família de abertos de $\topo|_S$. Então, para cada $i \in I$, existe um aberto $B_i \in \topo$ tal que $A_i = B_i \cap S$. Assim, temos que
+	\begin{equation*}
+	\bigcup_{i \in I} A_i = \bigcup_{i \in I} (B_i \cap S) = \left( \bigcup_{i \in I} B_i \right) \cap S,
+	\end{equation*}
+que pertence à topologia induzida pois $\bigcup_{i \in I} B_i \in \topo$. (3) Seja $(A_i)_{i=1}^n$ uma família de abertos de $\topo|_S$. Então, para cada $1 leq i leq n$, existe um aberto $B_i \in \topo$ tal que $A_i = B_i \cap S$. Assim, temos que
+	\begin{equation*}
+	\bigcap_{i=1}^n A_i = \bigcap_{i=1}^n (B_i \cap S) = \left( \bigcap_{i=1}^n B_i \right) \cap S,
+	\end{equation*}
+que pertence à topologia induzida pois $\bigcap_{i=1}^n B_i \in \topo$.
+\end{proof}
+
+\begin{proposition}[Propriedade característica]
+Sejam $\bm X=(X,\topo_X)$ e $(Y,\topo_Y)$ espaços topológicos e $\bm S \subseteq \bm X$ um subespaço. Uma função $f\colon Y \to S$ é contínua se, e somente se, $\iota \circ f: Y \to X$ é contínua (o diagrama comuta).
+\begin{figure}
+\centering
+\begin{tikzpicture}[node distance=2.5cm, auto]
+	\node (X) {$\bm X$};
+	\node (S) [below of=X] {$\bm S$};
+	\node (Y) [left of=S] {$\bm{T}$};
+	\draw[->] (Y) to node [swap] {$f$} (S);
+	\draw[->] (Y) to node {$\iota \circ f$} (X);
+	\draw[->] (S) to node [swap] {$\iota$} (X);
+\end{tikzpicture}
+\end{figure}
+\end{proposition}
+
+\paragraph*{Proposição} Restrição de função contínua é contínua na topologia induzida.
+
+\begin{proposition}[Colagem por abertos]
+Sejam $\bm X$ e $\bm Y$ espaços topológicos, $f: X \to Y$ uma função e $(X_i)_{i \in I}$ uma cobertura de $X$ por conjuntos abertos tal que, para todo $i \in I$, $f|_{X_i}: X_i \to Y$ é contínua. Então $f: X \to Y$ é contínua.
+\end{proposition}
+
+\begin{proposition}[Colagem por fechados]
+Sejam $\bm X$ e $\bm Y$ espaços topológicos, $f: X \to Y$ uma função e $(X_i)_{i=1}^n$ uma cobertura de $X$ por conjuntos fechados tal que, para todo $1 \leq i \leq n$, $f|_{X_i}: X_i \to Y$ é contínua. Então $f: X \to Y$ é contínua.
+\end{proposition}
+
+\subsubsection{Quociente de espaços topológicos}
+
+\begin{definition}
+Sejam $\bm X = (X,\topo)$ um espaço topológico e $\sim$ uma relação de equivalência em $X$. O \emph{espaço quociente} com respeito a $\sim$ é o espaço topológico
+	\begin{equation*}
+	\bm{\quo{X}{\sim}} := \left( \quo{X}{\sim}, \pi^\star(\topo) \right),
+	\end{equation*}
+em que $\pi: X \to \quo{X}{\sim}$ é a projeção canônica de equivalências.
+\end{definition}
+
+É fácil notar que os abertos de $\bm{\quo{X}{\sim}}$ são conjuntos de classes de equivalência cuja união é um aberto de $\bm X$. Notemos, ainda, que se $f: X \to Y$ é sobrejetivo, existe uma relação de equivalência em $X$ induzida por $f$, definida como dois elementos são equivalentes se suas imagens são iguais, e essa relação de equivalência faz com que possamos identificar $Y$ com $\quo{X}{\sim}$ como conjuntos. Definimos a topologia em $Y$ de modo que $Y$ e $\quo{X}{\sim}$ sejam homeomorfos.
+
+\begin{proposition}[Propriedade característica]
+Sejam $\bm X=(X,\topo_X)$ e $(Y,\topo_Y)$ espaços topológicos e $\bm Q$ um espaço quociente de $\bm X$. Uma função $f: Q \to Y$ é contínua se, e somente se, $f \circ \pi: X \to Y$ é contínua (o diagrama comuta).
+\begin{figure}
+\centering
+\begin{tikzpicture}[node distance=2.5cm, auto]
+	\node (Q) {$\bm Q$};
+	\node (X) [above of=Q] {$\bm X$};
+	\node (Y) [right of=Q] {$\bm Y$};
+	\draw[->] (Q) to node [swap] {$f$} (Y);
+	\draw[->] (X) to node {$f \circ \pi$} (Y);
+	\draw[->] (X) to node [swap] {$\pi$} (Q);
+\end{tikzpicture}
+\end{figure}
+\end{proposition}
+
+\subsection{Topologia de ordem}
+
+Lembremos que, se $(X,\leq)$ é um conjunto (totalmente) ordenado e $e,e' \in X$, o intervalo aberto de extremos inferior $e$ e superior $e'$ é o conjunto
+	\begin{equation*}
+	\intaa{e}{e'}= \set{x \in X}{e < x < e'}.
+	\end{equation*}
+As semirretas abertas são os intervalos
+	\begin{equation*}
+	\intaa{e}{\infty} := \set{x \in X}{e < x}
+	\end{equation*}
+e
+	\begin{equation*}
+	\intaa{-\infty}{e} := \set{x \in X}{x < e}.
+	\end{equation*}
+
+%Definindo a função $m_e(x) = \min\{x,e\}$. Então
+%	\begin{equation*}
+%	\intaa{-\infty}{e} = {m_e}\inv(X).
+%	\end{equation*}
+
+\begin{definition}
+Seja $(X,\leq)$ um conjunto ordenado. A \emph{topologia de ordem} sobre $X$ é a topologia gerada pelas semirretas abertas de $(X,\leq)$. %pelos intervalos abertos $\intaa{e}{e'}$.
+Denotamos essa topologia por $\topo_\leq$ (ou simplesmente $\topo$ se for claro pelo contexto).
+\end{definition}
+
+\begin{proposition}
+Seja $(X,\leq)$ um conjunto ordenado. O par $(X,\topo_\leq)$ é um espaço topológico hereditariamente normal com base de intervalos abertos.
+\end{proposition}
+
+\subsubsection{Topologia de um corpo ordenado}
+
+Lembremos que, se $(X,\leq)$ é um espaço ordenado, a topologia $\topo_\leq$ induzida por $\leq$ é a topologia gerada pelas semirretas abertas $\intaa{x}{\infty}$ e $\intaa{\infty}{x}$, e o conjunto de intervalos abertos $\intaa{x}{x'}$ é uma base de $\topo_\leq$.
+
+Note que
+	\begin{align*}
+	\bigcup_{i \in I} \intaa{e_i}{e'_i} &= \intaa{\inf_{i \in I} e_i}{\sup_{i \in I} e'_i} \\
+	\bigcap_{i \in I} \intff{e_i}{e'_i} &= \intff{\sup_{i \in I} e_i}{\inf_{i \in I} e'_i}.
+	\end{align*}
+
+\begin{proposition}
+Seja $(\bm C,\leq)$ um corpo ordenado. O par $(\bm C,\topo_\leq)$ é um corpo topológico.
+\end{proposition}
+\begin{proof}
+Precisamos mostrar que $+$, $-$, $\times$ e $\inv$ são contínuas. Para isso, basta mostrar que elas puxam abertos geradores para abertos. Seja $e \in C$ e consideremos as semirretas $\intaa{e}{\infty}$ e $\intaa{-\infty}{e}$. Para mostrar que $+$ é contínua, notamos que, se $c+c' > e$, então $c' > e-c$, logo
+	\begin{equation*}
+	+\inv \big( \intaa{e}{\infty} \big) = \bigcup_{c \in C} \big( \intaa{c}{\infty} \times \intaa{e-c}{\infty} \big)
+	\end{equation*}
+e, analogamente,
+	\begin{equation*}
+	+\inv \big( \intaa{-\infty}{e} \big) = \bigcup_{c \in C} \big( \intaa{-\infty}{c} \times \intaa{-\infty}{e-c} \big),
+	\end{equation*}
+que são abertos pois são uniões de abertos, o que implica que $+$ é contínua. Para mostrar que $-$ é contínua, notamos que
+	\begin{equation*}
+	-\inv \big( \intaa{e}{\infty} \big) = \intaa{-\infty}{-e}
+	\end{equation*}
+e
+	\begin{equation*}
+	-\inv( \intaa{-\infty}{e} ) = \intaa{-e}{\infty},
+	\end{equation*}
+que são ambos abertos, o que mostra que $-$ é contínua.
+
+Para mostrar que $\times$ é contínua, consideramos dois casos. 
+
+(1) Se $e=0$ e $c \times c' > e=0$, então $c \neq 0$, logo se $c > 0$ então $c'>0$ e, se $c < 0$, então $c' < 0$, logo
+	\begin{equation*}
+	\times\inv \big( \intaa{0}{\infty} \big) = \big( \intaa{0}{\infty} \times \intaa{0}{\infty} \big) \cup \big( \intaa{-\infty}{0} \times \intaa{-\infty}{0} \big)
+	\end{equation*}
+e, analogamente,
+	\begin{equation*}
+	\times\inv \big( \intaa{-\infty}{0} \big) = \big( \intaa{0}{\infty} \times \intaa{-\infty}{0} \big) \cup \big( \intaa{-\infty}{0} \times \intaa{0}{\infty} \big),
+	\end{equation*}
+que são ambos abertos;
+%	\begin{equation*}
+%	\times\inv ( \intaa{0}{\infty} ) = \bigcup_{c \in C_{>0}} \big( \intaa{c}{\infty} \times \intaa{0}{\infty} \big) \cup \bigcup_{c \in C_{<0}} \big( \intaa{\infty}{c} \times \intaa{-\infty}{0} \big)
+%	\end{equation*
+%(2) se $e > 0$ e $c \times c' > e > 0$, então $c \neq 0$,
+%
+%notamos que, se $c \times c' > e$, existem dois casos: (1) se $e=0$, então $c \neq 0$, logo $c' > c$
+%
+%
+%(1) se $c \neq 0$, então $c' \geq e/c$; se $c=0$, então e caso contr
+%
+%
+%	\begin{equation*}
+%	\times\inv ( \intaa{e}{\infty} ) = \bigcup_{c \in C \setminus \{0\}} \intaa{c}{\infty} \times \intaa{e/c}{\infty}
+%	\end{equation*}
+%pois
+o caso (2) em que $e \neq 0$ é análogo, embora um pouco mais trabalhoso. Isso mostra que $\times$ é contínua. Mostrar que $\inv$ é contínua também é trabalhoso, mas segue direto de modo análogo.
+%Para mostrar que $/$ é contínua, notamos que
+%	\begin{equation*}
+%	{/}\inv \big( \intaa{0}{\infty} \big)
+%	\end{equation*}
+\end{proof}
+
+
+
+% Topologicamente falando, qual a consequência de um corpo ser infinitesimal/arquimediano?
+
+
+
+
+\begin{proposition}
+Seja $(\bm C,\leq)$ um corpo ordenado. O corpo topológico $(\bm C,\topo_\leq)$ é separado.
+\end{proposition}
+\begin{proof}
+Sejam $c,c' \in C$ tais que $c \neq c'$. Então $c < c'$ ou $c' < c$. Sem perda de generalidade, considere que $c < c'$. Então as vizinhanças
+	\begin{equation*}
+	\intaa{-\infty}{\frac{c+c'}{2}} \qquad\text{e}\qquad \intaa{\frac{c+c'}{2}}{\infty}
+	\end{equation*}
+de $c$ e $c'$, respectivamente, separam $c$ e $c'$.
+\end{proof}
+
+% MOSTRAR QUE É NORMAL
+%Qualquer aberto é da forma
+%	\begin{equation*}
+%	\bigcup_{i \in I} \intaa{e_i}{e'_i},
+%	\end{equation*}
+%em que $e_i < e'_i$, mas $e_i,e'_i$ podem ser, respectivamente, $-\infty$ e $\infty$. Isso implica que qualquer fechado é da forma
+%	\begin{align*}
+%	F = \left( \bigcup_{i \in I} \intaa{e_i}{e'_i} \right)^\complement &= \bigcap_{i \in I} \big( \intaa{e_i}{e'_i} \big)^\complement \\
+%		&= \bigcap_{i \in I} \big( \intaa{-\infty}{e_i} \cup \intaa{e'_i}{\infty} \big) \\
+%%		&= \left( \bigcap_{i \in I} \intaa{-\infty}{e_i} \right) \cup \left( \bigcap_{i \in I}\intaa{e'_i}{\infty} \right) \\
+%%		&= 
+%	\end{align*}
+%
+%Agora, seja $c \notin F$. Então $c \in \bigcup_{i \in I} \intaa{e_i}{e'_i}$, o que significa que existe algum $i \in I$ tal que $c \in \intaa{e_i}{e'_i}$.
+
+% Tem no stack exchange como mostrar que todo espaço métrico é completamente normal, deve dar pra estender pra espaços "métricos" com uma distância a valores no cone positivo de um corpo ordenado.
+
+Consideremos em $C_{\geq 0}$ a topologia induzida.
+
+\begin{proposition}
+Seja $(\bm C,\leq)$ um corpo ordenado. As funções valor absoluto $\abs{\var}\colon C \to C_{\geq 0}$ e distância $\dist{\var}{\var}\colon C \times C \to C_{\geq 0}$ são contínuas.
+\end{proposition}
+\begin{proof}
+(Valor absoluto) Seja $c \in C_{\geq 0}$ e consideremos os abertos $\intaa{c}{\infty}$ e $\intfa{0}{c}$. Então
+	\begin{equation*}
+	\abs{\var}\inv \big( \intaa{c}{\infty} \big) = \intaa{-\infty}{-c} \cup \intaa{c}{\infty}
+	\end{equation*}
+e
+	\begin{equation*}
+	\abs{\var}\inv \big( \intfa{0}{c} \big) = \intaf{-c}{0} \cup \intfa{0}{c} = \intaa{-c}{c},
+	\end{equation*}
+que são ambos abertos, o que mostra que $\abs{\var}$ é contínua.
+
+(Distância) Como $\dist{\var}{\var}$ é composição de $\abs{\var}$, $+$, $-$, $\proj_0$ e $\proj_1$, que são todas contínuas, segue que ela é contínua.
+%	\begin{equation*}
+%	\dist{c}{c'} := \abs{c'-c}
+%	\end{equation*}
+%	\begin{align*}
+%	\dist{\var}{\var} &= \dist{\var}{\var} \circ \Id \\
+%		&= \dist{\var}{\var} \circ (\proj_0,\proj_1) \\
+%		&= \dist{\proj_0}{\proj_1} \\
+%		&= \abs{\proj_1-\proj_0} \\
+%		&= \abs{\var} \circ (+(\proj_1,- \circ \proj_0)).
+%	\end{align*}
+\end{proof}
+
+
+
+
+
+\begin{proposition}
+Seja $(\bm C,\leq)$ um corpo ordenado. O corpo $\bm C$ é não-infinitesimal se, e somente se, $\Q_C$ é denso em $C$.
+\end{proposition}
+
+\section{Separação}
+
+\subsection{Noções de separação de conjuntos}
+
+Nesta seção são apresentadas algumas noções de como dois conjuntos de um espaço topológico podem ser separados. As duas noções mas simples de separação são noções conjuntistas. A primeira é a de conjuntos distintos, ou diferentes, $A \neq B$, e a outra é a de conjuntos disjuntos, $A \cap B = \emptyset$. A seguir, mostramos noções que envolvem construções topológicas e não meramente conjuntistas.
+
+\begin{definition}
+Sejam $\bm X$ um espaço topológico e $A,B \subseteq X$. Definimos as seguintes relações entre $A$ e $B$:
+	\begin{enumerate}
+	\item (\emph{Separação}) Cada conjunto é disjunto do fecho do outro.
+	\begin{equation*}
+	A \cap \Fec{B} = \Fec{A} \cap B = \emptyset.
+	\end{equation*}
+	\item (\emph{Separação por vizinhanças}) Existem vizinhanças $V_A \in \viz_A$ e $V_B \in \viz_B$ que são disjuntas.
+	\begin{equation*}
+	V_A \cap V_B = \emptyset.
+	\end{equation*}
+	\item (\emph{Separação por função contínua}) Existe uma função contínua $f \in \Cont(X,[0,1])$ tal que
+	\begin{equation*}
+	f(A)=\{0\} \e f(B)=\{1\}.
+	\end{equation*}
+	\item (\emph{Separação precisa por função contínua}) Existe uma função contínua $f \in \Cont(X,[0,1])$ tal que
+	\begin{equation*}
+	f\inv(\{0\})=A \e f\inv(\{1\})=B.
+	\end{equation*}
+	\end{enumerate}
+Cada uma das relações vale entre pontos $x,y \in X$, ou entre um conjunto $A$ e um ponto $x$, ao considerarmos no lugar no ponto o conjunto unitário que o contém: valem entre os conjuntos $\{x\}$ e $\{y\}$, ou entre $A$ e $\{x\}$, respectivamente.
+\end{definition}
+
+	As primeiras duas relações binárias são claramente simétricas, mas isso não é necessariamente claro no caso da terceira e quarta. No entanto, isso pode ser concluído ao considerar, dada uma função $f$ que faz $A$ e $B$ separados por função contínua, a função $1-f$ que faz o mesmo entre $B$ e $A$.
+
+\begin{proposition}
+\label{topo:prop.separacao}
+Sejam $\bm X$ um espaço topológico e $A,B \subseteq X$. Então
+	\begin{enumerate}
+	\item Se $A$ e $B$ são precisamente separados por função contínua, então são separados por função contínua.
+	\item Se $A$ e $B$ são separados por função contínua, então são separados por vizinhanças.
+	\item Se $A$ e $B$ são separados por vizinhanças, então são separados.
+	\item Se $A$ e $B$ são separados, então são disjuntos.
+	\end{enumerate}
+\end{proposition}
+%\begin{proof}
+%Suponhamos que existe função contínua $f:X \to [0,1]$ tal que $f(A)= \{0\}$ e $f(B)=\{1\}$. Definamos $U := f^{-1}(\left[0,\frac{1}{2}\right))$ e $V := f^{-1}((\frac{1}{2},1))$. Como $f$ é contínua, $U$ e $V$ são abertos. Ainda, $A \subseteq U$ e $B \subseteq V$. Por fim, como $U \cap V = \emptyset$, concluímos que $\bm X$ é normal.
+%\end{proof}
+
+% DÚVIDA: As relações de separação negadas são relações de equivalência? Pois indintinguibilidade topológica é, e ela é a negação de separação de pontos (não exatamente). Tentar entender melhor isso.
+
+
+\subsection{Espaços distinguíveis}
+
+\begin{definition}
+Seja $\bm X$ um espaço topológico. Pontos \emph{topologicamente indistinguíveis} em $\bm X$ são pontos $x,y \in X$ tais que $\viz_x = \viz_y$. Pontos \emph{topologicamente disntinguíveis em $\bm X$} são pontos que não são topologicamente indistinguíveis.
+\end{definition}
+
+\begin{proposition}
+Seja $\bm X$ um espaço topológico. A relação binária de indistinguibilidade topológica é uma relação de equivalência em $X$.
+\end{proposition}
+\begin{proof}
+Denotemos por $\sim$ a relação binária de indistinguibilidade topológica. Sejam $x,y,z \in X$. Para mostrar a reflexividade, notemos que, como $\viz_x=\viz_y$, então $x \sim x$. Para mostrar a simetria, se $x \sim y$, então $\viz_x=\viz_y$, o que é equivalente a $\viz_y=\viz_x$ e, portanto, $y \sim x$. Por fim, para mostrar a transitividade, se $x \sim y$ e $y \sim z$, então $\viz_x=\viz_y$ e $\viz_y=\viz_z$, o que implica $\viz_x=\viz_z$ e, portanto, $x \sim z$.
+\end{proof}
+
+O fato de que essa é uma relação de equivalência mostra que podemos obter a partir de qualquer espaço topológico um espaço topológico em que nenhum ponto é topologicamente indisntinguível. Para isso, basta considerar o espaço quociente definido pela relação. de indistinguibilidade topológica. Espaços com essa propriedade são definidos a seguir.
+
+\begin{definition}[$T_0$]
+Um espaço topológico \emph{distinguível} é um espaço topológico $\bm X$ em que todo par de pontos distintos é topologicamente distinguível:
+	\begin{equation*}
+	\forall x,y \in X \quad x \neq y \quad \Rightarrow \quad \viz_x \neq \viz_y.
+	\end{equation*}
+\end{definition}
+
+\begin{proposition}
+Seja $\bm X$ um espaço topológico. São equivalentes as seguintes propriedades:
+	\begin{enumerate}
+	\item $\bm X$ é distinguível.
+	\item $\forall x,y \in X \quad x \neq y \quad \Rightarrow \quad \viz_x \nsubseteq \viz_y \ou \viz_y \nsubseteq \viz_x$.
+	\item $\forall x,y \in X \quad x \neq y \quad \Rightarrow \quad x \notin \Fec{\{y\}} \ou y \notin \Fec{\{x\}}$.
+	\item $\forall x,y \in X \quad x \neq y \quad \Rightarrow \quad \Fec{\{x\}} \neq \Fec{\{y\}}$.	
+\end{enumerate}
+\end{proposition}
+
+\begin{proposition}
+Sejam $\bm X$ um espaço topológico distinguível e $Y \subseteq X$. Então $\bm Y$ é um espaço topológico distinguível.
+\end{proposition}
+
+\begin{proposition}
+Seja $(X_i)_{i \in I}$ uma família não vazia de espaços topológicos não vazios. O espaço produto $\prod_{i \in I} \bm{X_i}$ é distinguível se, e somente se, todos os espaços $\bm X_i$ são distinguíveis.
+\end{proposition}
+
+\subsection{Espaços acessíveis}
+
+\begin{definition}[$T_1$]
+Um espaço topológico \emph{acessível} é um espaço topológico $\bm X$ em que
+	\begin{equation*}
+	\forall x,y \in X \quad x \neq y \quad \Rightarrow \quad \viz_x \nsubseteq \viz_y \e \viz_y \nsubseteq \viz_x.
+	\end{equation*}
+\end{definition}
+
+\begin{proposition}[$T_1 \Rightarrow T_0$]
+Seja $\bm X$ um espaço topológico. Se $\bm X$ é acessível, então $\bm X$ é distinguível.
+\end{proposition}
+\begin{proof}
+Se $\bm X$ é acessível, então, para todos $x,y \in X$ tais que $x \neq y$, temos que $\viz_x \nsubseteq \viz_y \e \viz_y \nsubseteq \viz_x$. Mas isso implica que $\viz_x \nsubseteq \viz_y \ou \viz_y \nsubseteq \viz_x$, o que é equivalente a $\viz_x \neq \viz_y$. Logo $\bm X$ é distinguível.
+\end{proof}
+
+\begin{proposition}
+Seja $\bm X$ um espaço topológico. São equivalentes as seguintes propriedades:
+	\begin{enumerate}
+	\item $\bm X$ é acessível.
+	\item Todo par de pontos distintos é separado:
+		\begin{equation*}
+		\forall x,y \in X \quad x \neq y \quad \Rightarrow \quad x \notin \Fec{\{y\}} \e y \notin \Fec{\{x\}}.
+		\end{equation*}
+	\item $\forall x,y \in X \quad x \neq y \quad \Rightarrow \quad \exists U \in \viz_x,\ V \in \viz_y \qquad y \notin U \e x \notin V$.
+	\item $\forall x \in X \quad \Fec{\{x\}}=\{x\}$.
+	\end{enumerate}
+\end{proposition}
+
+\begin{proposition}
+Sejam $\bm X$ um espaço topológico acessível e  $Y \subseteq X$. Então $\bm Y$ é um espaço topológico acessível.
+\end{proposition}
+
+\begin{proposition}
+Seja $(X_i)_{i \in I}$ uma família não vazia de espaços topológicos não vazios. O espaço produto $\prod_{i \in I} \bm{X_i}$ é acessível se, e somente se, todos os espaços $\bm X_i$ são acessíveis.
+\end{proposition}
+
+\subsection{Espaços separados}
+
+\begin{definition}[$T_2$]
+Um espaço topológico \emph{separado (por vizinhanças)} é um espaço topológico $\bm X$ em que todo par de pontos distintos é separado por vizinhanças:
+	\begin{equation*}
+	\forall x,y \in X \quad x \neq y \quad \Rightarrow \quad \exists U \in \viz_x,\ V \in \viz_y \quad U \cap V = \emptyset.
+	\end{equation*}
+\end{definition}
+Esses espaços também são conhecidos como espaços de Hausdorff.
+
+\begin{proposition}[$T_2 \Rightarrow T_1$]
+Seja $\bm X$ um espaço topológico. Se $\bm X$ é separado, então $\bm X$ é acessível.
+\end{proposition}
+
+\begin{proposition}
+Seja $\bm X$ um espaço topológico. São equivalentes as seguintes propriedades:
+	\begin{enumerate}
+	\item $\bm X$ é separado.
+	\item Toda rede convergente em $\bm X$ tem limite único.
+	\item Todo filtro convergente em $\bm X$ tem limite único.
+	\end{enumerate}
+\end{proposition}
+
+\begin{proposition}
+Sejam $\bm X$ um espaço topológico separado e $Y \subseteq X$. Então $\bm Y$ é um espaço topológico separado.
+\end{proposition}
+
+\begin{proposition}
+Seja $(\bm X_i)_{i \in I}$ uma família não vazia de espaços topológicos não vazios. O espaço produto $\prod_{i \in I} \bm{X_i}$ é separado se, e somente se, todos os espaços $\bm X_i$ são separados.
+\end{proposition}
+
+\begin{proposition}
+Sejam $\bm X$ um espaço topológico, $\bm Y$ um espaço topológico separado, $D \subseteq X$ um subconjunto denso em $X$ e $f,g: X \to Y$ funções contínuas tais que $f|_D=g|_D$. Então $f=g$.
+\end{proposition}
+
+\subsection{Espaços regulares}
+
+\begin{definition}
+Um espaço topológico \emph{regular} é um espaço topológico
+% $\bm X$
+em que é possível separar por vizinhanças qualquer ponto de qualquer conjunto fechado que não o contém.
+%: para todo $x \in X$ e para todo conjunto fechado $F \subseteq X$,
+%	\begin{equation*}
+%	F \cap \{x\}=\emptyset \quad \Rightarrow \quad \exists U \in \viz_x, \exists V \in \viz_F \quad U \cap V = \emptyset.
+%	\end{equation*}
+\end{definition}
+
+Espaços separados regulares são também chamados de $T_3$.
+
+\begin{proposition}
+Seja $\bm X$ um espaço topológico regular. Então $\bm X$ é separado por vizinhanças se, e somente se, é distinguível.
+\end{proposition}
+\begin{proof}
+Sabemos que todo espaço separado por vizinhanças é distinguível. Para demonstrar a recíproca, supondo que $\bm X$ é distinguível, então para todos pontos $x,y \in X$, $x \notin \Fec{\{y\}}$ ou $y \notin \Fec{\{x\}}$. Sem perda de generalidade, assumamos o primeiro caso. Seja $F := \Fec{\{y\}}$. Então $F$ é fechado e $x \notin F$. Da regularidade de $\bm X$, segue que existem $U \in \viz_x$ e $V \in \viz_{F}$ tais que $U \cap V = \emptyset$. Como $y \in F$, então $V \in \viz_y$, o que implica que $\bm X$ é separado por vizinhanças.
+\end{proof}
+
+\begin{proposition}
+Seja $\bm X$ um espaço topológico. São equivalentes as seguintes propriedades:
+	\begin{enumerate}
+	\item $\bm X$ é regular.
+	\item Para todos ponto $x \in X$ e aberto $A \in \viz_x$, existe aberto $V \in \viz_x$ tal que
+		\begin{equation*}
+		x \in V \subseteq \Fec{V} \subseteq A.
+		\end{equation*}
+	\end{enumerate}
+\end{proposition}
+
+\begin{proposition}
+Sejam $\bm X$ um espaço topológico regular e $Y \subseteq X$. Então $\bm Y$ é um espaço topológico regular.
+\end{proposition}
+
+\begin{proposition}
+Seja $(X_i)_{i \in I}$ uma família não vazia de espaços topológicos não vazios. O espaço produto $\prod_{i \in I} \bm{X_i}$ é regular se, e somente se, todos os espaços $\bm X_i$ são regulares.
+\end{proposition}
+
+\subsection{Espaços completamente regulares}
+
+\begin{definition}
+Um espaço topológico \emph{completamente regular} é um espaço topológico
+% $\bm X$
+em que é possível separar por função contínua qualquer ponto de qualquer conjunto fechado que não o contém.
+%: para todo $x \in X$ e para todo conjunto fechado $F \subseteq X$,
+%	\begin{equation*}
+%	\{x\} \cap F=\emptyset \quad \Rightarrow \quad \exists f \in \mathcal{C}(X,[0,1]) \quad f(x)=\{0\} \e f(F)=\{1\}.
+%	\end{equation*}
+\end{definition}
+
+\begin{proposition}
+Seja $\bm X$ um espaço topológico. Se $\bm X$ é completamente regular, então $\bm X$ é regular.
+\end{proposition}
+
+\begin{proposition}
+Sejam $\bm X$ um espaço topológico completamente regular e $Y \subseteq X$. Então $\bm Y$ é um espaço topológico completamente regular.
+\end{proposition}
+
+\begin{proposition}
+Seja $(X_i)_{i \in I}$ uma família não vazia de espaços topológicos não vazios. O espaço produto $\prod_{i \in I} \bm{X_i}$ é completamente regular se, e somente se, todos os espaços $\bm X_i$ são completamente regulares.
+\end{proposition}
+
+\subsection{Espaços normais}
+
+\begin{definition}
+Um espaço topológico \emph{normal} é um espaço topológico
+% $\bm X$ 
+em que todo par de conjuntos fechados disjuntos é separado por vizinhanças.
+% : para todos fechados $F,G \subseteq X$,
+%	\begin{equation*}
+%	F \cap G = \emptyset \quad \Rightarrow \quad \exists U \in \viz_F,\ V \in \viz_G \quad U \cap V = \emptyset.
+%	\end{equation*}
+\end{definition}
+
+Espaços normais separados por vizinhanças são também chamados de $T_4$.
+
+\begin{proposition}
+Seja $\bm X$ um espaço topológico normal. Então $\bm X$ é separado por vizinhanças se, e somente se, é acessível.
+\end{proposition}
+\begin{proof}
+Sabemos que todo espaço separado por vizinhanças é distinguível. Para demonstrar a recíproca, suponhamos que $\bm X$ é acessível e sejam $x,y \in X$ tais que $x \neq y$. Então vale que $\Fec{\{x\}}=\{x\}$ e $\Fec{\{y\}}=\{y\}$. Como $x \neq y$, da normalidade de $\bm X$ existem $V_x \in \viz_x$ e $V_y \in \viz_y$ tais que $V_x \cap V_y = \emptyset$; ou seja, $\bm X$ é separado por vizinhanças.
+\end{proof}
+
+\begin{proposition}
+Sejam $\bm X$ um espaço topológico normal e $Y \subseteq X$ fechado. Então $\bm Y$ é um espaço topológico normal.
+\end{proposition}
+
+\begin{proposition}
+Seja $\bm X$ um espaço topológico. São equivalentes as seguintes propriedades:
+	\begin{enumerate}
+	\item $\bm X$ é normal.
+	\item Para todos fechado $F$ e aberto $A \in \viz_F$, existe aberto $V \in \viz_F$ tal que
+		\begin{equation*}
+		F \subseteq V \subseteq \Fec{V} \subseteq A.
+		\end{equation*}
+	\end{enumerate}
+\end{proposition}
+
+\begin{proposition}[Lema de Urysohn]
+Um espaço topológico $\bm X$ é normal se, e somente se, todo par de conjuntos fechados disjuntos é separado por função contínua.
+% : para todos conjuntos fechados $F,G \subseteq X$,
+%	\begin{equation*}
+%	F \cap G = \emptyset \quad \Rightarrow \quad \exists f \in \mathcal{C}(X,[0,1]) \quad f(F)=\{0\} \e f(G)=\{1\}.
+%	\end{equation*}
+\end{proposition}
+\begin{proof}
+Se todo par de conjuntos fechados é separado por função contínua, segue da proposição \ref{topo:prop.separacao} que eles são separados por vizinhanças.
+%Primeiro, suponhamos que existe função contínua $f:X \to [0,1]$ tal que $f(F)= \{0\}$ e $f(G)=\{1\}$. Definamos $U := f^{-1}(\left[0,\frac{1}{2}\right))$ e $V := f^{-1}((\frac{1}{2},1))$. Como $f$ é contínua, $U$ e $V$ são abertos. Ainda, $F \subseteq U$ e $G \subseteq V$. Por fim, como $U \cap V = \emptyset$, concluímos que $\bm X$ é normal.
+
+Para demonstrar a recíproca, suponhamos que $\bm X$ é normal. Sejam $F_0,F_1 \subseteq X$ conjuntos fechados disjuntos. Seja $Q := \Q \cap \left[0,1\right]$. Construiremos uma família de abertos $(A_q)_{q \in Q}$ com a seguinte propriedade:
+	\begin{itemize}
+	\item Se $p,q \in Q$ são racionais tais que $p<q$, então $\Fec{A_p} \subseteq A_q$.
+	\end{itemize}
+
+Consideremos uma enumeração de $r: \N \to Q$ tal que $r(0)=0$ e $r(1)=1$, de modo que possamos fazer indução nos elementos de $Q$. Definimos $A_1:={F_1}^\complement$ e notamos que $F_0 \subseteq A_1$, pois $F_0$ e $F_1$ são disjuntos. Como $\bm X$ é normal e $F_0 \subseteq A_1$, existe aberto $A_0$ tal que
+	\begin{equation*}
+	F_0 \subseteq A_0 \subseteq \Fec{A_0} \subseteq A_1.
+	\end{equation*}
+Mostremos por indução que para todo $q \in Q$ existe $A_q$ com a propriedade enunciada. O caso base já está mostrado pela construção de $A_0$ e $A_1$, então consideremos o passo indutivo. Seja $Q_n := \set{r(k)}{k \in \{0,\ldots,n\}}$ e suponha que $\Fec{A_p} \subseteq A_q$ para todos racionais $p,q \in Q_n$ tais que $p<q$. Consideremos $r=r(n+1) \in Q$. O conjunto $Q_{n+1}$ é um subconjunto finito de $Q$ e, com essa ordem, todo elemento do conjunto tem um antecessor e um sucessor imediatos. Sejam $p,q \in Q_{n+1}$ tais racionais satisfazendo $p<r<q$. Os conjuntos abertos $A_p$ e $A_q$ já estão definidos pela hipótese de indução, então pela normalidade segue que existe aberto $A_r \subseteq X$ tal que
+	\begin{equation*}
+	\Fec{A_p} \subseteq A_r \subseteq \Fec{A_r} \subseteq A_q.
+	\end{equation*}
+Mostremos que a propriedade vale para todos elementos de $Q_{n+1}$. Se $p,q \in Q_n$, a propriedade vale. Consideremos $r=r(n+1)$ e $s \in Q_n$. Se $s<r(n+1)$, então $s \leq p$, portanto $\Fec{A_s} \subseteq \Fec{A_p} \subseteq A_r$, e se $r(n+1) < s$, então $q \leq s$, portanto $\Fec{A_r} \subseteq A_q \subseteq A_s$. Assim isso vale para todo $Q_n$ e portanto para $Q$, e construímos uma família $(A_q)_{q \in Q}$ satisfazendo a propriedade.
+
+Definamos agora a função
+	\begin{align*}
+	\func{f}{X}{[0,1]}{x}{\inf\set{q \in Q}{x \in A_q}}.
+	\end{align*}
+A função $f$ separa $F_0$ e $F_1$: por definição, $F_0 \subseteq A_0$, portanto $f(F_0)=\{0\}$; ainda, por definição, para todo $q \in Q$, tem-se $A_q \subseteq A_1={F_1}^\complement$, portanto $f(F_1)=\{1\}$. Para mostrar que $f$ é contínua, notemos antes dois fatos. (1) Para todo $q \in Q$, se $x \in \Fec{A_q}$ então $f(x) \leq q$. Isso ocorre porque, se $x \in \Fec{A_q}$, então $x \in A_r$ para todo $r \in \Q \cap \left]q,1\right]$, portanto $\set{q \in Q}{x \in A_q} \subseteq \Q \cap \left]q,1\right]$ o que implica $f(x) \leq q$ por definição de $f$. (2) Para todo $q \in Q$, se $x \notin A_q$ então $f(x) \geq q$. Isso ocorre porque, se $x \notin A_q$, então $x \notin A_r$ para todo $r \in \Q \cap \left[0,q\right[$, portanto $\set{q \in Q}{x \in A_q}\Q \cap \left[0,q\right[$ o que implica $f(x) \geq q$ por definição de $f$.
+
+Agora que provamos esses fatos, seja $x \in \left]a,b\right[ \subseteq [0,1]$. Mostremos que existe vizinhança $A \subseteq X$ de $x$ tal que $f(A) \subseteq \left]a,b\right[$. Para isso, sejam $p,q \in Q$ tais que $a<p<f(x)<q<b$ e definamos $A:=A_q \setminus \Fec{A_p}$. Então, pelos fatos acima, $x \in A_q$ porque $f(x)<q$ e $x \notin \Fec{A_p}$ porque $f(x)>p$, o que mostra que $x \in A$. Por fim, seja $x' \in A$. Então $x' \in A_q \subseteq \Fec{A_q}$, portanto $f(x') \leq q$ e $x' \notin \Fec{A_p} \supseteq A_p$, portanto $f(x') \geq p$, o que implica $f(x) \subseteq [p,q] \subseteq \left]a,b\right[$. Isso mostra que $f$ é contínua.
+\end{proof}
+
+%Acho que se em vez de A_0 e $A_1$ usamos $F_0$ e $F_1$, podemos fazer uma função $f$ que separa PRECISAMENTE os conjuntos $F_0$ e $F_1$, mas não tenho certeza.
+% Acho que podemos pegar qualquer conjunto $Q$ que seja contável e denso em $[,1]$, não precisa ser os racionais.
+
+
+
+\section{Convergência}
+
+\subsection{Redes}
+
+\begin{proposition}
+Sejam $\bm X$ um espaço topológico e $C \subseteq X$. Então $(\viz_C,\supseteq)$, o conjunto de vizinhanças de $C$ com ordem de contenção invertida, é um conjunto direcionado.
+\end{proposition}
+\begin{proof}
+Sabemos que $\supseteq$ é uma ordem parcial. Sejam $V_0,V_1 \in \viz_C$. Então $V := V_0 \cap V_1$ é uma vizinhança de $C$ tal que $V_0 \supseteq V$ e $V_1 \supseteq V$.
+\end{proof}
+
+\begin{definition}
+Sejam $X$ um conjunto e $(\Lambda,\leq)$ um conjunto direcionado. Uma \emph{rede} de elementos de $X$ indexados por $\Lambda$ é uma função $x: \Lambda \to X$. O conjunto $\Lambda$ é o \emph{conjunto de índices} da rede. Denota-se $(x_\lambda)_{\lambda \in \Lambda}$ e a imagem de $\lambda \in \Lambda$ por $x$ é denotada $x_\lambda$ e chamada de \emph{$\lambda$-ésimo membro} da rede.
+\end{definition}
+
+Note que uma sequência é uma rede cujo conjunto direcionado é $(\N,\leq)$.
+
+\begin{definition}[Limite e convergência]
+Sejam $\bm X$ um espaço topológico e $(x_\lambda)_{\lambda \in \Lambda}$ uma rede de $X$. Um \emph{limite} de $(x_\lambda)_{\lambda \in \Lambda}$ em $\bm X$ é um ponto $\ell \in X$ que satisfaz: para toda vizinhança $V$ de $\ell$, existe $\lambda \in \Lambda$ tal que, para todo $\mu \geq \lambda$, $x_\mu \in V$. Denota-se $(x_\lambda)_{\lambda \in \Lambda} \conv \ell$. Uma rede \emph{convergente} é uma rede que tem limite.
+\end{definition}
+
+\begin{proposition}
+Um espaço topológico $\bm X$ é separado por vizinhanças ($T_2$)  se, e somente se, toda rede convergente $(x_\lambda)_{\lambda \in \Lambda}$ de $X$ tem limite único.
+\end{proposition}
+\begin{proof}
+($\Rightarrow$) Sejam $\ell_0$ e $\ell_1$ limites de $(x_\lambda)_{\lambda \in \Lambda}$. Se $\ell_0$ e $\ell_1$ são distintos, então por $\bm X$ ser $T_2$ existem vizinhanças disjuntas $V_0$ de $\ell_0$ e $V_1$ de $\ell_1$. Da convergência da rede, existem $\lambda_0$ e $\lambda_1 \in \Lambda$ tais que, para todo $\mu\geq \lambda_0$, $x_\mu \in V_0$ e, para todo $\mu \geq \lambda_1$, $x_\mu \in V_1$. Como $(\Lambda,\leq)$ é direcionado, existe $\lambda \in \Lambda$ tal que $\lambda_0 \leq \lambda$ e $\lambda_1 \leq \lambda$, o que implica pela convergência da rede que $x_\lambda \in V_0 \cap V_1$, que é uma contradição. Portanto $\ell_0=\ell_1$.
+
+($\Leftarrow$) Suponhamos que $\bm X$ não é $T_2$. Então existem pontos distintos $x_0$ e $x_1 \in X$ tais que, para todas vizinhanças $V_0$ de $x_0$ e $V_1$ de $x_1$, $V_0 \cap V_1 \neq \emptyset$. Definamos $\viz := \viz_{\{x_0,x_1\}}$ e notemos que $(\viz_{\{x_0,x_1\}},\supseteq)$ é um conjunto direcionado. Para todos vizinhanças $V_0 \in \viz_{x_0}$ e $V_1 \in \viz_{x_1}$, tomamos $x_{V_0 \cap V_1} \in V_0 \cap V_1$, que existe pois o conjunto $V_0 \cap V_1$ não é vazio. Mostraremos que a rede $(x_V)_{V \in \viz}$ então converge para $x_0$ e para $x_1$. Sejam $V_0$ uma vizinhança de $x_0$ e $V_1$ uma vizinhança de $x_1$ e defina $V := V_0 \cap V_1$. Então, para toda vizinhança de $U \in \viz$ tal que $U \subseteq V$, segue que $x_U \in U \subseteq V$, portanto a rede $(x_V)_{V \in \viz}$  converge para $x_0$ e para $x_1$.
+\end{proof}
+
+Usamos o axioma da escolha para construir a rede na volta da demonstração, pois a rede é elemento do produto de todas as vizinhanças de $\viz$.
+
+\begin{proposition}
+Sejam $\bm X_0$ e $\bm X_1$ espaços topológicos e $f: X_0 \to X_1$ uma função. Então $f$ é contínua se, e somente se, para todo $\ell \in X_0$ e toda rede $(x_\lambda)_{\lambda \in \Lambda}$ que converge para $\ell \in X_0$, a rede $(f(x_\lambda))_{\lambda \in \Lambda}$ converge para $f(\ell) \in X_1$.
+\end{proposition}
+
+\begin{proposition}
+Sejam $(\bm X_i)_{i \in I}$ uma família de espaços topológicos e $(x_\lambda)_{\lambda \in \Lambda}$ uma rede de $\bm X = \prod_{i \in I} \bm X_i$. Então $(x_\lambda)_{\lambda \in \Lambda} \conv \ell \in X$ se, e somente se, para todo $i \in I$, $(\pi_i(x_\lambda))_{\lambda \in \Lambda} \conv \pi_i(\ell) \in X_i$.
+\end{proposition}
+\begin{proof} \hfill
+
+($\Rightarrow$) Segue da continuidade de $\pi_i$.
+
+($\Leftarrow$) Seja $V$ uma vizinhança de $(\ell_i)_{i \in I}$. Então existe um aberto básico $A = \bigcap_{i \in J} {\pi_i}\inv(A_i)$ tal que $A \subseteq V$, $J \subseteq I$ é um conjunto finito e $A_i \subseteq X_i$ é um aberto. Sendo assim, para cada $i \in J$, existe $\lambda_i \in \Lambda$ tal que, para todo $\mu \geq \lambda_i$, $x_{i,\mu} \in A_i$. Portanto, como $\Lambda$ é um conjunto direcionado (e $J$ é finito), existe $\lambda$ tal que, para todo $i \in J$, $\lambda_i \leq \lambda$, o que implica que, para todo $\mu \geq \lambda$, $(x_{i,\mu})_{i \in I} \in A \subseteq V$. Isso mostra que $((x_{i,\lambda})_{i \in I})_{\lambda \in \Lambda} \conv (\ell_i)_{i \in I}$.
+\end{proof}
+
+
+
+
+\section{Conexidade e compacidade}
+
+\subsection{Conexidades}
+
+Definimos o conceito de desconexo antes por ele ser mais intuitivo de ser enunciado. Ser desconexo é ter como separar o espaço $\bm X$ em dois conjuntos disjuntos, aberto e não triviais (não são $\emptyset$ nem $X$). Esses abertos cobrem todo espaço e, como são abertos, o separam pela definição de separação de conjuntos.
+
+\begin{definition}
+Um espaço topológico \emph{desconexo} é um espaço topológico $\bm X$ tal que $X$ admite partição por dois conjuntos abertos. Um espaço topológico \emph{conexo} é um espaço topológico que não é desconexo. Um subconjunto de $X$ é conexo ou desconexo de acordo com sua topologia induzida.
+\end{definition}
+
+Uma partição por dois abertos é equivalente a uma cobertura por dois conjuntos abertos, disjuntos e não triviais. Notemos que, por essa definição, o espaço topológico $\bm \emptyset$ é conexo, pois todos subconjuntos de $\emptyset$ são triviais, logo $\emptyset$ não admite partições. A conexidade de $\emptyset$ não é consenso entre autores, mas adotaremos esse resultado aqui. É importante notar que, na definição, poderíamos escolher uma partição por conjuntos fechados, já que, como cada conjunto da partição é o complementar do outro, ambos são fechados, pois ambos são abertos. A definição de separação de conjuntos vale nesse caso, os conjuntos da partição são separados no sentido que cada um é disjunto do fecho do outro, já que são fechados e disjuntos. Isso sugere que conexidade está relacionada com o problema de confusão semântica clássica em topologia: nem todo conjunto aberto é necessariamente não fechado, e vice-versa. Claro que $\emptyset$ e $X$ são sempre abertos e fechados, mas em espaços conexos eles são os únicos. Com o conceito de conexidade, temos o seguinte resultado.
+
+\begin{proposition}
+Um espaço topológico $\bm X$ é conexo se, e somente se, não existe um conjunto não trivial que é aberto e fechado.
+\end{proposition}
+\begin{proof}
+Vamos mostrar a ida e a volta pela contrapositiva. Se $\bm X$ é desconexo, os conjuntos que formam sua partição por abertos são ambos abertos e fechados. Reciprocamente, se $A \subseteq X$ é não trivial, aberto e fechado, $A^\complement$ também é não trivial e aberto (e fechado), logo $\{A, A^\complement\}$ é uma partição de $X$ por dois conjuntos abertos.
+\end{proof}
+
+As noções de conexidade de um espaço topológico e de um subconjunto de um espaço topológico são, de fato, a mesma, mas alguns cuidados devem ser tomados para escolher onde os conjuntos são abertos ou fechados, se na topologia original ou na induzida. A proposição a seguir oferece um critério para conjuntos conexos.
+
+\begin{proposition}
+Seja $\bm X$ um espaço topológico. Então $S \subseteq X$ é conexo se, e somente se, não existem conjuntos não triviais separados em $\bm X$ cuja união é $S$.
+\end{proposition}
+\begin{proof}
+Se $S$ é desconexo, existe uma partição $\{A,B\}$ de $S$ por abertos de $\bm S$. Então $A \cup B=S$,
+	\begin{equation*}
+	A \cap \Fec{B}^{_X} = (A \cap S) \cap \Fec{B}^{_X} = A \cap (S \cap \Fec{B}^{_X}) = A \cap \Fec{B}^{_S} = A \cap B = \emptyset
+	\end{equation*}
+e, similarmente, $\Fec{A}^{_X} \cap B = \emptyset$, o que mostra que $A$ e $B$ são separados em $\bm X$. Reciprocamente, se existem $A,B \subseteq X$ conjuntos não triviais separados em $\bm X$ tais que $A \cup B=S$, então
+	\begin{equation*}
+	\Fec{A}^{_S} = S \cap \Fec{A}^{_X} = (A \cap B) \cap \Fec{A}^{_X} = (A \cap \Fec{A}^{_X}) \cup (B \cap \Fec{A}^{_X}) = A \cup \emptyset = A
+	\end{equation*}
+e, similarmente, $\Fec{B}^{_S}=B$, portanto $\{A,B\}$ é partição de $S$ por fechados de $\bm S$, o que mostra que $\bm S$ é desconexo.
+\end{proof}
+
+A seguir, enunciamos uma equivalência da definição de conexidade e um resultado trivial, mas importantíssimo na topologia: conexidade é um invariante topológico.
+
+\begin{proposition}
+Sejam $\bm X$ um espaço topológico, e $\bm {\{0,1\}}$ espaço topológico com a topologia discreta. Então $\bm X$ é conexo se, e somente se, toda função contínua $f: \bm X \to \bm{\{0,1\}}$ é constante.
+\end{proposition}
+\begin{proof}
+Demonstraremos a ida e a volta pela contrapositiva. Se $\bm X$ é desconexo, seja $\{A_0,A_1\}$ uma partição de $X$ por dois conjuntos abertos. Definamos
+	\begin{align*}
+	\func{f}{X}{\{0,1\}}{x}{
+	\begin{cases}
+		0,& x \in A_0 \\
+		1,& x \in A_1.
+	\end{cases}}
+	\end{align*}
+Então $f\inv(\emptyset)=\emptyset$, $f\inv(\{0\}) = A_0$, $f\inv(\{1\})=A_1$ e $f\inv(\{0,1\})=X$. Portanto $f$ é contínua, mas não é constante. Reciprocamente, seja $f: X \to \{0,1\}$ uma função contínua não constante. Então $f\inv(\{0\})$ e $f\inv(\{1\})$ são abertos, pois $f$ é contínua, e formam uma partição de $X$: (1) não são vazios, pois $f$ não é constante, (2) são disjuntos e (3) sua união é $X$. Logo $\bm X$ é desconexo.
+\end{proof}
+
+\begin{proposition}
+Sejam $\bm X$ e $\bm Y$ espaços topológicos e $f: \bm X \to \bm Y$ uma função contínua. Se $\bm X$ é conexo, então $\bm Y$ é conexo.
+\end{proposition}
+\begin{proof}
+Se $\bm Y$ fosse desconexo, existiria uma partição de $Y$ por abertos $\{A,B\}$, e como $f$ é contínua, $\{f\inv(A),f\inv(B)\}$ seria uma partição de $X$ por abertos, contradizendo a conexidade de $\bm X$.
+\end{proof}
+
+\subsubsection{Componentes conexas}
+
+\begin{proposition}
+\label{topo:uni.conex}
+Seja $\bm X$ um espaço topológico e $(C_i)_{i \in I}$ uma família de conjuntos conexos tais que $\bigcap_{i \in I} C_i \neq \emptyset$. Então $\bigcup_{i \in I} C_i$ é conexo.
+\end{proposition}
+\begin{proof}
+Se $\bigcup_{i \in I} C_i$ for desconexo, existe partição $\{A,B\}$ por abertos de $\bigcup_{i \in I} C_i$. Como $p \in \bigcap_{i \in I} C_i \neq \emptyset$, existe $p \in \bigcap_{i \in I} C_i$ e, portanto, sem perda de generalidade, suponhamos $p \in A$. Seja $q \in B$. Então existe $i \in I$ tal que $q \in C_i$ e, como $p \in C_i$, temos que $p \in A \cap C_i$ e $q \in B \cap C_i$. Então $A \cap C_i$ e $B \cap C_i$ são não vazios e são abertos de $C_i$, o que implica que eles são uma partição de $C_i$ por conjuntos abertos, e isso contradiz sua conexidade.
+\end{proof}
+
+\begin{definition}
+Sejam $\bm X$ um espaço topológico, $p \in X$ e $(C_i)_{i \in I}$ uma indexação dos conjuntos conexos que contêm $p$. A \emph{componente conexa} de $\bm X$ em $p$ é o conjunto conexo
+	\begin{equation*}
+	\Gamma_p := \bigcup_{i \in I} C_i.
+	\end{equation*}
+\end{definition}
+
+O conjunto $\Gamma_p$ é conexo pela proposição \ref{topo:uni.conex}, pois a interseção de $(C_i)_{i \in I}$ contém $p$. A componente conexa em um ponto é o maior conjunto conexo que contém o ponto. A relação de estar na mesma componente conexa é uma relação de equivalência, como mostra a proposição a seguir, pois o conjunto de componentes conexas é uma partição de $X$.
+
+\begin{proposition}
+As componentes conexas de um espaço topológico $\bm X$ são uma partição de $X$.
+\end{proposition}
+\begin{proof}
+Claramente nenhuma componente conexa é vazia, pois contém o próprio ponto. Ainda, a união de todas as componentes conexas é $X$, pelo mesmo motivo. Falta mostrar que elas são disjuntas duas a duas. Sejam $p,q \in X$ pontos distintos. Vamos mostrar que $\Gamma_p = \Gamma_q$ ou $\Gamma_p \cap \Gamma_q = \emptyset$. Se $C_p \neq C_q$ e $C_p \cap C_q \neq \emptyset$, então $C_P \cup C_q$ seria um conjunto conexo estritamente maior que $C_p$, contradizendo a maximalidade da componente conexa.
+\end{proof}
+
+Na prática, podemos sempre reduzir o estudo de um espaço topológico ao estudo das suas componentes conexas, já que elas são abertos e definir funções contínuas no espaço é equivalente a definir em abertos que cobrem o espaço.
+
+\subsubsection{Conexidade por caminhos}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection{Compacidades}
+
+As propriedade de compacidade de um espaço topológico são propriedades relacionadas a coberturas de um espaço.
+
+\subsubsection{Compacidade}
+
+\begin{definition}
+Um espaço topológico \emph{compacto} é um espaço topológico $\bm X$ em que toda cobertura aberta $\mathcal C$ de $\bm X$ tem subcobertura finita. Um subconjunto \emph{compacto} de $\bm X$ é um conjunto $C \subseteq X$ que é compacto com a topologia de subespaço.
+\end{definition}
+
+\begin{proposition}
+Seja $\bm X$ um espaço topológico. São equivalentes
+	\begin{enumerate}
+	\item $\bm X$ é compacto;
+	\item Toda rede em $\bm X$ tem sub-rede convergente.
+	\end{enumerate}
+\end{proposition}
+
+\begin{proposition}
+Seja $\bm X$ um espaço topológico. Se $C \subseteq X$ é compacto e $F \subseteq C$ é fechado, então $F$ é compacto.
+%	\begin{enumerate}
+%	\item Se $\bm X$ é compacto, todo fechado $F \subseteq X$ é compacto;
+%	\item Se $\bm X$ é separado, todo compacto $C \subseteq X$ é fechado;
+%	\end{enumerate}
+\end{proposition}
+
+\begin{proposition}
+\label{topo:prop.esp.sep.comp.pont}
+Seja $\bm X$ um espaço topológico separado. Para todo compacto $C \subseteq X$ e todo ponto $x \in X \setminus C$, existem vizinhanças abertas $V'$ de $C$ e $V$ de $x$ que são disjuntas.
+\end{proposition}
+\begin{proof}
+Como $\bm X$ é separado, para todo $c \in C$ existem vizinhanças abertas $V'_c$ de $c$ e $V_c$ de $x$ que são disjuntas. Como $C$ é compacto e $\{V'_c\}_{c \in C}$ é cobertura de $C$, existem $c_0,\cdots,c_{n-1} \in C$ tais que
+	\begin{equation*}
+	C \subseteq \bigcup_{i \in [n]} V'_{c_i}
+	\end{equation*}
+Definindo $V' := \bigcup_{i \in [n]} V'_{c_i}$ e $V := \bigcap_{i \in [n]} V_{c_i}$, segue que $V'$ e $V$ são vizinhanças abertas de $C$ e $x$, respectivamente, e $V' \cap V = \emptyset$.
+\end{proof}
+
+\begin{proposition}
+Seja $\bm X$ um espaço topológico separado.
+	\begin{enumerate}
+	\item Se $C \subseteq X$ é compacto, então é fechado;
+	\item Se $C \subseteq X$ é compacto e $F \subseteq X$ é fechado, então $C \cap F$ é compacto.
+	\end{enumerate}
+\end{proposition}
+
+\begin{proposition}
+Sejam $\bm X_0$ e $\bm X_1$ espaços topológicos e $f\colon X_0 \to X_1$ uma função contínua. Se $\bm X_0$ é compacto, então $f(\bm X_0)$ é compacto.
+\end{proposition}
+\begin{proof}
+Seja $(C_I)_{i \in I}$ uma cobertura aberta de $f(\bm X_0)$. A família $(f\inv(C_i))_{i \in I}$ é  uma cobertura de $X_1$, pois
+	\begin{equation*}
+	\bigcup_{i \in I}f\inv(C_i) = f\inv\left(\bigcup_{i \in I}C_i\right) = f\inv(X_1) = X_0.
+	\end{equation*}
+A cobertura é aberta pois $f$ é contínua. Como $\bm X_0$ é compacto, existem $i_0, \ldots, i_{n-1} \in I$ tal que $(f\inv(A_{i_k}))_{k \in [n]}$ é uma cobertura aberta de $\bm X_0$. Então $(A_{i_k})_{k \in [n]}$ é uma cobertura aberta de $f(\bm X_0)$, pois
+	\begin{equation*}
+	f(X_0) = f\left(\bigcup_{k \in [n]} f \inv(A_{i_k})\right) = \bigcup_{k \in [n]} f(f\inv(A_{i_k})) \subseteq  \bigcup_{k \in [n]} A_{i_k}.
+	\end{equation*}
+Isso mostra que $f(\bm X_0)$ é compacto.
+\end{proof}
+
+\begin{definition}
+Sejam $\bm X$ um espaço topológico e $\bm L$ um espaço linear topológico. O espaço das funções contínuas de $\bm X$ para $\bm L$ com suporte compacto é denotado $\Cont_c(X,L)$.
+\end{definition}
+
+\subsubsection{Compacidade contável (Lindelöf)}
+
+\begin{definition}
+Um espaço topológico \emph{contavelmente compacto} (\emph{Lindelöf}) é um espaço topológico $\bm X$ em que toda cobertura aberta $\mathcal C$ de $\bm X$ tem subcobertura contável.
+\end{definition}
+
+Alguns autores definem compacidade contável como a propriedade de que toda cobertura aberta contável admite subcobertura finita.
+
+\subsubsection{Compacidade local}
+
+\begin{definition}
+Um espaço topológico \emph{localmente compacto} é um espaço topológico $\bm X$ em que todo ponto $x \in X$ tem uma vizinhança compacta.
+\end{definition}
+
+\begin{proposition}
+Seja $\bm X$ um espaço topológico localmente compacto. Se $\bm X$ é separado, então todo ponto $x \in X$ tem uma vizinhança aberta com fecho compacto.
+\end{proposition}
+
+\begin{proposition}
+Seja $\bm X$ um espaço topológico separado e localmente compacto. Para todo compacto $C \subseteq X$ e toda vizinhança aberta $A \subseteq X$ de $C$, existe aberto $V \subseteq X$ com fecho compacto tal que
+	\begin{equation*}
+	C \subseteq V \subseteq \Fec{V} \subseteq A.
+	\end{equation*}
+\end{proposition}
+
+\begin{proposition}
+Seja $\bm X$ um espaço topológico separado e localmente compacto. Para todo compacto $C$ e todo aberto $A$ de $X$, existe função $f \in \Cont_c(X,\intff{0}{1})$ que separa $C$ e $A^\complement$.
+\end{proposition}
+
+
+\subsubsection{Paracompacidade}
+
+\begin{definition}
+Um espaço topológico \emph{paracompacto} é um espaço topológico $\bm X$ em que toda cobertura aberta $\mathcal C$ de $\bm X$ tem refinamento aberto localmente finito.
+\end{definition}
+
+\subsubsection{Compacidade sequencial}
+
+
+
+\subsection{Contabilidades}
+
+\subsubsection{Base de vizinhanças contável (1º contável)}
+
+\subsubsection{Base contável (2º contável)}
+
+
+
+
+\section{Espaços de funções}
+
+Sejam $\bm X$ e $\bm X'$ espaços topológicos. Queremos construir uma topologia para o espaço $\Cont(\bm X, \bm X')$ das funções contínuas de $\bm X$ para $\bm X'$. Existem três principais topologias que podemos considerar nesse conjunto; a primeira, chamada topologia pontual, ignora a estrutura topológica de $\bm X$ e a segunda e terceiras, chamadas topologia compacto-aberta e topologia fechado-aberto, respectivamente, a levam em consideração. Para mais detalhes, conferir \cite{art:Arens-TopologiesforHomeomorphismGroups}.
+
+\subsection{Topologia pontual}
+
+Para expor a primeira topologia, vamos generalizar um pouco o contexto e considerar o conjunto de funções de um conjunto $C$ para um espaço topológico $\bm X$, o espaço de funções $\Func(C,X)$. Esse espaço pode ser identificado com o espaço produto $X^C$ e portanto podemos adotar sua topologia produto, cujos abertos sub-básicos são da forma $\mathcal A_{c_0} := \prod_{c \in C} A_x$, em que $c_0 \in C$, $A_{c_0} \subseteq X$ é aberto e, para todo $c \in c \setminus \{c_0\}$, $A_c = X$. O conjunto de pontos desse aberto de $X^C$ corresponde ao conjunto de funções $f \in \Func(C,X)$ tais que $f(c_0) \in A_{c_0}$.
+
+\begin{definition}
+Sejam $C$ um conjunto e $\bm X$ um espaço topológico. A topologia \emph{pontual} (ou \emph{de convergência pontual} ou \emph{finito-aberto}) em $\Func(C,X)$ é a topologia gerada pelos abertos sub-básicos
+	\begin{equation*}
+	\mathcal A_{F,A} := \set{f \in \Func(C,X)}{f(F) \subseteq A},
+	\end{equation*}
+em que $F \subseteq C$ é um conjunto finito e $A \subseteq X$ é um conjunto aberto.
+\end{definition}
+
+Pode-se mostrar que essa é a topologia produto de $\bm X^C$.
+
+
+\subsection{Topologia compacto-aberto}
+
+\begin{definition}
+Sejam $\bm X$ e $\bm X'$ espaços topológicos. A topologia \emph{compacto-aberto} em $\Cont(\bm X,\bm X')$ é a topologia $\topo_\Cont$ gerada pelos abertos sub-básicos
+	\begin{equation*}
+	\mathscr A_{K,A} := \set{f \in \Cont(\bm X,\bm X')}{f(K) \subseteq A},
+	\end{equation*}
+em que $K \subseteq X$ é compacto e $A \subseteq X'$ é aberto.
+\end{definition}
+
+\subsection{Topologia compacto-cocompacto}
+
+\begin{definition}
+Sejam $\bm X$ e $\bm X'$ espaços topológicos. A topologia \emph{compacto-cocompacto} em $\Cont(\bm X,\bm X')$ é a topologia $\topo'_\Cont$ gerada pelos abertos sub-básicos
+	\begin{equation*}
+	\mathscr A_{F,A} := \set{f \in \Cont(\bm X,\bm X')}{f(F) \subseteq A},
+	\end{equation*}
+em que $F \subseteq X$ é fechado, $A \subseteq X'$ é aberto e, ou $F$ é compacto. ou $A^\complement$ é compacto.
+\end{definition}
+
+
+
+\section{Topologia algébrica}
+
+\subsection{Homotopia}
+
+\begin{definition}
+Sejam $\bm X$ e $\bm X'$ espaços topológicos e $f,f' \in \Cont(X,X')$ funções contínuas. Uma \textit{homotopia} de $f$ para $f'$ é uma função contínua
+	\begin{align*}
+	\func{H}{[0,1] \times X}{X'}{(t,x)}{H^t(x)}
+	\end{align*}
+tal que $H^0 = f$ e $H^1 = f'$. As funções $f$ e $f'$ são \textit{homotópicas} e denota-se $f \homot g$.
+\end{definition}
+
+\begin{proposition}
+Sejam $\bm X$ e $\bm X'$ espaços topológicos. A relação de homotopia é uma equivalência no conjunto $\Cont(X,X')$ das funções contínuas de $\bm X$ para $\bm X'$.
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item (Reflexividade) Seja $f \in \Cont(X,X')$. Consideremos a função
+		\begin{align*}
+		\func{H}{[0,1] \times X}{X'}{(t,x)}{f(x)}
+		\end{align*}
+Então $H$ é uma função contínua, pois $f$ é contínua, e vale que $H^0 = H^1 = f$, portanto $f \homot f$.
+	
+	\item (Simetria) Sejam $f,f' \in \Cont(X,X')$ tais que $f \homot f'$ e $H\colon [0,1] \times X \to X'$ uma homotopia de $f$ para $f'$. Consideremos a função
+		\begin{align*}
+		\func{H'}{[0,1] \times X}{X'}{(t,x)}{H^{1-t}(x)}.
+		\end{align*}
+Como $H$ e $1-t$ são contínuas, a função $H'$ é contínua. Ainda, notemos que ${H'}^0 = H^1 = f'$ e ${H'}^1 = H^0 = f$, portanto $f' \homot f$.
+
+	\item (Transitividade) Sejam $f,f',f'' \in \Cont(X,X')$ tais que $f \homot f'$ e $f' \homot f''$ e $H\colon [0,1] \times X \to X'$ uma homotopia de $f$ para $f'$ e $H'\colon [0,1] \times X \to X'$ uma homotopia de $f'$ para $f''$. Consideremos a função
+		\begin{align*}
+		\func{H''}{[0,1] \times X}{X'}{(t,x)}{
+			\begin{cases}
+				H^{2t}(x),& t \in \left[0,\frac{1}{2}\right] \\
+				{H'}^{2t-1}(x),& t \in \left[\frac{1}{2},1\right].
+			\end{cases}
+		}
+		\end{align*}
+Como $H^1 = f' = {H'}^0$ e $H$ e $H'$ são contínuas, então $H''$ é contínua. Ainda, como $H$ é uma homotopia de $f$ para $f'$, então ${H''}^0 = H^0 = f$ e, como $H'$ é uma homotopia de $f'$ para $f''$, então ${H''}^1 = {H'}^1 = f''$, portanto $H''$ é uma homotopia de $f$ para $f''$.
+	\end{enumerate}
+\end{proof}
+
+\begin{proposition}
+Sejam $\bm X$, $\bm X'$ e $\bm X''$ espaços topológicos, $f,f' \in \Cont(X,X')$ e $g,g' \in \Cont(X',X'')$ funções contínuas tais que $f \homot f'$ e $g \homot g'$. Então
+	\begin{equation*}
+	(g \circ f) \homot (g' \circ f').
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+Sejam $H\colon [0,1] \times X \to X'$ uma homotopia de $f$ para $f'$ e $H': [0,1] \times X' \to X''$ uma homotopia de $g$ para $g'$. Consideremos a função
+	\begin{align*}
+	\func{H''}{[0,1] \times X}{X''}{(t,x)}{{H'}^t \circ H^t(x)}.
+	\end{align*}
+Como $H$ e $H'$ são contínuas, então $H''$ é contínua. Como $H$ é homotopia de $f$ para $f'$ e $H'$ é homotopia de $g$ para $g'$, então $H^0 = f$, $H^1 = f'$, ${H'}^0 = g$ e ${H'}^1 = g'$, o que implica
+	\begin{equation*}
+	{H''}^0 = {H'}^0 \circ H^0 = g \circ f
+	\end{equation*}
+e
+	\begin{equation*}
+	{H''}^1 = {H'}^1 \circ H^1 = g' \circ f',
+	\end{equation*}
+o que mostra que $H''$ é homotopia de $g \circ f$ para $g' \circ f'$.
+\end{proof}
+
+\subsection{Equivalência homotópica}
+
+\begin{definition}
+Sejam $\bm X$ e $\bm X'$ espaços topológicos. Uma \emph{equivalência homotópica} entre $\bm X$ e $\bm X'$ é uma par $(f,f') \in \Cont(X,X') \times \Cont(X',X)$ de funções contínuas tais que $f' \circ f \homot \Id_X$ e $f \circ f' \homot \Id_{X'}$. Os espaços $\bm X$ e $\bm X'$ são \emph{homotopicamente equivalentes} e denota-se $X \homot X'$.
+\end{definition}
+
+\subsection{Caminhos e laços}
+
+\begin{definition}[Caminho e laço]
+Seja $\bm X$ um espaço topológico. Um \textit{caminho} em $X$ é uma função contínua $c\colon [0,1] \to X$. Um \textit{laço} em $X$ é uma função contínua $\ell: \S^1 \to X$ e a \emph{origem} desse laço é o ponto $\ell(0)$. Denotaremos o conjunto dos laços em $X$ com origem em $x_0 \in X$ por $L(X,x_0)$
+\end{definition}
+
+Note que um laço é um caminho $c$ tal que $c(0)=c(1)$.
+
+\begin{definition}
+	Seja $X$ um espaço métrico e $c: [0,1] \to X$ um caminho em $X$. O \emph{caminho inverso} de $c$ é o caminho
+	\begin{align*}
+	c^{-1}: [0,1] &\to X \\
+				s &\mapsto c(1-s).
+	\end{align*}
+\end{definition}
+
+\begin{definition}
+	Seja $X$ um espaço métrico e $x_0 \in X$. O \emph{caminho constante} em $x_0$ é o caminho
+	\begin{align*}
+	e_{x_0}: [0,1] &\to X \\
+				s &\mapsto x_0.
+	\end{align*}
+\end{definition}
+
+\begin{definition}
+	Sejam $X$ um espaço métrico e $c_1,c_2: [0,1] \to X$ caminhos em $X$ tais que $c_1(1)=c_2(0)$. A \emph{composição} dos caminhos $c_1$ e $c_2$ é o caminho
+	\begin{align*}
+	(c_1 \comp c_2): [0,1] &\to X \\
+		s &\mapsto \begin{cases}
+					c_1(2s) &\text{se $0 \leq s \leq \frac{1}{2}$} \\
+					c_2(2s-1) &\text{se $\frac{1}{2} \leq s \leq 1$}.
+					\end{cases}
+	\end{align*}
+\end{definition}
+
+
+\subsection{Homotopia de caminhos}
+
+\begin{definition}
+	Sejam $X$ um espaço métrico e $c_1: [0,1] \to X$ e $c_2: [0,1] \to X$ caminhos em $X$ tal que $c_1(0)=c_2(0)$ e $c_1(1)=c_2(1)$. Uma \emph{homotopia de caminhos} entre $c_1$ e $c_2$ é uma homotopia $H$ entre $c_1$ e $c_2$ tal que, para todo $t \in [0,1]$, $H(0,t)=c_1(0)$ e $H(1,t)=c_1(1)$. No caso de existir uma homotopia de caminhos entre $c_1$ e $c_2$, denota-se $c_1 \approx c_2$.
+\end{definition}
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[scale=0.15]{imagens/homotopy.png}
+
+\caption{Ilustração de uma homotopia de caminhos.}
+\end{figure}
+
+\begin{proposition}
+	Sejam $X$ um espaço métrico e $x_0 \in X$. Então a relação $\approx$ de homotopia de caminhos é uma relação de equivalência em $L(X,x_0)$.
+\end{proposition}
+\begin{proof} Sejam $l_1,l_2,l_3 \in L(X,x_0)$. Então
+	\begin{enumerate}
+	\item Reflexividade: $l_1 \approx l_1$. \\
+	Consideremos a função
+		\begin{align*}
+		H: S^1 \times [0,1] &\to X \\
+		(x,t) &\mapsto l(x).
+		\end{align*}
+Sabemos que $H$ é uma homotopia entre $l_1$ e $l_1$. Basta notar que, para todo $t \in [0,1]$, $H(0,t)=H(1,t)=l(0)$, o que termina a demonstração de que $H$ é uma homotopia de laços entre $l_1$ e $l_1$.
+	
+	\item Simetria: $l_1 \approx l_2 \Rightarrow l_2 \approx l_1$. \\
+	Seja $H: S^1 \times [0,1] \to X$ uma homotopia de laços entre $l_1$ e $l_2$. Então consideremos a função
+	\begin{align*}
+	H': S^1 \times [0,1] &\to X \\
+		(x,t) &\mapsto H(x,1-t).
+	\end{align*}		
+Sabemos que $H$ é uma homotopia entre $l_2$ e $l_1$. Basta notar que, para todo $t \in [0,1]$, $H'(0,t)=H(0,1-t)=l(0)=H(1,1-t)=H'(1,t)$, o que termina a demonstração de que $H'$ é uma homotopia de laços entre $l_2$ e $l_1$.
+
+	\item Transitividade: $l_1 \approx l_2 \e l_2 \approx l_3 \Rightarrow l_1 \approx l_3$. \\
+	Sejam $H_1: S^1 \times [0,1] \to X$ uma homotopia entre $l_1$ e $l_2$ e $H_2: S^1 \times [0,1] \to X$ uma homotopia entre $l_2$ e $l_3$. Então consideremos a função
+	\begin{align*}
+	H: S^1 \times [0,1] &\to X \\
+		(x,t) &\mapsto \begin{cases}
+						H_1(x,2t) &\text{se $0 \leq t \leq \frac{1}{2}$}\\
+						H_2(x,2t-1) &\text{se $\frac{1}{2} \leq t \leq 1$}.
+						\end{cases}
+	\end{align*}
+Sabemos que $H$ é uma homotopia entre $l_1$ e $l_3$. Basta notar que, como $H_1$ é homotopia de laços, para todo $t \in [0,\frac{1}{2}]$, $H(0,t)=H_1(0,2t)=l_1(0)$ e, como $H_2$ é homotopia de laços entre $l_2$ e $l_3$, para todo $t \in [\frac{1}{2},1]$, $H(0,t)=H_2(0,2t-1)=l_2(0)=l_1(0)$ o que termina a demonstração de que $H$ é uma homotopia de laços entre $l_1$ e $l_3$. 
+	\end{enumerate}
+\end{proof}
+
+\begin{proposition}
+\label{prop:homo}
+	Seja $X$ um espaço métrico e $c_1,c_2,c_3: [0,1] \to X$ caminhos em $X$ tais que $c_1(0)=x_0$, $c_1(1)=c_2(0)$, $c_2(1)=c_3(0)$ e $c_3(0)=x_1$. Então
+	\begin{enumerate}
+	\item $c_1 \comp (c_1)^{-1} \approx e_{x_0}$;
+	\item $(c_1)^{-1} \comp c_1 \approx e_{x_1}$;
+	\item $e_{x_0} \comp c_1 \approx c_1 \approx c_1 \comp e_{x_1}$;
+	\item $(c_1 \comp c_2) \comp c_3 \approx c_1 \comp (c_2 \comp c_3)$.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item Notemos que
+	\begin{equation*}
+	c_1 \comp (c_1)^{-1}(s)
+		=
+			\begin{cases}
+				c_1(2s) &\text{se $s \in [0,\frac{1}{2}]$} \\
+				(c_1)^{-1}(2s-1) &\text{se $s \in [\frac{1}{2},1]$}.
+			\end{cases}
+		=
+			\begin{cases}
+				c_1(2s) &\text{se $s \in [0,\frac{1}{2}]$} \\
+				c_1(2-2s) &\text{se $s \in [\frac{1}{2},1]$}.
+			\end{cases}
+	\end{equation*}
+	Assim, considerando a parametrização $\phi: [0,1] \to [0,1]$
+	\begin{equation*}
+	\phi(s)
+		=
+			\begin{cases}
+				2s &\text{se $s \in [0,\frac{1}{2}]$} \\
+				2-2s &\text{se $s \in [\frac{1}{2},1]$}
+			\end{cases}
+	\end{equation*}
+segue que $c_1 \comp (c_1)^{-1}(s) = c_1(\phi(s))$.
+Consideremos, assim, a função
+	\begin{align*}
+	H: [0,1] \times [0,1] &\to X \\
+		(s,t) &\mapsto c_1((1-t)\phi(s)).
+	\end{align*}
+	Temos que $H$ é contínua, pois $c_1$, $1-t$ e $\phi$ são contínuas. Agora, notemos que, para todo $s,t \in [0,1]$, $1-t \in [0,1]$ e $\phi(s) \in [0,1]$, o que mostra que $(1-t)\phi(s) \in [0,1]$ e, portanto, que $H$ está bem definida. Ainda, para todo $s \in [0,1]$, $H(s,0)=c_1(\phi(s))=c_1 \comp (c_1)^{-1}(s)$ e $H(s,1)=c_1(0)=x_0$. Portanto $H$ é homotopia entre $c_1 \comp (c_1)^{-1}$ e $e_{x_0}$.	Para mostrar que $H$ é homotopia de caminhos, note que, para todo $t \in [0,1]$,	$H(0,t)=c_1((1-t)\phi(0))=c_1(0)$ e $H(1,t)=c_1((1-t)\phi(1))=c_1(0)$, o que termina a demonstração.
+	
+	\item Análogo ao item anterior, mas considerando a parametrização $\phi: [0,1] \to [0,1]$
+	\begin{equation*}
+	\phi(s)
+		=
+			\begin{cases}
+				1-2s &\text{se $s \in [0,\frac{1}{2}]$} \\
+				2s-1 &\text{se $s \in [\frac{1}{2},1]$}.
+			\end{cases}
+	\end{equation*}
+	
+	\item Análogo ao item anterior, mas considerando as parametrizações $\phi,\phi': [0,1] \to [0,1]$
+	\begin{equation*}
+	\phi(s)
+		=
+			\begin{cases}
+				0 &\text{se $s \in [0,\frac{1}{2}]$} \\
+				2s-1 &\text{se $s \in [\frac{1}{2},1]$}.
+			\end{cases}
+	\end{equation*}
+	\begin{equation*}
+	\phi'(s)
+		=
+			\begin{cases}
+				2s &\text{se $s \in [0,\frac{1}{2}]$} \\
+				0 &\text{se $s \in [\frac{1}{2},1]$}.
+			\end{cases}
+	\end{equation*}
+	
+	\item Notemos que
+	\begin{align*}
+	(c_1 \comp c_2) \comp c_3 &=
+		\begin{cases}
+		c_1 (4s) &\text{se $s \in [0,\frac{1}{4}]$}  \\
+		c_2(4s-1) &\text{se $s \in [\frac{1}{4},\frac{1}{2}]$} \\
+		c_3(2s-1) &\text{se $s \in [\frac{1}{2},1]$}
+		\end{cases} \\
+	c_1 \comp (c_2 \comp c_3) &=
+		\begin{cases}
+		c_1 (2s) &\text{se $s \in [0,\frac{1}{2}]$}  \\
+		c_2(4s-2) &\text{se $s \in [\frac{1}{2},\frac{3}{4}]$} \\
+		c_3(4s-3) &\text{se $s \in [\frac{3}{4},1]$}.
+		\end{cases}
+	\end{align*}
+	
+	Assim, considerando a parametrização $\phi: [0,1] \to [0,1]$
+	\begin{equation*}
+	\phi(s)
+		=
+			\begin{cases}
+				2s &\text{se $s \in [0,\frac{1}{4}]$} \\
+				s + \frac{1}{4} &\text{se $s \in [\frac{1}{4},\frac{1}{2}]$} \\
+				\frac{s}{2}+\frac{1}{2} &\text{se $s \in [\frac{1}{2},1]$}.
+			\end{cases}
+	\end{equation*}	
+segue que $((c_1 \comp c_2) \comp c_3)(s) = (c_1 \comp (c_2 \comp c_3)) (\phi(s))$. Consideremos, assim, a função
+	\begin{align*}
+	H: [0,1] \times [0,1] &\to X \\
+		(s,t) &\mapsto (c_1 \comp c_2) \comp c_3 ((1-t)s + t \phi(s)).
+	\end{align*}
+	Analogamente aos itens anteriores, mostra-se que $H$ é homotopia de caminhos.
+	\end{enumerate}
+\end{proof}
+
+
+\begin{proposition}
+\label{prop:equiv}
+	Sejam $X$ um espaço métrico, $x_0 \in X$ e $c_1,c_2,c'_1,c'_2 : [0,1] \to X$ caminhos em $X$. Então
+	\begin{enumerate}
+	\item Se $c_1 \approx c'_1$ e $c_2 \approx c'_2$, então $c_1 \comp c_2 \approx c'_1 \comp c'_2$.
+	\item $(c_1)^{-1} \approx (c'_1)^{-1}$.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item Seja $H_1$ a homotopia de caminhos entre $c_1$ e $c'_1$ e $H_2$ a homotopia de caminhos entre $c_2$ e $c'_2$. Consideremos a função
+	\begin{align*}
+	H: [0,1] \times [0,1] &\to X \\
+		(s,t) &\mapsto  \begin{cases}
+								H_1(2s,t) &\text{se $0 \leq s \leq \frac{1}{2}$} \\
+								H_2(2s-1,t) &\text{se $\frac{1}{2} \leq s \leq 1$}.
+								\end{cases}
+	\end{align*}
+	
+	Primeiro, notemos que $H$ é uma homotopia entre $c_1$ e $c_2$. Pa Como $H_1$ e $H_2$ são contínuas, basta mostrar que $H$ é contínua nos pontos em que $s=\frac{1}{2}$. Para isso, notemos que, para todo $t \in [0,1]$, $H_1(2\frac{1}{2},t)=H_1(1,t)=c'_1(1)$, pois $H_1$ é homotopia de caminhos, e $H_2(2\frac{1}{2}-1,t) = H_2(0,t) = c_2(0)$, pois $H_2$ é homotopia de caminhos. Assim, segue que as funções nesses pontos são iguais e, portanto, $H$ é contínua. Ainda, para todo $s \in [0,1]$,
+	\begin{equation*}
+	H(s,0) = \begin{cases}
+						H_1(2s,0) = c_1(2s) &\text{se $0 \leq s \leq \frac{1}{2}$} \\
+						H_2(2s-1,0) = c_2(2s-1) &\text{se $\frac{1}{2} \leq s \leq 1$},					\end{cases}
+	\end{equation*}
+o que mostra que $H(s,0)= (c_1 \comp c_2)(s)$, e
+	\begin{equation*}
+	H(s,0) = \begin{cases}
+						H_1(2s,1) = c'_1(2s) &\text{se $0 \leq s \leq \frac{1}{2}$} \\
+						H_2(2s-1,1) = c'_2(2s-1) &\text{se $\frac{1}{2} \leq s \leq 1$},					\end{cases}
+	\end{equation*}
+o que mostra que $H(s,0)= (c'_1 \comp c'_2)(s)$ e, portanto, que $H$ é homotopia.
+
+	Agora, devemos mostrar que $H$ é homotopia de caminhos. Notemos que, para todo $t \in [0,1]$, $H(0,t) = H_1(0,t) = c_1(0) = (c_1 \comp c_2)(0)$, pois $H_1$ é homotopia de caminhos, e $H(1,t) = H_2(1,t) = c'_2(1) = (c'_1 \comp c'_2)(1)$, o que mostra que $H$ é homotopia de caminhos.
+	
+	\item Seja $H$ uma homotopia de caminhos entre $c_1$ e $c'_1$. Consideremos a função
+	\begin{align*}
+	H': [0,1] \times [0,1] &\to X \\
+		(s,t) &\mapsto H(1-s,t).
+	\end{align*}
+	Primeiro notemos que $H'$ é uma homotopia entre  $(c_1)^{-1}$ e $(c'_1)^{-1}$. Claramente, $H'$ é contínua, pois $H$ e $1-s$ são contínuas. Ainda, para todo $s \in [0,1]$,
+	\begin{equation*}
+	H'(s,0)=H(1-s,0)=c_1(1-s)=(c_1)^{-1}(s)
+	\end{equation*}
+e
+	\begin{equation*}
+	H'(s,1)=H(1-s,1)=c'_1(1-s)=(c'_1)^{-1}(s),
+	\end{equation*}
+pois $H$ é homotopia. Assim, mostramos que $H'$ é homotopia entre $(c_1)^{-1}$ e $(c'_1)^{-1}$.
+	
+	Agora, mostremos que $H'$ é homotopia de caminhos. Para todo $t \in [0,1]$, $H'(0,t)=H(1,t)=c'_1(1)=(c'_1)^{-1}(0)$ e $H'(1,t)=H(0,t)=c_1(0)=(c_1)^{-1}(1)$, pois $H$ é homotopia de caminhos. Assim, mostramos que $H'$ é homotopia de caminhos entre $(c_1)^{-1}$ e $(c'_1)^{-1}$.
+	\end{enumerate}
+\end{proof}
+
+\subsection{Grupo fundamental}
+
+Como $\approx$ é uma relação de equivalência em $L(X,x_0)$, podemos considerar o espaço quociente $L(X,x_0) / \approx$ das classes de equivalência de laços em $L(X,x_0)$.
+
+\begin{definition}
+	Sejam $X$ um espaço métrico conexo por caminhos e $x_0 \in X$. Então o \emph{grupo fundamental} de $X$ com base em $x_0$ é o conjunto
+	\begin{equation*}
+	\pi_1(X,x_0) := L(X,x_0) / \approx.
+	\end{equation*}
+\end{definition}
+
+\begin{definition}
+	Sejam $X$ um espaço métrico conexo por caminhos. A \emph{composição} de classes de equivalência de laços em $\pi_1(X)$ é a função
+	\begin{align*}
+	\comp : \pi_1(X) \times \pi_1(X) &\to \pi_1(X) \\
+				([l_1],[l_2]) &\mapsto [l_1 \comp l_2].
+	\end{align*}
+\end{definition}
+
+Notemos que a composição de caminhos está bem definida por causa da proposição \ref{prop:equiv}.
+
+\begin{theorem}
+	Sejam $X$ um espaço métrico conexo por caminhos e $x_0 \in X$. Então  $(\pi_1(X),\comp)$ é um grupo.	
+\end{theorem}
+\begin{proof}
+	Segue direto das proposições  \ref{prop:homo} e \ref{prop:equiv}.
+\end{proof}
+

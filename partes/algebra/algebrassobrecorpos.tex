@@ -1,0 +1,913 @@
+\chapter{Álgebras sobre corpos}
+
+\section{Álgebra e ação adjunta}
+
+\begin{definition}
+Seja $\bm C$ um corpo. Uma \emph{álgebra} sobre $\bm C$ é um par $(\bm A,\cdot)$ em que $\bm A$ é um espaço vetorial sobre $\bm C$ e $\cdot\colon A \times A \to A$ é uma função bilinear. Uma álgebra é \emph{associativa, comutativa} ou \emph{antissimétrica} conforme a respectiva propriedade do produto $\cdot$, e é unitária se $\cdot$ tem identidade.
+\end{definition}
+
+\begin{definition}
+Sejam $(\bm A,\cdot)$ uma álgebra sobre um corpo $\bm C$ e $a \in A$. A \emph{ação adjunta} em $\bm A$ baseada em $a$ é a função linear
+	\begin{align*}
+	\func{\adj_a}{A}{A}{a'}{a \cdot a'.}
+	\end{align*}
+\end{definition}
+
+\begin{proposition}
+Seja $(\bm A,\cdot)$ uma álgebra sobre um corpo $\bm C$. Então $(\lin(A,A),\circ)$ é uma álgebra associativa sobre $\bm C$.
+\end{proposition}
+\begin{proof}
+Sabemos que $\lin(A,A)$ é um espaço linear. Para mostrar que é uma álgebra, devemos mostrar que $\circ$ é bilinear. Sejam $L,L,L'' \in \lin(A,A)$ e $c \in C$. Então, para todo $a \in A$,
+	\begin{align*}
+	((cL+L') \circ L'')(a) &= (cL+L')(L''(a)) \\
+		&= cL(L''(a))+L'(L''(a)) \\
+		&= cL \circ L''(a) + L' \circ L''(a) \\
+		&= (cL \circ L'' + L' \circ L'')(a).
+	\end{align*}
+Isso mostra que $(cL+L') \circ L'' = cL \circ L'' + L' \circ L''$. Agora,
+	\begin{align*}
+	(L \circ (cL'+L''))(a) &= L((cL'+L'')(a)) \\
+		&= L(cL'(a)+L''(a)) \\
+		&= cL(L'(a))+L(L''(a)) \\
+		&= cL \circ L'(a)+L \circ L''(a) \\
+		&= (cL \circ L' + L \circ L'')(a).
+	\end{align*}
+Isso mostra que $L \circ (cL'+L'') = cL \circ L' + L \circ L''$. A composição de funções é associativa, portanto a álgebra é associativa.
+\end{proof}
+
+\begin{proposition}
+Sejam $(\bm A,\cdot)$ uma álgebra sobre um corpo $\bm C$ e $I$ um conjunto. Então $(A^I,\cdot)$, em que $\cdot\colon A^I \times A^I \to A^I$ é o produto entrada a entrada, é uma álgebra sobre $\bm C$. Se o produto de $A$ é associativo ou comutativo, então o produto de $A^I$ é, respectivamente, associativo ou comutativo, e é se $A$ é unitária, $(1)_{in \in I}$ é identidade do produto de $A^I$.
+\end{proposition}
+\begin{proof}
+Sabemos que $A^I$ é um espaço linear sobre $\bm C$. Basta mostrar que $\cdot$ é um produto bilinear. Sejam $(a_i)_{i \in I},(a'_i)_{i \in I},(a''_i)_{i \in I} \in A^I$ e $c \in C$. Então
+	\begin{align*}
+	(c(a_i)_{i \in I} + (a'_i)_{i \in I}) \cdot (a''_i)_{i \in I} &= (ca_i + a'_i)_{i \in I} \cdot (a''_i)_{i \in I} \\
+	&= ((ca_i + a'_i) \cdot a''_i)_{i \in I} \\
+	&= (ca_i \cdot a''_i + a'_i \cdot a''_i)_{i \in I} \\
+	&= c(a_i \cdot a''_i)_{i \in I} + (a'_i \cdot a''_i)_{i \in I} \\
+	&= c(a_i)_{i \in I} \cdot (a''_i)_{i \in I} + (a'_i)_{i \in I} \cdot (a''_i)_{i \in I}.
+	\end{align*}
+A demonstração da linearidade na segunda entrada é análoga, e as demonstrações de associatividade e comutatividade e identidade são triviais.
+\end{proof}
+
+\begin{proposition}
+Seja $(\bm A,\cdot)$ uma álgebra sobre um corpo $\bm C$. A álgebra $\bm A$ é associativa se, e somente se, para todos $a,a' \in A$,
+	\begin{equation*}
+	\adj_{a \cdot a'} = \adj_a \circ \adj_{a'}.
+	\end{equation*}
+\end{proposition}
+
+\section{Derivação}
+
+\begin{definition}
+Seja $(\bm A,\cdot)$ uma álgebra sobre um corpo $\bm C$. Uma \emph{derivação} em $\bm A$ é uma função linear $D\colon A \to A$ tal que
+	\begin{enumerate}
+	\item (Regra do produto) Para todos $a,a' \in A$,
+		\begin{equation*}
+		D(a \cdot a') = D(a) \cdot a' + a \cdot D(a').
+		\end{equation*}
+	\end{enumerate}
+O conjunto dessas derivações é $\Der(A)$.
+\end{definition}
+
+Note que a propriedade acima nem sempre é equivalente a
+	\begin{equation*}
+	D(a \cdot a') = a' \cdot D(a)  + a \cdot D(a'),
+	\end{equation*}
+pois o produto $\cdot$ nem sempre é comutativo, mas sempre é equivalente a
+	\begin{equation*}
+	D(a \cdot a') = a \cdot D(a') + D(a) \cdot a',
+	\end{equation*}
+pois a soma $+$ é comutativa.
+
+\begin{proposition}
+Sejam $(\bm A,\cdot)$ uma álgebra sobre um corpo $\bm C$ e $D\colon A \to A$ uma derivação em $\bm A$.
+	\begin{enumerate}
+	\item (Regra do produto generalizada) Para todos $a_0,\ldots,a_{n-1} \in A$,
+		\begin{equation*}
+		D(a_0 \cdots a_{n-1}) = \sum_{i \in [n]} a_0 \cdots D(a_i) \cdots a_{n-1};
+		\end{equation*}
+	\item Se $\cdot$ é comutativo, então, para todos $a \in A$ e $n \in \N^*$,
+		\begin{equation*}
+		D(a^n) = na^{n-1}D(a);
+		\end{equation*}
+	\item Se existe identidade $1 \in A$ do produto, então
+		\begin{equation*}
+		D(1)=0.
+		\end{equation*}
+	\item (Regra do produto de ordem superior) Para todos $a,a' \in A$ e $n \in \N$,
+		\begin{equation*}
+		D^n(aa') = \sum_{i \in [n+1]} \binom{n}{i} D^{n-i}(a)D^i(a').
+		\end{equation*}
+	\end{enumerate}
+\end{proposition}
+
+\begin{definition}
+Seja $(\bm A,\cdot)$ uma álgebra sobre um corpo $\bm C$. O \emph{colchete comutador} de $(\bm A,\cdot)$ é a função
+	\begin{align*}
+	\func{\col{\var}{\var}}{A \times A}{A}{(a,a')}{a \cdot a' - a' \cdot a.}
+	\end{align*}
+\end{definition}
+
+\begin{proposition}
+Seja $(\bm A,\cdot)$ uma álgebra sobre um corpo $\bm C$. Então
+	\begin{enumerate}
+	\item $(A,\col{\var}{\var})$ é uma álgebra antissimétrica sobre $\bm C$;
+	\item O produto $\cdot$ é comutativo se, e somente se, $\col{\var}{\var} = 0$;
+%	\item Se $(\bm A,\cdot)$ é associativa, então $\mathrm{Der}(A) \subseteq A^A$, com as operações pontuais de espaço linear induzidas de $\bm A$, e com o produto como o comutador $\col{\var}{\var}$ do produto pontual $\cdot$, induzido de $A$, é uma álgebra.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item Primeiro, notemos que, para todos $a,a' \in A$,
+		\begin{equation*}
+		\col{a}{a'} = a \cdot a' - a' \cdot a = -(a' \cdot a - a \cdot a') = -\col{a'}{a}.
+		\end{equation*}	
+Sendo assim, para mostrar que $\col{\var}{\var}$ é bilinear antissimétrica, basta mostrar que ela é linear na primeira entrada. Para todos $a,a',a'' \in A$ e $c \in C$,
+		\begin{align*}
+		\col{ca+a'}{a''} &= (ca+a')a'' - a''(ca+a') \\
+			&= caa'' + a'a'' - ca''a - a''a' \\
+			&= caa'' - ca''a + a'a'' - a''a' \\
+			&= c\col{a}{a''} + \col{a'}{a''}.
+		\end{align*}
+
+	\item Suponhamos, primeiro, que $\cdot$ é comutativo. Então, para todos $a,a' \in A$,
+		\begin{equation*}
+		\col{a}{a'} = aa' - a'a = aa' - aa' = 0.
+		\end{equation*}
+Reciprocamente, suponhamos que $\col{\var}{\var}=0$. Então, para todos $a,a' \in A$,
+		\begin{equation*}
+		aa' = aa' + 0 = aa' + \col{a'}{a} = aa' + a'a - aa' = a'a.
+		\end{equation*}
+
+\begin{comment}
+	\item Mostremos que $\mathrm{Der}(A)$ é linearmente fechado. A soma e o produto por escalar de derivações são lineares, pois as derivações são funções lineares. Mostremos que essas funções satisfazem a regra do produto. Sejam $D,D' \in \mathrm{Der}(A)$ e $c \in C$. Então, para todos $a,a' \in A$,
+		\begin{align*}
+		(cD + D')(aa') &= cD(aa') + D'(aa') \\
+			&= cD(a)a' + caD(a') + D'(a)a' + aD'(a') \\
+			&= cD(a)a' + D'(a)a' + caD(a') + aD'(a') \\
+			&= (cD(a) + D'(a))a' + a(cD(a') + D'(a')) \\
+			&= (cD + D')(a)a' + a(cD + D')(a').
+		\end{align*}
+Agora, devemos mostrar que $\mathrm{Der}(A)$ é fechado por $\col{\var}{\var}$. Notaremos que $\mathrm{Der}(A)$ não é fechado pelo produto $\cdot$ induzido pontualmente na demonstração, e por isso precisamos do comutador. Além disso, ainda não usamos a associatividade do produto $\cdot$. Ela será usada agora. Sejam $D,D' \in \mathrm{Der}(A)$. Para todos $a,a' \in A$, primeiro notemos que, pela associatividade, segue que
+	\begin{align*}
+	(D \cdot D')(a)a' + a(D \cdot D')(a') &= (D(a)D'(a))a' + a(D(a')D'(a')) \\
+		&= D(a)D'(a)a' + aD(a')D'(a').
+	\end{align*}
+Então,
+	\begin{align*}
+	(D \cdot D')(a,a') &= D(aa')D'(aa') \\
+		&= (D(a)a' + aD(a'))(D'(a)a' + aD'(a')) \\
+		&= (D(a)a')(D'(a)a') + (aD(a'))(D'(a)a') \\
+			&\qquad + (D(a)a')(aD'(a')) + (aD(a'))(aD'(a')) \\
+		&= (D(a)a'D'(a))a' + a(D(a')D'(a)a') \\
+			&\qquad + (D(a)a')(aD'(a')) + (aD(a'))(aD'(a')) \\
+		&= (D \cdot D')(a)a' - 
+	\end{align*}
+e
+	\begin{align*}
+	(D' \cdot D)(a,a') &= D'(aa')D(aa') \\
+		&= (D'(a)a' + aD'(a'))(D(a)a' + aD(a')) \\
+		&= (D'(a)a')(D(a)a') + (aD'(a'))(D(a)a') \\
+			&\qquad + (D'(a)a')(aD(a')) + (aD'(a'))(aD(a')) \\
+		&= (D'(a)a'D(a))a' + a(D'(a')D(a)a') \\
+			&\qquad + (D'(a)a')(aD(a')) + (aD'(a'))(aD(a'))
+	\end{align*}
+\end{comment}
+	\end{enumerate}
+\end{proof}
+
+
+
+
+\section{Álgebra de derivação adjunta}
+
+\begin{proposition}
+Sejam $(\bm A,\cdot)$ uma álgebra sobre um corpo $\bm C$ e $a \in A$. A função adjunta $\adj_a$ é uma derivação em $\bm A$ se, e somente se, para todos $a',a'' \in A$,
+	\begin{equation*}
+	a \cdot (a' \cdot a'') = (a \cdot a') \cdot a'' + a' \cdot (a \cdot a'').
+	\end{equation*}
+\end{proposition}
+
+A demonstração é imediata. Essa propriedade é conhecida às vezes como identidade de Jacobi. No entanto, a identidade mais conhecida como identidade de Jacobi é
+	\begin{equation*}
+	a \cdot (a' \cdot a'') + a' \cdot (a'' \cdot a) + a'' \cdot (a \cdot a') = 0,
+	\end{equation*}
+que é equivalente à anterior se o produto é antissimétrico. Na maioria das vezes em que se usa essa identidade o produto é de fato antissimétrico, o que torna as duas propriedades equivalentes.
+
+\begin{definition}
+Seja $\bm C$ um corpo. Uma \emph{álgebra de derivação adjunta}\footnote{Essas álgebras são conhecidas como `álgebras de Lie'.} sobre $\bm C$ é um par $(\bm A,\col{\var}{\var})$ em que $\col{\var}{\var}\colon A \times A \to A$ é um produto alternado tal que, para todo $a \in A$, $\adj_a$ é uma derivação em $\bm A$. O produto $\col{\var}{\var}$ é o \emph{colchete de derivação}.
+\end{definition}
+
+Como $\col{\var}{\var}$ é alternada, é antissimétrica, portanto a bilinearidade é equivalente à linearidade na segunda entrada de $\col{\var}{\var}$. A alternância é equivalente ao produto de um elemento com ele mesmo ser $0$, o que é o mesmo que a derivação adjunta baseada em um elemento aplicada a esse elemento ser $0$.
+
+As três propriedades de $\fun{\col{\var}{\var}}{A \times A}{A}$ são equivalentes a
+	\begin{enumerate}
+	\item (Linearidade na 2ª entrada) Para todos $a,a',a'' \in A$ e $c \in C$,
+		\begin{equation*}
+		\col{a}{ca'+a''} = c\col{a}{a'} + \col{a}{a''};
+		\end{equation*}
+	\item (Alternância) Para todo $a' \in A$,
+		\begin{equation*}
+		\col{a}{a} = 0;
+		\end{equation*}
+	\item (Derivação adjunta) Para todo $a \in A$, $\adj_a$ é uma derivação: para todos $a',a'' \in A$,
+		\begin{equation*}
+		\col{a}{\col{a'}{a''}} = \col{\col{a}{a'}}{a''} + \col{a'}{\col{a}{a''}}.
+		\end{equation*}
+	\end{enumerate}
+
+Nesse caso em que a função adjunta é sempre uma derivação, pode-se também denotar $\ad{a} := \adj_a$, de modo que as propriedades acima se reduzem a termos: para todo $a \in A$, $\ad{a}$ é uma derivação tal que $\ad{a}(a)=0$. A partir de agora, denotaremos a adjunta de $a \in A$ em álgebras de derivação adjunta como
+	\begin{align*}
+	\func{\ad{a}}{A}{A}{a'}{\col{a}{a'}}
+	\end{align*}
+e a \emph{representação adjunta} será a função
+	\begin{align*}
+	\func{\ad{\var}}{A}{\lin(A,A)}{a}{
+		\begin{aligned}[t]
+		\func{\ad{a}}{A}{A}{a'}{\col{a}{a'}}.
+		\end{aligned}
+	}
+	\end{align*}
+
+
+Consideremos, agora, o conjunto $\Der(A)$ das derivações em uma álgebra associativa $(\bm A, \cdot)$. O espaço $\Der(A)$ é um subespaço linear de $\lin(A,A)$. Para mostrar isso, mostraremos que $\Der(A)$ é fechado pela soma e pelo produto por escalar pontuais. Soma: para todas derivações $D,D' \in \Der(A)$, a soma $D+D'$ é uma função linear, pois $D$ e $D'$ são lineares, portanto basta mostrar que ela é uma derivação. Para todos $a,a' \in A$,
+	\begin{align*}
+	(D+D')(aa') &= D(aa') + D'(aa') \\
+		&= D(a)a' + aD(a') + D'(a)a' + aD'(a') \\
+		&= (D(a)+D'(a))a' + a(D(a')+D'(a')) \\
+		&= (D+D')(a)a' + a(D+D')(a').
+	\end{align*}
+portanto $D+D'$ é uma derivação. Produto: para toda derivação $D \in \Der(A)$ e escalar $c \in C$, o produto $cD$ é linear, pois $D$ é linear, portanto basta mostrar que ele é uma derivação. Para todos $a,a' \in A$,
+	\begin{equation*}
+	(cD)(aa') = c(D(aa')) = c(D(a)a' + aD(a')) = (cD)(a)a' + a(cD)(a'),
+	\end{equation*}
+portanto $cD$ é uma derivação. Isso mostra que $\Der(A)$ é subespaço linear de $\lin(A,A)$.
+
+No entanto, $\Der(A)$ não é uma subálgebra de $\lin(A,A)$ com o produto de composição de funções, pois, para todos $D,D' \in \Der(A)$ e $a,a' \in A$,
+%	\begin{align*}
+%	(DD')(aa') &= D(aa')D'(aa') \\
+%		&= (D(a)a'+aD(a'))(D'(a)a'+aD'(a')) \\
+%		&= D(a)a'D'(a)a' + D(a)a'aD'(a') + aD(a')D'(a)a' + aD(a')aD'(a'),
+%	\end{align*}
+%e
+%	\begin{align*}
+%	(DD')(a)a' + a(DD')(a') &= D(a)D'(a)a' + aD(a')D'(a').
+%	\end{align*}
+%Se notarmos que
+%	\begin{align*}
+%	(D'D)(aa') &= D'(aa')D(aa') \\
+%		&= (D'(a)a'+aD'(a'))(D(a)a'+aD(a')) \\
+%		&= D'(a)a'D(a)a' + D'(a)a'aD(a') + aD'(a')D(a)a' + aD'(a')aD(a').
+%	\end{align*}
+% EU ESTAVA TENTANDO CONSIDERAR O PRODUTO PONTUAL EM L(A,A), MAS ISSO É UM ERRO, O CORRETO É CONSIDERAR O PRODUTO COMPOSIÇÃO DE FUNÇÕES.
+	\begin{align*}
+	(D \circ D')(aa') &= D(D'(aa')) = D(D'(a)a' + aD'(a')) \\
+		&= D(D'(a))a' + D'(a)D(a') + D(a)D'(a') + a D(D'(a')) \\
+		&= (D \circ D')(a)a' + a (D \circ D')(a') + D'(a)D(a') + D(a)D'(a').
+	\end{align*}
+Notando que invertendo as posições de $D$ e $D'$ obtemos a expressão
+	\begin{equation*}
+	(D' \circ D)(aa') = (D' \circ D)(a)a' + a (D' \circ D)(a') + D(a)D'(a') + D'(a)D(a'),
+	\end{equation*}
+podemos definir o produto $\col{D}{D'} := D \circ D' - D' \circ D$ de modo a obter das expressões anteriores que
+	\begin{align*}
+	\col{D}{D'}(aa') &= (D \circ D')(aa') - (D' \circ D)(aa') \\
+		&= (D \circ D')(a)a' + a (D \circ D')(a') - (D' \circ D)(a)a' - a (D' \circ D)(a') \\
+		&= \col{D}{D'}(a)a' + a\col{D}{D'}(a').
+	\end{align*}
+
+O produto $\col{\var}{\var}$ é bilinear, pois envolve somente diferença e composição de funções linear. Assim, está demonstrado a seguinte proposição.
+
+\begin{proposition}
+\label{alge:prop.algebra.colchete.deriv}
+Seja $(\bm A,\cdot)$ uma álgebra sobre um corpo $\bm C$. Então $(\Der(A),\col{\var}{\var})$ é uma subálgebra de $(\lin(A,A),\col{\var}{\var})$.
+\end{proposition}
+
+
+
+
+
+
+
+\section{As álgebras reais $\R$, $\R^2$ e $\R^4$}
+
+\subsection{Complexos}
+
+O espaço linear $\R$ é um álgebra com o produto de corpo usual. Consideremos o espaço linear $\R^2$ e o produto
+	\begin{align*}
+	\func{\times}{\R^2 \times \R^2}{\R^2}{(x,y)}{(x_0y_0-x_1y_1,x_0y_1+x_1y_0)}
+	\end{align*}
+
+Primeiro notemos que o produto é comutativo, pois para todos $x,y \in \R^2$,
+	\begin{equation*}
+	x \times y = (x_0y_0-x_1y_1,x_0y_1+x_1y_0) = (y_0x_0-y_1x_1,y_0x_1+y_1x_0) = y \times x.
+	\end{equation*}
+Assim, para mostrar que $\times$ é bilinear, basta mostrar que é linear na primeira entrada. Para todos $x,x',y \in \R^2$ e todo $c \in \R$,
+	\begin{align*}
+	(cx+x') \times y &= ((cx_0+x'_0)y_0-(cx_1+x'_1)y_1,(cx_0+x'_0)y_1+(cx_1+x'_1)y_0) \\
+		&= (cx_0y_0+x'_0y_0-cx_1y_1-x'_1y_1,cx_0y_1+x'_0y_1+cx_1y_0+x'_1y_0) \\
+		&= c(x_0y_0-x_1y_1,x_0y_1+x_1y_0) + (x'_0y_0-x'_1y_1,x'_0y_1x'_1y_0) \\
+		&= c (x \times y) + x' \times y.
+	\end{align*}
+Ainda, $\times$ é associativo, pois para todos $x,y,z \in \R^2$,
+	\begin{align*}
+	(x \times y) \times z &= (x_0y_0-x_1y_1,x_0y_1+x_1y_0) \times z \\
+		&= ((x_0y_0-x_1y_1)z_0 - (x_0y_1+x_1y_0)z_1 , (x_0y_0-x_1y_1)z_1 + (x_0y_1+x_1y_0)z_0 ) \\
+		&= (x_0(y_0z_0-y_1z_1)-x_1(y_0z_1+y_1z_0),x_0(y_0z_1+y_1z_0)+x_1(y_0z_0-y_1z_1)) \\
+		&= x \times (y_0z_0-y_1z_1,y_0z_1+y_1z_0) \\
+		&= x \times (y \times z).
+	\end{align*}
+Definindo $\bm 1 := (1,0)$, notemos que $\bm 1$ é uma unidade de $\times$, pois para todo $x \in \R^2$,
+	\begin{equation*}
+	\bm 1 \times x = (1x_0-0x_1,1x_1+0x_0) = (x_0,x_1) = x.
+	\end{equation*}
+Definindo $\bm \ii := (0,1)$, notemos que
+	\begin{equation*}
+	\bm \ii \times \bm \ii = (00-11,01+10) = (-1,0) = -\bm 1.
+	\end{equation*}
+Todo $x \in \R^2$ pode ser escrito como $x_0\bm 1 + x_1 \bm \ii$, de modo que o produto $\times$ nessa notação é o produto usual dos números complexos
+	\begin{equation*}
+	x \times y = (x_0\bm 1 + x_1 \bm \ii) \times (y_0\bm 1 + y_1 \bm \ii) = (x_0y_0-x_1y_1)\bm 1 + (x_0y_1+x_1y_0)\bm \ii.
+	\end{equation*}
+
+Para simplificar a notação, a partir de agora passaremos a escrever $1$ e $\ii$ para $\bm 1$ e $\bm \ii$ e escreveremos todos $x \in \R^2$ na notação de números complexos.
+
+O produto $\times$ pode também ser visto como uma ação de $\R^2$ aditivo sobre $\R^2$ aditivo. Cada $x \in \R^2$ pode ser identificado com uma transformação linear $x\colon \R^2 \to \R^2$. Os elementos $x \in \S^1 \subseteq \R^2$ são as rotações: se $x \in \S^1$, então existe $\alpha \in \intfa{0}{\tau}$ tal que
+	\begin{equation*}
+	x = (\cos(\alpha),\sin(\alpha)) = \cos(\alpha) + \ii \sin(\alpha).
+	\end{equation*}
+Isso ocorre porque, se $x \in \S^1$, então $\nor{x} = 1$, logo $({x_0}^2+{x_1}^2)^\frac{1}{2} = 1$, portanto ${x_0}^2+{x_1}^2 = 1$. Então $\abs{x_0} \leq 1$, ou seja, $-1 \leq x_0 \leq 1$. Definido $\alpha' := \cos\inv(x_0) \in \intff{0}{\frac{\tau}{2}}$, temos que ${x_1}^2 = 1-\cos(\alpha)^2$, logo $\abs{x_1} = (1-\cos(\alpha)^2)^\frac{1}{2}$, então $x_1 = \pm\sin(\alpha)$. Tomamos $\alpha := \alpha'$ se $x_1 > 0$ e $\alpha := \tau - \alpha'$ se $x_1 < 0$. No caso $x_1 = 0$, tomamos $\alpha = 0$ se $x_0=1$ e $\alpha = \frac{\tau}{2}$ se $x_0=-1$.
+
+Sendo assim, para todo $\cos(\alpha) + \ii \sin(\alpha) \in \S^1$, e todo $x \in \R^2$,
+	\begin{align*}
+	(\cos(\alpha) + \ii \sin(\alpha)) \times x &= (\cos(\alpha)x_0-\sin(\alpha)x_1) + \ii(\cos(\alpha)x_1+\sin(\alpha)x_0).
+	\end{align*}
+
+Definimos $\abs{x} := ({x_0}^2+{x_1}^2)^\frac{1}{2}$ e $\angle(x) := \alpha$. Os elementos $x \in \R \subseteq \R^2$ são as expansões e contrações. Os elementos de $\R^2$ podem ser decompostos como
+	\begin{equation*}
+	x = \abs{x}(\cos(\angle(x))+\ii\sin(\angle(x))).
+	\end{equation*}
+
+
+\begin{comment}
+
+\begin{figure}
+\centering
+\begin{tikzpicture}[scale=2]
+	\draw (-1,0) node[anchor=north] {$-1$} -- (0,0) node[anchor=north] {$0$} -- (1,0) node[anchor=north] {$1$};
+	\draw (0,0) -- (0,pi/2) node[anchor=west] {$\displaystyle\frac{\tau}{4}$} -- (0,pi) node[anchor=west] {$\displaystyle\frac{\tau}{2}$};
+	\draw[dotted] (1,0) -- (1,pi) -- (-1,pi) -- (-1,0);
+	\draw plot [domain=0:pi,smooth] ({cos(\x r)},\x);
+\end{tikzpicture}
+\caption{Gráfico da função $\cos\inv\colon \intff{-1}{1} \to \intff{0}{\frac{\tau}{2}}$.}
+%\label{fig:cossenoinv}
+\end{figure}
+
+\begin{figure}
+\centering
+\begin{tikzpicture}[scale=2]
+	\draw (-1,0) node[anchor=east] {$-1$} -- (0,0) node[anchor=east] {$0$} -- (1,0) node[anchor=west] {$1$};
+	\draw (0,-pi/2) node[anchor=east] {$-\displaystyle\frac{\tau}{4}$} -- (0,pi/2) node[anchor=east] {$\displaystyle\frac{\tau}{4}$};
+	\draw[dotted] (-1,-pi/2) rectangle (1,pi/2);
+	\draw plot [domain=-pi/2:pi/2,smooth] ({sin(\x r)},\x);
+\end{tikzpicture}
+\caption{Gráfico da função $\sin\inv\colon \intff{-1}{1} \to \intff{-\frac{\tau}{4}}{\frac{\tau}{4}}$.}
+\label{fig:senoinv}
+\end{figure}
+
+
+\begin{figure}
+\centering
+\begin{tikzpicture}[scale=1]
+%	\draw (-1,0) node[anchor=north] {$-1$} -- (0,0) node[anchor=north] {$0$} -- (1,0) node[anchor=north] {$1$};
+%	\draw (0,0) -- (0,pi/2) node[anchor=west] {$\displaystyle\frac{\tau}{4}$} -- (0,pi) node[anchor=west] {$\displaystyle\frac{\tau}{2}$};
+%	\draw[dotted] (1,0) -- (1,pi) -- (-1,pi) -- (-1,0);
+	\draw plot [domain=-1:1,smooth] (\x,{tan(\x r));
+\end{tikzpicture}
+\caption{Gráfico da função $\tan\inv\colon \R \to \intaa{\frac{\tau}{2}}{\frac{\tau}{2}}$.}
+%\label{fig:cossenoinv}
+\end{figure}
+
+\end{comment}
+
+\subsection{Quatérnios}
+
+\subsubsection{Produto quaterniônico}
+
+Consideremos o espaço linear $\R^4$. Definamos $\bm 1 := (1,0,0,0)$, $\bm \ii := (0,1,0,0)$, $\bm \jj := (0,0,1,0)$ e $\bm \kk := (0,0,0,1)$. Consideremos o produto
+	\begin{align*}
+	\func{\cdot}{\R^4 \times \R^4}{\R^4}{(x,y)}{
+		\begin{aligned}[t]
+		&(x_0y_0 - x_1y_1 - x_2y_2 - x_3y_3) \bm 1 \\
+			+ &(x_0y_1+x_1y_0+x_2y_3-x_3y_2) \bm\ii \\
+			+ &(x_0y_2-x_1y_3+x_2y_0+x_3y_1) \bm\jj \\
+			+ &(x_0y_3+x_1y_2-x_2y_1+x_3y_0) \bm\kk .
+		\end{aligned}
+	}
+	\end{align*}
+
+Pode-se mostrar (as contas são trabalhosas, embora simples) que $\cdot$ é um produto bilinear associativo, mas não comutativo, preservado pela norma, que $\bm 1$ é identidade de $\cdot$ e que
+	\begin{equation*}
+	\bm\ii\bm\jj\bm\kk = \bm\ii^2 = \bm\jj^2 = \bm\kk^2 = -\bm 1.
+	\end{equation*}
+Dessas relações, deduzem-se
+	\begin{equation*}
+	\bm\ii\bm\jj = -\bm\jj\bm\ii = \bm\kk, \qquad \bm\jj\bm\kk = -\bm\kk\bm\jj = \bm\ii, \qquad \bm\kk\bm\ii = -\bm\ii\bm\kk = \bm\jj.
+	\end{equation*}
+
+De fato, em vez da expressão explícita para $\cdot$ em termos das entradas de $x$ e $y$, poderíamos somente definir o produto entre os elementos de uma base, no caso $\{\bm 1,\bm \ii, \bm \jj, \bm \kk\}$, e o produto se estenderia linearmente. Essa definição seria dada como nas relações acima.
+
+Com essas relações e representando os elementos $x \in \R^4$ como
+	\begin{equation*}
+	x = x_0\bm 1  + x_1\bm \ii + x_2 \bm \jj + x_3 \bm \kk,
+	\end{equation*}
+pode-se calcular o produto $\cdot$ em $\R^4$ facilmente. Esse produto é o produto usual dos números quatérnios.
+
+Vamos denotar a álgebra de $\R^4$ com esse produto por $\HH$.
+
+%Por linearidade, deve valer
+%	\begin{align*}
+%	xy &= (x_0 1  + x_1 \ii + x_2 \jj + x_3 \kk)(y_0 1  + y_1 \ii + y_2 \jj + y_3 \kk) \\
+%		&= x_0 y_0 1  1  + x_0 y_1 1  \ii + x_0 y_2 1  \jj + x_0 y_3 1  \kk \\
+%		&+ x_1 y_0 \ii  1  + x_1 y_1 \ii  \ii + x_1y_2 \ii  \jj + x_1 y_3 \ii  \kk \\
+%		&+ x_2 y_0 \jj 1  + x_2 y_1 \jj \ii + x_2 y_2 \jj \jj + x_2 y_3 \jj \kk \\
+%		&+ x_3 y_0 \kk 1  + x_3 y_1 \kk \ii + x_3 y_2 \kk \jj + x_3 y_3 \kk \kk
+%	\end{align*}
+%
+%Portanto basta definir os valores dos produtos entre $1,i,j,k$. Escolhendo $1$ para ser a unidade, já que deve haver uma unidade (e essa notação não foi escolhida por acaso para $(1,0,0,0)$), basta determinarmos
+%	\begin{equation*}
+%	\ii\ii,\ii\jj,\ii\kk,\jj\ii,\jj\ij,\jj\kk,\kk\ii,\kk\jj,\kk\kk.
+%	\end{equation*}
+
+\begin{definition}
+Seja $x \in \HH$. A \emph{componente escalar} de $x$ é o número real
+	\begin{equation*}
+	\esc{x} := x_0 \in \R
+	\end{equation*}
+e a \emph{componente vetorial} de $x$ é o vetor real
+	\begin{equation*}
+	\vec{x} := (x_1,x_2,x_3) \in \R^3.
+	\end{equation*}
+Denota-se
+	\begin{equation*}
+	x = \esc{x} + \vec{x},
+	\end{equation*}
+em que $\esc{x}$ é entendido como $x_0 \bm 1$ e $\vec{x}$ é entendido como $x_1\bm \ii + x_2 \bm\jj + x_3 \bm \kk$. Os subespaços vetorias de escalares e vetores são denotados, respectivamente, $\esc{\HH}$ e $\vec{\HH}$, e temos portanto
+	\begin{equation*}
+	\HH = \esc{\HH} \oplus \vec{\HH} \simeq \R \oplus \R^3.
+	\end{equation*}
+
+O \emph{conjugado} de $x$ é
+	\begin{equation*}
+	\conju{x} := \esc{x}-\vec{x}.
+	\end{equation*}
+
+Um \emph{versor} é um quatérnio $u \in \HH$ tal que $\esc{u}=0$ e $\nor{\vec{u}}=1$.
+\end{definition}
+
+\subsubsection{Produtos escalar e vetorial}
+
+\begin{definition}
+O \emph{produto escalar} em $\vec{\HH}$ é a função
+	\begin{align*}
+	\func{\bm{\cdot}}{\vec{\HH} \times \vec{\HH}}{\R}{(\vec{x},\vec{y})}{\pesc{\vec{x}}{\vec{y}} := x_1y_1 + x_2y_2 + x_3y_3}.
+	\end{align*}
+
+O \emph{produto vetorial} em $\vec{\HH}$ é a função
+	\begin{align*}
+	\func{\bm{\times}}{\vec{\HH} \times \vec{\HH}}{\vec{\HH}}{(\vec{x},\vec{y})}{\pvec{\vec{x}}{\vec{y}}
+		\begin{aligned}[t]
+		&:= (x_2y_3-x_3y_2)\bm\ii \\
+		&+ (-x_1y_3+x_3y_1)\bm\jj \\
+		&+ (x_1y_2-x_2y_1)\bm\kk
+		\end{aligned}
+	}.
+	\end{align*}
+\end{definition}
+
+Esses são o produto interno e o produto vetorial usuais em $\R^3$.
+
+\begin{exercise}
+	\begin{enumerate}
+	\item O produto escalar $\bm{\cdot}\colon \vec{\HH} \times \vec{\HH} \to \R$ é um produto interno no subespaço vetorial $\vec{\HH}$;
+	
+	\item O produto vetorial $\bm{\times}\colon \vec{\HH} \times \vec{\HH} \to \vec{\HH}$ é uma função bilinear alternada tal que, para todos $\vec{x},\vec{y} \in \vec{\HH}$,
+		\begin{enumerate}
+		\item $
+			\pesc{(\pvec{\vec{x}}{\vec{y}})}{\vec{x}} = \pesc{(\pvec{\vec{x}}{\vec{y}})}{\vec{x}} = 0$;
+		
+		\item $\pesc{(\pvec{\vec{x}}{\vec{y}})}{(\pvec{\vec{x}}{\vec{y}})} =
+				\begin{vmatrix}
+				\pesc{\vec{x}}{\vec{x}} & \pesc{\vec{x}}{\vec{y}} \\ 
+				\pesc{\vec{y}}{\vec{x}} & \pesc{\vec{y}}{\vec{y}}
+				\end{vmatrix}$.
+		\end{enumerate}
+	
+	\item A função
+		\begin{align*}
+		\func{\bm{\cdot} \circ \bm{\times}}{\vec{\HH} \times \vec{\HH} \times \vec{\HH}}{\vec{\HH}}{(\vec{x},\vec{y},\vec{z})}{\pesc{(\pvec{\vec{x}}{\vec{y}})}{\vec{z}}}
+		\end{align*}
+é uma função trilinear alternada.
+	\end{enumerate}
+\end{exercise}
+
+
+\begin{proposition}
+	\begin{enumerate}
+	\item Para todos $\vec{x},\vec{y} \in \vec{\HH}$ ($\esc{x} = \esc{y} = 0$),
+		\begin{equation*}
+		\vec{x}\vec{y} = - \pesc{\vec{x}}{\vec{y}} + \pvec{\vec{x}}{\vec{y}};
+		\end{equation*}
+	\item Para todos $x,y \in \HH$,
+		\begin{align*}
+		xy &= \esc{x}\esc{y} - \pesc{\vec{x}}{\vec{y}}+\esc{x}\vec{y}+\esc{y}\vec{x}+\pvec{\vec{x}}{\vec{y}} \\
+%		\esc{(xy)} &= \esc{x}\esc{y} - \inte{\vec{x}}{\vec{y}} \\
+%		\vec{(xy)} &= \esc{x}\vec{y}+\esc{y}\vec{x}+\vec{x} \times \vec{y}
+		\end{align*}
+	
+	\item Para todos $x,y \in \HH$, $xy=yx$ se, e somente se, $\vec{x} \parallel \vec{y}$ (ou seja, $\pvec{\vec{x}}{\vec{y}}=0$);
+	
+	\item Para todo $x \in \HH \setminus \{0\}$,
+		\begin{equation*}
+		x\inv = \frac{\conju{x}}{\nor{x}^2};
+		\end{equation*}
+	
+	\item Um quatérnio $u \in \HH$ é um versor se, e somente se, $u^2=-1$;
+	
+	\item Para todo $x \in \HH \setminus \{0\}$, existem único versor $u \in \HH$ e único ângulo $\alpha \in \intfa{0}{\tau}$ tais que
+		\begin{equation*}
+		x=\nor{x}(\cos(\alpha) + \sin(\alpha) u).
+		\end{equation*}
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+\begin{enumerate}
+	\item Como $x_0=y_0=0$,
+	\begin{align*}
+	xy =& -(x_1y_1 + x_2y_2 + x_3y_3) \\
+			&+ (x_2y_3-x_3y_2)\bm\ii \\
+			&+ (-x_1y_3+x_3y_1)\bm\jj \\
+			&+ (x_1y_2-x_2y_1)\bm\kk \\
+		=& - \pesc{\vec{x}}{\vec{y}} + \pvec{\vec{x}}{\vec{y}}.
+	\end{align*}
+
+	\item Segue da bilinearidade do produto e de $\vec{x}$ e $\vec{y}$ serem puramente vetoriais que
+	\begin{align*}
+	xy &= (\esc{x}+\vec{x})(\esc{y}+\vec{y}) \\
+		&= \esc{x}\esc{y}+\esc{x}\vec{y}+\esc{y}\vec{x}+\vec{x}\vec{y} \\
+		&= \esc{x}\esc{y}+\esc{x}\vec{y}+\esc{y}\vec{x}+(-\inte{\vec{x}}{\vec{y}} + \pvec{\vec{x}}{\vec{y}}) \\
+		&= \big(\esc{x}\esc{y} - \pesc{\vec{x}}{\vec{y}}\big) + \big(\esc{x}\vec{y}+\esc{y}\vec{x}+\pvec{\vec{x}}{\vec{y}} \big).
+	\end{align*}
+%em que
+%	\begin{equation*}
+%	\esc{xy} = \esc{x}\esc{y} - \inte{\vec{x}}{\vec{y}}
+%	\end{equation*}
+%é a componente escalar e
+%	\begin{equation*}
+%	\vec{xy} = \esc{x}\vec{y}+\esc{y}\vec{x}+\vec{x} \times \vec{y}
+%	\end{equation*}
+%é a componente vetorial.
+	
+	\item Para todos $x,y \in \HH$,
+		\begin{align*}
+		xy - yx &= \esc{x}\esc{y} - \pesc{\vec{x}}{\vec{y}}+\esc{x}\vec{y}+\esc{y}\vec{x}+\pvec{\vec{x}}{\vec{y}} \\
+			&- \esc{y}\esc{x} + \pesc{\vec{y}}{\vec{x}}-\esc{y}\vec{x}-\esc{x}\vec{y}-\pvec{\vec{y}}{\vec{x}} \\
+			&=\pvec{\vec{x}}{\vec{y}} - \pvec{\vec{y}}{\vec{x}}.
+		\end{align*}
+Isso implica que $xy-yx=0$ se, e somente se, $\pvec{\vec{x}}{\vec{y}} - \pvec{\vec{y}}{\vec{x}}=0$, o que ocorre se, e somente se, $\pvec{\vec{x}}{\vec{y}}=0$, que por sua vez é equivalente a $\vec{x} \parallel \vec{y}$.
+
+	\item Para todo $x \in \HH \setminus \{0\}$,
+	\begin{align*}
+	xx\inv &= (\esc{x}+\vec{x})\nor{x}^{-2}(\esc{x}-\vec{x}) \\
+		&= \nor{x}^{-2}(\esc{x}^2-\pesc{\vec{x}}{(-\vec{x})}+\esc{x}(-\vec{x})+\esc{x}\vec{x}+\pvec{\vec{x}}{(-\vec{x})}) \\
+		&= \nor{x}^{-2}(\esc{x}^2+\pesc{\vec{x}}{\vec{x}}-\esc{x}\vec{x}+\esc{x}\vec{x}-\pvec{\vec{x}}{\vec{x}}) \\
+		&= \nor{x}^{-2}\nor{x}^2 \\
+		&= 1
+	\end{align*}
+e, como $\pvec{\vec{x}}{(-\vec{x})} = 0$, $x\inv x = xx\inv = 1$.
+
+	\item Para todo $u \in \HH$,
+		\begin{align*}
+		u^2 &= \esc{u}\esc{u} - \pesc{\vec{u}}{\vec{u}}+\esc{u}\vec{u}+\esc{u}\vec{u}+\pvec{\vec{u}}{\vec{u}} \\
+			&=  \esc{u}^2 - \nor{\vec{u}}^2 + 2\esc{u}\vec{u}.
+		\end{align*}
+Segue que $\esc{u}=0$ e $\nor{\vec{u}}=1$ se, e somente se, $u^2=-1$.
+	
+	\item Exercício.
+\end{enumerate}
+\end{proof}
+
+
+Sejam $x,y \in \HH \setminus \{0\}$ tais que $xy \in \esc{\HH}$. Então
+	\begin{equation*}
+	0 = \esc{x}\vec{y}+\esc{y}\vec{x}+\pvec{\vec{x}}{\vec{y}}.
+	\end{equation*}
+%Se $\vec{x} \parallel \vec{y}$, então $\vec{x} \times \vec{y}=0$ e existe $c \in \R$ tal que $\vec{y}=c\vec{x}$ ou $\vec{x}=c\vec{y}$. Isso significa que a condição anterior se reduz a
+%	\begin{equation*}
+%	0 = \esc{x}\vec{y}+\esc{y}\vec{x} = (\esc{x}c+\esc{y})\vec{x}
+%	\end{equation*}
+%ou
+%	\begin{equation*}
+%	0 = \esc{x}\vec{y}+\esc{y}\vec{x} = (\esc{x}+\esc{y}c)\vec{y},
+%	\end{equation*}
+%o que implica que $\vec{x}=\vec{y}=0$ ou $c=-\esc{y}/\esc{x}$ ou $c=-\esc{x}/\esc{y}$.
+%
+%Se $\vec{x} \perp \vec{y}$, então $(\vec{x},\vec{y},\vec{x} \times \vec{y})$ é uma base de $\vec{\HH}$
+%
+Isso implica que $(\vec{x},\vec{y},\pvec{\vec{x}}{\vec{y}})$ não é uma base de $\vec{\HH}$, pois caso contrário
+	\begin{equation*}
+	\esc{x}\vec{y}+\esc{y}\vec{x}+\vec{x} \times \vec{y} \neq 0,
+	\end{equation*}
+já que $(\esc{x},\esc{y},1) \neq (0,0,0)$. Mas a tripla não é base se, e somente se, $\vec{x}=0$ ou $\vec{y}=0$ ou $\pvec{\vec{x}}{\vec{y}}=0$, porque sempre vale $\pesc{\vec{x}}{(\pvec{\vec{x}}{\vec{y}})} = \pesc{\vec{y}}{(\pvec{\vec{x}}{\vec{y}})}=0$. No primeiro caso, segue que $\vec{x} \times \vec{y}=0$,
+	\begin{equation*}
+	0=\esc{x}\vec{y},
+	\end{equation*}
+e, no segundo caso, analogamente segue que
+	\begin{equation*}
+	0=\esc{y}\vec{x}.
+	\end{equation*}
+No terceiro caso, segue que
+	\begin{equation*}
+	\esc{y}\vec{x} = -\esc{x}\vec{y},
+	\end{equation*}
+e que $\vec{x} \parallel \vec{y}$.
+
+Nos primeiros dois casos, $\inte{\vec{x}}{\vec{y}}=0$, logo
+	\begin{equation*}
+	\esc{(xy)} = \esc{x}\esc{y} - \inte{\vec{x}}{\vec{y}} = \esc{x}\esc{y}.
+	\end{equation*}
+No terceiro caso, $\inte{\vec{x}}{\vec{y}}=\nor{\vec{x}}\nor{\vec{y}}$, logo
+	\begin{equation*}
+	\esc{(xy)} = \esc{x}\esc{y} - \inte{\vec{x}}{\vec{y}} = \esc{x}\esc{y} - \nor{\vec{x}}\nor{\vec{y}}.
+	\end{equation*}
+Em ambos os casos,
+	\begin{equation*}
+	\esc{(xy)} = \esc{x}\esc{y} - \nor{\vec{x}}\nor{\vec{y}}.
+	\end{equation*}
+
+
+
+
+
+%	$\vec{x} \parallel \vec{y}$ se, e somente se, $\vec{x} \times \vec{y} = 0$.
+
+%	\begin{equation*}
+%	xy = \esc{x}\esc{y} - \inte{\vec{x}}{\vec{y}}+\esc{x}\vec{y}+\esc{y}\vec{x}+\vec{x} \times \vec{y}.
+%	\end{equation*}
+
+
+
+
+\subsubsection{Rotações em \ensuremath{\R^3} por quatérnios}
+
+A rotação de $v \in \R^3$ por um ângulo $\theta$ em torno de um vetor unitário $u \in \R^3$ é dada por
+	\begin{equation*}
+	R^\theta_u(v) = \proj_{\parallel u}(v) + \cos(\theta) \proj_{\perp u}(v) + \sin(\theta) u \times v.
+	\end{equation*}
+%ou
+%	\begin{equation*}
+%	R^\theta_u(v) =(1-\cos(\theta)) \proj_{\parallel u}(v) + \cos(\theta) \Id + \sin(\theta) u \times v.
+%	\end{equation*}
+
+Note que genericamente $(\proj_{\parallel u}(v),\proj_{\perp u}(v),u \times v)$ é uma base de $\R^3$. %se $u$ e $v$ são ...
+Isso significa que
+	\begin{equation*}
+	R^\theta_u = \proj_{\parallel u} + \cos(\theta) \proj_{\perp u} + \sin(\theta){ u \times} .
+	\end{equation*}
+As funções $\proj_{\parallel u}$, $\proj_{\perp u}$ e $u \times$ são funções lineares e, na base canônica de $\R^3$, são dadas pelas matrizes
+	\begin{equation*}
+	[\proj_{\parallel u}] = 
+	\begin{bmatrix}
+		{u_1}^2 & u_1u_2 & u_1u_3 \\ 
+		u_1u_2 & {u_2}^2 & u_2u_3 \\ 
+		u_1u_3 & u_2u_3 & {u_3}^2
+	\end{bmatrix}
+	\end{equation*}
+	\begin{equation*}
+	[\proj_{\perp u}] = 
+	\begin{bmatrix}
+		1-{u_1}^2 & -u_1u_2 & -u_1u_3 \\ 
+		-u_1u_2 & 1-{u_2}^2 & -u_2u_3 \\ 
+		-u_1u_3 & -u_2u_3 & 1-{u_3}^2
+	\end{bmatrix}
+	\end{equation*}
+e
+	\begin{equation*}
+	[u \times] = 
+	\begin{bmatrix}
+			0 & -u_3 & u_2 \\ 
+			u_3 & 0 & -u_1 \\ 
+			-u_2 & u_1 & 0
+	\end{bmatrix}
+	\end{equation*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+Os quatérnios unitários são os elementos de $\S^3 \subseteq \R^4$ e $SO(3)$ é o grupo de rotações de $\R^3$. Definimos a função
+	\begin{align*}
+	\func{R}{\S^3}{SO(3)}{q}{
+		\begin{aligned}[t]
+		\func{R_q}{\R^3}{\R^3}{v}{qvq\inv}.
+		\end{aligned}
+		}
+	\end{align*}
+Mostremos que essa função está bem definida. Precisamos mostrar que $qvq\inv \in \R^3$ e que $R_q$ é uma rotação. Primeiro, seja $q \in \S^3$. Então, como $\nor{q}=1$,
+	\begin{equation*}
+	q\inv = \esc{q}-\vec{q}.
+	\end{equation*}
+Como $v \in \R^3$ é um quatérnio vetorial puro, temos
+	\begin{equation*}
+	\esc{(vq\inv)} = \esc{v}\esc{q} - \inte{\vec{v}}{-\vec{q}} = \inte{\vec{v}}{\vec{q}},
+	\end{equation*}
+	\begin{equation*}
+	\vec{(vq\inv)} = \esc{v}(-\vec{q})+\esc{q}\vec{v}+\vec{v} \times (-\vec{q}) = \esc{q}\vec{v}-\vec{v} \times \vec{q},
+	\end{equation*}
+e, portanto,
+	\begin{align*}
+	\esc{(qvq\inv)} &= \esc{q}\esc{(vq\inv)} - \inte{\vec{q}}{\vec{(vq\inv)}} \\
+		&= \esc{q}\inte{\vec{v}}{\vec{q}} - \inte{\vec{q}}{\esc{q}\vec{v}-\vec{v} \times \vec{q}} \\
+		&= \esc{q}\inte{\vec{v}}{\vec{q}}-\esc{q}\inte{\vec{q}}{\vec{v}}+\inte{\vec{q}}{\vec{v} \times \vec{q}} \\
+		&= \esc{q}\inte{\vec{v}}{\vec{q}}-\esc{q}\inte{\vec{v}}{\vec{q}} \\
+		&= 0,
+	\end{align*}
+o que mostra que $qvq\inv \in \R^3$, ou seja, é um quatérnio vetorial puro.
+
+Para cada $q \in \S^3$, essa função é linear, pois, para todos $c \in \R$ e $v,v' \in \R^3$, segue da bilinearidade e da associatividade do produto e da comutatividade com escalares que
+	\begin{align*}
+	R_q(cv+v') &= q(cv+v')q\inv \\
+		&= q(cvq\inv+v'q\inv) \\
+		&= qcvq\inv + qv'q\inv \\
+		&= cqvq\inv + qv'q\inv \\
+		&= cR_q(v) + R_q(v').
+	\end{align*}
+A função $R_q$ é uma isometria, pois
+	\begin{equation*}
+	\nor{R_q(v)} = \nor{qvq\inv} = \nor{q}\nor{v}\nor{q\inv} = \nor{q}\nor{q}\inv\nor{v} = \nor{v}.
+	\end{equation*}
+
+Por fim, notemos que
+	\begin{align*}
+	qvq\inv &= \vec{(qvq\inv)} \\
+		&= \esc{q}\vec{(vq\inv)}+\esc{(vq\inv)}\vec{q}+\vec{q} \times \vec{(vq\inv)} \\
+		&= \esc{q}(\esc{q}\vec{v}-\vec{v}\times \vec{q})+\inte{\vec{v}}{\vec{q}}\vec{q}+\vec{q} \times (\esc{q}\vec{v}-\vec{v}\times \vec{q}) \\
+		&= \esc{q}\esc{q}\vec{v}-\esc{q}\vec{v}\times \vec{q} + \inte{\vec{v}}{\vec{q}}\vec{q} + \esc{q} \vec{q} \times \vec{v} - \vec{q} \times (\vec{v}\times \vec{q}) \\
+		&= \esc{q}\esc{q}\vec{v}+2\esc{q}\vec{q}\times \vec{v} + \inte{\vec{v}}{\vec{q}}\vec{q} - \inte{\vec{q}}{\vec{q}}\vec{v} + \inte{\vec{q}}{\vec{v}}\vec{q} \\
+		&= (\esc{q}\esc{q} - \inte{\vec{q}}{\vec{q}})\vec{v}+2\esc{q}\vec{q}\times \vec{v} + 2\inte{\vec{v}}{\vec{q}}\vec{q}.
+	\end{align*}
+	
+Como $\nor{q}^2 = \esc{q}^2 + \nor{\vec{q}}^2$, podemos tomar $\theta \in \S^1$ tal que
+	\begin{equation*}
+	\esc{q} = \cos(\theta/2)
+	\end{equation*}
+e
+	\begin{equation*}
+	\nor{\vec{q}} = \sin(\theta/2).
+	\end{equation*}
+Definindo
+	\begin{equation*}
+	u := \vec{q}/\sin(\theta/2),
+	\end{equation*}
+temos $\nor{u}=1$ e
+	\begin{equation*}
+	q=\cos(\theta/2)+\sin(\theta/2)u = \ee^{(\theta/2)u}.
+	\end{equation*}
+
+Temos assim
+	\begin{align*}
+	qvq\inv 
+%		&= \left(\left(\cos\frac{\theta}{2}\right)^2-\left(\sin\frac{\theta}{2}\right)^2\right)v + 2\cos\frac{\theta}{2}\sin\frac{\theta}{2}{u \times v} + 2\left(\sin\frac{\theta}{2}\right)^2\inte{v}{u}u \\
+		&= (\cos(\theta/2)^2-\sin(\theta/2)^2)v + 2\cos(\theta/2)\sin(\theta/2){u \times v} + 2\sin(\theta/2)^2\inte{v}{u}u \\
+		&= \cos(\theta) v + \sin(\theta) u \times v + (1-\cos(\theta))\inte{v}{u}u \\
+		&= \inte{v}{u}u + \cos(\theta) (v-\inte{v}{u}u) + \sin(\theta) u \times v \\
+		&= \proj_{\parallel u}(v) + \cos(\theta) \proj_{\perp u}(v) + \sin(\theta) u \times v \\
+		&= R^\theta_u(v).
+	\end{align*}
+
+%	\begin{align*}
+%	\nor{qvq\inv} &= \left(\nor{\proj_{\parallel u}(v)}^2 + \nor{\cos(\theta) \proj_{\perp u}(v)}^2 + \nor{\sin(\theta) u \times v}^2\right)^{\frac{1}{2}} \\
+%		&= \left( (1-\cos(\theta))^2\cos(\alpha)^2\nor{v}^2 + \cos(\theta)^2 \nor{v}^2 + \sin(\theta)^2 \sin(\alpha)^2 \nor{v}^2 \right) \\
+%		&= \nor{v}\left( \cos(\alpha)^2-2\cos(\theta)\cos(\alpha)^2+\cos(\theta)^2\cos(\alpha)^2 + \cos(\theta)^2 + \sin(\theta)^2 \sin(\alpha)^2 \right) \\
+%	\end{align*}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Explicitamente, a matriz de $R_q$ na base canônica é
+%	\begin{equation*}
+%	[R_q] = 
+%	\begin{bmatrix}
+%		1-2({q_2}^2+{q_3}^2) & 2(q_1q_2-q_3q_0) & 2(q_1q_3+q_2q_0) \\ 
+%		2(q_1q_2+q_3q_0) & 1-2({q_1}^2+{q_3}^2) & 2(q_2q_3-q_1q_0) \\ 
+%		2(q_1q_3-q_2q_0) & 2(q_2q_3+q_1q_0) & 1-2({q_1}^2+{q_2}^2).
+%	\end{bmatrix}
+%	\end{equation*}
+
+
+%	\begin{equation*}
+%	\begin{bmatrix}
+%			1-2\sin(\theta/2)^2({u_2}^2+{u_3}^2) & 2(u_1u_2\sin(\theta/2)^2-u_3\sin(\theta/2)\cos(\theta/2)) & 2(u_1u_3\sin(\theta/2)^2+u_2\sin(\theta/2)\cos(\theta/2)) \\ 
+%			2(u_1u_2\sin(\theta/2)^2+u_3\sin(\theta/2)\cos(\theta/2)) & 1-2\sin(\theta/2)^2({u_1}^2+{u_3}^2) & 2(u_2u_3\sin(\theta/2)^2-u_1\sin(\theta/2)\cos(\theta/2)) \\ 
+%			2(u_1u_3\sin(\theta/2)^2-u_2\sin(\theta/2)\cos(\theta/2)) & 2(u_2u_3\sin(\theta/2)^2+u_1\sin(\theta/2)\cos(\theta/2)) & 1-2\sin(\theta/2)^2({u_1}^2+{u_2}^2)
+%	\end{bmatrix}
+%	\end{equation*}
+
+%Definindo $c:= \cos(\theta/2)$ e $s:=\sin(\theta/2)$ e tomando $q=\ee^{\frac{\theta}{2}u}=c+su$, temos
+%	\begin{equation*}
+%	\begin{bmatrix}
+%			1-2s^2({u_2}^2+{u_3}^2) & 2(u_1u_2s^2-u_3sc) & 2(u_1u_3s^2+u_2sc) \\ 
+%			2(u_1u_2s^2+u_3sc) & 1-2s^2({u_1}^2+{u_3}^2) & 2(u_2u_3s^2-u_1sc) \\ 
+%			2(u_1u_3s^2-u_2sc) & 2(u_2u_3s^2+u_1sc) & 1-2s^2({u_1}^2+{u_2}^2)
+%	\end{bmatrix}
+%	\end{equation*}
+%Mas ${u_2}^2+{u_3}^2 = 1-{u_1}^2$, etc...
+%	\begin{equation*}
+%	\begin{bmatrix}
+%			1-2s^2(1-{u_1}^2) & 2(u_1u_2s^2-u_3sc) & 2(u_1u_3s^2+u_2sc) \\ 
+%			2(u_1u_2s^2+u_3sc) & 1-2s^2(1-{u_2}^2) & 2(u_2u_3s^2-u_1sc) \\ 
+%			2(u_1u_3s^2-u_2sc) & 2(u_2u_3s^2+u_1sc) & 1-2s^2(1-{u_3}^2)
+%	\end{bmatrix}
+%	\end{equation*}
+%e, definindo $C:= \cos\theta$ e $S:=\sin\theta$, temos $2s^2 = 1-C$ e $2sc=S$, logo
+%	\begin{equation*}
+%	\begin{bmatrix}
+%			1-(1-C)(1-{u_1}^2) & u_1u_2(1-C)-u_3S & u_1u_3(1-C)+u_2S \\ 
+%			u_1u_2(1-C)+u_3S & 1-(1-C)(1-{u_2}^2) & u_2u_3(1-C)-u_1S \\ 
+%			u_1u_3(1-C)-u_2S & u_2u_3(1-C)+u_1S & 1-(1-C)(1-{u_3}^2)
+%	\end{bmatrix}
+%	\end{equation*}
+%	\begin{equation*}
+%	\begin{bmatrix}
+%			{u_1}^2(1-C)+C & u_1u_2(1-C)-u_3S & u_1u_3(1-C)+u_2S \\ 
+%			u_1u_2(1-C)+u_3S & {u_2}^2(1-C)+C & u_2u_3(1-C)-u_1S \\ 
+%			u_1u_3(1-C)-u_2S & u_2u_3(1-C)+u_1S & {u_3}^2(1-C)+C
+%	\end{bmatrix}
+%	\end{equation*}
+
+%	\begin{equation*}
+%	(1-C)
+%	\begin{bmatrix}
+%			{u_1}^2 & u_1u_2 & u_1u_3 \\ 
+%			u_1u_2 & {u_2}^2 & u_2u_3 \\ 
+%			u_1u_3 & u_2u_3 & {u_3}^2
+%	\end{bmatrix}
+%	+
+%	C\Id + S
+%	\begin{bmatrix}
+%			0 & -u_3 & u_2 \\ 
+%			u_3 & 0 & -u_1 \\ 
+%			-u_2 & u_1 & 0
+%	\end{bmatrix}
+%	\end{equation*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Matricialmente, $[R_q]$ é dada por
+	\begin{equation*}
+	\begin{bmatrix}
+			{u_1}^2 & u_1u_2 & u_1u_3 \\ 
+			u_1u_2 & {u_2}^2 & u_2u_3 \\ 
+			u_1u_3 & u_2u_3 & {u_3}^2
+	\end{bmatrix}
+	+\cos(\theta)
+	\begin{bmatrix}
+		1-{u_1}^2 & -u_1u_2 & -u_1u_3 \\ 
+		-u_1u_2 & 1-{u_2}^2 & -u_2u_3 \\ 
+		-u_1u_3 & -u_2u_3 & 1-{u_3}^2
+	\end{bmatrix}
+	+ \sin(\theta)
+	\begin{bmatrix}
+			0 & -u_3 & u_2 \\ 
+			u_3 & 0 & -u_1 \\ 
+			-u_2 & u_1 & 0
+	\end{bmatrix}
+	\end{equation*}
+ou
+	\begin{equation*}
+	(1-\cos(\theta))
+	\begin{bmatrix}
+			{u_1}^2 & u_1u_2 & u_1u_3 \\ 
+			u_1u_2 & {u_2}^2 & u_2u_3 \\ 
+			u_1u_3 & u_2u_3 & {u_3}^2
+	\end{bmatrix}
+	+
+	\cos(\theta)\Id + \sin(\theta)
+	\begin{bmatrix}
+			0 & -u_3 & u_2 \\ 
+			u_3 & 0 & -u_1 \\ 
+			-u_2 & u_1 & 0
+	\end{bmatrix}
+	\end{equation*}

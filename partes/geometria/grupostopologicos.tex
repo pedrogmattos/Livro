@@ -1,0 +1,297 @@
+\chapter{Grupos topológicos}
+
+\section{Grupo topológico}
+
+\begin{definition}
+Um \emph{grupo topológico} é uma quádrupla $\bm G = ((G,\topo),\times,\div,\id)$ em que $(G,\topo)$ é um espaço topológico, $(G,\times,\div,\id)$ é um grupo e as operações
+	\begin{equation*}
+	\times\colon G^2 \to G \qquad\e\qquad \div\colon G \to G
+	\end{equation*}
+são funções contínuas.% Um grupo \emph{discreto} é um grupo cuja topologia é discreta.
+\end{definition}
+
+Por simplicidade, denotamos $gg' := g \times g'$ e $\div g := g\inv$. Note que não é necessária nenhuma condição sobre a identidade $\id \in G$, pois se vista como uma operação zerária $\id\colon \{0\} \to G$, ela é contínua em qualquer topologia de $G$, pois $\{0\}$ só admite a topologia trivial.
+
+Lembremos que para um grupo $\bm G$ e $g \in G$, a conjugação por $g$ é a função
+	\begin{align*}
+	\func{C_g}{G}{G}{h}{ghg\inv},
+	\end{align*}
+a translação à direita por $g$ é a função
+	\begin{align*}
+	\func{D_g}{G}{G}{h}{hg}
+	\end{align*}
+e a translação à esquerda por $g$ é a função
+	\begin{align*}
+	\func{E_g}{G}{G}{h}{gh}.
+	\end{align*}
+
+\begin{proposition}
+Seja $\bm G$ um grupo topológico. As funções $C_h$, $D_h$ e $E_h$ são homeomorfismos para todo $h \in G$.
+\end{proposition}
+\begin{proof}
+Para ver que as funções são bijeções, basta notar que $(C_h)\inv = C_{h \inv}$, $(D_h)\inv = D_{h \inv}$ e $(E_h)\inv = E_{h \inv}$. Para mostrar a continuidade, basta notar que da continuidade de $\times$ e das relações $E_h = \times \circ (\bm\var,h)$ e $D_h = \times \circ (h,\bm\var)$, segue que $E_h$ e $D_h$ são contínuas, e que da continuidade de $\div$ e da relação $C_h = D_h \circ E_{h\inv}$, segue que $C_h$ é contínua.
+\end{proof}
+
+\begin{example}
+Sejam $\bm X$ um espaço topológico e $\bm G$ um grupo topológico. Consideremos o conjunto $\Cont(X,G)$ das funções contínuas de $\bm X$ para $\bm G$ e as operações induzidas pontualmente de $G$ em $\Cont(X,G)$ por $(f \times g)(x) := f(x) \times g(x)$, $(f\inv)(x) := (f(x))\inv$ e $\id(x) := \id$. A quádrupla $(\Cont(X,G),\times,\div,\id)$ é um grupo. Consideramos agora a topologia \emph{compacto-aberto} $\topo$ gerada pelos conjuntos
+	\begin{equation*}
+	\mathscr A_{K,A} := \set{f \in \Cont(X,G)}{f(K) \subseteq A}
+	\end{equation*}
+em que $K \subseteq X$ é um compacto e $A \subseteq G$ é um aberto. Então $((\Cont(X,G),\topo),\times,\div,\id)$ é um grupo topológico.
+\end{example}
+
+\begin{proposition}
+Seja $\bm G$ um grupo topológico.
+	\begin{enumerate}
+	\item Para todos $g \in G$ e $A \subseteq G$ aberto, $gA$ e $Ag$ são abertos;
+	\item Para todos $g \in G$ e $A \subseteq G$ fechado, $gA$ e $Ag$ são fechados;
+	\item Para todos $A \subseteq G$ aberto e $C \subseteq G$, $AC$ e $CA$ são abertos;
+	\item Para todos $F \subseteq G$ fechado e $K \subseteq G$ compacto, $FK$ e $KF$ são fechados.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item Segue do fato de que $E_g$ e $D_g$ são homeomorfismos e $gA = E_g(A)$, $Ag = D_g(A)$.
+	\item Segue do fato de que $E_g$ e $D_g$ são homeomorfismos e $gA = E_g(A)$, $Ag = D_g(A)$.
+	\item Segue do fato de que
+		\begin{equation*}
+		AC = \bigcup_{c \in C} Ac \e CA = \bigcup_{c \in C} cA
+		\end{equation*}
+e de que os conjuntos $cA$ e $Ac$ são abertos para todo $c \in C$.
+	\item Seja $x \in \Fec{FK}$. Então existe uma rede $(x_\lambda)_{\lambda \in \Lambda} = (f_\lambda k_\lambda)$ tal que $x = \lim_{\lambda \in \Lambda} x_\lambda$. Como $K$ é compacto, existe uma sub-rede $k_{\lambda_\mu}$ tal que $k := \lim_{\mu \in M} k_{\lambda_\mu} \in K$, o que implica que $k\inv = \lim_{\mu \in M} {k_{\lambda_\mu}}\inv$ pela continuidade da inversa. Pela continuidade do produto, segue que a sub-rede $f_{\lambda_\mu} = (f_{\lambda_\mu}k_{\lambda_\mu}){k_{\lambda_\mu}}\inv$ converge para $f = xk\inv$, e $f \in F$ pois $F$ é fechado. Assim segue que $x=fk$, portanto $FK$ é fechado. A demonstração é análoga para $KF$.
+	\end{enumerate}
+\end{proof}
+
+\section{Topologia em grupos}
+
+Uma peculiaridade dos grupos topológico é que, como temos homeomorfismo do grupo para ele mesmo que levam qualquer elemento para a identidade, segue que basta estudar as vizinhanças abertas da identidade para entender a topologia do grupo. Isso fica mais claro com os resultados a seguir.
+
+\begin{definition}
+Seja $\bm G$ um grupo. Um \emph{sistema de vizinhanças da identidade} em $\bm G$ é um conjunto $\viz$ de subconjuntos de $G$ tal que
+	\begin{enumerate}
+	\item Para todo $A \in \viz$, $\id \in A$;
+	\item Para todos $A,A' \in \viz$, $A \cap A' \in \viz$;
+	\item Para todo $A \in \viz$, existe $B \in \viz$ tal que $B^2 \subseteq A$;
+	\item	 Para todo $A \in \viz$, $A\inv \in \viz$;
+	\item Para todos $A \in \viz$, $g \in G$, $gAg\inv \in \viz$.	
+	\end{enumerate}
+\end{definition}
+
+Denotaremos por $\viz := \viz_\id^\circ$ as vizinhanças abertas da identidade $\id$.
+
+\begin{proposition}
+Seja $\bm G$ um grupo topológico. O conjunto $\viz$ de vizinhanças abertas de $\id$ é um sistema de vizinhanças da identidade.
+\end{proposition}
+
+\begin{definition}
+Seja $\bm G$ um grupo. Uma topologia \emph{invariante por translação à esquerda} em $\bm G$ é uma topologia $\topo$ em $G$ tal que, para todos $A \in \topo$ e $g \in G$, $gA \in \topo$. Uma topologia \emph{invariante por translação à direita} em $\bm G$ é uma topologia $\topo$ em $G$ tal que, para todos $A \in \topo$ e $g \in G$, $Ag \in \topo$.
+\end{definition}
+
+\begin{proposition}
+Sejam $\bm G$ um grupo e $\topo$ uma topologia em $G$.
+	\begin{enumerate}
+	\item Se $\topo$ é invariante por translação à esquerda em $\bm G$ então a topologia produto $\topo^2$ em $G \times G$ é invariante por translação à esquerda em $\bm G \times \bm G$;
+	\item Se $\topo$ é invariante por translação à direita em $\bm G$ então a topologia produto $\topo^2$ em $G \times G$ é invariante por translação à direita em $\bm G \times \bm G$.
+	\end{enumerate}
+\end{proposition}
+
+\begin{proposition}
+Seja $\bm G$ um grupo e $\topo$ uma topologia invariante por translação à esquerda e à direita em $\bm G$. Então $((G,\topo),\times,\div,\id)$ é um grupo topológico se, e somente se,
+	\begin{enumerate}
+	\item $\times$ é contínua em $(\id,\id)$;
+	\item $\div$ é contínua em $\id$.
+	\end{enumerate}
+\end{proposition}
+
+\begin{proposition}
+Sejam $\bm G$ um grupo e $\viz$ um sistema de vizinhanças da identidade em $\bm G$. Existe uma única topologia $\topo$ em $G$ tal que $((G,\topo),\times,\div,\id)$ é um grupo topológico e $\viz$ é um sistema fundamental de vizinhanças de $\id$ em $(G,\topo)$.
+\end{proposition}
+
+\begin{proposition}
+Seja $\bm G$ um grupo topológico. São equivalentes:
+	\begin{enumerate}
+	\item $(G,\topo)$ é separado;
+	\item $\{\id\}$ é fechado;
+	\item $\bigcap_{A \in \viz} A = \{\id\}$.
+	\end{enumerate}
+\end{proposition}
+
+\section{Distância em grupos}
+
+\begin{definition}
+Seja $\bm G$ um grupo. Uma distância \emph{invariante por translação à esquerda} em $\bm G$ é uma distância $\dist{\var}{\var}\colon G \times G \to \intfa{0}{\infty}$ em $G$ tal que, para todo $g \in G$, a translação à esquerda $E_g$ é uma isometria local em $(G,\dist{\var}{\var})$. Uma distância \emph{invariante por translação à direita} em $\bm G$ é uma distância em $G$ tal que, para todo $g \in G$, a translação à direita $D_g$ é uma isometria local. Uma distância \emph{invariante por translação} em $\bm G$ é uma distância invariante à esquerda e à direita em $\bm G$.
+\end{definition}
+
+No caso da invariância à esquerda, isso quer dizer que, para todos $g,g',g'' \in G$,
+	\begin{equation*}
+	\dist{gg'}{gg''} = \dist{g'}{g''}.
+	\end{equation*}
+O caso à direita é análogo.
+
+\begin{proposition}
+Seja $\bm G$ um grupo topológico e $\viz$ um sistema de vizinhanças da identidade enumerável. Existem distâncias $\dist{\var}{\var}_E$ e $\dist{\var}{\var}_D$ em $G$ invariantes por translação à esquerda e à direita em $\bm G$, respectivamente, e compatíveis com a topologia de $\bm G$.
+\end{proposition}
+
+
+\section{Homomorfismos contínuos}
+
+\begin{proposition}
+Sejam $\bm G$ e $\bm H$ grupos topológicos e $\phi\colon G \to H$ um homomorfismo de grupos. Então $\phi$ é contínuo se, e somente se, $\phi$ é contínuo na identidade $\id \in G$.
+\end{proposition}
+\begin{proof}
+A ida é evidente; basta mostrar a volta. Como $\phi$ é homomorfismo, $\phi \circ E_g = E_{\phi(g)} \circ \phi$ para todo $g \in G$. Mas $E_{\phi(g)} \circ \phi$ é contínua em $\id$, o que implica que $\phi \circ E_g$ é contínuo em $\id$ e, como $E_g$ é um homeomorfismo, segue que $\phi$ é contínuo em $g=E_g(\id)$.
+\end{proof}
+
+\begin{proposition}
+Sejam $\bm G$ e $\bm G'$ grupos topológicos, $\bm G'$ separado. Uma função $\phi\colon G \to G'$ é homomorfismo contínuo se, e somente se,
+$\graf(\phi)$ é subgrupo de $\bm G \times \bm G'$ homeomorfo a $G$ pela projeção $\proj_G\colon G \times G' \to G$.
+\end{proposition}
+
+\section{Subgrupos topológicos}
+
+\begin{definition}
+Seja $\bm G = ((G,\topo),\times,\div,\id)$ um grupo topológico. Um \emph{subgrupo topológico} de $\bm G$ é uma quádrupla $\bm S = ((S,\topo_S),\times|_S,\div|_S,\id)$ em que $(S,\topo|_S)$ é um subespaço topológico de $(G,\topo)$ e $(S,\times|_S,\div|_S,\id)$ é um subgrupo de $(G,\times,\div,\id)$.
+\end{definition}
+
+\begin{proposition}
+Seja $\bm G$ um grupo topológico e $\bm S$ um subgrupo de $\bm G$. Então $\bm S$ é um grupo topológico.
+\end{proposition}
+\begin{proof}
+Temos que mostrar que as operações $\times|_S$ e $\div|_S$ são contínuas.
+	\begin{enumerate}[wide, labelwidth=!, labelindent=0pt]
+	\item[($\times|_S$ é contínua)]
+		Seja $C \subseteq G$. Como
+		\begin{equation*}
+		\times|_S \inv (C \cap S) = \times \inv (C) \cap (S \times S),
+		\end{equation*}
+		portanto para todo aberto $A \cap S$ de $S$, com $A \subseteq G$ aberto de $G$, segue que $\times|_S \inv (A \cap S) = \times \inv (A) \cap (S \times S)$ é aberto em $S \times S$, logo $\times|_S$ é contínua.
+	\item[($\div|_S$ é contínua)]
+		Análogo ao caso do produto. \qedhere
+	\end{enumerate}
+\end{proof}
+
+\begin{proposition}
+Seja $\bm G$ um grupo topológico.
+	\begin{enumerate}
+	\item Se $\bm S$ é subgrupo topológico de $\bm G$, então $\bm{\Fec{S}}$ é um subgrupo topológico de $\bm G$.
+	\item Se $\bm N$ é subgrupo topológico normal de $\bm G$, então $\bm{\Fec{N}}$ é um subgrupo topológico normal de $\bm G$.
+	\end{enumerate}
+\end{proposition}
+
+\begin{proposition}
+Sejam $\bm G$ um grupo topológico e $\bm S$ é subgrupo topológico de $\bm G$.
+	\begin{enumerate}
+	\item Se $\Int{S} \neq \emptyset$, então $S$ é aberto;
+	\item Se $S$ é aberto, então $S$ é fechado.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+		\item Seja $g \in S$. Para todo $g' \in S$, o conjunto $g'g\inv S$ é aberto e $g'\in g'g\inv S \subseteq S$, 
+		\item 
+		\end{enumerate}
+\end{proof}
+
+\section{Conexidade em grupos topológicos}
+
+\begin{definition}
+Seja $\bm G$ um grupo topológico. A componente conexa de $\id$ é denotada $G_\id$.
+\end{definition}
+
+\begin{proposition}
+Seja $\bm G$ um grupo topológico. Então $\bm{G_\id}$ é um subgrupo topológico normal e fechado de $\bm G$ e existe bijeção entre as componentes conexas de $\bm G$ e as classes laterais de $G_\id$.
+\end{proposition}
+
+\begin{proposition}
+Seja $\bm G$ um grupo topológico.
+	\begin{enumerate}
+	\item Se $\bm G$ é localmente conexo, então $G_\id$ é aberta;
+	\item Se $\bm G$ é conexo, para toda vizinhança $A$ de $\id$,
+		\begin{equation*}
+		G = \bigcup_{n \in \N} A^n.
+		\end{equation*}
+	\end{enumerate} 
+\end{proposition}
+
+\section{Grupo de homeomorfismos}
+
+Seja $\bm X$ um espaço topológico. O espaço $\Iso{\Cont}(X) = \Iso{\Cont}(X,X)$ dos homeomorfismos de $\bm X$ para $\bm X$ é um grupo com produto de composição $\circ$, a inversa de função $\inv$ e a função identidade $\Id$. Uma questão interessante então é definir uma topologia para esse espaço.
+
+Num primeiro momento, podemos notar que podemos munir esse espaço da topologia produto no seguinte sentido. O conjunto $\Iso{\Func}(X)$ de bijeções de $X$ para $X$ é subconjunto do conjunto $\Func(X)$ de funções de $X$ para $X$. Esse conjunto é também denotado $X^X$, o que deixa mais explícito sua estrutura como um espaço produto. Como $\bm X$ é um espaço topológico, podemos explicitar os abertos sub-básicos dessa topologia. Eles consistem em um produto do tipo $\mathcal A_{x_0} := \prod_{x \in X} A_x$, em que $x_0 \in X$, $A_{x_0} \subseteq X$ é aberto e, para todo $x \in X \setminus \{x_0\}$, $A_x = X$. O conjunto de pontos desse aberto de $X^X$ corresponde ao conjunto de funções $f \in \Func(X)$ tais que $f(x_0) \in A_{x_0}$. Os abertos básicos dessa topologia são interseções finitas desses abertos sub-básicos. Pode-se mostrar que essa é a topologia pontual ou finito-aberto, a topologia gerada pelos abertos sub-básicos
+	\begin{equation*}
+	\mathcal A_{C,A} := \set{f \in \Func(X)}{f(C) \subseteq A},
+	\end{equation*}
+em que $C \subseteq X$ é um conjunto finito e $A \subseteq X$ é um conjunto aberto. Finalmente, tendo essa topologia produto em $\Func(X)$, podemos munir $\Iso{\Cont}(X)$ com a topologia induzida de subespaço.
+
+No entanto, notemos que a topologia de $X$ só foi utilizado quando $X$ tinha o papel de contradomínio das funções $\Func(X)=\Func(X,X)$; a mesma construção poderia ser feita para o conjunto de funções $\Func(I,X)$, em que $I$ é um conjunto qualquer, e ainda teríamos uma topologia nesse espaço de funções. Se queremos levar em consideração a topologia de $X$ como domínio, devemos construir uma outra topologia. A topologia geralmente adotada nesse caso é a topologia compacto-aberto, a topologia gerada pelos abertos sub-básicos
+	\begin{equation*}
+	\mathscr A_{K,A} := \set{f \in \Cont(X)}{f(K) \subseteq A},
+	\end{equation*}
+em que $K \subseteq X$ é um conjunto compacto e $A \subseteq X$ é um conjunto aberto. Note que agora nos restringimos a $\Cont(X)$ em vez de $\Func(X)$. Essa topologia é maior (ou mais fina) que a topologia finito-aberto, pois todo conjunto finito é compacto, e leva em consideração a topologia de $X$ tanto como domínio quanto como contradomínio.
+
+A topologia compacto-aberto não garante, porém, que o grupo de homeomorfismos seja um grupo topológico. Tanto a composição como a inversão de funções pode não ser contínua para algguns espaços topológicos. Existe uma outra topologia que garante isso, a topologia compacto-cocompacto.
+
+%\begin{definition}
+%Seja $\bm X$ um espaço topológico. A topologia de $\Iso{\Cont}(X)$ é a topologia compacto-aberto, denotada $\topo_\Cont$.
+%\end{definition}
+
+\begin{proposition}
+Seja $\bm X$ um espaço topológico. O espaço do homeomorfismos
+	\begin{equation*}
+	\left( \left( \Iso{\Cont}(X),\topo_\Cont \right),\circ,\inv,\Id \right)
+	\end{equation*}
+é um grupo topológico.
+\end{proposition}
+\begin{proof}
+Para qualquer conjunto $X$, o espaço de bijeções $( \Iso{\mathcal F}(X),\circ,\inv,\Id )$ é um grupo. No caso de $\bm X$ ser um espaço topológico, temos que $\Iso{\Cont}(\bm X) \subseteq \Iso{\mathcal F}(X)$, pois todo homeomorfismo é uma bijeção. Devemos mostrar que $\Iso{\Cont}(\bm X)$ é um subgrupo. Para isso, notemos que, para todas $f,f' \in \Iso{\Cont}(X)$, $f' \circ f$ é contínua, pois é composta de contínuas, e tem inversa contínua, pois
+	\begin{equation*}
+	(f' \circ f)\inv = f\inv \circ (f')\inv,
+	\end{equation*}
+que é contínua porque é composta das contínuas $f\inv$ e $(f')\inv$. Ainda, para toda $f \in \Iso{\Cont}(X)$, por definição temos $f\inv \in \Iso{\Cont}(X)$. Por fim, claramente $\Id$ é contínua, o que mostra que $\Iso{\Cont}(X)$ é um subgrupo de $\Iso{\mathcal F}(X)$.
+
+%A topologia de $\Iso{\Cont}(X)$ é a topologia de subconjunto induzida da topologia produto de $\Iso{\mathcal F}(X)$. Devemos mostrar que as operações $\circ$ e $\inv$ são contínuas.
+Devemos agora mostrar que a composição e a inversão de funções são contínuas com respeito à topologia compacto-aberto.
+\end{proof}
+
+\section{Ação contínua}
+
+\begin{definition}
+Sejam $\bm G$ um grupo topológico e $\bm X$ um espaço topológico. Uma \emph{ação contínua} de $\bm G$ em $\bm X$ é uma ação
+	\begin{align*}
+	\func{\pt}{G \times X}{X}{(g,x)}{g \pt x}
+	\end{align*}
+que é uma função contínua\footnote{Com respeito à topologia produto de $G \times X$.}. Denota-se $\pt\colon \bm G \age \bm X$. O grupo $\bm G$ \emph{age continuamente} em $\bm X$.
+\end{definition}
+
+Lembremos que uma ação é uma função que satisfaz
+	\begin{enumerate}
+	\item (Identidade) Para todo $x \in X$,
+		\begin{equation*}
+		\id\pt x = x;
+		\end{equation*}
+	\item (Compatibilidade) Para todos $g,g' \in G$ e $x \in X$,
+		\begin{equation*}
+		(g'g)\pt x = g'\pt(g\pt x).
+		\end{equation*}
+	\end{enumerate}
+
+Para cada $g \in G$, ação $\pt$ induz uma função contínua
+	\begin{align*}
+	\func{g\pt}{X}{X}{x}{g\pt x.}
+	\end{align*}
+Nesse caso, temos um homomorfismo de grupos topológicos (homomorfismo contínuo de grupo)
+	\begin{align*}
+	\func{\pt}{G}{\Iso{\Cont}(X)}{g}{
+		\begin{aligned}[t]
+		\func{g\pt}{X}{X}{x}{g\pt x}
+		\end{aligned}
+	}
+	\end{align*}
+
+\begin{proof}
+\begin{enumerate}
+	\item [($\Rightarrow$)] Suponhamos que a ação $\fun{\varphi}{G \times X}{X}$ seja contínua e mostremos que a ação $\fun{\phi}{G}{\Iso{\Cont}(X)}$ é contínua. Para isso,
+ 
+	\item [($\Leftarrow$)]
+\end{enumerate}
+\end{proof}

@@ -1,0 +1,1095 @@
+\chapter{Os axiomas e as construções essenciais}
+
+\section{Preliminares de lógica}
+
+Alguns conceitos da lógica formal serão brevemente introduzidos nesta seção para que a abordagem nas próximas seções façam sentido. Comentaremos sobre lógicas de ordem $0$ e de ordem $1$, tradicionalmente chamadas de lógica proposicional e lógica de predicados.
+
+As teorias da lógica formal costumam ter axiomas, sentenças assumidas válidas a partir das quais devem-se inferir todas as outras sentenças da teoria. Ao longo do livro, os axiomas, as definições e as proposições serão enunciados, não como sentenças simbólicas, mas como sentenças em português, como se faz tradicionalmente na matemática. Isso facilita o entendimento e a naturalidade das sentenças. No entanto, ao longo das seções que seguem essas sentenças serão enunciadas também formalmente, para estimular o pensamento e a manipulação formais.
+
+Alguns símbolos lógicos frequentemente facilitam e deixam mais claros os enunciados de sentenças na matemática. O símbolo
+	\begin{equation*}
+	\forall
+	\end{equation*}
+será usados para substituir as expressões ``para todo/a'', ``para todos/as'', ``para qualquer'', ``para quaisquer'' e outras possíveis flexões gramaticais. O símbolo
+	\begin{equation*}
+	\exists
+	\end{equation*}
+será usados para substituir as expressões ``para algum/ma'', ``para alguns/mas'', ``existe'', ``existem'' e outras possíveis flexões gramaticais. Eles indicam que uma propriedade vale para todo/algum conjunto. O símbolo $\exists!$ significa que existe e é único% e o símbolo $\nexists$ que não existe
+. Além desses, serão usados também os símbolos lógicos
+	\begin{equation*}
+	\leftarrow \qquad \limplica \qquad \leftrightarrow
+	\end{equation*}
+e as versões informais matemáticas
+	\begin{equation*}
+	\entao \se \sse
+	\end{equation*}
+para significar a implicação material em cada sentido e a equivalência lógica. Por fim, para os conectivos `e' e `ou'  são usados os símbolos lógicos
+	\begin{equation*}
+	\lee \qquad \lou
+	\end{equation*}
+e as versões informais matemáticas
+	\begin{equation*}
+	\e \qquad \ou
+	\end{equation*}
+Esse conectivos indicam, informalmente, que sentenças são ambas verdadeiras, no caso de `e', ou ao menos uma das duas é, no caso de `ou'. Os parênteses, que são comumente usados na lógica formal, serão substituídos por espaços, de modo que não haja ambiguidade. Mais detalhes sobre lógica formal e o uso dos símbolos lógicos serão suprimidos. Para aprofundamento em lógica e sistemas dedutivos, um livro indicado é \emph{Introduction to Logic}, de Alfred Tarski.
+
+
+\subsection{Lógica de ordem 0}
+
+Na lógica de ordem $0$, existem contáveis \emph{proposições simples} (ou \emph{variáveis proposicionais}). Elas são representadas por símbolos especificados e no que segue serão representadas pela letra $P$ ou por $P$ seguida de uma quantidade finita de $'$ (apóstrofes), como $P'$ ou $P''''$.
+
+Além disso, existem os \emph{operadores lógicos}, que são os símbolos
+	\begin{equation*}
+	\lnao \qquad \lee \qquad \lou \qquad \limplica \qquad \lequiv
+	\end{equation*}
+respectivamente chamados de \emph{negação}, \emph{conjunção}, \emph{disjunção}, \emph{implicação} e \emph{equivalência}. Podem-se considerar também os símbolos
+	\begin{equation*}
+	\lver \qquad \lfals
+	\end{equation*}
+que são chamados de \emph{verdade} e \emph{falsidade}, mas não adotaremos eles neste livro. Os símbolos $\lver$ e $\lfals$ são operadores $0$-ários, o símbolo $\lnao$ é um operador $1$-ário e os operadores $\lee$, $\lou$, $\limplica$ e $\lequiv$ são operadores $2$-ários.
+
+Os conectivos lógicos podem ser combinados com as proposições atômicas para formar outras proposições. Para isso, usam-se os símbolos
+	\begin{equation*}
+	( \qquad )
+	\end{equation*}
+que são os \emph{parênteses inicial} e \emph{final}, respectivamente. As regras de formação aceitas são que, se $P$ e $P'$ são proposições (atômicas ou não), então também são proposições
+	\begin{equation*}
+	\lnao P \qquad (P \lee P') \qquad (P \lou P') \qquad (P \limplica P') \qquad (P \lequiv P')
+	\end{equation*}
+e os parênteses podem ser omitidos quando for claro o que se pretende dizer. Qualquer fórmula formada indutivamente por esses passos é uma proposição da linguagem.
+
+Além disso, existem as regras de inferência ou dedução sintática, as regras que nos permitem, a partir de um conjunto de proposições $\Gamma$, deduzir outra proposição $P$. Denota-se isso por
+	\begin{equation*}
+	\Gamma \lded P
+	\end{equation*}
+Adotaremos as seguintes regras. Para quaisquer proposições $P$, $P'$ e $P''$, valem as seguintes deduções.
+
+\emph{Introdução da Negação}:
+	\begin{equation*}
+	(P \limplica P'), (P \limplica \lnao P') \lded (\lnao P)
+	\end{equation*}
+
+\emph{Eliminação da Negação}:
+	\begin{equation*}
+	(\lnao P) \lded (P \limplica P')
+	\end{equation*}
+
+\emph{Eliminação da Dupla-Negação}:
+	\begin{equation*}
+	(\lnao\lnao P) \lded P
+	\end{equation*}
+
+\emph{Introdução da Conjunção}:
+	\begin{equation*}
+	P, P' \lded (P \lee P')
+	\end{equation*}
+
+\emph{Eliminações da Conjunção}:
+	\begin{equation*}
+	(P \lee P') \lded P
+	\end{equation*}
+	\begin{equation*}
+	(P \lee P') \lded P'
+	\end{equation*}
+
+\emph{Introduções da Disjunção}:
+	\begin{equation*}
+	P \lded (P \lou P')
+	\end{equation*}
+
+	\begin{equation*}
+	P' \lded (P \lou P')
+	\end{equation*}
+
+\emph{Eliminação da Disjunção}:
+	\begin{equation*}
+	(P \lou P'), (P \limplica P''), (P' \limplica P'') \lded P''
+	\end{equation*}
+
+\emph{Introdução da Equivalência}:
+	\begin{equation*}
+	(P \limplica P'), (P' \limplica P) \lded (P \lequiv P')
+	\end{equation*}
+
+\emph{Eliminações da Equivalência}:
+	\begin{equation*}
+	(P \lequiv P') \lded (P \limplica P')
+	\end{equation*}
+	\begin{equation*}
+	(P \lequiv P') \lded (P' \limplica P)
+	\end{equation*}
+
+\emph{Introdução da Implicação}:
+	\begin{equation*}
+	(P \lded P') \lded (P \limplica P')
+	\end{equation*}
+
+\emph{Eliminação da Implicação}:
+	\begin{equation*}
+	P, (P \limplica P') \lded P'
+	\end{equation*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{comment}
+
+\emph{Introdução da Negação}:
+\begin{prooftree}
+\AxiomC{$P \limplica P'$}
+\AxiomC{$P \limplica \lnao P'$}
+\LeftLabel{$(\lnao)$}
+\BinaryInfC{$\lnao P$}
+\end{prooftree}
+
+\emph{Eliminação da Negação}:
+\begin{prooftree}
+\AxiomC{$\lnao P$}
+\RightLabel{$(\lnao)$}
+\UnaryInfC{$P \limplica P'$}
+\end{prooftree}
+
+\emph{Eliminação da Dupla-Negação}:
+\begin{prooftree}
+\AxiomC{$\lnao\lnao P$}
+\RightLabel{$(\lnao\lnao)$}
+\UnaryInfC{$P$}
+\end{prooftree}
+
+\emph{Introdução da Conjunção}:
+\begin{prooftree}
+\AxiomC{$P$}
+\AxiomC{$P'$}
+\LeftLabel{$(\lee)$}
+\BinaryInfC{$P \lee P'$}
+\end{prooftree}
+
+\emph{Eliminações da Conjunção}:
+\begin{prooftree}
+\AxiomC{$P \lee P'$}
+\RightLabel{$(\lee)_D$}
+\UnaryInfC{$P$}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{$P \lee P'$}
+\RightLabel{$(\lee)_E$}
+\UnaryInfC{$P'$}
+\end{prooftree}
+
+\emph{Introduções da Disjunção}:
+\begin{prooftree}
+\AxiomC{$P$}
+\LeftLabel{$(\lou)_D$}
+\UnaryInfC{$P \lou P'$}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{$P'$}
+\LeftLabel{$(\lou)_E$}
+\UnaryInfC{$P \lou P'$}
+\end{prooftree}
+
+\emph{Eliminação da Disjunção}:
+\begin{prooftree}
+\AxiomC{$P \lou P'$}
+\AxiomC{$P \limplica P''$}
+\AxiomC{$P' \limplica P''$}
+\RightLabel{$(\lou)_D$}
+\TrinaryInfC{$P''$}
+\end{prooftree}
+
+\emph{Introdução da Equivalência}:
+\begin{prooftree}
+\AxiomC{$P \limplica P'$}
+\AxiomC{$P' \limplica P$}
+\LeftLabel{$(\lequiv)$}
+\BinaryInfC{$P \lequiv P'$}
+\end{prooftree}
+
+\emph{Eliminações da Equivalência}:
+\begin{prooftree}
+\AxiomC{$P \lequiv P'$}
+\RightLabel{$(\lequiv)$}
+\UnaryInfC{$P \limplica P'$}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{$P \lequiv P'$}
+\RightLabel{$(\lequiv)$}
+\UnaryInfC{$P' \limplica P$}
+\end{prooftree}
+
+\emph{Introdução da Condição}:
+\begin{prooftree}
+\AxiomC{ }
+\AxiomC{$P$}
+\LeftLabel{$\Big|$}
+\UnaryInfC{$P'$}
+\LeftLabel{$(\limplica)$}
+\BinaryInfC{$P \limplica P'$}
+\end{prooftree}
+
+\emph{Eliminação da Condição}:
+\begin{prooftree}
+\AxiomC{$P$}
+\AxiomC{$P \limplica P'$}
+\RightLabel{$(\limplica)$}
+\BinaryInfC{$P'$}
+\end{prooftree}
+
+\end{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+A partir de um conjunto de proposições $\Gamma$, \emph{deduzimos} uma proposição $P$ com uma sequência finita de proposições obtidas de $\Gamma$ usando as regras de inferência enunciadas.
+
+\subsection{Lógica de ordem 1}
+
+A lógica de ordem $1$ é uma linguagem formal. O \emph{alfabeto} é composto por
+	\begin{enumerate}
+	\item letras latinas (em diferentes fontes e tamanhos)
+	\begin{equation*}
+	a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z
+	\end{equation*}
+	\begin{equation*}
+	A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z
+	\end{equation*}
+%	\begin{equation*}
+%	\mathcal{A B C D E F G H I J K L M N O P Q R S T U V W X Y Z}
+%	\end{equation*}
+%	\begin{equation*}
+%	\mathscr{A B C D E F G H I J K L M N O P Q R S T U V W X Y Z}
+%	\end{equation*}
+	
+	\item letras gregas
+		\begin{equation*}
+	\alpha,\beta,\gamma,\delta,\epsilon,\zeta,\eta,\theta,\iota,\kappa,\lambda,\mu,\nu,\xi,o,\pi,\rho,\sigma,\tau,\upsilon,\phi,\chi,\psi,\omega
+	\end{equation*}
+	\begin{equation*}
+	\Gamma, \Delta, \Theta, \Lambda, \Xi, \Pi, \Sigma, \Upsilon, \Phi, \Psi, \Omega
+	\end{equation*}
+		
+	\item numerais arábicos
+	\begin{equation*}
+	0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+	\end{equation*}
+	
+	\item símbolos lógicos (ou \emph{operadores})
+	\begin{equation*}
+	 \lnao, \lee, \lou, \limplica, \lequiv, \forall, \exists
+	 \end{equation*}
+	
+	\item outros símbolos gráficos
+	\begin{equation*}
+	(, ), [, ], \{, \}, |, ', ,
+	\end{equation*}
+	\end{enumerate}
+ 
+A \emph{expressões básicas} podem ser
+	\begin{enumerate}
+	\item as \emph{variáveis}, (em uma quantidade contável), representadas aqui por letras dos alfabetos latino e grego, possivelmente indexadas por outras letras ou numerais, ou pelo apóstrofe ';
+	
+	\item as \emph{constantes (individuais)} (em uma quantidade contável), representadas aqui por letras dos alfabetos latino e grego, possivelmente indexadas por outras letras ou numerais, ou pelo apóstrofe ', ou representadas por símbolos específicos;
+	
+	\item para cada número natural $n$, os \emph{predicados} $n$-ários (em uma quantidade contável), representadas aqui por letras dos alfabetos latino e grego, possivelmente indexadas por outras letras ou numerais, ou pelo apóstrofe ', ou representadas por símbolos específicos. Os predicados $0$-ários são as \emph{proposições} (ou \emph{letras sentenciais}), os predicados $1$-ários são as \emph{propriedades} e os predicados $2$-ários são as \emph{relações}.
+	\end{enumerate}
+
+Não restringiremos quais letras representam o que, isso sempre ficará claro pelo contexto. De fato, a quantidade de símbolos de uma linguagem é finita, mas expressões formadas por eles são contáveis, mas não especificaremos esses detalhes aqui.
+
+As \emph{expressões bem formadas} da linguagem são
+	\begin{enumerate}
+	\item Os \emph{termos}, que são as variáveis ou constantes individuais;
+	
+	\item As \emph{fórmulas}, expressões definidas recursivamente por
+		\begin{enumerate}
+		\item (Fórmulas simples ou atômicas) Para um predicado $n$-ário $P$ e termos $t_1, \cdots, t_n$, $P(t_1,\cdots,t_n)$ é uma fórmula;
+		
+		\item (Fórmulas moleculares) Para fórmulas $F$ e $F'$, $\lnao F$, $(F \lee F')$, $(F \lou F')$, $(F \limplica F')$ e $(F \lequiv F')$ são fórmulas. As fórmulas $F$ e $F'$ são \emph{subfórmulas} dessas fórmulas;
+		
+		\item (Fórmulas gerais) Para fórmula $F$ e variável $v$ que ocorre em $F$, $(\forall v F)$ e $(\exists v F)$ são fórmulas. A fórmula $F$ é uma \emph{subfórmula} dessas fórmulas;
+		
+		\item Nenhuma outra exressão é uma fórmula.
+		\end{enumerate}
+	\end{enumerate}
+
+Uma \emph{variável livre} de uma fórmula é definida recursivamente como
+	\begin{enumerate}
+	\item Para uma fórmula simples $F$ e $v$ uma variável, $v$ é livre em $F$ se, e somente se, $v$ ocorre em $F$;
+	
+	\item Para uma fórmula $F$ da forma $\lnao F'$, $(F' \lee F'')$, $(F' \lou F'')$, $(F' \limplica F'')$, $(F' \lequiv F'')$, e $v$ uma variável, $v$ é livre em $F$ se, e somente se, é livre em $F'$ ou em $F''$;
+	
+	\item Para uma fórmula composta $F$ da forma $\forall v' F'$ ou $\exists v' F'$ e $v$ uma variável, $v$ é livre em $F$ se, e somente se, $v$ é livre em $F'$ e $v$ é diferente de $v'$. No caso em que $v$ é livre em $F'$ mas $v$ é igual a $v'$, a variável $v$ está \emph{ligada} ao quantificador $\forall$ ou $\exists$, respectivamente.
+	\end{enumerate}
+
+Uma \emph{sentença} (ou \emph{fórmula fechada}) é uma fórmula sem variáveis livres. Uma \emph{fórmula aberta} é uma fórmula que não é uma sentença.
+
+\subsubsection{Abreviações}
+
+Por simplicidade, os parênteses de fórmulas moleculares e gerais podem ser omitidos sempre que possível. Fórmulas gerais da forma $\forall v F$ podem ser abreviadas por
+	\begin{equation*}
+	\bigforall_v F
+	\end{equation*}
+e fórmulas gerais da forma $\exists v F$ podem ser abreviadas por
+	\begin{equation*}
+	\bigexists_v F.
+	\end{equation*}
+
+Ainda, para fórmulas $F$ e $F'$ e variável $v$ livre em alguma das fórmulas, proposições categóricas do tipo
+	\begin{equation*}
+	\forall v(F \limplica F')
+	\end{equation*}
+podem ser abreviadas por
+	\begin{equation*}
+	\bigforall_{v | F} F'
+	\end{equation*}
+e proposições categóricas do tipo
+	\begin{equation*}
+	\exists v(F \lee F')
+	\end{equation*}
+podem ser abreviadas por
+	\begin{equation*}
+	\bigexists_{v | F} F'.
+	\end{equation*}
+
+Esse é o modo em que pensamos nessas afirmações na linguagem natural e em matemática.
+
+\subsubsection{Regras de inferência}
+
+As seguintes regras de inferência são definidas para fórmulas $F$ e $F'$:
+
+\begin{enumerate}
+\item \emph{Introdução da Negação}:
+	\begin{equation*}
+	(F \limplica F'), (F \limplica \lnao F') \lded (\lnao F)
+	\end{equation*}
+
+\item \emph{Eliminação da Negação}:
+	\begin{equation*}
+	(\lnao F) \lded (F \limplica F')
+	\end{equation*}
+
+\item \emph{Eliminação da Dupla-Negação}:
+	\begin{equation*}
+	(\lnao\lnao F) \lded F
+	\end{equation*}
+
+\item \emph{Introdução da Conjunção}:
+	\begin{equation*}
+	F, F' \lded (F \lee F')
+	\end{equation*}
+
+\item \emph{Eliminações da Conjunção}:
+	\begin{equation*}
+	(F \lee F') \lded F
+	\end{equation*}
+	\begin{equation*}
+	(F \lee F') \lded F'
+	\end{equation*}
+
+\item \emph{Introduções da Disjunção}:
+	\begin{equation*}
+	F \lded (F \lou F')
+	\end{equation*}
+	\begin{equation*}
+	F' \lded (F \lou F')
+	\end{equation*}
+
+\item \emph{Eliminação da Disjunção}:
+	\begin{equation*}
+	(F \lou F'), (F \limplica F''), (F' \limplica F'') \lded F''
+	\end{equation*}
+
+\item \emph{Introdução da Equivalência}:
+	\begin{equation*}
+	(F \limplica F'), (F' \limplica F) \lded (F \lequiv F')
+	\end{equation*}
+
+\item \emph{Eliminações da Equivalência}:
+	\begin{equation*}
+	(F \lequiv F') \lded (F \limplica F')
+	\end{equation*}
+	\begin{equation*}
+	(F \lequiv F') \lded (F' \limplica F)
+	\end{equation*}
+
+\item \emph{Introdução da Implicação}:
+	\begin{equation*}
+	(F \lded F') \lded (F \limplica F')
+	\end{equation*}
+
+\item \emph{Eliminação da Implicação}:
+	\begin{equation*}
+	F, (F \limplica F') \lded F'
+	\end{equation*}
+\end{enumerate}
+
+Para uma fórmula $F$, uma variável $v$ e um termo $t$ tal que, ao substituirmos cada ocorrência livre de $v$ em $F$ por $t$, o termo $t$ não é ligado a nenhum quantificador de $F$, denotamos a \emph{substituição} de $v$ por $t$ na fórmula $F$ por
+	\begin{equation*}
+	\subs{F}{v}{t},
+	\end{equation*}
+comumente denotado $F[v/t]$.
+
+\begin{enumerate}
+\item \emph{Introdução do Quantificador Universal}: Para fórmula $F$, variável $v$ e termo $t$, $t$ não ocorrente em premissa ou hipótese vigente,
+	\begin{equation*}
+	\subs{F}{v}{t} \lded \forall v F
+	\end{equation*}
+
+\item \emph{Eliminação do Quantificador Universal}: Para fórmula $F$, variável $v$ e termo $t$,
+	\begin{equation*}
+	\forall v F \lded \subs{F}{v}{t}
+	\end{equation*}
+
+\item \emph{Introdução do Quantificador Particular}: Para fórmula $F$, variável $v$ e termo $t$,
+	\begin{equation*}
+	\subs{F}{v}{t} \lded \exists v F
+	\end{equation*}
+
+\item \emph{Eliminação do Quantificador Particular}: Para fórmulas $F$ e $F'$, variável $v$ e termo $t$, $t$ não ocorrente em premissa ou hipótese vigente e $t$ não ocorre em $F'$,
+	\begin{equation*}
+	(\exists v F), (\subs{F}{v}{t} \lded F') \lded F'
+	\end{equation*}
+\end{enumerate}
+
+Os detalhes sobre essas regras de inferênncia não serão comentados, mas elas simplesmente formalizam as regras de inferência usuais na prática de matemática.
+
+\subsubsection{Igualdade e unicidade}
+
+O predicado $2$-ário mais importante em linguagens de lógica de ordem $1$ é a \emph{igualdade} $=$. Os detalhes sobre a definição e uso da igualdade não serão especificados aqui, mas basicamente para termos $t$ e $t'$, $t=t'$ é uma fórmula, e sempre que vale $t=t'$, pode-se substituir todos os $t$ por $t'$ em uma fórmula que ainda se tem uma fórmula equivalente. O símbolo \emph{desigualdade} é uma abreviação para uma fórmula de negação de uma igualdade. Para termos $t$ e $t'$, a expressão
+	\begin{equation*}
+	t \neq t'
+	\end{equation*}
+abrevia a fórmula
+	\begin{equation*}
+	\lnao(t = t').
+	\end{equation*}
+
+Com o conceito de igualdade, podemos definir o que significa que uma \emph{única} constante $c$ satisfaz uma propriedade $P$. Para uma propriedade $P$ e uma variável $v$, a expressão
+	\begin{equation*}
+	\exists!v Pv
+	\end{equation*}
+significa
+	\begin{equation*}
+	\exists v (Pv \lee \forall v'(Pv' \limplica v' = v)).
+	\end{equation*}
+
+Algumas definições equivalentes são
+	\begin{equation*}
+	\exists v \forall v' (Pv' \lequiv v'=v),
+	\end{equation*}
+que é mais breve, mas na prática mais difícil de se usar em demonstrações, e
+	\begin{equation*}
+	\exists v (Pv \lee \lnao\exists v'(Pv' \lee v' \neq v)),
+	\end{equation*}
+e
+	\begin{equation*}
+	\exists v Pv \lee \forall v \forall v' ((Pv \lee Pv') \limplica v=v').
+	\end{equation*}
+
+\subsection{Conjunto e pertencimento}
+
+A noção de um \emph{conjunto} é uma noção primitiva na matemática. Intuitivamente, um conjunto é um objeto que tem \emph{elementos}. Cada elemento tem para com o conjunto em que está a relação de \emph{pertencimento}. Abstraindo mais essa noção, pensamos que todas as propriedades de um conjunto se resumem aos elementos que a ele pertencem, de modo que um conjunto é, de fato, seus elementos. A \emph{Teoria de Conjuntos} é uma teoria da lógica formal que procura formalizar essas ideias e estudar suas consequências. Neste livro, o tratamento da teoria de conjuntos será um tratamento parcialmente formal, parcialmente informal, embora muita ênfase seja dada nos axiomas que constituem uma base para a teoria de conjuntos.
+
+A lógica formal estuda sentenças formadas a partir de símbolos pré-determinados e fixos e as regras que dizem como essas sentenças se relacionam para formar novas sentenças. No tratamento formal da teoria de conjuntos, não há distinção entre conjunto e elemento. Ambos são somente denotados por letras de um alfabeto específico, e a relação de pertencimento é geralmente denotada pelo o símbolo $\in$. Se $X$ e $Y$ são conjuntos, a sentença ``o conjunto $C$ pertence ao conjunto $C'$'' ou ``o conjunto $C$ é elemento do conjunto $C'$'' é denotada por 
+	\begin{equation*}
+	C \in C'.
+	\end{equation*}
+Para afirmar que um conjunto $C$ não é elemento de um conjunto $C'$, ou seja, negar $C \in C'$, o símbolo usado é $\notin$ e se denota $C \notin C'$.
+
+Isso quer dizer que a teoria de conjuntos é uma teoria da lógica de ordem $1$ com igualdade $=$ e um predicado $2$-ário $\in$.
+
+\section{Axiomas do vazio e da extensão}
+
+\subsection{Vazio e igualdade}
+
+Os conceitos definidos nesta seção são \emph{igualdade} e \emph{contenção} de conjuntos. O primeiro axioma a ser considerado é o que define que existe um conjunto sem nenhum elemento, o \emph{conjunto vazio}. Esse conjunto tem um papel semelhante ao número zero. Ele é, de certo modo, um ``objeto neutro'' na teoria de conjuntos. Ao decorrer do desenvolvimento da teoria, essa frase sem significado matemática de fato ganhará um significado intuitivo e, em vários casos, uma definição mais precisa.
+
+\begin{definition}
+Um conjunto \emph{vazio} é um conjunto que não possui elementos.
+\end{definition}
+
+\setcounter{axiom}{-1}
+
+\begin{axiom}[Vazio]
+Algum conjunto é vazio.
+	\begin{equation*}
+	\exists C \forall x(x \notin C)
+	\end{equation*}
+%Existe um conjunto vazio.
+%	\begin{equation*}
+%	\exists x \forall y(y \notin x)
+%	\end{equation*}
+\end{axiom}
+
+O axioma não estabelece explicitamente a unicidade desse conjunto, mas ele é de fato único e é denotado $\emptyset$. Como o conjunto vazio não possui elementos, sempre que se conclui que existe um elemento em $\emptyset$, ou seja, que existe $x \in \emptyset$, chega-se em uma contradição e a conclusão é que o que se assumiu para chegar na contradição é falso. Essa é uma forma padrão de se demonstrarem diversas proposições na lógica e na matemática.
+
+O segundo axioma considerado é um axioma baseado em uma dos primeiras propriedades de um conjunto quando pensado intuitivamente: a ideia de que, quando abstrai-se da realidade, um conjunto é totalmente definido pelos elementos que a ele pertencem. Esse axioma se chama axioma da extensão e é, de certa forma, a definição de \emph{igualdade} entre conjuntos.
+
+\begin{axiom}[Extensão]
+Sejam $C$ e $C'$ conjuntos. Os conjuntos $C$ e $C'$ são \emph{iguais} se, e somente se, todo elemento de $C$ pertence a $C'$ e todo elemento de $C'$ pertence a $C$. Denota-se $C=C'$.
+%	\begin{equation*}
+%	\forall x \forall y (x = y \lequiv \forall z (z \in x \lequiv z \in y))
+%	\end{equation*}
+	\begin{equation*}
+	\forall C \forall C' (\forall x (x \in C \lequiv x \in C') \limplica C = C')
+	\end{equation*}
+Caso contrário, denota-se $C \neq C'$.
+	\begin{equation*}
+	\forall C \forall C' (C \neq C' \lequiv \lnao (C = C'))
+	\end{equation*}
+\end{axiom}
+
+A recíproca do axioma da extensão segue das propriedades da igualdade. O axioma da extensão nos permite provar a proposição afirmada anteriormente de que um único conjunto é vazio.
+
+\begin{proposition}
+Um único conjunto é vazio.
+	\begin{equation*}
+	\exists! C \forall x(x \notin C)
+	\end{equation*}
+%	\begin{equation*}
+%	\exists! x(\forall y(y \notin x))
+%	\end{equation*}
+\end{proposition}
+\begin{proof}
+Sejam $C$ e $C'$ conjuntos vazios. Se $C \neq C'$, então (pelo axioma da extensão) para algum conjunto $Y$, $Y \in C$ e $Y \notin C'$, ou $Y \in C'$ e $Y \notin C$. O primeiro caso leva à contradição $Y \in C$ e o segundo caso leva à contradição $Y \in C'$, pois $C$ e $C'$ são vazios, não possuem elementos. Logo $C = C'$.
+\end{proof}
+
+\begin{definition}
+O único conjunto vazio é denotado $\emptyset$.
+	\begin{equation*}
+	\forall C(C=\emptyset \lequiv \forall x(x \notin C))
+	\end{equation*}
+\end{definition}
+
+\subsection{Subconjuntos}
+
+Quando se consideram conjuntos, é muito útil falar apenas de alguns de seus elementos, um conjunto desses elementos, possivelmente com alguma propriedade específica. Essa noção é a de um subconjunto, um conjunto cujos elementos pertencem todos a um outro conjunto considerado anteriormente. A definição de um subconjunto pode ser dada simplesmente a partir das noções primitivas já fornecidas, pois na ideia de subconjunto só são necessárias as noções de conjunto e pertencimento, além dos símbolos lógicos.
+
+\begin{definition}
+Seja $C$ um conjunto. Um \emph{subconjunto} (ou uma \emph{parte}) de $C$ é um conjunto $C'$ tal que, para todo $x \in C'$, $x \in C$. Denota-se $C' \subseteq C$.
+	\begin{equation*}
+	\forall C \forall C' (C' \subseteq C \lequiv \forall x (x \in C' \limplica x \in C))
+	\end{equation*}
+Caso contrário, denota-se $Y \nsubseteq X$.
+	\begin{equation*}
+	\forall C \forall C' (C' \nsubseteq C \lequiv \lnao C' \subseteq C)
+	\end{equation*}
+Um subconjunto \emph{próprio} de $C$ é um subconjunto $C' \subseteq C$ tal que $C' \neq C$. Denota-se $C' \subset C$.
+	\begin{equation*}
+	\forall C \forall C' (C' \subset C \lequiv C' \subseteq C \lee C' \neq C)
+	\end{equation*}
+\end{definition}
+
+Com essa definição, o axioma da extensão pode ser reenunciado como
+	\begin{equation*}
+	\forall C \forall C' (C = C' \lequiv C \subseteq C' \lee C' \subseteq C)
+	\end{equation*}
+
+\begin{proposition}
+Para todo conjunto $C$,
+	\begin{enumerate}
+	\item O conjunto vazio é subconjunto de todo conjunto.
+		\begin{equation*}
+		\forall C(\emptyset \subseteq C)
+		\end{equation*}
+	\item O único subconjunto do conjunto vazio é ele mesmo.
+		\begin{equation*}
+		\forall C(C \subseteq \emptyset \limplica C = \emptyset)
+		\end{equation*}
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item Suponha que $\emptyset$ não é subconjunto de $C$. Então existe $x \in \emptyset$ tal que $x \notin C$. Mas $x \in \emptyset$ é uma contradição, o que mostra que $\emptyset \subseteq C$.
+	
+	\item Exercício.
+	\end{enumerate}
+\end{proof}
+
+\section{Axioma da especificação}
+
+A noção intuitiva de subconjunto está diretamente relacionada à ideia de formar, a partir de um conjunto e uma propriedade, o subconjunto dos elementos que têm essa propriedade. A existência desse subconjunto é um axioma, chamado axioma da especificação porque a propriedade dada é um especificação dos elementos do conjunto original.
+
+\begin{axiom}[Especificação (Esquema)]
+Seja $f$ uma fórmula com variáveis livres $x,C,v_0,\cdots,v_n$. Para todos $v_0,\cdots,v_n$ e todo conjunto $C$, algum conjunto $S$ tem como seus únicos elementos os elementos de $C$ tais que vale $f(x,C,v_0,\cdots,v_n)$.
+	\begin{equation*}
+	\forall v_0,\cdots,v_n \forall C \exists S \forall x(x \in S \lequiv (x \in C \lee f(x,C,v_0,\cdots,v_n)))
+	\end{equation*}
+\end{axiom}
+
+\begin{proposition}[Unicidade da Especificação]
+Seja $f$ uma fórmula com variáveis livres $x,C,v_0,\cdots,v_n$. Para todos $v_0,\cdots,v_n$ e todo conjunto $C$, um único conjunto $S$ tem como seus únicos elementos os elementos de $C$ tais que vale $f(x,C,v_0,\cdots,v_n)$.
+	\begin{equation*}
+	\forall v_0,\cdots,v_n \forall C \exists! S \forall x(x \in S \lequiv (x \in C \lee f(x,C,v_0,\cdots,v_n)))
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+Sejam $f$, $x,C,v_0,\cdots,v_n$ como no enunciado. Pelo axioma da especificação, algum conjunto $S$ tem como seus únicos elementos os elementos de $C$ tais que vale $f(x,C,v_0,\cdots,v_n)$. Sejam $S,S'$ conjuntos com essas propriedades. Mostraremos que $S=S'$. Seja $x$ um conjunto. Então $x \in S$ é equivalente a $x \in C$ e $f(x,C,v_0,\cdots,v_n)$, o que é equivalente $x \in S'$. Pelo axioma da extensão, $S=S'$.
+\end{proof}
+
+\begin{definition}
+Seja $f$ uma fórmula com variáveis livres $x,C,v_0,\cdots,v_n$. Para todos $v_0,\cdots,v_n$ e todo conjunto $C$, o único conjunto $S$ que tem como seus únicos elementos os elementos de $C$ tais que vale $f(x,C,v_0,\cdots,v_n)$ é denotado
+	\begin{equation*}
+	\set{x \in C}{f(x,C,v_0,\cdots,v_n)} := S.
+	\end{equation*}
+\end{definition}
+
+\begin{proposition}
+Seja $f$ uma fórmula com variáveis livres $x,C,v_0,\cdots,v_n$.
+	\begin{equation*}
+	\set{x \in C}{f(x,C,v_0,\cdots,v_n)} \subseteq C.
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+Se $x \in S$, então $x \in C$ e $f(x,C,v_0,\cdots,v_n)$, logo $x \in C$, o que mostra que $S \subseteq C$.
+\end{proof}
+
+\section{Axioma das partes}
+
+O próximo axioma considerado é o que garante que os subconjuntos de um conjunto dado formam um conjunto.
+
+\begin{axiom}[Partes]
+Para todo conjunto $C$, algum conjunto tem todos os subconjuntos de $C$ como elementos.
+	\begin{equation*}
+	\forall C \exists P \forall p (p \subseteq C \limplica p \in P)
+	\end{equation*}
+\end{axiom}
+
+O conjunto cujos elementos precisamente pelos subconjuntos de um conjunto $X$ é chamado de conjunto das partes de $X$ e denotado $\p(X)$. O axioma das partes não estabelece explicitamente sua existência, mas podemos mostrar que ele existe usando o axioma da especificação, e mais precisamente mostrar que ele é único pela unicidade da especificação.
+
+\begin{proposition}[Conjuntos das Partes]
+Para todo conjunto $C$, um único conjunto tem exatamente os subconjuntos de $C$ como elementos.
+	\begin{equation*}
+	\forall C \exists! P \forall p (p \subseteq C \lequiv p \in P)
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+Seja $C$ um conjunto. Pelo axioma das partes, algum conjunto $Q$ satisfaz que, para todo $p \subseteq C$, $p \in Q$. Consideremos a fórmula $p \subseteq C$.  Pela unicidade da especificação, existe único $P$ definido como
+	\begin{equation*}
+	P := \set{p \in Q}{p \subseteq C}. \qedhere
+	\end{equation*}
+\end{proof}
+
+O conjunto $P$ não depende de $Q$ pela unicidade da especificação.
+
+\begin{definition}
+Para todo conjunto $C$, o \emph{conjunto das partes} de $C$ é o único conjunto cujos elementos são os subconjuntos de $C$. Denota-se
+	\begin{equation*}
+	\p(C) = \set{p}{p \subseteq C}.
+	\end{equation*}
+\end{definition}
+
+\begin{proposition}
+O conjunto das partes de um subconjunto de um conjunto é subconjunto do conjunto das partes do conjunto.
+%Para todos conjuntos $C$ e $C'$, $C \subseteq C'$ implica $\p(C) \subseteq \p(C')$.
+	\begin{equation*}
+	\forall C \forall C'(C \subseteq C' \limplica \p(C) \subseteq \p(C'))
+	\end{equation*}
+\end{proposition}
+
+\section{Axioma do par}
+
+O próximo axioma garante, a partir da existência de dois conjuntos, a existência de um novo conjunto cujos elementos são os dois conjuntos iniciais. Esse é o axioma do par. Embora a princípio sua necessidade não seja óbvia, esse axioma é importante --- ao menos útil --- para o desenvolvimento da teoria de conjuntos.
+
+\begin{axiom}[Par]
+Para todos conjuntos $C$ e $C'$, algum conjunto $P$ tem como elementos $C$ e $C'$.
+	\begin{equation*}
+	\forall C \forall C' \exists P(C \in P \lee C' \in P)
+	\end{equation*}
+\end{axiom}
+
+Como o axioma do conjunto vazio, o axioma da especificação e o axioma das partes, esse conjunto $P$ não é explicitamente único pelo axioma do par. Devemos derivar a unicidade de um conjunto que tem exatamente os dois conjuntos como elementos a partir da unicidade da especificação.
+
+\begin{proposition}
+Para todos conjuntos $C$ e $C'$, um único conjunto $P$ tem como seus únicos elementos $C$ e $C'$.
+	\begin{equation*}
+	\forall C \forall C' \exists ! P\forall x(x \in P \lequiv x=C \lou x=C')
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+Pelo axioma do par, algum conjunto $Q$ tem como elementos os conjunto $C$ e $C'$. pela unicidade da especificação, definimos
+	\begin{equation*}
+	P := \set{x \in Q}{x=C \lou x=C'}. \qedhere
+	\end{equation*}
+\end{proof}
+
+\begin{definition}
+Para todos conjuntos $C$ e $C'$, o \emph{par} de $C$ e $C'$ é o único conjunto que tem como seus únicos elementos $C$ e $C'$. Denota-se
+	\begin{equation*}
+	\{C,C'\} = \set{x}{x=C \lou x=C'}.
+	\end{equation*}
+\end{definition}
+
+A partir do axioma do par pode-se formar o conjunto que tem como único elemento um conjunto $X$ formando o par de $X$ e $X$. Esse conjunto é o conjunto unitário com único elemento $X$.
+
+\begin{definition}
+Seja $C$ um conjunto. O \emph{conjunto unitário} de elemento $C$ é o par de $C$ e $C$. Denota-se
+	\begin{equation*}
+	\{C\} := \{C,C\}.
+	\end{equation*}
+\end{definition}
+
+\section{Axioma da união}
+
+\subsection{União de um conjunto}
+
+Nesta seção são apresentadas duas das construções mais importantes da teoria de conjuntos: a união e a interseção. A união de um conjunto de conjuntos denotado $C$ é o conjunto cujos elementos pertencem a algum conjunto que pertence $C$. O axioma da união afirma que esse conjunto existe.
+
+\begin{axiom}[União]
+Para todo conjunto $C$, algum conjunto tem como elementos os elementos que pertencem a algum elemento de $C$.
+	\begin{equation*}
+	\forall C \exists U \forall x(\exists X(X \in C \lee x \in X) \limplica x \in U)
+	\end{equation*}
+\end{axiom}
+
+Novamente, a unicidade de um conjunto que tem exatamente esses elementos segue do unicidade da especificação.
+
+\begin{proposition}
+Para todo conjunto $C$, um único conjunto tem como seus únicos elementos os elementos que pertencem a algum elemento de $C$.
+	\begin{equation*}
+	\forall C \exists! U \forall x(\exists X(X \in C \lee x \in X) \lequiv x \in U)
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+Pelo axioma da união, existe $V$ cujos elementos são os elementos que pertencem a algum elemento de $C$. Pela unicidade da especificação, definimos
+	\begin{equation*}
+	U := \set{x \in V}{\exists X(X \in C \lee x \in X)}. \qedhere
+	\end{equation*}
+\end{proof}
+
+\begin{definition}
+Para todo conjunto $C$, a \emph{união} de $C$ é o único conjunto que tem como seus únicos elementos os elementos que pertencem a algum elemento de $C$. Denota-se
+	\begin{equation*}
+	\bigcup C = \set{x}{\exists X(X \in C \lee x \in X)}.
+	\end{equation*}
+A união do par $\{C,C'\}$ e denotada $C \cup C'$.
+\end{definition}
+
+\begin{proposition}
+	\begin{enumerate}
+	\item A união do conjunto vazio é o conjunto vazio.
+		\begin{equation*}
+		\bigcup \emptyset = \emptyset
+		\end{equation*}
+
+	\item A união de um subconjunto de um conjunto é subconjunto da união do conjunto.
+		\begin{equation*}
+		\forall C \forall C' (C \subseteq C' \limplica \bigcup C \subseteq \bigcup C')
+		\end{equation*}
+	
+	\item Todo elemento de um conjunto é subconjunto da união do conjunto.
+		\begin{equation*}
+		\forall C \forall X (X \in C \limplica X \subseteq \bigcup C)
+		\end{equation*}
+%		\begin{equation*}
+%		\forall\limits_{C \neq \emptyset} \forall\limits_{X \in C} X \subseteq \bigcup C
+%		\end{equation*}
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item Suponha que $x \in \bigcup \emptyset$. Então $\exists X \in \emptyset$ tal que $x \in X$, o que é absurdo porque não pode existir $X \in \emptyset$.
+	
+	\item Seja $x \in \bigcup C$. Então existe $X \in C$ tal que $x \in X$. Como $C \subseteq C'$, segue que $X \in C'$, portanto $x \in \bigcup C'$. \qedhere
+	\end{enumerate}
+\end{proof}
+
+\subsection{Interseção de um conjunto}
+
+A interseção de um conjunto não vazio de conjuntos denotado $C$ é o conjunto cujos elementos pertencem a todos conjuntos que pertencem $C$. O conjunto interseção existe por consequência do axioma da especificação.
+
+\begin{proposition}
+Para todo conjunto não vazio $C$, um único conjunto tem como elementos exatamente os elementos que pertencem a todos elementos de $C$.
+	\begin{equation*}
+	\forall C \exists! I \forall x(\forall X(X \in C \limplica x \in X) \lequiv x \in I)
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+Como $C$ é não vazio, tome $X' \in C$. Pela unicidade da especificação, definimos
+	\begin{equation*}
+	I := \set{x \in X'}{\forall X(X \in C \limplica x \in X)}. \qedhere
+	\end{equation*}
+\end{proof}
+
+\begin{definition}
+Para todo conjunto não vazio $C$, a \emph{interseção} de $C$ é o único conjunto que tem como elementos exatamente os elementos que pertencem a todos elementos de $C$. Denota-se
+	\begin{equation*}
+	\bigcap C = \set{x}{\forall X(X \in C \limplica x \in X)}.
+	\end{equation*}
+A interseção do par $\{C,C'\}$ e denotada $C \cap C'$.
+%Seja $C$ um conjunto não vazio. A \emph{interseção} de $C$ é o conjunto dos elementos que pertecem a todos elementos de $C$. Denota-se $\bigcap C$. A interseção de um par $\{X,Y\}$ é denotada $X \cap Y$.
+\end{definition}
+
+\begin{proposition}
+%A interseção de um subconjunto de um conjunto é superconjunto da interseção do conjunto.
+A interseção de um conjunto não vazio é subconjunto da interseção de um subconjunto não vazio do conjunto.
+	\begin{equation*}
+	\forall C \forall C' (C \neq \emptyset \lee C' \neq \emptyset \lee C \subseteq C' \limplica \bigcap C' \subseteq \bigcap C)
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+Seja $x \in \bigcap C'$. Então, para todo $X \in C'$, $x \in X$. Como $C \subseteq C'$, então todo para $X \in C$, $X \in C'$, logo $x \in \bigcap C$.
+\end{proof}
+
+\begin{proposition}
+A interseção de um conjunto não vazio é subconjunto de todo elemento do conjunto.
+%Seja $C$ um conjunto não vazio. Então, para todo $X \in C$,
+%	\begin{equation*}
+%	\bigcap C \subseteq X \subseteq \bigcup C.
+%	\end{equation*}
+	\begin{equation*}
+	\forall C \forall X(C \neq \emptyset \lee X \in C \limplica \bigcap C \subseteq X)
+	\end{equation*}
+\end{proposition}
+
+\section{Axioma do infinito}
+
+\begin{definition}
+Seja $C$ um conjunto. O \emph{sucessor} de $C$ é o conjunto
+	\begin{equation*}
+	\suce(C) := C \cup \{C\}.
+	\end{equation*}
+Um conjunto \emph{indutivo} é um conjunto que contém $\emptyset$ e contém o sucessor de cada um de seus elementos.
+\end{definition}
+
+\begin{axiom}
+Algum conjunto é indutivo.
+	\begin{equation*}
+	\exists I(\emptyset \in I \lee \forall x \in I(\suce(x) \in I))
+	\end{equation*}
+\end{axiom}
+
+\begin{proposition}
+Seja $F$ um conjunto cujos elementos são conjuntos indutivos. $\bigcap F$ é indutivo.
+\end{proposition}
+\begin{proof}
+Como todo $C \in F$ é indutivo, para todo $C \in F$ vale $\emptyset \in C$, portanto $\emptyset \in \bigcap F$. Seja $x \in \bigcap F$. Então, para todo $C \in F$, $x \in C$ e, como $C$ é indutivo, $\suce(x) \in C$, logo $\suce(x) \in \bigcap F$. Isso mostra que $\bigcap F$ é indutivo.
+\end{proof}
+
+\begin{proposition}
+Um único conjunto indutivo é subconjunto de todo conjunto indutivo.
+\end{proposition}
+\begin{proof}
+Pelo axioma do infinito, algum conjunto $I$ é indutivo. Consideremos o conjunto $F$ dos subconjuntos indutivos de $I$:
+	\begin{equation*}
+	F := \set{C \in \p(I)}{\emptyset \in C \lee \forall x \in C(\suce(x) \in C)}.
+	\end{equation*}
+Definimos
+	\begin{equation*}
+	\inftyord := \bigcap F.
+	\end{equation*}
+O conjunto $\inftyord$ é indutivo pela proposição anterior. Mostremos que $\inftyord$ é subconjunto de todo conjunto indutivo. Seja $J$ um conjunto indutivo. Consideremos o conjunto $\bigcap\{I,J\} = I \cap J$. Como $I$ e $J$ são indutivos, $I \cap J$ é indutivo pela proposição anterior; como $I \cap J \subseteq I$, $I \cap J \in F$, logo $\inftyord \subseteq I \cap J \subseteq J$.
+\end{proof}
+
+\begin{definition}
+O \emph{conjunto dos números ordinais finitos} (ou \emph{números naturais}) é o único conjunto indutivo que é subconjunto de todo conjunto indutivo. Denota-se esse conjunto por $\inftyord$.
+\end{definition}
+
+\begin{proposition}
+	\begin{enumerate}
+	\item (Princípio da Indução Finita) O único subconjunto indutivo de $\inftyord$ é $\inftyord$;
+	\item Todo elemento de $\inftyord$ é o conjunto vazio ou o sucessor de um outro elemento.
+		\begin{equation*}
+		\forall n (n \in \inftyord \limplica (n=\emptyset \lou \exists n' (n' \in \inftyord \lee n=\suce(n')))
+		\end{equation*}
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+Segue direto da definição de $\inftyord$, pois se $I \subseteq \inftyord$ é indutivo, então $\inftyord \subseteq I$, logo $I = \inftyord$.
+\end{proof}
+
+
+
+\section{Axioma da escolha}
+
+Para que o axioma da escolha seja compreensível, devem-se definir alguns conceitos antes. Essencialmente, o axioma da escolha é sobre produto de conjuntos e sobre funções. O nome escolha, de fato, vem de uma função, a função escolha. Para definir o conceito de função, é necessário primeiro definir o que é um par ordenado de elementos de dois conjuntos e o que é o conjunto de pares ordenados desses conjunto, que é chamado produto dos conjuntos. A partir desse produto de dois conjuntos, definem-se função e, a partir de função, define-se o produto de qualquer conjunto.
+
+\subsection*{Pares ordenados, produto de par e função}
+
+\begin{definition}
+Sejam $X$ e $Y$ conjuntos. O \emph{par ordenado} com \emph{primeira coordenada} $X$ e \emph{segunda coordenada} $Y$ é o conjunto
+	\begin{equation*}
+	(X,Y) := \{\{X\},\{X,Y\}\} \in \p\left(\p\left(X \cup Y\right)\right).
+	\end{equation*}
+\end{definition}
+
+\begin{proposition}
+Sejam $X,Y,Z$ e $W$ conjuntos. Então
+	\begin{equation*}
+	(X,Y) = (Z,W) \sse X=Z \e Y=W.
+	\end{equation*}
+\end{proposition}
+
+\begin{definition}
+Sejam $X$ e $Y$ conjuntos. O \emph{produto} de $X$ por $Y$ é o conjunto
+	\begin{equation*}
+	X \times Y := \set{(x,y) \in \p\left(\p\left(X \cup Y\right)\right)}{x \in X \e y \in Y}.
+	\end{equation*}
+\end{definition}
+
+A existência desse conjunto depende da união de pares, do conjunto das partes e do axioma de especificação.
+
+%\begin{definition}[Ênupla Ordenada]
+%	Sejam $A$ e $B$ conjuntos. O \emph{par (ordenado)} dos elementos $a \in A$ e $b %\in B$ é o conjunto
+%	\begin{equation*}
+%	(a,b) := \{\{a\},\{a,b\}\}.
+%	\end{equation*}
+%De modo mais geral, sejam $A_1, \ldots, A_n$ $n$ conjuntos e $I := \{1,\ldots,n\}$. A \emph{n-upla (ordenada)} dos elementos $a_i \in A_i$, para todo $i \in I$, é definida indutivamente por
+%	\begin{equation*}
+%	(a_1,\ldots,a_n) := ((a_1,\ldots,a_{n-1}),a_n)	
+%	\end{equation*}
+%\end{definition}
+%
+%Assim, uma \emph{tripla} é
+%	\begin{equation*}
+%	(a,b,c) = ((a,b),c)=\{\{(a,b)\},\{(a,b),c\}\}=\{\{\{\{a\},\{a,b\}\}\},\{\{\{a\},\{a,b\}\},c\}\},
+%	\end{equation*}
+%claramente uma confusão desnecessária se não escrevermos $(a,b,c)$.
+
+%\begin{proposition}
+%	Seja $A$ um conjunto não vazio. Então, para todos $a,b \in A$, vale $(a,b)=(b,a) \Leftrightarrow a=b$.
+%\end{proposition}
+%\begin{proof}
+%	Suponha $(a,b)=(b,a)$. Então $\{\{a\},b\}=\{\{b\},a\}$. Mas então $\{a\} \in (b,a)$, o que implica $\{a\}=\{b\}$ ou $\{a\}=a$. O primeiro caso implica $a=b$. O segundo caso é claramente impossível, pois nenhum conjunto pode ter como único elemento ele mesmo. A implicação contrária é trivial.
+%\end{proof}
+%
+%\begin{proposition}
+%	Sejam $A_1,\ldots,A_n$ $n$ conjuntos não vazios. Então, para todos $a_i,b_i \in A_i$, $i \in \{1,\ldots,n\}$, vale
+%	\begin{equation*}
+%	(a_1,\ldots,a_n)=(b_1,\ldots,b_n) \Leftrightarrow a_i=b_i \quad \forall i \in \{1,\ldots,n\}.
+%	\end{equation*}
+%\end{proposition}
+
+\begin{definition}
+Sejam $X$ e $Y$ conjuntos. Uma \emph{função} de $X$ para $Y$ é um conjunto $f \subseteq X \times Y$ que satisfaz
+	\begin{equation*}
+	\forall x \in X \ \exists! y \in Y \qquad (x,y) \in f.
+	\end{equation*}
+Esse $y$ é a \emph{imagem} de $x$, denotada por $f(x)$. Denotam-se $f: X \to Y$ e $f(x) := y$. Para qualquer conjunto $K \subseteq X$, defini-se a \emph{imagem} de $K$
+	\begin{equation*}
+	f(K)=\set{y \in Y}{\exists k \in K \quad y=f(k)},
+	\end{equation*}
+que é subconjunto de $Y$. Diz-se que o conjunto $f(X)$ é a \emph{imagem} de $f$.
+\end{definition}
+
+\begin{proposition}
+	Seja $f: A \to B$.
+	\begin{enumerate}
+	\item $A=\emptyset \sse f=\emptyset$.
+	\item $B=\emptyset \entao A=\emptyset$.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item Suponhamos que $A=\emptyset$. Primeiro, notemos que $f=\emptyset$ é uma função de $\emptyset$ em $B$. Claramente, $f = \emptyset \subseteq \emptyset \times B$. Ainda, se $f$ não fosse função de $\emptyset$ em $B$, existiria $a \in \emptyset$ tal que não existe único $b \in B$ satisfazendo $(a,b) \in f$. Mas existir $a \in \emptyset$ é um absurdo. Logo $f$ é função. Por fim, se $g: \emptyset \times B$ é uma função, como $\emptyset \times B = \emptyset$, então $g \subseteq \emptyset \times B = \emptyset$, logo $g=\emptyset=f$.
+	
+	Reciprocamente, suponhamos $f=\emptyset$. Se $A \neq \emptyset$, seja $a \in A$. Como $f$ é função, existe $b \in B$ tal que $(a,b) \in f=\emptyset$, o que é absurdo. Portanto $A=\emptyset$.
+	
+	\item Suponhamos que $A \neq \emptyset$. Então existe $a \in A$ e, como $f$ é função, existe único $b \in \emptyset$ tal que $(a,b) \in f$. Mas $b \in \emptyset$ é absurdo, o que mostra que $A = \emptyset$.
+	\end{enumerate}
+\end{proof}
+
+\subsection*{O axioma da escolha e produto de conjuntos}
+
+\begin{definition}
+Seja $C$ um conjunto. O \emph{produto} de $C$ é o conjunto
+	\begin{equation*}
+	\prod C := \set{f: C \to \bigcup C }{\forall X \in C \quad f(X) \in X}.
+	\end{equation*}
+	\begin{equation*}
+	\prod C := \set{f \in \left(\bigcup C\right)^C }{\forall X \in C \quad f(X) \in X}.
+	\end{equation*}
+\end{definition}
+
+\begin{proposition}
+Seja $C$ um conjunto. Então
+	\begin{enumerate}
+	\item $C = \emptyset \entao \prod C = \{\emptyset\}$;
+	\item $\emptyset \in C \entao \prod C = \emptyset$.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item Como $C=\emptyset$, então $\bigcup \emptyset = \emptyset$. A função $\emptyset: \emptyset \to \emptyset$ é uma função em $\prod C$, pois satisfaz por vacuidade que $\forall X \in C \quad f(X) \in X$. Se não satisfizesse, existiria $X \in \emptyset$ tal que $f(X) \notin X$, o que é contradição. Isso mostra que $\emptyset \in \prod \emptyset$. Agora, seja $f \in \prod \emptyset$ função de $\emptyset$ em $\emptyset$. Como o domínio de $f$ é $\emptyset$, segue que $f=\emptyset$.
+	
+	\item Suponha que existe $f \in \prod C$. Então $f: C \to \bigcup C$ satisfaz que $\forall X \in C \quad f(X) \in X$. Como $\emptyset \in C$, existe $f(\emptyset) \in \bigcup C$ e, pela propriedade, $f(\emptyset) \in \emptyset$, contradição. Portanto $\prod C = \emptyset$.
+	\end{enumerate}
+\end{proof}
+
+\begin{axiom}[Escolha]
+Seja $C$ um conjunto tal que $\emptyset \notin C$. Então $\prod C \neq \emptyset$.
+\end{axiom}
+
+
+\section{Axiomas da fundação e substituição}
+
+Citamos aqui os dois últimos axiomas da teoria de conjuntos, mas não estudaremos eles aqui.
+
+\begin{axiom}[Fundação]
+Todo conjunto não vazio tem algum elemento com o qual sua interseção é vazia.
+	\begin{equation*}
+	\forall x(x \neq \emptyset \limplica \exists y(y \in x \lee x \cap y = \emptyset))
+	\end{equation*}
+\end{axiom}
+
+Esse axioma é essencial na teoria de conjuntos, e também é conhecido como axioma da regularidade.
+
+\begin{axiom}[Substituição (Esquema)]
+Seja $f$ uma fórmula com variáveis livres $x,C,v_0,\cdots,v_n$. Para todos $v_0,\cdots,v_n$ e todo conjunto $C$, algum conjunto $S$ tem como seus únicos elementos os elementos de $C$ tais que vale $f(x,C,v_0,\cdots,v_n)$.
+	\begin{align*}
+		\forall v_0,\cdots,v_n \forall C \big( & (\forall x (x \in C \limplica \exists! y f(x,y,C,v_0,\cdots,v_n))) \\
+			&\limplica \exists B \forall y (y \in B \lequiv \exists x \in C f(x,y,C,v_0,\cdots,v_n))\big)
+		\end{align*}
+\end{axiom}
+
+Os axiomas da especificação e do par são consequência do axioma da substituição.
+
+\section*{Propriedades gerais}
+
+\subsection*{Contenção}
+
+\begin{proposition}
+Sejam $X$, $Y$ e $Z$ conjuntos. Então
+	\begin{enumerate}
+	\item $X \subseteq X$;
+	\item $X \subseteq Y \e Y \subseteq X \sse X=Y$;
+	\item $X \subseteq Y \e Y \subseteq Z \entao X \subseteq Z$.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item Se $X=\emptyset$, então $\emptyset \subseteq X = \emptyset$. Logo $X \subseteq X$. Caso contrário, seja $x \in X$. Então $x \in X$. Logo $X \subseteq X$.
+	\item $X \subseteq Y$ e $Y \subseteq X$ se, e somente se, $\forall x \in X \ x \in Y \e \forall y \in Y \ y \in X$, o que é equivalente a $X=Y$ pelo axioma da extensão.
+	\item Se $X=\emptyset$, então $X \subseteq Z$. Caso contrário, seja $x \in X$. Então, como $X \subseteq Y$, $x \in Y$ e, como $Y \subseteq Z$, $x \in Z$. Logo $X \subseteq Z$.
+	\end{enumerate}
+\end{proof}
+
+\subsection*{União e interseção}
+
+\begin{proposition}
+Sejam $X$, $Y$ e $Z$ conjuntos. Então
+	\begin{enumerate}
+	\item $X \cup \emptyset = X$;
+	\item $X \cup Y = Y \cup X$;
+	\item $(X \cup Y) \cup Z = X \cup (Y \cup Z)$;
+	\item $X \cup X = X$;
+	\item $X \subseteq Y \sse X \cup Y = Y$.
+	\end{enumerate}
+\end{proposition}
+
+\begin{proposition}
+Sejam $X,Y$ e $Z$ conjuntos. Então
+	\begin{enumerate}
+	\item $X \cap \emptyset = \emptyset$;
+	\item $X \cap Y = Y \cap X$;
+	\item $(X \cap Y) \cap Z = X \cap (Y \cap Z)$;
+	\item $X \cap X = X$;
+	\item $X \subseteq Y \sse X \cap Y = X$.
+	\end{enumerate}
+\end{proposition}
+
+\begin{proposition}
+Sejam $X$, $Y$ e $Z$ conjuntos. Então
+	\begin{enumerate}
+	\item $X \cap (Y \cup Z) = (X \cap Y) \cup (X \cap Z)$;
+	\item $X \cup (Y \cap Z) = (X \cup Y) \cap (X \cup Z)$.
+	\end{enumerate}
+\end{proposition}

@@ -1,0 +1,217 @@
+\chapter{Espaços lineares topológicos}
+
+\section{Anéis e corpos topológicos}
+
+\begin{definition}
+Um \emph{anel topológico} é uma lista $\bm A = ((A,\topo),+,-,0,\times,1)$ em que $(A,\topo)$ é um espaço topológico, $(A,+,-,0,\times,1)$ é um anel e as operações $+$, $-$ e $\times$ são contínuas.
+
+Um \emph{corpo topológico} é uma lista $\bm C = ((C,\topo),+,-,0,\times,\inv,1)$ em que $(C,\topo)$ é um espaço topológico, $(C,+,-,0,\times,\inv,1)$ é um corpo e as operações $+$, $-$, $\times$ e $\inv$ são contínuas.
+\end{definition}
+
+Note que, como no caso dos grupos topológicos, não é necessária nenhuma condição sobre $0$ e $1$, pois se vistos como operações zerárias, são contínuas em qualquer topologia.
+
+Nesta seção deixamos somente as definições de anel e corpo topológico para referência, não exploraremos a teoria de anéis e corpos topológicos.
+
+\section{Espaço linear topológico}
+
+\begin{definition}
+Um \emph{espaço linear topológico} é um espaço linear $\bm L = (L,\cdot)$ sobre um corpo topológico $\bm C$ em que $L$ é um grupo topológico e $\cdot\colon \bm C \age \bm L$ é uma ação contínua.
+\end{definition}
+
+\section{Espaço de funções a valores vetoriais}
+
+Primeiro relembremos que, se $X$ é um conjunto e $(L,+,0,-,\cdot)$ é um espaço linear sobre um corpo $C$, o espaço $L^X$ de funções de $X$ para $L$ é um espaço linear com a adição pontual
+	\begin{align*}
+	\func{+}{L^X \times L^X}{L^X}{(f,f')}{
+		\begin{aligned}[t]
+		\func{f+f'}{X}{L}{x}{f(x)+f'(x),}
+		\end{aligned}	
+	}
+	\end{align*}
+a função nula
+	\begin{align*}
+	\func{0}{X}{L}{x}{0,}
+	\end{align*}
+a inversa pontual da adição
+	\begin{align*}
+	\func{-}{L^X}{L^X}{f}{
+		\begin{aligned}[t]
+		\func{-f}{X}{L}{x}{-(f(x))}
+		\end{aligned}
+	}
+	\end{align*}
+e a multiplicação pontual por escalar
+	\begin{align*}
+	\func{\cdot}{C \times L^X}{L^X}{(c,f')}{
+		\begin{aligned}[t]
+		\func{cf}{X}{L}{x}{c(f(x)).}
+		\end{aligned}	
+	}
+	\end{align*}
+
+\begin{proposition}
+Sejam $X$ um conjunto e $\bm L$ um espaço linear topológico sobre um corpo topológico $\bm C$. O espaço de funções $L^X$ é um espaço linear topológico com a topologia produto.
+\end{proposition}
+\begin{proof}
+Temos que mostrar que as operações algébricas em $L^X$ são contínuas. As projeções da topologia produto de $L^X = \prod_{x \in X} L$ são as funções avaliação para cada $x \in X$
+	\begin{align*}
+	\func{\proj_x}{L^X}{L}{f}{f(x).}
+	\end{align*}
+Notemos que
+	\begin{align*}
+	\proj_x \circ + &= + \circ (\proj_x,\proj_x),\\
+	\proj_x \circ - &= - \circ \proj_x.\\
+	\proj_x \circ \cdot &= \cdot \circ (\Id,\proj_x),
+	\end{align*}
+em que as operações à esquerda são as operações em $L^X$ e as à direita, as em $L$. Nesse caso, segue que as operações algébricas em $L^X$ são contínuas pela propriedade universal do produto de espaços topológicos. No caso da adição $+\colon L^X \times L^X \to L^X$, o seguinte diagrama comuta:
+\begin{figure}
+\centering
+\begin{tikzpicture}[node distance=3.5cm, auto]
+	\node (P) {$L^X$};
+	\node (Ci) [below of=P] {$L$.};
+	\node (X) [left of=Ci] {$L^X \times L^X$};
+	\draw[->] (X) to node [swap] {$+ \circ (\proj_x,\proj_x)$} (Ci);
+	\draw[->, dashed] (X) to node {$+$} (P);
+	\draw[->] (P) to node {$\proj_x$} (Ci);
+\end{tikzpicture}
+\end{figure}
+Como $\proj_x$ é contínua para cada $x \in X$ pela definição da topologia produto, segue que $(\proj_x,\proj_x)\colon L^X \times L^X \to L \times L$ também é contínua, logo da continuidade de $+\colon L \times L \to L$ segue que $+ \circ (\proj_x,\proj_x)\colon L^X \times L^X \to L$ é contínua. Pela propriedade universal, $+\colon L^X \times L^X \to L^X$ é a única função contínua tal que o diagrama comuta. A demonstração da continuidade das outras operações algébricas é análoga. Os seguintes diagramas comutam:
+\begin{figure}
+\centering
+\begin{tikzpicture}[node distance=3cm, auto]
+	\node (P) {$L^X$};
+	\node (Ci) [below of=P] {$L$};
+	\node (X) [left of=Ci] {$L^X$};
+	\draw[->] (X) to node [swap] {$- \circ \proj_x$} (Ci);
+	\draw[->, dashed] (X) to node {$-$} (P);
+	\draw[->] (P) to node {$\proj_x$} (Ci);
+\end{tikzpicture}
+\hspace{3cm}
+\begin{tikzpicture}[node distance=3cm, auto]
+	\node (P) {$L^X$};
+	\node (Ci) [below of=P] {$L$.};
+	\node (X) [left of=Ci] {$C \times L^X$};
+	\draw[->] (X) to node [swap] {$\cdot \circ (\Id,\proj_x)$} (Ci);
+	\draw[->, dashed] (X) to node {$\cdot$} (P);
+	\draw[->] (P) to node {$\proj_x$} (Ci);
+\end{tikzpicture}
+\end{figure}
+\end{proof}
+
+\begin{proposition}
+Sejam $\bm X$ um espaço topológico e $\bm L$ um espaço linear topológico sobre um corpo topológico $\bm C$. O espaço de funções contínuas $\Cont(\bm X,\bm L)$ é espaço linear topológico.
+\end{proposition}
+\begin{proof}
+Para mostrar isso, basta mostrar que $\Cont(X,L)$ é um subespaço linear de $L^X$. (Fechado pela adição) Para todas $f,f' \in \Cont(X,L)$, $(f,f')\colon X \times X \to L \times L$ é contínua. Como $+\colon L^X \times L^X \to L^X$ é contínua, segue que
+	\begin{equation*}
+	f+f' = + \circ (f,f')
+	\end{equation*}
+é contínua, pois é composição de contínuas.
+
+(Fechado pela multiplicação por escalar) Para todos $c \in C$, $f \in \Cont(X,L)$, $(c,f)\colon \{0\} \times X \to C \times L$ é contínua, em que $c$ é interpretado como uma função $c\colon \{0\} \to C$. Como $\cdot$ é contínua, segue que
+	\begin{equation*}
+	cf = \cdot \circ (c,f)
+	\end{equation*}
+é contínua, pois é composição de contínuas. Isso mostra que $\Cont(X,L)$ é subespaço linear de $L^X$, portanto é um espaço linear.
+\end{proof}
+
+
+
+\section{Funções lineares contínuas}
+
+\begin{definition}
+Sejam $\bm L, \bm L'$ espaços lineares topológicos. Uma \emph{função linear contínua} de $\bm L$ para $\bm L'$ é uma função $f\colon L \to L'$ que é linear com respeito à estrutura de espaço linear de $\bm L$ e $\bm L'$ e contínua com respeito à estrutura de espaço topológico de $\bm L$ e $\bm L'$. O conjunto dessas funções é denotado $\toplin (\bm L, \bm L')$.
+\end{definition}
+
+Isso é o mesmo que dizer que
+	\begin{equation*}
+	\toplin (\bm L, \bm L') = \lin (\bm L, \bm L') \cap \Cont(\bm L, \bm L').
+	\end{equation*}
+
+
+\section{Espaço dual contínuo}
+
+No estudo de espaços lineares, um objeto importante é o espaço linear dual, o espaço dos funcionais lineares em um espaço linear. No caso de espaços lineares topológicos, um subespaço do espaço linear dual mostra-se mais interessante, o espaço dos funcionais lineares contínuos. No caso de espaço lineares topológico de dimensão finita, todo funcional linear é contínuo, mas no caso geral devemos nos restringir aos contínuos para que a teoria tenha propriedades mais desejáveis e interessantes.
+
+\begin{definition}
+Seja $L$ um espaço linear topológico sobre um corpo topológico $C$. O \emph{espaço linear dual contínuo} de $L$ é o espaço linear
+	\begin{equation*}
+	L^\circledast := \toplin(L,C).
+	\end{equation*}
+\end{definition}
+
+Como o espaço $L^* = \lin(L,C)$ dos funcionais lineares em $L$ e o espaço $\Cont(L,C)$ dos funcionais contínuos em $L$ são espaços lineares, o espaço
+	\begin{equation*}
+	L^\circledast = L^* \cap \Cont(L,C),
+	\end{equation*}
+dos funcionais lineares contínuos em $L$ é um espaço linear.
+
+\begin{definition}
+Sejam $L$ um espaço linear topológico sobre um corpo topológico $C$ e $v \in L$. A \emph{evaluação} em $v$ é o funcional linear
+	\begin{align*}
+	\func{e_v}{L^\circledast}{C}{f}{f(v)}.
+	\end{align*}
+A \emph{topologia\footnote{Chamada topologia fraca ou topologia fraca $*$ (lido `estrela') de $L^\circledast$.} de $L^\circledast$} é a topologia inicial com respeito à família $\{e_v\}_{v \in L}$
+\end{definition}
+
+A topologia definida é a menor topologia em $L^\circledast$ tal que, para todo $v \in L$, a evaluação $e_v\colon L^\circledast \to C$ é contínua; ou seja, é a topologia
+	\begin{equation*}
+	\topo := \ger{\bigcup_{v \in L} {e_v}\pux(\topo_C)},
+	\end{equation*}
+em que $\topo_C$ é a topologia de $C$.
+
+Em $\R$, essa é a mesma topologia que a gerada pelos abertos
+	\begin{equation*}
+	B^v_\varepsilon(f) := \set{f' \in L^*}{\abs{f'(v)-f(v)} < \varepsilon},
+	\end{equation*}
+para cada $v \in L$, $\varepsilon \in \intaa{0}{\infty}$ e $f \in L^*$. Basta notar que, para cada $v \in V$,
+	\begin{equation*}
+	\abs{e_v(f') - e_v(f)} = \abs{f'(v)-f(v)} < \varepsilon,
+	\end{equation*}
+ou seja, essa é a condição para $e_v$ ser contínua.
+
+
+
+\section{Teoremas de representação}
+
+\subsection{Representação linear de produto interno}
+
+\begin{proposition}
+Seja $\bm L$ um espaço linear com produto interno completo. A função
+	\begin{align*}
+	\func{I}{L}{L^\circledast}{v}{
+		\begin{aligned}[t]
+		\func{I_v}{V}{\R}{v'}{\inte{v}{v'}}
+		\end{aligned}
+	}
+	\end{align*}
+é um isomorfismo de espaços lineares com produto interno.
+\end{proposition}
+
+\subsection{Representação contínua de medida}
+
+Lembremos que, para todo espaço topológico $\bm X = (X,\topo)$, o conjunto $\mens_\topo$ é a álgebra de mensuráveis em $X$ gerada pelos abertos de $\topo$. O conjunto $\Med_r(X,\mens_\topo)$ é o conjunto das medidas (positivas ou não) completas regulares, o que nesse contexto quer dizer que são finitas em compactos, interiormente regulares em abertos e mensuráveis com medida finita, e exteriormente regulares em mensuráveis.
+
+%\begin{proposition}
+%Seja $\bm X$ um espaço topológico separado e compacto. A função
+%	\begin{align*}
+%	\func{I}{\mathscr{M}_\topo(X)}{\Cont(X,\R)^\circledast}{\med}{
+%		\begin{aligned}[t]
+%		\func{I_\med}{\Cont(X,\R)}{\R}{f}{\int_X f \dd \med}
+%		\end{aligned}
+%	}
+%	\end{align*}
+%é um isomorfismo de espaços lineares normados. Se restrito às medidas positivas, $I$ é um isomorfismo entre as medidas positivas e os funcionais positivos.
+%\end{proposition}
+
+\begin{proposition}
+Seja $\bm X$ um espaço topológico separado e localmente compacto. A função
+	\begin{align*}
+	\func{I}{\Med_\topo(X)}{\Cont_c(X,\R)^\circledast}{\med}{
+		\begin{aligned}[t]
+		\func{I_\med}{\Cont_c(X,\R)}{\R}{f}{\int_X f \dd \med}
+		\end{aligned}
+	}
+	\end{align*}
+é um isomorfismo de espaços lineares normados. Se restrito às medidas positivas, $I$ é um isomorfismo entre as medidas positivas e os funcionais positivos.
+\end{proposition}

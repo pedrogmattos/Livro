@@ -1,0 +1,148 @@
+\chapter{Cardinalidade de conjuntos}
+
+\section{Relações}
+
+\subsection{Igualdade de cardinais}
+
+\begin{definition}
+	Sejam $X$ e $Y$ conjuntos. Diz-se que $\card{X} = \card{Y}$ (a \emph{cardinalidade de $X$ é igual à cardinalidade de $Y$}) se, e somente se, existe uma bijeção $C$ entre $X$ e $Y$. Caso contrário, diz-se que $\card{X} \neq \card{Y}$ (a \emph{cardinalidade de $X$ é diferente da cardinalidade de $Y$}).
+
+	As cardinalidades dos números naturais e dos números reais são denotadas, respectivamente
+	\begin{equation*}
+	\aleph_0 := \card{\N} \e \mathfrak c := \card{\R}.
+	\end{equation*}
+\end{definition}
+
+\begin{proposition}\label{conj:prop.card.rel.equiv}
+	Sejam $X$, $Y$ e $Z$ conjuntos não vazios. Então
+	\begin{enumerate}
+	\item $\card{X} = \card{X}$;
+	\item $\card{X} = \card{Y} \Rightarrow \card{Y} = \card{X}$;
+	\item $\card{X} = \card{Y} \e \card{Y} = \card{Z} \Rightarrow \card{X} = \card{Z}$.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item Claramente, a função identidade em $X$ é uma bijeção entre $X$ e $X$ e, portanto, $\card{X} = \card{X}$.
+	\item Se $\card{X} = \card{Y}$, então existe bijeção $C: X \to Y$. Mas então $C^{-1}:Y \to X$ é uma bijeção de $Y$ em $X$ e, portanto, $\card{Y} = \card{X}$.
+	\item Se $\card{X} = \card{Y}$ e $\card{Y} \e \card{Y}$, então esistem bijeções $C_1: X \to Y$ e $C_2: Y \to Z$. Mas então $C_2 \circ C_1 : X \to Z$ é uma bijeção de $X$ em $Y$ e, portanto, $\card{X} = \card{Z}$.
+	\end{enumerate}
+\end{proof}
+
+	De certa forma, essa proposição mostra que a noção de cardinalidades iguais se comporta como uma relação de equivalência. Não podemos dizer que $=$ é, de fato, uma relação de equivalência porque nao existe um conjunto de todos os conjuntos no qual defini-la. Todas proposições sobre cardinalidades são, na verdade, proposições sobre funções entre conjuntos e convém saber que as propriedades acima valem.
+	
+\subsection{Ordenação de cardinais}
+
+\begin{definition}
+	Sejam $X$ e $Y$ conjuntos não vazios.
+	\begin{enumerate}
+	\item Diz-se que $\card{X} \leq \card{Y}$ (a \emph{cardinalidade de $X$ é menor ou igual à cardinalidade de $Y$}) se, e somente se, existe função injetiva $C:X \to Y$.
+	
+	Diz-se que $\card{X} \geq \card{Y}$ (a \emph{cardinalidade de $X$ é maior ou igual à cardinalidade de $Y$}) se, e somente se, existe função sobrejetiva $C:X \to Y$.
+	
+	\item Diz-se que $\card{X} < \card{Y}$ (a \emph{cardinalidade de $X$ é menor que a cardinalidade de $Y$}) se, e somente se, $\card{X} \leq \card{Y}$ e $\card{X} \neq \card{Y}$.
+	
+	Diz-se que $\card{X} > \card{Y}$ (a \emph{cardinalidade de $X$ é maior que a cardinalidade de $Y$}) se, e somente se, $\card{X} \geq \card{Y}$ e $\card{X} \neq \card{Y}$.
+	\end{enumerate}
+\end{definition}
+
+\begin{definition}
+	Um conjunto \emph{enumerável} (ou \emph{contável}) é um conjunto $X$ tal que $\# X \leq \aleph_0$. Uma função injetiva $E: X \to \N$ é uma \emph{enumeração} de $X$.
+\end{definition}
+
+\begin{definition}
+	Um conjunto \emph{finito} é um conjunto $X$ tal que $\# X < \aleph_0$. Um conjunto \emph{infinito} é um conjunto que não é finito.
+\end{definition}
+	
+	A seguir, demonstraremos algumas proposições para mostrar que o símbolo $\leq$ se comporta como uma relação de ordem total. Novamente, não podemos dizer formalmente que $\leq$ é uma relação, pois não existe o conjunto de todos os conjuntos no qual defini-la. No entanto, as propriedades acima são bem úteis de se ter em mente e serão usadas na demonstração de outras proposições. As propriedades análogas à reflexividade e transitividade de uma relação de ordem são bem triviais. A antissimetria, por outro lado, é bem difícil, tanto que é um conhecido teorema, o Teorema de Cantor-Schröder-Bernstein. Ainda, é possível demonstrar que $\leq$ se comporta como uma relação total; ou seja, todo conjunto pode ser comparado. Vamos demonstrar primeiro as propriedades triviais. Em seguida, demonstraremos separadamente as outras duas.
+
+\begin{proposition}
+	Sejam $X$, $Y$ e $Z$ conjuntos não vazios. Então
+	\begin{enumerate}
+	\item $\card{X} \leq \card{X}$;
+	\item $\card{X} \leq \card{Y} \e  \card{Y} \leq \card{X} \Rightarrow \card{X} = \card{Y}$;
+	\item $\card{X} \leq \card{Y} \e \card{Y} \leq \card{Z} \Rightarrow \card{X} \leq \card{Z}$;
+	\item $\card{X} \leq \card{Y} \ou \card{Y} \leq \card{X}$.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item Claramente, a função identidade é uma bijeção de $X$ em $X$, logo é uma injeção de $X$ em $X$ e, portanto, $\card{X} \leq \card{X}$.
+	\item Teorema de Cantor-Schröder-Bernstein.
+	\item $\card{X} \leq \card{Y}$ e $\card{Y} \leq \card{Z}$, então existem funções injetivas $C_1:X \to Y$ e $C_2: Y \to Z$. Mas então $C_2 \circ C_1: X \to Z$ é uma função injetiva de $X$ em $Z$ e, portanto, $\card{X} \leq \card{Z}$.
+	\end{enumerate}
+\end{proof}
+
+
+	MOSTRAR QUE INFINITO EQUIVALE A
+
+$X$ tal que $\card{X} \geq \aleph_0$.
+
+\section{Operações}
+
+\begin{definition}
+	Sejam $X$ e $Y$ conjuntos não vazios. Definimos as seguintes "operações" entre cardinais:
+	\begin{enumerate}
+	\item $\card{X} + \card{Y} := \card{X + Y}$;
+	\item $\card{X} \times \card{Y} := \card{X \times Y}$;
+	\item $\card{X}^{\card{Y}} := \card{X^Y}$.
+	\end{enumerate}
+\end{definition}
+
+\subsection{Cardinalidade de soma (ou união disjunta)}
+
+\begin{proposition}
+\label{conj:prop.un.dis}
+Seja $(C_i)_{i \in I}$ uma família não vazia de conjuntos disjuntos dois a dois. Então
+	\begin{equation*}
+	\card{\coprod_{i \in I} C_i} = \card{\bigcup_{i \in I} C_i}.
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+Consideremos a função
+	\begin{align*}
+	\func{f}{\coprod_{i \in I} C_i}{\bigcup_{i \in I} C_i}{(c,i)}{c}.
+	\end{align*}
+Mostremos que $f$ é bijeção. (Injetividade) Sejam $(c_1,i_1),(c_2,i_2) \in \coprod_{i \in I} C_i$ tais que $c_1=c_2$. Como os $C_i$ são disjuntos dois a dois, existe único $i \in I$ tal que $c_1=c_2 \in C_i$. Logo $i_1=i_2=i$ e, portanto, $(c_1,i_1)=(c_2,i_2)$. (Sobrejetividade) Seja $c \in \bigcup_{i \in I} C_i$. Então existe $i \in I$ tal que $c \in C_i$.
+\end{proof}
+
+\begin{proposition}
+\label{conj:prop.card.un.dis}
+Seja $(C_i)_{i \in I}$ uma família não vazia de conjuntos de mesma cardinalidade. Então
+	\begin{equation*}
+	\card{\coprod_{i \in I} C_i} = \card{I} \times \card{C}
+	\end{equation*}
+para algum $C$ de $(C_i)_{i \in I}$.
+\end{proposition}
+\begin{proof}
+Como $I \neq \emptyset$, seja $j \in I$ e defina $C := C_j$. Como todos os conjuntos de $(C_i)_{i \in I}$ têm a mesma cardinalidade, para todo $i \in I$, seja $f_i: C_i \to C$ bijeção. Considere a função
+	\begin{align*}
+	\func{f}{\coprod_{i \in I} C_i}{I \times C}{(c,i)}{(i,f_i(c))}.
+	\end{align*}
+Mostremos que $f$ é bijeção. (Injetividade) Sejam $(c_1,i_1),(c_2,i_2) \in \coprod_{i \in I} C_i$ tais que $(i_1,f_{i_1}(c_1))=(i_2,f_{i_2}(c_2))$. Então $i_1=i_2$ e $f_{i_1}(c_1)=f_{i_2}(c_2)$, o que implica que $f_{i_1}=f_{i_2}$ e, portanto, $c_1=c_2$, já que $f_{i_1}$ é injetiva. Logo $(c_1,i_1)=(c_2,i_2)$. (Sobrejetividade) Seja $(i,c) \in I \times C$. Como $f_i$ é sobrejetiva, existe $c' \in C_i$ tal que $f_i(c')=c$. Portanto $f(c',i)=(i,f_i(c'))=(i,c)$.
+
+Da sobrejetividade de $f$ e da definição de produto de cardinais, segue que
+	\begin{equation*}
+	\card{\coprod_{i \in I} C_i} = \card{I \times C} = \card{I} \times \card{C}.
+	\end{equation*}
+\end{proof}
+
+\begin{theorem}
+Seja $(C_i)_{i \in I}$ uma família não vazia de conjuntos. Se existem $\min_{i \in I}{\card{C_i}}$ e $\max_{i \in I}{\card{C_i}}$, então
+\begin{equation*}
+\card{I} \times \min_{i \in I}{\card{C_i}} \leq \card{\coprod_{i \in I} C_i} \leq \card{I} \times \max_{i \in I}{\card{C_i}}.
+\end{equation*}
+\end{theorem}
+\begin{proof}
+Mostremos a primeira desigualdade. Seja $j \in I$ tal que $\card{C_j} := \min_{i \in I}{\card{C_i}}$ e $C := C_j$. Para cada $i \in I$, existe função injetiva $f_i: C \to C_i$. Considere a função
+	\begin{align*}
+	\func{f}{I \times C}{\coprod_{i \in I} C_i}{(i,c)}{(f_i(c),i)}.
+	\end{align*}
+Mostremos que $f$ é injetiva. Sejam $(i_1,c_1),(i_2,c_2) \in I \times C$ tais que $(f_{i_1}(c_1),i_1)=(f_{i_2}(c_2),i_2)$. Então $i_1=i_2$ e $f_{i_1}=f_{i_2}$. Como $f_{i_1}$ é injetiva, temos que $c_1=c_2$, logo $(i_1,c_1)=(i_2,c_2)$.
+
+Mostremos agora a segunda desigualdade. Seja $j \in I$ tal que $\card{C_j} := \max_{i \in I}{\card{C_i}}$ e $C := C_j$. Para cada $i \in I$, existe função sobrejetiva $f_i: C_i \to C$. Considere a função
+	\begin{align*}
+	\func{f}{\coprod_{i \in I} C_i}{I \times C}{(c,i)}{(i,f_i(c))}.
+	\end{align*}
+Mostremos que $f$ é sobrejetiva. Seja $(i,c) \in I \times C$. Como $f_i$ é sobrejetiva, existe $c' \in C_i$ tal que $f_i(c')=c$. Portanto $f(c',i)=(i,f_i(c'))=(i,c)$.	
+\end{proof}

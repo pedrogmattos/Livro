@@ -1,0 +1,1547 @@
+\chapter{Fibrados}
+
+\section{Fibrados topológicos}
+
+\begin{definition}
+Sejam $\bm X$ e $\bm F$ espaços topológicos. Um \emph{fibrado (topológico) de $\bm F$ sobre $\bm X$} é um par $(\bm E,\proj)$, em que $\bm E$ é um espaço topológico e $\proj\colon E \to X$ é uma função contínua sobrejetiva que satisfaz: para todo $e \in E$, existem vizinhança $A \subseteq X$ de $\proj(e)$ e, definindo $E|_A := \proj\inv(A) \subseteq E$, homeomorfismo $h\colon E|_A \to A \times F$ tais que $\proj_A \circ h = \proj$ (o diagrama comuta).
+%\begin{figure}
+%\centering
+%\begin{tikzpicture}[node distance=2cm, auto]
+%	\node (A) {$A$};
+%	\node (pA) [above of=A, left of=A] {$\proj\inv(A)$};
+%	\node (AF) [above of=A, right of=A] {$A \times F$};
+%	\draw[->] (pA) to node [swap] {$\proj$} (A);
+%	\draw[->, dashed] (pA) to node {$h$} (AF);
+%	\draw[->] (AF) to node {$\proj_A$} (A);
+%\end{tikzpicture}
+%\end{figure}
+\begin{figure}
+\centering
+\begin{tikzpicture}[node distance=2.5cm, auto]
+	\node (A) {$A$};
+	\node (EA) [above of=A] {$E|_A$};
+	\node (AF) [right of=EA] {$A \times F$};
+	\draw[->] (EA) to node [swap] {$\proj$} (A);
+	\draw[->] (EA) to node {$h$} (AF);
+	\draw[->] (AF) to node {$\proj_A$} (A);
+\end{tikzpicture}
+\end{figure}
+O espaço $\bm E$ é o \emph{espaço fibrado}, o espaço $\bm X$ é a \emph{base}, o espaço $\bm F$ é a \emph{fibra} e a função $\proj\colon E \to X$ é a \emph{projeção fibrada} de $(\bm E,\proj)$. Para cada $x \in X$,  a \emph{fibra de $E$ em $x$} é $E|_x := \proj\inv(\{x\})$.
+\end{definition}
+
+A definição significa que o espaço fibrado $\bm E$ é localmente um produto de sua base $\bm X$ e sua fibra $\bm F$. Globalmente isso não precisa ocorrer, o espaço fibrado não precisa ser homeomorfo ao produto de sua base com sua fibra. Quanto isso ocorre, o fibrado é chamado trivial.
+
+\begin{proposition}
+Sejam $\bm X$ e $\bm F$ espaços topológicos e $(\bm E,\proj)$ um fibrado de $\bm F$ sobre $\bm X$.
+	\begin{enumerate}
+	\item Para todo $x \in X$, a fibra $E|_x$ é homeomorfa a $F$;
+	\item A projeção fibrada $\proj\colon E \to X$ é aberta e a topologia de $\bm X$ é a topologia quociente de $\bm E$ por $\proj$.
+	\end{enumerate}
+\end{proposition}
+
+\begin{proposition}
+Sejam $\bm X$ e $\bm F$ espaços topológicos. O par $(\bm X \times \bm F,\proj_X)$ é um fibrado de $\bm F$ sobre $\bm X$.
+\end{proposition}
+\begin{proof}
+Basta tomar $A=X$ e $h= \Id\colon X \times F \to X \times F$ e segue que $h$ é homeomorfismo e $\proj_X \circ \Id = \proj_X$.
+\end{proof}
+
+\begin{example}[Faixa Torcida (Möbius)]
+Consideremos em $\R^2$ a equivalência
+	\begin{equation*}
+	(x,y) \sim (x',y') \sse \exists_{n \in \Z} (x',y') = (x+n,(-1)^n y).
+	\end{equation*}
+Defina $E := \quo{\R^2}{\sim}$ e denote por $q\colon \R^2 \to E$ o mapa quociente. Consideremos o mapa $\proj_0\colon \R^2 \to \R$ a projeção na coordenada $0$ e $r\colon \R \to \S^1$ o recobrimento
+	\begin{align*}
+	\func{r}{\R}{\S^1}{x}{(\cos(\tau x),\sin(\tau x))}.
+	\end{align*}
+Como $r \circ \proj_0\colon \R^2 \to \S^1$ é constante em cada classe de equivalência, existe única função contínua $\proj\colon E \to \S^1$ tal que $q \circ \proj = r \circ \proj_0$ (o diagrama comuta).
+\begin{figure}
+\centering
+\begin{tikzpicture}[node distance=2cm, auto]
+	\node (R2) {$\R^2$};
+	\node (R) [below of=R2] {$\R$};
+	\node (E) [right of=R2] {$E$};
+	\node (S) [below of=E] {$\S^1$};
+	\draw[->] (R2) to node [swap] {$\proj_0$} (R);
+	\draw[->] (R2) to node {$q$} (E);
+	\draw[->] (R) to node [swap] {$r$} (S);
+	\draw[->, dashed] (E) to node {$\proj$} (S);
+\end{tikzpicture}
+\end{figure}
+%\begin{figure}
+%\centering
+%\begin{tikzpicture}[node distance=2cm, auto]
+%	\node (R2) {$\R^2$};
+%	\node (R) [below of=R2, right of=R2] {$\R$};
+%	\node (S) [below of=R, right of=R] {$\S^1$};
+%	\node (E) [right of=R2, above of=S] {$E$};
+%	\draw[->] (R2) to node [swap] {$\proj_0$} (R);
+%	\draw[->] (R2) to node {$q$} (E);
+%	\draw[->] (R) to node [swap] {$r$} (S);
+%	\draw[->, dashed] (E) to node {$\proj$} (S);
+%\end{tikzpicture}
+%\end{figure}
+O par $(\bm E,\proj)$ é um fibrado de $\R$ sobre $\S^1$, chamado de \emph{faixa torcida}.
+\end{example}
+
+A faixa torcida é um importante objeto topológico e geométrico. Ela está intrinsecamente ligada ao fenômeno de não-orientabilidade de variedades diferenciais, como será demonstrado em capítulos mais à frente.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{comment}
+
+\paragraph{Cartas Fibradas}
+
+A descrição de um fibrado pode também ser dada na linguagem de atlas da seguinte forma. Um \emph{atlas fibrado} é um conjunto $\atlas = \{(A,h)\}$ de \emph{cartas fibradas} $(A,h)$ tal que
+	\begin{enumerate}
+	\item (Cobertura) $A \subseteq X$ e $E = \bigcup_{(A,h) \in \atlas} A$;
+	\item (Fibração Local) $h\colon E|_{A} \to A \times F$ homeomorfismo e $\proj_A \circ h = \proj$.
+	\end{enumerate}
+
+\end{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Fibrados vetorias}
+
+Nessa seção, consideraremos espaços lineares reais de dimensão finita, ou seja, $\R^n$, mas poderíamos considerar espaços lineares topológicos $\bm L$.
+
+\begin{definition}
+%Sejam $\bm X$ um espaço topológico e $\bm L$ um espaço linear topológico.
+Sejam $\bm X$ um espaço topológico e $n \in \N$. Um \emph{fibrado vetorial de posto $n$ sobre $\bm X$} (ou \emph{fibrado vetorial de $\R^n$ sobre $\bm X$}) é um par $(\bm E,\proj)$, em que $\bm E$ é um espaço topológico e $\proj\colon E \to X$ é uma função contínua sobrejetiva que, definido, para todo $A \subseteq X$ e todo $x \in X$, $E|_A := \proj\inv(A) \subseteq E$ e $E|_x := E|_{\{x\}}$, satisfaz:
+	\begin{enumerate}
+	\item Para todo $x \in X$, $E|_x$ tem estrutura linear;
+	\item Para todo $e \in E$, existem vizinhança $A \subseteq X$ de $\proj(e)$ e homeomorfismo $h\colon E|_A \to A \times \R^n$ tais que
+		\begin{enumerate}
+		\item $\proj_A \circ h = \proj$ (o diagrama comuta).
+\begin{figure}
+\centering
+\begin{tikzpicture}[node distance=2.5cm, auto]
+	\node (A) {$A$};
+	\node (EA) [above of=A] {$E|_A$};
+	\node (AF) [right of=EA] {$A \times \R^n$};
+	\draw[->] (EA) to node [swap] {$\proj$} (A);
+	\draw[->] (EA) to node {$h$} (AF);
+	\draw[->] (AF) to node {$\proj_A$} (A);
+\end{tikzpicture}
+\end{figure}
+
+		\item Para todo $x \in A$, $h|_x\colon E|_x \to \{x\} \times \R^n \simeq \R^n$ é um isomorfismo linear.
+		\end{enumerate}
+	\end{enumerate}
+O espaço $\bm E$ é o \emph{espaço fibrado}, o espaço $\bm X$ é a \emph{base}, o espaço $\R^n$ é a \emph{fibra} e a função $\proj\colon E \to X$ é a \emph{projeção fibrada} de $\bm E$. Cada par $(A,h)$ como acima é uma \emph{trivialização local}. Para cada $x \in X$,  a \emph{fibra de $E$ sobre $x$} é o espaço $E|_x = \proj\inv(\{x\})$.
+%O \emph{posto} de $(\bm E,\proj)$ é $\dim L$.
+
+Um \emph{fibrado vetorial diferencial} é um fibrado vetorial em que $\bm E$ e $\bm X$ são variedades diferenciais, $\proj$ é diferenciável e existem cartas fibradas $(A,h)$ como acima tais que $h$ é difeomorfismo.
+\end{definition}
+
+A seguinte proposição é evidente.
+
+\begin{proposition}
+Sejam $\bm X$ um espaço topológico (variedade diferencial), $n \in \N$ e $(\bm E,\proj)$ um fibrado vetorial (diferencial) de $\R^n$ sobre $\bm X$. O par $(\bm E,\proj)$ é um fibrado topológico de $\R^n$ sobre $\bm X$.
+\end{proposition}
+
+\begin{proposition}[Fibrado Tangente]
+Sejam $\bm V$ uma variedade diferencial $d$-dimensional. O par $(\Tg \bm V,\proj)$, em que $\Tg \bm V$ é o fibrado tangente, $\proj\colon V \to \Tg V$ é a projeção canônica e $\Tg V|_p$ tem a estrutura linear canônica, é um fibrado vetorial diferencial de posto $d$ sobre $\bm V$.
+\end{proposition}
+\begin{proof}
+Sejam $p \in V$ e $(A,\x)$ uma carta de $\bm V$ em $p$. Definimos a função
+	\begin{align*}
+	\func{h}{\Tg V|_A}{A \times \R^d}{\sum_{i \in [d]} v^i \derr{\x^i}_p}{(p,(v^0,\ldots,v^{d-1}))}.
+	\end{align*}
+Claramente $\proj_A \circ h = \proj$, e $h|_p\colon \Tg V|_p \to \Tg V|_p$ é linear. Seja $(\Tg V|_A,\varphi)$ a carta de $\Tg V$ induzida de $(A,\x)$. Então temos que $\varphi = (\x,\Id) \circ h\colon \Tg V|_A \to \x(A) \times \R^d$. Como $\varphi$ e $(\x,\Id)$ são difeomorfismos, $h$ também é, o que mostra que $(A,h)$ é uma trivialização local em $p$. Isso conclui a demonstração.
+\end{proof}
+
+\subsubsection{Funções de transição}
+
+Relembremos que $\Iso{\toplin}(\R^n)$ é o grupo de homeomorfismos lineares de $\R^n$ para $\R^n$.
+
+\begin{proposition}
+Seja $(\bm E,\proj)$ um fibrado vetorial diferencial de $\R^n$ sobre uma variedade diferencial $\bm V$. Para todas trivializações locais $(A,h)$ e $(A',h')$ de $\bm E$ tais que $A \cap A' \neq \emptyset$, existe função diferenciável
+	\begin{align*}
+	\func{T^h_{h'}}{A \cap A'}{\Iso{\toplin}(\R^n)}{p}{T^h_{h'}|_p}.
+	\end{align*}
+tal que, para todos $(p,v) \in (A \cap A') \times \R^n$,
+	\begin{equation*}
+	h' \circ h\inv(p,v) = (p,T^h_{h'}|_p (v)).
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+Sejam $(A,h)$ e $(A',h')$ trivializações locais de $\bm E$ tais que $A \cap A' \neq \emptyset$. O seguinte diagrama comuta.
+\begin{figure}
+\centering
+\begin{tikzpicture}[node distance=3cm, auto]
+	\node (A) {$A$};
+	\node (EA) [above of=A] {$E|_{A \cap A'}$};
+	\node (AF) [right of=EA] {$(A \cap A') \times \R^n$};
+	\node (A'F) [left of=EA] {$(A \cap A') \times \R^n$};
+	\draw[->] (EA) to node [swap] {$\proj$} (A);
+	\draw[->] (EA) to node {$h$} (AF);
+	\draw[->] (EA) to node [swap] {$h'$} (A'F);
+	\draw[->] (AF) to node {$\proj_A$} (A);
+	\draw[->] (A'F) to node [swap] {$\proj_A$} (A);
+\end{tikzpicture}
+\end{figure}
+
+Segue que $\proj_A \circ (h' \circ h\inv) = \proj_A$, o que implica que existe função diferenciável $\sigma\colon (A \cap A') \times \R^n \to \R^n$ tal que, para todo $(p,v) \in $
+	\begin{equation*}
+	h' \circ h\inv(p,v) = (p,\sigma(p,v)).
+	\end{equation*}
+Para todo $p \in A \cap A'$, $T^h_{h'}|_p := \sigma(p,\var)\colon \R^n \to \R^n$ é um homeomorfismo linear. Assim, a função
+	\begin{align*}
+	\func{T^h_{h'}}{A \cap A'}{\Iso{\toplin}(\R^n)}{p}{T^h_{h'}|_p}
+	\end{align*}
+é diferenciável e satisfaz o enunciado.
+\end{proof}
+
+\begin{definition}
+Seja $(\bm E,\proj)$ um fibrado vetorial diferencial de $\R^n$ sobre uma variedade diferencial $\bm V$. Para todas trivializações locais $(A,h)$ e $(A',h')$ de $\bm E$ tais que $A \cap A' \neq \emptyset$, a \emph{função de transição} de $(A,h)$ para $(A',h')$ é a função
+	\begin{align*}
+	\func{T^h_{h'}}{A \cap A'}{\Iso{\toplin}(\R^n)}{p}{T^h_{h'}|_p}.
+	\end{align*}
+\end{definition}
+
+No caso do fibrado tangente $\Tg \bm V$ de uma variedade diferencial $\bm V$, dadas cartas $(A,\x)$ e $(A',\x')$ de $\bm V$ tais que $A \cap A' \neq 0$, a função de transição das cartas $(\Tg V|_A,\varphi)$ e $(\Tg V|_{A'},\varphi')$ de $\Tg \bm V$ induzidas por $(A,\x)$ e $(A',\x')$, respectivamente, é a função
+	\begin{align*}
+	\func{\D(\x' \circ x\inv)}{A \cap A'}{\Iso{\toplin}(\R^n)}{p}{\D(\x' \circ \x\inv)|_p}.
+	\end{align*}
+
+\begin{proposition}[Construção por Atlas Fibrado]
+\label{topo:atlas.fibrado}
+Sejam $\bm V$ uma variedade diferencial $d$-dimensional, $(E|_p)_{p \in V}$ uma família de espaços lineares reais $n$-dimensionais, $E := \coprod_{p \in V} E|_p$, $\proj\colon E \to V$ uma função tal que $\proj(E|_p) = \{p\}$ e $\atlas$ um conjunto de pares $(A,h)$ tais que
+	\begin{enumerate}
+	\item $(A)_{(A,h) \in \atlas}$ é uma cobertura aberta de $V$;
+	
+	\item Para toda $(A,h) \in \atlas$, com $E|_A := \proj\inv(A)$, $h\colon E|_A \to A \times \R^n$ é uma bijeção tal que $h\downharpoonright_{E|_p}\colon E|_p \to \{p\} \times \R^n \simeq \R^n$ é um isomorfismo linear;
+	
+	\item Para todas $(A,h), (A',h') \in \atlas$, existe função diferenciável $T^h_{h'}\colon A \cap A' \to \Iso{\toplin}(\R^n)$ tal que, para todo $(p,v) \in (A \cap A') \times \R^n$,
+		\begin{equation*}
+		h' \circ h\inv(p,v) = (p,T^h_{h'}|_p(v)).
+		\end{equation*}
+	\end{enumerate}
+Então existe única estrutura diferencial sobre $E$ que o torna uma variedade diferencial $(d+n)$-dimensional de modo que $(\bm E,\proj)$ é um fibrado vetorial de $\R^n$ sobre $\bm V$.
+\end{proposition}
+\begin{proof}
+Seja $p \in V$ e $(A,h) \in \atlas$ tal que $p \in A$. Seja $(U_p,\x_p)$ uma carta de $V$ em $p$ tal que $U_p \subseteq A$. Defina a função
+	\begin{equation*}
+	\bar\x_p := (\x_p \times \Id_{\R^n}) \circ h \colon E|_{U_p} \to \x_p(U_p) \times \R^n \subseteq \R^d \times \R^n.
+	\end{equation*}
+
+Mostraremos que
+	\begin{equation*}
+	\{(E|_{U_p},\bar\x_p)\}_{p \in V}
+	\end{equation*}
+é um atlas diferencial $(d+n)$-dimensional de $E$.
+
+\begin{enumerate}
+\item (Cartas) Como $(U_p,\x_p)$ é carta, $\x_p$ é injetivo, portanto $(\x_p \times \Id_{\R^n})$ é injetivo; como $h$ é injetivo, segue que $\bar\x_p$ é injetivo.
+
+Como $(U_p,\x_p)$ é carta, $\x_p(U_p)$ é aberto, logo
+	\begin{equation*}
+	\bar\x_p(E|_{U_p}) = (\x_p \times \Id_{\R^n}) \circ h (E|_{U_p}) = (\x_p \times \Id_{\R^n})(U_p \times \R^n)  = \x_p(U_p) \times \R^n
+	\end{equation*}
+é aberto.
+
+\item (Cobertura) Como $p \in U_p$, $E|_p \subseteq E|_{U_p} \subseteq E$, logo
+	\begin{equation*}
+	E = \bigcup_{p \in V} E|_p \subseteq \bigcup_{p \in V} E|_{U_p} \subseteq E.
+	\end{equation*}
+
+\item (Compatibilidade) Sejam $p,p' \in V$. Então
+	\begin{equation*}
+	E|_{U_p} \cap E|_{U_{p'}} = \proj\inv(U_p) \cap \proj\inv(U_{p'}) = \proj\inv(U_p \cap U_{p'}) = E|_{U_p \cap U_p'}.
+	\end{equation*}
+
+Como $(U_p,\x_p)$ e $(U_p,\x_p)$ são compatíveis, então $\x_p(U_p \cap U_{p'})$ e $\x_{p'}(U_p \cap U_{p'})$ são abertos, logo
+	\begin{equation*}
+	\bar\x_p (E|_{U_p} \cap E|_{U_{p'}}) = \bar\x_p (E|_{U_p \cap U_p'}) = \x_p(U_p \cap U_{p'}) \times \R^n
+	\end{equation*}
+e
+	\begin{equation*}
+	\bar\x_{p'} (E|_{U_p} \cap E|_{U_p'}) = \bar\x_{p'} (E|_{U_p \cap U_p'}) = \x_{p'}(U_p \cap U_{p'}) \times \R^n
+	\end{equation*}
+são abertos.
+
+Como $\x_{p'}$ e $\x_p$ são difeomorfismos, $(\x_{p'} \times \Id_{\R^n})$ e $(\x_p \times \Id_{\R^n})$ são difeomorfismos; como $h' \circ h\inv$ é difeomorfismo, segue que
+	\begin{equation*}
+	\bar\x_{p'} \circ {\bar\x_p}\inv = (\x_{p'} \times \Id_{\R^n}) \circ h' \circ h\inv \circ (\x_p \times \Id_{\R^n})\inv
+	\end{equation*}
+é difeomorfismo.
+
+Isso mostra que $\{(E|_{U_p},\bar\x_p)\}_{p \in V}$ é um atlas diferencial de $E$. Se $\bm V$ é segundo-contável, tem subatlas enumerável, e podemos tomar $U_p$ nesse subatlas e $\{(E|_{U_p},\bar\x_p)\}_{p \in V}$ será um atlas enumerável, o que mostra que $\bm E$ é segundo contável. Se $\bm V$ é separado (T$_2$), note que pontos $e,e'$ estão em um mesmo espaço $E|_p$ estão em uma mesma carta, enquanto que se esses pontos estão respectivamente em espaços $E|_p$ e $E|_{p'}$ distintos, podemos tomar $U_p$ e $U_{p'}$ disjuntos, de modo que
+	\begin{equation*}
+	E|_{U_p} \cap E|_{U_{p'}} = E|_{U_p \cap U_{p'}} = \emptyset,
+	\end{equation*}
+que são vizinhanças abertas de $e,e'$, o que mostra que $E$ é separado.
+\end{enumerate}
+
+A atlas maximal desse atlas define uma estrutura diferencial sobre $E$ e temos uma variedade diferencial $\bm E$.
+
+Para todo $(A,h) \in \atlas$, a função $h\colon E|_{U_p} \to U_p \times \R^n$ é um difeomorfismo, pois sua representação coordenada com respeito às cartas $(E|_{U_p}, \bar\x_p)$ de $E$ e $(U_p \times \R^n,\x_p \times \Id_{\R^n})$ de $U_p \times \R^n$ é a identidade
+	\begin{equation*}
+	(\x_p \times \Id_{\R^n}) \circ h \circ {\bar\x_p}\inv = \Id_{\x_p(U_p) \times \R^n} := \x_p(U_p) \times \R^n \to \x_p(U_p) \times \R^n,
+	\end{equation*}
+um difeomorfismo.
+
+A função $\proj\colon E \to V$ é diferenciável, pois sua representação coordenada com respeito às cartas $(E|_{U_p}, \bar\x_p)$ de $E$ e $(U_p,\x_p)$ de $V$ é a projeção
+	\begin{equation*}
+	\x_p \circ \proj \circ {\bar\x_p}\inv = \proj_{\x_p(U_p)}\colon \x_p(U_p) \times \R^n \to \x_p(U_p),
+	\end{equation*}
+uma função diferenciável.
+
+Mostremos que vale $\proj_{U_p} \circ h = \proj$. Seja $e \in E|_{U_p}$. Então existe $p' \in U_p$ tal que $e \in E|_{p'}$. Por hipótese, $\proj(e)=p'$. Por outro lado, como $h(E|_p) = \{p\} \times \R^n$, existe $v \in \R^n$ tal que $h(e) = (p',v)$, portanto
+	\begin{equation*}
+	\proj_{U_p} \circ h(e) = p' = \proj(e).
+	\end{equation*}
+Por hipótese, $h\downharpoonright_{E|_p}\colon E|_p \to \{p\} \times \R^n \simeq \R^n$ é um isomorfismo linear. Isso mostra que $h$ é uma trivialização local e, como $(A)_{(A,h) \in \atlas}$ cobre $V$, segue que $(\bm E,\pi)$ é um fibrado vetorial de $\R^n$ sobre $\bm V$.
+
+A unicidade segue da estrutura diferencial segue do fato de que as funções $(h)_{(A,h) \in \atlas}$ devem ser difeomorfismos, portanto qualquer outra estrutura deve conter as cartas construídas e portanto será igual a essa estrutura.
+\end{proof}
+
+As funções de transição $T^h_{h'}$ satisfazem as seguintes propriedades.
+
+\begin{proposition}
+\label{topo:prop.func.trans}
+Seja $(\bm E,\proj)$ um fibrado vetorial diferencial de $\R^n$ sobre uma variedade diferencial $\bm V$.
+	\begin{enumerate}
+%	\item (Diferenciabilidade) Para todas cartas fibradas $(A,h)$ e $(A',h')$ de $\bm E$, $T^h_{h'}$ é diferenciável;
+%
+	\item (Cociclicidade) Para todas trivializações locais $(A,h)$, $(A',h')$ e $(A'',h'')$ de $\bm E$ e todo $p \in A \cap A' \cap A''$,
+		\begin{equation*}
+		T^h_{h''}|_p = T^{h'}_{h''}|_p \circ T^h_{h'}|_p.
+		\end{equation*}
+
+	\item Para toda trivialização local $(A,h)$ de $\bm E$ e todo $p \in A$,
+		\begin{equation*}
+		T^h_h|_p = \Id_{\R^n};
+		\end{equation*}
+	
+	\item Para todas trivializações locais $(A,h)$ e $(A',h')$ de $\bm E$ e todo $p \in A \cap A'$,
+		\begin{equation*}
+		T^{h'}_h|_p = {T^h_{h'}|_p}\inv;
+		\end{equation*}
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item Como $h'' \circ h\inv = (h'' \circ {h'}\inv) \circ (h' \circ h\inv)$, segue que, para todo $v \in \R^n$,
+		\begin{align*}
+		(p,T^h_{h''}|_p(v)) &= h'' \circ h\inv (p,v) \\
+			&= (h'' \circ {h'}\inv) \circ (h' \circ h\inv) (p,v) \\
+			&= h'' \circ {h'}\inv(p,T^h_{h'}|_p(v)) \\
+			&= (p,T^{h'}_{h''}|_p \circ T^h_{h'}|_p (v)),
+		\end{align*}
+o que mostra que $T^h_{h''}|_p(v) = T^{h'}_{h''}|_p \circ T^h_{h'}|_p (v)$, logo $T^h_{h''}|_p = T^{h'}_{h''}|_p \circ T^h_{h'}|_p$.
+
+	\item Do item anterior segue que
+		\begin{equation*}
+		T^h_h|_p = T^h_h|_p \circ T^h_h|_p,
+		\end{equation*}
+o que mostra que
+		\begin{equation*}
+		T^h_h|_p = T^h_h|_p \circ (T^h_h|_p)\inv = \Id_{\R^n}.
+		\end{equation*}
+	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Fiz a demostração mas percebi que segue de 1.
+\begin{comment}
+Como $h \circ h\inv = \Id$, segue que, para todo $v \in \R^n$,
+		\begin{equation*}
+		(p,v) = h \circ h\inv(p,v) = (p,T^h_h|_p (v)),
+		\end{equation*}
+o que mostra que $v = T^h_h|_p (v)$, logo $T^h_h|_p = \Id_{\R^n}$.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+	\item Dos itens anteriores segue que
+		\begin{equation*}
+		T^{h'}_h|_p \circ T_h^{h'}|_p = T^h_h|_p = \Id_{\R^n}
+		\end{equation*}
+e
+		\begin{equation*}
+		T^h_{h'}|_p \circ T^{h'}_h|_p = T^{h'}_{h'}|_p = \Id_{\R^n},
+		\end{equation*}
+logo $T^{h'}_h|_p = {T^h_{h'}|_p}\inv$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Fiz a demostração mas logo percebi que segue de 1 e 3.
+\begin{comment}
+Como $(h' \circ h\inv) \circ (h \circ {h'}\inv) = \Id$ e $(h \circ {h'}\inv) \circ (h' \circ h\inv)= \Id$, segue que, para todo $v \in \R^n$,
+		\begin{align*}
+		(p,v) &= (h' \circ h\inv) \circ (h \circ {h'}\inv) (p,v) \\
+			&= h' \circ h\inv(p,T^{h'}_h|_p(v)) \\
+			&= (p,(T^h_{h'}|_p \circ T^{h'}_h|_p) (v))
+		\end{align*}
+e
+		\begin{align*}
+		(p,v) &= (h \circ {h'}\inv) \circ (h' \circ h\inv) (p,v) \\
+			&= h \circ {h'}\inv(p,T^h_{h'}|_p(v)) \\
+			&= (p,(T^{h'}_h|_p \circ T^h_{h'}|_p) (v)),
+		\end{align*}
+o que mostra que
+		\begin{equation*}
+		v = (T^h_{h'}|_p \circ T^{h'}_h|_p) (v) = (T^{h'}_h|_p \circ T^h_{h'}|_p) (v),
+		\end{equation*}
+logo ${T^h_{h'}|_p}\inv = T^{h'}_h|_p$.
+\end{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\end{enumerate}
+\end{proof}
+
+Reciprocamente, a partir de uma família de mapas como acima, podemos construir o fibrado vetorial. No entanto, essa construção não é necessariamente única.
+
+\begin{proposition}[Construção por Funções de Transição]
+Sejam $\bm V$ uma variedade diferencial, $\mathcal C = (A_i)_{i \in I}$ uma cobertura aberta de $V$ e $\{T^i_{i'}\}_{(i,i') \in I^2}$ um conjunto de funções diferenciáveis
+	\begin{align*}
+	\func{T^i_{i'}}{A_i \cap A_{i'}}{\Iso{\toplin}(\R^n)}{p}{T^i_{i'}|_p}
+	\end{align*}
+tais que
+	\begin{enumerate}
+%	\item (Identidade) Para todo $i \in I$ e todo $p \in A_i$,
+%		\begin{equation*}
+%		T^i_i|_p = \Id_{\R^n};
+%		\end{equation*}
+%	
+%	\item (Simetria) Para todos $i,i' \in I$ e todo $p \in A_i \cap A_{i'}$,
+%		\begin{equation*}
+%		T^{i'}_i|_p = {T^i_{i'}|_p}\inv;
+%		\end{equation*}
+%	
+	\item (Cociclicidade) Para todos $i,i',i'' \in I$ e todo $p \in A_i \cap A_{i'} \cap A_{i''}$,
+		\begin{equation*}
+		T^i_{i''}|_p = T^{i'}_{i''}|_p \circ T^i_{i'}|_p.
+		\end{equation*}
+	\end{enumerate}
+
+Existem variedade diferencial $\bm E$ e $\proj\colon E \to V$ função diferenciável sobrejetiva tal que $(\bm E,\proj)$ é um fibrado vetorial diferencial de $\R^n$ sobre $\bm V$.
+\end{proposition}
+% DEMOSNTRAÇÃO ORIGINAL MAIS COMPLICADA
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{comment}
+
+\begin{proof}
+A construção é simples de se acompanhar, mas leva alguns passos.
+
+\begin{enumerate}
+\item (Construir o espaço $E$) Definimos
+	\begin{equation*}
+	E' := \coprod_{i \in I} (A_i \times \R^n) = \set{(i,(p,v))}{i \in I \e (p,v) \in A_i \times \R^n}
+	\end{equation*}
+e a relação em $E'$ dada por
+	\begin{equation*}
+	(i,(p,v)) \sim (i',(p',v')) \sse p=p' \e v'=T^i_{i'}|_p(v).
+	\end{equation*}
+Mostremos que $\sim$ é relação de equivalência.
+
+(Reflexividade) Seja $(i,(p,v)) \in E$. Da reflexividade de $\{T^i_{i'}\}_{(i,i') \in I^2}$ segue que $T^i_i|_p (v) = v$, portanto $(i,(p,v)) \sim (i,(p,v))$.
+
+(Simetria) Sejam $(i,(p,v)), (i',(p',v')) \in E'$ tais que $(i,(p,v)) \sim (i',(p',v'))$. Então $p=p'$ e $v'=T^i_{i'}|_p(v)$. Da simetria de $\{T^i_{i'}\}_{(i,i') \in I^2}$ segue que
+	\begin{equation*}
+	v = T^{i'}_i|_p \circ T^i_{i'}|_p (v) = T^{i'}_i|_p(v').
+	\end{equation*}
+Como $p'=p$, segue que $(i',(p',v')) \sim (i,(p,v))$.
+
+(Transitividade) Sejam $(i,(p,v)), (i',(p',v')), (i'',(p'',v'')) \in E'$ tais que $(i,(p,v)) \sim (i',(p',v'))$ e $(i',(p',v')) \sim (i'',(p'',v''))$. Então $p=p'$, $p'=p''$, $v'=T^i_{i'}|_p(v)$ e $v''=T^{i'}_{i''}|_p(v')$. Da transitividade de $\{T^i_{i'}\}_{(i,i') \in I^2}$ segue que
+	\begin{equation*}
+	T^i_{i''}|_p (v) = T^{i'}_{i''}|_p \circ T^i_{i'}|_p(v) = T^{i'}_{i''}|_p (v') = v''.
+	\end{equation*}
+Como $p''=p$, segue que $(i,(p,v)) \sim (i'',(p'',v''))$.
+
+Definimos o espaço
+	\begin{equation*}
+	E:= \quo{E'}{\sim}.
+	\end{equation*}
+
+\item (Construir os espaços $E|_p$) Para todo $p \in V$, definimos
+	\begin{equation*}
+	E|_p := \set{[(i,(q,v))] \in E}{q=p}.
+	\end{equation*}
+Notemos que, para todos $p,p' \in V$, se $E|_p \cap E|_{p'} \neq \emptyset$, então $p=p'$, pois se $[(i,(q,v))] \in E|_p \cap E|_{p'}$, então $q=p$ e $q=p'$, logo $p=p'$. Além disso, como $(A_i)_{i \in I}$ é cobertura de $V$,
+	\begin{equation*}
+	E = \set{[(i,(p,v))]}{i \in I \e (p,v) \in A_i \times \R^n} = \bigcup_{p \in V} E|_p,
+	\end{equation*}
+o que implica que
+	\begin{equation*}
+	E \simeq \coprod_{p \in V} E|_p.
+	\end{equation*}
+
+Agora vamos dar estrutura de grupo para $E|_p$.
+	\begin{enumerate}
+	\item ($+$) A soma em $E|_p$ é a função
+	\begin{align*}
+	\func{+}{E|_p \times E|_p}{E|_p}{([(i,(p,v))] , [(i',(p,v'))])}{[(i,(p,v + T^{i'}_i|_p(v')))]},
+	\end{align*}
+que está bem definida pois se $(i,(p,v)) \sim (j,(p,u))$ e $(i',(p,v')) \sim (j',(p,u'))$, então $u = T^i_j|_p(v)$ e $u' = T^{i'}_{j'}|_p(v')$, logo
+	\begin{align*}
+	u + T^{j'}_j|_p(u') &= T^i_j|_p(v) + T^{j'}_j|_p \circ T^{i'}_{j'}|_p(v') \\
+		&= T^i_j|_p(v) + T^{i'}_j|_p (v') \\
+		&= T^i_j|_p(v) + T^i_j|_p \circ T^{i'}_i|_p(v') \\
+		&= T^i_j|_p (v + T^{i'}_i|_p(v')),
+	\end{align*}
+o que implica que
+	\begin{align*}
+	[(i,(p,v))] + [(i',(p,v'))] &= [(i,(p,v + T^{i'}_i|_p(v')))] \\
+		&= (j,(p,u + T^{j'}_j|_p(u'))) \\
+		&= [(j,(p,u))] + [(j',(p,u'))].
+	\end{align*}
+
+A soma é associativa: para todos $[(i,(p,v))], [(i',(p,v'))], [(i'',(p,v''))] \in E|_p$, segue da transitividade de $\{T^i_{i'}\}_{(i,i') \in I^2}$ que
+	\begin{align*}
+	([(i,(p,v))] + &[(i',(p,v'))]) + [(i'',(p,v''))] \\
+		&= [(i,(p,v + T^{i'}_i|_p(v')))] + [(i'',(p,v''))] \\
+		&= [(i,(p,v + T^{i'}_i|_p(v') + T^{i''}_i|_p (v'')))] \\
+		&= [(i,(p,v + T^{i'}_i|_p(v') + T^{i'}_i|_p \circ T^{i''}_{i'}|_p (v'')))]) \\ 
+		&= [(i,(p,v + T^{i'}_i|_p(v' + T^{i''}_{i'}|_p (v''))))]) \\ 
+		&= [(i,(p,v))] + [(i',(p,v' + T^{i''}_{i'}|_p (v'')))]) \\ 
+		&= [(i,(p,v))] + ([(i',(p,v'))]) + [(i'',(p,v''))]).
+	\end{align*}
+%	\begin{align*}
+%	([i,p,v] + &[i',p,v']) + [i'',p,v''] \\
+%		&= [i,p,v + T^{i'}_i|_p v'] + [i'',p,v''] \\
+%		&= [i,p,v + T^{i'}_i|_p v' + T^{i''}_i|_p v''] \\
+%		&= [(i,p,v + T^{i'}_i|_p v' + T^{i'}_i|_p \circ T^{i''}_{i'}|_p v'']) \\ 
+%		&= [i,p,v + T^{i'}_i|_p (v' + T^{i''}_{i'}|_p v'')]) \\ 
+%		&= [i,p,v] + [i',p,v' + T^{i''}_{i'}|_p v'']) \\ 
+%		&= [i,p,v] + ([i',p,v']) + [i'',p,v''])
+%	\end{align*}
+
+A soma é comutativa: para todos $[(i,(p,v))], [(i',(p,v'))] \in E|_p$, segue da simetria de $\{T^i_{i'}\}_{(i,i') \in I^2}$ e da linearidade de $T^i_{i'}|_p$ que
+	\begin{align*}
+	[(i,(p,v))] + [(i',(p,v'))] &= [(i,(p,v + T^{i'}_i|_p(v')))] \\
+		&= [(i',(p,T^i_{i'}|_p (v + T^{i'}_i|_p(v'))))] \\
+		&= [(i',(p,T^i_{i'}|_p (v) + T^i_{i'}|_p \circ T^{i'}_i|_p(v'))))] \\
+		&= [(i',(p,v' + T^i_{i'}|_p(v)))] \\
+		&= [(i',(p,v'))] + [(i,(p,v))].
+	\end{align*}
+%	\begin{align*}
+%	[i,p,v] + [i',p,v'] &= [i,p,v + T^{i'}_i|_p v'] \\
+%		&= [i',p,T^i_{i'}|_p (v + T^{i'}_i|_p v')] \\
+%		&= [i',p,T^i_{i'}|_p v + T^i_{i'}|_p \circ T^{i'}_i|_p v'] \\
+%		&= [i',p,v' + T^i_{i'}|_p v] \\
+%		&= [i',p,v'] + [i,p,v].
+%	\end{align*}
+	
+	\item ($0$) A identidade em $E|_p$ é
+	\begin{equation*}
+	0 := [(i,(p,0))],
+	\end{equation*}
+que está bem definida pois, para todo $i' \in I$ tal que $p \in A_{i'}$, segue da linearidade de $T^i_{i'}|_p$ que
+	\begin{equation*}
+	(i,(p,0)) \sim (i',(p,T^i_{i'}|_p(0))) = (i',(p,0)).
+	\end{equation*}
+
+Ela é identidade de $+$: para todo $[(i,(p,v))] \in E|_p$, segue da reflexividade de $T^i_i|_p$ que
+	\begin{equation*}
+	0 + [(i,(p,v))] = [(i,(p,0))] + [(i,(p,v))] = [(i,(p,0 + v))] = [(i,(p,v))].
+	\end{equation*}
+	
+	\item ($-$) A inversa em $E|_p$ é a função
+	\begin{align*}
+	\func{-}{E|_p}{E|_p}{[(i,(p,v))]}{[(i,(p,-v))]},
+	\end{align*}
+que está bem definida pois, se $(i,(p,v)) \sim (j,(p,u))$, então $u=T^i_j|_p (v)$, logo
+	\begin{equation*}
+	-u = -T^i_j|_p (v) = T^i_j|_p (-v),
+	\end{equation*}
+o que implica que
+	\begin{equation*}
+	-[(j,(p,u))] = [(j,(p,-u))] = [(j,(p,T^i_j|_p(-v)))] = [(i,(p,-v))].
+	\end{equation*}
+
+Ela é inversa com respeito a $+$ e $0$: para todo $[(i,(p,v))] \in E|_p$,
+	\begin{align*}
+	-[(i,(p,v))] + [(i,(p,v))] &= [(i,(p,-v))] + [(i,(p,v))] \\
+		&= [(i,(p,-v+v))] \\
+		&= [(i,(p,0))] \\
+		&= 0.
+	\end{align*}
+	\end{enumerate}
+
+Isso mostra que $\bm{E|_p} := (E|_p,+,-,0)$ é um grupo comutativo. Agora vamos construir a estrutura de espaço linear, ou seja, a ação de $\R$ sobre $E|_p$.
+
+($\cdot$) A ação de $\R$ sobre $E|_p$ é a função
+	\begin{align*}
+	\func{\cdot}{\R \times E|_p}{E|_p}{(c,[(i,(p,v)])}{[(i,(p,cv)]},
+	\end{align*}
+que está bem definida pois se $(i,(p,v)) \sim (i',(p,v'))$, segue da linearidade de $T^i_{i'}|_p$ que
+	\begin{equation*}
+	(i',(p,cv')) = (i',(p,cT^i_{i'}|_p (v))) = (i',(p,T^i_{i'}|_p (cv))) \sim (i,(p,cv)).
+	\end{equation*}
+
+	\begin{enumerate}
+	\item Seja $c \in \R$. Para todos $[(i,(p,v)], [(i',(p,v')] \in E|_p$, segue da linearidade de $T^{i'}_i|_p$ que
+		\begin{align*}
+		c([(i,(p,v)] + [(i',(p,v')]) &= c[(i,(p,v+T^{i'}_i|_p (v'))] \\
+			&= [(i,(p,cv+cT^{i'}_i|_p (v'))] \\
+			&= [(i,(p,cv+T^{i'}_i|_p (cv'))] \\
+			&= [(i,(p,cv)] + [(i',(p,cv')] \\
+			&= c[(i,(p,v)] + c[(i',(p,v')].
+		\end{align*}
+	
+	\item Para todos $c,c' \in \R$ e $[(i,(p,v)] \in E|_p$,
+		\begin{align*}
+		(c+c')[(i,(p,v)] &= [(i,(p,(c+c')v)] \\
+			&= [(i,(p,cv + c'v)] \\
+			&= [(i,(p,cv)] + [(i,(p,c'v)] \\
+			&= c[(i,(p,v)] + c'[(i,(p,v)],
+		\end{align*}
+		\begin{align*}
+		(cc')[(i,(p,v)] &= [(i,(p,(cc')v)] \\
+			&= [(i,(p,c(c'v))] \\
+			&= c[(i,(p,c'v)] \\
+			&= c(c'[(i,(p,v)])
+		\end{align*}	
+e
+		\begin{equation*}
+		1[(i,(p,v)] = [(i,(p,1v)] = [(i,(p,v)].
+		\end{equation*}
+	\end{enumerate}
+
+Isso mostra que $(\bm{E|_p},\cdot)$ é um espaço linear sobre $\R$. Esse espaço tem dimensão $n$, pois $([(i,(p,b_k))])_{k \in [n]}$ é uma base de $E|_p$, em que $(b_k)_{k \in [n]}$ é uma base de $\R^n$. Isso ocorre pois, se $[(i,(p,v))] \in E|_p$, então como $v \in \R^n$ e $(b_k)_{k \in [n]}$ gera $\R^n$, existe $(v^k)_{k \in [n]} \in \R^n$ tal que
+	\begin{equation*}
+	v = \sum_{k \in [n]} v^k b_k,
+	\end{equation*}
+logo
+	\begin{equation*}
+	[(i,(p,v))] = [(i,(p,\sum_{k \in [n]} v^k b_k))] = \sum_{k \in [n]} v^k [(i,(p,b_k))],
+	\end{equation*}
+o que mostra que $([(i,(p,b_k))])_{k \in [n]}$ gera $E|_p$, e se $(c^k)_{k \in [n]} \in \R^n$ são não nulos, então $\sum_{k \in [n]} c^k b_k \neq 0$, pois $(b_k)_{k \in [n]}$ é linearmente independente, logo
+	\begin{equation*}
+	\sum_{k \in [n]} c^k [(i,(p,b_k))] = [(i,(p,\sum_{k \in [n]} c^k b_k))] \neq 0,
+	\end{equation*}
+o que mostra que $([(i,(p,b_k))])_{k \in [n]}$ é linearmente independente, portanto base.
+
+\item (Construir a projeção $\proj$) Definimos função
+	\begin{align*}
+	\func{\proj}{E}{V}{[(i,(p,v))]}{p},
+	\end{align*}
+que está bem definida pois, se $(i,(p,v)), (i',(p',v')) \in E'$ são tais que $(i,(p,v)) \sim (i',(p',v'))$, então $p=p'$.
+%, portanto
+%	\begin{equation*}
+%	\proj([(i,(p,v))]) = p = p' = \proj([(i',(p',v'))]).
+%	\end{equation*}
+% Ainda, $\proj$ é sobrejetiva. Seja $p \in V$. Como $\mathcal C = (A_i)_{i \in I}$ é cobertura de $V$, existe $i \in I$ tal que $p \in A_i$. Tomando $v \in \R^n$, temos que
+%	\begin{equation*}
+%	\proj([(i,(p,v))]) = p.
+%	\end{equation*}
+Claramente $\proj(E|_p) = \{p\}$.
+
+\item (Construir as trivializações locais $h_i$) Definimos, para todo $C \subseteq V$, $E|_C := \proj\inv(C)$. Notemos que, para todo $p \in V$, $E|_p := E|_{\{p\}}$.
+
+Para todo $j \in I$, a função
+	\begin{align*}
+	\func{h_j}{E|_{A_j}}{A_j \times \R^n}{[(i,(p,v))]}{(p,T^i_j|_p (v))}.
+	\end{align*}
+Note que, se o representante de $e \in E|_{A_j}$ que está se considerando é $(j,(p,v))$ --- ou seja, $e = [(j,(p,v))]$ --- então
+	\begin{equation*}
+	h_j([(j,(p,v))]) = (p,T^j_j|_p(v)) = (p,v).
+	\end{equation*}
+Mostremos que $h_j$ está bem definida. Sejam $(i,(p,v)), (i',(p',v')) \in E|_{A_i}$ tais que $(i,(p,v)) \sim (i',(p',v'))$. Então $p=p'$ e $v' = T^i_{i'}|_p (v)$, portanto
+	\begin{equation*}
+	T^{i'}_j|_{p'} (v') = T^{i'}_j|_p \circ T^i_{i'}|_p (v) = T^i_j|_p (v),
+	\end{equation*}
+o que mostra que
+	\begin{equation*}
+	h_j ([(i,(p,v))]) = (p,T^i_j|_p (v)) = (p',T^{i'}_j|_{p'} (v')) = h_j ([(i',(p',v'))]).
+	\end{equation*}
+Toda classe $[(i',(p',v'))] \in E|_{A_j}$ tem representante $(j,(p,v))$, pois basta tomar $p=p'$ e $v=T^{i'}_j|_p(v)$ e temos $(i',(p',v')) \sim (j,(p,v))$, portanto podemos sempre tomar um representante com $j$.
+
+A função $h_j\colon A_j \times \R^n \to E|_{A_j}$ tem inversa
+	\begin{align*}
+	\func{{h_j}\inv}{A_j \times \R^n}{E|_{A_j}}{(p,v)}{[i,(p,v))]},
+	\end{align*}
+pois, para todo $[(j,(p,v))] \in E|_{A_j}$ e todo $(p,v) \in A_j \times \R^n$,
+	\begin{equation*}
+	{h_j}\inv \circ h_j [(j,(p,v))] = {h_j}\inv (p,v) = [(j,(p,v))]
+	\end{equation*}
+e
+	\begin{equation*}
+	h_j \circ {h_j}\inv (p,v) = h_j [(j,(p,v))] = (p,v).
+	\end{equation*}
+
+%Mostremos que $\proj_{A_j} \circ h_j = \proj$. Seja $[(j,(p,v))] \in E|_{A_j}$. Então
+%	\begin{equation*}
+%	\proj_{A_j} \circ h_j ([(j,(p,v))]) = \proj_{A_j} (p,v) = p = \proj ([(j,(p,v))]),
+%	\end{equation*}
+%o que mostra que $\proj_{A_j} \circ h_j = \proj$.
+
+Mostremos que, para todo $i \in I$, a função $h_i\downharpoonright_{E|_p} \colon E|_p \to \{p\} \times \R^n$ é isomorfismo linear. Primeiro notemos que o contradomínio de $h_i\downharpoonright_{E|_p}$ é $\{p\} \times \R^n$, para todo $[(i,(p,v))] \in E|_p$,
+	\begin{equation*}
+	h_i ([(i,(p,v))]) = (p,v) \in \{p\} \times \R^n.
+	\end{equation*}
+Além disso, ${h_i}\inv\downharpoonright_{\{p\} \times \R^n} \colon \{p\} \times \R^n \to E|_p$ é a inversa de $h_i\downharpoonright_{E|_p}$. Notemos que o contradomínio de ${h_i}\inv\downharpoonright_{\{p\} \times \R^n}$ é $E|_p$, pois
+	\begin{equation*}
+	{h_i}\inv (p,v) = [(i,(p,v))] \in E|_p.
+	\end{equation*}
+Claramente ${h_i}\inv\downharpoonright_{\{p\} \times \R^n} = {h_i|_p}\inv$.
+
+Para mostrar a linearidade, sejam $[(i,(p,v))], [(i,(p,v'))] \in E|_p$ e $c \in \R$. Então
+	\begin{align*}
+	h_i|_p (c[(i,(p,v))] + [(i,(p,v'))]) &= h_i|_p ([(i,(p,cv+v'))]) \\
+		&= (p,cv+v') \\
+		&= c(p,v) + (p,v').
+	\end{align*}
+
+\item Agora notemos que, para todos $i,i' \in I$ e $p \in A_i \cap A_{i'}$,
+	\begin{equation*}
+	h_{i'} \circ {h_i}\inv (p,v) = h_{i'} ([(i,(p,v))]) = (p,T^i_{i'}|_p (v)),
+	\end{equation*}
+o que mostra que $T^i_{i'}$ é a função de transição de $(A_i,h_i)$ para $(A_{i'},h_{i'})$.
+\end{enumerate}
+
+Pela proposição~\ref{topo:atlas.fibrado}, essa construção mostra que $E$ tem única estrutura diferencial tal que $(\bm E, \proj)$ é um fibrado vetorial de $\R^n$ sobre $\bm V$.
+\end{proof}
+\end{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% DEMOSNTRAÇÃO SIMPLIFICADA
+\begin{proof}
+A construção é simples de se acompanhar, mas tem várias etapas. Construiremos o espaço $E$, os espaços $E|_p$, a projeção $\proj\colon E \to V$ e as funções $h$ e usaremos a proposição~\ref{topo:atlas.fibrado} para mostrar a existência de estrutura diferencial para termos um fibrado vetorial.
+
+Por simplicidade, para todos $i,i' \in I$, $p \in A_i \cap A_{i'}$ e $v \in \R^n$, denotaremos $T^i_{i'}|_p (v)$ por $T^i_{i'}|_p v$.
+\begin{enumerate}
+\item (Construir o espaço $E$) Definimos
+	\begin{equation*}
+	E' := \coprod_{i \in I} (A_i \times \R^n) = \set{(i,(p,v))}{i \in I \e (p,v) \in A_i \times \R^n}.
+	\end{equation*}
+Por simplicidade, denotaremos $(i,(p,v)) \in E'$ por $(i,p,v)$. Definimos a relação $\sim$ em $E'$ por
+	\begin{equation*}
+	(i,p,v) \sim (i',p',v') \sse p=p' \e v'=T^i_{i'}|_p v.
+	\end{equation*}
+Mostremos que $\sim$ é relação de equivalência.
+	
+	\begin{enumerate}
+	\item (Reflexividade) Primeiro notemos que, pelo mesmo argumento de \ref{topo:prop.func.trans}, para todo $i \in I$ vale que $T^i_i|_p = \Id_{\R^n}$. Seja $(i,p,v) \in E$. %Da identidade de $\{T^i_{i'}\}_{(i,i') \in I^2}$
+Disso segue que $T^i_i|_p v = v$, portanto $(i,p,v) \sim (i,p,v)$.
+	
+	\item (Simetria) Sejam $(i,p,v), (i',p',v') \in E'$ tais que $(i,p,v) \sim (i',p',v')$. Então $p=p'$ e $v'=T^i_{i'}|_p v$. Da % identidade e a 
+cociclicidade de $\{T^i_{i'}\}_{(i,i') \in I^2}$ segue que
+	\begin{equation*}
+	v = T^i_i|_p v = T^{i'}_i|_p \circ T^i_{i'}|_p v = T^{i'}_i|_p v'.
+	\end{equation*}
+Como $p'=p$, segue que $(i',p',v') \sim (i,p,v)$.
+	
+	\item (Transitividade) Sejam $(i,p,v), (i',p',v'), (i'',p'',v'') \in E'$ tais que $(i,p,v) \sim (i',p',v')$ e $(i',p',v') \sim (i'',p'',v'')$. Então $p=p'$, $p'=p''$, $v'=T^i_{i'}|_p v$ e $v''=T^{i'}_{i''}|_p v'$. Da cociclicidade de $\{T^i_{i'}\}_{(i,i') \in I^2}$ segue que
+	\begin{equation*}
+	T^i_{i''}|_p v = T^{i'}_{i''}|_p \circ T^i_{i'}|_p v = T^{i'}_{i''}|_p v' = v''.
+	\end{equation*}
+Como $p''=p$, segue que $(i,p,v) \sim (i'',p'',v'')$.
+	\end{enumerate}
+
+Definimos então o espaço
+	\begin{equation*}
+	E:= \quo{E'}{\sim} = \set{[(i,p,v)]}{i \in I \e (p,v) \in A_i \times \R^n}.
+	\end{equation*}
+Por simplicidade, denotaremos $[(i,p,v)] \in E$ por $[i,p,v]$.
+
+\item (Construir os espaços $E|_p$) Para todo $p \in V$, definimos
+	\begin{equation*}
+	E|_p := \set{[i,q,v] \in E}{q=p}.
+	\end{equation*}
+Notemos que, para todos $p,p' \in V$, se $E|_p \cap E|_{p'} \neq \emptyset$, então $p=p'$, pois se $[i,q,v] \in E|_p \cap E|_{p'}$, então $q=p$ e $q=p'$, logo $p=p'$. Além disso, como $(A_i)_{i \in I}$ é cobertura de $V$,
+	\begin{equation*}
+	E = \set{[i,p,v]}{i \in I \e (p,v) \in A_i \times \R^n} = \bigcup_{p \in V} E|_p,
+	\end{equation*}
+o que implica que
+	\begin{equation*}
+	E \simeq \coprod_{p \in V} E|_p.
+	\end{equation*}
+
+Para todo $[j,p,u] \in E|_p$ e todo $i \in I$ tal que $p \in A_i$, existe único $v \in \R^n$ tal que $(i,p,v) \in [j,p,u]$. Para mostrar a existência, basta tomar $v = T^j_i|_p u$ e temos que
+	\begin{equation*}
+	(j,p,u) \sim (i,p,T^j_i|_p u) = (i,p,v).
+	\end{equation*}
+Agora, suponha que existem $v,v' \in \R^n$ tais que $(i,p,v), (i,p,v') \in [j,p,u]$. Então $(i,p,v) \sim (i,p,v')$, portanto $v' = T^i_i|_p v = v$.	
+% e segue da identidade de $\{T^i_{i'}\}_{(i,i') \in I^2}$ que $v'=v$. 
+Sendo assim, a partir de agora podemos sempre tomar um representante de $[j,p,u] \in E|_p$ com um $i \in I$ conveniente, contanto que $p \in A_i$.
+
+Vamos dar estrutura de grupo para $E|_p$.
+	\begin{enumerate}
+	\item ($+$) A soma em $E|_p$ é a função
+	\begin{align*}
+	\func{+}{E|_p \times E|_p}{E|_p}{([i,p,v] , [i,p,v'])}{[i,p,v + v']},
+	\end{align*}
+que está bem definida pois se $(i,p,v) \sim (j,p,u)$ e $(i,p,v') \sim (j,p,u')$, então $u = T^i_j|_p v$ e $u' = T^i_j|_p v'$, e segue da linearidade de $T^i_j|_p$ que
+	\begin{equation*}
+	u + u' = T^i_j|_p v + T^i_j|_p v' = T^i_j|_p (v + v'),
+	\end{equation*}
+o que implica que
+	\begin{equation*}
+	[j,p,u + u'] = [j,p,T^i_j|_p (v + v')] = [i,p,v + v'].
+	\end{equation*}
+
+A soma é associativa: para todos $[i,p,v], [i',p,v'], [i'',p,v''] \in E|_p$,
+	\begin{align*}
+	([i,p,v] + [i,p,v']) + [i,p,v''] &= [i,p,v + v'] + [i,p,v''] \\
+		&= [i,p,v + v' + v''] \\
+		&= [i,p,v] + [i,p,v' + v''] \\
+		&= [i,p,v] + ([i,p,v']) + [i,p,v''])
+	\end{align*}
+
+A soma é comutativa: para todos $[i,p,v], [i,p,v'] \in E|_p$,
+	\begin{equation*}
+	[i,p,v] + [i,p,v'] = [i,p,v + v'] = [i,p,v' + v] = [i,p,v'] + [i,p,v].
+	\end{equation*}
+	
+	\item ($0$) A identidade em $E|_p$ é
+	\begin{equation*}
+	0 := [i,p,0],
+	\end{equation*}
+que está bem definida pois, para todo $i' \in I$ tal que $p \in A_{i'}$, segue da linearidade de $T^i_{i'}|_p$ que
+	\begin{equation*}
+	(i,p,0) \sim (i',p,T^i_{i'}|_p 0) = (i',p,0).
+	\end{equation*}
+
+Ela é identidade de $+$: para todo $[i,p,v] \in E|_p$,
+	\begin{equation*}
+	0 + [i,p,v] = [i,p,0] + [i,p,v] = [i,p,0 + v] = [i,p,v].
+	\end{equation*}
+	
+	\item ($-$) A inversa em $E|_p$ é a função
+	\begin{align*}
+	\func{-}{E|_p}{E|_p}{[i,p,v]}{[i,p,-v]},
+	\end{align*}
+que está bem definida pois, se $(i,p,v) \sim (j,p,u)$, então $u=T^i_j|_p v$, e segue da linearidade de $T^i_j|_p$ que
+	\begin{equation*}
+	-u = -T^i_j|_p v = T^i_j|_p (-v),
+	\end{equation*}
+o que implica que
+	\begin{equation*}
+	[j,p,-u] = [j,p,T^i_j|_p (-v)] = [i,p,-v].
+	\end{equation*}
+
+Ela é inversa com respeito a $+$ e $0$: para todo $[(i,(p,v))] \in E|_p$,
+	\begin{equation*}
+	-[i,p,v] + [i,p,v] = [i,p,-v] + [i,p,v] = [i,p,-v+v] = [i,p,0] = 0.
+	\end{equation*}
+	\end{enumerate}
+
+Isso mostra que $\bm{E|_p} := (E|_p,+,-,0)$ é um grupo comutativo. Agora vamos construir a estrutura de espaço linear, ou seja, a ação de corpo de $\R$ sobre $E|_p$.
+
+\begin{enumerate}
+\item ($\cdot$) A ação de $\R$ sobre $E|_p$ é a função
+	\begin{align*}
+	\func{\cdot}{\R \times E|_p}{E|_p}{(c,[i,p,v])}{[i,p,cv]},
+	\end{align*}
+que está bem definida pois se $(i,p,v) \sim (i',p,v')$, então $v' = T^i_{i'}|_p v$ e segue da linearidade de $T^i_{i'}|_p$ que
+	\begin{equation*}
+	(i',p,cv') = (i',p,cT^i_{i'}|_p v) = (i',p,T^i_{i'}|_p (cv)) \sim (i,p,cv).
+	\end{equation*}
+
+Para mostrar que $\cdot$ é ação de corpo, devemos mostrar o seguinte.
+	\begin{enumerate}
+	\item Seja $c \in \R$. Para todos $[i,p,v], [i,p,v'] \in E|_p$,
+		\begin{align*}
+		c([i,p,v] + [i,p,v']) &= c[i,p,v+ v'] \\
+			&= [i,p,c(v+v')] \\
+			&= [i,p,cv+cv'] \\
+			&= [i,p,cv] + [i,p,cv'] \\
+			&= c[i,p,v] + c[i,p,v'].
+		\end{align*}
+	
+	\item Para todos $c,c' \in \R$ e $[i,p,v] \in E|_p$,
+		\begin{align*}
+		(c+c')[i,p,v] &= [i,p,(c+c')v] \\
+			&= [i,p,cv + c'v] \\
+			&= [i,p,cv] + [i,p,c'v] \\
+			&= c[i,p,v] + c'[i,p,v],
+		\end{align*}
+		\begin{align*}
+		(cc')[i,p,v] &= [i,p,(cc')v] \\
+			&= [i,p,c(c'v)] \\
+			&= c[i,p,c'v] \\
+			&= c(c'[i,p,v])
+		\end{align*}	
+e
+		\begin{equation*}
+		1[i,p,v] = [i,p,1v] = [i,p,v].
+		\end{equation*}
+	\end{enumerate}
+\end{enumerate}
+
+Isso mostra que $(\bm{E|_p},\cdot)$ é um espaço linear sobre $\R$. Esse espaço tem dimensão $n$, pois $([i,p,b_k])_{k \in [n]}$ é uma base de $E|_p$, em que $(b_k)_{k \in [n]}$ é uma base de $\R^n$. Isso ocorre pois, se $[i,p,v] \in E|_p$, então como $v \in \R^n$ e $(b_k)_{k \in [n]}$ gera $\R^n$, existe $(v^k)_{k \in [n]} \in \R^n$ tal que
+	\begin{equation*}
+	v = \sum_{k \in [n]} v^k b_k,
+	\end{equation*}
+logo
+	\begin{equation*}
+	[i,p,v] = [i,p,\sum_{k \in [n]} v^k b_k] = \sum_{k \in [n]} v^k [i,p,b_k],
+	\end{equation*}
+o que mostra que $([i,p,b_k])_{k \in [n]}$ gera $E|_p$; se $(c^k)_{k \in [n]} \in \R^n$ são não nulos, então $\sum_{k \in [n]} c^k b_k \neq 0$, pois $(b_k)_{k \in [n]}$ é linearmente independente, logo
+	\begin{equation*}
+	\sum_{k \in [n]} c^k [(i,(p,b_k))] = [(i,(p,\sum_{k \in [n]} c^k b_k))] \neq 0,
+	\end{equation*}
+o que mostra que $([i,p,b_k])_{k \in [n]}$ é linearmente independente, portanto base.
+
+\item (Construir a projeção $\proj$) Definimos função
+	\begin{align*}
+	\func{\proj}{E}{V}{[i,p,v]}{p},
+	\end{align*}
+que está bem definida pois se $(i',p',v') \sim (i,p,v) \in E$, então $p=p'$.
+% Ainda, $\proj$ é sobrejetiva. Seja $p \in V$. Como $\mathcal C = (A_i)_{i \in I}$ é cobertura de $V$, existe $i \in I$ tal que $p \in A_i$. Tomando $v \in \R^n$, temos que
+%	\begin{equation*}
+%	\proj([(i,(p,v))]) = p.
+%	\end{equation*}
+Claramente $\proj(E|_p) = \{p\}$.
+
+\item (Construir as trivializações locais $h_i$) Definimos, para todo $C \subseteq V$, $E|_C := \proj\inv(C)$. Notemos que, para todo $p \in V$, $E|_p := E|_{\{p\}}$.
+
+Para todo $i \in I$, definimos a função
+	\begin{align*}
+	\func{h_i}{E|_{A_i}}{A_i \times \R^n}{[i,p,v]}{(p,v)}.
+	\end{align*}
+Note que, para todo $[j,p,u] \in E|_{A_i}$, temos $p \in A_i$, o que garante que existe representante $(i,p,v) \in [j,p,u]$. Essa definição não é independente de representante.
+
+A função $h_i$ tem inversa
+	\begin{align*}
+	\func{{h_i}\inv}{A_i \times \R^n}{E|_{A_i}}{(p,v)}{[i,p,v]},
+	\end{align*}
+pois, para todo $[i,p,v] \in E|_{A_i}$ e todo $(p,v) \in A_i \times \R^n$,
+	\begin{equation*}
+	{h_i}\inv \circ h_i [i,p,v] = {h_i}\inv (p,v) = [i,p,v]
+	\end{equation*}
+e
+	\begin{equation*}
+	h_i \circ {h_i}\inv (p,v) = h_i [i,p,v] = (p,v).
+	\end{equation*}
+
+Mostremos que, para todo $i \in I$ e todo $p \in A_i$, a função $h_i\downharpoonright_{E|_p} \colon E|_p \to \{p\} \times \R^n$ é isomorfismo linear. Primeiro notemos que o contradomínio de $h_i\downharpoonright_{E|_p}$ é $\{p\} \times \R^n$, pois para todo $[i,p,v] \in E|_p$,
+	\begin{equation*}
+	h_i [i,p,v] = (p,v) \in \{p\} \times \R^n.
+	\end{equation*}
+Além disso, ${h_i}\inv\downharpoonright_{\{p\} \times \R^n} \colon \{p\} \times \R^n \to E|_p$ é a inversa de $h_i\downharpoonright_{E|_p}$. Notemos que o contradomínio de ${h_i}\inv\downharpoonright_{\{p\} \times \R^n}$ é $E|_p$, pois
+	\begin{equation*}
+	{h_i}\inv (p,v) = [i,p,v] \in E|_p.
+	\end{equation*}
+Claramente ${h_i}\inv\downharpoonright_{\{p\} \times \R^n} = {h_i\downharpoonright_{E|_p}}\inv$.
+
+Para mostrar a linearidade, sejam $[i,p,v], [i,p,v'] \in E|_p$ e $c \in \R$. Então
+	\begin{align*}
+	h_i (c[i,p,v] + [i,p,v']) &= h_i ([i,p,cv+v']) \\
+		&= (p,cv+v') \\
+		&= c(p,v) + (p,v') \\
+		&= c h_i [i,p,v] + h_i[i,p,v'].
+	\end{align*}
+
+\item Agora notemos que, para todos $i,i' \in I$ e $p \in A_i \cap A_{i'}$, temos que $(i,p,v) \sim (i',p,T^i_{i'}|_p v)$, logo
+	\begin{equation*}
+	h_{i'} \circ {h_i}\inv (p,v) = h_{i'} ([i,p,v]) = h_{i'} ([i',p,T^i_{i'}|_p v]) = (p,T^i_{i'}|_p (v)),
+	\end{equation*}
+o que mostra que $T^i_{i'}$ é a função de transição de $(A_i,h_i)$ para $(A_{i'},h_{i'})$.
+\end{enumerate}
+
+Pela proposição~\ref{topo:atlas.fibrado}, essa construção mostra que $E$ tem única estrutura diferencial tal que $(\bm E, \proj)$ é um fibrado vetorial de $\R^n$ sobre $\bm V$.
+\end{proof}
+
+Embora a proposição~\ref{topo:atlas.fibrado} garanta que a estrutura diferencial sobre $E$ é única, aqui não necessariamente garantimos a unicidade da construção do fibrado porque não garantimos que as construções de $E$, $\proj$ ou $h_i$ são únicas. Mantendo as construções de $E$ e $\proj$, mas tomando $L \in \Iso{\toplin}(\R^n)$ e definindo
+	\begin{align*}
+	\func{h_i}{E|_{A_i}}{A_i \times \R^n}{[i,p,v]}{(p,L v)}
+	\end{align*}
+com inversa	
+	\begin{align*}
+	\func{{h_i}\inv}{A_i \times \R^n}{E|_{A_i}}{(p,v)}{[i,p,L\inv v]},
+	\end{align*}
+ainda teríamos $h_i$ uma bijeção que restrita às fibras é isomorfismo linear, e teríamos funções de transição
+	\begin{align*}
+	\func{L \circ T^i_{i'} \circ L\inv}{A_i \cap A_{i'}}{\Iso{\toplin}(\R^n)}{p}{L \circ T^i_{i'}|_p \circ L\inv},
+	\end{align*}
+que é diferenciável porque $T^i_{i'}$ e $L$ são, e $L \circ T^i_{i'}|_p \circ L\inv \in \Iso{\toplin}(\R^n)$ pois $T^i_{i'}|_p \in \Iso{\toplin}(\R^n)$ e $L \in \Iso{\toplin}(\R^n)$.
+
+\begin{exercise}
+Verifique que a construção da proposição anterior com essa $h_i$ que usa $L \in \Iso{\toplin}(\R^n)$ também gera uma estrutura de fibrado vetorial $(\bm E,\proj)$.
+\end{exercise}
+
+Essa estrutura alternativa é de fato equivalente à que construímos, num sentido de equivalência de fibrados que estudaremos adiante.
+
+%\subsubsection{Soma, Produto Tensorial e Restrição de Fibrados}
+
+
+
+
+\subsection{Seções locais e globais}
+
+\newcommand{\Sec}{\Gamma}
+
+\begin{definition}
+Seja $(\bm E,\proj)$ um fibrado vetorial diferencial de $\R^n$ sobre uma variedade diferencial $\bm V$. Uma \emph{seção (global)} de $\bm E$ é uma função $s\colon V \to E$ tal que
+	\begin{equation*}
+	\proj \circ s = \Id_V.
+	\end{equation*}
+Isso é equivalente a dizer que
+	\begin{align*}
+	\func{s}{V}{E}{p}{s|_p}
+	\end{align*}
+satisfaz, para todo $p \in V$, $s|_p \in E|_p$. O conjunto das seções diferenciáveis de $\bm E$ é denotado $\Sec(E)$.
+
+Seja $A \subseteq V$. Uma \emph{seção local} de $\bm E$ sobre $A$ é uma função $s\colon A \to E$ tal que $\proj \circ s = \Id_A$. O conjunto das seções locais diferenciáveis de $\bm E$ sobre $A$ é denotado $\Sec(E)|_A$.
+\end{definition}
+
+\begin{definition}
+Sejam $(\bm E,\proj)$ um fibrado vetorial diferencial de $\R^n$ sobre uma variedade diferencial $\bm V$ e $s \in \Sec(E)$ uma seção. O \emph{suporte} de $s$ é o conjunto
+	\begin{equation*}
+	\supp (s) := \Fec{\set{p \in V}{s|_p \neq 0}}.
+	\end{equation*}
+\end{definition}
+
+O conjunto $\Sec(E)$ é um espaço linear sobre $\R$ com a adição e o multiplicação por escalar induzidos pontualmente pela adição, zero, inversa da adição e multiplicação por escalar de $E|_p$. Além dessa operações, podemos multiplicar uma seção por uma função escalar diferenciável pontualmente e dar a $\Sec(E)$ uma estrutura de módulo sobre $\Cont^\infty(V)$.
+
+\begin{definition}
+Seja $(\bm E,\proj)$ um fibrado vetorial diferencial de $\R^n$ sobre uma variedade diferencial $\bm V$. A \emph{adição} em $\Sec(E)$ é
+	\begin{align*}
+	\func{+}{\Sec(E) \times \Sec(E)}{\Sec(E)}{(s,s')}{
+	\begin{aligned}[t]
+	\func{s+s'}{V}{E}{p}{s|_p + s'|_p,}
+	\end{aligned}
+	}
+	\end{align*}
+a \emph{seção zero} em $\Sec(E)$ é a seção
+	\begin{align*}
+	\func{0}{V}{E}{p}{0_{E|_p}},
+	\end{align*}
+a \emph{inversa aditiva} de $\Sec(E)$ é
+	\begin{align*}
+	\func{-}{\Sec(E)}{\Sec(E)}{s}{
+	\begin{aligned}[t]
+	\func{-s}{V}{E}{p}{-s|_p}
+	\end{aligned}
+	}
+	\end{align*}
+e o \emph{produto por escalar} em $\Sec(E)$ é
+	\begin{align*}
+	\func{\cdot}{\R \times \Sec(E)}{\Sec(E)}{(c,s)}{
+	\begin{aligned}[t]
+	\func{cs}{V}{E}{p}{cs|_p.}
+	\end{aligned}
+	}
+	\end{align*}
+
+A \emph{multiplicação por função}
+	\begin{align*}
+	\func{\cdot}{\Cont^\infty(V) \times \Sec(E)}{\Sec(E)}{(f,s)}{
+		\begin{aligned}[t]
+		\func{fs}{V}{E}{p}{f(p)s|_p.}
+		\end{aligned}
+	}	
+	\end{align*}
+Isso é uma ação do anel $\Cont^\infty(V)$ que dá ao espaço $\Sec(E)$ uma estrutura de módulo.
+\end{definition}
+
+
+\begin{exercise}
+Seja $(\bm E,\proj)$ um fibrado vetorial diferencial de $\R^n$ sobre uma variedade diferencial $\bm V$.
+	\begin{enumerate}
+	\item O espaço de seções $\Sec(E)$ é um espaço linear sobre $\R$ com respeito à adição e multiplicação por escalar pontuais.
+	\item O espaço de seções $\Sec(E)$ é um módulo sobre $\Cont^\infty(V)$ com respeito à adição e multiplicação por função pontuais.
+	\end{enumerate}
+\end{exercise}
+
+
+\subsection{Grupo estrutural}
+
+\begin{definition}
+Sejam $(\bm E,\proj)$ um fibrado vetorial diferencial de $\R^n$ sobre uma variedade diferencial $\bm V$ e $\bm G \subseteq \Iso{\toplin}(\R^n)$ um grupo diferencial. Uma $G$-estrutura sobre $(\bm E,\proj)$ é uma coleção de funções de transição $\{T^i_{i'}\}_{(i,i') \in I^2}$ cujos domínios cobrem $V$ tais que, para todos $i,i' \in I$ e $p \in A_i \cap A_{i'}$, $T^i_{i'}|_p \in G$. Um \emph{grupo estrutural} de $\bm E$ é um grupo diferencial $\bm G$ para o qual existe uma $G$-estrutura.
+\end{definition}
+
+\begin{example}
+Seja $(\bm E,\proj)$ um fibrado vetorial diferencial de $\R^n$ sobre uma variedade diferencial $\bm V$.
+	\begin{enumerate}
+	\item Se $G=\{\Id\}$ é um grupo estrutural de $\bm E$, então $\bm E$ é trivial;
+	
+	\item Uma $\Iso{\toplin}(\R^n)^+$-estrutura sobre $\Tg V$ é equivalente a uma orientação de $\bm V$;
+	
+	\item Uma $\Iso{\toplin_{\nor{}}}(\R^n)$-estrutura (também denotado $O(n)$ ou  $O_n(\R)$) sobre $\bm E$ é equivalente a um produto interno em cada fibra $E|_p$, dado por
+		\begin{equation*}
+		\inte{v}{v'}|_p := {v'}^* T^i_{i'}|_p v.
+		\end{equation*}
+	\end{enumerate}
+\end{example}
+
+
+\subsection{Referenciais locais e globais}
+
+\begin{definition}
+Sejam $(\bm E,\proj)$ um fibrado vetorial diferencial de $\R^n$ sobre uma variedade diferencial $\bm V$ e $A \subseteq V$ um aberto. Uma $k$-tupla de seções locais sobre $A$ \emph{linearmente independente} é uma $k$-tupla $(s_i)_{i \in [k]}$ de seções locais $s_i\colon A \to E$ de $\bm E$ sobre $A$ tais que, para todo $p \in A$, $(s_i|_p)_{i \in [k]}$ é linearmente independente em $E|_p$.
+
+Similarmente, uma $k$-tupla de seções locais sobre $A$ que \emph{gera} $\bm E$ é uma $k$-tupla $(s_i)_{i \in [k]}$ de seções locais $s_i\colon A \to E$ de $\bm E$ sobre $A$ tais que, para todo $p \in A$, $(s_i|_p)_{i \in [k]}$ gera $E|_p$.
+
+Um \emph{referencial local} de $\bm E$ sobre $A$ é uma $k$-tupla de seções locais de $\bm E$ sobre $A$ linearmente independente que \emph{gera} $\bm E$. Um \emph{referencial (global)} de $\bm E$ é um referencial local de $\bm E$ sobre $V$.
+\end{definition}
+
+Lembremos que $(e_i)_{i \in [n]}$ é a base canônica de $\R^n$.
+
+\begin{proposition}
+Sejam $(\bm E,\proj)$ um fibrado vetorial diferencial de $\R^n$ sobre uma variedade diferencial $\bm V$ e $(A,h)$ uma trivialização local. A funções
+	\begin{align*}
+	\func{s_i}{A}{E}{p}{h\inv (p,e_i)}.
+	\end{align*}
+são seções locais de $\bm E$ e $(s_i)_{i \in [n]}$ é um referencial local de $\bm E$ sobre $A$.
+\end{proposition}
+\begin{proof}
+As funções $s_i$ são diferenciáveis porque $h$ é difeomorfismo e de $\proj_A \circ h = \proj$ segue que, para todo $p \in A$,
+	\begin{equation*}
+	\proj \circ s_i(p) = \proj \circ h\inv (p,e_i) = \proj_A (p,e_i) = p,
+	\end{equation*}
+logo $\proj \circ s_i = \Id_A$, o que mostra que $s_i$ é uma seção local.
+
+Para vermos que $(s_i)_{i \in [n]}$ é um referencial local, notemos que $h\colon E|_p \to \{p\} \times \R^n$ é um isomorfismo e $h(s_i|_p) = (p,e_i)$, então leva $(s_i)_{i \in [n]}$ para a base canônica de $\{p\} \times \R^n$.
+\end{proof}
+
+\begin{definition}
+Sejam $(\bm E,\proj)$ um fibrado vetorial diferencial de $\R^n$ sobre uma variedade diferencial $\bm V$ e $(A,h)$ uma trivialização local. O \emph{referencial local associado a $h$} é o referencial local $(s_i)_{i \in [n]}$ de $\bm E$ sobre $A$, em que
+	\begin{align*}
+	\func{s_i}{A}{E}{p}{h\inv (p,e_i)}.
+	\end{align*}
+\end{definition}
+
+\begin{exercise}
+Todo referencial local está associado a uma trivialização local.
+\end{exercise}
+
+
+
+
+
+
+\section{Fibrados principais}
+
+Lembremos o que é uma ação à direita de um grupo. Sejam $X$ um conjunto e $\bm G$ um grupo. Uma ação à direita $X \curvearrowleft \bm G$ de $G$ em $X$ é uma função
+	\begin{align*}
+	\func{A}{X \times G}{X}{(x,g)}{x \centerdot g}
+	\end{align*}
+tal que
+	\begin{enumerate}
+	\item (Identidade) Para todo $x \in X$,
+		\begin{equation*}
+		x \centerdot \id = x;
+		\end{equation*}
+
+	\item (Compatibilidade) Para todos $g,g' \in G$ e $x \in X$,
+		\begin{equation*}
+		x \centerdot (gg') = (x \centerdot g) \centerdot g';
+		\end{equation*}
+	\end{enumerate}
+
+Além disso, consideraremos também a seguinte propriedade da ação.
+%Algumas propriedades de ação de grupo são
+	\begin{enumerate}
+%	\item (Regular) Para todos $x,x' \in X$, existe único $g \in G$ tal que
+%	\begin{equation*}
+%	x' = x \centerdot g.
+%	\end{equation*}
+%	
+	\item (Livre) Para todo $g \in G$, se existe $x \in X$ tal que $x \centerdot g = x$, então $g=\id$;
+%	
+%	\item (Transitiva) Para todos $x,x' \in X$, existe $g \in G$ tal que $x' = x \centerdot g$.
+	\end{enumerate}
+%
+%Ser regular é equivalente a ser ser livre e transitiva.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Outras definições que adotei antes para tentar estudar melhor, mas a do Kovalev está a mais consistente com o que queria.
+\begin{comment}
+
+\begin{definition}[Wikipedia]
+Sejam $\bm X$ um espaço topológico e $\bm G$ um grupo topológico. Um \emph{fibrado principal de $\bm G$ sobre $\bm X$} é um fibrado topológico $(\bm E,\proj)$ junto com uma ação à direita contínua $\bm E \curvearrowleft \bm G$ tal que
+	\begin{enumerate}
+	\item (Preserva fibras) Para todo $x \in X$, todo $e \in E|_x$ e todo $g \in G$, $e \centerdot g \in E|_x$;
+	
+	\item (Regularidade) Para todo $x \in X$, a ação restrita à fibra $E|_x \curvearrowleft \bm G$ é regular --- ou seja, para todos $x,x' \in X$, existe único $g \in G$ tal que $x' = x \centerdot g$.
+	
+	\item Para todo $x \in X$ e todo $e \in E|_x$,
+		\begin{align*}
+		\func{e \centerdot}{G}{E|_x}{g}{e \centerdot g}
+		\end{align*}
+é  um homeomorfismo.
+	\end{enumerate}
+%
+%O espaço $\bm E$ é o \emph{espaço fibrado}, o espaço $\bm X$ é a \emph{base}, o espaço $\bm F$ é a \emph{fibra} e a função $\proj\colon E \to X$ é a \emph{projeção fibrada} de $(\bm E,\proj)$. Para cada $x \in X$,  a \emph{fibra de $E$ em $x$} é $E|_x := \proj\inv(\{x\})$.
+\end{definition}
+
+\begin{definition}[Henrique]
+Um $\bm G$-fibrado principal (suave) é uma tripla $(\bm E,\bm G,R)$ em que $\bm E$ é uma variedade diferencial, $\bm G$ é um grupo diferencial e $R\colon E \times G \to E$ é uma ação à direita livre e própria, munida de trivializações locais: para todo $[p] \in \quo{E}{G}$, existem vizinhança $A \subseteq \quo{E}{G}$ de $[p]$ e difeomorfismo $h\colon E|_A := \proj\inv(A) \to A \times G$ tais que
+	\begin{enumerate}
+	\item $\proj_A \circ h = \proj$ (o diagrama comuta).
+\begin{figure}
+\centering
+\begin{tikzpicture}[node distance=2.5cm, auto]
+	\node (A) {$A$};
+	\node (EA) [above of=A] {$E|_A$};
+	\node (AF) [right of=EA] {$A \times G$};
+	\draw[->] (EA) to node [swap] {$\proj$} (A);
+	\draw[->] (EA) to node {$h$} (AF);
+	\draw[->] (AF) to node {$\proj_A$} (A);
+\end{tikzpicture}
+\end{figure}
+
+	\item ($G$-equivariância) Se $h(e) = (p,g)$, então $h(e \centerdot g') = (p,gg')$;
+	\end{enumerate}
+\end{definition}
+
+A $G$-equivariância é equivalente a $\proj_G \circ h \circ (\centerdot g) = (\centerdot g) \circ \proj_G \circ h$ (o diagrama comuta).
+\begin{figure}
+\centering
+\begin{tikzpicture}[node distance=2.5cm, auto]
+	\node (G) {$G$};
+	\node (G2) [right of=G] {$G$};
+	\node (EA) [above of=G] {$E|_A$};
+	\node (EA2) [above of=G2] {$E|_A$};
+	\draw[->] (EA) to node [swap] {$\proj_G \circ h$} (G);
+	\draw[->] (EA2) to node {$\proj_G \circ h$} (G2);
+	\draw[->] (EA) to node {$\centerdot g$} (EA2);
+	\draw[->] (G) to node [swap] {$\centerdot g$} (G2);
+\end{tikzpicture}
+\end{figure}
+
+% Tentei fazer a analogia com o fibrado vetorial, mudando todo objeto da categoria de espaços lineares para objeto da categoria de grupos, mas isso DÁ ERRADO. Realmente não é paralelo, temos que mudar algumas coisas. No caso o que deu errado na minha tentativa é que em fibrados principais as funções de transição são multiplicação à esquerda por um elemento do grupo; são homeomorfismos/difeomorfismos, mas NÃO são isomorfimo de grupo.
+
+\begin{definition}[Analogia a fibrados vetoriais]
+Sejam $\bm X$ um espaço topológico e $\bm G$ um grupo topológico. Um \emph{fibrado principal de $\bm G$ sobre $\bm X$} é um par $(\bm E,\proj)$, em que $\bm E$ é um espaço topológico e $\proj\colon E \to X$ é uma função contínua sobrejetiva que, definido, para todo $A \subseteq X$ e todo $x \in X$, $E|_A := \proj\inv(A) \subseteq E$ e $E|_x := E|_{\{x\}}$, satisfaz:
+	\begin{enumerate}
+	\item Para todo $x \in X$, $E|_x$ tem estrutura de grupo;
+	\item Para todo $e \in E$, existem vizinhança $A \subseteq X$ de $\proj(e)$ e homeomorfismo $h\colon E|_A \to A \times G$ tais que
+		\begin{enumerate}
+		\item $\proj_A \circ h = \proj$ (o diagrama comuta).
+\begin{figure}
+\centering
+\begin{tikzpicture}[node distance=2.5cm, auto]
+	\node (A) {$A$};
+	\node (EA) [above of=A] {$E|_A$};
+	\node (AF) [right of=EA] {$A \times G$};
+	\draw[->] (EA) to node [swap] {$\proj$} (A);
+	\draw[->] (EA) to node {$h$} (AF);
+	\draw[->] (AF) to node {$\proj_A$} (A);
+\end{tikzpicture}
+\end{figure}
+
+		\item Para todo $x \in A$, $h|_x\colon E|_x \to \{x\} \times G \simeq G$ é um isomorfismo de grupo.
+		\end{enumerate}
+	\end{enumerate}
+O espaço $\bm E$ é o \emph{espaço fibrado}, o espaço $\bm X$ é a \emph{base}, o grupo $\bm G$ é a \emph{fibra} e a função $\proj\colon E \to X$ é a \emph{projeção fibrada} de $\bm E$. Cada par $(A,h)$ como acima é uma \emph{trivialização local}. Para cada $x \in X$, a \emph{fibra de $E$ sobre $x$} é o grupo $E|_x = \proj\inv(\{x\})$.
+
+%Um \emph{fibrado principal diferencial} é um fibrado principal em que $\bm E$ e $\bm X$ são variedades diferenciais, $\bm G$ é um grupo diferencial, $\proj$ é diferenciável e existem cartas fibradas $(A,h)$ como acima tais que $h$ é difeomorfismo.
+\end{definition}
+
+Vamos definir uma ação de $\bm G$ em $\bm E$. Para todo $e \in E$, existem vizinhança $A \subseteq X$ de $p := \proj(e)$ e homeomorfismo $h\colon E|_A \to A \times G$ trivialização local. Definimos
+	\begin{equation*}
+	e \centerdot g := h\inv(p,\proj_G \circ h(e) g).
+	\end{equation*}
+Para mostrar que isso está bem definido, ou seja, não depende da trivialização local escolhida, basta notarmos que, se $T^h_{h'}|_p$ é a função de transição de $h$ para $h'$, vale
+	\begin{equation*}
+	h' \circ h\inv(p,g') = (p,T^h_{h'}|_p (g'))
+	\end{equation*}
+o que equivale a
+	\begin{equation*}
+	\proj_G \circ (h' \circ h \inv) = T^h_{h'}|_p  \circ \proj_G.
+	\end{equation*}
+Disso, segue que
+	\begin{equation*}
+	T^h_{h'}|_p  \circ \proj_G \circ h = \proj_G \circ h',
+	\end{equation*}
+logo
+	\begin{equation*}
+	[T^h_{h'}|_p  \circ \proj_G \circ h(e)]g = [\proj_G \circ h'(e)]g,
+	\end{equation*}
+portanto
+	\begin{align*}
+	h' \circ h\inv (p,(\proj_G \circ h (e))g) &= (p, T^h_{h'}|_p  (\proj_G \circ h (e)) g) \\
+		&= (p,\proj_G \circ h' (e) g),
+	\end{align*}
+o que finalmente implica que
+	\begin{equation*}
+	h\inv (p,\proj_G \circ h (e)g) = {h'}\inv(p,\proj_G \circ h' (e) g).
+	\end{equation*}
+	
+\end{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% DEFINIÇÃO DO [Kovalev]
+\begin{definition}
+Sejam $\bm V$ uma variedade diferencial e $\bm G$ um grupo diferencial. Um $\bm G$-fibrado principal diferencial sobre $\bm V$ é uma tripla $(\bm E,\pi,\centerdot)$ em que $\bm P$ é uma variedade diferencial, $\centerdot\colon E \times G \to E$ é uma ação à direita diferenciável e livre, $V \simeq \quo{E}{G}$ e, para todo $x \in V$, existem vizinhança $A \subseteq V$ de $x$ e difeomorfismo $\phi\colon E|_A := \proj\inv(A) \to A \times G$ tais que
+	\begin{enumerate}
+	\item $\proj_A \circ \phi = \proj$ (o diagrama comuta).
+\begin{figure}
+\centering
+\begin{tikzpicture}[node distance=2.5cm, auto]
+	\node (A) {$A$};
+	\node (EA) [above of=A] {$E|_A$};
+	\node (AF) [right of=EA] {$A \times G$};
+	\draw[->] (EA) to node [swap] {$\proj$} (A);
+	\draw[->] (EA) to node {$\phi$} (AF);
+	\draw[->] (AF) to node {$\proj_A$} (A);
+\end{tikzpicture}
+\end{figure}
+
+	\item ($G$-equivariância) Se $\phi(e) = (p,h)$, então $\phi(e \centerdot g) = (p,hg)$ --- ou, equivalentemente, $\proj_G \circ \phi \circ \centerdot g = \centerdot g \circ \proj_G \circ \phi$ (o diagrama comuta).
+\begin{figure}
+\centering
+\begin{tikzpicture}[node distance=2.5cm, auto]
+	\node (G) {$G$};
+	\node (G2) [right of=G] {$G$};
+	\node (EA) [above of=G] {$E|_A$};
+	\node (EA2) [above of=G2] {$E|_A$};
+	\draw[->] (EA) to node [swap] {$\proj_G \circ \phi$} (G);
+	\draw[->] (EA2) to node {$\proj_G \circ \phi$} (G2);
+	\draw[->] (EA) to node {$\centerdot g$} (EA2);
+	\draw[->] (G) to node [swap] {$\centerdot g$} (G2);
+\end{tikzpicture}
+\end{figure}
+	\end{enumerate}
+\end{definition}
+
+	\begin{equation*}
+	\phi\inv (p,h) \centerdot g = \phi\inv (p,hg)
+	\end{equation*}
+	\begin{equation*}
+	(\centerdot g) \circ \phi\inv (p,h) = \phi\inv (p,hg)
+	\end{equation*}
+	\begin{equation*}
+	(\centerdot g) \circ \phi\inv (p,h) = \phi\inv (p,(\centerdot g) \circ \proj_G(e))
+	\end{equation*}
+
+\begin{proposition}
+Seja $(\bm E,\pi,\centerdot)$ um fibrado principal diferencial de um grupo diferencial $\bm G$ sobre uma variedade diferencial $\bm V$. Para todas trivializações locais $(A,\phi)$ e $(A',\phi')$ de $\bm E$, a função de transição delas é a multiplicação à esquerda pela valor dela na identidade do grupo:
+	\begin{align*}
+	\func{T^\phi_{\phi'}|_p = E_{T^\phi_{\phi'}|_p \id}}{G}{G}{g}{(T^\phi_{\phi'}|_p \id) g}.
+	\end{align*}
+\end{proposition}
+\begin{proof}
+Sejam $g,h \in G$ e $e := \phi\inv(p,h)$. Da definição de função de transição,
+	\begin{equation*}
+	\phi'(e) = \phi' \circ \phi\inv (p,h) = (p,T^\phi_{\phi'}|_p(h))
+	\end{equation*}
+e, da equivariância,
+	\begin{equation*}
+	(p,T^\phi_{\phi'}|_p(hg)) = \phi' \circ \phi\inv (p,hg) = \phi'(e \centerdot g) = (p,(T^\phi_{\phi'}|_p(h))g),
+	\end{equation*}
+o que implica que
+	\begin{equation*}
+	T^\phi_{\phi'}|_p(hg) = (T^\phi_{\phi'}|_p h)g.
+	\end{equation*}
+Tomando $h=\id$, segue que
+	\begin{equation*}
+	T^\phi_{\phi'}|_p(g) = (T^\phi_{\phi'}|_p \id)g.
+	\end{equation*}
+\end{proof}
+
+Por simplicidade, identificaremos $T^\phi_{\phi'}|_p$ com $T^\phi_{\phi'}|_p \id$, de modo a termos $T^\phi_{\phi'}|_p \in G$. As funções de transição, que são da forma
+	\begin{equation*}
+	T^\phi_{\phi'}\colon A \cap A' \to \Iso{\Cont^\infty}(G),
+	\end{equation*}
+sob essa identificação podem ser entendidas como funções da forma
+	\begin{equation*}
+	T^\phi_{\phi'}\colon A \cap A' \to G.
+	\end{equation*}
+
+
+
+
+
+
+
+
+\section{Conexões em fibrados vetoriais}
+
+\subsection{Espaços verticais e horizontais}
+
+Seja $(\bm E,\proj)$ um fibrado vetorial diferencial de $\R^n$ sobre uma variedade diferencial $\bm B$. Tomemos carta $(A,\x)$ de $\bm B$ e trivialização local $(A,\phi)$ de $\bm E$. Elas são funções
+	\begin{align*}
+	\func{\x}{A}{\x(A) \subseteq \R^d}{b}{\x(b)}
+	\end{align*}
+e
+	\begin{align*}
+	\func{\phi}{E|_A}{A \times \R^n}{e}{(b,v)}.
+	\end{align*}
+A função
+	\begin{align*}
+	\func{\bar x = (\x \times \Id_{\R^n}) \circ \phi}{E|_A}{\x(A) \times \R^n \subseteq \R^d \times \R^n}{e}{(\x(b),v)},
+	\end{align*}
+em que $\phi(e) = (b,v)$, é uma carta de $\bm E$. O referencial coordenado de $\Tg E|_A$ é
+	\begin{equation*}
+	\left( \derr{\bar \x^i}_e \right)_{i \in [d+n]}.
+	\end{equation*}
+Mas notemos que, para $i \in [d]$,
+	\begin{equation*}
+	\bar \x^i = \proj_i \circ \bar \x = \proj^i \circ \x = \x^i
+	\end{equation*}
+e, para $j \in d+[n]$,
+	\begin{equation*}
+	\bar \x^i = \proj_i \circ \bar \x = \proj^i \circ \phi = \phi^i,
+	\end{equation*}
+portanto
+	\begin{equation*}
+	\left( \derr{\bar \x^i}_e \right)_{i \in [d+n]} = \left( \derr{\x^i}_e, \derr{\phi^j}_e \right)_{i \in [d], j \in d+[n]}.
+	\end{equation*}
+
+Consideremos a função diferenciável
+	\begin{equation*}
+	\D \proj|_e \colon \Tg E|_e \to \Tg B|_b.
+	\end{equation*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection{Conexão/derivada covariante}
+
+Definamos
+	\begin{equation*}
+	\Omega^k_B(E) = \Omega^k(B) \otimes \Sec(E).
+	\end{equation*}
+Em particular,
+	\begin{equation*}
+	\Omega^0_B(E) = \Cont^\infty(B) \otimes \Sec(E) = \Sec(E)
+	\end{equation*}
+e
+	\begin{equation*}
+	\Omega^1_B(E) = \Omega^1(B) \otimes \Sec(E).
+	\end{equation*}
+
+\begin{definition}
+Seja $(\bm E,\proj)$ um fibrado vetorial diferencial de $\R^n$ sobre uma variedade diferencial $\bm B$. Uma \emph{derivada covariante} em $\bm E$ é uma função linear sobre $\R$
+	\begin{equation*}
+	\nabla\colon \Omega^0_B(E) \to \Omega^1_B(E).
+	\end{equation*}
+tal que, para todas $f \in \Cont^\infty(B)$ e $s \in \Sec(E)$,
+	\begin{equation*}
+	\nabla(fs) = \dd f \otimes s + f \nabla s.
+	\end{equation*}
+\end{definition}
+
+Equivalentemente, $\nabla$ é uma função
+	\begin{equation*}
+	\nabla\colon \Sec(E) \to \Omega^1(B) \otimes \Sec(E)
+	\end{equation*}
+que toma seções e retorna $1$-formas a valores em seções.
+
+
+Estendemos a derivada covariante $\nabla\colon \Omega^0_B(E) \to \Omega^1_B(E)$ para uma função\footnote{Geralmente essa derivada estendida é denotada $\dd_\nabla$ e chamada de derivada exterior covariante, mas aqui adotaremos a simplicidade de manter $\nabla$ para todos os casos.} linear sobre $\R$
+	\begin{equation*}
+	\nabla\colon \Omega^k_B(E) \to \Omega^{k+1}_B(E)
+	\end{equation*}
+para todo $k$ tal que, para todas $\omega \in \Omega^k(B)$ e $s \in \Sec(E)$,
+	\begin{equation*}
+	\nabla(\omega \otimes s) = \dd \omega \otimes s + (-1)^k \omega \otimes \nabla s.
+	\end{equation*}
+
+	\begin{align*}
+	\func{\nabla}{\Omega^k_B(E)}{\Omega^{k+1}_B(E)}{\sigma}{
+		\begin{aligned}[t]
+		\func{\nabla \sigma}{•}{•}{•}{•}
+		\end{aligned}	
+	}
+	\end{align*}
+
+
+
+
+
+
+
+
+\cleardoublepage
+
+
+A derivada covariante é a função $\R$-linear
+	\begin{equation*}
+	\nabla\colon \Omega^k_B(E) \to \Omega^{k+1}_B(E).
+	\end{equation*}
+Localmente, temos
+	\begin{equation*}
+	\nabla = \dd + A.
+	\end{equation*}
+
+A \emph{curvatura} é a função $\Cont^\infty(B)$-linear
+	\begin{equation*}
+	\nabla^2\colon \Omega^k_B(E) \to \Omega^{k+2}_B(E).
+	\end{equation*}
+Localmente, temos
+	\begin{equation*}
+	\nabla^2 = \dd A + A \wedge A.
+	\end{equation*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\cleardoublepage
+
+\paragraph{Parametrização e Métrica da Esfera}
+
+	\begin{align*}
+	x_0 &= r\cos \phi_0 \\
+	x_1 &= r\sin \phi_0 \cos \phi_1 \\
+	x_2 &= r\sin \phi_0 \sin \phi_1.
+	\end{align*}
+
+	\begin{align*}
+	\dd x_0 &= \cos \phi_0 \dd r - r\sin\phi_0 \dd\phi_0 \\
+	\dd x_1 &= \sin \phi_0 \cos \phi_1 \dd r + r\cos \phi_0 \cos \phi_1 \dd\phi_0 - r\sin \phi_0 \sin \phi_1 \dd \phi_1 \\
+	\dd x_2 &= \sin \phi_0 \sin \phi_1 \dd r + r\cos \phi_0 \sin \phi_1 \dd \phi_0 + r\sin \phi_0 \cos \phi_1 \dd \phi_1
+	\end{align*}
+
+	\begin{align*}
+	(\dd x_0)^2 &= \cos^2 \phi_0 (\dd r)^2 + r^2\sin^2\phi_0 (\dd\phi_0)^2 -2r\sin\phi_0\cos\phi_0 \dd r \dd \phi_0 \\
+	(\dd x_1)^2 &= \sin^2 \phi_0 \cos^2 \phi_1 (\dd r)^2 + r^2\cos^2 \phi_0 \cos^2 \phi_1 (\dd\phi_0)^2 + r^2\sin^2 \phi_0 \sin^2 \phi_1 (\dd \phi_1)^2 \\
+		&+ 2r\sin \phi_0 \cos \phi_0 \cos^2 \phi_1 \dd r \dd\phi_0 - 2r \sin^2 \phi_0 \sin \phi_1 \cos \phi_1 \dd r \dd \phi_1 \\
+		&- 2r^2\sin \phi_0\cos \phi_0 \sin \phi_1 \cos \phi_1 \dd\phi_0 \dd \phi_1 \\
+	(\dd x_2)^2 &= \sin^2 \phi_0 \sin^2 \phi_1 (\dd r)^2 + r^2\cos^2 \phi_0 \sin^2 \phi_1 (\dd \phi_0)^2 + r^2\sin^2 \phi_0 \cos^2 \phi_1 (\dd \phi_1)^2 \\
+	&+ 2r \sin \phi_0 \cos \phi_0 \sin^2 \phi_1 \dd r \dd \phi_0 + 2r \sin^2 \phi_0 \sin \phi_1 \cos \phi_1 \dd r \dd \phi_1 \\
+	&+ 2r^2 \sin \phi_0 \cos \phi_0 \sin \phi_1 \cos \phi_1 \dd \phi_0 \dd \phi_1
+	\end{align*}
+
+	\begin{align*}
+	(\dd x_0)^2 + (\dd x_1)^2 + (\dd x_2)^2 &= (\cos^2 \phi_0 + \sin^2 \phi_0) (\dd r)^2 \\
+		&+ r^2(\sin^2\phi_0 + \cos^2 \phi_0 \cos^2 \phi_1 + \cos^2 \phi_0 \sin^2 \phi_1) (\dd\phi_0)^2 \\
+		&+ r^2(\sin^2 \phi_0 \sin^2 \phi_1 + \sin^2 \phi_0 \cos^2 \phi_1) (\dd \phi_1)^2 \\
+		&+ 2r(-\sin\phi_0\cos\phi_0 \\
+		&\hspace{3em}+ \sin \phi_0 \cos \phi_0 \cos^2 \phi_1 + \sin \phi_0 \cos \phi_0 \sin^2 \phi_1)  \dd r \dd \phi_0 \\
+		&+ 2r(- \sin^2 \phi_0 \sin \phi_1 \cos \phi_1 + \sin^2 \phi_0 \sin \phi_1 \cos \phi_1) \dd r \dd \phi_1 \\
+		&+ 2r^2(- \sin \phi_0\cos \phi_0 \sin \phi_1 \cos \phi_1 \\
+		&\hspace{3em} + \sin \phi_0 \cos \phi_0 \sin \phi_1 \cos \phi_1) \dd\phi_0 \dd \phi_1 \\
+		&= (\dd r)^2 + r^2 ( (\dd\phi_0)^2 + \sin^2 \phi_0 (\dd \phi_1)^2 ) \\
+		&= (\dd r)^2 + r^2 \dd S^2 .
+	\end{align*}

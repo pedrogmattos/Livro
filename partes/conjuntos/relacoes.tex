@@ -1,0 +1,1123 @@
+\chapter{Relações}
+
+Definimos brevemente o que são relações e, em especial, relações binárias, antes de abordar os casos específicos de funções, equivalências e ordens.
+
+\begin{definition}
+Sejam $X$ e $Y$ conjuntos. Uma \emph{relação} $R$ de $X$ para $Y$ é um subconjunto de $X \times Y$. Os conjuntos $X$ e $Y$ são, respectivamente, o \emph{domínio} e o \emph{contradomínio} de $R$. Denota-se $x \mathrel{R} y$ para $(x,y) \in R$.
+\end{definition}
+
+\begin{definition}
+	Seja $A$ um conjunto não vazio. Uma \emph{relação binária} $R$ em $A$ é uma relação $R$ de $A$ para $A$.
+\end{definition}
+
+\begin{definition}
+	Seja $A$ um conjunto não vazio e $R$ uma relação binária em $A$. Definem-se as seguintes propriedades de $R$:
+	\begin{enumerate}
+	\item (Reflexividade) $\forall a \in A \qquad aRa$;
+	\item (Irreflexividade) $\nexists a \in A \qquad aRa$;
+	\item (Simetria) $\forall a_1,a_2 \in A \qquad a_1Ra_2 \Leftrightarrow a_2Ra_1$;
+	\item (Antissimetria) $\forall a_1,a_2 \in A \qquad a_1Ra_2 \text{\ \ e\ \ } a_2Ra_1 \Rightarrow a_1=a_2$;
+	\item (Transitividade) $\forall a_1,a_2,a_3 \in A \qquad a_1Ra_2 \text{\ \ e\ \ } a_2Ra_3 \Rightarrow a_1Ra_3$;
+	\item (Totalidade) $\forall a_1,a_2 \in A \qquad a_1Ra_2 \text{\ \ ou\ \ } a_2Ra_1$.
+	\end{enumerate}
+	Uma relação que satisfaz as propriedades acima é, respectivamente, reflexiva, simétrica, antissimétrica, transitiva e total.
+\end{definition}
+
+\section{Funções}
+
+\begin{definition}
+Seja $R$ uma relação de $X$ em $Y$. A \emph{relação inversa} de $R$ é a relação $R\inv$ de $Y$ em $X$ definida por
+	\begin{equation*}
+	\forall x \in X\ \forall y \in Y \qquad x \mathrel{R} y \Leftrightarrow y \mathrel{R\inv} x.
+	\end{equation*}
+\end{definition}
+
+
+\subsection{Definição e propriedades básicas}
+
+\begin{definition}
+Sejam $A$ e $B$ conjuntos. Uma \emph{função} de $A$ para $B$ é uma relação $f$ de $A$ para $B$ tal que
+	\begin{enumerate}
+		\item (Funtorialidade) Para todo $a \in A$, existe único $b \in B$ tal que $(a,b) \in f$.
+	\end{enumerate}
+Denota-se $f: A \to B$. O conjunto das funções de $A$ para $B$ é denotado $\Func(A,B)$ ou $B^A$. O conjunto das funções de $A$ para $A$ é denotado $\Func(A)$.
+
+A \emph{imagem} de $a \in A$ é o único $b \in B$ que satisfaz $(a,b) \in f$. Denota-se $b=f(a)$. Ambas informações podem ser denotadas por
+	\begin{align*}
+	\func{f}{A}{B}{a}{b}.
+	\end{align*}
+
+\end{definition}
+
+\begin{proposition}
+Seja $f: A \to B$ uma função. Então
+	\begin{enumerate}
+	\item $A=\emptyset \sse f=\emptyset$.
+	\item $B=\emptyset \entao A=\emptyset$.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item Suponhamos que $A=\emptyset$. Primeiro, notemos que $f=\emptyset$ é uma função de $\emptyset$ em $B$. Claramente, $f = \emptyset \subseteq \emptyset \times B$. Ainda, se $f$ não fosse função de $\emptyset$ em $B$, existiria $a \in \emptyset$ tal que não existe único $b \in B$ satisfazendo $(a,b) \in f$. Mas existir $a \in \emptyset$ é uma contradição. Logo $f$ é função. Por fim, se $g: \emptyset \times B$ é uma função, como $\emptyset \times B = \emptyset$, então $g \subseteq \emptyset \times B = \emptyset$, logo $g=\emptyset=f$.
+	
+Reciprocamente, suponhamos $f=\emptyset$. Se $A \neq \emptyset$, seja $a \in A$. Como $f$ é função, existe $b \in B$ tal que $(a,b) \in f=\emptyset$, o que é contradição. Portanto $A=\emptyset$.
+	
+	\item Suponhamos que $A \neq \emptyset$. Então existe $a \in A$ e, como $f$ é função, existe único $b \in \emptyset$ tal que $(a,b) \in f$. Mas $b \in \emptyset$ é absurdo, o que mostra que $A = \emptyset$.
+	\end{enumerate}
+\end{proof}
+
+\begin{proposition}\label{conj:prop.func.ig}
+Sejam $f: A \to B$ e $g:A' \to B'$. Então
+	\begin{equation*}
+	f=g \sse A=A' \e \forall a \in A \quad f(a)=g(a).
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+Suponhamos que $f=g$. Se $A=\emptyset$, então $f=\emptyset$ e $g=f=\emptyset$, o que implica $A'=\emptyset$. Ainda, para todo $a \in A$, $f(a)=g(a)$ pois, se isso fosse falso, existiria $a \in \emptyset$ tal que $f(a)\neq g(a)$, mas existir $a \in \emptyset$ é absurdo. Se $A \neq \emptyset$, seja $a \in A$. Então existe $b \in B$ tal que $(a,b) \in f$ e, como $f=g$, $(a,b) \in g$. Isso implica $a \in A'$ e concluímos que $A \subseteq A'$. Por outro lado, seja $a \in A'$. Então existe $b \in B'$ tal que $(a,b) \in g$ e, como $f=g$, $(a,b) \in f$. Isso implica $a \in A$ e concluímos que $A' \subseteq A$. Portanto $A=A'$. Agora, seja $a \in A$. Então existem $f(a) \in B$ e $g(a) \in B'$. Como $(a,f(a)) \in f$ e $f=g$, então $(a,f(a)) \in g$. Como $f$ é função, existe único $b \in B$ tal que $(a,b) \in f$, o que implica $f(a)=g(a)$.
+	
+Reciprocamente, suponhamos que $A=A'$ e que, para todo $a \in A$, $f(a)=g(a)$. Se $A=\emptyset$, então $f=\emptyset$ e $g=\emptyset$, logo $f=g$. Se $A \neq \emptyset$, então seja $p \in f$. Existe $a \in A$ tal que $p=(a,f(a))$. Como $f(a)=g(a)$, então $p=(a,g(a))$; mas $(a,g(a)) \in g$, o que implica $p \in g$ e, portanto, $f \subseteq g$. Agora, seja $p \in g$. Existe $a \in A'$ tal que $p=(a,g(a))$. Como $f(a)=g(a)$, então $p=(a,f(a))$; mas $(a,f(a)) \in f$, o que implica $p \in f$ e, portanto, $f \subseteq g$. Assim, concluímos que $f=g$.
+\end{proof}
+
+\begin{definition}
+Sejam $f: A \to B$ uma função e $C \subseteq A$ um conjunto. O \emph{conjunto imagem} de $C$ sob $f$ é
+	\begin{equation*}
+	f(C)=\set{y \in Y}{\exists c \in C \quad y=f(c)}.
+	\end{equation*}
+O conjunto $f(A)$ é o \emph{imagem} de $f$.
+\end{definition}
+
+\begin{proposition}
+Seja $f: A \to B$. Então $f: A \to f(A)$.
+\end{proposition}
+
+\begin{definition}
+Sejam $f: A \to B$ uma função e $A' \subseteq A$ um conjunto. A \emph{restrição} de $f$ a $A'$ é a função
+	\begin{align*}
+	\func{f|_{A'}}{A'}{B}{a}{f(a)}.
+	\end{align*}
+\end{definition}
+
+\begin{proposition}\label{conj:prop.func.rest.ig}
+	Sejam $f: A \to B$, $A' \subseteq A$ e $B' \subseteq B$. Então a restrição $f|_{A'}$ é uma função de $A'$ em $B'$ se, e somente se, $f(A') \subseteq B'$.
+\end{proposition}
+\begin{proof}
+	Se que $f|_{A'}$ é uma função de $A'$ em $B'$, então o contradomínio de $f_{A'}$ é $B'$, o que significa que, para todo $a \in A'$, $f(a) = f|_{A'}(a) \in B'$, logo $f(A') \subseteq B$. Reciprocamente, se, para todo $a \in A'$, $f(a) \in B'$, então $f|_{A'}$ é uma função de $A'$ em $B'$.
+\end{proof}
+
+\subsection{Composição de funções}
+
+\begin{definition}
+	Sejam $f: A \to B'$ e $g: B \to C$ funções tais que $B' \subseteq B$. A \emph{função composta} de $g$ com $f$ é a função
+	\begin{align*}
+	\func{g \circ f }{A}{C}{a}{g(f(a))}.
+	\end{align*}
+\end{definition}
+
+\begin{proposition}
+\label{prop:comp.func.asso}
+	Sejam $f: A \to B'$, $g: B \to C'$ e $h: C \to D$ funções tais que $B' \subseteq B$ e $C' \subseteq C$. Então
+	\begin{equation*}
+	h \circ (g \circ f) = (h \circ g) \circ f.
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+	Primeiro, notemos que $g \circ f$ é uma função de $A$ em $C'$, o que implica que $h \circ (g \circ f)$ é uma função de $A$ em $D$. Anda, notemos que $h \circ g$ é uma função de $B$ em $D$, o que implica que $(h \circ g) \circ f$ é uma função de $A$ em $D$. Logo os domínios de $h \circ (g \circ f)$ e $(h \circ g) \circ f$ são iguais. Se $A=\emptyset$, então $h \circ (g \circ f) = (h \circ g) \circ f = \emptyset$. Suponhamos, então, que $A \neq \emptyset$ e seja $a \in A$. Então
+	\begin{equation*}
+	(h \circ (g \circ f))(a) = h((g \circ f)(a)) = h(g(f(a))) = (h \circ g)(f(a)) = ((h \circ g) \circ f)(a),
+	\end{equation*}
+o que mostra que $h \circ (g \circ f) = (h \circ g) \circ f$. 
+\end{proof}
+
+\begin{proposition}
+	Seja $f\colon A \to B$. Então
+	\begin{enumerate}
+	\item $f \circ \emptyset = \emptyset$;
+	\item $\emptyset \circ f = \emptyset$.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	Para a primeira igualdade, notemos que $f \circ \emptyset$ é uma função de $\emptyset$ em $B$ e, portanto, $f \circ \emptyset=\emptyset$. Para a segunda igualdade, notemos que $\emptyset \circ f$ é uma função de $A$ em $\emptyset$ e, portanto, $A=\emptyset$, o que é equivalente a $\emptyset \circ f=\emptyset$.
+\end{proof}
+
+\begin{definition}
+	Seja $A$ um conjunto não vazio. A \emph{função identidade} em $A$ é a função
+	\begin{align*}
+	\func{\Id_A}{A}{A}{a}{a}.
+	\end{align*}
+\end{definition}
+
+\begin{proposition}
+\label{prop:id.comp.func}
+	Seja $f\colon A \to B$ uma função. Então
+	\begin{equation*}
+	f \circ \Id_A = f \e \Id_B \circ f = f.
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+	Primeiro, notemos que $f \circ \Id_A$ e $\Id_B \circ f$ são funções de $A$ em $B$ e, portanto, têm o mesmo domínio de $f$. Se $A = \emptyset$, então $f: \emptyset \to B$ e, portanto, $f=\emptyset$. Notemos que $\Id_\emptyset = \emptyset$. De fato, $\emptyset$ é função e, se não fosse identidade de $\emptyset$ em $\emptyset$, existiria $a \in \emptyset$ tal que $f(a) \neq a$; mas $a \in \emptyset$ é absurdo. Assim, $f \circ \Id_A$ é uma função de $\emptyset$ em $B$ e, portanto, $f \circ \Id_A = \emptyset = f$. Ainda, $\Id_B \circ f$ é uma função de $\emptyset$ em $B$ e, portanto, $\Id_B \circ f = \emptyset = f$. Se $A \neq \emptyset$, seja $a \in A$. Então $(f \circ \Id_A) (a) = f(\Id_A(a)) = f(a) = \Id_B(f(a)) = (\Id_B \circ f)(a)$.
+\end{proof}
+
+\subsection{Função inversa, injetividade e sobrejetividade}
+
+\begin{definition}
+Seja $f\colon A \to B$ uma função. Uma \emph{função inversa} de $f$ é uma função $g\colon B \to A$ tal que
+	\begin{equation*}
+	g \circ f = \Id_A \e f \circ g = \Id_B.
+	\end{equation*}
+\end{definition}
+
+\begin{definition}
+Uma \emph{função injetiva} (ou \emph{injeção}) é uma função $f\colon A \to B$ que satisfaz
+	\begin{equation*}
+	\forall a_1,a_2 \in A \qquad f(a_1)=f(a_2) \Rightarrow a_1=a_2.
+	\end{equation*}
+O conjunto das funções injetivas de $A$ para $B$ é denotado $\Mono{\Func}(A,B)$. O conjunto das funções injetivas de $A$ para $A$ é denotado $\Mono{\Func}(A)$.
+\end{definition}
+
+\begin{definition}
+Uma \emph{função sobrejetiva} sobre um conjunto $B$ é uma função $f\colon A \to B$ que satisfaz $f(A)=B$. O conjunto das funções sobrejetivas de $A$ para $B$ é denotado $\Epi{\Func}(A,B)$. O conjunto das funções sobrejetivas de $A$ para $A$ é denotado $\Epi{\Func}(A)$.
+\end{definition}
+
+\begin{definition}
+Sejam $A$ e $B$ conjunto. Uma \emph{bijeção} entre $A$ e $B$ é uma função injetiva $f\colon A \to B$ que é sobrejetiva sobre $B$. O conjunto das funções bijetivas de $A$ para $B$ é denotado $\Iso{\Func}(A,B)$.
+\end{definition}
+
+\begin{proposition}
+\label{prop:func.inv.esq}
+Seja $f\colon A \to B$. Então $f$ é injetiva se, e somente se, existe $g\colon B \to A$ tal que $g \circ f = \Id_A$.
+\end{proposition}
+\begin{proof}
+Suponhamos que $f$ é injetiva. Se $A = \emptyset$. Então $f=\emptyset$ e, portanto, tomando $g=\Id_B$, temos que $g \circ f = \Id_B \circ \emptyset = \Id_\emptyset = \emptyset$.
+	Se $A \neq \emptyset$, seja $a \in A$.
+	
+	
+\end{proof}
+
+\begin{proposition}
+\label{prop:func.inv.dir}
+Seja $f\colon A \to B$. Então $f$ é sobrejetiva sobre $B$ se, e somente se, existe $g\colon B \to A$ tal que $f \circ g = \Id_B$.
+\end{proposition}
+\begin{proof}
+Suponhamos que $f$ é sobrejetiva sobre $B$. Então $B=f(A)$; ou seja, para todo $b \in B$, existe $a \in A$ tal que $f(a)=b$ e, portanto, definimos a função $g\colon B \to A$ para cada elemento de $B$ como $g(b) := a$. Assim, segue que $g \circ f = \Id_B$.
+\end{proof}
+
+\begin{proposition}
+	Seja $f\colon A \to B$. Se $g\colon B \to A$ e $g'\colon B \to A$ são funções inversas de $f$, então $g=g'$.
+\end{proposition}
+%\begin{proof}
+%	Primeiro, notemos que os domínios de $g$ e $g'$ são os mesmos. Agora, se $A=\emptyset$, então $f=\emptyset$. Mas isso significa que $\Id_A = \emptyset$ e, como $g$ e $g'$ são inversas de $f$, segue que $g$
+%	 (NÃO SEI SE ROLA COM A=0).
+	
+%	Se $A \neq \emptyset$, seja $a \in A$. Então $g \circ f = \Id_B$
+%\end{proof}
+
+\begin{proposition}
+\label{prop:comp.func.inj}
+	Sejam $f\colon A \to B'$ e $g\colon B \to C$ funções tais que $B' \subseteq B$. Se $f$ e $g$ são funções injetivas, então $g \circ f$ é uma função injetiva.
+\end{proposition}
+\begin{proof}
+	Sejam $a_1,a_2 \in A$ tais que $g \circ f(a_1)=g \circ f(a_2)$. Então $g(f(a_1))=g(f(a_2))$. Como $g$ é injetiva, então $f(a_1)=f(a_2)$ e, como $f$ é injetiva, então $a_1=a_2$. Portanto $g \circ f$ é injetiva.
+\end{proof}
+
+\begin{proposition}
+\label{prop:comp.func.sobr}
+	Sejam $f\colon A \to B$ e $g\colon B \to C$ funções. Se $f$ e $g$ são funções sobrejetivas, então $g \circ f$ é uma função sobrejetiva.
+\end{proposition}
+\begin{proof}
+	Como $f$ é sobrejetiva, então $f(A)=B$. Ainda, como $g$ é sobrejetiva, então $g(B)=C$. Então $g \circ f(A) = g(f(A))=g(B)=C$. Portanto $g \circ f$ é sobrejetiva.
+\end{proof}
+
+\subsection{Imagem inversa de função e propriedades}
+
+\begin{definition}
+	Seja $f: A \to B$ uma função e $B' \subseteq B$. A \emph{imagem inversa} de $B$ sob $f$ é o conjunto
+	\begin{equation*}
+	f^{-1}(B') := \set{a \in A}{f(a) \in B'}.
+	\end{equation*}
+\end{definition}
+
+\begin{proposition}
+\label{prop:props.imag.inv}
+	Seja $f: A \to B$ uma função, $B' \subseteq B$ e $(B_i)_{i \in I} \subseteq \p(B)$ uma família de subconjuntos de $B$. Então
+	\begin{enumerate}
+	\item $f^{-1}(\emptyset) = \emptyset$;
+	\item $f^{-1}(B) = A$;
+	\item $f^{-1}\left((B')^\complement\right) = (f^{-1}(B'))^\complement$;
+	\item $f^{-1}\left(\displaystyle\bigcup_{i \in I} B_i\right) = \displaystyle\bigcup_{i \in I} f^{-1}(B_i)$;
+	\item $f^{-1}\left(\displaystyle\bigcap_{i \in I} B_i\right) = \displaystyle\bigcap_{i \in I} f^{-1}(B_i)$.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item Suponha, por absudo, que existe $a \in f^{-1}(\emptyset)$. Então $f(a) \in \emptyset$, o que é absurdo, e conclui-se $f^{-1}(\emptyset) = \emptyset$.
+	\item Seja $a \in A$. Como f é função de $A$ em $B$, então existe $b \in B$ tal que $f(a)=b$, o que implica $a \in f^{-1}(B)$ e, então, $a \subseteq A$. Como a inclusão contrária vale por definição, então$f^{-1}(B) = A$.
+	\item Seja $a \in f^{-1}((B')^\complement)$. Então $f(a) \in (B')^\complement$. Mas isso implica $a \notin f^{-1}(B')$, pois, caso contrário, seguiria que $f(a) \in B'$, o que contradiz a hipótese. Portanto $a \in (f^{-1}(B'))^\complement$; ou seja, $f^{-1}((B')^\complement) \subseteq (f^{-1}(B'))^\complement$. Reciprocamente, seja $a \in (f^{-1}(B'))^\complement$. Se, por absurdo, $f(a) \in B'$, então $a \notin f^{-1}(B')$, o que contradiz a hipótese. Portanto $f(a) \in (B')^\complement$, o que implica $a \in f^{-1}((B')^\complement)$. Assim conclui-se que $(f^{-1}(B'))^\complement \subseteq f^{-1}((B')^\complement)$ e, portanto, $f^{-1}((B')^\complement) = (f^{-1}(B'))^\complement$.
+	\item Seja $a \in f^{-1}(\bigcup_{i \in I} B_i)$. Então $f(a) \in \bigcup_{i \in I} B_i$. Isso significa que exite $i \in I$ tal que $f(a) \in B_i$. Portanto $a \in f^{-1}(B_i)$, e segue que $a \in \bigcup_{i \in I} f^{-1}(B_i)$; ou seja, $f^{-1}(\bigcup_{i \in I} B_i) \subseteq \bigcup_{i \in I} f^{-1}(B_i)$. Reciprocamente, seja $a \in \bigcup_{i \in I} f^{-1}(B_i)$. Então existe $i \in I$ tal que $a \in f^{-1}(B_i)$. Então $f(a) \in B_i$. Mas isso implica que $f(a) \in \bigcup_{i \in I} B_i$. Portanto $a \in f^{-1}(\bigcup_{i \in I} B_i)$; ou seja, $\bigcup_{i \in I} f^{-1}(B_i) \subseteq f^{-1}(\bigcup_{i \in I} B_i)$. Assim, conclui-se que $f^{-1}(\bigcup_{i \in I} B_i) = \bigcup_{i \in I} f^{-1}(B_i)$.
+	\item Seja $a \in f^{-1}(\bigcap_{i \in I} B_i)$. Então $f(a) \in \bigcap_{i \in I} B_i$. Isso significa que, para todo $i \in I$, $f(a) \in B_i$. Portanto, para todo $i \in I$, $a \in f^{-1}(B_i)$, e segue que $a \in \bigcap_{i \in I} f^{-1}(B_i)$; ou seja, $f^{-1}(\bigcap_{i \in I} B_i) \subseteq \bigcap_{i \in I} f^{-1}(B_i)$. Reciprocamente, seja $a \in \bigcap_{i \in I} f^{-1}(B_i)$. Então, para todo $i \in I$, $a \in f^{-1}(B_i)$. Então, para todo $i \in I$, $f(a) \in B_i$, o que implica que $f(a) \in \bigcap_{i \in I} B_i$. Portanto $a \in f^{-1}(\bigcap_{i \in I} B_i)$; ou seja, $\bigcap_{i \in I} f^{-1}(B_i) \subseteq f^{-1}(\bigcap_{i \in I} B_i)$. Assim, conclui-se que $f^{-1}(\bigcap_{i \in I} B_i) = \bigcap_{i \in I} f^{-1}(B_i)$.
+\qedhere
+	\end{enumerate}
+\end{proof}
+
+\subsection{Propriedades de imagem e imagem inversa}
+
+\begin{proposition}
+	Sejam $f: D \to C$ uma função e $(C_i)_{i \in I}$ uma família de subconjuntos de $C$. Então
+	\begin{enumerate}
+	\item $f(\emptyset) = \emptyset$;
+	\item $f(D) \subseteq C$;
+	\item $f\left(\displaystyle\bigcup_{i \in I} C_i \right) = \displaystyle\bigcup_{i \in I} f(C_i)$;
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item Suponha, por absurdo, que existe $c \in f(\emptyset)$. Nesse caso, existe $d \in \emptyset$ tal que $f(d) = c$, o que é absurdo. Logo $f(\emptyset) = \emptyset$.
+	\item Se$f(D)=\emptyset$, então vale a proposição. Caso contrário, seja $c \in f(D)$. Então existe $d \in D$ tal que $f(d)=c \in C$.
+	\item Se $f \left( \bigcup_{i \in I} C_i \right) = \emptyset$, então $\bigcup_{i \in I} C_i = \emptyset$. Assim, segue que, para todo $i \in I$, $C_i = \emptyset$ e temos que $f(C_i)=\emptyset$. Portanto $\bigcup_{i \in I} f(C_i) = \emptyset$. Caso contrário, seja $d \in f \left( \bigcup_{i \in I} C_i \right)$. Então existe $c \in \bigcup_{i \in I} C_i$ tal que $f(c)=d$ e, consequentemente, existe $i \in I$ tal que $c \in C_i$. Assim, segue que $d=f(c) \in f(C_i) \subseteq \bigcup_{i \in I} f(C_i)$.
+	
+	Reciprocamente, se $\bigcup_{i \in I} f(C_i) = \emptyset$, então, para todo $i \in I$, $f(C_i) = \emptyset$, o que implica $C_i = \emptyset$. Assim, segue que $\bigcup_{i \in I} C_i = \emptyset$ e, portanto, $f\left(\bigcup_{i \in I} C_i \right) = \emptyset$. Caso contrário, seja $d \in \bigcup_{i \in I} f(C_i)$. Então existe $i \in I$ tal que $d \in f(C_i)$ e, consequentemente, existe $c \in C_i$ tal que $f(c)=d$. Assim, segue que $c \in \bigcup_{i \in I} C_i$ e, portanto, que $d \in f\left(\bigcup_{i \in I} C_i \right)$.
+	\end{enumerate}
+\end{proof}
+
+\begin{proposition}
+Sejam $f: D \to C$ uma função, $X \subseteq D$ e $Y \subseteq C$. Então
+	\begin{enumerate}
+	\item $X \subseteq f^{-1}(f(X))$.
+	\item $X = f^{-1}(f(X))$ se $f$ é injetiva.
+	\item $f(f^{-1}(Y)) \subseteq Y$.
+	\item $f(f^{-1}(Y)) = Y$ se $f$ é sobrejetiva.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item Seja $x \in X$. Então $f(x) \in f(X)$, o que implica que $x \in f^{-1}(f(X))$.
+	
+	\item Seja $x \in f^{-1}(f(X))$. Então $f(x) \in f(X)$. Portanto existe $x' \in X$ tal que $f(x)=f(x')$. Da injetividade, segue que $x=x' \in X$.
+	
+	\item Seja $y \in f(f^{-1}(Y))$. Então existe $x \in f^{-1}(Y)$ tal que $f(x)=y$. Mas então $f(x) \in Y$, portanto $y \in Y$.
+	
+	\item Seja $y \in Y$. Da sobrejetividade, existe $x \in X$ tal que $f(x)=y \in Y$. Isso implica que $x \in f^{-1}(Y)$ e, portanto, $y=f(x)=f(f^{-1}(Y))$.
+	\end{enumerate}
+\end{proof}
+
+
+
+\subsection{Os funtores imagem e imagem inversa}
+
+Podemos entender a imagem e a imagem inversa de funções como funções definidas no conjunto das partes do domínio de contradomínio da função, como a seguir.
+
+Seja $f\colon C \to C'$ uma função. A função imagem de $f$ é a função
+	\begin{align*}
+	\func{\p\emp(f)}{\p(C)}{\p(C')}{A}{f(A) = \set{f(a)}{a \in A}}
+	\end{align*}
+e a função imagem inversa de $f$ é a função
+	\begin{align*}
+	\func{\p\pux(f)}{\p(C')}{\p(C)}{B}{f\inv(B) = \set{c \in C}{f(c) \in B}.}
+	\end{align*}
+
+Sendo assim, elas satisfazem as seguintes propriedades funtoriais.
+
+\begin{proposition}[Imagem é funtor covariante]
+	\begin{enumerate}
+	\item Para todo conjunto $C$,
+		\begin{equation*}
+		\p\emp(\Id_C) = \Id_{\begin{footnotesize}\p\end{footnotesize}(C)};
+		\end{equation*}
+	\item Para todos conjuntos $C,C',C''$ e todas funções $f\colon C \to C'$ e $f'\colon C' \to C''$,
+		\begin{equation*}
+		\p\emp(f' \circ f) = \p\emp(f') \circ \p\emp(f).
+		\end{equation*}
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item Para todo $A \in \p(C)$,
+		\begin{equation*}
+		\p\emp(\Id_c)(A) = \set{\Id_C(a)}{a \in A} = \set{a}{a \in A} = A,
+		\end{equation*}
+portanto $\p\emp(\Id_C) = \Id_{\begin{footnotesize}\p\end{footnotesize}(C)}$.
+
+	\item Para todo $A \in \p(C)$,
+		\begin{align*}
+		\p\emp(f' \circ f)(A) &= \set{f' \circ f(a)}{a \in A} \\
+			&= \set{f'(f(a))}{a \in A} \\
+			&= \p\emp(f')(\set{f(a)}{a \in A}) \\
+			&= \p\emp(f')(\p\emp(f)(A)) \\
+			&= (\p\emp(f') \circ \p\emp(f))(A),
+		\end{align*}
+portanto $\p\emp(f' \circ f) = \p\emp(f') \circ \p\emp(f)$.
+	\end{enumerate}
+\end{proof}
+
+\begin{proposition}[Imagem inversa é funtor contravariante]
+	\begin{enumerate}
+	\item Para todo conjunto $C$,
+		\begin{equation*}
+		\p\emp(\Id_C) = \Id_{\begin{footnotesize}\p\end{footnotesize}(C)};
+		\end{equation*}
+	\item Para todos conjuntos $C,C',C''$ e todas funções $f\colon C \to C'$ e $f'\colon C' \to C''$,
+		\begin{equation*}
+		\p\emp(f' \circ f) = \p\emp(f) \circ \p\emp(f').
+		\end{equation*}
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item Para todo $A \in \p(C)$,
+		\begin{equation*}
+		\p\pux(\Id_c)(A) = \set{c \in C}{\Id_C(c) \in A} = \set{c \in C}{c \in A} = A,
+		\end{equation*}
+portanto $\p\pux(\Id_C) = \Id_{\begin{footnotesize}\p\end{footnotesize}(C)}$.
+
+	\item Para todo $A \in \p(C'')$,
+		\begin{align*}
+		\p\pux(f' \circ f)(A) &= \set{c \in C}{f' \circ f(c) \in A} \\
+			&= \set{c \in C}{f'(f(c)) \in A} \\
+			&= \set{c \in C}{f(c) \in \p\pux(f')(A)} \\
+			&= \set{c \in C}{c \in \p\pux(f)(\p\pux(f')(A))} \\
+			&= \set{c \in C}{c \in \p\pux(f) \circ \p\pux(f')(A)} \\
+			&= \p\pux(f) \circ \p\pux(f')(A),
+		\end{align*}
+portanto $\p\emp(f' \circ f) = \p\emp(f') \circ \p\emp(f)$.
+	\end{enumerate}
+\end{proof}
+
+\begin{proposition}
+Seja $f\colon C \to C'$ uma função.
+	\begin{enumerate}
+	\item $\Id_{\p(C)} \subseteq \p\pux \circ \p\emp(f)$;
+	\item $\Id_{\p(C)} = \p\pux \circ \p\emp(f)$ se $f$ é injetiva;
+	\item $\p\emp \circ \p\pux(f) \subseteq \Id_{\p(C')}$;
+	\item $\p\emp \circ \p\pux(f) = \Id_{\p(C')}$ se $f$ é sobrejetiva.
+	\end{enumerate}
+\end{proposition}
+
+\section{Equivalências}
+
+\begin{definition}
+	Seja $A$ um conjunto. Uma \emph{equivalência} em $A$ é uma relação binária $\sim$ em $A$ que é reflexiva, simétrica e transitiva.
+\end{definition}
+
+Costumamos denotar uma relação de equivalência com símbolos $\sim, \simeq, \approx, \equiv$ ou outros símbolos semelhantes.
+
+\begin{definition}
+	Seja $A$ um conjunto e $\sim$ uma relação de equivalência em $A$. A \emph{classe de equivalência} de $a \in A$ é o conjunto
+	\begin{equation*}
+	\cla{a} := \set{b \in A}{b \sim a}.
+	\end{equation*}
+	O \emph{conjunto quociente} de $A$ por $\sim$ é o conjunto
+	\begin{equation*}
+	\quo{A}{\sim} := \set{\cla{a}}{a \in A}.
+	\end{equation*}
+\end{definition}
+
+\begin{theorem}[Teorema Fundamental das Relações de Equivalência]
+\label{conj:teo.rel.equiv.part}
+	Seja $A$ um conjunto. Se $\sim$ é uma relação de equivalência em $A$, então $\quo{A}{\sim}$ é uma partição de $A$. Reciprocamente, se $P$ é uma partição de $A$, então existe uma relação de equivalência $\sim$ em $A$ tal que $P = \quo{A}{\sim}$.
+\end{theorem}
+\begin{proof}
+	Seja $\sim$ uma relação de equivalência em $A$ e $P := \quo{A}{\sim}$. Claramente, $\emptyset \notin P$. Ainda, para todo $a \in A$, como $a \sim a$, então $a \in \cla{a}$. Logo
+	\begin{equation*}
+	\bigcup_{\cla{a} \in P} \cla{a} = A.
+	\end{equation*}
+Por fim, sejam $\cla{a_1},\cla{a_2} \in P$ tais que $\cla{a_1} \neq \cla{a_2}$. Se existir $a \in \cla{a_1} \cap \cla{a_2}$, então, para todo $b \in \cla{a_1}$, $b \sim a_1$ e $a_1 \sim a$, o que implica $b \sim a$. Ainda, $a \sim a_2$. Então $b \in \cla{a_2}$; ou seja, $\cla{a_1} \subseteq \cla{a_2}$. Por outro lado, $b \sim a_2 \sim a \sim a_1$, o que implica $\cla{a_2} \subseteq \cla{a_1}$. Isso implica $\cla{a_1}=\cla{a_2}$, contradição. Logo $\cla{a_1} \cap \cla{a_2}=\emptyset$. Assim, concluímos que $P$ é uma partição de $A$.
+	
+	Seja $P$ uma partição de $A$. A relação binária $\sim$ em $A$, definida por
+	\begin{equation*}
+	\forall a_1,a_2 \in A \qquad a_1 \sim a_2 \Leftrightarrow \exists Q \in P \quad a_1,a_2 \in Q,
+	\end{equation*}
+é uma relação de equivalência. Claramente, para todo $a \in A$, existe $Q \in P$ tal que $a \in Q$, pois $\displaystyle \bigcup_{R \in P} R = A$. Então $a \sim a$, o que mostra a reflexividade. Ainda, a simetria é trivial pela definição da relação $\sim$. Por fim, para $a_1,a_2,a_3 \in A$, se $a_1 \sim a_2$ e $a_2 \sim a_3$, existem conjuntos $Q,R \in P$ tais que $a_1,a_2 \in Q$ e $a_2,a_3 \in R$. Como $a_2 \in Q \cap R$, pela definição de partição $Q=R$. Então $a_1 \sim a_3$, o que mostra a transitividade. Logo $\sim$ é uma relação de equivalência em $A$.
+\end{proof}
+
+\subsection{Funções bem definidas}
+
+\begin{definition}
+	Sejam $(E,\sim)$ e $(E',\sim')$ conjuntos com equivalência. Uma \emph{função bem definida} (ou \emph{função que preserva equivalência}) de $(E,\sim)$ para $(E',\sim')$ é uma função $\fun{f}{E}{E'}$ tal que, para todos $x_0,x_1 \in E$ tais que $x_0 \sim x_1$,
+		\begin{equation*}
+			f(x_0) \sim' f(x_1).
+		\end{equation*}
+\end{definition}
+
+\begin{proposition}
+	Sejam $(E,\sim)$ e $(E',\sim')$ conjuntos com equivalência e $\fun{f}{E}{E'}$ uma função. A função $f$ é bem definida se, e somente se, a relação
+		\begin{equation*}
+			\cla{f} := \set{(\cla{x},\cla{x'}') \in \quo{E}{\sim} \times \quo{E'}{\sim'}}{\exists_{x_0 \in \cla{x}} f(x_0) \in \cla{x'}'}
+		\end{equation*}
+	é uma função.
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+		\item [($\Rightarrow$)] Suponhamos que $f$ é bem definida e seja $\cla{x} \in \quo{E}{\sim}$. Para todo $x_0 \in \cla{x}$, $x_0 \sim x$, portanto $f(x_0) \sim' f(x)$, o que mostra que $\cla{f(x_0)}' = \cla{f(x)}'$, portanto existe única classe $\cla{f(x)}' \in \quo{E'}{\sim'}$ tal que $(\cla{x},\cla{f(x)'}) \in \cla{f}$.
+		
+		\item [($\Leftarrow$)] Suponhamos que $\cla{f}$ é função e sejam $x_0,x_1 \in E$ tais que $x_0 \sim x_1$, temos que $\cla{x_0} = \cla{x_1}$, portanto
+			\begin{equation*}
+				\cla{f(x_0)}' = \cla{f}(\cla{x_0}) = \cla{f}(\cla{x_1}) = \cla{f(x_1)}',
+			\end{equation*}
+		o que mostra que $f(x_0) \sim' f(x_1)$.
+	\end{enumerate}
+\end{proof}
+
+Nesse caso, temos a função
+	\begin{align*}
+		\func{\cla{f}}{\quo{E}{\sim}}{\quo{E'}{\sim'}}{\cla{x}}{\cla{f(x)}'}.
+	\end{align*}
+
+Em geral, a função $\cla{f}$ também é denotada $f$ por simplicidade. Comumente, considera-se somente um espaço com equivalência, e a equivalência no segundo conjunto é tomada como a igualdade.
+
+\section{Ordens}
+
+\subsection{Ordens parciais, estritas e totais}
+
+\begin{definition}
+	Seja $X$ um conjunto. Uma \emph{ordem parcial} em $X$ é uma relação binária $\leq$ em $X$ que é reflexiva, antissimétrica e transitiva. Uma \emph{ordem total} é uma ordem parcial que é total.
+\end{definition}
+
+	Costumamos denotar uma relação de ordem com símbolos $\leq, \subseteq, \unlhd$ ou outros símbolos semelhantes.
+	
+\begin{example}
+	Seja $A$ um conjunto. Então a relação $\subseteq$ entre elementos de $\p(A)$ é uma relação de ordem parcial em $\p(A)$.
+\end{example}
+
+\begin{example}
+	Seja $\N$ o conjunto dos naturais. Então a relação divide $|$, definida por
+	\begin{equation*}
+	a|b \Leftrightarrow \exists n \in \N \qquad an=b
+	\end{equation*}
+é uma relação de ordem parcial nos naturais.
+\end{example}
+
+\begin{proposition}
+	Seja $X$ um conjunto e $\leq$ uma ordem parcial em $X$. Então a relação binária $\geq$ em $X$, definida para todos $x_1,x_2 \in X$ por
+	\begin{equation*}
+	x_1 \geq x_2 \Leftrightarrow x_2 \leq x_1,
+	\end{equation*}
+é uma ordem parcial em $X$.
+\end{proposition}
+\begin{proof}
+	Vamos mostrar que valem as três propriedades de ordem parcial. Sejam $x_1,x_2,x_2 \in X$. Como $x_1 \leq x_1$, então $x_1 \geq x_1$. Agora suponha que $x_1 \geq x_2$. Por definição, temos $x_2 \leq x_1$, o que implica $x_1 \leq x_2$, que por sua vez implica $x_2 \geq x_1$. Por fim, suponha $x_1 \geq x_2$ e $x_2 \geq x_3$. Então $x_2 \leq x_1$ e $x_3 \leq x_2$, o que implica $x_3 \leq x_1$ e, portanto, $x_1 \geq x_3$.
+\end{proof}
+
+\begin{definition}
+	Seja $X$ um conjunto e $\leq$ uma ordem parcial em $X$. A \emph{ordem dual de $\leq$} é a ordem parcial $\geq$ em $X$, definida para todos $x_1,x_2 \in X$ por
+	\begin{equation*}
+	x_1 \geq x_2 \Leftrightarrow x_2 \leq x_1.
+	\end{equation*}
+\end{definition}
+
+	O conceito de dualidade é um conceito importante na teoria de ordem. De fato, toda definição ou teorema tem uma definição ou teorema dual, que consiste em trocar a ordem parcial $\leq$ por sua ordem dual $\geq$.
+
+\begin{definition}
+	Seja $X$ um conjunto. Uma \emph{ordem parcial estrita} em $X$ é uma relação binária $<$ em $X$ que é irreflexiva e transitiva. Uma \emph{ordem total estrita} é uma ordem estrita que é total.
+\end{definition}
+
+	Costumamos denotar uma relação de ordem parcial estrita com símbolos $<, \prec, \subset, \lhd$ ou outros símbolos semelhantes.
+
+\begin{example}
+	Seja $A$ um conjunto. Então a relação $\subset$ entre elementos de $\p(A)$ é uma relação de ordem estrita em $\p(A)$.
+\end{example}
+
+\begin{proposition}
+	Seja $X$ um conjunto não vazio e $\leq$ uma ordem parcial em $X$. Então a relação binária $<$ em $X$, definida para todos $x_1,x_2 \in X$ por
+	\begin{equation*}
+	x_1 < x_2 \Leftrightarrow x_1 \leq x_2 \text{\ \ e\ \ } x_1 \neq x_2,
+	\end{equation*}
+é uma ordem estrita em $X$.
+\end{proposition}
+\begin{proof}
+	Sejam $x_1,x_2,x_3 \in X$. Claramente, $<$ é irreflexiva por definição pois, se $x_1 < x_2$, então $x_1 \neq x_2$. Consideremos agora a transitividade de $<$. Se $x_1 < x_2$ e $x_2 < x_3$, então $x_1 \leq x_2$ e $x_2 \leq x_3$, e também $x_1 \neq x_2$ e $x_2 \neq x_3$. Pela transitividade de $\leq$, temos $x_1 \leq x_3$. Ainda, $x_1=x_3$ implica $x_1 \leq x_2$ e $x_2 \leq x_1$ e, da antissimetria de $\leq$, temos $x_1 = x_2$, absurdo. Concluímos que $x_1 \neq x_3$ e, portanto, $x_1 < x_3$.
+\end{proof}
+
+\begin{definition}
+	Seja $X$ um conjunto não vazio e $\leq$ uma ordem parcial em $X$. A \emph{ordem estrita associada a $\leq$} é a ordem estrita $<$ em $X$, definida para todos $x_1,x_2 \in X$ por
+	\begin{equation*}
+	x_1 < x_2 \Leftrightarrow x_1 \leq x_2 \text{\ \ e\ \ } x_1 \neq x_2.
+	\end{equation*}
+\end{definition}
+
+\begin{proposition}
+	Seja $X$ um conjunto não vazio e $<$ uma ordem estrita em $X$. Então a relação binária $\leq$ em $X$, definida para todos $x_1,x_2 \in X$ por
+	\begin{equation*}
+	x_1 \leq x_2 \Leftrightarrow x_1 < x_2 \text{\ \ ou\ \ } x_1 = x_2,
+	\end{equation*}
+é uma ordem parcial em $X$.
+\end{proposition}
+\begin{proof}
+	A demonstração é análoga à demonstração da proposição anterior.
+\end{proof}
+
+\begin{definition}
+	Seja $X$ um conjunto não vazio e $<$ uma ordem estrita em $X$. A \emph{ordem parcial associada a $<$} é a ordem parcial $<$ em $X$, definida para todos $x_1,x_2 \in X$ por
+	\begin{equation*}
+	x_1 \leq x_2 \Leftrightarrow x_1 < x_2 \text{\ \ ou\ \ } x_1 = x_2.
+	\end{equation*}
+\end{definition}
+
+\subsection{Conjuntos parcialmente ordenados}
+
+\begin{definition}
+	Um \emph{conjunto parcialmente ordenado} é um par $(X,\leq)$ em que $X$ é um conjunto e $\leq$ é uma ordem parcial em $X$. Um \emph{conjunto parcialmente ordenado estrito} é um par $(X,<)$ em que $X$ é um conjunto e $<$ é uma ordem parcial estrita em $X$.
+\end{definition}
+
+\begin{definition}[Maior e menor elementos]
+	Sejam $(X,\leq)$ um conjunto parcialmente ordenado e $Y \subseteq X$. Um \emph{maior elemento} de $Y$ é um elemento $m \in Y$ que satisfaz
+	\begin{equation*}
+	\forall y \in Y \qquad y \leq m.
+	\end{equation*}
+Dualmente, um \emph{menor elemento} de $Y$ é um elemento $m \in Y$ que satisfaz
+	\begin{equation*}
+	\forall y \in Y \qquad m \leq y.
+	\end{equation*}
+\end{definition}
+
+\begin{proposition}
+	Seja $(X,\leq)$ um conjunto parcialmente ordenado e $Y \subseteq X$. Se existe maior elemento de $Y$, ele é único. Dualmente, se existe menor elemento de $Y$, ele é único.
+\end{proposition}
+\begin{proof}
+	Seja $m$ um maior elemento de $Y$. Então, se $n \in Y$ é um maior elemento de $Y$, então $m \leq n$. Mas, como $m$ é um maior elemento de $Y$, então $n \leq m$ e, como $\leq$ é antissimétrica, $m=n$. A mesma demonstração vale para um menor elemento de $Y$, considerando a ordem parcial $\geq$, dual de $\leq$.
+\end{proof}
+
+\begin{notation}
+	Sejam $(X,\leq)$ um conjunto parcialmente ordenado e $Y \subseteq X$. Se existirem, o maior e menor elementos de $Y$ são denotados $\max Y$ e $\min Y$, respectivamente.
+\end{notation}
+
+\begin{proposition}
+	Seja $(X,\leq)$ um conjunto parcialmente ordenado. Então
+	\begin{enumerate}
+	\item $\emptyset$ não tem maior  nem menor elemento.
+	\item $\forall x \in X \qquad \min\{x\}=\max\{x\} = x.$
+	\end{enumerate}
+\end{proposition}
+
+\begin{proposition}
+	Sejam $(X,\leq)$ um conjunto parcialmente ordenado e $Y$ e $Z$ conjuntos tais que $Z \subseteq Y \subseteq X$. Então, se $Y$ e $Z$ têm maior elemento,
+	\begin{equation*}
+	\max Y = \max(\{\max Z\} \cup (Y \setminus Z)).
+	\end{equation*}
+Dualmente, se $Y$ e $Z$ têm menor elemento,
+	\begin{equation*}
+	\min Y = \min(\{\min Z\} \cup (Y \setminus Z)).
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+	Vamos mostrar que $\max Y \in \{\max Z\} \cup (Y \setminus Z)$. Como $\max Y \in Y$, $\max Y \notin (Y \setminus Z)$ implica que $\max Y \in Z$. Portanto $\max Y \leq \max Z$; por outro lado, como $Z \subseteq Y$, então $\max Z \leq \max Y$, o que implica $\max Y = \max Z$ e, assim, concluímos que $\max Y \in \{\max Z\} \cup (Y \setminus Z)$. Agora vamos mostrar que $\{\max Z\} \cup (Y \setminus Z)$ tem maior elemento $\max Y$. Seja $y \in \{\max Z\} \cup (Y \setminus Z)$. Se $y = \max Z$, como $Z \subseteq Y$, então $y \leq \max Y$. Se $y \in (Y \setminus Z)$, como $(Y \setminus Z) \in Y$, então $y \leq \max Y$. Portanto $\max Y = \max(\{\max Z\} \cup (Y \setminus Z))$.
+\end{proof}
+
+\begin{definition}[Elementos maximal e minimal]
+	Seja $(X,\leq)$ um conjunto parcialmente ordenado e $Y \subseteq X$ um conjunto não vazio. Um \emph{elemento maximal} de $Y$ é um elemento $m \in Y$ que satisfaz
+	\begin{equation*}
+	\nexists y \in Y \qquad m < y.
+	\end{equation*}
+Dualmente, um \emph{elemento minimal} de $Y$ é um elemento $m \in Y$ que satisfaz
+	\begin{equation*}
+	\nexists y \in Y \qquad y < m.
+	\end{equation*}
+\end{definition}
+
+\begin{proposition}
+	Seja $(X,\leq)$ um conjunto parcialmente ordenado e $Y \subseteq X$ um conjunto não vazio. Se $Y$ tem maior elemento, então ele é o único elemento maximal de $Y$. Dualmente, se $Y$ tem menor elemento, então ele é o único elemento minimal de $Y$.
+\end{proposition}
+\begin{proof}
+	Se $Y$ tem maior elemento, então, para todo $y \in Y$, vale $y \leq \max Y$. Como $\max Y$ é único, não existe elemento $y \in Y$ tal que $y \neq \max$ e $\max Y \leq y$. Portanto $\max Y$ é um elemento maximal de $Y$. Agora, se existisse outro elemento maximal $m$ de $Y$, teríamos $m \leq \max Y$, pois $\max Y$ é o maior elemento de $Y$, o que contradiz a maximalidade de $m$. Logo $\max Y$ é o único elemento maximal de $Y$.
+\end{proof}
+
+\begin{definition}[Limitantes superior e inferior]
+	Seja $(X,\leq)$ um conjunto parcialmente ordenado e $Y \subseteq X$. Um \emph{limitante superior} de $Y$ é um elemento $l \in X$ que satisfaz
+	\begin{equation*}
+	\forall y \in Y \qquad y \leq l.
+	\end{equation*}
+Dualmente, um \emph{limitante inferior} de $Y$ é um elemento $l \in X$ que satisfaz
+	\begin{equation*}
+	\forall y \in Y \qquad l \leq y.
+	\end{equation*}
+Um conjunto \emph{limitado por cima} é um  conjunto que possui limitante superior. Um conjunto \emph{limitado por baixo} é um conjunto que possui limitante inferior. Um conjunto \emph{limitado} é um conjunto limitado por cima e por baixo.
+\end{definition}
+
+\begin{proposition}
+	Sejam $(X,\leq)$ um conjunto parcialmente ordenado e $Y$ e $Z$ conjuntos tais que $Z \subseteq Y \subseteq X$. Então, se $L_Z$ é o conjunto dos limitantes superiores de $Z$
+	
+	...
+\end{proposition}
+
+\begin{definition}[Supremo e ínfimo]
+	Seja $(X,\leq)$ um conjunto parcialmente ordenado e $Y \subseteq X$. O \emph{supremo} de $Y$, denotado $\sup Y$, é o menor elemento do conjunto de limitantes superiores de $Y$. Dualmente, o \emph{ínfimo} de $Y$, denotado $\inf Y$, é o maior elemento do conjunto de limitantes inferiores de $Y$.
+\end{definition}
+
+\begin{proposition}
+	Sejam $(X,\leq)$ um conjunto parcialmente ordenado e $Y$ e $Z$ conjuntos tais que $Z \subseteq Y \subseteq X$. Então, se $Y$ e $Z$ têm supremo,
+	\begin{equation*}
+	\sup Y = \sup(\{\sup Z\} \cup (Y \setminus Z)).
+	\end{equation*}
+Dualmente, se $Y$ e $Z$ têm ínfimo,
+	\begin{equation*}
+	\inf Y = \inf(\{\inf Z\} \cup (Y \setminus Z)).
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+	Seja $y \in \{\sup Z\} \cup (Y \setminus Z)$. Se $y = \sup Z$, como $Z \subseteq Y$, então $\sup Z \leq \sup Y$; 
+\end{proof}
+
+\subsection{Funções monótonas}
+
+\begin{definition}
+	Sejam $\bm X = (X,\leq)$ e $\bm X' = (X',\leq')$ conjuntos parcialmente ordenados. Uma \emph{função monótona} de $\bm X$ para $\bm X'$ é uma função $\fun{f}{X}{X'}$ tal que, para todos $x_0,x_1 \in X$ tais que $x_0 \leq x_1$,
+		\begin{equation*}
+		f(x_0) \leq' f(x_1).
+		\end{equation*}
+	Denota-se $\fun{f}{\bm X}{\bm X'}$. O conjunto dessas funções é denotado $\Func_\leq(\bm X, \bm X')$.
+
+	Uma \emph{função monótona estrita} de $\bm X$ para $\bm X'$ é uma função $\fun{f}{X}{X'}$ tal que, para todos $x_0,x_1 \in X$ tais que $x_0 < x_1$,
+		\begin{equation*}
+		f(x_0) <' f(x_1).
+		\end{equation*}
+\end{definition}
+
+\begin{exercise}
+	Sejam $\bm X = (X,\leq)$ e $\bm X' = (X',\leq')$ conjuntos parcialmente ordenados e $\fun{f}{X}{X'}$ uma função. A função $f$ é monótona e injetiva se, e somente se, é monótona estrita.
+\end{exercise}
+\begin{proof}
+	\begin{enumerate}
+		\item [($\Rightarrow$)] Suponhamos que $f$ é monótona e injetiva e sejam $x_0,x_1 \in X$ tais que $x_0 < x_1$. Como $x_0 \leq x_1$, segue da monotonicidade que $f(x_0) \leq f(x_1)$. Como $x_0 \neq x_1$, segue da injetividade que $f(x_0) \neq f(x_1)$, portanto $f(x_0) < f(x_1)$.
+		
+		\item [($\Leftarrow$)] Suponhamos que $f$ é monótona estrita e sejam $x_0,x_1 \in X$ tais que $x_0 \leq x_1$. Se $x_0 = x_1$, então $f(x_0) = f(x_1)$, logo $f(x_0) \leq f(x_1)$. Caso contrário, $x_0 < x_1$, e segue da monotonicidade estrita que $f(x_0) < f(x_1)$. logo $f(x_0) \leq f(x_1)$, o que mostra que $f$ é monótona.
+	\end{enumerate}
+\end{proof}
+
+\begin{definition}
+	Sejam $\bm X = (X,\leq)$ e $\bm X' = (X',\leq')$ conjuntos parcialmente ordenados. Um \emph{isomorfismo de ordem} (ou \emph{isomorfismo monótono}) de $\bm X$ para $\bm X'$ é uma função monótona $\fun{f}{\bm X}{\bm X'}$ invertível. O conjunto dessas funções é denotado $\Iso{\Func}_\leq(\bm X, \bm X')$. Nesse caso, os conjuntos $\bm X$ e $\bm X'$ são \emph{isomorfos} e denota-se $\bm X \simeq \bm X'$.
+\end{definition}
+
+\begin{proposition}
+	Sejam $\bm X = (X,\leq)$ e $\bm X' = (X',\leq')$ conjuntos parcialmente ordenados e $\fun{f}{\bm X}{\bm X'}$ um isomorfismo de ordem de $\bm X$ para $\bm X'$. A função inversa $\fun{f\inv}{X'}{X}$ é uma função monótona de $\bm X'$ para $\bm X$.
+\end{proposition}
+\begin{proof}
+	Sejam $x'_0,x'_1 \in X$ tais que $x'_0 \leq x'_1$. Suponhamos, por absurdo, que $f\inv(x'_0) > f\inv(x'_1)$. Da monotonicidade de $f$ seguiria que $x'_0 = f(f\inv(x'_0)) > f(f\inv(x'_1)) = x'_1$, contradição.
+\end{proof}
+
+\subsection{Conjuntos totalmente ordenados e cadeias}
+
+\begin{definition}
+	Um \emph{conjunto totalmente ordenado} é um conjunto parcialmente ordenado $(X,\leq)$ tal que $\leq$ é uma ordem total: para todos $x,x' \in X$,
+		\begin{equation*}
+			x \leq x' \ou x' \leq x.
+		\end{equation*}
+	Um \emph{conjunto totalmente ordenado estrito} é um conjunto parcialmente ordenado estrito $(X,<)$ tal que $<$ é uma ordem total estrita.
+\end{definition}
+
+\begin{definition}
+	Seja $(X,\leq)$ um conjunto parcialmente ordenado. Uma \emph{cadeia} de $X$ é um conjunto $Y \subseteq X$ que satisfaz
+	\begin{equation*}
+	\forall y_1,y_2 \in Y \qquad y_1 \leq y_2 \text{\ \ ou\ \ } y_2 \leq y_1.
+	\end{equation*}
+\end{definition}
+
+\begin{exercise}
+	Seja $(X,\leq)$ um conjunto totalmente ordenado e $Y \subseteq X$ um conjunto não vazio. Então $Y$ é uma cadeia de $X$.
+\end{exercise}
+
+\begin{definition}
+	Seja $(X,\leq)$ um conjunto totalmente ordenado. Um \emph{intervalo} de $X$ é um conjunto $I \subseteq X$ tal que, para todos $i,i' \in I$ e $x \in X$ tal que $i \leq x \leq i'$, vale $x \in I$. Para $e,e' \in X$, definimos:
+	
+	O \emph{intervalo aberto} de extremos $e$ e $e'$ é o conjunto
+		\begin{equation*}
+			\intaa{e}{e'} := \set{x \in X}{e < x < e'}.
+		\end{equation*}
+	O \emph{intervalo semi-aberto inferiormente} de extremos $e$ e $e'$ é o conjunto
+		\begin{equation*}
+			\intaf{e}{e'} := \set{x \in X}{e < x \leq e'}.
+		\end{equation*}
+	O \emph{intervalo semi-aberto superiormente} de extremos $e$ e $e'$ é o conjunto
+		\begin{equation*}
+			\intfa{e}{e'} := \set{x \in X}{e \leq x < e'}.
+		\end{equation*}
+	O \emph{intervalo fechado} de extremos $e$ e $e'$ é o conjunto
+		\begin{equation*}
+			\intff{e}{e'} := \set{x \in X}{e \leq x \leq e'}.
+		\end{equation*}
+	A \emph{semirreta fechada superior} com extremo $e$ é o conjunto
+		\begin{equation*}
+			\intfa{e}{\infty} := \set{e \in X}{e \leq x}.
+		\end{equation*}
+	A \emph{semirreta aberta superior} com extremo $e$ é o conjunto
+		\begin{equation*}
+			\intaa{e}{\infty} := \set{e \in X}{e < x}.
+		\end{equation*}
+	A \emph{semirreta fechada inferior} com extremo $e$ é o conjunto
+		\begin{equation*}
+			\intaf{-\infty}{e} := \set{e \in X}{x \leq e}.
+		\end{equation*}
+	A \emph{semirreta aberta inferior} com extremo $e$ é o conjunto
+		\begin{equation*}
+			\intaa{-\infty}{e} := \set{e \in X}{x < e}.
+		\end{equation*}
+\end{definition}
+
+Claramente, supomos que $\infty$ e $-\infty$ não são símbolos usados para representar um elemento de $X$, de modo a não gerar confusão.
+
+
+
+Aqui citamos o resultado conhecido como lema de Zorn, mas não apresentamos uma demonstração.
+
+\begin{lema}[Lema de Zorn]
+	Seja $(X,\leq)$ um conjunto parcialmente ordenado. Se toda cadeia de $X$ possui limitante superior, então $X$ tem elemento maximal.
+\end{lema}
+
+
+
+\subsection{Conjuntos bem ordenados}
+
+\begin{definition}
+Um \emph{conjunto bem ordenado} é um conjunto totalmente ordenado $(X,\leq)$ tal que todo conjunto não vazio $C \subseteq X$ tem elemento mínimo $\min C$. O \emph{zero} de um conjunto bem ordenado não vazio é o elemento $0_X := \min X$. Um \emph{conjunto bem ordenado estrito} é um conjunto totalmente ordenado estrito $(X,<)$ tal que $(X,\leq)$ é um conjunto bem ordenado.
+\end{definition}
+
+\begin{proposition}
+	Sejam $(X,\leq)$ um conjunto bem ordenado e $\fun{f}{\bm X}{\bm X}$ uma função monótona.
+		\begin{enumerate}
+			\item Se $f$ é injetiva, para todo $x \in X$ vale $x \leq f(x)$;
+			\item Se $f$ é isomorfismo, $f=\Id$.
+		\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+		\item Consideremos o conjunto
+			\begin{equation*}
+				C := \set{x \in X}{f(x)<x}.
+			\end{equation*}
+		Suponhamos que $C$ é não vazio e seja $m := \min C$. Porque $m \in C$, vale $f(m) < m$, o que implica $f(m) \notin C$; da monotonicidade de $f$ segue que $f(f(m)) < f(m)$, o que mostra que $f(m) \in C$, contradição.
+
+		\item Seja $x \in X$. Como $f$ é isomorfismo, $f$ e $f\inv$ são injetivas, logo $x \leq f(x)$ e $f\inv(x) \leq x$; como $f$ é monótona, segue que $x = f(f\inv(x)) \leq f(x)$, portanto $f(x) = \Id$.
+	\end{enumerate}
+\end{proof}
+
+\begin{exercise}
+	Sejam $(X,\leq)$ e $(X',\leq')$ conjuntos bem ordenados isomorfos. Existe único isomorfismo de ordem $\fun{f}{\bm X}{\bm X}$.
+\end{exercise}
+
+\begin{definition}
+	Sejam $(X,\leq)$ um conjunto bem ordenado e $e \in X$. O \emph{segmento inicial} dado por $e$ é o conjunto
+		\begin{equation*}
+			[e] := \intfa{0_X}{e} = \set{x \in X}{x<e}.
+		\end{equation*}
+\end{definition}
+
+\begin{proposition}
+	Sejam $(X,\leq)$ um conjunto bem ordenado e $e \in X$. Não existe isomorfismo de ordem $\fun{f}{X}{[e]}$.
+\end{proposition}
+\begin{proof}
+	Se existisse isomorfismo $\fun{f}{X}{[e]}$, teríamos $f(X) = [e] = \set{x \in X}{x<e}$, o que implicaria $f(e) < e$; mas como $f$ seria injetiva, teríamos $e \leq f(e)$, contradição.
+\end{proof}
+
+\begin{exercise}[Tricotomia]
+	Sejam $(X,\leq)$ e $(X',\leq')$ conjuntos bem ordenados. Exatamente um dos três vale:
+	\begin{enumerate}
+		\item $(X,\leq)$ é isomorfo a $(X',\leq')$;
+		\item $(X,\leq)$ é isomorfo a um segmento inicial de $(X',\leq')$;
+		\item $(X',\leq')$ é isomorfo a um segmento inicial de $(X,\leq)$.
+	\end{enumerate}
+\end{exercise}
+\begin{comment}
+
+\begin{proof}
+	Definamos a relação
+		\begin{equation*}
+			f := \set{(x,x') \in X \times X'}{[x] \simeq [x']'}.
+		\end{equation*}
+	Mostremos que $f$ é uma função injetiva. 
+	\begin{enumerate}
+		\item (Funtorialidade) Sejam $x_0,x_1 \in X$ e $x' \in X'$ tais que $[x_0] \simeq [x']'$ e $[x_1] \simeq [x']'$. Então $[x_0] \simeq [x_1]$ e, como $x_0 \leq x_1$ ou $x_1 \leq x_0$, e não existe isomorfismo de um conjunto bem ordenado com um segmento inicial, segue que $x_0 = x_1$.
+
+		\item (Injetividade) Argumento análogo mostra que $f$ é injetiva.
+	\end{enumerate}
+\end{proof}
+
+\end{comment}
+
+
+\subsubsection{Números ordinais}
+
+\begin{definition}
+	Um conjunto \emph{transitivo} é um conjunto $T$ tal que, para todo $t \in T$, $t \subseteq T$.
+\end{definition}
+
+\begin{definition}
+	Um \emph{número ordinal} é um conjunto transitivo $O$ tal que $(O,\in)$ é um conjunto bem ordenado.
+\end{definition}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection{Pré-ordens}
+
+\begin{definition}
+Seja $X$ um conjunto não vazio. Uma \emph{pré-ordem} (ou \emph{precedência}) em $X$ é uma relação binária em $X$ que é reflexiva e transitiva. O par $(X,\preceq)$ é um \emph{conjunto pré-ordenado}.
+\end{definition}
+
+\begin{definition}
+Seja $(X,\preceq)$ um conjunto pré-ordenado. A \emph{equivalência induzida} por $\preceq$ é a relação binária $\sim$ definida por: para todos $x,x' \in X$,
+	\begin{equation*}
+	x \sim x' \sse x \preceq x' \e x' \preceq x.
+	\end{equation*}
+A \emph{ordenação induzida} por $\leq$ é a relação binária em $\quo{X}{\sim}$ definida por: para todos $x,x' \in X$,
+	\begin{equation*}
+	[x] \leq [x'] \sse x \preceq x'.
+	\end{equation*}
+\end{definition}
+
+\begin{proposition}
+Seja $(X,\preceq)$ um conjunto pré-ordenado. A relação $\sim$ em $A$ é uma equivalência em $X$ e a relação $\leq$ em $\quo{X}{\sim}$ é uma ordem em $\quo{X}{\sim}$.
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+		\item (Equivalência $\sim$)
+			\begin{enumerate}
+				\item (Reflexividade) Para todo $x \in X$, vale que $x \preceq x$, portanto $x \sim x$.
+				
+				\item (Simetria) Para todos $x,x' \in X$, se $x \preceq x'$ e $x' \preceq x$, então $x \sim x'$ por definição.
+				
+				\item (Transitividade) Para todos $x,x',x'' \in X$, se $x \sim x'$ e $x' \sim x''$, então se $x \preceq x'$, $x' \preceq x$, $x' \preceq x''$ e $x'' \preceq x'$, o que implica pela transitividade de $\preceq$ que $x \preceq x''$ e $x'' \preceq x$, portanto $x \sim x''$.
+			\end{enumerate}
+		
+		\item (Ordem $\leq$) Primeiro devemos mostrar que a relação está bem definida. Sejam $[x],[x'] \in X$. Tomemos $x,y \in [x]$ e $x',y' \in [x']$; queremos mostrar que se $x \preceq x'$, então $y \preceq y'$. Como $x \sim y$, então $y \preceq x$, e como $x' \sim y'$, então $x' \preceq y'$; assim, da transitividade de $\preceq$ segue que
+	\begin{equation*}
+	y \preceq x \preceq x' \preceq y'.
+	\end{equation*}
+Isso mostra que $\leq$ está bem definida. Agora, mostremos que $\leq$ é ordem. (Reflexividade) Para todo $x \in X$, vale que $[x] \leq [x]$, pois $x \preceq x$. (Antissimetria) Para todos $x,x' \in X$, se $[x] \leq [x']$ e $[x]' \leq [x]$, então $x \preceq x'$ e $x' \preceq x$, o que implica $x \sim x'$, portanto $[x]=[x']$. (Transitividade) Para todos $x,x',x'' \in X$, se $[x] \leq [x']$ e $[x'] \leq [x'']$, então $x \preceq x'$ e $x' \preceq x''$, o que implica que $x \preceq x''$, portanto $[x] \leq [x'']$.
+	\end{enumerate}
+\end{proof}
+
+\subsection{Conjunto direcionado}
+
+\begin{definition}
+Um \emph{conjunto direcionado} (\emph{superiormente}) é um par $(X,\preceq)$ em que $X$ é um conjunto não vazio e $\preceq$ é uma pré-ordem em $X$ que satisfaz: para todos $x,x' \in X$, existe $s \in X$ tal que $x \leq s$ e $x' \leq s$.
+\end{definition}
+
+\begin{proposition}
+Sejam $(X,\preceq)$ um conjunto direcionado e $x_0,\ldots,x_{n-1} \in X$. Existe $s \in X$ tal que, para todo $i \in [n]$, $x_i \leq s$.
+\end{proposition}
+
+\subsection{Reticulados}
+
+\begin{definition}
+	Um \emph{reticulado} é um conjunto parcialmente ordenado $(X,\leq)$ em que, para todos $x_1, x_1 \in X$, o conjunto $\{x_1,x_2\}$ tem supremo e ínfimo, denotados, respectivamente, $x_1 \vee x_2$ e $x_1 \wedge x_2$.
+\end{definition}
+
+\begin{proposition}
+	Seja $(X,\leq)$ um reticulado e $Y \subseteq X$ um conjunto finito. Então $Y$ tem supremo e ínfimo.
+\end{proposition}
+
+Um reticulado também pode ser entendido como uma estrutura algébrica. As definições a seguir usam definições da parte de Álgebra do livro, e devem ser conferidas nessa parte.
+
+\begin{definition}
+Um \emph{reticulado} é uma tripla $(R,\vee,\wedge)$ em que
+	\begin{enumerate}
+	\item $(R,\vee)$ e $(R,\wedge)$ são semigrupos comutativos;
+	\item Valem as propriedades de \emph{absorção}: para todos $a,b \in R$, 
+		\begin{enumerate}
+		\item $a \vee (a \wedge b) = a$;
+		\item $a \wedge (a \vee b) = a$.
+		\end{enumerate}
+	\end{enumerate}
+\end{definition}
+
+\begin{proposition}
+Seja $(R,\vee,\wedge)$ um reticulado. Valem as propriedades de \emph{idempotência}: para todo $a \in R$,
+	\begin{enumerate}
+	\item $a \vee a = a$;
+	\item $a \wedge a = a$.
+	\end{enumerate}
+\end{proposition}
+
+\begin{definition}
+Um \emph{reticulado limitado} é uma $5$-sequência $(R,\vee,\wedge,0,1)$ em que $(R,\vee,\wedge)$ é um reticulado, $0$ é elemento neutro de $(R,\vee)$ e $1$ é elemento neutro de $(R,\wedge)$.
+\end{definition}
+
+$\vee$ e $\wedge$ estão definidos para todo subconjunto não-vazio finito por indução, já que são operações associativas.
+
+\begin{proposition}
+Todo reticulado finito é limitado.
+\end{proposition}
+
+\subsection{Álgebras booleanas}
+\begin{definition}
+Uma \emph{álgebra booleana} é uma 5-sequência $(A, \vee ,\wedge, 0, 1)$, em que $A$ é um conjunto não vazio, que satisfaz
+	\begin{enumerate}
+	\item $(A,\vee,0)$ e $(A,\wedge,1)$ são magmas comutativos com elemento neutro;
+	\item As operações $ \vee $ e $\wedge$ são distributivas uma sobre a outra;
+	\item Para todo $a \in A$ existe um elemento \emph{complementar} $a' \in A$, que satisfaz $a \vee a'=1$ e $a \wedge a' = 0$.
+	\end{enumerate}
+\end{definition}
+
+\begin{proposition}
+\label{prop:algeb.subconj}
+	Seja $A$ um conjunto e $\mathcal A \subseteq \p(A)$ um conjunto de partes de $A$ que satisfaz
+	\begin{enumerate}
+	\item $\emptyset \in \mathcal A$;
+	\item $X \in \mathcal A \Rightarrow X^\complement \in \mathcal A$.
+	\end{enumerate}
+Então $(\mathcal A,\cup,\cap)$ é uma álgebra booleana.
+\end{proposition}
+\begin{proof}
+	Primeiramente, é necessário notar, embora os símbolos $\cup$ e $\cap$ não sejam funções propriamente ditas, ao fixarmos um conjunto $A$, podemos definir $\cup$ e $\cap$ como operações binárias em $\p(A)$, dadas por $(X,Y) \mapsto X \cup Y$ e $(X,Y) \mapsto X \cap Y$, respectivamente. Para $X,Y \in \mathcal A$, temos que $X \cup Y,X \cap Y \in \mathcal A$, o que mostra que as operações estão bem definidas.
+
+	Sendo assim, podemos prosseguir com a demonstração. Se $\mathcal A$ satisfaz as propriedades do enunciado, então $A = \emptyset^\complement \in \mathcal A$. O par $(\mathcal A,\cup)$ é um magma comutativo com elemento neutro $\emptyset$, pois a união de dois cojuntos é comutativa por definição e a união de um conjunto qualquer com o conjunto vazio dá o próprio conjunto. Da mesma forma, o par $(\mathcal A,\wedge)$ é um magma comutativo com elemento neutro $A$, pois a interseção de dois conjuntos é comutativa por definição e a interseção de qualquer conjunto com o conjunto $A$ é o próprio conjunto. Ainda, vale que, para todo $X,Y,Z \in \mathcal A$, $X \cup (Y \cap Z) = (X \cup Y) \cap (X \cup Z)$ e $X \cap (Y \cup Z) = (X \cap Y) \cup (X \cap Z)$; ou seja, as operações binárias $\cup$ e $\cap$ são distributivas uma sobre a outra. Por fim, nota-se que, dado $X \in \mathcal A$, $X^\complement \in \mathcal A$ e vale $X \cup X^\complement = A$ e $X \cap X^\complement = \emptyset$. Logo $(\mathcal A,\cup,\cap)$ é uma álgebra booleana.
+\end{proof}
+
+\begin{proposition}[Princípio da Dualidade]
+	Toda afirmação dudutível somente a partir da definição de álgebra booleana continua válida se são trocados entre si os símbolos $ \vee $ e $\wedge$ e os símbolos $0$ e $1$ que aparecem na expressão.
+\end{proposition}
+\begin{proof}
+	Todas as propriedades de uma álgebra booleana são definidas simetricaente e continuam iguais se trocamos entre si os símbolos $ \vee $ e $\wedge$ e os símbolos $0$ e $1$. Logo isso também vale para qualquer afirmação dedutível dessas propriedades.
+\end{proof}
+
+	Como consequência do princípio da dualidade, qualquer afirmação dedutível das pripriedades de álbegra booleana tem uma afirmação associadad a ela ao trocarmos entre si os símbolos $ \vee $ e $\wedge$ e os símbolos $0$ e $1$, que chamaremos que sua afirmação \emph{dual}. Claramente, a afirmação dual da dual é a própria afirmação. Portanto só será necessário demonstrar a afirmação para demonstrar sua afirmação dual. Toda proposição, lema e teorema dessa seção exibirá sua proposição, lema e teorema dual, mas a afirmação dual não será demonstrada.
+
+\begin{theorem}[Identidades]
+	Seja $(A, \vee ,\wedge)$ uma álgebra booleana. Então
+	\begin{equation*}
+	\forall a \in A \qquad a \vee 1=1
+	\end{equation*}
+	\begin{equation*}
+	\forall a \in A \qquad a \wedge 0 = 0
+	\end{equation*}
+\end{theorem}
+
+\begin{theorem}[Absorção]
+	Seja $(A, \vee ,\wedge)$ uma álgebra booleana. Então
+	\begin{equation*}
+	\forall a,b \in A \qquad a \vee (a \wedge b)=a
+	\end{equation*}
+	\begin{equation*}
+	\forall a,b \in A \qquad a \wedge (a  \vee  b) = a
+	\end{equation*}
+\end{theorem}
+
+\begin{coro}[Idempotência]
+	Seja $(A, \vee ,\wedge)$ uma álgebra booleana. Então
+	\begin{equation*}
+	\forall a \in A \qquad a \vee a=a
+	\end{equation*}
+	\begin{equation*}
+	\forall a \in A \qquad a \wedge a = a
+	\end{equation*}
+\end{coro}
+\begin{proof}
+	Basta tomar $b=1$ e $b=0$ nas proposições anteriores.
+\end{proof}
+
+\begin{theorem}[Associatividade]
+	Seja $(A, \vee ,\wedge)$ uma álgebra booleana. Então
+	\begin{equation*}
+	(A, \vee ) \text{ é associativo.}
+	\end{equation*}
+	\begin{equation*}
+	(A,\wedge) \text{ é associativo.}
+	\end{equation*}
+\end{theorem}
+
+\begin{theorem}[Unicidade do Complementar]
+	Seja $(A, \vee ,\wedge)$ uma álgebra booleana e $a \in A$. Então o complementar de $a$ é único.
+\end{theorem}
+
+	Note que esse teorema é seu próprio dual.
+
+\begin{theorem}[Dupla Complementação]
+	Seja $(A, \vee ,\wedge)$ uma álgebra booleana e $a \in A$. Então o complementar de $a'$ é $a$.
+\end{theorem}
+
+\begin{theorem}[Identidades Complementares]
+	Seja $(A, \vee ,\wedge)$ uma álgebra booleana. Então
+	\begin{equation*}
+	0'=1
+	\end{equation*}
+	\begin{equation*}
+	1'=0
+	\end{equation*}
+\end{theorem}
+
+\begin{theorem}[Leis de De Morgan]
+\label{prop:de.morgan}
+	Seja $(A, \vee ,\wedge)$ uma álgebra booleana. Então
+	\begin{equation*}
+	\forall a,b \in A \qquad (a \wedge b)'=a' \vee b'
+	\end{equation*}
+	\begin{equation*}
+	\forall a,b \in A \qquad (a  \vee  b)'=a' \wedge b'
+	\end{equation*}
+\end{theorem}
+
+\subsubsection{Função indicadora}
+
+\begin{definition}
+Sejam $X$ um conjunto. A \emph{função indicadora} em $X$ é a função
+	\begin{align*}
+	\func{\idc}{\p(X)}{2^X}{C}{
+		\begin{aligned}[t]
+		\func{\idc_C}{X}{\{0,1\}}{x}{
+			\begin{cases}
+			1,& x \in C \\
+			0,& x \notin C.
+			\end{cases}
+		}
+		\end{aligned}
+	}
+	\end{align*}
+A função indicadora de um conjunto $C \subseteq X$ é a função $\fun{\idc_C}{X}{\{0,1\}}$.
+\end{definition}
+
+A função indicadora é uma bijeção e mostra que os conjuntos $\p(X)$ e $2^X$ têm a mesma cardinalidade. De fato, sabemos que $(\p(X),\cap,\cup,\emptyset,X)$ é uma álgebra de conjuntos. Podemos também, usando a estrutura de álgebra em $\{0,1\}$, dada pelas operações mínimo e máximo $\min,\max\colon \{0,1\} \times \{0,1\} \to \{0,1\}$ e pelos os elementos $0$ e $1$, induzir uma álgebra em $2^X$ com as operações definidas pontualmente e as funções constantes $0,1 \in 2^X$. Assim, podemos mostrar que a bijeção $\idc\colon \p(X) \to 2^X$ é um isomorfismo de álgebras.
+
+\begin{proposition}
+Seja $X$ um conjunto. A função indicadora
+	\begin{equation*}
+	\idc\colon \p(X) \to 2^X
+	\end{equation*}
+de $X$ é um isomorfismo entre as álgebras $(\p(X),\cap,\cup,\emptyset,X)$ e $(2^X,\min,\max,0,1)$.
+\end{proposition}
+\begin{proof}
+Para isso, devemos mostrar que $\idc$ preserva as operações binárias e constantes das álgebras. É imediato verificar que, para todos $C,C' \in \p(X)$, $\idc_{C \cap C'} = \min \{ \idc_C, \idc_{C'} \}$, $\idc_{C \cup C'} = \max \{ \idc_C, \idc_{C'} \}$, e que $\idc_\emptyset = 0$ e $\idc_X = 1$.
+\end{proof}
+
+Vale notar, também, que em $\{0,1\}$ vale que, para todos $n,n' \in \{0,1\}$, $n \min n' = nn'$ e $n \max n' = n+n'-nn'$. Algumas outras relações da função indicadora estão expostas na proposição seguinte. Todas elas seguem diretamente do fato de $\idc$ ser isomorfismo de álgebras. As demonstrações ficam como exercício.
+
+\begin{proposition}
+Sejam $X$ um conjunto e $A,B \subseteq X$, e $n \in \N$. Então
+	\begin{enumerate}
+	\item $\idc_{A^\complement} = 1- \idc_A$;
+	\item $\idc_{A \setminus B} = \idc_A-\idc_A\idc_B$;
+	\item $\idc_{A \difsim B} = \idc_A+\idc_B-2\idc_A\idc_B$;
+	\item $\displaystyle\idc_{\bigcap_{i \in [n]} A_i} = \bigtimes_{i \in [n]} \idc_{A_i}$;
+	\item $\displaystyle\idc_{\bigcup_{i \in [n]} A_i} = \sum_{\substack{S \subseteq [n]\\S \neq \emptyset}} \left((-1)^{\card{S}-1} \bigtimes_{i \in S}\idc_{A_i}\right)$;
+	\item $\displaystyle\idc_{\scalebox{1.2}{$\difsim$}_{i \in [n]} A_i} = \sum_{\substack{S \subseteq [n]\\S \neq \emptyset}} \left((-2)^{\card{S}-1} \bigtimes_{i \in S}\idc_{A_i} \right)$;
+	\end{enumerate}
+\end{proposition}
+%\begin{proof}
+%	\begin{align*}
+%	\idc_{A \difsim B} &= \idc_{A\setminus B \cup B\setminus A} \\
+%			&= \idc_{A \setminus B} + \idc_{B \setminus A} - 	\idc_{A \setminus B}\idc_{B \setminus A}\\
+%			&=\idc_A-\idc_A\idc_B + \idc_B-\idc_B\idc_A - (\idc_A-\idc_A\idc_B)(\idc_B-\idc_B\idc_A)\\
+%			&=\idc_A+\idc_B-2\idc_A\idc_B-(\idc_A\idc_B-\idc_A\idc_B-\idc_A\idc_B+\idc_A\idc_B) \\
+%			&=\idc_A+\idc_B-2\idc_A\idc_B.
+%	\end{align*}
+%	
+%	\begin{align*}
+%	\idc_{A \difsim B \difsim C} &= \idc_{A \difsim B}+\idc_C-2\idc_{A \difsim B}\idc_C \\
+%			&= \idc_A+\idc_B-2\idc_A\idc_B+\idc_C-2(\idc_A+\idc_B-2\idc_A\idc_B)\idc_C \\
+%			&= \idc_A+\idc_B+\idc_C-2(\idc_A\idc_B+\idc_A\idc_C+\idc_B\idc_C)+4\idc_A\idc_B\idc_C.
+%	\end{align*}
+%\end{proof}

@@ -1,0 +1,1273 @@
+\chapter{Medida}
+
+\section{Espaço mensurável}
+
+\subsection{Sigma-álgebras e sub-sigma-álgebras}
+
+\begin{definition}
+Seja $X$ um conjunto. Uma \emph{sigma-álgebra} sobre $X$ é um conjunto $\mens \subseteq \p(X)$ de subconjuntos $X$ que satisfaz
+	\begin{enumerate}
+	\item (Vazio) $\emptyset \in \mens$;
+	\item (Fechamento por complementação) Para todo $M \in \mens$, $M^\complement \in \mens$;
+	\item (Fechamento por união enumerável) Para toda sequência $(M_i)_{i \in \N}$ de conjuntos de $\mens$,
+	\begin{equation*}
+	\bigcup_{i \in \N} M_i \in \mens.
+	\end{equation*}
+	\end{enumerate}
+\end{definition}
+
+	Vale notar que uma sigma-álgebra $\mens$ é uma álgebra booleana (\ref{prop:algeb.subconj}) e, portanto, todas propriedades de álgebras booleanas valem para uma sigma-álgebra. De fato, o \textit{sigma} no nome vem da terceira propriedade das sigma-álgebras, pois veremos que essa propriedade tem a ver com um tipo de soma de medidas a ser definido adiante.
+
+\begin{proposition}
+	Seja $X$ um conjunto não vazio e $\mens$ uma sigma-álgebra sobre $X$. Então
+	\begin{enumerate}
+	\item (Universo) $X \in \mens$;
+	\item (Fechamento por interseção enumerável) Para toda sequência $(M_i)_{i \in \N}$ de conjuntos de $\mens$,
+	\begin{equation*}
+	\bigcap_{i \in \N} M_i \in \mens.
+	\end{equation*}
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item Da primeira propriedade de $\mens$, tem-se que $\emptyset \in \mens$. Da segunda propriedade de $\mens$, tem-se que $X = \emptyset^\complement \in \mens$.
+	\item Da segunda propriedade, tem-se que, para todo $i \in \N$, $M_i^\complement \in \mens$. Da terceira propriedade de $\mens$, tem-se que $\bigcup_{i \in \N} M_i^\complement \in \mens$. Das Leis de De Morgan (\ref{prop:de.morgan}), tem-se que
+	\begin{equation*}
+	\left(\bigcap_{i \in \N} M_i \right)^\complement = \bigcup_{i \in \N} (M_i)^\complement \in \mens,
+	\end{equation*}
+e conclui-se que $\displaystyle\bigcap_{i \in \N} M_i \in \mens$.
+	\end{enumerate}
+\end{proof}
+
+\begin{example}
+	$\mens = \{\emptyset,X\}$ e $\mens = \p(X)$ são sigma-álgebras sobre $X$.
+\end{example}
+
+\begin{definition}
+Seja $X$ um conjunto não vazio e $\mens$ uma sigma-álgebra sobre $X$. Uma \emph{sub-sigma-álgebra} de $\mens$ é um conjunto $\mens' \subseteq \mens$ que é uma sigma-álgebra sobre $X$.
+\end{definition}
+
+\begin{definition}
+	Um \emph{espaço mensurável} é um par $(X,\mens)$ em que $X$ é um conjunto não vazio e $\mens$ é uma sigma-álgebra sobre $X$. Um \emph{conjunto mensurável} é um elemento da sigma-álgebra $\mens$.
+\end{definition}
+
+\begin{proposition}
+Seja $(C_n)_{n \in \N}$ uma sequência de conjuntos.
+	\begin{enumerate}
+	\item A sequência
+	\begin{equation*}
+	M_n := \bigcup_{k=0}^n C_k
+	\end{equation*}
+é uma sequência crescente de conjuntos;
+	\item A sequência $D_0 := C_0$ e, para $n \in \N^*$,
+	\begin{equation*}
+	D_n := C_n \setminus M_n
+	\end{equation*}
+é uma sequência disjunta de conjuntos;
+	\item	
+	\begin{equation*}
+	\bigcup_{n \in \N} C_n = \bigcup_{n \in \N} M_n = \bigcup_{n \in \N} D_n.
+	\end{equation*}
+	\end{enumerate}
+\end{proposition}
+
+\subsection{Sigma-álgebras geradas}
+
+\begin{proposition}
+Seja $X$ um conjunto não vazio e $(\mens_i)_{i \in I}$ uma família de sigma-álgebras sobre $X$. Então
+	\begin{equation*}
+	\mens := \bigcap_{i \in I} \mens_i
+	\end{equation*}
+é uma sigma-álgebra sobre $X$.
+\end{proposition}
+\begin{proof}
+	Como $\mens_i$ são sigma-álgebras, então $\emptyset \in \mens_i$ para todo $i \in I$. Assim, segue que $\emptyset \in \mens$. Ainda, se $A \in \mens$, então $A \in \mens_i$ para todo $i \in I$. Logo $A^\complement \in \mens_i$ para todo $i \in I$, o que implica $A^\complement \in \mens$. Por fim, se $(A_j)_{j \in \N}$ é uma sequência de conjuntos em $\mens$, então $A_j \in \mens$ para todo $j \in \N$. Mas isso implica que $A_j \in \mens_i$ para todo $j \in \N$, $i \in I$, o que, por sua vez, implica que, para todo $i \in I$,
+	\begin{equation*}
+	\bigcup_{j \in \N} A_j \in \mens_i.
+	\end{equation*}
+Então conclui-se que $\displaystyle\bigcup_{j \in \N} A_j \in \mens$ e, portanto, $\mens$ é uma sigma-álgebra sobre $X$.
+\end{proof}
+
+\begin{definition}
+Seja $X$ um conjunto e $\mathcal C \in \p(X)$ um conjunto de subconjuntos de $X$. A \emph{sigma-álgebra gerada por} $\mathcal C$ é a interseção da família de todas as sigma-álgebras sobre $X$ de que $\mathcal C$ é subconjunto, denotada $\ger{\mathcal C}$.
+\end{definition}
+	
+	A sigma-álgebra gerada por um conjunto é a menor sigma-álgebra que contém esse conjunto no sentido que não existe subconjunto dessa sigma-álgebra que contenha o conjunto e também seja uma sigma-álgebra.
+
+\begin{example}
+	A sigma-álgebra sobre $X$ gerada por $\emptyset$ é $\{\emptyset, X\}$.
+\end{example}
+
+%Tentei construir os elementos da sigma-álgebra gerada, mas dá um pouco mais de trabalho do que eu queria, tem a ver com ordinais e tal, vou fazer depois se der.
+
+%\begin{proposition}
+%Seja $X$ um conjunto e $\mathcal C \subseteq \p(X)$ um conjunto de subconjuntos de $X$. Então
+%	\begin{equation*}
+%	\ger{\mathcal C} = \set{\bigcup_{i \in I} C_i}{\card{I}\leq \card{\N} \e \forall i \in I \left( C_i \in \mathcal C \ou C_i\comp \in \mathcal C\right)}.
+%	\end{equation*}
+%\end{proposition}
+%\begin{proof}
+%Seja $\mens := \set{\bigcup_{i \in I} C_i}{\card{I}\leq \card{\N} \e \forall i \in I \left( C_i \in \mathcal C \ou C_i\comp \in \mathcal C\right)}$. Primeiro notemos que $\mathcal C \subseteq \mens$. Para todo $C \in \mathcal C$, temos $C = \bigcup_{i \in \{0\}} C$ e $\card{\{0\}} \leq \card{\N}$. Logo $C \in \mens$ e, então, $\mathcal C \subseteq \mens$. Agora, mostremos que $\mens$ é uma sigma-álgebra. Primeiro notemos que $\emptyset \in \mens$, pois $\emptyset = \bigcup_{i \in \emptyset} C$ e $\card{\emptyset} \leq \card{\N}$.
+
+%Agora, seja $M \in \mens$. Então $M=\bigcup_{i \in I} C_i$ tal que $\card{I}\leq \card{\N}$  e, para todo $i \in I$, $C_i \in \mathcal C$ ou $C_i\comp \in \mathcal C$. Como
+%	\begin{equation*}
+%	M\comp = \left( \bigcup_{i \in I} C_i \right)\comp = \bigcap_{i \in I} (C_i)\comp
+%	\end{equation*}
+
+%Por fim, seja $(M_n)_{n \in N}$ uma sequência de conjuntos de $\mens$. Então, para todo $n \in \N$, existe conjunto $I_n$ enumerável e conjuntos $(C_{n,i})_{i \in I_n}$ tais que
+%	\begin{equation*}
+%	M_n = \bigcup_{i \in I_n} C_{n,i}.
+%	\end{equation*}
+%Como, para todo $n \in \N$, o conjunto $I_n$ é enumerável, então temos que os conjuntos $\set{C_{n,i}}{i \in I_n}$ são enumeráveis e, portanto,
+%	\begin{equation*}
+%	E := \bigcup_{n \in \N} \set{C_{n,i}}{i \in I_n}
+%	\end{equation*}
+%é enumerável, pois é união enumerável de conjuntos enumeráveis. Indexando $E$ como $(C_j)_{j \in J}$, segue que
+%	\begin{equation*}
+%	\bigcup_{n \in \N} M_n = \bigcup_{n \in \N} \bigcup_{i \in I_n} C_{n,i} = \bigcup_{j \in J} C_j
+%	\end{equation*}
+%é uma união enumerável e, portanto, $\bigcup_{n \in \N} M_n \in \mens$. Concluímos, assim, que $\mens$ é uma sigma-álgebra em que $\mathcal C$ está contido. Para notar que $\mens=\ger{\mathcal C}$, resta mostrar que $\mens$ é a menor sgma-álgebra em que $\mathcal C$ está contido. Para isso, seja $\mens'$ uma sigma-álgebra sobre $X$ tal que $\mathcal C \subseteq \mens$. Seja $M \in \mens$. Então $M=\bigcup_{i \in I} C_i$ tal que $\card{I}\leq \card{\N}$ e, para todo $i \in I$, $C_i \in \mathcal C$ ou $C_i\comp \in \mathcal C$. Como $\mathcal C \subseteq \mens'$, segue que, para todo $i \in I$, $C_i \in \mens'$ ou $C_i\comp \in \mens'$. Portanto, como $\mens'$ é uma sigma-álgebra, $M=\bigcup_{i \in I} C_i \in \mens'$. Concluímos que $\mens \subseteq \mens'$ e, então, que $\mens = \ger{\mathcal C}$.
+%\end{proof}
+
+
+\subsection{Limites de conjuntos}
+
+\begin{definition}
+	Sejam $X$ um conjunto e $(A_n)_{n \in \N}$ uma sequência de subconjuntos de $X$. O \emph{limite inferior} de $(A_n)_{n \in \N}$ é o conjunto
+	\begin{equation*}
+	\liminf A_n := \bigcup_{m=0}^\infty \left( \bigcap_{n=m}^\infty A_n \right).
+	\end{equation*}
+	Esse conjunto é o conjunto dos pontos que não pertencem todos menos finitos conjuntos $A_n$.
+O \emph{limite superior} de $(A_n)_{n \in \N}$ é o conjunto
+	\begin{equation*}
+	\limsup A_n := \bigcap_{m=0}^\infty \left( \bigcup_{n=m}^\infty A_n \right).
+	\end{equation*}
+	Esse conjunto é o conjunto dos pontos que pertencem a infinitos conjuntos $A_n$.
+\end{definition}
+
+\begin{proposition}
+	Sejam $X$ um conjunto e $(A_n)_{n \in \N}$ uma sequência de subconjuntos de $X$. Então
+	\begin{equation*}
+	\emptyset \subseteq \liminf A_n \subseteq \limsup A_n \subseteq X.
+	\end{equation*}
+\end{proposition}
+
+\begin{proposition}
+	Sejam $X$ um conjunto e $(A_n)_{n \in \N}$ uma sequência de subconjuntos de $X$. Então
+	\begin{enumerate}
+	\item Se $(A_n)_{n \in \N}$ é monótona crescente,
+	\begin{equation*}
+	\liminf A_n = \bigcup_{n=0}^\infty A_n = \limsup A_n.
+	\end{equation*}
+	
+	\item Se $(A_n)_{n \in \N}$ é monótona decrescente,
+	\begin{equation*}
+	\liminf A_n = \bigcap_{n=0}^\infty A_n = \limsup A_n.
+	\end{equation*}
+	\end{enumerate}
+\end{proposition}
+
+\begin{definition}
+	Sejam $X$ um conjunto e $(A_n)_{n \in \N}$ uma sequência de subconjuntos de $X$. Um \emph{limite} de $(A_n)_{n \in \N}$ é um conjunto $\lim A_n$ tal que
+	\begin{equation*}
+	\lim A_n = \liminf A_n = \limsup A_n.
+	\end{equation*}
+\end{definition}
+
+
+\section{Funções mensuráveis}
+
+\begin{definition}
+Sejam $\bm X = (X,\mens_X)$ e $\bm Y = (Y,\mens_Y)$ espaços mensuráveis. Uma \emph{função mensurável} de $\bm X$ para $\bm Y$ é uma função $f\colon X \to Y$ tal que, para todo $M \in \mens$,
+	\begin{equation*}
+	f\inv(M) \in \mens_X.
+	\end{equation*}
+Denota-se $f\colon \bm X \to \bm Y$. O conjunto dessas funções é denotado $\Men(\bm X, \bm Y)$.
+\end{definition}
+
+\begin{proposition}
+Seja $\bm X$ um espaço mensurável. A função $\Id_X: X \to X$ é uma função mensurável.
+\end{proposition}
+
+\begin{proposition}
+Sejam $\bm{X_0}$, $\bm{X_1}$ e $\bm{X_2}$ espaços mensuráveis e $f_0: \bm{X_0} \to \bm{X_1}$ e $f_1: \bm{X_1} \to \bm{X_2}$ funções mensuráveis. Então $f_1 \circ f_0: \bm{X_0} \to \bm{X_2}$ é uma função mensurável.
+\end{proposition}
+
+\subsection{Sigma-álgebras puxadas e empurradas}
+
+\begin{definition}
+Sejam $X$ um conjunto, $\bm Y = (Y,\mens_Y)$ um espaço mensurável e $f: X \to Y$ uma função. A \emph{sigma-álgebra puxada} por $f$ é
+	\begin{equation*}
+	f^*(\mens_Y) := \set{f^{-1}(M)}{M \in \mens_Y}.
+	\end{equation*}
+\end{definition}
+
+\begin{proposition}
+Sejam $X$ um conjunto, $\bm Y = (Y,\mens_Y)$ um espaço mensurável e $f: X \to Y$ uma função. Então $\mens_X := f^*(\mens_Y)$, a sigma-álgebra puxada por $f$, é uma sigma-álgebra sobre $X$.
+\end{proposition}
+\begin{proof}
+Primeiro, notemos que $\emptyset \in \mens_X$, pois $\emptyset \in \mens_Y$ e $f^{-1}(\emptyset) = \emptyset$ (\ref{prop:props.imag.inv}). Segundo, seja $B \in \mens_X$. Então existe $A \in \mens_Y$ tal que $B = f^{-1}(A)$. Como $\mens_Y$ é uma sigma-álgebra, então $A^\complement \in \mens_Y$, o que implica $f^{-1}(A^\complement) \in \mens_X$. Mas $(f^{-1}(A))^\complement = f^{-1}(A^\complement)$ (\ref{prop:props.imag.inv}). Então $B^\complement \in \mens_X$. Terceiro, seja $(B_i)_{i \in \N}$ uma sequência de conjuntos de $\mens_X$. Então, para todo $i \in I$, existe $A_i \in \mens_Y$ tal que $B_i = f^{-1}(A_i)$. Como $\mens_Y$ é uma sigma-álgebra, então $\bigcup_{i \in \N} A_i \in \mens_Y$. Isso implica que $f^{-1}(\bigcup_{i \in \N} A_i) \in \mens_X$. Mas $f^{-1}(\bigcup_{i \in \N} A_i) = \bigcup_{i \in \N} f^{-1}(A_i)$ (\ref{prop:props.imag.inv}). Então $\bigcup_{i \in \N} B_i \in \mens_X$ e, assim, conclui-se que $\mens_X$ é uma sigma-álgebra sobre $X$.
+\end{proof}
+
+\begin{definition}
+Sejam $\bm X = (X,\mens_X)$ um espaço mensurável, $Y$ um conjunto e $f: X \to Y$ uma função. A \emph{sigma-álgebra empurrada} por $f$ é
+	\begin{equation*}
+	f_*(\mens_X) := \set{M \subseteq Y}{f^{-1}(M) \in \mens_X}.
+	\end{equation*}
+\end{definition}
+
+\begin{proposition}
+Sejam $\bm X = (X,\mens_X)$ um espaço mensurável, $Y$ um conjunto e $f: X \to Y$ uma função. Então $\mens_Y := f_*(\mens_X)$, a sigma-álgebra empurrada por $f$, é uma sigma-álgebra sobre $Y$.
+\end{proposition}
+\begin{proof}
+Primeiro, notemos que $\emptyset \in \mens_Y$, pois $\emptyset \in \mens_X$ e $f^{-1}(\emptyset) = \emptyset$ (\ref{prop:props.imag.inv}). Segundo, seja $A \in \mens_Y$. Então $f^{-1}(A) \in \mens_ X$, o que implica $(f^{-1}(A))^\complement \in \mens_ X$, pois $\mens_ X$ é sigma-álgebra. Mas $(f^{-1}(A))^\complement = f^{-1}(A^\complement)$ (\ref{prop:props.imag.inv}), o que implica $f^{-1}(A^\complement) \in \mens_ X$ e, portanto, $A^\complement \in \mens_ Y$. Terceiro, seja $(A_i)_{i \in \N}$ uma sequência de conjuntos de $\mens_ Y$. Então, para todo $i \in \N$, $f^{-1}(A_i) \in \mens_ X$, o que implica que $\bigcup_{i \in \N} f^{-1}(A_i) \in \mens_ X$, pois $\mens_ X$ é uma sigma-álgebra. Mas, como $\bigcup_{i \in \N} f^{-1}(A_i) = f^{-1}(\bigcup_{i \in \N} A_i)$ (\ref{prop:props.imag.inv}), segue que $\bigcup_{i \in \N} A_i \in \mens_ Y$ e, assim, conclui-se que $\mens_ Y$ é uma sigma-álgebra sobre $Y$.
+\end{proof}
+
+\begin{proposition}
+Sejam $\bm X = (X,\mens_ X)$ e $\bm Y = (Y,\mens_ Y)$ espaços mensuráveis. Uma função $f: X \to Y$ é função mensurável de $\bm X$ para $\bm Y$ se, e somente se, a sigma-álgebra $f^*(\mens_Y)$ puxada por $f$ é uma sub-sigma-álgebra de $\mens_ X$.
+	\begin{equation*}
+	f \in \Men(\bm X,\bm Y) \sse f^*(\mens_Y) \subseteq \mens_X.
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+Suponha que $f$ é uma função mensurável. Seja $B \in f^*(\mens_Y)$. Então existe $A \in \mens_ Y$ tal que $B = f^{-1}(A)$. Como $f$ é mensurável, vale $f^{-1}(A) \in \mens_ X$, o que implica $B \in \mens_ X$ e, portanto, $f^*(\mens_Y) \subseteq \mens_ X$. Como $f^*(\mens_Y)$ é uma sigma-álgebra sobre $X$ pela proposição acima, segue que $f^*(\mens_Y)$ é uma sub-sigma-álgebra de $\mens_ X$. Reciprocamente, suponha que $f^*(\mens_Y)$ é uma sub-sigma-álgebra de $\mens_ X$. Seja $A \in \mens_ Y$. Então $f^{-1}(A) \in f^*(\mens_Y)$. Mas como $f^*(\mens_Y)$ é uma sub-sigma-álgebra de $\mens_ X$, segue que $f^{-1}(A) \in \mens_ X$, o que mostra que $f$ é mensurável.
+\end{proof}
+
+
+
+
+
+
+\section{Produto de espaços mensuráveis}
+
+\begin{definition}
+Seja $(\bm{X_i})_{i \in I} = (X_i,\mens_i)_{i \in I}$ uma família de espaços mensuráveis. O \emph{produto} da família $(\bm X_i)_{i \in I}$ é o par
+	\begin{equation*}
+	\prod_{i \in I} \bm{X_i} := (X,\mens)
+	\end{equation*}
+em que $X := \prod_{i \in I} X_i$ é o produto de conjuntos e
+	\begin{equation*}
+	\mens := \ger{\bigcup_{i \in I} \pi_i^*(\mens_i)}.
+	\end{equation*}
+\end{definition}
+
+\begin{proposition}
+Seja $(\bm X_i)_{i \in I} = (X_i,\mens_i)_{i \in I}$ uma família de espaços mensuráveis. Então o produto $\prod_{i \in I} \bm X_i$ é um espaço mensurável.
+\end{proposition}
+\begin{proof}
+Sejam $X := \prod_{i \in I} X_i$ e $\mens=\ger{\bigcup_{i \in I} \pi_i^*(\mens_i)}$. Devemos somente argumentar que $\mens$ é uma sigma-álgebra sobre $X= \prod_{i \in I} X_i$. Para isso, notemos que, para cada $i \in I$, a sigma-álgebras $\pi_i^*(\mens_i)$ é a sigma-álgebras puxada por $\pi_i: X \to X_i$, portanto uma sigma-álgebra sobre $X$. Assim, sendo, $\bigcup_{i \in I} \pi_i^*(\mens_i) \subseteq \p(X)$ e, portanto, a sigma-álgebra $\mens$ gerada por esse conjunto é uma sigma-álgebra sobre $X$.
+\end{proof}
+
+\begin{proposition}
+Seja $(\bm X_i)_{i \in I} = (X_i,\mens_i)_{i \in I}$ uma família de espaços mensuráveis. Para todo $i \in I$, a projeção canônica $\pi_i: \prod_{i \in I} X_i \to X_i$ é uma função mensurável.
+\end{proposition}
+\begin{proof}
+Sejam $i \in I$ e $M \in \mens_i$. Então $\pi_i\inv(M) \in \pi_i^*(\mens_i)$ e, portanto, $\pi_i\inv(M) \in \mens$.
+\end{proof}
+
+\begin{proposition}[Propriedade Universal]
+Seja $(\bm X_i)_{i \in I} = (X_i,\mens_i)_{i \in I}$ uma família de espaços mensuráveis, $\bm Y = (Y,\mens_Y)$ um espaço mensurável e, para todo $i \in I$, $f_i: \bm Y \to \bm{X_i}$ uma função mensurável. Então existe uma única função mensurável $f: \bm Y \to \prod_{i \in I} \bm{X_i}$ tal que, para todo $i \in I$, $\pi_i \circ f = f_i$ (o diagrama comuta).
+\begin{figure}
+\centering
+\begin{tikzpicture}[node distance=2.5cm, auto]
+	\node (P) {$\displaystyle\prod_{i \in I} \bm{X_i}$};
+	\node (Ci) [below of=P] {$\bm{X_i}$};
+	\node (X) [left of=Ci] {$\bm{Y}$};
+	\draw[->] (X) to node [swap] {$f_i$} (Ci);
+	\draw[->, dashed] (X) to node {$f$} (P);
+	\draw[->] (P) to node {$\pi_i$} (Ci);
+\end{tikzpicture}
+\end{figure}
+\end{proposition}
+\begin{proof}
+Defina a função
+	\begin{align*}
+	\func{f}{Y}{\prod_{i \in I} X_i}{y}{(f_i(y))_{i \in I}}.
+	\end{align*}
+Da propriedade universal para o produto de conjuntos, $f$ é a única função tal que, para todo $i \in I$, $\pi_i \circ f = f_i$. Basta mostrar que $f$ é uma função mensurável. Para simplificar a notação, definamos $(X,\mens) := \prod_{i \in I} \bm{X_i}$. Todo elemento de $\mens$ é formado a partir de complementos e uniões de elementos de $\bigcup_{i \in I} \pi_i^*(\mens)$. Sendo assim, como $f\inv$ preserva complemento e união, e $f\inv(\emptyset)=\emptyset$, se mostrarmos que, para todo $M \in \bigcup_{i \in I} \pi_i^*(\mens_i)$, $f\inv(M) \in \mens_Y$, seguirá que, para todo $M \in \mens$, $f\inv(M) \in \mens_Y$. Seja $M \in \bigcup_{i \in I} \pi_i^*(\mens_i)$. Então existe $i \in I$ tal que $M \in \pi_i^*(\mens_i)$ e, portanto, existe $M_i \in \mens_i$ tal que $M=\pi_i\inv(M_i)$. Então segue que
+	\begin{equation*}
+	f\inv(M) = f\inv(\pi_i\inv(M_i)) = (\pi_i \circ f)\inv(M_i) = f_i\inv(M_i)
+	\end{equation*}
+e portanto, como $f_i$ é mensurável, $f_i\inv(M_i) \in \mens_Y$, portanto $f\inv(M) \in \mens_Y$. Isso prova, pelos comentários anteriores, que para todo $M \in \mens$, $f\inv(M) \in \mens$ e, portanto, $f$ é mensurável.
+\end{proof}
+
+
+
+
+
+
+
+
+
+\clearpage
+\section{Espaços mensuráveis com estrutura adicional}
+
+\subsection{Espaços mensuráveis topológicos}
+
+\begin{definition}
+Seja $\bm X=(X,\topo)$ um espaço topológico. A \emph{$\sigma$-álgebra topológica} de $\bm X$ é
+	\begin{equation*}
+	\mathcal{M}_{\topo} := \ger{\topo},
+	\end{equation*}
+a $\sigma$-álgebra gerada pela topologia $\topo$.
+\end{definition}
+
+Essa $\sigma$-álgebra é comumente chamada de $\sigma$-\emph{álgebra de Borel} e seus conjuntos mensuráveis de \emph{borelianos} em homenagem ao matemático francês Émile Borel\footnote{Félix Édouard Justin Émile Borel (07/01/1871 – 03/02/1956)}.
+
+\begin{proposition}
+Sejam $\bm X=(X,\topo)$ um espaço topológico e $\mathcal{B} \subseteq \topo$ uma base da topologia. Então
+	\begin{equation*}
+	\mathcal{M}_{\topo} = \ger{\mathcal B}.
+	\end{equation*}
+\end{proposition}
+%\begin{proof}
+%Queremos mostrar que $\ger{\mathcal B} = \ger{\topo}$. Claramente, como $\mathcal B \subseteq \topo$, então $\ger{\mathcal B} \subseteq \ger{\topo}$. Para a inclusão contrária, seja $M \in \ger{\topo}$. Então existe 
+%\end{proof}
+
+
+\subsection{Funções mensuráveis com valores vetoriais}
+
+Tratamos brevemente de funções mensuráveis a valores vetoriais. De fato poderíamos somente considerar espaços lineares mensuráveis (nos quais as operações do espaço linear são mensuráveis, mas esse caso é mais geral do que o necessário e não será definido). Pode-se perceber, no entanto, que a demonstração seria a mesma.
+
+\begin{proposition}
+Sejam $\bm X$ um espaço mensurável e $\bm L$ um espaço linear topológico sobre um corpo $\bm C$. O espaço $\Men(\bm X,\bm L)$ de funções mensuráveis de $\bm X$ para $(L,\mens_\topo)$ é um subespaço linear de ${\bm L}^X$.
+\end{proposition}
+\begin{proof}
+Sejam $c \in C$ e $f,f' \in \Men(X,L)$. Como as operações $+$ e $\cdot$ do espaço linear são mensuráveis, pois são contínuas, e $f,f'$ e a função constante $c$ são mensuráveis, segue que $cf$ e $f+f'$ são mensuráveis.
+\end{proof}
+
+\subsection{Funções mensuráveis com valores em espaços métricos}
+
+\begin{proposition}
+\label{ana:conv.pont.func.mens}
+Sejam $\bm X = (X,\mens_X)$ um espaço mensurável, $\bm Y = (Y,\dist{\var}{\var})$ um espaço métrico e $(f_n)_{n \in \N}$ uma sequência de funções mensuráveis de $(X,\mens_X)$ para $(Y,\mens_\topo)$ que converge pontualmente para $f\colon X \to Y$. Então $f$ é mensurável.
+\end{proposition}
+\begin{proof}
+Como a $\sigma$-álgebra topológica de $Y$ é gerada por $\topo$, basta mostrar que $f$ puxa abertos para mensuráveis. Primeiro notemos que, se $A \subseteq Y$ é um conjunto aberto, então, para todo $x \in f\inv(A)$, existe $N \in \N$ tal que, para todo $n \geq N$, $x \in f_n\inv(A)$. Portanto, para todo $m \in \N$,
+	\begin{equation*}
+	f\inv(A) \subseteq \bigcup_{n=m}^\infty {f_n}\inv (A)
+	\end{equation*}
+e, consequentemente,
+	\begin{equation*}
+	f\inv(A) \subseteq \bigcap_{m=0}^\infty \bigcup_{n=m}^\infty {f_n}\inv(A) = \limsup_{n \in \N} {f_n}\inv(A).
+	\end{equation*}
+Segundo, seja $F \subseteq Y$ um conjunto fechado. Suponha que, para todo $m \in \N$, $x \in \bigcup_{n=m}^\infty {f_n}\inv (F)$. Então existe $N \in \N$ tal que, para todo $n \geq N$, $f_n(x) \in F$, portanto $f(x) \in F$ pois $F$  é fechado. Segue então a inclusão contrária
+	\begin{equation*}
+	\limsup_{n \in \N} {f_n}\inv(F) = \bigcap_{m=0}^\infty \bigcup_{n=m}^\infty {f_n}\inv(F) \subseteq f\inv(F).
+	\end{equation*}
+
+Finalmente, seja agora $A \subseteq Y$ um conjunto aberto, e defina, para todo $n \in \N$, os conjuntos abertos
+	\begin{equation*}
+	A_n := \set{y \in Y}{\dist{y}{A^\complement} > n\inv}.
+	\end{equation*}
+e os conjuntos fechados
+	\begin{equation*}
+	F_n := \set{y \in Y}{\dist{y}{A^\complement} \geq n\inv},
+	\end{equation*}
+Claramente $A_n \subseteq F_n$ e
+	\begin{equation*}
+	A = \bigcup_{n \in \N} A_n = \bigcup_{n \in \N} F_n.
+	\end{equation*}
+Temos então as inclusões
+%	\begin{equation*}
+%	f\inv(A) = \bigcup_{N \in \N} f\inv(F_N) \supseteq \bigcup_{N \in \N} \bigcap_{m=0}^\infty \bigcup_{n=m}^\infty {f_n}\inv(F_N) \supseteq \bigcup_{N \in \N} \bigcap_{m=0}^\infty \bigcup_{n=m}^\infty {f_n}\inv(A_N)
+%	\end{equation*}
+	\begin{equation*}
+	f\inv(A) = \bigcup_{N \in \N} f\inv(F_N) \supseteq \bigcup_{N \in \N}\limsup_{n \in \N} {f_n}\inv(F_N) \supseteq \bigcup_{N \in \N} \limsup_{n \in \N} {f_n}\inv(A_N)
+	\end{equation*}
+e
+%	\begin{equation*}
+%	f\inv(A) = \bigcup_{N \in \N} f\inv(A_N) \subseteq \bigcup_{N \in \N} \bigcap_{m=0}^\infty \bigcup_{n=m}^\infty {f_n}\inv(A_N),
+%	\end{equation*}
+	\begin{equation*}
+	f\inv(A) = \bigcup_{N \in \N} f\inv(A_N) \subseteq \bigcup_{N \in \N} \limsup_{n \in \N} {f_n}\inv(A_N),
+	\end{equation*}
+logo $f\inv(A) = \bigcup_{n \in \N} \limsup_{n \in \N} {f_n}\inv(A_N)$, e como $f_n$ são mensuráveis e $A_N$ são abertos, $f\inv(A)$ é mensurável.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Medida e espaço de medida}
+
+\paragraph{Comentário sobre o Monoide de Números Reais Positivos com Infinito}
+
+Adotaremos nesta seção as definições de que, em $\intff{0}{\infty}$, a adição é definida por
+	\begin{align*}
+	\func{+}{\intff{0}{\infty} \times \intff{0}{\infty}}{\intff{0}{\infty}}{(c,c')}{
+		\begin{cases}
+			c+c,& c \neq \infty \e c \neq \infty \\
+			\infty,& c=\infty \ou c'=\infty
+		\end{cases}
+	}
+	\end{align*}
+e a multiplicação é definida por
+	\begin{align*}
+	\func{\times}{\intff{0}{\infty} \times \intff{0}{\infty}}{\intff{0}{\infty}}{(c,c')}{
+		\begin{cases}
+			0,& c=0 \ou c'=0 \\
+			c \times c,& c \in \intaa{0}{\infty} \e c' \in \intaa{0}{\infty} \\
+			\infty,& (c=\infty \e c' \neq 0) \ou (c \neq 0 \e c'=\infty).
+		\end{cases}
+	}
+	\end{align*}
+
+\subsection{Medidas}
+
+Isso faz de $\intff{0}{\infty}$ um monoide com operação binária de adição $+$ e identidade $0$ e um monoide com operação binária de multiplicação $+$ e identidade $1$.
+
+\begin{definition}
+Seja $\bm X=(X,\mens)$ um espaço mensurável. Uma \emph{medida} sobre $\bm X$ é uma função $\med\colon \mens \to \intff{0}{\infty}$ que satisfaz
+	\begin{enumerate}
+	\item $\med(\emptyset)=0$;
+	\item Para toda sequência $(M_i)_{i \in \N}$ de conjuntos mensuráveis disjuntos aos pares,
+	\begin{equation*}
+	\med\left(\bigcup_{i \in \N} M_i\right)=\sum_{i \in \N} \med(M_i).
+	\end{equation*}
+	\end{enumerate}
+\end{definition}
+
+\begin{definition}
+Sejam $X$ um conjunto e $\p(X)$ a $\sigma$-álgebra das partes de $X$. A \emph{medida de contagem} sobre $(X,\p(X))$ é a função
+	\begin{align*}
+	\func{\#}{\p(X)}{\intff{0}{\infty}}{C}{
+		\begin{cases}
+			\card{M},& \card{M}<\card{\N} \\
+			\infty,& \card{M} \geq \card{\N}.
+		\end{cases}
+	}
+	\end{align*}
+\end{definition}
+
+\begin{definition}
+Sejam $\bm X$ um espaço mensurável e $x \in X$. A \emph{medida atômica}\footnote{Essa medida é conhecida como `medida de Dirac', em homenagem ao físico britânico \textit{Paul Dirac} (08/08/1902 -- 20/10/1984). \url{https://en.wikipedia.org/wiki/Dirac_measure}.} sobre $\bm X$ em $x$ é a função
+	\begin{align*}
+	\func{\idc|_x}{\mens}{\intff{0}{\infty}}{M}{
+		\begin{cases}
+			1,& x \in M \\
+			0,& x \notin M.
+		\end{cases}
+	}
+	\end{align*}
+\end{definition}
+
+Em geral, a notação adotada é $\delta_x$. Note que $\idc|_x(M) = \idc_M(x)$, portanto adotamos essa notação.
+
+\begin{example}
+Prove que as medida de contagem e atômica são medidas.
+\end{example}
+
+\begin{definition}
+Um \emph{espaço de medida} é uma tripla $(X,\mens,\med)$ em que $(X,\mens)$ é um espaço mensurável e $\med$ é uma medida sobre $(X,\mens)$.
+\end{definition}
+
+\begin{proposition}
+Sejam $(X, \mens,\med)$ um espaço de medida e $M_1,M_2 \in \mens$ conjuntos mensuráveis tais que $M_1 \subseteq M_2$. Então
+	\begin{enumerate}
+	\item $\med(M_1) \leq \med(M_2)$;
+	\item $\med(M_1) < + \infty \entao \med(M_2 \setminus M_1) = \med(M_2) - \med(M_1)$.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	Como $M_2 = M_1 \cup (M_2 \setminus M_1)$ e $M_1 \cap (M_2 \setminus M_1) = \emptyset$, segue que
+	\begin{equation*}
+	\med(M_2)=\med(M_1)+\med(M_2 \setminus M_1).
+	\end{equation*}
+	\begin{enumerate}
+	\item Daí, como $\med(M_2 \setminus M_1) \geq 0$, segue que $\med(M_2) \geq \med(M_1)$.
+	\item Se $\med(M_1) < + \infty$, então, subtraindo-a dos dois lados da equação, temos $\med(M_2)-\med(M_1)=\med(M_2 \setminus M_1)$.
+	\end{enumerate}
+\end{proof}
+
+\begin{proposition}
+Sejam $(X, \mens,\med)$ um espaço de medida e $(M_n)_{n \in \N}$ uma sequência de conjuntos mensuráveis.
+	\begin{enumerate}
+	\item Se $(M_n)_{n \in \N}$ é crescente, então
+		\begin{equation*}
+		\med \left( \bigcup_{n \in \N} M_n \right) = \lim_{n \to +\infty} \med(M_n);
+		\end{equation*}
+	\item Se $(M_n)_{n \in \N}$ é decrescente e existe $n \in \N$ tal que $\med(M_n) < + \infty$, então
+		\begin{equation*}
+		\med \left( \bigcap_{n \in \N} M_n \right) = \lim_{n \to +\infty} \med(M_n).
+		\end{equation*}
+	\end{enumerate}
+\end{proposition}
+
+
+
+
+
+
+
+\subsection{Medida exterior}
+
+O conceito de medida exterior é um conceito mais abrangente que nos permite atribuir a cada subconjunto de um conjunto $X$ um número real positivo. No entanto, nem sempre essa função será uma contavelmente aditiva, o que significa que ela nem sempre é uma medida. Mostraremos um jeito de restringir essa função a subconjuntos propícios de modo a termos uma sigma-álgebra de mensuráveis restrita à qual a medida exterior é uma medida. As medidas exteriores recebem esse nome exatamente porque medem conjuntos fora dessa sigma-álgebra, conjuntos não-mensuráveis.
+
+\begin{definition}
+Seja $X$ um conjunto. Uma \emph{medida exterior} sobre $\bm X$ é uma função $\med\colon \p(X) \to \intff{0}{\infty}$ que satisfaz
+	\begin{enumerate}
+	\item $\med(\emptyset)=0$;
+	\item Para todos $C,C' \subseteq X$ tais que $C \subset C'$,
+		\begin{equation*}
+		\med(C) \leq \med(C');
+		\end{equation*}
+	\item Para toda sequência $(C_i)_{i \in \N}$ de subconjuntos de $X$,
+	\begin{equation*}
+	\med\left(\bigcup_{i \in \N} C_i\right) \leq \sum_{i \in \N} \med(M_i).
+	\end{equation*}
+	\end{enumerate}
+\end{definition}
+
+\begin{definition}
+Sejam $X$ um conjunto e $\med\colon \p(X) \to \intff{0}{\infty}$ uma medida exterior sobre $X$. Um conjunto \emph{mensurável} por $\med$ (ou \emph{$\med$-mensurável}) é um conjunto $M \subseteq X$ tal que, para todo conjunto $C \subseteq X$,
+	\begin{equation*}
+	\med(C) = \med(C \cap M) + \med(C \cap M^\complement).
+	\end{equation*}
+O conjunto de conjuntos mensuráveis por $\med$ é denotado $\mens_\med$.
+\end{definition}
+
+\begin{proposition}
+Sejam $X$ um conjunto e $\med\colon \p(X) \to \intff{0}{\infty}$ uma medida exterior sobre $X$. A tripla $(X,\mens_\med,\med|_{\mens_\med})$ é um espaço de medida.
+\end{proposition}
+
+Esse método nos permite traduzir o problema de construir medida ao problema de construir medidas exteriores. Agora, vamos delinear um método de construir medidas exteriores em $X$ usando somente um conjunto de subconjuntos de $X$ em que uma função real positiva está definida. Essa medida é construída a partir de coberturas e por isso é chamada de medida exterior de cobertura.
+
+%\begin{definition}
+%Sejam $X$ um conjunto e $\mathcal{E} \subseteq \p(X)$ um conjunto de subconjunto
+%\end{definition}
+
+\begin{definition}
+Seja $X$ um conjunto. Um \emph{pré-sistema de medida} sobre $X$ é um par $(\mathcal E, \rho)$, em que $\mathcal E \subseteq \p(X)$, $\emptyset \in \mathcal E$ e $\rho\colon \mathcal E \to \intff{0}{\infty}$ é uma função tal que $\rho(\emptyset) = 0$.
+\end{definition}
+
+Na definição seguinte, consideramos $\inf \{\emptyset\} = \infty$, pois o ínfimo é considerado no conjunto $\intff{0}{\infty}$.
+
+\begin{definition}
+Sejam $X$ um conjunto e $(\mathcal E, \rho)$ um pré-sistema de medida sobre $X$. A \emph{medida exterior de cobertura} induzida por $(\mathcal E, \rho)$ é a função
+	\begin{align*}
+	\func{\med^{(\mathcal E, \rho)}}{\p(X)}{\intff{0}{\infty}}{C}{
+		\inf \set{\sum_{i \in \N} \rho(C_i)}{\{C_i\}_{i \in \N} \subseteq \mathcal E,\ C \subseteq \bigcup_{i \in \N} C_i}
+	}.
+	\end{align*}
+\end{definition}
+
+\begin{proposition}
+Sejam $X$ um conjunto e $(\mathcal E, \rho)$ um pré-sistema de medida sobre $X$. A medida exterior de cobertura $\med^{(\mathcal E, \rho)}$ induzida por $(\mathcal E, \rho)$ é a uma medida exterior sobre $X$.
+\end{proposition}
+\begin{proof}
+(Conjunto vazio) $\med^{(\mathcal E, \rho)}(\emptyset)=0$, pois se tomamos a cobertura vazia $(\emptyset)_{i \in \N}$, temos que $\emptyset \subseteq \bigcup_{i \in \N} \emptyset$ e $\rho(\emptyset)=0$;
+
+(Monotonicidade crescente) Para todos $C,C' \subseteq M$ tais que $C \subseteq C'$, temos que uma cobertura de $C'$ por conjuntos de $\mathcal E$ é uma cobertura de $C$ por conjuntos de $\mathcal E$, logo $\med^{(\mathcal E, \rho)}(C) \leq \med^{(\mathcal E, \rho)}(C')$;
+
+(Subaditividade contável) Seja $(C_i)_{i \in \N}$ uma sequência de subconjuntos de $M$. Para todos $i \in \N$ e $\varepsilon \in \left]0,\infty\right[$, seja $U^i=(U_{i,j})_{j \in \N}$ é uma cobertura de $C_i$ por conjuntos de $\mathcal E$ tal que
+	\begin{equation*}
+	\sum_{j \in \N} \rho(U_{i,j}) \leq \med^{(\mathcal E, \rho)}(C_i) + \frac{\varepsilon}{2^{i+1}}.
+	\end{equation*}
+Essa cobertura existe porque $\med^{(\mathcal E, \rho)}(C_i)$ é um ínfimo. Então $(U_{i,j})_{(i,j) \in \N^2}$ é uma cobertura de $\bigcup_{i \in \N} C_i$ por conjuntos de $\mathcal E$ e segue que
+	\begin{align*}
+	\med^{(\mathcal E, \rho)}\left( \bigcup_{i \in \N} C_i \right) &\leq \med^{(\mathcal E, \rho)}\left( \bigcup_{(i,j) \in \N^2} U_{i,j} \right) \\
+		&\leq \sum_{(i,j) \in \N^2} \rho(U_{i,j}) \\
+		&\leq \sum_{i \in \N} \left( \med^{(\mathcal E, \rho)}(C_i) + \frac{\varepsilon}{2^{i+1}} \right) \\
+		&= \sum_{i \in \N} \left( \med^{(\mathcal E, \rho)}(C_i)\right) + \sum_{i \in \N}\frac{\varepsilon}{2^{i+1}} \\
+		&= \sum_{i \in \N} \left( \med^{(\mathcal E, \rho)}(C_i)\right) + \varepsilon.
+	\end{align*}
+A primeira desigualdade vem da monotonicidade de $\med^{(\mathcal E, \rho)}$, a segunda de $\med^{(\mathcal E, \rho)}$ ser ínfimo, e a terceira vem da condição para as coberturas $(U_{i,j})_{j \in \N}$. Como isso vale para qualquer $\varepsilon$, segue que
+	\begin{equation*}
+	\med^{(\mathcal E, \rho)}\left( \bigcup_{i \in \N} C_i \right) \leq \sum_{i \in \N} \med^{(\mathcal E, \rho)}(C_i). \qedhere
+	\end{equation*}
+\end{proof}
+
+\begin{proposition}
+Sejam $X$ um conjunto e $(\mathcal E, \rho)$ e $(\mathcal E', \rho')$ pré-sistemas de medida tais que $\mathcal E' \subseteq \mathcal E$ e $\rho \leq \rho'$. Então $\med^{(\mathcal E, \rho)} \leq \med^{(\mathcal E', \rho')}$.
+\end{proposition}
+\begin{proof}
+Vamos mostrar que $\med^{(\mathcal E, \rho)} \leq \med^{(\mathcal E', \rho)}$ e então que $\med^{(\mathcal E', \rho)} \leq \med^{(\mathcal E', \rho')}$. Seja $C \subseteq X$. Como toda cobertura de $C$ por de $\mathcal E'$ é uma cobertura de $C$ por conjuntos de $\mathcal E$. Isso implica que
+	\begin{align*}
+	\med^{(\mathcal E, \rho)}(C) &= \inf \set{\sum_{i \in \N} \rho(C_i)}{\{C_i\}_{i \in \N} \subseteq \mathcal E,\ C \subseteq \bigcup_{i \in \N} C_i} \\
+	&\leq \inf \set{\sum_{i \in \N} \rho(C_i)}{\{C_i\}_{i \in \N} \subseteq \mathcal E',\ C \subseteq \bigcup_{i \in \N} C_i} \\
+	&= \med^{(\mathcal E', \rho)}(C),
+	\end{align*}
+o que mostra que $\med^{(\mathcal E, \rho)} \leq \med^{(\mathcal E', \rho)}$.
+
+Agora, como $\rho(C) \leq \rho'(C)$, segue que, para toda cobertura de $C$ por conjuntos de $\mathcal E$,
+	\begin{equation*}
+	\sum_{i \in \N} \rho(C_i) \leq \sum_{i \in \N} \rho'(C_i),
+	\end{equation*}
+portanto
+	\begin{align*}
+	\med^{(\mathcal E', \rho)}(C) &= \inf \set{\sum_{i \in \N} \rho(C_i)}{\{C_i\}_{i \in \N} \subseteq \mathcal E',\ C \subseteq \bigcup_{i \in \N} C_i} \\
+	&\leq \inf \set{\sum_{i \in \N} \rho'(C_i)}{\{C_i\}_{i \in \N} \subseteq \mathcal E',\ C \subseteq \bigcup_{i \in \N} C_i} \\
+	&= \med^{(\mathcal E', \rho')}(C),
+	\end{align*}
+o que mostra que $\med^{(\mathcal E', \rho)} \leq \med^{(\mathcal E', \rho')}$ e, finalmente, que
+	\begin{equation*}
+	\med^{(\mathcal E, \rho)} \leq \med^{(\mathcal E', \rho')}.
+	\end{equation*}
+\end{proof}
+
+
+
+
+
+
+
+\section{Medida em espaços topológicos}
+
+Consideraremos nesta seção medidas em espaços topológicos. No entanto, em geral supomos que o espaço topológico é separado, isto é, $T_2$, pois isso garante um mínimo de propriedades de separação entre os pontos do espaço, a separação de pontos por vizinhanças abertas.
+
+Consideraremos, em geral, $\sigma$-álgebras que contêm a topologia do espaço, o que é equivalente a dizer que contêm a $\sigma$-álgebra topológica do espaço, que é, por definição, a menor $\sigma$-álgebra que contém sua topologia.
+
+\subsection{Medidas regulares}
+
+% DÚVIDA: Por que precisamos pedir a regularidade interior usando compactos e não fechados?
+\begin{definition}
+Sejam $\bm X = (X,\topo)$ um espaço topológico separado, $\mens$ uma $\sigma$-álgebra sobre $X$ que contém $\topo$ e $\med$ uma medida sobre $(X,\mens)$. Um conjunto \emph{interiormente regular} com respeito a $\med$ é um conjunto mensurável $M \subseteq X$ tal que
+	\begin{equation*}
+	\med(M) = \sup\set{\med(C)}{C \subseteq M,\text{ $C$ é compacto}}.
+	\end{equation*}
+Uma medida \emph{interiormente regular} sobre $(X,\mens)$ é uma medida $\med$ sobre $(X,\mens)$ para a qual todo conjunto mensurável de $X$ é interiormente regular com respeito a $\med$.
+
+Um conjunto \emph{exteriormente regular} com respeito a $\med$ é um conjunto mensurável $M \subseteq X$ tal que
+	\begin{equation*}
+	\med(M) = \sup\set{\med(C)}{C \subseteq M, M \in \topo}.
+	\end{equation*}
+Uma medida \emph{exteriormente regular} sobre $(X,\mens)$ é uma medida $\med$ sobre $(X,\mens)$ para a qual todo conjunto mensurável de $X$ é exteriormente regular com respeito a $\med$.
+
+Um conjunto \emph{regular} com respeito a $\med$ é um conjunto que é interior e exteriormente regular com respeito a $\med$. Uma medida \emph{regular} sobre $(X,\mens)$ é uma medida $\med$ sobre $(X,\mens)$ que é interiormente e exteriormente regular.
+\end{definition}
+
+% A Wikipedia parece sugerir esse resultado em \url{https://en.wikipedia.org/wiki/Borel_regular_measure}, mas ainda não tive tempo de pensar se é verdade. É importante ressaltar que não é claro para mim o que a wikipedia quer dizer com um conjunto mensurável. Como o contexto do verbete é uma medida exterior, é provável que seja mensurável no sentido de Caratheodory.
+% Resolvi anotar esse resultado aqui porque achei interessante e seria bom tê-lo para entender melhor regularidade de medidas em espaços topológicos.
+% Esse teorema \url{https://en.wikipedia.org/wiki/Regularity_theorem_for_Lebesgue_measure} parece sugerir ainda uma outra definição de regularidade, que envolve conjuntos serem aproximadamente abertos ou fechados e tem mais a ver com a definição acima de aproximação por compactos e abertos.
+%\begin{proposition}
+%Sejam $\bm X = (X,\topo)$ um espaço topológico separado e $\mens \geq \mens_\topo$ uma $\sigma$-álgebra sobre $X$. Uma medida $\med$ sobre $(X,\mens)$ é regular se, e somente se, para todo mensurável $M$ existe $M' \in \mens_\topo$ tal que $M \subseteq M'$ e $\med(M)=\med(M')$.
+%\end{proposition}
+
+\subsection{Medidas localmente finitas}
+
+\begin{definition}
+Sejam $\bm X = (X,\topo)$ um espaço topológico separado e $\mens$ uma $\sigma$-álgebra sobre $X$ que contém $\topo$. Uma medida \emph{localmente finita} sobre $(X,\mens)$ é uma $\med$ sobre $(X,\mens)$ tal que, para todo $x \in X$, existe vizinhança aberta $A \subseteq X$ de $x$ tal que $\med(A) < \infty$.\end{definition}
+
+
+
+\section{Medidas em grupos topológicos}
+
+\begin{definition}
+Sejam $\bm G$ um grupo topológico. Uma medida \emph{invariante por translação à direita} sobre $(G,\mens_\topo)$ é uma medida $\med$ sobre $(G,\mens_\topo)$ tal que, para todo $g \in G$ e todo mensurável $M \subseteq G$,
+	\begin{equation*}
+	\med(gM) = \med(M).
+	\end{equation*}
+Uma medida \emph{invariante por translação à esquerda} sobre $(G,\mens_\topo)$ é uma medida $\med$ sobre $(G,\mens_\topo)$ tal que, para todo $g \in G$ e todo mensurável $M \subseteq G$,
+	\begin{equation*}
+	\med(Mg) = \med(M).
+	\end{equation*}
+\end{definition}
+
+\begin{proposition}[\footnote{Este teorema é conhecido como `Teorema de Haar', em homenagem ao matemático húngaro \textit{Alfréd Haar} (11/10/1885 -- 16/03/1933). \url{https://en.wikipedia.org/wiki/Haar_measure}.}]
+Seja $\bm G$ um grupo topológico localmente compacto. Existe uma única (a menos de constante multiplicativa) medida não trivial sobre $(G,\mens_\topo)$ que é
+	\begin{enumerate}
+	\item Invariante por translação à esquerda;
+	\item Finita em conjuntos compactos;
+	\item Exteriormente regular (em conjuntos mensuráveis);
+	\item Interiormente regular em conjuntos abertos.
+	\end{enumerate}
+
+Se $\bm G$ é compacto, existe única medida como acima tal que $\med(G)=1$.
+\end{proposition}
+
+
+
+
+\section{Medida em espaços métricos}
+
+\subsection{Medidas exteriores métricas}
+
+\begin{definition}
+Seja $\bm M$ um espaço métrico. Uma medida exterior \emph{métrica} em $\bm M$ é uma medida exterior $\med\colon \p(M) \to \intff{0}{\infty}$ sobre $M$ tal que, para todos $C,C' \subseteq M$ metricamente separados,
+	\begin{equation*}
+	\med(C \cup C') = \med(C) + \med(C').
+	\end{equation*}
+\end{definition}
+
+\begin{proposition}
+\label{prop:criterio.mensur.med.metrica}
+Sejam $\bm M$ um espaço métrico, com $\sigma$-álgebra topológica $\mens_\topo$ e $\med$ uma medida exterior métrica em $\bm M$. Então todo $M \in \mens_\topo$ é $\med$-mensurável.
+\end{proposition}
+\begin{proof}
+Para mostrar isso, mostraremos que todo conjunto fechado é $\med$-mensurável. Basta mostrar que, para todo $C \subseteq M$ com $\med(C) < \infty$ e todo fechado $F \subseteq M$,
+	\begin{equation*}
+	\med(C) \geq \med(C \cap F) + \med(C \cap F^\complement),
+	\end{equation*}
+pois a desigualdade contrária sempre vale por subaditividade e a igualdade vale trivialmente se $\med(C) = \infty$. Consideremos as vizinhanças fechadas
+	\begin{equation*}
+	F_j := \overline\bola_{\frac{1}{j}}(F) = \set{p \in M}{\dist{F}{p} \leq \frac{1}{j}}.
+	\end{equation*}
+Vale que $\dist{C \cap F}{C \cap F_j^\complement} > 0$, portanto
+	\begin{equation*}
+	\med(C) \geq \med\left( (C \cap F) \cup (C \cap F_j^\complement) \right) = \med(C \cap F) + \med(C \cap F_j^\complement).
+	\end{equation*}
+Resta mostrar agora que $\lim_{j \conv \infty} \med(C \cap F_j^\complement) = \med(C \cap F^\complement)$. Como $F$ é fechado, podemos escrever, para todo $j \in \N^*$,
+	\begin{equation*}
+	C \cap F^\complement = \set{p \in C}{\dist{F}{p} > 0} = (C \cap F_j^\complement) \cup \bigcup_{k=j}^\infty R_k,
+	\end{equation*}
+em que $R_k := C \cap \overline\bola_{\frac{1}{k}}(F) \setminus \overline\bola_{\frac{1}{k+1}}(F) = \set{p \in C}{\frac{1}{k+1} < \dist{F}{p} \leq \frac{1}{k}}$. Pela subaditividade de $\med$, segue que
+	\begin{equation*}
+	\med(C \cap F_j^\complement) \leq \med(C \cap F^\complement) \leq \med(C \cap F_j^\complement) + \sum_{k=j}^\infty \med(R_k).
+	\end{equation*}
+Mas note que $\sum_{k=1}^\infty \med(R_k) < \infty$. Isso ocorre pois, para todo $j \geq i+2$, $\dist{F_i}{F_j} > 0$, portanto por indução em $N$ segue que
+	\begin{equation*}
+	\sum_{k=1}^N \med(R_{2k}) = \med\left( \bigcup_{k=1}^N R_{2k} \right) \leq \med(C) < \infty
+	\end{equation*}
+e
+	\begin{equation*}
+	\sum_{k=1}^N \med(R_{2k-1}) = \med\left( \bigcup_{k=1}^N R_{2k-1} \right) \leq \med(C) < \infty.
+	\end{equation*}
+Portanto $\sum_{k=1}^\infty \med(R_k) < \infty$, o que implica que $\lim_{j \conv \infty} \med(C \cap F_j^\complement) = \med(C \cap F^\complement)$, e concluímos que $F$ é $\med$-mensurável, resultando que todo $M \in \mens_\topo$ é $\med$-mensurável.
+\end{proof}
+
+%A recíproca também vale.
+
+\subsection{Medidas por coberturas métricas}
+
+Nesta seção, definiremos uma família de medidas exteriores em um espaço métrico e usaremos essas medidas para definir a dimensão do espaço métrico e de seus subconjuntos mensuráveis. No entanto, é importante ressaltar que existem diferentes definições de medida e de dimensão em espaços métricos e aqui abordaremos somente uma delas, a medida por coberturas métricas. Uma outra abordagem considera, em vez de coberturas métricas, empacotamentos, e essa abordagem chega a resultados semelhantes, mas às vezes distintos dos que chegaremos aqui. Essa abordagem por empacotamentos é, de certa forma, a noção dual da abordagem que estudaremos usando coberturas. No entanto, um paradigma que é em geral seguido é que as dimensões definidas coincidam com as dimensões de espaços lineares como a reta, o plano, e de variedades.
+
+Consideremos a função diâmetro em $\bm M$
+	\begin{align*}
+	\func{\diam}{\p(M)}{[0,\infty]}{C}{\diam(C)}.
+	\end{align*}
+
+Essa função $\diam$ não é uma medida exterior em $M$. Ela satisfaz (1) $\diam(\emptyset)=0$ e (2) Para todos $C,D \subseteq M$ tais que $C \subseteq D$, então $C \times C \subseteq D \times D$, portanto $d(C \times C) \subseteq d(D \times D)$, o que implica
+	\begin{equation*}
+	\diam(C) \leq \diam(D);
+	\end{equation*}
+No entanto, não satisfaz 
+(3) Para todos $(C_i)_{i \in \N}$ subconjuntos de $M$,
+	\begin{equation*}
+	\diam\left( \bigcup_{i \in \N} C_i \right) \leq \sum_{i \in \N} \diam\left( C_i \right).
+	\end{equation*}
+Para ver isso, considere o intervalo $[0,1]$ e os conjuntos $C_i$ como os intervalos de tamanho $\frac{1}{2^{i+2}}$ e que tocam pela direita nos pontos $\frac{1}{2^i}$ do intervalo $[0,1]$. Facilmente nota-se que
+	\begin{equation*}
+	\diam\left( \bigcup_{i \in \N} C_i \right) = 1 > \frac{1}{2} = \sum_{i \in \N} \diam\left( C_i \right).
+	\end{equation*}
+
+Isso ocorre porque a distância entre os conjuntos $C_i$ não é considerada na soma dos diâmetros individuais, mas é considerada na união, e essa distância resulta em $\frac{1}{2}$ nesse caso. Pode-se fazer com que essa diferença seja tão grande quanto se queira.
+
+Definiremos uma família de medidas exteriores em $\bm M$ com um parâmetro $d$, que representa a `dimensão' da medida utilizando a função diâmetro $\diam$. Mas antes brevemente comentamos a definição de cobertura que usaremos.
+
+\begin{definition}
+Sejam $\bm M$ um espaço métrico, $C \subseteq M$ e $\delta \in \intaa{0}{\infty}$. Uma \emph{$\delta$-cobertura} de $C$ é uma cobertura $(C_i)_{i \in I}$ de $C$ tal que, para todo $i \in I$, $\diam(C_i) \leq \delta$. O conjunto de $\delta$-coberturas de $C$ é $\mathcal C_\delta (C)$.
+\end{definition}
+
+\begin{definition}
+Sejam $\bm M$ um espaço métrico, $C \subseteq M$, $d \in \intfa{0}{\infty}$ e $\delta \in \intaa{0}{\infty}$. A \emph{medida $d$-dimensional $\delta$-precisa} de $C$ em $\bm M$ é
+%	\begin{equation*}
+%	H^d_\delta(C) := \inf\set{\sum_{i \in \N} \diam(U_i)^d}{C \subseteq \bigcup_{i \in \N} U_i, \forall i \in \N\ \diam(U_i) \leq \delta}.
+%	\end{equation*}
+	\begin{equation*}
+	H^d_\delta(C) := \inf\set{\sum_{i \in \N} \diam(U_i)^d}{(U_i)_{i \in \N} \in \mathcal C_\delta(C)}.
+	\end{equation*}
+ A \emph{medida $d$-dimensional $\delta$-precisa} em $\bm M$ é a função
+ 	\begin{align*}
+ 	\func{H^d_\delta}{\p(M)}{\intff{0}{\infty}}{C}{H^d_\delta(C)}.
+ 	\end{align*}
+\end{definition}
+
+A sequência $(U_i)_{i \in \N}$ é uma $\delta$-\emph{cobertura} de $C$. Mostremos que $H^d_\delta$ é uma medida exterior em $M$.
+
+\begin{proposition}
+Sejam $\bm M$ um espaço métrico, $d \in \intfa{0}{\infty}$ e $\delta \in \intaa{0}{\infty}$. A função $H^d_\delta\colon \p(M) \to \intff{0}{\infty}$ é uma medida exterior sobre $M$.
+\end{proposition}
+\begin{proof}
+(Conjunto vazio) $H^d_\delta(\emptyset)=0$, pois se tomamos a cobertura vazia $(\emptyset)_{i \in \N}$, temos que $\emptyset \subseteq \bigcup_{i \in \N} \emptyset$ e $\diam(\emptyset)\leq \delta$; (Monotonicidade) Para todos $C,C' \subseteq M$ tais que $C \subseteq C'$, temos que uma $\delta$-cobertura de $C'$ é uma $\delta$-cobertura de $C$, logo $H^d_\delta(C) \leq H^d_\delta(C')$; (Subaditividade contável) Seja $(C_i)_{i \in \N}$ uma sequência de subconjuntos de $M$. Para todos $i \in \N$ e $\varepsilon \in \left]0,\infty\right[$, seja $U^i=(U_{i,j})_{j \in \N}$ é uma cobertura de $C_i$ tal que
+	\begin{equation*}
+	\sum_{j \in \N} \diam(U_{i,j})^d \leq H^d_\delta(C_i) + \frac{\varepsilon}{2^{i+1}}.
+	\end{equation*}
+Essa cobertura existe porque $H^d_\delta(C_i)$ é um ínfimo. Então $(U_{i,j})_{(i,j) \in \N^2}$ é uma cobertura de $\bigcup_{i \in \N} C_i$ e segue que
+	\begin{align*}
+	H^d_\delta\left( \bigcup_{i \in \N} C_i \right) &\leq H^d_\delta\left( \bigcup_{(i,j) \in \N^2} U_{i,j} \right) \\
+		&\leq \sum_{(i,j) \in \N^2} \diam(U_{i,j})^d \\
+		&\leq \sum_{i \in \N} \left( H^d_\delta(C_i) + \frac{\varepsilon}{2^{i+1}} \right) \\
+		&= \sum_{i \in \N} \left( H^d_\delta(C_i)\right) + \sum_{i \in \N}\frac{\varepsilon}{2^{i+1}} \\
+		&= \sum_{i \in \N} \left( H^d_\delta(C_i)\right) + \varepsilon.
+	\end{align*}
+A primeira desigualdade vem da monotonicidade de $H^d_\delta$, a segunda de $H^d_\delta$ ser ínfimo, e a terceira vem da condição para as coberturas $(U_{i,j})_{j \in \N}$. Como isso vale para qualquer $\varepsilon$, segue que
+	\begin{equation*}
+	H^d_\delta\left( \bigcup_{i \in \N} C_i \right) \leq \sum_{i \in \N} H^d_\delta(C_i). \qedhere
+	\end{equation*}
+\end{proof}
+
+
+Definimos agora a medida $H^d$ que independe de $\delta$. Notemos que, se $\delta \leq \delta'$, então $H^d_{\delta'}(C) \leq H^d_\delta(C)$, pois toda cobertura de $C$ com diâmetro $\delta$ é uma cobertura com diâmetro $\delta'$. Isso implica que existe em $\intff{0}{\infty}$ o limite
+	\begin{equation*}
+	\lim_{\delta \conv 0} H^d_\delta(C) = \sup_{\delta \in \intaa{0}{\infty}} H^d_\delta(C).
+	\end{equation*}
+
+\begin{definition}
+Sejam $\bm M$ um espaço métrico e $d \in \intfa{0}{\infty}$. A \emph{medida $d$-dimensional} em $\bm M$ é a função
+ 	\begin{align*}
+ 	\func{H^d}{\p(M)}{\intff{0}{\infty}}{C}{H^d(C) := \sup_{\delta \in \intaa{0}{\infty}} H^d_\delta(C).}
+ 	\end{align*}
+\end{definition}
+
+\begin{proposition}
+Sejam $\bm M$ um espaço métrico e $d \in \intfa{0}{\infty}$. A função
+	\begin{equation*}
+	H^d\colon \p(M) \to \intff{0}{\infty}
+	\end{equation*}
+é uma medida exterior métrica em $M$.
+\end{proposition}
+\begin{proof}
+(Conjunto vazio) $H^d(\emptyset)=0$, pois $H^d_\delta(\emptyset)=0$ para todo $\delta \in \intaa{0}{\infty}$; (Monotonicidade) Para todos $C,C' \subseteq M$ tais que $C \subseteq C'$, temos que $H^d_\delta(C) \leq H^d_\delta(C')$ para todo $\delta \in \intaa{0}{\infty}$, logo $H^d(C) \leq H^d(C')$; (Subaditividade contável) Seja $(C_i)_{i \in \N}$ uma sequência de subconjuntos de $M$. Como para todo $i \in \N$ e $\delta \in \intaa{0}{\infty}$ vale por definição que $H^d_\delta(C_i) \leq H^d(C_i)$, segue que
+	\begin{equation*}
+	H^d_\delta\left( \bigcup_{i \in \N} C_i \right) \leq \sum_{i \in \N} H^d_\delta(C_i) \leq  \sum_{i \in \N} H^d(C_i).
+	\end{equation*}
+Como isso vale para todo $\delta$, segue que
+	\begin{equation*}
+	H^d\left( \bigcup_{i \in \N} C_i \right) \leq \sum_{i \in \N} H^d\left( C_i \right).
+	\end{equation*}
+
+Por fim, pode-se mostrar que, para todos conjuntos $C,C' \in M$ e para todo $\delta < d(C,C')$, tem-se
+	\begin{equation*}
+	H^d_\delta(C \cup C') = H^d_\delta(C) + H^d_\delta(C'),
+	\end{equation*}
+portanto, se $d(C,C') > 0$, tem-se
+	\begin{equation*}
+	H^d(C \cup C') = H^d(C) + H^d(C'). \qedhere
+	\end{equation*}
+\end{proof}
+
+Essa medida é comumente chamada de \emph{medida de Hausdorff} $d$-dimensional. Definem-se os conjuntos mensuráveis como usual para medidas exteriores. Um conjunto $E \subseteq M$ é mensurável se, e somente se, para todo conjunto $C \in M$,
+	\begin{equation*}
+	H^d(C) = H^d(C \cap E) + H^d(C \cap E^\complement).
+	\end{equation*}
+
+A proposição mostra que $H^d$ é uma medida exterior métrica, todos os conjuntos da $\sigma$-álgebra topológica (conjuntos de Borel) são mensuráveis pela medida exterior $H^d$ (\ref{prop:criterio.mensur.med.metrica}) e $H^d$ pode ser restringida para uma medida em $M$. Em geral, não se pode garantir o mesmo para as medidas exteriores\footnote{\url{https://web.stanford.edu/class/math285/ts-gmt.pdf}} $H^d_\delta$. Pode-se ainda mostrar a seguinte proposição.
+
+\begin{proposition}
+Seja $n \in \N$ e $\R^n$ o espaço métrico real $n$-dimensional. A medida $H^n$ é um múltiplo da medida de volume  $\vol^n$ em $\R^n$ (Lebesgue):
+	\begin{equation*}
+	H^n = \frac{2^n}{\vol^n(\mathbb B^n)}\vol^n.
+	\end{equation*}
+\end{proposition}
+
+Lembrando que
+	\begin{equation*}
+	\vol^n(\mathbb B^n) = \frac{(\quo{\tau}{2})^{\frac{n}{2}}}{\left( \quo{n}{2} \right)!}
+	\end{equation*}
+em que $\tau = 6,28\ldots$ é a constante do círculo (razão da circunferência pelo raio) e a função fatorial $!$ é entendida como a extensão dada pela função $\Gamma$, definida $x! = \Gamma(x+1)$, ou mais explicitamente por
+	\begin{align*}
+	\func{!}{\intff{0}{\infty}}{\intff{0}{\infty}}{x}{\int_0^\infty t^x \ee^{-t} \dd t.}
+	\end{align*}
+Alguns casos particulares são
+	\begin{align*}
+	H^0 &= \vol^0 = \# &&\qquad	H^1 = \vol^1 \\
+	H^2 &= \frac{8}{\tau}\vol^2 &&\qquad H^3 = \frac{12}{\tau}\vol^3
+	\end{align*}
+O fator $\vol^n(\mathbb{B}^n)$ poderia ser evitado multiplicando-o na definição de $H^n_\delta$, e o fator $2^n$ poderia ser evitado avaliando a soma de $\left (\frac{\diam(U_i)}{2}\right )^n$ em vez de somente $\diam(U_i)^n$. O número $\frac{\diam(C)}{2}$ pode ser naturalmente entendido como o \emph{raio} do conjunto $C$.
+
+\subsection{Dimensão métrica e fractais}
+
+Seja $C \subseteq M$ um conjunto. A função
+	\begin{align*}
+	\func{H^{(\var)}(C)}{\intfa{0}{\infty}}{\intff{0}{\infty}}{d}{H^d(C)}
+	\end{align*}
+é uma função com uma propriedade interessante. Ela admite no máximo três valores. Pode-se notar que, se $d \leq d'$, então $H^{d'}(C) \leq H^d(C)$. Além disso, existe $d \in \intfa{0}{\infty}$ tal que $H^d(C) = 0$. Portanto podemos definir a \emph{dimensão métrica} de $C$ como
+	\begin{equation*}
+	\dim(C) := \inf\set{d \in \intfa{0}{\infty}}{H^d(C)=0}.
+	\end{equation*}
+Nesse caso, pode-se mostrar que, para todo $d>\dim(C)$, $H^d(C) = 0$ e, para todo $d < \dim(C)$, $H^d(C) = \infty$. No entanto, o valor $H^{\dim(C)}(C)$ pode ser qualquer número em $\intff{0}{\infty}$. O valor de $H^{\dim(C)}(C)$ pode ser qualquer valor na linha tracejada do gráfico da figura~\ref{fig:dimensaometrica}. Exitem subconjuntos de $\R^d$ que têm dimensões não inteiras. Esses conjuntos são conhecidos como \emph{fractais}.
+
+\begin{figure}
+\centering
+\begin{tikzpicture}
+	\draw[<->] (0,3) node[anchor=east] {$H^{(\var)}(C)$} -- (0,0) node[anchor=east] {$0$} -- (12,0);
+	\draw (0,2) node[anchor=east] {$\infty$} -- (6,2);
+	\draw[dotted] (6,2) -- (6,0) node[anchor=north] {$\dim(C)$};
+\end{tikzpicture}
+\caption{Gráfico de $H^d(C)$ em função de $d$.}
+\label{fig:dimensaometrica}
+\end{figure}
+
+
+
+
+
+
+
+
+
+\section{Espaço linear de medidas}
+
+Podemos expandir o conceito de medida para obtermos mais estrutura algébrica entre as medidas. Vamos modificar o conceito de medida para admitir valores negativos, mas em contrapartida temos que impedir que a medida de um conjunto seja infinita. Para isso, podemos definir a medida como uma função assumindo valores em $\R$ mas, de modo mais geral, basta considerarmos valores em um corpo topológico, o que permite que tenhamos medidas com valores em $\C$, ou podemos até mesmo generalizar para espaços lineares topológicos. A estrutura linear é o que garante que o espaço de medidas será também um espaço linear e a topologia é o que garante que podemos falar de convergência de uma sequência de elementos do espaço linear, o que é necessário para que definamos a propriedade de $\sigma$-aditividade de uma medida.
+
+\begin{definition}
+Sejam $\bm X = (X,\mens)$ um espaço mensurável e $\bm L$ um espaço linear topológico sobre um corpo topológico $\bm C$. Uma \emph{medida} sobre $\bm X$ a valores em $\bm L$ é uma função $\med\colon \mens \to L$ que satisfaz:
+	\begin{enumerate}
+	\item $\med(\emptyset) = 0$;
+	\item Para toda sequência $(M_i)_{i \in \N}$ de conjuntos mensuráveis disjuntos,
+		\begin{equation*}
+		\med\left( \bigcup_{i \in \N} M_i \right) = \sum_{i \in \N} \med(M_i).
+		\end{equation*}
+	\end{enumerate}
+O conjunto das medidas sobre $\bm X$ a valores em $\bm L$ é denotado $\Med(\bm X,\bm L)$. Caso não haja ambiguidade, denotamos $\Med$.
+\end{definition}
+
+O conjunto $\Med(\bm X)$ das medidas sobre $\bm X$ é um espaço de funções do conjunto $\mens$ para o corpo (ou espaço linear) $\R$. Nesse sentido, podemos entender $\Med(\bm X)$ como um subconjunto de $\R^\mens$ e, de fato, esse conjunto forma um subespaço com respeito à adição e à multiplicação pontuais, bem como inversas e identidades de cada.
+
+\begin{proposition}
+Seja $\bm X$ um espaço mensurável. O espaço $\Med(\bm X)$ é um subespaço linear de $\R^\mens$.
+\end{proposition}
+\begin{proof}
+Temos que mostrar que $\Med(\bm X)$ é fechado pela adição e multiplicação. Sejam $c \in \R$ e $\med,\med' \in \Med(\bm X)$. Então
+	\begin{enumerate}
+	\item $(c\med+\med')(\emptyset) = c\med(\emptyset)+\med'(\emptyset) = 0$;
+	\item Seja $(M_i)_{i \in \N}$ uma sequência de conjuntos mensuráveis disjuntos. Então
+		\begin{align*}
+		(c\med+\med')\left( \bigcup_{i \in \N} M_i \right) &= c\med\left( \bigcup_{i \in \N} M_i \right) + \med'\left( \bigcup_{i \in \N} M_i \right) \\
+			&= \sum_{i \in \N} c\med(M_i) + \sum_{i \in \N} \med'(M_i) \\
+			&= \sum_{i \in \N} (c\med+\med')(M_i).
+		\end{align*}
+	\end{enumerate}
+\end{proof}
+
+Quando $L = \R$, podemos quase recuperar a definição que tínhamos de medida finita considerando as \emph{medidas positivas}. Esse é o conjunto das medida reais que só assumem valores em $\R_{\geq 0} = \intfa{0}{\infty}$ e é denotado $\Med_{\geq 0}$. Note que $\Med_{\geq 0}$ é um cone em $\Med$, pois para todo $c \in \R_{\geq 0}$ e toda $\med \in \Med_{\geq 0}$, temos $c\med \in \Med_{\geq 0}$. Além disso, se $\med \in \Med_{\geq 0} \cap -\Med_{\geq 0}$, então, para todo $M \in \mens$, $\med(M) \geq 0$ e $-\med(M) \geq 0$, portanto $\med=0$, o que mostra que $\Med_{\geq 0}(\bm X)$ é um cone agudo, ou seja, $\Med_{\geq 0}(\bm X) \cap -\Med_{\geq 0}(\bm X) = \{0\}$.
+
+De modo mais geral, se temos um cone $X$ em um espaço linear $\bm L$, então o espaço $\Med|_X$ é um cone e, se $X$ é agudo, então $\Med$.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Quase}
+
+\subsection{Quase todo}
+
+A estrutura de medida nos permite definir um novo quantificador, que formaliza o conceito de que quase todo ponto satisfaz alguma propriedade, ou seja, de que, a menos de pontos em um conjunto de medida nula, todos os pontos satisfazem tal propriedade.
+
+\begin{definition}
+Seja $\bm X$ um espaço de medida. Uma propriedade $\mathrm{P}$ de elementos de $X$ vale para \emph{quase todo} ponto se existe um conjunto $M \in \mens$ com $\med(M)=0$ tal que, para todo $x \in X \setminus M$, vale a propriedade $\mathrm{P}$:
+	\begin{equation*}
+	\qforall x \mathrm{P}x \equiv \exists M \forall x (M \in \mens \wedge \med(M)=0 \wedge (x \in X \setminus M \rightarrow \mathrm{P}x)).
+	\end{equation*}
+\end{definition}
+
+A partir desse quantificador, podemos definir o quantificador \emph{quase existe} da seguinte forma
+	\begin{equation*}
+	\overset{\circ}{\exists}x \mathrm{P}x \equiv \neg \qforall x \neg \mathrm{P}x
+	\end{equation*}
+	\begin{align*}
+	\neg\qforall x \neg\mathrm{P}x &\equiv \neg\exists M \forall x (M \in \mens \wedge \med(M)=0 \wedge (x \in X \setminus M \rightarrow \neg\mathrm{P}x)) \\	
+	&\equiv \forall M \exists x (M \notin \mens \vee \med(M)>0 \vee (x \in X \setminus M \wedge \mathrm{P}x)) \\
+	&\equiv \forall M \exists x (\neg(M \notin \mens \vee \med(M)>0) \rightarrow (x \in X \setminus M \wedge \mathrm{P}x)) \\
+	&\equiv \forall M \exists x (M \in \mens \wedge \med(M)=0 \rightarrow (x \in X \setminus M \wedge \mathrm{P}x)) \\
+	\end{align*}
+pois
+	\begin{equation*}
+	\neg(A \rightarrow B) \equiv A \wedge \neg B
+	\end{equation*}
+	\begin{equation*}
+	A \vee B \equiv \neg A \rightarrow B
+	\end{equation*}
+
+\begin{proposition}
+Sejam $\bm X$ um espaço de medida e $\mathrm{P}$ e $\mathrm{Q}$ propriedades de elementos de $X$. Então
+	\begin{enumerate}
+	\item $\qforall x \mathrm{P}x \wedge \qforall x \mathrm{Q}x \rightarrow \qforall x (\mathrm{P}x \wedge \mathrm{Q}x)$;
+	\item $\forall x \mathrm{P}x \rightarrow \qforall x \mathrm{P}x$;
+	\item $\overset{\circ}{\exists} x \mathrm{P}x \rightarrow \exists x \mathrm{P}x$;
+	\item $\neg \overset{\circ}{\exists}x \neg\mathrm{P}x \equiv \qforall x \mathrm{P}x$;
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item Sejam $M,N \in \mens$ os conjuntos de medida $0$ em cujos complementares $\mathrm{P}$ e $\mathrm{Q}$ falham, respectivamente. Então $M \cup N \in \mens$ tem medida $0$, portanto $\mathrm{P}$ e $\mathrm{Q}$ falham no complementar de $M \cup N$ e segue o teorema.
+	
+	\item Tomando $M=\emptyset$, temos $X \setminus M = X$ e concluímo que para todo $x \in X \setminus M$ vale $\mathrm{P}x$.
+	
+	\item Tomando $M=\emptyset$, temos $X \setminus M = X$ e concluímos que existe $x \in X$ tal que $\mathrm{P}x$.
+	
+	\item Exercício.
+	\end{enumerate}
+\end{proof}
+
+\subsection{Quase igualdade de conjuntos}
+
+\begin{definition}
+Sejam $\bm X=(X,\mens,\med)$ um espaço de medida e $A \in \mens$. Um conjunto \emph{quase contido} em $A$ com respeito a $\bm X$ é um conjunto $B \in \mens$ tal que $\med(B \setminus A) = 0$. Denota-se $B \qsubset A$.
+
+Um conjunto \emph{quase igual} a $A$ com respeito a $\bm X$ é um conjunto $B \in \mens$ tal que $B \qsubset A$ e $A \qsubset B$. Denota-se $B \qeq A$. Conjuntos \emph{quase vazios} em $\bm X$ são conjuntos quase iguais ao conjunto vazio ($A \qeq \emptyset$) e conjuntos \emph{quase totais} em $\bm X$ são conjuntos quase iguais a $X$ ($A \qeq X$).
+
+%Seja $\bm X=(X,\mens,\med)$ um espaço de medida. Conjuntos \emph{quase iguais} em $\bm X$ são conjuntos $A,B \in \mens$ tais que $\med(A \difsim B) = 0$. Denota-se $A \qeq B$. 
+\end{definition}
+
+\begin{proposition}
+Seja $\bm X$ um espaço de medida.
+	\begin{enumerate}
+	\item A relação $\qsubset$ em $\mens$
+	% de quase contenção de conjuntos em $\bm X$ 
+	é uma relação de ordem parcial (com respeito a $\qeq$);
+	\item A relação $\qeq$ em $\mens$
+	% de quase igualdade de conjuntos em $\bm X$ 
+	é uma relação de equivalência.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item (Reflexividade) Seja $A \in \mens$. Então $A \qsubset A$, pois $\med(A \setminus A) =\med(\emptyset)=0$. (Antissimetria) Sejam $A,B \in \mens$ tais que $A \qsubset B$ e $B \qsubset A$. Então $A \qeq B$ por definição. (Transitividade) Sejam $A,B,C \in \mens$ tais que $A \qsubset B$ e $B \qsubset C$. Então $\med(A \setminus B)=0$ e $\med(B \setminus C) = 0$. Mas $A \setminus C = (A \cap B \setminus C) \cup (A \setminus (B \cup C))$; como $(A \cap B \setminus C) \subseteq B \setminus C$ e $(A \setminus (B \cup C)) \subseteq A \setminus B$, segue que
+		\begin{equation*}
+		\med(A \setminus C) = \med(A \cap B \setminus C) + \med(A \setminus (B \cup C)) \leq 0,
+		\end{equation*}
+logo $A \qsubset C$;
+	
+	\item (Reflexividade) Seja $A \in \mens$. Então $A \qeq A$, pois $A \qsubset A$. (Simetria) Sejam $A,B \in \mens$ tais que $A \qeq B$. Então $A \qsubset B$ e $B \qsubset A$, portanto $B \qeq A$. (Transitividade) Sejam $A,B,C \in \mens$ tais que $A \qeq B$ e $B \qeq C$. Então $A \qsubset B$ e $B \qsubset C$, portanto $A \qsubset C$. Analogamente, $C \qsubset A$, portanto $A \qeq C$.
+
+%(Reflexividade) Seja $A \in \mens$. $A \qeq A$, pois $A \difsim A =\emptyset$. (Simetria) Sejam $A,B \in \mens$. Como $A \difsim B = B \difsim A$, segue que $A \qeq B$ se, e somente se, $B \qeq A$.
+	\end{enumerate}
+\end{proof}
+
+\begin{proposition}
+Sejam $\bm X$ um espaço de medida e $A,B \in \mens$.
+	\begin{enumerate}
+	\item $A \qeq B$ se, e somente se, $\med(A \difsim B) = 0$;
+	\item Se $A \qeq B$, então $\med(A)=\med(B)$;
+	\item Se $A \subseteq B$, então $A \qeq B$ implica $\med(A)=\med(B)$; se $A \subseteq B$ e $\med$ é finita, então $\med(A)=\med(B)$ implica $A \qeq B$;
+	\item $A \qeq \emptyset$ se, e somente se, $\med(A)=0$;
+	\item $A \qeq X$ se, e somente se, $\med(A^\complement)=0$. Se $\med$ é finita, $A \qeq X$ se, e somente se, $\med(A)=\med(X)$;
+	\item $A \qeq \emptyset$ se, e somente se, $A^\complement \qeq X$;
+	\item Se $A \qeq X$ e $B \qeq X$, então $A \cap B \qeq X$.
+	\item Se $A \qeq X$ e $\med$ é finita, então, para todo $B \subseteq A$, vale $	\med(B) = \med(A \cap B)$;
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item Como $A \setminus B$ e $B \setminus A$ são disjuntos, temos $\med(A \difsim B) = \med(A \setminus B) + \med(B \setminus A)$, portanto $\med(A \setminus B) = \med(B \setminus A) = 0$ se, e somente se, $m(A \difsim B) = 0$;
+	\item Como $A \setminus B$ e $B \setminus A$ são disjuntos, temos $\med(A \difsim B) = \med(A \setminus B) + \med(B \setminus A)$, portanto $\med(A \setminus B) = \med(B \setminus A) = 0$. Como $A = (A \cap B) \cup (A \setminus B)$ e $A \cap B$ e $A \setminus B$ são disjuntos, $\med(A) = \med(A \cap B)+\med(A \setminus B) = \med(A \cap B)$. Analogamente $\med(B)=\med(B \cap A)$, portanto $\med(A) = \med(B)$.
+	
+	\item Como $A \subseteq B$, então $A \cup B = A$ e $A \cap B = B$, logo de $\med(A \difsim B)=0$ segue
+		\begin{equation*}
+		\med (A) = \med(A \cup B) = \med(A \cap B) + \med(A \difsim B) = \med(B).
+		\end{equation*}
+% Dá pra enfraquecer pra B quase contido em A...
+Se $\med$ é finita, da mesma igualdade segue que
+	\begin{equation*}
+	\med(A \difsim B) = \med(A \cup B) - \med(A \cap B) = \med(A) - \med(B) = 0.
+	\end{equation*}
+
+	\item A ida segue do item acima. Como $A \cup \emptyset = A$ e $A \cap \emptyset = \emptyset$, segue que $A \difsim \emptyset = A$, logo $\med(A \difsim \emptyset) = \med(A)$. Assim segue de $\med(A)=0$ que $A \qeq \emptyset$.
+	
+	\item A ida segue do item acima e de $\med(X) = \med(A)+\med(A^\complement)$. Como $A \cup X = X$ e $A \cap X = A$, segue que $A \difsim X = A^\complement$, logo $\med(A \difsim X) = \med(A^\complement)$. Assim segue de $\med(A^\complement)=0$ que $A \qeq X$.
+Se $\med$ é finita, $\med(A^\complement) = \med(X)-\med(A)$. Assim segue de $\med(A)=\med(X)$ se, e somente se, $\med(A^\complement)=0$.
+
+	\item Consequência dos itens anteriores.
+	
+	\item Como $A \qeq X$ e $B \qeq X$, então $\med(A^\complement)=\med(B^\complement)=0$, portanto
+		\begin{equation*}
+		\med\left((A \cap B)^\complement\right ) = \med\left(A^\complement \cup B^\complement\right) \leq \med\left(A^\complement\right)+\med\left(B^\complement\right)=0,
+		\end{equation*}
+o que mostra que $A \cap B \qeq X$.
+
+\item Como $A \subseteq A \cup B$, então $\med(A \cup B) = \med(A \cap B) + \med(A \difsim B) = 1$ e $\med(A) = \med(A \cap B) + \med(A \setminus B) = 1$, e, por $\med$ ser finita, igualando as expressões segue que
+	\begin{equation*}
+	\med(A \difsim B) = \med(A \setminus B).
+	\end{equation*}
+Como 
+	\begin{equation*}
+	\med(A \difsim B) = \med(A \setminus B) = \med(B \setminus A),
+	\end{equation*}
+segue que $\med(B \setminus A)=0$. Portanto, como
+	\begin{equation*}
+	\med(B) = \med(B \cap A) + \med(B \setminus A)
+	\end{equation*}
+concluímos que $\med(B) = \med(B \cap A)$.
+	\end{enumerate}
+\end{proof}
+
+\begin{proposition}
+Seja $\bm X$ um espaço de medida.
+	\begin{enumerate}
+	\item Os conjuntos $\set{M \in \mens}{M \qeq \emptyset}$ e $\set{M \in \mens}{M \qeq X}$ são fechados sob união e interseção enumeráveis;
+	\item O conjunto $\set{M \in \mens}{M \qeq \emptyset \ou M \qeq X}$ é uma sigma-álgebra.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item Seja $(M_i)_{i \in \N}$ uma sequência de conjuntos quase vazios. Então
+		\begin{equation*}
+		\med\left( \bigcup_{i \in \N} M_i \right) \leq \sum_{i \in \N} \med(M_i) = 0
+		\end{equation*}
+e, para algum $i \in \N$
+		\begin{equation*}
+		\med\left( \bigcap_{i \in \N} M_i \right) \leq \med(M_i) = 0.
+		\end{equation*}
+Seja $(M_i)_{i \in \N}$ uma sequência de conjuntos quase totais. O mesmo vale já que $M \qeq X$ se, e somente, $M^\complement \qeq \emptyset$.
+	\item Segue do item anterior, do fato que $M \qeq X$ se, e somente, $M^\complement \qeq \emptyset$, e de $\emptyset$ ser quase vazio.
+	\end{enumerate}
+\end{proof}
+
+\subsection{Quase igualdade de funções}
+
+Existem dois modos de generalizar o conceito de função a partir de uma estrutura de medida, de modo a considerar equivalentes funções que diferem em um conjunto de medida zero. O método padrão consiste em construir classes de equivalência de funções definidas no espaço todo. O outro é considerar funções que não estão definidas no domínio todo do espaço. Descreveremos a abordagem padrão e numa subseção posterior esboçaremos algumas construções da segunda abordagem.
+
+\begin{definition}
+Sejam $\bm X$ espaço de medida e $X'$ conjunto. Funções de $\bm X$ para $X'$ \emph{quase iguais} são funções (mensuráveis) $f\colon X \to X'$ e $f'\colon X \to X'$ tais que, para quase todo $x \in X$, $f(x)=f'(x)$. Denota-se $f \qeq f'$.
+\end{definition}
+
+Explicitamente, a definição significa que existe $N \in \mens$ tal que $N \qeq \emptyset$ e, para todo $x \in X \setminus N$, $f(x)=f'(x)$; ou ainda, tal que $f|_{X \setminus N} = f'|_{X \setminus N}$.
+
+\begin{proposition}
+Sejam $\bm X$ espaço de medida e $X'$ conjunto. A relação $\qeq$ de quase igualdade de funções é uma relação de equivalência no conjunto de funções de $X$ para $X'$.
+\end{proposition}
+\begin{proof}
+Sejam $f,f',f''\colon X \to X'$. (Reflexividade) Claramente, $f \qeq f$. (Simetria) Claramente $f \qeq f'$ implica $f' \qeq f$. (Transitividade) Se $f \qeq f'$ e $f' \qeq f''$, então existem conjuntos $N$ e $N'$ quase vazios tais que $f|_{X \setminus N} = f'|_{X \setminus N}$ e $f'|_{X \setminus N'} = f'|_{X \setminus N}$. Então, como $N \cap N'$ é quase vazio, segue que $f|_{X \setminus (N \cap N')} = f'|_{X \setminus (N \cap N')} = f''|_{X \setminus (N \cap N')}$, portanto $f \qeq f''$.
+\end{proof}
+
+Embora não seja necessário na definição que as funções sejam mensuráveis, consideraremos somente funções mensuráveis. Lembremos que, dados $\bm X$ e $\bm X'$ espaços de medida, $\Men(\bm X, \bm X')$ é o conjunto de funções mensuráveis de $\bm X$ para $\bm X'$. Como $\qeq$ é uma equivalência, podemos quocientar esse espaço pela equivalência, obtendo o conjunto de classes de equivalência de funções mensuráveis
+
+\begin{definition}
+Sejam $\bm X$ e $\bm X'$ espaços de medida. Uma \emph{quase função} é uma classe de equivalência
+	\begin{equation*}
+	[f] = \set{f' \in \Men(\bm X, \bm X')}{f' \qeq f}.
+	\end{equation*}
+O conjunto de \emph{quase funções} de $\bm X$ para $\bm X'$ é o conjunto quociente
+	\begin{equation*}
+	\Menq(\bm X, \bm X') := \quo{\Men(\bm X, \bm X')}{\qeq}.
+	\end{equation*}
+\end{definition}
+
+Quando conveniente, denotaremos uma quase função $[f]$ cujo representante é $f$ por $f$, para simplificar a notação.
+
+\begin{definition}
+Sejam $\bm X$, $\bm X'$ e $\bm X''$ espaços de medida. A \emph{composição} de quase funções é definida como
+	\begin{align*}
+	\func{\circ}{\Menq(\bm X', \bm X'') \times \Menq(\bm X, \bm X')}{\Menq(\bm X, \bm X'')}{([f'],[f])}{[f' \circ f]}.
+	\end{align*}
+\end{definition}
+
+\begin{proposition}
+Sejam $\bm X$, $\bm X'$, $\bm X''$ e $\bm X'''$ espaços de medida.
+	\begin{enumerate}
+	\item Para toda $[f] \in \Menq(\bm X, \bm X')$,
+		\begin{equation*}
+		[\Id_{X'}] \circ [f] = [f] = [f] \circ [\Id_X];
+		\end{equation*}
+	\item Para todas $[f] \in \Menq(\bm X, \bm X')$, $[f'] \in \Menq(\bm X', \bm X'')$ e $[f''] \in \Menq(\bm X'', \bm X''')$,
+		\begin{equation*}
+		[f''] \circ ([f'] \circ [f]) = ([f''] \circ [f']) \circ [f].
+		\end{equation*}
+	\end{enumerate}
+\end{proposition}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsubsection{Abordagem alternativa}
+
+Nesta subseção, definimos outros objetos com o nome de quase funções. Eles têm uma relação direta com as quase funções da seção anterior, mas fora desta seção, uma quase função sempre será entendida como uma classe de equivalência de funções que diferem somente em um conjunto de medida zero, como na seção anterior.
+
+\begin{definition}
+Sejam $\bm X_1$ e $\bm X_2$ espaços de medida. Uma \emph{quase função} de $\bm X_1$ para $\bm X_2$ é uma função $f\colon C \to X_2$ tal que $C \qeq X_1$. Denota-se $f\colon \bm X_1 \overset{\circ}{\to} \bm X_2$.
+\end{definition}
+
+\begin{definition}
+Sejam $X_1,C_1,X_2,C_2$ e $X_3$ conjuntos tais que $C_1 \subseteq X_1$ e $C_2 \subseteq X_2$, e $f_1\colon C_1 \to X_2$ e $f_2\colon C_2 \to X_3$ funções. A \emph{composição} (generalizada) de $f_1$ com $f_2$ é a função
+	\begin{align*}
+	\func{f_2 \circ f_1}{C_1 \cap {f_1}\inv(C_2)}{X_3}{x}{f_2(f_1(x))}.
+	\end{align*}
+\end{definition}
+
+\begin{proposition}[Composição de quase função]
+Sejam $\bm X_1$, $\bm X_2$ e $\bm X_3$ espaços de medida e $f_1\colon \bm X_1 \overset{\circ}{\to} \bm X_2$ e $f_2\colon \bm X_2 \overset{\circ}{\to} \bm X_3$ quase funções, com respectivos domínios $C_1$ e $C_2$, que preservam medida. Então $f_2 \circ f_1\colon \bm X_1 \overset{\circ}{\to} \bm X_3$ é uma quase função, com domínio $C_1 \cap {f_1}\inv(C_2)$, que preserva medida.
+\end{proposition}
+\begin{proof}
+Como $f_1$ e $f_2$ preservam medida, $f_2 \circ f_1$ preserva medida. Basta mostrar que seu domínio é quase total. Como $f_1$ é quase função, $\med_1({C_1}^\complement) = 0$, e como $f_2$ é quase função, $\med_2({C_2}^\complement) = 0$. Assim, como $f_1$ preserva medida, $\med_1({f_1}\inv((C_2)^\complement)) = \med_2((C_2)^\complement)= 0$. Por fim segue que
+	\begin{align*}
+	\med_1 \left(\left(C_1 \cap {f_1}\inv(C_2)\right)^\complement\right) &= \med_1 \left({C_1}^\complement \cup {f_1}\inv({C_2}^\complement)\right) \\
+		&\leq \med_1 \left({C_1}^\complement\right ) + \med_1 \left ({f_1}\inv({C_2}^\complement)\right) \\
+		&= 0+0=0,
+	\end{align*}
+portanto $C_1 \cap {f_1}\inv(C_2) \qeq X_1$, e concluímos que $f_2 \circ f_1$ é uma quase função.
+\end{proof}
+
+\begin{proposition}[Associatividade]
+Sejam $\bm X_1$, $\bm X_2$, $\bm X_3$ e $\bm X_4$ espaços de medida e $f_1\colon \bm X_1 \overset{\circ}{\to} \bm X_2$, $f_2\colon \bm X_2 \overset{\circ}{\to} \bm X_3$ e $f_3\colon \bm X_3 \overset{\circ}{\to} \bm X_4$ quase funções, com respectivos domínios $C_1$, $C_2$ e $C_3$, que preservam medida. Então
+	\begin{equation*}
+	f_3 \circ (f_2 \circ f_1) = (f_3 \circ f_2) \circ f_1.
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+O domínio de $f_3 \circ (f_2 \circ f_1)$ é o conjunto
+	\begin{equation*}
+	(C_1 \cap {f_1}\inv(C_2)) \cap (f_2 \circ f_1)\inv(C_3)
+	\end{equation*}
+e o domínio de $(f_3 \circ f_2) \circ f_1$ é o conjunto
+	\begin{equation*}
+	C_1 \cap {f_1}\inv(C_2 \cap {f_2}\inv(C_3)).
+	\end{equation*}
+Vamos mostrar que esses conjuntos são iguais.
+	\begin{align*}
+	(C_1 \cap {f_1}\inv(C_2)) \cap (f_2 \circ f_1)\inv(C_3) &= C_1 \cap {f_1}\inv(C_2) \cap (f_2 \circ f_1)\inv(C_3) \\
+		&= C_1 \cap {f_1}\inv(C_2) \cap {f_1}\inv({f_2}\inv(C_3)) \\
+		&= C_1 \cap {f_1}\inv(C_2 \cap {f_2}\inv(C_3)).
+	\end{align*}
+% Como $D_1 \qeq X_1$ e $D_2 \qeq X_2$, segue que $D_1 \cap D_2 \qeq X_1$. As funções $\left (f_3 \circ (f_2 \circ f_1)\right )|_{D_1 \cap D_2}$ e $\left ((f_3 \circ f_2) \circ f_1\right )|_{D_1 \cap D_2}$ são iguais, pois são funções e sua composição é associativa, o que implica que as quase funções são quase iguais.
+\end{proof}
+
+\begin{definition}
+Sejam $\bm X_1$ e $\bm X_2$ espaços de medida. Quase funções de $\bm X_1$ para $\bm X_2$ \emph{quase iguais} são quase funções $f_1\colon \bm X_1 \overset{\circ}{\to} \bm X_2$ e $f_2\colon \bm X_1 \overset{\circ}{\to} \bm X_2$ satisfazendo $f_1|_C = f_2|_C$ para algum conjunto $C \qeq X_1$. Denota-se $f_1 \qeq f_2$.
+\end{definition}
+
+\begin{proposition}
+A relação $\qeq$ de quase igualdade de quase funções é uma relação de equivalência.
+\end{proposition}
+\begin{proof}
+Sejam $f,f',f''\colon X \to X'$. (Reflexividade) Claramente, $f \qeq f$. (Simetria) Claramente $f \qeq f'$ implica $f' \qeq f$. (Transitividade) Se $f \qeq f'$ e $f' \qeq f''$, então existem conjuntos $C$ e $C'$ quase totais tais que $f|_C = f'|_C$ e $f'|_{C'} = f'|_{C'}$. Então, como $C \cap C'$ é quase total, segue que $f|_{C \cap C'} = f'|_{C \cap C'} = f''|_{C \cap C'}$, portanto $f \qeq f''$.
+\end{proof}

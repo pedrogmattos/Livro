@@ -1,0 +1,293 @@
+\chapter{Espaços afins}
+
+\section{Espaço e subespaço afins}
+
+\begin{definition}
+Seja $\bm C$ um corpo. Um \emph{espaço afim} sobre $\bm C$ é uma tripla $\bm A = (A,\vec{\bm A},+)$ em que
+	\begin{enumerate}
+		\item $A$ é um conjunto, o \emph{conjunto de pontos} de $\bm A$;
+		\item $\vec{\bm A}$ é um espaço linear sobre $\bm C$, o \emph{espaço de translações} de $\bm A$;
+		\item $+\colon \vec{\bm A} \age A$ é uma ação de grupo simplesmente transitiva\footnote{Também chamada de \emph{regular}.} (transitiva e livre), a \emph{translação} de $\bm A$, denotada por
+			\begin{align*}
+				\func{+}{\vec{A}}{\Iso{\Func}(A)}{v}{
+					\begin{aligned}[t]
+						\func{+v}{A}{A}{a}{a+v}
+					\end{aligned}
+				}
+			\end{align*}
+	\end{enumerate}
+A dimensão de $\bm A$ é a dimensão de $\vec{\bm A}$.
+\end{definition}
+
+Não distinguiremos a notação da ação $+\colon \vec{\bm A} \age A$, da operação binária de grupo $\fun{+}{\vec{A}^2}{\vec{A}}$ e da adição do corpo $\fun{+}{C^2}{C}$, pois elas são todas compatíveis entre si, mas deve-se ter em mente que são funções distintas. Sempre que possível, denotaremos, para todos $a \in A$ e $v \in \vec{A}$, $a-v := a+(-v)$.
+
+
+\begin{proposition}
+Sejam $A$ um conjunto, $\vec{\bm A}$ um espaço linear sobre um corpo $\bm C$ e $+\colon \vec{\bm A} \age A$ ação. São equivalentes:
+	\begin{enumerate}
+		\item A ação $+$ é simplesmente transitiva;
+		\item (Afinidade) Para todo $a \in A$,
+			\begin{align*}
+				\func{a+}{\vec{A}}{A}{v}{a+v}
+			\end{align*}
+		é uma bijeção;
+		\item (Subtração) Para todos $a,a' \in A$, existe único $v \in \vec{A}$ tal que $a+v=a'$.
+	\end{enumerate}
+\end{proposition}
+
+Por causa dessa proposição, podemos definir uma função de subtração em $A$, que toma $a,a' \in A$ e dá o único vetor $v \in \vec{A}$ tal que $a+v=a'$, que será denotado $a'-a := v$, de modo a termos a igualdade
+	\begin{equation*}
+		a + (a'-a) = a'.
+	\end{equation*}
+
+\begin{definition}
+Seja $\bm A = (A,\vec{\bm A},+)$ um espaço afim sobre um corpo $\bm C$. A \emph{subtração} em $A$ é a função
+	\begin{align*}
+		\func{-}{A^2}{\vec{A}}{(a,a')}{a'-a}.
+	\end{align*}
+\end{definition}
+
+É importante notar que não está definida adição entre pontos de $A$, de modo que $a+(a'-a)$ não pode ser escrita como $(a+a')-a$. A seguir estão duas propriedades conhecidas como axiomas de Weyl.
+
+\begin{proposition}
+\label{alg:prop.afim}
+Seja $\bm A = (A,\vec{\bm A},+)$ um espaço afim sobre um corpo $\bm C$.
+	\begin{enumerate}
+		\item Para todos $a \in A$ e $v \in \vec{A}$, existe único $a' \in A$ tal que $a'-a=v$;
+		\item (Paralelogramo) Para todos $a,a',a'' \in A$,
+			\begin{equation*}
+				(a''-a')+(a'-a) = a''-a.
+			\end{equation*}
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+Ambas propridades seguem da propriedade de subtração da proposição anterior.
+	\begin{enumerate}
+		\item Para a existência, tomamos $a' := a+v$. Pela propriedade de subtração da proposição anterior, $v \in \vec{A}$ é o único vetor tal que $a+v=a'$ e como, por definição, $a+(a'-a)=a'$, segue que $v=a'-a$. Para a unicidade, sejam $a',a'' \in A$ tais que $a'-a = v = a''-a$. Então
+			\begin{equation*}
+				a' = a+(a'-a) = a+(a''-a) = a''.
+			\end{equation*}
+		
+		\item Basta notar que
+			\begin{equation*}
+				a+(a''-a')+(a'-a) = a+(a'-a)+(a''-a') = a'+(a''-a') = a'',
+			\end{equation*}
+		portanto, da unicidade da propriedade de subtração,
+			\begin{equation*}
+				(a''-a')+(a'-a) = (a''-a).
+			\end{equation*}
+	\end{enumerate}
+\end{proof}
+
+\begin{exercise}
+Seja $\bm A = (A,\vec{\bm A},+)$ um espaço afim sobre um corpo $\bm C$. Para todos $a,a',a'' \in A$,
+	\begin{equation*}
+		(a''-a) - (a'-a) = (a''-a').
+	\end{equation*}
+\end{exercise}
+
+
+\begin{definition}
+Seja $\bm A = (A,\vec{\bm A},+)$ um espaço afim sobre um corpo $\bm C$. Um \emph{subespaço afim} de $\bm A$ é uma tripla $\bm S = (S,\vec{\bm S},+_S)$ tal que
+	\begin{enumerate}
+		\item $S \subseteq A$;
+		\item Existe $a \in A$ tal que $\vec{S} := \set{s-a}{s \in S}$ é subespaço linear de $\vec{A}$;
+		\item $+_S$ é a ação $+\colon \vec{\bm A} \age A$ restrita a $\vec{S}$.
+	\end{enumerate}
+\end{definition}
+
+Isso não depende da escolha de $a \in A$.
+
+
+\section{Transformação afim}
+
+\begin{definition}
+Sejam $\bm A$ e $\bm A'$ espaços afins sobre um corpo $\bm C$. Um \emph{transformação afim} de $\bm A$ para $\bm A'$ é uma função $\fun{f}{A}{B}$ tal que
+	\begin{enumerate}
+		\item Para todos $a,a',b,b' \in A$ tais que $a'-a = b'-b$,
+			\begin{equation*}
+				f(a')-f(a) = f(b')-f(b);
+			\end{equation*}
+		\item A função
+			\begin{align*}
+				\func{\vec{f}}{\vec{A}}{\vec{A'}}{a'-a}{f(a')-f(a)}
+			\end{align*}
+		é linear.
+	\end{enumerate}
+Denota-se $\fun{f}{\bm A}{\bm A'}$. O conjunto de todas transformações afins é denotado $\vec{\bm A} \rtimes \lin(\vec{\bm A})$.
+\end{definition}
+
+Isso implica que, para todos $a \in A$ e $v \in \vec{A}$,
+	\begin{equation*}
+		f(a+v) = f(a) + \vec{f}(v)
+	\end{equation*}
+e, portanto, $f$ está unicamente determinada por seu valor $f(a)$ e pela função linear $\vec{f}$, como mostra a proposição a seguir.
+
+\begin{proposition}
+Sejam $\bm A$ e $\bm A'$ espaços afins sobre um corpo $\bm C$ e  $\fun{f}{A}{B}$ uma função. Então $f$ é uma transformação afim de $\bm A$ para $\bm A'$ se, e somente se, existe transformação linear $\fun{L}{\vec{\bm A}}{\vec{\bm A'}}$ tal que, para todos $a \in A$ e $v \in \vec{A}$,
+	\begin{equation*}
+		f(a+v) = f(a)+L(v).
+	\end{equation*}
+Nesse caso, a transformação linear $L$ é única e $L=\vec{f}$.
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+		\item [($\Rightarrow$)] Suponhamos que $f$ é afim. Nesse caso, basta tomar $L:=\vec{f}$ e segue que $L$, é linear e, para todos $a \in A$ e $v \in \vec{A}$,
+			\begin{align*}
+				f(a+v) &= f(a) + (f(a+v)-f(a)) \\
+					&= f(a) + f((a+v)-a) \\
+					&= f(a) + \vec{f}(v) \\
+					&= f(a) + L(v).
+			\end{align*}
+		
+		\item [($\Leftarrow$)] Suponhamos que existe tal $L$ linear. Então, para todos $a,a' \in A$,
+			\begin{equation*}
+				f(a')-f(a) = f(a+(a'-a)) - f(a) = (f(a)+L(a'-a)) - f(a) = L(a'-a).
+			\end{equation*}
+		Isso implica que
+			\begin{enumerate}
+				\item Para todos $a,a',b,b' \in A$ tais que $a'-a = b'-b$,
+					\begin{equation*}
+						f(a')-f(a) = L(a'-a) = L(b'-b) = f(b')-f(b);
+					\end{equation*}
+				\item A função $\vec{f} = L$, logo é linear.
+			\end{enumerate}
+		A unicidade segue pois, se $L,L'$ são funções lineares satisfazendo a propriedade da proposição, então, para todo $v \in \vec{A}$, tomamos $a \in A$ e então
+			\begin{align*}
+				L(v) &= (f(a) + L(v)) - f(a) \\
+					&= f(a+v) - f(a) \\
+					&= (f(a)+L'(v)) - f(a) \\
+					&= L'(v).
+			\end{align*}
+	\end{enumerate}
+\end{proof}
+
+\begin{proposition}
+	\begin{enumerate}
+		\item (Fechamento) Sejam $\bm A$, $\bm A'$ e $\bm A''$ espaços afins sobre um corpo $\bm C$ e $\fun{f}{\bm A}{\bm A'}$ e $\fun{f'}{\bm A'}{\bm A''}$ transformações afins. Então $\fun{f' \circ f}{\bm A}{\bm A''}$ é uma transformação afim e $\vec{(f' \circ f)} = \vec{f'} \circ \vec{f}$;
+
+		\item (Identidade) Seja $\bm A$ um espaço afim sobre um corpo $\bm C$. A identidade $\fun{\Id_A}{\bm A}{\bm A}$ é uma transformação afim e $\vec{\Id}_A=\Id_{\vec{A}}$;
+
+%		\item (Associatividade) Sejam $\bm A$, $\bm A'$, $\bm A''$ e $\bm A'''$ espaços afins sobre um corpo $\bm C$ e $\fun{f}{\bm A}{\bm A'}$, $\fun{f'}{\bm A'}{\bm A''}$ e $\fun{f''}{\bm A''}{\bm A'''}$ transformações afins. Então
+%			\begin{equation*}
+%				f'' \circ (f' \circ f) = (f'' \circ f') \circ f.
+%			\end{equation*}
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+		\item Para todos $a \in A$ e $v \in \vec{A}$,
+			\begin{align*}
+				f' \circ f (a+v) &= f'(f(a)+\vec{f}(v)) \\
+					&= f'(f(a)) + \vec{f'}(\vec{f}(v)) \\
+					&= f' \circ f(a) + \vec{f'} \circ \vec{f}(v).
+			\end{align*}
+		Como $\vec{f'} \circ \vec{f}$ é linear, segue que $f' \circ f$ é afim e $\vec{(f' \circ f)} = \vec{f'} \circ \vec{f}$.
+
+		\item Para todos $a \in A$ e $v \in \vec{A}$,
+			\begin{align*}
+				\Id_A(a+v) = a+v = \Id_A(a) + \Id_{\vec{A}}(v).
+			\end{align*}
+		Como $\Id_{\vec{A}}$ é linear, segue que $\Id_A$ é linear e $\vec{\Id}_A=\Id_{\vec{A}}$.
+
+%		\item Basta notar que, para todos $a,a',b,b' \in A$ tais que $a'-a = b-b$,
+%			\begin{equation*}
+%				\Id(a')-\Id(a') = a'-a' = b'-b = \Id(b')-\Id(b)
+%			\end{equation*}
+%		e que, para todos $a,a' \in A$,
+%			\begin{equation*}
+%				\vec{\Id}(a'-a) = \Id(a')-\Id(a') = a'-a' = \Id(a'-a),
+%			\end{equation*}
+%		portanto $\vec{\Id} = \Id$ é linear, o que mostra que $\Id$ é afim.
+
+%		\item Segue da associatividade da composição de funções.
+	\end{enumerate}
+\end{proof}
+
+
+\section{Bases e coordenadas}
+
+\subsection{Coordenadas baricêntricas}
+
+\begin{proposition}
+Sejam $\bm A$ um espaço afim sobre um corpo $\bm C$, $n \in \N$ e $a_1,\ldots,a_n \in A$, $c_1,\ldots,c_n \in C$.
+	\begin{enumerate}
+		\item Se $c_1+\cdots+c_n = 0$, existe único $v \in \vec{A}$ tal que, para todo $o \in A$,
+			\begin{equation*}
+				v = c_1(a_1-o) + \ldots + c_n(a_n-o);
+			\end{equation*}
+		\item Se $c_1+\cdots+c_n = 1$, existe único $a \in A$ tal que, para todo $o \in A$,
+			\begin{equation*}
+				a-o = c_1(a_1-o) + \ldots + c_n(a_n-o).
+			\end{equation*}
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+Segue da propriedade do paralelogramo que, para todos $a,a',o \in A$,
+	\begin{equation*}
+		(a'-o) - (a-o) = (a'-a).
+	\end{equation*}
+	\begin{enumerate}
+		\item Sejam $o,o' \in A$ e definamos
+			\begin{equation*}
+				v := c_1(a_1-o) + \ldots + c_n(a_n-o).
+			\end{equation*}
+		Mostraremos que $v = c_1(a_1-o') + \ldots + c_n(a_n-o')$. A unicidade segue da definição de $v$. Como $c_1+\cdots+c_n = 0$, então $c_n = -(c_1+\cdots+c_{n-1})$, logo
+			\begin{align*}
+				v &= \sum_{i=1}^{n} c_i(a_i-o) \\
+					&= \sum_{i=1}^{n-1} c_i(a_i-o) - \sum_{i=1}^{n-1} c_i (a_n-o) \\
+					&= \sum_{i=1}^{n-1} c_i((a_i-o) - (a_n-o)) \\
+					&= \sum_{i=1}^{n-1} c_i(a_i-a_n) \\
+					&= \sum_{i=1}^{n-1} c_i((a_i-o') - (a_n-o')) \\
+					&= \sum_{i=1}^{n-1} c_i(a_i-o') - \sum_{i=1}^{n-1} c_i (a_n-o') \\
+					&= \sum_{i=1}^{n} c_i(a_i-o').
+			\end{align*}
+		
+		\item Sejam $o,o' \in A$. Pela proposição~\ref{alg:prop.afim}, existe único $a \in A$ tal que
+			\begin{equation*}
+				a-o = c_1(a_1-o) + \ldots + c_n(a_n-o).
+			\end{equation*}
+		Mostraremos que $a-o' = c_1(a_1-o') + \ldots + c_n(a_n-o')$. A unicidade segue da definição de $a$. Como $c_1+\cdots+c_n = 1$, então $c_n = 1-(c_1+\cdots+c_{n-1})$, logo
+			\begin{align*}
+				a-o &= \sum_{i=1}^{n} c_i(a_i-o) \\
+					&= \sum_{i=1}^{n-1} c_i(a_i-o) + \left( 1-\sum_{i=1}^{n-1} c_i \right)(a_n-o) \\
+					&= \sum_{i=1}^{n-1} c_i(a_i-a_n) + (a_n-o).
+			\end{align*}
+		Como
+			\begin{equation*}
+				(a-o) - (a_n-o) = (a-a_n) = (a-o') - (a_n-o'),
+			\end{equation*}
+		segue que
+			\begin{align*}
+				a-o' &= (a-o) - (a_n-o) + (a_n-o') \\
+					&= \sum_{i=1}^{n-1} c_i(a_i-a_n) + (a_n-o) - (a_n-o) + (a_n-o') \\
+					&= \sum_{i=1}^{n-1} c_i(a_i-a_n) + (a_n-o') \\
+					&= \sum_{i=1}^{n-1} c_i(a_i-o') + \left( 1-\sum_{i=1}^{n-1} c_i \right)(a_n-o') \\
+					&= \sum_{i=1}^{n} c_i(a_i-o).
+			\end{align*}
+	\end{enumerate}
+\end{proof}
+
+Isso nos permite fazer a seguinte definição, que não depende de $o \in A$.
+
+\begin{definition}
+Sejam $\bm A$ um espaço afim sobre um corpo $\bm C$, $n \in \N$ e $a_1,\ldots,a_n \in A$, $c_1,\ldots,c_n \in C$ tais que $c_1+\ldots+c_n = 1$. O \emph{baricentro} (ou \emph{centroide}) de $(a_i)_{i \in [n]}$ com \emph{pesos} $(c_i)_{i \in [n]}$ é o ponto
+	\begin{equation*}
+		c_1 a_1 + \cdots + c_n a_n := o + c_1(a_1-o) + \ldots + c_n(a_n-o).
+	\end{equation*}
+\end{definition}
+
+Além disso, podemos também definir, para $c_1+\cdots+c_n=0$, o vetor
+	\begin{equation*}
+		c_1 a_1 + \cdots + c_n a_n := c_1(a_1-o) + \cdots + c_n(a_n-o).
+	\end{equation*}
+Esse vetor pode ser interpretado da seguinte maneira. Primeiro, notemos que para $n=2$, $c_1=1$ e $c_2=-1$, temos o vetor $a_0-a_1$ da propriedade de subtração, que leva $a$ para $a'$. Agora, no caso geral em que $c_1+\cdots+c_n=0$ e $v=c_1 a_1 + \cdots + c_n a_n$, separamos os coeficientes positivos, denotados $c^+_j$, e seus respectivos pontos $p_j$, dos negativos, denotados $-c^-_k$, e seus respectivos pontos $n_k$ de modo que temos
+	\begin{equation*}
+		\Delta := \sum_j c^+_j = \sum_j c^+_j - \sum_i c_i = \sum_k c^-_k.
+	\end{equation*}
+Assim, podemos concluir que $\frac{v}{\Delta}$ é o vetor que desloca o baricentro dos pontos negativos $n_k$ com pesos $\frac{c^-_k}{\Delta}$ ao baricentro dos pontos positivos $p_j$ com pesos $\frac{c^+_k}{\Delta}$ , ou seja,
+	\begin{equation*}
+		\frac{1}{\Delta} (c_1 a_1 + \cdots + c_n a_n) = \sum_j \frac{c^+_j}{\Delta} p_j - \sum_k \frac{c^-_k}{\Delta} n_k.
+	\end{equation*}
+
+%A partir desses resultados, definiremos
