@@ -1464,9 +1464,9 @@ em que $F \subseteq X$ é fechado, $A \subseteq X'$ é aberto e, ou $F$ é compa
 \begin{definition}
 Sejam $\bm X$ e $\bm X'$ espaços topológicos e $f,f' \in \Cont(X,X')$ funções contínuas. Uma \textit{homotopia} de $f$ para $f'$ é uma função contínua
 	\begin{align*}
-	\func{H}{[0,1] \times X}{X'}{(t,x)}{H^t(x)}
+	\func{H}{\intff{0}{1} \times X}{X'}{(t,x)}{H_t(x)}
 	\end{align*}
-tal que $H^0 = f$ e $H^1 = f'$. As funções $f$ e $f'$ são \textit{homotópicas} e denota-se $f \homot g$.
+tal que $H_0 = f$ e $H_1 = f$. As funções $f$ e $f$ são \textit{homotópicas} e denota-se $f \homot f$.
 \end{definition}
 
 \begin{proposition}
@@ -1476,26 +1476,26 @@ Sejam $\bm X$ e $\bm X'$ espaços topológicos. A relação de homotopia é uma 
 	\begin{enumerate}
 	\item (Reflexividade) Seja $f \in \Cont(X,X')$. Consideremos a função
 		\begin{align*}
-		\func{H}{[0,1] \times X}{X'}{(t,x)}{f(x)}
+		\func{H}{\intff{0}{1} \times X}{X'}{(t,x)}{f(x)}
 		\end{align*}
-Então $H$ é uma função contínua, pois $f$ é contínua, e vale que $H^0 = H^1 = f$, portanto $f \homot f$.
+Então $H$ é uma função contínua, pois $f$ é contínua, e vale que $H_0 = H_1 = f$, portanto $f \homot f$.
 	
-	\item (Simetria) Sejam $f,f' \in \Cont(X,X')$ tais que $f \homot f'$ e $H\colon [0,1] \times X \to X'$ uma homotopia de $f$ para $f'$. Consideremos a função
+	\item (Simetria) Sejam $f,f' \in \Cont(X,X')$ tais que $f \homot f'$ e $\fun{H}{\intff{0}{1} \times X}{X'}$ uma homotopia de $f$ para $f'$. Consideremos a função
 		\begin{align*}
-		\func{H'}{[0,1] \times X}{X'}{(t,x)}{H^{1-t}(x)}.
+		\func{H'}{\intff{0}{1} \times X}{X'}{(t,x)}{H_{1-t}(x)}.
 		\end{align*}
-Como $H$ e $1-t$ são contínuas, a função $H'$ é contínua. Ainda, notemos que ${H'}^0 = H^1 = f'$ e ${H'}^1 = H^0 = f$, portanto $f' \homot f$.
+Como $H$ e $1-t$ são contínuas, a função $H'$ é contínua. Ainda, notemos que $H'_0= H_1 = f'$ e $H'_1 = H_0 = f$, portanto $f' \homot f$.
 
-	\item (Transitividade) Sejam $f,f',f'' \in \Cont(X,X')$ tais que $f \homot f'$ e $f' \homot f''$ e $H\colon [0,1] \times X \to X'$ uma homotopia de $f$ para $f'$ e $H'\colon [0,1] \times X \to X'$ uma homotopia de $f'$ para $f''$. Consideremos a função
+	\item (Transitividade) Sejam $f,f',f'' \in \Cont(X,X')$ tais que $f \homot f'$ e $f' \homot f''$ e $\fun{H}{\intff{0}{1} \times X}{X'}$ uma homotopia de $f$ para $f'$ e $\fun{H'}{\intff{0}{1} \times X}{X'}$ uma homotopia de $f'$ para $f''$. Consideremos a função
 		\begin{align*}
-		\func{H''}{[0,1] \times X}{X'}{(t,x)}{
+		\func{H''}{\intff{0}{1} \times X}{X'}{(t,x)}{
 			\begin{cases}
-				H^{2t}(x),& t \in \left[0,\frac{1}{2}\right] \\
-				{H'}^{2t-1}(x),& t \in \left[\frac{1}{2},1\right].
+				H_{2t}(x),& t \in \intff{0}{\frac{1}{2}} \\
+				H'_{2t-1}(x),& t \in \intff{\frac{1}{2}}{1}.
 			\end{cases}
 		}
 		\end{align*}
-Como $H^1 = f' = {H'}^0$ e $H$ e $H'$ são contínuas, então $H''$ é contínua. Ainda, como $H$ é uma homotopia de $f$ para $f'$, então ${H''}^0 = H^0 = f$ e, como $H'$ é uma homotopia de $f'$ para $f''$, então ${H''}^1 = {H'}^1 = f''$, portanto $H''$ é uma homotopia de $f$ para $f''$.
+Como $H_1 = f' = H'_0$ e $H$ e $H'$ são contínuas, então $H''$ é contínua. Ainda, como $H$ é uma homotopia de $f$ para $f'$, então $H''_0 = H_0 = f$ e, como $H'$ é uma homotopia de $f'$ para $f''$, então $H''_1 = H'_1 = f''$, portanto $H''$ é uma homotopia de $f$ para $f''$.
 	\end{enumerate}
 \end{proof}
 
@@ -1506,59 +1506,57 @@ Sejam $\bm X$, $\bm X'$ e $\bm X''$ espaços topológicos, $f,f' \in \Cont(X,X')
 	\end{equation*}
 \end{proposition}
 \begin{proof}
-Sejam $H\colon [0,1] \times X \to X'$ uma homotopia de $f$ para $f'$ e $H': [0,1] \times X' \to X''$ uma homotopia de $g$ para $g'$. Consideremos a função
+Sejam $\fun{H}{\intff{0}{1} \times X}{X'}$ uma homotopia de $f$ para $f'$ e $\fun{H'}{\intff{0}{1} \times X'}{X''}$ uma homotopia de $g$ para $g'$. Consideremos a função
 	\begin{align*}
-	\func{H''}{[0,1] \times X}{X''}{(t,x)}{{H'}^t \circ H^t(x)}.
+	\func{H''}{\intff{0}{1} \times X}{X''}{(t,x)}{H'_t \circ H_t(x)}.
 	\end{align*}
-Como $H$ e $H'$ são contínuas, então $H''$ é contínua. Como $H$ é homotopia de $f$ para $f'$ e $H'$ é homotopia de $g$ para $g'$, então $H^0 = f$, $H^1 = f'$, ${H'}^0 = g$ e ${H'}^1 = g'$, o que implica
+Como $H$ e $H'$ são contínuas, então $H''$ é contínua. Como $H$ é homotopia de $f$ para $f'$ e $H'$ é homotopia de $g$ para $g'$, então $H_0 = f$, $H_1 = f'$, $H'_0 = g$ e $H'_1 = g'$, o que implica
 	\begin{equation*}
-	{H''}^0 = {H'}^0 \circ H^0 = g \circ f
+	H''_0 = H'_0 \circ H_0 = g \circ f
 	\end{equation*}
 e
 	\begin{equation*}
-	{H''}^1 = {H'}^1 \circ H^1 = g' \circ f',
+	H''_1 = H'_1 \circ H_1 = g' \circ f',
 	\end{equation*}
 o que mostra que $H''$ é homotopia de $g \circ f$ para $g' \circ f'$.
 \end{proof}
-
-\subsection{Equivalência homotópica}
 
 \begin{definition}
 Sejam $\bm X$ e $\bm X'$ espaços topológicos. Uma \emph{equivalência homotópica} entre $\bm X$ e $\bm X'$ é uma par $(f,f') \in \Cont(X,X') \times \Cont(X',X)$ de funções contínuas tais que $f' \circ f \homot \Id_X$ e $f \circ f' \homot \Id_{X'}$. Os espaços $\bm X$ e $\bm X'$ são \emph{homotopicamente equivalentes} e denota-se $X \homot X'$.
 \end{definition}
 
+
 \subsection{Caminhos e laços}
 
 \begin{definition}[Caminho e laço]
-Seja $\bm X$ um espaço topológico. Um \textit{caminho} em $X$ é uma função contínua $c\colon [0,1] \to X$. Um \textit{laço} em $X$ é uma função contínua $\ell: \S^1 \to X$ e a \emph{origem} desse laço é o ponto $\ell(0)$. Denotaremos o conjunto dos laços em $X$ com origem em $x_0 \in X$ por $L(X,x_0)$
+Seja $\bm X$ um espaço topológico. Um \textit{caminho} em $X$ é uma função contínua $\fun{c}{\intff{0}{1}}{X}$. Um \textit{laço} em $X$ é uma função contínua $\fun{\ell}{\S^1}{X}$ e a \emph{origem} desse laço é o ponto $\ell(0)$. Denotaremos o conjunto dos laços em $X$ com origem em $x_0 \in X$ por $L(X,x_0)$
 \end{definition}
 
-Note que um laço é um caminho $c$ tal que $c(0)=c(1)$.
+Note que um caminho $c$ tal que $c(0)=c(1)$ gera um laço, e vice-versa.
 
 \begin{definition}
-	Seja $X$ um espaço métrico e $c: [0,1] \to X$ um caminho em $X$. O \emph{caminho inverso} de $c$ é o caminho
+Seja $X$ um espaço métrico e $\fun{c}{\intff{0}{1}}{X}$ um caminho em $X$. O \emph{caminho inverso} de $c$ é o caminho
 	\begin{align*}
-	c^{-1}: [0,1] &\to X \\
-				s &\mapsto c(1-s).
+		\func{c^{-1}}{\intff{0}{1}}{X}{s}{c(1-s)}.
 	\end{align*}
 \end{definition}
 
 \begin{definition}
-	Seja $X$ um espaço métrico e $x_0 \in X$. O \emph{caminho constante} em $x_0$ é o caminho
+Seja $X$ um espaço métrico e $x_0 \in X$. O \emph{caminho constante} em $x_0$ é o caminho
 	\begin{align*}
-	e_{x_0}: [0,1] &\to X \\
-				s &\mapsto x_0.
+		\func{e_{x_0}}{\intff{0}{1}}{X}{s}{x_0}.
 	\end{align*}
 \end{definition}
 
 \begin{definition}
-	Sejam $X$ um espaço métrico e $c_1,c_2: [0,1] \to X$ caminhos em $X$ tais que $c_1(1)=c_2(0)$. A \emph{composição} dos caminhos $c_1$ e $c_2$ é o caminho
+Sejam $X$ um espaço métrico e $c_1,c_2: \intff{0}{1} \to X$ caminhos em $X$ tais que $c_1(1)=c_2(0)$. A \emph{composição} dos caminhos $c_1$ e $c_2$ é o caminho
 	\begin{align*}
-	(c_1 \comp c_2): [0,1] &\to X \\
-		s &\mapsto \begin{cases}
-					c_1(2s) &\text{se $0 \leq s \leq \frac{1}{2}$} \\
-					c_2(2s-1) &\text{se $\frac{1}{2} \leq s \leq 1$}.
-					\end{cases}
+		\func{(c_1 \comp c_2)}{\intff{0}{1}}{X}{s}{
+			\begin{cases}
+				c_1(2s),& s \in \intff{0}{\frac{1}{2}} \\
+				c_2(2s-1),& s \in \intaf{\frac{1}{2}}{1}.
+			\end{cases}
+		}
 	\end{align*}
 \end{definition}
 
@@ -1566,7 +1564,7 @@ Note que um laço é um caminho $c$ tal que $c(0)=c(1)$.
 \subsection{Homotopia de caminhos}
 
 \begin{definition}
-	Sejam $X$ um espaço métrico e $c_1: [0,1] \to X$ e $c_2: [0,1] \to X$ caminhos em $X$ tal que $c_1(0)=c_2(0)$ e $c_1(1)=c_2(1)$. Uma \emph{homotopia de caminhos} entre $c_1$ e $c_2$ é uma homotopia $H$ entre $c_1$ e $c_2$ tal que, para todo $t \in [0,1]$, $H(0,t)=c_1(0)$ e $H(1,t)=c_1(1)$. No caso de existir uma homotopia de caminhos entre $c_1$ e $c_2$, denota-se $c_1 \approx c_2$.
+	Sejam $X$ um espaço métrico e $c_1: \intff{0}{1} \to X$ e $c_2: \intff{0}{1} \to X$ caminhos em $X$ tal que $c_1(0)=c_2(0)$ e $c_1(1)=c_2(1)$. Uma \emph{homotopia de caminhos} entre $c_1$ e $c_2$ é uma homotopia $H$ entre $c_1$ e $c_2$ tal que, para todo $t \in \intff{0}{1}$, $H(0,t)=c_1(0)$ e $H(1,t)=c_1(1)$. No caso de existir uma homotopia de caminhos entre $c_1$ e $c_2$, denota-se $c_1 \approx c_2$.
 \end{definition}
 
 \begin{figure}[!ht]
@@ -1584,23 +1582,23 @@ Note que um laço é um caminho $c$ tal que $c(0)=c(1)$.
 	\item Reflexividade: $l_1 \approx l_1$. \\
 	Consideremos a função
 		\begin{align*}
-		H: S^1 \times [0,1] &\to X \\
+		H: S^1 \times \intff{0}{1} &\to X \\
 		(x,t) &\mapsto l(x).
 		\end{align*}
-Sabemos que $H$ é uma homotopia entre $l_1$ e $l_1$. Basta notar que, para todo $t \in [0,1]$, $H(0,t)=H(1,t)=l(0)$, o que termina a demonstração de que $H$ é uma homotopia de laços entre $l_1$ e $l_1$.
+Sabemos que $H$ é uma homotopia entre $l_1$ e $l_1$. Basta notar que, para todo $t \in \intff{0}{1}$, $H(0,t)=H(1,t)=l(0)$, o que termina a demonstração de que $H$ é uma homotopia de laços entre $l_1$ e $l_1$.
 	
 	\item Simetria: $l_1 \approx l_2 \Rightarrow l_2 \approx l_1$. \\
-	Seja $H: S^1 \times [0,1] \to X$ uma homotopia de laços entre $l_1$ e $l_2$. Então consideremos a função
+	Seja $H: S^1 \times \intff{0}{1} \to X$ uma homotopia de laços entre $l_1$ e $l_2$. Então consideremos a função
 	\begin{align*}
-	H': S^1 \times [0,1] &\to X \\
+	H': S^1 \times \intff{0}{1} &\to X \\
 		(x,t) &\mapsto H(x,1-t).
 	\end{align*}		
-Sabemos que $H$ é uma homotopia entre $l_2$ e $l_1$. Basta notar que, para todo $t \in [0,1]$, $H'(0,t)=H(0,1-t)=l(0)=H(1,1-t)=H'(1,t)$, o que termina a demonstração de que $H'$ é uma homotopia de laços entre $l_2$ e $l_1$.
+Sabemos que $H$ é uma homotopia entre $l_2$ e $l_1$. Basta notar que, para todo $t \in \intff{0}{1}$, $H'(0,t)=H(0,1-t)=l(0)=H(1,1-t)=H'(1,t)$, o que termina a demonstração de que $H'$ é uma homotopia de laços entre $l_2$ e $l_1$.
 
 	\item Transitividade: $l_1 \approx l_2 \e l_2 \approx l_3 \Rightarrow l_1 \approx l_3$. \\
-	Sejam $H_1: S^1 \times [0,1] \to X$ uma homotopia entre $l_1$ e $l_2$ e $H_2: S^1 \times [0,1] \to X$ uma homotopia entre $l_2$ e $l_3$. Então consideremos a função
+	Sejam $H_1: S^1 \times \intff{0}{1} \to X$ uma homotopia entre $l_1$ e $l_2$ e $H_2: S^1 \times \intff{0}{1} \to X$ uma homotopia entre $l_2$ e $l_3$. Então consideremos a função
 	\begin{align*}
-	H: S^1 \times [0,1] &\to X \\
+	H: S^1 \times \intff{0}{1} &\to X \\
 		(x,t) &\mapsto \begin{cases}
 						H_1(x,2t) &\text{se $0 \leq t \leq \frac{1}{2}$}\\
 						H_2(x,2t-1) &\text{se $\frac{1}{2} \leq t \leq 1$}.
@@ -1612,7 +1610,7 @@ Sabemos que $H$ é uma homotopia entre $l_1$ e $l_3$. Basta notar que, como $H_1
 
 \begin{proposition}
 \label{prop:homo}
-	Seja $X$ um espaço métrico e $c_1,c_2,c_3: [0,1] \to X$ caminhos em $X$ tais que $c_1(0)=x_0$, $c_1(1)=c_2(0)$, $c_2(1)=c_3(0)$ e $c_3(0)=x_1$. Então
+	Seja $X$ um espaço métrico e $c_1,c_2,c_3: \intff{0}{1} \to X$ caminhos em $X$ tais que $c_1(0)=x_0$, $c_1(1)=c_2(0)$, $c_2(1)=c_3(0)$ e $c_3(0)=x_1$. Então
 	\begin{enumerate}
 	\item $c_1 \comp (c_1)^{-1} \approx e_{x_0}$;
 	\item $(c_1)^{-1} \comp c_1 \approx e_{x_1}$;
