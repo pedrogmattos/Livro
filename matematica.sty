@@ -635,6 +635,18 @@
 	\newcommand{\Hip}{\mathbb{H}} % Espaço Hiperbólico
 	\newcommand{\T}{\mathbb{T}} % Toro
 	
+	% Somatório pontual
+	\newcommand{\bigdotplus}{%
+	\DOTSB\mathop{\mathpalette\mattos@bigdotplus\relax}\slimits@
+	}
+	\newcommand\mattos@bigdotplus[2]{%
+	\vcenter{\hbox{%
+		\sbox\z@{$#1\bigoplus$}%
+		\resizebox{!}{0.9\dimexpr\ht\z@+\dp\z@}{\raisebox{\depth}%
+		{$\m@th#1\dotplus$}}%
+	}}%
+	\vphantom{\bigoplus}%
+	}
 
 	\newcommand{\homot}{\approx}
 	\newcommand{\comp}{\cdot}
