@@ -674,6 +674,39 @@ Sejam $\bm X=(X,\topo_X)$ e $(Y,\topo_Y)$ espaços topológicos e $\bm Q$ um esp
 \end{figure}
 \end{proposition}
 
+\paragraph{Soma pontual}
+
+\begin{definition}
+Sejam $(\bm X_0,x_0)$ e $(\bm X_1,x_1)$ espaços topológicos pontuados. A \emph{soma pontual} de $\bm X_0$ e $\bm X_1$ é o espaço quociente
+	\begin{equation*}
+	\bm X_0 \dotplus \bm X_1 := \quo{\bm X_0 \sqcup \bm X_1}{\sim},
+	\end{equation*}
+em que $\sim$ é a menor equivalência tal que $(0,x_0) \sim (1,x_1)$.
+\end{definition}
+
+\begin{definition}
+Sejam $(\bm X_i,x_i)_{i \in I}$ espaços topológicos pontuados. A \emph{soma pontual} de $(\bm X_i,x_i)_{i \in I}$ é o espaço quociente
+	\begin{equation*}
+	\bigdotplus_{i \in I} X_i := \quo{\bigsqcup X_i}{\sim},
+	\end{equation*}
+em que $\sim$ é a menor equivalência tal que, para todos $i,i' \in I$, $(i,x_i) \sim (i',x_{i'})$.
+\end{definition}
+
+\paragraph{Exemplo de topologia quociente para soma pontual de esferas}
+
+Consideremos uma esfera $d$-dimensional $\S^d$ e o espaço $\S^s \dotplus \S^d$, dado aqui por
+	\begin{align*}
+	\S^d \dotplus \S^d &= (\frac{1}{2}\S^d + (\frac{1}{2},0,\ldots,0)) \cup (\frac{1}{2}\S^d - (\frac{1}{2},0,\ldots,0)) \\
+		&= \set{x \in \R^{d+1}}{\nor{x-(\frac{1}{2},0,\ldots,0)}=\frac{1}{2}} \cup \set{x \in \R^{d+1}}{\nor{x+(\frac{1}{2},0,\ldots,0)}=\frac{1}{2}}.
+	\end{align*}
+
+Definimos assim a função
+	\begin{align*}
+	\func{\mathrm{q}}{\S^d}{\S^d \dotplus \S^d}{(x_0,\ldots,x_d)}{\left( x_0, \left( \frac{\abs{x_0}-{x_0}^2}{1-{x_0}^2} \right)^{\frac{1}{2}} x_1, \ldots, \left( \frac{\abs{x_0}-{x_0}^2}{1-{x_0}^2} \right)^{\frac{1}{2}} x_d \right)}
+	\end{align*}
+
+Essa função é uma função quociente. Primeiro, mostremos que ela está bem definida. Seja $x \in \S^d$.
+
 \subsection{Topologia de ordem}
 
 Lembremos que, se $(X,\leq)$ é um conjunto (totalmente) ordenado e $e,e' \in X$, o intervalo aberto de extremos inferior $e$ e superior $e'$ é o conjunto
