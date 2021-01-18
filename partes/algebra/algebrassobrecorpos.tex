@@ -515,8 +515,9 @@ Seja $x \in \R^4$. O \emph{conjugado} de $x$ é
 \begin{exercise}
 Seja $x \in \R^4$.
 	\begin{enumerate}
-	\item Para todo $x \in \R^4$, $\conju{x} = -\frac{1}{2}(x + \ii x \ii + \jj x \jj + \kk x \kk)$;
-	\item Para todo $x \in \R^4$, $\nor{x}^2 = x\conju{x}$.
+	\item $\nor{x}^2 = \abs{\esc{x}}^2 + \nor{\vec{x}}^2$;
+	\item $\conju{x} = -\frac{1}{2}(x + \ii x \ii + \jj x \jj + \kk x \kk)$;
+	\item $\nor{x}^2 = x\conju{x}$.
 	\end{enumerate}
 \end{exercise}
 
@@ -642,12 +643,12 @@ Isso implica que $xy-yx=0$ se, e somente se, $\pvec{\vec{x}}{\vec{y}} - \pvec{\v
 	\end{align*}
 e, como $\pvec{\vec{x}}{(-\vec{x})} = 0$, $x\inv x = xx\inv = 1$.
 
-	\item Para todo $u \in \R^4$,
+	\item Para todo $x \in \R^4$,
 		\begin{align*}
-		u^2 &= \esc{u}\esc{u} - \pesc{\vec{u}}{\vec{u}}+\esc{u}\vec{u}+\esc{u}\vec{u}+\pvec{\vec{u}}{\vec{u}} \\
-			&=  \esc{u}^2 - \nor{\vec{u}}^2 + 2\esc{u}\vec{u}.
+		x^2 &= \esc{x}\esc{x} - \pesc{\vec{x}}{\vec{x}}+\esc{x}\vec{x}+\esc{x}\vec{x}+\pvec{\vec{x}}{\vec{x}} \\
+			&= \esc{x}^2 - \nor{\vec{x}}^2 + 2\esc{x}\vec{x}.
 		\end{align*}
-Segue que $\esc{u}=0$ e $\nor{\vec{u}}=1$ se, e somente se, $u^2=-1$.
+Segue que $\esc{x}=0$ e $\nor{\vec{x}}=1$ se, e somente se, $x^2=-1$.
 	
 	\item Como $x \neq 0$, $\nor{x} \neq 0$, logo da igualdade $\nor{x}^2 = \abs{\esc{x}}^2 + \nor{\vec{q}}^2$ segue que
 		\begin{equation*}
