@@ -333,20 +333,24 @@ Todo $x \in \R^2$ pode ser escrito como $x_0\bm 1 + x_1 \bm \ii$, de modo que o 
 
 Para simplificar a notação, a partir de agora passaremos a escrever $1$ e $\ii$ para $\bm 1$ e $\bm \ii$ e escreveremos todos $x \in \R^2$ na notação de números complexos.
 
-O produto $\times$ pode também ser visto como uma ação de $\R^2$ aditivo sobre $\R^2$ aditivo. Cada $x \in \R^2$ pode ser identificado com uma transformação linear $x\colon \R^2 \to \R^2$. Os elementos $x \in \S^1 \subseteq \R^2$ são as rotações: se $x \in \S^1$, então existe $\alpha \in \intfa{0}{\tau}$ tal que
+O produto $\times$ pode também ser visto como uma ação de $\R^2$ aditivo sobre $\R^2$ aditivo. Cada $x \in \R^2$ pode ser identificado com uma transformação linear $x\colon \R^2 \to \R^2$. Os elementos $x \in \S^1 \subseteq \R^2$ são as rotações: se $x \in \S^1$, então existe $\theta \in \intfa{0}{\tau}$ tal que
 	\begin{equation*}
-	x = (\cos(\alpha),\sin(\alpha)) = \cos(\alpha) + \ii \sin(\alpha).
+	x = (\cos(\theta),\sin(\theta)) = \cos(\theta) + \sin(\theta) \ii.
 	\end{equation*}
-Isso ocorre porque, se $x \in \S^1$, então $\nor{x} = 1$, logo $({x_0}^2+{x_1}^2)^\frac{1}{2} = 1$, portanto ${x_0}^2+{x_1}^2 = 1$. Então $\abs{x_0} \leq 1$, ou seja, $-1 \leq x_0 \leq 1$. Definido $\alpha' := \cos\inv(x_0) \in \intff{0}{\frac{\tau}{2}}$, temos que ${x_1}^2 = 1-\cos(\alpha)^2$, logo $\abs{x_1} = (1-\cos(\alpha)^2)^\frac{1}{2}$, então $x_1 = \pm\sin(\alpha)$. Tomamos $\alpha := \alpha'$ se $x_1 > 0$ e $\alpha := \tau - \alpha'$ se $x_1 < 0$. No caso $x_1 = 0$, tomamos $\alpha = 0$ se $x_0=1$ e $\alpha = \frac{\tau}{2}$ se $x_0=-1$.
+Isso ocorre porque, se $x \in \S^1$, então $\nor{x} = 1$, logo $({x_0}^2+{x_1}^2)^\frac{1}{2} = 1$, portanto ${x_0}^2+{x_1}^2 = 1$. Então $\abs{x_0} \leq 1$, ou seja, $-1 \leq x_0 \leq 1$. Definido $\theta' := \cos\inv(x_0) \in \intff{0}{\frac{\tau}{2}}$, temos que ${x_1}^2 = 1-\cos(\theta)^2$, logo $\abs{x_1} = (1-\cos(\theta)^2)^\frac{1}{2}$, então $x_1 = \pm\sin(\theta)$. Tomamos $\theta := \theta'$ se $x_1 > 0$ e $\theta := \tau - \theta'$ se $x_1 < 0$. No caso $x_1 = 0$, tomamos $\theta = 0$ se $x_0=1$ e $\theta = \frac{\tau}{2}$ se $x_0=-1$.
 
-Sendo assim, para todo $\cos(\alpha) + \ii \sin(\alpha) \in \S^1$, e todo $x \in \R^2$,
+Sendo assim, para todo $\cos(\theta) + \sin(\theta) \ii \in \S^1$, e todo $x \in \R^2$,
 	\begin{align*}
-	(\cos(\alpha) + \ii \sin(\alpha)) \times x &= (\cos(\alpha)x_0-\sin(\alpha)x_1) + \ii(\cos(\alpha)x_1+\sin(\alpha)x_0).
+	(\cos(\theta) + \ii \sin(\theta)) \times x &= (\cos(\theta)x_0-\sin(\theta)x_1) + \ii(\cos(\theta)x_1+\sin(\theta)x_0).
 	\end{align*}
 
-Definimos $\abs{x} := ({x_0}^2+{x_1}^2)^\frac{1}{2}$ e $\angle(x) := \alpha$. Os elementos $x \in \R \subseteq \R^2$ são as expansões e contrações. Os elementos de $\R^2$ podem ser decompostos como
+%Definimos $\angle(x) := \theta$.
+Os elementos $x \in \R \subseteq \R^2$ são as expansões e contrações. Os elementos de $\R^2$ podem ser decompostos como
+%	\begin{equation*}
+%	x = \nor{x}(\cos(\angle(x)) + \sin(\angle(x)) \ii).
+%	\end{equation*}
 	\begin{equation*}
-	x = \abs{x}(\cos(\angle(x))+\ii\sin(\angle(x))).
+	x = \nor{x}(\cos(\theta) + \sin(\theta) \ii).
 	\end{equation*}
 
 
@@ -420,28 +424,31 @@ De fato, em vez da expressão explícita para $\cdot$ em termos das entradas de 
 
 Com essas relações e representando os elementos $x \in \R^4$ como
 	\begin{equation*}
-	x = x_0\bm 1  + x_1\bm \ii + x_2 \bm \jj + x_3 \bm \kk,
+	x = x_0\bm 1 + x_1\bm \ii + x_2 \bm \jj + x_3 \bm \kk,
 	\end{equation*}
-pode-se calcular o produto $\cdot$ em $\R^4$ facilmente. Esse produto é o produto usual dos números quatérnios.
+pode-se calcular o produto $\cdot$ em $\R^4$ facilmente. Esse produto é o produto usual dos números quatérnios. A partir de agora, escreveremos simplesmente $1, \ii, \jj, \kk$.
 
-Vamos denotar a álgebra de $\R^4$ com esse produto por $\HH$.
+%Vamos denotar a álgebra de $\R^4$ com esse produto por $\HH$.
+A álgebra de $\R^4$ com esse produto costuma ser denotado por $\mathbb{H}$, mas manteremos a notação $\R^4$.
 
-%Por linearidade, deve valer
-%	\begin{align*}
-%	xy &= (x_0 1  + x_1 \ii + x_2 \jj + x_3 \kk)(y_0 1  + y_1 \ii + y_2 \jj + y_3 \kk) \\
-%		&= x_0 y_0 1  1  + x_0 y_1 1  \ii + x_0 y_2 1  \jj + x_0 y_3 1  \kk \\
-%		&+ x_1 y_0 \ii  1  + x_1 y_1 \ii  \ii + x_1y_2 \ii  \jj + x_1 y_3 \ii  \kk \\
-%		&+ x_2 y_0 \jj 1  + x_2 y_1 \jj \ii + x_2 y_2 \jj \jj + x_2 y_3 \jj \kk \\
-%		&+ x_3 y_0 \kk 1  + x_3 y_1 \kk \ii + x_3 y_2 \kk \jj + x_3 y_3 \kk \kk
-%	\end{align*}
-%
-%Portanto basta definir os valores dos produtos entre $1,i,j,k$. Escolhendo $1$ para ser a unidade, já que deve haver uma unidade (e essa notação não foi escolhida por acaso para $(1,0,0,0)$), basta determinarmos
-%	\begin{equation*}
-%	\ii\ii,\ii\jj,\ii\kk,\jj\ii,\jj\ij,\jj\kk,\kk\ii,\kk\jj,\kk\kk.
-%	\end{equation*}
+\begin{comment}
+
+Por linearidade, deve valer
+	\begin{align*}
+	xy &= (x_0 1  + x_1 \ii + x_2 \jj + x_3 \kk)(y_0 1  + y_1 \ii + y_2 \jj + y_3 \kk) \\
+		&= x_0 y_0 1  1  + x_0 y_1 1  \ii + x_0 y_2 1  \jj + x_0 y_3 1  \kk \\
+		&+ x_1 y_0 \ii  1  + x_1 y_1 \ii  \ii + x_1y_2 \ii  \jj + x_1 y_3 \ii  \kk \\
+		&+ x_2 y_0 \jj 1  + x_2 y_1 \jj \ii + x_2 y_2 \jj \jj + x_2 y_3 \jj \kk \\
+		&+ x_3 y_0 \kk 1  + x_3 y_1 \kk \ii + x_3 y_2 \kk \jj + x_3 y_3 \kk \kk
+	\end{align*}
+
+Portanto basta definir os valores dos produtos entre $1,i,j,k$. Escolhendo $1$ para ser a unidade, já que deve haver uma unidade (e essa notação não foi escolhida por acaso para $(1,0,0,0)$), basta determinarmos
+	\begin{equation*}
+	\ii\ii,\ii\jj,\ii\kk,\jj\ii,\jj\ij,\jj\kk,\kk\ii,\kk\jj,\kk\kk.
+	\end{equation*}
 
 \begin{definition}
-Seja $x \in \HH$. A \emph{componente escalar} de $x$ é o número real
+Seja $x \in \R^4$. A \emph{componente escalar} de $x$ é o número real
 	\begin{equation*}
 	\esc{x} := x_0 \in \R
 	\end{equation*}
@@ -453,7 +460,7 @@ Denota-se
 	\begin{equation*}
 	x = \esc{x} + \vec{x},
 	\end{equation*}
-em que $\esc{x}$ é entendido como $x_0 \bm 1$ e $\vec{x}$ é entendido como $x_1\bm \ii + x_2 \bm\jj + x_3 \bm \kk$. Os subespaços vetorias de escalares e vetores são denotados, respectivamente, $\esc{\HH}$ e $\vec{\HH}$, e temos portanto
+em que $\esc{x}$ é entendido como $x_0 \bm 1$ e $\vec{x}$ é entendido como $x_1\bm \ii + x_2 \bm\jj + x_3 \bm \kk$. Os subespaços vetoriais de escalares e vetores são denotados, respectivamente, $\esc{\HH}$ e $\vec{\HH}$, e temos portanto
 	\begin{equation*}
 	\HH = \esc{\HH} \oplus \vec{\HH} \simeq \R \oplus \R^3.
 	\end{equation*}
@@ -466,23 +473,70 @@ O \emph{conjugado} de $x$ é
 Um \emph{versor} é um quatérnio $u \in \HH$ tal que $\esc{u}=0$ e $\nor{\vec{u}}=1$.
 \end{definition}
 
+\end{comment}
+
+\begin{definition}
+Seja $x \in \R^4$. A \emph{componente escalar} de $x$ é (o número) $\esc{x} := x_0$ e a \emph{componente vetorial} de $x$ é (o vetor)
+	\begin{equation*}
+	\vec{x} := x_1 \ii + x_2 \jj + x_3 \kk.
+	\end{equation*}
+
+O \emph{subespaço de escalares} de $\R^4$ é o subespaço
+	\begin{equation*}
+	\esc{\R} := \set{x \in \R^4}{\vec{x}=0}
+	\end{equation*}
+e o \emph{subespaço de vetores} de $\R^4$ é o subespaço
+	\begin{equation*}
+	\vec{\R}^3 := \set{x \in \R^4}{\esc{x}=0}.
+	\end{equation*}
+A \emph{esfera de vetores} de $\R^4$ é o conjunto
+	\begin{equation*}
+	\vec{\S}^2 := \set{x \in \S^3}{\esc{x}=0} = \S^3 \cap \vec{\R}^3.
+	\end{equation*}
+\end{definition}
+
+Isso nos permite escrever todo quatérnio $x \in \R^4$ unicamente como
+	\begin{equation*}
+	x = \esc{x} + \vec{x}
+	\end{equation*}
+e decompor $\R^4$ como a soma direta
+	\begin{equation*}
+	\R^4 = \esc{\R} + \vec{\R}^3.
+	\end{equation*}
+
+\begin{definition}
+Seja $x \in \R^4$. O \emph{conjugado} de $x$ é
+	\begin{equation*}
+	\conju{x} := \esc{x}-\vec{x}.
+	\end{equation*}
+%Um \emph{versor} é um quatérnio $u \in \HH$ tal que $\esc{u}=0$ e $\nor{\vec{u}}=1$.
+\end{definition}
+
+\begin{exercise}
+Seja $x \in \R^4$.
+	\begin{enumerate}
+	\item Para todo $x \in \R^4$, $\conju{x} = -\frac{1}{2}(x + \ii x \ii + \jj x \jj + \kk x \kk)$;
+	\item Para todo $x \in \R^4$, $\nor{x}^2 = x\conju{x}$.
+	\end{enumerate}
+\end{exercise}
+
 \subsubsection{Produtos escalar e vetorial}
 
 \begin{definition}
-O \emph{produto escalar} em $\vec{\HH}$ é a função
+O \emph{produto escalar} em $\vec{\R}^3$ é a função
 	\begin{align*}
-	\func{\bm{\cdot}}{\vec{\HH} \times \vec{\HH}}{\R}{(\vec{x},\vec{y})}{\pesc{\vec{x}}{\vec{y}} := x_1y_1 + x_2y_2 + x_3y_3}.
+	\func{\bm{\cdot}}{\vec{\R}^3 \times \vec{\R}^3}{\R}{(\vec{x},\vec{y})}{\pesc{\vec{x}}{\vec{y}} := x_1y_1 + x_2y_2 + x_3y_3}.
 	\end{align*}
 
-O \emph{produto vetorial} em $\vec{\HH}$ é a função
+O \emph{produto vetorial} em $\vec{\R}^3$ é a função
 	\begin{align*}
-	\func{\bm{\times}}{\vec{\HH} \times \vec{\HH}}{\vec{\HH}}{(\vec{x},\vec{y})}{\pvec{\vec{x}}{\vec{y}}
+	\func{\bm{\times}}{\vec{\R}^3 \times \vec{\R}^3}{\vec{\R}^3}{(\vec{x},\vec{y})}{\pvec{\vec{x}}{\vec{y}}
 		\begin{aligned}[t]
-		&:= (x_2y_3-x_3y_2)\bm\ii \\
-		&+ (-x_1y_3+x_3y_1)\bm\jj \\
-		&+ (x_1y_2-x_2y_1)\bm\kk
+			:=& (x_2y_3-x_3y_2)\bm\ii \\
+			&+ (-x_1y_3+x_3y_1)\bm\jj \\
+			&+ (x_1y_2-x_2y_1)\bm\kk.
 		\end{aligned}
-	}.
+	}
 	\end{align*}
 \end{definition}
 
@@ -490,9 +544,9 @@ Esses são o produto interno e o produto vetorial usuais em $\R^3$.
 
 \begin{exercise}
 	\begin{enumerate}
-	\item O produto escalar $\bm{\cdot}\colon \vec{\HH} \times \vec{\HH} \to \R$ é um produto interno no subespaço vetorial $\vec{\HH}$;
+	\item O produto escalar $\bm{\cdot}\colon \vec{\R}^3 \times \vec{\R}^3 \to \R$ é um produto interno no subespaço vetorial $\vec{\R}^3$;
 	
-	\item O produto vetorial $\bm{\times}\colon \vec{\HH} \times \vec{\HH} \to \vec{\HH}$ é uma função bilinear alternada tal que, para todos $\vec{x},\vec{y} \in \vec{\HH}$,
+	\item O produto vetorial $\bm{\times}\colon \vec{\R}^3 \times \vec{\R}^3 \to \vec{\R}^3$ é uma função bilinear alternada tal que, para todos $\vec{x},\vec{y} \in \vec{\R}^3$,
 		\begin{enumerate}
 		\item $
 			\pesc{(\pvec{\vec{x}}{\vec{y}})}{\vec{x}} = \pesc{(\pvec{\vec{x}}{\vec{y}})}{\vec{x}} = 0$;
@@ -506,7 +560,7 @@ Esses são o produto interno e o produto vetorial usuais em $\R^3$.
 	
 	\item A função
 		\begin{align*}
-		\func{\bm{\cdot} \circ \bm{\times}}{\vec{\HH} \times \vec{\HH} \times \vec{\HH}}{\vec{\HH}}{(\vec{x},\vec{y},\vec{z})}{\pesc{(\pvec{\vec{x}}{\vec{y}})}{\vec{z}}}
+		\func{\bm{\cdot} \circ \bm{\times}}{\vec{\R}^3 \times \vec{\R}^3 \times \vec{\R}^3}{\vec{\R}^3}{(\vec{x},\vec{y},\vec{z})}{\pesc{(\pvec{\vec{x}}{\vec{y}})}{\vec{z}}}
 		\end{align*}
 é uma função trilinear alternada.
 	\end{enumerate}
@@ -515,30 +569,31 @@ Esses são o produto interno e o produto vetorial usuais em $\R^3$.
 
 \begin{proposition}
 	\begin{enumerate}
-	\item Para todos $\vec{x},\vec{y} \in \vec{\HH}$ ($\esc{x} = \esc{y} = 0$),
+	\item Para todos $x,y \in \vec{\R}^3$ ($\esc{x} = \esc{y} = 0$),
 		\begin{equation*}
-		\vec{x}\vec{y} = - \pesc{\vec{x}}{\vec{y}} + \pvec{\vec{x}}{\vec{y}};
+		xy = - \pesc{\vec{x}}{\vec{y}} + \pvec{\vec{x}}{\vec{y}};
 		\end{equation*}
-	\item Para todos $x,y \in \HH$,
+	\item Para todos $x,y \in \R^4$,
 		\begin{align*}
 		xy &= \esc{x}\esc{y} - \pesc{\vec{x}}{\vec{y}}+\esc{x}\vec{y}+\esc{y}\vec{x}+\pvec{\vec{x}}{\vec{y}} \\
 %		\esc{(xy)} &= \esc{x}\esc{y} - \inte{\vec{x}}{\vec{y}} \\
 %		\vec{(xy)} &= \esc{x}\vec{y}+\esc{y}\vec{x}+\vec{x} \times \vec{y}
 		\end{align*}
 	
-	\item Para todos $x,y \in \HH$, $xy=yx$ se, e somente se, $\vec{x} \parallel \vec{y}$ (ou seja, $\pvec{\vec{x}}{\vec{y}}=0$);
+	\item Para todos $x,y \in \R^4$, $xy=yx$ se, e somente se, $\vec{x} \parallel \vec{y}$ (ou seja, $\pvec{\vec{x}}{\vec{y}}=0$);
 	
-	\item Para todo $x \in \HH \setminus \{0\}$,
+	\item Para todo $x \in \R^4 \setminus \{0\}$,
 		\begin{equation*}
 		x\inv = \frac{\conju{x}}{\nor{x}^2};
 		\end{equation*}
 	
-	\item Um quatérnio $u \in \HH$ é um versor se, e somente se, $u^2=-1$;
+	\item $\vec{\S}^2 = \set{x \in \R^4}{x^2 = -1}$;
 	
-	\item Para todo $x \in \HH \setminus \{0\}$, existem único versor $u \in \HH$ e único ângulo $\alpha \in \intfa{0}{\tau}$ tais que
+	\item Para todo $x \in \R^4 \setminus \{0\}$,% existem $\phi_0 \in \intff{0}{\tau \div 2}$ e $\hat{x} \in \vec{\S}^2$ tais que
 		\begin{equation*}
-		x=\nor{x}(\cos(\alpha) + \sin(\alpha) u).
+		x=\nor{x}(\cos(\phi_0) + \sin(\phi_0) \hat{x}),
 		\end{equation*}
+	em que $\phi_0 := \cos\inv\left( \frac{\esc{x}}{\nor{x}} \right) \in \intff{0}{\tau \div 2}$ e $\hat{x} := \frac{\vec{x}}{\nor{\vec{x}}} \in \vec{\S}^2$.
 	\end{enumerate}
 \end{proposition}
 \begin{proof}
@@ -569,7 +624,7 @@ Esses são o produto interno e o produto vetorial usuais em $\R^3$.
 %	\end{equation*}
 %é a componente vetorial.
 	
-	\item Para todos $x,y \in \HH$,
+	\item Para todos $x,y \in \R^4$,
 		\begin{align*}
 		xy - yx &= \esc{x}\esc{y} - \pesc{\vec{x}}{\vec{y}}+\esc{x}\vec{y}+\esc{y}\vec{x}+\pvec{\vec{x}}{\vec{y}} \\
 			&- \esc{y}\esc{x} + \pesc{\vec{y}}{\vec{x}}-\esc{y}\vec{x}-\esc{x}\vec{y}-\pvec{\vec{y}}{\vec{x}} \\
@@ -577,7 +632,7 @@ Esses são o produto interno e o produto vetorial usuais em $\R^3$.
 		\end{align*}
 Isso implica que $xy-yx=0$ se, e somente se, $\pvec{\vec{x}}{\vec{y}} - \pvec{\vec{y}}{\vec{x}}=0$, o que ocorre se, e somente se, $\pvec{\vec{x}}{\vec{y}}=0$, que por sua vez é equivalente a $\vec{x} \parallel \vec{y}$.
 
-	\item Para todo $x \in \HH \setminus \{0\}$,
+	\item Para todo $x \in \R^4 \setminus \{0\}$,
 	\begin{align*}
 	xx\inv &= (\esc{x}+\vec{x})\nor{x}^{-2}(\esc{x}-\vec{x}) \\
 		&= \nor{x}^{-2}(\esc{x}^2-\pesc{\vec{x}}{(-\vec{x})}+\esc{x}(-\vec{x})+\esc{x}\vec{x}+\pvec{\vec{x}}{(-\vec{x})}) \\
@@ -587,19 +642,32 @@ Isso implica que $xy-yx=0$ se, e somente se, $\pvec{\vec{x}}{\vec{y}} - \pvec{\v
 	\end{align*}
 e, como $\pvec{\vec{x}}{(-\vec{x})} = 0$, $x\inv x = xx\inv = 1$.
 
-	\item Para todo $u \in \HH$,
+	\item Para todo $u \in \R^4$,
 		\begin{align*}
 		u^2 &= \esc{u}\esc{u} - \pesc{\vec{u}}{\vec{u}}+\esc{u}\vec{u}+\esc{u}\vec{u}+\pvec{\vec{u}}{\vec{u}} \\
 			&=  \esc{u}^2 - \nor{\vec{u}}^2 + 2\esc{u}\vec{u}.
 		\end{align*}
 Segue que $\esc{u}=0$ e $\nor{\vec{u}}=1$ se, e somente se, $u^2=-1$.
 	
-	\item Exercício.
+	\item Como $x \neq 0$, $\nor{x} \neq 0$, logo da igualdade $\nor{x}^2 = \abs{\esc{x}}^2 + \nor{\vec{q}}^2$ segue que
+		\begin{equation*}
+		1 = \left( \frac{\abs{\esc{x}}}{\nor{x}} \right)^2 + \left( \frac{\nor{\vec{x}}}{\nor{x}} \right)^2,
+		\end{equation*}
+	portanto $\frac{\abs{\esc{x}}}{\nor{x}} \leq 1$, o que é equivalente a $\frac{\esc{x}}{\nor{x}} \in \intff{-1}{1}$. Disso segue que $\phi_0 = \cos\inv\left( \frac{\esc{x}}{\nor{x}} \right) \in \intff{0}{\tau \div 2}$, de modo que $\frac{\nor{\vec{x}}}{\nor{x}} = (1-(\cos(\phi_0))^2)^{1 \div 2}$, o que implica $\frac{\nor{\vec{x}}}{\nor{x}}=\sin(\phi_0)$ ou $\frac{\nor{\vec{x}}}{\nor{x}}=-\sin(\phi_0)$. Como para $\phi_0 \in \intff{0}{\tau \div 2}$ vale $\sin(\phi_0) \geq 0$, concluímos que $\frac{\nor{\vec{x}}}{\nor{x}}=\sin(\phi_0)$.
+	
+	Das definições de $\phi_0$ e $\hat{x}$, segue que $\esc{x} = \nor{x}\cos(\phi_0)$ e $\vec{x} = \nor{x}\sin(\phi_0)\hat{x}$, portanto
+		\begin{align*}
+		x &= \esc{x} + \vec{x} \\
+			&= \nor{x}\cos(\phi_0) + \nor{x}\sin(\phi_0)\hat{x} \\
+			&= \cos(\phi_0) + \sin(\phi_0) \frac{\vec{x}}{\nor{\vec{x}}} \\
+			&= \nor{x} (\cos(\phi_0) + \sin(\phi_0) \hat{x}).									\qedhere
+		\end{align*}
 \end{enumerate}
 \end{proof}
 
 
-Sejam $x,y \in \HH \setminus \{0\}$ tais que $xy \in \esc{\HH}$. Então
+
+Analisemos agora um caso específico. Sejam $x,y \in \R^4 \setminus \{0\}$ tais que $xy \in \esc{\R}$. Então
 	\begin{equation*}
 	0 = \esc{x}\vec{y}+\esc{y}\vec{x}+\pvec{\vec{x}}{\vec{y}}.
 	\end{equation*}
@@ -615,7 +683,7 @@ Sejam $x,y \in \HH \setminus \{0\}$ tais que $xy \in \esc{\HH}$. Então
 %
 %Se $\vec{x} \perp \vec{y}$, então $(\vec{x},\vec{y},\vec{x} \times \vec{y})$ é uma base de $\vec{\HH}$
 %
-Isso implica que $(\vec{x},\vec{y},\pvec{\vec{x}}{\vec{y}})$ não é uma base de $\vec{\HH}$, pois caso contrário
+Isso implica que $(\vec{x},\vec{y},\pvec{\vec{x}}{\vec{y}})$ não é uma base de $\vec{\R}^3$, pois caso contrário
 	\begin{equation*}
 	\esc{x}\vec{y}+\esc{y}\vec{x}+\vec{x} \times \vec{y} \neq 0,
 	\end{equation*}
@@ -714,9 +782,9 @@ e
 
 
 
-Os quatérnios unitários são os elementos de $\S^3 \subseteq \R^4$ e $SO(3)$ é o grupo de rotações de $\R^3$. Definimos a função
+Os quatérnios unitários são os elementos de $\S^3 \subseteq \R^4$ e $\SO(3)$ é o grupo de rotações de $\R^3$. Definimos a função
 	\begin{align*}
-	\func{R}{\S^3}{SO(3)}{q}{
+	\func{R}{\S^3}{\SO(3)}{q}{
 		\begin{aligned}[t]
 		\func{R_q}{\R^3}{\R^3}{v}{qvq\inv}.
 		\end{aligned}
@@ -766,28 +834,28 @@ Por fim, notemos que
 		&= (\esc{q}\esc{q} - \inte{\vec{q}}{\vec{q}})\vec{v}+2\esc{q}\vec{q}\times \vec{v} + 2\inte{\vec{v}}{\vec{q}}\vec{q}.
 	\end{align*}
 	
-Como $\nor{q}^2 = \esc{q}^2 + \nor{\vec{q}}^2$, podemos tomar $\theta \in \S^1$ tal que
+Como $\nor{q}^2 = \esc{q}^2 + \nor{\vec{q}}^2$, podemos tomar $\theta \in \intff{0}{\tau}$ tal que
 	\begin{equation*}
-	\esc{q} = \cos(\theta/2)
+	\esc{q} = \cos(\theta \div 2)
 	\end{equation*}
 e
 	\begin{equation*}
-	\nor{\vec{q}} = \sin(\theta/2).
+	\nor{\vec{q}} = \sin(\theta \div 2).
 	\end{equation*}
 Definindo
 	\begin{equation*}
-	u := \vec{q}/\sin(\theta/2),
+	u := \frac{\vec{q}}{\sin(\theta \div 2)},
 	\end{equation*}
 temos $\nor{u}=1$ e
 	\begin{equation*}
-	q=\cos(\theta/2)+\sin(\theta/2)u = \ee^{(\theta/2)u}.
+	q=\cos(\theta \div 2)+\sin(\theta \div 2)u = \ee^{(\theta \div 2)u}.
 	\end{equation*}
 
-Temos assim
+Segue então que
 	\begin{align*}
 	qvq\inv 
 %		&= \left(\left(\cos\frac{\theta}{2}\right)^2-\left(\sin\frac{\theta}{2}\right)^2\right)v + 2\cos\frac{\theta}{2}\sin\frac{\theta}{2}{u \times v} + 2\left(\sin\frac{\theta}{2}\right)^2\inte{v}{u}u \\
-		&= (\cos(\theta/2)^2-\sin(\theta/2)^2)v + 2\cos(\theta/2)\sin(\theta/2){u \times v} + 2\sin(\theta/2)^2\inte{v}{u}u \\
+		&= (\cos(\theta \div 2)^2-\sin(\theta \div 2)^2)v + 2\cos(\theta \div 2)\sin(\theta \div 2){u \times v} + 2\sin(\theta \div 2)^2\inte{v}{u}u \\
 		&= \cos(\theta) v + \sin(\theta) u \times v + (1-\cos(\theta))\inte{v}{u}u \\
 		&= \inte{v}{u}u + \cos(\theta) (v-\inte{v}{u}u) + \sin(\theta) u \times v \\
 		&= \proj_{\parallel u}(v) + \cos(\theta) \proj_{\perp u}(v) + \sin(\theta) u \times v \\
@@ -819,13 +887,13 @@ Temos assim
 
 %	\begin{equation*}
 %	\begin{bmatrix}
-%			1-2\sin(\theta/2)^2({u_2}^2+{u_3}^2) & 2(u_1u_2\sin(\theta/2)^2-u_3\sin(\theta/2)\cos(\theta/2)) & 2(u_1u_3\sin(\theta/2)^2+u_2\sin(\theta/2)\cos(\theta/2)) \\ 
-%			2(u_1u_2\sin(\theta/2)^2+u_3\sin(\theta/2)\cos(\theta/2)) & 1-2\sin(\theta/2)^2({u_1}^2+{u_3}^2) & 2(u_2u_3\sin(\theta/2)^2-u_1\sin(\theta/2)\cos(\theta/2)) \\ 
-%			2(u_1u_3\sin(\theta/2)^2-u_2\sin(\theta/2)\cos(\theta/2)) & 2(u_2u_3\sin(\theta/2)^2+u_1\sin(\theta/2)\cos(\theta/2)) & 1-2\sin(\theta/2)^2({u_1}^2+{u_2}^2)
+%			1-2\sin(\theta \div 2)^2({u_2}^2+{u_3}^2) & 2(u_1u_2\sin(\theta \div 2)^2-u_3\sin(\theta \div 2)\cos(\theta \div 2)) & 2(u_1u_3\sin(\theta \div 2)^2+u_2\sin(\theta \div 2)\cos(\theta \div 2)) \\ 
+%			2(u_1u_2\sin(\theta \div 2)^2+u_3\sin(\theta \div 2)\cos(\theta \div 2)) & 1-2\sin(\theta \div 2)^2({u_1}^2+{u_3}^2) & 2(u_2u_3\sin(\theta \div 2)^2-u_1\sin(\theta \div 2)\cos(\theta \div 2)) \\ 
+%			2(u_1u_3\sin(\theta \div 2)^2-u_2\sin(\theta \div 2)\cos(\theta \div 2)) & 2(u_2u_3\sin(\theta \div 2)^2+u_1\sin(\theta \div 2)\cos(\theta \div 2)) & 1-2\sin(\theta \div 2)^2({u_1}^2+{u_2}^2)
 %	\end{bmatrix}
 %	\end{equation*}
 
-%Definindo $c:= \cos(\theta/2)$ e $s:=\sin(\theta/2)$ e tomando $q=\ee^{\frac{\theta}{2}u}=c+su$, temos
+%Definindo $c:= \cos(\theta \div 2)$ e $s:=\sin(\theta \div 2)$ e tomando $q=\ee^{\frac{\theta}{2}u}=c+su$, temos
 %	\begin{equation*}
 %	\begin{bmatrix}
 %			1-2s^2({u_2}^2+{u_3}^2) & 2(u_1u_2s^2-u_3sc) & 2(u_1u_3s^2+u_2sc) \\ 
