@@ -1668,35 +1668,99 @@ Portanto
 		\exp(x)\exp(-x) = \exp(x-x) = \exp(0) = 1.
 		\end{equation*}
 	
-	\item Exercício.
+	\item Exercício. \qedhere
 	\end{enumerate}
 \end{proof}
 
-\paragraph{Exponencial dos números quaternos $\R^4$}
 
-Seja $x = x_0 + \vec{x} \in \R^4$, em que $\vec{x} = x_1 \ii + x_2 \jj + x_3 \kk$. Como $x_0\vec{x} = \vec{x}x_0$, segue que
+\subsubsection{Exponencial dos complexos $\R^2$}
+
+Seja $x = x_0 + x_1 \ii \in \R^2$. Como $\R^2$ é comutativo,
 	\begin{equation*}
-	\ee^{x} = \ee^{x_0+\vec{x}} = \ee^{x_0}\ee^{\vec{x}}.
+	\ee^{x} = \ee^{x_0 + x_1 \ii} = \ee^{x_0}\ee^{x_1 \ii}.
+	\end{equation*}
+Devemos calcular, portanto, somente a exponencial $\ee^{x_1 \ii}$. Como $\ii^2 = -1$, segue que, para todo $n \in \N$,
+	\begin{align*}
+	(x_1 \ii)^{2n} &= (x_1)^{2n}(\ii)^{2n} = (-1)^n (x_1)^{2n} \\
+	(x_1 \ii)^{2n+1} &= (x_1)^{2n+1}(\ii)^{2n+1} = (-1)^n (x_1)^{2n+1}\ii,
+	\end{align*}
+o que implica que
+	\begin{align*}
+	\ee^{x_1 \ii} &= \sum_{n \in \N} \frac{(x_1 \ii)^n}{n!} \\
+		&= \sum_{n \in \N} \frac{(x_1 \ii)^{2n}}{(2n)!} + \sum_{n \in \N} \frac{(x_1 \ii)^{2n+1}}{(2n+1)!} \\
+		&= \sum_{n \in \N} (-1)^n \frac{(x_1)^{2n}}{(2n)!} + \sum_{n \in \N} (-1)^n \frac{(x_1)^{2n+1}}{(2n+1)!}\ii \\
+		&= \cos(x_1) + \sin(x_1)\ii.
+	\end{align*}
+
+Concluímos que
+	\begin{equation*}
+	\ee^{x} = \ee^{x_0}\ee^{x_1 \ii} = \ee^{x_0}(\cos(x_1) + \sin(x_1)\ii).
 	\end{equation*}
 
-Devemos calcular, portanto, somente a exponencial $\ee^{\vec{x}}$. Como $(\vec{x})^2 = -\nor{\vec{x}}^2$, prova-se por indução que, para todo $n \in \N$,
+\paragraph{Logaritmo} Pela decomposição polar, para todo $x \in \R^2 \setminus \{0\}$,
 	\begin{equation*}
-	(\vec{x})^{2n} = (-1)^n \nor{\vec{x}}^{2n}
+	x = \nor{x}(\cos(\theta)+\sin(\theta)\ii).
 	\end{equation*}
-e
+Assim, definimos
 	\begin{equation*}
-	(\vec{x})^{2n+1} = (-1)^n \nor{\vec{x}}^{2n}\vec{x},
+	\log(x) := \log(\nor{x}) + \theta \ii,
 	\end{equation*}
+Concluímos que
+	\begin{align*}
+	x &= \nor{x}(\cos(\theta)+\sin(\theta) \ii) \\
+		&= \ee^{\log(\nor{x})}\ee^{\theta \ii} \\
+		&= \ee^{\log(\nor{x}) + \theta \ii} \\
+		&= \ee^{\log(x)}.
+	\end{align*}
+
+No entanto, é importante notar que, para todo $n \in \N$,
+	\begin{equation*}
+	\ee^{(\theta+n\tau) \ii} = \cos(\theta+n\tau)+\sin(\theta+n\tau) \ii = \cos(\theta)+\sin(\theta) \ii = \ee^{\theta \ii}
+	\end{equation*}
+
+\subsubsection{Exponencial dos quatérnios $\R^4$}
+
+Seja $x = \esc{x} + \vec{x} \in \R^4$, em que $\esc{x} = x_0$ e $\vec{x} = x_1 \ii + x_2 \jj + x_3 \kk$. Como $\esc{x}\vec{x} = \vec{x}\esc{x}$, segue que
+	\begin{equation*}
+	\ee^{x} = \ee^{\esc{x}+\vec{x}} = \ee^{\esc{x}}\ee^{\vec{x}}.
+	\end{equation*}
+
+Devemos calcular, portanto, somente a exponencial $\ee^{\vec{x}}$. Lembremos que $\hat{x} = \frac{\vec{x}}{\nor{\vec{x}}}$ e que $\hat{x} \in \vec{\S}^2$, portanto $\hat{x}^2 = -1$. Segue que, para todo $n \in \N$,
+	\begin{align*}
+	(\vec{x})^{2n} &= (\nor{\vec{x}} \hat{x})^{2n} = (-1)^n \nor{\vec{x}}^{2n} \\
+	(\vec{x})^{2n+1} &= (\nor{\vec{x}} \hat{x})^{2n+1} = (-1)^n \nor{\vec{x}}^{2n+1}\hat{x},
+	\end{align*}
 o que implica que
 	\begin{align*}
 	\ee^{\vec{x}} &= \sum_{n \in \N} \frac{(\vec{x})^n}{n!} \\
 		&= \sum_{n \in \N} \frac{(\vec{x})^{2n}}{(2n)!} + \sum_{n \in \N} \frac{(\vec{x})^{2n+1}}{(2n+1)!} \\
-		&= \sum_{n \in \N} (-1)^n \frac{\nor{\vec{x}}^{2n}}{(2n)!} + \sum_{n \in \N} (-1)^n \frac{\nor{\vec{x}}^{2n}\vec{x}}{(2n+1)!} \\
-		&= \sum_{n \in \N} (-1)^n \frac{\nor{\vec{x}}^{2n}}{(2n)!} + \sum_{n \in \N} (-1)^n \frac{\nor{\vec{x}}^{2n+1}}{(2n+1)!}\frac{\vec{x}}{\nor{\vec{x}}} \\
-		&= \cos(\nor{\vec{x}}) + \sin(\nor{\vec{x}}) \frac{\vec{x}}{\nor{\vec{x}}}.
+		&= \sum_{n \in \N} (-1)^n \frac{\nor{\vec{x}}^{2n}}{(2n)!} + \sum_{n \in \N} (-1)^n \frac{\nor{\vec{x}}^{2n+1}}{(2n+1)!}\hat{x} \\
+		&= \cos(\nor{\vec{x}}) + \sin(\nor{\vec{x}}) \hat{x}.
 	\end{align*}
 
-Definindo $\hat{x} := \frac{\vec{x}}{\nor{\vec{x}}}$, concluímos que
+Concluímos que
 	\begin{equation*}
-		\ee^{x} = \ee^{x_0}\left( \cos(\nor{\vec{x}}) + \sin(\nor{\vec{x}}) \hat{x} \right).
+		\ee^{x} = \ee^{\esc{x}}\ee^{\vec{x}} = \ee^{\esc{x}}\left( \cos(\nor{\vec{x}}) + \sin(\nor{\vec{x}}) \hat{x} \right).
 	\end{equation*}
+
+\paragraph{Logaritmo}
+
+Pela decomposição polar, para todo $x \in \R^4 \setminus \{0\}$,
+	\begin{equation*}
+	x = \nor{x}(\cos(\phi_0 + \sin(\phi_0)\hat{x})).
+	\end{equation*}
+Assim, definimos
+	\begin{equation*}
+	\log(x) := \log(\nor{x}) + \phi_0 \hat{x}.
+	\end{equation*}
+Denotando $y := \log(x)$, vale $\esc{y} = \log(\nor{x})$ e $\vec{y}=\phi_0 \hat{x}$, portanto $\nor{\vec{y}} = \nor{\phi_0\hat{x}} = \phi_0$ e
+	\begin{equation*}
+	\hat{y} = \frac{\vec{y}}{\nor{\vec{y}}} = \frac{\phi_0 \hat{x}}{\phi_0} = \hat{x}.
+	\end{equation*}
+Concluímos que
+	\begin{align*}
+	x &= \nor{x}(\cos(\phi_0 + \sin(\phi_0)\hat{x})) \\
+		&= \ee^{\log(\nor{x})}\ee^{\phi_0 \hat{x}} \\
+		&= \ee^{\log(\nor{x}) + \phi_0 \hat{x}} \\
+		&= \ee^{\log(x)}.
+	\end{align*}
