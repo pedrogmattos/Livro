@@ -1593,7 +1593,7 @@ Seja $\mathbb A$ uma álgebra normada unitária completa.
 		\exp(x+y) = \exp(x)\exp(y);
 		\end{equation*}
 	\item Para todo $x \in A$, $\exp(x)\inv = \exp(-x)$;
-	\item Para todo $x \in A$, $\lim_{n \to \infty} \left( 1 + \frac{x}{n} \right)^n$.
+	\item Para todo $x \in A$, $\exp(x) = \lim_{n \to \infty} \left( 1 + \frac{x}{n} \right)^n$.
 	\end{enumerate}
 \end{proposition}
 \begin{proof}
@@ -1665,9 +1665,38 @@ Portanto
 	
 	\item Basta notar que, como $x(-x)=(-x)x$,
 		\begin{equation*}
-		\exp(x)\exp(-x) = \exp(x-x) = \exp(0) = 1. \qedhere
+		\exp(x)\exp(-x) = \exp(x-x) = \exp(0) = 1.
 		\end{equation*}
 	
 	\item Exercício.
 	\end{enumerate}
 \end{proof}
+
+\paragraph{Exponencial dos números quaternos $\R^4$}
+
+Seja $x = x_0 + \vec{x} \in \R^4$, em que $\vec{x} = x_1 \ii + x_2 \jj + x_3 \kk$. Como $x_0\vec{x} = \vec{x}x_0$, segue que
+	\begin{equation*}
+	\ee^{x} = \ee^{x_0+\vec{x}} = \ee^{x_0}\ee^{\vec{x}}.
+	\end{equation*}
+
+Devemos calcular, portanto, somente a exponencial $\ee^{\vec{x}}$. Como $(\vec{x})^2 = -\nor{\vec{x}}^2$, prova-se por indução que, para todo $n \in \N$,
+	\begin{equation*}
+	(\vec{x})^{2n} = (-1)^n \nor{\vec{x}}^{2n}
+	\end{equation*}
+e
+	\begin{equation*}
+	(\vec{x})^{2n+1} = (-1)^n \nor{\vec{x}}^{2n}\vec{x},
+	\end{equation*}
+o que implica que
+	\begin{align*}
+	\ee^{\vec{x}} &= \sum_{n \in \N} \frac{(\vec{x})^n}{n!} \\
+		&= \sum_{n \in \N} \frac{(\vec{x})^{2n}}{(2n)!} + \sum_{n \in \N} \frac{(\vec{x})^{2n+1}}{(2n+1)!} \\
+		&= \sum_{n \in \N} (-1)^n \frac{\nor{\vec{x}}^{2n}}{(2n)!} + \sum_{n \in \N} (-1)^n \frac{\nor{\vec{x}}^{2n}\vec{x}}{(2n+1)!} \\
+		&= \sum_{n \in \N} (-1)^n \frac{\nor{\vec{x}}^{2n}}{(2n)!} + \sum_{n \in \N} (-1)^n \frac{\nor{\vec{x}}^{2n+1}}{(2n+1)!}\frac{\vec{x}}{\nor{\vec{x}}} \\
+		&= \cos(\nor{\vec{x}}) + \sin(\nor{\vec{x}}) \frac{\vec{x}}{\nor{\vec{x}}}.
+	\end{align*}
+
+Definindo $\hat{x} := \frac{\vec{x}}{\nor{\vec{x}}}$, concluímos que
+	\begin{equation*}
+		\ee^{x} = \ee^{x_0}\left( \cos(\nor{\vec{x}}) + \sin(\nor{\vec{x}}) \hat{x} \right).
+	\end{equation*}
