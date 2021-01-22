@@ -727,11 +727,15 @@
 	\newcommand{\ncos}{\mathop{\Cos}}
 
 	% Parte escalar e vetorial do quatérnio
-	\newcommand{\esc}[1]{\dot{#1}}
+%	\newcommand{\esc}[1]{\dot{#1}}
 %	\newcommand{\esc}[1]{\tilde{#1}}
+	\newcommand{\esc}[1]{{#1}_0}
 	% Produto escalar e produto vetorial
 	\newcommand{\pesc}[2]{{#1} \bm{\cdot} {#2}}
-	\newcommand{\pvec}[2]{{#1} \bm{\times} {#2}}
+%	\newcommand{\pesc}[2]{\left\langle{#1},{#2}\right\rangle}
+%	\newcommand{\pvec}[2]{{#1} \bm{\times} {#2}}
+	\newcommand{\pvec}[2]{{#1} \Yup {#2}}
+	\newcommand{\inteq}[2]{\left\langle\!\left\langle{#1},{#2}\right\rangle\!\right\rangle}
 
 % Medida
 %------------------------------------
