@@ -138,6 +138,7 @@ Sendo assim, para mostrar que $\col{\var}{\var}$ é bilinear antissimétrica, ba
 Reciprocamente, suponhamos que $\col{\var}{\var}=0$. Então, para todos $a,a' \in A$,
 		\begin{equation*}
 		aa' = aa' + 0 = aa' + \col{a'}{a} = aa' + a'a - aa' = a'a.
+		\qedhere
 		\end{equation*}
 
 \begin{comment}
@@ -404,9 +405,9 @@ Da definição de $\theta$ segue que $x_0 = \nor{x}\cos(\theta)$ e $x_1 = \nor{x
 Assim, concluímos que
 	\begin{equation*}
 	x = x_0 + x_1 \ii = \nor{x}\cos(\theta) + \nor{x}\sin(\theta) \ii = \nor{x}(\cos(\theta) + \sin(\theta) \ii).
+	\qedhere
 	\end{equation*}
 \end{proof}
-
 
 \begin{comment}
 
@@ -449,41 +450,139 @@ Assim, concluímos que
 
 \end{comment}
 
+
+
+
+\subsubsection{Rotações em $\R^2$}
+
+\begin{proposition}
+A função
+	\begin{align*}
+	\func{R}{\S^1}{\SO(2)}{u}{
+		\begin{aligned}[t]
+			\func{R_u}{\R^2}{\R^2}{x}{ux}
+		\end{aligned}
+	}
+	\end{align*}
+é um difeomorfismo e isomorfismo de grupos.
+\end{proposition}
+\begin{proof}
+A função $R$ é diferenciável porque $R_u(x)$ é um polinômio em cada entrada. Primeiro, vamos mostrar que $R$ de fato está bem definida, ou seja, que, para todo $u \in \S^1$, $R_u \in \SO(2)$. Seja $u \in \S^1$. A função $R_u$ é linear, pois, para todos $x,x' \in \R^2$ e $c \in \R$, segue da bilinearidade do produto complexo que
+	\begin{equation*}
+	R_u(cx+c') = u(cx+c') = cux + ux' = cR_u(x) + R_u(x').
+	\end{equation*}
+Isso mostra que $R_u \in \GL(2,\R)$. Além disso, $R_u$ preserva a norma, pois
+	\begin{equation*}
+	\nor{R_u(x)} = \nor{ux} = \nor{u}\nor{x} = \nor{x}.
+	\end{equation*}
+Isso mostra que $R_u \in \OO(2)$. Agora, como $R$ é diferenciável, em particular é contínua, logo, como $\S^1$ é conexo, $R(\S^1)$ é conexo. Isso implica que $R(\S^1) \subseteq \SO(2)$.
+
+Seja $u \in \S^3$ tal que $R_u = \Id$. Então, para todo $x \in \R^2$, $ux = R_u(x) = x$. Em particular, $u = u1 = 1$, o que mostra que $R$ é injetiva.
+
+Seja $R^\theta \in \SO(2)$ a rotação por $\theta \in \intfa{0}{\tau}$. Se tomamos
+	\begin{equation*}
+	\ee^{\theta\ii} = \cos(\theta) + \sin(\theta)\ii,
+	\end{equation*}
+segue que, para todo $x \in \R^2$,
+	\begin{align*}
+	R_{\ee^{\theta \ii}}(x) &= (\cos(\theta) + \sin(\theta)\ii)(x_0 + x_1 \ii) \\
+		&= (\cos(\theta)x_0 - \sin(\theta)x_1) + (\sin(\theta)x_0 + \cos(\theta)x_1) \ii \\
+		&= R^\theta(x),
+	\end{align*}
+portanto $R(\ee^{\theta \ii}) = R^{\theta}$, o que mostra que $R$ é sobrejetiva. A inversa de $R$ é claramente diferenciável.
+\end{proof}
+
+
+
+
+
+
 \subsection{Quatérnios $\R^4$}
 
 \subsubsection{Produto quaterniônico}
 
-Consideremos o espaço linear $\R^4$. Definamos $\bm 1 := (1,0,0,0)$, $\bm \ii := (0,1,0,0)$, $\bm \jj := (0,0,1,0)$ e $\bm \kk := (0,0,0,1)$. Consideremos o produto
+Consideremos o espaço linear $\R^4$ com a norma canônica
 	\begin{align*}
-	\func{\cdot}{\R^4 \times \R^4}{\R^4}{(x,y)}{
+	\func{\nor{\var}}{\R^4}{\R^4}{x}{({x_0}^2+{x_1}^2+{x_2}^2+{x_3}^2+)^{\frac{1}{2}}}.
+	\end{align*}
+
+Denotemos a base canônica por $\bm 1 := (1,0,0,0)$, $\ii := (0,1,0,0)$, $\jj := (0,0,1,0)$ e $\kk := (0,0,0,1)$. Em geral, por não haver ambiguidade, denotaremos $\bm 1$ simplesmente por $1$.
+
+Definimos o seguinte produto, unidade e inversa em $\R^4$.
+
+\begin{definition}
+O \emph{produto quaterniônico} em $\R^4$ é a função
+	\begin{align*}
+	\func{\times}{\R^4 \times \R^4}{\R^4}{(x,y)}{
 		\begin{aligned}[t]
-		&(x_0y_0 - x_1y_1 - x_2y_2 - x_3y_3) \bm 1 \\
-			+ &(x_0y_1+x_1y_0+x_2y_3-x_3y_2) \bm\ii \\
-			+ &(x_0y_2-x_1y_3+x_2y_0+x_3y_1) \bm\jj \\
-			+ &(x_0y_3+x_1y_2-x_2y_1+x_3y_0) \bm\kk .
+		xy := &(x_0y_0 - x_1y_1 - x_2y_2 - x_3y_3) 1 \\
+			+ &(x_0y_1 + x_1y_0 + x_2y_3 - x_3y_2) \ii \\
+			+ &(x_0y_2 - x_1y_3 + x_2y_0 + x_3y_1) \jj \\
+			+ &(x_0y_3 + x_1y_2 - x_2y_1 + x_3y_0) \kk .
 		\end{aligned}
 	}
 	\end{align*}
+A \emph{unidade} de $\R^4$ é $1$. A \emph{inversa} de $\R^4$ é
+	\begin{align*}
+	\func{\div}{\R^4 \setminus \{0\}}{\R^4 \setminus \{0\}}{x}{x\inv := \frac{x_0 1 - x_1 \ii - x_2 \jj - x_3 \kk}{\nor{x}^2}}.
+	\end{align*}
+\end{definition}
 
-Pode-se mostrar (as contas são trabalhosas, embora simples) que $\cdot$ é um produto bilinear associativo, mas não comutativo, preservado pela norma, que $\bm 1$ é identidade de $\cdot$ e que
+Pode-se mostrar que $\times$ é um produto bilinear associativo (mas não comutativo), que $1$ é identidade de $\times$ e que $\div$ é inversa de $\times$, e que além disso todas operações são preservadas pela norma. As contas são longas, mas diretas, portanto não as apresentaremos aqui. Alguns resultados, como a de que $x\inv$ é a operação inversa, serão provados mais à frente usando a notação de componente escalar, vetorial e conjugado de um quatérnio que simplificará as contas. Ressaltamos esse fato na seguinte proposição.
+
+\begin{proposition}
+A lista $((\R^4,+,-,0,\cdot,\times,\div,1),\nor{\var})$ é uma álgebra\footnote{A álgebra de $\R^4$ com esse produto costuma ser denotada por $\mathbb{H}$, mas manteremos a notação $\R^4$ por simplicidade de notação, pois nenhuma ambiguidade resultará disso. A letra `H' é usada em homenagem ao matemático irlandês William Rowan Hamilton (1805 -- 1865).} (associativa) invertível normada sobre $\R$.
+\begin{enumerate}
+	\item (Bilinearidade) O produto quaterniônico $\fun{\times}{\R^4 \times \R^4}{\R^4}$ é uma função bilinear;
+	\item (Associatividade) Para todos $x,y,z \in \R^4$,
+		\begin{equation*}
+		(x \times y) \times z = x \times (y \times z);
+		\end{equation*}
+	\item (Identidade) Para todo $x \in \R^4$,
+		\begin{equation*}
+		x1 = 1x = x;
+		\end{equation*}
+	\item (Inversa) Para todo $x \in \R^4$,
+		\begin{equation*}
+		xx\inv = x\inv x = 1;
+		\end{equation*}
+	\item (Normalidade do produto) Para todos $x,y \in \R^4$,
+		\begin{equation*}
+		\nor{xx'} \leq \nor{x}\nor{x'}.
+		\end{equation*}
+	\item (Normalidade da unidade) $\nor{1}=1$;
+	\item (Normalidade da inversa) Para todo $x \in \R^4$,
+		\begin{equation*}
+		\nor{x\inv} = \nor{x}\inv.
+		\end{equation*}
+\end{enumerate}
+\end{proposition}
+
+Em particular, essas propriedades implicam que, para todos $x,x' \in \R^4$,
 	\begin{equation*}
-	\bm\ii\bm\jj\bm\kk = \bm\ii^2 = \bm\jj^2 = \bm\kk^2 = -\bm 1.
+	\nor{xx'} = \nor{x}\nor{x'}.
+	\end{equation*}
+Como o vetor $1$ é uma unidade, em geral o omitiremos da notação da base, denotando $x_0 1$ por $x_0$ e
+	\begin{equation*}
+	x = x_0 + x_1 \ii + x_2 \jj + x_3 \kk.
+	\end{equation*}
+
+Segue direto da definição do produto que valem as seguintes relações de produto entre os elementos da base:
+	\begin{equation*}
+	\ii\jj\kk = \ii^2 = \jj^2 = \kk^2 = - 1.
 	\end{equation*}
 Dessas relações, deduzem-se
 	\begin{equation*}
-	\bm\ii\bm\jj = -\bm\jj\bm\ii = \bm\kk, \qquad \bm\jj\bm\kk = -\bm\kk\bm\jj = \bm\ii, \qquad \bm\kk\bm\ii = -\bm\ii\bm\kk = \bm\jj.
+	\ii\jj = -\jj\ii = \kk, \qquad \jj\kk = -\kk\jj = \ii, \qquad \kk\ii = -\ii\kk = \jj.
 	\end{equation*}
 
-De fato, em vez da expressão explícita para $\cdot$ em termos das entradas de $x$ e $y$, poderíamos somente definir o produto entre os elementos de uma base, no caso $\{\bm 1,\bm \ii, \bm \jj, \bm \kk\}$, e o produto se estenderia linearmente. Essa definição seria dada como nas relações acima.
+De fato, em vez da expressão explícita para $\times$ em termos das entradas de $x$ e $y$, poderíamos somente definir o produto entre os elementos de uma base, no caso $\{1,\ii, \jj, \kk\}$, e o produto se estenderia linearmente. Essa definição seria dada como nas relações acima.
 
 Com essas relações e representando os elementos $x \in \R^4$ como
 	\begin{equation*}
-	x = x_0\bm 1 + x_1\bm \ii + x_2 \bm \jj + x_3 \bm \kk,
+	x = x_0 + x_1 \ii + x_2 \jj + x_3 \kk,
 	\end{equation*}
-pode-se calcular o produto $\cdot$ em $\R^4$ facilmente. Esse produto é o produto usual dos números quatérnios. A partir de agora, escreveremos simplesmente $1, \ii, \jj, \kk$.
-
-%Vamos denotar a álgebra de $\R^4$ com esse produto por $\HH$.
-A álgebra de $\R^4$ com esse produto costuma ser denotado por $\mathbb{H}$, mas manteremos a notação $\R^4$.
+pode-se calcular o produto quaterniônico $\times$ em $\R^4$ usando linearidade.
 
 \begin{comment}
 
@@ -501,36 +600,10 @@ Portanto basta definir os valores dos produtos entre $1,i,j,k$. Escolhendo $1$ p
 	\ii\ii,\ii\jj,\ii\kk,\jj\ii,\jj\ij,\jj\kk,\kk\ii,\kk\jj,\kk\kk.
 	\end{equation*}
 
-\begin{definition}
-Seja $x \in \R^4$. A \emph{componente escalar} de $x$ é o número real
-	\begin{equation*}
-	\esc{x} := x_0 \in \R
-	\end{equation*}
-e a \emph{componente vetorial} de $x$ é o vetor real
-	\begin{equation*}
-	\vec{x} := (x_1,x_2,x_3) \in \R^3.
-	\end{equation*}
-Denota-se
-	\begin{equation*}
-	x = \esc{x} + \vec{x},
-	\end{equation*}
-em que $\esc{x}$ é entendido como $x_0 \bm 1$ e $\vec{x}$ é entendido como $x_1\bm \ii + x_2 \bm\jj + x_3 \bm \kk$. Os subespaços vetoriais de escalares e vetores são denotados, respectivamente, $\esc{\HH}$ e $\vec{\HH}$, e temos portanto
-	\begin{equation*}
-	\HH = \esc{\HH} \oplus \vec{\HH} \simeq \R \oplus \R^3.
-	\end{equation*}
-
-O \emph{conjugado} de $x$ é
-	\begin{equation*}
-	\conju{x} := \esc{x}-\vec{x}.
-	\end{equation*}
-
-Um \emph{versor} é um quatérnio $u \in \HH$ tal que $\esc{u}=0$ e $\nor{\vec{u}}=1$.
-\end{definition}
-
 \end{comment}
 
 \begin{definition}
-Seja $x \in \R^4$. A \emph{componente escalar} de $x$ é (o número) $\esc{x} := x_0$ e a \emph{componente vetorial} de $x$ é (o vetor)
+Seja $x \in \R^4$. A \emph{componente escalar} de $x$ é (o número) $\esc{x} := x_0 1$ e a \emph{componente vetorial} de $x$ é (o vetor)
 	\begin{equation*}
 	\vec{x} := x_1 \ii + x_2 \jj + x_3 \kk.
 	\end{equation*}
@@ -576,14 +649,21 @@ Seja $x \in \R^4$.
 \end{exercise}
 
 \begin{proposition}[Decomposição polar]
-Seja $x \in \R^4 \setminus \{0\}$. Então % existem $\phi_0 \in \intff{0}{\tau \div 2}$ e $\hat{x} \in \vec{\S}^2$ tais que
+Seja $x \in \R^4 \setminus \{0\}$. Existem únicos $\phi_0 \in \intff{0}{\tau \div 2}$ e $\hat{x} \in \vec{\S}^2$ tais que
 	\begin{equation*}
-	x=\nor{x}(\cos(\phi_0) + \sin(\phi_0) \hat{x}),
+	x = \nor{x}(\cos(\phi_0) + \sin(\phi_0) \hat{x}).
 	\end{equation*}
-em que $\phi_0 := \cos\inv\left( \frac{\esc{x}}{\nor{x}} \right) \in \intff{0}{\tau \div 2}$ e $\hat{x} := \frac{\vec{x}}{\nor{\vec{x}}} \in \vec{\S}^2$.
+Eles são dados por $\phi_0 := \cos\inv\left( \frac{\esc{x}}{\nor{x}} \right) \in \intff{0}{\tau \div 2}$ e $\hat{x} := \frac{\vec{x}}{\nor{\vec{x}}} \in \vec{\S}^2$.
 \end{proposition}
+%\begin{proposition}[Decomposição polar]
+%	Seja $x \in \R^4 \setminus \{0\}$. Então % existem $\phi_0 \in \intff{0}{\tau \div 2}$ e $\hat{x} \in \vec{\S}^2$ tais que
+%		\begin{equation*}
+%		x=\nor{x}(\cos(\phi_0) + \sin(\phi_0) \hat{x}),
+%		\end{equation*}
+%	em que $\phi_0 := \cos\inv\left( \frac{\esc{x}}{\nor{x}} \right) \in \intff{0}{\tau \div 2}$ e $\hat{x} := \frac{\vec{x}}{\nor{\vec{x}}} \in \vec{\S}^2$.
+%\end{proposition}
 \begin{proof}
-Como $x \neq 0$, $\nor{x} \neq 0$, logo da igualdade $\nor{x}^2 = \abs{\esc{x}}^2 + \nor{\vec{q}}^2$ segue que
+Mostraremos primeiro a decomposição. Como $x \neq 0$, $\nor{x} \neq 0$, logo da igualdade $\nor{x}^2 = \abs{\esc{x}}^2 + \nor{\vec{q}}^2$ segue que
 	\begin{equation*}
 	1 = \left( \frac{\abs{\esc{x}}}{\nor{x}} \right)^2 + \left( \frac{\nor{\vec{x}}}{\nor{x}} \right)^2,
 	\end{equation*}
@@ -595,39 +675,55 @@ Das definições de $\phi_0$ e $\hat{x}$, segue que $\esc{x} = \nor{x}\cos(\phi_
 		&= \nor{x}\cos(\phi_0) + \nor{x}\sin(\phi_0)\hat{x} \\
 		&= \cos(\phi_0) + \sin(\phi_0) \frac{\vec{x}}{\nor{\vec{x}}} \\
 		&= \nor{x} (\cos(\phi_0) + \sin(\phi_0) \hat{x}).
+		\qedhere
 	\end{align*}
+
+Para a unicidade, sejam $\phi_0' \in \intff{0}{\tau \div 2}$ e $\hat{x}' \in \vec{\S}^2$ tais que
+	\begin{equation*}
+	x = \nor{x}(\cos(\phi_0) + \sin(\phi_0) \hat{x}) = \nor{x}(\cos(\phi_0') + \sin(\phi_0') \hat{x}').
+	\end{equation*}
+Então $\cos(\phi_0) = \cos(\phi_0')$ e $\sin(\phi_0) \hat{x} = \sin(\phi_0') \hat{x}'$. Da primeira igualdade segue que existe $n \in \Z$ tal que $\phi_0' = \phi_0 + n\tau$ ou $\phi_0' = -\phi_0 + n\tau$. Como $\phi_0,\phi_0' \in \intff{0}{\tau \div 2}$, segue que $\phi_0 = \phi_0'$. Isso implica que $\sin(\phi_0) = \sin(\phi_0')$, portanto da segunda igualdade segue que $\hat{x} = \hat{x}'$.
 \end{proof}
 
-\subsubsection{Produtos escalar e vetorial}
+\subsubsection{Produtos interno, escalar e vetorial}
 
 \begin{definition}
-O \emph{produto escalar} em $\vec{\R}^3$ é a função
+O \emph{produto interno quaterniônico} em $\R^4$ é a função
 	\begin{align*}
-	\func{\bm{\cdot}}{\vec{\R}^3 \times \vec{\R}^3}{\R}{(\vec{x},\vec{y})}{\pesc{\vec{x}}{\vec{y}} := x_1y_1 + x_2y_2 + x_3y_3}.
+	\func{\inteq{\var}{\var}}{\R^4 \times \R^4}{\R}{(x,y)}{\inteq{x}{y} := x_0y_0 - (x_1y_1 + x_2y_2 + x_3y_3)}.
+	\end{align*}
+
+	O \emph{produto escalar} em $\vec{\R}^3$ é a função
+	\begin{align*}
+	\func{\pesc{}{}}{\vec{\R}^3 \times \vec{\R}^3}{\R}{(\vec{x},\vec{y})}{\pesc{\vec{x}}{\vec{y}} := x_1y_1 + x_2y_2 + x_3y_3}.
 	\end{align*}
 
 O \emph{produto vetorial} em $\vec{\R}^3$ é a função
 	\begin{align*}
-	\func{\bm{\times}}{\vec{\R}^3 \times \vec{\R}^3}{\vec{\R}^3}{(\vec{x},\vec{y})}{\pvec{\vec{x}}{\vec{y}}
+	\func{\pvec{}{}}{\vec{\R}^3 \times \vec{\R}^3}{\vec{\R}^3}{(\vec{x},\vec{y})}{
 		\begin{aligned}[t]
-			:=& (x_2y_3-x_3y_2)\bm\ii \\
-			&+ (-x_1y_3+x_3y_1)\bm\jj \\
-			&+ (x_1y_2-x_2y_1)\bm\kk.
+			\pvec{\vec{x}}{\vec{y}} := &(x_2y_3-x_3y_2) \ii \\
+			+ &(-x_1y_3+x_3y_1) \jj \\
+			+ &(x_1y_2-x_2y_1) \kk.
 		\end{aligned}
 	}
 	\end{align*}
 \end{definition}
 
-Esses são o produto interno e o produto vetorial usuais em $\R^3$.
+O produto interno quaterniônico difere do produto interno usual em $\R^4$, mas os outros dois produtos são o produto interno e o produto vetorial usuais em $\R^3$.
 
 \begin{exercise}
 	\begin{enumerate}
+	\item Para todos $x,y \in \R^4$,
+		\begin{equation*}
+		\inteq{x}{y} = \esc{x}\esc{y}-\pesc{\vec{x}}{\vec{y}}.
+		\end{equation*}
+
 	\item O produto escalar $\bm{\cdot}\colon \vec{\R}^3 \times \vec{\R}^3 \to \R$ é um produto interno no subespaço vetorial $\vec{\R}^3$;
 	
 	\item O produto vetorial $\bm{\times}\colon \vec{\R}^3 \times \vec{\R}^3 \to \vec{\R}^3$ é uma função bilinear alternada tal que, para todos $\vec{x},\vec{y} \in \vec{\R}^3$,
 		\begin{enumerate}
-		\item $
-			\pesc{(\pvec{\vec{x}}{\vec{y}})}{\vec{x}} = \pesc{(\pvec{\vec{x}}{\vec{y}})}{\vec{x}} = 0$;
+		\item $\pesc{(\pvec{\vec{x}}{\vec{y}})}{\vec{x}} = \pesc{(\pvec{\vec{x}}{\vec{y}})}{\vec{y}} = 0$;
 		
 		\item $\pesc{(\pvec{\vec{x}}{\vec{y}})}{(\pvec{\vec{x}}{\vec{y}})} =
 				\begin{vmatrix}
@@ -636,11 +732,17 @@ Esses são o produto interno e o produto vetorial usuais em $\R^3$.
 				\end{vmatrix}$.
 		\end{enumerate}
 	
+	\item Para todos $\vec{x},\vec{y},\vec{z} \in \vec{\R}^3$,
+		\begin{equation*}
+		\pvec{(\pvec{\vec{x}}{\vec{y}})}{\vec{z}} = (\pesc{\vec{x}}{\vec{z}})\vec{y} - (\pesc{\vec{y}}{\vec{z}})\vec{x};
+		\end{equation*}
+	
 	\item A função
 		\begin{align*}
-		\func{\bm{\cdot} \circ \bm{\times}}{\vec{\R}^3 \times \vec{\R}^3 \times \vec{\R}^3}{\vec{\R}^3}{(\vec{x},\vec{y},\vec{z})}{\pesc{(\pvec{\vec{x}}{\vec{y}})}{\vec{z}}}
+		\func{\vol_{\Yup}}{\vec{\R}^3 \times \vec{\R}^3 \times \vec{\R}^3}{\vec{\R}^3}{(\vec{x},\vec{y},\vec{z})}{\pesc{(\pvec{\vec{x}}{\vec{y}})}{\vec{z}}}
 		\end{align*}
 é uma função trilinear alternada.
+
 	\end{enumerate}
 \end{exercise}
 
@@ -652,20 +754,35 @@ Esses são o produto interno e o produto vetorial usuais em $\R^3$.
 		xy = - \pesc{\vec{x}}{\vec{y}} + \pvec{\vec{x}}{\vec{y}};
 		\end{equation*}
 	\item Para todos $x,y \in \R^4$,
-		\begin{align*}
-		xy &= \esc{x}\esc{y} - \pesc{\vec{x}}{\vec{y}}+\esc{x}\vec{y}+\esc{y}\vec{x}+\pvec{\vec{x}}{\vec{y}} \\
-%		\esc{(xy)} &= \esc{x}\esc{y} - \inte{\vec{x}}{\vec{y}} \\
-%		\vec{(xy)} &= \esc{x}\vec{y}+\esc{y}\vec{x}+\vec{x} \times \vec{y}
+		\begin{equation*}
+		xy = \esc{x}\esc{y} - \pesc{\vec{x}}{\vec{y}} + \esc{x}\vec{y} + \esc{y}\vec{x} + \pvec{\vec{x}}{\vec{y}},
+		\end{equation*}
+sendo
+		\begin{align*}	
+		\esc{(xy)} &= \esc{x}\esc{y} - \pesc{\vec{x}}{\vec{y}}, \\
+		\vec{(xy)} &= \esc{x}\vec{y} + \esc{y}\vec{x} + \pvec{\vec{x}}{\vec{y}}.
 		\end{align*}
 	
-	\item Para todos $x,y \in \R^4$, $xy=yx$ se, e somente se, $\vec{x} \parallel \vec{y}$ (ou seja, $\pvec{\vec{x}}{\vec{y}}=0$);
+	\item Para todos $x,y \in \R^4$, $xy=yx$ se, e somente se, $\pvec{\vec{x}}{\vec{y}}=0$;% (ou seja, $\vec{x} \parallel \vec{y}$);
 	
 	\item Para todo $x \in \R^4 \setminus \{0\}$,
 		\begin{equation*}
 		x\inv = \frac{\conju{x}}{\nor{x}^2};
 		\end{equation*}
 	
-	\item $\vec{\S}^2 = \set{x \in \R^4}{x^2 = -1}$.
+	\item $\vec{\S}^2 = \set{x \in \R^4}{x^2 = -1}$;
+
+	\item Para todos $x \in \R^4 \setminus \{0\}$ e $y \in \R^4$,
+		\begin{equation*}
+		xyx\inv = \esc{y} + 2\frac{\pesc{\vec{x}}{\vec{y}}}{\nor{x}^2}\vec{x} + \frac{\inteq{x}{x}}{\nor{x}^2}\vec{y} + 2\frac{\esc{x}}{\nor{x}^2}(\pvec{\vec{x}}{\vec{y}}).
+		\end{equation*}
+
+	\item Para todos $x,y \in \R^4 \setminus \{0\}$ tais que $xy \in \esc{\R}$, % vale que $\vec{x}=0$ ou $\vec{y}=0$ ou
+	 $\vec{x} \parallel \vec{y}$.
+%	  e
+%		\begin{equation*}
+%		xy = \esc{x}\esc{y} - \nor{\vec{x}}\nor{\vec{y}}.
+%		\end{equation*}
 	\end{enumerate}
 \end{proposition}
 \begin{proof}
@@ -673,9 +790,9 @@ Esses são o produto interno e o produto vetorial usuais em $\R^3$.
 	\item Como $x_0=y_0=0$,
 	\begin{align*}
 	xy =& -(x_1y_1 + x_2y_2 + x_3y_3) \\
-			&+ (x_2y_3-x_3y_2)\bm\ii \\
-			&+ (-x_1y_3+x_3y_1)\bm\jj \\
-			&+ (x_1y_2-x_2y_1)\bm\kk \\
+			&+ (x_2y_3-x_3y_2) \ii \\
+			&+ (-x_1y_3+x_3y_1) \jj \\
+			&+ (x_1y_2-x_2y_1) \kk \\
 		=& - \pesc{\vec{x}}{\vec{y}} + \pvec{\vec{x}}{\vec{y}}.
 	\end{align*}
 
@@ -683,26 +800,18 @@ Esses são o produto interno e o produto vetorial usuais em $\R^3$.
 	\begin{align*}
 	xy &= (\esc{x}+\vec{x})(\esc{y}+\vec{y}) \\
 		&= \esc{x}\esc{y}+\esc{x}\vec{y}+\esc{y}\vec{x}+\vec{x}\vec{y} \\
-		&= \esc{x}\esc{y}+\esc{x}\vec{y}+\esc{y}\vec{x}+(-\inte{\vec{x}}{\vec{y}} + \pvec{\vec{x}}{\vec{y}}) \\
-		&= \big(\esc{x}\esc{y} - \pesc{\vec{x}}{\vec{y}}\big) + \big(\esc{x}\vec{y}+\esc{y}\vec{x}+\pvec{\vec{x}}{\vec{y}} \big).
+		&= \esc{x}\esc{y}+\esc{x}\vec{y}+\esc{y}\vec{x}+(-\pesc{\vec{x}}{\vec{y}} + \pvec{\vec{x}}{\vec{y}}) \\
+		&= (\esc{x}\esc{y} - \pesc{\vec{x}}{\vec{y}}) + (\esc{x}\vec{y}+\esc{y}\vec{x}+\pvec{\vec{x}}{\vec{y}}).
 	\end{align*}
-%em que
-%	\begin{equation*}
-%	\esc{xy} = \esc{x}\esc{y} - \inte{\vec{x}}{\vec{y}}
-%	\end{equation*}
-%é a componente escalar e
-%	\begin{equation*}
-%	\vec{xy} = \esc{x}\vec{y}+\esc{y}\vec{x}+\vec{x} \times \vec{y}
-%	\end{equation*}
-%é a componente vetorial.
 	
 	\item Para todos $x,y \in \R^4$,
 		\begin{align*}
 		xy - yx &= \esc{x}\esc{y} - \pesc{\vec{x}}{\vec{y}}+\esc{x}\vec{y}+\esc{y}\vec{x}+\pvec{\vec{x}}{\vec{y}} \\
 			&- \esc{y}\esc{x} + \pesc{\vec{y}}{\vec{x}}-\esc{y}\vec{x}-\esc{x}\vec{y}-\pvec{\vec{y}}{\vec{x}} \\
-			&=\pvec{\vec{x}}{\vec{y}} - \pvec{\vec{y}}{\vec{x}}.
+			&= \pvec{\vec{x}}{\vec{y}} - \pvec{\vec{y}}{\vec{x}} \\
+			&= 2\pvec{\vec{x}}{\vec{y}}.
 		\end{align*}
-Isso implica que $xy-yx=0$ se, e somente se, $\pvec{\vec{x}}{\vec{y}} - \pvec{\vec{y}}{\vec{x}}=0$, o que ocorre se, e somente se, $\pvec{\vec{x}}{\vec{y}}=0$, que por sua vez é equivalente a $\vec{x} \parallel \vec{y}$.
+Isso implica que $xy-yx=0$ se, e somente se, $\pvec{\vec{x}}{\vec{y}} - \pvec{\vec{y}}{\vec{x}}=0$, o que ocorre se, e somente se, $\pvec{\vec{x}}{\vec{y}}=0$.%, que por sua vez é equivalente a $\vec{x} \parallel \vec{y}$.
 
 	\item Para todo $x \in \R^4 \setminus \{0\}$,
 	\begin{align*}
@@ -719,73 +828,279 @@ e, como $\pvec{\vec{x}}{(-\vec{x})} = 0$, $x\inv x = xx\inv = 1$.
 		x^2 &= \esc{x}\esc{x} - \pesc{\vec{x}}{\vec{x}}+\esc{x}\vec{x}+\esc{x}\vec{x}+\pvec{\vec{x}}{\vec{x}} \\
 			&= \esc{x}^2 - \nor{\vec{x}}^2 + 2\esc{x}\vec{x}.
 		\end{align*}
-Segue que $\esc{x}=0$ e $\nor{\vec{x}}=1$ se, e somente se, $x^2=-1$. \qedhere
+Segue que $\esc{x}=0$ e $\nor{\vec{x}}=1$ se, e somente se, $x^2=-1$.
+
+	\item Para todos $x,y \in \R^4$,
+		\begin{align*}
+		\esc{(xyx\inv)} &= \esc{(xy)}\esc{(x\inv)} - \pesc{\vec{(xy)}}{\vec{(x\inv)}} \\
+			&= (\esc{x}\esc{y} - \pesc{\vec{x}}{\vec{y}})\frac{\esc{x}}{\nor{x}^2} - \pesc{(\esc{x}\vec{y} + \esc{y}\vec{x} + \pvec{\vec{x}}{\vec{y}})}{\frac{(-\vec{x})}{\nor{x}^2}} \\
+			&= \frac{\esc{x}^2\esc{y} - \esc{x}(\pesc{\vec{x}}{\vec{y}}) + \esc{x}\pesc{\vec{y}}{\vec{x}} + \esc{y}\pesc{\vec{x}}{\vec{x}} + \pesc{(\pvec{\vec{x}}{\vec{y}})}{\vec{x}}}{\nor{x}^2} \\
+			&= \frac{\esc{x}^2\esc{y} + \nor{\vec{x}}^2\esc{y}}{\nor{x}^2} \\
+			&= \esc{y}
+		\end{align*}
+e
+		\begin{align*}
+		\vec{(xyx\inv)} &= \esc{(xy)}\vec{(x\inv)} + \esc{(x\inv)}\vec{(xy)} + \pvec{\vec{(xy)}}{\vec{(x\inv)}} \\
+			&= (\esc{x}\esc{y} - \pesc{\vec{x}}{\vec{y}})\frac{(-\vec{x})}{\nor{x}^2} 
+			+ \frac{\esc{x}}{\nor{x}^2}(\esc{x}\vec{y} + \esc{y}\vec{x} + \pvec{\vec{x}}{\vec{y}}) \\
+				&\qquad + \pvec{(\esc{x}\vec{y} + \esc{y}\vec{x} + \pvec{\vec{x}}{\vec{y}})}{\frac{(-\vec{x})}{\nor{x}^2}} \\
+			&= \frac{(\pesc{\vec{x}}{\vec{y}})\vec{x} + \esc{x}^2\vec{y} + \esc{x}(\pvec{\vec{x}}{\vec{y}})}{\nor{x}^2} \\
+				&\qquad - \frac{\esc{x}(\pvec{\vec{y}}{\vec{x})} + \pvec{(\pvec{\vec{x}}{\vec{y}})}{\vec{x}}}{\nor{x}^2} \\
+			&= \frac{(\pesc{\vec{x}}{\vec{y}})\vec{x}+ \esc{x}^2\vec{y} + 2\esc{x}(\pvec{\vec{x}}{\vec{y}}) - (\pesc{\vec{x}}{\vec{x}})\vec{y} + (\pesc{\vec{y}}{\vec{x}})\vec{x}}{\nor{x}^2} \\
+			&= \frac{2(\pesc{\vec{x}}{\vec{y}})\vec{x} + (\esc{x}^2-\nor{\vec{x}}^2)\vec{y} + 2\esc{x}(\pvec{\vec{x}}{\vec{y}})}{\nor{x}^2} \\
+			&= 2\frac{\pesc{\vec{x}}{\vec{y}}}{\nor{x}^2}\vec{x} + \frac{\inteq{x}{x}}{\nor{x}^2}\vec{y} + 2\frac{\esc{x}}{\nor{x}^2}(\pvec{\vec{x}}{\vec{y}}).
+		\end{align*}
+
+Portanto
+		\begin{equation*}
+		xyx\inv = \esc{y} + 2\frac{\pesc{\vec{x}}{\vec{y}}}{\nor{x}^2}\vec{x} + \frac{\inteq{x}{x}}{\nor{x}^2}\vec{y} + 2\frac{\esc{x}}{\nor{x}^2}(\pvec{\vec{x}}{\vec{y}}).
+		\end{equation*}
+
+	\item Sejam $x,y \in \R^4 \setminus \{0\}$ tais que $xy \in \esc{\R}$. Então
+		\begin{equation*}
+		0 = \esc{x}\vec{y}+\esc{y}\vec{x}+\pvec{\vec{x}}{\vec{y}}.
+		\end{equation*}
+	%Se $\vec{x} \parallel \vec{y}$, então $\vec{x} \times \vec{y}=0$ e existe $c \in \R$ tal que $\vec{y}=c\vec{x}$ ou $\vec{x}=c\vec{y}$. Isso significa que a condição anterior se reduz a
+	%	\begin{equation*}
+	%	0 = \esc{x}\vec{y}+\esc{y}\vec{x} = (\esc{x}c+\esc{y})\vec{x}
+	%	\end{equation*}
+	%ou
+	%	\begin{equation*}
+	%	0 = \esc{x}\vec{y}+\esc{y}\vec{x} = (\esc{x}+\esc{y}c)\vec{y},
+	%	\end{equation*}
+	%o que implica que $\vec{x}=\vec{y}=0$ ou $c=-\esc{y}/\esc{x}$ ou $c=-\esc{x}/\esc{y}$.
+	%
+	%Se $\vec{x} \perp \vec{y}$, então $(\vec{x},\vec{y},\vec{x} \times \vec{y})$ é uma base de $\vec{\HH}$
+	%
+	Isso implica que $(\vec{x},\vec{y},\pvec{\vec{x}}{\vec{y}})$ não é uma base de $\vec{\R}^3$, pois caso contrário
+		\begin{equation*}
+		\esc{x}\vec{y}+\esc{y}\vec{x}+\vec{x} \times \vec{y} \neq 0,
+		\end{equation*}
+	já que $(\esc{x},\esc{y},1) \neq (0,0,0)$. Mas a tripla não é base se, e somente se, $\vec{x}=0$ ou $\vec{y}=0$ ou $\pvec{\vec{x}}{\vec{y}}=0$, porque sempre vale $\pesc{\vec{x}}{(\pvec{\vec{x}}{\vec{y}})} = \pesc{\vec{y}}{(\pvec{\vec{x}}{\vec{y}})}=0$. Consideramos cada caso.
+		\begin{itemize}
+		\item ($\vec{x}=0$) Nesse caso, segue que $\esc{x} \neq 0$, pois $x \neq 0$, e que $\vec{x} \times \vec{y}=0$, logo
+			\begin{equation*}
+			0 = \esc{x}\vec{y}.
+			\end{equation*}
+		o que implica que $\vec{y}=0$, portanto $\vec{x} \parallel \vec{y}$ e $x,y \in \esc{\R}$.
+
+		\item ($\vec{y}=0$) Nesse caso, segue que $\esc{y} \neq 0$, pois $y \neq 0$, e que $\vec{x} \times \vec{y}=0$, logo
+			\begin{equation*}
+			0 = \esc{y}\vec{x},
+			\end{equation*}
+		o que implica que $\vec{x}=0$, portanto $\vec{x} \parallel \vec{y}$ e $x,y \in \esc{\R}$.
+
+		\item ($\vec{x} \neq 0$, $\vec{y} \neq 0$ e $\pvec{\vec{x}}{\vec{y}}=0$) Nesse caso, segue que $\vec{x} \parallel \vec{y}$.
+%		 e que
+%			\begin{equation*}
+%			\esc{y}\vec{x} = -\esc{x}\vec{y}.
+%			\end{equation*}
+%		Se $\esc{x} = 0$, então $\esc{y}\vec{x} = 0$, logo $\esc{y} = 0$. Se $\esc{x} \neq 0$, então
+%			\begin{equation*}
+%			\frac{\esc{y}}{\esc{x}}\vec{x} = -\vec{y} \neq 0,
+%			\end{equation*}
+%		logo $\esc{y} \neq 0$.
+		\end{itemize}
+
+%	Nos primeiros dois casos, $\pesc{\vec{x}}{\vec{y}} = 0 = \nor{\vec{x}}\nor{\vec{y}}$, e no terceiro caso, $\pesc{\vec{x}}{\vec{y}}=\nor{\vec{x}}\nor{\vec{y}}$, portanto
+%		\begin{equation*}
+%		xy = \esc{(xy)} = \esc{x}\esc{y} - \nor{\vec{x}}\nor{\vec{y}}.
+%		\qedhere
+%		\end{equation*}
 \end{enumerate}
 \end{proof}
 
 
 
-Analisemos agora um caso específico. Sejam $x,y \in \R^4 \setminus \{0\}$ tais que $xy \in \esc{\R}$. Então
+\subsubsection{Rotações em \ensuremath{\R^3}}
+
+\begin{proposition}
+A função
+	\begin{align*}
+	\func{R}{\S^3}{\SO(3)}{u}{
+		\begin{aligned}[t]
+		\func{R_u}{\vec{\R}^3}{\vec{\R}^3}{x}{uxu\inv}.
+		\end{aligned}
+	}
+	\end{align*}
+é um homomorfismo sobrejetivo de grupos diferenciável e $\nuc(R)=\S^0$.
+\end{proposition}
+\begin{proof}
+A função $R$ é diferenciável porque $R_u(x)$ é um polinômio em cada entrada. Primeiro, vamos mostrar que $R$ de fato está bem definida, ou seja, que, para todo $u \in \S^3$, $R_u \in \SO(3)$. Seja $u \in \S^3$. Pela fórmula de conjugação por quatérnio, temos que, para todo $x \in \vec{\R}^3$,
 	\begin{equation*}
-	0 = \esc{x}\vec{y}+\esc{y}\vec{x}+\pvec{\vec{x}}{\vec{y}}.
+	\esc{(R_u(x))} = \esc{(uxu\inv)} = \esc{x} = 0,
 	\end{equation*}
-%Se $\vec{x} \parallel \vec{y}$, então $\vec{x} \times \vec{y}=0$ e existe $c \in \R$ tal que $\vec{y}=c\vec{x}$ ou $\vec{x}=c\vec{y}$. Isso significa que a condição anterior se reduz a
+portanto $R_u(x) \in \vec{\R}^3$ e então $\fun{R_u}{\vec{\R}^3}{\vec{\R}^3}$. A função $R_u$ é linear, pois, para todos $x,x' \in \vec{\R}^3$ e $c \in \R$, segue da bilinearidade do produto quaterniônico que
+	\begin{equation*}
+	R_u(cx+x') = u(cx+x')u\inv = (cux+ux')u\inv = cuxu\inv + ux'u\inv = cR_u(x) + R_u(x').
+	\end{equation*}
+Isso mostra que $R_u \in \GL(3,\R)$. Além disso, $R_u$ preserva norma, pois
+	\begin{equation*}
+	\nor{R_u(x)} = \nor{uxu\inv} = \nor{u}\nor{x}\nor{u}\inv = \nor{x}.
+	\end{equation*}
+Isso mostra que $R_u \in \OO(3)$. Agora, como $R$ é diferenciável, em particular é contínua, logo, como $\S^3$ é conexo, $R(\S^3)$ é conexo. Isso implica que $R(\S^3) \subseteq \SO(3)$.
+
+Seja $u \in \S^3$ tal que $R_u=\Id$. Então, para todo $x \in \vec{\R}^3$, $uxu\inv = R_u(x) = x$, logo $ux=xu$. Isso ocorre se, e somente se, $\pvec{\vec{u}}{x} = 0$. Como isso vale para todo $x \in \vec{\R}^3$, segue que $\vec{u}=0$, portanto $u=\esc{u} \in \esc{\R}$; como $u \in \S^3$, concluímos que $u \in \S^0 = \{1,-1\}$, ou $\nuc(R) = \S^0$.
+
+A sobrejetividade se dá a seguir mostrando qual é a rotação que $R_u$ representa em $\SO(3)$.
+\end{proof}
+
+Para calcular exatamente qual é a rotação que $R_u$ representa em $\SO(3)$, lembremos que, pela decomposição polar, todo $u \in \S^3$ pode ser escrito como
+	\begin{equation*}
+	u = \cos(\phi) + \sin(\phi)\hat{u} = \ee^{\phi \hat{u}},
+	\end{equation*}
+com $\phi = \cos(\esc{u}) \in \intff{0}{\tau \div 2}$ e $\hat{u} = \frac{\vec{u}}{\nor{\hat{u}}} \in \vec{\S}^2$.
+
+A rotação de $x \in \R^3$ por um ângulo $\theta \in \intff{0}{\tau \div 2}$ em torno de um vetor unitário $\hat{u} \in \S^2$ é dada por
+	\begin{equation*}
+	R^{\theta}_{\hat{u}}(x) = \proj_{\parallel \hat{u}}(x) + \cos(\theta) \proj_{\perp \hat{u}}(x) + \sin(\theta) \pvec{\hat{u}}{x}.
+	\end{equation*}
+%Note que genericamente $(\proj_{\parallel u}(x),\proj_{\perp u}(x),u \times x)$ é uma base de $\R^3$. %se $u$ e $x$ são ...
+Isso ocorre pois, se rotacionamos um vetor $x$ em torno de um eixo $\hat{u}$, a componente de $x$ que é paralela a $\hat{u}$, dada pela projeção $\proj_{\parallel \hat{u}}(x)$ de $x$ em $\hat{u}$, fica constante, não rotaciona pois é paralela ao eixo de rotação, enquanto que a componente de $x$ que é perpendicular a $\hat{u}$, dada pela projeção $\pro_{\perp \hat{u}}(x)$, rotaciona no plano perpendicular a $\hat{u}$, dado pela base $\pro_{\perp \hat{u}}(x)$ e $\pvec{\hat{u}}{x}$, e essa rotação é por um ângulo $\theta$, portanto resultará em $\cos(\theta) \proj_{\perp \hat{u}}(x) + \sin(\theta) \pvec{\hat{u}}{x}$. Um detalhe é que o plano perpendicular é dado por essa base se, e somente se, $\hat{u}$ e $x$ não são paralelos, mas quando eles são paralelos vale $\proj_{\parallel \hat{u}}(x)=x$ e $\proj_{\perp \hat{u}}(x) = \pvec{\hat{u}}{x} = 0$, portanto a fórmula acima ainda vale.
+
+Isso significa que
+	\begin{equation*}
+	R^{\theta}_{\hat{u}} = \proj_{\parallel \hat{u}} + \cos(\theta) \proj_{\perp \hat{u}} + \sin(\theta){ \pvec{\hat{u}}{}} .
+	\end{equation*}
+
+Como
+	\begin{align*}
+	2\sin(\phi)^2 &= 1-\cos(2\phi) \\
+	\cos(\phi)^2 - \sin(\phi)^2 &= \cos(2\phi) \\
+	2\cos(\phi)\sin(\phi) &= \sin(2\phi)
+	\end{align*}
+segue que da fórmula de conjugação por quatérnio que
+	\begin{align*}
+	\ee^{\phi \hat{u}}x\ee^{-\phi \hat{u}} &= 2(\pesc{\vec{u}}{x})\vec{u} + \inteq{u}{u}x + 2\esc{u}(\pvec{\vec{u}}{x}) \\
+		&= 2\sin(\phi)(\pesc{\hat{u}}{x})(\sin(\phi)\hat{u}) + (\cos(\phi)^2-\sin(\phi)^2)x + 2\cos(\phi)\sin(\phi)(\pvec{\hat{u}}{x}) \\
+		&= (1-\cos(2\phi))(\pesc{x}{\hat{u}})\hat{u} + \cos(2\phi)x + \sin(2\phi)(\pvec{\hat{u}}{x}) \\
+		&= (\pesc{x}{\hat{u}})\hat{u} + \cos(2\phi)(x-(\pesc{x}{\hat{u}})\hat{u}) + \sin(2\phi)(\pvec{\hat{u}}{x}) \\
+		&= \proj_{\parallel \hat{u}}(x) + \cos(2\phi)\proj_{\perp \hat{u}}(x) + \sin(2\phi)(x) \\
+		&= R^{2\phi}_{\hat{u}}(x).
+	\end{align*}
+
+Isso mostra que
+	\begin{align*}
+	\func{R}{\S^3}{\SO(3)}{\ee^{\phi \hat{u}}}{
+		\begin{aligned}[t]
+		\func{R^{2\phi}_{\hat{u}}}{\vec{\R}^3}{\vec{\R}^3}{x}{\ee^{\phi \hat{u}}x\ee^{-\phi \hat{u}}}.
+		\end{aligned}
+	}
+	\end{align*}
+
+Como $\nuc(R) = \S^0$, sabemos que $R\inv(R^{\theta}_{\hat{u}}) = \{\ee^{\frac{\theta}{2}\hat{u}},-\ee^{\frac{\theta}{2}\hat{u}}\}$. Podemos achar $-\ee^{\frac{\theta}{2}\hat{u}}$ explicitamente em função de seu ângulo em $\intff{0}{\tau \div 2}$ e eixo de rotação em $\vec{\S}^2$. Como para todo $\phi \in \intff{0}{\tau \div 2}$ vale
+	\begin{align*}
+	-\cos(\phi) &= \cos((\tau \div 2) - \phi) \\
+	\sin(\phi) &= \sin((\tau \div 2) - \phi),
+	\end{align*}
+segue que
+	\begin{align*}
+	-\ee^{\frac{\theta}{2}\hat{u}} &= -(\cos(\theta \div 2) + \sin(\theta \div 2) \hat{u}) \\
+		&= -\cos(\theta \div 2) - \sin(\theta \div 2) \hat{u} \\
+		&= \cos((\tau-\theta) \div 2) + \sin((\tau - \theta) \div 2)(-\hat{u}) \\
+		&= \ee^{\frac{\tau - \theta}{2}(-\hat{u})}.
+	\end{align*}
+Notemos que como $(\tau \div 2) - \phi \in \intff{0}{\tau \div 2}$ e $-\hat{u} \in \vec{\S}^2$, $\ee^{\frac{\tau - \theta}{2}(-\hat{u})}$ é a decomposição polar de $-\ee^{\frac{\theta}{2}\hat{u}}$. Obtemos assim
+	\begin{equation*}
+	R\inv(R^{\theta}_{\hat{u}}) = \{\ee^{\frac{\theta}{2}\hat{u}},-\ee^{\frac{\tau - \theta}{2}(-\hat{u}})\}.
+	\end{equation*}
+
+%Por outro lado, como
+%	\begin{align*}
+%	-\cos(\theta) &= \cos(\theta + (\tau \div 2)) \\
+%	-\sin(\theta) &= \sin(\theta + (\theta \div 2)),
+%	\end{align*}
+%segue que
+%	\begin{align*}
+%	-\ee^{\frac{\theta}{2}\hat{u}} &= -(\cos(\theta \div 2) + \sin(\theta \div 2) \hat{u}) \\
+%		&= -\cos(\theta \div 2) - \sin(\theta \div 2) \hat{u} \\
+%		&= \cos((\theta \div 2) + (\tau \div 2)) + \sin((\theta \div 2) + (\theta \div 2))\hat{u} \\
+%		&= \ee^{\frac{\theta + \tau}{2}\hat{u}},
+%	\end{align*}
+%portanto temos que
 %	\begin{equation*}
-%	0 = \esc{x}\vec{y}+\esc{y}\vec{x} = (\esc{x}c+\esc{y})\vec{x}
+%	R\inv(R^{\theta}_{\hat{u}}) = \{\ee^{\frac{\theta}{2}\hat{u}},-\ee^{\frac{\theta + \tau}{2}\hat{u}}\}.
 %	\end{equation*}
-%ou
-%	\begin{equation*}
-%	0 = \esc{x}\vec{y}+\esc{y}\vec{x} = (\esc{x}+\esc{y}c)\vec{y},
-%	\end{equation*}
-%o que implica que $\vec{x}=\vec{y}=0$ ou $c=-\esc{y}/\esc{x}$ ou $c=-\esc{x}/\esc{y}$.
-%
-%Se $\vec{x} \perp \vec{y}$, então $(\vec{x},\vec{y},\vec{x} \times \vec{y})$ é uma base de $\vec{\HH}$
-%
-Isso implica que $(\vec{x},\vec{y},\pvec{\vec{x}}{\vec{y}})$ não é uma base de $\vec{\R}^3$, pois caso contrário
-	\begin{equation*}
-	\esc{x}\vec{y}+\esc{y}\vec{x}+\vec{x} \times \vec{y} \neq 0,
-	\end{equation*}
-já que $(\esc{x},\esc{y},1) \neq (0,0,0)$. Mas a tripla não é base se, e somente se, $\vec{x}=0$ ou $\vec{y}=0$ ou $\pvec{\vec{x}}{\vec{y}}=0$, porque sempre vale $\pesc{\vec{x}}{(\pvec{\vec{x}}{\vec{y}})} = \pesc{\vec{y}}{(\pvec{\vec{x}}{\vec{y}})}=0$. No primeiro caso, segue que $\vec{x} \times \vec{y}=0$,
-	\begin{equation*}
-	0=\esc{x}\vec{y},
-	\end{equation*}
-e, no segundo caso, analogamente segue que
-	\begin{equation*}
-	0=\esc{y}\vec{x}.
-	\end{equation*}
-No terceiro caso, segue que
-	\begin{equation*}
-	\esc{y}\vec{x} = -\esc{x}\vec{y},
-	\end{equation*}
-e que $\vec{x} \parallel \vec{y}$.
+% MAS nesse caso $(\theta + \tau) \div 2 \in \intff{0}{\tau \div 2}$
 
-Nos primeiros dois casos, $\inte{\vec{x}}{\vec{y}}=0$, logo
+
+
+
+
+As funções $\proj_{\parallel u}$, $\proj_{\perp u}$ e $\pvec{u}{}$ são funções lineares e, na base canônica de $\R^3$, são dadas pelas matrizes
 	\begin{equation*}
-	\esc{(xy)} = \esc{x}\esc{y} - \inte{\vec{x}}{\vec{y}} = \esc{x}\esc{y}.
+	[\proj_{\parallel u}] =
+		\begin{bmatrix}
+			{u_1}^2 & u_1u_2 & u_1u_3 \\
+			u_1u_2 & {u_2}^2 & u_2u_3 \\
+			u_1u_3 & u_2u_3 & {u_3}^2
+		\end{bmatrix},
 	\end{equation*}
-No terceiro caso, $\inte{\vec{x}}{\vec{y}}=\nor{\vec{x}}\nor{\vec{y}}$, logo
 	\begin{equation*}
-	\esc{(xy)} = \esc{x}\esc{y} - \inte{\vec{x}}{\vec{y}} = \esc{x}\esc{y} - \nor{\vec{x}}\nor{\vec{y}}.
+	[\proj_{\perp u}] =
+		\begin{bmatrix}
+			1-{u_1}^2 & -u_1u_2 & -u_1u_3 \\
+			-u_1u_2 & 1-{u_2}^2 & -u_2u_3 \\
+			-u_1u_3 & -u_2u_3 & 1-{u_3}^2
+		\end{bmatrix}
 	\end{equation*}
-Em ambos os casos,
+e
 	\begin{equation*}
-	\esc{(xy)} = \esc{x}\esc{y} - \nor{\vec{x}}\nor{\vec{y}}.
+	[\pvec{u}{}] =
+		\begin{bmatrix}
+			0 & -u_3 & u_2 \\
+			u_3 & 0 & -u_1 \\
+			-u_2 & u_1 & 0
+		\end{bmatrix}.
 	\end{equation*}
 
+Matricialmente, $[R_u]$ é dada por
+	\begin{equation*}
+	\begin{bmatrix}
+			{u_1}^2 & u_1u_2 & u_1u_3 \\ 
+			u_1u_2 & {u_2}^2 & u_2u_3 \\ 
+			u_1u_3 & u_2u_3 & {u_3}^2
+	\end{bmatrix}
+	+\cos(\theta)
+	\begin{bmatrix}
+		1-{u_1}^2 & -u_1u_2 & -u_1u_3 \\ 
+		-u_1u_2 & 1-{u_2}^2 & -u_2u_3 \\ 
+		-u_1u_3 & -u_2u_3 & 1-{u_3}^2
+	\end{bmatrix}
+	+ \sin(\theta)
+	\begin{bmatrix}
+			0 & -u_3 & u_2 \\ 
+			u_3 & 0 & -u_1 \\ 
+			-u_2 & u_1 & 0
+	\end{bmatrix}
+	\end{equation*}
+ou
+	\begin{equation*}
+	(1-\cos(\theta))
+	\begin{bmatrix}
+			{u_1}^2 & u_1u_2 & u_1u_3 \\ 
+			u_1u_2 & {u_2}^2 & u_2u_3 \\ 
+			u_1u_3 & u_2u_3 & {u_3}^2
+	\end{bmatrix}
+	+
+	\cos(\theta)\Id + \sin(\theta)
+	\begin{bmatrix}
+			0 & -u_3 & u_2 \\ 
+			u_3 & 0 & -u_1 \\ 
+			-u_2 & u_1 & 0
+	\end{bmatrix}
+	\end{equation*}
 
 
 
 
-%	$\vec{x} \parallel \vec{y}$ se, e somente se, $\vec{x} \times \vec{y} = 0$.
-
-%	\begin{equation*}
-%	xy = \esc{x}\esc{y} - \inte{\vec{x}}{\vec{y}}+\esc{x}\vec{y}+\esc{y}\vec{x}+\vec{x} \times \vec{y}.
-%	\end{equation*}
 
 
 
 
-\subsubsection{Rotações em \ensuremath{\R^3} por quatérnios}
+\begin{comment}
+
+\subsubsection{Rotações em \ensuremath{\R^3} por quatérnios [Antiga]}
 
 A rotação de $v \in \R^3$ por um ângulo $\theta$ em torno de um vetor unitário $u \in \R^3$ é dada por
 	\begin{equation*}
@@ -827,15 +1142,6 @@ e
 			-u_2 & u_1 & 0
 	\end{bmatrix}
 	\end{equation*}
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1037,3 +1343,74 @@ ou
 			-u_2 & u_1 & 0
 	\end{bmatrix}
 	\end{equation*}
+
+\end{comment}
+
+
+
+
+
+
+
+
+
+
+\subsubsection{Rotações em $\R^4$}
+
+\begin{definition}
+A função
+	\begin{align*}
+	\func{R}{\S^3 \times \S^3}{\SO(4)}{(u,v)}{
+		\begin{aligned}[t]
+		\func{R{u,v}}{\R^4}{\R^4}{x}{uxv\inv}
+		\end{aligned}
+	}
+	\end{align*}
+é um homomorfismo sobrejetivo de grupos tal que $\nuc(R) = (1,1)\S^0$.
+\end{definition}
+\begin{proof}
+A função $R$ é diferenciável porque $R_u(x)$ é um polinômio em cada entrada. Primeiro, vamos mostrar que $R$ de fato está bem definida, ou seja, que, para todos $u,v \in \S^3$, $R_{u,v} \in \SO(4)$. Sejam $u,v \in \S^3$. A função $R_{u,v}$ é linear, pois, para todos $x,x' \in \vec{\R}^3$ e $c \in \R$, segue da bilinearidade do produto quaterniônico que
+	\begin{equation*}
+	R_{u,v}(cx+x') = u(cx+x')v\inv = (cux+ux')v\inv = cuxv\inv + ux'v\inv = cR_{u,v}(x) + R_{u,v}(x').
+	\end{equation*}
+Isso mostra que $R_{u,v} \in \GL(4,\R)$. Além disso, $R_{u,v}$ preserva norma, pois
+	\begin{equation*}
+	\nor{R_{u,v}(x)} = \nor{uxv\inv} = \nor{u}\nor{x}\nor{v}\inv = \nor{x}.
+	\end{equation*}
+Isso mostra que $R_{u,v} \in \OO(4)$. Agora, como $R$ é diferenciável, em particular é contínua, logo, como $\S^3 \times \S^3$ é conexo, $R(\S^3 \times \S^3)$ é conexo. Isso implica que $R(\S^3 \times \S^3) \subseteq \SO(4)$.
+
+Sejam $u,v \in \S^3$ tais que $R_{u,v} = \Id$. Então, para todo $x \in \R^4$, $uxv\inv = R_{u,v}(x) = x$. Em particular, $u1v\inv = 1$, portanto $u=v$ e $R_{u,v}(x) = uxu\inv$. Suponhamos por absurdo que $\vec{u} \neq 0$. Então existiria $\vec{x} \in \vec{\R}^3$ tal que $\pesc{\vec{u}}{\vec{x}} = 0$, de modo que $\{\vec{u},\vec{x},\pvec{\vec{u}}{\vec{x}}\}$ seria uma base de $\vec{\R}^3$. Pela fórmula de conjugação por quatérnio, seguiria que
+	\begin{equation*}
+	\vec{u} = u\vec{u}u\inv = 2(\pesc{\vec{u}}{\vec{u}})\vec{u} + \inteq{u}{u}\vec{u} + 2 \esc{u}(\pvec{\vec{u}}{\vec{u}}) = (2+\inteq{u}{u})\vec{u},
+	\end{equation*}
+portanto $\inteq{u}{u} = -1$, e que
+	\begin{equation*}
+	\vec{x} = u\vec{x}u\inv = 2(\pesc{\vec{u}}{\vec{x}})\vec{u} + \inteq{u}{u}\vec{x} + 2 \esc{u}(\pvec{\vec{u}}{\vec{x}}) = \inteq{u}{u}\vec{x} + 2\esc{u}(\pvec{\vec{u}}{\vec{x}}).
+	\end{equation*}
+portanto $\inteq{u}{u}=1$, o que é uma contradição. Isso mostra que $\vec{u} = 0$, portanto que $u = \esc{u} \in \esc{\R}$; como $u \in \S^3$, concluímos que $u \in \S^0$, ou seja, $\nuc{R} = \{(1,1),(-1,-1)\} = (1,1)\S^0$.
+\end{proof}
+
+
+
+\begin{comment}
+
+Lembremos que, pela decomposição polar, todo $u \in \S^3$ pode ser escrito como
+	\begin{equation*}
+	u = \cos(\phi) + \sin(\phi)\hat{u} = \ee^{\phi \hat{u}},
+	\end{equation*}
+com $\phi = \cos(\esc{u}) \in \intff{0}{\tau \div 2}$ e $\hat{u} = \frac{\vec{u}}{\nor{\hat{u}}} \in \vec{\S}^2$.
+
+
+
+
+
+Definimos a função
+	\begin{align*}
+	\func{R}{\S^3 \times \S^3}{\SO(3)}{(u,u')}{
+		\begin{aligned}[t]
+		\func{R^{2\phi}_{\hat{u}}}{\vec{\R}^3}{\vec{\R}^3}{x}{\ee^{\phi \hat{u}}x\ee^{-\phi \hat{u}}}
+		\end{aligned}
+	}
+	\end{align*}
+
+\end{comment}
