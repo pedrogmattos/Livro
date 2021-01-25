@@ -1560,11 +1560,13 @@ Uma \emph{álgebra unitária normada} é uma álgebra normada $\mathbb A = (\bm 
 	\begin{equation*}
 	\nor{1} = 1.
 	\end{equation*}
-Uma \emph{álgebra invertível normada} é uma álgebra normada tal que $(A,\cdot,\inv,1)$ é uma álgebra unitária invertível e, para todos $a \in A \setminus \{0\}$,
+Uma \emph{álgebra invertível normada} é uma álgebra unitária normada $\mathbb A = (\bm A,\nor{\var})$ tal que $(A,\cdot,\inv,1)$ é uma álgebra invertível e, para todos $a \in A \setminus \{0\}$,
 	\begin{equation*}
 	\nor{a\inv} = \nor{a}\inv.
 	\end{equation*}
 \end{definition}
+
+Na proposição a seguir, usamos a associatividade do produto, mas de fato bastaria que o produto fosse alternativo, como no caso dos octônios.
 
 \begin{exercise}
 Seja $\mathbb A = (\bm A,\nor{\var})$ uma álgebra (associativa) invertível normada. Para todos $a,a' \in A$,
@@ -1573,11 +1575,11 @@ Seja $\mathbb A = (\bm A,\nor{\var})$ uma álgebra (associativa) invertível nor
 	\end{equation*}
 \end{exercise}
 \begin{proof}
-Se $a=0$ ou $a'=0$, então $aa' = 0$, e também $\nor{a}=0$ ou $\nor{a'}=0$, portanto $\nor{a}\nor{a'}=0$, portanto
+Se $a=0$, então $aa' = 0$ e $\nor{a}=0$, logo $\nor{a}\nor{a'}=0$, o que implica
 	\begin{equation*}
 	\nor{aa'} = \nor{0} = 0 = \nor{a}\nor{a'}.
 	\end{equation*}
-Se $a,a' \in A \setminus \{0\}$,
+Se $a \in A \setminus \{0\}$,
 	\begin{align*}
 	\nor{a}\nor{a'} &= \nor{a}\nor{(a\inv a)a'} \\
 		&= \nor{a}\nor{a\inv (aa')} \\
@@ -1605,18 +1607,18 @@ Consideremos uma álgebra normada unitária completa $\mathbb A$. Para todo $x \
 	\end{equation*}
 Como a álgebra é completa, isso significa que $e_n(x)$ converge para um elemento
 	\begin{equation*}
-	\ee^{x} :=: \exp(x) := \lim_{n \to \infty} e_n(x) = \sum_{n \in \N} \frac{x^n}{n!}.
+	\ee^{x} := \lim_{n \to \infty} e_n(x) = \sum_{n \in \N} \frac{x^n}{n!}.
 	\end{equation*}
 
 \begin{definition}
-Seja $\mathbb A$ uma álgebra normada unitária completa. A \emph{função exponencial} em $\mathbb A$ é a função
+Seja $\mathbb A$ uma álgebra unitária normada completa. A \emph{função exponencial} em $\mathbb A$ é a função
 	\begin{align*}
-	\func{\exp}{A}{A}{x}{\sum_{n \in \N} \frac{x^n}{n!}.}
+	\func{\exp}{A}{A}{x}{\ee^{x} := \sum_{n \in \N} \frac{x^n}{n!}.}
 	\end{align*}
 \end{definition}
 
 \begin{proposition}
-Seja $\mathbb A$ uma álgebra normada unitária completa.
+Seja $\mathbb A$ uma álgebra unitária normada completa.
 	\begin{enumerate}
 	\item Para todo $x \in A$, $\nor{\exp(x)} \leq \ee^{\nor{x}}$;
 	\item A função exponencial $\exp\colon A \to A$ é contínua;
