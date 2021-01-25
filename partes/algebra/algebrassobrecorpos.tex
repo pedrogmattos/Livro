@@ -479,21 +479,36 @@ Isso mostra que $R_u \in \OO(2)$. Agora, como $R$ é diferenciável, em particul
 
 Seja $u \in \S^3$ tal que $R_u = \Id$. Então, para todo $x \in \R^2$, $ux = R_u(x) = x$. Em particular, $u = u1 = 1$, o que mostra que $R$ é injetiva.
 
-Seja $R^\theta \in \SO(2)$ a rotação por $\theta \in \intfa{0}{\tau}$. Se tomamos
+Para a sobrejetividade, primeiro notamos que, como $R(\S^1) \subseteq \SO(2)$ é compacto, pois $\S^1$ é compacto, e $\SO(2)$ é separado\footnote{Hausdorff}, segue que $R(\S^1)$ é fechado. Além disso, $R$ é difeomorfismo local, pois o núcleo $\{1\}$ é um subgrupo discreto (portanto tem álgebra de Lie trivial), logo $R$ é difeomorfismo local na identidade, e portanto em todo $\S^1$, já que um morfismo de grupos diferenciáveis\footnote{Grupos de lie} tem posto constante. Assim, segue que $R(\S^1) \subseteq \SO(2)$ é aberto. Como $\SO(2)$ é conexo, segue que $R(\S^1) = \SO(2)$ e a inversa de $R$ é diferenciável.
+\end{proof}
+
+Para calcular exatamente qual é a rotação que $R_u$ representa em $\SO(2)$, lembremos que, pela decomposição polar de $\R^2$, todo $u \in \S^1$ pode ser escrito como
 	\begin{equation*}
 	\ee^{\theta\ii} = \cos(\theta) + \sin(\theta)\ii,
 	\end{equation*}
-segue que, para todo $x \in \R^2$,
+em que $\theta \in \intff{0}{\tau}$.
+
+A rotação de $x \in \R^2$ por um ângulo $\theta \in \intfa{0}{\tau}$ (em torno da origem) é dada por
+	\begin{equation*}
+	R^\theta = (\cos(\theta)x_0 - \sin(\theta)x_1) + (\sin(\theta)x_0 + \cos(\theta)x_1) \ii.
+	\end{equation*}
+
+Assim segue que, para todo $x \in \R^2$,
 	\begin{align*}
 	R_{\ee^{\theta \ii}}(x) &= (\cos(\theta) + \sin(\theta)\ii)(x_0 + x_1 \ii) \\
 		&= (\cos(\theta)x_0 - \sin(\theta)x_1) + (\sin(\theta)x_0 + \cos(\theta)x_1) \ii \\
 		&= R^\theta(x),
 	\end{align*}
-portanto $R(\ee^{\theta \ii}) = R^{\theta}$, o que mostra que $R$ é sobrejetiva. A inversa de $R$ é claramente diferenciável.
-\end{proof}
+portanto $R(\ee^{\theta \ii}) = R^{\theta}$.
 
-
-
+Isso mostra que
+	\begin{align*}
+	\func{R}{\S^1}{\SO(2)}{\ee^{\theta \ii}}{
+		\begin{aligned}[t]
+			\func{R^{\theta}}{\R^2}{\R^2}{x}{\ee^{\theta \ii} x}.
+		\end{aligned}
+	}
+	\end{align*}
 
 
 
@@ -501,9 +516,9 @@ portanto $R(\ee^{\theta \ii}) = R^{\theta}$, o que mostra que $R$ é sobrejetiva
 
 \subsubsection{Produto quaterniônico}
 
-Consideremos o espaço linear $\R^4$ com a norma canônica
+Consideremos o espaço linear $\R^4$ com a $2$-norma
 	\begin{align*}
-	\func{\nor{\var}}{\R^4}{\R^4}{x}{({x_0}^2+{x_1}^2+{x_2}^2+{x_3}^2+)^{\frac{1}{2}}}.
+	\func{\nor{\var}}{\R^4}{\R^4}{x}{({x_0}^2+{x_1}^2+{x_2}^2+{x_3}^2)^{\frac{1}{2}}}.
 	\end{align*}
 
 Denotemos a base canônica por $\bm 1 := (1,0,0,0)$, $\ii := (0,1,0,0)$, $\jj := (0,0,1,0)$ e $\kk := (0,0,0,1)$. Em geral, por não haver ambiguidade, denotaremos $\bm 1$ simplesmente por $1$.
@@ -576,9 +591,7 @@ Dessas relações, deduzem-se
 	\ii\jj = -\jj\ii = \kk, \qquad \jj\kk = -\kk\jj = \ii, \qquad \kk\ii = -\ii\kk = \jj.
 	\end{equation*}
 
-De fato, em vez da expressão explícita para $\times$ em termos das entradas de $x$ e $y$, poderíamos somente definir o produto entre os elementos de uma base, no caso $\{1,\ii, \jj, \kk\}$, e o produto se estenderia linearmente. Essa definição seria dada como nas relações acima.
-
-Com essas relações e representando os elementos $x \in \R^4$ como
+De fato, em vez da expressão explícita para $\times$ em termos das entradas de $x$ e $y$, poderíamos somente definir o produto entre os elementos de uma base, no caso $\{1,\ii, \jj, \kk\}$, e o produto se estenderia linearmente. Essa definição seria dada como nas relações acima. Com essas relações e representando os elementos $x \in \R^4$ como
 	\begin{equation*}
 	x = x_0 + x_1 \ii + x_2 \jj + x_3 \kk,
 	\end{equation*}
@@ -643,8 +656,8 @@ Seja $x \in \R^4$. O \emph{conjugado} de $x$ é
 Seja $x \in \R^4$.
 	\begin{enumerate}
 	\item $\nor{x}^2 = \abs{\esc{x}}^2 + \nor{\vec{x}}^2$;
-	\item $\conju{x} = -\frac{1}{2}(x + \ii x \ii + \jj x \jj + \kk x \kk)$;
-	\item $\nor{x}^2 = x\conju{x}$.
+	\item $\nor{x}^2 = x\conju{x}$;
+	\item $\conju{x} = -\frac{1}{2}(x + \ii x \ii + \jj x \jj + \kk x \kk)$.
 	\end{enumerate}
 \end{exercise}
 
@@ -725,11 +738,11 @@ O produto interno quaterniônico difere do produto interno usual em $\R^4$, mas 
 		\begin{enumerate}
 		\item $\pesc{(\pvec{\vec{x}}{\vec{y}})}{\vec{x}} = \pesc{(\pvec{\vec{x}}{\vec{y}})}{\vec{y}} = 0$;
 		
-		\item $\pesc{(\pvec{\vec{x}}{\vec{y}})}{(\pvec{\vec{x}}{\vec{y}})} =
-				\begin{vmatrix}
-				\pesc{\vec{x}}{\vec{x}} & \pesc{\vec{x}}{\vec{y}} \\ 
+		\item $\pesc{(\pvec{\vec{x}}{\vec{y}})}{(\pvec{\vec{x}}{\vec{y}})} = \det
+				\begin{bmatrix}
+				\pesc{\vec{x}}{\vec{x}} & \pesc{\vec{x}}{\vec{y}} \\
 				\pesc{\vec{y}}{\vec{x}} & \pesc{\vec{y}}{\vec{y}}
-				\end{vmatrix}$.
+				\end{bmatrix}$.
 		\end{enumerate}
 	
 	\item Para todos $\vec{x},\vec{y},\vec{z} \in \vec{\R}^3$,
@@ -942,8 +955,14 @@ Isso mostra que $R_u \in \OO(3)$. Agora, como $R$ é diferenciável, em particul
 
 Seja $u \in \S^3$ tal que $R_u=\Id$. Então, para todo $x \in \vec{\R}^3$, $uxu\inv = R_u(x) = x$, logo $ux=xu$. Isso ocorre se, e somente se, $\pvec{\vec{u}}{x} = 0$. Como isso vale para todo $x \in \vec{\R}^3$, segue que $\vec{u}=0$, portanto $u=\esc{u} \in \esc{\R}$; como $u \in \S^3$, concluímos que $u \in \S^0 = \{1,-1\}$, ou $\nuc(R) = \S^0$.
 
-A sobrejetividade se dá a seguir mostrando qual é a rotação que $R_u$ representa em $\SO(3)$.
+%A sobrejetividade se dá a seguir mostrando qual é a rotação que $R_u$ representa em $\SO(3)$.
+Para a sobrejetividade, primeiro notamos que, como $R(\S^3) \subseteq \SO(3)$ é compacto, pois $\S^3$ é compacto, e $\SO(3)$ é separado\footnote{Hausdorff}, segue que $R(\S^3)$ é fechado. Além disso, $R$ é difeomorfismo local, pois o núcleo $\S^0$ é um subgrupo discreto (portanto tem álgebra de Lie trivial), logo $R$ é difeomorfismo local na identidade, e portanto em todo $\S^3$, já que um morfismo de grupos diferenciáveis\footnote{Grupos de lie} tem posto constante. Assim, segue que $R(\S^3) \subseteq \SO(3)$ é aberto. Como $\SO(3)$ é conexo, segue que $R(\S^3) = \SO(3)$.
 \end{proof}
+
+Em particular, obtemos desse recobrimento duplo que
+	\begin{equation*}
+	\quo{\S^3}{\S^0} \simeq \SO(3).
+	\end{equation*}
 
 Para calcular exatamente qual é a rotação que $R_u$ representa em $\SO(3)$, lembremos que, pela decomposição polar, todo $u \in \S^3$ pode ser escrito como
 	\begin{equation*}
@@ -951,7 +970,7 @@ Para calcular exatamente qual é a rotação que $R_u$ representa em $\SO(3)$, l
 	\end{equation*}
 com $\phi = \cos(\esc{u}) \in \intff{0}{\tau \div 2}$ e $\hat{u} = \frac{\vec{u}}{\nor{\hat{u}}} \in \vec{\S}^2$.
 
-A rotação de $x \in \R^3$ por um ângulo $\theta \in \intff{0}{\tau \div 2}$ em torno de um vetor unitário $\hat{u} \in \S^2$ é dada por
+A rotação de $x \in \R^3$ por um ângulo $\theta \in \intff{0}{\tau}$ em torno de um vetor unitário $\hat{u} \in \S^2$ é dada por
 	\begin{equation*}
 	R^{\theta}_{\hat{u}}(x) = \proj_{\parallel \hat{u}}(x) + \cos(\theta) \proj_{\perp \hat{u}}(x) + \sin(\theta) \pvec{\hat{u}}{x}.
 	\end{equation*}
@@ -1027,7 +1046,7 @@ Notemos que como $(\tau \div 2) - \phi \in \intff{0}{\tau \div 2}$ e $-\hat{u} \
 
 
 
-As funções $\proj_{\parallel u}$, $\proj_{\perp u}$ e $\pvec{u}{}$ são funções lineares e, na base canônica de $\R^3$, são dadas pelas matrizes
+As funções $\proj_{\parallel u}$, $\proj_{\perp u}$ e $\pvec{u\!}{}$ são funções lineares e, na base canônica de $\R^3$, são dadas pelas matrizes
 	\begin{equation*}
 	[\proj_{\parallel u}] =
 		\begin{bmatrix}
@@ -1046,7 +1065,7 @@ As funções $\proj_{\parallel u}$, $\proj_{\perp u}$ e $\pvec{u}{}$ são funç�
 	\end{equation*}
 e
 	\begin{equation*}
-	[\pvec{u}{}] =
+	[\pvec{u\!}{}] =
 		\begin{bmatrix}
 			0 & -u_3 & u_2 \\
 			u_3 & 0 & -u_1 \\
@@ -1388,6 +1407,8 @@ portanto $\inteq{u}{u} = -1$, e que
 	\vec{x} = u\vec{x}u\inv = 2(\pesc{\vec{u}}{\vec{x}})\vec{u} + \inteq{u}{u}\vec{x} + 2 \esc{u}(\pvec{\vec{u}}{\vec{x}}) = \inteq{u}{u}\vec{x} + 2\esc{u}(\pvec{\vec{u}}{\vec{x}}).
 	\end{equation*}
 portanto $\inteq{u}{u}=1$, o que é uma contradição. Isso mostra que $\vec{u} = 0$, portanto que $u = \esc{u} \in \esc{\R}$; como $u \in \S^3$, concluímos que $u \in \S^0$, ou seja, $\nuc{R} = \{(1,1),(-1,-1)\} = (1,1)\S^0$.
+
+Para a sobrejetividade, primeiro notamos que, como $R(\S^3 \times \S^3) \subseteq \SO(4)$ é compacto, pois $\S^3 \times \S^3$ é compacto, e $\SO(4)$ é separado\footnote{Hausdorff}, segue que $R(\S^3 \times \S^3)$ é fechado. Além disso, $R$ é difeomorfismo local, pois o núcleo $(1,1)\S^0$ é um subgrupo discreto (portanto tem álgebra de Lie trivial), logo $R$ é difeomorfismo local na identidade, e portanto em todo $\S^3 \times \S^3$, já que um morfismo de grupos diferenciáveis\footnote{Grupos de lie} tem posto constante. Assim, segue que $R(\S^3 \times \S^3) \subseteq \SO(4)$ é aberto. Como $\SO(4)$ é conexo, segue que $R(\S^3 \times \S^3) = \SO(4)$.
 \end{proof}
 
 
