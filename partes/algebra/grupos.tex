@@ -378,7 +378,7 @@ Para simplificar as contas, usaremos a notação $[g]=gN$ quando conveniente.
 	\end{equation*}
 (identidade) Seja $g \in G$. Então
 	\begin{equation*}
-	[1][g] = [1 g] = [g] = [g\id] = [g][1].
+	[1][g] = [1 g] = [g] = [g 1] = [g][1].
 	\end{equation*}
 (Invertibilidade) Seja $g \in G$. Então
 	\begin{equation*}
@@ -614,7 +614,7 @@ Seja $(\bm{G_i})_{i \in I}$ uma família de grupos. Então o produto $\prod_{i \
 		\end{equation*}
 	(Identidade) Para todo $g=(g_i)_{i \in I} \in G$,
 		\begin{equation*}
-		1 g = (1_ig_i)_{i \in I} = (g_i)_{i \in I} = g = (g_i)_{i \in I} =(g_i\id_i)_{i \in I} = g\id.
+		1 g = (1_ig_i)_{i \in I} = (g_i)_{i \in I} = g = (g_i)_{i \in I} =(g_i\id_i)_{i \in I} = g 1.
 		\end{equation*}
 	(Invertibilidade) Seja $g \in G$. Então
 	\begin{equation*}
@@ -1014,7 +1014,7 @@ Sejam $\bm G$ e $\bm H$ grupos e $A\colon \bm G \age \bm H$ uma ação do grupo 
 \subsection{Grupo simples e subgrupo normal maximal}
 
 \begin{definition}
-Um \emph{grupo simples} é um grupo não-trivial $\bm G$ cujos únicos subgrupos normais são $\bm{\{\id\}}$ e $\bm G$.
+Um \emph{grupo simples} é um grupo não-trivial $\bm G$ cujos únicos subgrupos normais são $\bm{\{1\}}$ e $\bm G$.
 \end{definition}
 
 \begin{definition}
@@ -1035,7 +1035,7 @@ Sejam $\bm G$ um grupo e $\bm M \ide \bm G$ um subgrupo normal. Então $\bm M$ �
 	\func{\pi}{G}{\quo{G}{M}}{g}{gM}.
 	\end{align*}
 	\begin{enumerate}
-		\item [($\Rightarrow$)] Suponhamos que $\bm M$ é maximal. Então $\bm M$ é um subgrupo próprio, o implica que $\bm{G/M}$ é não-trivial. Seja $\bm N \ide \bm{G/M}$. Sabemos que $\bm{\pi^{-1}(N)} \ide \bm G$ (\ref{alge:prop.gru.hominv}). Como $[e] \in N$, então $\pi^{-1}(\id) \subseteq \pi^{-1}(N)$. Notando que $\pi^{-1}([\id])=\nuc(\pi) = M$, segue que $M \subseteq \pi^{-1}(N)$. Como $\bm M$ é maximal, segue que $\pi^{-1}(N) = N$ ou $\pi^{-1}(N) = G$. Notemos que $N=\pi(\pi^{-1}(N))$, pois $\pi$ é sobrejetiva. No primeiro caso, $N = \pi(\pi^{-1}(N)) = \pi(M) = \{[\id]\}$. No segundo caso, $N = \pi(\pi^{-1}(N)) = \pi(G) = G/M$. Portanto $\bm{G/M}$ é simples.
+		\item [($\Rightarrow$)] Suponhamos que $\bm M$ é maximal. Então $\bm M$ é um subgrupo próprio, o implica que $\bm{G/M}$ é não-trivial. Seja $\bm N \ide \bm{G/M}$. Sabemos que $\bm{\pi^{-1}(N)} \ide \bm G$ (\ref{alge:prop.gru.hominv}). Como $[e] \in N$, então $\pi^{-1}(1) \subseteq \pi^{-1}(N)$. Notando que $\pi^{-1}([1])=\nuc(\pi) = M$, segue que $M \subseteq \pi^{-1}(N)$. Como $\bm M$ é maximal, segue que $\pi^{-1}(N) = N$ ou $\pi^{-1}(N) = G$. Notemos que $N=\pi(\pi^{-1}(N))$, pois $\pi$ é sobrejetiva. No primeiro caso, $N = \pi(\pi^{-1}(N)) = \pi(M) = \{[1]\}$. No segundo caso, $N = \pi(\pi^{-1}(N)) = \pi(G) = G/M$. Portanto $\bm{G/M}$ é simples.
 		
 		\item [($\Leftarrow$)] Suponhamos que $\bm{G/M}$ é simples. Seja $\bm N \ide \bm G$ tal que $M \subseteq N$. Como $\pi$ é homomorfismo de grupos sobrejetivo, segue que $\pi(N) \ide \bm{G/M}$ (\ref{alge:prop.gru.hom}). Como $\bm{G/M}$ é simples, então $\pi(N) = \{[e]\}$ ou $\pi(N) = G/M$. No primeiro caso, $N = \nuc(\pi) = M$. No segundo caso, $N = \pi^{-1}(\pi(N)) = \pi^{-1}(N) = G$. Logo $\bm M$ é maximal.
 	\end{enumerate}
@@ -1064,14 +1064,14 @@ Então $P$ tem elemento maximal.
 \begin{definition}
 Seja $\bm G$ um grupo. Uma \emph{sequência subnormal} de $\bm G$ é uma sequência finita $(\bm{N_i})_{i \in [n]}$ de subgrupos de $\bm G$ que satisfaz
 	\begin{equation*}
-	\bm{\{\id\}} = \bm{N_0} \ide \cdots \ide \bm{N_{n-1}} = \bm G.
+	\bm{\{1\}} = \bm{N_0} \ide \cdots \ide \bm{N_{n-1}} = \bm G.
 	\end{equation*}
 O grupo $\bm{N_{i+1}/N_i}$ é o $i$-ésimo \emph{grupo fator} da sequência.
 Uma \emph{sequência normal} é uma sequência subnormal em que, para todo $i \in [n]$, $\bm{N_i} \ide \bm G$.
 
 Uma sequência subnormal \emph{estrita} de $\bm G$ é uma sequência subnormal $(\bm{N_i})_{i \in [n]}$ de $\bm G$ que satisfaz
 	\begin{equation*}
-	\bm{\{\id\}} = \bm{N_0} \idepro \cdots \idepro \bm{N_{n-1}} = \bm G.
+	\bm{\{1\}} = \bm{N_0} \idepro \cdots \idepro \bm{N_{n-1}} = \bm G.
 	\end{equation*}
 	
 O \emph{comprimento} de uma sequência subnormal estrita é o número $n$.
