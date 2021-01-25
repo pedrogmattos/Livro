@@ -1549,16 +1549,49 @@ segue que
 
 \section{Álgebras normadas}
 
+Em geral, álgebra são definidas como espaços lineares com um produto bilinear associativo, e nós usaremos a propriedade de associatividade na grande maioria dos casos. No entanto, a propriedade de associatividade é às vezes dispensável, ou não vale (como no caso dos octônios), e por isso ressaltamos abaixo que as definições ainda valem sem a hipótese de associatividade.
+
 \begin{definition}
-Uma \emph{álgebra normada} é um par $\mathbb A = (\bm A,\nor{\var})$ em que $\bm A = (A,\cdot)$ é uma álgebra sobre um corpo $\bm C \subseteq \C$ e $\nor{\var}\colon A \to \R$ é uma norma em $\bm A$ satisfazendo, para todos $a,a' \in A$,
+Uma \emph{álgebra (associativa) normada} é um par $\mathbb A = (\bm A,\nor{\var})$ em que $\bm A = (A,\cdot)$ é uma álgebra (associativa) sobre um corpo $\bm C \subseteq \C$ e $\nor{\var}\colon A \to \R$ é uma norma em $\bm A$ satisfazendo, para todos $a,a' \in A$,
 	\begin{equation*}
-	\nor{a \cdot a'} \leq \nor{a}\nor{a'};
+	\nor{aa'} \leq \nor{a}\nor{a'};
 	\end{equation*}
-Uma \emph{álgebra normada unitária} é uma álgebra normada $\mathbb A = (\bm A,\nor{\var})$ tal que $\bm A = (A,\cdot,1)$ é uma álgebra unitária e
+Uma \emph{álgebra unitária normada} é uma álgebra normada $\mathbb A = (\bm A,\nor{\var})$ tal que $\bm A = (A,\cdot,1)$ é uma álgebra unitária e
 	\begin{equation*}
 	\nor{1} = 1.
 	\end{equation*}
+Uma \emph{álgebra invertível normada} é uma álgebra normada tal que $(A,\cdot,\inv,1)$ é uma álgebra unitária invertível e, para todos $a \in A \setminus \{0\}$,
+	\begin{equation*}
+	\nor{a\inv} = \nor{a}\inv.
+	\end{equation*}
 \end{definition}
+
+\begin{exercise}
+Seja $\mathbb A = (\bm A,\nor{\var})$ uma álgebra (associativa) invertível normada. Para todos $a,a' \in A$,
+	\begin{equation*}
+	\nor{aa'} = \nor{a}\nor{a'}.
+	\end{equation*}
+\end{exercise}
+\begin{proof}
+Se $a=0$ ou $a'=0$, então $aa' = 0$, e também $\nor{a}=0$ ou $\nor{a'}=0$, portanto $\nor{a}\nor{a'}=0$, portanto
+	\begin{equation*}
+	\nor{aa'} = \nor{0} = 0 = \nor{a}\nor{a'}.
+	\end{equation*}
+Se $a,a' \in A \setminus \{0\}$,
+	\begin{align*}
+	\nor{a}\nor{a'} &= \nor{a}\nor{(a\inv a)a'} \\
+		&= \nor{a}\nor{a\inv (aa')} \\
+		&\leq \nor{a}\nor{a\inv} \nor{aa'} \\
+		&= \nor{a}\nor{a}\inv \nor{aa'} \\
+		&= \nor{aa'}.
+	\end{align*}
+Como vale $\nor{aa'} \leq \nor{a}\nor{a'}$, concluímos que
+	\begin{equation*}
+	\nor{aa'} = \nor{a}\nor{a'}.
+	\qedhere
+	\end{equation*}
+\end{proof}
+
 
 \subsection{Função exponencial}
 
