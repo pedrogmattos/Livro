@@ -431,6 +431,15 @@
 	\newcommand{\id}{\textsc{i}}
 	\renewcommand{\id}{1}
 
+	% Conjugação por elemento do grupo
+	\newcommand{\con}{
+		\mathord{
+			\mathpalette\superimpose{
+				{\mkern3mu\times}{\times\mkern3mu}
+			}
+		}
+	}
+
 	% Grupos normais, análogo ao ideal
 	\newcommand{\ide}{\mathrel{\unlhd}}
 	\newcommand{\idepro}{\mathrel{\lhd}}
