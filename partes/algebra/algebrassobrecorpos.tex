@@ -208,7 +208,7 @@ As três propriedades de $\fun{\col{\var}{\var}}{A \times A}{A}$ são equivalent
 		\begin{equation*}
 		\col{a}{ca'+a''} = c\col{a}{a'} + \col{a}{a''};
 		\end{equation*}
-	\item (Alternância) Para todo $a' \in A$,
+	\item (Alternância) Para todo $a \in A$,
 		\begin{equation*}
 		\col{a}{a} = 0;
 		\end{equation*}
@@ -224,28 +224,33 @@ Nesse caso em que a função adjunta é sempre uma derivação, pode-se também 
 	\end{align*}
 e a \emph{representação adjunta} será a função
 	\begin{align*}
-	\func{\ad{\var}}{A}{\lin(A,A)}{a}{
+	\func{\ad{\var}}{A}{\lin(A)}{a}{
 		\begin{aligned}[t]
-		\func{\ad{a}}{A}{A}{a'}{\col{a}{a'}}.
+		\func{\ad{a}}{A}{A}{a'}{\col{a}{a'}},
 		\end{aligned}
 	}
 	\end{align*}
+em que $\lin(A) = \lin(A,A)$ é o espaço das funções lineares de $A$ para $A$.
 
-
-Consideremos, agora, o conjunto $\Der(A)$ das derivações em uma álgebra associativa $(\bm A, \cdot)$. O espaço $\Der(A)$ é um subespaço linear de $\lin(A,A)$. Para mostrar isso, mostraremos que $\Der(A)$ é fechado pela soma e pelo produto por escalar pontuais. Soma: para todas derivações $D,D' \in \Der(A)$, a soma $D+D'$ é uma função linear, pois $D$ e $D'$ são lineares, portanto basta mostrar que ela é uma derivação. Para todos $a,a' \in A$,
+Consideremos, agora, o conjunto $\Der(A)$ das derivações em uma álgebra associativa $(\bm A, \cdot)$. O espaço $\Der(A)$ é um subespaço linear de $\lin(A)$. Para mostrar isso, mostraremos que $\Der(A)$ é fechado pela soma e pelo produto por escalar pontuais.
+\begin{itemize}
+\item (Soma) Para todas derivações $D,D' \in \Der(A)$, a soma $D+D'$ é uma função linear, pois $D$ e $D'$ são lineares, portanto basta mostrar que ela é uma derivação. Para todos $a,a' \in A$,
 	\begin{align*}
 	(D+D')(aa') &= D(aa') + D'(aa') \\
 		&= D(a)a' + aD(a') + D'(a)a' + aD'(a') \\
 		&= (D(a)+D'(a))a' + a(D(a')+D'(a')) \\
 		&= (D+D')(a)a' + a(D+D')(a').
 	\end{align*}
-portanto $D+D'$ é uma derivação. Produto: para toda derivação $D \in \Der(A)$ e escalar $c \in C$, o produto $cD$ é linear, pois $D$ é linear, portanto basta mostrar que ele é uma derivação. Para todos $a,a' \in A$,
+portanto $D+D'$ é uma derivação.
+
+\item (Produto) Para toda derivação $D \in \Der(A)$ e escalar $c \in C$, o produto $cD$ é linear, pois $D$ é linear, portanto basta mostrar que ele é uma derivação. Para todos $a,a' \in A$,
 	\begin{equation*}
 	(cD)(aa') = c(D(aa')) = c(D(a)a' + aD(a')) = (cD)(a)a' + a(cD)(a'),
 	\end{equation*}
 portanto $cD$ é uma derivação. Isso mostra que $\Der(A)$ é subespaço linear de $\lin(A,A)$.
+\end{itemize}
 
-No entanto, $\Der(A)$ não é uma subálgebra de $\lin(A,A)$ com o produto de composição de funções, pois, para todos $D,D' \in \Der(A)$ e $a,a' \in A$,
+No entanto, $\Der(A)$ não é uma subálgebra de $\lin(A)$ com o produto de composição de funções, pois, para todos $D,D' \in \Der(A)$ e $a,a' \in A$,
 %	\begin{align*}
 %	(DD')(aa') &= D(aa')D'(aa') \\
 %		&= (D(a)a'+aD(a'))(D'(a)a'+aD'(a')) \\
@@ -278,11 +283,11 @@ podemos definir o produto $\col{D}{D'} := D \circ D' - D' \circ D$ de modo a obt
 		&= \col{D}{D'}(a)a' + a\col{D}{D'}(a').
 	\end{align*}
 
-O produto $\col{\var}{\var}$ é bilinear, pois envolve somente diferença e composição de funções linear. Assim, está demonstrado a seguinte proposição.
+O produto $\col{\var}{\var}$ é bilinear, pois envolve somente diferença e composição de funções lineares. Assim, está demonstrada a seguinte proposição.
 
 \begin{proposition}
 \label{alge:prop.algebra.colchete.deriv}
-Seja $(\bm A,\cdot)$ uma álgebra sobre um corpo $\bm C$. Então $(\Der(A),\col{\var}{\var})$ é uma subálgebra de $(\lin(A,A),\col{\var}{\var})$.
+Seja $(\bm A,\cdot)$ uma álgebra sobre um corpo $\bm C$. Então $(\Der(A),\col{\var}{\var})$ é uma subálgebra de $(\lin(A),\col{\var}{\var})$.
 \end{proposition}
 
 
