@@ -1,6 +1,6 @@
-\chapter{Diferenciação}
+\section{Diferenciação}
 
-O espaço real $\E$ estudado neste capítulo será o espaço vetorial normado $(\R^d,+,\cdot)$ sobre $\R$. A base canônica de $\R^d$ será representada pelos vetores $\{\bm e_0, \ldots, \bm e_{d-1}\}$. Um ponto $x \in \R^d$ será representado por $x=(x_0,\ldots,x_{d-1})$, em que $x_i := \proj_i(x)$ e $\fun{\proj_i}{\R^d}{\R}$ a $i$-ésima projeção canônica de $\R^d$ para $\R$, e uma função $\fun{f}{\R^d}{\R^{d'}}$ será também representada por $f=(f_0,\ldots,f_{d'-1})$, de modo que $f_i := \fun{\proj_i \circ f}{\R^d}{\R}$, sendo $\fun{\proj_i}{\R^{d'}}{\R}$. Como todas normas em $\R^d$ são equivalentes, não será feita referência à norma utilizada, apenas será usado o fato de que $\R^d$ é um espaço vetorial normado completo. Se necessário, a norma utilizada será explicitada e, quando não for, a norma usada será $\nor{\cdot}_2$.
+O espaço real $\E$ estudado neste capítulo será o espaço vetorial normado $\R^d$ sobre $\R$. A base canônica de $\R^d$ será representada pelos vetores $\{e_0, \ldots, e_{d-1}\}$. Um ponto $x \in \R^d$ será representado por $x=(x_0,\ldots,x_{d-1})$, em que $x_i := \proj_i(x)$ e $\fun{\proj_i}{\R^d}{\R}$ a $i$-ésima projeção canônica de $\R^d$ para $\R$, e uma função $\fun{f}{\R^d}{\R^{d'}}$ será também representada por $f=(f_0,\ldots,f_{d'-1})$, de modo que $f_i := \fun{\proj_i \circ f}{\R^d}{\R}$, sendo $\fun{\proj_i}{\R^{d'}}{\R}$. Como todas normas em $\R^d$ são equivalentes, não será feita referência à norma utilizada, apenas será usado o fato de que $\R^d$ é um espaço vetorial normado completo. Se necessário, a norma utilizada será explicitada e, quando não for, a norma usada será $\nor{\cdot}_2$.
 %O estudo da diferenciabilidade em espaços de dimensão maior que 1 envolve o uso de funções contínuas e funções lineares, e também de funções de um espaço real em um espaço de funções lineares. Por esse motivo, a notação pode ser confusa. Para simplificar a notação, uma função linear $T$ aplicada a um vetor $v$ será sempre denotada por $T \cdot v$.
 
 Desenvolveremos a seguir a teoria de diferenciabilidade de funções entre espaços reais, e as funções consideradas serão sempre da forma
@@ -13,9 +13,9 @@ mas toda teoria poderia ser desenvolvida para funções definidas em abertos de 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{comment}
 
-\section{Espaço real}
+\subsection{Espaço real}
 
-\section{Compactos}
+\subsection{Compactos}
 
 \begin{theorem}[Heine-Borel]
 	Seja $C \subseteq \R^n$ um conjunto. Então são equivalentes:
@@ -45,7 +45,7 @@ Um conjunto $C \subseteq \R^n$ é compacto se, e somente se, para toda função 
 \end{comment}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Diferenciabilidade}
+\subsection{Diferenciabilidade}
 
 A ideia por trás dessa definição de diferenciabilidade é a de que a função $f$ pode ser aproximada em uma vizinhança de um ponto $p$ por seu valor no ponto mais o valor de uma função linear aplicada num vetor $v$ de variação que mede quanto afastou-se do ponto $p$. Ser aproximada, nesse sentido, quer dizer que o erro da aproximação será da ordem da norma do vetor variação $v$, de modo que a razão entre os dois vá a zero quando a variação vai a zero. A definição de função contínua, de fato, pode ser pensada como um caso análogo: a função $f$ numa vizinhança do ponto $p$ pode ser aproximada por seu valor em $p$, e aproximada aqui quer dizer que a norma da diferença vai a zero quando o vetor variação vai a zero. Mais à frente, as $k$-ésimas diferenciais da função $f$ serão definidas analogamente, considerando nesses casos funções multilineares.
 
@@ -187,7 +187,7 @@ Sejam $d,d' \in \N$, $p \in \R^d$ e $\fun{f,f'}{\R^d}{\R^{d'}}$ diferenciáveis 
 	\end{enumerate}
 \end{exercise}
 
-\subsection{Diferenciais de ordem superior}
+\subsubsection{Diferenciais de ordem superior}
 
 Nesta seção, estenderemos a ideia de diferenciabilidade de uma função $\fun{f}{\R^d}{\R^{d'}}$ para a noção de $r$-diferenciabilidade da função, em que $r \in \N$ é a ordem de diferenciabilidade, e também a ideia de diferencial para a de $r$-diferencial. Para isso, usaremos funções $k$-multilineares do tipo
 	\begin{align*}
@@ -228,7 +228,11 @@ Portanto segue que
 	\end{align*}
 \end{proof}
 
-Para a demonstração da unicidade a seguir, usaremos o fato de que se $\fun{T,T'}{\R^d \times \cdots \times \R^d}{\R^{d'}}$ são funções $r$-lineares simétricas tais que $T(v^{\otimes r}) = T'(v^{\otimes r})$, então $T=T'$. Isso segue da multilinearidade e da simetria, basta abrir por linearidade um termo do tipo $T((v_0+\cdots+v_{r-1})^{\otimes r})$ e igualá-lo a $T'((v_0+\cdots+v_{r-1})^{\otimes r})$.
+Para a demonstração da unicidade a seguir, usaremos o fato de que se
+	\begin{equation*}
+	\fun{T,T'}{\R^d \times \cdots \times \R^d}{\R^{d'}}
+	\end{equation*}
+são funções $r$-lineares simétricas tais que $T(v^{\otimes r}) = T'(v^{\otimes r})$, então $T=T'$. Isso segue da multilinearidade e da simetria, basta abrir por linearidade um termo do tipo $T((v_0+\cdots+v_{r-1})^{\otimes r})$ e igualá-lo a $T'((v_0+\cdots+v_{r-1})^{\otimes r})$.
 
 \begin{proposition}[Unicidade da $r$-diferencial]
 Sejam $d,d' \in \N$, $p \in \R^d$ e $\fun{f}{\R^d}{\R^{d'}}$ uma função $r$-diferenciável em $p$. Então, para todo $k \in [r+1]$, existe única função $k$-linear simétrica que satisfaz
@@ -310,33 +314,71 @@ Sejam $d,d',d'' \in \N$, $p \in \R^d$, $\fun{f}{\R^d}{\R^{d'}}$ $2$-diferenciáv
 
 
 
-\section{Derivadas direcionais e a geometria da diferenciabilidade}
+\subsection{Derivadas direcionais e a geometria da diferenciabilidade}
 
 A partir dessa seção, consideraremos funções $\fun{f}{A}{\R^{d'}}$, em que $A \subseteq \R^d$ é um aberto. Toda a discussão feita na seção anterior considerou a diferenciabilidade em pontos do domínio. Agora, consideraremos a diferenciabilidade em conjuntos. A definição de diferenciabilidade da seção anterior pode ser facilmente adaptada parra funções $\fun{f}{A}{\R^{d'}}$ pois essa função pode ser definida em $\R^d$ todo escolhendo qualquer valor para $f$ em $A^\complement$. Como as definições e resultados trataram de pontos, isso não é um problema. Os abertos serão necessários agora pois consideraremos curvas numa vizinhança de um ponto e relacionaremos as derivadas por essas curvas com derivadas parciais da função $f$.
 
 \begin{definition}
-Sejam $d,d' \in \N$, $A \subseteq \R^d$ aberto, $p \in A$, $v \in \R^d$ tal que $p+v \in A$ e $\fun{f}{A}{\R^{d'}}$. A \emph{derivada direcional} de $f$ em $p$ na direção de $v$ é
+Sejam $d,d' \in \N$, $A \subseteq \R^d$ aberto, $p \in A$ e $v \in \R^d$.% (tal que $p+v \in A$). 
+Uma função \emph{derivável em $p$ na direção de $v$} é uma função $\fun{f}{A}{\R^{d'}}$ tal que existe o limite
 	\begin{equation*}
-	\der{f}{v}(p) := \lim_{t \conv 0} \frac{f(p+tv)-f(p)}{t}.
+	\lim_{t \conv 0} \frac{f(p+tv)-f(p)}{t}.
+	\end{equation*}
+A \emph{derivada direcional} de $f$ em $p$ na direção de $v$ é
+%	\begin{equation*}
+%	\der{f}{v}(p) := \lim_{t \conv 0} \frac{f(p+tv)-f(p)}{t}.
+%	\end{equation*}
+	\begin{equation*}
+	\Dir_v f(p) := \lim_{t \conv 0} \frac{f(p+tv)-f(p)}{t}.
 	\end{equation*}
 \end{definition}
+
+\begin{proposition}
+Sejam $d,d' \in \N$, $A \subseteq \R^d$ aberto, $p \in A$ e $\fun{f}{A}{\R^{d'}}$
+\end{proposition}
+
 
 Como $A$ é aberto, existe $\varepsilon$ tal que $p+tv \in A$ para todo $t \in \left]-\varepsilon,\varepsilon \right[$. Tomemos então a curva
 	\begin{align*}
 	\func{\gamma}{\left]-\varepsilon,\varepsilon \right[}{A}{t}{p+tv},
 	\end{align*}
-de modo que temos $\gamma(0)=p$ e $\gamma'(0) = v$. Então, pela regra da cadeia,
+de modo que temos $\gamma(0)=p$ e $\D \gamma|_0 = v$. Então, pela regra da cadeia,
+%	\begin{equation*}
+%	\der{f}{v}(p) = \D (f \circ \gamma)|_0 = \D f|_{\gamma(0)} (\gamma'(0)) = \D f|_p(v).
+%	\end{equation*}
 	\begin{equation*}
-	 \der{f}{v}(p) = \D (f \circ \gamma)|_0 = \D f|_{\gamma(0)} (\gamma'(0)) = \D f|_p(v).
+	\Dir_v f(p) = \D (f \circ \gamma)|_0 = \D f|_{\gamma(0)} (\D \gamma|_0) = \D f|_p(v).
 	\end{equation*}
-Disso concluímos que a derivada direcional de $f$ em $p$ na direção de $v$ é a imagem de $v$ sob a função linear $\D f(p)$. Portanto definindo as derivadas direcionais $\partial_i f(x) := \D f(x) \cdot e_i$ temos que
+Disso concluímos que a derivada direcional de $f$ em $p$ na direção de $v$ é a imagem de $v$ sob a função linear $\D f_p$. Portanto definindo as derivadas direcionais $\partial_i f(x) := \D f|_p(e_i)$ temos que
 	\begin{equation*}
-	\D f(x) \cdot v = \sum_{i=0}^{d-1} v^i \partial_i f(x).
+	\D f|_p(v) = \sum_{i=0}^{d-1} v^i \partial_i f(x).
 	\end{equation*}
 
-\section{Teoremas fundamentais}
 
-\subsection{Teorema da função inversa}
+
+
+\begin{exercise}
+Sejam $d,d' \in \N$, $A \subseteq \R^d$ aberto, $p \in A$, $v \in \R^d$.
+\begin{enumerate}
+	\item Para todas $\fun{f,f'}{A}{\R^{d'}}$ funções deriváveis em $p$ na direção de $v$,
+		\begin{equation*}
+		\Dir_v(f+f')(p) = \Dir_v f(p) + \Dir_v f'(p);
+		\end{equation*}
+	\item Para todo $c \in \R$ e todas $\fun{f,f'}{A}{\R^{d'}}$ funções deriváveis em $p$ na direção de $v$,
+		\begin{equation*}
+		\Dir_v(cf)(p) = c\Dir_v f(p);
+		\end{equation*}
+	\item Para todas $\fun{f,f'}{A}{\R^{d'}}$ funções deriváveis em $p$ na direção de $v$,
+		\begin{equation*}
+		\Dir_v(ff')(p) = \Dir_vf(p)f'(p) + f(p)\Dir_v f'(p);
+		\end{equation*}
+	\item $\Dir_v(f' \circ f)(p) = \D f'|_{f(p)} \Dir_v f(p)$.
+\end{enumerate}
+\end{exercise}
+
+\subsection{Teoremas fundamentais}
+
+\subsubsection{Teorema da função inversa}
 
 \begin{proposition}
 %Sejam $A \subseteq \R^d$ um aberto, $p \in A$ e $f\colon A \subseteq \R^d \to \R^d$ uma função $\Cont^r$-diferenciável ($r \geq 1$).
@@ -347,7 +389,7 @@ Sejam $p \in \R^d$ e $f\colon \R^d \to \R^d$ uma função $\Cont^r$-diferenciáv
 	\end{equation*}
 \end{proposition}
 
-\subsection{Teorema da função implícita}
+\subsubsection{Teorema da função implícita}
 
 \begin{proposition}
 %Sejam $A \subseteq \R^{d_0+d_1}$ um aberto, $p=(x_0,y_0) \in A$ e $f\colon A \subseteq \R^{d_0} \times \R^{d_1} \to \R^{d_1}$ uma função $\Cont^r$-diferenciável tal que $f(p)=0$.
@@ -366,7 +408,7 @@ Observação: $\D f(p)\colon \R^{d_0} \times \R^{d_1} \to \R^{d_1}$ é sobrejeti
 	\end{align*}
 é invertível (em que $\iota_1\colon \R^{d_1} \to \R^{d_0} \times \R^{d_1}$).  Note que $\D_1 f(p)$ também pode ser vista como essa função.
 
-\subsection{Forma local da imersão}
+\subsubsection{Forma local da imersão}
 
 \begin{proposition}
 %Sejam $A \subseteq \R^{d_0}$ um aberto, $p \in A$ e $f\colon A \subseteq \R^{d_0} \to \R^{d_0} \times \R^{d_1}$ uma função $\Cont^r$-diferenciável.
@@ -385,7 +427,7 @@ Observação: A diferencial $\D f(p)\colon \R^{d_0} \to \R^{d_0} \times \R^{d_1}
 é invertível.
 
 
-\subsection{Forma local da submersão}
+\subsubsection{Forma local da submersão}
 
 \begin{proposition}
 %Sejam $A \subseteq \R^{d_0} \times \R^{d_1}$ um aberto, $p=(x_0,y_0) \in A$ e $f\colon A \subseteq \R^{d_0} \times \R^{d_1} \to \R^{d_1}$ uma função $\Cont^r$-diferenciável.
@@ -403,7 +445,7 @@ Observação: A diferencial $\D f(p)\colon \R^{d_0} \times \R^{d_1} \to \R^{d_1}
 	\end{align*}
 é invertível. Note que $\D_1 f(p)$ também pode ser vista como essa função.
 
-\subsection{Teorema do posto}
+\subsubsection{Teorema do posto}
 
 \begin{proposition}
 Seja $f\colon \R^{d} \times \R^{d_0} \to \R^{d} \times \R^{d_1}$ uma função $\Cont^r$-diferenciável ($r \geq 1$) num aberto $A \subseteq \R^{d} \times \R^{d_0}$. Se $\D f(p)\colon \R^{d} \times \R^{d_0} \to \R^{d} \times \R^{d_1}$ tem o mesmo posto para todo $p \in A$ ($f$ tem posto constante em $A$), então, para todo $p \in A$, existem vizinhanças abertas $V_0 \subseteq \R^{d} \times \R^{d_0}$ de $p$ e $V_1 \subseteq \R^{d} \times \R^{d_1}$ de $f(p)$ e $\Cont^r$-difeomorfismos $g_0\colon V_0 \to g_0(V_0) \subseteq \R^{d} \times \R^{d_0}$ e $g_1\colon V_1 \to g_1(V_1) \subseteq \R^{d} \times \R^{d_1}$ tais que, para todo $(x,y) \in V_0$, 
@@ -424,13 +466,12 @@ Seja $f\colon \R^{d} \times \R^{d_0} \to \R^{d} \times \R^{d_1}$ uma função $\
 
 
 
-
-
+\begin{comment}
 
 \cleardoublepage
-\section{Cálculo em espaços normados de dimensão finita}
+\subsection{Cálculo em espaços normados de dimensão finita}
 
-\subsection{Diferencial}
+\subsubsection{Diferencial}
 
 \begin{definition}
 Sejam $\E_0$ e $\E_1$ espaços normados de dimensão finita, $p \in \E_0$, $A \subseteq E_0$ uma vizinhança aberta de $p$ e $f\colon A \to \E_1$ uma função. Uma \emph{diferencial} de $f$ em $p$ é uma função linear $L\colon \E_0 \to \E_1$ que satisfaz
@@ -538,3 +579,5 @@ Logo
 	\end{equation*}
 e concluímos que $\D f_1(f_0(p)) \circ \D f_0(p)$ é a diferencial de $f_1 \circ f_0$ em $p$.
 \end{proof}
+
+\end{comment}
