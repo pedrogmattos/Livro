@@ -1271,3 +1271,556 @@ A relação $\qeq$ de quase igualdade de quase funções é uma relação de equ
 \begin{proof}
 Sejam $f,f',f''\colon X \to X'$. (Reflexividade) Claramente, $f \qeq f$. (Simetria) Claramente $f \qeq f'$ implica $f' \qeq f$. (Transitividade) Se $f \qeq f'$ e $f' \qeq f''$, então existem conjuntos $C$ e $C'$ quase totais tais que $f|_C = f'|_C$ e $f'|_{C'} = f'|_{C'}$. Então, como $C \cap C'$ é quase total, segue que $f|_{C \cap C'} = f'|_{C \cap C'} = f''|_{C \cap C'}$, portanto $f \qeq f''$.
 \end{proof}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Integração}
+
+\subsection{Integral de funções mensuráveis simples}
+
+Lembremos que a função indicadora em um conjunto $X$ é a função
+	\begin{align*}
+	\func{\idc}{\p(X)}{2^X}{C}{
+		\begin{aligned}[t]
+		\func{\idc_C}{X}{\{0,1\}}{x}{
+			\begin{cases}
+			1,& x \in C \\
+			0,& x \notin C.
+			\end{cases}
+		}
+		\end{aligned}
+	}
+	\end{align*}
+
+Na proposição a seguir mostramos que funções indicadoras são mensuráveis se, e somente se, o conjunto que elas indicam são. Para fazer sentido uma função indicadora ser mensurável, precisamos dar uma estrutura mensurável para $\{0,1\}$, e a estrutura que escolhemos é a álgebra discreta. Essa é a álgebra induzida se consideramos $\{0,1\}$ como subconjunto de $\R$, logo a função indicadora será mensurável também como uma função para $\R$.
+
+\begin{proposition}
+Seja $(X,\mens)$ um espaço mensurável. Um conjunto $M \subseteq X$ é mensurável se, e somente se, $\idc_M \in \Men(\bm X,\{0,1\})$ é mensurável.
+\end{proposition}
+\begin{proof}
+Basta notar que $\idc_M\inv(\{1\}) = M$ e $\idc_M\inv(\{0\}) = M^\complement$. Se $M$ é mensurável, então $M^\complement$ é mensurável, logo $\idc_M$ também é. Reciprocamente, se $\idc_M$ é mensurável, então $M = \idc_M\inv(\{1\})$ é mensurável, pois $\{1\}$ é mensurável.
+\end{proof}
+
+%Dado um conjunto $M \in \mens$, podemos ver que a função $\idc_M$ é uma função de $\p(X) \to \{0,1\}$. Se restringimos $\idc_M$ para $\mens \subseteq \p(X)$ e ressaltamos que $\{0,1\} \subseteq \intff{0}{\infty}$, temos uma função $\idc_M\colon \mens \to \intff{0}{\infty}$. Essa função não é uma medida em $(X,\mens)$ para qualquer $M$, mas se $M=\{x\}$, ela é. Nesse caso, é denotada $\idc_x$.
+
+%\begin{proposition}
+%Sejam $(X,\mens)$ um espaço mensurável e $x \in X$. A função $\idc_x$ é uma medida sobre $(X,\mens)$.
+%\end{proposition}
+
+Usaremos funções indicadoras na teoria de integração. Elas permitem cancelar funções $f\colon X \to \R$ em um conjunto $C$ se multiplicamos $f$ por $\idc_C$ (com a multiplicação definida pontualmente). Nesse caso, temos a função
+	\begin{align*}
+	\func{\idc_Cf}{X}{\R}{x}{\idc_C(x)f(x)=
+		\begin{cases}
+			f(x),& x \in C \\
+			0,& x \notin C.
+		\end{cases}
+	}
+	\end{align*}
+
+Consideraremos primeiro funções que têm um número finito de valores. Essas funções são chamadas simples.
+
+\begin{definition}
+Seja $\bm X = (X,\mens,\med)$ um espaço de medida. Uma função \emph{simples} em $X$ é uma função $f\colon X \to \R$ tal que $f(X)$ é finito. A \emph{partição por níveis} de $f$ é o conjunto
+	\begin{equation*}
+	\mathcal P_f := \{f\inv(c)\}_{c \in f(X)}.
+	\end{equation*}
+O conjunto das funções simples mensuráveis de $X$ para $\R$ é denotado $\Simp(\bm X,\R)$.
+\end{definition}
+
+\begin{proposition}
+Sejam $(X,\mens,\med)$ um espaço de medida e $f,f' \in \Men(\bm X,\intff{0}{\infty})$ funções simples mensuráveis.
+	\begin{enumerate}
+	\item A partição por níveis $\mathcal P_f$ é uma partição por medida de $X$ e 
+		\begin{equation*}
+		f = \sum_{c \in f(X)} c \idc_{f\inv(c)}.
+		\end{equation*}
+
+	\item A partição por níveis de $f+f'$ é mais grossa que o refinamento das partições por níveis de $f$ e $f'$:
+		\begin{equation*}
+		\mathcal P_{f+f'} \leq \mathcal P_f \vee \mathcal P_{f'}.
+		\end{equation*}
+	\end{enumerate}
+\end{proposition}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{comment}
+\begin{proposition}
+Sejam $(X,\mens,\med)$ um espaço de medida e $f\colon X \to \R$ uma função simples mensurável. Então existem únicas constantes distintas $c_1,\cdots,c_n \in \R$ e uma única partição de $X$ em conjuntos mensuráveis $P_1,\cdots,P_n \in \mens$ satisfazendo
+	\begin{equation*}
+	f = \sum_{i=1}^n c_i \idc_{P_i}.
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+Como $f(X)$ é finito, existem únicos $c_1,\cdots,c_n \in \R$ distintos tais que $f(X)=\{c_1,\cdots,c_n\}$. Seja $I := \{1,\cdots,n\}$. Definem-se os conjuntos
+	\begin{equation*}
+	P_i := \set{x \in X}{f(x) = c_i}.
+	\end{equation*}
+Esses conjuntos formam claramente uma partição de $X$. Além disso, são mensuráveis pelos resultados do capítulo anterior. Por fim, seja $x \in X$. Existe $j \in I$ tal que $f(x)=c_j$ e $x \in P_j$. Nesse caso, $\idc_{P_j}(x)=1$ e, para todo $i \in I\setminus\{j\}$, $\idc_{P_i}(x)=0$, pois os conjuntos $P_i$ são disjuntos. Portanto
+	\begin{equation*}
+	f(x) = c_j = c_j \idc_{P_j}(x) + \sum_{i \in I \setminus \{j\}} c_i \idc_{P_i}(x) = \sum_{i=1}^n c_i \idc_{P_i}(x),
+	\end{equation*}o que mostra que
+	\begin{equation*}
+	f = \sum_{i=1}^n c_i \idc_{P_i}.
+	\end{equation*}
+\end{proof}
+\end{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%\begin{definition}
+%Sejam $(X,\mens,\med)$ um espaço de medida, $f \colon X \to \R$ uma função simples tal que $f=\sum_{i=1}^n c_i \idc_{P_i}$ e $M \in \mens$ um conjunto mensurável. A \emph{integral} de $f$ sobre $M$ com respeito a $\med$ é o número
+%	\begin{equation*}
+%	\int_M f := \sum_{i=1}^n c_i \med(P_i \cap M).
+%	\end{equation*}
+%Quando for necessário explicitar a medida $\med$ usada, escreveremos $\displaystyle\int_{\med,M} f$. No caso em que $M=X$, temos
+%	\begin{equation*}
+%	\int_X f = \sum_{i=1}^n c_i \med(f\inv(c_i)) =  \sum_{i=1}^n c_i \med(P_i).
+%	\end{equation*}
+%\end{definition}
+
+
+\begin{definition}
+Sejam $\bm X = (X,\mens,\med)$ um espaço de medida e $f\in \Men(\bm X,\intff{0}{\infty})$ uma função simples mensurável.
+% e $M \in \mens$ um conjunto mensurável.
+A \emph{integral} de $f$ em $\bm X$ é
+	\begin{equation*}
+	\int f \dd\med := \sum_{c \in f(X)} c \ \med(f\inv(c)).
+	\end{equation*}
+Para todo conjunto mensurável $M \in \mens$, a \emph{integral} de $f$ sobre $M$ em $\bm X$ é
+	\begin{equation*}
+	\int_M f \dd\med := \int \idc_M f \dd\med.
+	\end{equation*}
+Quando não for necessário explicitar a medida $\med$, escreveremos
+	\begin{equation*}
+	\int f.
+	\end{equation*}
+Quando for necessário explicitar a variável da função $f$, escreveremos
+	\begin{equation*}
+	\int f(x) \dd \med(x).
+	\end{equation*}
+\end{definition}
+
+Para denotar a integral, a notação
+	\begin{equation*}
+	\int\limits_{x \in X} f(x)
+	\end{equation*}
+também poderia ser usada, e teria a vantagem de se assemelhar mais com a notação de somatório
+	\begin{equation*}
+	\sum_{i \in I} f_i.
+	\end{equation*}
+A notação da definição, no entanto, tem a vantagem de evitar escrever a variável $x$, que é de fato desnecessária na maioria dos contextos. Essa notação não é usual e não será usada aqui.
+
+\begin{proposition}
+Sejam $\bm X = (X,\mens,\med)$ um espaço de medida.
+	\begin{enumerate}
+	\item Para todo $M \in \mens$, $\displaystyle\int \idc_M = \med(M)$.
+	\item Para todo $M \in \mens$ e toda função simples mensurável $f\colon X \to \R$,
+		\begin{equation*}
+		\int_M f = \sum_{c \in f(X)} c \ \med(M \cap f\inv(c)).
+		\end{equation*}
+	
+	\item Se $f \in \Men(\bm X,\intff{0}{\infty})$ é uma função simples mensurável, $\mathcal P$ é uma partição tal que $\mathcal P_f \leq \mathcal P$ e, para todo $P \in \mathcal P$, $f|_{P} = c_P$, então
+		\begin{equation*}
+		\int f = \sum_{P \in \mathcal P} c_P \ \med(P).
+		\end{equation*}
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item Como $\idc_M(X) = \{0,1\}$, $\idc_M\inv(1) = M$ e $\idc_M\inv(0) = M^\complement$,
+		\begin{equation*}
+		\int \idc_M = \sum_{c \in \idc_M(X)} c \ \med(\idc_M\inv(c)) = 1 \med(M)+0\med(M^\complement) = \med(M).
+		\end{equation*}
+%	\item Como $f$ é função simples, $f=\displaystyle\sum_{c \in f(X)} c\idc_{f\inv(c)}$. Então
+%	\begin{align*}
+%	\int_M f &=  \int \idc_M f \\
+%		&= \int \idc_M \left(\sum_{c \in f(X)} c\idc_{f\inv(c)}\right) \\
+%		&= \int \sum_{c \in f(X)} c \idc_M \idc_{f\inv(c)} \\
+%		&= \sum_{c \in f(X)} c \int \idc_{M \cap f\inv(c)} \\
+%		& =\sum_{c \in f(X)} c \ \med(M \cap f\inv(c)).
+%	\end{align*}
+	\end{enumerate}
+\end{proof}
+
+\begin{proposition}
+Sejam $(X,\mens,\med)$ um espaço de medida, $M \in \mens$ um conjunto mensurável $f\colon X \to \R$ e $f'\colon X \to \R$ funções simples e $a \in \R$. Então
+	\begin{enumerate}
+	\item A função $af$ é função simples mensurável e $\displaystyle\int_M af = a\int_M f$.
+	\item A função $f+f'$ é função simples mensurável e $\displaystyle\int_M (f+f') = \int_M f + \int_M f'$.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+\begin{enumerate}
+	\item Notemos que $(af)(X) = af(X)$, pois todo elemento de $(af)(X)$ é da forma $ac$, para $c \in f(X)$. Isso significa que $(af)(X)$ é finito, logo $af$ é simples. Agora, separamos em dois casos. Se $a=0$, então $af=0f=0$, logo $0f(X)=\{0\}$ e $(0f)\inv(0)=X$, portanto
+	\begin{equation*}
+	\int_M 0f = \sum_{c \in (0f)(X)} c \med(M \cap (0f)\inv(c)) = 0 \med(M \cap X) = 0 = 0\int_M f.
+	\end{equation*}
+Se $a \neq 0$, então
+	\begin{equation*}
+	(af)\inv(ac) = \set{x \in X}{af(x)=ac} = \set{x \in X}{f(x)=c} = f\inv(c).
+	\end{equation*}
+	Nesse caso segue que
+	\begin{align*}
+	\int_M af &= \sum_{c \in (af)(X)} c \med(M \cap (af)\inv(c)) \\
+		&= \sum_{c \in f(X)} ac \med(M \cap (af)\inv(ac)) \\
+		&= \sum_{c \in f(X)} ac \med(M \cap f\inv(c)) \\
+		&= a\sum_{c \in f(X)} c \med(M \cap f\inv(c)) \\
+		&= a\int_M f.
+	\end{align*}
+
+	\item Notemos que
+%	\begin{align*}
+%	(f+f')(X) &= \set{f(x)+f'(x)}{x \in X} \\
+%		& \subseteq \set{c+c'}{(c,c') \in f(X) \times f'(X)} \\
+%		&= f(X)+f'(X),
+%	\end{align*}
+	\begin{align*}
+	(f+f')(X) &= \set{f(x)+f'(x)}{x \in X} \\
+		&= \set{c+c'}{(c,c') \in f(X) \times f'(X), f\inv(c) \cap (f')\inv(c') \neq \emptyset} \\
+		&\subseteq f(X)+f'(X).
+	\end{align*}
+Como $f(X)+f'(X)$ é finito, então $(f+f')(X)$ é finito, logo $f+f'$ é simples. %Notemos, no entanto, que não necessariamente a inclusão é uma igualdade; em geral não é. Para calcular a intergal de $f+f'$ em relação à integral de $f$ e de $f'$, temos que tomar esse cuidado. Definamos $f(X) =: \{c_0,\cdots,c_{n-1}\}$, $f'(X) =: \{c'_0,\cdots,c'_{n'-1}\}$ e $(f+f')(X) =: \{d_0,\cdots,d_m\}$. Nesse caso, temos
+%	\begin{align*}
+%	\int_M f &= \sum_{i \in [n]} c_i \med(M \cap f\inv(c_i)) \\
+%	\int_M f &= \sum_{i \in [n']} c_i \med(M \cap (f')\inv(c'_i)) \\
+%	\int_M f+f' &= \sum_{i \in [m]} d_i \med(M \cap (f+f')\inv(d_i)).
+%	\end{align*}
+%Mas notemos que, para todo $d \in (f+f')(X)$, existem $c \in f(X)$ e $c' \in f'(X)$ tais que $d=c+c'$. O conjunto $(f+f')\inv(d)$
+%	\begin{align*}
+%	\int f+f' &= \sum_{c \in (f+f')(X)} c \med(M \cap (f+f')\inv(c)) \\
+%		&= \sum_{c \in f(X)} ac \med(M \cap (af)\inv(ac)) \\
+%		&= \sum_{c \in f(X)} ac \med(M \cap f\inv(c)) \\
+%		&= \sum_{c \in f(X)} c \med(M \cap f\inv(c)) + \sum_{c \in f'(X)} c \med(M \cap (f')\inv(c)) \\
+%		&= \int_M f + \int_M f'.
+%	\end{align*}
+Para todo $x \in X$, existem únicos $c \in f(X)$ e $c' \in f'(X)$ tais que $x \in f\inv(c)$ e $x \in (f')\inv(c')$, pois $\{f\inv(c)\}_{c \in f(X)}$ e $\{(f')\inv(c)\}_{c \in f'(X)}$ são partições de $X$. Logo $(f+f')(x) = f(x)+f'(x) = c+c' = (c+c') \idc_{f\inv(c) \cap f\inv(c')}(x)$, o que mostra que
+	\begin{equation*}
+	f+f' = \sum_{c \in f(X)} \sum_{c' \in f(X)} (c + c') \idc_{f\inv(c) \cap f\inv(c')},
+	\end{equation*}
+Como $\{f\inv(c) \cap f\inv(c')\}_{(c,c') \in f(X) \times f(X)} = \{f\inv(c)\}_{c \in f(X)} \vee \{(f')\inv(c)\}_{c \in f'(X)}$ é o refinamento comum da partição por níveis de $f + f$, segue que
+	\begin{align*}
+	\int f+f' &= \sum_{c \in f(X)} \sum_{c' \in f(X)} (c + c') \med\left(f\inv(c) \cap f\inv(c')\right) \\
+		&= \sum_{c \in f(X)} \sum_{c' \in f(X)} c \ \med\left(f\inv(c) \cap f\inv(c')\right) + c' \ \med\left(f\inv(c) \cap f\inv(c')\right) \\
+		&= \sum_{c \in f(X)} c \left(\sum_{c' \in f(X)} \med\left(f\inv(c) \cap f\inv(c')\right)\right) \\
+		&\qquad\qquad\qquad + \sum_{c' \in f(X)} c' \left(\sum_{c \in f(X)} \med\left(f\inv(c) \cap f\inv(c')\right)\right) \\
+		&= \sum_{c \in f(X)} c \ \med(f\inv(c)) + \sum_{c' \in f'(X)} c' \ \med((f')\inv(c')) \\
+		&= \int f + \int f'.
+	\end{align*}
+
+%	\begin{align*}
+%	\int_M f+f' &= \sum_{c \in (f+f')(X)} c \med(M \cap (f+f')\inv(c)) \\
+%		&= \sum_{c \in f(X)} ac \med(M \cap (af)\inv(ac)) \\
+%		&= \sum_{c \in f(X)} ac \med(M \cap f\inv(c)) \\
+%		&= \sum_{c \in f(X)} c \med(M \cap f\inv(c)) + \sum_{c \in f'(X)} c \med(M \cap (f')\inv(c)) \\
+%		&= \int_M f + \int_M f'.
+%	\end{align*}
+\end{enumerate}
+\end{proof}
+
+\begin{proof}
+Sejam $f=\sum_{i=1}^n c_i \idc_{P_i}$, $g=\sum_{j=1}^m d_j \idc_{Q_j}$, $I := \{1,\cdots,n\}$ e $J := \{1,\cdots,m\}$.
+\begin{enumerate}
+	\item Se $c=0$, vale a igualdade, pois $0f=0\idc_X$, logo
+	\begin{equation*}
+	\int_M 0f = 0\med(M \cap X) = 0 = 0\int_M f.
+	\end{equation*}
+Se $c \neq 0$, então $cf(X)=\{cc_1,\cdots,cc_n\}$ e as constantes $cc_1,\cdots,cc_n$ são todas distintas. Definindo, para todo $i \in I$, $R_i := \set{x \in X}{cf(x)=cc_i}$, os conjuntos $R_1,\cdots,R_n$ formam uma partição de $X$ em conjuntos mensuráveis. Além disso, temos $R_i=P_i$ para todo $i \in I$ porque, como $c \neq 0$, segue que $f(x)=c_i$ se, e somente se, $cf(x)=cc_i$. Portanto
+	\begin{equation*}
+	\int_M cf = \sum_{i=1}^n cc_i \med(R_i \cap M) = c\bigplus_{i=1}^n c_i \med(P_i \cap M) = c\int_M f.
+	\end{equation*}
+	
+	\item Como $f(X)$ e $g(X)$ são conjuntos finitos,
+	\begin{equation*}
+	(f+g)(X) := \set{c_i+d_j}{(i,j) \in I \times J}
+	\end{equation*}
+é um conjunto finito. No entanto, não necessariamente $(f+g)(X)$ tem $mn$ elementos, pois podem existir $(i_1,j_1),(i_2,j_2) \in I \times J$ distintos tais que $c_{i_1}+d_{j_1}=c_{i_2}+d_{j_2}$. Sejam $e_1,\cdots,e_l \in \R$ as constantes distintas tais que $(f+g)(X)=\{e_1,\cdots,e_l\}$, $K := \{1,\cdots,l\}$ e $R_k := \set{x \in X}{(f+g)(x)=e_k}$. Nesse caso, $\set{R_k}{k \in K}$ é uma partição de $X$ em conjuntos mensuráveis e
+	\begin{equation*}
+	f+g=\sum_{k=1}^l e_k \idc_{R_k}.
+	\end{equation*}
+Por outro lado, temos
+	\begin{align*}
+	(f+g)(x) &= f(x)+g(x) \\
+				&= \sum_{i=1}^n c_i \idc_{P_i}(x) + \sum_{j=1}^m d_j \idc_{Q_j}(x) \\
+				&= 
+	\end{align*}
+	
+
+	\begin{equation*}
+	f+g = \sum_{i=1}^n \sum_{j=1}^m (c_i+d_j) \idc_{P_i \cap Q_j}.
+	\end{equation*}
+ Isso significa que os conjuntos
+\end{enumerate}
+\end{proof}
+
+\subsection{Integral de funções mensuráveis positivas}
+
+\subsection{Integral de funções mensuráveis}
+
+\subsection{Teoremas de convergências}
+
+\subsection{Mudança de variáveis na integração}
+
+Lembremos que, se $T\colon (X,\mens) \to (X',\mens')$ é uma função mensurável e $\med$ é uma medida sobre $(X,\mens)$, então a medida $T\emp \med$ empurrada de $\med$ por $T$ é a medida dada por
+	\begin{equation*}
+	T\emp \med = \med \circ T\inv.
+	\end{equation*}
+% que para um mensurável $M \in \mens'$ vale
+%	\begin{equation*}
+%	T\emp \med (M) = \med(T\inv(M)).
+%	\end{equation*}
+
+Ainda, se $f\colon X' \to X''$ é uma função, a função puxada de $f$ por $T$ é a função $T\pux f\colon X \to X''$ dada por
+	\begin{equation*}
+	T\pux f = f \circ T.
+	\end{equation*}
+
+\begin{proposition}
+%Sejam $\bm X = (X,\mens,\med)$ um espaço de medida, $\bm X'=(X',\mens')$ um espaço mensurável, $T\colon X \to X'$ e $f\colon X' \to \R$ funções mensuráveis. A função $T\pux f$ é integrável ($T\pux f \in L^1(X,\mens,\med)$) se, e somente se, $f$ é integrável ($f \in L^1(X',\mens',T\emp \med)$) e, nesse caso,
+Sejam $\bm X = (X,\mens,\med)$ e $\bm X'=(X',\mens',\med')$ espaços de medida e $T\colon X \to X'$ uma função mensurável tal que $\med' = T\emp\med$. Para toda $f \in \Men(X',\R)$, $T\pux f \in \Intg^1(X,\R)$ se, e somente se, $f \in \Intg^1(X',\R)$ e, nesse caso,
+	\begin{equation*}
+	\int T\pux f \dd\med = \int f \dd T\emp\med.
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+A demonstração é evidente para funções simples, e pelo teorema da convergência monótona segue para qualquer função. Para qualquer conjunto mensurável $M \in \mens'$, notemos que
+	\begin{equation*}
+	T\pux \idc_{M} = \idc_{M} \circ T = \idc_{T\inv(M)},
+	\end{equation*}
+logo
+	\begin{equation*}
+	\int T\pux \idc_{M} \dd\med = \int \idc_{T\inv(M)} \dd\med = \med(T\inv(M)) = T\emp\med(M) = \int \idc_M \dd T\emp\med.
+	\end{equation*}
+Da linearidade de $T\pux$, segue que para qualquer função simples $f\colon X' \to \R$,% $f = \sum_{c \in f(X')} c\idc_{f\inv(c)},$
+	\begin{equation*}
+	T\pux f = T\pux \left( \sum_{c \in f(X')} c\idc_{f\inv(c)} \right) = \sum_{c \in f(X')} c T\pux \idc_{f\inv(c)} = \sum_{c \in (T\pux f)(X)} c \idc_{(T\pux f)\inv(c)}
+	\end{equation*}
+é uma função simples. Da linearidade da integral segue então que
+	\begin{align*}
+	\int T\pux f \dd\med &= \int \sum_{c \in (T\pux f)(X)} c \idc_{(T\pux f)\inv(c)} \dd\med \\
+		&= \int \sum_{c \in f(X')} c T\pux \idc_{f\inv(c)} \dd\med \\
+		&= \sum_{c \in f(X')} c \int T\pux \idc_{f\inv(c)} \dd\med \\
+		&= \sum_{c \in f(X')} c \int \idc_{f\inv(c)} \dd T\emp \med \\
+		&= \int \sum_{c \in f(X')} c \idc_{f\inv(c)} \dd T\emp \med \\
+		&= \int f \dd T\emp\med.
+	\end{align*}
+Para uma função mensurável positiva $f\colon X' \to \intfa{0}{\infty}$, existe uma sequência crescente $(f_n)_{n \in \N}$ de funções mensuráveis simples positivas que converge para $f$. Segue que $(T\pux f_n)_{n \in \N}$ é uma sequência crescente de funções mensuráveis simples positivas que converge para $T\pux f$ e, pela convergência monótona da integral,
+	\begin{equation*}
+	\int T\pux f \dd\med = \lim_{n \conv \infty} \int T\pux f_n \dd \med  = \lim_{n \conv \infty} \int f_n \dd T\emp \med = \int f \dd T\emp\med.
+	\end{equation*}
+Agora, para qualquer função mensurável $f\colon X' \to \R$, vale que $(T\pux f)^+ = T\pux f^+$ e $(T\pux f)^- = T\pux f^-$, portanto segue que
+	\begin{align*}
+	\int T\pux f \dd\med &= \int (T\pux f)^+ \dd\med - \int (T\pux f)^- \dd\med \\
+		&= \int T\pux f^+ \dd\med - \int T\pux f^- \dd\med \\
+		&= \int f^+ \dd T\emp \med - \int f^- \dd T\emp \med \\
+		&= \int f \dd T\emp\med.
+	\end{align*}
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{comment}
+
+\subsection{Funções absolutamente integráveis}
+
+Lembremos que $\sup ess (f) := \inf \set{c \in \intaa{0}{\infty}}{\forall^\circ_{x \in X} f(x) \leq c}$.
+
+\begin{definition}
+Sejam $\bm X$ um espaço de medida e $p \in \intfa{1}{\infty}$. Uma função \emph{absolutamente $p$-integrável}\footnote{Essas funções não recebem esse nome usualmente. O espaço $\Intg^p(\bm X)$ é geralmente chamado de espaço $L^p(\bm X)$, em homenagem a Henri Lebesgue, embora de acordo com conjunto dos Bourbaki o criador dos espaços tenha sido Frigyes Riesz (\url{https://en.wikipedia.org/wiki/Lp_space}).} é uma função $f \in \Men(\bm X,\intff{0}{\infty})$
+%Mais geralmente, pode-se considerar funções com valor em um CORPO NORMADO
+ tal que
+	\begin{equation*}
+	\int \abs{f}^p \dd\med < \infty.
+	\end{equation*}
+O conjunto das quase-funções absolutamente $p$-integráveis é denotado $\Intg^p(\bm X)$.
+
+Uma função \emph{absolutamente $\infty$-integrável} é uma função $f \in \Men(\bm X,\intff{0}{\infty})$ tal que
+	\begin{equation*}
+	\supess(\abs{f}) < \infty.
+	\end{equation*}
+O conjunto das quase-funções absolutamente $\infty$-integráveis é denotado $\Intg^\infty(\bm X)$.
+\end{definition}
+
+\begin{definition}
+Sejam $\bm X$ um espaço de medida e $p \in \intfa{1}{\infty}$.  A \emph{norma} de $f \in \Intg^p(\bm X)$ é
+	\begin{equation*}
+	\nor{f}_p := \left( \int \abs{f}^p \dd\med \right)^{p\inv}.
+	\end{equation*}
+A \emph{norma} de $f \in \Intg^\infty(\bm X)$ é
+	\begin{equation*}
+	\nor{f}_\infty := \supess(\abs{f}).
+	\end{equation*}
+O \emph{produto interno} de $f,f' \in \Intg^2(\bm X)$ é
+	\begin{equation*}
+	\inte{f}{f'} := \left( \int ff' \dd\med \right)^{2\inv}.
+	\end{equation*}
+\end{definition}
+
+\begin{proposition}
+Sejam $\bm X$ um espaço de medida e $p \in \intff{1}{\infty}$. O espaço $(\Intg^p(\bm X),\nor{\var}_p)$ é um espaço normado completo. O espaço $(\Intg^2(\bm X),\inte{\var}{\var})$ é um espaço com produto interno.
+\end{proposition}
+
+\end{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+\subsection{Integral em espaços normados completos}
+
+Queremos definir o conceito de integração de funções de espaços de medida para espaços normados completos. Isso generaliza o caso de funções reais e complexas, pois de fato tudo que se precisa para integração são linearidade, norma e completude. Para estudar funções mensuráveis de um espaço de medida para um espaço normado, consideraremos no espaço normado a álgebra de mensuráveis topológica, gerada pelos abertos da topologia da norma. Começamos pelas funções simples.
+
+\subsection{Funções simples}
+
+\begin{definition}
+Sejam $\bm X$ um espaço de medida e $\E$ um espaço normado real. Uma \emph{função simples} de $\bm X$ para $\bm E$ é uma função $f\colon X \to E$ tal que $f(X)$ é finito. A \emph{partição por níveis} de $f$ é o conjunto
+	\begin{equation*}
+	\mathcal P_f := \{f\inv(c)\}_{c \in f(X)}.
+	\end{equation*}
+O conjunto das funções simples mensuráveis de $X$ para $E$ é denotado $\Simp(X,E)$.
+\end{definition}
+
+\begin{proposition}
+Sejam $\bm X$ um espaço de medida, $\E$ um espaço normado real e $f,f'\colon X \to E$ funções simples.
+	\begin{enumerate}
+	\item Uma função simples $f\colon X \to E$ é mensurável se, e somente se, sua partição por níveis $\mathcal P_f$ é mensurável;
+	
+	\item A função $f$ pode ser decomposta em funções indicadoras como
+		\begin{equation*}
+		f = \sum_{v \in f(X)} \idc_{f\inv(v)} v
+		\end{equation*}
+e, para toda partição $\mathcal P \geq \mathcal P_f$, definindo $\{v_P\} := f(P)$,
+		\begin{equation*}
+		f = \sum_{P \in \mathcal P} \idc_P v_P;
+		\end{equation*}
+	
+	\item Para todas funções simples $f,f'\colon X \to E$, a partição por níveis de $f+f'$ é mais grossa que o refinamento das partições por níveis de $f$ e $f'$:
+		\begin{equation*}
+		\mathcal P_{f+f'} \leq \mathcal P_f \vee \mathcal P_{f'}.
+		\end{equation*}
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item Suponha que $f\colon X \to E$ é uma função simples mensurável. Seja $v \in f(X)$. Como $\{v\}$ é fechado e $f$ é mensurável, $f\inv(\{v\})=f\inv(v)$ é mensurável.
+% COMENTŔIO: Abaixo está uma demonstração que eu tinha feito usando a estrutura topológica no sentido de que dois pontos são separados, ou seja, que é T1. Isso é equivalente a todo ponto ser fechado, que é uma demonstração mais simples que substituí acima. Sendo assim, esse teorema é verdade em espaços T1, não precisa ser um espaço normado. Aliás, basta que o espaço de chegada tenha os pontos como conjuntos mensuráveis, não precisa nem ter estrutura topológica, muito menos norma.
+%Como $f(X)$ é finito, existe vizinhança aberta $A \subseteq E$ de $v$ tal que, para todo $v' \in f(X) \setminus \{v\}$, $v' \notin A$. Assim, segue que $A \cap f(X) = \{v\}$, portanto
+%		\begin{equation*}
+%		f\inv(\{v\}) = f\inv(A \cap f(X)) = f\inv(A),
+%		\end{equation*}
+%que é mensurável porque $A$ é mensurável e $f$ também.	
+
+Reciprocamente, seja $M \subseteq E$ um conjunto mensurável. Como $f(X)$ é finito, segue que $M \cap f(X)$ é finito. Seja $v_0, \cdots,v_{n-1} \in E$ tais que $M \cap f(X) = \bigcup_{i \in [n]} \{v_i\}$. Então
+		\begin{equation*}
+		f\inv(M) = f\inv(M \cap f(X)) = f\inv \left( \bigcup_{i \in [n]} \{v_i\} \right) = \bigcup_{i \in [n]} f\inv(\{v_0\}).
+		\end{equation*}
+Como $f\inv(\{v_i\})$ são mensuráveis, pois são elementos da partição por níveis de $f$, segue que $f\inv(M)$ é mensurável, pois é união de mensuráveis, o que mostra que $f$ é mensurável.
+	
+	\item Seja $x \in X$. Como $\mathcal P_f$ é partição de $X$, existe $v \in f(X)$ tal que $x \in f\inv(v)$. Nesse caso, $f(x)=v$, $\idc_{f\inv(v)}(x)=1$ e, para todo $v' \in f(X) \setminus \{v\}$, $\idc_{f\inv(v')}(x)=0$, logo
+		\begin{equation*}
+		f(x) = 1v = \idc_{f\inv(v)}(x) v = \sum_{v \in f(X)} \idc_{f\inv(v)}(x) v,
+		\end{equation*}
+portanto $f=\sum_{v \in f(X)} \idc_{f\inv(v)} v$.
+A outra igualdade é semelhante.
+%Agora, seja $\mathcal P$ uma partição mais fina que a partição por níveis de $f$. Seja $x \in X$. Como $\mathcal P$ é partição de $X$, existe $P in \mathcal P$ tal que $x \in P$. Ainda, como $\mathcal \geq \mathcal_f$, existe $v \in f(X)$ tal que $P \subseteq f\inv(v)$. Nesse caso, $f(x)$
+	
+	\item Exercício.
+	\end{enumerate}
+\end{proof}
+
+\begin{proposition}
+Sejam $\bm X$ um espaço de medida e $\E$ um espaço normado real. O conjunto $\Simp(\bm X,\bm E)$ de funções simples mensuráveis é um subespaço linear real de $\Men(\bm X,\bm E)$. Se $f\colon X \to E$ é uma função simples mensurável, então $\nor{f}\colon X \to \R$ também é.
+\end{proposition}
+\begin{proof}
+Para ver que $\Simp(\bm X,\bm E)$ é um espaço linear, basta mostrar que ele subespaço linear de $\Men(\bm X,\bm E)$. Sejam $c \in \R$ e $f,f' \in \Simp(X,E)$. Como $f(X)$ e $f'(X)$ são finitos, e $(cf+f')(X) \subseteq cf(X) + f'(X)$, claramente $cf+f'$ é simples. Ainda, como $f,f'$ são mensuráveis, segue que $cf+f'$ é mensurável, o que mostra que $cf+f' \in \Simp(X,E)$.
+
+Para mostrar que $\nor{f}$ é simples, basta notar que, como $f(X)$ é finito, claramente $\nor{f}(X)$ é finito, e, como $\nor{\var}$ é mensurável (pois é contínua), a composição $\nor{f} = \nor{\var} \circ f$ é mensurável.
+\end{proof}
+
+\begin{proposition}
+Sejam $\bm X$ um espaço de medida e $\E$ um espaço normado real de dimensão finita. Uma função $f\colon X \to E$ é mensurável se, e somente se, existe uma sequência $(f_n)_{n \in \N}$ de funções simples de $\Simp(X,E)$ que convergem pontualmente para $f$.
+\end{proposition}
+\begin{proof}
+Como $\E$ tem dimensão finita, basta mostrar a proposição para $\R$. Suponhamos que $f$ é mensurável. Para cada $n \in \N^*$, particionamos o intervalo $\intfa{-n}{n}$ em intervalos de tamanho $\frac{1}{n}$ e definimos, para cada $k \in \intfa{-n^2-1}{n^2+1} \cap \Z$, os conjuntos
+%Para cada $n \in \N^*$ e cada $k \in [2n^2]$, particionamos o intervalo $\intfa{-n}{n}$ nos intervalos
+%	\begin{equation*}
+%	I_k := \intfa{\frac{k}{n}-n}{\frac{k+1}{n}-n}
+%	\end{equation*}
+	\begin{equation*}
+	X_k := 
+	\begin{cases}
+		\displaystyle f\inv\left( \intaa{\infty}{-n} \right),& k=-n^2-1 \\
+		\displaystyle f\inv\left( \intfa{\frac{k}{n}}{\frac{k+1}{n}} \right),& k \in \intfa{-n^2}{n^2} \cap \Z \\
+		\displaystyle f\inv\left( \intfa{n}{\infty} \right),& k=n^2.
+	\end{cases}
+	\end{equation*}
+%e definimos também o conjunto
+%	\begin{equation*}
+%	I_{2n^2} := \intaa{-\infty}{-n} \cup \intfa{n}{\infty} = \intfa{-n}{n}^\complement.
+%	\end{equation*}
+Os conjuntos $X_k \subseteq X$ são mensuráveis e particionam $X$. Definimos $f_0 := 0$ e, para cada $n \in \N^*$, as funções $f_n\colon X \to \R$ por
+	\begin{equation*}
+	f_n := \idc_{X_{-n^2-1}} (-n) + \sum_{k=-n^2}^{n^2} \idc_{X_k} \frac{k}{n}.
+	\end{equation*}
+%Para cada $k \in [2n^2+1]$, o conjunto $f\inv(I_k) \subseteq X$ é mensurável e esses conjuntos particionam $X$. Para cada $n \in \N^*$, definimos as funções $\phi_n\colon X \to \R$ por
+%	\begin{equation*}
+%	\phi_n := \sum_{k \in [2n^2]} \idc_{f\inv(I_k)} \inf_{x \in f\inv(I_k)} f(x).
+%	\end{equation*}
+%	\begin{align*}
+%	\func{\phi_n}{X}{\R}{x}{\sum_{k \in [2n^2-1]} \idc_{f\inv(I_k)}(x) \inf f(f\inv(I_k)) + \idc_{f\inv(\intaa{-\infty}{-n})} \inf f(f\inv(\intaa{-\infty}{-n})) + \idc_{f\inv(\intfa{n}{\infty})} \inf f(f\inv(\intfa{n}{\infty}))}.
+%	\end{align*}
+As funções $f_n$ são funções simples e mensuráveis, e convergem pontualmente para $f$, o que termina a demonstração.
+
+A recíproca é consequência de \ref{ana:conv.pont.func.mens}.
+\end{proof}
+
+%Um corolário dessa proposição é o caso em que as funções reais são positivas.
+
+% Para a definição de função simples valer nesse caso, preciso expandir o conceito para espaços topológicos e não somente espaços normados.
+%\begin{proposition}
+%Sejam $\bm X$ um espaço de medida e $f\colon X \to \intfa{0}{\infty}$ uma função real positiva. Existe uma sequência crescente $(f'_n)_{n \in \N}$ de funções simples de $\Simp(X,\intfa{0}{\infty})$ que convergem pontualmente para $f$.
+%\end{proposition}
+%\begin{proof}
+%As funções $f_n$ da demonstração anterior são todas menores ou iguais a $f$. Restringindo-as a $\intfa{0}{\infty}$, temos as funções $f'_n := f_n|_{\intfa{0}{\infty}}$, que satisfazem o enunciado.
+%%Assim, definimos $f'_n := \max_{k \in [n+1]} f_k|_{\intfa{0}{\infty}}$, temos a sequência procurada.
+%\end{proof}
+
+
+
+
+
+\subsection{Desintegração de medida}
+
+Seja $\bm X=(X,\mens,\med)$ um espaço de medida. Nessa seção consideraremos partições mensuráveis e partições por medida (contavelmente gerada). Dada uma partição $\mathcal P$ de $\bm X$, podemos induzir em $\mathcal P$ uma $\sigma$-álgebra e uma medida. Para isso, definimos a projeção
+	\begin{align*}
+	\func{\proj}{X}{\mathcal P}{x}{[x] = P_x}.
+	\end{align*}
+Como $\mathcal P$ é partição por medida (contavelmente gerada), a projeção $\proj$ não está definida para todo $x \in X$, as para quase todo, portanto é uma quase função. Agora, a $\sigma$-álgebra sobre $\mathcal P$ é $\proj\emp \mens$, a $\sigma$-álgebra empurrada por $\proj$, e a medida sobre $(\mathcal P,\proj\emp \mens)$ é $\proj\emp \med$, a medida empurrada por $\proj$. A tripla $(\mathcal P,\proj\emp\mens,\proj\emp\med)$ é um espaço de medida. Usaremos esse espaço de medida para falar sobre desintegração de medidas.
+
+\begin{definition}
+Sejam $\bm X=(X,\mens,\med)$ um espaço de medida (finita) e $\mathcal P$ uma partição por medida (contavelmente gerada) de $\bm X$. Uma \emph{desintegração} de $\mu$ relativa a $\mathcal P$ é uma família $(\med_P)_{P \in \mathcal P}$ tal que
+	\begin{enumerate}
+	\item Para quase todo $P \in \mathcal P$,
+		\begin{equation*}
+		\med_P(P)=1;
+		\end{equation*}
+	
+	\item Para todo $M \in \mens$, a função
+		\begin{align*}
+		\func{\med_{(\var)}(M)}{\mathcal P}{\R}{P}{\med_P(M)}
+		\end{align*}
+é mensurável;
+	
+	\item Para todo $M \in \mens$,
+		\begin{equation*}
+		\med(M) = \int \med_P(M) \dd\proj\emp\med(P).
+		\end{equation*}
+		\begin{equation*}
+		\med(M) = \int_{P \in \mathcal P} \med_P(M) \dd\proj\emp\med.
+		\end{equation*}
+	\end{enumerate}
+\end{definition}
+
+\begin{proposition}[Unicidade de Desintegração]
+Sejam $\bm X=(X,\mens,\med)$ um espaço de medida (finita) e $\mathcal P$ uma partição por medida (contavelmente gerada) de $\bm X$. Se $(\med_P)_{P \in \mathcal P}$ e $(\med'_P)_{P \in \mathcal P}$ são desintegrações de $\med$ relativas a $\mathcal P$, então, para quase todo $P \in \mathcal P$, $\med_P=\med'_P$.
+\end{proposition}
