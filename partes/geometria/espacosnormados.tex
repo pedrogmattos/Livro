@@ -12,9 +12,9 @@ Nesse caso, temos
 	\end{equation*}
 Se $\abs{0} \neq 0$, então $\abs{c}=1$ para todo $c \in C$ (inclusive $\abs{0}=1$), o que mostra que $\abs{\var}$ é uma função trivial e, portanto, não tem comportamento tão interessante. É natural então assumir que $\abs{0}=0$. Nesse caso, não concluímos da multiplicatividade que $\abs{c}=1$ para todo $c \in C$. No entanto, temos
 	\begin{equation*}
-	\abs{1} = \abs{1 \cdot 1} = \abs{1}\abs{1}.
+	\abs{1} = \abs{1 \times 1} = \abs{1}\abs{1}.
 	\end{equation*}
-Então $\abs{1}=0$ ou $\abs{1}=1$. No primeiro caso, segue que, para todo $c \in C$, $\abs{c} = \abs{1c} = \abs{1}\abs{c} = 0 \abs{c} = 0$, logo $\abs{c} = 0$ para todo $c \in C$, o que mostra que $\abs{\var}$ novamente é uma função trivial. É natural, assim, assumir que $\abs{1} \neq 0$, e portanto $\abs{1}=1$. Assumiremos, no entanto, que para todo $c \in C$, se $\abs{c} = 0$ então $c=0$, o que implica $\abs{\var}$ é um homomorfismo de grupos entre o grupo multiplicativo de $\bm C$ e o grupo multiplicativo $\intaa{0}{\infty}$.
+Então $\abs{1}=0$ ou $\abs{1}=1$. No primeiro caso, segue que, para todo $c \in C$, $\abs{c} = \abs{1c} = \abs{1}\abs{c} = 0 \abs{c} = 0$, logo $\abs{c} = 0$ para todo $c \in C$, o que mostra que $\abs{\var}$ novamente é uma função trivial. É natural, assim, assumir que $\abs{1} \neq 0$, e portanto $\abs{1}=1$. Assumiremos, no entanto, que para todo $c \in C$, se $\abs{c} = 0$ então $c=0$, o que implica que $\abs{\var}$ é um homomorfismo de grupos entre o grupo multiplicativo de $\bm C$ e o grupo multiplicativo $\intaa{0}{\infty}$.
 %Mas notemos que $\abs{1}=1$ é equivalente a assumirmos que, para todo $c \in C$, se $\abs{c} = 0$ então $c=0$, pois
 Notemos ainda que
 	\begin{equation*}
@@ -51,7 +51,7 @@ Seja $\bm C$ um corpo. Uma \emph{norma} (ou \emph{valor absoluto}) em $\bm C$ é
 	\end{enumerate}
 \end{definition}
 
-\begin{proposition}[Propriedades da Norma]
+\begin{proposition}[Propriedades da norma]
 Sejam $\bm C$ um corpo e $\abs{\var}$ uma norma em $\bm C$.
 	\begin{enumerate}
 	\item $\abs{1}=\abs{-1}=1$;
@@ -303,7 +303,7 @@ Seja $\bm E$ um espaço linear sobre um corpo normado $(\bm C,\abs{\var})$. Uma 
 \begin{definition}
 Seja $\E$ um espaço normado. A \emph{métrica} (induzida pela norma) de $\E$ é a função
 	\begin{align*}
-	\func{\dist{\var}{\var}}{E \times E}{\R}{(v,\bar v)}{\nor{v - \bar v}}.
+	\func{\dist{\var}{\var}}{E \times E}{\R}{(v,v')}{\nor{v - v'}}.
 	\end{align*}	
 A \emph{topologia de $\E$} é a topologia de $(E,\dist{\var}{\var})$.
 \end{definition}
@@ -313,30 +313,30 @@ Para que essa definição seja boa, mostramos a seguir a proposição.
 \begin{proposition}
 Seja $\E$ um espaço normado. A função
 	\begin{align*}
-	\func{\dist{\var}{\var}}{E \times E}{\R}{(v_0,v_1)}{\nor{v_0 - v_1}}.
+	\func{\dist{\var}{\var}}{E \times E}{\R}{(v,v')}{\nor{v - v'}}.
 	\end{align*}
 é uma métrica linear em $E$.
 \end{proposition}
 \begin{proof}
 Primeiro mostramos que $\dist{\var}{\var}$ é uma métrica.
 	\begin{enumerate}
-	\item (Separação) Sejam $v,\bar v \in E$. Se $v = \bar v$, então segue da positividade que
+	\item (Separação) Sejam $v,v' \in E$. Se $v = v'$, então segue da positividade que
 	\begin{equation*}
-	\dist{v}{\bar v} = \dist{v}{v} = \nor{v - v} = \nor{v-v}=\nor{0}=0.
+	\dist{v}{v'} = \dist{v}{v} = \nor{v - v} = \nor{v-v}=\nor{0}=0.
 	\end{equation*}
-Reciprocamente, se $\dist{v}{\bar v}=0$, então $\nor{v-\bar v}=0$. Segue da separação que $v-\bar v=0$, logo $v=\bar v$.
+Reciprocamente, se $\dist{v}{v'}=0$, então $\nor{v-v'}=0$. Segue da separação que $v-v'=0$, logo $v=v'$.
 
-	\item (Simetria)  Sejam $v,\bar v \in E$. Então segue da homogeneidade absoluta que
+	\item (Simetria)  Sejam $v,v' \in E$. Então segue da homogeneidade absoluta que
 	\begin{equation*}
-	\dist{v}{\bar v}=\nor{v-\bar v}=\nor{-1(\bar v -v)}=\abs{-1}\nor{\bar v - v}=\dist{\bar v}{v}.
+	\dist{v}{v'}=\nor{v-v'}=\nor{-1(v' - v)}=\abs{-1}\nor{v' - v}=\dist{v'}{v}.
 	\end{equation*}
 	
-	\item (Desigualdade triangular) Sejam $v_0,v_1,v_2 \in E$. Então segue da subaditividade que
+	\item (Desigualdade triangular) Sejam $v,v',v'' \in E$. Então segue da subaditividade que
 	\begin{align*}
-	\dist{v_0}{v_2} &= \nor{v_0-v_2} \\
-		&=\nor{v_0-v_1+v_1-v_2} \\
-		&\leq \nor{v_0-v_1}+\nor{v_1-v_2} \\
-		&=\dist{v_0}{v_1}+\dist{v_1}{v_2}.
+	\dist{v}{v''} &= \nor{v-v''} \\
+		&=\nor{v-v'+v'-v''} \\
+		&\leq \nor{v-v'}+\nor{v'-v''} \\
+		&=\dist{v}{v'}+\dist{v'}{v''}.
 	\end{align*}	
 	\end{enumerate}
 Agora, mostremos que $\dist{\var}{\var}$ é métrica linear.
@@ -783,9 +783,9 @@ Sejam $\bm E$ um espaço vetorial sobre um corpo normado completo $(\bm C,\abs{\
 	\begin{equation*}
 	\nor{v} = \nor{\sum_{i=0}^{d-1} v_ie_i} \leq \sum_{i=0}^{d-1}\abs{v_i}\nor{e_i} \leq c\nor{v}_1.
 	\end{equation*}
-A outra parte da equivalência segue do fato de que todo conjunto fechado e limitado em $\C$ é sequencialmente compacto.
+A outra parte da equivalência segue do fato de que todo conjunto fechado e limitado em $\bm C$ é sequencialmente compacto.
 
-Suponha, por absurdo, que não exista $C \in \intaa{0}{\infty}$ tal que, para todo $v \in E$, $C\inv\nor{v}_1 \leq \nor{v}$. Assim, para todo $n \in \N$, existe $v_n \in E$ com $\nor{v_n}_1 = 1$ e $1 = \nor{v_n}_1 > N\nor{v_n}$. Como $\S$ é compacta, já que a dimensão é finita, existe subsequência $(v_{n_k})_{k \in \N}$ convergindo a $v'$ em $(\bm E,\nor{\var}_1)$. Como a norma é contínua, segue que $\nor{v'}_1 = 1$. Pela desigualdade anterior, tem-se
+Suponha, por absurdo, que não exista $k \in \intaa{0}{\infty}$ tal que, para todo $v \in E$, $k\inv\nor{v}_1 \leq \nor{v}$. Assim, para todo $n \in \N$, existe $v_n \in E$ com $\nor{v_n}_1 = 1$ e $1 = \nor{v_n}_1 > n\nor{v_n}$. Como $\S$ é compacta, já que a dimensão é finita, existe subsequência $(v_{n_k})_{k \in \N}$ convergindo a $v'$ em $(\bm E,\nor{\var}_1)$. Como a norma é contínua, segue que $\nor{v'}_1 = 1$. Pela desigualdade anterior, tem-se
 	\begin{equation*}
 	\nor{v'} \leq \nor{v' - v_{n_k}} + \nor{v_{n_k}} \leq c\nor{v' - v_{n_k}}_1 + \frac{1}{n_k},
 	\end{equation*}
