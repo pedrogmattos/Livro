@@ -1732,12 +1732,90 @@ Sejam $d,d' \in \N$, $p \in \R^d$ e $\fun{f,f'}{\R^d}{\R^{d'}}$ diferenciáveis 
 	\begin{enumerate}
 	\item $\D (f+f')_p = \D f|_p + \D f'|_p$;
 	\item $\D (ff')|_p = \D f|_p f'(p) + f(p)\D f'|_p;$
-	\item Se $f'(p) \neq 0$,
+	\item Se, para todo $p \in \R^d$, $f'(p) \neq 0$,
 	\begin{equation*}
-	\D \left(\frac{f}{f'}\right)|_p = \frac{\D f|_p f'(p) - f(p)\D f'|_p}{f'(p)^2}
+	\D \left. \left(\frac{f}{f'}\right) \right|_p = \frac{\D f|_p f'(p) - f(p)\D f'|_p}{f'(p)^2}
 	\end{equation*}
 	\end{enumerate}
 \end{exercise}
+
+Para a demonstração a seguir, lembremos que toda função $k$-linear $L$ avaliada em uma soma $p+v$, sendo $p=(p_0,\cdots,p_{k-1})$ e $v=(v_0,\ldots,v_{k-1})$, vale
+	\begin{align*}
+	L(p+v) &= L(p_0+v_0,\ldots,p_{k-1}+v_{k-1}) \\
+			&= \sum_{j=0}^{k-1} \sum_{i \in [k]^{\uparrow j}} L(p_0,\ldots,p_{i_0-1},v_{i_0},p_{i_0+1},\ldots,p_{i_j-1},v_{i_j},p_{i_j+1},\ldots,p_{k-1}),
+	\end{align*}
+em que
+	\begin{equation*}
+	i \in [k]^{\uparrow j} = \set{(i_0,\cdots,i_{j-1}) \in [k]^j}{i_0 < \cdots < i_{j-1}}
+	\end{equation*}
+é um multi-índice crescente (cujas entradas pertencem a $[k]$) e cada termo
+	\begin{equation*}
+	L(p_0,\ldots,p_{i_0-1},v_{i_0},p_{i_0+1},\ldots,p_{i_{j-1}-1},v_{i_{j-1}},p_{i_{j-1}+1},\ldots,p_{k-1})
+	\end{equation*}
+tem $j$ termos de $v$ e $k-j$ termos de $p$.
+
+\begin{proposition}[Diferencial de função multilinear]
+Sejam $k,d_0,\ldots,d_{k-1},d' \in \N$, $p=(p_0,\cdots,p_{k-1}) \in \R^{d_0} \times \cdots \times \R^{d_{k-1}}$ e
+	\begin{equation*}
+	\fun{L}{\R^{d_0} \times \cdots \times \R^{d_{k-1}}}{\R^{d'}}
+	\end{equation*}
+uma função multilinear. A função $L$ é diferenciável e
+%	\begin{align*}
+%	\func{\D L|_p}{\R^{d_0} \times \cdots \times \R^{d_{k-1}}}{\R^{d'}}{v}{\sum_{i \in [k]} L(p_0,\ldots,v_i,\ldots,p_{k-1})}.
+%	\end{align*}
+	\begin{align*}
+	\func{\D L|_p}{\R^{d_0} \times \cdots \times \R^{d_{k-1}}}{\R^{d'}}{v=(v_0,\ldots,v_{k-1})}{\sum_{i \in [k]} L(p_0,\ldots,p_{i-1},v_i,p_{i+1},\ldots,p_{k-1})}.
+	\end{align*}
+\end{proposition}
+\begin{proof}
+Como $L$ é $k$-linear,
+	\begin{align*}
+	L(p+v) &= L(p_0+v_0,\ldots,p_{k-1}+v_{k-1}) \\
+			&= \sum_{j=0}^{k-1} \sum_{i \in [k]^{\uparrow j}} L(p_0,\ldots,p_{i_0-1},v_{i_0},p_{i_0+1},\ldots,p_{i_{j-1}-1},v_{i_{j-1}},p_{i_{j-1}+1},\ldots,p_{k-1}) \\
+			&= L(p) + \sum_{i \in [k]} L(p_0,\ldots,p_{i-1},v_i,p_{i+1},\ldots,p_{k-1}) \\
+			&\ + \sum_{j=2}^{k-1} \sum_{i \in [k]^{\uparrow j}} L(p_0,\ldots,p_{i_0-1},v_{i_0},p_{i_0+1},\ldots,p_{i_{j-1}-1},v_{i_{j-1}},p_{i_{j-1}+1},\ldots,p_{k-1}).
+	\end{align*}
+
+Primeiro, denotemos o termo para $j=1$ por
+	\begin{equation*}
+	D(v) := \sum_{i \in [k]} L(p_0,\ldots,p_{i-1},v_i,p_{i+1},\ldots,p_{k-1})
+	\end{equation*}
+e notemos que $D$ é linear pois, para todos $c \in \R$ e $v,v' \in \R^{d_0} \times \cdots \times \R^{d_{k-1}}$, segue da multilinearidade de $L$ que
+	\begin{align*}
+	D(cv+v') &= \sum_{i \in [k]} L(p_0,\ldots,p_{i-1},cv_i+v'_i,p_{i+1},\ldots,p_{k-1}) \\
+		&= c\sum_{i \in [k]} L(p_0,\ldots,p_{i-1},v_i,p_{i+1},\ldots,p_{k-1}) + \sum_{i \in [k]} L(p_0,\ldots,p_{i-1},v'_i,p_{i+1},\ldots,p_{k-1}) \\
+		&= cD(v)+D(v').
+	\end{align*}
+Definamos então
+	\begin{align*}
+	r(v) &:= L(p+v) - L(p) - D(v) \\
+		&= \sum_{j=2}^{k-1} \sum_{i \in [k]^{\uparrow j}} L(p_0,\ldots,p_{i_0-1},v_{i_0},p_{i_0+1},\ldots,p_{i_{j-1}-1},v_{i_{j-1}},p_{i_{j-1}+1},\ldots,p_{k-1})
+	\end{align*}
+e mostremos que
+	\begin{equation*}
+	\lim_{v \to 0} \frac{r(v)}{\nor{v}_{\infty}} = 0.
+	\end{equation*}
+Para isso usaremos a norma do máximo $\nor{\var}_\infty$ em $\R^{d_0} \times \cdots \times \R^{d_{k-1}}$. Como $L$ é contínua, vale
+	\begin{align*}
+	\nor{r(v)} &= \nor{\sum_{j=2}^{k-1} \sum_{i \in [k]^{\uparrow j}} L(p_0,\ldots,p_{i_0-1},v_{i_0},p_{i_0+1},\ldots,p_{i_{j-1}-1},v_{i_{j-1}},p_{i_{j-1}+1},\ldots,p_{k-1})} \\
+		&\leq \sum_{j=2}^{k-1} \sum_{i \in [k]^{\uparrow j}} \nor{L(p_0,\ldots,p_{i_0-1},v_{i_0},p_{i_0+1},\ldots,p_{i_{j-1}-1},v_{i_{j-1}},p_{i_{j-1}+1},\ldots,p_{k-1})} \\
+		&\leq \sum_{j=2}^{k-1} \sum_{i \in [k]^{\uparrow j}} \nor{L}\nor{p_0}\ldots\nor{p_{i_0-1}}\nor{v_{i_0}}\nor{p_{i_0+1}}\ldots\nor{p_{i_{j-1}-1}}\nor{v_{i_{j-1}}}\nor{p_{i_{j-1}+1}}\ldots\nor{p_{k-1}} \\
+		&= \sum_{j=2}^{k-1} \nor{L} \nor{p}_{\infty}^{k-j}\nor{v}_{\infty}^j \\
+		&\leq \nor{L} \left( \sum_{j=2}^{k-1} \nor{p}_{\infty}^{k-j}\nor{v}_{\infty}^j \right).
+	\end{align*}
+A primeira desigualdade segue da subaditividade da norma, a segunda segue da continuidade de $L$, e a terceira segue da definição de norma do máximo. Como $1 \leq j-1 \leq k-1$, então $\lim_{v \to 0} \nor{v}_{\infty}^{j-1} = 0$, logo
+	\begin{align*}
+	\lim_{v \to 0} \frac{\nor{r(v)}}{\nor{v}_{\infty}} &\leq \lim_{v \to 0} \frac{\nor{L} \left( \sum_{j=2}^{k-1} \nor{p}_{\infty}^{k-j}\nor{v}_{\infty}^j \right)}{\nor{v}_{\infty}} \\
+		&= \nor{L} \left( \sum_{j=2}^{k-1} \nor{p}_{\infty}^{k-j}\nor{v}_{\infty}^{j-1} \right) \\
+		&= 0.
+		\qedhere
+	\end{align*}
+\end{proof}
+
+
+
+
+
 
 \subsubsection{Diferenciais de ordem superior}
 
@@ -1829,7 +1907,7 @@ Como $D$ e $D'$ são funções $r$-lineares, sabemos que $D(0^{\otimes r}) = D'(
 o que implica $D(v^{\otimes r}) = D'(v^{\otimes r})$, pois $\nor{v} \neq 0$. Como $D$ e $D'$ são simétricas, então $D=D'$.
 \end{proof}
 
-\begin{definition}[$r$-Diferencial]
+\begin{definition}[Multidiferencial]
 Sejam $d,d' \in \N$, $p \in \R^d$ e $\fun{f}{\R^d}{\R^{d'}}$ uma função $r$-diferenciável em $p$. Para $k \in [r+1]$, a \emph{diferencial de ordem $k$} (ou \emph{$r$-diferencial}) de $f$ em $p$ é a única função $k$-linear simétrica
 	\begin{equation*}
 	\fun{\D^k f|_p}{\R^d \times \cdots \times \R^d}{\R^{d'}}
@@ -1864,6 +1942,36 @@ Sejam $d,d',d'' \in \N$, $p \in \R^d$, $\fun{f}{\R^d}{\R^{d'}}$ $2$-diferenciáv
 \end{exercise}
 
 \end{comment}
+
+Para a demonstração a seguir, lembremos que toda função $k$-linear $L$ avaliada em uma soma $p+v$, sendo $p=(p_0,\cdots,p_{k-1})$ e $v=(v_0,\ldots,v_{k-1})$, vale
+	\begin{align*}
+	L(p+v) &= L(p_0+v_0,\ldots,p_{k-1}+v_{k-1}) \\
+			&= \sum_{j=0}^{k-1} \sum_{i \in [k]^{\uparrow j}} L(p_0,\ldots,p_{i_0-1},v_{i_0},p_{i_0+1},\ldots,p_{i_j-1},v_{i_j},p_{i_j+1},\ldots,p_{k-1}),
+	\end{align*}
+em que $i \in [k]^{\uparrow j}$ é um multi-índice crescente $i=(i_0,\ldots,i_{j-1})$ com $i_0 < \cdots < i_{j-1}$ cujas entradas pertencem a $[k]$ e cada termo
+	\begin{equation*}
+	L(p_0,\ldots,p_{i_0-1},v_{i_0},p_{i_0+1},\ldots,p_{i_j-1},v_{i_j},p_{i_j+1},\ldots,p_{k-1})
+	\end{equation*}
+tem $j$ termos de $v$ e $k-j$ termos de $p$.
+
+\begin{exercise}[Multidiferencial de função multilinear]
+Sejam $k,d_0,\ldots,d_{k-1},d' \in \N$, $p=(p_0,\cdots,p_{k-1}) \in \R^{d_0} \times \cdots \times \R^{d_{k-1}}$ e
+	\begin{equation*}
+	\fun{L}{\R^{d_0} \times \cdots \times \R^{d_{k-1}}}{\R^{d'}}
+	\end{equation*}
+uma função multilinear. Para todo $r \in \N$, a função $L$ é $r$-diferenciável e, para todo $v^{\otimes r} \in (\R^{d_0} \times \cdots \times \R^{d_{k-1}})^{\otimes r}$,
+	\begin{equation*}
+	\D^r L|_p (v^{\otimes r}) = \sum_{i \in [k]^{\uparrow r}} L(p_0,\ldots,p_{i_0-1},v_{i_0},p_{i_0+1},\ldots,p_{i_{r-1}-1},v_{i_{r-1}},p_{i_{r-1}+1},\ldots,p_{k-1}).
+	\end{equation*}
+Em particular, para todo $r > k$, $\D^r L|_p = 0$.
+\end{exercise}
+
+Isso nos permite escrever uma função $r$-linear avaliada em uma soma como
+	\begin{align*}
+	L(p+v) &= \sum_{j=0}^{k-1} \sum_{i \in [k]^{\uparrow j}} L(p_0,\ldots,p_{i_0-1},v_{i_0},p_{i_0+1},\ldots,p_{i_j-1},v_{i_j},p_{i_j+1},\ldots,p_{k-1}) \\
+		&= \sum_{j=0}^{k-1} \D^j L|_p (v^{\otimes j}) \\
+		&= L(p) + \D L|_p (v) + \cdots + \D^{r-1} L|_p (v,\ldots,v) + L(v).
+	\end{align*}
 
 
 
