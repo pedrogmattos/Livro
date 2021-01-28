@@ -486,38 +486,54 @@ A partir desta seção, não estudaremos mais com detalhes os casos de variedade
 
 \subsection{Álgebra dos campos escalares}
 
-Dada uma variedade diferencial $\bm V$, um \emph{campos escalares} em $\bm V$ são funções do espaço $\Cont^\infty(V,\R)$ das funções diferenciáveis de $V$ para $\R$. Esse espaço será denotado $\tens^0(V)$\footnote{Usualmente denota-se esse espaço por $\Cont^\infty(V)$, mas adotaremos essa notação por motivos que ficarão mais claros na seção de campos tensoriais mais à frente; em resumo, campos escalares são campos tensoriais de tipo $(0,0)$}. O espaço $\tens^0(V)$ é um espaço vetorial sobre $\R$ com as operações de soma e produto por escalar induzidas pontualmente de $\R$: a soma dada por
+Dada uma variedade diferencial $\bm V$, um \emph{campos escalar} em $\bm V$ é uma função do espaço $\Cont^\infty(\bm V,\R)$, as funções diferenciáveis de $\bm V$ para $\R$. Esse espaço será denotado $\tens^0(\bm V)$\footnote{Usualmente denota-se esse espaço por $\Cont^\infty(V)$, mas adotaremos essa notação por motivos que ficarão mais claros na seção de campos tensoriais mais à frente; em resumo, campos escalares são campos tensoriais de tipo $(0,0)$}. O espaço $\tens^0(\bm V)$ é um espaço vetorial sobre $\R$ com as operações de soma e produto por escalar induzidas pontualmente de $\R$: a \emph{adição} é dada por
 	\begin{align*}
-	\func{+}{\tens^0(V) \times \tens^0(V)}{\tens^0(V)}{(f,f')}{
+	\func{+}{\tens^0(\bm V) \times \tens^0(\bm V)}{\tens^0(\bm V)}{(f,f')}{
 		\begin{aligned}[t]
-		\func{f+f'}{V}{\R}{p}{f(p)+f'(p)}
+		\func{f+f'}{V}{\R}{p}{f(p)+f'(p)},
 		\end{aligned}
 		}
 	\end{align*}
-e o produto por escalar é dado por
+a \emph{inversa} da adição é dada por
 	\begin{align*}
-	\func{\cdot}{\R \times \tens^0(V)}{\tens^0(V)}{(c,f)}{
+	\func{-}{\tens^0(\bm V)}{\tens^0(\bm V)}{f}{
+		\begin{aligned}[t]
+			\func{-f}{V}{\R}{p}{-f(p)},
+		\end{aligned}
+	}
+	\end{align*}
+a \emph{identidade} da adição é dada por
+	\begin{align*}
+	\func{0}{V}{\R}{p}{0}
+	\end{align*}
+e o \emph{produto por escalar} é dado por
+	\begin{align*}
+	\func{\cdot}{\R \times \tens^0(\bm V)}{\tens^0(\bm V)}{(c,f)}{
 		\begin{aligned}[t]
 		\func{cf}{V}{\R}{p}{cf(p).}
 		\end{aligned}
 		}
 	\end{align*}
-Ainda, pode-se definir um produto em $\tens^0(V)$ também induzido pontualmente de $\R$, dado por
+Ainda, pode-se definir um \emph{produto} em $\tens^0(\bm V)$, também induzido pontualmente de $\R$, dado por
 	\begin{align*}
-	\func{\times}{\tens^0(V) \times \tens^0(V)}{\tens^0(V)}{(f,f')}{
+	\func{\times}{\tens^0(\bm V) \times \tens^0(\bm V)}{\tens^0(\bm V)}{(f,f')}{
 		\begin{aligned}[t]
 		\func{ff'}{V}{\R}{p}{f(p)f'(p).}
 		\end{aligned}
 		}
 	\end{align*}
-Esse produto é bilinear com respeito à estrutura linear de $\tens^0(V)$ e, portanto, faz desse espaço uma álgebra associativa e comutativa. Essa álgebra é a \emph{álgebra de campos escalares} em $\bm V$. É simples ver que essas operações geram funções diferenciáveis de $\tens^0(V)$.
+Esse produto é bilinear com respeito à estrutura linear de $\tens^0(\bm V)$ e, portanto, faz desse espaço uma álgebra associativa e comutativa. Essa álgebra é a \emph{álgebra de campos escalares} em $\bm V$. É simples ver que essas operações geram funções diferenciáveis de $\tens^0(\bm V)$.
 
 \begin{proposition}
-Seja $\bm V$ uma variedade diferencial.
-	\begin{enumerate}
-	\item $(\tens^0(V),+,-,0,\times,1)$ é um anel, em que as operações são as operações pontuais induzidas de $\R$.
-	\item $(\tens^0(V),+,-,0,\times,1,\cdot)$ é uma álgebra associativa, comutativa e com unidade sobre $\R$, em que as operações são as operações pontuais induzidas de $\R$.
-	\end{enumerate}
+Seja $\bm V$ uma variedade diferencial. A lista
+	\begin{equation*}
+	\bm{\tens^0(\bm V)} := (\tens^0(\bm V),+,-,0,\times,1,\cdot)
+	\end{equation*}
+é uma álgebra associativa, comutativa e unitária sobre $\R$. Em particular,
+	\begin{equation*}
+	(\tens^0(\bm V),+,-,0,\times,1)
+	\end{equation*}
+é um anel.
 \end{proposition}
 
 \subsection{Espaço tangente e a diferencial}
@@ -525,17 +541,17 @@ Seja $\bm V$ uma variedade diferencial.
 \subsubsection{Derivações em pontos}
 
 \begin{definition}
-Sejam $\bm V$ uma variedade diferencial e $p \in V$. Uma \emph{derivação} em $p$ é um funcional linear $D\colon \tens^0(V) \to \R$ que satisfaz, para todas $f,f' \in \tens^0(V)$,
+Sejam $\bm V$ uma variedade diferencial e $p \in V$. Uma \emph{derivação} em $p$ é um funcional linear $D\colon \tens^0(\bm V) \to \R$ que satisfaz, para todas $f,f' \in \tens^0(\bm V)$,
 	\begin{equation*}
 	D(ff') = D(f)f'(p) + f(p)D(f').
 	\end{equation*}
 O \emph{espaço tangente} a $\bm V$ em $p$ é o conjunto $\Tg V|_p$ de todas derivações em $p$ e os \emph{vetores tangentes} a $V$ em $p$ são os elementos de $\Tg V|_p$.
 \end{definition}
 
-O espaço tangente $\Tg V|_p$ é um espaço vetorial. Para mostrar isso, devemos mostrar que ele é um subespaço vetorial do espaço dos funcionais lineares $\lin(\tens^0(V),\R)$.
+O espaço tangente $\Tg V|_p$ é um espaço vetorial. Para mostrar isso, devemos mostrar que ele é um subespaço vetorial do espaço dos funcionais lineares $\lin(\tens^0(\bm V),\R)$.
 
 \begin{proposition}
-Sejam $\bm V$ uma variedade diferencial e $p \in V$. O espaço tangente a $V$ em $p$ é um subespaço vetorial de $\lin(\tens^0(V),\R)$.
+Sejam $\bm V$ uma variedade diferencial e $p \in V$. O espaço tangente a $V$ em $p$ é um subespaço vetorial de $\lin(\tens^0(\bm V),\R)$.
 \end{proposition}
 \begin{proof}
 Para isso, primeiro notamos que claramente $\Tg V|_p$ não é vazio, pois o funcional nulo que leva toda função diferenciável em $0 \in \R$ é uma derivação em $p$.
@@ -543,7 +559,7 @@ Para isso, primeiro notamos que claramente $\Tg V|_p$ não é vazio, pois o func
 %	\begin{align*}
 %	\func{+}{\Tg_p V \times \Tg_p V}{\Tg_p V}{(v,v')}{
 %		\begin{aligned}[t] Seguem as seguintes propriedades que serão utilizadas mais à frente.
-%		\func{v+v'}{\tens^0(V)}{\R}{f}{v(f)+v(f')}
+%		\func{v+v'}{\tens^0(\bm V)}{\R}{f}{v(f)+v(f')}
 %		\end{aligned}
 %		}
 %	\end{align*}
@@ -551,12 +567,12 @@ Para isso, primeiro notamos que claramente $\Tg V|_p$ não é vazio, pois o func
 %	\begin{align*}
 %	\func{\cdot}{\R \times \Tg_p V}{\Tg_p V}{(c,v)}{
 %		\begin{aligned}[t]
-%		\func{cv}{\tens^0(V)}{\R}{f}{cv(f).}
+%		\func{cv}{\tens^0(\bm V)}{\R}{f}{cv(f).}
 %		\end{aligned}
 %		}
 %	\end{align*}
 %
-Agora, para todos $v,v' \in \Tg V|_p$ e $c \in \R$, e todos $f,f' \in \tens^0(V)$,
+Agora, para todos $v,v' \in \Tg V|_p$ e $c \in \R$, e todos $f,f' \in \tens^0(\bm V)$,
 	\begin{align*}
 	(v+v')(ff') &= v(ff') + v'(ff') \\
 		&= v(f)f'(p) + f(p)v(f') + v'(f)f'(p) + f(p)v'(f') \\
@@ -579,11 +595,11 @@ Assim temos um espaço vetorial $\Tg V|_p$ associado a cada ponto $p$ da varieda
 \label{topo:prop.deriva.lema}
 Sejam $\bm V$ uma variedade diferencial, $p \in V$ e $v \in \Tg V|_p$.
 	\begin{enumerate}
-	\item Para toda função constante $f \in \tens^0(V)$,
+	\item Para toda função constante $f \in \tens^0(\bm V)$,
 		\begin{equation*}
 		v(f) = 0.
 		\end{equation*}
-	\item Para todas funções $f,f' \in \tens^0(V)$ tais que $f(p)=f'(p)=0$,
+	\item Para todas funções $f,f' \in \tens^0(\bm V)$ tais que $f(p)=f'(p)=0$,
 		\begin{equation*}
 		v(ff')=0.
 		\end{equation*}
@@ -610,14 +626,14 @@ Sejam $\bm V$ e $\bm V'$ variedades diferenciais, $F\colon V \to V'$ uma funçã
 	\begin{align*}
 	\func{\D F|_p}{\Tg V|_p}{\Tg V'|_{F(p)}}{v}{
 		\begin{aligned}[t]
-		\func{\D F|_p v}{\tens^0(V')}{\R}{f}{v(f \circ F).}
+		\func{\D F|_p v}{\tens^0(\bm V')}{\R}{f}{v(f \circ F).}
 		\end{aligned}
 		}
 	\end{align*}
 Pode-se denotar $\D F_p$ por simplicidade.
 \end{definition}
 
-A diferencial $\D F|_p$ aplicada em um vetor tangente $v$ é uma derivação em $F(p)$ de $\tens^0(V')$. Para mostrar isso, sejam $f,f' \in \tens^0(V')$ e $c \in \R$. Como $v$ é linear,
+A diferencial $\D F|_p$ aplicada em um vetor tangente $v$ é uma derivação em $F(p)$ de $v\tens^0(\bm V')$. Para mostrar isso, sejam $f,f' \in v\tens^0(\bm V')$ e $c \in \R$. Como $v$ é linear,
 	\begin{align*}
 	(\D F|_p v) (f+f') &= v((f + f') \circ F) \\
 		&= v((f \circ F) + (f' \circ F)) \\
@@ -645,7 +661,7 @@ o que mostra que $\D F|_p v$ é derivação em $F(p)$.
 Sejam $\bm V$ e $\bm V'$ variedades diferenciais e $F\colon V \to V'$ uma função diferenciável e $p \in V$. A diferencial $\D F|_p\colon \Tg V|_p \to \Tg V'|_{F(p)}$ é uma função linear.
 \end{proposition}
 \begin{proof}
-Sejam $v,v' \in \Tg V|_p$ e $c \in \R$. Então, para todo $f \in \tens^0(V)$,
+Sejam $v,v' \in \Tg V|_p$ e $c \in \R$. Então, para todo $f \in \tens^0(\bm V)$,
 	\begin{align*}
 	(\D F|_p (v+v')) (f) &= (v+v')(f \circ F) \\
 		&= v(f \circ F) + v'(f \circ F) \\
@@ -773,16 +789,16 @@ a união disjunta dos espaços tangentes a $\bm V$ em todos pontos de $V$.
 
 Dada uma carta $(A,\x)$ de $V$, as funções $\left( \derr{\x^i}_p \right)_{i \in [d]}$, definidas por
 	\begin{align*}
-	\func{\derr{\x^i}_p}{\tens^0(V)}{\R}{f}{\partial_i(f \circ \x\inv)|_{\x(p)}}
+	\func{\derr{\x^i}_p}{\tens^0(\bm V)}{\R}{f}{\partial_i(f \circ \x\inv)|_{\x(p)}}
 	\end{align*}
-são uma base ordenada de $\Tg V|_p$. Essas funções são lineares porque, para todas $f,f' \in \tens^0(V)$ e $c \in \R$,
+são uma base ordenada de $\Tg V|_p$. Essas funções são lineares porque, para todas $f,f' \in \tens^0(\bm V)$ e $c \in \R$,
 	\begin{align*}
 	\derr{\x^i}_p(cf+f') &= \partial_i((cf+f') \circ \x\inv)|_{x(p)} \\
 		&= \partial_i((cf \circ \x\inv) + (f' \circ \x\inv))|_{x(p)} \\
 		&= c\partial_i(f \circ \x\inv)|_{x(p)} + \partial_i(f' \circ \x\inv))|_{x(p)} \\
 		&= c\derr{\x^i}_p f + \derr{\x^i}_p f,
 	\end{align*}
-e são derivações porque, para todas $f,f' \in \tens^0(V)$,
+e são derivações porque, para todas $f,f' \in \tens^0(\bm V)$,
 	\begin{align*}
 	\derr{\x^i}_p(ff') &= \partial_i ((ff') \circ \x\inv)|_{\x(p)} \\
 		&= \partial_i ((f \circ \x\inv)(f' \circ \x\inv))|_{\x(p)} \\
@@ -1105,112 +1121,123 @@ Seja $\bm V$ uma variedade diferencial. Um \emph{campo tensorial} de tipo $(k,l)
 	\begin{align*}
 	\func{T}{V}{\Tg V^{\otimes(k,l)}}{p}{T|_p}
 	\end{align*}
-tal que, para todo $p \in V$, $T|_p \in \Tg V^{\otimes(k,l)}|_p$. O conjunto dos campos tensoriais diferenciáveis\footnote{Aqui diferenciável quer dizer $\Cont^\infty$.} de tipo $(k,l)$ em $\bm V$ é denotado $\tens^{(k,l)}(V)$.
+tal que, para todo $p \in V$, $T|_p \in \Tg V^{\otimes(k,l)}|_p$. O conjunto dos campos tensoriais diferenciáveis\footnote{Aqui diferenciável quer dizer $\Cont^\infty$.} de tipo $(k,l)$ em $\bm V$ é denotado $\tens^{(k,l)}(\bm V)$.
 
-Um campo tensorial diferenciável de tipo $(k,0)$ é também denotado $\tens^k(V)$ e um de tipo $(0,l)$ é também denotado $\tens^{* l}(V)$.
+Um campo tensorial diferenciável de tipo $(k,0)$ é também denotado $\tens^k(\bm V)$ e um de tipo $(0,l)$ é também denotado $\tens^{* l}(\bm V)$.
 Um \emph{campo vetorial} é um campo tensorial de tipo $(1,0)$.
-% (Já defini na parte de Álgebra dos Campos Escalares) Um \emph{campo escalar} é uma função real $f\colon V \to \R$ e são equivalentes os conjuntos $\Cont^\infty(V) = \tens^0(V) = \tens^{*0}(V)$.
+% (Já defini na parte de Álgebra dos Campos Escalares) Um \emph{campo escalar} é uma função real $f\colon V \to \R$ e são equivalentes os conjuntos $\Cont^\infty(V) = \tens^0(\bm V) = \tens^{*0}(V)$.
 \end{definition}
 
-O conjunto $\tens^1(V)$ é um espaço linear sobre $\R$ com a soma e o produto por escalar induzidos pontualmente pela soma e produto por escalar de $\Tg V|_p$: a soma é dada por
+O conjunto $\tens^1(\bm V)$ é um espaço linear sobre $\R$ com a soma e o produto por escalar induzidos pontualmente pela soma e produto por escalar de $\Tg V|_p$: a \emph{adição} é dada por
 	\begin{align*}
-	\func{+}{\tens^1(V) \times \tens^1(V)}{\tens^1(V)}{(X,X')}{
-	\begin{aligned}[t]
-	\func{X+X'}{V}{\Tg V}{p}{X|_p + X'|_p.}
-	\end{aligned}
+	\func{+}{\tens^1(\bm V) \times \tens^1(\bm V)}{\tens^1(\bm V)}{(v,v')}{
+		\begin{aligned}[t]
+		\func{v+v'}{V}{\Tg V}{p}{v|_p + v'|_p},
+		\end{aligned}
 	}
+	\end{align*}
+a \emph{inversa} da adição é dada por
+	\begin{align*}
+	\func{-}{\tens^1(\bm V)}{\tens^1(\bm V)}{v}{
+		\begin{aligned}[t]
+			\func{-v}{V}{\Tg V}{p}{-v|_p},
+		\end{aligned}
+	}
+	\end{align*}
+a \emph{identidade} da adição é dada por
+	\begin{align*}
+	\func{0}{V}{\Tg V}{v}{0|_p}
 	\end{align*}
 e o produto por escalar é dado por
 	\begin{align*}
-	\func{\cdot}{\R \times \tens^1(V)}{\tens^1(V)}{(c,X)}{
-	\begin{aligned}[t]
-	\func{cX}{V}{\Tg V}{p}{cX|_p.}
-	\end{aligned}
+	\func{\cdot}{\R \times \tens^1(\bm V)}{\tens^1(\bm V)}{(c,v)}{
+		\begin{aligned}[t]
+		\func{cv}{V}{\Tg V}{p}{cv|_p.}
+		\end{aligned}
 	}
 	\end{align*}
 
 Mais adiante introduziremos um produto bilinear nesse espaço linear de modo a lhe dar uma estrutura de álgebra sobre $\R$. Além dessa operações, podemos multiplicar um campo vetorial por uma função escalar diferenciável pontualmente:
 	\begin{align*}
-	\func{\cdot}{\tens^0(V) \times \tens^1(V)}{\tens^1(V)}{(f,X)}{
+	\func{\bm\cdot}{\tens^0(\bm V) \times \tens^1(\bm V)}{\tens^1(\bm V)}{(f,v)}{
 		\begin{aligned}[t]
-		\func{fX}{V}{\Tg V}{p}{f(p)X|_p.}
+		\func{fv}{V}{\Tg V}{p}{f(p)v|_p.}
 		\end{aligned}
 	}	
 	\end{align*}
-Isso é uma ação do anel $\tens^0(V)$ que dá ao espaço $\tens^1(V)$ uma estrutura de módulo.
+Isso é uma ação do anel $\tens^0(\bm V)$ que dá ao espaço $\tens^1(\bm V)$ uma estrutura de módulo.
 
 \begin{proposition}
 Seja $\bm V$ uma variedade diferencial.
 	\begin{enumerate}
-	\item $(\tens^1(V),+,-,0,\cdot)$ é um espaço linear sobre $\R$.
-	\item $(\tens^1(V),+,-,0,\cdot)$ é um módulo sobre $\tens^0(V)$.
+	\item A lista $(\tens^1(\bm V),+,-,0,\cdot)$ é um espaço linear sobre $\R$.
+	\item A lista $(\tens^1(\bm V),+,-,0,\bm\cdot)$ é um módulo sobre o anel de $\tens^0(\bm V)$.
 	\end{enumerate}
 \end{proposition}
 
+A proposição a seguir dá uma condição equivalente a um campo vetorial $\fun{v}{V}{\Tg V}$ ser diferenciável, ou seja, pertencer a $\tens^1(\bm V)$.
+
 \begin{proposition}
-Sejam $\bm V$ uma variedade diferencial e $X\colon V \to \Tg V$ um campo vetorial. O campo vetorial $X$ é diferenciável\footnote{Aqui diferenciável quer dizer $\Cont^\infty$. Não consideraremos os detalhes relacionados ao grau de regularidade do campo, mas eles podem ser definidos e estudados de modo análogo, substituindo $\Cont^\infty$ por $\Cont^k$.} em $\bm V$ se, e somente se, para toda $f \in \tens^0(V)$,
+Sejam $\bm V$ uma variedade diferencial e $\fun{v}{V}{\Tg V}$ um campo vetorial. O campo vetorial $v$ é diferenciável\footnote{Aqui diferenciável quer dizer $\Cont^\infty$. Não consideraremos os detalhes relacionados ao grau de regularidade do campo, mas eles podem ser definidos e estudados de modo análogo, substituindo $\Cont^\infty$ por $\Cont^k$.} em $\bm V$ se, e somente se, para toda $f \in \tens^0(\bm V)$,
 	\begin{align*}
-	\func{\partial_X f}{V}{\R}{p}{X|_p f}
+	\func{\partial_v f}{V}{\R}{p}{v|_p f}
 	\end{align*}
-é uma função escalar diferenciável.
+é um campo escalar diferenciável.
 \end{proposition}
 
 \subsection{Derivações e colchete de campos vetoriais}
 
-A proposição da seção anterior é equivalente a dizer que $X$ induz uma função
+A proposição da seção anterior é equivalente a dizer que o campo $v \in \tens^1(\bm V)$ induz uma função
 	\begin{align*}
-	\func{\partial_X}{\tens^0(V)}{\tens^0(V)}{f}{\partial_X f.}
+	\func{\partial_v}{\tens^0(\bm V)}{\tens^0(\bm V)}{f}{\partial_v f.}
 	\end{align*}
 
-Essa função é linear na álgebra $\tens^0(V)$, pois
+Essa função é linear na álgebra $\tens^0(\bm V)$, pois
 	\begin{equation*}
-	\partial_X(cf+f')(p) = X|_p(cf+f') = cX|_p f + X|_p f = (c\partial_X f + \partial_X f')(p).
+	\partial_v(cf+f')(p) = v|_p(cf+f') = cv|_p f + v|_p f = (c\partial_v f + \partial_v f')(p).
 	\end{equation*}
 
-Além disso, ela é uma derivação em $\tens^0(V)$, pois
-%	\begin{equation*}
-%	X^*(ff')(p) = X|_p(ff') = X|_p(f)f'(p) + f(p) X|_p(f') = (X^*(f)f'+fX^*(f'))(p).
-%	\end{equation*}
+Além disso, ela é uma derivação em $\tens^0(\bm V)$, pois
 	\begin{equation*}
-	\partial_X(ff')(p) = X|_p(ff') = X|_p(f)f'(p) + f(p) X|_p(f') = (\partial_X(f)f'+f\partial_X(f'))(p).
+	\partial_v(ff')(p) = v|_p(ff') = v|_p(f)f'(p) + f(p) v|_p(f') = (\partial_v(f)f'+f\partial_v(f'))(p).
 	\end{equation*}
 
-Pode-se mostrar que existe uma bijeção entre o conjunto dos campos vetoriais diferenciáveis $\tens^1(V)$ e o conjunto das derivações $\Der(\tens^0(V))$. Por esse motivo, ignora-se a notação $\partial_X f$ da derivação e denota-se simplesmente $Xf$. É importante notar, no entanto, que $fX$ e $Xf$ são objetos distintos, o primeiro sendo um elemento de $\tens^1(V)$, resultado da multiplicação de uma função escalar por um campo vetorial, uma operação da estrutura de $\tens^0(V)$-módulo de $\tens^1(V)$, e a segunda é um elemento de $\tens^0(V)$, uma função escalar, resultado de uma derivação na álgebra $\tens^0(V)$.
+Pode-se mostrar que existe uma bijeção entre o conjunto dos campos vetoriais diferenciáveis $\tens^1(\bm V)$ e o conjunto das derivações $\Der(\bm{\tens^0(\bm V)})$. Por esse motivo, é comum se ignorar a notação $\partial_v f$ da derivação e denotar-se simplesmente $vf$. É importante notar, no entanto, que $fv$ e $vf$ são objetos distintos, o primeiro sendo um elemento de $\tens^1(\bm V)$, resultado da multiplicação de uma função escalar por um campo vetorial, uma operação da estrutura de $\tens^0(\bm V)$-módulo de $\tens^1(\bm V)$, e a segunda é um elemento de $\tens^0(\bm V)$, um campo escalar, resultado de uma derivação na álgebra $\bm{\tens^0(\bm V)}$.
 
-Definiremos agora o `colchete de Lie'. Esse colchete dará, como comentado anteriormente, uma estrutura de álgebra sobre $\R$ a $\tens^1(V)$. O conjunto $\Der(\tens^0(V))$ tem um produto $\circ$ dado pela composição de funções, induzido do produto de composição de $\lin(\tens^0,\R)$. Esse produto é associativo, mas não faz de $\Der(\tens^0(V))$ uma álgebra de Lie, pois nem é fechado; ou seja, a composição de quaisquer duas derivações não é uma derivação. Podemos formar uma álgebra de Lie a partir de uma álgebra associativa de um modo bem conhecido usando o colchete de Lie. Definamos, portanto, para duas derivações $\partial_X,\partial_{X'} \in \Der(\tens^0(V))$, o produto
+Definiremos agora o \textit{colchete}\footnote{Comumente chamado de `colchete de Lie' na literatura.} de campos vetoriais. Esse colchete é um produto bilinear que dará, como comentado anteriormente, uma estrutura de álgebra sobre $\R$ a $\tens^1(\bm V)$. O conjunto $\Der(\tens^0(\bm V))$ tem um produto $\circ$ dado pela composição de funções, induzido do produto de composição de $\toplin(\bm{\tens^0(\bm V)},\R)$. Esse produto é associativo, mas não faz de $\Der(\tens^0(\bm V))$ uma álgebra de derivação adjunta\footnote{Álgebra de Lie}, pois nem é fechado; ou seja, a composição de quaisquer duas derivações não é uma derivação. Podemos formar uma álgebra de derivação adjunta a partir de uma álgebra associativa de um modo bem conhecido usando o colchete. Definamos, portanto, para duas derivações $\partial_v,\partial_{v'} \in \Der(\tens^0(\bm V))$, o produto
 	\begin{equation*}
-	\col{\partial_X}{\partial_{X'}} := \partial_X \circ \partial_{X'} - \partial_{X'} \circ \partial_X.
+	\col{\partial_v}{\partial_{v'}} := \partial_v \circ \partial_{v'} - \partial_{v'} \circ \partial_v.
 	\end{equation*}
 
-Esse produto é uma derivação pela proposição \ref{alge:prop.algebra.colchete.deriv}. Portanto existe um campo vetorial associado à derivação $\col{\partial_X}{\partial_{X'}}$, que denotaremos por $\col{X}{X'} \in \tens^1(V)$, de modo que
+Esse produto é uma derivação pela proposição \ref{alge:prop.algebra.colchete.deriv}. Portanto existe um campo vetorial associado à derivação $\col{\partial_v}{\partial_{v'}}$, que denotaremos por $\col{v}{v'} \in \tens^1(\bm V)$, de modo que
 	\begin{equation*}
-	\partial_{\col{X}{X'}} = \col{\partial_X}{\partial_{X'}}.
+	\partial_{\col{v}{v'}} = \col{\partial_v}{\partial_{v'}}.
 	\end{equation*}
 
-O campo vetorial $\col{X}{X'}$ é chamado de `colchete de Lie' dos campos $X,X' \in \tens^1(V)$. Em um ponto $p \in V$, e função $f \in \tens^0(V)$, o colchete é
+O campo vetorial $\col{v}{v'}$ é chamado de \emph{colchete} dos campos $v,v' \in \tens^1(\bm V)$. Em um ponto $p \in V$, e função $f \in \tens^0(\bm V)$, o colchete é
 	\begin{equation*}
-	\col{X}{X'}|_p(f) = X|_p(X' f) - X'|_p(X f).
+	\col{v}{v'}|_p(f) = v|_p(v' f) - v'|_p(v f).
 	\end{equation*}
 
 \begin{proposition}[Colchete em Coordenadas Locais]
-Sejam $\bm V$ uma variedade diferencial e $X,Y \in \tens^1(V)$ campos vetoriais. Para toda carta $(A,\x)$ de $\bm V$, se $X = X^i \der{}{\x^i}$ e $Y = Y^i \der{}{\x^i}$ em $A$, então o colchete entre $X$ e $Y$ em $A$ é
+Sejam $\bm V$ uma variedade diferencial e $v,w \in \tens^1(\bm V)$ campos vetoriais. Para toda carta $(A,\x)$ de $\bm V$, se $v = v^i \der{}{\x^i}$ e $w = w^i \der{}{\x^i}$ em $A$, então o colchete entre $v$ e $w$ em $A$ é
 	\begin{equation*}
-	\col{X}{Y} = \sum_{(i,j) \in [d]^2} \left(X^i\der{Y^j}{\x^i} -  Y^i\der{X^j}{\x^i}\right) \der{}{\x^j}.
+	\col{v}{w} = \sum_{(i,j) \in [d]^2} \left(v^i\der{w^j}{\x^i} -  w^i\der{v^j}{\x^i}\right) \der{}{\x^j}.
 	\end{equation*}
 \end{proposition}
 \begin{proof}
-Basta notar que, para toda $f \in \tens^0(V)$
+Basta notar que, para toda $f \in \tens^0(\bm V)$
 	\begin{align*}
-	\col{X}{Y}f &= \sum_{i \in [d]} X^i \der{}{\x^i} \left( \sum_{j \in [d]} Y^j \der{f}{\x^j} \right) - \sum_{j \in [d]} Y^j \der{}{\x^j} \left( \sum_{i \in [d]} X^i \der{f}{\x^i} \right) \\
-		&= \sum_{(i,j) \in [d]^2} \left( X^i \der{Y^j}{\x^i}\der{f}{\x^j} + X^iY^j \der{^2 f}{\x^i \partial \x^j} - Y^j \der{X^i}{\x^j}\der{f}{\x^i} - Y^jX^i \der{^2 f}{\x^j \partial \x^i} \right)\\
-		&= \sum_{(i,j) \in [d]^2} \left(X^i\der{Y^j}{\x^i} -  Y^i\der{X^j}{\x^i}\right) \der{f}{\x^j},
+	\col{v}{w}f &= \sum_{i \in [d]} v^i \der{}{\x^i} \left( \sum_{j \in [d]} w^j \der{f}{\x^j} \right) - \sum_{j \in [d]} w^j \der{}{\x^j} \left( \sum_{i \in [d]} v^i \der{f}{\x^i} \right) \\
+		&= \sum_{(i,j) \in [d]^2} \left( v^i \der{w^j}{\x^i}\der{f}{\x^j} + v^iw^j \der{^2 f}{\x^i \partial \x^j} - w^j \der{v^i}{\x^j}\der{f}{\x^i} - w^jv^i \der{^2 f}{\x^j \partial \x^i} \right)\\
+		&= \sum_{(i,j) \in [d]^2} \left(v^i\der{w^j}{\x^i} -  w^i\der{v^j}{\x^i}\right) \der{f}{\x^j},
 	\end{align*}
 pois $\der{^2 f}{\x^i \partial \x^j} = \der{^2 f}{\x^j \partial \x^i}$.
 \end{proof}
 
 Usando a notação de Einstein e simplificando a fórmula da proposição, temos
 	\begin{equation*}
-	\col{X}{Y} = (XY^i - YX^i)\der{}{\x^i}.
+	\col{v}{w} = (vw^i - wv^i)\der{}{\x^i}.
 	\end{equation*}
 Em particular, temos que $\col{\der{}{\x^i}}{\der{}{\x^j}} = 0$ para todos $i,j \in [d]$, fato essencial na demonstração da proposição anterior.
 
@@ -1219,40 +1246,44 @@ O colchete de Lie satisfaz as seguintes propriedades.
 \begin{proposition}
 Seja $\bm V$ uma variedade diferencial.
 	\begin{enumerate}
-	\item $(\tens^1(V),\col{\var}{\var})$ é uma álgebra de Lie sobre $\R$;
-	\item Para todos $X,X' \in \tens^1(V)$ e $f,f' \in \tens^0(V)$,
+	\item A lista
 		\begin{equation*}
-		\col{fX}{f'X'} = ff'\col{X}{X'} + f(Xf')X' - f'(X'f)X.
+		\bm{\tens^1(\bm V)} := (\tens^1(\bm V),+,-,0,\col{\var}{\var},\cdot)
+		\end{equation*}
+	é uma álgebra de derivação adjunta sobre $\R$;
+	\item Para todos $v,v' \in \tens^1(\bm V)$ e $f,f' \in \tens^0(\bm V)$,
+		\begin{equation*}
+		\col{fv}{f'v'} = ff'\col{v}{v'} + f(vf')v' - f'(v'f)v.
 		\end{equation*}
 	\end{enumerate}
 \end{proposition}
 \begin{proof}
 	\begin{enumerate}
 	\item Corolário de \ref{alge:prop.algebra.colchete.deriv}.
-	\item Para toda $g \in \tens^0(V)$,
+	\item Para toda $g \in \tens^0(\bm V)$,
 		\begin{align*}
-		\col{fX}{f'X'}g &= (fX)(f'X')g - (f'X')(fX)g \\
-			&= (fX)(f'X'g) - (f'X')(fXg) \\
-			&= (fX)(f')(X'g) + f'((fX)(X'g)) \\
-			&\qquad - (f'X')(f)(Xg) - f((f'X')(Xg)) \\
-			&= ff'\col{X}{X'}(g) + f(Xf')X'(g) - f'(X'f)X(g) \\
-			&= \left(ff'\col{X}{X'} + f(Xf')X' - f'(X'f)X\right)(g).
+		\col{fv}{f'v'}g &= (fv)(f'v')g - (f'v')(fv)g \\
+			&= (fv)(f'v'g) - (f'v')(fvg) \\
+			&= (fv)(f')(v'g) + f'((fv)(v'g)) \\
+			&\qquad - (f'v')(f)(vg) - f((f'v')(vg)) \\
+			&= ff'\col{v}{v'}(g) + f(vf')v'(g) - f'(v'f)v(g) \\
+			&= \left(ff'\col{v}{v'} + f(vf')v' - f'(v'f)v\right)(g).
 		\end{align*}
 	\end{enumerate}
 \end{proof}
 
 \subsection{Álgebra de campos tensoriais}
 
-Assim como definimos produto tensorial de espaços lineares, podemos definir um produto tensorial de módulos sobre anéis comutativos. Pode-se mostrar que, nesse caso, o produto tensorial de tipo $(k,l)$ do módulo $\tens^1(V)$ sobre o anel comutativo $\tens^0(V)$ é o espaço $\tens^{(k,l)}(V)$ de campos tensoriais de tipo $(k,l)$ em $\bm V$:
+Assim como definimos produto tensorial de espaços lineares, podemos definir um produto tensorial de módulos sobre anéis (comutativos). Pode-se mostrar que, nesse caso, o produto tensorial de tipo $(k,l)$ do módulo $\tens^1(\bm V)$ sobre o anel comutativo $\tens^0(\bm V)$ é o espaço $\tens^{(k,l)}(\bm V)$ de campos tensoriais de tipo $(k,l)$ em $\bm V$:
 	\begin{equation*}
-	\left(\tens^1(V)\right)^{\otimes (k,l)} = \tens^{(k,l)}(V).
+	\left(\tens^1(\bm V)\right)^{\otimes (k,l)} = \tens^{(k,l)}(\bm V).
 	\end{equation*}
-Desse modo, os campos tensoriais $T \in \tens^{(k,l)}(V)$ são tensores em si, e não somente tensores em cada ponto $p \in V$. Assim, podemos formar a \emph{álgebra de campos tensoriais} em $\bm V$
+Desse modo, os campos tensoriais $T \in \tens^{(k,l)}(\bm V)$ são tensores em si, e não somente tensores em cada ponto $p \in V$. Assim, podemos formar a \emph{álgebra de campos tensoriais} em $\bm V$
 	\begin{equation*}
-	\tens^\otimes (V) := \bigoplus_{(k,l) \in \N^2} \tens^{(k,l)}(V).
+	\tens^\otimes (\bm V) := \bigoplus_{(k,l) \in \N^2} \tens^{(k,l)}(\bm V).
 	\end{equation*}
 
-O espaço $\tens^\otimes (V)$ é uma álgebra sobre $\tens^0(V)$. A soma e o produto por escalar são definidos pontualmente e o produto tensorial também.
+O espaço $\tens^\otimes (\bm V)$ é uma álgebra sobre $\tens^0(\bm V)$. A soma e o produto por escalar são definidos pontualmente e o produto tensorial também.
 
 
 
@@ -1265,7 +1296,7 @@ As demonstrações dessa serão omitidas, mas podem ser encontradas em \textit{I
 Consideremos uma curva diferenciável $\gamma\colon I \to V$ definida em um intervalo aberto $I$. Como, para todo $t \in I$, $\Tg I|_t \simeq \R$, segue que sua diferencial em $t \in I$ é uma função $\D \gamma|_t \to \Tg V|_{\gamma(t)}$. Mas então $\D \gamma$
 
 \begin{definition}
-Sejam $\bm V$ um variedade diferencial e $X \in \tens^1(V)$. Uma \emph{curva integral de $X$} é uma curva diferenciável $\gamma\colon I \to V$ tal que, para todo $t \in I$,
+Sejam $\bm V$ um variedade diferencial e $X \in \tens^1(\bm V)$. Uma \emph{curva integral de $X$} é uma curva diferenciável $\gamma\colon I \to V$ tal que, para todo $t \in I$,
 	\begin{equation*}
 	\dot \gamma(t) = X|_{\gamma(t)}.
 	\end{equation*}
@@ -1284,11 +1315,11 @@ que se reduz a um sistema autônomo de equações diferenciais parciais: para to
 O teorema de existência, unicidade e diferenciabilidade garante que o sistema anterior tem solução única e diferenciável. Isso implica a seguinte proposição.
 
 \begin{proposition}
-Sejam $\bm V$ um variedade diferencial e $X \in \tens^1(V)$. Para todo $p \in V$, existem $\varepsilon \in \intaa{0}{\infty}$ e curva diferenciável $\gamma\colon \intaa{-\varepsilon}{\varepsilon} \to V$ que é curva integral de $X$ iniciada em $p$.
+Sejam $\bm V$ um variedade diferencial e $X \in \tens^1(\bm V)$. Para todo $p \in V$, existem $\varepsilon \in \intaa{0}{\infty}$ e curva diferenciável $\gamma\colon \intaa{-\varepsilon}{\varepsilon} \to V$ que é curva integral de $X$ iniciada em $p$.
 \end{proposition}
 
 \begin{proposition}
-Sejam $\bm V$ um variedade diferencial, $X \in \tens^1(V)$ e $\gamma\colon I \to V$ uma curva integral de $X$.
+Sejam $\bm V$ um variedade diferencial, $X \in \tens^1(\bm V)$ e $\gamma\colon I \to V$ uma curva integral de $X$.
 	\begin{enumerate}
 	\item Para todo $c \in \R$, a curva
 		\begin{align*}
@@ -1304,7 +1335,7 @@ Sejam $\bm V$ um variedade diferencial, $X \in \tens^1(V)$ e $\gamma\colon I \to
 	\end{enumerate}
 \end{proposition}
 %\begin{proof}
-%Seja $f \in \tens^0(V)$. Então
+%Seja $f \in \tens^0(\bm V)$. Então
 %	\begin{align*}
 %	\D (\gamma \circ E_c)|_t f &= \D(f \circ \gamma \circ E_c)|_t \\
 %		&= \D(f \circ \gamma \circ E_c)|_t \\
@@ -1348,7 +1379,7 @@ Sejam $\bm V$ um variedade diferencial e $\Phi\colon \R \times V \to V$ um fluxo
 No entanto, nem todo campo vetorial diferenciável gera um fluxo porque nem toda curva integral está definida para todo $\R$. Para permitir que exista uma forma de recíproca para essa proposição, devemos expandir o conceito de fluxo com o conceito de um fluxo local.
 
 \begin{definition}
-Seja $\bm V$ um variedade diferencial. Um \emph{domínio de fluxo local} em $\bm V$ é um conjunto aberto $\mathscr{D} \subseteq \R \times V$ que satisfaz: para todo $p \in V$, existem $e_p \in \intaa{-\infty}{0}$ e $\bar e_p \in \intaa{0}{\infty}$ tais que
+Seja $\bm V$ um variedade diferencial. Um \emph{domínio de fluxo local} em $\bm V$ é um conjunto aberto $\mathscr{D} \subseteq \R \times V$ que satisfaz: para todo $p \in V$, existem $e_p \in \intfa{-\infty}{0}$ e $\bar e_p \in \intaf{0}{\infty}$ tais que
 	\begin{equation*}
 	\intaa{e_p}{\bar e_p} = \set{t \in \R}{(t,p) \in \mathscr{D}}.
 	\end{equation*}
@@ -1381,7 +1412,7 @@ Para todo $t \in \R$, a \emph{translação} por $t$ ao longo de $\Phi$ é a fun�
 %	\begin{align*}
 %	\func{\Phi^t}{V_t}{V_{-t}}{p}{\Phi^t(p)},
 %	\end{align*}
-% Não sei se o contra omínio é de fato $V_{-t}$, tentei provar mas não me convenci, acho que não vale se o fluxo não é máximo.
+% Não sei se o contra domínio é de fato $V_{-t}$, tentei provar mas não me convenci, acho que não vale se o fluxo não é máximo.
 	\begin{align*}
 	\func{\Phi^t}{V_t}{V}{p}{\Phi^t(p)},
 	\end{align*}
@@ -1423,7 +1454,7 @@ Seja $\bm V$ uma variedade diferencial.
 \end{definition}
 
 \begin{proposition}
-Sejam $\bm V$ um variedade diferencial e $X \in \tens^1(V)$. Existe único fluxo diferencial máximo $\Phi\colon \mathscr{D} \to V$ gerado por $X$ e o fluxo $\Phi$ satisfaz
+Sejam $\bm V$ um variedade diferencial e $X \in \tens^1(\bm V)$. Existe único fluxo diferencial máximo $\Phi\colon \mathscr{D} \to V$ gerado por $X$ e o fluxo $\Phi$ satisfaz
 	\begin{enumerate}
 	\item Para todo $p \in V$, a curva de fluxo $\Phi_{(p)}\colon \intaa{e_p}{\bar e_p} \to V$ é uma curva integral máxima de $X$ iniciada em $p$;
 	
