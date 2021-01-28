@@ -692,6 +692,20 @@ Dualmente, se $Y$ e $Z$ têm ínfimo,
 	Sejam $x'_0,x'_1 \in X$ tais que $x'_0 \leq x'_1$. Suponhamos, por absurdo, que $f\inv(x'_0) > f\inv(x'_1)$. Da monotonicidade de $f$ seguiria que $x'_0 = f(f\inv(x'_0)) > f(f\inv(x'_1)) = x'_1$, contradição.
 \end{proof}
 
+\subsubsection{Multi-índices estritamente crescentes}
+
+Definimos
+	\begin{equation*}
+	[d]^{\uparrow k} := \set{(i_0,\ldots,i_{k-1}) \in [d]^k}{i_{0}<\cdots<i_{k-1}}.
+	\end{equation*}
+Note que
+	\begin{equation*}
+	\card{[d]^{\uparrow k}} = \card{\binom{[d]}{k}} = \binom{d}{k},
+	\end{equation*}
+em que $\binom{[d]}{k} = \set{I \subseteq [d]}{\card{I}=k}$.
+
+
+
 \subsection{Conjuntos totalmente ordenados e cadeias}
 
 \begin{definition}
