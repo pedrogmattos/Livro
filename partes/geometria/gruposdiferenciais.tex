@@ -114,31 +114,95 @@ que também é diferenciável, portanto $\Phi$ é um difeomorfismo.
 \end{itemize}
 \end{proof}
 
-\subsection{Álgebras de derivação adjunta}
+\subsection{Álgebra infinitesimal de um grupo diferencial}
 
 \subsubsection{Campos vetoriais invariantes}
 
 \begin{definition}
-Seja $\bm G$ um grupo diferencial. Um \emph{campo vetorial invariante à direita} em $\bm G$ é um campo vetorial $v \in \tens^1((G,\atlas))$ tal que, para todo $g \in G$,
-	\begin{equation*}
-	\D(\times g)\emp v = v,
-	\end{equation*}
-ou seja, para todo $g,g' \in G$,
-	\begin{equation*}
-	\D(\times g)|_{g'} v|_{g'} = v|_{g'g}.
-	\end{equation*}
-O conjunto desses campos é denotado $\tens^1_D(\bm G)$.
-
-Um \emph{campo vetorial invariante à esquerda} em $\bm G$ é um campo vetorial $v \in \tens^1((G,\atlas))$ tal que, para todo $g \in G$,
+Seja $\bm G$ um grupo diferencial. Um \emph{campo vetorial invariante à esquerda} em $\bm G$ é um campo vetorial $v \in \tens^1((G,\atlas))$ tal que, para todo $g \in G$,
 	\begin{equation*}
 	\D(g \times)\emp v = v,
 	\end{equation*}
 ou seja, para todo $g,g' \in G$,
 	\begin{equation*}
-	\D(g \times)|_{g'} v|_{g'} = v|_{gg'}.
+	\D(g \times)|_{g'} (v|_{g'}) = v|_{gg'}.
 	\end{equation*}
 O conjunto desses campos é denotado $\tens^1_E(\bm G)$.
+
+Um \emph{campo vetorial invariante à direita} em $\bm G$ é um campo vetorial $v \in \tens^1((G,\atlas))$ tal que, para todo $g \in G$,
+	\begin{equation*}
+	\D(\times g)\emp v = v,
+	\end{equation*}
+ou seja, para todo $g,g' \in G$,
+	\begin{equation*}
+	\D(\times g)|_{g'} (v|_{g'}) = v|_{g'g}.
+	\end{equation*}
+O conjunto desses campos é denotado $\tens^1_D(\bm G)$.
 \end{definition}
 
-Na teoria geral, adotaremos campos invariantes à direita, mas definimos campos invariantes à esquerda por completude.
+%Na teoria geral, adotaremos campos invariantes à direita, mas definimos campos invariantes à esquerda por completude.
 
+Os espaços dos campos invariantes são subespaços lineares de $\tens((G,\atlas))$
+
+Para definir um campo invariante, basta definirmos seu valor $v \in \Tg G|_1$ em $1 \in G$, pois todos os outros valores podem ser obtidos empurrando $v$ pela diferencial da translação. Para campos invariante à esquerda,
+	\begin{equation*}
+	v|_p := \D(g \times)|_{1} (v),
+	\end{equation*}
+e para campos invariantes à direita,
+	\begin{equation*}
+	v|_{g} = \D(\times g)|_{1} (v).
+	\end{equation*}
+
+Denotaremos esses campos por $v_E$ e $v_D$, respectivamente. Eles induzem isomorfismos de espaços lineares
+	\begin{align*}
+	\func{\Phi_E}{\Tg G|_1}{\tens^1_E(G)}{v}{
+		\begin{aligned}[t]
+		\func{v_E}{G}{\Tg G}{g}{v_E|_g := \D(g \times)|_{1} (v)}
+		\end{aligned}
+	}
+	\end{align*}
+	\begin{align*}
+	\func{\Phi_D}{\Tg G|_1}{\tens^1_D(G)}{v}{
+		\begin{aligned}[t]
+		\func{v_D}{G}{\Tg G}{g}{v_E|_g := \D(\times g)|_{1} (v)}.
+		\end{aligned}
+	}
+	\end{align*}
+
+\subsection{Álgebra infinitesimal}
+
+Lembremos que o espaço de campos vetoriais $\tens^1(G,\atlas)$ da variedade $(G,\atlas)$ é uma álgebra de derivação adjunta\footnote{Álgebra de Lie.} sobre $\R$ cujo produto é o colchete de campos vetoriais $\col{\var}{\var}$. Os espaços de campos vetoriais invariantes à esquerda e à direita são subálgebras da álgebra de campos vetoriais, pois são subespaços lineares e o colchete é fechado. Esses colchetes, dos campos invariantes à esquerda e à direita, induzem colchetes em $\Tg G|_1$ pelos isomorfismos $\Phi_E$ e $\Phi_D$ anteriormente enunciados.
+
+\begin{proposition}
+Seja $\bm G$ um grupo diferencial.
+	\begin{enumerate}
+	\item $(\tens^1_E(\bm G),+,-,0,\col{\var}{\var},\cdot)$ é subálgebra de $(\tens^1(G,\atlas),+,-,0,\col{\var}{\var},\cdot)$ (sobre $\R$);
+	\item $(\tens^1_D(\bm G),+,-,0,\col{\var}{\var},\cdot)$ é subálgebra de $(\tens^1(G,\atlas),+,-,0,\col{\var}{\var},\cdot)$ (sobre $\R$).
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+A demonstração de que são subespaços lineares é direta. Para vermos que o colchete é fechado, basta notarmos que, como $\fun{g\times}{G}{G}$ é difeomorfismo, segue que, para todos campos vetoriais $v,v' \in \tens^1_E(\bm G)$,
+	\begin{equation*}
+	\D (g\times)\col{v}{v'} = \col{\D(g \times)\emp v}{\D(g \times)\emp v'} = \col{v}{v'},
+	\end{equation*}
+portanto se $\col{v}{v'} \in \tens^1_E(\bm G)$. A demonstração é análoga para campos invariantes à direita.
+\end{proof}
+
+\begin{definition}
+Seja $\bm G$ um grupo diferencial. O \emph{colchete} (à esquerda) em $\Tg G|_1$ é
+	\begin{align*}
+	\func{\col{\var}{\var}_E}{\Tg G|_1 \times \Tg G|_1}{\Tg G|_1}{(v,v')}{\col{v_E}{v'_E}|_1}.
+	\end{align*}
+
+O \emph{colchete} (à direita) em $\Tg G|_1$ é
+	\begin{align*}
+	\func{\col{\var}{\var}_D}{\Tg G|_1 \times \Tg G|_1}{\Tg G|_1}{(v,v')}{\col{v_D}{v'_D}|_1}.
+	\end{align*}
+\end{definition}
+
+\begin{definition}
+Seja $\bm G$ um grupo diferencial. A \emph{álgebra infinitesimal} de $\bm G$ é a álgebra de derivação adjunta
+	\begin{equation*}
+	\bm{\Tg G|_1} := (\Tg G|_1,\col{\var}{\var}).
+	\end{equation*}
+\end{definition}
