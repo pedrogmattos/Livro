@@ -296,65 +296,98 @@ Seja $(\bm A,\cdot)$ uma álgebra sobre um corpo $\bm C$. Então $(\Der(A),\col{
 
 
 
-\section{As álgebras reais $\R$, $\R^2$ e $\R^4$}
 
-A álgebra real $\R$ é simplesmente o corpo $\R$. Analisaremos com detalhes os casos $\R^2$ e $\R^4$.
+
+
+
+
+
+
+
+
+\section{Álgebras reais}
+
+Nesta seção, descreveremos algumas álgebras sobre os números reais $\R$. A álgebra real $\R$ é simplesmente o corpo $\R$. Analisaremos com detalhes os casos das álgebras dos complexos $\R^2$ e dos quatérnios $\R^4$. Descreveremos brevemente os números $2$-hiperbólicos $\R^{1,1}$, às vezes chamados de `complexos hiperbólicos', os números $4$-hiperbólicos $\R^{1,3}$.
 
 \subsection{Complexos $\R^2$}
 
-O espaço linear $\R$ é um álgebra com o produto de corpo usual. Consideremos o espaço linear $\R^2$ e o produto
+Consideremos o espaço linear $\R^2$ com a norma $2$
 	\begin{align*}
-	\func{\times}{\R^2 \times \R^2}{\R^2}{(x,y)}{(x_0y_0-x_1y_1,x_0y_1+x_1y_0)}
+	\func{\nor{\var}}{\R^2}{\R}{x}{((x_0)^2 + (x_1)^2)^{\frac{1}{2}}}.
 	\end{align*}
 
-Primeiro notemos que o produto é comutativo, pois para todos $x,y \in \R^2$,
-	\begin{equation*}
-	x \times y = (x_0y_0-x_1y_1,x_0y_1+x_1y_0) = (y_0x_0-y_1x_1,y_0x_1+y_1x_0) = y \times x.
-	\end{equation*}
-Assim, para mostrar que $\times$ é bilinear, basta mostrar que é linear na primeira entrada. Para todos $x,x',y \in \R^2$ e todo $c \in \R$,
+Denotemos a base canônica de $\R^2$ por $\bm 1 := (1,0)$ e $\ii := (0,1)$. Em geral, por não haver ambiguidade, denotaremos $\bm 1$ simplesmente por $1$.
+
+\begin{definition}
+O \emph{produto complexo} em $\R^2$ é a operação
 	\begin{align*}
-	(cx+x') \times y &= ((cx_0+x'_0)y_0-(cx_1+x'_1)y_1,(cx_0+x'_0)y_1+(cx_1+x'_1)y_0) \\
-		&= (cx_0y_0+x'_0y_0-cx_1y_1-x'_1y_1,cx_0y_1+x'_0y_1+cx_1y_0+x'_1y_0) \\
-		&= c(x_0y_0-x_1y_1,x_0y_1+x_1y_0) + (x'_0y_0-x'_1y_1,x'_0y_1x'_1y_0) \\
-		&= c (x \times y) + x' \times y.
+	\func{\times}{\R^2 \times \R^2}{\R^2}{(x,y)}{xy := (x_0y_0-x_1y_1,x_0y_1+x_1y_0)}.
 	\end{align*}
-Ainda, $\times$ é associativo, pois para todos $x,y,z \in \R^2$,
+A \emph{unidade} de $(\R^2,\times)$ é
+	\begin{equation*}
+	1 := (1,0).
+	\end{equation*}
+A \emph{inversa} de $(\R^2,\times,1)$ é a operação
 	\begin{align*}
-	(x \times y) \times z &= (x_0y_0-x_1y_1,x_0y_1+x_1y_0) \times z \\
+	\func{\div}{\R^2 \setminus \{0\}}{\R^2 \setminus \{0\}}{x}{x\inv := \nor{x}^{-2}(x_0,-x_1)}.
+	\end{align*}
+\end{definition}
+
+Como a notação acima sugere, omitiremos o símbolo de multiplicação $\times$ sempre que possível pois isso não gerará ambiguidade. Omitiremos também a unidade $1$ dos produtos, de modo que todo $x \in \R^2$ pode ser denotado
+	\begin{equation*}
+	x = x_0 + x_1\ii.
+	\end{equation*}
+
+Notemos que
+	\begin{equation*}
+	\ii^2 = (0,1)(0,1) = (0 \times 0 - 1 \times 1, 0 \times 1 + 1 \times 0) = (-1,0) = -1.
+	\end{equation*}
+Todo $x \in \R^2$ pode ser escrito como $x_0 + x_1 \ii$, de modo que o produto $\times$ nessa notação é o produto usual dos números complexos
+	\begin{equation*}
+	xy = (x_0 + x_1 \ii)(y_0 + y_1 \ii) = (x_0y_0-x_1y_1) + (x_0y_1+x_1y_0) \ii.
+	\end{equation*}
+
+\begin{proposition}
+A lista
+	\begin{equation*}
+	(\R^2,+,-,0,\times,1,\cdot)
+	\end{equation*}
+é uma álgebra associativa, comutativa e unitária (e invertível) sobre $\R$.
+\end{proposition}
+\begin{proof}
+\begin{itemize}
+	\item (Comutatividade) Para todos $x,y \in \R^2$,
+		\begin{equation*}
+		xy = (x_0y_0-x_1y_1,x_0y_1+x_1y_0) = (y_0x_0-y_1x_1,y_0x_1+y_1x_0) = yx.
+		\end{equation*}
+	\item (Bilinearidade) Como o produto é comutativo, basta mostrar a linearidade na primeira entrada. Para todos $x,x',y \in \R^2$ e todo $c \in \R$,
+		\begin{align*}
+		(cx+x')y &= ((cx_0+x'_0)y_0-(cx_1+x'_1)y_1,(cx_0+x'_0)y_1+(cx_1+x'_1)y_0) \\
+			&= (cx_0y_0+x'_0y_0-cx_1y_1-x'_1y_1,cx_0y_1+x'_0y_1+cx_1y_0+x'_1y_0) \\
+			&= c(x_0y_0-x_1y_1,x_0y_1+x_1y_0) + (x'_0y_0-x'_1y_1,x'_0y_1x'_1y_0) \\
+			&= c(xy) + x'y.
+		\end{align*}
+	\item (Associatividade) Para todos $x,y,z \in \R^2$,
+	\begin{align*}
+	(xy)z &= (x_0y_0-x_1y_1,x_0y_1+x_1y_0)z \\
 		&= ((x_0y_0-x_1y_1)z_0 - (x_0y_1+x_1y_0)z_1 , (x_0y_0-x_1y_1)z_1 + (x_0y_1+x_1y_0)z_0 ) \\
 		&= (x_0(y_0z_0-y_1z_1)-x_1(y_0z_1+y_1z_0),x_0(y_0z_1+y_1z_0)+x_1(y_0z_0-y_1z_1)) \\
-		&= x \times (y_0z_0-y_1z_1,y_0z_1+y_1z_0) \\
-		&= x \times (y \times z).
+		&= x(y_0z_0-y_1z_1,y_0z_1+y_1z_0) \\
+		&= x(yz).
 	\end{align*}
-Definindo $\bm 1 := (1,0)$, notemos que $\bm 1$ é uma unidade de $\times$, pois para todo $x \in \R^2$,
+	\item (Identidade) Para todo $x \in \R^2$,
 	\begin{equation*}
-	\bm 1 \times x = (1x_0-0x_1,1x_1+0x_0) = (x_0,x_1) = x.
+	1x = (1x_0-0x_1,1x_1+0x_0) = (x_0,x_1) = x.
 	\end{equation*}
-Definindo $\bm \ii := (0,1)$, notemos que
-	\begin{equation*}
-	\bm \ii \times \bm \ii = (00-11,01+10) = (-1,0) = -\bm 1.
-	\end{equation*}
-Todo $x \in \R^2$ pode ser escrito como $x_0\bm 1 + x_1 \bm \ii$, de modo que o produto $\times$ nessa notação é o produto usual dos números complexos
-	\begin{equation*}
-	x \times y = (x_0\bm 1 + x_1 \bm \ii) \times (y_0\bm 1 + y_1 \bm \ii) = (x_0y_0-x_1y_1)\bm 1 + (x_0y_1+x_1y_0)\bm \ii.
-	\end{equation*}
+\end{itemize}
+(Não demonstraremos a invertibilidade agora.)
+\end{proof}
 
-Para simplificar a notação, a partir de agora passaremos a escrever $1$ e $\ii$ para $\bm 1$ e $\bm \ii$ e escreveremos todos $x \in \R^2$ na notação de números complexos.
 
 O produto $\times$ pode também ser visto como uma ação de $\R^2$ aditivo sobre $\R^2$ aditivo. Cada $x \in \R^2$ pode ser identificado com uma transformação linear $x\colon \R^2 \to \R^2$. Os elementos $x \in \S^1 \subseteq \R^2$ são as rotações: se $x \in \S^1$, então existe $\theta \in \intfa{0}{\tau}$ tal que
 	\begin{equation*}
 	x = \cos(\theta) + \sin(\theta) \ii.
 	\end{equation*}
-
-\begin{comment}
-Isso ocorre porque, se $x \in \S^1$, então $\nor{x} = 1$, logo $({x_0}^2+{x_1}^2)^\frac{1}{2} = 1$, portanto ${x_0}^2+{x_1}^2 = 1$. Então $\abs{x_0} \leq 1$, ou seja, $-1 \leq x_0 \leq 1$. Definido $\phi := \cos\inv(x_0) \in \intff{0}{\tau \div 2}$, temos que ${x_1}^2 = 1-\cos(\theta)^2$, logo $\abs{x_1} = (1-\cos(\theta)^2)^\frac{1}{2}$, então $x_1 = \pm\sin(\theta)$. Definimos então
-	\begin{equation*}
-	\theta :=	\begin{cases}
-		\cos\inv\left(\frac{x_0}{\nor{x}}\right),			& x_1 > 0 \ou x_0 = 1, \\
-		\tau - \cos\inv\left(\frac{x_0}{\nor{x}}\right)		& x_1 < 0 \ou x_0 = -1.
-		\end{cases}
-	\end{equation*}
-\end{comment}
 
 Sendo assim, para todo $\cos(\theta) + \sin(\theta) \ii \in \S^1$, e todo $x \in \R^2$,
 	\begin{align*}
@@ -521,42 +554,83 @@ Isso mostra que
 
 \subsubsection{Produto quaterniônico}
 
-Consideremos o espaço linear $\R^4$ com a $2$-norma
+Consideremos o espaço linear $\R^4$ com a norma $2$
 	\begin{align*}
-	\func{\nor{\var}}{\R^4}{\R^4}{x}{({x_0}^2+{x_1}^2+{x_2}^2+{x_3}^2)^{\frac{1}{2}}}.
+	\func{\nor{\var}}{\R^4}{\R}{x}{({x_0}^2+{x_1}^2+{x_2}^2+{x_3}^2)^{\frac{1}{2}}}.
 	\end{align*}
 
-Denotemos a base canônica por $\bm 1 := (1,0,0,0)$, $\ii := (0,1,0,0)$, $\jj := (0,0,1,0)$ e $\kk := (0,0,0,1)$. Em geral, por não haver ambiguidade, denotaremos $\bm 1$ simplesmente por $1$.
-
-Definimos o seguinte produto, unidade e inversa em $\R^4$.
+A base canônica de $\R^4$ será denotada por
+	\begin{align*}
+	\ii_0 &:= (1,0,0,0) \\
+	\ii_1 &:= (0,1,0,0) \\
+	\ii_2 &:= (0,0,1,0) \\
+	\ii_3 &:= (0,0,0,1).
+	\end{align*}
 
 \begin{definition}
-O \emph{produto quaterniônico} em $\R^4$ é a função
+O \emph{produto quaterniônico} em $\R^4$ é a operação
+%	\begin{align*}
+%	\func{\times}{\R^4 \times \R^4}{\R^4}{(x,y)}{
+%		\begin{aligned}[t]
+%		xy := &(x_0y_0 - x_1y_1 - x_2y_2 - x_3y_3) 1 \\
+%			+ &(x_0y_1 + x_1y_0 + x_2y_3 - x_3y_2) \ii_1 \\
+%			+ &(x_0y_2 - x_1y_3 + x_2y_0 + x_3y_1) \ii_2 \\
+%			+ &(x_0y_3 + x_1y_2 - x_2y_1 + x_3y_0) \ii_3.
+%		\end{aligned}
+%	}
+%	\end{align*}
 	\begin{align*}
 	\func{\times}{\R^4 \times \R^4}{\R^4}{(x,y)}{
 		\begin{aligned}[t]
-		xy := &(x_0y_0 - x_1y_1 - x_2y_2 - x_3y_3) 1 \\
-			+ &(x_0y_1 + x_1y_0 + x_2y_3 - x_3y_2) \ii \\
-			+ &(x_0y_2 - x_1y_3 + x_2y_0 + x_3y_1) \jj \\
-			+ &(x_0y_3 + x_1y_2 - x_2y_1 + x_3y_0) \kk .
+		xy := (&x_0y_0 - x_1y_1 - x_2y_2 - x_3y_3, \\
+			&x_0y_1 + x_1y_0 + x_2y_3 - x_3y_2, \\
+			&x_0y_2 - x_1y_3 + x_2y_0 + x_3y_1, \\
+			&x_0y_3 + x_1y_2 - x_2y_1 + x_3y_0).
 		\end{aligned}
 	}
 	\end{align*}
-A \emph{unidade} de $\R^4$ é $1$. A \emph{inversa} de $\R^4$ é
+A \emph{unidade} de $(\R^4,\times)$ é
+	\begin{equation*}
+	\bm 1 := \ii_0 = (1,0,0,0).
+	\end{equation*}
+A \emph{inversa} de $(\R^4,\times,1)$ é a operação
+%	\begin{align*}
+%	\func{\div}{\R^4 \setminus \{0\}}{\R^4 \setminus \{0\}}{x}{x\inv := \frac{x_0 1 - x_1 \ii_1 - x_2 \ii_2 - x_3 \ii_3}{\nor{x}^2}}.
+%	\end{align*}
 	\begin{align*}
-	\func{\div}{\R^4 \setminus \{0\}}{\R^4 \setminus \{0\}}{x}{x\inv := \frac{x_0 1 - x_1 \ii - x_2 \jj - x_3 \kk}{\nor{x}^2}}.
+	\func{\div}{\R^4 \setminus \{0\}}{\R^4 \setminus \{0\}}{x}{x\inv := \nor{x}^{-2} (x_0, -x_1, -x_2, -x_3)}.
 	\end{align*}
 \end{definition}
 
-Pode-se mostrar que $\times$ é um produto bilinear associativo (mas não comutativo), que $1$ é identidade de $\times$ e que $\div$ é inversa de $\times$, e que além disso todas operações são preservadas pela norma. As contas são longas, mas diretas, portanto não as apresentaremos aqui. Alguns resultados, como a de que $x\inv$ é a operação inversa, serão provados mais à frente usando a notação de componente escalar, vetorial e conjugado de um quatérnio que simplificará as contas. Ressaltamos esse fato na seguinte proposição.
+Em geral, por não haver ambiguidade, denotaremos $\bm 1$ simplesmente por $1$. Assim, todo $x \in \R^4$ pode ser escrito
+	\begin{equation*}
+	x = x_0 1 + x_1\ii_1 + x_2\ii_2 + x_3\ii_3.
+	\end{equation*}
+Como a notação acima sugere, omitiremos o símbolo de multiplicação $\times$ sempre que possível pois isso não gerará ambiguidade.% Omitiremos também a unidade $1$ dos produtos, de modo que todo $x \in \R^4$ pode ser denotado
+%	\begin{equation*}
+%	x = x_0 + x_1\ii_1 + x_2\ii_2 + x_3\ii_3.
+%	\end{equation*}
+
+%Notemos que
+%	\begin{align*}
+%	{\ii_1}^2 &= (0,1,0,0)(0,1,0,0) = -1, \\
+%	{\ii_2}^2 &= (0,0,1,0)(0,0,1,0) = -1, \\
+%	{\ii_3}^2 &= (0,0,0,1)(0,0,0,1) = -1.
+%	\end{align*}
+
+%Pode-se mostrar que $\times$ é um produto bilinear associativo (mas não comutativo), que $1$ é identidade de $(\R^4,\times)$ e que $\div$ é inversa de $(\R^4,\times,1)$, e que além disso todas operações são preservadas pela norma. As contas são longas, mas diretas, portanto não as apresentaremos aqui. Alguns resultados, como a de que $x\inv$ é a operação inversa, serão provados mais à frente usando a notação de componente escalar, vetorial e conjugado de um quatérnio que simplificará as contas. Ressaltamos esse fato na seguinte proposição.% Isso significa que
 
 \begin{proposition}
-A lista $((\R^4,+,-,0,\cdot,\times,\div,1),\nor{\var})$ é uma álgebra\footnote{A álgebra de $\R^4$ com esse produto costuma ser denotada por $\mathbb{H}$, mas manteremos a notação $\R^4$ por simplicidade de notação, pois nenhuma ambiguidade resultará disso. A letra `H' é usada em homenagem ao matemático irlandês William Rowan Hamilton (1805 -- 1865).} (associativa) invertível normada sobre $\R$.
+A lista
+	\begin{equation*}
+	((\R^4,+,-,0,\cdot,\times,\div,1),\nor{\var})
+	\end{equation*}
+é uma álgebra\footnote{A álgebra de $\R^4$ com esse produto costuma ser denotada por $\mathbb{H}$, mas manteremos a notação $\R^4$ por simplicidade de notação, pois nenhuma ambiguidade resultará disso. A letra `H' é usada em homenagem ao matemático irlandês William Rowan Hamilton (1805 -- 1865).} (associativa) invertível normada sobre $\R$.
 \begin{enumerate}
 	\item (Bilinearidade) O produto quaterniônico $\fun{\times}{\R^4 \times \R^4}{\R^4}$ é uma função bilinear;
 	\item (Associatividade) Para todos $x,y,z \in \R^4$,
 		\begin{equation*}
-		(x \times y) \times z = x \times (y \times z);
+		(xy)z = x(yz);
 		\end{equation*}
 	\item (Identidade) Para todo $x \in \R^4$,
 		\begin{equation*}
@@ -564,58 +638,273 @@ A lista $((\R^4,+,-,0,\cdot,\times,\div,1),\nor{\var})$ é uma álgebra\footnote
 		\end{equation*}
 	\item (Inversa) Para todo $x \in \R^4$,
 		\begin{equation*}
-		xx\inv = x\inv x = 1;
+		x\inv x = 1 = xx\inv;
 		\end{equation*}
-	\item (Normalidade do produto) Para todos $x,y \in \R^4$,
+	\item (Submultiplicatividade) Para todos $x,y \in \R^4$,
 		\begin{equation*}
 		\nor{xx'} \leq \nor{x}\nor{x'}.
 		\end{equation*}
-	\item (Normalidade da unidade) $\nor{1}=1$;
-	\item (Normalidade da inversa) Para todo $x \in \R^4$,
+	\item (Unitariedade) $\nor{1}=1$;
+	\item (Invertibilidade) Para todo $x \in \R^4$,
 		\begin{equation*}
 		\nor{x\inv} = \nor{x}\inv.
 		\end{equation*}
 \end{enumerate}
 \end{proposition}
+\begin{proof}
+\begin{itemize}
+	\item (Identidade) Para todo $x \in \R^4$,
+		\begin{align*}
+		1x &= (1,0,0,0)(x_0,x_1,x_2,x_3) \\
+			&= (1 x_0 - 0 x_1 - 0 x_2 - 0 x_3)1 \\
+			&+ (1 x_1 + 0 x_0 + 0 x_3 - 0 x_2)\ii_1 \\
+			&+ (1 x_2 - 0 x_3 + 0 x_0 + 0 x_1)\ii_2 \\
+			&+ (1 x_3 + 0 x_2 - 0 x_1 + 0 x_0)\ii_3 \\
+			&= (x_0,x_1,x_2,x_3) \\
+			&= x
+		\end{align*}
+	e
+		\begin{align*}
+		x1 &= (x_0,x_1,x_2,x_3)(1,0,0,0) \\
+			&= (x_0 1 - x_1 0 - x_2 0 - x_3 0)1 \\
+			&+ (x_0 0 + x_1 1 + x_2 0 - x_3 0)\ii_1 \\
+			&+ (x_0 0 - x_1 0 + x_2 1 + x_3 0)\ii_2 \\
+			&+ (x_0 0 + x_1 0 - x_2 0 + x_3 1)\ii_3 \\
+			&= (x_0,x_1,x_2,x_3) \\
+			&= x.
+		\end{align*}
+	
+	\item (Bilinearidade) Para mostrar que o produto é bilinear, primeiro mostremos quais são seus valores na base $\{1,\ii_2,\ii_2,\ii_3\}$. Como $1$ é identidade do produto, basta calcular os valores do produto $\ii_1$, $\ii_2$ e $\ii_3$. Cálculos simples mostram que
+		\begin{align*}
+		\ii_1 \ii_1 &= -1 &\ii_1 \ii_2 = \ii_3 = -\ii_2 \ii_1 \\
+		\ii_2 \ii_2 &= -1 &\ii_2 \ii_3 = \ii_1 = -\ii_3 \ii_2 \\
+		\ii_3 \ii_3 &= -1 &\ii_3 \ii_1 = \ii_2 = -\ii_1 \ii_3
+		\end{align*}
+	e, sendo assim, basta mostrar que uma função bilinear $\fun{b}{\R^4 \times \R^4}{\R^4}$ com esses mesmos valores na base canônica coincide com o produto quaterniônico definido. Da bilinearidade segue que
+		\begin{align*}
+		b(x,y) &= b(x_0 1 + x_1 \ii_1 + x_2 \ii_2 + x_3 \ii_3, y_0 1 + y_1 \ii_1 + y_2 \ii_2 + y_3 \ii_3) \\
+			&= x_0 b(1, y_0 1 + y_1 \ii_1 + y_2 \ii_2 + y_3 \ii_3) \\
+			&+ x_1 b(\ii_1, y_0 1 + y_1 \ii_1 + y_2 \ii_2 + y_3 \ii_3) \\
+			&+ x_2 b(\ii_2, y_0 1 + y_1 \ii_1 + y_2 \ii_2 + y_3 \ii_3) \\
+			&+ x_3 b(\ii_3, y_0 1 + y_1 \ii_1 + y_2 \ii_2 + y_3 \ii_3) \\
+			&= x_0 (y_0 b(1,1) + y_1 b(1,\ii_1) + y_2 b(1,\ii_2) + y_3 b(1,\ii_3)) \\
+			&+ x_1 (y_0 b(\ii_1,1) + y_1 b(\ii_1,\ii_1) + y_2 b(\ii_1,\ii_2) + y_3 b(\ii_1,\ii_3)) \\
+			&+ x_2 (y_0 b(\ii_2,1) + y_1 b(\ii_2,\ii_1) + y_2 b(\ii_2,\ii_2) + y_3 b(\ii_2,\ii_3)) \\
+			&+ x_3 (y_0 b(\ii_3,1) + y_1 b(\ii_3,\ii_1) + y_2 b(\ii_3,\ii_2) + y_3 b(\ii_3,\ii_3)) \\
+			&= x_0 (y_0 1 + y_1 \ii_1 + y_2 \ii_2 + y_3 \ii_3) \\
+			&+ x_1 (y_0 \ii_1 + y_1 (-1) + y_2 \ii_3 + y_3 (-\ii_2)) \\
+			&+ x_2 (y_0 \ii_2 + y_1 (-\ii_3) + y_2 (-1) + y_3 \ii_1) \\
+			&+ x_3 (y_0 \ii_3 + y_1 \ii_2 + y_2 (-\ii_1) + y_3 (-1)) \\
+			&= (x_0y_0 - x_1y_1 - x_2y_2 - x_3y_3) 1 \\
+			&+ (x_0y_1 + x_1y_0 + x_2y_3 - x_3y_2) \ii_1 \\
+			&+ (x_0y_2 - x_1y_3 + x_2y_0 + x_3y_1) \ii_2 \\
+			&+ (x_0y_3 + x_1y_2 - x_2y_1 + x_3y_0) \ii_3 \\
+			&= xy.
+		\end{align*}
 
-Em particular, essas propriedades implicam que, para todos $x,x' \in \R^4$,
+	\item (Associatividade) Faremos as contas por coordenadas para que seja tipograficamente possível apresentar os resultados. Para todos $x,y,z \in \R^4$, segue da definição do produto que as coordenadas de $xy$ são
+		\begin{align*}
+		(xy)_0 &= (x_0y_0 - x_1y_1 - x_2y_2 - x_3y_3) \\
+		(xy)_1 &= (x_0y_1 + x_1y_0 + x_2y_3 - x_3y_2) \\
+		(xy)_2 &= (x_0y_2 - x_1y_3 + x_2y_0 + x_3y_1) \\
+		(xy)_3 &= (x_0y_3 + x_1y_2 - x_2y_1 + x_3y_0)
+		\end{align*}
+	e que as coordenadas de $yz$ são
+		\begin{align*}
+		(yz)_0 &= (y_0z_0 - y_1z_1 - y_2z_2 - y_3z_3) \\
+		(yz)_1 &= (y_0z_1 + y_1z_0 + y_2z_3 - y_3z_2) \\
+		(yz)_2 &= (y_0z_2 - y_1z_3 + y_2z_0 + y_3z_1) \\
+		(yz)_3 &= (y_0z_3 + y_1z_2 - y_2z_1 + y_3z_0).
+		\end{align*}
+	Ainda da definição do produto, as que as coordenadas de $(xy)z$ são
+		\begin{align*}
+		((xy)z)_0 &= (xy)_0z_0 - (xy)_1z_1 - (xy)_2z_2 - (xy)_3z_3 \\
+		((xy)z)_1 &= (xy)_0z_1 + (xy)_1z_0 + (xy)_2z_3 - (xy)_3z_2 \\
+		((xy)z)_2 &= (xy)_0z_2 - (xy)_1z_3 + (xy)_2z_0 + (xy)_3z_1 \\
+		((xy)z)_3 &= (xy)_0z_3 + (xy)_1z_2 - (xy)_2z_1 + (xy)_3z_0 \\
+		\end{align*}
+	e as que as coordenadas de $x(yz)$ são
+		\begin{align*}
+		(x(yz))_0 &= x_0(yz)_0 - x_1(yz)_1 - x_2(yz)_2 - x_3(yz)_3 \\
+		(x(yz))_1 &= x_0(yz)_1 + x_1(yz)_0 + x_2(yz)_3 - x_3(yz)_2 \\
+		(x(yz))_2 &= x_0(yz)_2 - x_1(yz)_3 + x_2(yz)_0 + x_3(yz)_1 \\
+		(x(yz))_3 &= x_0(yz)_3 + x_1(yz)_2 - x_2(yz)_1 + x_3(yz)_0.
+		\end{align*}
+	Para a coordenada $0$, segue que
+		\begin{align*}
+		((xy)z)_0 &= (xy)_0z_0 - (xy)_1z_1 - (xy)_2z_2 - (xy)_3z_3 \\
+			&= (x_0y_0 - x_1y_1 - x_2y_2 - x_3y_3)z_0 \\
+			&+ (x_0y_1 + x_1y_0 + x_2y_3 - x_3y_2)z_1 \\
+			&+ (x_0y_2 - x_1y_3 + x_2y_0 + x_3y_1)z_2 \\
+			&+ (x_0y_3 + x_1y_2 - x_2y_1 + x_3y_0)z_3 \\
+			&= x_0(y_0z_0 - y_1z_1 - y_2z_2 - y_3z_3) \\
+			&+ x_1(y_0z_1 + y_1z_0 + y_2z_3 - y_3z_2) \\
+			&+ x_2(y_0z_2 - y_1z_3 + y_2z_0 + y_3z_1) \\
+			&+ x_3(y_0z_3 + y_1z_2 - y_2z_1 + y_3z_0) \\
+			&= x_0(yz)_0 + x_1(yz)_1 + x_2(yz)_2 + x_3(yz)_3 \\
+			&= (x(yz))_0;
+		\end{align*}
+	para a coordenada $1$, segue que
+		\begin{align*}
+		((xy)z)_1 &= (xy)_0z_1 + (xy)_1z_0 + (xy)_2z_3 - (xy)_3z_2 \\
+			&= (x_0y_0 - x_1y_1 - x_2y_2 - x_3y_3)z_1 \\
+			&+ (x_0y_1 + x_1y_0 + x_2y_3 - x_3y_2)z_0 \\
+			&+ (x_0y_2 - x_1y_3 + x_2y_0 + x_3y_1)z_3 \\
+			&- (x_0y_3 + x_1y_2 - x_2y_1 + x_3y_0)z_2 \\
+			&= x_0(y_0z_1 + y_1z_0 + y_2z_3 - y_3z_2) \\
+			&+ x_1(y_0z_0 - y_1z_1 - y_2z_2 - y_3z_3) \\
+			&+ x_2(y_0z_3 + y_1z_2 - y_2z_1 + y_3z_0) \\
+			&- x_3(y_0z_2 - y_1z_3 + y_2z_0 + y_3z_1) \\
+			&= x_0(yz)_1 + x_1(yz)_0 + x_2(yz)_3 - x_3(yz)_2 \\
+			&= (x(yz))_1;
+		\end{align*}
+	para a coordenada $2$, segue que
+		\begin{align*}
+		((xy)z)_2 &= (xy)_0z_2 - (xy)_1z_3 + (xy)_2z_0 + (xy)_3z_1 \\
+			&= (x_0y_0 - x_1y_1 - x_2y_2 - x_3y_3)z_2 \\
+			&- (x_0y_1 + x_1y_0 + x_2y_3 - x_3y_2)z_3 \\
+			&+ (x_0y_2 - x_1y_3 + x_2y_0 + x_3y_1)z_0 \\
+			&+ (x_0y_3 + x_1y_2 - x_2y_1 + x_3y_0)z_1 \\
+			&= x_0(y_0z_2 - y_1z_3 + y_2z_0 + y_3z_1) \\
+			&- x_1(y_0z_3 + y_1z_2 - y_2z_1 + y_3z_0) \\
+			&+ x_2(y_0z_0 - y_1z_1 - y_2z_2 - y_3z_3) \\
+			&+ x_3(y_0z_1 + y_1z_0 + y_2z_3 - y_3z_2) \\
+			&= x_0(yz)_2 - x_1(yz)_3 + x_2(yz)_0 + x_3(yz)_1 \\
+			&= (x(yz))_2;
+		\end{align*}
+	e para a coordenada $3$, segue que
+		\begin{align*}
+		((xy)z)_3 &= (xy)_0z_3 + (xy)_1z_2 - (xy)_2z_1 + (xy)_3z_0 \\
+			&= (x_0y_0 - x_1y_1 - x_2y_2 - x_3y_3)z_3 \\
+			&+ (x_0y_1 + x_1y_0 + x_2y_3 - x_3y_2)z_2 \\
+			&- (x_0y_2 - x_1y_3 + x_2y_0 + x_3y_1)z_1 \\
+			&+ (x_0y_3 + x_1y_2 - x_2y_1 + x_3y_0)z_0 \\
+			&= x_0(y_0z_3 + y_1z_2 - y_2z_1 + y_3z_0) \\
+			&+ x_1(y_0z_2 - y_1z_3 + y_2z_0 + y_3z_1) \\
+			&- x_2(y_0z_1 + y_1z_0 + y_2z_3 - y_3z_2) \\
+			&+ x_3(y_0z_0 - y_1z_1 - y_2z_2 - y_3z_3) \\
+			&= x_0(yz)_3 + x_1(yz)_2 - x_2(yz)_1 + x_3(yz)_0 \\
+			&= (x(yz))_3.
+		\end{align*}
+	Portanto
+		\begin{align*}
+		((xy)z) &= ((xy)z)_0 1 + ((xy)z)_1 \ii_1 + ((xy)z)_2 \ii_2 + ((xy)z)_3 \ii_3 \\
+			&= (x(yz))_0 1 + (x(yz))_1 \ii_1 + (x(yz))_2 \ii_2 + (x(yz))_3 \ii_3 \\
+			&= (x(yz)).
+		\end{align*}
+	
+	\item (Inversa) Para todo $x \in \R^4 \setminus \{0\}$,
+		\begin{align*}
+		x\inv x &= \nor{x}^{-2} (x_0,-x_1,-x_2,-x_3)(x_0,x_1,x_2,x_3) \\
+			&= \nor{x}^{-2} (x_0x_0 - (-x_1)x_1 - (-x_2)x_2 - (-x_3)x_3) 1 \\
+			&+ \nor{x}^{-2} (x_0x_1 + (-x_1)x_0 + (-x_2)x_3 - (-x_3)x_2) \ii_1 \\
+			&+ \nor{x}^{-2} (x_0x_2 - (-x_1)x_3 + (-x_2)x_0 + (-x_3)x_1) \ii_2 \\
+			&+ \nor{x}^{-2} (x_0x_3 + (-x_1)x_2 - (-x_2)x_1 + (-x_3)x_0) \ii_3 \\
+			&= \nor{x}^{-2} ({x_0}^2 + {x_1}^2 + {x_2}^2 + {x_3}^2) 1 \\
+			&= \nor{x}^{-2} \nor{x}^2 1 \\
+			&= 1
+		\end{align*}
+	e
+		\begin{align*}
+		x x\inv &= (x_0,x_1,x_2,x_3) \nor{x}^{-2}(x_0,-x_1,-x_2,-x_3) \\
+			&= \nor{x}^{-2} (x_0x_0 - x_1(-x_1) - x_2(-x_2) - x_3(-x_3)) 1 \\
+			&+ \nor{x}^{-2} (x_0(-x_1) + x_1x_0 + x_2(-x_3) - x_3(-x_2)) \ii_1 \\
+			&+ \nor{x}^{-2} (x_0(-x_2) - x_1(-x_3) + x_2x_0 + x_3(-x_1)) \ii_2 \\
+			&+ \nor{x}^{-2} (x_0(-x_3) + x_1(-x_2) - x_2(-x_1) + x_3x_0) \ii_3 \\
+			&= \nor{x}^{-2} ({x_0}^2 + {x_1}^2 + {x_2}^2 + {x_3}^2) 1 \\
+			&= \nor{x}^{-2} \nor{x}^2 1 \\
+			&= 1.
+		\end{align*}
+\end{itemize}
+\begin{itemize}
+	\item (Submultiplicatividade) Demonstramos de fato a multiplicatividade da norma, que implica a submultiplicatividade. Para todos $x,y \in \R^4$,
+		\begin{align*}
+		\nor{xy}^2 &= (x_0y_0 - x_1y_1 - x_2y_2 - x_3y_3)^2 \\
+			&+ (x_0y_1 + x_1y_0 + x_2y_3 - x_3y_2)^2 \\
+			&+ (x_0y_2 - x_1y_3 + x_2y_0 + x_3y_1)^2 \\
+			&+ (x_0y_3 + x_1y_2 - x_2y_1 + x_3y_0)^2 \\
+%			&= (x_0y_0)^2 + (x_1y_1)^2 + (x_2y_2)^2 + (x_3y_3)^2 \\
+%			&+ 2 (-x_0y_0x_1y_1 - x_0y_0x_2y_2 - x_0y_0x_3y_3 + x_1y_1x_2y_2 + x_1y_1x_3y_3 + x_2y_2x_3y_3) \\
+			&= (x_0y_0)^2 + (x_1y_1)^2 + (x_2y_2)^2 + (x_3y_3)^2 \\
+			&- 2 (x_0y_0x_1y_1 + x_0y_0x_2y_2 + x_0y_0x_3y_3 - x_1y_1x_2y_2 - x_1y_1x_3y_3 - x_2y_2x_3y_3) \\
+%			&+ (x_0y_1)^2 + (x_1y_0)^2 + (x_2y_3)^2 + (x_3y_2)^2 \\
+%			&+ 2 (x_0y_1x_1y_0 + x_0y_1x_2y_3 - x_0y_1x_3y_2 + x_1y_0x_2y_3 - x_1y_0x_3y_2 - x_2y_3x_3y_2) \\
+			&+ (x_0y_1)^2 + (x_1y_0)^2 + (x_2y_3)^2 + (x_3y_2)^2 \\
+			&+ 2 (x_0y_1x_1y_0 + x_0y_1x_2y_3 - x_0y_1x_3y_2 + x_1y_0x_2y_3 - x_1y_0x_3y_2 - x_2y_3x_3y_2) \\
+%			&+ (x_0y_2)^2 + (x_1y_3)^2 + (x_2y_0)^2 + (x_3y_1)^2 \\
+%			&+ 2 (-x_0y_2x_1y_3 + x_0y_2x_2y_0 + x_0y_2x_3y_1 - x_1y_3x_2y_0 - x_1y_3x_3y_1 + x_2y_0x_3y_1) \\
+			&+ (x_0y_2)^2 + (x_1y_3)^2 + (x_2y_0)^2 + (x_3y_1)^2 \\
+			&- 2 (x_0y_2x_1y_3 - x_0y_2x_2y_0 - x_0y_2x_3y_1 + x_1y_3x_2y_0 + x_1y_3x_3y_1 - x_2y_0x_3y_1) \\
+%			&+ (x_0y_3)^2 + (x_1y_2)^2 + (x_2y_1)^2 + (x_3y_0)^2 \\
+%			&+ 2 (x_0y_3x_1y_2 - x_0y_3x_2y_1 + x_0y_3x_3y_0 - x_1y_2x_2y_1 + x_1y_2x_3y_0 - x_2y_1x_3y_0) \\
+			&+ (x_0y_3)^2 + (x_1y_2)^2 + (x_2y_1)^2 + (x_3y_0)^2 \\
+			&+ 2 (x_0y_3x_1y_2 - x_0y_3x_2y_1 + x_0y_3x_3y_0 - x_1y_2x_2y_1 + x_1y_2x_3y_0 - x_2y_1x_3y_0) \\
+			&= (x_0y_0)^2 + (x_1y_1)^2 + (x_2y_2)^2 + (x_3y_3)^2 \\
+			&+ (x_0y_1)^2 + (x_1y_0)^2 + (x_2y_3)^2 + (x_3y_2)^2 \\
+			&+ (x_0y_2)^2 + (x_1y_3)^2 + (x_2y_0)^2 + (x_3y_1)^2 \\
+			&+ (x_0y_3)^2 + (x_1y_2)^2 + (x_2y_1)^2 + (x_3y_0)^2 \\
+			&= {x_0}^2({y_0}^2+{y_1}^2+{y_2}^2+{y_3}^2) \\
+			&+ {x_1}^2({y_0}^2+{y_1}^2+{y_2}^2+{y_3}^2) \\
+			&+ {x_2}^2({y_0}^2+{y_1}^2+{y_2}^2+{y_3}^2) \\
+			&+ {x_3}^2({y_0}^2+{y_1}^2+{y_2}^2+{y_3}^2) \\
+			&= ({x_0}^2+{x_1}^2+{x_2}^2+{x_3}^2)({y_0}^2+{y_1}^2+{y_2}^2+{y_3}^2) \\
+			&= \nor{x}^2\nor{y}^2.
+		\end{align*}
+	
+	\item (Unitariedade)
+		\begin{equation*}
+		\nor{1} = (1^2+0^2+0^2+0^2)^{\frac{1}{2}} = 1.
+		\end{equation*}
+	
+	\item (Invertibilidade) Para todo $x \in \R^4 \setminus \{0\}$,
+		\begin{align*}
+		\nor{x\inv} &= \left(\left(\frac{x_0}{\nor{x}^2}\right)^2 + \left(\frac{-x_1}{\nor{x}^2}\right)^2 + \left(\frac{-x_2}{\nor{x}^2}\right)^2 + \left(\frac{-x_3}{\nor{x}^2}\right)^2\right)^{\frac{1}{2}} \\
+			&= \frac{1}{\nor{x}^2}((x_0)^2+(-x_1)^2+(-x_2)^2+(-x_3)^2)^{\frac{1}{2}} \\
+			&= \frac{\nor{x}}{\nor{x}^2} \\
+			&= \nor{x}\inv.
+			\qedhere
+		\end{align*}
+\end{itemize}
+\end{proof}
+
+Demonstramos de fato a multiplicatividade da norma, mas a submultiplicatividade, junto às outras propriedades da norma, implica que, para todos $x,x' \in \R^4$,
 	\begin{equation*}
 	\nor{xx'} = \nor{x}\nor{x'}.
 	\end{equation*}
-Como o vetor $1$ é uma unidade, em geral o omitiremos da notação da base, denotando $x_0 1$ por $x_0$ e
+Como o vetor $1 = (1,0,0,0)$ é uma unidade, em geral o omitiremos da notação da base, denotando $x_0 1$ por $x_0$ e
 	\begin{equation*}
-	x = x_0 + x_1 \ii + x_2 \jj + x_3 \kk.
+	x = x_0 + x_1 \ii_1 + x_2 \ii_2 + x_3 \ii_3.
 	\end{equation*}
 
+\begin{comment}
 Segue direto da definição do produto que valem as seguintes relações de produto entre os elementos da base:
 	\begin{equation*}
-	\ii\jj\kk = \ii^2 = \jj^2 = \kk^2 = - 1.
+	\ii_1\ii_2\ii_3 = {\ii_1}^2 = {\ii_2}^2 = {\ii_3}^2 = -1.
 	\end{equation*}
 Dessas relações, deduzem-se
 	\begin{equation*}
-	\ii\jj = -\jj\ii = \kk, \qquad \jj\kk = -\kk\jj = \ii, \qquad \kk\ii = -\ii\kk = \jj.
+	\ii_1\ii_2 = -\ii_2\ii_1 = \ii_3, \qquad \ii_2\ii_3 = -\ii_3\ii_2 = \ii_1, \qquad \ii_3\ii_1 = -\ii_1\ii_3 = \ii_2.
 	\end{equation*}
 
-De fato, em vez da expressão explícita para $\times$ em termos das entradas de $x$ e $y$, poderíamos somente definir o produto entre os elementos de uma base, no caso $\{1,\ii, \jj, \kk\}$, e o produto se estenderia linearmente. Essa definição seria dada como nas relações acima. Com essas relações e representando os elementos $x \in \R^4$ como
+De fato, em vez da expressão explícita para $\times$ em termos das entradas de $x$ e $y$, poderíamos somente definir o produto entre os elementos de uma base, no caso $\{1,\ii_1, \ii_2, \ii_3\}$, e o produto se estenderia linearmente. Essa definição seria dada como nas relações acima. Com essas relações e representando os elementos $x \in \R^4$ como
 	\begin{equation*}
-	x = x_0 + x_1 \ii + x_2 \jj + x_3 \kk,
+	x = x_0 + x_1 \ii_1 + x_2 \ii_2 + x_3 \ii_3,
 	\end{equation*}
 pode-se calcular o produto quaterniônico $\times$ em $\R^4$ usando linearidade.
 
-\begin{comment}
 
 Por linearidade, deve valer
 	\begin{align*}
-	xy &= (x_0 1  + x_1 \ii + x_2 \jj + x_3 \kk)(y_0 1  + y_1 \ii + y_2 \jj + y_3 \kk) \\
-		&= x_0 y_0 1  1  + x_0 y_1 1  \ii + x_0 y_2 1  \jj + x_0 y_3 1  \kk \\
-		&+ x_1 y_0 \ii  1  + x_1 y_1 \ii  \ii + x_1y_2 \ii  \jj + x_1 y_3 \ii  \kk \\
-		&+ x_2 y_0 \jj 1  + x_2 y_1 \jj \ii + x_2 y_2 \jj \jj + x_2 y_3 \jj \kk \\
-		&+ x_3 y_0 \kk 1  + x_3 y_1 \kk \ii + x_3 y_2 \kk \jj + x_3 y_3 \kk \kk
+	xy &= (x_0 1  + x_1 \ii_1 + x_2 \ii_2 + x_3 \ii_3)(y_0 1  + y_1 \ii_1 + y_2 \ii_2 + y_3 \ii_3) \\
+		&= x_0 y_0 1  1  + x_0 y_1 1  \ii_1 + x_0 y_2 1  \ii_2 + x_0 y_3 1  \ii_3 \\
+		&+ x_1 y_0 \ii_1  1  + x_1 y_1 \ii_1  \ii_1 + x_1y_2 \ii_1  \ii_2 + x_1 y_3 \ii_1  \ii_3 \\
+		&+ x_2 y_0 \ii_2 1  + x_2 y_1 \ii_2 \ii_1 + x_2 y_2 \ii_2 \ii_2 + x_2 y_3 \ii_2 \ii_3 \\
+		&+ x_3 y_0 \ii_3 1  + x_3 y_1 \ii_3 \ii_1 + x_3 y_2 \ii_3 \ii_2 + x_3 y_3 \ii_3 \ii_3
 	\end{align*}
 
 Portanto basta definir os valores dos produtos entre $1,i,j,k$. Escolhendo $1$ para ser a unidade, já que deve haver uma unidade (e essa notação não foi escolhida por acaso para $(1,0,0,0)$), basta determinarmos
 	\begin{equation*}
-	\ii\ii,\ii\jj,\ii\kk,\jj\ii,\jj\ij,\jj\kk,\kk\ii,\kk\jj,\kk\kk.
+	\ii_1\ii_1,\ii_1\ii_2,\ii_1\ii_3,\ii_2\ii_1,\ii_2\ij,\ii_2\ii_3,\ii_3\ii_1,\ii_3\ii_2,\ii_3\ii_3.
 	\end{equation*}
 
 \end{comment}
@@ -623,7 +912,7 @@ Portanto basta definir os valores dos produtos entre $1,i,j,k$. Escolhendo $1$ p
 \begin{definition}
 Seja $x \in \R^4$. A \emph{componente escalar} de $x$ é (o número) $\esc{x} := x_0 1$ e a \emph{componente vetorial} de $x$ é (o vetor)
 	\begin{equation*}
-	\vec{x} := x_1 \ii + x_2 \jj + x_3 \kk.
+	\vec{x} := x_1 \ii_1 + x_2 \ii_2 + x_3 \ii_3.
 	\end{equation*}
 
 O \emph{subespaço de escalares} de $\R^4$ é o subespaço
@@ -662,7 +951,7 @@ Seja $x \in \R^4$.
 	\begin{enumerate}
 	\item $\nor{x}^2 = \abs{\esc{x}}^2 + \nor{\vec{x}}^2$;
 	\item $\nor{x}^2 = x\conju{x}$;
-	\item $\conju{x} = -\frac{1}{2}(x + \ii x \ii + \jj x \jj + \kk x \kk)$.
+	\item $\conju{x} = \frac{1}{2}(1x(-1) + \ii_1 x (-\ii_1) + \ii_2 x (-\ii_2) + \ii_3 x (-\ii_3))$.
 	\end{enumerate}
 \end{exercise}
 
@@ -720,9 +1009,9 @@ O \emph{produto vetorial} em $\vec{\R}^3$ é a função
 	\begin{align*}
 	\func{\pvec{}{}}{\vec{\R}^3 \times \vec{\R}^3}{\vec{\R}^3}{(\vec{x},\vec{y})}{
 		\begin{aligned}[t]
-			\pvec{\vec{x}}{\vec{y}} := &(x_2y_3-x_3y_2) \ii \\
-			+ &(-x_1y_3+x_3y_1) \jj \\
-			+ &(x_1y_2-x_2y_1) \kk.
+			\pvec{\vec{x}}{\vec{y}} := &(x_2y_3-x_3y_2) \ii_1 \\
+			+ &(-x_1y_3+x_3y_1) \ii_2 \\
+			+ &(x_1y_2-x_2y_1) \ii_3.
 		\end{aligned}
 	}
 	\end{align*}
@@ -808,9 +1097,9 @@ sendo
 	\item Como $x_0=y_0=0$,
 	\begin{align*}
 	xy =& -(x_1y_1 + x_2y_2 + x_3y_3) \\
-			&+ (x_2y_3-x_3y_2) \ii \\
-			&+ (-x_1y_3+x_3y_1) \jj \\
-			&+ (x_1y_2-x_2y_1) \kk \\
+			&+ (x_2y_3-x_3y_2) \ii_1 \\
+			&+ (-x_1y_3+x_3y_1) \ii_2 \\
+			&+ (x_1y_2-x_2y_1) \ii_3 \\
 		=& - \pesc{\vec{x}}{\vec{y}} + \pvec{\vec{x}}{\vec{y}}.
 	\end{align*}
 
@@ -1440,3 +1729,168 @@ Definimos a função
 	\end{align*}
 
 \end{comment}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection{$2$-Hiperbólicos $\R^{1,1}$}
+
+Definiremos o `produto hiperbólico' no espaço linear $\R^2$, cuja base canônica denotaremos por
+	\begin{align*}
+	\bm 1 &:= (1,0) \\
+	\jj &:= (0,1).
+	\end{align*}
+Como de costume, denotaremos o vetor $\bm 1$ simplesmente por $1$, pois isso não gerará ambiguidade, e sempre que possível ele será sempre omitido da notação, de modo que todo $x \in \R^2$ será denotado
+	\begin{equation*}
+	x = x_0 + x_1 \jj.
+	\end{equation*}
+Além disso, denotaremos o espaço $\R^2$ por $\R^{1,1}$ para enfatizar que estamos usando um produto diferente do complexo e que a geometria desse espaço será diferente.
+
+\begin{definition}
+O \emph{produto hiperbólico} em $\R^{1,1}$ é a operação
+	\begin{align*}
+	\func{\htimes}{\R^{1,1} \times \R^{1,1}}{\R^{1,1}}{(x,y)}{xy := (x_0y_0 + x_1y_1, x_0y_1+x_1y_0)}
+	\end{align*}
+A \emph{unidade} de $(\R^{1,1},\htimes)$ é $1 = (1,0)$.
+\end{definition}
+
+Escrevendo esse produto explicitamente na base de $\R^{1,1}$, temos
+	\begin{equation*}
+	xy = (x_0y_0 + x_1y_1) + (x_0y_1+x_1y_0)\jj.
+	\end{equation*}
+
+Notemos que
+	\begin{equation*}
+	\jj^2 = (0,1)(0,1) = (0 \times 0 + 1 \times 1) + (0 \times 1 + 1 \times 0)\jj = 1.
+	\end{equation*}
+
+\begin{proposition}
+A lista
+	\begin{equation*}
+	(\R^{1,1},+,-,0,\htimes,1,\cdot)
+	\end{equation*}
+é uma álgebra associativa, comutativa e unitária sobre $\R$.
+\end{proposition}
+\begin{proof}
+\begin{itemize}
+	\item (Comutatividade) Para todos $x,y \in \R^{1,1}$,
+%		\begin{equation*}
+%		xy = (x_0y_0 + x_1y_1) + (x_0y_1+x_1y_0)\jj = (y_0x_0 + y_1x_1) + (y_0x_1+y_1x_0)\jj = yx.
+%		\end{equation*}
+		\begin{equation*}
+		xy = (x_0y_0 + x_1y_1,x_0y_1+x_1y_0) = (y_0x_0 + y_1x_1, y_0x_1+y_1x_0) = yx.
+		\end{equation*}
+	\item (Associatividade) Para todos $x,y,z \in \R^{1,1}$,
+%		\begin{align*}
+%		(xy)z &= ((x_0y_0 + x_1y_1) + (x_0y_1+x_1y_0)\jj)(z_0+z_1\jj) \\
+%				&= ((x_0y_0 + x_1y_1)z_0 + (x_0y_1+x_1y_0)z_1) + ((x_0y_0 + x_1y_1)z_1 + (x_0y_1+x_1y_0)z_0)\jj \\
+%				&= (x_0y_0z_0 + x_1y_1z_0 + x_0y_1z_1+x_1y_0z_1) + (x_0y_0z_1 + x_1y_1z_1 + x_0y_1z_0+x_1y_0z_0)\jj \\
+%				&= (x_0(y_0z_0+y_1z_1) + x_1(y_0z_1+y_1z_0)) + (x_0(y_0z_1+y_1z_0) + x_1(y_0z_0+y_1z_1))\jj \\
+%				&= x(yz).
+%		\end{align*}
+		\begin{align*}
+		(xy)z &= (x_0y_0 + x_1y_1, x_0y_1+x_1y_0)(z_0,z_1) \\
+				&= ((x_0y_0 + x_1y_1)z_0 + (x_0y_1+x_1y_0)z_1, (x_0y_0 + x_1y_1)z_1 + (x_0y_1+x_1y_0)z_0) \\
+				&= (x_0y_0z_0 + x_1y_1z_0 + x_0y_1z_1+x_1y_0z_1, x_0y_0z_1 + x_1y_1z_1 + x_0y_1z_0+x_1y_0z_0) \\
+				&= (x_0(y_0z_0+y_1z_1) + x_1(y_0z_1+y_1z_0), x_0(y_0z_1+y_1z_0) + x_1(y_0z_0+y_1z_1)) \\
+				&= x(yz).
+		\end{align*}
+	\item (Bilinearidade) Como o produto é comutativo, basta mostrar a linearidade na primeira entrada. Para todos $x,x',y \in \R^{1,1}$ e $c \in \R$,
+%		\begin{align*}
+%		(cx+x')y &= ((cx_0+x'_0)y_0 + (cx_1+x'_1)y_1) + ((cx_0+x'_0)y_1 + (cx_1+x'_1)y_0)\jj \\
+%			&= (cx_0y_0+x'_0y_0 + cx_1y_1+x'_1y_1) + (cx_0y_1+x'_0y_1 + cx_1y_0+x'_1y_0))\jj \\
+%%			&= (c(x_0y_0+x_1y_1) + x'_0y_0 +x'_1y_1) + (c(x_0y_1+x_1y_0) + x'_0y_1+x'_1y_0))\jj \\
+%			&= (cx_0y_0+cx_1y_1) + (cx_0y_1+cx_1y_0)\jj \\
+%				&\qquad\qquad\qquad\qquad + (x'_0y_0+x'_1y_1) + (x'_0y_1+x'_1y_0)\jj \\
+%			&= c((x_0y_0+x_1y_1) + (x_0y_1+x_1y_0)\jj) \\
+%				&\qquad\qquad\qquad\qquad + (x'_0y_0+x'_1y_1) + (x'_0y_1+x'_1y_0)\jj \\
+%			&= c(xy) + x'y.
+%		\end{align*}
+		\begin{align*}
+		(cx+x')y &= ((cx_0+x'_0)y_0 + (cx_1+x'_1)y_1, (cx_0+x'_0)y_1 + (cx_1+x'_1)y_0) \\
+			&= (cx_0y_0+x'_0y_0 + cx_1y_1+x'_1y_1, cx_0y_1+x'_0y_1 + cx_1y_0+x'_1y_0) \\
+%			&= (c(x_0y_0+x_1y_1) + x'_0y_0 +x'_1y_1) + (c(x_0y_1+x_1y_0) + x'_0y_1+x'_1y_0))\jj \\
+			&= (cx_0y_0+cx_1y_1, cx_0y_1+cx_1y_0) + (x'_0y_0+x'_1y_1, x'_0y_1+x'_1y_0) \\
+			&= c(x_0y_0+x_1y_1, x_0y_1+x_1y_0) + (x'_0y_0+x'_1y_1, x'_0y_1+x'_1y_0) \\
+			&= c(xy) + x'y.
+		\end{align*}
+	\item (Identidade) Como o produto é comutativo, basta mostrar a identidade à esquerda. Para todo $x \in \R^{1,1}$,
+%		\begin{equation*}
+%		1x = (1+0\jj)(x_0+x_1\jj) = (1x_0+0x_1)+(1x_1+0x_0)\jj = x_0+x_1\jj.
+%		\qedhere
+%		\end{equation*}
+		\begin{equation*}
+		1x = (1,0)(x_0,x_1) = (1x_0+0x_1, 1x_1+0x_0) = (x_0, x_1).
+		\qedhere
+		\end{equation*}
+\end{itemize}
+\end{proof}
+
+\begin{definition}
+Seja $x \in \R^{1,1}$. O \emph{conjugado} de $x$ é $\conju{x} := x_0 - x_1\jj$. A 
+\end{definition}
+
+
+
+
+\subsection{$4$-Hiperbólicos $\R^{1,3}$}
+
+Definiremos o `produto hiperbólico' no espaço linear $\R^4$, cuja base canônica denotaremos por
+	\begin{align*}
+	\bm 1 &:= (1,0,0,0) \\
+	\jj_1 &:= (0,1,0,0) \\
+	\jj_2 &:= (0,0,1,0) \\
+	\jj_3 &:= (0,0,0,1).
+	\end{align*}
+Como de costume, denotaremos o vetor $\bm 1$ simplesmente por $1$, pois isso não gerará ambiguidade, e sempre que possível ele será sempre omitido da notação, de modo que todo $x \in \R^4$ será denotado
+	\begin{equation*}
+	x = x_0 + x_1 \jj_1 + x_2 \jj_2 + x_3 \jj_3.
+	\end{equation*}
+Além disso, denotaremos o espaço $\R^4$ por $\R^{1,3}$ para enfatizar que estamos usando um produto diferente do quaterniônico e que a geometria desse espaço será diferente.
+
+\begin{definition}
+O \emph{produto hiperbólico} em $\R^{1,3}$ é a operação
+	\begin{align*}
+	\func{\htimes}{\R^{1,3} \times \R^{1,3}}{\R^{1,3}}{(x,y)}{
+		\begin{aligned}[t]
+		xy := &(x_0y_0 + x_1y_1 + x_2y_2 + x_3y_3) 1 \\
+			+ &(x_0y_1 + x_1y_0 + x_2y_3 - x_3y_2) \jj_1 \\
+			+ &(x_0y_2 - x_1y_3 + x_2y_0 + x_3y_1) \jj_2 \\
+			+ &(x_0y_3 + x_1y_2 - x_2y_1 + x_3y_0) \jj_3 .
+		\end{aligned}
+	}
+	\end{align*}
+A \emph{unidade} de $(\R^{1,3},\htimes)$
+	\begin{equation*}
+	1 := (1,0,0,0).
+	\end{equation*}
+\end{definition}
+
+Notemos que
+	\begin{align*}
+	(\jj_1)^2 &= 1 \\
+	(\jj_2)^2 &= 1 \\
+	(\jj_3)^2 &= 1 \\
+	\jj_1\jj_2 &= \jj_3 = -\jj_2\jj_1 \\
+	\jj_2\jj_3 &= \jj_1 = -\jj_3\jj_2 \\
+	\jj_3\jj_1 &= \jj_2 = -\jj_1\jj_3.
+	\end{align*}
+
+\begin{exercise}
+A lista
+	\begin{equation*}
+	(\R^{1,3},+,-,0,\htimes,1,\cdot)
+	\end{equation*}
+é uma álgebra unitária sobre $\R$.
+\end{exercise}
