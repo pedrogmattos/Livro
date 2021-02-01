@@ -1,9 +1,11 @@
 \chapter{Espaços lineares com produto interno}
 
+O foco dessa seção é definir o produto interno em um espaço vetorial e estudar suas propriedades geométricas. O produto interno será definido para qualquer espaço vetorial sobre o corpo dos números complexos, que denotaremos por $\R^2$. De fato, ele será definido para qualquer subcorpo de $\R^2$ invariante por conjugação complexa, o que inclui o corpo dos números reais. O produto interno poderia ser definido sobre os números quaterniônicos $\R^4$ da mesma forma, mas notando que esse anel não é comutativo, embora seja invertível no sentido de que todo elemento não $0$ tem inversa, tratando-se portanto de um anel de divisão. Muitas das propriedades do produto interno ainda valeriam para coeficientes quaterniônicos, mas cuidado deve ser tomado devido à não-comutatividade.
+
 \section{Produto interno}
 
 \begin{definition}
-Seja $\bm V$ um espaço linear sobre um corpo $\bm C \subseteq \C$ invariante por conjugação complexa\footnote{Um corpo $\bm C \subseteq \C$ tal que, para todo $c \in C$, temos $\conju{c} \in C$.}. Um \emph{produto interno} em $\bm V$ é uma função $\inte{\var}{\var}\colon V \times V \to C$ que satisfaz
+Seja $\bm V$ um espaço linear sobre um corpo $\bm C \subseteq \R^2$ invariante por conjugação complexa\footnote{Um corpo $\bm C \subseteq \R^2$ tal que, para todo $c \in C$, temos $\conju{c} \in C$.}. Um \emph{produto interno} em $\bm V$ é uma função $\inte{\var}{\var}\colon V \times V \to C$ que satisfaz
 	\begin{enumerate}
 	\item (Linearidade na primeira entrada)
 		\begin{enumerate}
@@ -26,11 +28,11 @@ Seja $\bm V$ um espaço linear sobre um corpo $\bm C \subseteq \C$ invariante po
 \end{definition}
 
 \begin{definition}
-Um \emph{espaço com produto interno} é um par $(\bm V,\inte{\var}{\var})$ em que $\bm V$ é um espaço linear sobre um corpo $\bm C \subseteq \C$ invariante por conjugação complexa e $\inte{\var}{\var}\colon \bm V \times \bm V \to C$ é um produto interno em $\bm V$.
+Um \emph{espaço com produto interno} é um par $(\bm V,\inte{\var}{\var})$ em que $\bm V$ é um espaço linear sobre um corpo $\bm C \subseteq \R^2$ invariante por conjugação complexa e $\inte{\var}{\var}\colon \bm V \times \bm V \to C$ é um produto interno em $\bm V$.
 \end{definition}
 
 \begin{proposition}[Propriedades de Produto Interno]
-Seja $(\bm V,\inte{\var}{\var})$ um espaço com produto interno sobre um corpo $\bm C \subseteq \C$. Então
+Seja $(\bm V,\inte{\var}{\var})$ um espaço com produto interno sobre um corpo $\bm C \subseteq \R^2$. Então
 	\begin{enumerate}
 	\item (Linearidade conjugada na segunda entrada)
 		\begin{enumerate}
@@ -51,7 +53,7 @@ e
 		\begin{equation*}
 		\inte{v}{\sum_{i=0}^n c_iv_i} = \sum_{i=0}^n \conju{c_i}\inte{v}{v_i}.
 		\end{equation*}
-	\item (Desigualdade de Cauchy-Schwarz) Para todos $v,v' \in V$,
+	\item (Desigualdade do produto interno\footnote{Conhecida por `desigualdade de Cauchy-Schwarz'.}) Para todos $v,v' \in V$,
 		\begin{equation*}
 		\abs{\inte{v}{v'}}^2 \leq \inte{v}{v}\inte{v'}{v'}
 		\end{equation*}
@@ -83,7 +85,7 @@ o que implica
 \end{proof}
 
 \begin{proposition}
-Sejam $\bm V$ um espaço linear sobre um corpo $\bm C \subseteq \C$ invariante por conjugação complexa e $(b_i)_{i \in I}$ uma base ordenada de $\bm V$. Existe único produto interno $\inte{\var}{\var}$ em $\bm V$ tal que, para todos $i,j \in I$, $\inte{b_i}{b_j}=\delta_{i,j}$.
+Sejam $\bm V$ um espaço linear sobre um corpo $\bm C \subseteq \R^2$ invariante por conjugação complexa e $(b_i)_{i \in I}$ uma base ordenada de $\bm V$. Existe único produto interno $\inte{\var}{\var}$ em $\bm V$ tal que, para todos $i,j \in I$, $\inte{b_i}{b_j}=\delta_{i,j}$.
 \end{proposition}
 
 \section{Norma induzida, ortogonalidade e ângulo}
@@ -91,19 +93,19 @@ Sejam $\bm V$ um espaço linear sobre um corpo $\bm C \subseteq \C$ invariante p
 \subsection{Norma}
 
 \begin{definition}
-Seja $(\bm V,\inte{\var}{\var})$ um espaço com produto interno sobre um corpo $\bm C \subseteq \C$. A \emph{norma} (induzida pelo produto interno) de $\bm V$ é a função
+Seja $(\bm V,\inte{\var}{\var})$ um espaço com produto interno sobre um corpo $\bm C \subseteq \R^2$. A \emph{norma} (induzida pelo produto interno) de $\bm V$ é a função
 	\begin{align*}
 	\func{\nor{\var}}{V}{\R}{v}{\inte{v}{v}^{\frac{1}{2}}}.
 	\end{align*}
 \end{definition}
 
-Em termos da norma, a desigualdade de Cauchy-Schwarz fica
+Em termos da norma, a desigualdade do produto interno fica
 	\begin{equation*}
 	\abs{\inte{v}{v'}} \leq \nor{v}\nor{v'}.
 	\end{equation*}
 
 \begin{proposition}
-Seja $(\bm V,\inte{\var}{\var})$ um espaço com produto interno sobre um corpo $\bm C \subseteq \C$. A função $\nor{\var}$ é uma norma em $\bm V$.
+Seja $(\bm V,\inte{\var}{\var})$ um espaço com produto interno sobre um corpo $\bm C \subseteq \R^2$. A função $\nor{\var}$ é uma norma em $\bm V$.
 \end{proposition}
 \begin{proof}
 	\begin{enumerate}
@@ -114,20 +116,21 @@ Seja $(\bm V,\inte{\var}{\var})$ um espaço com produto interno sobre um corpo $
 	\nor{cv} = \inte{cv}{cv}^{\frac{1}{2}} = \left(c\conju{c}\inte{v}{v}\right)^{\frac{1}{2}} = \abs{c}\nor{v}.
 	\end{equation*}
 	
-	\item (Subaditividade) Para todos $v,v' \in V$,
+	\item (Subaditividade) Para todos $v,v' \in V$, da desigualdade do produto interno segue que
 	\begin{align*}
 	\nor{v+v'}^2 &= \inte{v+v'}{v+v'} \\
 		&= \inte{v}{v}+\inte{v}{v'}+\inte{v'}{v}+\inte{v'}{v'} \\
-		&=  \nor{v}^2+\inte{v}{v'}+\conju{\inte{v}{v'}}+\nor{v'}\\
-		&= \nor{v}^2+2\Re(\inte{v}{v'})+\nor{v'}\\
-		&\leq \nor{v}^2+2\abs{\inte{v}{v'}}+\nor{v'}\\
-		&= \nor{v}^2 + 2\nor{v}\nor{v'}+\nor{v'}^2 \\
-		&= (\nor{v} + \nor{v'})^2. \qedhere
+		&=  \nor{v}^2+\inte{v}{v'}+\conju{\inte{v}{v'}}+\nor{v'}^2\\
+		&= \nor{v}^2+2\Re(\inte{v}{v'})+\nor{v'}^2\\
+		&\leq \nor{v}^2+2\abs{\inte{v}{v'}}+\nor{v'}^2\\
+		&\leq \nor{v}^2 + 2\nor{v}\nor{v'}+\nor{v'}^2 \\
+		&= (\nor{v} + \nor{v'})^2.
+		\qedhere
 	\end{align*}
 	\end{enumerate}
 \end{proof}
 
-\begin{proposition}
+\begin{exercise}
 Seja $(\bm V,\inte{\var}{\var})$ um espaço com produto interno.
 	\begin{enumerate}
 	\item (Regra do Paralelogramo) Para todos $v,v' \in V$,
@@ -135,30 +138,55 @@ Seja $(\bm V,\inte{\var}{\var})$ um espaço com produto interno.
 			2\left( \nor{v}^2 + \nor{v'}^2 \right) = \nor{v+v'}^2+\nor{v-v'}^2;
 		\end{equation*}
 
-	\item (Polarização) Para todos $v,v' \in V$, valem\footnote{Se a característica de $\bm C$ é diferente de $2$.}
+	\item (Polarização) Para todos $v,v' \in V$, valem%\footnote{Se a característica de $\bm C$ é diferente de $2$.}
 		\begin{equation*}
-		\Re(\inte{v}{v'}) = \frac{1}{4}\left(\nor{v+v'}^2 - \nor{v-v'}^2\right),
+		\Re(\inte{v}{v'}) = \frac{1}{4}(\nor{v+v'}^2 - \nor{v-v'}^2),
 		\end{equation*}
 		\begin{equation*}
-		\Im(\inte{v}{v'}) = \frac{\ii}{4}\left(\nor{v+\ii v'}^2 - \nor{v-\ii v'}^2\right),
+		\Im(\inte{v}{v'}) = \frac{1}{4}(\nor{v+\ii v'}^2 - \nor{v-\ii v'}^2)\ii,
 		\end{equation*}
 e
 		\begin{equation*}
-		\inte{v}{v'} = \frac{1}{4} \left( \left(\nor{v+v'}^2 - \nor{v-v'}^2\right) + \ii \left(\nor{v+\ii v'}^2 - \nor{v-\ii v'}^2\right) \right).
+		\inte{v}{v'} = \frac{(\nor{v+v'}^2 - \nor{v-v'}^2) + (\nor{v+\ii v'}^2 - \nor{v-\ii v'}^2) \ii}{4}.
 		\end{equation*}
 	\end{enumerate}
-\end{proposition}
+\end{exercise}
+%\begin{proof}
+%Como
+%	\begin{align*}
+%	\inte{v+v'}{v+v'} &= \inte{v}{v} + \inte{v}{v'} + \inte{v'}{v} + \inte{v'}{v'}, \\
+%	\ii\inte{v+\ii v'}{v+\ii v'} &= \ii\inte{v}{v} + \ii\inte{v}{\ii v'} + \ii\inte{\ii v'}{v} + \ii\inte{\ii v'}{\ii v'}, \\
+%	-\inte{v-v'}{v-v'} &= -\inte{v}{v} + \inte{v}{v'} + \inte{v'}{v} - \inte{v'}{v'}, \\
+%	-\ii\inte{v-\ii v'}{v-\ii v'} &= -\ii\inte{v}{v} + \ii\inte{v}{\ii v'} + \ii\inte{\ii v'}{v} - \ii\inte{\ii v'}{\ii v'}, \\
+%	\end{align*}
+%segue que
+%	\begin{align*}
+%	\inte{v}{v'} &= \frac{1}{4} (\inte{v+v'}{v+v'} + \ii \inte{v+\ii v'}{v+\ii v'} \\
+%		&\qquad - \inte{v-v'}{v-v'} -\ii \inte{v-\ii v'}{v-\ii v'}) \\
+%	\end{align*}
+%\end{proof}
 
 De certa forma, vale uma recíproca da polarização quando uma norma tem a propriedade de paralelogramo. De fato, a igualdade do paralelogramo pode ser enfraquecida para uma desigualdade.
 
 \begin{proposition}
 Seja $(\bm V,\nor{\var})$ um espaço normado tal que, para todos $v,v' \in V$,
 	\begin{equation*}
-	2\left( \nor{v}^2 + \nor{v'}^2 \right) \leq \nor{v+v'}^2+\nor{v-v'}^2.
+	2( \nor{v}^2 + \nor{v'}^2 ) \leq \nor{v+v'}^2+\nor{v-v'}^2.
 	\end{equation*}
-Então existe produto interno $\inte{\var}{\var}$ em $\bm V$ tal que $\nor{v}^2=\inte{v}{v}$ para todo $v \in V$.
-\end{proposition}
-\begin{proof}
+%Então existe produto interno $\inte{\var}{\var}$ em $\bm V$ tal que $\nor{v}^2=\inte{v}{v}$ para todo $v \in V$.
+A função
+	\begin{align*}
+		\func{\inte{\var}{\var}}{V \times V}{C}{(v,v')}{\inte{v}{v'} := \frac{1}{4} \sum_{k=0}^{3} \nor{v+\ii^kv'}^2 \ii^k}
+	\end{align*}
+é um produto interno em $\bm V$ tal que, para todo $v \in V$, $\nor{v} = \inte{v}{v}^{\frac{1}{2}}$. Para um corpo real,
+	\begin{equation*}
+	\inte{v}{v'} = \frac{\nor{v+v'}^2 - \nor{v-v'}^2}{4}
+	\end{equation*}
+e, para um corpo complexo,
+	\begin{equation*}
+	\inte{v}{v'} = \frac{(\nor{v+v'}^2 - \nor{v-v'}^2) + (\nor{v+\ii v'}^2 - \nor{v-\ii v'}^2) \ii}{4}.
+	\end{equation*}
+\end{proposition}\begin{proof}
 O primeiro passo é mostrar que vale a regra do paralelogramo. Segue da desigualdade que
 	\begin{equation*}
 		2\left( \nor{\frac{v+v'}{2}}^2 + \nor{\frac{v-v'}{2}}^2 \right) \leq \nor{\frac{v+v'}{2} + \frac{v-v'}{2}}^2+\nor{\frac{v+v'}{2} - \frac{v-v'}{2}}^2
@@ -171,7 +199,186 @@ e disso segue que
 	\end{align*}
 Assim, temos a desigualdade oposta e segue a regra do paralelogramo.
 
-Consideremos o caso real. Definimos agora o produto interno por
+A definição do produto interno é equivalente a
+	\begin{equation*}
+	\inte{v}{v'} = \frac{(\nor{v+v'}^2 - \nor{v-v'}^2) + (\nor{v+\ii v'}^2 - \nor{v-\ii v'}^2) \ii}{4}.
+	\end{equation*}
+
+Como $\ii\inv = -\ii$, para todo $v \in V$ vale
+	\begin{equation*}
+	\nor{v+\ii v} = \nor{\ii(-\ii v + v)} = \abs{\ii}\nor{v-\ii v} = \nor{v-\ii v},
+	\end{equation*}
+portanto segue da definição do produto interno que
+	\begin{align*}
+	\inte{v}{v} &= \frac{1}{4} \sum_{k=0}^{3} \nor{v+\ii^kv}^2 \ii^k \\
+		&= \frac{(\nor{v+v}^2 - \nor{v-v}^2) + (\nor{v+\ii v}^2 - \nor{v-\ii v}^2) \ii}{4} \\
+		&= \frac{\nor{2v}^2}{4} \\
+		&= \nor{v}^2.
+	\end{align*}
+
+Para um corpo real, como $\nor{v+\ii v'} = \nor{v-\ii v'}$, a fórmula se reduz a
+	\begin{equation*}
+	\inte{v}{v'} = \frac{\nor{v+v'}^2 - \nor{v-v'}^2}{4}.
+	\end{equation*}
+
+Mostremos que $\inte{\var}{\var}$ é um produto interno.
+\begin{enumerate}
+\item (Linearidade na primeira entrada)
+	\begin{enumerate}
+	\item (Aditividade) Sejam $v,v',v'' \in V$ e $k \in [4]$. Pela propriedade do paralelogramo,
+		\begin{equation*}
+		\nor{v+\ii^kv''+v'}^2 = 2\nor{v+\ii^kv''}^2 + 2\nor{v'}^2 - \nor{v+\ii^kv''-v'}^2
+		\end{equation*}
+		e
+		\begin{equation*}
+		\nor{v'+\ii^kv''+v}^2 = 2\nor{v'+\ii^kv''}^2 + 2\nor{v}^2 - \nor{v'+\ii^kv''-v}^2.
+		\end{equation*}
+	Então
+		\begin{align*}
+		\nor{v+v'+\ii^kv''}^2 &= \frac{\nor{v+\ii^kv''+v'}^2 + \nor{v'+\ii^kv''+v}^2}{2} \\
+			&= \nor{v+\ii^kv''}^2 + \nor{v'+\ii^kv''}^2 \\
+			&+ \nor{v}^2 + \nor{v'}^2 \\
+			&- \frac{\nor{v+\ii^kv''-v'}^2 + \nor{v'+\ii^kv''-v}^2}{2}.
+		\end{align*}
+	
+	Como
+		\begin{equation*}
+		\nor{v'+\ii^kv''-v}^2 = \nor{-(v-\ii^kv''-v')}^2 = \nor{v+\ii^{k+2}v''-v'}^2,
+		\end{equation*}
+	segue que
+		\begin{align*}
+		\sum_{k=0}^{3} &\left(\frac{\nor{v+\ii^kv''-v'}^2 + \nor{v'+\ii^kv''-v}^2}{2}\right)\ii^k \\
+		&= \sum_{k=0}^{3} \frac{\nor{v+\ii^kv''-v'}^2}{2}\ii^k + \sum_{k=0}^{3} \frac{\nor{v'+\ii^kv''-v}^2}{2}\ii^k \\
+		&= \sum_{k=0}^{3} \frac{\nor{v+\ii^kv''-v'}^2}{2}\ii^k + \sum_{k=0}^{3} \frac{\nor{v+\ii^{k+2}v''-v'}^2}{2}\ii^k \\
+		&= \sum_{k=0}^{3} \frac{\nor{v+\ii^kv''-v'}^2}{2}\ii^k - \sum_{k=0}^{3} \frac{\nor{v+\ii^kv''-v'}^2}{2}\ii^k \\
+		&=0,
+		\end{align*}
+	portanto
+		\begin{align*}
+		\inte{v+v'}{v''} &= \frac{1}{4} \sum_{k=0}^{3} \nor{v+v'+\ii^kv''}^2 \ii^k \\
+			&= \frac{1}{4} \sum_{k=0}^{3} \left(\nor{v+\ii^kv''}^2 + \nor{v'+\ii^kv''}^2\right)\ii^k \\
+			&+ \frac{1}{4} \sum_{k=0}^{3} \left(\nor{v}^2 + \nor{v'}^2\right)\ii^k \\
+			&- \frac{1}{4} \sum_{k=0}^{3} \left(\frac{\nor{v+\ii^kv''-v'}^2 + \nor{v'+\ii^kv''-v}^2}{2}\right)\ii^k \\
+			&= \frac{1}{4} \sum_{k=0}^{3} \nor{v+\ii^kv''}^2\ii^k + \frac{1}{4} \sum_{k=0}^{3} \nor{v'+\ii^kv''}^2\ii^k \\
+			&= \inte{v}{v''} + \inte{v'}{v''}.
+		\end{align*}
+	
+	\item (Homogeneidade) Sejam $v,v' \in V$. Mostraremos a homogeneidade por partes: para os números naturais, inteiros, racionais, reais e então complexos.
+	
+	(Números naturais) Mostremos por indução. Para $n=0$, basta notar que
+		\begin{align*}
+		\inte{0v}{v'} &= \frac{1}{4} \sum_{k=0}^{3} \nor{0v+\ii^kv'}^2 \ii^k \\
+			&= \frac{1}{4} \sum_{k=0}^{3} \nor{\ii^kv'}^2 \ii^k \\
+			&= \frac{1}{4} \sum_{k=0}^{3} \abs{\ii^k}\nor{v'}^2 \ii^k \\
+			&= \nor{v'}^2\frac{1}{4} \sum_{k=0}^{3} \ii^k \\
+			&= 0 \\
+			&= 0 \inte{v}{v'}.
+		\end{align*}
+	Supondo que vale para $n$, segue da aditividade que
+		\begin{align*}
+		\inte{(n+1)v}{v'} &= \inte{nv+v}{v'} \\
+			&= \inte{nv}{v'} + \inte{v}{v'} \\
+			&= n\inte{v}{v'} + \inte{v}{v'} \\
+			&= (n+1)\inte{v}{v'}.
+		\end{align*}
+	
+	(Números inteiros) Seja $n \in \N$. A homogeneidade vale para $-1$ pois, como $\ii^2 = \ii^{-2} = -1$,
+		\begin{align*}
+		\inte{-v}{v'} &= \frac{1}{4} \sum_{k=0}^{3} \nor{-v+\ii^kv'}^2 \ii^k \\
+			&= \frac{1}{4} \sum_{k=0}^{3} \abs{-1}\nor{v-\ii^kv'}^2 \ii^k \\
+			&= \frac{1}{4} \sum_{k=0}^{3} \nor{v+\ii^{k-2}v'}^2 \ii^k \\
+			&= \frac{1}{4} \sum_{k=0}^{3} \nor{v+\ii^kv'}^2 \ii^{k+2} \\
+			&= \frac{1}{4} \sum_{k=0}^{3} \nor{v+\ii^kv'}^2 \ii^{k}\ii^2 \\
+			&= -\frac{1}{4} \sum_{k=0}^{3} \nor{v+\ii^kv'}^2 \ii^{k} \\
+			&= -\inte{v}{v'}.
+		\end{align*}
+	Segue da homogeneidade para $-1$ que
+		\begin{align*}
+		\inte{(-n)v}{v'} = \inte{-(nv)}{n'} = -\inte{nv}{v'} = -n\inte{v}{v'}.
+		\end{align*}
+	
+	(Números racionais) Seja $\frac{n}{d} \in \Q$. Segue da homogeneidade para números inteiros que
+		\begin{align*}
+		\inte{\frac{n}{d}v}{v'} = \frac{d}{d}\inte{\frac{n}{d}v}{v'} = \frac{n}{d}\inte{\frac{d}{d}v}{v'} = \frac{n}{d}\inte{v}{v'}.
+		\end{align*}
+
+	(Números reais) Sejam $c \in \R$ e $(c_n)_{n \in \N}$ uma sequência de números racionais tal que $c = \lim_{n \to \infty} c_n$. A função $\inte{\var}{\var}$ é contínua, pois é composição de adição, subtração, multiplicação por escalar e norma, que são contínuas. Da continuidade de $\inte{\var}{\var}$ e da homogeneidade para números racionais, segue que
+		\begin{equation*}
+		\inte{cv}{v'} = \inte{\lim_{n \to \infty} c_n v}{v'} = \lim_{n \to \infty} c_n \inte{v}{v'} = c \inte{v}{v'}.
+		\end{equation*}
+	\end{enumerate}
+
+	(Números complexos) Seja $c \in \R^2$, $c=c_0 + c_1 \ii$. Como $\ii\inv = -\ii$,
+		\begin{align*}
+		\inte{\ii v}{v'} &= \frac{1}{4} \sum_{k=0}^{3} \nor{\ii v+\ii^kv'}^2 \ii^k \\
+			&= \frac{1}{4} \sum_{k=0}^{3} \nor{\ii( v+\ii^{k-1}v')}^2 \ii^k \\
+			&= \frac{1}{4} \sum_{k=0}^{3} \abs{\ii}^2\nor{v+\ii^{k-1}v'}^2 \ii^k \\
+			&= \ii\frac{1}{4} \sum_{k=0}^{3} \nor{v+\ii^{k-1}v'}^2 \ii^{k-1} \\
+			&= \ii\inte{v}{v'}.
+		\end{align*}
+	Segue da aditividade, da homogeneidade para números reais e da homogeneidade para $\ii$ que
+		\begin{align*}
+		\inte{cv}{v'} &= \inte{(c_0+c_1 \ii)v}{v'} \\
+			&= \inte{c_0 v +c_1 \ii v}{v'} \\
+			&= c_0 \inte{v}{v'} + c_1 \ii \inte{v}{v'} \\
+			&= (c_0+c_1 \ii)\inte{v}{v'} \\
+			&= c\inte{v}{v'}.
+		\end{align*}
+
+\item (Simetria conjugada) Sejam $v,v' \in V$. Segue direto da simetria da adição e de $\ii\inv = -\ii$ que
+	\begin{align*}
+	\conju{\inte{v'}{v}} &= \conju{\frac{1}{4} \sum_{k=0}^{3} \nor{v'+\ii^kv}^2 \ii^k} \\
+		&= \frac{1}{4} \sum_{k=0}^{3} \nor{v'+\ii^kv}^2 \conju{\ii^k} \\
+		&= \frac{1}{4} (\nor{v'+v}^2 (1) + \nor{v'+\ii v}^2 (-\ii) + \nor{v'-v}^2 (-1) + \nor{v'-\ii v}^2 \ii) \\
+		&= \frac{1}{4} (\nor{v+v'}^2 - \abs{\ii}^2\nor{v-\ii v'}^2 \ii - \abs{-1}^2\nor{v-v'}^2 + \abs{-\ii}^2\nor{v+\ii v'}^2 \ii) \\
+		&= \inte{v}{v'}.
+	\end{align*}
+
+\item (Positividade) Seja $v \in V$. Segue da positividade da norma que
+	\begin{equation*}
+		\inte{v}{v} = \nor{v}^2 \geq 0.
+	\end{equation*}
+
+\item (Definição positiva) Seja $v \in V$ tal que $\inte{v}{v}=0$. Então
+	\begin{equation*}
+		0 = \inte{v}{v} = \nor{v}^2,
+	\end{equation*}
+e segue da separação da norma que $v=0$.
+\qedhere
+\end{enumerate}
+
+%Para um corpo real, como $\nor{v+\ii v'} = \nor{v-\ii v'}$, a fórmula se reduz a
+%	\begin{equation*}
+%	\inte{v}{v'} = \frac{\nor{v+v'}^2 - \nor{v-v'}^2}{4}.
+%	\end{equation*}
+
+%	\begin{align*}
+%	\Im(\inte{v}{v'}) &= \frac{\inte{v}{v'} - \conju{\inte{v}{v'}}}{2} \\
+%		&= \frac{\inte{v}{v'} - \inte{v'}{v}}{2} \\
+%		&= \frac{1}{2} \frac{(\nor{v+v'}^2 - \nor{v-v'}^2) + (\nor{v+\ii v'}^2 - \nor{v-\ii v'}^2) \ii}{4} \\
+%		&- \frac{1}{2} \frac{(\nor{v'+v}^2 - \nor{v'-v}^2) + (\nor{v'+\ii v}^2 - \nor{v'-\ii v}^2) \ii}{4} \\
+%		&- \frac{1}{2} \frac{(\nor{v'+v}^2 - \nor{v'-v}^2) + (\nor{v'+\ii v}^2 - \nor{v'-\ii v}^2) \ii}{4} \\
+%		&= \frac{1}{2} \frac{\nor{v+\ii v'}^2 - \nor{v-\ii v'}^2 - \nor{v'+\ii v}^2 + \nor{v'-\ii v}^2}{4}\ii
+%	\end{align*}
+
+\end{proof}
+
+\begin{comment}
+
+\begin{proof}[Demonstração antiga somente para o caso real]
+O primeiro passo é mostrar que vale a regra do paralelogramo. Segue da desigualdade que
+	\begin{equation*}
+		2\left( \nor{\frac{v+v'}{2}}^2 + \nor{\frac{v-v'}{2}}^2 \right) \leq \nor{\frac{v+v'}{2} + \frac{v-v'}{2}}^2+\nor{\frac{v+v'}{2} - \frac{v-v'}{2}}^2
+	\end{equation*}
+e disso segue que
+	\begin{align*}
+		\nor{v+v'}^2 + \nor{v-v'}^2 &= 4\left( \nor{\frac{v+v'}{2}}^2 + \nor{\frac{v-v'}{2}}^2 \right) \\
+			&\leq 2\left( \nor{\frac{v+v'}{2} + \frac{v-v'}{2}}^2+\nor{\frac{v+v'}{2} - \frac{v-v'}{2}}^2 \right) \\
+			&= 2(\nor{v}^2 + \nor{v'}^2).
+	\end{align*}
+Assim, temos a desigualdade oposta e segue a regra do paralelogramo.
+
+Consideremos primeiro o caso real. Definimos agora o produto interno por
 	\begin{equation*}
 	\inte{v}{v'} := \frac{\nor{v+v'}^2 - \nor{v-v'}^2}{4}.
 	\end{equation*}
@@ -181,103 +388,107 @@ Segue direto da definição que
 		\inte{v}{v} = \frac{\nor{v+v}^2-\nor{v-v}^2}{4} = \frac{\nor{2v}^2}{4} = \nor{v}^2.
 	\end{equation*}
 
+\begin{enumerate}
+\item (Linearidade na primeira entrada)
 	\begin{enumerate}
-		\item (Linearidade na primeira entrada)
-			\begin{enumerate}
-				\item (Aditividade) Sejam $v,v',v'' \in V$. Pela propriedade do paralelogramo,
-					\begin{equation*}
-						\nor{v+v'+v''}^2 = 2\nor{v+v''}^2 + 2\nor{v'}^2 - \nor{v-v'+v''}^2
-					\end{equation*}
-					e
-					\begin{equation*}
-						\nor{v+v'+v''}^2 = 2\nor{v'+v''}^2 + 2\nor{v}^2 - \nor{v'-v+v''}^2.
-					\end{equation*}
-				Somando as duas igualdades divididas por $2$ segue que
-					\begin{align*}
-						\nor{v+v'+v''}^2 =& \nor{v}^2 + \nor{v'}^2 + \nor{v+v''}^2 + \nor{v'+v''}^2 \\
-							&- \frac{\nor{v-v'+v''}^2 + \nor{v'-v+v''}^2}{2}
-					\end{align*}
-				e, substituindo $v''$ por $-v''$, obtemos também
-					\begin{align*}
-						\nor{v+v'-v''}^2 =& \nor{v}^2 + \nor{v'}^2 + \nor{v-v''}^2 + \nor{v'-v''}^2 \\
-							&- \frac{\nor{v-v'-v''}^2 + \nor{v'-v-v''}^2}{2}.
-					\end{align*}
-				Como
-					\begin{align*}
-						\nor{v-v'+v''}^2 + \nor{v'-v+v''}^2 &= \nor{-(v'-v-v'')}^2 + \nor{-(v-v'-v'')}^2 \\
-							&= \nor{v-v'-v''}^2 + \nor{v'-v-v''}^2,
-					\end{align*}
-				segue que
-					\begin{align*}
-						\inte{v+v'}{v''} &= \frac{\nor{v+v'+v''}^2 - \nor{v+v'-v''}^2}{4} \\
-							&= \frac{\nor{v+v''}^2 + \nor{v'+v''}^2 - \nor{v-v''}^2 - \nor{v'-v''}^2}{4} \\
-							&= \frac{\nor{v+v''}^2 - \nor{v-v''}^2}{4} + \frac{\nor{v'+v''}^2 - \nor{v'-v''}^2}{4} \\
-							&= \inte{v}{v''} + \inte{v'}{v''}.
-					\end{align*}
+	\item (Aditividade) Sejam $v,v',v'' \in V$. Pela propriedade do paralelogramo,
+		\begin{equation*}
+			\nor{v+v'+v''}^2 = 2\nor{v+v''}^2 + 2\nor{v'}^2 - \nor{v-v'+v''}^2
+		\end{equation*}
+		e
+		\begin{equation*}
+			\nor{v+v'+v''}^2 = 2\nor{v'+v''}^2 + 2\nor{v}^2 - \nor{v'-v+v''}^2.
+		\end{equation*}
+	Somando as duas igualdades divididas por $2$ segue que
+		\begin{align*}
+			\nor{v+v'+v''}^2 =& \nor{v}^2 + \nor{v'}^2 + \nor{v+v''}^2 + \nor{v'+v''}^2 \\
+				&- \frac{\nor{v-v'+v''}^2 + \nor{v'-v+v''}^2}{2}
+		\end{align*}
+	e, substituindo $v''$ por $-v''$, obtemos também
+		\begin{align*}
+			\nor{v+v'-v''}^2 =& \nor{v}^2 + \nor{v'}^2 + \nor{v-v''}^2 + \nor{v'-v''}^2 \\
+				&- \frac{\nor{v-v'-v''}^2 + \nor{v'-v-v''}^2}{2}.
+		\end{align*}
+	Como
+		\begin{align*}
+			\nor{v-v'+v''}^2 + \nor{v'-v+v''}^2 &= \nor{-(v'-v-v'')}^2 + \nor{-(v-v'-v'')}^2 \\
+				&= \nor{v-v'-v''}^2 + \nor{v'-v-v''}^2,
+		\end{align*}
+	segue que
+		\begin{align*}
+			\inte{v+v'}{v''} &= \frac{\nor{v+v'+v''}^2 - \nor{v+v'-v''}^2}{4} \\
+				&= \frac{\nor{v+v''}^2 + \nor{v'+v''}^2 - \nor{v-v''}^2 - \nor{v'-v''}^2}{4} \\
+				&= \frac{\nor{v+v''}^2 - \nor{v-v''}^2}{4} + \frac{\nor{v'+v''}^2 - \nor{v'-v''}^2}{4} \\
+				&= \inte{v}{v''} + \inte{v'}{v''}.
+		\end{align*}
 
-				\item (Homogeneidade) Sejam $v,v' \in V$. A homogeneidade vale para $-1$, pois
-					\begin{align*}
-						\inte{-v}{v} = \frac{\nor{-v+v'}^2 - \nor{-v-v'}^2}{4} = \frac{\nor{v'-v}^2 - \nor{v'+v}^2}{4} = -\inte{v}{v'}.
-					\end{align*}
-				
-				 A homogeneidade vale para números naturais. Mostremos por indução. Para $n=0$, basta notar que
-					\begin{equation*}
-						\inte{0v}{v'} = \frac{\nor{0v+v'}^2 - \nor{0v-v'}^2}{4} = \frac{\nor{v'}^2 - \nor{-v'}^2}{4} = 0 = 0\inte{v}{v'}.
-					\end{equation*}
-				Supondo que vale para $n$, segue da aditividade que
-					\begin{align*}
-						\inte{(n+1)v}{v'} &= \inte{nv+v}{v'} \\
-							&= \inte{nv}{v'} + \inte{v}{v'} \\
-							&= n\inte{v}{v'} + \inte{v}{v'} \\
-							&= (n+1)\inte{v}{v'}.
-					\end{align*}
-				
-				A homogeneidade vale para inteiros negativos, pois segue da homogeneidade para $-1$ que
-					\begin{align*}
-						\inte{(-n)v}{v'} = \inte{-(nv)}{n'} = -\inte{nv}{v'} = -n\inte{v}{v'}.
-					\end{align*}
-				
-				A homogeneidade vale para números racionais. Seja $\frac{n}{d} \in \Q$. Segue da homogeneidade para números inteiros que
-					\begin{align*}
-						\inte{\frac{n}{d}v}{v'} = \frac{d}{d}\inte{\frac{n}{d}v}{v'} = \frac{n}{d}\inte{\frac{d}{d}v}{v'} = \frac{n}{d}\inte{v}{v'}.
-					\end{align*}
+	\item (Homogeneidade) Sejam $v,v' \in V$. A homogeneidade vale para $-1$, pois
+		\begin{align*}
+			\inte{-v}{v} = \frac{\nor{-v+v'}^2 - \nor{-v-v'}^2}{4} = \frac{\nor{v'-v}^2 - \nor{v'+v}^2}{4} = -\inte{v}{v'}.
+		\end{align*}
+	
+		A homogeneidade vale para números naturais. Mostremos por indução. Para $n=0$, basta notar que
+		\begin{equation*}
+			\inte{0v}{v'} = \frac{\nor{0v+v'}^2 - \nor{0v-v'}^2}{4} = \frac{\nor{v'}^2 - \nor{-v'}^2}{4} = 0 = 0\inte{v}{v'}.
+		\end{equation*}
+	Supondo que vale para $n$, segue da aditividade que
+		\begin{align*}
+			\inte{(n+1)v}{v'} &= \inte{nv+v}{v'} \\
+				&= \inte{nv}{v'} + \inte{v}{v'} \\
+				&= n\inte{v}{v'} + \inte{v}{v'} \\
+				&= (n+1)\inte{v}{v'}.
+		\end{align*}
+	
+	A homogeneidade vale para inteiros negativos, pois segue da homogeneidade para $-1$ que
+		\begin{align*}
+			\inte{(-n)v}{v'} = \inte{-(nv)}{n'} = -\inte{nv}{v'} = -n\inte{v}{v'}.
+		\end{align*}
+	
+	A homogeneidade vale para números racionais. Seja $\frac{n}{d} \in \Q$. Segue da homogeneidade para números inteiros que
+		\begin{align*}
+			\inte{\frac{n}{d}v}{v'} = \frac{d}{d}\inte{\frac{n}{d}v}{v'} = \frac{n}{d}\inte{\frac{d}{d}v}{v'} = \frac{n}{d}\inte{v}{v'}.
+		\end{align*}
 
-				Por fim, notemos que $\inte{\var}{\var}$ é contínua, pois é composição de adição, subtração, multiplicação por escalar e norma, que são contínuas. Sendo assim, podemos mostrar que a homogeneidade vale para números reais. Sejam $c \in \R$ e $(c_n)_{n \in \N}$ uma sequência de números racionais tal que $c = \lim_{n \to \infty} c_n$. Da continuidade de $\inte{\var}{\var}$ e da homogeneidade para números racionais, segue que
-					\begin{equation*}
-						\inte{cv}{v'} = \inte{\lim_{n \to \infty} c_n v}{v'} = \lim_{n \to \infty} c_n \inte{v}{v'} = c \inte{v}{v'}.
-					\end{equation*}
-			\end{enumerate}
-
-		\item (Simetria) Sejam $v,v' \in V$. Segue direto da simetria da adição que
-			\begin{equation*}
-				\inte{v}{v'} = \frac{\nor{v+v'}^2 - \nor{v-v'}^2}{4} = \frac{\nor{v'+v}^2 - \nor{v'-v}^2}{4} = \inte{v'}{v}
-			\end{equation*}
-
-		\item (Positividade) Seja $v \in V$. Segue da positividade da norma que
-			\begin{equation*}
-				\inte{v}{v} = \nor{v}^2 \geq 0.
-			\end{equation*}
-
-		\item (Definição positiva) Seja $v \in V$ tal que $\inte{v}{v}=0$. Então
-			\begin{equation*}
-				0 = \inte{v}{v} = \nor{v}^2,
-			\end{equation*}
-		e segue da separação da norma que $v=0$.
+	Por fim, notemos que $\inte{\var}{\var}$ é contínua, pois é composição de adição, subtração, multiplicação por escalar e norma, que são contínuas. Sendo assim, podemos mostrar que a homogeneidade vale para números reais. Sejam $c \in \R$ e $(c_n)_{n \in \N}$ uma sequência de números racionais tal que $c = \lim_{n \to \infty} c_n$. Da continuidade de $\inte{\var}{\var}$ e da homogeneidade para números racionais, segue que
+		\begin{equation*}
+			\inte{cv}{v'} = \inte{\lim_{n \to \infty} c_n v}{v'} = \lim_{n \to \infty} c_n \inte{v}{v'} = c \inte{v}{v'}.
+		\end{equation*}
 	\end{enumerate}
 
-Para o caso complexo, definimos
+\item (Simetria) Sejam $v,v' \in V$. Segue direto da simetria da adição que
 	\begin{equation*}
-	\inte{v}{v'} := \frac{1}{4} \sum_{k=0}^{3} \ii^k \nor{v+\ii^kv'}^2 = \frac{\left(\nor{v+v'}^2 - \nor{v-v'}^2\right) + \ii \left(\nor{v+\ii v'}^2 - \nor{v-\ii v'}^2\right)}{4}.
+		\inte{v}{v'} = \frac{\nor{v+v'}^2 - \nor{v-v'}^2}{4} = \frac{\nor{v'+v}^2 - \nor{v'-v}^2}{4} = \inte{v'}{v}
 	\end{equation*}
+
+\item (Positividade) Seja $v \in V$. Segue da positividade da norma que
+	\begin{equation*}
+		\inte{v}{v} = \nor{v}^2 \geq 0.
+	\end{equation*}
+
+\item (Definição positiva) Seja $v \in V$ tal que $\inte{v}{v}=0$. Então
+	\begin{equation*}
+		0 = \inte{v}{v} = \nor{v}^2,
+	\end{equation*}
+e segue da separação da norma que $v=0$.
+\end{enumerate}
+
+Consideremos agora o caso complexo. Definimos
+	\begin{align*}
+	\inte{v}{v'} &:= \frac{1}{4} \sum_{k=0}^{3} \nor{v+\ii^kv'}^2 \ii^k \\
+		&= \frac{\left(\nor{v+v'}^2 - \nor{v-v'}^2\right) + \left(\nor{v+\ii v'}^2 - \nor{v-\ii v'}^2\right) \ii}{4}.
+	\end{align*}
+
 A demonstração fica como exercício\footnote{Os detalhes podem ser conferidos em \href{https://math.stackexchange.com/questions/21792/norms-induced-by-inner-products-and-the-parallelogram-law}{https://math.stackexchange.com/questions/21792/norms-induced-by-inner-products-and-the-parallelogram-law}}.
 \end{proof}
 
-A identidade do caso complexo se reduz à do caso real quando $v,v'$ são reais.
+\end{comment}
+
+%A identidade do caso complexo se reduz à do caso real quando $v,v'$ são reais.
 
 \subsection{Perpendicularidade e paralelismo}
 
 \begin{definition}
-Seja $(\bm V,\inte{\var}{\var})$ um espaço com produto interno sobre um corpo $\bm C \subseteq \C$. Vetores \emph{paralelos} são vetores $v,v' \in V$ para os quais existe $c \in C \setminus \{0\}$ satisfazendo $v'=cv$. Denota-se $v \parallel v'$.
+Seja $(\bm V,\inte{\var}{\var})$ um espaço com produto interno sobre um corpo $\bm C \subseteq \R^2$. Vetores \emph{paralelos} são vetores $v,v' \in V$ para os quais existe $c \in C \setminus \{0\}$ satisfazendo $v'=cv$. Denota-se $v \parallel v'$.
 
 Vetores \emph{perpendiculares} (ou \emph{ortogonais}) são vetores $v,v' \in V$ que satisfazem $\inte{v}{v'}=0$. Denota-se $v \perp v'$.
 
@@ -288,7 +499,7 @@ Um conjunto \emph{perpendicular} (ou \emph{ortogonal}) é um conjunto $U \subset
 \end{definition}
 
 \begin{proposition}[Propriedades de $\parallel$ e $\perp$]
-Seja $(\bm V,\inte{\var}{\var})$ um espaço com produto interno sobre um corpo $\bm C \subseteq \C$.
+Seja $(\bm V,\inte{\var}{\var})$ um espaço com produto interno sobre um corpo $\bm C \subseteq \R^2$.
 	\begin{enumerate}
 	\item A relação de paralelismo $\parallel$ é uma equivalência;
 	\item A relação de perpendicularidade $\perp$ é simétrica;
@@ -300,7 +511,7 @@ Seja $(\bm V,\inte{\var}{\var})$ um espaço com produto interno sobre um corpo $
 \end{proposition}
 
 \begin{proposition}[Propriedades de complemento perpendicular]
-Seja $(\bm V,\inte{\var}{\var})$ um espaço com produto interno sobre um corpo $\bm C \subseteq \C$.
+Seja $(\bm V,\inte{\var}{\var})$ um espaço com produto interno sobre um corpo $\bm C \subseteq \R^2$.
 	\begin{enumerate}
 	\item Para todo $U \subseteq V$, $U^\perp$ é um subespaço linear de $V$.
 	\item $V^\perp = \{0\}$.
@@ -326,7 +537,7 @@ Seja $(\bm V,\inte{\var}{\var})$ um espaço com produto interno. \emph{Subespaç
 \subsection{Projeções paralela e perpendicular}
 
 \begin{definition}
-Sejam $(\bm V,\inte{\var}{\var})$ um espaço com produto interno sobre um corpo $\bm C \subseteq \C$ e $u \in V$. A \emph{projeção paralela}\footnote{Essa projeção é conhecida como \emph{projeção ortogonal} de $V$ sobre $u$, mas aqui adotaremos as nomenclatura de paralela, já que definimos também a projeção perpendicular, e essa pode ser confundida com a ortogonal.} de $V$ sobre $u$ é
+Sejam $(\bm V,\inte{\var}{\var})$ um espaço com produto interno sobre um corpo $\bm C \subseteq \R^2$ e $u \in V$. A \emph{projeção paralela}\footnote{Essa projeção é conhecida como \emph{projeção ortogonal} de $V$ sobre $u$, mas aqui adotaremos as nomenclatura de paralela, já que definimos também a projeção perpendicular, e essa pode ser confundida com a ortogonal.} de $V$ sobre $u$ é
 	\begin{align*}
 	\func{\proj_{\parallel u}}{V}{V}{v}{
 		\begin{cases}
@@ -342,7 +553,7 @@ A \emph{projeção perpendicular} de $V$ sobre $u$ é
 \end{definition}
 
 \begin{proposition}[Propriedades das projeções]
-Seja $(\bm V,\inte{\var}{\var})$ um espaço com produto interno sobre um corpo $\bm C \subseteq \C$.
+Seja $(\bm V,\inte{\var}{\var})$ um espaço com produto interno sobre um corpo $\bm C \subseteq \R^2$.
 	\begin{enumerate}
 	\item $\proj_{\parallel 0} = 0$ e $\proj_{\perp 0} = \Id$;
 	\item Para todo $u \in V$, as projeções $\proj_{\parallel u}\colon V \to V$ e $\proj_{\perp u}\colon V \to V$ são projeções lineares.
@@ -463,7 +674,7 @@ pois
 
 \subsubsection{Processo de ortogonalização}
 
-Seja $(\bm V,\inte{\var}{\var})$ um espaço com produto interno sobre um corpo $\bm C \subseteq \C$ e $B = (v_i)_{i \in [d]}$ uma base finita de $\bm V$. A base $(u_i)_{i \in [d]}$, definida recursivamente por
+Seja $(\bm V,\inte{\var}{\var})$ um espaço com produto interno sobre um corpo $\bm C \subseteq \R^2$ e $B = (v_i)_{i \in [d]}$ uma base finita de $\bm V$. A base $(u_i)_{i \in [d]}$, definida recursivamente por
 	\begin{equation*}
 	u_i := \proj_{\perp u_{i-1}} \circ \cdots \circ \proj_{\perp u_0} (v_i) =  v_i - \sum_{j \in [i]} \proj_{\parallel u_j} (v_i)
 	\end{equation*}
@@ -688,7 +899,7 @@ Suponhamos agora que existe $c \in \R \setminus \{0\}$ tal que $v'=cv$. Nesse ca
 	\end{cases}
 		\end{equation*}
 
-Reciprocamente, suponhamos que $\ang{v}{v'}=0$. Da bijetividade de $\cos\inv$ segue que $\frac{\inte{v}{v'}}{\nor{v}\nor{v'}} = 1$, logo $\abs{\inte{v}{v'}} = \nor{v}\nor{v'}$ e pela desigualdade de Cauchy-Schwarz existe $c \in \R \setminus \{0\}$ tal que $v'=cv$. Como $0 = \ang{v}{v'} = \ang{v}{cv}$, $c \in \intaa{0}{\infty}$. Suponhamos então que $\ang{v}{v'}=\frac{\tau}{2}$. Da bijetividade de $\cos\inv$ segue que $\frac{\inte{v}{v'}}{\nor{v}\nor{v'}} = -1$, logo $\abs{\inte{v}{v'}} = \nor{v}\nor{v'}$ e pela desigualdade de Cauchy-Schwarz existe $c \in \R \setminus \{0\}$ tal que $v'=cv$. Como $\frac{\tau}{2} = \ang{v}{v'} = \ang{v}{cv}$, $c \in \intaa{-\infty}{0}$.
+Reciprocamente, suponhamos que $\ang{v}{v'}=0$. Da bijetividade de $\cos\inv$ segue que $\frac{\inte{v}{v'}}{\nor{v}\nor{v'}} = 1$, logo $\abs{\inte{v}{v'}} = \nor{v}\nor{v'}$ e pela desigualdade do produto interno existe $c \in \R \setminus \{0\}$ tal que $v'=cv$. Como $0 = \ang{v}{v'} = \ang{v}{cv}$, $c \in \intaa{0}{\infty}$. Suponhamos então que $\ang{v}{v'}=\frac{\tau}{2}$. Da bijetividade de $\cos\inv$ segue que $\frac{\inte{v}{v'}}{\nor{v}\nor{v'}} = -1$, logo $\abs{\inte{v}{v'}} = \nor{v}\nor{v'}$ e pela desigualdade do produto interno existe $c \in \R \setminus \{0\}$ tal que $v'=cv$. Como $\frac{\tau}{2} = \ang{v}{v'} = \ang{v}{cv}$, $c \in \intaa{-\infty}{0}$.
 
 	\item Segue diretamente da bijetividade de $\cos\inv$, pois $\ang{v}{v'} = \frac{\tau}{4}$ se, e somente se, $\frac{\inte{v}{v}}{\nor{v}\nor{v}}=0$, o que ocorre se, e somente se, $\inte{v}{v'}=0$. \qedhere
 \end{enumerate}
@@ -2013,7 +2224,8 @@ então $\nor{f(v)} = \inte{f(v)}{f(v)}^{\frac{1}{2}} = c^{\frac{1}{2}}\inte{v}{v
 	\begin{align*}
 	\sphericalangle' \left( f(v),f(v') \right) &= \cos\inv \left( \frac{\inte{f(v)}{f(v')}'}{\nor{f(v)}'\nor{f(v')}'} \right) \\
 		&= \cos\inv \left( \frac{c\inte{v}{v'}}{c\nor{v}\nor{v'}} \right) \\
-		&= \ang{v}{v'}. \qedhere
+		&= \ang{v}{v'}.
+		\qedhere
 	\end{align*}
 	\end{enumerate}
 \end{proof}
@@ -2022,15 +2234,15 @@ então $\nor{f(v)} = \inte{f(v)}{f(v)}^{\frac{1}{2}} = c^{\frac{1}{2}}\inte{v}{v
 
 \section{Espaço de funções quadrado somáveis}
 
-Sejam $X$ um conjunto e $\bm C \subseteq \C$. Para todo $p \in \intff{1}{\infty}$, o espaço $\Smvl^p(\bm X,\bm C)$ é um espaço normado completo, mas somente para $p=2$ esse espaço admite um produto interno. As funções absolutamente $2$-somáveis do espaço $Smvl^2(\bm X,\bm C)$ são também chamadas de \emph{funções quadrado somáveis}. Note que, diferente do caso mais geral de funções absolutamente $p$-somáveis, aqui fixamos um subcorpo dos números complexos para usar o conjugação complexa. A generalização do complexo conjugado é mais difícil e detalhada e não será feita aqui.
+Sejam $X$ um conjunto e $\bm C \subseteq \R^2$. Para todo $p \in \intff{1}{\infty}$, o espaço $\Smvl^p(\bm X,\bm C)$ é um espaço normado completo, mas somente para $p=2$ esse espaço admite um produto interno. As funções absolutamente $2$-somáveis do espaço $Smvl^2(\bm X,\bm C)$ são também chamadas de \emph{funções quadrado somáveis}. Note que, diferente do caso mais geral de funções absolutamente $p$-somáveis, aqui fixamos um subcorpo dos números complexos para usar o conjugação complexa. A generalização do complexo conjugado é mais difícil e detalhada e não será feita aqui.
 
 \begin{definition}
-Sejam $X$ um conjunto e $\bm C \subseteq \C$ um corpo. O \emph{produto interno} entre $f,f' \in \Smvl^2(\bm X,\bm C)$ é
+Sejam $X$ um conjunto e $\bm C \subseteq \R^2$ um corpo. O \emph{produto interno} entre $f,f' \in \Smvl^2(\bm X,\bm C)$ é
 	\begin{equation*}
 	\inte{f}{f'} := \left( \sum_{x \in X} f(x)\overline{f'(x)} \right)^{2\inv}.
 	\end{equation*}
 \end{definition}
 
 \begin{proposition}
-Sejam $X$ um conjunto e $\bm C \subseteq \C$ um corpo. O espaço $(\Smvl^2(\bm X,\bm C),\inte{\var}{\var})$ é um espaço com produto interno completo.
+Sejam $X$ um conjunto e $\bm C \subseteq \R^2$ um corpo. O espaço $(\Smvl^2(\bm X,\bm C),\inte{\var}{\var})$ é um espaço com produto interno completo.
 \end{proposition}
