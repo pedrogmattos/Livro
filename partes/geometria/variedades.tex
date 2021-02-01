@@ -28,7 +28,7 @@ Seja $V$ um conjunto. Cartas $\Cont^k$-\emph{compatíveis} de $V$ são cartas $(
 	\end{equation*}
 é um difeomorfismo $\Cont^k$. Para $k=0$, as cartas são \emph{topologicamente compatíveis}, para $k>0$, são \emph{diferencialmente compatíveis}, sendo para $k=\infty$ \emph{suavemente compatíveis}.
 \end{definition}
-'
+
 A relação de compatibilidade entre cartas não é uma relação de equivalência, mas a compatibilidade de atlas, uma noção associada a ela, é. A seguir, definimos o que é um atlas. A primeira condição, além de aparentemente necessária para que todos os pontos de $V$ tenham cartas, será uma hipótese essencial para que a compatibilidade de atlas seja uma relação de equivalência. Isso é um resultado muito simples, mas que indica que nossa axiomatização é boa, de certa forma, pois ao termos a estrutura de um atlas do conjunto, não temos simplesmente várias cartas, mas cartas que se comportam de acordo com certa relação de equivalência. Essa relação de equivalência nos permitirá definir um objeto abstrato chamado atlas maximal, que na prática nunca é calculado, mas que como objeto teórico é belo e conveniente.
 
 \begin{definition}
@@ -486,7 +486,7 @@ A partir desta seção, não estudaremos mais com detalhes os casos de variedade
 
 \subsection{Álgebra dos campos escalares}
 
-Dada uma variedade diferencial $\bm V$, um \emph{campos escalar} em $\bm V$ é uma função do espaço $\Cont^\infty(\bm V,\R)$, as funções diferenciáveis de $\bm V$ para $\R$. Esse espaço será denotado $\tens^0(\bm V)$\footnote{Usualmente denota-se esse espaço por $\Cont^\infty(V)$, mas adotaremos essa notação por motivos que ficarão mais claros na seção de campos tensoriais mais à frente; em resumo, campos escalares são campos tensoriais de tipo $(0,0)$}. O espaço $\tens^0(\bm V)$ é um espaço vetorial sobre $\R$ com as operações de soma e produto por escalar induzidas pontualmente de $\R$: a \emph{adição} é dada por
+Dada uma variedade diferencial $\bm V$, um \emph{campo escalar} em $\bm V$ é uma função do espaço $\Cont^\infty(\bm V,\R)$, as funções diferenciáveis de $\bm V$ para $\R$. Esse espaço será denotado $\tens^0(\bm V)$\footnote{Usualmente denota-se esse espaço por $\Cont^\infty(V)$, mas adotaremos essa notação por motivos que ficarão mais claros na seção de campos tensoriais mais à frente; em resumo, campos escalares são campos tensoriais de tipo $(0,0)$}. O espaço $\tens^0(\bm V)$ é um espaço vetorial sobre $\R$ com as operações de soma e produto por escalar induzidas pontualmente de $\R$: a \emph{adição} é dada por
 	\begin{align*}
 	\func{+}{\tens^0(\bm V) \times \tens^0(\bm V)}{\tens^0(\bm V)}{(f,f')}{
 		\begin{aligned}[t]
@@ -1124,11 +1124,10 @@ Seja $\bm V$ uma variedade diferencial. Um \emph{campo tensorial} de tipo $(k,l)
 tal que, para todo $p \in V$, $T|_p \in \Tg V^{\otimes(k,l)}|_p$. O conjunto dos campos tensoriais diferenciáveis\footnote{Aqui diferenciável quer dizer $\Cont^\infty$.} de tipo $(k,l)$ em $\bm V$ é denotado $\tens^{(k,l)}(\bm V)$.
 
 Um campo tensorial diferenciável de tipo $(k,0)$ é também denotado $\tens^k(\bm V)$ e um de tipo $(0,l)$ é também denotado $\tens^{* l}(\bm V)$.
-Um \emph{campo vetorial} é um campo tensorial de tipo $(1,0)$.
-% (Já defini na parte de Álgebra dos Campos Escalares) Um \emph{campo escalar} é uma função real $f\colon V \to \R$ e são equivalentes os conjuntos $\Cont^\infty(V) = \tens^0(\bm V) = \tens^{*0}(V)$.
+Um \emph{campo vetorial} é um campo tensorial de tipo $(1,0)$ e um \emph{campo covetorial} é um campo tensorial de tipo $(0,1)$.
 \end{definition}
 
-O conjunto $\tens^1(\bm V)$ é um espaço linear sobre $\R$ com a soma e o produto por escalar induzidos pontualmente pela soma e produto por escalar de $\Tg V|_p$: a \emph{adição} é dada por
+Como já definido anteriormente, um campo escalar é uma função $f \in \tens^0(\bm V) \simeq \Cont^{\infty}(\bm V,\R)$. O conjunto $\tens^1(\bm V)$ é um espaço linear sobre $\R$ com a soma e o produto por escalar induzidos pontualmente pela soma e produto por escalar de $\Tg V|_p$: a \emph{adição} é dada por
 	\begin{align*}
 	\func{+}{\tens^1(\bm V) \times \tens^1(\bm V)}{\tens^1(\bm V)}{(v,v')}{
 		\begin{aligned}[t]
@@ -1241,7 +1240,7 @@ Usando a notação de Einstein e simplificando a fórmula da proposição, temos
 	\end{equation*}
 Em particular, temos que $\col{\der{}{\x^i}}{\der{}{\x^j}} = 0$ para todos $i,j \in [d]$, fato essencial na demonstração da proposição anterior.
 
-O colchete de Lie satisfaz as seguintes propriedades.
+O colchete satisfaz as seguintes propriedades.
 
 \begin{proposition}
 Seja $\bm V$ uma variedade diferencial.
@@ -1276,14 +1275,14 @@ Seja $\bm V$ uma variedade diferencial.
 
 Assim como definimos produto tensorial de espaços lineares, podemos definir um produto tensorial de módulos sobre anéis (comutativos). Pode-se mostrar que, nesse caso, o produto tensorial de tipo $(k,l)$ do módulo $\tens^1(\bm V)$ sobre o anel comutativo $\tens^0(\bm V)$ é o espaço $\tens^{(k,l)}(\bm V)$ de campos tensoriais de tipo $(k,l)$ em $\bm V$:
 	\begin{equation*}
-	\left(\tens^1(\bm V)\right)^{\otimes (k,l)} = \tens^{(k,l)}(\bm V).
+	\left(\tens^1(\bm V)\right)^{\otimes (k,l)} \simeq \tens^{(k,l)}(\bm V).
 	\end{equation*}
 Desse modo, os campos tensoriais $T \in \tens^{(k,l)}(\bm V)$ são tensores em si, e não somente tensores em cada ponto $p \in V$. Assim, podemos formar a \emph{álgebra de campos tensoriais} em $\bm V$
 	\begin{equation*}
-	\tens^\otimes (\bm V) := \bigoplus_{(k,l) \in \N^2} \tens^{(k,l)}(\bm V).
+	\tens (\bm V) := \bigoplus_{(k,l) \in \N^2} \tens^{(k,l)}(\bm V).
 	\end{equation*}
 
-O espaço $\tens^\otimes (\bm V)$ é uma álgebra sobre $\tens^0(\bm V)$. A soma e o produto por escalar são definidos pontualmente e o produto tensorial também.
+O espaço $\tens (\bm V)$ é uma álgebra sobre $\tens^0(\bm V)$. A soma e o produto por escalar são definidos pontualmente e o produto tensorial também.
 
 
 
@@ -1291,47 +1290,55 @@ O espaço $\tens^\otimes (\bm V)$ é uma álgebra sobre $\tens^0(\bm V)$. A soma
 
 \subsection{Fluxo de campos vetoriais}
 
-As demonstrações dessa serão omitidas, mas podem ser encontradas em \textit{Introduction to Smooth Manifolds}, \textit{John M. Lee}, segunda edição.
+As demonstrações dessa serão omitidas, mas podem ser encontradas em \citetitle{liv:Lee-IntroductionSmoothManifolds} \cite{liv:Lee-IntroductionSmoothManifolds}.
 
-Consideremos uma curva diferenciável $\gamma\colon I \to V$ definida em um intervalo aberto $I$. Como, para todo $t \in I$, $\Tg I|_t \simeq \R$, segue que sua diferencial em $t \in I$ é uma função $\D \gamma|_t \to \Tg V|_{\gamma(t)}$. Mas então $\D \gamma$
+Consideremos uma curva diferenciável $\gamma\colon I \to V$ definida em um intervalo aberto $I$. Como, para todo $t \in I$, $\Tg I|_t \simeq \R$, segue que sua diferencial em $t \in I$ é uma função linear $\fun{\D \gamma|_t}{\Tg \R|_{t_0}}{\Tg V|_{\gamma(t)}}$, o que significa que $\D \gamma|_t$ pode ser identificada com um vetor $\dot \gamma(t) \in \Tg V|_{\gamma(t)}$. O vetor velocidade de tal curva no ponto $t$ por
+	\begin{equation*}
+	\dot \gamma(t_0) := \D \gamma \left( \left. \frac{\dd}{\dd t}\right|_{t_0} \right) \in \Tg|_{\gamma(t_0)} V,
+	\end{equation*}
+%ou
+%	\begin{equation*}
+%	\frac{\dd}{\dd t} \gamma (t_0) := \D \gamma \left( \left. \frac{\dd}{\dd t}\right|_{t_0} \right),
+%	\end{equation*}
+em que $\left. \frac{\dd}{\dd t}\right|_{t_0}$ é a base padrão em $\Tg \R|_{t_0} \simeq \R$.% Mas então $\D \gamma$ é uma curva no fibrado tangente $\Tg V$. 
 
 \begin{definition}
-Sejam $\bm V$ um variedade diferencial e $X \in \tens^1(\bm V)$. Uma \emph{curva integral de $X$} é uma curva diferenciável $\gamma\colon I \to V$ tal que, para todo $t \in I$,
+Sejam $\bm V$ um variedade diferencial e $v \in \tens^1(\bm V)$. Uma \emph{curva integral de $v$} é uma curva diferenciável $\gamma\colon I \to V$ tal que, para todo $t \in I$,
 	\begin{equation*}
-	\dot \gamma(t) = X|_{\gamma(t)}.
+	\dot \gamma(t) = v|_{\gamma(t)}.
 	\end{equation*}
 Se $0 \in I$, $\gamma(0) \in M$ é o \emph{ponto inicial} de $\gamma$ e $\gamma$ é \emph{iniciada} em $\gamma(0)$.
 \end{definition}
 
-Em coordenadas locais $(A,\x)$, a condição $\dot \gamma(t) = X|_{\gamma(t)}$ se torna
+Em coordenadas locais $(A,\x)$, a condição $\dot \gamma(t) = v|_{\gamma(t)}$ se torna
 	\begin{equation*}
-	\dot \gamma^i(t) \der{}{\x^i}|_{\gamma(t)} = X^i(\gamma(t)) \der{}{\x^i}|_{\gamma(t)},
+	\dot \gamma^i(t) \left. \der{}{\x^i} \right|_{\gamma(t)} = v^i(\gamma(t)) \left. \der{}{\x^i} \right|_{\gamma(t)},
 	\end{equation*}
 que se reduz a um sistema autônomo de equações diferenciais parciais: para todo $i \in [d]$,
 	\begin{align*}
-	\dot \gamma^i(t) = X^i(\gamma^0(t),\ldots,\gamma^{d-1}(t)).
+	\dot \gamma^i(t) = v^i(\gamma^0(t),\ldots,\gamma^{d-1}(t)).
 	\end{align*}
 
 O teorema de existência, unicidade e diferenciabilidade garante que o sistema anterior tem solução única e diferenciável. Isso implica a seguinte proposição.
 
 \begin{proposition}
-Sejam $\bm V$ um variedade diferencial e $X \in \tens^1(\bm V)$. Para todo $p \in V$, existem $\varepsilon \in \intaa{0}{\infty}$ e curva diferenciável $\gamma\colon \intaa{-\varepsilon}{\varepsilon} \to V$ que é curva integral de $X$ iniciada em $p$.
+Sejam $\bm V$ um variedade diferencial e $v \in \tens^1(\bm V)$. Para todo $p \in V$, existem $\varepsilon \in \intaa{0}{\infty}$ e curva diferenciável $\gamma\colon \intaa{-\varepsilon}{\varepsilon} \to V$ que é curva integral de $v$ iniciada em $p$.
 \end{proposition}
 
 \begin{proposition}
-Sejam $\bm V$ um variedade diferencial, $X \in \tens^1(\bm V)$ e $\gamma\colon I \to V$ uma curva integral de $X$.
+Sejam $\bm V$ um variedade diferencial, $v \in \tens^1(\bm V)$ e $\gamma\colon I \to V$ uma curva integral de $v$.
 	\begin{enumerate}
-	\item Para todo $c \in \R$, a curva
+	\item (Translação) Para todo $c \in \R$, a curva
 		\begin{align*}
-		\func{\gamma \circ T_c}{T_{-c} I}{V}{t}{\gamma(c+t)}
+		\func{\gamma \circ (c +)}{-c + I}{V}{t}{\gamma(c+t)}
 		\end{align*}
-é uma curva integral de $X$;
+é uma curva integral de $v$;
 	
-	\item Para todo $c \in \R \setminus \{0\}$, a curva
+	\item (Reescala) Para todo $c \in \R \setminus \{0\}$, a curva
 		\begin{align*}
-		\func{\gamma \circ E_c}{E_{c\inv} I}{M}{t}{\gamma(ct)}
+		\func{\gamma \circ (c \times)}{c\inv I}{M}{t}{\gamma(ct)}
 		\end{align*}
-é uma curva integral de $cX$.
+é uma curva integral de $cv$.
 	\end{enumerate}
 \end{proposition}
 %\begin{proof}
@@ -1340,11 +1347,11 @@ Sejam $\bm V$ um variedade diferencial, $X \in \tens^1(\bm V)$ e $\gamma\colon I
 %	\D (\gamma \circ E_c)|_t f &= \D(f \circ \gamma \circ E_c)|_t \\
 %		&= \D(f \circ \gamma \circ E_c)|_t \\
 %		&= c \D \gamma|_{E_c(t)} f \\
-%		&= cX|_{(\gamma \circ E_c)(t)} f.
+%		&= cv|_{(\gamma \circ E_c)(t)} f.
 %	\end{align*}
 %\end{proof}
 
-Lembremos que um fluxo em um conjunto $V$ é uma ação de $\R$ em $X$, uma função
+Lembremos que um fluxo em um conjunto $V$ é uma ação de $\R$ em $v$, uma função
 	\begin{align*}
 	\func{\Phi}{\R \times V}{V}{(t,p)}{\Phi^t(p)}
 	\end{align*}
@@ -1368,12 +1375,12 @@ Note que $\Phi^t\colon V \to V$ é um difeomorfismo e $\Phi_{(p)}\colon \R \to V
 \begin{definition}
 Sejam $\bm V$ um variedade diferencial e $\Phi\colon \R \times V \to V$ um fluxo diferenciável em $\bm V$. O \emph{gerador infinitesimal de $\Phi$} é o campo vetorial
 	\begin{align*}
-	\func{X}{V}{\Tg V}{p}{\dot \Phi_{(p)}(0)}.
+	\func{v}{V}{\Tg V}{p}{\dot \Phi_{(p)}(0)}.
 	\end{align*}
 \end{definition}
 
 \begin{proposition}
-Sejam $\bm V$ um variedade diferencial e $\Phi\colon \R \times V \to V$ um fluxo diferenciável em $\bm V$. O gerador infinitesimal $X$ de $\Phi$ é um campo vetorial diferenciável e cada curva $\Phi_{(p)}\colon \R \to V$ é uma curva integral de $X$.
+Sejam $\bm V$ um variedade diferencial e $\Phi\colon \R \times V \to V$ um fluxo diferenciável em $\bm V$. O gerador infinitesimal $v$ de $\Phi$ é um campo vetorial diferenciável e cada curva $\Phi_{(p)}\colon \R \to V$ é uma curva integral de $v$.
 \end{proposition}
 
 No entanto, nem todo campo vetorial diferenciável gera um fluxo porque nem toda curva integral está definida para todo $\R$. Para permitir que exista uma forma de recíproca para essa proposição, devemos expandir o conceito de fluxo com o conceito de um fluxo local.
@@ -1436,12 +1443,12 @@ Para ressaltar a diferença conceitual, às vezes chama-se um fluxo de \textit{f
 \begin{definition}
 Sejam $\bm V$ um variedade diferencial e $\Phi\colon \mathscr{D} \to V$ um fluxo local diferenciável em $\bm V$. O \emph{gerador infinitesimal de $\Phi$} é o campo vetorial
 	\begin{align*}
-	\func{X}{V}{\Tg V}{p}{\dot \Phi_{(p)}(0)}.
+	\func{v}{V}{\Tg V}{p}{\dot \Phi_{(p)}(0)}.
 	\end{align*}
 \end{definition}
 
 \begin{proposition}
-Sejam $\bm V$ um variedade diferencial e $\Phi\colon \mathscr{D} \to V$ um fluxo local diferenciável em $V$. O gerador infinitesimal $X$ de $\Phi$ é um campo vetorial diferenciável e cada curva $\Phi_{(p)}\colon \R \to V$ é uma curva integral de $X$.
+Sejam $\bm V$ um variedade diferencial e $\Phi\colon \mathscr{D} \to V$ um fluxo local diferenciável em $V$. O gerador infinitesimal $v$ de $\Phi$ é um campo vetorial diferenciável e cada curva $\Phi_{(p)}\colon \R \to V$ é uma curva integral de $v$.
 \end{proposition}
 
 \begin{definition}
@@ -1454,9 +1461,9 @@ Seja $\bm V$ uma variedade diferencial.
 \end{definition}
 
 \begin{proposition}
-Sejam $\bm V$ um variedade diferencial e $X \in \tens^1(\bm V)$. Existe único fluxo diferencial máximo $\Phi\colon \mathscr{D} \to V$ gerado por $X$ e o fluxo $\Phi$ satisfaz
+Sejam $\bm V$ um variedade diferencial e $v \in \tens^1(\bm V)$. Existe único fluxo diferencial máximo $\Phi\colon \mathscr{D} \to V$ gerado por $v$ e o fluxo $\Phi$ satisfaz
 	\begin{enumerate}
-	\item Para todo $p \in V$, a curva de fluxo $\Phi_{(p)}\colon \intaa{e_p}{\bar e_p} \to V$ é uma curva integral máxima de $X$ iniciada em $p$;
+	\item Para todo $p \in V$, a curva de fluxo $\Phi_{(p)}\colon \intaa{e_p}{\bar e_p} \to V$ é uma curva integral máxima de $v$ iniciada em $p$;
 	
 	\item Para todo $p \in V$ e todo $t \in \intaa{e_p}{\bar e_p}$,
 	\begin{equation*}
@@ -1467,8 +1474,27 @@ Sejam $\bm V$ um variedade diferencial e $X \in \tens^1(\bm V)$. Existe único f
 	\end{enumerate}
 \end{proposition}
 
-
-
+Esse fluxo gerado por $v \in \tens^1(\bm V)$ será denotado
+	\begin{align*}
+	\func{\flux^{(\var)v}(\var)}{\mathscr{D}}{V}{(t,p)}{\flux^{tv}(p)},
+	\end{align*}
+de modo que valem as seguintes propriedades. Pela propriedade de curvas integrais maximais, para todo $p \in V$,
+	\begin{equation*}
+	\frac{\dd}{\dd t} \flux^{tv}(p) = v \circ \flux^{tv}(p) = v|_{\flux^{tv}(p)}.
+	\end{equation*}
+Pela propriedades de fluxo local,
+	\begin{equation*}
+	\flux^{0v}(p) = \Id(p) = p
+	\end{equation*}
+e
+	\begin{equation*}
+	\flux^{(t+t')v}(p) = \flux^{tv} \circ \flux^{t'v}(p)
+	\end{equation*}
+Além disso, pelo lema de reescala, temos que, para todo $t' \in \R$, o fluxo de do campo vetorial $t'v$ é dado por
+	\begin{equation*}
+	\flux^{t(t'v)}(p) = \flux^{(tt')v}(p),
+	\end{equation*}
+o que significa que a notação $\flux^{tt'v}$ não é ambígua. Essas similaridades de propriedades com a exponencial justificam a notação. Além da similaridade, a função exponencial de grupos diferenciais é de fato definida a partir do fluxo de um campo vetorial invariante, e como um caso particular, a função exponencial em álgebras normadas está também relacionada ao fluxo acima definido.
 
 \subsection{Espaço cotangente}
 
@@ -1525,10 +1551,10 @@ Seja $\bm V$ uma variedade diferencial. Uma $k$-\emph{forma} em $\bm V$ é uma f
 	\begin{equation*}
 	\omega\colon V \to \bigwedge\nolimits^k \Tg\dual V
 	\end{equation*}
-tal que, para todo $p \in V$, $\omega|_p \in \bigwedge^k\Tg\dual V|_p$ é um funcional $k$-linear alternado de $\Tg V|_p$. O conjunto de $k$-formas diferenciáveis\footnote{Aqui diferenciável quer dizer $\Cont^\infty$.} em $\bm V$ é denotado $\form^k (V)$.
+tal que, para todo $p \in V$, $\omega|_p \in \bigwedge^k\Tg\dual V|_p$ é um funcional $k$-linear alternado de $\Tg V|_p$. O conjunto de $k$-formas diferenciáveis\footnote{Aqui diferenciável quer dizer $\Cont^\infty$.} em $\bm V$ é denotado $\form^k (\bm V)$.
 \end{definition}
 
-O produto exterior de duas formas $\omega \in \form^k (V)$ e $\omega' \in \form^{k'} (V)$ é definido pontualmente,
+O produto exterior de duas formas $\omega \in \form^k (\bm V)$ e $\omega' \in \form^{k'} (\bm V)$ é definido pontualmente,
 	\begin{equation*}
 	(\omega \wedge \omega')|_p := \omega|_p \wedge \omega'|_p,
 	\end{equation*}
@@ -1536,13 +1562,21 @@ e é uma $(k+k')$-forma em $\bm V$. Para $k=0$, $\omega \wedge \omega'$ é simpl
 
 A soma direta desses espaços é o espaço das formas em $\bm V$, denotado
 	\begin{equation*}
-	\form (V) := \bigoplus_{i \in [d]} \form^k (V).
+	\form (\bm V) := \bigoplus_{i \in [d]} \form^k (\bm V).
 	\end{equation*}
 Esse espaço linear com o produto exterior
 	\begin{align*}
-	\func{\wedge}{\form (V) \times \form (V)}{\form (V)}{(\omega,\omega')}{\omega \wedge \omega'}
+	\func{\wedge}{\form (\bm V) \times \form (\bm V)}{\form (\bm V)}{(\omega,\omega')}{\omega \wedge \omega'}
 	\end{align*}
-é uma álgebra associativa, anticomutativa e graduada.
+é uma álgebra associativa, anticomutativa e graduada. Ressaltamos isso na proposição seguinte, que não demonstraremos.
+
+\begin{proposition}
+Seja $\bm V$ um variedade diferencial. A lista
+	\begin{equation*}
+	\bm{\form(\bm V)} := (\form(\bm V),+,-,0,\wedge,\cdot)
+	\end{equation*}
+é uma álgebra associativa, anticomutativa e graduada sobre $\R$.
+\end{proposition}
 
 \subsubsection{Representação coordenada}
 
@@ -1755,13 +1789,13 @@ Seja $\bm V$ uma variedade diferencial. Existe única função
 	\end{equation*}
 tal que
 	\begin{enumerate}
-	\item Para todo $k \in [\dim V]$, $\dd\colon \form^k(V) \to \form^{k+1}(V)$ é linear sobre $\R$;
-	\item  Para todas formas $\omega \in \form^k (V)$ e $\omega' \in \form^{k'} (V)$,
+	\item (Linearidade) Para todo $k \in [\dim V]$, $\dd\colon \form^k(V) \to \form^{k+1}(V)$ é linear sobre $\R$;
+	\item (Derivação graduada) Para todas formas $\omega \in \form^k (V)$ e $\omega' \in \form^{k'} (V)$,
 		\begin{equation*}
 		\dd(\omega \wedge \omega') = \dd\omega \wedge \omega' + (-1)^k\omega \wedge \dd \omega';
 		\end{equation*}
-	\item $\dd \circ \dd = 0$;
-	\item Para todo campo escalar $f \in \Cont^\infty(V) = \form^0(V)$, a diferencial $\D f$ de $f$ é a derivada exterior $\dd f$ de $f$, dada por $\dd f(X) = \partial_X f$.
+	\item (Cobordismo) $\dd \circ \dd = 0$;
+	\item (Diferencial) Para todo campo escalar $f \in \Cont^\infty(V) = \form^0(V)$, a diferencial $\D f$ de $f$ é a derivada exterior $\dd f$ de $f$, dada por $\dd f(v) = \partial_v f$.
 	\end{enumerate}
 \end{proposition}
 
@@ -1772,16 +1806,62 @@ tal que
 
 
 
-\subsection{Derivada de Lie}
+\subsection{Derivada por fluxo}
 
+A derivada por fluxo é um modo de generalizar o conceito de derivada direcional para variedades diferenciais. No caso de derivadas direcionais, o ambiente de estudo são espaços vetoriais normados e derivamos uma função $f$ ao longo de um vetor $v$, avaliando o limite para o tempo $t$ em $0$ da diferença entre o valor da função em um ponto $p$ deslocado por $tv$ e o valor da função em $p$, pela fórmula
+	\begin{equation*}
+	\Dir_v f(p) = \lim_{t \conv 0} \frac{f(p+tv)-f(p)}{t}.
+	\end{equation*}
+Como a função é avaliada em um espaço vetorial, o ponto $p$ e o vetor de deslocamento $v$ podem ser somados, de modo que $p+tv$ é um elemento do espaço. No caso que estamos estudando, no entanto, não podemos somar um ponto $p$ a um vetor tangente $v$, portanto o termo $p+tv$ na fórmula de derivada direcional não tem sentido em variedades. Existem dois principais maneiras de se resolver esse problema, e ambos consistem na seguinte observação: o que o termo $p+tv$ representa na definição de derivada direcional em espaço vetoriais normados é o deslocamento do ponto $p$ na direção $v$ por um tempo $t$, e nesse caso esse deslocamento é dado pela soma do ponto com o vetor. No contexto de variedades diferenciais, pode-se tentar definir a derivada direcional ao longo de um vetor tangente a um ponto por coordenadas, mas é simples ver que isso não será invariante por escolha de coordenadas para derivação de qualquer campo tensorial. Assim, devemos estabelecer uma maneira de deslocar um ponto ao longo de um vetor tangente que seja invariante por coordenadas. A primeira maneira envolve definir o que se chama de `transporte paralelo' na variedade, que dará origem ao conceito de `derivada covariante'. Isso envolve, no entanto, dotar a variedade de uma estrutura geométrica que permite dizer como se transportar um vetor tangente ao longo de uma curva de modo que esses vetores se mantenham `paralelos' ao longo dessa curva. Por isso, não envolve somente a estrutura da variedade. A segunda maneira, a que estudaremos nesta seção, consiste em se considerar, em vez de um vetor tangente, um campo vetorial na variedade. Dado esse campo vetorial, podemos deslocar um cada vetor tangente do campo por seu fluxo local, e assim podemos definir a `derivada por fluxo'\footnote{A derivada por fluxo recebe o nome na literatura de `derivada de Lie'} ao longo do um campo vetorial. A mesma ideia pode ser aplicada a derivada de qualquer campo tensorial, não somente de campos escalares.
 
+\subsubsection{Derivada de campos escalares}
 
+Denotamos o fluxo local do campo vetorial $v$ no tempo $t$ por $\flux^{tv}$.
 
+\begin{definition}
+Sejam $\bm V$ uma variedade diferencial, $v \in \tens^1(\bm V)$ um campo vetorial e $f \in \tens^(\bm V)$ um campo escalar. A \emph{derivada por fluxo} de $f$ ao longo de $v$ (ou na direção de $v$) é
+	\begin{equation*}
+	\Dir_v f(p) := \frac{f(\flux^{tv}(p))-f(p)}{t}.
+	\end{equation*}
+\end{definition}
 
+%\subsubsection{Derivada de campos vetoriais}
 
+%No caso de campos vetoriais, a derivada por fluxo de um campo vetorial $v'$ ao longo de um campo vetorial $v$ é o colchete dos campos vetoriais
+%	\begin{equation*}
+%	\Dir_v v' = \col{v}{v'}.
+%	\end{equation*}
 
+%\subsubsection{Derivada de campos tensoriais}
 
+%Dado um campo vetorial $v \in \tens^1(\bm V)$, denotamos seu fluxo local por $\flux^{tv}$. Para cada $t \in \R$, a função $\fun{\flux^{tv}}{V_t}{V_{-t}}$ é um difeomorfismo
 
+\subsubsection{Definição algébrica}
+
+\begin{proposition}
+Sejam $\bm V$ uma variedade diferencial e $v \in \tens^1(\bm V)$ um campo vetorial. Existe única função
+	\begin{equation*}
+	\fun{\Dir_v}{\tens(\bm V)}{\tens(\bm V)}
+	\end{equation*}
+tal que
+	\begin{enumerate}
+	\item (Derivada direcional) Para todo $f \in \tens^0(\bm V)$,
+		\begin{equation*}
+		\Dir_v(f) = \partial_v f.
+		\end{equation*}
+	\item (Derivação) Para todos $T \in \tens^(k,l)(\bm V)$ e $T' \in \tens^(k',l')(\bm V)$,
+		\begin{equation*}
+		\Dir_v(T \otimes T') = (\Dir_v T) \otimes T' + T \otimes \Dir_v (T');
+		\end{equation*}
+	\item (Contração) Para todos $T \in \tens^{(k,l)}(\bm V)$, $v_0,\ldots,v_{k-1} \in \tens^1(\bm V)$ e $\nu_0,\ldots,\nu_{l-1} \in \tens^{*1}(\bm V)$,
+		\begin{align*}
+		\Dir_v (T(v_0,\ldots,v_{k-1},\nu_0,\ldots,\nu_{l-1})) &= (\Dir_v T)(v_0,\ldots,v_{k-1},\nu_0,\ldots,\nu_{l-1}) \\
+			&+ \sum_{i \in [k]} T(v_0,\ldots,(\Dir_v v_i),\ldots,v_{k-1},\nu_0,\ldots,\nu_{l-1}) \\
+			&+ \sum_{i \in [l]} T(v_0,\ldots,v_{k-1},\nu_0,\ldots,(\Dir_v \ni_i),\ldots,\nu_{l-1}).
+		\end{align*}
+	\item (Derivada exterior) $\col{\Dir_v}{\dd}=0$.
+	\end{enumerate}
+\end{proposition}
 
 
 
