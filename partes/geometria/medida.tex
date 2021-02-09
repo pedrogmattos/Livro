@@ -103,11 +103,11 @@ Seja $X$ um conjunto e $\mathcal C \in \p(X)$ um conjunto de subconjuntos de $X$
 %\begin{proposition}
 %Seja $X$ um conjunto e $\mathcal C \subseteq \p(X)$ um conjunto de subconjuntos de $X$. Então
 %	\begin{equation*}
-%	\ger{\mathcal C} = \set{\bigcup_{i \in I} C_i}{\card{I}\leq \card{\N} \e \forall i \in I \left( C_i \in \mathcal C \ou C_i\comp \in \mathcal C\right)}.
+%	\ger{\mathcal C} = \set{\bigcup_{i \in I} C_i}{\card{I}\leq \card{\N} \text{\ \ e\ \ } \forall i \in I \left( C_i \in \mathcal C \text{\ \ ou\ \ } C_i\comp \in \mathcal C\right)}.
 %	\end{equation*}
 %\end{proposition}
 %\begin{proof}
-%Seja $\mens := \set{\bigcup_{i \in I} C_i}{\card{I}\leq \card{\N} \e \forall i \in I \left( C_i \in \mathcal C \ou C_i\comp \in \mathcal C\right)}$. Primeiro notemos que $\mathcal C \subseteq \mens$. Para todo $C \in \mathcal C$, temos $C = \bigcup_{i \in \{0\}} C$ e $\card{\{0\}} \leq \card{\N}$. Logo $C \in \mens$ e, então, $\mathcal C \subseteq \mens$. Agora, mostremos que $\mens$ é uma sigma-álgebra. Primeiro notemos que $\emptyset \in \mens$, pois $\emptyset = \bigcup_{i \in \emptyset} C$ e $\card{\emptyset} \leq \card{\N}$.
+%Seja $\mens := \set{\bigcup_{i \in I} C_i}{\card{I}\leq \card{\N} \text{\ \ e\ \ } \forall i \in I \left( C_i \in \mathcal C \text{\ \ ou\ \ } C_i\comp \in \mathcal C\right)}$. Primeiro notemos que $\mathcal C \subseteq \mens$. Para todo $C \in \mathcal C$, temos $C = \bigcup_{i \in \{0\}} C$ e $\card{\{0\}} \leq \card{\N}$. Logo $C \in \mens$ e, então, $\mathcal C \subseteq \mens$. Agora, mostremos que $\mens$ é uma sigma-álgebra. Primeiro notemos que $\emptyset \in \mens$, pois $\emptyset = \bigcup_{i \in \emptyset} C$ e $\card{\emptyset} \leq \card{\N}$.
 
 %Agora, seja $M \in \mens$. Então $M=\bigcup_{i \in I} C_i$ tal que $\card{I}\leq \card{\N}$  e, para todo $i \in I$, $C_i \in \mathcal C$ ou $C_i\comp \in \mathcal C$. Como
 %	\begin{equation*}
@@ -409,8 +409,8 @@ Adotaremos nesta seção as definições de que, em $\intff{0}{\infty}$, a adiç
 	\begin{align*}
 	\func{+}{\intff{0}{\infty} \times \intff{0}{\infty}}{\intff{0}{\infty}}{(c,c')}{
 		\begin{cases}
-			c+c,& c \neq \infty \e c \neq \infty \\
-			\infty,& c=\infty \ou c'=\infty
+			c+c,& c \neq \infty \text{\ \ e\ \ } c \neq \infty \\
+			\infty,& c=\infty \text{\ \ ou\ \ } c'=\infty
 		\end{cases}
 	}
 	\end{align*}
@@ -418,9 +418,9 @@ e a multiplicação é definida por
 	\begin{align*}
 	\func{\times}{\intff{0}{\infty} \times \intff{0}{\infty}}{\intff{0}{\infty}}{(c,c')}{
 		\begin{cases}
-			0,& c=0 \ou c'=0 \\
-			c \times c,& c \in \intaa{0}{\infty} \e c' \in \intaa{0}{\infty} \\
-			\infty,& (c=\infty \e c' \neq 0) \ou (c \neq 0 \e c'=\infty).
+			0,& c=0 \text{\ \ ou\ \ } c'=0 \\
+			c \times c,& c \in \intaa{0}{\infty} \text{\ \ e\ \ } c' \in \intaa{0}{\infty} \\
+			\infty,& (c=\infty \text{\ \ e\ \ } c' \neq 0) \text{\ \ ou\ \ } (c \neq 0 \text{\ \ e\ \ } c'=\infty).
 		\end{cases}
 	}
 	\end{align*}
@@ -869,7 +869,7 @@ Lembrando que
 	\end{equation*}
 em que $\tau = 6,28\ldots$ é a constante do círculo (razão da circunferência pelo raio) e a função fatorial $!$ é entendida como a extensão dada pela função $\Gamma$, definida $x! = \Gamma(x+1)$, ou mais explicitamente por
 	\begin{align*}
-	\func{!}{\intff{0}{\infty}}{\intff{0}{\infty}}{x}{\int_0^\infty t^x \ee^{-t} \dd t.}
+	\func{!}{\intff{0}{\infty}}{\intff{0}{\infty}}{x}{\int_0^\infty t^x \e^{-t} \dd t.}
 	\end{align*}
 Alguns casos particulares são
 	\begin{align*}
@@ -1112,7 +1112,7 @@ concluímos que $\med(B) = \med(B \cap A)$.
 Seja $\bm X$ um espaço de medida.
 	\begin{enumerate}
 	\item Os conjuntos $\set{M \in \mens}{M \qeq \emptyset}$ e $\set{M \in \mens}{M \qeq X}$ são fechados sob união e interseção enumeráveis;
-	\item O conjunto $\set{M \in \mens}{M \qeq \emptyset \ou M \qeq X}$ é uma sigma-álgebra.
+	\item O conjunto $\set{M \in \mens}{M \qeq \emptyset \text{\ \ ou\ \ } M \qeq X}$ é uma sigma-álgebra.
 	\end{enumerate}
 \end{proposition}
 \begin{proof}

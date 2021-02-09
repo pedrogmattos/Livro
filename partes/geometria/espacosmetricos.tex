@@ -450,7 +450,7 @@ Basta notar que $\bar\bola_r(c)^\complement$ é aberto.
 \begin{proof}
 	Se $F=\emptyset$, então $F$ é fechado. Se $F \neq \emptyset$, seja $(p_n)_{n \in \N}$ uma sequência em $F$ que converge para $p \in M_1$. Mostraremos que $p \in F$. Como $f$ e $g$ são contínuas em $p$, segue que
 	\begin{equation*}
-	(f(p_n)) \conv f(p) \e (g(p_n)) \conv g(p).
+	(f(p_n)) \conv f(p) \text{\ \ e\ \ } (g(p_n)) \conv g(p).
 	\end{equation*}
 	Como $(p_n)_{n \in \N}$ é uma sequência em $F$, as sequências $(f(p_n))_{n \in \N}$ e $(g(p_n))_{n \in \N}$ são a mesma sequência e segue da unicidade do limite que $f(p)=g(p)$, o que mostra que $p \in F$ e que, portanto, $F$ é um conjunto fechado.
 \end{proof}
@@ -846,7 +846,7 @@ Sejam $K \subseteq M$ compacto e $f: M \to \bar M$ contínua. Então $f$ é unif
 \begin{proof}
 Suponhamos, por absurdo, que $f$ não é uniformemente contínua. Então existem $\varepsilon > 0$ e $(x_n)_{n \in \N},(y_n)_{n \in \N}$ sequências em $K$ tais que
 	\begin{equation*}
-	\nor{x_n - y_n} < \frac{1}{n} \e \nor{f(x_n)-f(y_n)} \geq \varepsilon.
+	\nor{x_n - y_n} < \frac{1}{n} \text{\ \ e\ \ } \nor{f(x_n)-f(y_n)} \geq \varepsilon.
 	\end{equation*}
 Como $K$ é compacto, existem subsequências $(x_{n_k})_{k \in \N}$  e $(y_{n_k})_{k \in \N}$ convergindo a $x \in K$ com $\nor{f(x_{n_k})-f(y_{n_k})} \geq \varepsilon$. Por continuidade de $f$, existe $\delta > 0$ tal que, se $x_{n_k},y_{n_k} \in B(x,\delta)$, então $\nor{f(x_{n_k})-f(x)} < \frac{\varepsilon}{2}$ e $\nor{f(y_{n_k})-f(x)} < \frac{\varepsilon}{2}$. Pela desigualdade triangular, temos um absudo.
 \end{proof}

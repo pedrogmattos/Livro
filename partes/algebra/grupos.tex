@@ -42,7 +42,7 @@ Em vista das definições introdutórias do capítulo anterior, um grupo é um m
 \begin{definition}
 Sejam $\bm G = (G,\times,\div,1)$ um grupo, $g \in G$ e $n \in \N$. Definimos
 	\begin{equation*}
-	g^n := \bigtimes_{i=1}^n g \e g^{-n} := \bigtimes_{i=1}^n g^{-1}.
+	g^n := \bigtimes_{i=1}^n g \text{\ \ e\ \ } g^{-n} := \bigtimes_{i=1}^n g^{-1}.
 	\end{equation*}
 \end{definition}
 
@@ -144,7 +144,7 @@ Sejam $\bm G$ um grupo, $(\bm S_i)_{i \in I}$ uma família superiormente dirigid
 Então $\bm S$ é um subgrupo de $\bm G$.
 \end{proposition}
 \begin{proof}
-(Não-vacuidade) Para todo $i \in I$, $\bm{S_i}\leq \bm G$, portanto $e \in N_i$. Logo $e \in N$. (Fechamento) Sejam $s_1,s_2 \in S$. Existem $i_1,i_2 \in I$ tais que $s_1 \in S_{i_1}$ e $s_2 \in S_{i_2}$ e, pela propriedade, existe $i \in I$ tal que $S_{i_1} \subseteq S_{i} \e S_{i_2} \subseteq S_{i}$. Então $s_1,s_2 \in S_i$. Como $\bm{S_i} \leq \bm G$, segue que $s_1s_2 \in S_i$, o que implica que $s_1s_2 \in S$. (Invertibilidade) Seja $s \in S$. Existe $i \in I$ tal que $s \in N_i$ e, como $\bm{S_i} \leq \bm G$, segue que $s^{-1} \in S_i$, o que implica que $s^{-1} \in S$.
+(Não-vacuidade) Para todo $i \in I$, $\bm{S_i}\leq \bm G$, portanto $e \in N_i$. Logo $e \in N$. (Fechamento) Sejam $s_1,s_2 \in S$. Existem $i_1,i_2 \in I$ tais que $s_1 \in S_{i_1}$ e $s_2 \in S_{i_2}$ e, pela propriedade, existe $i \in I$ tal que $S_{i_1} \subseteq S_{i} \text{\ \ e\ \ } S_{i_2} \subseteq S_{i}$. Então $s_1,s_2 \in S_i$. Como $\bm{S_i} \leq \bm G$, segue que $s_1s_2 \in S_i$, o que implica que $s_1s_2 \in S$. (Invertibilidade) Seja $s \in S$. Existe $i \in I$ tal que $s \in N_i$ e, como $\bm{S_i} \leq \bm G$, segue que $s^{-1} \in S_i$, o que implica que $s^{-1} \in S$.
 \end{proof}
 
 A propriedade definida acima é equivalente a dizer que a família $(S_i)_{i \in I}$ é um conjunto dirigido com respeito a $\subseteq$.
@@ -161,7 +161,7 @@ Seja $\bm M = (M,\times,1)$ um monoide. Então existe uma operação unária $\d
 \begin{proof}
 	Sejam $m_1,m_2 \in M^*$. Então existem $m_1^{-1},m_2^{-1} \in M$ tais que
 	\begin{equation*}
-	m_1m_1^{-1}=1 \e m_2m_2^{-1}=1.
+	m_1m_1^{-1}=1 \text{\ \ e\ \ } m_2m_2^{-1}=1.
 	\end{equation*}
 Portanto
 	\begin{equation*}
@@ -204,7 +204,7 @@ Coclasses também são conhecidas como classes laterais. As definições de cocl
 \label{alge:prop.gru.coclas}
 Sejam $\bm G$ um grupos, $\bm S \leq \bm G$ um subgrupo e $g_1g_2 \in G$. Então
 	\begin{enumerate}
-	\item $g_1(g_2S) = (g_1g_2)S \e (Sg_1)g_2 = S(g_1g_2)$
+	\item $g_1(g_2S) = (g_1g_2)S \text{\ \ e\ \ } (Sg_1)g_2 = S(g_1g_2)$
 	\item $g_1S=g_2S \Leftrightarrow g_2^{-1}g_1 \in S$ e $Sg_1=Sg_2 \Leftrightarrow g_2^{-1}g_1 \in S$.
 	\end{enumerate}
 \end{proposition}
@@ -532,7 +532,7 @@ Sejam $\bm{G_1}$, $\bm{G_2}$ e $\bm{G_3}$ grupos. Então
 	\begin{enumerate}
 	\item (Reflexividade) $\bm{G_1} \simeq \bm{G_1}$;
 	\item (Antissimetria) $\bm{G_1} \simeq \bm{G_2} \Rightarrow \bm{G_2} \simeq \bm{G_1}$;
-	\item (Transitividade) $\bm{G_1} \simeq \bm{G_2} \e \bm{G_2} \simeq \bm{G_3} \Rightarrow \bm{G_1} \simeq \bm{G_3}$.
+	\item (Transitividade) $\bm{G_1} \simeq \bm{G_2} \text{\ \ e\ \ } \bm{G_2} \simeq \bm{G_3} \Rightarrow \bm{G_1} \simeq \bm{G_3}$.
 	\end{enumerate}
 \end{proposition}
 \begin{proof}
@@ -1022,7 +1022,7 @@ Seja $\bm G$ um grupo. Um subgrupo normal \emph{maximal} de $\bm G$ é um subgru
 	\begin{enumerate}
 	\item (Maximalidade) Para todo $\bm N \ide \bm G$,
 		\begin{equation*}
-		M \subseteq N \Rightarrow N = M \ou N = G.
+		M \subseteq N \Rightarrow N = M \text{\ \ ou\ \ } N = G.
 		\end{equation*}
 	\end{enumerate}
 \end{definition}
@@ -1084,10 +1084,10 @@ O \emph{comprimento} de uma sequência subnormal estrita é o número $n$.
 \begin{definition}
 Seja $\bm G$ um grupo e $S \subseteq G$ um conjunto. O grupo \emph{gerado} por $S$ é o grupo $\bm{\langle S \rangle} \leq \bm G$ em que
 	\begin{equation*}
-	\langle S \rangle := \set{s_1 \cdots s_n}{n \in \N,\ s_i \in S \ou s_i\inv \in S}.
+	\langle S \rangle := \set{s_1 \cdots s_n}{n \in \N,\ s_i \in S \text{\ \ ou\ \ } s_i\inv \in S}.
 	\end{equation*}
 	\begin{equation*}
-	\langle S \rangle := \set{\bigopb_{i \in [n]} s_i}{n \in \N,\ s_i \in S \ou s_i\inv \in S}.
+	\langle S \rangle := \set{\bigopb_{i \in [n]} s_i}{n \in \N,\ s_i \in S \text{\ \ ou\ \ } s_i\inv \in S}.
 	\end{equation*}
 \noindent
 Um \emph{conjunto gerador} de $\bm G$ é um conjunto $S \subseteq G$ tal que $\langle S \rangle = G$.

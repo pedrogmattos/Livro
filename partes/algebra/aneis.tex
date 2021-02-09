@@ -26,7 +26,7 @@ Um \emph{anel} é uma lista $\bm A=(A,+,-,0,\times,1)$ tal que
 \begin{notation}
 O símbolo de multiplicação $\times$ será suprimido sempre que possível, de modo que denotaremos $a_0a_1$ para $a_0 \times a_1$, e a notação da multiplicação terá preferência sobre a da adição e a da substração, pois $\times$ é distributiva sobre $+$, de modo que denotaremos $a_0a_1 + a_2$ para $(a_1a_2) + a_3$ e $-a_1a_2$ para $-(a_1a_2)$. Os símbolos operatórios relativos à adição e à multiplicação serão, respectivamente,
 	\begin{equation*}
-	\sum \e \bigtimes.
+	\sum \text{\ \ e\ \ } \bigtimes.
 	\end{equation*}
 O elemento $a$ multiplicado por si mesmo $n$ vezes será denotado $a^n$. Denotaremos o inverso de um elemento $a \in A$ com respeito a $\times$ por $a\inv$ ou $\div a$, se ele existir, pois sabemos que é único (\ref{prop:unic.inv}).
 \end{notation}
@@ -806,7 +806,7 @@ Ainda, $1 := (1_i)_{i \in I}$ é elemento neutro, pois
 \begin{definition}
 Um \emph{domínio} (ou \emph{domínio integral}) é um anel não trivial $\bm A$ tal que, para todos $a_0,a_1 \in A$,
 	\begin{equation*}
-	a_0 \cdot a_1 = 0 \entao a_0=0 \ou a_1=0.
+	a_0 \cdot a_1 = 0 \entao a_0=0 \text{\ \ ou\ \ } a_1=0.
 	\end{equation*}
 \end{definition}
 
@@ -887,7 +887,7 @@ que é a definição de ideal primo.
 %	\item $\nexists J \subset A \qquad I \subset J \idepro A$.
 %	\end{enumerate}
 	\begin{equation*}
-	\forall J \in \p(A) \qquad I \subseteq J \e J \ide A \Rightarrow J = I \ou J = A.
+	\forall J \in \p(A) \qquad I \subseteq J \text{\ \ e\ \ } J \ide A \Rightarrow J = I \text{\ \ ou\ \ } J = A.
 	\end{equation*}
 \end{definition}
 
@@ -1586,7 +1586,7 @@ Seja $\bm A$ um anel.
 		\end{equation*}
 	\item Para todos $u \in A^*$ e $a,a' \in A$ tais que $a \dleq a'$,
 		\begin{equation*}
-		ua \dleq a \e a \dleq ua'.
+		ua \dleq a \text{\ \ e\ \ } a \dleq ua'.
 		\end{equation*}
 	\end{enumerate}
 \end{proposition}
@@ -1828,7 +1828,7 @@ Seja $\bm D$ um domínio. Uma \emph{função euclidiana} em $\bm D$ é uma funç
 	\item Para todos $a \in D$ e $b \in D \setminus \{0\}$, existem $q,r \in D$ tais que
 		\begin{enumerate}
 		\item $a=qb+r$;
-		\item $r=0 \ou \phi(r)<\phi(b)$;
+		\item $r=0 \text{\ \ ou\ \ } \phi(r)<\phi(b)$;
 		\end{enumerate}
 	\item Para todos $a,b \in D \setminus \{0\}$, $\phi(a) \leq \phi(ab)$.
 	\end{enumerate}
@@ -1843,7 +1843,7 @@ Sejam $\bm D$ um domínio e $\phi: D \setminus \{0\} \to \N$ uma função que sa
 	\item Para todos $a \in D$ e $b \in D \setminus \{0\}$, existem $q,r \in D$ tais que
 		\begin{enumerate}
 		\item $a=qb+r$;
-		\item $r=0 \ou \phi(r)<\phi(b)$;
+		\item $r=0 \text{\ \ ou\ \ } \phi(r)<\phi(b)$;
 		\end{enumerate}
 	\end{enumerate}
 Então existe uma função euclidiana em $\bm D$.
@@ -1928,7 +1928,7 @@ Tome $d_2=1$ na proposição anterior.
 \begin{definition}
 Seja $\bm D$ um domínio. Um elemento \emph{irredutível} em $\bm D$ é um elemento $i \in D \setminus (D^* \cup \{0\})$ que satisfaz, para todos $d,d' \in D$ tais que $i=dd'$,
 		\begin{equation*}
-		d \in D^* \ou d' \in D^*.
+		d \in D^* \text{\ \ ou\ \ } d' \in D^*.
 		\end{equation*}
 \end{definition}
 
@@ -1945,7 +1945,7 @@ Agora, sejam $d,d' \in D$ tais que $ui=dd'$. Então $i=u\inv dd'$. Se $d \notin 
 \begin{definition}
 Seja $\bm D$ um domínio. Um elemento \emph{primo} em $\bm D$ é um elemento $p \in D\setminus (D^* \cup \{0\})$ que satisfaz, para todos $d,d' \in D$ tais que $p \dleq dd'$,
 		\begin{equation*}
-		p \dleq d \ou p \dleq d'.
+		p \dleq d \text{\ \ ou\ \ } p \dleq d'.
 		\end{equation*}
 \end{definition}
 
@@ -2142,7 +2142,7 @@ Seja $\bm D$ um domínio de fatoração única. Então
 	\item (Existência de Fatoração Reduzida) Todo $d \in D \setminus \{0\}$ tem fatoração reduzida;
 	\item (Unicidade de Fatoração Reduzida) Para todo $d \in D \setminus \{0\}$, se
 	\begin{equation*}
-	(p_i,e_i)_{i \in [n]} \e (p'_i,e'_i)_{i \in [n']}
+	(p_i,e_i)_{i \in [n]} \text{\ \ e\ \ } (p'_i,e'_i)_{i \in [n']}
 	\end{equation*}
 são fatorações reduzidas de $d$, então $n=n'$ e existe permutação $\sigma \in \sime_n$ tal que, para todo $i \in [n]$, $p_i \sim p'_{\sigma(i)}$ e $e_i=e'_{\sigma(i)}$.
 	\end{enumerate}
@@ -2381,7 +2381,7 @@ Seja $\bm A$ um anel e $f,g \in A[x]$. Se $g$ é mônico, então existem $q,r \i
 \begin{proof}
 Sejam $n := \g(f)$, $m := \g(g)$,
 	\begin{equation*}
-	f = \sum_{i=0}^n a_ix^i \e g = \sum_{i=0}^{m-1} b_ix^i + x^m
+	f = \sum_{i=0}^n a_ix^i \text{\ \ e\ \ } g = \sum_{i=0}^{m-1} b_ix^i + x^m
 	\end{equation*}
 Se $m \leq n$, definimos $q(x) := a_nx^{n-m}$ e $r := f-qg$ e temos
 	\begin{align*}
@@ -2814,7 +2814,7 @@ Fazendo, $n := m-k$ e, para todo $i \in \{0,\ldots,n\}$, $c_i := c'_{k+i}$, temo
 	\begin{enumerate}
 	\item $p(\alpha) = 0$;
 	\item $p$ é mônico;
-	\item $\g(p) = \min\{\g(f) : f \in C[x]^*, f(\alpha)=0 \e f \text{\ é mônico}\}$.
+	\item $\g(p) = \min\{\g(f) : f \in C[x]^*, f(\alpha)=0 \text{\ \ e\ \ } f \text{\ é mônico}\}$.
 	\end{enumerate}
 \end{definition}
 
@@ -2826,7 +2826,7 @@ Fazendo, $n := m-k$ e, para todo $i \in \{0,\ldots,n\}$, $c_i := c'_{k+i}$, temo
 	\begin{equation*}
 	p := (a'_n)^{-1}p = \sum_{i=0}^{n-1} (a'_n)^{-1}a_ix^i + x^n,
 	\end{equation*}
-segue que $p \in C[x]^*$, $\g(p)=n$, $p(\alpha) = (a'_n)^{-1}p'(\alpha)=0$ e $p$ é mônico. Portanto $\{\g(f) : f \in C[x]^*, f(\alpha)=0 \e f \text{\ é mônico}\}$ não é vazio, e, como é subconjunto de $\N$, admite mínimo, o que mostra que existe polinômio minimal de $\alpha$ sobre $\bm C$.
+segue que $p \in C[x]^*$, $\g(p)=n$, $p(\alpha) = (a'_n)^{-1}p'(\alpha)=0$ e $p$ é mônico. Portanto $\{\g(f) : f \in C[x]^*, f(\alpha)=0 \text{\ \ e\ \ } f \text{\ é mônico}\}$ não é vazio, e, como é subconjunto de $\N$, admite mínimo, o que mostra que existe polinômio minimal de $\alpha$ sobre $\bm C$.
 
 	Para mostrar a unicidade, suponhamos que $p_1$ e $p_2$ são polinômios minimais de $\alpha$ sobre $\bm C$. Pela primeira propriedade de polinômio minimal, $(p_1-p_2)(\alpha)=p_1(\alpha)-p_2(\alpha)=0$. Pela terceira propriedade de polinômio minimal, $\g(p_1)=\g(p_2)$. Seja $n := \g(p_1)$ e sejam $p_1 = \sum_{i=0}^n a_ix^i$ e $p_2 = \sum_{i=0}^n b_ix^i$. Pela segunda propriedade de polinômio minimal, $a_n=b_n=1$. Então $a_n-b_n=0$ e
 	\begin{equation*}
@@ -2849,7 +2849,7 @@ Como $\bm C$ é corpo e $a_k-b_k \neq 0$, existe $(a_k-b_k)^{-1} \in C$. Definin
 \begin{proof}
 	Como $p$ é redutível, existem $p'_1,p'_2 \in C[x]^*$ tais que $p=p'_1p'_2$. Sejam $n := \g(p_1)$, $p_1 = \sum_{i=0}^n a_ix^i$, e $m := \g(p_2)$, $p_2 = \sum_{i=0}^m b_ix^i$. Pela definição de produto, sabemos que $a_nb_m=1$, pois $p$ é mônico. Como $\bm C$ é um corpo, existem $(a_n)^{-1},(b_m)^{-1} \in C$. Definindo
 	\begin{equation*}
-	p_1 := (a_n)^{-1}p'_1 = \sum_{i=0}^{n-1} (a_n)^{-1}a_ix^i+ x^n \e p_2 := (b_m)^{-1}p'_2 = \sum_{i=0}^{m-1} (b_m)^{-1}b_ix^i + x^m,
+	p_1 := (a_n)^{-1}p'_1 = \sum_{i=0}^{n-1} (a_n)^{-1}a_ix^i+ x^n \text{\ \ e\ \ } p_2 := (b_m)^{-1}p'_2 = \sum_{i=0}^{m-1} (b_m)^{-1}b_ix^i + x^m,
 	\end{equation*}
 segue que $p_1,p_2 \in C[x]^*$ são mônicos e que
 	\begin{equation*}

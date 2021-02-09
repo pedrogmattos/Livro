@@ -407,8 +407,8 @@ Seja $x \in \R^2 \setminus \{0\}$. Então
 em que $\theta \in \intfa{0}{\tau}$ é definido
 	\begin{equation*}
 	\theta :=	\begin{cases}
-				\cos\inv\left(\frac{x_0}{\nor{x}}\right),			& x_1 > 0 \ou x_0 = 1, \\
-				\tau - \cos\inv\left(\frac{x_0}{\nor{x}}\right)		& x_1 < 0 \ou x_0 = -1.
+				\cos\inv\left(\frac{x_0}{\nor{x}}\right),			& x_1 > 0 \text{\ \ ou\ \ } x_0 = 1, \\
+				\tau - \cos\inv\left(\frac{x_0}{\nor{x}}\right)		& x_1 < 0 \text{\ \ ou\ \ } x_0 = -1.
 				\end{cases}
 	\end{equation*}
 \end{proposition}
@@ -522,7 +522,7 @@ Para a sobrejetividade, primeiro notamos que, como $R(\S^1) \subseteq \SO(2)$ é
 
 Para calcular exatamente qual é a rotação que $R_u$ representa em $\SO(2)$, lembremos que, pela decomposição polar de $\R^2$, todo $u \in \S^1$ pode ser escrito como
 	\begin{equation*}
-	\ee^{\theta\ii} = \cos(\theta) + \sin(\theta)\ii,
+	\e^{\theta\ii} = \cos(\theta) + \sin(\theta)\ii,
 	\end{equation*}
 em que $\theta \in \intff{0}{\tau}$.
 
@@ -533,17 +533,17 @@ A rotação de $x \in \R^2$ por um ângulo $\theta \in \intfa{0}{\tau}$ (em torn
 
 Assim segue que, para todo $x \in \R^2$,
 	\begin{align*}
-	R_{\ee^{\theta \ii}}(x) &= (\cos(\theta) + \sin(\theta)\ii)(x_0 + x_1 \ii) \\
+	R_{\e^{\theta \ii}}(x) &= (\cos(\theta) + \sin(\theta)\ii)(x_0 + x_1 \ii) \\
 		&= (\cos(\theta)x_0 - \sin(\theta)x_1) + (\sin(\theta)x_0 + \cos(\theta)x_1) \ii \\
 		&= R^\theta(x),
 	\end{align*}
-portanto $R(\ee^{\theta \ii}) = R^{\theta}$.
+portanto $R(\e^{\theta \ii}) = R^{\theta}$.
 
 Isso mostra que
 	\begin{align*}
-	\func{R}{\S^1}{\SO(2)}{\ee^{\theta \ii}}{
+	\func{R}{\S^1}{\SO(2)}{\e^{\theta \ii}}{
 		\begin{aligned}[t]
-			\func{R^{\theta}}{\R^2}{\R^2}{x}{\ee^{\theta \ii} x}.
+			\func{R^{\theta}}{\R^2}{\R^2}{x}{\e^{\theta \ii} x}.
 		\end{aligned}
 	}
 	\end{align*}
@@ -1260,7 +1260,7 @@ Em particular, obtemos desse recobrimento duplo que
 
 Para calcular exatamente qual é a rotação que $R_u$ representa em $\SO(3)$, lembremos que, pela decomposição polar, todo $u \in \S^3$ pode ser escrito como
 	\begin{equation*}
-	u = \cos(\phi) + \sin(\phi)\hat{u} = \ee^{\phi \hat{u}},
+	u = \cos(\phi) + \sin(\phi)\hat{u} = \e^{\phi \hat{u}},
 	\end{equation*}
 com $\phi = \cos(\esc{u}) \in \intff{0}{\tau \div 2}$ e $\hat{u} = \frac{\vec{u}}{\nor{\hat{u}}} \in \vec{\S}^2$.
 
@@ -1284,7 +1284,7 @@ Como
 	\end{align*}
 segue que da fórmula de conjugação por quatérnio que
 	\begin{align*}
-	\ee^{\phi \hat{u}}x\ee^{-\phi \hat{u}} &= 2(\pesc{\vec{u}}{x})\vec{u} + \inteq{u}{u}x + 2\esc{u}(\pvec{\vec{u}}{x}) \\
+	\e^{\phi \hat{u}}x\e^{-\phi \hat{u}} &= 2(\pesc{\vec{u}}{x})\vec{u} + \inteq{u}{u}x + 2\esc{u}(\pvec{\vec{u}}{x}) \\
 		&= 2\sin(\phi)(\pesc{\hat{u}}{x})(\sin(\phi)\hat{u}) + (\cos(\phi)^2-\sin(\phi)^2)x + 2\cos(\phi)\sin(\phi)(\pvec{\hat{u}}{x}) \\
 		&= (1-\cos(2\phi))(\pesc{x}{\hat{u}})\hat{u} + \cos(2\phi)x + \sin(2\phi)(\pvec{\hat{u}}{x}) \\
 		&= (\pesc{x}{\hat{u}})\hat{u} + \cos(2\phi)(x-(\pesc{x}{\hat{u}})\hat{u}) + \sin(2\phi)(\pvec{\hat{u}}{x}) \\
@@ -1294,28 +1294,28 @@ segue que da fórmula de conjugação por quatérnio que
 
 Isso mostra que
 	\begin{align*}
-	\func{R}{\S^3}{\SO(3)}{\ee^{\phi \hat{u}}}{
+	\func{R}{\S^3}{\SO(3)}{\e^{\phi \hat{u}}}{
 		\begin{aligned}[t]
-		\func{R^{2\phi}_{\hat{u}}}{\vec{\R}^3}{\vec{\R}^3}{x}{\ee^{\phi \hat{u}}x\ee^{-\phi \hat{u}}}.
+		\func{R^{2\phi}_{\hat{u}}}{\vec{\R}^3}{\vec{\R}^3}{x}{\e^{\phi \hat{u}}x\e^{-\phi \hat{u}}}.
 		\end{aligned}
 	}
 	\end{align*}
 
-Como $\nuc(R) = \S^0$, sabemos que $R\inv(R^{\theta}_{\hat{u}}) = \{\ee^{\frac{\theta}{2}\hat{u}},-\ee^{\frac{\theta}{2}\hat{u}}\}$. Podemos achar $-\ee^{\frac{\theta}{2}\hat{u}}$ explicitamente em função de seu ângulo em $\intff{0}{\tau \div 2}$ e eixo de rotação em $\vec{\S}^2$. Como para todo $\phi \in \intff{0}{\tau \div 2}$ vale
+Como $\nuc(R) = \S^0$, sabemos que $R\inv(R^{\theta}_{\hat{u}}) = \{\e^{\frac{\theta}{2}\hat{u}},-\e^{\frac{\theta}{2}\hat{u}}\}$. Podemos achar $-\e^{\frac{\theta}{2}\hat{u}}$ explicitamente em função de seu ângulo em $\intff{0}{\tau \div 2}$ e eixo de rotação em $\vec{\S}^2$. Como para todo $\phi \in \intff{0}{\tau \div 2}$ vale
 	\begin{align*}
 	-\cos(\phi) &= \cos((\tau \div 2) - \phi) \\
 	\sin(\phi) &= \sin((\tau \div 2) - \phi),
 	\end{align*}
 segue que
 	\begin{align*}
-	-\ee^{\frac{\theta}{2}\hat{u}} &= -(\cos(\theta \div 2) + \sin(\theta \div 2) \hat{u}) \\
+	-\e^{\frac{\theta}{2}\hat{u}} &= -(\cos(\theta \div 2) + \sin(\theta \div 2) \hat{u}) \\
 		&= -\cos(\theta \div 2) - \sin(\theta \div 2) \hat{u} \\
 		&= \cos((\tau-\theta) \div 2) + \sin((\tau - \theta) \div 2)(-\hat{u}) \\
-		&= \ee^{\frac{\tau - \theta}{2}(-\hat{u})}.
+		&= \e^{\frac{\tau - \theta}{2}(-\hat{u})}.
 	\end{align*}
-Notemos que como $(\tau \div 2) - \phi \in \intff{0}{\tau \div 2}$ e $-\hat{u} \in \vec{\S}^2$, $\ee^{\frac{\tau - \theta}{2}(-\hat{u})}$ é a decomposição polar de $-\ee^{\frac{\theta}{2}\hat{u}}$. Obtemos assim
+Notemos que como $(\tau \div 2) - \phi \in \intff{0}{\tau \div 2}$ e $-\hat{u} \in \vec{\S}^2$, $\e^{\frac{\tau - \theta}{2}(-\hat{u})}$ é a decomposição polar de $-\e^{\frac{\theta}{2}\hat{u}}$. Obtemos assim
 	\begin{equation*}
-	R\inv(R^{\theta}_{\hat{u}}) = \{\ee^{\frac{\theta}{2}\hat{u}},-\ee^{\frac{\tau - \theta}{2}(-\hat{u}})\}.
+	R\inv(R^{\theta}_{\hat{u}}) = \{\e^{\frac{\theta}{2}\hat{u}},-\e^{\frac{\tau - \theta}{2}(-\hat{u}})\}.
 	\end{equation*}
 
 %Por outro lado, como
@@ -1325,14 +1325,14 @@ Notemos que como $(\tau \div 2) - \phi \in \intff{0}{\tau \div 2}$ e $-\hat{u} \
 %	\end{align*}
 %segue que
 %	\begin{align*}
-%	-\ee^{\frac{\theta}{2}\hat{u}} &= -(\cos(\theta \div 2) + \sin(\theta \div 2) \hat{u}) \\
+%	-\e^{\frac{\theta}{2}\hat{u}} &= -(\cos(\theta \div 2) + \sin(\theta \div 2) \hat{u}) \\
 %		&= -\cos(\theta \div 2) - \sin(\theta \div 2) \hat{u} \\
 %		&= \cos((\theta \div 2) + (\tau \div 2)) + \sin((\theta \div 2) + (\theta \div 2))\hat{u} \\
-%		&= \ee^{\frac{\theta + \tau}{2}\hat{u}},
+%		&= \e^{\frac{\theta + \tau}{2}\hat{u}},
 %	\end{align*}
 %portanto temos que
 %	\begin{equation*}
-%	R\inv(R^{\theta}_{\hat{u}}) = \{\ee^{\frac{\theta}{2}\hat{u}},-\ee^{\frac{\theta + \tau}{2}\hat{u}}\}.
+%	R\inv(R^{\theta}_{\hat{u}}) = \{\e^{\frac{\theta}{2}\hat{u}},-\e^{\frac{\theta + \tau}{2}\hat{u}}\}.
 %	\end{equation*}
 % MAS nesse caso $(\theta + \tau) \div 2 \in \intff{0}{\tau \div 2}$
 
@@ -1525,7 +1525,7 @@ Definindo
 	\end{equation*}
 temos $\nor{u}=1$ e
 	\begin{equation*}
-	q=\cos(\theta \div 2)+\sin(\theta \div 2)u = \ee^{(\theta \div 2)u}.
+	q=\cos(\theta \div 2)+\sin(\theta \div 2)u = \e^{(\theta \div 2)u}.
 	\end{equation*}
 
 Segue então que
@@ -1570,7 +1570,7 @@ Segue então que
 %	\end{bmatrix}
 %	\end{equation*}
 
-%Definindo $c:= \cos(\theta \div 2)$ e $s:=\sin(\theta \div 2)$ e tomando $q=\ee^{\frac{\theta}{2}u}=c+su$, temos
+%Definindo $c:= \cos(\theta \div 2)$ e $s:=\sin(\theta \div 2)$ e tomando $q=\e^{\frac{\theta}{2}u}=c+su$, temos
 %	\begin{equation*}
 %	\begin{bmatrix}
 %			1-2s^2({u_2}^2+{u_3}^2) & 2(u_1u_2s^2-u_3sc) & 2(u_1u_3s^2+u_2sc) \\ 
@@ -1711,7 +1711,7 @@ Para a sobrejetividade, primeiro notamos que, como $R(\S^3 \times \S^3) \subsete
 
 Lembremos que, pela decomposição polar, todo $u \in \S^3$ pode ser escrito como
 	\begin{equation*}
-	u = \cos(\phi) + \sin(\phi)\hat{u} = \ee^{\phi \hat{u}},
+	u = \cos(\phi) + \sin(\phi)\hat{u} = \e^{\phi \hat{u}},
 	\end{equation*}
 com $\phi = \cos(\esc{u}) \in \intff{0}{\tau \div 2}$ e $\hat{u} = \frac{\vec{u}}{\nor{\hat{u}}} \in \vec{\S}^2$.
 
@@ -1723,7 +1723,7 @@ Definimos a função
 	\begin{align*}
 	\func{R}{\S^3 \times \S^3}{\SO(3)}{(u,u')}{
 		\begin{aligned}[t]
-		\func{R^{2\phi}_{\hat{u}}}{\vec{\R}^3}{\vec{\R}^3}{x}{\ee^{\phi \hat{u}}x\ee^{-\phi \hat{u}}}
+		\func{R^{2\phi}_{\hat{u}}}{\vec{\R}^3}{\vec{\R}^3}{x}{\e^{\phi \hat{u}}x\e^{-\phi \hat{u}}}
 		\end{aligned}
 	}
 	\end{align*}

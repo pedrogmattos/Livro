@@ -265,7 +265,7 @@ Então o conjunto $\complement(\topo) := \set{C \subseteq X}{C = \mathcal F(C)}$
 	\begin{enumerate}
 	\item O fecho é a união disjunta de interior e fronteira.
 	\begin{equation*}
-	\Fec{C} = \Int{C} \cup \fro{C} \e \Int{C} \cap \fro{C} = \emptyset
+	\Fec{C} = \Int{C} \cup \fro{C} \text{\ \ e\ \ } \Int{C} \cap \fro{C} = \emptyset
 	\end{equation*}
 	\item A fronteira é a interseção dos fechos do conjunto e de seu complementar.
 	\begin{equation*}
@@ -393,7 +393,7 @@ Sejam $\bm{X_0}$, $\bm{X_1}$ e $\bm{X_2}$ espaços topológicos.
 		\begin{enumerate}
 		\item (Reflexividade) $\bm{X_0} \simeq \bm{X_0}$;
 		\item (Antissimetria) $\bm{X_0} \simeq \bm{X_1} \Rightarrow \bm{X_1} \simeq \bm{X_0}$;
-		\item (Transitividade) $\bm{X_0} \simeq \bm{X_1} \e \bm{X_1} \simeq \bm{X_2} \Rightarrow \bm{X_0} \simeq \bm{X_2}$.
+		\item (Transitividade) $\bm{X_0} \simeq \bm{X_1} \text{\ \ e\ \ } \bm{X_1} \simeq \bm{X_2} \Rightarrow \bm{X_0} \simeq \bm{X_2}$.
 		\end{enumerate}
 \end{exercise}
 
@@ -892,11 +892,11 @@ Sejam $\bm X$ um espaço topológico e $A,B \subseteq X$. Definimos as seguintes
 	\end{equation*}
 	\item (\emph{Separação por função contínua}) Existe uma função contínua $f \in \Cont(X,[0,1])$ tal que
 	\begin{equation*}
-	f(A)=\{0\} \e f(B)=\{1\}.
+	f(A)=\{0\} \text{\ \ e\ \ } f(B)=\{1\}.
 	\end{equation*}
 	\item (\emph{Separação precisa por função contínua}) Existe uma função contínua $f \in \Cont(X,[0,1])$ tal que
 	\begin{equation*}
-	f\inv(\{0\})=A \e f\inv(\{1\})=B.
+	f\inv(\{0\})=A \text{\ \ e\ \ } f\inv(\{1\})=B.
 	\end{equation*}
 	\end{enumerate}
 Cada uma das relações vale entre pontos $x,y \in X$, ou entre um conjunto $A$ e um ponto $x$, ao considerarmos no lugar no ponto o conjunto unitário que o contém: valem entre os conjuntos $\{x\}$ e $\{y\}$, ou entre $A$ e $\{x\}$, respectivamente.
@@ -947,8 +947,8 @@ Um espaço topológico \emph{distinguível} é um espaço topológico $\bm X$ em
 Seja $\bm X$ um espaço topológico. São equivalentes as seguintes propriedades:
 	\begin{enumerate}
 	\item $\bm X$ é distinguível.
-	\item $\forall x,y \in X \quad x \neq y \quad \Rightarrow \quad \viz_x \nsubseteq \viz_y \ou \viz_y \nsubseteq \viz_x$.
-	\item $\forall x,y \in X \quad x \neq y \quad \Rightarrow \quad x \notin \Fec{\{y\}} \ou y \notin \Fec{\{x\}}$.
+	\item $\forall x,y \in X \quad x \neq y \quad \Rightarrow \quad \viz_x \nsubseteq \viz_y \text{\ \ ou\ \ } \viz_y \nsubseteq \viz_x$.
+	\item $\forall x,y \in X \quad x \neq y \quad \Rightarrow \quad x \notin \Fec{\{y\}} \text{\ \ ou\ \ } y \notin \Fec{\{x\}}$.
 	\item $\forall x,y \in X \quad x \neq y \quad \Rightarrow \quad \Fec{\{x\}} \neq \Fec{\{y\}}$.	
 \end{enumerate}
 \end{proposition}
@@ -966,7 +966,7 @@ Seja $(X_i)_{i \in I}$ uma família não vazia de espaços topológicos não vaz
 \begin{definition}[$T_1$]
 Um espaço topológico \emph{acessível} é um espaço topológico $\bm X$ em que
 	\begin{equation*}
-	\forall x,y \in X \quad x \neq y \quad \Rightarrow \quad \viz_x \nsubseteq \viz_y \e \viz_y \nsubseteq \viz_x.
+	\forall x,y \in X \quad x \neq y \quad \Rightarrow \quad \viz_x \nsubseteq \viz_y \text{\ \ e\ \ } \viz_y \nsubseteq \viz_x.
 	\end{equation*}
 \end{definition}
 
@@ -974,7 +974,7 @@ Um espaço topológico \emph{acessível} é um espaço topológico $\bm X$ em qu
 Seja $\bm X$ um espaço topológico. Se $\bm X$ é acessível, então $\bm X$ é distinguível.
 \end{proposition}
 \begin{proof}
-Se $\bm X$ é acessível, então, para todos $x,y \in X$ tais que $x \neq y$, temos que $\viz_x \nsubseteq \viz_y \e \viz_y \nsubseteq \viz_x$. Mas isso implica que $\viz_x \nsubseteq \viz_y \ou \viz_y \nsubseteq \viz_x$, o que é equivalente a $\viz_x \neq \viz_y$. Logo $\bm X$ é distinguível.
+Se $\bm X$ é acessível, então, para todos $x,y \in X$ tais que $x \neq y$, temos que $\viz_x \nsubseteq \viz_y \text{\ \ e\ \ } \viz_y \nsubseteq \viz_x$. Mas isso implica que $\viz_x \nsubseteq \viz_y \text{\ \ ou\ \ } \viz_y \nsubseteq \viz_x$, o que é equivalente a $\viz_x \neq \viz_y$. Logo $\bm X$ é distinguível.
 \end{proof}
 
 \begin{proposition}
@@ -983,9 +983,9 @@ Seja $\bm X$ um espaço topológico. São equivalentes as seguintes propriedades
 	\item $\bm X$ é acessível.
 	\item Todo par de pontos distintos é separado:
 		\begin{equation*}
-		\forall x,y \in X \quad x \neq y \quad \Rightarrow \quad x \notin \Fec{\{y\}} \e y \notin \Fec{\{x\}}.
+		\forall x,y \in X \quad x \neq y \quad \Rightarrow \quad x \notin \Fec{\{y\}} \text{\ \ e\ \ } y \notin \Fec{\{x\}}.
 		\end{equation*}
-	\item $\forall x,y \in X \quad x \neq y \quad \Rightarrow \quad \exists U \in \viz_x,\ V \in \viz_y \qquad y \notin U \e x \notin V$.
+	\item $\forall x,y \in X \quad x \neq y \quad \Rightarrow \quad \exists U \in \viz_x,\ V \in \viz_y \qquad y \notin U \text{\ \ e\ \ } x \notin V$.
 	\item $\forall x \in X \quad \Fec{\{x\}}=\{x\}$.
 	\end{enumerate}
 \end{proposition}
@@ -1081,7 +1081,7 @@ Um espaço topológico \emph{completamente regular} é um espaço topológico
 em que é possível separar por função contínua qualquer ponto de qualquer conjunto fechado que não o contém.
 %: para todo $x \in X$ e para todo conjunto fechado $F \subseteq X$,
 %	\begin{equation*}
-%	\{x\} \cap F=\emptyset \quad \Rightarrow \quad \exists f \in \mathcal{C}(X,[0,1]) \quad f(x)=\{0\} \e f(F)=\{1\}.
+%	\{x\} \cap F=\emptyset \quad \Rightarrow \quad \exists f \in \mathcal{C}(X,[0,1]) \quad f(x)=\{0\} \text{\ \ e\ \ } f(F)=\{1\}.
 %	\end{equation*}
 \end{definition}
 
@@ -1137,7 +1137,7 @@ Seja $\bm X$ um espaço topológico. São equivalentes as seguintes propriedades
 Um espaço topológico $\bm X$ é normal se, e somente se, todo par de conjuntos fechados disjuntos é separado por função contínua.
 % : para todos conjuntos fechados $F,G \subseteq X$,
 %	\begin{equation*}
-%	F \cap G = \emptyset \quad \Rightarrow \quad \exists f \in \mathcal{C}(X,[0,1]) \quad f(F)=\{0\} \e f(G)=\{1\}.
+%	F \cap G = \emptyset \quad \Rightarrow \quad \exists f \in \mathcal{C}(X,[0,1]) \quad f(F)=\{0\} \text{\ \ e\ \ } f(G)=\{1\}.
 %	\end{equation*}
 \end{proposition}
 \begin{proof}
@@ -1628,7 +1628,7 @@ Sabemos que $H$ é uma homotopia entre $l_1$ e $l_1$. Basta notar que, para todo
 	\end{align*}		
 Sabemos que $H$ é uma homotopia entre $l_2$ e $l_1$. Basta notar que, para todo $t \in \intff{0}{1}$, $H'(0,t)=H(0,1-t)=l(0)=H(1,1-t)=H'(1,t)$, o que termina a demonstração de que $H'$ é uma homotopia de laços entre $l_2$ e $l_1$.
 
-	\item Transitividade: $l_1 \approx l_2 \e l_2 \approx l_3 \Rightarrow l_1 \approx l_3$. \\
+	\item Transitividade: $l_1 \approx l_2 \text{\ \ e\ \ } l_2 \approx l_3 \Rightarrow l_1 \approx l_3$. \\
 	Sejam $H_1: S^1 \times \intff{0}{1} \to X$ uma homotopia entre $l_1$ e $l_2$ e $H_2: S^1 \times \intff{0}{1} \to X$ uma homotopia entre $l_2$ e $l_3$. Então consideremos a função
 	\begin{align*}
 	H: S^1 \times \intff{0}{1} &\to X \\

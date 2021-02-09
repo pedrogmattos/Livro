@@ -2319,20 +2319,20 @@ Consideremos uma álgebra normada unitária completa $\mathbb A$. Para todo $x \
 	\end{equation*}
 Como a álgebra é completa, isso significa que $e_n(x)$ converge para um elemento
 	\begin{equation*}
-	\ee^{x} := \lim_{n \to \infty} e_n(x) = \sum_{n \in \N} \frac{x^n}{n!}.
+	\e^{x} := \lim_{n \to \infty} e_n(x) = \sum_{n \in \N} \frac{x^n}{n!}.
 	\end{equation*}
 
 \begin{definition}
 Seja $\mathbb A$ uma álgebra unitária normada completa. A \emph{função exponencial} em $\mathbb A$ é a função
 	\begin{align*}
-	\func{\exp}{A}{A}{x}{\ee^{x} := \sum_{n \in \N} \frac{x^n}{n!}.}
+	\func{\exp}{A}{A}{x}{\e^{x} := \sum_{n \in \N} \frac{x^n}{n!}.}
 	\end{align*}
 \end{definition}
 
 \begin{proposition}
 Seja $\mathbb A$ uma álgebra unitária normada completa.
 	\begin{enumerate}
-	\item Para todo $x \in A$, $\nor{\exp(x)} \leq \ee^{\nor{x}}$;
+	\item Para todo $x \in A$, $\nor{\exp(x)} \leq \e^{\nor{x}}$;
 	\item A função exponencial $\exp\colon A \to A$ é contínua;
 	\item $\exp(0) = 1$;
 	\item Para todos $x,y \in A$ tais que $xy=yx$,
@@ -2349,7 +2349,7 @@ Seja $\mathbb A$ uma álgebra unitária normada completa.
 		\begin{equation*}
 		\nor{e_n(x)} = \nor{\sum_{i=0}^{n} \frac{x^i}{i!}} \leq \sum_{i=0}^{n} \frac{\nor{x}^i}{i!} = e_n(\nor{x}),
 		\end{equation*}
-logo $\nor{\exp(x)} \leq \ee^{\nor{x}}$.
+logo $\nor{\exp(x)} \leq \e^{\nor{x}}$.
 	
 	\item Primeiro notamos que, para todos $x,y \in A$,
 		\begin{align*}
@@ -2361,7 +2361,7 @@ portanto
 	\nor{\exp(y) - \exp(x)} &= \nor{\sum_{n=1}^\infty \frac{y^n-x^n}{n!}} \\
 		&\leq \sum_{n=1}^\infty \frac{\nor{y^n-x^n}}{n!} \\
 		&\leq \sum_{n=1}^\infty \frac{n\max(\nor{x},\nor{y})^{n-1}}{n!} \nor{y-x} \\
-		&= \ee^{\max(\nor{x},\nor{y})}\nor{y-x},
+		&= \e^{\max(\nor{x},\nor{y})}\nor{y-x},
 	\end{align*}
 o que mostra que $\exp$ é contínua.
 	
@@ -2391,7 +2391,7 @@ o que implica que
 	\end{align*}
 Assim segue que
 	\begin{equation*}
-	\nor{\exp(x+y) - \exp(x)\exp(y)} \leq \ee^{\nor{x}\nor{y}}-\ee^{\nor{x}}\ee^{\nor{y}} = 0.
+	\nor{\exp(x+y) - \exp(x)\exp(y)} \leq \e^{\nor{x}\nor{y}}-\e^{\nor{x}}\e^{\nor{y}} = 0.
 	\end{equation*}
 	
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2424,16 +2424,16 @@ Portanto
 
 Seja $x = x_0 + x_1 \ii \in \R^2$. Como $\R^2$ é comutativo,
 	\begin{equation*}
-	\ee^{x} = \ee^{x_0 + x_1 \ii} = \ee^{x_0}\ee^{x_1 \ii}.
+	\e^{x} = \e^{x_0 + x_1 \ii} = \e^{x_0}\e^{x_1 \ii}.
 	\end{equation*}
-Devemos calcular, portanto, somente a exponencial $\ee^{x_1 \ii}$. Como $\ii^2 = -1$, segue que, para todo $n \in \N$,
+Devemos calcular, portanto, somente a exponencial $\e^{x_1 \ii}$. Como $\ii^2 = -1$, segue que, para todo $n \in \N$,
 	\begin{align*}
 	(x_1 \ii)^{2n} &= (x_1)^{2n}(\ii)^{2n} = (-1)^n (x_1)^{2n} \\
 	(x_1 \ii)^{2n+1} &= (x_1)^{2n+1}(\ii)^{2n+1} = (-1)^n (x_1)^{2n+1}\ii,
 	\end{align*}
 o que implica que
 	\begin{align*}
-	\ee^{x_1 \ii} &= \sum_{n \in \N} \frac{(x_1 \ii)^n}{n!} \\
+	\e^{x_1 \ii} &= \sum_{n \in \N} \frac{(x_1 \ii)^n}{n!} \\
 		&= \sum_{n \in \N} \frac{(x_1 \ii)^{2n}}{(2n)!} + \sum_{n \in \N} \frac{(x_1 \ii)^{2n+1}}{(2n+1)!} \\
 		&= \sum_{n \in \N} (-1)^n \frac{(x_1)^{2n}}{(2n)!} + \sum_{n \in \N} (-1)^n \frac{(x_1)^{2n+1}}{(2n+1)!}\ii \\
 		&= \cos(x_1) + \sin(x_1)\ii.
@@ -2441,7 +2441,7 @@ o que implica que
 
 Concluímos que
 	\begin{equation*}
-	\ee^{x} = \ee^{x_0}\ee^{x_1 \ii} = \ee^{x_0}(\cos(x_1) + \sin(x_1)\ii).
+	\e^{x} = \e^{x_0}\e^{x_1 \ii} = \e^{x_0}(\cos(x_1) + \sin(x_1)\ii).
 	\end{equation*}
 
 \paragraph{Logaritmo} Pela decomposição polar, para todo $x \in \R^2 \setminus \{0\}$,
@@ -2455,31 +2455,31 @@ Assim, definimos
 Concluímos que
 	\begin{align*}
 	x &= \nor{x}(\cos(\theta)+\sin(\theta) \ii) \\
-		&= \ee^{\log(\nor{x})}\ee^{\theta \ii} \\
-		&= \ee^{\log(\nor{x}) + \theta \ii} \\
-		&= \ee^{\log(x)}.
+		&= \e^{\log(\nor{x})}\e^{\theta \ii} \\
+		&= \e^{\log(\nor{x}) + \theta \ii} \\
+		&= \e^{\log(x)}.
 	\end{align*}
 
 No entanto, é importante notar que, para todo $n \in \N$,
 	\begin{equation*}
-	\ee^{(\theta+n\tau) \ii} = \cos(\theta+n\tau)+\sin(\theta+n\tau) \ii = \cos(\theta)+\sin(\theta) \ii = \ee^{\theta \ii}
+	\e^{(\theta+n\tau) \ii} = \cos(\theta+n\tau)+\sin(\theta+n\tau) \ii = \cos(\theta)+\sin(\theta) \ii = \e^{\theta \ii}
 	\end{equation*}
 
 \subsubsection{Exponencial dos quatérnios $\R^4$}
 
 Seja $x = \esc{x} + \vec{x} \in \R^4$, em que $\esc{x} = x_0$ e $\vec{x} = x_1 \ii + x_2 \jj + x_3 \kk$. Como $\esc{x}\vec{x} = \vec{x}\esc{x}$, segue que
 	\begin{equation*}
-	\ee^{x} = \ee^{\esc{x}+\vec{x}} = \ee^{\esc{x}}\ee^{\vec{x}}.
+	\e^{x} = \e^{\esc{x}+\vec{x}} = \e^{\esc{x}}\e^{\vec{x}}.
 	\end{equation*}
 
-Devemos calcular, portanto, somente a exponencial $\ee^{\vec{x}}$. Lembremos que $\hat{x} = \frac{\vec{x}}{\nor{\vec{x}}}$ e que $\hat{x} \in \vec{\S}^2$, portanto $\hat{x}^2 = -1$. Segue que, para todo $n \in \N$,
+Devemos calcular, portanto, somente a exponencial $\e^{\vec{x}}$. Lembremos que $\hat{x} = \frac{\vec{x}}{\nor{\vec{x}}}$ e que $\hat{x} \in \vec{\S}^2$, portanto $\hat{x}^2 = -1$. Segue que, para todo $n \in \N$,
 	\begin{align*}
 	(\vec{x})^{2n} &= (\nor{\vec{x}} \hat{x})^{2n} = (-1)^n \nor{\vec{x}}^{2n} \\
 	(\vec{x})^{2n+1} &= (\nor{\vec{x}} \hat{x})^{2n+1} = (-1)^n \nor{\vec{x}}^{2n+1}\hat{x},
 	\end{align*}
 o que implica que
 	\begin{align*}
-	\ee^{\vec{x}} &= \sum_{n \in \N} \frac{(\vec{x})^n}{n!} \\
+	\e^{\vec{x}} &= \sum_{n \in \N} \frac{(\vec{x})^n}{n!} \\
 		&= \sum_{n \in \N} \frac{(\vec{x})^{2n}}{(2n)!} + \sum_{n \in \N} \frac{(\vec{x})^{2n+1}}{(2n+1)!} \\
 		&= \sum_{n \in \N} (-1)^n \frac{\nor{\vec{x}}^{2n}}{(2n)!} + \sum_{n \in \N} (-1)^n \frac{\nor{\vec{x}}^{2n+1}}{(2n+1)!}\hat{x} \\
 		&= \cos(\nor{\vec{x}}) + \sin(\nor{\vec{x}}) \hat{x}.
@@ -2487,7 +2487,7 @@ o que implica que
 
 Concluímos que
 	\begin{equation*}
-		\ee^{x} = \ee^{\esc{x}}\ee^{\vec{x}} = \ee^{\esc{x}}\left( \cos(\nor{\vec{x}}) + \sin(\nor{\vec{x}}) \hat{x} \right).
+		\e^{x} = \e^{\esc{x}}\e^{\vec{x}} = \e^{\esc{x}}\left( \cos(\nor{\vec{x}}) + \sin(\nor{\vec{x}}) \hat{x} \right).
 	\end{equation*}
 
 \paragraph{Logaritmo}
@@ -2507,7 +2507,7 @@ Denotando $y := \log(x)$, vale $\esc{y} = \log(\nor{x})$ e $\vec{y}=\phi_0 \hat{
 Concluímos que
 	\begin{align*}
 	x &= \nor{x}(\cos(\phi_0 + \sin(\phi_0)\hat{x})) \\
-		&= \ee^{\log(\nor{x})}\ee^{\phi_0 \hat{x}} \\
-		&= \ee^{\log(\nor{x}) + \phi_0 \hat{x}} \\
-		&= \ee^{\log(x)}.
+		&= \e^{\log(\nor{x})}\e^{\phi_0 \hat{x}} \\
+		&= \e^{\log(\nor{x}) + \phi_0 \hat{x}} \\
+		&= \e^{\log(x)}.
 	\end{align*}

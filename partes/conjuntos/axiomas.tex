@@ -4,7 +4,7 @@
 
 Alguns conceitos da lógica formal serão brevemente introduzidos nesta seção para que a abordagem nas próximas seções façam sentido. Comentaremos sobre lógicas de ordem $0$ e de ordem $1$, tradicionalmente chamadas de lógica proposicional e lógica de predicados.
 
-As teorias da lógica formal costumam ter axiomas, sentenças assumidas válidas a partir das quais devem-se inferir todas as outras sentenças da teoria. Ao longo do livro, os axiomas, as definições e as proposições serão enunciados, não como sentenças simbólicas, mas como sentenças em português, como se faz tradicionalmente na matemática. Isso facilita o entendimento e a naturalidade das sentenças. No entanto, ao longo das seções que seguem essas sentenças serão enunciadas também formalmente, para estimular o pensamento e a manipulação formais.
+As teorias da lógica formal costumam ter axiomas --- sentenças assumidas válidas a partir das quais devem-se inferir todas as outras sentenças da teoria. Ao longo do livro, os axiomas, as definições e as proposições serão enunciados, não como sentenças simbólicas, mas como sentenças em português, como se faz tradicionalmente na matemática. Isso facilita o entendimento e a naturalidade das sentenças. No entanto, ao longo das seções que seguem essas sentenças serão enunciadas também formalmente, para estimular o pensamento e a manipulação formais.
 
 Alguns símbolos lógicos frequentemente facilitam e deixam mais claros os enunciados de sentenças na matemática. O símbolo
 	\begin{equation*}
@@ -29,7 +29,7 @@ para significar a implicação material em cada sentido e a equivalência lógic
 	\end{equation*}
 e as versões informais matemáticas
 	\begin{equation*}
-	\e \qquad \ou
+	\text{\ \ e\ \ } \qquad \text{\ \ ou\ \ }.
 	\end{equation*}
 Esse conectivos indicam, informalmente, que sentenças são ambas verdadeiras, no caso de `e', ou ao menos uma das duas é, no caso de `ou'. Os parênteses, que são comumente usados na lógica formal, serão substituídos por espaços, de modo que não haja ambiguidade. Mais detalhes sobre lógica formal e o uso dos símbolos lógicos serão suprimidos. Para aprofundamento em lógica e sistemas dedutivos, um livro indicado é \citetitle{liv:Tarski-IntroductionLogic}, de \citeauthor{liv:Tarski-IntroductionLogic}.
 
@@ -926,14 +926,14 @@ Sejam $X$ e $Y$ conjuntos. O \emph{par ordenado} com \emph{primeira coordenada} 
 \begin{proposition}
 Sejam $X,Y,Z$ e $W$ conjuntos. Então
 	\begin{equation*}
-	(X,Y) = (Z,W) \sse X=Z \e Y=W.
+	(X,Y) = (Z,W) \sse X=Z \text{\ \ e\ \ } Y=W.
 	\end{equation*}
 \end{proposition}
 
 \begin{definition}
 Sejam $X$ e $Y$ conjuntos. O \emph{produto} de $X$ por $Y$ é o conjunto
 	\begin{equation*}
-	X \times Y := \set{(x,y) \in \p\left(\p\left(X \cup Y\right)\right)}{x \in X \e y \in Y}.
+	X \times Y := \set{(x,y) \in \p\left(\p\left(X \cup Y\right)\right)}{x \in X \text{\ \ e\ \ } y \in Y}.
 	\end{equation*}
 \end{definition}
 
@@ -1062,14 +1062,14 @@ Os axiomas da especificação e do par são consequência do axioma da substitui
 Sejam $X$, $Y$ e $Z$ conjuntos. Então
 	\begin{enumerate}
 	\item $X \subseteq X$;
-	\item $X \subseteq Y \e Y \subseteq X \sse X=Y$;
-	\item $X \subseteq Y \e Y \subseteq Z \entao X \subseteq Z$.
+	\item $X \subseteq Y \text{\ \ e\ \ } Y \subseteq X \sse X=Y$;
+	\item $X \subseteq Y \text{\ \ e\ \ } Y \subseteq Z \entao X \subseteq Z$.
 	\end{enumerate}
 \end{proposition}
 \begin{proof}
 	\begin{enumerate}
 	\item Se $X=\emptyset$, então $\emptyset \subseteq X = \emptyset$. Logo $X \subseteq X$. Caso contrário, seja $x \in X$. Então $x \in X$. Logo $X \subseteq X$.
-	\item $X \subseteq Y$ e $Y \subseteq X$ se, e somente se, $\forall x \in X \ x \in Y \e \forall y \in Y \ y \in X$, o que é equivalente a $X=Y$ pelo axioma da extensão.
+	\item $X \subseteq Y$ e $Y \subseteq X$ se, e somente se, $\forall x \in X \ x \in Y$ e $\forall y \in Y \ y \in X$, o que é equivalente a $X=Y$ pelo axioma da extensão.
 	\item Se $X=\emptyset$, então $X \subseteq Z$. Caso contrário, seja $x \in X$. Então, como $X \subseteq Y$, $x \in Y$ e, como $Y \subseteq Z$, $x \in Z$. Logo $X \subseteq Z$.
 	\end{enumerate}
 \end{proof}
