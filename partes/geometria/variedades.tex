@@ -1819,7 +1819,7 @@ Como a função é avaliada em um espaço vetorial, o ponto $p$ e o vetor de des
 Denotamos o fluxo local do campo vetorial $v$ no tempo $t$ por $\flux^{tv}$.
 
 \begin{definition}
-Sejam $\bm V$ uma variedade diferencial, $v \in \tens^1(\bm V)$ um campo vetorial e $f \in \tens^(\bm V)$ um campo escalar. A \emph{derivada por fluxo} de $f$ ao longo de $v$ (ou na direção de $v$) é
+Sejam $\bm V$ uma variedade diferencial, $v \in \tens^1(\bm V)$ um campo vetorial e $f \in \tens^0(\bm V)$ um campo escalar. A \emph{derivada por fluxo} de $f$ ao longo de $v$ (ou na direção de $v$) é
 	\begin{equation*}
 	\Dir_v f(p) := \frac{f(\flux^{tv}(p))-f(p)}{t}.
 	\end{equation*}
@@ -1857,7 +1857,7 @@ tal que
 		\begin{align*}
 		\Dir_v (T(v_0,\ldots,v_{k-1},\nu_0,\ldots,\nu_{l-1})) &= (\Dir_v T)(v_0,\ldots,v_{k-1},\nu_0,\ldots,\nu_{l-1}) \\
 			&+ \sum_{i \in [k]} T(v_0,\ldots,(\Dir_v v_i),\ldots,v_{k-1},\nu_0,\ldots,\nu_{l-1}) \\
-			&+ \sum_{i \in [l]} T(v_0,\ldots,v_{k-1},\nu_0,\ldots,(\Dir_v \ni_i),\ldots,\nu_{l-1}).
+			&+ \sum_{i \in [l]} T(v_0,\ldots,v_{k-1},\nu_0,\ldots,(\Dir_v \nu_i),\ldots,\nu_{l-1}).
 		\end{align*}
 	\item (Derivada exterior) $\col{\Dir_v}{\dd}=0$.
 	\end{enumerate}
