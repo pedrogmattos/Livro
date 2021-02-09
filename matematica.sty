@@ -73,6 +73,7 @@
 \RequirePackage{mathrsfs} % Letras cursivas na matemática
 \RequirePackage{bm,bbm} % Negrito de qualquer símbolo
 \RequirePackage{eucal} % Muda o \mathcal de Computer Modern pra Euler
+\RequirePackage{accents} % Acentos matemáticos. Uso para \Iso, \Mono, \Epi.
 
 \RequirePackage{graphicx}
 \RequirePackage{relsize,scalerel} % Mudança de tamanho e definição de operador
@@ -219,9 +220,12 @@
 	\newcommand{\newtwoheadrightarrow}{\mathrel{\mathpalette\superimpose{{\mkern2.5mu\rightarrow}{\rightarrow\mkern2.5mu}}}}
 	\renewcommand{\twoheadrightarrow}{\newtwoheadrightarrow}
 
-	\newcommand{\Mono}[1]{\overset{\hookrightarrow}{#1}}
-	\newcommand{\Epi}[1]{\overset{\twoheadrightarrow}{#1}}
-	\newcommand{\Iso}[1]{\overset{\leftrightarrow}{#1}}
+%	\newcommand{\Mono}[1]{\overset{\hookrightarrow}{#1}}
+%	\newcommand{\Epi}[1]{\overset{\twoheadrightarrow}{#1}}
+%	\newcommand{\Iso}[1]{\overset{\leftrightarrow}{#1}}
+	\newcommand{\Mono}[1]{\accentset{\hookrightarrow}{#1}}
+	\newcommand{\Epi}[1]{\accentset{\twoheadrightarrow}{#1}}
+	\newcommand{\Iso}[1]{\accentset{\leftrightarrow}{#1}}
 
 	% Projeção e inclusão
 	\newcommand{\inclu}{\iota}
