@@ -31,12 +31,12 @@ e as versões informais matemáticas
 	\begin{equation*}
 	\e \qquad \ou
 	\end{equation*}
-Esse conectivos indicam, informalmente, que sentenças são ambas verdadeiras, no caso de `e', ou ao menos uma das duas é, no caso de `ou'. Os parênteses, que são comumente usados na lógica formal, serão substituídos por espaços, de modo que não haja ambiguidade. Mais detalhes sobre lógica formal e o uso dos símbolos lógicos serão suprimidos. Para aprofundamento em lógica e sistemas dedutivos, um livro indicado é \emph{Introduction to Logic}, de Alfred Tarski.
+Esse conectivos indicam, informalmente, que sentenças são ambas verdadeiras, no caso de `e', ou ao menos uma das duas é, no caso de `ou'. Os parênteses, que são comumente usados na lógica formal, serão substituídos por espaços, de modo que não haja ambiguidade. Mais detalhes sobre lógica formal e o uso dos símbolos lógicos serão suprimidos. Para aprofundamento em lógica e sistemas dedutivos, um livro indicado é \citetitle{liv:Tarski-IntroductionLogic}, de \citeauthor{liv:Tarski-IntroductionLogic}.
 
 
 \subsection{Lógica de ordem 0}
 
-Na lógica de ordem $0$, existem contáveis \emph{proposições simples} (ou \emph{variáveis proposicionais}). Elas são representadas por símbolos especificados e no que segue serão representadas pela letra $P$ ou por $P$ seguida de uma quantidade finita de $'$ (apóstrofes), como $P'$ ou $P''''$.
+Na lógica de ordem $0$, existem contáveis \emph{proposições simples} (ou \emph{variáveis proposicionais}). Elas são representadas por símbolos especificados e no que segue serão representadas pela letra $P$ ou por $P$ seguida de uma quantidade finita de apóstrofes `$'$', como $P'$ ou $P''''$.
 
 Além disso, existem os \emph{operadores lógicos}, que são os símbolos
 	\begin{equation*}
@@ -325,11 +325,11 @@ Uma \emph{sentença} (ou \emph{fórmula fechada}) é uma fórmula sem variáveis
 
 Por simplicidade, os parênteses de fórmulas moleculares e gerais podem ser omitidos sempre que possível. Fórmulas gerais da forma $\forall v F$ podem ser abreviadas por
 	\begin{equation*}
-	\bigforall_v F
+	\forall_v F
 	\end{equation*}
 e fórmulas gerais da forma $\exists v F$ podem ser abreviadas por
 	\begin{equation*}
-	\bigexists_v F.
+	\exists_v F.
 	\end{equation*}
 
 Ainda, para fórmulas $F$ e $F'$ e variável $v$ livre em alguma das fórmulas, proposições categóricas do tipo
@@ -338,7 +338,7 @@ Ainda, para fórmulas $F$ e $F'$ e variável $v$ livre em alguma das fórmulas, 
 	\end{equation*}
 podem ser abreviadas por
 	\begin{equation*}
-	\bigforall_{v | F} F'
+	\forall_{v | F} F'
 	\end{equation*}
 e proposições categóricas do tipo
 	\begin{equation*}
@@ -346,7 +346,7 @@ e proposições categóricas do tipo
 	\end{equation*}
 podem ser abreviadas por
 	\begin{equation*}
-	\bigexists_{v | F} F'.
+	\exists_{v | F} F'.
 	\end{equation*}
 
 Esse é o modo em que pensamos nessas afirmações na linguagem natural e em matemática.
@@ -495,6 +495,17 @@ A lógica formal estuda sentenças formadas a partir de símbolos pré-determina
 Para afirmar que um conjunto $C$ não é elemento de um conjunto $C'$, ou seja, negar $C \in C'$, o símbolo usado é $\notin$ e se denota $C \notin C'$.
 
 Isso quer dizer que a teoria de conjuntos é uma teoria da lógica de ordem $1$ com igualdade $=$ e um predicado $2$-ário $\in$.
+
+\subsubsection{Abreviações}
+
+Comentamos anteriormente que, para fórmulas $F$ e $F'$ e variável $v$ livre em alguma das fórmulas, proposições categóricas do tipo $\forall v(F \limplica F')$ podem ser abreviadas por $\forall_{v | F} F'$ e proposições categóricas do tipo $\exists v(F \lee F')$ podem ser abreviadas por $\exists_{v | F} F'$. No caso em que $F$ é da forma $v \in C$, as fórmulas podem ser ainda mais abreviadas respectivamente por
+	\begin{equation*}
+	\forall_{v \in C} F'
+	\end{equation*}
+e
+	\begin{equation*}
+	\exists_{v \in C} F'.
+	\end{equation*}
 
 \section{Axiomas do vazio e da extensão}
 
