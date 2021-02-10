@@ -199,7 +199,7 @@ que satisfaz
 	\end{enumerate}
 \end{theorem}
 \begin{proof}
-	Primeiro devemos mostrar que a função $\times$ está bem definida. Para isso, devemos mostrar que, para todo $n_1,n_2 \in N$, existe único $n_3 \in N$ tal que $n_1 \times n_2=n_3$. Consideremos $I := \{n \in N : \exists! n_3 \in N \quad n_1 \times n = n_3\}$. Primeiro, notemos que $0 \in I$, pois $n_1 \times 0 = 0$ e, portanto, $n_3$ esxite e é único. Agora, seja $n \in I$. Então existe único $n_3 \in N$ tal que $n_1 \times n = n_3$ e, como $+$ é função, $n_3 + n_1=n_1 \times n + n$ é único e tomando $n_1 \times \suce(n)=n_1 \times n + n_1$, concluímos que $\suce(n) \in I$ e, portanto, $I=N$. Logo $\times$ está bem definida. Agora, devemos mostrar que $\times$ é única. Sejam $\times_1,\times_2: N \times N \to N$ funções satisfazendo $(M_1),(M_2)$, $n_1 \in N$ e $I := \{n \in N : n_1 \times_1 n = n_1 \times_2 n\}$. Primeiro, notemos que $0 \in I$, pois $n_1 \times_1 0 = 0 = n_1 \times_2 0$. Agora, seja $n \in I$. Então
+	Primeiro devemos mostrar que a função $\times$ está bem definida. Para isso, devemos mostrar que, para todo $n_1,n_2 \in N$, existe único $n_3 \in N$ tal que $n_1 \times n_2=n_3$. Consideremos $I := \{n \in N : \exists! n_3 \in N \quad n_1 \times n = n_3\}$. Primeiro, notemos que $0 \in I$, pois $n_1 \times 0 = 0$ e, portanto, $n_3$ existe e é único. Agora, seja $n \in I$. Então existe único $n_3 \in N$ tal que $n_1 \times n = n_3$ e, como $+$ é função, $n_3 + n_1=n_1 \times n + n$ é único e tomando $n_1 \times \suce(n)=n_1 \times n + n_1$, concluímos que $\suce(n) \in I$ e, portanto, $I=N$. Logo $\times$ está bem definida. Agora, devemos mostrar que $\times$ é única. Sejam $\times_1,\times_2: N \times N \to N$ funções satisfazendo $(M_1),(M_2)$, $n_1 \in N$ e $I := \{n \in N : n_1 \times_1 n = n_1 \times_2 n\}$. Primeiro, notemos que $0 \in I$, pois $n_1 \times_1 0 = 0 = n_1 \times_2 0$. Agora, seja $n \in I$. Então
 	\begin{equation*}
 	n_1 \times_1 \suce(n) = n_1 \times_1 n + n_1 = n_1 \times_2 n + n_1 = n_1 \times_2 \suce(n),
 	\end{equation*}
@@ -417,7 +417,7 @@ O número \emph{zero}, representado por $0$, é a constante definida na estrutur
 	\onze &:= \suce(\dez).
 	\end{align*}
 
-%Para esses vaores, obviamente vale $n = \suce^n(0)$. Como $\suce(n) = 1+n$, também vale que $n = \sum_{i \in [n]} 1$.
+%Para esses valores, obviamente vale $n = \suce^n(0)$. Como $\suce(n) = 1+n$, também vale que $n = \sum_{i \in [n]} 1$.
 
 O número \emph{doze} ou a \emph{dúzia} é o número $\suce(\onze)$. Esses são os caracteres usados na representação numérica de base doze, ou seja, a representação dos números naturais que define doze símbolos para representar os primeiros números:
 	\begin{equation*}
@@ -530,7 +530,7 @@ o \emph{conjunto dos números inteiros}.
 	Seja $\bm Z$ um modelo de números inteiros. Para todo $z \in Z$, existe único $d \in N$ tal que $z=[(n+d,n)]$ ou $z=[(n,n+d)]$.
 \end{proposition}
 \begin{proof}
-	Seja $z \in Z$. Então $z=[(n_1,n_2)]$. Notemos que $n_1 \leq n_2$ ou $n_1 \geq n_2$. Agora, devemos notar que isso está bem definido para qualquer representante de $z$. Sejam $(n_1,n_2),(n'_1,n'_2) \in z$. Então $n_1+n'_2=n_2+n'_1$. Sem perda de generalidade, cosideremos que $n_1 \geq n_2$. Nesse caso, existe $d \in N$ tal que $n_1=n_2+d$. Mas isso implica que $n_2+d+n'_2=n_2+n'_1$ e, portanto, que $n'_1=n'_2+d$ e, então $n'_1 \geq n'_2$. Do mesmo modo, supondo $n'_1 \geq n'_2$ achamos que $n_1 \geq n_2$. Ainda, o valor $d$ é o mesmo em ambos os casos. Assim, se $n_1 \geq n_2$, temos que $z=[(n+d,n)]$ e, caso contrário, que $z=[(n,n+d)]$. A unicidade de $d$ é óbvia pois, se existem $d_1,d_2$ tais que $n_1=n_2+d_1$ e $n_1=n_2+d_2$, então segue que $n_2+d_1=n_2+d_2$ e, portanto, que $d_1=d_2$.
+	Seja $z \in Z$. Então $z=[(n_1,n_2)]$. Notemos que $n_1 \leq n_2$ ou $n_1 \geq n_2$. Agora, devemos notar que isso está bem definido para qualquer representante de $z$. Sejam $(n_1,n_2),(n'_1,n'_2) \in z$. Então $n_1+n'_2=n_2+n'_1$. Sem perda de generalidade, consideremos que $n_1 \geq n_2$. Nesse caso, existe $d \in N$ tal que $n_1=n_2+d$. Mas isso implica que $n_2+d+n'_2=n_2+n'_1$ e, portanto, que $n'_1=n'_2+d$ e, então $n'_1 \geq n'_2$. Do mesmo modo, supondo $n'_1 \geq n'_2$ achamos que $n_1 \geq n_2$. Ainda, o valor $d$ é o mesmo em ambos os casos. Assim, se $n_1 \geq n_2$, temos que $z=[(n+d,n)]$ e, caso contrário, que $z=[(n,n+d)]$. A unicidade de $d$ é óbvia pois, se existem $d_1,d_2$ tais que $n_1=n_2+d_1$ e $n_1=n_2+d_2$, então segue que $n_2+d_1=n_2+d_2$ e, portanto, que $d_1=d_2$.
 \end{proof}
 
 	Pela proposição anterior, um número inteiro de $\bm Z$ é unicamente representado pelo elemento $d \in N$ e sua posição no par ordenado. Por isso, se $z=[(n+d,n)]$, identificamos $z$ com $d$ e, se $z=[(n,n+d)]$, identificamos $z$ com $-d$.
@@ -769,7 +769,7 @@ Sejam $\bm X=(X,\opb)$ um semigrupo, $n \in \N^*$, $(x_i)_{i \in [n]}$ elementos
 Segue por indução da proposição anterior.
 \end{proof}
 
-Essa proposição diz que podemos colocar os parêntesses como quisermos que o resultado será o mesmo, pois
+Essa proposição diz que podemos colocar os parênteses como quisermos que o resultado será o mesmo, pois
 	\begin{equation*}
 	\bigopb_{j \in [p]}\left(\bigopb_{i \in [k_j]} x_{i + k_0 + \cdots + k_{j-1}}\right) = \left(\bigopb_{i \in [k_{p-1}]} x_{i + k_0 + \cdots + k_{p-2}}\right) \opb \cdots \opb \left(\bigopb_{i \in [k_0]} x_i\right)
 	\end{equation*}

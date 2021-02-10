@@ -4,7 +4,7 @@
 
 \section{Corpos ordenados}
 
-Nesta seção, pretendemos formalizar a ideia de elementos positivos e negativos em um corpo, e para isso usaremos o conceito de ordem. Uma ordem, também chamada de ordem total, ordem linear ou cadeia, é uma relação reflexiva, antissimétrica, transitiva e total em um conjunto $X$. As três primeiras propriedades definem uma ordem parcial, e a quarta, também chamada de conexidade, significa existe relação entre qualquer par de elementos. De fato, as três úmtimas implicam a reflexividade, mas definimos assim para podermos dizer que uma ordem total é uma ordem parcial que satisfaz a totalidade.
+Nesta seção, pretendemos formalizar a ideia de elementos positivos e negativos em um corpo, e para isso usaremos o conceito de ordem. Uma ordem, também chamada de ordem total, ordem linear ou cadeia, é uma relação reflexiva, antissimétrica, transitiva e total em um conjunto $X$. As três primeiras propriedades definem uma ordem parcial, e a quarta, também chamada de conexidade, significa existe relação entre qualquer par de elementos. De fato, as três últimas implicam a reflexividade, mas definimos assim para podermos dizer que uma ordem total é uma ordem parcial que satisfaz a totalidade.
 
 Um corpo é um conjunto em que existe adição, subtração, multiplicação e divisão. Para unir os dois conceitos de modo que as estruturas de corpo e de ordem se relacionem, devemos exigir que elas satisfaçam algumas propriedades. Para isso, devemos relembrar dos conceitos de função monótona, de translação e de expansão. Uma função monótona crescente entre conjuntos ordenados é uma função $f$ tal que, se dois elementos do domínio $x,x'$ têm uma certa relação de ordem $x \leq x'$  (um é menor ou igual ao outro), então suas imagens têm a mesma relação de ordem, $f(x) \leq f(x')$. Isso quer dizer que a função preserva a ordem dos conjuntos. Uma função monótona decrescente inverte a relação de ordem, de modo que se dois elementos têm uma relação de ordem $x \leq x'$, suas imagens têm a relação de ordem dual, ou invertida, $f(x') \leq f(x)$. Lembremos ainda que, em uma ordem total, definimos para cada $e \in X$ os seguintes intervalos
 	\begin{align*}
@@ -50,7 +50,7 @@ Um \emph{corpo ordenado} é um par $(\bm C, \leq)$ em que $\bm C$ é um corpo e 
 Os elementos \emph{positivos}, \emph{negativos}, \emph{estritamente positivos} e \emph{estritamente negativos} de $C$ são os elementos $c \in C$ tais que $c \geq 0$, $c \leq 0$, $c>0$ e $c<0$, respectivamente. O conjuntos desses elementos são denotados, respectivamente, $C_{\geq 0} := \intfa{0}{\infty}$, $C_{\leq 0} := \intaf{-\infty}{0}$, $C_{> 0} := \intaa{0}{\infty}$ e $C_{< 0} := \intaa{-\infty}{0}$.
 \end{definition}
 
-Poderia-se perguntar por que devemos ter uma ordem total, por que não só uma ordem parcial. Se queremos definir o conceito de positividade e negatividade, devemos garantir que todos os elementos sejam relacioonados com o $0$. Suponhamos então que temos uma ordem parcial tal que todos elementos são relacionados com $0$ e mostremos que essa ordem é total. Para todos $c,c' \in C$, consideremos então $c'-c \in C$. Como todos elementos podem ser comparados com $0$, segue que $c'-c \geq 0$ ou $c'-c \leq 0$. Da monotonicidade crescente da translação por $c$, segue que $c' \geq c$ ou $c' \leq c$, portanto a ordem é total. O conceito de monotonicidade da expansão ser crescente ou decrescente de acordo com a positividade do elemento pelo qual se multiplica exige, em si, que todos elementos sejam relacionados com $0$. Nas seções seguintes veremos como o conceito de cone positivo se relaciona com o de ordem em corpos.
+Poderia-se perguntar por que devemos ter uma ordem total, por que não só uma ordem parcial. Se queremos definir o conceito de positividade e negatividade, devemos garantir que todos os elementos sejam relacionados com o $0$. Suponhamos então que temos uma ordem parcial tal que todos elementos são relacionados com $0$ e mostremos que essa ordem é total. Para todos $c,c' \in C$, consideremos então $c'-c \in C$. Como todos elementos podem ser comparados com $0$, segue que $c'-c \geq 0$ ou $c'-c \leq 0$. Da monotonicidade crescente da translação por $c$, segue que $c' \geq c$ ou $c' \leq c$, portanto a ordem é total. O conceito de monotonicidade da expansão ser crescente ou decrescente de acordo com a positividade do elemento pelo qual se multiplica exige, em si, que todos elementos sejam relacionados com $0$. Nas seções seguintes veremos como o conceito de cone positivo se relaciona com o de ordem em corpos.
 %Suponhamos que $\leq$ é uma ordem parcial em $C$ satisfazendo as monotonicidades da adição e multiplicação. Sejam $c,c' \in C$ tais que $c \leq c'$ e $c \neq c'$. Então $0 \leq c'-c$, o que implica, ao dividir por $c'-c$, que $0 \leq 1$. Assim sendo, para todo $n \in \N_C$, temos que $0 \leq n$ e $-n \leq 0$. Ainda, para todos $(p,q) \in \N_C \times \N_C \setminus \{0\}$, $0 \leq \frac{p}{q}$ e $-\frac{p}{q} \leq 0$. Isso significa que $\leq$ é uma ordem total em $\Q_C$.
 
 \begin{proposition}
@@ -74,9 +74,9 @@ Seja $(\bm C,\leq)$ um corpo ordenado.
 	
 	\item Para todos $c,c' \in C$, $cc' \in C_{\geq 0}$ se, e somente se, $c,c' \in C_{\geq 0}$ ou $c,c' \in C_{\leq 0}$;
 	
-	\item A inversa da adição $-\colon C \to C$ é descrescente: para todos $c,c' \in C$ tais que $c \leq c'$, $-c' \leq -c$;
+	\item A inversa da adição $-\colon C \to C$ é decrescente: para todos $c,c' \in C$ tais que $c \leq c'$, $-c' \leq -c$;
 	
-	\item A inversa da multiplicação ${}\inv\colon C \setminus \{0\} \to C \setminus \{0\}$ é descrecente: para todos $c,c' \in C \setminus \{0\}$ tais que $c \leq c'$, ${c'}\inv \leq c\inv$;
+	\item A inversa da multiplicação ${}\inv\colon C \setminus \{0\} \to C \setminus \{0\}$ é decrescente: para todos $c,c' \in C \setminus \{0\}$ tais que $c \leq c'$, ${c'}\inv \leq c\inv$;
 	
 	\item Para todo $c \in C$, $c^2 \geq 0$;
 	
@@ -139,7 +139,7 @@ Lembremos que a função
 	\begin{align*}
 	\func{\bar h}{\Q}{C}{\frac{n}{d}}{h(n)h(d)\inv}
 	\end{align*}
-é um homomorfismo de corpo injetivo cuja imagem é $\Q_C$. O homomorfismo $\bar h$ é o único homomorfismo injetivo que extende $h$, de acordo com a propriedade universal dos corpos de frações \ref{alg:prop.univer.corpo.frac}. Assim, todo corpo sem torção, em particular um corpo ordenado não trivial, tem um subcorpo isomorfo aos racionais. 	Note que $\bar h$ é crescente, pois $\Q_C$ tem a mesma relação de ordem que $\Q$.
+é um homomorfismo de corpo injetivo cuja imagem é $\Q_C$. O homomorfismo $\bar h$ é o único homomorfismo injetivo que estende $h$, de acordo com a propriedade universal dos corpos de frações \ref{alg:prop.univer.corpo.frac}. Assim, todo corpo sem torção, em particular um corpo ordenado não trivial, tem um subcorpo isomorfo aos racionais. 	Note que $\bar h$ é crescente, pois $\Q_C$ tem a mesma relação de ordem que $\Q$.
 
 \begin{proposition}
 Seja $(\bm C,\leq)$ um corpo ordenado não trivial. Para todo $\frac{n}{d},\frac{n'}{d'} \in \Q_C$,
@@ -152,7 +152,7 @@ Tomemos $q,q' \geq 0$ sem perda de generalidade. Suponhamos que $\frac{p}{q} \le
 	\begin{equation*}
 	pq' = qq'\frac{p}{q} \leq qq'\frac{p'}{q'} = qp'.
 	\end{equation*}
-A recírpoca é evidente.
+A recíproca é evidente.
 \end{proof}
 
 
@@ -198,7 +198,7 @@ Sejam $\bm C$ um corpo e $P \subseteq C$ um cone pré-positivo.
 Seja $(\bm C,\leq)$ um corpo ordenado. O conjunto $C_{\geq  0}$ de elementos positivos de $C$ é um cone positivo.
 \end{proposition}
 \begin{proof}
-Segue direto das proposiçãos anteriores.
+Segue direto das proposições anteriores.
 \end{proof}
 
 \begin{definition}
@@ -294,7 +294,7 @@ Definimos $h$ como
 	\end{align*}
 Definamos $L(x) := \set{q \in \Q}{q \leq x}$. Mostremos que $h$ é uma bijeção. (Injetividade) Sejam $x,x' \in \R$ tais que $x \neq x'$. Da totalidade da ordem, $x < x'$ ou $x' < x$, logo $\sup L(x) < \sup L(x')$ ou $\sup L(x') < \sup L(x)$. No primeiro caso, segue que $h(x) < h(x')$, e no segundo $h(x') < h(x)$, portanto $h(x) \neq h(x')$. (Sobrejetividade) Seja $c \in C$. Então $c = \sup \set{q \in \Q_C}{q \leq c}$, portanto definindo $x := \sup \set{\frac{i_C}{j_C}}{(i,j) \in \Z \times \Z \setminus \{0\}, \frac{i_C}{j_C} \leq c}$, temos que $h(x)=y$.
 
-Agora, mostremos que $h$ é isomorfismo de corpos. (Homomorfismo de grupo aditivivo) Sejam $x,x' \in \R$. Então $x+x' = \sup L(x+x')$, logo
+Agora, mostremos que $h$ é isomorfismo de corpos. (Homomorfismo de grupo aditivo) Sejam $x,x' \in \R$. Então $x+x' = \sup L(x+x')$, logo
 	\begin{align*}
 	h(x+x') = h(\sup L(x+x')) = \sup h(L(x+x')) = h(x) + h(x').
 	\end{align*}
@@ -304,12 +304,12 @@ Agora, mostremos que $h$ é isomorfismo de corpos. (Homomorfismo de grupo aditiv
 	\end{align*}
 Os detalhes podem ser completados pelo leitor.
 
-O ismorfismo $h$ é crescente pois, se $x \leq x'$, então $L(x) \subseteq L(x')$, logo $h(L(x)) \subseteq h(L(x'))$, o que implica $h(x) \leq h(x')$.
+O isomorfismo $h$ é crescente pois, se $x \leq x'$, então $L(x) \subseteq L(x')$, logo $h(L(x)) \subseteq h(L(x'))$, o que implica $h(x) \leq h(x')$.
 \end{proof}
 
 Essa proposição mostra que corpos ordenados completos são, basicamente, cópias de $\R$. Isso nos permite usar $\R$ sempre que quisermos usar algum corpo que seja ordenado e completo, e tira um pouco a arbitrariedade algébrica de usar o corpo dos números reais.
 
-\subsection{Corpos crdenados infinitesimais}
+\subsection{Corpos ordenados infinitesimais}
 
 \begin{definition}
 Um \emph{corpo não-infinitesimal} (ou \emph{arquimediano}) é um corpo ordenado $(\bm C,\leq)$ tal que $\N_C$ é ilimitado superiormente: para todo $c \in C$, existe $n \in \N_C$ tal que $c < n$.
@@ -513,7 +513,7 @@ Sejam $X$ um conjunto e $(\bm C,\leq)$ um corpo ordenado. O espaço $C^X_{\geq 0
 Sejam $c \in C_{\geq 0}$ e $f \in C^X_{\geq 0}$. Então, para todo $x \in X$, $f(x) \geq 0$, portanto $cf(x) \geq 0$, logo $cf \geq 0$.
 \end{proof}
 
-% O mesmo vale para funções de um conjuto em um cone de um espaço linear.
+% O mesmo vale para funções de um conjunto em um cone de um espaço linear.
 
 
 

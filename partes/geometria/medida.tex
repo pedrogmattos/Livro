@@ -126,7 +126,7 @@ Seja $X$ um conjunto e $\mathcal C \in \p(X)$ um conjunto de subconjuntos de $X$
 %	\begin{equation*}
 %	\bigcup_{n \in \N} M_n = \bigcup_{n \in \N} \bigcup_{i \in I_n} C_{n,i} = \bigcup_{j \in J} C_j
 %	\end{equation*}
-%é uma união enumerável e, portanto, $\bigcup_{n \in \N} M_n \in \mens$. Concluímos, assim, que $\mens$ é uma sigma-álgebra em que $\mathcal C$ está contido. Para notar que $\mens=\ger{\mathcal C}$, resta mostrar que $\mens$ é a menor sgma-álgebra em que $\mathcal C$ está contido. Para isso, seja $\mens'$ uma sigma-álgebra sobre $X$ tal que $\mathcal C \subseteq \mens$. Seja $M \in \mens$. Então $M=\bigcup_{i \in I} C_i$ tal que $\card{I}\leq \card{\N}$ e, para todo $i \in I$, $C_i \in \mathcal C$ ou $C_i\comp \in \mathcal C$. Como $\mathcal C \subseteq \mens'$, segue que, para todo $i \in I$, $C_i \in \mens'$ ou $C_i\comp \in \mens'$. Portanto, como $\mens'$ é uma sigma-álgebra, $M=\bigcup_{i \in I} C_i \in \mens'$. Concluímos que $\mens \subseteq \mens'$ e, então, que $\mens = \ger{\mathcal C}$.
+%é uma união enumerável e, portanto, $\bigcup_{n \in \N} M_n \in \mens$. Concluímos, assim, que $\mens$ é uma sigma-álgebra em que $\mathcal C$ está contido. Para notar que $\mens=\ger{\mathcal C}$, resta mostrar que $\mens$ é a menor sigma-álgebra em que $\mathcal C$ está contido. Para isso, seja $\mens'$ uma sigma-álgebra sobre $X$ tal que $\mathcal C \subseteq \mens$. Seja $M \in \mens$. Então $M=\bigcup_{i \in I} C_i$ tal que $\card{I}\leq \card{\N}$ e, para todo $i \in I$, $C_i \in \mathcal C$ ou $C_i\comp \in \mathcal C$. Como $\mathcal C \subseteq \mens'$, segue que, para todo $i \in I$, $C_i \in \mens'$ ou $C_i\comp \in \mens'$. Portanto, como $\mens'$ é uma sigma-álgebra, $M=\bigcup_{i \in I} C_i \in \mens'$. Concluímos que $\mens \subseteq \mens'$ e, então, que $\mens = \ger{\mathcal C}$.
 %\end{proof}
 
 
@@ -1481,7 +1481,7 @@ Se $a \neq 0$, então
 		&= \set{c+c'}{(c,c') \in f(X) \times f'(X), f\inv(c) \cap (f')\inv(c') \neq \emptyset} \\
 		&\subseteq f(X)+f'(X).
 	\end{align*}
-Como $f(X)+f'(X)$ é finito, então $(f+f')(X)$ é finito, logo $f+f'$ é simples. %Notemos, no entanto, que não necessariamente a inclusão é uma igualdade; em geral não é. Para calcular a intergal de $f+f'$ em relação à integral de $f$ e de $f'$, temos que tomar esse cuidado. Definamos $f(X) =: \{c_0,\cdots,c_{n-1}\}$, $f'(X) =: \{c'_0,\cdots,c'_{n'-1}\}$ e $(f+f')(X) =: \{d_0,\cdots,d_m\}$. Nesse caso, temos
+Como $f(X)+f'(X)$ é finito, então $(f+f')(X)$ é finito, logo $f+f'$ é simples. %Notemos, no entanto, que não necessariamente a inclusão é uma igualdade; em geral não é. Para calcular a integral de $f+f'$ em relação à integral de $f$ e de $f'$, temos que tomar esse cuidado. Definamos $f(X) =: \{c_0,\cdots,c_{n-1}\}$, $f'(X) =: \{c'_0,\cdots,c'_{n'-1}\}$ e $(f+f')(X) =: \{d_0,\cdots,d_m\}$. Nesse caso, temos
 %	\begin{align*}
 %	\int_M f &= \sum_{i \in [n]} c_i \med(M \cap f\inv(c_i)) \\
 %	\int_M f &= \sum_{i \in [n']} c_i \med(M \cap (f')\inv(c'_i)) \\
@@ -1703,7 +1703,7 @@ e, para toda partição $\mathcal P \geq \mathcal P_f$, definindo $\{v_P\} := f(
 \begin{proof}
 	\begin{enumerate}
 	\item Suponha que $f\colon X \to E$ é uma função simples mensurável. Seja $v \in f(X)$. Como $\{v\}$ é fechado e $f$ é mensurável, $f\inv(\{v\})=f\inv(v)$ é mensurável.
-% COMENTŔIO: Abaixo está uma demonstração que eu tinha feito usando a estrutura topológica no sentido de que dois pontos são separados, ou seja, que é T1. Isso é equivalente a todo ponto ser fechado, que é uma demonstração mais simples que substituí acima. Sendo assim, esse teorema é verdade em espaços T1, não precisa ser um espaço normado. Aliás, basta que o espaço de chegada tenha os pontos como conjuntos mensuráveis, não precisa nem ter estrutura topológica, muito menos norma.
+% COMENTÁRIO: Abaixo está uma demonstração que eu tinha feito usando a estrutura topológica no sentido de que dois pontos são separados, ou seja, que é T1. Isso é equivalente a todo ponto ser fechado, que é uma demonstração mais simples que substituí acima. Sendo assim, esse teorema é verdade em espaços T1, não precisa ser um espaço normado. Aliás, basta que o espaço de chegada tenha os pontos como conjuntos mensuráveis, não precisa nem ter estrutura topológica, muito menos norma.
 %Como $f(X)$ é finito, existe vizinhança aberta $A \subseteq E$ de $v$ tal que, para todo $v' \in f(X) \setminus \{v\}$, $v' \notin A$. Assim, segue que $A \cap f(X) = \{v\}$, portanto
 %		\begin{equation*}
 %		f\inv(\{v\}) = f\inv(A \cap f(X)) = f\inv(A),

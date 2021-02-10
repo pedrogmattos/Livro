@@ -297,7 +297,7 @@ o que mostra que $(c_1+c_2)\bm f=c_1\bm f+c_2\bm f$. Assim, concluímos que $(V^
 é um subespaço vetorial de $\bm V$.
 \end{proposition}
 \begin{proof}
-	Como, para todo $i \in I$, $\bm 0 \in W_i$, pois $W_i$ é subespaço vetoriasl de $\bm V$, segue que $\bm 0 \in W$ e, portanto, $W$ não é vazio. Agora, sejam $\bm w_1,\bm w_2 \in W$. Então existem $i,j \in I$ tais que $\bm w_1 \in W_i$ e $\bm w_2 \in W_j$. Nesse caso, $W_i \subseteq W_j$ ou $W_j \subseteq W_i$. Sem perda de generalidade, suponhamos o primeiro caso. Então segue que $\bm w_1 \in W_j$ e, portanto, $\bm w_1+\bm w_2 \in W_j$, o que mostra que $\bm w_1+\bm w_2 \in W$. Agora, seja $c \in C$ e notemos que, como $W_i$ é subespaço vetorial de $\bm V$, segue que $c\bm w_1 \in W_i$. Logo $c\bm w_1 \in W$, o que mostra que $W$ é subespaço vetorial de $\bm V$.
+	Como, para todo $i \in I$, $\bm 0 \in W_i$, pois $W_i$ é subespaço vetorial de $\bm V$, segue que $\bm 0 \in W$ e, portanto, $W$ não é vazio. Agora, sejam $\bm w_1,\bm w_2 \in W$. Então existem $i,j \in I$ tais que $\bm w_1 \in W_i$ e $\bm w_2 \in W_j$. Nesse caso, $W_i \subseteq W_j$ ou $W_j \subseteq W_i$. Sem perda de generalidade, suponhamos o primeiro caso. Então segue que $\bm w_1 \in W_j$ e, portanto, $\bm w_1+\bm w_2 \in W_j$, o que mostra que $\bm w_1+\bm w_2 \in W$. Agora, seja $c \in C$ e notemos que, como $W_i$ é subespaço vetorial de $\bm V$, segue que $c\bm w_1 \in W_i$. Logo $c\bm w_1 \in W$, o que mostra que $W$ é subespaço vetorial de $\bm V$.
 \end{proof}
 
 \begin{definition}
@@ -358,7 +358,7 @@ são combinações lineares de $W$ em $\bm V$, o que implica que o conjunto de t
 	\end{equation*}
 \end{proposition}
 \begin{proof}
-	Como $\bm v \in \langle W \rangle$, existem $\bm w'_1, \ldots, \bm w'_m \in W$ e $c'_1, \ldots, c'_m \in C$ tais que $\bm v = \sum_{i=1}^m c'_i \bm w'_i$. Vamos particionar o conjunto dos índices $[m]$ com a seguinte relação de equivalência: para todo $i,j \in [m]$, $i \sim j$ se, e somente se, $\bm w'_i = \bm w'_j$. Essa relação é de equivalência pois a igualddade de vetores é uma relação de equivalência. Agora, seja $n$ o número de classes de equivalências dessa relação. Para cada $i \in [n]$, seja $j \in P_i$ e definimos os vetores $\bm w_i := \bm w'_j$. Notemos que os vetores $\bm w_i$ estão bem definidos, não dependem do $j$, pois, se $k \in P_i$, então $\bm w_i = \bm w'_j = \bm w'_k$. Ainda, definimos os coeficientes $c_i := \sum _{j \in P_i} c'_j$. Desse modo, segue que
+	Como $\bm v \in \langle W \rangle$, existem $\bm w'_1, \ldots, \bm w'_m \in W$ e $c'_1, \ldots, c'_m \in C$ tais que $\bm v = \sum_{i=1}^m c'_i \bm w'_i$. Vamos particionar o conjunto dos índices $[m]$ com a seguinte relação de equivalência: para todo $i,j \in [m]$, $i \sim j$ se, e somente se, $\bm w'_i = \bm w'_j$. Essa relação é de equivalência pois a igualdade de vetores é uma relação de equivalência. Agora, seja $n$ o número de classes de equivalências dessa relação. Para cada $i \in [n]$, seja $j \in P_i$ e definimos os vetores $\bm w_i := \bm w'_j$. Notemos que os vetores $\bm w_i$ estão bem definidos, não dependem do $j$, pois, se $k \in P_i$, então $\bm w_i = \bm w'_j = \bm w'_k$. Ainda, definimos os coeficientes $c_i := \sum _{j \in P_i} c'_j$. Desse modo, segue que
 	\begin{equation*}
 	\bm v = \sum_{i=1}^m c'_i \bm w'_i = \sum_{i=1}^n \sum_{j \in P_i} c'_j \bm w'_j = \sum_{i=1}^n \sum_{j \in P_i} c'_j \bm w_i =  \sum_{i=1}^n c_i \bm w_i.
 	\end{equation*}
@@ -366,7 +366,7 @@ são combinações lineares de $W$ em $\bm V$, o que implica que o conjunto de t
 \end{proof}
 
 \begin{definition}[Dependência Linear]
-	Sejam $\bm V$ um espaço vetorial sobre um corpo $\bm C$ e $W \subseteq V$. Dizemos que $W$ é \emph{linarmente dependente} em $\bm V$ se existem $\bm w_1, \ldots,\bm w_n \in W$ distintos e $c_1,\ldots,c_n \in C$ não nulos tais que
+	Sejam $\bm V$ um espaço vetorial sobre um corpo $\bm C$ e $W \subseteq V$. Dizemos que $W$ é \emph{linearmente dependente} em $\bm V$ se existem $\bm w_1, \ldots,\bm w_n \in W$ distintos e $c_1,\ldots,c_n \in C$ não nulos tais que
 	\begin{equation*}
 	\bm 0 = \sum_{i=1}^n c_i \bm w_i.
 	\end{equation*}
@@ -500,7 +500,7 @@ se, e somente se, para todo $\bm v \in V$, existem únicos $\bm w_1 \in W_1,\ldo
 	\end{equation*}
 \end{proposition}
 \begin{proof}
-	Mostraremos, primeiro, que se $V$ é soma direta de $W_1,\ldots,W_n$, então todo vetor de $V$ é soma única de vetores de $W_1,\ldots,W_n$. A demontração será por indução em $n$. O caso base é trivial, pois, se $V=W_1$, então, para todo $\bm v \in V$, $\bm v \in W_1$. Agora, suponhamos que a proposição vale para todo natural menor ou igual a $n$. Sejam $W_1,\ldots,W_{n+1}$ subespaços vetoriais de $V$ tais que $V = \sum_{i=1}^{n+1} W_i$. Então existem $\bm w_1 \in W_1,\ldots,\bm w_{n+1} \in W_{n+1}$ tais que
+	Mostraremos, primeiro, que se $V$ é soma direta de $W_1,\ldots,W_n$, então todo vetor de $V$ é soma única de vetores de $W_1,\ldots,W_n$. A demonstração será por indução em $n$. O caso base é trivial, pois, se $V=W_1$, então, para todo $\bm v \in V$, $\bm v \in W_1$. Agora, suponhamos que a proposição vale para todo natural menor ou igual a $n$. Sejam $W_1,\ldots,W_{n+1}$ subespaços vetoriais de $V$ tais que $V = \sum_{i=1}^{n+1} W_i$. Então existem $\bm w_1 \in W_1,\ldots,\bm w_{n+1} \in W_{n+1}$ tais que
 	\begin{equation*}
 	\bm v = \sum_{i=1}^{n+1} \bm w_i.
 	\end{equation*}
@@ -568,7 +568,7 @@ Como $\bm v \in W_i \cap W_j$, segue que $(\bm w_i+\bm v) \in W_i$ e $(\bm w_j -
 	Sejam $L$ um conjunto linearmente independente em $\bm V$ e $P$ o conjunto dos subconjuntos $S \subseteq V$ tais que $L \subseteq S$ e $S$ é linearmente independente em $\bm V$. Então $(P,\subseteq)$ é um conjunto parcialmente ordenado com a contenção de conjuntos usual. Agora, seja $(S_i)_{i \in I}$ uma cadeia de $(P,\subseteq)$. Consideremos o conjunto $S := \bigcup_{i \in I} S_i$. Como $L \subseteq S_i$ para todo $i \in I$, então $L \subseteq S$. Devemos mostrar que $S$ é um conjunto linearmente independente em $\bm V$. Para isso, seja $M \subseteq S$ subconjunto finito de $S$. Como $(S_i)_{i \in I}$ é uma cadeia, existe $i \in I$ tal que $M \subseteq S_i$. Mas, como $S_i$ é linearmente independente, então $M$ também o é e, portanto, $S$ é linearmente independente. Logo $S$ é um limitante superior da cadeia. Concluímos, portanto, que existe um elemento maximal $B$ de $(P,\subseteq)$ que, por definição de $P$, é linearmente independente e $L \subseteq B$.
 
 	Vamos mostrar que $B$ é base de $\bm V$. Devemos mostrar que $B$ gera $V$, ou seja, que $V=\langle B \rangle$.
-Seja $\bm v \in V$ e suponhamos, por absurdo, que $\bm v \notin \langle B \rangle$. Então, em particular, $\bm v \notin B$; logo $B \subset B \cup \{\bm v\}$. Concluiremos que $B \cup \{\bm v\}$ é linearmente independente, o que constradiz a maximalidade de $B$. Seja $S$ um subconjunto finito de $B \cup \{\bm v\}$. Se $\bm v \notin S$, então $S \subseteq B$ e, portanto, é linearmente independente, pois $B$ o é; se $\bm v \in S$, sejam $\{\bm v_1,\ldots,\bm v_n\} := S \setminus \{\bm v\} \subseteq B$ e $c,c_1,\ldots,c_n \in C$ tais que
+Seja $\bm v \in V$ e suponhamos, por absurdo, que $\bm v \notin \langle B \rangle$. Então, em particular, $\bm v \notin B$; logo $B \subset B \cup \{\bm v\}$. Concluiremos que $B \cup \{\bm v\}$ é linearmente independente, o que contradiz a maximalidade de $B$. Seja $S$ um subconjunto finito de $B \cup \{\bm v\}$. Se $\bm v \notin S$, então $S \subseteq B$ e, portanto, é linearmente independente, pois $B$ o é; se $\bm v \in S$, sejam $\{\bm v_1,\ldots,\bm v_n\} := S \setminus \{\bm v\} \subseteq B$ e $c,c_1,\ldots,c_n \in C$ tais que
 	\begin{equation*}
 	c_1\bm v_1 + \cdots + c_n\bm v_n -c\bm v=\bm 0.
 	\end{equation*}
@@ -606,7 +606,7 @@ Notemos que o conjunto de todos esses $\bm b_{i,j}$ é $B'' := \bigcup_{i=1}^n \
 	\begin{equation*}
 	\bm b = \sum_{i=1}^n c_i \bm b_i = \sum _{i=1}^n c_i \sum_{j=1}^{n_i} c_{i,j} \bm b_{i,j} = \sum _{i=1}^n \sum_{j=1}^{n_i} c_ic_{i,j} \bm b_{i,j},
 	\end{equation*}
-o que mostra que $\bm b \in B'$ pode ser escrito como uma combinação linear de $B' \setminus \{\bm b\}$ em $\bm V$; ou seja, $B'$ não é linearmente independente, o que é um absurdo. Assim, existem dois casos a serem considereados; o primeiro em que ambas as bases são conjuntos finitos e o outro em que ambas são conjuntos infinitos.
+o que mostra que $\bm b \in B'$ pode ser escrito como uma combinação linear de $B' \setminus \{\bm b\}$ em $\bm V$; ou seja, $B'$ não é linearmente independente, o que é um absurdo. Assim, existem dois casos a serem considerados; o primeiro em que ambas as bases são conjuntos finitos e o outro em que ambas são conjuntos infinitos.
 
 	Suponhamos, no primeiro caso, que $B$ e $B'$ são conjuntos finitos com $\card{B}=n$ e $\card{B'}=m$. Como $B$ é linearmente independente e $B'$ gera $V$, segue que $\card{B} \leq \card{B'}$. Reciprocamente, como $B'$ é linearmente independente e $B$ gera $V$, segue que $\card{B'} \leq \card{B}$. Assim, segue que $\card{B} = \card{B'}$. Agora, suponhamos que $B$ e $B'$ são conjuntos infinitos.
 
@@ -898,7 +898,7 @@ O coproduto de espaços vetoriais é também chamado de \emph{soma} ou \emph{som
 \section{Projeções lineares}
 
 \begin{definition}
-Seja $\bm V$ um espaço linear sobre um corpo $\bm C$. Uma \emph{projeção linear} em $\bm V$ é uma função linear $p\colon V \to V$ idenpotente: $p^2=p$.
+Seja $\bm V$ um espaço linear sobre um corpo $\bm C$. Uma \emph{projeção linear} em $\bm V$ é uma função linear $p\colon V \to V$ idempotente: $p^2=p$.
 \end{definition}
 
 \begin{proposition}
@@ -1088,7 +1088,7 @@ O conjunto das funções $k$-lineares alternadas é denotado $\mathcal A^k(\bm V
 \begin{proposition}
 Sejam $\bm V$ e $\bm W$ espaços lineares sobre um corpo $\bm C$ e $f \in \lin^k(\bm V,\bm W)$.
 	\begin{enumerate}
-	\item A função $f$ é alternada se, e somente se, para todos $v_0$, $\ldots$, $v_{k-1} \in V$ tais que existem $i,j \in [k]$ distintos satizfazendo $v_i = v_j$,
+	\item A função $f$ é alternada se, e somente se, para todos $v_0$, $\ldots$, $v_{k-1} \in V$ tais que existem $i,j \in [k]$ distintos satisfazendo $v_i = v_j$,
 	\begin{equation*}
 	f(v_0,\ldots,v_{k-1})=0.
 	\end{equation*} 
@@ -1252,7 +1252,7 @@ Seja $\bm V$ um espaço linear sobre um corpo $\bm C$.
 	\end{enumerate}
 \end{proof}
 
-%Isso definine uma função bilinear
+%Isso define uma função bilinear
 %	\begin{align*}
 %	\func{\wedge}{\mathcal{A}^k(\bm V) \times \mathcal{A}^l(\bm V)}{\mathcal{A}^{k+l}(\bm V)}{(f,g)}{f \wedge g}
 %	\end{align*}

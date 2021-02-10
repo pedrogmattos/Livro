@@ -146,7 +146,7 @@ Então $d_1(p,p')=0$ ou $d_2(p,p')=0$. Em ambos os casos, temos $p=p'$. Reciproc
 	\begin{equation*}
 	d(p,p'') = d_1(p,p'') \leq d_1(p,p') + d_1(p',p'') \leq d(p,p') + d(p',p'').
 	\end{equation*}
-	No segudo caso, segue que
+	No segundo caso, segue que
 	\begin{equation*}
 	d(p,p'') = d_2(p,p'') \leq d_2(p,p') + d_2(p',p'') \leq d(p,p') + d(p',p''). \qedhere
 	\end{equation*}
@@ -660,7 +660,7 @@ portanto se $\delta_f \leq \delta_{f'}$, então $f \in \bola_{\frac{\delta_{f'}}
 Seja $\bm M$ um espaço métrico e $K,K' \subseteq M$ compactos disjuntos. Então $F$ e $F'$ são metricamente separados.
 \end{proposition}
 \begin{proof}
-% FALTA MOSTRAR QUE REALMENTE AS SEQUÊNIAS f_n f'_n convergem.
+% FALTA MOSTRAR QUE REALMENTE AS SEQUÊNCIAS f_n f'_n convergem.
 Sejam $F,F' \subseteq M$ fechados disjuntos. Mostraremos que $F$ e $F'$ são metricamente separados.
  Queremos mostrar que
 	\begin{equation*}
@@ -782,7 +782,7 @@ Um espaço métrico \emph{completo} é um espaço métrico em que todas sequênc
 Seja $\bm M$ um espaço métrico. Todo subespaço completo de $\bm M$ é um conjunto fechado em $\bm M$.
 \end{proposition}
 \begin{proof}
-Sejam $\bm C \subseteq \bm M$ subsepaço métrico completo e $(p_n)_{n \in \N}$ uma sequência convergente em $C$. Então $(p_n)_{n \in \N}$ é aproximante e, como $C$ é completo, converge para um ponto em $C$, o que significa que $C$ é fechado.
+Sejam $\bm C \subseteq \bm M$ subespaço métrico completo e $(p_n)_{n \in \N}$ uma sequência convergente em $C$. Então $(p_n)_{n \in \N}$ é aproximante e, como $C$ é completo, converge para um ponto em $C$, o que significa que $C$ é fechado.
 \end{proof}
 
 \begin{proposition}
@@ -793,7 +793,7 @@ Seja $(p_n)_{n \in \N}$ uma sequência aproximante em $F$. Então $(p_n)_{n \in 
 \end{proof}
 
 \begin{theorem}
-Seja $\bm M$ um espaço métrico. Então $\bm M$ é completo se, e somente se, para toda sequência descrescente $(F_n)_{n \in \N}$ de conjuntos não vazios e fechados em $\bm M$ tais que $(\diam(F_n))_{n \in \N} \conv 0$ em $\R$, vale que
+Seja $\bm M$ um espaço métrico. Então $\bm M$ é completo se, e somente se, para toda sequência decrescente $(F_n)_{n \in \N}$ de conjuntos não vazios e fechados em $\bm M$ tais que $(\diam(F_n))_{n \in \N} \conv 0$ em $\R$, vale que
 	\begin{equation*}
 	\bigcap_{n \in \N} A_n \neq \emptyset.
 	\end{equation*}
@@ -817,11 +817,11 @@ A sequência $(r_n)_{n \in \N}$ converge para $p$ e, portanto, é uma sequência
 	\begin{equation*}
 	\forall p,p' \in M_1 \qquad d_1(p,p') < \delta \Rightarrow d_2(f(p),f(p')) < \frac{\varepsilon}{2}.
 	\end{equation*}
-Assim, sejam $p,q \in M_1$ tais que $d_1(p,q) < \delta$. Quremos mostrar que $d_2(f(p),f(p')) < \varepsilon$. Sejam $(p_n)_{n \in \N}$ e $(q_n)_{n \in \N}$ sequências que convergem para $p$ e $q$, respectivamente. Então $d_1(p_n,q_n) \conv d_1(p,q)$ em $\R$.
+Assim, sejam $p,q \in M_1$ tais que $d_1(p,q) < \delta$. Queremos mostrar que $d_2(f(p),f(p')) < \varepsilon$. Sejam $(p_n)_{n \in \N}$ e $(q_n)_{n \in \N}$ sequências que convergem para $p$ e $q$, respectivamente. Então $d_1(p_n,q_n) \conv d_1(p,q)$ em $\R$.
 
 ...
 
-	A unicidade de $f^*$ ocorre pois, se existem $f^*$ e $f'^*$ uniformemente contínuas que extendem $f$, como $D$ é denso em $M_1$ e $f^*|_D = f'^*|_D$, segue que $f^* = f'^*$ .
+	A unicidade de $f^*$ ocorre pois, se existem $f^*$ e $f'^*$ uniformemente contínuas que estendem $f$, como $D$ é denso em $M_1$ e $f^*|_D = f'^*|_D$, segue que $f^* = f'^*$ .
 	
 	Por fim, mostramos que a isometria se preserva...
 \end{proof}
@@ -830,14 +830,14 @@ Assim, sejam $p,q \in M_1$ tais que $d_1(p,q) < \delta$. Quremos mostrar que $d_
 Seja $\bm M_1$  um espaço métrico. Um \emph{completamento} de $\bm M$ é um espaço métrico $\bm M_2$ completo tal que $M_1$ é denso em $M_2$.
 \end{definition}
 
-\begin{proposition}
+\begin{exercise}
 Seja $\bm M$ um espaço métrico e $\bm M_1$ e $\bm M_2$ completamentos de $\bm M$. Então existe uma isometria entre $\bm M_1$ e $\bm M_2$ que é a função identidade quando restrita a $M$.
-\end{proposition}
-\begin{proof}
-	Seja $f$ a função identidade em $M$. Pela proposição anterior, existe uma única extensãouniformemente contínua de $f^*$ em $M_1$ ...
-	
-	...
-\end{proof}
+\end{exercise}
+%\begin{proof}
+%	Seja $f$ a função identidade em $M$. Pela proposição anterior, existe uma única extensão uniformemente contínua de $f^*$ em $M_1$ ...
+%	
+%	...
+%\end{proof}
 
 
 \begin{proposition}
@@ -848,7 +848,7 @@ Suponhamos, por absurdo, que $f$ não é uniformemente contínua. Então existem
 	\begin{equation*}
 	\nor{x_n - y_n} < \frac{1}{n} \text{\ \ e\ \ } \nor{f(x_n)-f(y_n)} \geq \varepsilon.
 	\end{equation*}
-Como $K$ é compacto, existem subsequências $(x_{n_k})_{k \in \N}$  e $(y_{n_k})_{k \in \N}$ convergindo a $x \in K$ com $\nor{f(x_{n_k})-f(y_{n_k})} \geq \varepsilon$. Por continuidade de $f$, existe $\delta > 0$ tal que, se $x_{n_k},y_{n_k} \in B(x,\delta)$, então $\nor{f(x_{n_k})-f(x)} < \frac{\varepsilon}{2}$ e $\nor{f(y_{n_k})-f(x)} < \frac{\varepsilon}{2}$. Pela desigualdade triangular, temos um absudo.
+Como $K$ é compacto, existem subsequências $(x_{n_k})_{k \in \N}$  e $(y_{n_k})_{k \in \N}$ convergindo a $x \in K$ com $\nor{f(x_{n_k})-f(y_{n_k})} \geq \varepsilon$. Por continuidade de $f$, existe $\delta > 0$ tal que, se $x_{n_k},y_{n_k} \in B(x,\delta)$, então $\nor{f(x_{n_k})-f(x)} < \frac{\varepsilon}{2}$ e $\nor{f(y_{n_k})-f(x)} < \frac{\varepsilon}{2}$. Pela desigualdade triangular, temos um absurdo.
 \end{proof}
 
 

@@ -304,7 +304,7 @@ Disso segue que $\card{G}=[G:S] \times \card{S}$.
 \subsection{Subgrupo normal e grupo quociente}
 
 \begin{definition}
-Seja $\bm G$ um grupo. Um subgrupo \emph{normal} de $\bm G$ é um subgrupo $\bm N \leq \bm G$ que satsfaz
+Seja $\bm G$ um grupo. Um subgrupo \emph{normal} de $\bm G$ é um subgrupo $\bm N \leq \bm G$ que satisfaz
 	\begin{enumerate}[label={SGN\arabic*.}]
 	\item \label{SGN} (Normalidade) Para todos $g \in G$ e $n \in N$, $gng^{-1} \in N$.
 	\end{enumerate}
@@ -447,7 +447,7 @@ Sejam $\bm G$ um grupo e $\bm N \ide \bm G$ um subgrupo normal. A projeção can
 é um homomorfismo de grupos sobrejetivo.
 \end{proposition}
 \begin{proof}
-Sejam $g_1,g_2 \in G$. Então, da definição de prduto em $\bm{\quo{G}{N}}$, segue que
+Sejam $g_1,g_2 \in G$. Então, da definição de produto em $\bm{\quo{G}{N}}$, segue que
 	\begin{equation*}
 	\pi(g_1g_2) = g_1g_2N = g_1Ng_2N = \pi(g_1)\pi(g_2).
 	\end{equation*}
@@ -559,7 +559,7 @@ Sejam $\bm{G_1}$ e $\bm{G_2}$ grupos e $h: \bm{G_1} \to \bm{G_2}$ um homomorfism
 		\end{align*}
 Primeiro mostremos que $\eta$ é função. Sejam $g_1,g_2 \in G_1$ tais que $g_1\nuc(h) = g_2\nuc(h)$. Então $g_2^{-1}g_1 \in \nuc(h)$ (\ref{alge:prop.gru.coclas}), o que implica que $h(g_2^{-1}g_1) = e$. Como $h$ é homomorfismo, $e = h(g_2^{-1}g_1) = h(g_2)^{-1}h(g_1)$, portanto $h(g_1)=h(g_2)$. Isso implica que $\eta(g_1\nuc(h))=\eta(g_1\nuc(h))$.
 
-Agora, mostremos que $\eta$ é isomomorfismo de grupos. Para simplificar as contas, denotamos $[g] = g\nuc(h)$. Primeiro mostramos que $\eta$ é homomorfismo. Sejam $g_1,g_2 \in G_1$. Então
+Agora, mostremos que $\eta$ é isomorfismo de grupos. Para simplificar as contas, denotamos $[g] = g\nuc(h)$. Primeiro mostramos que $\eta$ é homomorfismo. Sejam $g_1,g_2 \in G_1$. Então
 	\begin{equation*}
 	\eta([g_1][g_2]) = \eta([g_1g_2]) = h(g_1g_2) = h(g_1)h(g_2) = \eta([g_1])\eta([g_2]).
 	\end{equation*}
@@ -903,10 +903,10 @@ o centro de $\bm G$ é um subgrupo normal de $\bm G$.
 Seja $\bm G$ um grupo. Um \emph{automorfismo interno} de $\bm G$ é um automorfismo da forma $C_g$ para algum $g \in G$.
 \end{definition}
 
-Pode-se mostrar que um automorfismo $\fun{h}{G}{G}$ é interno (ou seja, é conjugação por algum elemento de $G$) se, e somente se, para todo supergrupo $\bm H \geq \bm G$, esse automorfismo pode ser estendido para $\bm H$. A ida é evidente mas a volta é um pouco mais complicada\footnote{A Characterization of inner automorphisms, Paul E. Schupp}.
+Pode-se mostrar que um automorfismo $\fun{h}{G}{G}$ é interno (ou seja, é conjugação por algum elemento de $G$) se, e somente se, para todo supergrupo $\bm H \geq \bm G$, esse automorfismo pode ser estendido para $\bm H$. A ida é evidente mas a volta é um pouco mais complicada\cite{art:Schupp-CharacterizationInnerAutomorphisms}.
 
 	\begin{equation*}
-		1 \to \Zen(G) \to G \to \Aut(G) \to Out(G) \to 1
+	1 \to \Zen(G) \to G \to \Aut(G) \to Out(G) \to 1
 	\end{equation*}
 
 
@@ -1347,7 +1347,7 @@ Seja $n \in \N$. A composição de duas permutações $p_1,p_2 \in \sime_n$, qua
 	\begin{equation*}
 	[p][q]_{i,j} = \sum_{k=0}^{n-1} [p]_{i,k}[q]_{k,j} = \sum_{k=0}^{n-1} \delta_{i,p(k)}\delta_{k,p(j)}.
 	\end{equation*}
-	Mas o produto $\delta_{i,p(k)}\delta_{k,p(j)}$ é igual a 1 se, e somente se, $i=p(k)$ e $k=q(j)$. Como $p$ é bijeção, a segunda consição é equivalente a $p(k)=pq(j)$, e isso mostra que as duas condições são equivalentes a $i=p(k)=pq(j)$. Como $p$ é bijeção, para cada $i \in [n]$, $k=p\inv(i)$ é o único $k \in [n]$ tal que a condição é satisfeita, e segue que
+	Mas o produto $\delta_{i,p(k)}\delta_{k,p(j)}$ é igual a 1 se, e somente se, $i=p(k)$ e $k=q(j)$. Como $p$ é bijeção, a segunda condição é equivalente a $p(k)=pq(j)$, e isso mostra que as duas condições são equivalentes a $i=p(k)=pq(j)$. Como $p$ é bijeção, para cada $i \in [n]$, $k=p\inv(i)$ é o único $k \in [n]$ tal que a condição é satisfeita, e segue que
 	\begin{equation*}
 	[p][q]_{i,j} = \sum_{k=1}^n \delta_{i,p(k)}\delta_{k,p(j)} = \sum_{k=1}^n \delta_{i,pq(j)} = [pq]_{i,j}.
 	\end{equation*}

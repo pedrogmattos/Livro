@@ -23,7 +23,7 @@ Vale notar que uma família é vazia se, e somente se, $I=\emptyset$. Uma famíl
 	Seja $X$ um conjunto não vazio. Uma \emph{indexação} de $X$ é uma família bijetiva $(x_i)_{i \in I}$ de elementos de $X$. Nesse caso, $X$ é um conjunto indexado por $I$ e denota-se $X=\{x_i\}_{i \in I}$.
 \end{definition}
 
-A noção de uma família é, de fato, mais motivada por notação do que por um conceito teórico, já que uma família é simplesmennte uma função sem nenhuma restrição, e a única diferença entre uma família é uma função é o contexto. Uma pergunta relevante, ainda, é se todo conjunto pode ser indexado por meio de uma família. Essa pergunta tem uma resposta óbvia e uma não óbvia, e ambas afirmam que sim. A resposta óbvia é que, para se indexar um conjunto $C$ basta considerar a função $F: C \to C$ definida para todo $X \in C$ por $F(X)=X$. Desse modo, essa é uma indexação do conjunto $X$. Mas essa resposta não satisfaz a tradição de indexar um quantidade finita de conjuntos $\{X,Y\}$ com números naturais. A resposta menos óbvia é que todo conjunto pode ser bem ordenado e, dessa forma, existe uma função de um número ordinal para o conjunto, logo uma indexação desse conjunto por um número ordinal. Os números naturais são os números ordinais finitos, o que significa que essa resposta menos óbvia condiz com a idexação que se faz usualmente de uma quantidade finita de conjuntos. Esse tópicos, no entanto, não serão abordados nesse capítulo.
+A noção de uma família é, de fato, mais motivada por notação do que por um conceito teórico, já que uma família é simplesmente uma função sem nenhuma restrição, e a única diferença entre uma família é uma função é o contexto. Uma pergunta relevante, ainda, é se todo conjunto pode ser indexado por meio de uma família. Essa pergunta tem uma resposta óbvia e uma não óbvia, e ambas afirmam que sim. A resposta óbvia é que, para se indexar um conjunto $C$ basta considerar a função $F: C \to C$ definida para todo $X \in C$ por $F(X)=X$. Desse modo, essa é uma indexação do conjunto $X$. Mas essa resposta não satisfaz a tradição de indexar um quantidade finita de conjuntos $\{X,Y\}$ com números naturais. A resposta menos óbvia é que todo conjunto pode ser bem ordenado e, dessa forma, existe uma função de um número ordinal para o conjunto, logo uma indexação desse conjunto por um número ordinal. Os números naturais são os números ordinais finitos, o que significa que essa resposta menos óbvia condiz com a indexação que se faz usualmente de uma quantidade finita de conjuntos. Esse tópicos, no entanto, não serão abordados nesse capítulo.
 
 \section{Propriedades de união e interseção}
 
@@ -256,11 +256,11 @@ Isso mostra que $\overline{f}=f$.
 	\end{enumerate}
 \end{proof}
 
-Notemos que a inclusão contrária no primeiro item nao vale. Suponhamos que para um $j_0 \in J$, todos os $C_{ij_0}$ são vazios, mas para todos outros $j \in J$, os $C_{ij}$ não são vazios. Então o produto desses $C_{ij}$ será sempre vazio, pois sempre tem um dos elementos do produto vazio, e então a união desses produtos será vazia; no entanto, a união desses $C_{ij}$ não será nenhuma vazia e, então, o produto não seráa vazio (pelo axioma da escolha).
+Notemos que a inclusão contrária no primeiro item nao vale. Suponhamos que para um $j_0 \in J$, todos os $C_{ij_0}$ são vazios, mas para todos outros $j \in J$, os $C_{ij}$ não são vazios. Então o produto desses $C_{ij}$ será sempre vazio, pois sempre tem um dos elementos do produto vazio, e então a união desses produtos será vazia; no entanto, a união desses $C_{ij}$ não será nenhuma vazia e, então, o produto não será vazio (pelo axioma da escolha).
 
 \begin{proposition}
 \label{conj:proposition.im.inv.prod}
-Sejam $X$ um conjunto, $(Y_i)_{i \in I}$ uma família de conjuntos, $(S_i)_{i \in I}$ uma família de subconjutos de $(Y_i)_{i \in I}$, $f: X \to \prod_{i \in I} Y_i$ uma função e, para todo $i \in I$, $f_i := \pi_i \circ f$. Então
+Sejam $X$ um conjunto, $(Y_i)_{i \in I}$ uma família de conjuntos, $(S_i)_{i \in I}$ uma família de subconjuntos de $(Y_i)_{i \in I}$, $f: X \to \prod_{i \in I} Y_i$ uma função e, para todo $i \in I$, $f_i := \pi_i \circ f$. Então
 	\begin{equation*}
 	f\inv\left( \prod_{i \in I} {S_i} \right) = \bigcap_{i \in I} f_i\inv (S_i).
 	\end{equation*}
@@ -374,7 +374,7 @@ Seja $X$ um conjunto. Uma \emph{partição} de $X$ é um conjunto $\mathcal P \s
 Os conjuntos $C \in \mathcal P$ são as \emph{células} de $\mathcal P$.
 \end{definition}
 
-Uma partição, se identidicamos um subconjunto de $\p(X)$ com uma família de sunconjuntos de $X$, é uma cobertura de $X$ por conjuntos disjuntos (logo distintos) que não contém o conjunto vazio.
+Uma partição, se identificamos um subconjunto de $\p(X)$ com uma família de subconjuntos de $X$, é uma cobertura de $X$ por conjuntos disjuntos (logo distintos) que não contém o conjunto vazio.
 
 \subsection{Refinamento de partições}
 
@@ -425,6 +425,6 @@ Primeiro, mostremos que $\mathcal P := \bigvee_{i \in I} \mathcal P_i$ é uma pa
 Agora mostraremos que $\mathcal P$ é refinamento de $\mathcal P_i$ para todo $i \in I$. Sejam $i \in I$ e $C \in \mathcal P$. Então $\mathcal P=\bigcap_{i \in I} C_i$, portanto $C_i \in \mathcal P_i$. Por fim, sejam $\mathcal R$ partição de $X$ que é refina $\mathcal P_i$ para todo $i \in I$ e $D \in \mathcal R$ uma célula. Então, para todo $i \in I$, existe $C_i \in \mathcal P_i$ tal que $D \subseteq C_i$. Portanto $D \subseteq \bigcap_{i \in I} C_i$, e como $\bigcap_{i \in I} C_i \in \mathcal P$, segue que $\mathcal P \leq \mathcal R$.
 \end{proof}
 
-Alguns tipos especiais de partições são úteis na teoria de intergação de Riemmann. Em $\R^1$, essas partições são chamadas de partições de intervalo, e são representadas como um número finito de pontos em um intervalo. Quando generaliza-se para dimensões maiores, usam-se $n$-retângulos, que são conjuntos em $\R^n$ produtos de $n$ intervalos limitados. Podemos fixar um critério a mais, o de que um $n$-retângulo é produto de intervalos fechados em baixo e abertos em cima. Nesse caso, podemos definir que uma partição cujos elementos são $n$-retângulos é uma \emph{malha}.
+Alguns tipos especiais de partições são úteis na teoria de integração de Riemann. Em $\R^1$, essas partições são chamadas de partições de intervalo, e são representadas como um número finito de pontos em um intervalo. Quando generaliza-se para dimensões maiores, usam-se $n$-retângulos, que são conjuntos em $\R^n$ produtos de $n$ intervalos limitados. Podemos fixar um critério a mais, o de que um $n$-retângulo é produto de intervalos fechados em baixo e abertos em cima. Nesse caso, podemos definir que uma partição cujos elementos são $n$-retângulos é uma \emph{malha}.
 
 Alternativamente, quando temos uma medida, que é o caso de $\R^n$, podemos enfraquecer a restrição de que as células de uma partição são iguais ou disjuntas para a de que são iguais ou \emph{quase disjuntas} \--- a interseção tem medida zero \--- e a restrição de que cobrem para a restrição de que a união da partição é quase total \--- seu complementar tem medida nula \--- e por fim, de que nenhum elemento da partição é quase vazio \--- tem medida nula \--- e definir que isso é uma $\mu$-partição ou \emph{quase partição com respeito a $\mu$}.

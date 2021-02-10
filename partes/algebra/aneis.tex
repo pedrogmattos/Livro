@@ -136,7 +136,7 @@ Sejam $\bm A=(A,+,-,0,\times,1)$ um anel e $S \subseteq A$. Então
 		\begin{enumerate}
 		\item (Subgrupo) Como $S \subseteq A$ e $\bm S^+$ um grupo comutativo, então é um subgrupo de $\bm A^+$ por definição de subgrupo (o que é equivalente às propriedades listadas) e é comutativo (\ref{alge:prop.subgru})).
 		
-		\item (Submonoide)  Como $S \subseteq A$ e $\bm S^\times$ é um monoide comutativo com $1 \in S$, então é um submonoide de $(A,\times)$ por definição de submonoide (o que é equivalente às propriedades listadas) e é comutativo (\ref{alge:prop.submon}).
+		\item (Submonoide) Como $S \subseteq A$ e $\bm S^\times$ é um monoide comutativo com $1 \in S$, então é um submonoide de $(A,\times)$ por definição de submonoide (o que é equivalente às propriedades listadas) e é comutativo (\ref{alge:prop.submon}).
 		\end{enumerate}
 
 	\item [($\Leftarrow$)] Suponhamos, agora, que $\bm S^+$ é subgrupo comutativo de $\bm A^+$ e $\bm S^\times$ é submonoide comutativo de $\bm A^\times$.
@@ -625,11 +625,11 @@ Não dizemos que $\simeq$ é uma relação de equivalência porque ela não est�
 	\end{align*}
 Notemos que a função $\psi$ é bem definida. Para isso, sejam $a_1,a_2 \in A$ tais que $a_1+\nuc(\phi)=a_2+\nuc(\phi)$. Então $(a_1-a_2) \in \nuc(\phi)$, o que implica $\phi(a_1-a_2)=0$. Como $\phi$ é homomorfismo de anéis, segue que $\phi(a_1)=\phi(a_2)$. Então $\psi(a_1+\nuc(\phi)) = \psi(a_2+\nuc(\phi))$.
 
-	Vamos mostrar que essa função é um isomorfismo de anéis. Primeiro, vamos mostrar que $\psi$ é homomorfismo de anéis. Para isso, vamos denotar $a+\nuc(\phi) \in A/\nuc(\phi)$ por $[a]$ para facilitar a demonstração. Sejam $[a_1],[a_2] \in A/\nuc(\phi)$. Vemos que $\psi$ é homomosfismo de grupos entre $(A/\nuc(\phi),+)$ e $(\im(\phi),\oplus)$, pois
+	Vamos mostrar que essa função é um isomorfismo de anéis. Primeiro, vamos mostrar que $\psi$ é homomorfismo de anéis. Para isso, vamos denotar $a+\nuc(\phi) \in A/\nuc(\phi)$ por $[a]$ para facilitar a demonstração. Sejam $[a_1],[a_2] \in A/\nuc(\phi)$. Vemos que $\psi$ é homomorfismo de grupos entre $(A/\nuc(\phi),+)$ e $(\im(\phi),\oplus)$, pois
 	\begin{equation*}
 	\psi([a_1]+[a_2]) = \psi([a_1+a_2]) = \phi(a_1+a_2) = \phi(a_1) \oplus \phi(a_2) = \psi([a_1]) \oplus \psi([a_2]).
 	\end{equation*}
-Agora, vemos que $\psi$ é homomosfismo de monoides entre $(A/\nuc(\phi),\cdot)$ e $(\im(\phi),\odot)$, pois
+Agora, vemos que $\psi$ é homomorfismo de monoides entre $(A/\nuc(\phi),\cdot)$ e $(\im(\phi),\odot)$, pois
 	\begin{equation*}
 	\psi([a_1] \cdot [a_2]) = \psi([a_1 \cdot a_2]) = \phi(a_1 \cdot a_2) = \phi(a_1) \odot \phi(a_2) = \psi([a_1]) \odot \psi([a_2])
 	\end{equation*}
@@ -664,7 +664,7 @@ e $\psi([1_A]) = \phi(1_A) = 1_B$.
 \end{theorem}
 \begin{proof}
 	\begin{enumerate}
-	\item Para mostrar que $B+I$ é subanel de $\bm A$, primeiro notamos que $B+I$ não é vazio, pois $B$ não é vazio e $I$ não é vazio. Ainda, notamos que $B+I \subseteq A$, pois $B \subseteq A$ e $I \subseteq A$. Agora, mostramos as pripriedades de subanel. Sejam $b_1,b_2 \in B$ e $i_1,i_2 \in I$. Primeiro, mostraremos que $B+I$ é subgrupo de $(A,+)$. Note que $(b_1+i_1)-(b_2+i_2) \in B+I$, pois, como $B$ é subgrupo de $(A,+)$, $b_1-b_2 \in B$ e, como $I \ide A$, $i_1-i_2 \in A$, o que implica $(b_1+i_1)-(b_2+i_2) = (b_1-b_2)+(i_1-i_2) \in B+I$. Mostremos agora que $B+I$ é submonoide de $(A,\cdot)$. Note que
+	\item Para mostrar que $B+I$ é subanel de $\bm A$, primeiro notamos que $B+I$ não é vazio, pois $B$ não é vazio e $I$ não é vazio. Ainda, notamos que $B+I \subseteq A$, pois $B \subseteq A$ e $I \subseteq A$. Agora, mostramos as propriedades de subanel. Sejam $b_1,b_2 \in B$ e $i_1,i_2 \in I$. Primeiro, mostraremos que $B+I$ é subgrupo de $(A,+)$. Note que $(b_1+i_1)-(b_2+i_2) \in B+I$, pois, como $B$ é subgrupo de $(A,+)$, $b_1-b_2 \in B$ e, como $I \ide A$, $i_1-i_2 \in A$, o que implica $(b_1+i_1)-(b_2+i_2) = (b_1-b_2)+(i_1-i_2) \in B+I$. Mostremos agora que $B+I$ é submonoide de $(A,\cdot)$. Note que
 	\begin{equation*}
 	(b_1+i_1)(b_2+i_2)=b_1b_2+b_1i_2+i_1b_2+i_1i_2.
 	\end{equation*}
@@ -787,7 +787,7 @@ Ainda, $1 := (1_i)_{i \in I}$ é elemento neutro, pois
 	a \times 1 = (a_i \times 1_i)_{i \in I} = (a_i)_{i \in I} = a.
 	\end{equation*}
 
-	Por fim, como $\times_i$ são ditributivas sobre $+_i$, temos que
+	Por fim, como $\times_i$ são distributivas sobre $+_i$, temos que
 	\begin{align*}
 	a \times (b + c) &= a \times (b_i +_i c_i)_{i \in I} \\
 		&= (a_i \times_i (b_i +_i c_i))_{i \in I} \\
@@ -1767,7 +1767,7 @@ Dualmente,
 Sejam $\bm A$ um anel e $a,a' \in A$. O elemento $a$ é \emph{associado} ao elemento $a'$ em $\bm A$ se, e somente se, $a \dleq_{\bm A} a'$ e $a' \dleq_{\bm A} a$. Denota-se $a \sim_{\bm A} a'$. A relação $\sim_{\bm A}$ é a relação de \emph{associação} em $\bm A$. Sempre que possível, o subíndice de $\sim_{\bm A}$ será omitido.
 \end{definition}
 
-A relação $\sim$ de associação em anéis é uma equivaência, pois é a equivalência induzida pela pré-ordem de divisão $\dleq$ em anéis. Quando o anel $A$ é um domínio, essa relação é equivalente a existir $u \in A^*$ tal que $au=a'$.
+A relação $\sim$ de associação em anéis é uma equivalência, pois é a equivalência induzida pela pré-ordem de divisão $\dleq$ em anéis. Quando o anel $A$ é um domínio, essa relação é equivalente a existir $u \in A^*$ tal que $au=a'$.
 
 \begin{proposition}
 Sejam $\bm A$ um domínio e $a,a' \in A$. Então $a \sim a'$ se, e somente se, existe $u \in A^*$ tal que $au=a'$.
@@ -1903,7 +1903,7 @@ Seja $\phi$ uma função euclidiana em $\bm D$ e $I \ide D$. Se $I = \{0\}$, ent
 \end{proof}
 
 \begin{proposition}
-Sejam $\bm D$ um domínio eucidiano, $\phi$ uma função euclidiana em $\bm D$ e $d_1,d_2 \in D \setminus \{0\}$. Então $d_1 \in D^*$ se, e somente se, $\phi(d_2) = \phi(d_1d_2)$.
+Sejam $\bm D$ um domínio euclidiano, $\phi$ uma função euclidiana em $\bm D$ e $d_1,d_2 \in D \setminus \{0\}$. Então $d_1 \in D^*$ se, e somente se, $\phi(d_2) = \phi(d_1d_2)$.
 \end{proposition}
 \begin{proof}
 	Se $d_1 \in D^*$, então existe $d_1^{-1} \in D$. Assim, temos que $\phi(d_1d_2) \leq \phi(d_1d_2d_1^{-1})=\phi(d_2)$. Por outro lado, sempre vale $\phi(d_2) \leq \phi(d_1d_2)$. Logo $\phi(d_1d_2)=\phi(d_2)$. Por outro lado, suponha $\phi(d_1d_1)=\phi(d_2)$. Existem $q,r \in D$ tais que $d_2 = d_1d_2q+r$. Se $r \neq 0$, então, como $r = d_2-d_1d_2q = d_2(1-d_1q)$ e $\bm D$ é domínio, segue que $1-qa \neq 0$. Logo $\phi(r)=\phi(d_2(1-d_1q)) \geq \phi(d_2) = \phi(d_1d_2)$, contradição. Logo $r=0$ e temos $d_2=d_1d_2q$. Como $d_2 \neq 0$ e $\bm D$ é domínio, então $d_1q = 1$, o que implica $d_1 \in D^*$.
@@ -1967,7 +1967,7 @@ Agora, usaremos a comutatividade. Sejam $d,d' \in D$ tais que $up \dleq dd'$. En
 	\end{equation*}
 Como $p$ é primo, $p \dleq u\inv d$ ou $p \dleq d'$. No primeiro caso, $up \dleq uu\inv d=d$; no segundo caso, segue pela comutatividade que $p'=up \dleq d'$.
 	
-	\item Vamos mostrar por indução em $n$. O caso base é trivial. Para demonstrar o passo indutivo, suponhamos que a propridade vale para um natural $n$. Então, se $p \dleq d_0 \cdots d_n$, então como $p$ é primo, $p \dleq d_0 \cdots d_{n-1}$ ou $p \dleq d_n$. Se $p \dleq d_0 \cdots d_{n-1}$, pela hipótese de indução, existe $i \in [n]$ tal que $p \dleq d_i$; caso contrário, $p \dleq d_n$. Logo existe $i \in [n+1]$ tal que $p \dleq d_i$.
+	\item Vamos mostrar por indução em $n$. O caso base é trivial. Para demonstrar o passo indutivo, suponhamos que a propriedade vale para um natural $n$. Então, se $p \dleq d_0 \cdots d_n$, então como $p$ é primo, $p \dleq d_0 \cdots d_{n-1}$ ou $p \dleq d_n$. Se $p \dleq d_0 \cdots d_{n-1}$, pela hipótese de indução, existe $i \in [n]$ tal que $p \dleq d_i$; caso contrário, $p \dleq d_n$. Logo existe $i \in [n+1]$ tal que $p \dleq d_i$.
 	
 	\item Se existem $d,d' \in D$ tais que $p=dd'$, então $p \dleq dd'$. Como $p$ é primo, então $p \dleq d$ ou $p \dleq d'$. Se $p \dleq d$, então existe $q \in D$ tal que $pq=d$. Assim, segue que $p=dd'=pqd'$ e, como $\bm D$ é domínio, $1=qd'$. Logo $d' \in D^*$. Analogamente, se $p \dleq d'$, segue que $d \in D^*$ (usamos a comutatividade). Portanto $p$ é irredutível.
 	\end{enumerate}
@@ -2044,7 +2044,7 @@ Um \emph{domínio de fatoração única} é um domínio $\bm D$ que satisfaz
 	\end{enumerate}
 \end{definition}
 
-Domínios de fatoração única também são chamados de domínios fatoriais. Antes de demosntrar a próxima proposição, enunciamos um lema simples que usaremos na demonstração.
+Domínios de fatoração única também são chamados de domínios fatoriais. Antes de demonstrar a próxima proposição, enunciamos um lema simples que usaremos na demonstração.
 
 \begin{lemma}
 \label{conj:prop:permut.tranlad}
@@ -2078,7 +2078,7 @@ Para toda permutação $\sigma'\colon [n-1] \to [n-1]$, a função
 %Por fim, mostremos que $f$ é uma permutação de $[n]$ e que, para todo $i \in [n]$, $p_i \sim q_{f(i)}$ em $\bm D$. Primeiro, mostremos que $f$ é injetiva. Para isso, notemos que, como $f'$ é injetiva, $f_k$ é injetiva e $k \notin\im(f_k)$, então $(f_k \circ f')|_{[n-1]}$ é injetiva e, então, segue que $f$ é injetiva, pois $f(n)=k$. Agora, para mostrar que $f$ é sobrejetiva, seja $j \in [n]$ e notemos que, como $f_k$ é injetiva e $k \notin \im(f_k)$, então, se $1 \leq j \leq k-1$ ou $k+1 \leq j \leq m$, existe $i \in [n-1]$ tal que $f(i)=j$; e, se $j=k$, então $f(n)=k$. Logo $f$ é sobrejetiva e concluímos que $f$ é uma permutação de $[n]$.
 %\end{proof}
 
-A proposição a seguir relaciona duas noções da teoria de fatoação em anéis. A primeira é a unicidade de fatoração e a segunda é a relação entre elementos irredutíveis e primos.
+A proposição a seguir relaciona duas noções da teoria de fatoração em anéis. A primeira é a unicidade de fatoração e a segunda é a relação entre elementos irredutíveis e primos.
 
 \begin{proposition}
 Seja $\bm D$ um domínio tal que todo elemento não nulo tem fatoração. Então as fatorações de $d \in D \setminus \{0\}$ são todas associadas se, e somente se, todo elemento irredutível de $\bm D$ é primo.
@@ -2195,7 +2195,7 @@ Como $\bm D$ é domínio de fatoração única, existem fatorações $(p_i)_{i \
 Se $k=0$, mostraremos que $\mdc(a,b) = D^*$. Para isso, mostraremos que $1 \in \mdc(a,b)$. Notamos que $1 \in D^* \subseteq \divv(a,b)$. Agora, seja $d \in \divv(a,b)$. Como $0 \notin \{a,b\}$, então $0 \notin \divv(a,b)$. Se $d \in D^*$, então $d \dleq 1$, logo $1 \in \mdc(a,b)$. Se $d \in D \setminus (D^* \cup \{0\})$, então existe $p$ irredutível tal que $p \dleq d$, portanto $p \dleq a$ e $p \dleq b$. Como $\bm D$ é domínio de fatoração única, $p$ é primo. Então segue que existem $i$ e $j$ tais que $p \dleq p_i$ e $p \dleq q_j$. Como esses elementos são irredutíveis, $p \sim p_i$ e $p \sim q_j$, portanto $p_i \sim q_j$, o que é uma contradição. Logo $1 \in \mdc(a,b)$. Como todos os máximos divisores comuns são associados, então $D^* = \mdc(a,b)$.
 
 Se $k \geq 1$, mostraremos que $p_1 \cdots p_k \in \mdc(a,b)$. Primeiro, notamos que $p_1 \cdots p_k \dleq a$ e $q_1 \cdots q_k \dleq b$. Como $p_i \sim q_i$ para todo $i \leq k$, então $p_1 \cdots p_k \sim q_1 \cdots q_k$. Logo $p_1 \cdots p_k \dleq q_1 \cdots q_k$ e, da transitividade de $\dleq$, segue que $p_1 \cdots p_k \dleq b$. Logo $p_1 \cdots p_k \in \divv(a,b)$. Então, seja $d \in \divv(a,b)$. Se $d \in D^*$, então $d \dleq p_1 \cdots p_k$. Logo $p_1 \cdots p_k \in \mdc(a,b)$. Se $d \in D \setminus (D^* \cup \{0\})$, então existem $r_1,\ldots,r_l$ irredutíveis tais que $d = r_1 \cdots r_l$. Por $\bm D$ ser domínio, $r_1,\ldots,r_l$ são primos. Como $d \dleq a$, então $r_1 \dleq p_1 \cdots p_k$. Como $r_1$ é primo, existe $i_1 \in \{1,\ldots,k\}$ tal que $r_1 \dleq p_{i_1}$. Seja $s_1 \in D$ tal que $r_1s_1 = p_{i_1}$. Como $r_1$ e $p_{i_1}$ são irredutíveis, então $r_1 \sim p_{i_1}$, o que implica $s_1 \in D^*$. Então $r_2 \cdots r_l \dleq p_1 \cdots p_{i_1-1} \cdot s_1 \cdot p_{i_1+1} \cdots p_k$, pois $\bm D$ é domínio. Repetindo o processo indutivamente, conclui-se que existem $i_1, \ldots,i_m$ tais que $r_j \sim p_{i_j}$ para todo $j \in \{1,\ldots,l\}$.
-%(MELHORAR ARUMENTAÇÃO DA INDUÇÃO).
+%(MELHORAR ARGUMENTAÇÃO DA INDUÇÃO).
 Da mesma forma, conclui-se que que existem $i'_1, \ldots,i'_m$ tais que $r_j \sim q_{i'_j}$ para todo $j \in \{1,\ldots,l\}$. Portanto, da reflexividade e transitividade de $\sim$, segue que $p_{i_j} \sim q_{i'_j}$ para todo $i,j$. Então $d \sim p_{i_1} \cdots p_{i_m} \sim q_{i'_1} \cdots q_{i'_m}$. Como $p_{i_1} \cdots p_{i_m} \dleq p_1 \cdots p_k$ e $q_{i'_1} \cdots q_{i'_m} \dleq q_1 \cdots q_k$, então $d \dleq p_1 \cdots p_k$.
 %(MELHORAR ARGUMENTAÇÃO FINAL)
 \end{proof}
@@ -2766,11 +2766,11 @@ A função \emph{arredondamento meio para cima} é a função
 \end{proof}
 
 \begin{notation}
-	Nesse caso, quando não houver ambiguidade, denotaremos $\oplus$ como $+$ e $\odot$ como $\cdot$, bem como todas outras notações relacionadas às operações do espaço veorial.
+	Nesse caso, quando não houver ambiguidade, denotaremos $\oplus$ como $+$ e $\odot$ como $\cdot$, bem como todas outras notações relacionadas às operações do espaço vetorial.
 \end{notation}
 
 \begin{definition}
-	Sejam $\bm C$ um corpo e $\bm E$ uma extensão de $\bm C$. Então a \emph{dimensão} da extensão $\bm E$ com respeito a $\bm C$ é a dimensão do espaço vetorial $\bm E$ sobre $\bm C$. A extensão $\bm E$ é \emph{finita} de sua dimensão é finita e \emph{infitina} se sua dimensão é infinita.
+	Sejam $\bm C$ um corpo e $\bm E$ uma extensão de $\bm C$. Então a \emph{dimensão} da extensão $\bm E$ com respeito a $\bm C$ é a dimensão do espaço vetorial $\bm E$ sobre $\bm C$. A extensão $\bm E$ é \emph{finita} de sua dimensão é finita e \emph{infinita} se sua dimensão é infinita.
 \end{definition}
 
 \begin{definition}
@@ -2875,7 +2875,7 @@ e segue que $p' \in C[x]^*$, $p'(\alpha)=(a_n)^{-1}p'(\alpha)=0$ e $p'$ é môni
 \subsection{Extras}
 
 \begin{theorem}
-	Seja $k \subseteq K$ uma estensão de corpos, $\overline{k}$ fecho algébrico de $k$. Então as seguintes condições são equivalentes:
+	Seja $k \subseteq K$ uma extensão de corpos, $\overline{k}$ fecho algébrico de $k$. Então as seguintes condições são equivalentes:
 	\begin{enumerate}
 	\item DIAGRAMA COMUTATIVO
 	\begin{figure}[!ht]
@@ -2912,14 +2912,14 @@ OBS: Se $k \subseteq \overline{k}$ é uma extensão algébrica, então todo $\be
 %(?????)
 
 \begin{proposition}
-	Seja $k \subseteq K$ um extensão algébrica e $\sigma: K \to K$ um homomorfismo de cropos que satisfaz $\sigma|_k=id|_k$. Então $\sigma$ é um isomorfismo de corpos.
+	Seja $k \subseteq K$ um extensão algébrica e $\sigma: K \to K$ um homomorfismo de corpos que satisfaz $\sigma|_k=id|_k$. Então $\sigma$ é um isomorfismo de corpos.
 \end{proposition}
 %\begin{proof}
 %...
 %\end{proof}
 
 \begin{definition}
-	Seja $E \subseteq F$ uma extensão algébrica e $\sigma:E \to L$ um homomorfismo de corpos tal que $L$ é algebricamente fechaado, $\sigma(E) \subseteq L$ é uma extensão algébrica ($L$ é fecho algébrico de $\sigma(E)$)
+	Seja $E \subseteq F$ uma extensão algébrica e $\sigma:E \to L$ um homomorfismo de corpos tal que $L$ é algebricamente fechado, $\sigma(E) \subseteq L$ é uma extensão algébrica ($L$ é fecho algébrico de $\sigma(E)$)
 	\begin{equation*}
 	S_\sigma := \{\mu : \mu: F \to L \text{\ homomorfismo de corpos}, \mu|_E=\sigma\}.
 	\end{equation*}
