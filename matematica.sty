@@ -261,9 +261,9 @@
 	\newcommand{\intff}[2]{\left[{#1},{#2}\right]}
 	% Mínimo e máximo como encontro e junta
 	\providecommand{\doublevee}{}
-	\renewcommand{\doublevee}{\mathbin{\ooalign{$\vee$\cr\hbox{$\mkern3mu\vee$}\cr}}} % Superposição de v e v
+	\renewcommand{\doublevee}{\mathbin{\ooalign{$\vee$\cr\hbox{$\mkern4mu\vee$}\cr}}} % Superposição de v e v
 	\providecommand{\doublewedge}{}
-	\renewcommand{\doublewedge}{\mathbin{\ooalign{$\wedge$\cr\hbox{$\mkern3mu\wedge$}\cr}}} % Superposição de cunha e cunha
+	\renewcommand{\doublewedge}{\mathbin{\ooalign{$\wedge$\cr\hbox{$\mkern4mu\wedge$}\cr}}} % Superposição de cunha e cunha
 	\newcommand{\newmax}{\mathop{\doublevee}}
 	\newcommand{\newmin}{\mathop{\doublewedge}}
 	\renewcommand{\max}{\newmax}
@@ -544,7 +544,10 @@
 
 
 	% Grau de polinômio
-	\DeclareMathOperator{\g}{gr} 
+%	\DeclareMathOperator{\g}{gr}
+	\newcommand{\g}[1]{\mathrm{g}\left\vert{#1}\right\vert}
+	% Ordem de uma série
+	\newcommand{\ordser}[1]{\mathrm{o}\left\vert{#1}\right\vert}
 
 	% Relação binária de divisão em um anel
 	\newcommand{\dleq}{\preceq} 
