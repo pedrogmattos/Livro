@@ -7,7 +7,7 @@
 \begin{definition}
 Um \emph{anel} é uma lista $\bm A=(A,+,-,0,\times,1)$ tal que
 	\begin{enumerate}
-	\item $\bm A^+ := (A,+,-,0)$ é um grupo comutativo, em que $+$ é a \emph{adição}, $-$ é a \emph{subtração} e $0$ é a \emph{nulidade} (ou o \emph{zero}) de $\bm A$;
+	\item $\bm A^+ := (A,+,-,0)$ é um grupo comutativo, em que $+$ é a \emph{adição}, $-$ é a \emph{inversão aditiva} e $0$ é a \emph{nulidade} (ou o \emph{zero}) de $\bm A$;
 	\item $\bm A^\times := (A,\times,1)$ é um monoide comutativo, em que $\times$ é a \emph{multiplicação} e $1$ é a \emph{unidade} (ou o \emph{um}) de $\bm A$;
 	\item A multiplicação $\times$ é distributiva sobre a adição $+$.
 	\end{enumerate}
@@ -804,15 +804,14 @@ Ainda, $1 := (1_i)_{i \in I}$ é elemento neutro, pois
 
 
 \begin{definition}
-Um \emph{domínio} (ou \emph{domínio integral}) é um anel não trivial $\bm A$ tal que, para todos $a_0,a_1 \in A$,
-	\begin{equation*}
-	a_0 \cdot a_1 = 0 \entao a_0=0 \text{\ \ ou\ \ } a_1=0.
-	\end{equation*}
+Um \emph{domínio} (ou \emph{domínio integral}, ou \emph{anel integral}) é um anel não trivial $\bm A$ tal que, para todos $a,a' \in A$ tais que $aa' = 0$, vale que $a=0$ ou $a'=0$.
 \end{definition}
 
 \begin{definition}
-Um \emph{corpo} é um anel $\bm A$ tal que, para todo $a \in A \setminus \{0\}$, existe $a\inv$, de modo que $(A \setminus \{0\},\times,\inv,1)$ é um grupo.
+Um \emph{corpo} é um anel $\bm A$ tal que todo $a \in A \setminus \{0\}$ tem inverso multiplicativo $a\inv \in A \setminus \{0\}$; ou seja, para todo $a \in A \setminus \{0\}$, existe $a' \in A$ tal que $aa'=1=a'a$.
 \end{definition}
+
+O inverso multiplicativo $a'$ de $a$ é único e denotado $a\inv$. A definição de corpo é equivalente a dizer que $(A \setminus \{0\},\times,\div,1)$ é um grupo.
 
 \begin{proposition}
 \label{prop:corp.dom}
@@ -1317,7 +1316,7 @@ e denominado \emph{fração} de $a$ sobre $d$, em que $a$ é o \emph{numerador} 
 		\begin{align*}
 		\func{+}{(A \olddiv D) \times (A \olddiv D)}{A \olddiv D}{\left( \frac{a}{d}, \frac{a'}{d'} \right)}{\frac{ad'+a'd}{dd'}}.
 		\end{align*}
-	\item $-$ é a \emph{subtração} de $A \olddiv D$, definida por
+	\item $-$ é a \emph{inversão aditiva} de $A \olddiv D$, definida por
 		\begin{align*}
 		\func{-}{A \olddiv D}{A \olddiv D}{\frac{a}{d}}{\frac{-a}{d}}.
 		\end{align*}
@@ -1537,7 +1536,7 @@ o que mostra que $h''=h'$.
 \end{proof}
 
 \begin{exercise}
-Sejam $\bm A$ e $\bm A'$ anéis, $D$ um submonoide multiplicativo de $\bm A$ e $\fun{q}{A}{A'}$ um homomorfismo de anel tal que
+Sejam $\bm A$ e $\bm A'$ anéis, $\bm D$ um submonoide multiplicativo de $\bm A$ e $\fun{q}{A}{A'}$ um homomorfismo de anel tal que
 	\begin{enumerate}
 	\item Para todo $d \in D$, $q(d) \in A'$ é invertível;
 	
@@ -1547,6 +1546,460 @@ Sejam $\bm A$ e $\bm A'$ anéis, $D$ um submonoide multiplicativo de $\bm A$ e $
 	\end{enumerate}
 Existe único isomorfismo de anel $\fun{h}{A \olddiv D}{A'}$ tal que $q = h \circ \frac{\Id}{1}$.
 \end{exercise}
+
+\subsection{Corpo de frações e números racionais \ensuremath{\Q}}
+
+\begin{exercise}
+Seja $\bm A$ um anel. Então $A \setminus \{0\}$ é um submonoide multiplicativo de $\bm A$ se, e somente se, $\bm A$ é um domínio.
+\end{exercise}
+
+\begin{definition}
+Seja $\bm A$ um domínio. O \emph{corpo de frações} de $\bm A$ é o anel de frações
+	\begin{equation*}
+	\bm{A^{\olddiv}} := \bm{A \olddiv (A \setminus \{0\})}.
+	\end{equation*}
+\end{definition}
+
+\begin{proposition}
+Seja $\bm A$ um domínio. O corpo de frações $\bm{A^{\olddiv}}$ de $\bm A$ é um corpo.
+\end{proposition}
+\begin{proof}
+Como $\bm{A^{\olddiv}} = \bm{A \olddiv (A \setminus \{0\})}$ é um anel, basta mostrar que todo elemento não zero tem inversa multiplicativa. Seja $\frac{a}{d} \in A^{\olddiv} \setminus \{0\}$. Como $\frac{a}{d} \neq 0$, então $a \neq 0$, portanto $a \in A \setminus \{0\}$. Segue que
+	\begin{equation*}
+	\frac{a}{d}\frac{d}{a} = \frac{1}{1} = 1,
+	\end{equation*}
+portanto $\frac{a}{d}$ é invertível.
+\end{proof}
+
+\begin{comment}
+
+\subsection{Corpo de frações}
+
+\begin{definition}
+Seja $\bm D$ um domínio. A \emph{equivalência de frações} em $D \times D \setminus \{0\}$ é a relação definida por: para todos $(n,d),(n',d') \in D \times D*$,
+	\begin{equation*}
+	(n,d) \sim (n',d') \Leftrightarrow nd' = dn'.
+	\end{equation*}
+\end{definition}
+
+\begin{proposition}
+Seja $\bm D$ um domínio. A \emph{equivalência de frações} em $D \times D \setminus \{0\}$ é uma equivalência.
+\end{proposition}
+\begin{proof}
+(Reflexividade) Segue direto de $nd=dn$ para todo $(n,d) \in D \times D \setminus \{0\}$.
+
+(Simetria) Segue direto de $nd'=dn'$ se, e somente se, $dn'=nd'$ para todos $(n,d),(n',d') \in D \times D*$.
+
+(Transitividade) Sejam $(n,d),(n',d'),(n'',d'') \in D \times D \setminus \{0\}$ tais que $(n,d) \sim (n',d')$ e $(n',d') \sim (n'',d'')$. Isso significa que $nd' = dn'$ e $n'd'' = d'n''$. Então segue que
+	\begin{equation*}
+	d'(nd'') = nd'd'' = dn'd'' = dd'n'' = d'(dn'')
+	\end{equation*}
+logo, como $d \neq 0$, segue da propriedade de cancelamento que
+	\begin{equation*}
+	nd'' = dn'',
+	\end{equation*}
+o que significa que $(n,d) \sim (n'',d'')$.
+\end{proof}
+
+Note que a transitividade exige que valha a propriedade de cancelamento, por isso precisamos de um domínio, e também exige a comutatividade da multiplicação. Como essa relação é uma equivalência, podemos considerar o quociente desse conjunto pela relação, e obtemos o que se chama corpo de frações.
+
+\begin{definition}
+Seja $\bm D$ um domínio. O \emph{corpo de frações} de $\bm D$ é o conjunto
+	\begin{equation*}
+	Q(D) := \quo{D \times D \setminus \{0\}}{\sim}.
+	\end{equation*}
+Os elementos de $Q(D)$ são \emph{frações} e são denotadas
+	\begin{equation*}
+	\frac{n}{d} := [(n,d)].
+	\end{equation*}
+A \emph{adição de frações} é a função
+	\begin{align*}
+	\func{+}{Q(D) \times Q(D)}{Q(D)}{\left( \frac{n}{d},\frac{n'}{d'} \right)}{\frac{nd'+dn'}{dd'}}
+	\end{align*}
+A \emph{inversa da adição de frações} é a função
+	\begin{align*}
+	\func{-}{Q(D)}{Q(D)}{\frac{n}{d}}{\frac{-n}{d}}
+	\end{align*}
+A \emph{nulidade de frações} é a fração
+	\begin{equation*}
+	0 := \frac{0}{1}.
+	\end{equation*}
+A \emph{multiplicação de frações} é a função
+	\begin{align*}
+	\func{+}{Q(D) \times Q(D)}{Q(D)}{\left( \frac{n}{d},\frac{n'}{d'} \right)}{\frac{nn'}{dd'}};
+	\end{align*}
+A \emph{inversa da multiplicação de frações} é a função
+	\begin{align*}
+	\func{\inv}{Q(D) \setminus \{0\}}{Q(D) \setminus \{0\}}{\frac{n}{d}}{\frac{d}{n}};
+	\end{align*}
+A \emph{unidade de frações} é a fração
+	\begin{equation*}
+	1 := \frac{1}{1}.
+	\end{equation*}
+\end{definition}
+
+\begin{definition}
+Seja $\bm D$ um domínio. A lista $(Q(D),+,-,0,\times,\inv,1)$ é um corpo.
+\end{definition}
+\begin{proof}
+Exercício simples.
+\end{proof}
+
+\begin{definition}
+Seja $\bm D$ um domínio. A \emph{inclusão canônica} de $D$ em $Q(D)$ é a função
+	\begin{align*}
+	\func{\inclu}{D}{Q(D)}{a}{\frac{a}{1}}.
+	\end{align*}
+\end{definition}
+
+\begin{proposition}
+Seja $\bm D$ um domínio. A inclusão $\iota\colon D \to Q(D)$ é um homomorfismo injetivo de anéis.
+\end{proposition}
+
+\begin{proposition}[Propriedade Universal]
+\label{alg:prop.univer.corpo.frac}
+Sejam $\bm D$ um domínio, $\bm C$ um corpo e $h\colon D \to C$ um homomorfismo injetivo de anel. Existe um único homomorfismo injetivo de anel $\bar h\colon Q(D) \to C$ tal que $\bar h \circ \iota = h$ (o diagrama comuta).
+\begin{figure}
+\centering
+\begin{tikzpicture}[node distance=2.5cm, auto]
+	\node (C) {$\bm D$};
+	\node (G) [above of=C] {$\displaystyle\bm{Q(D)}$};
+	\node (X) [right of=C] {$\bm C$};
+	\draw[->] (C) to node [swap] {$h$} (X);
+	\draw[->, dashed] (G) to node {$\bar h$} (X);
+	\draw[->] (C) to node {$\iota$} (G);
+\end{tikzpicture}
+\end{figure}
+\end{proposition}
+\begin{proof}
+Definimos
+	\begin{align*}
+	\func{\bar h}{Q(D)}{C}{\frac{n}{d}}{h(n)h(d)\inv}.
+	\end{align*}
+Mostremos primeiro que essa função está bem definida. Primeiro, note que, como $h$ é injetiva e $d \neq 0$, então $h(d) \neq 0$, portanto existe $h(d)\inv \in C$. Agora, sejam $(n,d),(n',d') \in D \times D \setminus \{0\}$ tais que $\frac{n}{d} = \frac{n'}{d'}$. Então $nd'=dn'$, e segue da injetividade de $h$ vale que $h(nd') = h(dn')$. Mas então $h(n)h(d')=h(d)h(n')$, o que implica que $h(n)h(d)\inv = h(n')h(d')\inv$, e segue que
+	\begin{equation*}
+	\bar h\left( \frac{n}{d} \right) = h(n)h(d)\inv = h(n')h(d')\inv = \bar h\left( \frac{n'}{d'} \right).
+	\end{equation*}
+
+Agora mostremos que $\bar h$ é homomorfismo de anel. (Homomorfismo de grupo) Sejam $\frac{n}{d},\frac{n'}{d'} \in Q(D)$. Então
+	\begin{align*}
+	\bar h\left( \frac{n}{d} + \frac{n'}{d'} \right) &= \bar h\left( \frac{nd'+dn'}{dd'} \right) \\
+		&= h(nd'+dn')h(dd')\inv \\
+		&= (h(n)h(d')+h(d)h(n'))h(d)\inv h(d')\inv \\
+		&= h(n)h(d)\inv + h(n')h(d')\inv \\
+		&= \bar h\left( \frac{n}{d} \right) + \bar h \left( \frac{n'}{d'} \right).
+	\end{align*}
+
+(Homomorfismo de monoide) Sejam $\frac{n}{d},\frac{n'}{d'} \in Q(D)$. Então
+	\begin{align*}
+	\bar h\left( \frac{n}{d}\frac{n'}{d'} \right) &= \bar h\left( \frac{nn'}{dd'} \right) \\
+		&= h(nn')h(dd')\inv \\
+		&= h(n)h(n')h(d)\inv h(d')\inv \\
+		&= h(n)h(d)\inv h(n')h(d')\inv \\
+		&= \bar h\left( \frac{n}{d} \right)\bar h \left( \frac{n'}{d'} \right).
+	\end{align*}
+Ainda, como $h$ é homomorfismo de anel, $h(1)=1$, logo
+	\begin{equation*}
+	\bar h\left( \frac{1}{1} \right) = h(1)h(1)\inv = 1.
+	\end{equation*}
+
+(Injetividade) Sejam $\frac{n}{d},\frac{n'}{d'} \in Q(D)$ tais que $\bar h(\frac{n}{d}) = \bar h(\frac{n'}{d'})$. Então
+	\begin{align*}
+	0 &= \bar h \left( \frac{n}{d} \right) - \bar h \left( \frac{n'}{d'} \right) \\
+		&= \bar h \left( \frac{n}{d} - \frac{n'}{d'} \right) \\
+		&= \bar h \left( \frac{nd'-dn'}{dd'} \right) \\
+		&= h(nd'-dn')h(dd')\inv.
+	\end{align*}
+Como $d \neq 0$ e $d' \neq 0$, segue que $h(nd'-dn')=0$, e da injetividade de $h$ segue que $nd'-dn'=0$, logo $nd'=dn'$, o que significa que $\frac{n}{d} = \frac{n'}{d'}$.
+
+%(Unicidade) Seja $g\colon Q(D) \to C$ um homomorfismo injetivo de anel tal que $g \circ \iota = h$. Então, para todos $m$
+\end{proof}
+
+
+\end{comment}
+
+
+\subsubsection{Os números racionais \ensuremath{\Q}}
+
+A construção de corpo de frações de um domínio aplicada ao anel dos números inteiros $\Z$ é o conjunto dos números racionais.
+
+\begin{definition}
+O \emph{corpo dos números racionais} é o corpo
+	\begin{equation*}
+	\Q := \Z^{\olddiv} = \Z \olddiv (\Z \setminus \{0\}).
+	\end{equation*}
+\end{definition}
+
+
+
+
+\subsubsection{Funções de arredondamento}
+
+
+\paragraph{Chão e teto}
+
+\begin{definition}
+A função \emph{chão} é a função
+	\begin{align*}
+	\func{\chao{\var}}{\R}{\Z}{x}{\max\set{i \in \Z}{i \leq x}}.
+	\end{align*}
+A função \emph{teto} é a função
+	\begin{align*}
+	\func{\teto{\var}}{\R}{\Z}{x}{\min\set{i \in \Z}{i \geq x}}.
+	\end{align*}
+\end{definition}
+
+\begin{exercise}
+Para todo $x \in \R$,
+	\begin{enumerate}
+	\item (Conjugação)
+		\begin{align*}
+		-\chao{x} &= \teto{-x} \\
+		-\teto{x} &= \chao{-x};
+		\end{align*}
+	\item (Idempotência)
+		\begin{align*}
+		\chao{\chao{x}} &= \chao{x} \\
+		\teto{\teto{x}} &= \teto{x};
+		\end{align*}
+	\end{enumerate}
+\end{exercise}
+
+
+
+\begin{exercise}
+Para todo $x, x' \in \R$ e todo $i \in \Z$,
+	\begin{enumerate}
+	\item
+		\begin{align*}
+		\chao{x+i} &= \chao{x}+i \\
+		\teto{x+i} &= \teto{x}+i;
+		\end{align*}
+
+	\item
+		\begin{align*}
+		\chao{x}+\chao{x'} &\leq \chao{x+x'} \leq \chao{x}+\chao{x'}+1 \\
+		-1+\teto{x}+\teto{x'} &\leq \teto{x+x'} \leq \teto{x}+\teto{x'};
+		\end{align*}
+	\end{enumerate}
+\end{exercise}
+
+
+
+\begin{exercise}
+Para todos $x,x' \in \R$, $x'>0$ e todos $i,i' \in \Z$, $i>0$,
+	\begin{enumerate}
+	\item 
+		\begin{align*}
+		\chao{\frac{\chao{x}+i'}{i}} &= \chao{\frac{x+i'}{i}} \\
+		\teto{\frac{\teto{x}+i'}{i}} &= \teto{\frac{x+i'}{i}};
+		\end{align*}
+
+	\item
+		\begin{align*}
+		\teto{\frac{i'}{i}} - 1 &= \chao{\frac{i'-1}{i}} \\
+		\chao{\frac{i'}{i}} + 1 &= \teto{\frac{i'+1}{i}};
+		\end{align*}
+
+	\item	
+		\begin{align*}
+		\chao{\frac{\chao{x \div x'}}{i}} &= \chao{\frac{x}{x'i}} \\	
+		\teto{\frac{\teto{\frac{x}{x'}}}{i}} &= \teto{\frac{x}{x'i}}.
+		\end{align*}
+	
+	\end{enumerate}
+\end{exercise}
+
+
+
+
+\paragraph{Resto e parte fracionária}
+
+\begin{definition}
+Sejam $x,d \in \R$, $d \neq 0$. O \emph{resto} de $x$ com respeito a $d$ é
+	\begin{equation*}
+	\resto{x}{d} := x - d\chao{\frac{x}{d}}.
+	\end{equation*}
+A \emph{parte fracionária} de $x$ é o resto de $x$ com respeito a $1$:
+	\begin{equation*}
+	\resfra{x} := \resto{x}{1}.
+	\end{equation*}
+\end{definition}
+
+\begin{exercise}
+Sejam $x,d \in \R$, $d \neq 0$.
+	\begin{enumerate}
+	\item Se $d>0$,
+		\begin{equation*}
+		0 \leq \resto{x}{d} < d;
+		\end{equation*}
+
+	\item Se $d<0$,
+		\begin{equation*}
+		d < \resto{x}{d} \leq 0;
+		\end{equation*}
+	\end{enumerate}
+\end{exercise}
+
+
+
+
+
+\begin{exercise}
+Seja $x \in \R$,
+	\begin{equation*}
+	\teto{\resfra{x}} = \teto{x} - \chao{x} = \begin{cases}
+			0,& x \in \Z \\
+			1,& x \notin \Z.
+		\end{cases}
+	\end{equation*}
+\end{exercise}
+
+
+\begin{exercise}
+Sejam $x \in \R$, $i \in \Z$, $i > 0$.
+	\begin{equation*}
+	\teto{\resfra{ \frac{x}{i} }} = \teto{\frac{x}{i}} - \chao{\frac{x}{i}}  = \begin{cases}
+			0,& x \in i\Z \\
+			1,& x \notin i\Z.
+		\end{cases}
+	\end{equation*}
+\end{exercise}
+
+
+\paragraph{Arredondamento}
+
+\begin{definition}
+A função \emph{arredondamento meio para baixo} é a função
+	\begin{align*}
+	\func{\arrebai{\var}}{\R}{\Z}{x}{\teto{x-\frac{1}{2}}}.
+	\end{align*}
+A função \emph{arredondamento meio para cima} é a função
+	\begin{align*}
+	\func{\arrecim{\var}}{\R}{\Z}{x}{\chao{x+\frac{1}{2}}}.
+	\end{align*}
+\end{definition}
+
+\subsection{Números reais \ensuremath{\R}}
+
+Definiremos o conjunto dos números reais, suas operações de corpo e sua relação de ordem total pela construção usando cortes de números racionais.
+
+\begin{definition}
+Um \emph{corte} de $\Q$ é um conjunto $c \subseteq \Q$ tal que
+	\begin{enumerate}
+	\item (Finitude) $c \neq \emptyset$ e $c \neq \Q$;
+	\item (Fechamento inferior) Para todos $q, q' \in \Q$ tais que $q < q'$, se $q' \in c$ então $q \in c$;
+	\item (Não-maximalidade) Para todo $q \in c$, algum $q' \in c$ satisfaz $q < q'$.
+	\end{enumerate}
+O \emph{conjunto dos números reais} é o conjunto dos cortes de $\Q$, denotado $\R$.
+\end{definition}
+
+\begin{definition}
+A \emph{ordem dos números reais} é a ordem $\subseteq$ de inclusão de subconjuntos de $\Q$, denotada $\leq$.
+\end{definition}
+
+\begin{proposition}
+O par $(\R,\leq)$ é um conjunto totalmente ordenado, e completo no sentido que todo conjunto não-vazio limitado superiormente tem supremo.
+\end{proposition}
+\begin{proof}
+O par $(\R,\leq)$ é um conjunto parcialmente ordenado porque é um subconjunto parcialmente ordenado de $(\p(\Q),\subseteq)$. Basta mostrarmos que a ordem é total. Sejam $c,c' \in \R$ e suponhamos que $c' \nleq c$, ou seja, $c' \nsubseteq c$. Mostremos que $c \leq c'$, ou seja, $c \subseteq c'$. Seja $q \in c$. Como $c' \nsubseteq c$, algum $q' \in c'$ satisfaz $q' \notin c$. Se valesse $q > q'$, então, como $q \in c$, seguiria do fechamento inferior que $q' \in c$, uma contradição, portanto $q \leq q'$; se valesse $q = q'$, então, como $q \in c$, seguiria que $q' \in c$, uma contradição, portanto $q < q'$. Segue assim do fechamento inferior que, como $q' \in c'$, $q \in c'$, portanto $c \subseteq c'$, ou seja, $c \leq c'$.
+
+Agora, seja $C \subseteq \R$ um conjunto não-vazio limitado superiormente. Mostremos que o supremo de $C$ é dado por
+	\begin{equation*}
+	\sup C := \bigcup C = \bigcup_{c \in C} c \subseteq \Q.
+	\end{equation*}
+Primeiro mostremos que $\sup C \in \R$.
+	\begin{itemize}
+	\item (Finitude) Como $C$ é não-vazio, algum $c \in C$. Como $c \in \R$, $c \neq \emptyset$, portanto algum $q \in c$. Assim segue que $q \in c \subseteq \bigcup C = \sup C$, portanto $\sup C \neq \emptyset$.
+	
+	Como $C$ é limitado superiormente, algum $l \in \R$ satisfaz que, para todo $c \in C$, $c \leq l$, ou seja, $c \subseteq l$. Como $l \in \R$, $l \neq \Q$, portanto algum $q \in \Q \setminus l$. Como, para todo $c \in C$, $c \subseteq l$, segue que $q \notin c$, logo $q \notin \bigcup C$, o qu implica que $\sup C \neq \Q$.
+
+	\item (Fechamento inferior) Sejam $q,q' \in \Q$ tais que $q < q'$ e $q' \in \sup C = \bigcup C$. Então, para algum $c \in \sup C$, $q' \in c$. Pelo fechamento inferior, segue que $q \in c$, portanto $q \in \bigcup C = \sup C$.
+
+	\item (Não-maximalidade) Seja $q \in \sup C = \bigcup C$. Então, para algum $c \in C$, $q \in c$. Pela não-maximalidade, segue que algum $q' \in c$ satisfaz $q < q'$. Mas então $q' \in c \subseteq \bigcup C = \sup C$.
+	\end{itemize}
+
+Agora mostremos que $\sup C$ é supremo de $C$. Primeiro mostremos que $\sup C$ é limitante superior de $C$. Como, para todo $c \in C$, $c \subseteq \bigcup C$, ou seja, $c \leq \sup C$. Agora, mostremos que $\sup C$ é o menor limitante superior. Seja $l \in \R$ um limitante superior de $C$, ou seja, para todo $c \in C$, $c \leq l$. Mas isso é equivalente a $c \subseteq l$, portanto $\sup C = \bigcup C \subseteq l$, ou seja, $\sup C \leq l$.
+\end{proof}
+
+\begin{definition}
+O \emph{grupo aditivo dos números reais} é a lista
+	\begin{equation*}
+	\R^+ := (\R,+,-,0),
+	\end{equation*}
+em que
+	\begin{enumerate}
+	\item $+$ é a \emph{adição} de $\R$, definida por
+		\begin{align*}
+		\func{+}{\R \times \R}{\R}{(c,c')}{c+c' = \set{q+q'}{q \in c \land q' \in c'}};
+		\end{align*}
+	\item $0$ é o \emph{zero} de $\R$, definido por
+		\begin{equation*}
+		0 := \set{q \in \Q}{q < 0};
+		\end{equation*}
+	\item $-$ é a \emph{inversa aditiva} de $\R$, definida por
+		\begin{align*}
+		\func{-}{\R}{\R}{c}{-c := \set{r-q}{r < 0 \land q \in \Q \setminus c}}.
+		\end{align*}
+	\end{enumerate}
+\end{definition}
+
+\begin{exercise}
+O grupo aditivo dos números reais $\R^+$ é um grupo comutativo e $(\R^+,\leq)$ é um grupo ordenado.
+\end{exercise}
+
+\begin{definition}
+O \emph{monoide multiplicativo dos números reais} é a lista
+	\begin{equation*}
+	\R^\times := (\R,\times,1)
+	\end{equation*}
+e o \emph{grupo multiplicativo dos números reais} é a lista
+	\begin{equation*}
+	\R^{\div}:= (\R \setminus \{0\},\times,\div,1),
+	\end{equation*}
+em que
+	\begin{enumerate}
+	\item $\times$ é a \emph{multiplicação} de $\R$, definida por
+		\begin{align*}
+		\func{\times}{\R \times \R}{\R}{(c,c')}{
+			c \times c' :=
+			\begin{cases}
+			\set{qq'}{q \in c \land q' \in c'} \cup 0,	& c \geq 0 \land c' \geq 0, \\
+			c \times (-c'),			& c \geq 0 \land c' < 0, \\
+			(-c) \times c',			& c < 0 \land c' \geq 0, \\
+			(-c) \times (-c'),		& c < 0 \land c' < 0;
+			\end{cases}
+		}
+		\end{align*}
+	\item $0$ é o \emph{um} de $\R$, definido por
+		\begin{equation*}
+		1 := \set{q \in \Q}{q < 1};
+		\end{equation*}
+	\item $\div$ é a \emph{inversa multiplicativa} de $\R$, definida por
+		\begin{align*}
+		\func{\div}{\R \setminus \{0\}}{\R \setminus \{0\}}{c}{
+			c\inv :=
+			\begin{cases}
+			\set{u \div q}{u \in 1 \land q \in \Q \setminus c}	& c > 0, \\
+			-((-c)\inv)	& c < 0.
+			\end{cases}
+		}
+		\end{align*}
+	\end{enumerate}
+\end{definition}
+
+\begin{exercise}
+O monoide multiplicativo dos números reais $\R^\times$ é um monoide comutativo e o grupo multiplicativo dos números reais $\R^{\div}$ é um grupo comutativo.
+\end{exercise}
+
+\begin{definition}
+O \emph{corpo dos números reais} é a lista $\R = (\R,+,-,0,\times,\div,0)$.
+\end{definition}
+
+\begin{exercise}
+O corpo dos números reais $\R$ é um corpo e $(\R,\leq)$ é um corpo ordenado.
+\end{exercise}
+
 
 \subsection{Divisão e associação}
 
@@ -2094,7 +2547,7 @@ Reciprocamente, suponhamos todo irredutível de $\bm D$ é primo. Sejam $d \in D
 	\begin{equation*}
 	\bigtimes_{i \in [n]} p_i \sim d \sim \bigtimes_{i \in [n']} p'_i.
 	\end{equation*}
-Todos os irredutíveis $p_0,\ldots,p_{n-1}$ e $p'_0,\ldots,p'_{n'-1}$ são primos. Mostraremos que essas fatorações são associadas por indução em $m := \min\{n,n'\}$. Para o caso base, se $m=0$, então $n=0$ ou $n'=0$. Em ambos os casos, $d \sim 1$, ou seja, $d \in D^*$, portanto todas suas fatorações são associadas. Agora, seja $m > 0$ e suponhamos que todas fatorações com $k$ e $k'$ fatores de um elemento $d \in D \setminus \{0\}$ tais que $\min\{k,k'\}<m$ sejam associadas. Como $p_{n-1}$ é primo  e $p_{n-1} \dleq d \sim p'_0 \cdots p'_{n'-1}$, existe $k \in [n']$ tal que $p_{n-1} \dleq p'_k$. Portanto existe $q \in D$ tal que $p_{n-1}q = p'_k$. Como $p_{n-1}$ e $p'_k$ são irredutíveis, então $q \in D^*$. Portanto segue que
+Todos os irredutíveis $p_0,\ldots,p_{n-1}$ e $p'_0,\ldots,p'_{n'-1}$ são primos. Mostraremos que essas fatorações são associadas por indução em $m := n \opmin n'$. Para o caso base, se $m=0$, então $n=0$ ou $n'=0$. Em ambos os casos, $d \sim 1$, ou seja, $d \in D^*$, portanto todas suas fatorações são associadas. Agora, seja $m > 0$ e suponhamos que todas fatorações com $k$ e $k'$ fatores de um elemento $d \in D \setminus \{0\}$ tais que $k \opmin k' < m$ sejam associadas. Como $p_{n-1}$ é primo  e $p_{n-1} \dleq d \sim p'_0 \cdots p'_{n'-1}$, existe $k \in [n']$ tal que $p_{n-1} \dleq p'_k$. Portanto existe $q \in D$ tal que $p_{n-1}q = p'_k$. Como $p_{n-1}$ e $p'_k$ são irredutíveis, então $q \in D^*$. Portanto segue que
 	\begin{align*}
 	\left( \bigtimes_{i \in [n-1]} p_i \right) p_{n-1} &\sim \left( \bigtimes_{i \in [k]} p'_i \right) p_{n-1} \left( \bigtimes_{i \in [n'-k-1]} p'_{i+k+1} \right) \\
 		&= \left( \bigtimes_{i \in [k]} p'_i \right)\left( \bigtimes_{i \in [n'-k-1]} p'_{i+k+1} \right) p_{n-1}.
@@ -2114,7 +2567,7 @@ Considerando a bijeção (\ref{conj:prop:permut.tranlad})
 	\begin{equation*}
 	\bigtimes_{i \in [n-1]} p_i \sim \bigtimes_{i \in [n'-1]} q_i.
 	\end{equation*}
-Como $m>0$, então $n>0$ e $n'>0$, portanto as expressões são duas fatorações, uma com $n-1$ e outra com $n'-1$ fatores. Como $\min\{n-1,n'-1\} = m-1 < m$, vale a hipótese de indução, e então, $n-1=n'-1$ e existe permutação $\sigma'$ de $[n-1]$ tal que, para todo $i \in [n-1]$, $p_i \sim q_{\sigma'(i)}$. Então  $n=n'$ e, considerando a permutação (\ref{conj:prop:permut.tranlad})
+Como $m>0$, então $n>0$ e $n'>0$, portanto as expressões são duas fatorações, uma com $n-1$ e outra com $n'-1$ fatores. Como $(n-1) \opmin (n'-1) = m-1 < m$, vale a hipótese de indução, e então, $n-1=n'-1$ e existe permutação $\sigma'$ de $[n-1]$ tal que, para todo $i \in [n-1]$, $p_i \sim q_{\sigma'(i)}$. Então  $n=n'$ e, considerando a permutação (\ref{conj:prop:permut.tranlad})
 	\begin{align*}
 	\func{\sigma}{[n]}{[n]}{i}{\begin{cases}
 		f_k \circ \sigma'(i), & i < n-1 \\
@@ -2161,7 +2614,7 @@ pois, para todo $j \in [n']$, existe $k \in [n]$ tal que $I_j = P_k$ e, como $j 
 	d \sim \bigtimes_{i \in [n']} p'_i = \bigtimes_{k \in [n]} \bigtimes_{i \in P_k} p'_i.
 	\end{equation*}
 
-Sendo assim, seja $k \in [n]$. Definamos $p_k := p'_{\min(P_k)}$ e $e_k := \card{P_k}$. Segue claramente que $p_k$ é irredutível e que $e_k \in \N^*$. Como, para todo $i \in P_k$, vale $p'_i \sim p_k$, 
+Sendo assim, seja $k \in [n]$. Definamos $p_k := p'_{\min P_k}$ e $e_k := \card{P_k}$. Segue claramente que $p_k$ é irredutível e que $e_k \in \N^*$. Como, para todo $i \in P_k$, vale $p'_i \sim p_k$, 
 %então existe $u'_i \in A^*$ tal que $p'_i = u'_ip_k$. Assim, definindo $u_k := \displaystyle\bigtimes_{i \in P_k} u'_i$, temos que $u_k \in A^*$ e
 %	\begin{equation*}
 %	\bigtimes_{i \in P_k} p'_i = \bigtimes_{i \in P_k} u'_ip_k = \left( \bigtimes_{i \in P_k}u'_i \right) p_k^{\alpha_k} = u_kp_k^{\alpha_k}.
@@ -2211,45 +2664,85 @@ Da mesma forma, conclui-se que que existem $i'_1, \ldots,i'_m$ tais que $r_j \si
 \subsection{Anel de polinômios}
 
 \begin{definition}
-Seja $\bm A$ um anel. O \emph{anel de polinômios} em $\bm A$ é o conjunto
+	Seja $\bm A$ um anel. O \emph{anel de polinômios} em $\bm A$ é a lista
 	\begin{equation*}
-	A[x] := \set{p \in A^\N}{\card{\supp(p)} < \card{\N}}.
+	\bm{A[x]} := (A[x],+,-,0,\times,1),
 	\end{equation*}
-Os elementos de $A[x]$ são os \emph{polinômios} em $\bm A$.
+em que
+\begin{enumerate}
+	\item $A[x]$ é o \emph{conjunto de polinômios} em $\bm A$, definido por
+		\begin{equation*}
+		A[x] := \set{p \in A^{\N}}{\card{\supp(p)} < \card{\N}}
+		\end{equation*}
+	e os elementos de $A[x]$ são \emph{polinômios} em $\bm A$
+	\item $+$ é a \emph{adição} de $A[x]$, definida por
+		\begin{align*}
+		\func{+}{A[x] \times A[x]}{A[x]}{(p,q)}{(p_n+q_n)_{n \in \N}}
+		\end{align*}
+	\item $-$ é a \emph{inversão aditiva} de $A[x]$, definida por
+		\begin{align*}
+		\func{-}{A[x]}{A[x]}{p}{(-p_n)_{n \in \N}}
+		\end{align*}
+	\item $0$ é a \emph{nulidade} de $A[x]$, definida por
+		\begin{align*}
+		\func{0}{\N}{A}{n}{0}
+		\end{align*}
+	\item $\times$ é a \emph{multiplicação} de $A[x]$, definida por
+		\begin{align*}
+		\func{\times}{A[x] \times A[x]}{A[x]}{(p,q)}{\left(\sum_{i=0}^n p_i q_{n-i}\right)_{n \in \N}}
+		\end{align*}
+	\item $1$ é a \emph{unidade} de $A[x]$, definida por
+		\begin{align*}
+		\func{1}{\N}{A}{n}{
+			\begin{cases}
+			1,& n=0 \\
+			0,& n\neq0.
+		\end{cases}}
+		\end{align*}
+\end{enumerate}
 \end{definition}
+%\begin{definition}
+%Seja $\bm A$ um anel. O \emph{anel de polinômios} em $\bm A$ é o conjunto
+%	\begin{equation*}
+%	A[x] := \set{p \in A^{\N}}{\card{\supp(p)} < \card{\N}}.
+%	\end{equation*}
+%Os elementos de $A[x]$ são os \emph{polinômios} em $\bm A$.
+%\end{definition}
 
-Definimos os polinômios em $\bm A$ como as sequências em $A$ com suporte finito. O suporte da sequência $p\colon \N \to A$, nesse caso, é o suporte com respeito ao grupo $(A,+,-,0)$, ou seja, sequências que têm uma quantidade finita de entradas não nulas. Essas sequências são também chamadas de sequências eventualmente nulas. Por enquanto, $x$ é um símbolo qualquer, e pode ser substituído por qualquer outro símbolo de preferência, mas mais para frente ele será definido como um elemento de $A[x]$ de modo que os polinômios $p \in A[x]$ tenham a forma usual
+Definimos os polinômios em $\bm A$ como as sequências em $A$ com suporte finito. O suporte da sequência $p\colon \N \to A$, nesse caso, é o suporte com respeito ao grupo $(A,+,-,0)$, ou seja, sequências que têm uma quantidade finita de entradas não nulas. Essas sequências são também chamadas de sequências eventualmente nulas. Se consideramos a topologia discreta em $\N$, que é sua topologia usual, toda função $\fun{s}{\N}{A}$ é contínua, independente da topologia de $A$, o que significa que $A^{\N} = \Cont(\N,A)$. Além disso, o suporte topológico (fechado) de funções de $\N$ coincide com o suporte algébrico, e os compactos de $\N$ são os conjuntos finitos, portanto ter suporte finito é o mesmo que ter suporte compacto. Assim, os polinômios são as funções (contínuas) de $\N$ para $A$ com suporte compacto.
+
+Por enquanto, $x$ é um símbolo qualquer, e pode ser substituído por qualquer outro símbolo de preferência, mas mais para frente ele será definido como um elemento de $A[x]$ de modo que os polinômios $p \in A[x]$ tenham a forma usual
 	\begin{equation*}
 	p = \sum_{i=0}^{n} p_i x^i.
 	\end{equation*}
 Antes disso, mostraremos que $A[x]$ é um anel, o que justifica seu nome.
 
-\begin{definition}
-Seja $\bm A$ um anel. Definimos em $A[x]$ as operações e as constantes
-	\begin{align*}
-	\func{+_{A[x]}}{A[x] \times A[x]}{A[x]}{(p,q)}{(p_n+q_n)_{n \in \N}}
-	\end{align*}
-	\begin{align*}
-	\func{-_{A[x]}}{A[x]}{A[x]}{p}{(-p_n)_{n \in \N}}
-	\end{align*}
-	\begin{align*}
-	\func{0_{A[x]}}{\N}{A}{n}{0}
-	\end{align*}
-
-	\begin{align*}
-	\func{\times_{A[x]}}{A[x] \times A[x]}{A[x]}{(p,q)}{\left(\sum_{i=0}^n p_i q_{n-i}\right)_{n \in \N}}.
-	\end{align*}
-	\begin{align*}
-	\func{1_{A[x]}}{\N}{A}{n}{\begin{cases}
-		1,& n=0 \\
-		0,& n\neq0.
-	\end{cases}}
-	\end{align*}
-Os sub-índices $A[x]$ serão suprimidos quando possível.
-\end{definition}
+%\begin{definition}
+%Seja $\bm A$ um anel. Definimos em $A[x]$ as operações e as constantes
+%	\begin{align*}
+%	\func{+_{A[x]}}{A[x] \times A[x]}{A[x]}{(p,q)}{(p_n+q_n)_{n \in \N}}
+%	\end{align*}
+%	\begin{align*}
+%	\func{-_{A[x]}}{A[x]}{A[x]}{p}{(-p_n)_{n \in \N}}
+%	\end{align*}
+%	\begin{align*}
+%	\func{0_{A[x]}}{\N}{A}{n}{0}
+%	\end{align*}
+%
+%	\begin{align*}
+%	\func{\times_{A[x]}}{A[x] \times A[x]}{A[x]}{(p,q)}{\left(\sum_{i=0}^n p_i q_{n-i}\right)_{n \in \N}}.
+%	\end{align*}
+%	\begin{align*}
+%	\func{1_{A[x]}}{\N}{A}{n}{\begin{cases}
+%		1,& n=0 \\
+%		0,& n\neq0.
+%	\end{cases}}
+%	\end{align*}
+%Os sub-índices $A[x]$ serão suprimidos quando possível.
+%\end{definition}
 
 \begin{proposition}
-Seja $\bm A$ um anel. Então $\bm{A[x]} = (A[x],+,-,0,\times,1)$ é um anel.
+Seja $\bm A$ um anel. O anel de polinômios $\bm{A[x]}$ em $\bm A$ é um anel.
 \end{proposition}
 \begin{proof}
 Sabemos que $(A[x],+,-,0)$ é um grupo comutativo, pois $(A,+,-,0)$ o é. Mostremos que $(A[x],\times,1)$ é um monoide comutativo. Como $(A,\times,1)$ é um monoide comutativo, segue que
@@ -2286,14 +2779,24 @@ Por fim, mostremos que vale a distributividade. Para todos $p,q,r \in A[x]$,
 \end{proof}
 
 \begin{definition}
-Seja $\bm A$ um anel. O \emph{grau} de $p \in A[x] \setminus \{0\}$ é o número
+Seja $\bm A$ um anel. O \emph{grau} (ou \emph{grau máximo}) de $p \in A[x] \setminus \{0\}$ é o número natural
 	\begin{equation*}
-	\g(p) := \max{\supp(p)}
+	\grau{p} := \max\supp(p) = \max\set{n \in \N}{s_n \neq 0}.
 	\end{equation*}
-(o maior índice de uma entrada não nula de $p$, que é sempre inteiro porque o suporte de $p$ é finito).
 \end{definition}
 
-O grau do polinômio $0$ não é definido. Se a definição acima fosse mudada de $\max$ para $\sup$, ele seria $0$ pela convenção de $\sup \emptyset = 0$.
+O grau de $p$ é o maior índice de uma entrada não nula de $p$, que é sempre inteiro porque o suporte de $p$ é finito. O grau do polinômio $0$ não é definido. Se a definição acima fosse mudada do máximo $\max$ para o supremo $\sup$, ele seria $0$ pois $\sup \emptyset = 0$ em $\N$.
+
+\begin{exercise}
+Seja $\bm A$ um anel.
+	\begin{enumerate}
+	\item Para todos $p,p' \in A[x] \setminus \{0\}$ tais que $p+p'\neq 0$, $\grau{p+p'} \geq \grau{p} \opmax \grau{p'}$;
+	\item Para todo $p \in A[x] \setminus \{0\}$, $\grau{-p} = \grau{p}$;
+	%\item \grau{0} = 0; % Se definimos com \sup em vez de \max
+	\item Para todos $p,p' \in A[x] \setminus \{0\}$ tais que $pp' \neq 0$, $\grau{pp'} \leq \grau{p} + \grau{p'}$;
+	\item $\grau{1}=0$.
+	\end{enumerate}
+\end{exercise}
 
 A próxima definição justifica a notação $A[x]$, no sentido de que dá significado ao símbolo $x$.
 
@@ -2316,38 +2819,38 @@ Notemos que, para todo $k \in \N$, $x^k$ é a função
 	\end{align*}
 e assim podemos escrever todo polinômio $p \in A[x]$ como uma soma finita
 	\begin{equation*}
-	p = \sum_{i=0}^{\g(p)} p_ix^i.
+	p = \sum_{i=0}^{\grau{p}} p_ix^i.
 	\end{equation*}
 
 %\begin{proposition}
 %Sejam $\bm A$ um anel e $p,q \in A[x}$. Então
 %	\begin{equation*}
-%	\g(p+q)=\max\{\g(p),\g(q)\}
+%	\grau{p+q}=\max\{\grau{p},\grau{q}\}
 %	\end{equation*}
 %	\begin{equation*}
-%	\g(pq) \leq \g(p)+\g(p)
+%	\grau{pq} \leq \grau{p}+\grau{q}
 %	\end{equation*}
 %\end{proposition}
 
 \begin{proposition}
 Sejam $\bm A$ um domínio e $p,q \in A[x]\setminus\{0\}$. Então
 	\begin{equation*}
-	\g(pq)=\g(p)+\g(q).
+	\grau{pq}=\grau{p}+\grau{q}.
 	\end{equation*}
 \end{proposition}
 \begin{proof}
-Seja $k := \g(p)+\g(q)$. O produto $pq$ terá coeficientes $\sum_{i=0}^n p_i q_{n-i}$, com $n \in \{0,\ldots,k\}$. Notemos que, para $k = \g(p)+\g(q)$,
+Seja $k := \grau{p}+\grau{q}$. O produto $pq$ terá coeficientes $\sum_{i=0}^n p_i q_{n-i}$, com $n \in [k+1]$. Notemos que, para $k = \grau{p}+\grau{q}$,
 	\begin{equation*}
-	\sum_{i=0}^k p_i q_{k-i} = p_{\g(p)}q_{\g(q)}.
+	\sum_{i=0}^k p_i q_{k-i} = p_{\grau{p}}q_{\grau{q}}.
 	\end{equation*}
-Isso ocorre porque todos os termos desse somatório se anulam, menos quando $i=\g(p)$. Se $i>\g(p)$, temos $p_i=0$; se $i<\g(p)$, então $k-i > \g(p)+\g(q)-\g(p) = \g(q)$, e temos $q_{k-i}=0$. Em ambos os casos, $p_i q_{k-i}=0$. Por definição, $p_{\g(p)} \neq 0$ e $q_{\g(q)} \neq 0$ e, como $\bm A$ é um domínio, isso implica que $p_{\g(p)} q_{\g(q)} \neq 0$. Logo $pq \neq 0$ e $\g(pq)=\g(p)+\g(q)$.
+Isso ocorre porque todos os termos desse somatório se anulam, menos quando $i=\grau{p}$. Se $i>\grau{p}$, temos $p_i=0$; se $i<\grau{p}$, então $k-i > \grau{p}+\grau{q}-\grau{p} = \grau{q}$, e temos $q_{k-i}=0$. Em ambos os casos, $p_i q_{k-i}=0$. Por definição, $p_{\grau{p}} \neq 0$ e $q_{\grau{q}} \neq 0$ e, como $\bm A$ é um domínio, isso implica que $p_{\grau{p}} q_{\grau{q}} \neq 0$. Logo $pq \neq 0$ e $\grau{pq}=\grau{p}+\grau{q}$.
 \end{proof}
 
 \begin{proposition}
 Seja $\bm A$ um anel. Então $\bm A$ é um domínio se, e somente se, $\bm{A[x]}$ é um domínio.
 \end{proposition}
 \begin{proof}
-Suponha que $\bm A$ é um domínio e sejam $p_0,p_1 \in A[x]\setminus\{0\}$. Então $\g(p_0p_1)=\g(p_1)+\g(p_1)$, o que mostra que $p_0p_1 \neq 0$. Logo $\bm{A[x]}$ é um domínio. Reciprocamente, suponha que $\bm{A[x]}$ é um domínio e sejam $a_0,a_1 \in A\setminus\{0\}$. Então $a_0,a_1 \in A[x]\setminus\{0\}$ e, portanto, $a_0a_1 \neq 0$. Logo $\bm A$ é um domínio.
+Suponha que $\bm A$ é um domínio e sejam $p_0,p_1 \in A[x]\setminus\{0\}$. Então $\grau{p_0p_1}=\grau{p_0}+\grau{p_1}$, o que mostra que $p_0p_1 \neq 0$. Logo $\bm{A[x]}$ é um domínio. Reciprocamente, suponha que $\bm{A[x]}$ é um domínio e sejam $a_0,a_1 \in A\setminus\{0\}$. Então $a_0,a_1 \in A[x]\setminus\{0\}$ e, portanto, $a_0a_1 \neq 0$. Logo $\bm A$ é um domínio.
 \end{proof}
 
 Podemos ver que $\bm{A[x]}$ nunca é um corpo, pois $x$ não tem inverso.
@@ -2376,10 +2879,10 @@ Os elementos de $A[x]$ são os \emph{polinômios em $n$ variáveis} em $\bm A$.
 \subsection{Raízes de polinômios}
 
 \begin{proposition}
-Seja $\bm A$ um anel e $f,g \in A[x]$. Se $g$ é mônico, então existem $q,r \in A[x]$ tais que $f=qg+r$ e $r=0$ ou $\g(r) < \g(g)$.
+Seja $\bm A$ um anel e $f,g \in A[x]$. Se $g$ é mônico, então existem $q,r \in A[x]$ tais que $f=qg+r$ e $r=0$ ou $\grau{r} < \grau{g}$.
 \end{proposition}
 \begin{proof}
-Sejam $n := \g(f)$, $m := \g(g)$,
+Sejam $n := \grau{f}$, $m := \grau{g}$,
 	\begin{equation*}
 	f = \sum_{i=0}^n a_ix^i \text{\ \ e\ \ } g = \sum_{i=0}^{m-1} b_ix^i + x^m
 	\end{equation*}
@@ -2391,9 +2894,9 @@ Se $m \leq n$, definimos $q(x) := a_nx^{n-m}$ e $r := f-qg$ e temos
 	&= \sum_{i=0}^{n-1} a_ix^i - \sum_{i=n-m}^{n-1} a_nb_{i-n+m}x^i \\
 	&= \sum_{i=0}^{n-m-1} a_ix^i + \sum_{i=n-m}^{n-1} (a_i - a_nb_{i-n+m})x^i.
 	\end{align*}
-Daí, segue que, se $r \neq 0$, $\g(r) \leq n-1 < m  \leq \g(g)$.
-
-... TERMINAR, USEI ISSO NUMA DEMONSTRAÇÃO MAIS A FRENTE, TENHO QUE DEMONSTRAR.
+Daí segue que, se $r \neq 0$, $\grau{r} \leq n-1 < m \leq \grau{g}$.
+%
+%... TERMINAR, USEI ISSO NUMA DEMONSTRAÇÃO MAIS A FRENTE, TENHO QUE DEMONSTRAR.
 \end{proof}
 
 \begin{definition}
@@ -2404,20 +2907,161 @@ Sejam $\bm A$ um anel, $p = \sum_{i=0}^n p_ix^i \in A[x]$ e $a \in A$. O \emph{v
 \end{definition}
 
 \begin{definition}
-	Sejam $\bm A$ um anel e $p \in A[x]^* = A[x] \setminus A$. Uma \emph{raiz} de $p$ é um elemento $r \in A$ tal que $p(r)=0$.
+Sejam $\bm A$ um anel e $p \in A[x]^* = A[x] \setminus A$. Uma \emph{raiz} de $p$ é um elemento $r \in A$ tal que $p(r)=0$.
 \end{definition}
 
+\begin{exercise}
+Sejam $\bm A$ um anel, $p \in A[x]^*$ e $r \in A$. Então $r$ é raiz de $p$ se, e somente se, existe $q \in A[x]$ tal que $p(x)=(x-r)q(x)$.
+\end{exercise}
+%\begin{proof}
+%	Primeiro, notemos que, se existe $q \in A[x]$ tal que $p(x)=(x-r)q(x)$, então $p(r)=(r-r)q(r)=0q(r)=0$. Reciprocamente, suponhamos que $r$ é raiz de $p$.
+%
+%	...
+%\end{proof}
+
+
+
+\cleardoublepage
+
+\subsection{Anel de séries}
+
+\begin{definition}
+Seja $\bm A$ um anel. O \emph{anel de séries} (ou \emph{séries de potências}) em $\bm A$ é a lista
+	\begin{equation*}
+	\bm{A\llbracket x \rrbracket} := (A\llbracket x \rrbracket,+,-,0,\times,1),
+	\end{equation*}
+em que
+\begin{enumerate}
+	\item $A\llbracket x \rrbracket := A^{\N}$ é o \emph{conjunto de séries} e um elemento de $A\llbracket x \rrbracket$ é denominado \emph{série} (ou \emph{série de potências}) em $\bm A$
+	\item $+$ é a \emph{adição} de $A\llbracket x \rrbracket$, definida por
+		\begin{align*}
+		\func{+}{A\llbracket x \rrbracket \times A\llbracket x \rrbracket}{A\llbracket x \rrbracket}{(s,s')}{(s_n+s'_n)_{n \in \N}}
+		\end{align*}
+	\item $-$ é a \emph{inversão aditiva} de $A\llbracket x \rrbracket$, definida por
+		\begin{align*}
+		\func{-}{A\llbracket x \rrbracket}{A\llbracket x \rrbracket}{s}{(-s_n)_{n \in \N}}
+		\end{align*}
+	\item $0$ é a \emph{nulidade} de $A\llbracket x \rrbracket$, definida por
+		\begin{align*}
+		\func{0}{\N}{A}{n}{0}
+		\end{align*}
+	\item $\times$ é a \emph{multiplicação} de $A\llbracket x \rrbracket$, definida por
+		\begin{align*}
+		\func{\times}{A\llbracket x \rrbracket \times A\llbracket x \rrbracket}{A\llbracket x \rrbracket}{(s,s')}{\left(\sum_{i=0}^n s_i s'_{n-i}\right)_{n \in \N}}
+		\end{align*}
+	\item $1$ é a \emph{unidade} de $A\llbracket x \rrbracket$, definida por
+		\begin{align*}
+		\func{1}{\N}{A}{n}{
+			\begin{cases}
+			1,	& n = 0 \\
+			0,	& n \neq 0.
+		\end{cases}}
+		\end{align*}
+\end{enumerate}
+\end{definition}
+
+Em particular, todo polinômio $p \in A[x]$ é uma série, ou seja, $A[x] \subseteq A\llbracket x \rrbracket$.
+
+\begin{exercise}
+Seja $\bm A$ um anel. O anel de séries $\bm{A\llbracket x \rrbracket}$ de $\bm A$ é um anel.
+\end{exercise}
+
+\begin{definition}
+Seja $\bm A$ um anel. A \emph{variável} de $A\llbracket x \rrbracket$ é a função
+	\begin{align*}
+	\func{x}{\N}{A}{n}{\begin{cases}
+		1,& n=1 \\
+		0,& n\neq 1.
+	\end{cases}}
+	\end{align*}
+\end{definition}
+
+Assim como no anel de polinômios $A[x]$, notemos que, para todo $k \in \N$, $x^k$ é a função
+	\begin{align*}
+	\func{x^k}{\N}{A}{n}{\begin{cases}
+		1,& n=k \\
+		0,& n \neq k
+	\end{cases}}
+	\end{align*}
+e assim podemos escrever todo polinômio $p \in A[x]$ como uma soma finita
+	\begin{equation*}
+	p = \sum_{n=0}^{\grau{p}} p_nx^n.
+	\end{equation*}
+
+Os elementos de $A\llbracket x \rrbracket$ que não são todos polinômios, no entanto; as sequências $s \in A\llbracket x \rrbracket$ tais que, para todo $n \in \N$, algum $n' \in \N$, $n' > n$, satisfaz $s_{n'} \neq 0$, não podem de fato ser escritos como
+	\begin{equation*}
+	s = \sum_{n \in \N} s_nx^n,
+	\end{equation*}
+pois essa soma é infinita e a princípio soma infinita não está definida em um anel. No entanto, podemos adotar a expressão anterior como uma notação para a série $s$. Um outro método de resolver esse problema será apresentado a seguir, introduzindo uma topologia no anel de séries que possibilitará tratar de convergência de somas finitas.
+
+\subsubsection{Topologia do anel de séries}
+
+Além disso, podemos tentar munir $A\llbracket x \rrbracket$ com uma topologia, de modo que a sequencia
+	\begin{equation*}
+	\left( \sum_{n = 0}^{m} s_nx^n \right)_{m \in \N}
+	\end{equation*}
+seja convergente para $s$. Isso permitira escrever a soma infinita acima sem ser uma notação. Definimos uma topologia em $A\llbracket x \rrbracket$ como sendo a topologia produto de $A^{\N}$, com $A$ munido da topologia discreta.
+
+\begin{definition}
+Seja $\bm A$ um anel. A \emph{topologia do anel de séries} $A\llbracket x \rrbracket$ é a topologia produto de $A^{\N}$, em que a topologia de $A$ é considerada a topologia discreta.
+\end{definition}
+
+Se o anel $\bm A$ tiver uma topologia diferente da discreta, podemos definir a topologia de $A\llbracket x \rrbracket$ como a topologia produto dessa topologia de $\bm A$. Isso permite que mais séries convirjam. No entanto, aqui consideraremos somente esse caso, que é mais simples. Essa segunda topologia é mais grossa e é a topologia mais adequada para considerar, por exemplo, o anel de séries de um anel de séries, $A\llbracket x \rrbracket\llbracket x' \rrbracket$; nesse anel, a topologia que definimos considera $A\llbracket x \rrbracket$ com tendo a topologia discreta e não a topologia que definimos, e por isso o anel $A\llbracket x \rrbracket\llbracket x' \rrbracket$ não terá a mesma topologia de $A\llbracket x, x' \rrbracket$, que pode ser definia analogamente à topologia acima definida.
+
+Essa topologia pode ser dada por uma métrica e para isso definimos antes a ordem de uma série.
+
+\begin{definition}
+Sejam $\bm A$ um anel e $s \in A\llbracket x \rrbracket \setminus \{0\}$. A \emph{ordem} (ou \emph{grau mínimo}) da série $s$ é o número natural
+	\begin{equation*}
+	\ords{s} := \min\supp(s) = \min\set{n \in \N}{s_n \neq 0}.
+	\end{equation*}
+\end{definition}
+
+A ordem da série $s$ é o menor índice de um coeficiente não nulo de $s$ (o grau de um polinômio é o maior índice), que existe a menos que $s = 0$. No caso em que $s=0$, podemos definir sua ordem como sendo $\infty$, mas não definiremos a ordem de $0$.
+
+\begin{exercise}
+Seja $\bm A$ um anel.
+	\begin{enumerate}
+	\item Para todos $s,s' \in A[x] \setminus \{0\}$ tais que $s+s'\neq 0$, $\ords{s+s'} \geq \ords{s} \opmin \ords{s'}$;
+	\item Para todo $s \in A[x] \setminus \{0\}$, $\ords{-s} = \ords{s}$;
+%	\item \ords{0} = \infty; % Se definimos com \inf em vez de \min
+	\item Para todos $s,s' \in A[x] \setminus \{0\}$ tais que $ss' \neq 0$, $\ords{ss'} \geq \ords{s} + \ords{s'}$;
+	\item $\ords{1}=0$.
+	\end{enumerate}
+\end{exercise}
+
 \begin{proposition}
-	Sejam $\bm A$ um anel, $p \in A[x]^*$ e $r \in A$. Então $r$ é raiz de $p$ se, e somente se, existe $q \in A[x]$ tal que $p(x)=(x-r)q(x)$.
+Seja $\bm A$ um anel. A topologia de $A\llbracket x \rrbracket$ é dada pela distância
+	\begin{align*}
+	\func{\dist{\var}{\var}}{A\llbracket x \rrbracket \times A\llbracket x \rrbracket}{\R}{(s,s')}{
+		\dist{s}{s'} :=
+			\begin{cases}
+				0					& s=s' \\
+				2^{-\ords{s-s'}}	& s \neq s'.
+			\end{cases}
+	}
+	\end{align*}
 \end{proposition}
 \begin{proof}
-	Primeiro, notemos que, se existe $q \in A[x]$ tal que $p(x)=(x-r)q(x)$, então $p(r)=(r-r)q(r)=0q(r)=0$. Reciprocamente, suponhamos que $r$ é raiz de $p$.
-
-	...
+Segue direto de \ref{prop:grupo.comut.discreto.metrica}, para $\bm G = \bm{A^+}$, $m = 1$, $I = \N$ e $\alpha = 2\inv$.
 \end{proof}
 
+\begin{exercise}
+Seja $\bm A$ um anel e $(\sigma_n)_{n \in \N}$ uma sequência de séries $\sigma_n \in \bm{A\llbracket x \rrbracket}$. A sequência de somas parciais
+	\begin{equation*}
+	\sigma'_{n' \in \N} = \left( \sum_{n=0}^{n'} \sigma_n \right)_{n' \in \N}
+	\end{equation*}
+converge se, e somente se, para todo $i \in \N$, a sequência de coeficientes de $x_i$ de $\sigma'_{n'}$ é eventualmente constante.
+\end{exercise}
 
-
+No caso de uma série $s \in \bm{A\llbracket x \rrbracket}$, considerarmos $\sigma_n := s_nx^n$, e claramente a sequência de somas parciais de $(\sigma_n)_{n \in \N}$ converge, portanto obtemos
+	\begin{equation*}
+	s = \sum_{n \in \N} s_nx^n.
+	\end{equation*}
+Isso mostra que com essa topologia, a igualdade anterior deixa de ser somente uma notação e se torna de fato um resultado de convergência. Além disso, podemos expressar o produto de duas séries mais simplesmente usando esse resultado de convergência. Para todas séries $s,s' \in A\llbracket x \rrbracket$,
+	\begin{equation*}
+	ss' = \left( \sum_{n \in \N} s_nx^n \right) \left( \sum_{n' \in \N} s'_{n'}x^{n'} \right) = \sum_{n,n' \in \N} s_ns'_{n'}x^{n+n'}.
+	\end{equation*}
 
 
 \cleardoublepage
@@ -2430,7 +3074,7 @@ Sejam $\bm A$ um anel, $p = \sum_{i=0}^n p_ix^i \in A[x]$ e $a \in A$. O \emph{v
 
 \subsection{Corpo e subcorpo}
 
-Já demos a definição de um corpo no capítulo de anéis, mas agora pretendemos ressaltar essa definição.
+Já demos a definição de um corpo, mas agora pretendemos ressaltar essa definição em termos da estrutura algébrica do corpo.
 
 %\begin{definition}
 %Um \emph{corpo} é uma lista $\bm C = (C,+,-,0,\times,\inv,1)$ tal que
@@ -2440,317 +3084,23 @@ Já demos a definição de um corpo no capítulo de anéis, mas agora pretendemo
 %	\end{enumerate} 
 %\end{definition}
 
+%\begin{definition}
+%Um \emph{corpo} é uma lista $\bm C = (C,+,-,0,\times,\div,1)$ tal que
+%	\begin{enumerate}
+%	\item $(C,+,-,0,\times,1)$ é um anel;
+%	\item $(C \setminus \{0\},\times,\div,1)$ é um grupo (comutativo).
+%	\end{enumerate} 
+%\end{definition}
+
 \begin{definition}
 Um \emph{corpo} é uma lista $\bm C = (C,+,-,0,\times,\div,1)$ tal que
 	\begin{enumerate}
-	\item $(C,+,-,0,\times,1)$ é um anel;
-	\item $(C \setminus \{0\},\times,\div,1)$ é um grupo (comutativo).
-	\end{enumerate} 
-\end{definition}
-
-\subsection{Corpo de frações}
-
-\begin{definition}
-Seja $\bm D$ um domínio. A \emph{equivalência de frações} em $D \times D \setminus \{0\}$ é a relação definida por: para todos $(n,d),(n',d') \in D \times D*$,
-	\begin{equation*}
-	(n,d) \sim (n',d') \Leftrightarrow nd' = dn'.
-	\end{equation*}
-\end{definition}
-
-\begin{proposition}
-Seja $\bm D$ um domínio. A \emph{equivalência de frações} em $D \times D \setminus \{0\}$ é uma equivalência.
-\end{proposition}
-\begin{proof}
-(Reflexividade) Segue direto de $nd=dn$ para todo $(n,d) \in D \times D \setminus \{0\}$.
-
-(Simetria) Segue direto de $nd'=dn'$ se, e somente se, $dn'=nd'$ para todos $(n,d),(n',d') \in D \times D*$.
-
-(Transitividade) Sejam $(n,d),(n',d'),(n'',d'') \in D \times D \setminus \{0\}$ tais que $(n,d) \sim (n',d')$ e $(n',d') \sim (n'',d'')$. Isso significa que $nd' = dn'$ e $n'd'' = d'n''$. Então segue que
-	\begin{equation*}
-	d'(nd'') = nd'd'' = dn'd'' = dd'n'' = d'(dn'')
-	\end{equation*}
-logo, como $d \neq 0$, segue da propriedade de cancelamento que
-	\begin{equation*}
-	nd'' = dn'',
-	\end{equation*}
-o que significa que $(n,d) \sim (n'',d'')$.
-\end{proof}
-
-Note que a transitividade exige que valha a propriedade de cancelamento, por isso precisamos de um domínio, e também exige a comutatividade da multiplicação. Como essa relação é uma equivalência, podemos considerar o quociente desse conjunto pela relação, e obtemos o que se chama corpo de frações.
-
-\begin{definition}
-Seja $\bm D$ um domínio. O \emph{corpo de frações} de $\bm D$ é o conjunto
-	\begin{equation*}
-	Q(D) := \quo{D \times D \setminus \{0\}}{\sim}.
-	\end{equation*}
-Os elementos de $Q(D)$ são \emph{frações} e são denotadas
-	\begin{equation*}
-	\frac{n}{d} := [(n,d)].
-	\end{equation*}
-A \emph{adição de frações} é a função
-	\begin{align*}
-	\func{+}{Q(D) \times Q(D)}{Q(D)}{\left( \frac{n}{d},\frac{n'}{d'} \right)}{\frac{nd'+dn'}{dd'}}
-	\end{align*}
-A \emph{inversa da adição de frações} é a função
-	\begin{align*}
-	\func{-}{Q(D)}{Q(D)}{\frac{n}{d}}{\frac{-n}{d}}
-	\end{align*}
-A \emph{nulidade de frações} é a fração
-	\begin{equation*}
-	0 := \frac{0}{1}.
-	\end{equation*}
-A \emph{multiplicação de frações} é a função
-	\begin{align*}
-	\func{+}{Q(D) \times Q(D)}{Q(D)}{\left( \frac{n}{d},\frac{n'}{d'} \right)}{\frac{nn'}{dd'}};
-	\end{align*}
-A \emph{inversa da multiplicação de frações} é a função
-	\begin{align*}
-	\func{\inv}{Q(D) \setminus \{0\}}{Q(D) \setminus \{0\}}{\frac{n}{d}}{\frac{d}{n}};
-	\end{align*}
-A \emph{unidade de frações} é a fração
-	\begin{equation*}
-	1 := \frac{1}{1}.
-	\end{equation*}
-\end{definition}
-
-\begin{definition}
-Seja $\bm D$ um domínio. A lista $(Q(D),+,-,0,\times,\inv,1)$ é um corpo.
-\end{definition}
-\begin{proof}
-Exercício simples.
-\end{proof}
-
-\begin{definition}
-Seja $\bm D$ um domínio. A \emph{inclusão canônica} de $D$ em $Q(D)$ é a função
-	\begin{align*}
-	\func{\inclu}{D}{Q(D)}{a}{\frac{a}{1}}.
-	\end{align*}
-\end{definition}
-
-\begin{proposition}
-Seja $\bm D$ um domínio. A inclusão $\iota\colon D \to Q(D)$ é um homomorfismo injetivo de anéis.
-\end{proposition}
-
-\begin{proposition}[Propriedade Universal]
-\label{alg:prop.univer.corpo.frac}
-Sejam $\bm D$ um domínio, $\bm C$ um corpo e $h\colon D \to C$ um homomorfismo injetivo de anel. Existe um único homomorfismo injetivo de anel $\bar h\colon Q(D) \to C$ tal que $\bar h \circ \iota = h$ (o diagrama comuta).
-\begin{figure}
-\centering
-\begin{tikzpicture}[node distance=2.5cm, auto]
-	\node (C) {$\bm D$};
-	\node (G) [above of=C] {$\displaystyle\bm{Q(D)}$};
-	\node (X) [right of=C] {$\bm C$};
-	\draw[->] (C) to node [swap] {$h$} (X);
-	\draw[->, dashed] (G) to node {$\bar h$} (X);
-	\draw[->] (C) to node {$\iota$} (G);
-\end{tikzpicture}
-\end{figure}
-\end{proposition}
-\begin{proof}
-Definimos
-	\begin{align*}
-	\func{\bar h}{Q(D)}{C}{\frac{n}{d}}{h(n)h(d)\inv}.
-	\end{align*}
-Mostremos primeiro que essa função está bem definida. Primeiro, note que, como $h$ é injetiva e $d \neq 0$, então $h(d) \neq 0$, portanto existe $h(d)\inv \in C$. Agora, sejam $(n,d),(n',d') \in D \times D \setminus \{0\}$ tais que $\frac{n}{d} = \frac{n'}{d'}$. Então $nd'=dn'$, e segue da injetividade de $h$ vale que $h(nd') = h(dn')$. Mas então $h(n)h(d')=h(d)h(n')$, o que implica que $h(n)h(d)\inv = h(n')h(d')\inv$, e segue que
-	\begin{equation*}
-	\bar h\left( \frac{n}{d} \right) = h(n)h(d)\inv = h(n')h(d')\inv = \bar h\left( \frac{n'}{d'} \right).
-	\end{equation*}
-
-Agora mostremos que $\bar h$ é homomorfismo de anel. (Homomorfismo de grupo) Sejam $\frac{n}{d},\frac{n'}{d'} \in Q(D)$. Então
-	\begin{align*}
-	\bar h\left( \frac{n}{d} + \frac{n'}{d'} \right) &= \bar h\left( \frac{nd'+dn'}{dd'} \right) \\
-		&= h(nd'+dn')h(dd')\inv \\
-		&= (h(n)h(d')+h(d)h(n'))h(d)\inv h(d')\inv \\
-		&= h(n)h(d)\inv + h(n')h(d')\inv \\
-		&= \bar h\left( \frac{n}{d} \right) + \bar h \left( \frac{n'}{d'} \right).
-	\end{align*}
-
-(Homomorfismo de monoide) Sejam $\frac{n}{d},\frac{n'}{d'} \in Q(D)$. Então
-	\begin{align*}
-	\bar h\left( \frac{n}{d}\frac{n'}{d'} \right) &= \bar h\left( \frac{nn'}{dd'} \right) \\
-		&= h(nn')h(dd')\inv \\
-		&= h(n)h(n')h(d)\inv h(d')\inv \\
-		&= h(n)h(d)\inv h(n')h(d')\inv \\
-		&= \bar h\left( \frac{n}{d} \right)\bar h \left( \frac{n'}{d'} \right).
-	\end{align*}
-Ainda, como $h$ é homomorfismo de anel, $h(1)=1$, logo
-	\begin{equation*}
-	\bar h\left( \frac{1}{1} \right) = h(1)h(1)\inv = 1.
-	\end{equation*}
-
-(Injetividade) Sejam $\frac{n}{d},\frac{n'}{d'} \in Q(D)$ tais que $\bar h(\frac{n}{d}) = \bar h(\frac{n'}{d'})$. Então
-	\begin{align*}
-	0 &= \bar h \left( \frac{n}{d} \right) - \bar h \left( \frac{n'}{d'} \right) \\
-		&= \bar h \left( \frac{n}{d} - \frac{n'}{d'} \right) \\
-		&= \bar h \left( \frac{nd'-dn'}{dd'} \right) \\
-		&= h(nd'-dn')h(dd')\inv.
-	\end{align*}
-Como $d \neq 0$ e $d' \neq 0$, segue que $h(nd'-dn')=0$, e da injetividade de $h$ segue que $nd'-dn'=0$, logo $nd'=dn'$, o que significa que $\frac{n}{d} = \frac{n'}{d'}$.
-
-%(Unicidade) Seja $g\colon Q(D) \to C$ um homomorfismo injetivo de anel tal que $g \circ \iota = h$. Então, para todos $m$
-\end{proof}
-
-
-\subsection{Os números racionais \ensuremath{\Q}}
-
-Essa construção, aplicada ao anel dos números inteiro, é o conjunto dos números racionais.
-
-\begin{definition}
-$\Q : = Q(\Z)$.
-\end{definition}
-
-
-
-
-\subsubsection{Funções de arredondamento}
-
-
-\paragraph{Chão e teto}
-
-\begin{definition}
-A função \emph{chão} é a função
-	\begin{align*}
-	\func{\chao{\var}}{\R}{\Z}{x}{\max\set{i \in \Z}{i \leq x}}.
-	\end{align*}
-A função \emph{teto} é a função
-	\begin{align*}
-	\func{\teto{\var}}{\R}{\Z}{x}{\min\set{i \in \Z}{i \geq x}}.
-	\end{align*}
-\end{definition}
-
-\begin{proposition}
-Para todo $x \in \R$,
-	\begin{enumerate}
-	\item (Conjugação)
-		\begin{align*}
-		-\chao{x} &= \teto{-x} \\
-		-\teto{x} &= \chao{-x};
-		\end{align*}
-	\item (Idempotência)
-		\begin{align*}
-		\chao{\chao{x}} &= \chao{x} \\
-		\teto{\teto{x}} &= \teto{x};
-		\end{align*}
+	\item $\bm C^+ := (C,+,-,0)$ é um grupo comutativo, em que $+$ é a \emph{adição}, $-$ é a \emph{inversão aditiva} e $0$ é a \emph{nulidade} (ou o \emph{zero}) de $\bm C$;
+	\item $\bm C^\times := (C,\times,1)$ é um monoide comutativo, em que $\times$ é a \emph{multiplicação} e $1$ é a \emph{unidade} (ou o \emph{um}) de $\bm C$;
+	\item $\bm C^{\div} := (C^{\div},\times,\div,1)$ é um grupo comutativo, em que $C^{\div} = C \setminus \{0\}$ é  conjunto de elementos invertíveis de $C$ e $\div$ é a \emph{inversão multiplicativa} de $\bm C$;
+	\item A multiplicação $\times$ é distributiva sobre a adição $+$.
 	\end{enumerate}
-\end{proposition}
-
-
-
-\begin{proposition}
-Para todo $x, x' \in \R$ e todo $i \in \Z$,
-	\begin{enumerate}
-	\item
-		\begin{align*}
-		\chao{x+i} &= \chao{x}+i \\
-		\teto{x+i} &= \teto{x}+i;
-		\end{align*}
-
-	\item
-		\begin{align*}
-		\chao{x}+\chao{x'} &\leq \chao{x+x'} \leq \chao{x}+\chao{x'}+1 \\
-		-1+\teto{x}+\teto{x'} &\leq \teto{x+x'} \leq \teto{x}+\teto{x'};
-		\end{align*}
-	\end{enumerate}
-\end{proposition}
-
-
-
-\begin{proposition}
-Para todos $x,x' \in \R$, $x'>0$ e todos $i,i' \in \Z$, $i>0$,
-	\begin{enumerate}
-	\item 
-		\begin{align*}
-		\chao{\frac{\chao{x}+i'}{i}} &= \chao{\frac{x+i'}{i}} \\
-		\teto{\frac{\teto{x}+i'}{i}} &= \teto{\frac{x+i'}{i}};
-		\end{align*}
-
-	\item
-		\begin{align*}
-		\teto{\frac{i'}{i}} - 1 &= \chao{\frac{i'-1}{i}} \\
-		\chao{\frac{i'}{i}} + 1 &= \teto{\frac{i'+1}{i}};
-		\end{align*}
-
-	\item	
-		\begin{align*}
-		\chao{\frac{\chao{x \div x'}}{i}} &= \chao{\frac{x}{x'i}} \\	
-		\teto{\frac{\teto{\frac{x}{x'}}}{i}} &= \teto{\frac{x}{x'i}}.
-		\end{align*}
-	
-	\end{enumerate}
-\end{proposition}
-
-
-
-
-\paragraph{Resto e parte fracionária}
-
-\begin{definition}
-Sejam $x,y \in \R$, $x' \neq 0$. O \emph{resto} de $x$ com respeito a $x'$ é
-	\begin{equation*}
-	\resto{x}{x'} := x - x'\chao{\frac{x}{x'}}.
-	\end{equation*}
-A \emph{parte fracionária} de $x$ é o resto de $x$ com respeito a $1$:
-	\begin{equation*}
-	\resfra{x} := \resto{x}{1}.
-	\end{equation*}
 \end{definition}
-
-\begin{proposition}
-Sejam $x,x' \in \R$, $x' \neq 0$.
-	\begin{enumerate}
-	\item Se $x'>0$,
-		\begin{equation*}
-		0 \leq \resto{x}{x'} < x';
-		\end{equation*}
-
-	\item Se $x'<0$,
-		\begin{equation*}
-		x' < \resto{x}{x'} \leq 0;
-		\end{equation*}
-	\end{enumerate}
-\end{proposition}
-
-
-
-
-
-\begin{proposition}
-Seja $x \in \R$,
-	\begin{equation*}
-	\teto{\resfra{x}} = \teto{x} - \chao{x} = \begin{cases}
-			0,& x \in \Z \\
-			1,& x \notin \Z.
-		\end{cases}
-	\end{equation*}
-\end{proposition}
-
-
-\begin{proposition}
-Sejam $x \in \R$, $i \in \Z$, $i > 0$.
-	\begin{equation*}
-	\teto{\resfra{ \frac{x}{i} }} = \teto{\frac{x}{i}} - \chao{\frac{x}{i}}  = \begin{cases}
-			0,& x \in i\Z \\
-			1,& x \notin i\Z.
-		\end{cases}
-	\end{equation*}
-\end{proposition}
-
-
-\paragraph{Arredondamento}
-
-\begin{definition}
-A função \emph{arredondamento meio para baixo} é a função
-	\begin{align*}
-	\func{\arrebai{\var}}{\R}{\Z}{x}{\teto{x-\frac{1}{2}}}.
-	\end{align*}
-A função \emph{arredondamento meio para cima} é a função
-	\begin{align*}
-	\func{\arrecim{\var}}{\R}{\Z}{x}{\chao{x+\frac{1}{2}}}.
-	\end{align*}
-\end{definition}
-
-
-
 
 \subsection{Extensões de corpos}
 
@@ -2794,7 +3144,7 @@ A função \emph{arredondamento meio para cima} é a função
 	\begin{equation*}
 	\sum_{i=0}^m c'_i\alpha^i = 0.
 	\end{equation*}
-Como $c'_0, \ldots,c'_m$ não são todos nulos, seja $k := \min\{i \in \{0,\ldots,m\} : c'_i \neq 0\}$. Então, para todo $i < k$, $c'_i = 0$, e segue que
+Como $c'_0, \ldots,c'_m$ não são todos nulos, seja $k := \min\set{i \in [m+1]}{c'_i \neq 0}$. Então, para todo $i < k$, $c'_i = 0$, e segue que
 	\begin{equation*}
 	0 = \sum_{i=0}^m c'_i\alpha^i = \sum_{i=k}^m c'_i\alpha^i = \alpha^k \sum_{i=k}^m c'_i\alpha^{i-k}
 	\end{equation*}
@@ -2802,7 +3152,7 @@ e, como $E$ é corpo e $\alpha \neq 0$, podemos dividir por $\alpha^k$ em ambos 
 	\begin{equation*}
 	\sum_{i=k}^m c'_i\alpha^{i-k} = 0.
 	\end{equation*}
-Fazendo, $n := m-k$ e, para todo $i \in \{0,\ldots,n\}$, $c_i := c'_{k+i}$, temos que $c_0,\ldots,c_n \in E$ — com $c_0 = c'_k \neq 0$ e, portanto, não todos nulos — tais que
+Fazendo, $n := m-k$ e, para todo $i \in [n+1]$, $c_i := c'_{k+i}$, temos que $c_0,\ldots,c_n \in E$ — com $c_0 = c'_k \neq 0$ e, portanto, não todos nulos — tais que
 	\begin{equation*}
 	\sum_{i=0}^n c_i\alpha^i = \sum_{i=0}^n c'_{k+i}\alpha^i = \sum_{i=k}^m c'_i\alpha^{i-k} = 0.
 	\end{equation*}
@@ -2814,7 +3164,7 @@ Fazendo, $n := m-k$ e, para todo $i \in \{0,\ldots,n\}$, $c_i := c'_{k+i}$, temo
 	\begin{enumerate}
 	\item $p(\alpha) = 0$;
 	\item $p$ é mônico;
-	\item $\g(p) = \min\{\g(f) : f \in C[x]^*, f(\alpha)=0 \text{\ \ e\ \ } f \text{\ é mônico}\}$.
+	\item $\grau{p} = \min\set{\grau{f}}{f \in C[x]^*, f(\alpha)=0 \text{\ \ e\ \ } f \text{\ é mônico}}$.
 	\end{enumerate}
 \end{definition}
 
@@ -2822,17 +3172,17 @@ Fazendo, $n := m-k$ e, para todo $i \in \{0,\ldots,n\}$, $c_i := c'_{k+i}$, temo
 	Sejam $\bm C$ um corpo, $\bm E$ uma extensão de $\bm C$ e $\alpha \in E$ um elemento algébrico sobre $\bm C$. Então existe um único polinômio minimal de $\alpha$ sobre $\bm C$.
 \end{proposition}
 \begin{proof}
-	Pela definição de elemento algébrico, existe $p \in C[x]^*$ tal que $p'(\alpha)=0$. Seja $n := \g(p')$ e $p'(x) = \sum_{i=0}^n a'_ix^i$. Como $\bm C$ é corpo e $a'_n \neq 0$, existe $(a'_n)^{-1} \in C$. Definindo
+	Pela definição de elemento algébrico, existe $p \in C[x]^*$ tal que $p'(\alpha)=0$. Seja $n := \grau{p'}$ e $p'(x) = \sum_{i=0}^n a'_ix^i$. Como $\bm C$ é corpo e $a'_n \neq 0$, existe $(a'_n)^{-1} \in C$. Definindo
 	\begin{equation*}
 	p := (a'_n)^{-1}p = \sum_{i=0}^{n-1} (a'_n)^{-1}a_ix^i + x^n,
 	\end{equation*}
-segue que $p \in C[x]^*$, $\g(p)=n$, $p(\alpha) = (a'_n)^{-1}p'(\alpha)=0$ e $p$ é mônico. Portanto $\{\g(f) : f \in C[x]^*, f(\alpha)=0 \text{\ \ e\ \ } f \text{\ é mônico}\}$ não é vazio, e, como é subconjunto de $\N$, admite mínimo, o que mostra que existe polinômio minimal de $\alpha$ sobre $\bm C$.
+segue que $p \in C[x]^*$, $\grau{p}=n$, $p(\alpha) = (a'_n)^{-1}p'(\alpha)=0$ e $p$ é mônico. Portanto $\set{\grau{f}}{f \in C[x]^*, f(\alpha)=0 \text{\ \ e\ \ } f \text{\ é mônico}}$ não é vazio, e, como é subconjunto de $\N$, admite mínimo, o que mostra que existe polinômio minimal de $\alpha$ sobre $\bm C$.
 
-	Para mostrar a unicidade, suponhamos que $p_1$ e $p_2$ são polinômios minimais de $\alpha$ sobre $\bm C$. Pela primeira propriedade de polinômio minimal, $(p_1-p_2)(\alpha)=p_1(\alpha)-p_2(\alpha)=0$. Pela terceira propriedade de polinômio minimal, $\g(p_1)=\g(p_2)$. Seja $n := \g(p_1)$ e sejam $p_1 = \sum_{i=0}^n a_ix^i$ e $p_2 = \sum_{i=0}^n b_ix^i$. Pela segunda propriedade de polinômio minimal, $a_n=b_n=1$. Então $a_n-b_n=0$ e
+	Para mostrar a unicidade, suponhamos que $p_1$ e $p_2$ são polinômios minimais de $\alpha$ sobre $\bm C$. Pela primeira propriedade de polinômio minimal, $(p_1-p_2)(\alpha)=p_1(\alpha)-p_2(\alpha)=0$. Pela terceira propriedade de polinômio minimal, $\grau{p_1}=\grau{p_2}$. Seja $n := \grau{p_1}$ e sejam $p_1 = \sum_{i=0}^n a_ix^i$ e $p_2 = \sum_{i=0}^n b_ix^i$. Pela segunda propriedade de polinômio minimal, $a_n=b_n=1$. Então $a_n-b_n=0$ e
 	\begin{equation*}
 	(p_1-p_2)(x) = \sum_{i=0}^{n-1} (a_i-b_i)x^i,
 	\end{equation*}
-e conclui-se que $\g(p_1-p_2) < n$. Se $p_1 \neq p_2$, existe $i \in \{0,\ldots,n-1\}$ tal que $a_i \neq b_i$. Então seja $k := \max\{i \in \{0,\ldots,n-1\} : a_i \neq b_i\}$. Assim, para todo $i > k$, $a_i = b_i$, o que implica $a_i-b_i=0$, e temos que $\g(p_1-p_2)=k$ e
+e conclui-se que $\grau{p_1-p_2} < n$. Se $p_1 \neq p_2$, existe $i \in [n]$ tal que $a_i \neq b_i$. Então seja $k := \max\set{i \in [n]}{a_i \neq b_i}$. Assim, para todo $i > k$, $a_i = b_i$, o que implica $a_i-b_i=0$, e temos que $\grau{p_1-p_2}=k$ e
 	\begin{equation*}
 	(p_1-p_2)(x) = \sum_{i=0}^{k} (a_i-b_i)x^i.
 	\end{equation*}
@@ -2840,14 +3190,14 @@ Como $\bm C$ é corpo e $a_k-b_k \neq 0$, existe $(a_k-b_k)^{-1} \in C$. Definin
 	\begin{equation*}
 	p := (a_k-b_k)^{-1}(p_1-p_2) = \sum_{i=0}^{k-1} (a_k-b_k)^{-1}(a_i-b_i)x^i + x^k,
 	\end{equation*}
- segue que $p \in C[x]^*$, $\g(p)=k$, $p(\alpha)=(a_k-b_k)^{-1}(p_1-p_2)(\alpha)=(a_k-b_k)^{-1}(p_1(\alpha)-p_2(\alpha))=0$ e $p$ é mônico. Mas $\g(p) = k < n = \g(p_1) = \g(p_2)$, o que contradiz a minimalidade do grau de $p_1$ e $p_2$. Portanto $p_1=p_2$ e está provada a unicidade.
+ segue que $p \in C[x]^*$, $\grau{p}=k$, $p(\alpha)=(a_k-b_k)^{-1}(p_1-p_2)(\alpha)=(a_k-b_k)^{-1}(p_1(\alpha)-p_2(\alpha))=0$ e $p$ é mônico. Mas $\grau{p} = k < n = \grau{p_1} = \grau{p_2}$, o que contradiz a minimalidade do grau de $p_1$ e $p_2$. Portanto $p_1=p_2$ e está provada a unicidade.
 \end{proof}
 
 \begin{proposition}
 	Seja $\bm C$ um corpo e $p \in C[x]^*$. Se $p$ é mônico e redutível, então existem $p_1,p_2 \in C[x]^*$ tais que $p=p_1p_2$ e $p_1$ e $p_2$ são mônicos.
 \end{proposition}
 \begin{proof}
-	Como $p$ é redutível, existem $p'_1,p'_2 \in C[x]^*$ tais que $p=p'_1p'_2$. Sejam $n := \g(p_1)$, $p_1 = \sum_{i=0}^n a_ix^i$, e $m := \g(p_2)$, $p_2 = \sum_{i=0}^m b_ix^i$. Pela definição de produto, sabemos que $a_nb_m=1$, pois $p$ é mônico. Como $\bm C$ é um corpo, existem $(a_n)^{-1},(b_m)^{-1} \in C$. Definindo
+	Como $p$ é redutível, existem $p'_1,p'_2 \in C[x]^*$ tais que $p=p'_1p'_2$. Sejam $n := \grau{p_1}$, $p_1 = \sum_{i=0}^n a_ix^i$, e $m := \grau{p_2}$, $p_2 = \sum_{i=0}^m b_ix^i$. Pela definição de produto, sabemos que $a_nb_m=1$, pois $p$ é mônico. Como $\bm C$ é um corpo, existem $(a_n)^{-1},(b_m)^{-1} \in C$. Definindo
 	\begin{equation*}
 	p_1 := (a_n)^{-1}p'_1 = \sum_{i=0}^{n-1} (a_n)^{-1}a_ix^i+ x^n \text{\ \ e\ \ } p_2 := (b_m)^{-1}p'_2 = \sum_{i=0}^{m-1} (b_m)^{-1}b_ix^i + x^m,
 	\end{equation*}
@@ -2861,13 +3211,13 @@ segue que $p_1,p_2 \in C[x]^*$ são mônicos e que
 	Sejam $\bm C$ um corpo, $\bm E$ uma extensão de $\bm C$, $\alpha \in E$ um elemento algébrico sobre $\bm C$ e $p \in C[x]^*$ um polinômio mônico tal que $p(\alpha)$. Então $p$ é o polinômio minimal de $\alpha$ sobre $\bm C$ se, e somente se, $p$ é irredutível em $\bm C[x]$.
 \end{proposition}
 \begin{proof}
-	Suponhamos que $p$ é polinômio minimal de $\alpha$ sobre $\bm C$. Se $p$ não é irredutível em $C[x]$, como $p$ é mônico, então existem $p_1,p_2 \in C[x]^*$ mônicos tais que $0 < \g(p_i) < \g(p)$ para todo $i \in \{1,2\}$. Como $p(\alpha)=p_1(\alpha)p_2(\alpha)=0$ e $\bm C$ é corpo, segue que $p_1(\alpha)=0$ ou $p_2(\alpha)=0$. No primeiro caso, $p_1 \in C[x]^*$ é um polinômio mônico, $p_1(\alpha)=0$ e $\g(p_1) < \g(p)$, o que contradiz a minimalidade de $p$. No segundo caso, $p_2 \in C[x]^*$ é um polinômio mônico, $p_2(\alpha)=0$ e $\g(p_2) < \g(p)$, o que também contradiz a minimalidade de $p$, e temos um absurdo. Portanto $p$ é irredutível em $\bm C[x]$.
+	Suponhamos que $p$ é polinômio minimal de $\alpha$ sobre $\bm C$. Se $p$ não é irredutível em $C[x]$, como $p$ é mônico, então existem $p_1,p_2 \in C[x]^*$ mônicos tais que $0 < \grau{p_i} < \grau{p}$ para todo $i \in \{1,2\}$. Como $p(\alpha)=p_1(\alpha)p_2(\alpha)=0$ e $\bm C$ é corpo, segue que $p_1(\alpha)=0$ ou $p_2(\alpha)=0$. No primeiro caso, $p_1 \in C[x]^*$ é um polinômio mônico, $p_1(\alpha)=0$ e $\grau{p_1} < \grau{p}$, o que contradiz a minimalidade de $p$. No segundo caso, $p_2 \in C[x]^*$ é um polinômio mônico, $p_2(\alpha)=0$ e $\grau{p_2} < \grau{p}$, o que também contradiz a minimalidade de $p$, e temos um absurdo. Portanto $p$ é irredutível em $\bm C[x]$.
 
-	Reciprocamente, suponhamos que $p$ é irredutível em $\bm C[x]$. Por hipótese, $p(\alpha)=0$ e $p$ é mônico. Seja $p_\alpha \in C[x]^*$ o polinômio minimal de $\alpha$ sobre $\bm C$. Então $\g(p_\alpha) \leq \g(p)$. Como $p_\alpha$ é mônico, exitem $q,r \in C[x]$ tais que $p = qp_\alpha+r$. Como $p(\alpha) = p_\alpha(\alpha) = 0$, então $r(\alpha) = p(\alpha) - q(\alpha)p_\alpha(\alpha) = 0$. Se $r \neq 0$, então $\g(r) < \g(p_\alpha)$. Seja $n := \g(r)$. Como $r(\alpha)=0$, segue que $\g(r)>0$. Então seja $r(x) = \sum_{i=0}^n a_ix^i$. Como $\bm C$ é corpo, existe $(a_n)^{-1} \in C$. Assim, definindo
+	Reciprocamente, suponhamos que $p$ é irredutível em $\bm C[x]$. Por hipótese, $p(\alpha)=0$ e $p$ é mônico. Seja $p_\alpha \in C[x]^*$ o polinômio minimal de $\alpha$ sobre $\bm C$. Então $\grau{p_\alpha} \leq \grau{p}$. Como $p_\alpha$ é mônico, exitem $q,r \in C[x]$ tais que $p = qp_\alpha+r$. Como $p(\alpha) = p_\alpha(\alpha) = 0$, então $r(\alpha) = p(\alpha) - q(\alpha)p_\alpha(\alpha) = 0$. Se $r \neq 0$, então $\grau{r} < \grau{p_\alpha}$. Seja $n := \grau{r}$. Como $r(\alpha)=0$, segue que $\grau{r}>0$. Então seja $r(x) = \sum_{i=0}^n a_ix^i$. Como $\bm C$ é corpo, existe $(a_n)^{-1} \in C$. Assim, definindo
 	\begin{equation*}
 	p' := (a_n)^{-1}r = \sum_{i=0}^{n-1} (a_n)^{-1}a_ix^i + x^n,
 	\end{equation*}
-e segue que $p' \in C[x]^*$, $p'(\alpha)=(a_n)^{-1}p'(\alpha)=0$ e $p'$ é mônico. Mas $\g(p') = n = \g(r) < \g(p_\alpha)$, o que contradiz a minimalidade do grau de $p_\alpha$. Então $r \neq 0$. Se $r=0$, então $p=qp_\alpha$. Mas $p$ é irredutível, e $p_\alpha \in C[x]^*$, o que implica $q \in C$. Como $p$ e $p_\alpha$ são mônicos, segue que $q=1$ e, portanto, $p=p_\alpha$.
+e segue que $p' \in C[x]^*$, $p'(\alpha)=(a_n)^{-1}p'(\alpha)=0$ e $p'$ é mônico. Mas $\grau{p'} = n = \grau{r} < \grau{p_\alpha}$, o que contradiz a minimalidade do grau de $p_\alpha$. Então $r \neq 0$. Se $r=0$, então $p=qp_\alpha$. Mas $p$ é irredutível, e $p_\alpha \in C[x]^*$, o que implica $q \in C$. Como $p$ e $p_\alpha$ são mônicos, segue que $q=1$ e, portanto, $p=p_\alpha$.
 \end{proof}
 
 
@@ -2981,7 +3331,7 @@ Sejam $X$ um conjunto e $\bm G$ um grupo comutativo. Então
 	\begin{equation*}
 	\bm{\Func}(X,\bm G) := (\Func(X,G),+,-,0,\circ,\Id)
 	\end{equation*}
-é um anel.
+é um anel\footnote{No sentido em que a multiplicação $\circ$ não precisa ser comutativa.}.
 \end{proposition}
 \begin{proof}
 	\begin{enumerate}
@@ -3057,7 +3407,7 @@ Seja $\bm G$ um grupo comutativo. Então
 	\begin{equation*}
 	\bm{\Homo}(\bm G) := (\Homo(\bm G),+,-,0,\circ,\Id)
 	\end{equation*}
-é um anel.
+é um anel\footnote{No sentido em que a multiplicação $\circ$ não precisa ser comutativa.}.
 \end{proposition}
 \begin{proof}
 Como $\Homo(\bm G) \subseteq \Func(G)$, basta mostrar que $\Homo(\bm G)$ é subanel de $\bm{\Func}(\bm G)$.
