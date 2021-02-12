@@ -62,6 +62,121 @@ e de que os conjuntos $cA$ e $Ac$ são abertos para todo $c \in C$.
 	\end{enumerate}
 \end{proof}
 
+Para o exemplo a seguir, seja $m \in \N \setminus \{0\}$ e lembremos que um $m$-multi-índice é um elemento $i \in I$ e sua norma é norma $1$ dada por
+	\begin{equation*}
+	\abs{i} = \abs{i_0} + \cdots + \abs{i_{m-1}} \in \N.
+	\end{equation*}
+Além disso, para um grupo $\bm G = (G,+,-,0)$, o suporte de uma função $\fun{s}{I}{G}$, que é um elemento de $s \in G^{I}$, é o conjunto de multi-índices $i \in I$ tais que $s_i \neq 0$, ou seja,
+	\begin{equation*}
+	\supp(s) = \set{i \in I}{s_i \neq 0}.
+	\end{equation*}
+A ordem de uma função $s \in I \setminus \{0\}$ é
+	\begin{equation*}
+	\ords{s} := \min\set{\abs{i}}{i \in \supp(s)},
+	\end{equation*}
+a menor norma de um índice de uma entrada não $0$. A ordem de $0 \in I$ pode ser definida como $\infty$, mas não usaremos essa definição explicitamente, embora ela seja compatível com a definição de distância a seguir. As mesmas definições valem analogamente para qualquer $I \subseteq I$.
+
+%\begin{proposition}
+%Sejam $\bm G = (G,+,-,0)$ um grupo comutativo com a topologia discreta. O grupo produto $\bm G^{\N}$ com a topologia produto é um grupo topológico e sua topologia é dada pela distância
+%	\begin{align*}
+%	\func{\dist{\var}{\var}}{G^{\N} \times G^{\N}}{\R}{(s,s')}{
+%		\dist{x}{x'} :=
+%			\begin{cases}
+%			0, & s = s'\\
+%			2^{-\ords{s-s'}}, & s \neq s',
+%			\end{cases}
+%	}
+%	\end{align*}
+%em que $\ords{s} = \min\supp(s) = \min\set{n \in \N}{s_n \neq 0}$.
+%\end{proposition}
+
+\begin{proposition}
+\label{prop:grupo.comut.discreto.metrica}
+Sejam $\bm G = (G,+,-,0)$ um grupo comutativo discreto, $m \in \Z \setminus \{0\}$, $I \subseteq \Z^m$ e $\alpha \in \intaa{0}{1}$. A topologia produto de $\bm G^{I}$ é dada pela distância
+	\begin{align*}
+	\func{\dist{\var}{\var}_\alpha}{G^{I} \times G^{I}}{\R}{(s,s')}{
+		\dist{s}{s'}_\alpha :=
+			\begin{cases}
+			0, & s = s'\\
+			\alpha^{\ords{s'-s}}, & s \neq s'.
+			\end{cases}
+	}
+	\end{align*}
+\end{proposition}
+\begin{proof}
+Mostremos que $\dist{\var}{\var}_\alpha$ é uma distância.
+	\begin{itemize}
+		\item (Separação) Sejam $s,s' \in G^{I}$. Se $s=s'$, por definição $\dist{s}{s'}_\alpha = 0$. Se $s \neq s'$, então $\dist{s}{s'}_\alpha = \alpha^{\ords{s'-s}}$ e, como $\alpha>0$, $\dist{s}{s'}_\alpha>0$.
+		\item (Simetria) Sejam $s,s' \in G^{I}$. Se $s=s'$, então $\dist{s}{s'}_\alpha = 0 = \dist{s'}{s}_\alpha$. Se $s \neq s'$, então $\ords{s'-s} = \ords{-(s'-s)} = \ords{s-s'}$, portanto $\dist{s}{s'}_\alpha = \dist{s'}{s}_\alpha$.
+		\item (Desigualdade triangular) Sejam $s,s',s'' \in G^{I}$. Se $s = s'$, então $\dist{s}{s'}_\alpha = 0$, portanto
+			\begin{equation*}
+			\dist{s}{s''}_\alpha = \dist{s'}{s''}_\alpha \leq 0 + \dist{s'}{s''}_\alpha = \dist{s}{s'}_\alpha + \dist{s'}{s''}_\alpha.
+			\end{equation*}
+		Se $s' = s''$, então $\dist{s'}{s''}_\alpha = 0$, portanto
+			\begin{equation*}
+			\dist{s}{s''}_\alpha = \dist{s}{s'}_\alpha \leq \dist{s}{s'}_\alpha + 0 = \dist{s}{s'}_\alpha + \dist{s'}{s''}_\alpha.
+			\end{equation*}
+		Se $s=s''$, então $\dist{s}{s''}_\alpha = 0$, portanto
+			\begin{equation*}
+			\dist{s}{s''}_\alpha = 0 \leq \dist{s}{s'}_\alpha + \dist{s'}{s''}_\alpha.
+			\end{equation*}
+		Se $s \neq s'$, $s' \neq s''$ e $s \neq s''$, então $\dist{s}{s'}_\alpha = \alpha^{\ords{s'-s}}$, $\dist{s'}{s''}_\alpha = \alpha^{\ords{s''-s'}}$ e $\dist{s}{s''}_\alpha = \alpha^{\ords{s''-s}}$. Como $0 \neq s''-s = (s''-s') + (s'-s)$, vale que
+			\begin{equation*}
+			\ords{s''-s} = \ords{(s''-s') + (s'-s)} \geq \ords{s''-s'} \opmin \ords{s'-s},
+			\end{equation*}
+		portanto, como $\alpha<1$,
+			\begin{align*}
+			\dist{s}{s''}_\alpha &= \alpha^{\ords{s''-s}} \\
+				&= \alpha^{\ords{(s''-s') + (s'-s)}} \\
+				&\leq \alpha^{\ords{s''-s'} \opmin \ords{s'-s}} \\
+				&\leq \alpha^{\ords{s''-s'}} + \alpha^{\ords{s'-s}} \\
+				&= \dist{s}{s'}_\alpha + \dist{s'}{s''}_\alpha.
+			\end{align*}
+	\end{itemize}
+
+	Mostraremos que as topologias são iguais.
+
+	\begin{itemize}
+	\item (Topologia métrica é mais fina que topologia produto) Não usaremos que a topologia de $G$ é discreta. Seja $U \subseteq G^{I}$ um aberto básico. Por definição da topologia produto, $U$ é da forma
+	\begin{equation*}
+	U = \prod_{i \in I} U_i,
+	\end{equation*}
+	e existe um conjunto finito $F \subseteq I$ tal que, para todo $i \notin F$, $U_i = G$. Se $U = \emptyset$, % então, para algum $i \in F$, $U_i = \emptyset$. Nesse caso, 
+	definindo $c := 0 \in G^{I}$ e $r := 0 \in \R$, segue que $\bola_r(c) = \emptyset \subseteq U$. Caso contrário, seja $u \in U$. Se $F = \emptyset$, então $U = G^{I}$; definindo $r:=1 \in \R$, segue que $u \in \bola_r(u) \subseteq G^{I} = U$. Se $F \neq \emptyset$, defina
+		\begin{equation*}
+		r := \alpha^{\max\abs{F}} = \alpha^{\max\set{\abs{i}}{i \in F}}.
+		\end{equation*}
+	Mostremos que $u \in \bola_r(u) \subseteq U$. Note que $r>0$, pois $\alpha \in \intaa{0}{1}$, logo $u \in \bola_r(u)$. Seja $x \in \bola_r(u)$. Se $x=u$, então $x \in U$; caso contrário, $x-u \neq 0$, logo $\dist{u}{x}_\alpha = \alpha^{\ords{x-u}}$. %Como $x \in \bola_r(u)$, segue que $\alpha^{\ords{x-u}} < r = \alpha^{\max\abs{F}}$, o que é equivalente a $\max\abs{F} < \ords{x-u}$, pois $\alpha \in \intaa{0}{1}$. Por sua vez, $\max\abs{F} < \ords{x-u}$ é equivalente a, para todo $i \in I$ tal que $\abs{i} \leq \max\abs{F}$, $x_i - u_i = 0$, ou seja, $x_i = u_i \in U_i$.
+	Como $x \in \bola_r(u)$, segue que
+		\begin{equation*}
+		\alpha^{\ords{x-u}} = \dist{u}{x}_\alpha< r = \alpha^{\max\abs{F}},
+		\end{equation*}
+	o que implica que $\max\abs{F} < \ords{x-u}$, pois $\alpha \in \intaa{0}{1}$. Por sua vez, isso implica que, para todo $i \in I$ tal que $\abs{i} \leq \max\abs{F}$, $x_i - u_i = 0$, ou seja, $x_i = u_i$. Como todo $i \in F$ satisfaz $\abs{i} \leq \max\abs{F}$, segue que $x_i = u_i \in U_i$, o que mostra que $x \in U$. Portanto $\bola_r(u) \subseteq U$.
+
+	\item (Topologia produto é mais fina que topologia métrica) Usaremos que a topologia de $G$ é discreta. Seja $\bola_r(c) \subseteq G^{I}$ uma bola aberta. Se $r=0$, $\bola_r(c) = \emptyset$; defina $U := \emptyset$, e segue que $U \subseteq \bola_r(c)$. Se $r>0$, $\bola_r(c) = \emptyset$; defina $k := \teto{\log_{\alpha}(r)}$ e $F := \set{i \in I}{\abs{i} \leq k}$, que é finito. Como a topologia de $G$ é discreta, para todo $i \in F$, $\{c_i\} \subseteq G$ é aberto; defina assim o aberto básico
+		\begin{equation*}
+		U := \prod_{i \in I} U_i,
+		\end{equation*}
+	em que $U_i := \{c_i\}$ se $i \in F$ e $U_i = G$ se $i \notin F$. %Mostremos que $u \in U \subseteq \bola_r(c)$. Seja $x \in U$. Então, para todo $i \in F$, $x_i=c_i$. 
+	%Mostremos que $U = \bola_r(c)$, o que em particular implica $u \in U \subseteq \bola_r(c)$. Seja $x \in G^{I}$. Então $x \in U$ se, e somente se, para todo $i \in F$, $x_i=c_i$.
+	%Mas $x \neq c$ satisfaz $\ords{x-c} > k$ se, e somente se, para todo $i \in F$, $x_i - c_i = 0$, ou seja, $x_i = c_i$. Isso significa que $\dist{c}{x}_\alpha < \alpha^k$ se, e somente se, para todo $i \in F$, $x_i = c_i$. Como $\alpha \in \intaa{0}{1}$, $k = \teto{\log_{\alpha}(r)} \geq \log_{\alpha}(r)$ é equivalente a $\alpha^k \leq \alpha^{\log_{\alpha}(r)} = r$.
+
+	%Mostremos que $U = \bola_r(c)$.
+	%\begin{itemize}
+	%	\item ($U \subseteq \bola_r(c)$) Seja $x \in U$. Então, para todo $i \in F$, $x_i=c_i$, ou seja, $x_i-c_i=0$. Se $x \neq c$, isso implica que $\ords{x-c} > k$ pela definição de $F$; como $\alpha < 1$, segue que $\dist{c}{x}_\alpha = \alpha^{\ords{x-c}} < \alpha^k$. Se $x=c$, então $\dist{c}{x}_\alpha = 0 < \alpha^k$, pois $\alpha > 0$. Em ambos os casos, $\dist{c}{x}_\alpha < \alpha^k$. Como $\alpha < 1$ e $k = \teto{\log_{\alpha}(r)} \geq \log_{\alpha}(r)$, segue que $\alpha^k \leq \alpha^{\log_{\alpha}(r)} = r$, portanto que $\dist{c}{x}_\alpha < \alpha^k \leq r$, logo $x \in \bola_r(c)$.
+	%
+	%	\item ($\bola_r(c) \subseteq U$) Seja $x \in \bola_r(c)$. Então $\dist{c}{x}_\alpha < r$. Se $x=c$, então, para todo $i \in F$, $x_i=c_i \in \{c_i\}$, logo $x \in U$. Se $x \neq c$, então $\dist{c}{x}_\alpha = \alpha^{\ords{x-c}}$, portanto $\alpha^{\ords{x-c}} < r = \alpha^{\log_{\alpha}(r)}$. Como $\alpha < 1$, segue que $\ords{x-c} > \log_{\alpha}(r)$ e, já que $\ords{x-c} \in \N$, segue que $\ords{x-c} \geq \teto{\log_{\alpha}(r)} = k$. Se $\ords{x-c}>k$, isso implica que, para todo $i \in F$, $x_i-c_i=0$, ou seja, $x_i=c_i$; portanto $x \in U$. Se $\ords{x-c}=k$, então, para todo $i \in I$ tal que $\abs{i}<k$, $x_i-c_i=0$, e para algum $i \in I$ tal que $\abs{i}=k$, $x_i \neq 0$.
+	%NOTA: TRAVEI AQUI, RESOLVI ADAPTAR A DEMONSTRAÇÃO.
+	%\end{itemize}
+	%Assim, para todo $x \in \bola_r(c)$, vale $x \in U \subseteq \bola_r(c)$.
+
+	Mostremos que $c \in U \subseteq \bola_r(c)$. Seja $x \in U$. Então, para todo $i \in F$, $x_i=c_i$, ou seja, $x_i-c_i=0$. Se $x \neq c$, isso implica que $\ords{x-c} > k$ pela definição de $F$; como $\alpha < 1$, segue que $\dist{c}{x}_\alpha = \alpha^{\ords{x-c}} < \alpha^k$. Se $x=c$, então $\dist{c}{x}_\alpha = 0 < \alpha^k$, pois $\alpha > 0$. Em ambos os casos, $\dist{c}{x}_\alpha < \alpha^k$. Como $\alpha < 1$ e $k = \teto{\log_{\alpha}(r)} \geq \log_{\alpha}(r)$, segue que $\alpha^k \leq \alpha^{\log_{\alpha}(r)} = r$, portanto que $\dist{c}{x}_\alpha < \alpha^k \leq r$, logo $x \in \bola_r(c)$. Isso mostra que $U \subseteq \bola_r(c)$. Além disso, $c \in U$, pois, para todo $i \in F$, $c_i \in \{c_i\}$, logo $c \in U$.
+
+	Assim, dado $u \in \bola_r(c)$, tomamos $r'>0$ tal que $\bola_{r'}(u) \subseteq \bola_r(c)$, e pela demonstração anterior existe aberto básico $U' \subseteq G^{I}$ tal que $u \in U' \subseteq \bola_{r'}(u) \subseteq \bola_r(c)$.
+	\end{itemize}
+\end{proof}
+
+
 \section{Topologia em grupos}
 
 Uma peculiaridade dos grupos topológico é que, como temos homeomorfismo do grupo para ele mesmo que levam qualquer elemento para a identidade, segue que basta estudar as vizinhanças abertas da identidade para entender a topologia do grupo. Isso fica mais claro com os resultados a seguir.
