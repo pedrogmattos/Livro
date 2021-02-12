@@ -259,29 +259,45 @@
 	\newcommand{\intaf}[2]{\left]{#1},{#2}\right]}
 	\newcommand{\intfa}[2]{\left[{#1},{#2}\right[}
 	\newcommand{\intff}[2]{\left[{#1},{#2}\right]}
-	% Mínimo e máximo como encontro e junta
+	% Mínimo e máximo "como encontro e junta" (operador de um conjunto)
+	\def\composeform@xmin#1#2{\m@th\ooalign{$\hfil#1\mkern4mu#2\hfil$\crcr$#1#2$}}
 	\providecommand{\doublevee}{}
-	\renewcommand{\doublevee}{\mathbin{\ooalign{$\vee$\cr\hbox{$\mkern4mu\vee$}\cr}}} % Superposição de v e v
+%	\renewcommand{\doublevee}{\mathbin{\ooalign{$\vee$\cr\hbox{$\mkern4mu\vee$}\cr}}} % Superposição de v e v
+	\renewcommand{\doublevee}{\mathbin{\mathpalette\composeform@xmin\vee}}
 	\providecommand{\doublewedge}{}
-	\renewcommand{\doublewedge}{\mathbin{\ooalign{$\wedge$\cr\hbox{$\mkern4mu\wedge$}\cr}}} % Superposição de cunha e cunha
-	\newcommand{\newmax}{\mathop{\doublevee}}
-	\newcommand{\newmin}{\mathop{\doublewedge}}
-	\renewcommand{\max}{\newmax}
-	\renewcommand{\min}{\newmin}
-	% NOTA: Escrevi um pouco mais complexo porque queria que os comandos binários \doublewedge e \doublevee estivessem disponíveis, e que fossem redefinidos caso existissem em outro pacote
-	% Supremo e ínfimo
-	\newcommand{\newsup}{
-		\mathop{
-			\mathpalette\superimpose{{\vee}{\_}}
-		}
-	}
-	\newcommand{\newinf}{
-		\mathop{
-			\mathpalette\superimpose{{\wedge}{\_}}
-		}
-	}
+%	\renewcommand{\doublewedge}{\mathbin{\ooalign{$\wedge$\cr\hbox{$\mkern4mu\wedge$}\cr}}} % Superposição de cunha e cunha
+	\renewcommand{\doublewedge}{\mathbin{\mathpalette\composeform@xmin\wedge}}
+	% NOTA[2021-02-10]: Mudei os comando para que ficassem adequados a expoentes etc usando \mathpalette, seguindo https://tex.stackexchange.com/questions/34393/the-mysteries-of-mathpalette. Criei o comando \composeform@xmin e mudei os comandos \doublevee e \doublewedge para usar \mathpalette.
+	\providecommand{\bigdoublevee}{}
+	\renewcommand{\bigdoublevee}{\mathop{\mathpalette\composeform@xmin\bigvee}}
+	\providecommand{\bigdoublewedge}{}
+	\renewcommand{\bigdoublewedge}{\mathop{\mathpalette\composeform@xmin\bigwedge}}
+
+%	\newcommand{\newmax}{\mathop{\doublevee}}
+%	\newcommand{\newmin}{\mathop{\doublewedge}}
+	\renewcommand{\max}{\bigdoublevee}
+	\renewcommand{\min}{\bigdoublewedge}
+	% NOTA: Escrevi um pouco mais complexo porque queria que os comandos binários \doublewedge e \doublevee estivessem disponíveis, e que fossem redefinidos caso existissem em outro pacote.
+	
+	% Mínimo e máximo como operação binária entre elementos (na verdade são \sup e \inf, mas para dois números coincide)
+	\newcommand{\opmax}{\mathbin{\vee}}
+	\newcommand{\opmin}{\mathbin{\wedge}}
+	
+	% Supremo e ínfimo como encontro e junta
+%	\newcommand{\newsup}{
+%		\mathop{
+%			\mathpalette\superimpose{{\vee}{\_}}
+%		}
+%	}
+%	\newcommand{\newinf}{
+%		\mathop{
+%			\mathpalette\superimpose{{\wedge}{\_}}
+%		}
+%	}
 %	\renewcommand{\sup}{\newsup}
 %	\renewcommand{\inf}{\newinf}
+	\renewcommand{\sup}{\bigvee}
+	\renewcommand{\inf}{\bigwedge}
 
 	% Álgebra indicadora
 	\newcommand{\Dois}{\mathbbm{2}}
@@ -543,25 +559,39 @@
 	}
 
 
-	% Grau de polinômio
-%	\DeclareMathOperator{\g}{gr}
-	\newcommand{\g}[1]{\mathrm{g}\left\vert{#1}\right\vert}
-	% Ordem de uma série
-	\newcommand{\ordser}[1]{\mathrm{o}\left\vert{#1}\right\vert}
+	% Grau (ou grau máximo) de polinômio
+%	\DeclareMathOperator{\grau}{gr}
+%	\newcommand{\grau}[1]{\mathrm{g}\left\vert{#1}\right\vert}
+	\newcommand{\grau}[1]{\left\vert{#1}\right\vert^{\circ}}
+	% Ordem (ou grau mínimo) de uma série (ou sequência)
+%	\newcommand{\ords}[1]{\mathrm{o}\left\vert{#1}\right\vert}
+	\newcommand{\ords}[1]{\left\vert{#1}\right\vert_{\circ}}
 
 	% Relação binária de divisão em um anel
 	\newcommand{\dleq}{\preceq} 
 	\newcommand{\ndleq}{\npreceq}
-	% MDC e MMC como encontro e junta da relação de divisão
-	\newcommand{\newgcd}{\mathop{\curlywedge}}
-	\newcommand{\newlcm}{\mathop{\curlyvee}}
+
+	% Máximo divisor comum e mínimo múltiplo comum como encontro e junta da relação de divisão
+%	\DeclareMathOperator{\mdc}{mdc}
+	\DeclareMathOperator{\divv}{Div}
+
+	\providecommand{\mdc}{}
+	\renewcommand{\mdc}{\mathop{\bigcurlywedge}}
+	\renewcommand{\gcd}{\mdc}
+	\newcommand{\opmdc}{\mathbin{\curlywedge}}
+
+%	\DeclareMathOperator{\mmc}{mmc}
+	\DeclareMathOperator{\mul}{Mul}
+
+	\providecommand{\mmc}{}
+	\renewcommand{\mmc}{\mathop{\bigcurlyvee}}
+	\newcommand{\opmmc}{\mathbin{\curlyvee}}
+
+%	\newcommand{\newgcd}{\mathop{\curlywedge}}
+%	\newcommand{\newlcm}{\mathop{\curlyvee}}
 %	\renewcommand{\gcd}{\newgcd}
 %	\newcommand{\lcm}{\newlcm}
-	% Outros
-	\DeclareMathOperator{\mdc}{mdc}
-	\DeclareMathOperator{\divv}{Div}
-	\DeclareMathOperator{\mmc}{mmc}
-	\DeclareMathOperator{\mul}{Mul}
+
 %	\newcommand{\inte}{\mathtt I}
 
 
@@ -581,8 +611,8 @@
 	\newcommand{\chao}[1]{\left\lfloor{#1}\right\rfloor}
 	\newcommand{\teto}[1]{\left\lceil{#1}\right\rceil}
 	
-	\newcommand{\resto}[2]{\left\{ {#1} \right\}_{#2}}
-	\newcommand{\resfra}[1]{\left\{ {#1} \right\}}
+	\newcommand{\resto}[2]{\left\llbracket{#1}\right\rrbracket_{#2}}
+	\newcommand{\resfra}[1]{\left\llbracket{#1}\right\rrbracket}
 	
 	\newcommand{\arrecim}[1]{\left\lfloor{#1}\right\rceil}
 	\newcommand{\arrebai}[1]{\left\lceil{#1}\right\rfloor}
@@ -641,8 +671,9 @@
 	\newcommand{\topo}{\mathcal{T}}
 
 	\newcommand{\Int}[1]{{#1}^\circ} % \mathring é um comando iteressante, mas não serve tão bem aos meus propósitos.
-	\newcommand{\Fec}[1]{\overline{#1}}
-%	\newcommand{\Fec}[1]{{#1}^\bullet} % Análogo ao \Int
+%	\newcommand{\Fec}[1]{\overline{#1}}
+	\newcommand{\Fec}[1]{{#1}^\bullet} % Análogo ao \Int
+	\newcommand{\Fecrel}[2]{{#1}^{\bullet_{#2}}} % Fecho relativo a um espaço
 	\newcommand{\fro}[1]{\partial{#1}}
 	%\newcommand{\fro}[1]{\mathrm{fro}#1}
 	%\DeclareMathOperator{\fro}{fro}
@@ -650,6 +681,8 @@
 	
 	% Funções contínuas
 	\newcommand{\Cont}{\mathscr{C}}
+	% Suporte topológico
+	\newcommand{\supptop}{\supp^{\bullet}}
 	
 	\newcommand{\emp}{_\star} % Objeto empurrado
 	\newcommand{\pux}{^\star} % Objeto puxado
@@ -698,9 +731,10 @@
 	\newcommand{\conv}{\rightarrow}
 	% Convergência uniforme
 	\newcommand{\uconv}{\rightrightarrows}
-	% Bola de espaço métrico
+	% Bola aberta e bola fechada de espaço métrico
 	\newcommand{\bola}{\mathrm{B}}
 %	\newcommand{\bola}{\mbox{\larger[1]$\odot$}}
+	\newcommand{\bolafec}{\Fec{\bola}} % A notação é diferente, e não simplesmente denotamos uma como o fecho da outra, porque nem sempre em um espaço métrico ao fecho da bola aberta é a bola fechada de mesmo raio e centro.
 
 % Grupos topológicos
 %------------------------------------
