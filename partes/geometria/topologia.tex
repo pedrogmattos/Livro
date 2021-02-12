@@ -54,7 +54,7 @@ A noção de topologia que será abordada nesta parte do livro é a topologia ba
 %\end{proof}
 
 \begin{definition}
-	Um \emph{espaço topológico} é um par $(X,\topo)$ em que $X$ é um conjunto não vazio e $\topo$ é uma topologia de $X$. Um \emph{aberto} de $(X,\topo)$ é um conjunto de $\topo$. Um \emph{fechado} de $(X,\topo)$ é um conjunto cujo complementar em $X$ é um aberto de $(X,\topo)$. O conjunto dos fechados de $(X,\topo)$ é denotado $\complement (\topo)$.
+	Um \emph{espaço topológico} é um par $(X,\topo)$ em que $X$ é um conjunto não vazio e $\topo$ é uma topologia de $X$. Um \emph{aberto} de $(X,\topo)$ é um conjunto de $\topo$. Um \emph{fechado} de $(X,\topo)$ é um conjunto cujo complementar em $X$ é um aberto de $(X,\topo)$. O conjunto dos fechados de $(X,\topo)$ é denotado $\topo_{\bullet}$.
 \end{definition}
 
 \begin{proposition}[Dualidade de abertos e fechados]
@@ -62,33 +62,33 @@ A noção de topologia que será abordada nesta parte do livro é a topologia ba
 	\begin{enumerate}
 	\item Vazio e conjunto todo são fechados.
 	\begin{equation*}
-	\emptyset, X \in \complement (\topo)
+	\emptyset, X \in \topo_{\bullet}
 	\end{equation*}
 
 	\item Interseção de fechados é fechado.
 	\begin{equation*}
-	(F_i)_{i \in I} \subseteq \complement (\topo) \Rightarrow \bigcap_{i \in I} F_i  \in \complement (\topo)
+	(F_i)_{i \in I} \subseteq \topo_{\bullet} \Rightarrow \bigcap_{i \in I} F_i  \in \topo_{\bullet}
 	\end{equation*}
 	
 	\item União finita de fechados é fechado.
 	\begin{equation*}
-	(F_i)_{i \in [n]} \subseteq \complement (\topo) \Rightarrow \bigcup_{i=0}^{n-1} F_i \in \complement (\topo)
+	(F_i)_{i \in [n]} \subseteq \topo_{\bullet} \Rightarrow \bigcup_{i=0}^{n-1} F_i \in \topo_{\bullet}
 	\end{equation*}
 	
 
-%	\item $F_1,F_2 \in \complement (\topo) \Rightarrow F_1 \cup F_2 \in \complement (\topo)$ se, e somente se, $(F_i)_{i \in [n]} \subseteq \complement (\topo) \Rightarrow \displaystyle\bigcup_{i=1}^n F_i \in \complement (\topo)$.
+%	\item $F_1,F_2 \in \topo_{\bullet} \Rightarrow F_1 \cup F_2 \in \topo_{\bullet}$ se, e somente se, $(F_i)_{i \in [n]} \subseteq \topo_{\bullet} \Rightarrow \displaystyle\bigcup_{i=1}^n F_i \in \topo_{\bullet}$.
 	\end{enumerate}
 \end{proposition}
 \begin{proof} Todas as demonstrações dependem de propriedades básicas de teoria de conjuntos.
 	\begin{enumerate}
-	\item Como $\emptyset,X \in \topo$, $\emptyset^\complement = X$ e $X^\complement = \emptyset$, segue que $\emptyset,X \in \complement (\topo)$.
+	\item Como $\emptyset,X \in \topo$, $\emptyset^\complement = X$ e $X^\complement = \emptyset$, segue que $\emptyset,X \in \topo_{\bullet}$.
 	
-	\item  Seja $(F_i)_{i \in I} \subseteq \complement (\topo)$. Então $((F_i)^\complement)_{i \in I} \subseteq \topo$, o que implica que $\bigcup_{i \in I} (F_i)^\complement \in \topo$. Para concluir a demonstração, basta notar que
+	\item  Seja $(F_i)_{i \in I} \subseteq \topo_{\bullet}$. Então $((F_i)^\complement)_{i \in I} \subseteq \topo$, o que implica que $\bigcup_{i \in I} (F_i)^\complement \in \topo$. Para concluir a demonstração, basta notar que
 	\begin{equation*}
 	\left( \bigcup_{i \in I} (F_i)^\complement \right)^\complement = \bigcap_{i \in I} F_i.
 	\end{equation*}
 	
-	\item Seja $(F_i)_{i \in [n]} \subseteq \complement (\topo)$. Então $((F_i)^\complement)_{i \in [n]} \subseteq \topo$, o que implica que $\bigcap_{i=0}^{n-1} (F_i)^\complement \in \topo$. Para concluir a demonstração, basta notar que
+	\item Seja $(F_i)_{i \in [n]} \subseteq \topo_{\bullet}$. Então $((F_i)^\complement)_{i \in [n]} \subseteq \topo$, o que implica que $\bigcap_{i=0}^{n-1} (F_i)^\complement \in \topo$. Para concluir a demonstração, basta notar que
 	\begin{equation*}
 	\left( \bigcap_{i=0}^{n-1} (F_i)^\complement \right)^\complement = \bigcup_{i=0}^{n-1} F_i.
 	\end{equation*}
@@ -104,14 +104,20 @@ A noção de topologia que será abordada nesta parte do livro é a topologia ba
 	
 	No começo dessa seção, o foco será o conceito de interior de um conjunto. A definição de interior que usaremos é a de que o interior de um conjunto é o maior conjunto aberto contido no conjunto. Maior, nesse caso, significa maior em relação à ordem parcial de contenção de conjuntos abertos. Como união de abertos é aberto, sabemos que a união de todos abertos contidos em um conjunto é aberto e, portanto, é o maior aberto contido no conjunto. Podemos perceber, ainda, que essa definição é equivalente à comentada acima pois, se um ponto está em um aberto do conjunto, ele está na união de todos eles e, se ele está na união, está, em particular, em algum aberto. Seguem abaixo a definição formal de interior de um conjunto e, em seguida, algumas propriedades básicas.
 
+%\begin{definition}
+%	Sejam $\bm X$ um espaço topológico, $C \subseteq X$ e $(A_i)_{i \in I}$ uma indexação do conjunto de todos conjuntos abertos de $X$ que são subconjunto de $C$. O \emph{interior de $C$} é o conjunto aberto
+%	\begin{equation*}
+%	\Int{C} \coloneqq \bigcup_{i \in I} A_i.
+%	\end{equation*}
+%\end{definition}
 \begin{definition}
-	Sejam $\bm X$ um espaço topológico, $C \subseteq X$ e $(A_i)_{i \in I}$ uma indexação do conjunto de todos conjuntos abertos de $X$ que são subconjunto de $C$. O \emph{interior de $C$} é o conjunto aberto
+Sejam $\bm X$ um espaço topológico e $C \subseteq X$. O \emph{interior de $C$} é o conjunto aberto
 	\begin{equation*}
-	\Int{C} \coloneqq \bigcup_{i \in I} A_i.
+	\Int{C} := \bigcup \set{A \in \topo}{A \subseteq C}.
 	\end{equation*}
 \end{definition}
 
-	De acordo com essa definição, o interior de um conjunto é o maior aberto contido no conjunto, no sentido de que qualquer aberto contido no conjunto está também contido no seu interior. Ainda, podemos ver o interior como um operador topológico \---- uma função $\mathcal I: \p(X) \to \p(X)$ que leva $C \mapsto \Int{C}$. Nesse sentido, podemos pensar em propriedades que esse operador satisfaz. Algumas dessas propriedades estão na proposição abaixo. Além disso, se temos um operador qualquer em $\p(X)$ que satisfaça algumas das propriedades abaixo, então esse operador é o operador interior de alguma topologia de $X$. Isso está demonstrado na proposição que segue a proposição abaixo.
+De acordo com essa definição, o interior de um conjunto é o maior aberto contido no conjunto, no sentido de que qualquer aberto contido no conjunto está também contido no seu interior. Ainda, podemos ver o interior como um operador topológico --- uma função $\mathcal I: \p(X) \to \p(X)$ que leva $C \mapsto \Int{C}$. Nesse sentido, podemos pensar em propriedades que esse operador satisfaz. Algumas dessas propriedades estão na proposição abaixo. Além disso, se temos um operador qualquer em $\p(X)$ que satisfaça algumas das propriedades abaixo, então esse operador é o operador interior de alguma topologia de $X$. Isso está demonstrado na proposição que segue a proposição abaixo.
 
 \begin{proposition}
 	Sejam $\bm X$ um espaço topológico e $A,B \subseteq X$. Então
@@ -198,10 +204,16 @@ Devemos, por fim, mostrar que $\mathcal I(C)=\Int{C}$ para todo $C \subseteq X$.
 
 	Dualmente, consideraremos agora o conceito de fecho.
 
+%\begin{definition}
+%	Sejam $(X,\topo)$ um espaço topológico, $C \subseteq X$ e $(F_i)_{i \in I}$ uma indexação do conjunto de todos conjuntos fechados de $X$ dos quais $C$ é subconjunto. O \emph{fecho de $C$} é o conjunto fechado
+%	\begin{equation*}
+%	\Fec{C} := \bigcap_{i \in I} F_i.
+%	\end{equation*}
+%\end{definition}
 \begin{definition}
-	Sejam $(X,\topo)$ um espaço topológico, $C \subseteq X$ e $(F_i)_{i \in I}$ uma indexação do conjunto de todos conjuntos fechados de $X$ dos quais $C$ é subconjunto. O \emph{fecho de $C$} é o conjunto fechado
+Sejam $(X,\topo)$ um espaço topológico e $C \subseteq X$. O \emph{fecho de $C$} é o conjunto fechado
 	\begin{equation*}
-	\Fec{C} := \bigcap_{i \in I} F_i.
+	\Fec{C} := \bigcap \set{F \in \topo_{\bullet}}{C \subseteq F}.
 	\end{equation*}
 \end{definition}
 
@@ -229,26 +241,21 @@ Devemos, por fim, mostrar que $\mathcal I(C)=\Int{C}$ para todo $C \subseteq X$.
 	\item $\mathcal F(\mathcal F(A)) = \mathcal F(A)$.
 	\end{enumerate}
 	
-Então o conjunto $\complement(\topo) := \set{C \subseteq X}{C = \mathcal F(C)}$ é o conjunto de fechados de uma topologia $\topo$ de $X$ e $\mathcal F(C) = \Fec{C}$ para cada $C \subseteq X$.
+Então o conjunto $\topo_{\bullet} := \set{C \subseteq X}{C = \mathcal F(C)}$ é o conjunto de fechados de uma topologia $\topo$ de $X$ e $\mathcal F(C) = \Fec{C}$ para cada $C \subseteq X$.
 \end{proposition}
 \begin{proof}
 	Demonstração análoga à de interior.
 \end{proof}
 
 
-\begin{proposition}
+\begin{exercise}
 	Sejam $\bm X$ um espaço topológico e $A \subseteq X$. Então
 	\begin{enumerate}
 	\item $(\Fec{A})^\complement = \Int{(A^\complement)}$;
 	\item $(\Int{A})^\complement = \Fec{(A^\complement)}$.
 	\end{enumerate}
-\end{proposition}
-\begin{proof}
-	\begin{enumerate}
-	\item
-	\item
-	\end{enumerate}
-\end{proof}
+\end{exercise}
+
 
 
 \subsubsection{Fronteira}
@@ -260,7 +267,7 @@ Então o conjunto $\complement(\topo) := \set{C \subseteq X}{C = \mathcal F(C)}$
 	\end{equation*}
 \end{definition}
 
-\begin{proposition}
+\begin{exercise}
 	Sejam $\bm X$ um espaço topológico e $C \subseteq X$. Então
 	\begin{enumerate}
 	\item O fecho é a união disjunta de interior e fronteira.
@@ -269,7 +276,7 @@ Então o conjunto $\complement(\topo) := \set{C \subseteq X}{C = \mathcal F(C)}$
 	\end{equation*}
 	\item A fronteira é a interseção dos fechos do conjunto e de seu complementar.
 	\begin{equation*}
-	\fro{C} = \Fec{C} \cap \Fec{C^\complement}
+	\fro{C} = \Fec{C} \cap \Fec{(C^\complement)}
 	\end{equation*}
 	\item Um conjunto é aberto se, e somente se, não contém pontos da fronteira.
 	\begin{equation*}
@@ -277,28 +284,28 @@ Então o conjunto $\complement(\topo) := \set{C \subseteq X}{C = \mathcal F(C)}$
 	\end{equation*}
 	\item Um conjunto é fechado se, e somente se, contém todos pontos da fronteira.
 	\begin{equation*}
-	C \in \complement(\topo) \Leftrightarrow \fro{C} \subseteq C
+	C \in \topo_{\bullet} \Leftrightarrow \fro{C} \subseteq C
 	\end{equation*}
-	\item A fronteira de um conjunto é fechada.
+	\item A fronteira de um conjunto é fechado.
 	\begin{equation*}
-	\fro{C} \in \complement(\topo)
+	\fro{C} \in \topo_{\bullet}
 	\end{equation*}
 	\item $\fro{(\fro{(\fro{C})})} = \fro{(\fro{C})}$.
 	\end{enumerate}
-\end{proposition}
-\begin{proof}
-	\begin{enumerate}
-	\item
-	\begin{equation*}
-	\fro{C} = \Fec{C} \setminus \Int{C} \Leftrightarrow \Fec{C} = \Int{C} \cup \fro{C}
-	\end{equation*}
-	\item
-	\item 
-	\begin{equation*}
-	\fro{C} = \Fec{C} \setminus \Int{C} = \Fec{C} \cap (\Int{C})^\complement = \Fec{C} \cap \Fec{C^\complement}
-	\end{equation*}
-	\end{enumerate}
-\end{proof}
+\end{exercise}
+%\begin{proof}
+%	\begin{enumerate}
+%	\item
+%	\begin{equation*}
+%	\fro{C} = \Fec{C} \setminus \Int{C} \Leftrightarrow \Fec{C} = \Int{C} \cup \fro{C}
+%	\end{equation*}
+%	\item
+%	\item 
+%	\begin{equation*}
+%	\fro{C} = \Fec{C} \setminus \Int{C} = \Fec{C} \cap (\Int{C})^\complement = \Fec{C} \cap \Fec{C^\complement}
+%	\end{equation*}
+%	\end{enumerate}
+%\end{proof}
 
 \subsection{Topologias geradas, bases e sub-bases}
 
@@ -402,7 +409,7 @@ Sejam $\bm{X_0}$, $\bm{X_1}$ e $\bm{X_2}$ espaços topológicos.
 \begin{definition}
 Sejam $\bm X$ um espaço topológico, $\bm L$ um espaço linear topológico e $f\colon X \to L$ uma função contínua. O \emph{suporte fechado} de $f$ é o conjunto
 	\begin{equation*}
-	\overline\supp(f) := \Fec{\supp(f)} = \Fec{f\inv(L \setminus \{0\})}.
+	\supptop(f) := \Fec{\supp(f)} = \Fec{(f\inv(L \setminus \{0\}))}.
 	\end{equation*}
 \end{definition}
 
@@ -1249,13 +1256,13 @@ Seja $\bm X$ um espaço topológico. Então $S \subseteq X$ é conexo se, e some
 \begin{proof}
 Se $S$ é desconexo, existe uma partição $\{A,B\}$ de $S$ por abertos de $\bm S$. Então $A \cup B=S$,
 	\begin{equation*}
-	A \cap \Fec{B}^{_X} = (A \cap S) \cap \Fec{B}^{_X} = A \cap (S \cap \Fec{B}^{_X}) = A \cap \Fec{B}^{_S} = A \cap B = \emptyset
+	A \cap \Fecrel{B}{X} = (A \cap S) \cap \Fecrel{B}{X} = A \cap (S \cap \Fecrel{B}{X}) = A \cap \Fecrel{B}{S} = A \cap B = \emptyset
 	\end{equation*}
-e, similarmente, $\Fec{A}^{_X} \cap B = \emptyset$, o que mostra que $A$ e $B$ são separados em $\bm X$. Reciprocamente, se existem $A,B \subseteq X$ conjuntos não triviais separados em $\bm X$ tais que $A \cup B=S$, então
+e, similarmente, $\Fecrel{A}{X} \cap B = \emptyset$, o que mostra que $A$ e $B$ são separados em $\bm X$. Reciprocamente, se existem $A,B \subseteq X$ conjuntos não triviais separados em $\bm X$ tais que $A \cup B=S$, então
 	\begin{equation*}
-	\Fec{A}^{_S} = S \cap \Fec{A}^{_X} = (A \cap B) \cap \Fec{A}^{_X} = (A \cap \Fec{A}^{_X}) \cup (B \cap \Fec{A}^{_X}) = A \cup \emptyset = A
+	\Fecrel{A}{S} = S \cap \Fecrel{A}{X} = (A \cap B) \cap \Fecrel{A}{X} = (A \cap \Fecrel{A}{X}) \cup (B \cap \Fecrel{A}{X}) = A \cup \emptyset = A
 	\end{equation*}
-e, similarmente, $\Fec{B}^{_S}=B$, portanto $\{A,B\}$ é partição de $S$ por fechados de $\bm S$, o que mostra que $\bm S$ é desconexo.
+e, similarmente, $\Fecrel{B}{S}=B$, portanto $\{A,B\}$ é partição de $S$ por fechados de $\bm S$, o que mostra que $\bm S$ é desconexo.
 \end{proof}
 
 A seguir, enunciamos uma equivalência da definição de conexidade e um resultado trivial, mas importantíssimo na topologia: conexidade é um invariante topológico.
