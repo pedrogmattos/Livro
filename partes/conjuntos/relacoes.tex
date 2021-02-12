@@ -1094,32 +1094,32 @@ Sejam $X$ um conjunto. A \emph{função indicadora} em $X$ é a função
 A função indicadora de um conjunto $C \subseteq X$ é a função $\fun{\idc_C}{X}{\{0,1\}}$.
 \end{definition}
 
-A função indicadora é uma bijeção e mostra que os conjuntos $\p(X)$ e $2^X$ têm a mesma cardinalidade. De fato, sabemos que $(\p(X),\cap,\cup,\emptyset,X)$ é uma álgebra de conjuntos. Podemos também, usando a estrutura de álgebra em $\{0,1\}$, dada pelas operações mínimo e máximo $\min,\max\colon \{0,1\} \times \{0,1\} \to \{0,1\}$ e pelos os elementos $0$ e $1$, induzir uma álgebra em $2^X$ com as operações definidas pontualmente e as funções constantes $0,1 \in 2^X$. Assim, podemos mostrar que a bijeção $\idc\colon \p(X) \to 2^X$ é um isomorfismo de álgebras.
+A função indicadora é uma bijeção e mostra que os conjuntos $\p(X)$ e $2^X$ têm a mesma cardinalidade. De fato, sabemos que $(\p(X),\cap,\cup,\emptyset,X)$ é uma álgebra de conjuntos. Podemos também, usando a estrutura de álgebra em $\{0,1\}$, dada pelas operações mínimo e máximo $\opmin,\opmax\colon \{0,1\} \times \{0,1\} \to \{0,1\}$ e pelos os elementos $0$ e $1$, induzir uma álgebra em $2^X$ com as operações definidas pontualmente e as funções constantes $0,1 \in 2^X$. Assim, podemos mostrar que a bijeção $\idc\colon \p(X) \to 2^X$ é um isomorfismo de álgebras.
 
 \begin{proposition}
 Seja $X$ um conjunto. A função indicadora
 	\begin{equation*}
 	\idc\colon \p(X) \to 2^X
 	\end{equation*}
-de $X$ é um isomorfismo entre as álgebras $(\p(X),\cap,\cup,\emptyset,X)$ e $(2^X,\min,\max,0,1)$.
+de $X$ é um isomorfismo entre as álgebras $(\p(X),\cap,\cup,\emptyset,X)$ e $(2^X,\opmin,\opmax,0,1)$.
 \end{proposition}
 \begin{proof}
-Para isso, devemos mostrar que $\idc$ preserva as operações binárias e constantes das álgebras. É imediato verificar que, para todos $C,C' \in \p(X)$, $\idc_{C \cap C'} = \min \{ \idc_C, \idc_{C'} \}$, $\idc_{C \cup C'} = \max \{ \idc_C, \idc_{C'} \}$, e que $\idc_\emptyset = 0$ e $\idc_X = 1$.
+Para isso, devemos mostrar que $\idc$ preserva as operações binárias e constantes das álgebras. É imediato verificar que, para todos $C,C' \in \p(X)$, $\idc_{C \cap C'} = \idc_C \opmin \idc_{C'}$, $\idc_{C \cup C'} = \idc_C \opmax \idc_{C'}$, e que $\idc_\emptyset = 0$ e $\idc_X = 1$.
 \end{proof}
 
-Vale notar, também, que em $\{0,1\}$ vale que, para todos $n,n' \in \{0,1\}$, $n \min n' = nn'$ e $n \max n' = n+n'-nn'$. Algumas outras relações da função indicadora estão expostas na proposição seguinte. Todas elas seguem diretamente do fato de $\idc$ ser isomorfismo de álgebras. As demonstrações ficam como exercício.
+Vale notar, também, que em $\{0,1\}$ vale que, para todos $n,n' \in \{0,1\}$, $n \opmin n' = nn'$ e $n \opmax n' = n+n'-nn'$. Algumas outras relações da função indicadora estão expostas na proposição seguinte. Todas elas seguem diretamente do fato de $\idc$ ser isomorfismo de álgebras. As demonstrações ficam como exercício.
 
-\begin{proposition}
-Sejam $X$ um conjunto e $A,B \subseteq X$, e $n \in \N$. Então
+\begin{exercise}
+Sejam $X$ um conjunto, $A,B \subseteq X$, $n \in \N$ $(A_i)_{i \in [n]} \subseteq X$. Então
 	\begin{enumerate}
 	\item $\idc_{A^\complement} = 1- \idc_A$;
 	\item $\idc_{A \setminus B} = \idc_A-\idc_A\idc_B$;
 	\item $\idc_{A \difsim B} = \idc_A+\idc_B-2\idc_A\idc_B$;
 	\item $\displaystyle\idc_{\bigcap_{i \in [n]} A_i} = \bigtimes_{i \in [n]} \idc_{A_i}$;
 	\item $\displaystyle\idc_{\bigcup_{i \in [n]} A_i} = \sum_{\substack{S \subseteq [n]\\S \neq \emptyset}} \left((-1)^{\card{S}-1} \bigtimes_{i \in S}\idc_{A_i}\right)$;
-	\item $\displaystyle\idc_{\scalebox{1.2}{$\difsim$}_{i \in [n]} A_i} = \sum_{\substack{S \subseteq [n]\\S \neq \emptyset}} \left((-2)^{\card{S}-1} \bigtimes_{i \in S}\idc_{A_i} \right)$;
+	\item $\displaystyle\idc_{\scalebox{1.2}{$\difsim$}_{i \in [n]} A_i} = \sum_{\substack{S \subseteq [n]\\S \neq \emptyset}} \left((-2)^{\card{S}-1} \bigtimes_{i \in S}\idc_{A_i} \right)$.
 	\end{enumerate}
-\end{proposition}
+\end{exercise}
 %\begin{proof}
 %	\begin{align*}
 %	\idc_{A \difsim B} &= \idc_{A\setminus B \cup B\setminus A} \\
