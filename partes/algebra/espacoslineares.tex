@@ -1282,7 +1282,7 @@ Em particular, isso mostra que formas $d$-lineares num espaço de dimensão $d$ 
 \begin{definition}
 Seja $d \in \N$. O \emph{determinante} em $\R^d$ é a forma $d$-linear
 	\begin{equation*}
-	\det := {e_0}\dual \wedge \ldots \wedge {e_{d-1}}\dual.
+	\det := {\ii_0}\dual \wedge \ldots \wedge {\ii_{d-1}}\dual.
 	\end{equation*}
 %Sejam $\bm V$ um espaço linear de dimensão finita $d$ sobre um corpo $\bm C$ e $b=(b_i)_{i \in [d]}$ uma base de $\bm V$. O \emph{determinante} em $\bm V$ com respeito a $b$ é a forma $d$-linear
 %	\begin{equation*}
@@ -1290,12 +1290,12 @@ Seja $d \in \N$. O \emph{determinante} em $\R^d$ é a forma $d$-linear
 %	\end{equation*}
 %No caso de $V = \R^d$, o determinante é definido com respeito à base canônica
 %	\begin{equation*}
-%	\det := {e_0}\dual \wedge \ldots \wedge {e_{d-1}}\dual.
+%	\det := {\ii_0}\dual \wedge \ldots \wedge {\ii_{d-1}}\dual.
 %	\end{equation*}
 \end{definition}
 
 Como comentado, essa é a única forma $d$-linear em $\R^d$ tal que	\begin{equation*}
-	\det(e_0,\ldots,e_{d-1})=1.
+	\det(\ii_0,\ldots,\ii_{d-1})=1.
 	\end{equation*}
 
 Na seção seguinte, definiremos o conceito de determinante de modo mais geral e independente de base.
@@ -1374,9 +1374,37 @@ Basta notar que $L$ é invertível se, e somente se, leva base em base e $f \in 
 \end{proof}
 
 
+\subsection{\ensuremath{2}-Formas reais e os espaços \ensuremath{\R^{p,q}}}
 
+Definimos agora espaços reais munidos de formas bilineares simétricas não-degeneradas.
 
+\begin{definition}
+Sejam $p,q \in \Z_{>}$. A \emph{$2$-forma simétrica canônica de assinatura $(p,q)$} é a $2$-forma
+	\begin{align*}
+	\func{\inte{\var}{\var}_{p,q}}{\R^{p+q} \times \R^{p+q}}{\R}{(x,x')}{\sum_{k=0}^{p-1}{x_k}^2 - \sum_{k=p}^{p+q-1}{x_k}^2}
+	\end{align*}
+\end{definition}
 
+Para ver que essa função é bilinear, basta ver que na base canônica $(\ii_k)_{k \in [p+q]}$, ela é dada por
+	\begin{equation*}
+	\inte{\ii_k}{\ii_{k'}}_{p,q} =
+		\begin{cases}
+		\delta_{k,k'}	& 0 \leq k,k' \leq p-1 \\
+		-\delta_{k,k'}	& p \leq k,k' \leq p+q-1 \\
+		0				& \text{c.c.}.
+		\end{cases}
+	\end{equation*}
+e que a partir disso obtemos
+	\begin{align*}
+	\inte{x}{x'}_{p,q} &= \inte{\sum_{k=0}^{p-1} x_k\ii_k + \sum_{k=p}^{p+q-1} x_k\ii_k}{\sum_{k'=0}^{p-1} x_{k'}\ii_{k'} + \sum_{k'=p}^{p+q-1} x_{k'}\ii_{k'}}_{p,q} \\
+		&= \inte{\sum_{k=0}^{p-1} x_k\ii_k}{\sum_{k'=0}^{p-1} x_{k'}\ii_{k'}}_{p,q} + \inte{\sum_{k=0}^{p-1} x_k\ii_k}{\sum_{k'=p}^{p+q-1} x_{k'}\ii_{k'}}_{p,q} \\
+		&+ \inte{\sum_{k=p}^{p+q-1} x_k\ii_k}{\sum_{k'=0}^{p-1} x_{k'}\ii_{k'}}_{p,q} + \inte{\sum_{k=p}^{p+q-1} x_k\ii_k}{\sum_{k'=p}^{p+q-1} x_{k'}\ii_{k'}}_{p,q} \\
+		&= \sum_{k=0}^{p-1} \sum_{k'=0}^{p-1} x_kx_{k'}\inte{\ii_k}{\ii_{k'}}_{p,q} + \sum_{k=0}^{p-1} \sum_{k'=p}^{p+q-1} x_k x_{k'} \inte{\ii_k}{\ii_{k'}}_{p,q} \\
+		&+ \sum_{k=p}^{p+q-1} \sum_{k'=0}^{p-1} x_k x_{k'} \inte{\ii_k}{\ii_{k'}}_{p,q} + \sum_{k=p}^{p+q-1} \sum_{k'=p}^{p+q-1} x_k x_{k'} \inte{\ii_k}{\ii_{k'}}_{p,q} \\
+		&= \sum_{k=0}^{p-1}{x_k}^2 - \sum_{k=p}^{p+q-1}{x_k}^2.
+	\end{align*}
+
+O espaço linear $\R^{p+q}$ dotado dessa forma é denotado $\R^{p,q}$.
 
 
 \cleardoublepage
