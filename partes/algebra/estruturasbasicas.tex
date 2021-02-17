@@ -10,39 +10,48 @@ A \emph{Álgebra} estuda objetos matemáticos conhecidos como \emph{estruturas a
 \begin{definition}
 Seja $X$ um conjunto não vazio. Uma \emph{operação binária} em $X$ é uma função
 	\begin{align*}
-	\func{\opb}{X \times X}{X}{(x_1,x_2)}{x_1 \opb x_2}.
+	\func{\opb}{X \times X}{X}{(x,x')}{x \opb x'}.
 	\end{align*}
 \end{definition}
 
 \begin{proposition}[Propriedade de fecho]
 \label{prop:restri.op.bin}
-Sejam $X$ e $Y$ conjuntos não vazios tais que $Y \subseteq X$ e $ \opb $ uma operação binária em $X$. Então a restrição $ \opb |_{Y \times Y}$ da operação binária $ \opb $ a $Y \times Y$ é uma operação binária em $Y$ se, e somente se, para todos $y_1,y_2 \in Y$
+Sejam $X$ um conjunto, $S \subseteq X$ um subconjunto e $\opb$ uma operação binária em $X$. A restrição $\opb|_{S \times S}$ da operação binária $\opb$ a $S \times S$ é uma operação binária em $S$ se, e somente se, para todos $s,s' \in S$
 	\begin{equation*}
-	y_1 \opb y_2 \in Y.
+	s \opb s' \in S.
 	\end{equation*}
 \end{proposition}
 \begin{proof}
-Basta notar que, como $Y \subseteq X$, então $Y \times Y \subseteq X \times X$, e a proposição segue da proposição \ref{conj:prop.func.rest.ig}.
+Basta notar que, como $S \subseteq X$, então $S \times S \subseteq X \times X$, e a proposição segue da proposição \ref{conj:prop.func.rest.ig}.
 \end{proof}
 
-Denotamos $\opb |_{Y \times Y}$ por $\opb$ quando não há ambiguidade.
+Denotamos $\opb |_{S \times S}$ por $\opb$ quando não há ambiguidade.
 
 \begin{definition}
-Seja $X$ um conjunto. Uma operação binária \emph{associativa} é uma operação binária $\opb: X \times X \to X$ que satisfaz, para todos $x_1,x_2,x_3 \in X$,
-	\begin{equation*}
-	(x_1 \opb x_2) \opb x_3 = x_1 \opb (x_2 \opb x_3).
-	\end{equation*}
-Uma operação binária \emph{comutativa} é uma operação binária $\opb : X \times X \to X$ que satisfaz, para todos $x_1,x_2 \in X$
-	\begin{equation*}
-	x_1 \opb x_2 = x_2 \opb x_1.
-	\end{equation*}
+Seja $X$ um conjunto. Uma operação binária \emph{associativa} é uma operação binária $\fun{\opb}{X \times X}{X}$ que satisfaz
+	\begin{itemize}
+	\item (Associatividade) Para todos $x,x',x'' \in X$,
+		\begin{equation*}
+		(x \opb x') \opb x'' = x \opb (x' \opb x'').
+		\end{equation*}
+	\end{itemize}
+Uma operação binária \emph{comutativa} é uma operação binária $\fun{\opb}{X \times X}{X}$ que satisfaz
+	\begin{itemize}
+	\item (Comutatividade) Para todos $x,x' \in X$
+		\begin{equation*}
+		x \opb x' = x' \opb x.
+		\end{equation*}
+	\end{itemize}
 \end{definition}
 
 \begin{definition}
-	Sejam $X$ um conjunto e $+$ uma operação binária em $X$. Uma operação binária \emph{distributiva} sobre $+$ é uma operação binária $\times$ em $X$ que satisfaz, para todos $x_1,x_2,x_3 \in X$,
+Sejam $X$ um conjunto e $+$ uma operação binária em $X$. Uma operação binária \emph{distributiva} sobre $+$ é uma operação binária $\times$ em $X$ que satisfaz
+	\begin{itemize}
+	\item (Distributividade) Para todos $x,x',x'' \in X$,
 	\begin{equation*}
-	x_1 \times (x_2 + x_3) = (x_1 \times x_2) + (x_1 \times x_3).
+	x \times (x' + x'') = (x \times x') + (x \times x'').
 	\end{equation*}
+	\end{itemize}
 \end{definition}
 
 \section{Conjuntos numéricos}
@@ -398,7 +407,8 @@ então $I=N$.
 e, portanto, $n_1 \times n_2 \leq m_1 \times m_2$.
 \end{proof}
 
-%\begin{comment}
+\begin{comment}
+
 \cleardoublepage
 \subsubsection{Bases}
 
@@ -429,7 +439,7 @@ Para representar a dúzia, definimos $10 := \suce(\onze)$. Note que isso é uma 
 Evidentemente, a representação mais usual dos números naturais é a representação decimal, ou de base dez. Nesse caso $\dez$ é representado por $10$ e existem somente dez símbolos, pois os símbolos $\dez$ e $\onze$ não são usados para representar dez e onze.
 
 Na base doze, os caracteres que usamos são:
-\begin{table}[!ht]
+\begin{table}
 \centering
 \begin{tabular}{|c|c|}
 \hline
@@ -466,7 +476,7 @@ Símbolo & Nome \\
 
 A tabela de multiplicação é:
 
-\begin{table}[!ht]
+\begin{table}
 \centering
 \begin{tabular}{|c|cccccccccccc|}
 \hline 
@@ -501,7 +511,7 @@ A tabela de multiplicação é:
 \label{tab:alg.tabela.multiplicacao}
 \end{table}
 
-%\end{comment}
+\end{comment}
 
 
 
@@ -653,73 +663,98 @@ e, portanto, $(n_1 m_1 + n_2 m_2,n_2 m_1+n_1 m_2) \sim (n'_1 m'_1 + n'_2 m'_2,n'
 	\end{equation*}
 \end{definition}
 
-\begin{proposition}
+\begin{exercise}
 	Seja $\bm Z$ um modelo de números inteiros. A relação binária $\leq$ em $N$ está bem definida e é uma relação de ordem total.
-\end{proposition}
+\end{exercise}
 
 
-%\subsection{Números racionais}
-%
-%\subsubsection{Adição e subtração}
-%
-%\subsubsection{Multiplicação e divisão}
-%
-%\subsubsection{Ordenação}
-%
-%
-%\subsection{Números reais}
-%
-%\subsubsection{Adição e subtração}
-%
-%\subsubsection{Multiplicação e divisão}
-%
-%\subsubsection{Ordenação}
-%
-%\subsubsection{Completude}
+\section{Grupoide e semigrupo}
 
-\section{Magma}
+\subsection{Grupoide}
+
+Grupoides\footnote{Essas estruturas são às vezes chamadas na literatura de `magmas' para distinguí-las de objetos distintos da teoria de categorias que também são chamados `grupoides'.} são talvez a estrutura algébrica mais simples que se pode estudar. Eles consistem em um conjunto e uma operação binária nesse conjunto, sem que nenhuma propriedade adicional seja esperada dessa operação binária. O nome `grupoide' vem por sua semelhança aos grupos, estruturas algébricas muito importantes que serão estudadas detalhadamente mais à frente. O sufixo `-oide' vem do latim e indica semelhança.
 
 \begin{definition}
-Um \emph{magma} é um par $\bm X=(X,\opb)$ em que $X$ é um conjunto não vazio e $ \opb $ é uma operação binária em $X$.
+Um \emph{grupoide} é um par $\bm X=(X,\opb)$ em que $X$ é um conjunto e $\opb$ é uma operação binária em $X$.
 \end{definition}
+
+Em um grupoide, pode-se ter um elemento que é neutro com relação à operação binária no sentido que qualquer elemento do grupoide é levado em si mesmo quando operado com esse elemento neutro. Esses elementos são chamados de `identidades'.
 
 \begin{definition}[Identidade]
-Seja $\bm X=(X, \opb )$ um magma. Uma \emph{identidade} com respeito a $\opb$ é um elemento $\id \in X$ que satisfaz, para todo $x \in X$,
-	\begin{equation*}
-	\id \opb x = x = x \opb \id.
-	\end{equation*}
+Seja $\bm X=(X,\opb)$ um grupoide.
+	\begin{itemize}
+	\item Uma \emph{identidade à esquerda} de $(X, \opb)$ é um elemento $\id \in X$ que satisfaz, para todo $x \in X$,
+		\begin{equation*}
+		\id \opb x = x;
+		\end{equation*}
+	\item Uma \emph{identidade à direita} de $(X, \opb)$ é um elemento $\id \in X$ que satisfaz, para todo $x \in X$,
+		\begin{equation*}
+		x \opb \id = x;
+		\end{equation*}
+	\item Uma \emph{identidade} de $(X, \opb)$ é um elemento $\id \in X$ que satisfaz, para todo $x \in X$,
+		\begin{equation*}
+		\id \opb x = x = x \opb \id.
+		\end{equation*}
+	\end{itemize}
 \end{definition}
 
-Pode-se distinguir \emph{identidade à esquerda} e \emph{identidade à direita}, que seria o caso de $e$ se só satisfizesse, respectivamente, as igualdades da esquerda e da direita acima, mas não adotaremos essa distinção neste livro.
+As identidade são elementos importantes de qualquer grupoide e pode-se mostrar que, se existem identidades aos dois lados, elas são a mesma e a identidade nesse grupoide é única. Em particular, isso implica que identidades à esquerda ou à direita são únicas se a operação binária por comutativa.
 
 \begin{proposition}
 \label{prop:unic.elem.neut}
-Seja $\bm X = (X, \opb )$ um magma. Se existe identidade com respeito a $\opb$, ela é única.
+Seja $\bm X = (X,\opb)$ um grupoide. Se $\id$ é uma identidade à esquerda e $\id'$ é uma identidade à direita de $(X, \opb)$, então $\id = \id'$ e $\id$ é a única identidade de $(X,\opb)$.
 \end{proposition}
 \begin{proof}
-Suponha que existam duas identidades com respeito a $\opb$, $\id_1$ e $\id_2$. Então
+Como $\id'$ é identidade à direita e $\id$ é identidade à esquerda de $(X, \opb)$, segue que
 	\begin{equation*}
-	\id_1 = \id_1 \opb \id_2 = \id_2. \qedhere
+	\id = \id \opb \id' = \id'.
 	\end{equation*}
+A unicidade segue pois qualquer identidade de $(X,\opb)$ é identidade à esquerda.
 \end{proof}
 
+Por completude, definimos aqui a operação binária entre subconjuntos de um grupoide.
+
 \begin{definition}[Operação com conjuntos]
-Sejam $\bm X$ um magma, $A,B \subseteq X$ e $x \in X$. Definimos
+Sejam $\bm X$ um grupoide, $S,S' \subseteq X$ subconjuntos. Denota-se
+	\begin{equation*}
+	S \opb S' := \set{s \opb s'}{s \in S \land s' \in S'}.
+	\end{equation*}
+Para todo $x \in X$, denotam-se $x \opb S := \{x\} \opb S$ e $S \opb x := S \opb \{x\}$.
+\end{definition}
+
+\subsubsection{Homomorfismo de grupoide}
+
+\begin{definition}
+Sejam $\bm X=(X,\opb)$ e $\bm X'=(X',\opb')$ grupoide. Um \emph{homomorfismo de grupoide} de $\bm X$ para $\bm X'$ é uma função $\fun{h}{X}{X'}$ que satisfaz, para todos $x,x' \in X$
+	\begin{equation*}
+	h(x \opb x')=h(x') \opb' h(x').
+	\end{equation*}
+Denota-se $\fun{h}{\bm X}{\bm X'}$ e o conjunto de todos esses homomorfismos de grupoide é denotado por $\Homo(\bm X,\bm X')$.
+\end{definition}
+
+\begin{proposition}[Composição de homomorfismos]
+\label{comp.hom.grupoide}
+Sejam $\bm X=(X,\opb)$, $\bm X'=(X',\opb')$ e $\bm X''=(X'',\opb'')$ grupoides e $\fun{h}{\bm X }{\bm X'}$ e $\fun{h'}{\bm X'}{\bm X''}$ homomorfismos de grupoide. Então $\fun{h' \circ h}{\bm X}{\bm X''}$ é homomorfismo de grupoide.
+\end{proposition}
+\begin{proof}
+Para todos $x,x' \in X$,
 	\begin{align*}
-	x \opb A &:= \set{x \opb a}{a \in A} \\
-	A \opb x &:= \set{a\opb x}{a \in A} \\
-	A \opb B &:= \set{a \opb b}{a \in A,b \in B}.
+	(h' \circ h)(x \opb x') &= h'(h(x \opb x')) \\
+		&= h'(h(x) \opb' h(x')) \\
+		&= h'(h (x)) \opb'' h'(h(x')) \\
+		&= (h' \circ h)(x) \opb'' (h' \circ h)(x').
+		\qedhere
 	\end{align*}
-\end{definition}
+\end{proof}
 
-\section{Semigrupo}
-
-\begin{definition}
-Um \emph{semigrupo} é um magma $\bm X=(X,\opb)$ em que $\opb$ é associativa. Um semigrupo \emph{comutativo} é um semigrupo em que $\opb$ é comutativa.
-\end{definition}
+\subsection{Semigrupo (grupoide associativo)}
 
 \begin{definition}
-Sejam $\bm X=(X,\opb)$ um semigrupo, $n \in \N^*$ e $(x_i)_{i \in [n]}$ elementos de $X$. O \emph{operatório} desses elementos é
+Um \emph{semigrupo} (ou \emph{grupoide associativo}) é um grupoide $\bm X=(X,\opb)$ cuja operação binária $\opb$ é associativa. Um semigrupo \emph{comutativo} é um semigrupo cuja operação binária $\opb$ é comutativa.
+\end{definition}
+
+\begin{definition}
+Sejam $\bm X=(X,\opb)$ um semigrupo, $n \in \N \setminus \{0\}$ e $(x_i)_{i \in [n]}$ elementos de $X$. O \emph{operatório} desses elementos é definido indutivamente por
 	\begin{equation*}
 	\bigopb _{i \in [n]} x_i :=
 		\begin{cases}
@@ -729,17 +764,10 @@ Sejam $\bm X=(X,\opb)$ um semigrupo, $n \in \N^*$ e $(x_i)_{i \in [n]}$ elemento
 	\end{equation*}
 \end{definition}
 
-\begin{notation}
-Costumamos denotar essa operação por
-	\begin{equation*}
-	x_{n_1} \opb \cdots \opb x_0 := \bigopb_{i \in [n]} x_i = (x_{n-1} \opb ( \cdots (x_1 \opb x_0)))
-	\end{equation*}
-\end{notation}
-
-O símbolo usado para a soma $+$ é o \emph{somatório} $\displaystyle\bigplus$ e o símbolo usado para o produto $\times$ é o \emph{produtório} $\displaystyle\bigtimes$. Essa definição considera que as operações vão sendo feitos à esquerda, mas uma mesma definição poderia ter sido feita para operações à direita --- todas demonstrações ainda valeriam, considerando que as ordens fossem devidamente trocadas.
+O símbolo usado para a soma $+$ é o \emph{somatório} $\displaystyle\bigplus$ e o símbolo usado para o produto $\times$ é o \emph{produtório} $\displaystyle\bigtimes$. Essa definição considera que as operações vão sendo feitas à esquerda, mas uma mesma definição poderia ter sido feita para operações à direita --- todas demonstrações ainda valeriam, considerando que as ordens fossem devidamente trocadas.
 
 \begin{proposition}
-Sejam $\bm X=(X,\opb)$ um semigrupo, $n,k \in \N^*$ e $(x_i)_{i \in [n+k]}$ elementos de $X$. Então
+Sejam $\bm X=(X,\opb)$ um semigrupo, $n,k \in \N \setminus \{0\}$ e $(x_i)_{i \in [n+k]}$ elementos de $X$. Então
 	\begin{equation*}
 	\bigopb_{i \in [n+k]} x_i = \bigopb_{i \in [k]} x_{n+i} \opb \bigopb_{i \in [n]} x_i.
 	\end{equation*}
@@ -749,7 +777,7 @@ A demonstração será por indução em $k$. Se $k=1$, por definição segue que
 	\begin{equation*}
 	\bigopb_{i \in [n+1]} x_i = x_{n} \opb \displaystyle \bigopb_{i \in [n]} x_i = \bigopb_{i \in [1]} x_{n+i} \opb \bigopb_{i \in [n]} x_i.
 	\end{equation*}
-Considere agora que vale a igualdade para algum $k \in \N^*$. Então
+Considere agora que vale a igualdade para algum $k \in \N \setminus \{0\}$. Então
 	\begin{align*}
 	\bigopb_{i \in [n+k+1]} x_i
 		&= x_{n+k} \opb \bigopb_{i \in [n+k]} x_i \\
@@ -760,7 +788,7 @@ Considere agora que vale a igualdade para algum $k \in \N^*$. Então
 \end{proof}
 
 \begin{proposition}[Associatividade Generalizada]
-Sejam $\bm X=(X,\opb)$ um semigrupo, $n \in \N^*$, $(x_i)_{i \in [n]}$ elementos de $X$ e $(k_j)_{j \in [p]}$ uma partição de $[n]$ (ou seja: $n = \sum_{j \in [p]} k_j$ e, para todos $j \in [p]$, $k_j \neq 0$). Então
+Sejam $\bm X=(X,\opb)$ um semigrupo, $n \in \N \setminus \{0\}$, $(x_i)_{i \in [n]}$ elementos de $X$ e $(k_j)_{j \in [p]}$ uma partição de $[n]$ (ou seja: $n = \sum_{j \in [p]} k_j$ e, para todos $j \in [p]$, $k_j \neq 0$). Então
 	\begin{equation*}
 	\bigopb_{i \in [n]} x_i = \bigopb_{j \in [p]}\left(\bigopb_{i \in [k_j]} x_{i + k_0 + \cdots + k_{j-1}}\right).
 	\end{equation*}
@@ -775,131 +803,276 @@ Essa proposição diz que podemos colocar os parênteses como quisermos que o re
 	\end{equation*}
 e a partição $(k_j)_{j \in [p]}$ determina essa separação.
 
-\begin{proposition}[Comutatividade Generalizada]
-Sejam $\bm X=(X, \opb )$ um semigrupo comutativo e $n \in \N^*$. Então, para toda bijeção $\psi\colon [n] \to [n]$,
+\begin{notation}
+Por causa da associatividade generalizada, denota-se essa operação por
 	\begin{equation*}
-	\bigopb_{i \in [n]} x_{\psi(i)} = \bigopb_{i \in [n]} x_i.
+	x_{n-1} \opb \cdots \opb x_0 := \bigopb_{i \in [n]} x_i = (x_{n-1} \opb ( \cdots (x_1 \opb x_0)))
+	\end{equation*}
+\end{notation}
+
+Além da associatividade generalizada, também vale a comutatividade generalizada se o semigrupo é comutativo. Pode-se enunciar uma comutatividade generalizada para grupoides comutativos, sem supor associatividade, mas a associatividade em geral vale quando a comutatividade vale e ela facilita a notação.
+
+\begin{proposition}[Comutatividade Generalizada]
+Sejam $\bm X=(X,\opb)$ um semigrupo comutativo e $n \in \N \setminus \{0\}$. Então, para toda bijeção $\pi \in \Iso{\Func}(n)$,% $\pi\colon [n] \to [n]$,
+	\begin{equation*}
+	\bigopb_{i \in [n]} x_{\pi(i)} = \bigopb_{i \in [n]} x_i.
 	\end{equation*}
 \end{proposition}
 \begin{proof}
-Usaremos o fato de que $\opb$ é associativa. A demonstração será por indução em $n$. Se $n=1$, a afirmação é óbvia. Considere que vale para algum $n \in \N^*$ e seja $\psi\colon [n+1] \to [n+1]$ uma bijeção. Definamos $k = \psi\inv(n)$ e a bijeção
+Usaremos o fato de que $\opb$ é associativa. A demonstração será por indução em $n$. Se $n=1$, a afirmação é óbvia. Considere que vale para algum $n \in \N \setminus \{0\}$ e seja $\fun{\pi}{[n+1]}{[n+1]}$ uma bijeção. Definamos $k = \pi\inv(n)$ e a bijeção
 	\begin{align*}
-	\func{\phi}{[n]}{[n]}{i}{
+	\func{\pi'}{[n]}{[n]}{i}{
 		\begin{cases}
-		\psi(m) 		& i<k \\
-		\psi(m+1) & i>k.
+		\pi(m)		& i<k \\
+		\pi(m+1) 	& i>k.
 		\end{cases}
 	}
 	\end{align*}
 Da associatividade generalizada, da comutatividade e da hipótese para $n$, segue que
 	\begin{align*}
-	\bigopb_{i \in [n+1]} x_{\psi(i)}
-		&= \bigopb_{i \in [n-k]} x_{\psi(i+k+1)} \opb x_{\psi(k)} \opb \bigopb_{i \in [k]} x_{\psi(i)} \\
-		&= x_{n} \opb \bigopb_{i \in [n-k]} x_{\psi(i+k+1)} \opb \bigopb_{i \in [k]} x_{\psi(i)} \\
-		&= x_{n} \opb \bigopb_{i \in [n-k]} x_{\phi(i+k)} \opb \bigopb_{i \in [k]} x_{\phi(i)} \\
-		&= x_n \opb \bigopb_{i \in [n]} x_{\phi(i)}\\
+	\bigopb_{i \in [n+1]} x_{\pi(i)}
+		&= \bigopb_{i \in [n-k]} x_{\pi(i+k+1)} \opb x_{\pi(k)} \opb \bigopb_{i \in [k]} x_{\pi(i)} \\
+		&= x_{n} \opb \bigopb_{i \in [n-k]} x_{\pi(i+k+1)} \opb \bigopb_{i \in [k]} x_{\pi(i)} \\
+		&= x_{n} \opb \bigopb_{i \in [n-k]} x_{\pi'(i+k)} \opb \bigopb_{i \in [k]} x_{\pi'(i)} \\
+		&= x_n \opb \bigopb_{i \in [n]} x_{\pi'(i)}\\
 		&= x_n \opb \bigopb_{i \in [n]} x_i \\
-		&= \bigopb_{i \in [n+1]} x_i. \qedhere
+		&= \bigopb_{i \in [n+1]} x_i.
+		\qedhere
 	\end{align*}
 \end{proof}
 
 
 \begin{definition}[Operatório de conjuntos]
-Sejam $\bm X=(X,\opb)$ um semigrupo, $n \in \N^*$ e $(C_i)_{i \in [n]}$ uma família de subgrupos de $X$. Definimos
+Sejam $\bm X=(X,\opb)$ um semigrupo, $n \in \N \setminus \{0\}$ e $(C_i)_{i \in [n]}$ uma família de subgrupos de $X$. Define-se
 	\begin{equation*}
 	\bigopb _{i \in [n]} C_i := \set{\bigopb _{i \in [n]} x_i}{\forall_{i \in [n]} x_i \in C_i}.
 	\end{equation*}
 \end{definition}
 
-\subsection{Homomorfismo de semigrupos}
+\subsubsection{Homomorfismo de semigrupo}
 
 \begin{definition}
-Sejam $\bm X_1=(X_1,\opb_1)$ e $\bm X_2=(X_2,\opb_2)$ semigrupos. Um \emph{homomorfismo de semigrupos} de $\bm X_1$ para $\bm X_2$ é uma função $h: X_1 \to X_2$ que satisfaz, para todos $x,x' \in X_1$
-	\begin{equation*}
-	h(x  \opb_1  x')=h(x') \opb_2 h(x').
-	\end{equation*}
-\noindent Denota-se $h: \bm X_1 \to \bm X_2$. %e o conjunto de todos esses homomorfismos de semigrupos é denotado por $\Homo(\bm X_1,\bm X_2)$.
+Sejam $\bm X=(X,\opb)$ e $\bm X'=(X',\opb')$ semigrupos. Um \emph{homomorfismo de semigrupo} de $\bm X$ para $\bm X'$ é um homomorfismo de grupoide $\fun{h}{\bm X}{\bm X'}$. Denota-se $\fun{h}{\bm X}{\bm X'}$ e o conjunto de todos esses homomorfismos de semigrupo é denotado por $\Homo(\bm X,\bm X')$.
 \end{definition}
 
 \begin{proposition}[Composição de homomorfismos]
 \label{comp.hom.sem}
-Sejam $\bm X_1=(X,\opb_1)$, $\bm X_2=(X_2,\opb_2)$ e $\bm X_3=(X_3,\opb_3)$ semigrupos e $h_1: \bm X_1 \to \bm X_2$ e $h_2: \bm X_2 \to \bm X_3$ homomorfismos de semigrupos. Então $h_2 \circ h_1: \bm X_1 \to \bm X_3$ é homomorfismo de semigrupos.
+Sejam $\bm X=(X,\opb)$, $\bm X'=(X',\opb')$ e $\bm X''=(X'',\opb'')$ semigrupos e $\fun{h}{\bm X }{\bm X'}$ e $\fun{h'}{\bm X'}{\bm X''}$ homomorfismos de semigrupo. Então $\fun{h' \circ h}{\bm X}{\bm X''}$ é homomorfismo de semigrupo.
 \end{proposition}
 \begin{proof}
-Sejam $x,x' \in X_1$. Então
-	\begin{align*}
-	(h_2 \circ h_1)(x \opb_1 x') &= h_2(h_1(x \opb_1 x')) \\
-		&= h_2(h_1(x) \opb_2 h_1(x')) \\
-		&= h_2(h_1 (x)) \opb_3 h_2(h_1(x')) \\
-		&= (h_2 \circ h_1)(x) \opb_3 (h_2 \circ h_1)(x').
-	\end{align*}
+A mesma demonstração de \ref{comp.hom.grupoide}.
 \end{proof}
 
-\section{Monoide}
+
+
+\section{Grupídeo e monoide}
+
+\subsection{Grupídeo}
 
 \begin{definition}
-Um \emph{monoide} é uma tripla $\bm M=(M,\opb,\id)$ em que $(M,\opb)$ é um semigrupo e $\id$ é uma identidade com respeito a $\opb$. Um monoide \emph{comutativo} é um monoide cuja operação binária $\opb$ é comutativa.
+Um \emph{grupídeo} é uma tripla $\bm G = (G,\opb,\id)$ em que $(G,\opb)$ é um grupoide e $\id$ é uma identidade de $(G,\opb)$.
 \end{definition}
 
+A motivação para o nome `grupídeo' vem da biologia, mas está ligada à estrutura algébrica em si. Na biologia, existe um conjunto de espécies chamado de superfamília dos Hominoides\footnote{O nome em latim é \textit{Hominoidea} \url{https://pt.wikipedia.org/wiki/Hominoidea}.}, que são primatas próximos aos humanos. Dentro dessa superfamília, há um subconjunto de espécies chamado de família dos Hominídeos\footnote{O nome em latim é \textit{Hominidae} \url{https://pt.wikipedia.org/wiki/Hominoidea}.}, que contém orangotangos, gorilas, chipanzés e humanos.
+
+Pode-se adotar por analogia o nome `grupídeo' para um tipo específico de grupoide, aqueles que têm um elemento identidade. A nomenclatura é especialmente conveniente pois na palavra `grup\textbf{íd}eo', as letras `id' remetem ao fato de que a estrutura se trata de um grupoide com identidade.
+
+\begin{definition}[Inverso]
+Sejam $\bm G = (G,\opb,\id)$ um grupídeo e $g \in G$.
+	\begin{itemize}
+	\item Um \emph{inverso à esquerda} de $g$ em $\bm G$ é um elemento $g \vid \in G$ que satisfaz
+		\begin{equation*}
+		(g \vid) \opb g = \id.
+		\end{equation*}
+	\item Um \emph{inverso à direita} de $g$ em $\bm G$ é um elemento $\div g \in G$ que satisfaz
+		\begin{equation*}
+		g \opb (\div g) = \id;
+		\end{equation*}
+	\item Um \emph{inverso} de $g$ em $\bm G$ é um elemento $\div g \in G$ que satisfaz
+		\begin{equation*}
+		(\div g) \opb g = \id = g \opb (\div g).
+		\end{equation*}
+	\end{itemize}
+
+Uma \emph{inversão} de $\bm G$ é uma operação unária
+	\begin{align*}
+	\func{\div}{G}{G}{g}{\div g}
+	\end{align*}
+tal que, para todo $g \in G$, $\div g$ é o inverso de $g$ em $(G,\opb,\id)$.
+\end{definition}
+
+\begin{proposition}
+Sejam $\bm G = (G,\opb,\id)$ um grupídeo e $g \in G$.
+	\begin{enumerate}
+		\item Se $g$ tem inverso à direita $\div g$ em $\bm G$, então $g$ é inverso à esquerda de $\div g$ em $\bm G$;
+		\item Se $g$ tem inverso à esquerda $g \vid$ em $\bm G$, então $g$ é inverso à direita de $g \vid$ em $\bm G$;
+		\item Se $g$ tem inverso $\div g$ em $\bm G$, então $g$ é inverso de $\div g$ em $\bm G$.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item Como $\div g$ é inverso à direita de $g$,
+		\begin{equation*}
+		g \opb (\div g) = \id,
+		\end{equation*}
+	o que mostra que $g$ é inverso à esquerda de $\div g$.
+	\item Como $g \vid$ é inverso à esquerda de $g$,
+		\begin{equation*}
+		(g \vid) \opb g = \id,
+		\end{equation*}
+	o que mostra que $g$ é inverso à direita de $g \vid$.
+	\item Segue dos itens anteriores.
+	\qedhere
+	\end{enumerate}
+\end{proof}
+
+\subsubsection{Homomorfismos de grupídeo}
+
+\begin{definition}
+Sejam $\bm G=(G,\opb,\id)$ e $\bm G'=(G',\opb',\id')$ grupídeos. Um \emph{homomorfismo de grupídeo} de $\bm G$ para $\bm G'$ é uma função $\fun{h}{G}{G'}$ que satisfaz
+	\begin{enumerate}
+	\item $h$ é um homomorfismo de grupoide de $(G,\opb)$ para $(G',\opb')$:
+		\begin{enumerate}
+		\item Para todos $g,g' \in G$, $h(g \opb g') = h(g) \opb' h(g')$;
+		\end{enumerate}
+	\item $h(\id)=\id'$.
+	\end{enumerate}
+Denota-se $\fun{h}{\bm G}{\bm G'}$ e o conjunto de todos esses homomorfismos de monoides é denotado por $\Homo(\bm G,\bm G')$.
+\end{definition}
+
+Podemos notar que precisamos garantir que a função $h$ leve a identidade de um monoide para a identidade de outro, já que isso não seria verdade se função fosse somente um homomorfismo de semigrupos. No entanto, mesmo sem a segunda propriedade, um homomorfismo de semigrupos entre grupos garante que a imagem da identidade do primeiro é a identidade do conjunto imagem. Veremos mais adiante que um homomorfismo de grupos é simplesmente um homomorfismo de semigrupos, pois ele é suficiente para preservar a estrutura algébrica de grupos.
+
+\begin{proposition}[Composição de homomorfismos]
+\label{comp.hom.grupideo}
+Sejam $\bm G=(G,\opb,\id)$, $\bm G'=(G',\opb',\id')$ e $\bm G''=(G'',\opb'',\id'')$ grupídeos e $\fun{h}{\bm G}{\bm G'}$ e $\fun{h'}{\bm G'}{\bm G''}$ homomorfismos de grupídeo. Então $\fun{h' \circ h}{\bm G}{\bm G''}$ é homomorfismo de grupídeo.
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item Como homomorfismos de grupídeo são homomorfismos de grupoide, o resultado segue da proposição na seção de grupoides que afirma que composição de homomorfismos é homomorfismo (\ref{comp.hom.sem}).
+	\item Para mostrar que a identidade é preservada, basta notar que
+		\begin{equation*}
+		(h' \circ h)(\id) = h'(h(\id)) = h'(\id') = \id''.
+		\qedhere
+		\end{equation*}
+	\end{enumerate}
+\end{proof}
+
+\paragraph{Uma propriedade interessante}
+
+\begin{proposition}[Eckmann–Hilton]
+Sejam $G$ um conjunto e $(G,\opb,1)$ e $(G,\opb',1')$ grupídeos (sobre o mesmo $G$) tais que
+	\begin{itemize}
+		\item (Lei de troca) para todos $g_0,g_1,g_2,g_3 \in G$,
+	\begin{equation*}
+	(g_0 \opb g_1) \opb' (g_2 \opb g_3) = (g_0 \opb' g_2) \opb (g_1 \opb' g_3).
+	\end{equation*}
+	\end{itemize}
+Então $(G,\opb,1) = (G,\opb',1')$ e $\opb$ é associativa e comutativa.
+\end{proposition}
+\begin{proof}
+A demonstração é direta.
+	\begin{itemize}
+		\item ($1=1'$) Da identidade e da lei da troca segue que
+		\begin{align*}
+		1 = 1 \opb 1 = (1' \opb' 1) \opb (1 \opb' 1') = (1' \opb 1) \opb' (1 \opb 1') = 1' \opb' 1' = 1'.
+		\end{align*}
+		
+		\item ($\opb = \opb'$) Para todos $g,g' \in G$, da identidade, da lei da troca e de $1=1'$ segue que
+		\begin{align*}
+		g \opb g' = (g \opb' 1) \opb (1 \opb' g') = (g \opb 1) \opb' (1 \opb g) = g \opb' g'.
+		\end{align*}
+
+		\item (Associatividade) Para todos $g,g',g'' \in G$, da identidade, da lei da troca e de $(G,\opb,1) = (G,\opb',1')$ segue que
+		\begin{align*}
+		(g \opb g') \opb g'' = (g \opb g') \opb (1 \opb g'') = (g \opb 1) \opb (g' \opb g'') = g \opb (g' \opb g'').
+		\end{align*}
+
+		\item (Comutatividade) Para todos $g,g' \in G$, da identidade, da lei da troca e de $(G,\opb,1) = (G,\opb',1')$ segue que
+		\begin{align*}
+		g \opb g' = (1 \opb g) \opb (g' \opb 1) = (1 \opb g') \opb (g \opb 1) = g' \opb g.
+		\end{align*}
+	\end{itemize}
+\end{proof}
+
+\subsection{Monoide (grupídeo associativo)}
+
+\begin{definition}
+Um \emph{monoide} (ou \emph{grupídeo associativo}) é um grupídeo $\bm M=(M,\opb,\id)$ cuja operação binária $\opb$ é associativa. Um monoide \emph{comutativo} é um monoide cuja operação binária $\opb$ é comutativa.
+\end{definition}
+
+Equivalentemente, um monoide é uma tripla $\bm M=(M,\opb,\id)$ em que $(M,\opb)$ é um semigrupo e $\id$ é uma identidade de $(M,\opb)$.
+
 \begin{notation}
-Denotaremos a identidade de um monoide $\bm M$ por $\id_M$ quando houver ambiguidade. Ainda, como existe identidade, definimos
+Denotaremos a identidade de um monoide $\bm M$ por $\id_M$ quando houver ambiguidade. Ainda, como existe identidade, definimos o operatório vazio
 	\begin{equation*}
 	\bigopb_{i \in [0]} x_i = \id.
 	\end{equation*}
 \end{notation}
 
 \begin{example}
-O conjunto $\N$, com a operação binária
-	\begin{align*}
-	\func{\max}{\N^2}{\N}{(n,n')}{\max\{n,n'\}}
-	\end{align*}
-e a identidade $0$, formam um monoide comutativo.
+A tripla $(\N,+,0)$ é um monoide comutativo.
 \end{example}
 
-\begin{definition}[Inverso]
-Sejam $\bm X = (X, \opb )$ um magma, $\id$ uma identidade com respeito a $\opb$ e $x \in X$. Um \emph{inverso} de $x$ com respeito a $\opb$ e $\id$ é um elemento $\bar x \in X$ que satisfaz
-	\begin{equation*}
-	\overline x \opb x = \id =  x \opb \overline x.
-	\end{equation*}
-Uma operação unária \emph{inversa} com respeito a $\opb$ e $\id$ é uma operação unária
-	\begin{align*}
-	\func{\overline{(\var)}}{X}{X}{x}{\overline{x}}
-	\end{align*}
-tal que, para todo $x \in X$, $\overline{x}$ é o inverso de $x$ com respeito a $\opb$ e $\id$.
-\end{definition}
+\begin{example}
+A tripla $(\N,\times,1)$ é um monoide comutativo.
+\end{example}
 
-Pode-se distinguir \emph{inverso à esquerda} e \emph{inverso à direita}, que seria o caso de $\bar x$ se só satisfizesse, respectivamente, as igualdades da esquerda e da direita acima, mas não adotaremos essa distinção neste livro.
+\begin{example}
+A tripla $(\N,\opmax,0)$ é um monoide comutativo, em que $\N$ é o conjunto de números naturais, $\opmax$ é a operação máximo dada por
+	\begin{align*}
+	\func{\opmax}{\N \times \N}{\N}{(n,n')}{n \opmax n' := \max \{n,n'\}}
+	\end{align*}
+e $0$ é o zero.
+\end{example}
+
+\begin{example}
+A tripla $(\N_{\infty},\opmin,\infty)$ é um monoide comutativo, em que $\N_{\infty} := \N \cup \{\infty\}$ é o conjunto de números naturais com infinito, $\opmin$ é a operação mínimo dada por
+	\begin{align*}
+	\func{\opmin}{\N_{\infty} \times \N_{\infty}}{\N}{(n,n')}{n \opmin n' := \min \{n,n'\}}
+	\end{align*}
+e $\infty$ é o infinito.
+\end{example}
 
 \begin{proposition}
 \label{prop:unic.inv}
-Seja $(M,\opb,\id)$ um monoide. Se $m \in M$ tem inverso com respeito $\opb$ e $\id$, ele é único.
+Seja $\bm M = (M,\opb,\id)$ um monoide. Se $m \in M$ tem inverso à esquerda $m \vid$ e inverso à direita $\div m$ em $\bm M$, então $m \vid = \div m$ e $\div m$ é o único inverso de $m$ em $\bm M$.
 \end{proposition}
 \begin{proof}
-Suponha que existam dois inversos $\overline m$ e $\overline{m}'$ de $m$. Então
-	\begin{equation*}
-	\overline{m} = \overline{m} \opb \id = \overline m \opb (m \opb \overline{m}') = (\overline m \opb m) \opb \overline{m}' = \id \opb \overline{m}' = \overline{m}'. \qedhere
-	\end{equation*}
+Como $m \vid$ é inverso à esquerda e $\div m$ é inverso à direita de $m$, segue da associatividade que
+	\begin{align*}
+	m \vid &= (m \vid) \opb \id \\
+		&= (m \vid) \opb (m \opb (\div m)) \\
+		&= ((m \vid) \opb m) \opb (\div m) \\
+		&= \id \opb (\div m) \\
+		&= \div m.
+	\end{align*}
+%	\begin{equation*}
+%	m \vid = m \vid \id = m \vid (m \div m) = (m \vid m) \div m = \id \div m = \div m.
+%	\end{equation*}
+A unicidade segue pois qualquer inverso de $m$ em $\bm M$ é inverso à esquerda.
 \end{proof}
 
 \begin{notation}
-A unicidade do inverso nos permite denotar o inverso de um elemento $m \in M$ de algum modo fixo. Quando a operação binária é a adição ($+$), denotamos o inverso por $-m$; quando é a multiplicação ($\times$, $\cdot$, $\circ$), denotamo-lo por $m\inv$ ou $\div m$.
+A unicidade do inverso nos permite denotar o inverso de um elemento $m \in M$ de algum modo fixo. Quando a operação binária é a adição (denotada $+$), denotamos o inverso por $-m$; quando é a multiplicação (denotada $\times$, $\cdot$, $\circ$), denotamo-lo por $\div m$, $m^{-}$ ou, mais comumente, por $m\inv$. Para $m \in M$ com inverso $\div m$ e $m'$, denota-se $m' \div m := m' \opb (\div m)$ por simplicidade.
 \end{notation}
 
 \begin{proposition}
-Seja $(M,\opb,\id)$ um monoide. Se $m \in M$ tem inverso com respeito a $\opb$ e $\id$, então $\overline m$ tem inverso e
+Seja $(M,\opb,\id)$ um monoide. Se $m \in M$ tem inverso $\div m$ em $\bm M$, então $\div m$ tem inverso e
 	\begin{equation*}
-	\overline{\overline{m}}=m.
+	\div(\div m) = m.
 	\end{equation*}
 \end{proposition}
 \begin{proof}
-	\begin{align*}
-	\overline{\overline m} &= \overline{\overline m}  \opb  \id \\
-		&= \overline{\overline m}  \opb  (\overline m  \opb  m) \\
-		&= (\overline{\overline m}  \opb  \overline m)  \opb  m \\
-		&= \id  \opb  m \\
-		&= m.
-	\end{align*}
+Como $\div m$ é inverso de $m$, então $m$ é inverso de $\div m$ e, da unicidade do inverso em monoides segue que $\div(\div m) = m$.
+%	\begin{align*}
+%	\div(\div m) &= \div(\div m) \opb \id \\
+%		&= \div(\div m) \opb (\div m \opb m) \\
+%		&= (\div(\div m) \opb \div m) \opb m \\
+%		&= \id \opb m \\
+%		&= m.
+%	\end{align*}
 \end{proof}
+
 
 \begin{definition}
 Seja $\bm M=(M,\opb,\id)$ um monoide. Um \emph{submonoide} de $\bm M$ é um monoide $\bm S=(S,\opb _S,\id_S)$ em que $S \subseteq M$, $\opb _S= \opb |_{S \times S}$ e $\id_S=\id$. Denota-se $\bm S \leq \bm M$. Um submonoide \emph{próprio} de $\bm M$ é um monoide $\bm S \leq \bm M$ em que $S$ é um subconjunto próprio de $M$ ($S \subset M$). Denota-se $\bm S < \bm M$.
@@ -923,49 +1096,59 @@ Então $\bm S=(S,\opb|_{S \times S},\id)$ é um monoide. Ainda, se $\bm M$ é co
 Suponhamos que valem as propriedades listadas. (Operação binária) Pela identidade, segue que $S \neq \emptyset$, e disso e do fechamento, segue que $\star$ é uma operação binária (\ref{prop:restri.op.bin}).
 (Associatividade) Sejam $s_1,s_2,s_3 \in S$. Da associatividade de $ \opb $ segue que
 	\begin{equation*}
-	 (s_1 \star s_2) \star s_3 = (s_1  \opb  s_2)  \opb  s_3 = s_1  \opb  (s_2  \opb  s_3) = s_1 \star (s_2 \star s_3).
+	 (s_1 \star s_2) \star s_3 = (s_1 \opb s_2) \opb s_3 = s_1 \opb (s_2  \opb  s_3) = s_1 \star (s_2 \star s_3).
 	 \end{equation*}
 Logo $\star$ é associativa. (Identidade) Seja $s \in S$. Como $\id \in S$, da identidade de $ \opb $ segue que
 	\begin{equation*}
-	\id \star s = \id  \opb  s = s = s \opb  \id = s \star \id.
+	\id \star s = \id \opb s = s = s \opb \id = s \star \id.
 	\end{equation*}
 Logo $\id$ é identidade de $\bm S$.
 
 Por fim, suponhamos que $\bm M$ é um monoide comutativo. Sejam $s_1,s_2 \in S$. Como $ \opb $ é comutativa, então
 	\begin{equation*}
-	s_1 \star s_2 = s_1  \opb  s_2 = s_2  \opb  s_1 = s_2 \star s_1.
+	s_1 \star s_2 = s_1 \opb s_2 = s_2 \opb s_1 = s_2 \star s_1.
 	\end{equation*}
 Logo $\star$ é comutativa.
 \end{proof}
 
 Vale observar que, somente sabendo que $\bm S$ é um monoide, isto é, que um subconjunto $S$ de um monoide $\bm M$ com a operação do monoide restrita a esse subconjunto formam um monoide, não podemos garantir que a identidade de $\bm S$ é a mesmo que a de $\bm M$.
 
-\subsection{Homomorfismos de monoides}
+\subsubsection{Homomorfismos de monoide}
 
 \begin{definition}
-Sejam $\bm M_1=(M_1,\opb_1,\id_1)$ e $\bm M_2=(M_2,\opb_2,\id_2)$ monoides. Um \emph{homomorfismo de monoides} de $\bm M_1$ para $\bm M_2$ é uma função $h: M_1 \to M_2$ que satisfaz
-	\begin{enumerate}
-	\item $h$ é um homomorfismo de semigrupos de $\bm M_1$ para $\bm M_2$:
-		\begin{enumerate}
-		\item para todos $m,m' \in M_1$, $h(m \opb_1 m')=h(m) \opb_2 h(m')$;
-		\end{enumerate}
-	\item $h(\id_1)=\id_2$.
-	\end{enumerate}
-\noindent Denota-se $h: \bm M_1 \to \bm N_2$. %e o conjunto de todos esses homomorfismos de monoides é denotado por $\Homo(\bm M_1,\bm M_2)$.
+Sejam $\bm M=(M,\opb,\id)$ e $\bm M'=(M',\opb',\id')$ monoides. Um \emph{homomorfismo de monoide} de $\bm M$ para $\bm M'$ é um homomorfismo de grupídeo $\fun{h}{\bm M}{\bm M'}$. Denota-se $\fun{h}{\bm M}{\bm M'}$ e o conjunto de todos esses homomorfismos de monoide é denotado por $\Homo(\bm M,\bm M')$.
 \end{definition}
+
+Isso significa que $h$ é uma função $\fun{h}{M}{M'}$ que satisfaz
+	\begin{enumerate}
+	\item $h$ é um homomorfismo de semigrupos de $(M,\opb)$ para $(M',\opb)$:
+		\begin{enumerate}
+		\item para todos $m,m' \in M$, $h(m \opb m') = h(m) \opb' h(m')$;
+		\end{enumerate}
+	\item $h(\id)=\id'$.
+	\end{enumerate}
 
 Podemos notar que precisamos garantir que a função $h$ leve a identidade de um monoide para a identidade de outro, já que isso não seria verdade se função fosse somente um homomorfismo de semigrupos. No entanto, mesmo sem a segunda propriedade, um homomorfismo de semigrupos entre grupos garante que a imagem da identidade do primeiro é a identidade do conjunto imagem. Veremos mais adiante que um homomorfismo de grupos é simplesmente um homomorfismo de semigrupos, pois ele é suficiente para preservar a estrutura algébrica de grupos.
 
 \begin{proposition}[Composição de homomorfismos]
 \label{comp.hom.mon}
-Sejam $\bm M_1=(M_1,\opb_1.\id_1)$, $\bm M_2=(M_2,\opb_2,\id_2)$ e $\bm M_3=(M_3,\opb_3,\id_3)$ monoides e $h_1: \bm M_1 \to \bm M_2$ e $h_2: \bm M_2 \to \bm M_3$ homomorfismos de monoides. Então $h_2 \circ h_1: \bm M_1 \to \bm M_3$ é homomorfismo de monoides.
+Sejam $\bm M=(M,\opb,\id)$, $\bm M'=(M',\opb',\id')$ e $\bm M''=(M'',\opb'',\id'')$ monoides e $h: \bm M \to \bm M'$ e $h': \bm M' \to \bm M''$ homomorfismos de monoides. Então $h' \circ h: \bm M \to \bm M''$ é homomorfismo de monoides.
 \end{proposition}
 \begin{proof}
-	\begin{enumerate}
-	\item Como homomorfismos de monoides são homomorfismos de semigrupos, o resultado segue da proposição na seção de semigrupos que afirma que composição de homomorfismos é homomorfismo (\ref{comp.hom.sem}).
-	\item Para mostrar que a identidade é preservada, basta notar que
-	\begin{equation*}
-	(h_2 \circ h_1)(\id_1) = h_2(h_1(\id_1)) = h_2(\id_2) = \id_3.
-	\end{equation*}
-	\end{enumerate}
+A mesma demonstração de \ref{comp.hom.grupideo}.
 \end{proof}
+
+
+
+\subsection{Grupíneo}
+
+\begin{definition}
+Um \emph{grupíneo} é uma lista $\bm G = (G,\times,\div,\id)$ em que $(G,\times,\id)$ é um grupídeo e $\fun{\div}{G}{G}$ é uma inversão de $(G,\times,\id)$.
+\end{definition}
+
+Como no caso de grupídeos, a motivação para o nome `grupíneo' vem da biologia, mas está ligada à estrutura algébrica em si. Dentro da família dos Hominídeos, há um subconjunto de espécies chamado de subfamília dos Hominíneos\footnote{O nome em latim é \textit{Homininae} \url{https://pt.wikipedia.org/wiki/Hominidae\#Subfam\%C3\%ADlia_Homininae}.}, que contém gorilas, chipanzés e humanos.
+
+Da mesma forma, pode-se adotar por analogia o nome `grupíneo' para um tipo específico de grupídeo, aqueles que têm uma inversão. A nomenclatura é novamente conveniente pois na palavra `grup\textbf{ín}eo', as letras `in' remetem ao fato de que a estrutura se trata de um grupídeo com inversão.
+
+Não estudaremos grupíneos aqui, pois os grupíneos associativos, chamados grupos, são estruturas muito importantes às quais se dedicará um capítulo específico.
+
