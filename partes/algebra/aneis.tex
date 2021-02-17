@@ -1935,27 +1935,32 @@ em que
 		\end{align*}
 	\item $0$ é o \emph{zero} de $\R$, definido por
 		\begin{equation*}
-		0 := \set{q \in \Q}{q < 0};
+		0_{\R} := \set{q \in \Q}{q < 0};
 		\end{equation*}
 	\item $-$ é a \emph{inversa aditiva} de $\R$, definida por
+%		\begin{align*}
+%		\func{-}{\R}{\R}{c}{-c := \set{r-q}{q \in c^\complement \land z \in 0_{\R}}}.
+%		\end{align*}
 		\begin{align*}
-		\func{-}{\R}{\R}{c}{-c := \set{r-q}{r < 0 \land q \in \Q \setminus c}}.
+		\func{-}{\R}{\R}{c}{-c := \set{-q}{q \in c^\complement \land \exists_{r \in c^\complement} r < q}}.
 		\end{align*}
 	\end{enumerate}
 \end{definition}
 
+A menos que gere ambiguidade, denotaremos $0_{\R}$ por $0$.
+
 \begin{exercise}
-O grupo aditivo dos números reais $\R^+$ é um grupo comutativo e $(\R^+,\leq)$ é um grupo ordenado.
+As operações $+$ e $-$ estão bem definidas, $0 \in \R$, o grupo aditivo dos números reais $\R^+$ é um grupo comutativo e $(\R^+,\leq)$ é um grupo ordenado.
 \end{exercise}
 
 \begin{definition}
 O \emph{monoide multiplicativo dos números reais} é a lista
 	\begin{equation*}
-	\R^\times := (\R,\times,1)
+	\R_\times := (\R,\times,1)
 	\end{equation*}
 e o \emph{grupo multiplicativo dos números reais} é a lista
 	\begin{equation*}
-	\R^{\div}:= (\R \setminus \{0\},\times,\div,1),
+	\R_{\div}:= (\R \setminus \{0\},\times,\div,1),
 	\end{equation*}
 em que
 	\begin{enumerate}
@@ -1964,23 +1969,23 @@ em que
 		\func{\times}{\R \times \R}{\R}{(c,c')}{
 			c \times c' :=
 			\begin{cases}
-			\set{qq'}{q \in c \land q' \in c'} \cup 0,	& c \geq 0 \land c' \geq 0, \\
-			c \times (-c'),			& c \geq 0 \land c' < 0, \\
-			(-c) \times c',			& c < 0 \land c' \geq 0, \\
-			(-c) \times (-c'),		& c < 0 \land c' < 0;
+			\set{qq'}{q \in c_{\geq 0} \land q' \in c'_{\geq 0}} \cup 0_{\R},	& c \geq 0_{\R} \land c' \geq 0_{\R}, \\
+			c \times (-c'),			& c \geq 0_{\R} \land c' < 0_{\R}, \\
+			(-c) \times c',			& c < 0_{\R} \land c' \geq 0_{\R}, \\
+			(-c) \times (-c'),		& c < 0_{\R} \land c' < 0_{\R};
 			\end{cases}
 		}
 		\end{align*}
 	\item $0$ é o \emph{um} de $\R$, definido por
 		\begin{equation*}
-		1 := \set{q \in \Q}{q < 1};
+		1_{\R} := \set{q \in \Q}{q < 1};
 		\end{equation*}
 	\item $\div$ é a \emph{inversa multiplicativa} de $\R$, definida por
 		\begin{align*}
 		\func{\div}{\R \setminus \{0\}}{\R \setminus \{0\}}{c}{
 			c\inv :=
 			\begin{cases}
-			\set{u \div q}{u \in 1 \land q \in \Q \setminus c}	& c > 0, \\
+			\set{u \div q}{u \in 1_{\R} \land q \in c^\complement}	& c > 0, \\
 			-((-c)\inv)	& c < 0.
 			\end{cases}
 		}
@@ -1988,17 +1993,87 @@ em que
 	\end{enumerate}
 \end{definition}
 
+A menos que gere ambiguidade, denotaremos $1_{\R}$ por $1$.
+
 \begin{exercise}
-O monoide multiplicativo dos números reais $\R^\times$ é um monoide comutativo e o grupo multiplicativo dos números reais $\R^{\div}$ é um grupo comutativo.
+As operações $\times$ e $\div$ estão bem definidas, $1 \in \R$, o monoide multiplicativo dos números reais $\R^\times$ é um monoide comutativo e o grupo multiplicativo dos números reais $\R^{\div}$ é um grupo comutativo.
 \end{exercise}
 
 \begin{definition}
-O \emph{corpo dos números reais} é a lista $\R = (\R,+,-,0,\times,\div,0)$.
+O \emph{corpo dos números reais} é a lista
+	\begin{equation*}
+	\R = (\R,+,-,0,\times,\div,0).
+	\end{equation*}
 \end{definition}
+
+Por abuso de notação, denotamos tanto o corpo como o conjunto dos números reais pelo símbolo $\R$.
 
 \begin{exercise}
 O corpo dos números reais $\R$ é um corpo e $(\R,\leq)$ é um corpo ordenado.
 \end{exercise}
+
+\begin{exercise}
+Para todo $q \in \Q$,
+	\begin{equation*}
+	q_{\R} := \set{q' \in \Q}{q' < q} \in \R
+	\end{equation*}
+e a função
+	\begin{align*}
+	\func{\inclu}{\Q}{\R}{q}{q_{\R} = \set{q' \in \Q}{q' < q}}
+	\end{align*}
+é um homomorfismo injetivo de corpo ordenado de $(\Q,\leq)$ para $(\R,\leq)$.
+\end{exercise}
+
+Por essa identificação dos racionais $\Q$ dentro dos números reais $\R$, vamos sempre nos referir aos racionais como elementos de $\R$. A menos que gere ambiguidade, denotaremos $q_{\R}$ por $q$. A partir de agora, não vamos mais utilizar a construção de $\R$ como um conjunto de subconjuntos de $\R$, somente o fato de que ele é um corpo ordenado e completo.
+
+\subsubsection{Raiz de números reais}
+
+\begin{proposition}
+Sejam $n \in \Z_{>}$ e $c \in \R_{\geq}$. O conjunto
+	\begin{equation*}
+	\set{x \in \R_{\geq}}{x^n \leq c}
+	\end{equation*}
+é não vazio e limitado superiormente por $1 \opmax c$.
+\end{proposition}
+\begin{proof}
+O conjunto $\set{x \in \R_{\geq}}{x^n \leq c}$ é não vazio pois, como $c \geq 0$ e $0^n=0$, então $c \geq 0^n$, portanto $0 \in \set{x \in \R_{\geq}}{x^n \leq c}$.
+
+O conjunto $\set{x \in \R_{\geq}}{x^n \leq c}$ é limitado superiormente por $1 \opmax c$, seja $x \in \R_{\geq}$ tal que $x^n \leq c$. Se $x<1$, então $x < 1 \opmax c$. Se $x \geq 1$, como $\R$ é corpo ordenado segue que $x \leq x^n$, logo $x \leq c \leq 1 \opmax c$. Isso mostra que $1 \opmax c$ é um limitante superior de $\set{x \in \R_{\geq}}{x^n \leq c}$.
+\end{proof}
+
+Isso mostra que o conjunto $\set{x \in \R_{\geq}}{x^n \leq c}$ tem supremo. Esse supremo define a função raiz $n$-ésima.
+
+\begin{definition}
+Seja $n \in \Z_{>}$. A \emph{$n$-ésima raiz} em $\R_{\geq}$ é a função
+	\begin{align*}
+	\func{\sqrt[n]{}}{\R_{\geq}}{\R_{\geq}}{c}{\sqrt[n]{c} := \sup \set{x \in \R_{\geq}}{x^n \leq c}}
+	\end{align*}
+\end{definition}
+
+\begin{proposition}
+Sejam $n \in \Z_{>}$ e $c \in \R_{\geq}$.
+	\begin{enumerate}
+	\item Se $c \geq 1$, então $1 \leq \sqrt[n]{c} \leq c$;
+	\item Se $c \leq 1$, então $c \leq \sqrt[n]{c} \leq 1$;
+	\item $\sqrt[n]{c} = c$ se, e somente se, $c=1$ ou $c=0$;
+	\item $(\sqrt[n]{c})^n = c$.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item Nesse caso, $1 \opmax c = c$, portanto $c$ é limitante superior de $\set{x \in \R_{\geq}}{x^n \leq c}$; como $\sqrt[n]{c}$ é supremo dese conjunto, é o menor limitante superior, e segue que $\sqrt[n]{c} \leq c$.
+	
+	Como $1 \leq c$ e $1^n = 1$, então $1^n \leq c$, e segue que $1 \in \set{x \in \R_{\geq}}{x^n \leq c}$; como $\sqrt[n]{c}$ é supremo dese conjunto, é limitante superior, e segue que $1 \leq \sqrt[n]{c}$.
+
+	\item Nesse caso, $1 \opmax c = 1$, portanto $1$ é limitante superior de $\set{x \in \R_{\geq}}{x^n \leq c}$; como $\sqrt[n]{c}$ é supremo dese conjunto, é o menor limitante superior, e segue que $\sqrt[n]{c} \leq 1$.
+	
+	Como $c \leq 1$, então $c^n \leq c$, e segue que $c \in \set{x \in \R_{\geq}}{x^n \leq c}$; como $\sqrt[n]{c}$ é supremo dese conjunto, é limitante superior, e segue que $c \leq \sqrt[n]{c}$.
+
+	\item Segue dos itens anteriores que $\sqrt[n]{1} \leq 1$ e $\sqrt[n]{1} \geq 1$, portanto $\sqrt[n]{1} = 1$. Além disso, $\set{x \in \R_{\geq}}{x^n \leq 0} = \{0\}$, portanto $\sqrt[n]{0} = 0$. A recíproca é exercício.
+
+	\item Exercício.
+	\end{enumerate}
+\end{proof}
 
 
 \subsection{Divisão e associação}
