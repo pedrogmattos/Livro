@@ -1,97 +1,179 @@
-\chapter{Álgebras sobre corpos}
+\chapter{Álgebras}
 
-\section{Álgebra e ação adjunta}
+\section{Álgebra e conceitos básicos}
+
+%\begin{definition}
+%Seja $\bm C$ um corpo. Uma \emph{álgebra} sobre $\bm C$ é um par $(\bm A,\times)$ em que $\bm A$ é um espaço vetorial sobre $\bm C$ e $\times\colon A \times A \to A$ é uma função bilinear. Uma álgebra é \emph{associativa, comutativa} ou \emph{antissimétrica} conforme a respectiva propriedade do produto $\times$, e é unitária se $\times$ tem identidade.
+%\end{definition}
 
 \begin{definition}
-Seja $\bm C$ um corpo. Uma \emph{álgebra} sobre $\bm C$ é um par $(\bm A,\cdot)$ em que $\bm A$ é um espaço vetorial sobre $\bm C$ e $\cdot\colon A \times A \to A$ é uma função bilinear. Uma álgebra é \emph{associativa, comutativa} ou \emph{antissimétrica} conforme a respectiva propriedade do produto $\cdot$, e é unitária se $\cdot$ tem identidade.
+Seja $\bm C$ um corpo. Uma \emph{álgebra} sobre $\bm C$ é uma lista $\bm{A} := ((A,+,-,0,\times),\cdot)$ tal que $((A,+,-,0),\cdot)$ é um espaço linear sobre $\bm C$ e $\fun{\times}{A \times A}{A}$ é uma função bilinear. Uma álgebra é \emph{associativa, comutativa, alternativa} ou \emph{antissimétrica} conforme a respectiva propriedade de $\times$.
+
+Uma \emph{álgebra unitária} sobre $\bm C$ é uma lista $((A,+,-,0,\times,1),\cdot)$ tal $((A,+,-,0,\times),\cdot)$ é uma álgebra sobre $\bm C$ e $1 \in A$ é identidade de $(A,\times)$.
+
+Uma \emph{álgebra de divisão associativa} sobre $\bm C$ é uma lista $((A,+,-,0,\times,1,\div),\cdot)$ tal $((A,+,-,0,\times,1),\cdot)$ é uma álgebra unitária associativa sobre $\bm C$ e $\fun{\div}{A \setminus \{0\}}{A \setminus \{0\}}$ é uma inversão de $(A,\times,1)$.
 \end{definition}
 
-\begin{definition}
-Sejam $(\bm A,\cdot)$ uma álgebra sobre um corpo $\bm C$ e $a \in A$. A \emph{ação adjunta} em $\bm A$ baseada em $a$ é a função linear
-	\begin{align*}
-	\func{\adj_a}{A}{A}{a'}{a \cdot a'.}
-	\end{align*}
-\end{definition}
+Por simplicidade, denotamos uma álgebra por $(\bm A,\times)$ se queremos ressaltar a notação para a multiplicação de $A$.
 
 \begin{proposition}
-Seja $(\bm A,\cdot)$ uma álgebra sobre um corpo $\bm C$. Então $(\lin(A,A),\circ)$ é uma álgebra associativa sobre $\bm C$.
+Seja $\bm V$ um espaço linear sobre um corpo $\bm C$. Então
+	\begin{equation*}
+	((\lin(\bm V),+,-,0,\circ,\Id),\cdot)
+	\end{equation*}
+é uma álgebra unitária associativa sobre $\bm C$.
 \end{proposition}
 \begin{proof}
-Sabemos que $\lin(A,A)$ é um espaço linear. Para mostrar que é uma álgebra, devemos mostrar que $\circ$ é bilinear. Sejam $L,L,L'' \in \lin(A,A)$ e $c \in C$. Então, para todo $a \in A$,
+Sabemos que $((\lin(\bm V),+,-,0),\cdot)$ é um espaço linear sobre $\bm C$. Para mostrar que é uma álgebra, devemos mostrar que a composição de funções $\circ$ é bilinear. Sejam $L,L',L'' \in \lin(\bm V)$ e $c \in C$. Para todo $v \in V$, segue que
 	\begin{align*}
-	((cL+L') \circ L'')(a) &= (cL+L')(L''(a)) \\
-		&= cL(L''(a))+L'(L''(a)) \\
-		&= cL \circ L''(a) + L' \circ L''(a) \\
-		&= (cL \circ L'' + L' \circ L'')(a).
+	((cL+L') \circ L'')(v) &= (cL+L')(L''(v)) \\
+		&= cL(L''(v))+L'(L''(v)) \\
+		&= cL \circ L''(v) + L' \circ L''(v) \\
+		&= (cL \circ L'' + L' \circ L'')(v),
 	\end{align*}
-Isso mostra que $(cL+L') \circ L'' = cL \circ L'' + L' \circ L''$. Agora,
+portanto $(cL+L') \circ L'' = cL \circ L'' + L' \circ L''$.
+
+Para todo $v \in V$, segue da linearidade de $L$ que
 	\begin{align*}
-	(L \circ (cL'+L''))(a) &= L((cL'+L'')(a)) \\
-		&= L(cL'(a)+L''(a)) \\
-		&= cL(L'(a))+L(L''(a)) \\
-		&= cL \circ L'(a)+L \circ L''(a) \\
-		&= (cL \circ L' + L \circ L'')(a).
+	(L \circ (cL'+L''))(v) &= L((cL'+L'')(v)) \\
+		&= L(cL'(v)+L''(v)) \\
+		&= cL(L'(v))+L(L''(v)) \\
+		&= cL \circ L'(v)+L \circ L''(v) \\
+		&= (cL \circ L' + L \circ L'')(v),
 	\end{align*}
-Isso mostra que $L \circ (cL'+L'') = cL \circ L' + L \circ L''$. A composição de funções é associativa, portanto a álgebra é associativa.
+portanto $L \circ (cL'+L'') = cL \circ L' + L \circ L''$. A composição de funções é associativa, portanto a álgebra é associativa. Por fim, a função identidade $\Id$ é identidade da composição.
 \end{proof}
 
 \begin{proposition}
-Sejam $(\bm A,\cdot)$ uma álgebra sobre um corpo $\bm C$ e $I$ um conjunto. Então $(A^I,\cdot)$, em que $\cdot\colon A^I \times A^I \to A^I$ é o produto entrada a entrada, é uma álgebra sobre $\bm C$. Se o produto de $A$ é associativo ou comutativo, então o produto de $A^I$ é, respectivamente, associativo ou comutativo, e é se $A$ é unitária, $(1)_{in \in I}$ é identidade do produto de $A^I$.
+Sejam $(\bm A,\times)$ uma álgebra sobre um corpo $\bm C$ e $I$ um conjunto. Então $(A^I,\times)$, em que $\times\colon A^I \times A^I \to A^I$ é o produto entrada a entrada, é uma álgebra sobre $\bm C$. Se o produto de $A$ é associativo ou comutativo, então o produto de $A^I$ é, respectivamente, associativo ou comutativo, e é se $A$ é unitária, $(1)_{in \in I}$ é identidade do produto de $A^I$.
 \end{proposition}
 \begin{proof}
-Sabemos que $A^I$ é um espaço linear sobre $\bm C$. Basta mostrar que $\cdot$ é um produto bilinear. Sejam $(a_i)_{i \in I},(a'_i)_{i \in I},(a''_i)_{i \in I} \in A^I$ e $c \in C$. Então
+Sabemos que $A^I$ é um espaço linear sobre $\bm C$. Basta mostrar que $\times$ é um produto bilinear. Sejam $(a_i)_{i \in I},(a'_i)_{i \in I},(a''_i)_{i \in I} \in A^I$ e $c \in C$. Então
 	\begin{align*}
-	(c(a_i)_{i \in I} + (a'_i)_{i \in I}) \cdot (a''_i)_{i \in I} &= (ca_i + a'_i)_{i \in I} \cdot (a''_i)_{i \in I} \\
-	&= ((ca_i + a'_i) \cdot a''_i)_{i \in I} \\
-	&= (ca_i \cdot a''_i + a'_i \cdot a''_i)_{i \in I} \\
-	&= c(a_i \cdot a''_i)_{i \in I} + (a'_i \cdot a''_i)_{i \in I} \\
-	&= c(a_i)_{i \in I} \cdot (a''_i)_{i \in I} + (a'_i)_{i \in I} \cdot (a''_i)_{i \in I}.
+	(c(a_i)_{i \in I} + (a'_i)_{i \in I}) \times (a''_i)_{i \in I} &= (ca_i + a'_i)_{i \in I} \times (a''_i)_{i \in I} \\
+	&= ((ca_i + a'_i) \times a''_i)_{i \in I} \\
+	&= (ca_i \times a''_i + a'_i \times a''_i)_{i \in I} \\
+	&= c(a_i \times a''_i)_{i \in I} + (a'_i \times a''_i)_{i \in I} \\
+	&= c(a_i)_{i \in I} \times (a''_i)_{i \in I} + (a'_i)_{i \in I} \times (a''_i)_{i \in I}.
 	\end{align*}
 A demonstração da linearidade na segunda entrada é análoga, e as demonstrações de associatividade e comutatividade e identidade são triviais.
 \end{proof}
 
-\begin{proposition}
-Seja $(\bm A,\cdot)$ uma álgebra sobre um corpo $\bm C$. A álgebra $\bm A$ é associativa se, e somente se, para todos $a,a' \in A$,
-	\begin{equation*}
-	\adj_{a \cdot a'} = \adj_a \circ \adj_{a'}.
-	\end{equation*}
-\end{proposition}
+\subsection{Ação adjunta}
 
-\section{Derivação}
+Como de costume, denotamos a multiplicação à esquerda por um elemento fixo por $a \in A$ por
+	\begin{align*}
+	\func{a\times}{A}{A}{a'}{a \times a'}.
+	\end{align*}
+Pela bilinearidade da multiplicação, temos que $a\times \in \lin(\bm A)$ e, portanto está bem definida uma função que leva cada $a \in A$ em uma função linear $a\times$, como definimos a seguir.
 
 \begin{definition}
-Seja $(\bm A,\cdot)$ uma álgebra sobre um corpo $\bm C$. Uma \emph{derivação} em $\bm A$ é uma função linear $D\colon A \to A$ tal que
+Sejam $(\bm A,\times)$ uma álgebra sobre um corpo $\bm C$ e $a \in A$. A \emph{ação adjunta} de $\bm A$ é a função linear
+	\begin{align*}
+	\func{\adj}{A}{\lin(\bm A)}{a}{
+		\adj_a :=
+		\begin{aligned}[t]
+		\func{a\times}{A}{A}{a'}{a \times a'}.
+		\end{aligned}
+	}
+	\end{align*}
+\end{definition}
+
+\begin{exercise}
+Seja $(\bm A,\times)$ uma álgebra sobre um corpo $\bm C$. A álgebra $\bm A$ é associativa se, e somente se, para todos $a,a' \in A$,
+	\begin{equation*}
+	\adj_{a \times a'} = \adj_a \circ \adj_{a'}.
+	\end{equation*}
+\end{exercise}
+Explicitamente, a condição anterior é
+	\begin{equation*}
+	(a \times a') \times = (a \times) \circ (a' \times).
+	\end{equation*}
+
+A ação adjunta é uma representação quando a álgebra é associativa.
+
+\subsection{Colchete comutador}
+
+\begin{definition}
+Seja $(\bm A,\times)$ uma álgebra sobre um corpo $\bm C$. O \emph{colchete comutador} de $(\bm A,\times)$ é a função
+	\begin{align*}
+	\func{\col{\var}{\var}}{A \times A}{A}{(a,a')}{a \times a' - a' \times a.}
+	\end{align*}
+\end{definition}
+
+\begin{proposition}
+Seja $(\bm A,\times)$ uma álgebra sobre um corpo $\bm C$. Então
 	\begin{enumerate}
-	\item (Regra do produto) Para todos $a,a' \in A$,
+	\item $(\bm A,\col{\var}{\var})$ é uma álgebra alternativa sobre $\bm C$;
+	\item O produto $\times$ é comutativo se, e somente se, $\col{\var}{\var} = 0$;
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item Primeiro, notemos que, para todos $a,a' \in A$,
 		\begin{equation*}
-		D(a \cdot a') = D(a) \cdot a' + a \cdot D(a').
+		\col{a}{a'} = a \times a' - a' \times a = -(a' \times a - a \times a') = -\col{a'}{a}.
+		\end{equation*}
+	portanto $\col{\var}{\var}$ é antissimétrico. Sendo assim, para mostrar que $\col{\var}{\var}$ é bilinear, basta mostrar que ela é linear na primeira entrada. Para todos $a,a',a'' \in A$ e $c \in C$,
+		\begin{align*}
+		\col{ca+a'}{a''} &= (ca+a') \times a'' - a'' \times (ca+a') \\
+			&= ca \times a'' + a' \times a'' - ca'' \times a - a'' \times a' \\
+			&= ca \times a'' - ca'' \times a + a' \times a'' - a'' \times a' \\
+			&= c\col{a}{a''} + \col{a'}{a''}.
+		\end{align*}
+	Por fim, para todo $a \in A$,
+		\begin{equation*}
+		\col{a}{a} = a \times a - a \times a = 0.
+		\end{equation*}
+
+	\item Suponhamos, primeiro, que $\times$ é comutativo. Então, para todos $a,a' \in A$,
+		\begin{equation*}
+		\col{a}{a'} = a \times a' - a' \times a = a \times a' - a \times a' = 0.
+		\end{equation*}
+Reciprocamente, suponhamos que $\col{\var}{\var}=0$. Então, para todos $a,a' \in A$,
+		\begin{equation*}
+		a \times a' = a \times a' + 0 = a \times a' + \col{a'}{a} = a \times a' + a' \times a - a \times a' = a' \times a.
 		\end{equation*}
 	\end{enumerate}
-O conjunto dessas derivações é $\Der(A)$.
+\end{proof}
+	
+	
+
+\subsection{Derivação}
+
+\begin{definition}
+Seja $(\bm A,\times)$ uma álgebra sobre um corpo $\bm C$. Uma \emph{derivação} em $\bm A$ é uma função linear $\fun{D}{A}{A}$ tal que
+	\begin{itemize}
+	\item (Derivabilidade\footnote{A propriedade de derivabilidade é também chamada de `regra do produto' ou `regra de Leibniz'.}) Para todos $a,a' \in A$,
+		\begin{equation*}
+		D(a \times a') = D(a) \times a' + a \times D(a').
+		\end{equation*}
+	\end{itemize}
+O conjunto dessas derivações é $\Der(\bm A)$.
 \end{definition}
 
 Note que a propriedade acima nem sempre é equivalente a
 	\begin{equation*}
-	D(a \cdot a') = a' \cdot D(a)  + a \cdot D(a'),
+	D(a \times a') = a' \times D(a) + a \times D(a'),
 	\end{equation*}
-pois o produto $\cdot$ nem sempre é comutativo, mas sempre é equivalente a
+pois o produto $\times$ nem sempre é comutativo, mas sempre é equivalente a
 	\begin{equation*}
-	D(a \cdot a') = a \cdot D(a') + D(a) \cdot a',
+	D(a \times a') = a \times D(a') + D(a) \times a',
 	\end{equation*}
 pois a soma $+$ é comutativa.
 
 \begin{proposition}
-Sejam $(\bm A,\cdot)$ uma álgebra sobre um corpo $\bm C$ e $D\colon A \to A$ uma derivação em $\bm A$.
+Sejam $(\bm A,\times)$ uma álgebra sobre um corpo $\bm C$ e $\fun{D}{A}{A}$ uma derivação em $\bm A$.
 	\begin{enumerate}
 	\item (Regra do produto generalizada) Para todos $a_0,\ldots,a_{n-1} \in A$,
 		\begin{equation*}
 		D(a_0 \cdots a_{n-1}) = \sum_{i \in [n]} a_0 \cdots D(a_i) \cdots a_{n-1};
 		\end{equation*}
-	\item Se $\cdot$ é comutativo, então, para todos $a \in A$ e $n \in \N^*$,
+	\item Se $\times$ é comutativa, então, para todos $a \in A$ e $n \in \N \setminus \{0\}$,
 		\begin{equation*}
 		D(a^n) = na^{n-1}D(a);
 		\end{equation*}
-	\item Se existe identidade $1 \in A$ do produto, então
+	\item Se existe unidade $1 \in A$ do produto, então
 		\begin{equation*}
 		D(1)=0.
 		\end{equation*}
@@ -102,105 +184,82 @@ Sejam $(\bm A,\cdot)$ uma álgebra sobre um corpo $\bm C$ e $D\colon A \to A$ um
 	\end{enumerate}
 \end{proposition}
 
-\begin{definition}
-Seja $(\bm A,\cdot)$ uma álgebra sobre um corpo $\bm C$. O \emph{colchete comutador} de $(\bm A,\cdot)$ é a função
-	\begin{align*}
-	\func{\col{\var}{\var}}{A \times A}{A}{(a,a')}{a \cdot a' - a' \cdot a.}
-	\end{align*}
-\end{definition}
+Uma derivação pode ser equivalentemente descrita usando o comutador de composição de funções.
+
+\begin{exercise}
+Sejam $\bm A$ uma álgebra sobre um corpo $\bm C$ e $\fun{D}{A}{A}$ uma função linear. São equivalentes
+	\begin{enumerate}
+	\item $D$ é uma derivação;
+	\item Para todo $a \in A$, $(D(a))\times = \col{D}{a \times}$;
+	\item Para todo $a \in A$, $\times(D(a)) = \col{D}{\times a}$.
+	\end{enumerate}
+\end{exercise}
 
 \begin{proposition}
-Seja $(\bm A,\cdot)$ uma álgebra sobre um corpo $\bm C$. Então
-	\begin{enumerate}
-	\item $(A,\col{\var}{\var})$ é uma álgebra antissimétrica sobre $\bm C$;
-	\item O produto $\cdot$ é comutativo se, e somente se, $\col{\var}{\var} = 0$;
-%	\item Se $(\bm A,\cdot)$ é associativa, então $\mathrm{Der}(A) \subseteq A^A$, com as operações pontuais de espaço linear induzidas de $\bm A$, e com o produto como o comutador $\col{\var}{\var}$ do produto pontual $\cdot$, induzido de $A$, é uma álgebra.
-	\end{enumerate}
+\label{prop:algebra.derivacao.subespaco}
+Seja $\bm A$ uma álgebra sobre um corpo $\bm C$. O conjunto $\Der(\bm A)$ das derivações em $\bm A$ é um subespaço linear de $\lin(\bm A)$.
 \end{proposition}
 \begin{proof}
-	\begin{enumerate}
-	\item Primeiro, notemos que, para todos $a,a' \in A$,
-		\begin{equation*}
-		\col{a}{a'} = a \cdot a' - a' \cdot a = -(a' \cdot a - a \cdot a') = -\col{a'}{a}.
-		\end{equation*}	
-Sendo assim, para mostrar que $\col{\var}{\var}$ é bilinear antissimétrica, basta mostrar que ela é linear na primeira entrada. Para todos $a,a',a'' \in A$ e $c \in C$,
-		\begin{align*}
-		\col{ca+a'}{a''} &= (ca+a')a'' - a''(ca+a') \\
-			&= caa'' + a'a'' - ca''a - a''a' \\
-			&= caa'' - ca''a + a'a'' - a''a' \\
-			&= c\col{a}{a''} + \col{a'}{a''}.
-		\end{align*}
-
-	\item Suponhamos, primeiro, que $\cdot$ é comutativo. Então, para todos $a,a' \in A$,
-		\begin{equation*}
-		\col{a}{a'} = aa' - a'a = aa' - aa' = 0.
-		\end{equation*}
-Reciprocamente, suponhamos que $\col{\var}{\var}=0$. Então, para todos $a,a' \in A$,
-		\begin{equation*}
-		aa' = aa' + 0 = aa' + \col{a'}{a} = aa' + a'a - aa' = a'a.
-		\qedhere
-		\end{equation*}
-
-\begin{comment}
-	\item Mostremos que $\mathrm{Der}(A)$ é linearmente fechado. A soma e o produto por escalar de derivações são lineares, pois as derivações são funções lineares. Mostremos que essas funções satisfazem a regra do produto. Sejam $D,D' \in \mathrm{Der}(A)$ e $c \in C$. Então, para todos $a,a' \in A$,
-		\begin{align*}
-		(cD + D')(aa') &= cD(aa') + D'(aa') \\
-			&= cD(a)a' + caD(a') + D'(a)a' + aD'(a') \\
-			&= cD(a)a' + D'(a)a' + caD(a') + aD'(a') \\
-			&= (cD(a) + D'(a))a' + a(cD(a') + D'(a')) \\
-			&= (cD + D')(a)a' + a(cD + D')(a').
-		\end{align*}
-Agora, devemos mostrar que $\mathrm{Der}(A)$ é fechado por $\col{\var}{\var}$. Notaremos que $\mathrm{Der}(A)$ não é fechado pelo produto $\cdot$ induzido pontualmente na demonstração, e por isso precisamos do comutador. Além disso, ainda não usamos a associatividade do produto $\cdot$. Ela será usada agora. Sejam $D,D' \in \mathrm{Der}(A)$. Para todos $a,a' \in A$, primeiro notemos que, pela associatividade, segue que
+Para mostrar que $\Der(\bm A)$ é subespaço linear de $\lin(\bm A)$, mostraremos que $\Der(\bm A)$ é fechado pela adição e pela ação por escalar pontuais. Para todo $c \in C$ e todas derivações $D,D' \in \Der(\bm A)$, a função $cD+D'$ é linear, pois $D$ e $D'$ são lineares; resta mostrar que ela é uma derivação. Para todos $a,a' \in A$,
 	\begin{align*}
-	(D \cdot D')(a)a' + a(D \cdot D')(a') &= (D(a)D'(a))a' + a(D(a')D'(a')) \\
-		&= D(a)D'(a)a' + aD(a')D'(a').
+	(cD+D')(aa') &= (cD)(aa') + D'(aa') \\
+		&= cD(aa') + D'(aa') \\
+		&= cD(a)a' + caD(a') + D'(a)a' + aD'(a') \\
+		&= (cD(a)+D'(a))a' + a(cD(a')+D'(a')) \\
+		&= (cD+D')(a)a' + a(cD+D')(a').
 	\end{align*}
-Então,
-	\begin{align*}
-	(D \cdot D')(a,a') &= D(aa')D'(aa') \\
-		&= (D(a)a' + aD(a'))(D'(a)a' + aD'(a')) \\
-		&= (D(a)a')(D'(a)a') + (aD(a'))(D'(a)a') \\
-			&\qquad + (D(a)a')(aD'(a')) + (aD(a'))(aD'(a')) \\
-		&= (D(a)a'D'(a))a' + a(D(a')D'(a)a') \\
-			&\qquad + (D(a)a')(aD'(a')) + (aD(a'))(aD'(a')) \\
-		&= (D \cdot D')(a)a' - 
-	\end{align*}
-e
-	\begin{align*}
-	(D' \cdot D)(a,a') &= D'(aa')D(aa') \\
-		&= (D'(a)a' + aD'(a'))(D(a)a' + aD(a')) \\
-		&= (D'(a)a')(D(a)a') + (aD'(a'))(D(a)a') \\
-			&\qquad + (D'(a)a')(aD(a')) + (aD'(a'))(aD(a')) \\
-		&= (D'(a)a'D(a))a' + a(D'(a')D(a)a') \\
-			&\qquad + (D'(a)a')(aD(a')) + (aD'(a'))(aD(a'))
-	\end{align*}
-\end{comment}
-	\end{enumerate}
+portanto $cD+D'$ é uma derivação.
 \end{proof}
 
 
 
+\section{Álgebra derivativa}
 
-\section{Álgebra de derivação adjunta}
+As álgebras que descreveremos nesta seção são conhecidas como `álgebras de Lie'. Elas são álgebras cujo produto é antissimétrico e satisfaz uma propriedade importante, conhecida por `identidade de Jacobi', mas que chamamos de derivação adjunta pois ela é equivalente a dizer que a adjunta de todo elemento é uma derivação da álgebra.
 
 \begin{proposition}
-Sejam $(\bm A,\cdot)$ uma álgebra sobre um corpo $\bm C$ e $a \in A$. A função adjunta $\adj_a$ é uma derivação em $\bm A$ se, e somente se, para todos $a',a'' \in A$,
-	\begin{equation*}
-	a \cdot (a' \cdot a'') = (a \cdot a') \cdot a'' + a' \cdot (a \cdot a'').
-	\end{equation*}
+Sejam $\bm A$ uma álgebra sobre um corpo $\bm C$ e $a \in A$. A função adjunta $\adj_a$ é uma derivação em $\bm A$ se, e somente se,
+	\begin{itemize}
+	\item (Derivação adjunta) Para todos $a',a'' \in A$,
+		\begin{equation*}
+		a \times (a' \times a'') = (a \times a') \times a'' + a' \times (a \times a'').
+		\end{equation*}
+	\end{itemize}
 \end{proposition}
 
-A demonstração é imediata. Essa propriedade é conhecida às vezes como identidade de Jacobi. No entanto, a identidade mais conhecida como identidade de Jacobi é
+A demonstração é imediata. Como comentado, essa propriedade é conhecida às vezes como `identidade de Jacobi'. No entanto, a identidade mais conhecida como `identidade de Jacobi' é
 	\begin{equation*}
-	a \cdot (a' \cdot a'') + a' \cdot (a'' \cdot a) + a'' \cdot (a \cdot a') = 0,
+	a \times (a' \times a'') + a' \times (a'' \times a) + a'' \times (a \times a') = 0,
 	\end{equation*}
 que é equivalente à anterior se o produto é antissimétrico. Na maioria das vezes em que se usa essa identidade o produto é de fato antissimétrico, o que torna as duas propriedades equivalentes.
 
 \begin{definition}
-Seja $\bm C$ um corpo. Uma \emph{álgebra de derivação adjunta}\footnote{Essas álgebras são conhecidas como `álgebras de Lie'.} sobre $\bm C$ é um par $(\bm A,\col{\var}{\var})$ em que $\col{\var}{\var}\colon A \times A \to A$ é um produto alternado tal que, para todo $a \in A$, $\adj_a$ é uma derivação em $\bm A$. O produto $\col{\var}{\var}$ é o \emph{colchete de derivação}.
+Seja $\bm C$ um corpo. Uma \emph{álgebra derivativa} sobre $\bm C$ é uma álgebra
+	\begin{equation*}
+	\bm{\mathfrak{A}} := ((\mathfrak{A},+,-,0,\col{\var}{\var}),\cdot)
+	\end{equation*}
+sobre $\bm C$ cuja multiplicação $\fun{\col{\var}{\var}}{\mathfrak{A} \times \mathfrak{A}}{\mathfrak{A}}$ satisfaz
+	\begin{itemize}
+	\item (Alternatividade) Para todo $a \in \mathfrak{A}$, $\col{a}{a} = 0$;
+%	\item (Derivação adjunta) Para todo $a \in \mathfrak{A}$, $\ad{a} := \adj_a$ é uma derivação em $\bm{\mathfrak{A}}$.
+	\item (Derivação adjunta) Para todo $a,a',a'' \in \mathfrak{A}$,
+		\begin{equation*}
+		\col{a}{\col{a'}{a''}} = \col{\col{a}{a'}}{a''} + \col{a'}{\col{a}{a''}}.
+		\end{equation*}
+	\end{itemize}
+A multiplicação $\col{\var}{\var}$ é o \emph{colchete de derivação} da álgebra. A ação adjunta de $\mathfrak{A}$ é denotada
+	\begin{align*}
+	\func{\ad{\var}}{\mathfrak{A}}{\lin(\bm{\mathfrak{A}})}{a}{
+		\begin{aligned}[t]
+		\func{\ad{a}}{\mathfrak{A}}{\mathfrak{A}}{a'}{\col{a}{a'}}.
+		\end{aligned}
+	}
+	\end{align*}
 \end{definition}
 
-Como $\col{\var}{\var}$ é alternada, é antissimétrica, portanto a bilinearidade é equivalente à linearidade na segunda entrada de $\col{\var}{\var}$. A alternância é equivalente ao produto de um elemento com ele mesmo ser $0$, o que é o mesmo que a derivação adjunta baseada em um elemento aplicada a esse elemento ser $0$.
+\begin{comment}
+
+Como $\col{\var}{\var}$ é alternativa, é antissimétrica, portanto a bilinearidade é equivalente à linearidade na segunda entrada de $\col{\var}{\var}$. A alternância é equivalente ao produto de um elemento com ele mesmo ser $0$, o que é o mesmo que a derivação adjunta baseada em um elemento aplicada a esse elemento ser $0$.
 
 As três propriedades de $\fun{\col{\var}{\var}}{A \times A}{A}$ são equivalentes a
 	\begin{enumerate}
@@ -224,33 +283,85 @@ Nesse caso em que a função adjunta é sempre uma derivação, pode-se também 
 	\end{align*}
 e a \emph{representação adjunta} será a função
 	\begin{align*}
-	\func{\ad{\var}}{A}{\lin(A)}{a}{
+	\func{\ad{\var}}{A}{\lin(\bm A)}{a}{
 		\begin{aligned}[t]
 		\func{\ad{a}}{A}{A}{a'}{\col{a}{a'}},
 		\end{aligned}
 	}
 	\end{align*}
-em que $\lin(A) = \lin(A,A)$ é o espaço das funções lineares de $A$ para $A$.
+em que $\lin(\bm A) = \lin(A,A)$ é o espaço das funções lineares de $A$ para $A$.
 
-Consideremos, agora, o conjunto $\Der(A)$ das derivações em uma álgebra associativa $(\bm A, \cdot)$. O espaço $\Der(A)$ é um subespaço linear de $\lin(A)$. Para mostrar isso, mostraremos que $\Der(A)$ é fechado pela soma e pelo produto por escalar pontuais.
-\begin{itemize}
-\item (Soma) Para todas derivações $D,D' \in \Der(A)$, a soma $D+D'$ é uma função linear, pois $D$ e $D'$ são lineares, portanto basta mostrar que ela é uma derivação. Para todos $a,a' \in A$,
+\end{comment}
+
+\begin{proposition}
+Seja $(\bm A,\times)$ uma álgebra associativa sobre um corpo $\bm C$. A álgebra $(\bm A,\col{\var}{\var})$, em que $\col{\var}{\var}$ é o colchete comutador de $\times$, é uma álgebra derivativa sobre $\bm C$.
+\end{proposition}
+\begin{proof}
+Já demonstramos que $(\bm A,\col{\var}{\var})$ é uma álgebra alternativa, resta mostrar a derivação adjunta. Para todos $a,a',a'' \in A$, segue da associatividade de $\times$ que
 	\begin{align*}
-	(D+D')(aa') &= D(aa') + D'(aa') \\
-		&= D(a)a' + aD(a') + D'(a)a' + aD'(a') \\
-		&= (D(a)+D'(a))a' + a(D(a')+D'(a')) \\
-		&= (D+D')(a)a' + a(D+D')(a').
+	\col{a}{\col{a'}{a''}} &= a \times (a' \times a'' - a'' \times a') - (a' \times a'' - a'' \times a') \times a \\
+		&= a \times (a' \times a'') - a \times (a'' \times a') - (a' \times a'') \times a + (a'' \times a') \times a \\
+		&= (a \times a') \times a'' - (a \times a'') \times a' - a' \times (a'' \times a) + a'' \times (a' \times a) \\
+		&= (a \times a') \times a'' - (a \times a'') \times a' - a' \times (a'' \times a) + a'' \times (a' \times a) \\
+		&+ a' \times (a \times a'') - (a' \times a) \times a'' + (a'' \times a) \times a' - a'' \times (a \times a') \\
+		&= (a \times a') \times a'' - (a' \times a) \times a'' - a'' \times (a \times a') + a'' \times (a' \times a) \\
+		&+ a' \times (a \times a'') - a' \times (a'' \times a) - (a \times a'') \times a' + (a'' \times a) \times a' \\
+		&= (a \times a' - a' \times a) \times a'' - a'' \times (a \times a' - a' \times a) \\
+		&+ a' \times (a \times a'' - a'' \times a) - (a \times a'' - a'' \times a) \times a' \\
+		&= \col{\col{a}{a'}}{a''} + \col{a'}{\col{a}{a''}}.
+		\qedhere
 	\end{align*}
-portanto $D+D'$ é uma derivação.
+\end{proof}
 
-\item (Produto) Para toda derivação $D \in \Der(A)$ e escalar $c \in C$, o produto $cD$ é linear, pois $D$ é linear, portanto basta mostrar que ele é uma derivação. Para todos $a,a' \in A$,
+Isso mostra, em particular, que a álgebra de funções lineares em um espaço linear $\bm V$ com composição $((\lin(\bm V),+,-,0,\circ),\cdot)$ gera uma álgebra derivativa $((\lin(\bm V),+,-,0,\col{\var}{\var}),\cdot)$, em que o colchete comutador da álgebra é dado, para todas $L,L' \in \lin(\bm V)$, por
 	\begin{equation*}
-	(cD)(aa') = c(D(aa')) = c(D(a)a' + aD(a')) = (cD)(a)a' + a(cD)(a'),
+	\col{L}{L'} = L \circ L' - L' \circ L.
 	\end{equation*}
-portanto $cD$ é uma derivação. Isso mostra que $\Der(A)$ é subespaço linear de $\lin(A,A)$.
-\end{itemize}
 
-No entanto, $\Der(A)$ não é uma subálgebra de $\lin(A)$ com o produto de composição de funções, pois, para todos $D,D' \in \Der(A)$ e $a,a' \in A$,
+Para diferenciá-la da álgebra associativa de composição de funções lineares, a denotaremos como $\Linder(\bm V)$. A estrutura de espaço linear subjacente é a mesma para as duas álgebras, mas a multiplicação é diferente.
+
+\begin{definition}
+Seja $\bm V$ um espaço vetorial sobre um corpo $\bm C$. A \emph{álgebra derivativa linear} de $\bm V$ é a álgebra derivativa
+	\begin{equation*}
+	\bm{\Linder(\bm V)} := ((\Linder(\bm V),+,-,0,\col{\var}{\var}),\cdot)
+	\end{equation*}
+em que $\Linder(\bm V) := \lin(\bm V)$, $((\Linder(\bm V),+,-,0),\cdot)$ é o espaço linear de funções lineares e $\col{\var}{\var}$ é o colchete comutador da composição $\circ$ de funções.
+\end{definition}
+
+Consideremos, agora, o conjunto $\Der(\bm A)$ das derivações em uma álgebra $\bm A$. Por \ref{prop:algebra.derivacao.subespaco}, o espaço $\Der(\bm A)$ é um subespaço linear de $\lin(\bm A)$. No entanto, $\Der(\bm A)$ não é uma subálgebra de $\lin(\bm A)$ com o produto de composição de funções, pois, para todos $D,D' \in \Der(\bm A)$ e $a,a' \in A$,
+	\begin{equation*}
+	(D \circ D')(aa') = (D \circ D')(a)a' + a (D \circ D')(a') + D'(a)D(a') + D(a)D'(a')
+	\end{equation*}
+o que significa que $D \circ D'$ nem sempre é uma derivação, pois $D'(a) \times D(a') + D(a) \times D'(a')$ nem sempre é $0$. Pra resolver esse problema, devemos considerar em $\Der(\bm A)$ o colchete comutador da composição de funções%, de modo que $(\Der(\bm A),\col{\var}{\var})$ será uma subálgebra de $(\lin(\bm A),\col{\var}{\var})$
+
+\begin{proposition}
+\label{alge:prop.algebra.colchete.deriv}
+Seja $\bm A$ uma álgebra sobre um corpo $\bm C$. A álgebra de derivações $(\Der(\bm A),\col{\var}{\var})$ é uma álgebra derivativa.% é uma subálgebra de $(\Linder(\bm A),\col{\var}{\var})$.
+\end{proposition}
+\begin{proof}
+Por \ref{prop:algebra.derivacao.subespaco}, o espaço $((\Der(\bm A),+,-,0),\cdot)$ é um subespaço linear de $((\lin(\bm A),+,-,0),\cdot)$. Primeiro mostramos que $\Der(\bm A)$ é fechado pelo colchete comutador. Denotaremos o produto $a \times a'$ por $aa'$ para simplificar a notação. Para todas $D,D' \in \Der(\bm A)$ e $a,a' \in A$,
+	\begin{align*}
+		(D \circ D')(aa') &= D(D'(aa')) \\
+			&= D(D'(a)a' + aD'(a')) \\
+			&= D(D'(a)a') + D(aD'(a')) \\
+			&= D(D'(a))a' + D'(a)D(a') + D(a)D'(a') + a D(D'(a')) \\
+			&= (D \circ D')(a)a' + a (D \circ D')(a') + D'(a)D(a') + D(a)D'(a').
+		\end{align*}
+Trocando $D$ e $D'$, segue que
+		\begin{equation*}
+		(D' \circ D)(aa') = (D' \circ D)(a)a' + a (D' \circ D)(a') + D(a)D'(a') + D'(a)D(a'),
+		\end{equation*}
+Dessas duas expressões, segue que
+		\begin{align*}
+		\col{D}{D'}(aa') &= (D \circ D')(aa') - (D' \circ D)(aa') \\
+			&= (D \circ D')(a)a' + a (D \circ D')(a') - (D' \circ D)(a)a' - a (D' \circ D)(a') \\
+			&= \col{D}{D'}(a)a' + a\col{D}{D'}(a').
+		\end{align*}
+portanto $\col{D}{D'} \in \Der(\bm A)$.
+
+%Já demonstramos que $(\bm A,\col{\var}{\var})$ é uma álgebra alternativa, resta mostrar a derivação adjunta.
+\end{proof}
+
 %	\begin{align*}
 %	(DD')(aa') &= D(aa')D'(aa') \\
 %		&= (D(a)a'+aD(a'))(D'(a)a'+aD'(a')) \\
@@ -267,28 +378,326 @@ No entanto, $\Der(A)$ não é uma subálgebra de $\lin(A)$ com o produto de comp
 %		&= D'(a)a'D(a)a' + D'(a)a'aD(a') + aD'(a')D(a)a' + aD'(a')aD(a').
 %	\end{align*}
 % EU ESTAVA TENTANDO CONSIDERAR O PRODUTO PONTUAL EM L(A,A), MAS ISSO É UM ERRO, O CORRETO É CONSIDERAR O PRODUTO COMPOSIÇÃO DE FUNÇÕES.
+\begin{comment}
+Agora, devemos mostrar que $\mathrm{Der}(A)$ é fechado por $\col{\var}{\var}$. Notaremos que $\mathrm{Der}(A)$ não é fechado pelo produto $\times$ induzido pontualmente na demonstração, e por isso precisamos do comutador. Além disso, ainda não usamos a associatividade do produto $\times$. Ela será usada agora. Sejam $D,D' \in \mathrm{Der}(A)$. Para todos $a,a' \in A$, primeiro notemos que, pela associatividade, segue que
 	\begin{align*}
-	(D \circ D')(aa') &= D(D'(aa')) = D(D'(a)a' + aD'(a')) \\
-		&= D(D'(a))a' + D'(a)D(a') + D(a)D'(a') + a D(D'(a')) \\
-		&= (D \circ D')(a)a' + a (D \circ D')(a') + D'(a)D(a') + D(a)D'(a').
+	(D \times D')(a)a' + a(D \times D')(a') &= (D(a)D'(a))a' + a(D(a')D'(a')) \\
+		&= D(a)D'(a)a' + aD(a')D'(a').
 	\end{align*}
-Notando que invertendo as posições de $D$ e $D'$ obtemos a expressão
-	\begin{equation*}
-	(D' \circ D)(aa') = (D' \circ D)(a)a' + a (D' \circ D)(a') + D(a)D'(a') + D'(a)D(a'),
-	\end{equation*}
-podemos definir o produto $\col{D}{D'} := D \circ D' - D' \circ D$ de modo a obter das expressões anteriores que
+Então,
 	\begin{align*}
-	\col{D}{D'}(aa') &= (D \circ D')(aa') - (D' \circ D)(aa') \\
-		&= (D \circ D')(a)a' + a (D \circ D')(a') - (D' \circ D)(a)a' - a (D' \circ D)(a') \\
-		&= \col{D}{D'}(a)a' + a\col{D}{D'}(a').
+	(D \times D')(a,a') &= D(aa')D'(aa') \\
+		&= (D(a)a' + aD(a'))(D'(a)a' + aD'(a')) \\
+		&= (D(a)a')(D'(a)a') + (aD(a'))(D'(a)a') \\
+			&\qquad + (D(a)a')(aD'(a')) + (aD(a'))(aD'(a')) \\
+		&= (D(a)a'D'(a))a' + a(D(a')D'(a)a') \\
+			&\qquad + (D(a)a')(aD'(a')) + (aD(a'))(aD'(a')) \\
+		&= (D \times D')(a)a' - 
 	\end{align*}
+e
+	\begin{align*}
+	(D' \times D)(a,a') &= D'(aa')D(aa') \\
+		&= (D'(a)a' + aD'(a'))(D(a)a' + aD(a')) \\
+		&= (D'(a)a')(D(a)a') + (aD'(a'))(D(a)a') \\
+			&\qquad + (D'(a)a')(aD(a')) + (aD'(a'))(aD(a')) \\
+		&= (D'(a)a'D(a))a' + a(D'(a')D(a)a') \\
+			&\qquad + (D'(a)a')(aD(a')) + (aD'(a'))(aD(a'))
+	\end{align*}
+\end{comment}
 
-O produto $\col{\var}{\var}$ é bilinear, pois envolve somente diferença e composição de funções lineares. Assim, está demonstrada a seguinte proposição.
+
+
+
+\section{Álgebra involutiva}
+
+Antes de definirmos uma álgebra involutiva, definimos o que é um anel (e um corpo) involutivos.
+
+\begin{definition}
+Uma \emph{anel involutivo} é um par $(\bm A,\invol{})$ tal que $\bm A$ é um anel e $\fun{\invol{}}{A}{A}$ é uma operação unária que satisfaz
+	\begin{itemize}
+	\item (Involutividade) Para todo $a \in A$, $\invol{(\invol{a})} = a$;
+	\item (Aditividade) Para todos $a,a' \in A$, $\invol{(a+a')} = \invol{a} + \invol{(a')}$;
+	\item (Anti-multiplicatividade) Para todos $a,a' \in A$, $\invol{(aa')} = \invol{(a')}\invol{a}$;
+	\item (Identidade multiplicativa) $\invol{1} = 1$.
+	\end{itemize}
+\end{definition}
 
 \begin{proposition}
-\label{alge:prop.algebra.colchete.deriv}
-Seja $(\bm A,\cdot)$ uma álgebra sobre um corpo $\bm C$. Então $(\Der(A),\col{\var}{\var})$ é uma subálgebra de $(\lin(A),\col{\var}{\var})$.
+Seja $(\bm A,*)$ um anel involutivo.
+	\begin{enumerate}
+	\item (Identidade aditiva) $\invol{0} = 0$;
+	\item (Invertibilidade aditiva) Para todo $a \in A$, $\invol{(-a)} = -\invol{a}$;
+	\item (Invertibilidade multiplicativa) Para todo $a \in A^{\div}$, $\invol{a} \in A^{\div}$ e $\invol{(a\inv)} = (\invol{a})\inv$.
+	\end{enumerate}
 \end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item Segue da aditividade que
+		\begin{equation*}
+		0 = \invol{0} - \invol{0} = \invol{0+0} - \invol{0} = \invol{0} + \invol{0} - \invol{0} = \invol{0}.
+		\end{equation*}
+
+	\item Para todo $a \in A$, segue da aditividade e do item anterior que
+		\begin{align*}
+		\invol{-a} &= \invol{-a} + 0 \\
+			&= \invol{-a} + \invol{a} - \invol{a} \\
+			&= \invol{(-a+a)} - \invol{a} \\
+			&= \invol{0} - \invol{a} \\
+			&= 0 - \invol{a} \\
+			&= \invol{a}.
+		\end{align*}
+
+	\item Para todo $a \in A^{\div}$, segue da multiplicatividade e da identidade multiplicativa que
+		\begin{align*}
+		1 = \invol{1} = \invol{a a\inv} = \invol{a}\invol{(a\inv)}
+		\end{align*}
+	e
+		\begin{align*}
+		1 = \invol{1} = \invol{a\inv a} = \invol{(a\inv)}\invol{a}
+		\end{align*}
+	portanto $\invol{a} \in A^{\div}$ e $\invol{(a\inv)} = (\invol{a})\inv$.
+%		\begin{align*}
+%		\invol{(a\inv)} &= \invol{(a\inv)}1 \\
+%			&= \invol{(a\inv)}\invol{a}(\invol{a})\inv \\
+%			&= \invol{(a\inv a)}(\invol{a})\inv \\
+%			&= \invol{1}(\invol{a})\inv \\
+%			&= 1(\invol{a})\inv \\
+%			&= (\invol{a})\inv.
+%		\end{align*}
+	\end{enumerate}
+\end{proof}
+
+\begin{notation}
+Por causa da propriedade de invertibilidade multiplicativa, denota-se, para todo $a \in A^{\div}$,
+	\begin{equation*}
+	\invinvol{a} := \invol{(a\inv)}.
+	\end{equation*}
+\end{notation}
+
+
+\begin{example}
+	\begin{enumerate}
+	\item Todo anel com a involução trivial dada pela identidade.
+	\item Os números complexos com a conjugação complexa.
+	\item O anel de matrizes reais com a transposta.
+	\item O anel de matrizes reais com a transposta conjugada.
+	\item A adjunta de uma transformação linear contínua em um espaço de produto interno completo.
+	\end{enumerate}
+\end{example}
+
+\begin{definition}
+Seja $(\bm C,\invol{})$ um corpo involutivo. Uma \emph{álgebra involutiva} sobre $\bm C$ é uma lista $((A,+,-,0,\times,1,\invol{}),\cdot)$ em que $((A,+,-,0,\times,1),\cdot)$ é um álgebra unitária sobre $\bm C$ e $\fun{\invol{}}{A}{A}$ é uma operação unária que satisfaz
+	\begin{itemize}
+	\item (Involutividade) Para todo $a \in A$, $\invol{(\invol{a})} = a$;
+	\item (Aditividade) Para todos $a,a' \in A$, $\invol{(a+a')} = \invol{a} + \invol{(a')}$;
+	\item (Anti-multiplicatividade) Para todos $a,a' \in A$, $\invol{(aa')} = \invol{(a')}\invol{a}$;
+	\item (Identidade multiplicativa) $\invol{1} = 1$;
+	\item (Compatibilidade) Para todos $c \in C$ e $a \in A$, $\invol{(ca)} = \invol{c}\invol{a}$.
+	\end{itemize}
+\end{definition}
+
+\begin{definition}
+Seja $\bm A$ uma álgebra involutiva sobre um corpo involutivo $\bm C$. A norma quadrática de $\bm A$ é a função
+	\begin{align*}
+	\func{\qua{\var}}{A}{A}{x}{\qua{x} := x\invol{x}}.
+	\end{align*}
+\end{definition}
+
+\begin{proposition}
+Seja $\bm A$ uma álgebra involutiva sobre um corpo involutivo $\bm C$.
+	\begin{enumerate}
+	\item Para todo $c \in C$ e $x \in A$, $\qua{cx} = \qua{c}\qua{x}$;
+	\item Para todo $x \in A$, $ \qua{\invol{x}} = \invol{x}x$;
+	\item Para todo $x \in A$, $ \invol{\qua{x}} = \qua{x}$;
+	\item A função $B(x,y) := \qua{x+y}-\qua{x}-\qua{y}$ é satisfaz $B(x,y) = x\invol{y} + y\invol{x}$, é simétrica e comuta com adição e inversa da adição em cada entrada.% bi-aditiva.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item Para todos $c \in C$ e $x \in A$, segue da bilinearidade da multiplicação e compatibilidade da involução que
+		\begin{equation*}
+		\qua{cx} = (cx)\invol{(cx)} = c\invol{c}x\invol{x} = \qua{c}\qua{x}.
+		\end{equation*}
+	\item Para todo $x \in A$,
+		\begin{equation*}
+		\qua{\invol{x}} = \invol{x}\invol{(\invol{x})} = \invol{x}x;
+		\end{equation*}
+	\item Para todo $x \in A$,
+		\begin{equation*}
+		\invol{\qua{x}} = \invol{(x\invol{x})} = \invol{(\invol{x})}\invol{x} = x\invol{x} = \qua{x};
+		\end{equation*}
+	\item Para todos $x,y \in A$,
+		\begin{align*}
+		B(x,y) &= \qua{x+y}-\qua{x}-\qua{y} \\
+			&= (x+y)\invol{(x+y)} - x\invol{x} - y\invol{y} \\
+			&= x(\invol{x}+\invol{y}) + y(\invol{x}+\invol{y}) - x\invol{x} - y\invol{y} \\
+			&= x\invol{x} + x\invol{y} + y\invol{x} + y\invol{y} - x\invol{x} - y\invol{y} \\
+			&= x\invol{y} + y\invol{x},
+		\end{align*}
+	portanto $B$ é simétrica. Além disso, para todos $x,x',y \in A$,
+		\begin{align*}
+		B(x,y) &= (x+x')\invol{y} + y\invol{(x+x')} \\
+			&= x\invol{y} + x'\invol{y} + y\invol{x} + y\invol{(x')} \\
+			&= x\invol{y} + y\invol{x} + x'\invol{y} + y\invol{(x')} \\
+			&= B(x,y) + B(x',y)
+		\end{align*}
+		\begin{align*}
+		B(-x,y) = (-x)\invol{y} + y\invol{(-x)} = -x\invol{y} - y\invol{x} = -B(x,y).
+		\end{align*}
+	portanto $B$ comuta com adição e inversa da adição em cada entrada.
+%	e, para todos $c \in C$ e $x,x',y \in A$,
+%		\begin{align*}
+%		B(cx+x',y) &= (cx+x')\invol{y} + y\invol{(cx+x')} \\
+%			&= cx\invol{y} + x'\invol{y} + \invol{c}y\invol{x} + y\invol{(x')} \\
+%			&= cx\invol{y} + \invol{c}y\invol{x} + x'\invol{y} + y\invol{(x')} \\
+%			&= cx\invol{y} + \invol{c}y\invol{x} + B(x',y) \\
+%		\end{align*}
+	\end{enumerate}
+\end{proof}
+
+\paragraph{Produto torcido}
+
+Essa construção de uma álgebra produto é conhecida por `construção de Cayley-Dickson'.
+Definamos, a partir de uma álgebra involutiva $\bm A$, uma álgebra involutiva na soma direta $A^2$.
+
+\begin{definition}
+Seja $\bm A$ uma álgebra involutiva sobre um corpo involutivo $\bm C$. O \emph{produto torcido} de $\bm A$ (por $\bm A$) é
+	\begin{equation*}
+	((A^2,+,-,0,\times,1,\invol{}),\cdot)
+	\end{equation*}
+em que
+	\begin{itemize}
+	\item $((A^2,+,-,0),\cdot)$ é o produto (soma direta) como espaço linear;
+	\item $\times$ é a \emph{multiplicação torcida} definida por
+%		\begin{align*}
+%		\func{\times}{A^2 \times A^2}{A^2}{((a_{00},a_{01}), (a_{10},a_{11}))}{(a_{00}a_{10}-\invol{a_{11}}a_{01}, a_{11}a_{00} + a_{01}\invol{a_{10}})}
+%		\end{align*}
+		\begin{align*}
+		\func{\times}{A^2 \times A^2}{A^2}{((x_0,x_1), (y_0,y_1))}{(x_0y_0-\invol{y_1}x_1, y_1x_0 + x_1\invol{y_0})}
+		\end{align*}
+	\item $\invol{}$ é a \emph{involução torcida} definida por
+%		\begin{align*}
+%		\func{\invol{}}{A^2}{A^2}{(a_0,a_1)}{(\invol{a_0},-a_1)}
+%		\end{align*}
+		\begin{align*}
+		\func{\invol{}}{A^2}{A^2}{(x_0,x_1)}{(\invol{x_0},-x_1)}
+		\end{align*}
+	\item $1$ é a unidade definida por $1 := (1,0)$.
+	\end{itemize}
+\end{definition}
+
+\begin{comment}
+
+\begin{proposition}
+Seja $\bm A$ uma álgebra involutiva sobre um corpo involutivo $\bm C$. O produto torcido de $\bm A$ é uma álgebra involutiva.
+\end{proposition}
+\begin{proof}
+Basta mostrar as propriedades de multiplicação, involução e unidade, pois o produto de espaços lineares é espaço linear.
+	\begin{itemize}
+	\item (Bilinearidade) Para todos 
+	\end{itemize}
+\end{proof}
+
+Vale então que
+	\begin{align*}
+	\invol{(yx)} &= \invol{(x_0y_0-\invol{y_1}x_1, y_1x_0 + x_1\invol{y_0})} \\
+		&= (\invol{(x_0y_0-\invol{y_1}x_1)}, -(y_1x_0 + x_1\invol{y_0})) \\
+		&= (\invol{(x_0y_0)}-\invol{(\invol{y_1}x_1)}, -y_1x_0 - x_1\invol{y_0}) \\
+		&= (\invol{y_0}\invol{x_0}-\invol{x_1}y_1, -x_1\invol{y_0} - y_1x_0) \\
+		&= (\invol{y_0}\invol{x_0}-\invol{(-x_1)}(-y_1), (-x_1)\invol{y_0} + (-y_1)\invol{(\invol{x_0})}) \\
+		&= (\invol{y_0},-y_1)(\invol{x_0},-x_1) \\
+		&= \invol{y}\invol{x}.
+	\end{align*}
+
+Vale também que
+	\begin{equation*}
+	(x_0,0)(y_0,0) = (x_0y_0-\invol{0}0, 0x_0 + 0\invol{y_0}) = (x_0y_0,0)
+	\end{equation*}
+e
+	\begin{equation*}
+	(0,x_1)(0,y_1) = (00-\invol{y_1}x_1, y_10 + x_1\invol{0}) = -(\invol{y_1}x_1,0).
+	\end{equation*}
+
+
+	\begin{align*}
+	\qua{x} &= x\invol{x} \\
+		&= (x_0,x_1)(\invol{x_0},-x_1) \\
+		&= (x_0\invol{x_0}-\invol{(-x_1)}x_1, (-x_1)x_0 + x_1\invol{(\invol{x_0})}) \\
+		&= (x_0\invol{x_0}+\invol{x_1}x_1, (-x_1)x_0 + x_1x_0) \\
+		&= (\qua{x_0} + \qua{\invol{x_1}},0)
+	\end{align*}
+e
+	\begin{align*}
+	\qua{\invol{x}} &= \invol{x}x \\
+		&= (\invol{x_0},-x_1)(x_0,x_1) \\
+		&= ((\invol{x_0})x_0-\invol{x_1}(-x_1), x_1(\invol{x_0}) + (-x_1)\invol{x_0}) \\
+		&= (\invol{x_0}x_0+\invol{x_1}x_1, x_1\invol{x_0} - x_1\invol{x_0}) \\
+		&= (\qua{\invol{x_0}} + \qua{\invol{x_1}},0)
+	\end{align*}
+%Se a álgebra é associativa (e começamos indutivamente do corpo), $\qua{xy} = \qua{x}\qua{y}$. Para provar isso, n
+Notemos que
+	\begin{align*}
+	\qua{xy} &= (\qua{(x_0y_0-\invol{y_1}x_1)} + \qua{\invol{(y_1x_0 + x_1\invol{y_0})}},0) \\
+		&= (\qua{x_0y_0-\invol{y_1}x_1} + \qua{\invol{x_0}\invol{y_1} + y_0\invol{x_1}},0) \\
+		&= (\qua{x_0y_0}-\qua{\invol{y_1}x_1} + \qua{\invol{x_0}\invol{y_1}} + \qua{y_0\invol{x_1}},0) .
+	\end{align*}
+%	\begin{align*}
+%	\qua{xy} &= (x_0y_0-\invol{y_1}x_1, y_1x_0 + x_1\invol{y_0})\invol{(x_0y_0-\invol{y_1}x_1, y_1x_0 + x_1\invol{y_0})} \\
+%		&= (x_0y_0-\invol{y_1}x_1, y_1x_0 + x_1\invol{y_0})(\invol{(x_0y_0-\invol{y_1}x_1)}, -(y_1x_0 + x_1\invol{y_0})) \\
+%		&= (x_0y_0-\invol{y_1}x_1, y_1x_0 + x_1\invol{y_0})(\invol{y_0}\invol{x_0}-\invol{x_1}y_1, -x_1\invol{y_0} - y_1x_0);
+%	\end{align*}
+%a primeira entrada do produto dá
+%	\begin{align*}
+%	(\qua{xy})_0 &= (x_0y_0-\invol{y_1}x_1)(\invol{y_0}\invol{x_0}-\invol{x_1}y_1)-\invol{(-x_1\invol{y_0} - y_1x_0)}(y_1x_0 + x_1\invol{y_0}) \\
+%		&= (x_0y_0-\invol{y_1}x_1)(\invol{y_0}\invol{x_0}-\invol{x_1}y_1)-(-y_0\invol{x_1} - \invol{x_0}\invol{y_1})(y_1x_0 + x_1\invol{y_0}) \\
+%		&= (x_0y_0-\invol{y_1}x_1)(\invol{y_0}\invol{x_0}-\invol{x_1}y_1)+(y_0\invol{x_1} + \invol{x_0}\invol{y_1})(y_1x_0 + x_1\invol{y_0}) \\
+%		&= (x_0y_0)(\invol{y_0}\invol{x_0}) - (x_0y_0)(\invol{x_1}y_1) - (\invol{y_1}x_1)(\invol{y_0}\invol{x_0}) + (\invol{y_1}x_1)(\invol{x_1}y_1) \\
+%		&+ (y_0\invol{x_1})(y_1x_0) + (y_0\invol{x_1})(x_1\invol{y_0}) +(\invol{x_0}\invol{y_1})(y_1x_0) + (\invol{x_0}\invol{y_1})(x_1\invol{y_0}) \\
+%	\end{align*}
+%e a segunda entrada do produto dá (não usa associatividade)
+%	\begin{align*}
+%	(\qua{xy})_1 &= (-x_1\invol{y_0} - y_1x_0)(x_0y_0-\invol{y_1}x_1) + (y_1x_0 + x_1\invol{y_0})\invol{(\invol{y_0}\invol{x_0}-\invol{x_1}y_1)} \\
+%		&= -(x_1\invol{y_0} + y_1x_0)(x_0y_0-\invol{y_1}x_1) + (y_1x_0 + x_1\invol{y_0})(x_0y_0-\invol{y_1}x_1) \\
+%		&= - (x_1\invol{y_0})(x_0y_0) + (x_1\invol{y_0})(\invol{y_1}x_1) - (y_1x_0)(x_0y_0) + (y_1x_0)(\invol{y_1}x_1) \\
+%		&+ (y_1x_0)(x_0y_0) - (y_1x_0)(\invol{y_1}x_1) + (x_1\invol{y_0})(x_0y_0) - (x_1\invol{y_0})(\invol{y_1}x_1) \\
+%		&= 0.
+%	\end{align*}
+Por outro lado,
+	\begin{align*}
+	\qua{x}\qua{y} &= (x\invol{x})(y\invol{y}) \\
+		&= (\qua{x_0} + \qua{\invol{x_1}},0)(\qua{y_0} + \qua{\invol{y_1}},0) \\
+		&= ((\qua{x_0} + \qua{\invol{x_1}})(\qua{y_0} + \qua{\invol{y_1}}),0) \\
+		&= (\qua{x_0}\qua{y_0} + \qua{x_0}\qua{\invol{y_1}} + \qua{\invol{x_1}}\qua{y_0} + \qua{\invol{x_1}}\qua{\invol{y_1}},0) \\
+	\end{align*}
+%a primeira entrada do produto dá
+%	\begin{align*}
+%	(\qua{x}\qua{y})_0 &= (x_0x_0-\invol{x_1}x_1)(y_0y_0-\invol{y_1}y_1)-\invol{(y_1y_0 + y_1\invol{y_0})}(x_1x_0 + x_1\invol{x_0}) \\
+%		&= (x_0x_0-\invol{x_1}x_1)(y_0y_0-\invol{y_1}y_1)-(\invol{y_0}\invol{y_1} + y_0\invol{y_1})(x_1x_0 + x_1\invol{x_0}) \\
+%		&= (x_0x_0)(y_0y_0) - (x_0x_0)(\invol{y_1}y_1) - (\invol{x_1}x_1)(y_0y_0) + (\invol{x_1}x_1)(\invol{y_1}y_1) \\
+%		&- (\invol{y_0}\invol{y_1})(x_1x_0) - (\invol{y_0}\invol{y_1})(x_1\invol{x_0}) - (y_0\invol{y_1})(x_1x_0) - (y_0\invol{y_1})(x_1\invol{x_0}) \\
+%	\end{align*}
+%e a segunda entrada do produto dá
+%	\begin{align*}
+%	(\qua{x}\qua{y})_1 &= (y_1y_0 + y_1\invol{y_0})(x_0x_0-\invol{x_1}x_1) + (x_1x_0 + x_1\invol{x_0})\invol{(y_0y_0-\invol{y_1}y_1)} \\
+%		&= (y_1y_0 + y_1\invol{y_0})(x_0x_0-\invol{x_1}x_1) + (x_1x_0 + x_1\invol{x_0})(\invol{y_0}\invol{y_0}-\invol{y_1}y_1) \\
+%		&= (y_1y_0)(x_0x_0) - (y_1y_0)(\invol{x_1}x_1) + (y_1\invol{y_0})(x_0x_0) - (y_1\invol{y_0})(\invol{x_1}x_1) \\
+%		&+ (x_1x_0)(\invol{y_0}\invol{y_0}) - (x_1x_0)(\invol{y_1}y_1) + (x_1\invol{x_0})(\invol{y_0}\invol{y_0}) - (x_1\invol{x_0})(\invol{y_1}y_1) \\
+%		&= 
+%	\end{align*}
+
+\end{comment}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -307,7 +716,7 @@ Seja $(\bm A,\cdot)$ uma álgebra sobre um corpo $\bm C$. Então $(\Der(A),\col{
 
 \section{Álgebras reais}
 
-Nesta seção, descreveremos algumas álgebras sobre os números reais $\R$. A álgebra real $\R$ é simplesmente o corpo $\R$. Analisaremos com detalhes os casos das álgebras dos complexos $\R^2$ e dos quatérnios $\R^4$. Descreveremos brevemente os números $2$-hiperbólicos $\R^{1,1}$, às vezes chamados de `complexos hiperbólicos', os números $4$-hiperbólicos $\R^{1,3}$.
+Nesta seção, descreveremos algumas álgebras sobre o corpo dos números reais $\R$. A álgebra real $\R$ é simplesmente o corpo $\R$. Analisaremos com detalhes os casos das álgebras dos complexos $\R^2$ e dos quatérnios $\R^4$. Descreveremos brevemente os números $2$-hiperbólicos $\R^{1,1}$, às vezes chamados de `complexos hiperbólicos', e os números $4$-hiperbólicos $\R^{1,3}$.
 
 \subsection{Complexos \ensuremath{\R^2}}
 
@@ -316,35 +725,37 @@ Consideremos o espaço linear $\R^2$ com a norma $2$
 	\func{\nor{\var}}{\R^2}{\R}{x}{((x_0)^2 + (x_1)^2)^{\frac{1}{2}}}.
 	\end{align*}
 
-Denotemos a base canônica de $\R^2$ por $\bm 1 := (1,0)$ e $\ii := (0,1)$. Em geral, por não haver ambiguidade, denotaremos $\bm 1$ simplesmente por $1$.
+A base canônica de $\R^2$ será denotada por
+	\begin{align*}
+	\ii_0 &:= (1,0) \\
+	\ii_1 &:= (0,1) .
+	\end{align*}
 
 \begin{definition}
-O \emph{produto complexo} em $\R^2$ é a operação
+A \emph{multiplicação complexa} em $\R^2$ é a operação
 	\begin{align*}
 	\func{\times}{\R^2 \times \R^2}{\R^2}{(x,y)}{xy := (x_0y_0-x_1y_1,x_0y_1+x_1y_0)}.
 	\end{align*}
 A \emph{unidade} de $(\R^2,\times)$ é
 	\begin{equation*}
-	1 := (1,0).
+	1_{\R^2} := \ii_0 = (1,0).
 	\end{equation*}
-A \emph{inversa} de $(\R^2,\times,1)$ é a operação
+A \emph{inversão} de $(\R^2,\times,1)$ é a operação
 	\begin{align*}
 	\func{\div}{\R^2 \setminus \{0\}}{\R^2 \setminus \{0\}}{x}{x\inv := \nor{x}^{-2}(x_0,-x_1)}.
 	\end{align*}
 \end{definition}
 
-Como a notação acima sugere, omitiremos o símbolo de multiplicação $\times$ sempre que possível pois isso não gerará ambiguidade. Omitiremos também a unidade $1$ dos produtos, de modo que todo $x \in \R^2$ pode ser denotado
+Em geral, por não haver ambiguidade, denotaremos $1_{\R^2}$ simplesmente por $1$ e $\ii_1$ simplesmente por $\ii$. Assim, todo $x \in \R^2$ pode ser denotado
 	\begin{equation*}
-	x = x_0 + x_1\ii.
+	x = x_0 1 + x_1 \ii.
 	\end{equation*}
+
+Como a notação acima sugere, omitiremos o símbolo de multiplicação $\times$ sempre que possível pois isso não gerará ambiguidade.
 
 Notemos que
 	\begin{equation*}
 	\ii^2 = (0,1)(0,1) = (0 \times 0 - 1 \times 1, 0 \times 1 + 1 \times 0) = (-1,0) = -1.
-	\end{equation*}
-Todo $x \in \R^2$ pode ser escrito como $x_0 + x_1 \ii$, de modo que o produto $\times$ nessa notação é o produto usual dos números complexos
-	\begin{equation*}
-	xy = (x_0 + x_1 \ii)(y_0 + y_1 \ii) = (x_0y_0-x_1y_1) + (x_0y_1+x_1y_0) \ii.
 	\end{equation*}
 
 \begin{proposition}
@@ -352,15 +763,16 @@ A lista
 	\begin{equation*}
 	(\R^2,+,-,0,\times,1,\cdot)
 	\end{equation*}
-é uma álgebra associativa, comutativa e unitária (e invertível) sobre $\R$.
+é uma álgebra associativa, comutativa, unitária e invertível sobre $\R$.
 \end{proposition}
 \begin{proof}
+Como $(\R^2,+,-,0,\cdot)$ é um espaço linear sobre $\R$, basta mostrar as propriedades de $\times$.
 \begin{itemize}
 	\item (Comutatividade) Para todos $x,y \in \R^2$,
 		\begin{equation*}
 		xy = (x_0y_0-x_1y_1,x_0y_1+x_1y_0) = (y_0x_0-y_1x_1,y_0x_1+y_1x_0) = yx.
 		\end{equation*}
-	\item (Bilinearidade) Como o produto é comutativo, basta mostrar a linearidade na primeira entrada. Para todos $x,x',y \in \R^2$ e todo $c \in \R$,
+	\item (Bilinearidade) Como a multiplicação é comutativa, basta mostrar a linearidade na primeira entrada. Para todos $x,x',y \in \R^2$ e todo $c \in \R$,
 		\begin{align*}
 		(cx+x')y &= ((cx_0+x'_0)y_0-(cx_1+x'_1)y_1,(cx_0+x'_0)y_1+(cx_1+x'_1)y_0) \\
 			&= (cx_0y_0+x'_0y_0-cx_1y_1-x'_1y_1,cx_0y_1+x'_0y_1+cx_1y_0+x'_1y_0) \\
@@ -368,23 +780,67 @@ A lista
 			&= c(xy) + x'y.
 		\end{align*}
 	\item (Associatividade) Para todos $x,y,z \in \R^2$,
-	\begin{align*}
-	(xy)z &= (x_0y_0-x_1y_1,x_0y_1+x_1y_0)z \\
-		&= ((x_0y_0-x_1y_1)z_0 - (x_0y_1+x_1y_0)z_1 , (x_0y_0-x_1y_1)z_1 + (x_0y_1+x_1y_0)z_0 ) \\
-		&= (x_0(y_0z_0-y_1z_1)-x_1(y_0z_1+y_1z_0),x_0(y_0z_1+y_1z_0)+x_1(y_0z_0-y_1z_1)) \\
-		&= x(y_0z_0-y_1z_1,y_0z_1+y_1z_0) \\
-		&= x(yz).
-	\end{align*}
+		\begin{align*}
+		(xy)z &= (x_0y_0-x_1y_1,x_0y_1+x_1y_0)z \\
+			&= ((x_0y_0-x_1y_1)z_0 - (x_0y_1+x_1y_0)z_1 , (x_0y_0-x_1y_1)z_1 + (x_0y_1+x_1y_0)z_0 ) \\
+			&= (x_0(y_0z_0-y_1z_1)-x_1(y_0z_1+y_1z_0),x_0(y_0z_1+y_1z_0)+x_1(y_0z_0-y_1z_1)) \\
+			&= x(y_0z_0-y_1z_1,y_0z_1+y_1z_0) \\
+			&= x(yz).
+		\end{align*}
 	\item (Identidade) Para todo $x \in \R^2$,
-	\begin{equation*}
-	1x = (1x_0-0x_1,1x_1+0x_0) = (x_0,x_1) = x.
-	\end{equation*}
+		\begin{equation*}
+		1x = (1x_0-0x_1,1x_1+0x_0) = (x_0,x_1) = x.
+		\end{equation*}
+	\item (Inversa) Para todo $x \in \R^2 \setminus \{0\}$,
+		\begin{align*}
+		x\inv x &= \nor{x}^{-2}(x_0,-x_1)(x_0,x_1) \\
+			&= \nor{x}^{-2} (x_0x_0 - (-x_1)x_1,x_0(-x_1)+x_1x_0) \\
+			&= \nor{x}^{-2} (\nor{x}^2,0) \\
+			&= (1,0) \\
+			&= 1.
+			\qedhere
+		\end{align*}
 \end{itemize}
-(Não demonstraremos a invertibilidade agora.)
 \end{proof}
 
+Como o vetor $1=(1,0)$ é uma unidade, em geral o omitiremos da notação da base, denotando $x_0 1$ por $x_0$ e
+	\begin{equation*}
+	x = x_0 + x_1\ii,
+	\end{equation*}
+de modo que a multiplicação $\times$ nessa notação é a multiplicação usual dos números complexos
+	\begin{equation*}
+	xy = (x_0 + x_1 \ii)(y_0 + y_1 \ii) = (x_0y_0-x_1y_1) + (x_0y_1+x_1y_0) \ii.
+	\end{equation*}
 
-O produto $\times$ pode também ser visto como uma ação de $\R^2$ aditivo sobre $\R^2$ aditivo. Cada $x \in \R^2$ pode ser identificado com uma transformação linear $x\colon \R^2 \to \R^2$. Os elementos $x \in \S^1 \subseteq \R^2$ são as rotações: se $x \in \S^1$, então existe $\theta \in \intfa{0}{\tau}$ tal que
+\begin{definition}
+A \emph{conjugação} em $\R^2$ é a operação
+	\begin{align*}
+	\func{\conju{}}{\R^2}{\R^2}{x}{\conju{x} := (x_0,-x_1)}.
+	\end{align*}
+\end{definition}
+
+\begin{exercise}
+	\begin{enumerate}
+	\item (Involutividade) Para todo $x \in \R^2$, $\conju{(\conju{x})} = x$;
+	\item (Aditividade) Para todos $x,x' \in \R^2$, $\conju{(x+x')} = \conju{x} + \conju{(x')}$;
+	\item (Identidade aditiva) $\conju{0} = 0$;
+	\item (Invertibilidade aditiva) Para todo $x \in \R^2$, $\conju{(-x)} = -\conju{x}$;
+	\item (Anti-multiplicatividade) Para todos $x,x' \in \R^2$, $\conju{(xx')} = \conju{(x')}\conju{x}$;
+	\item (Identidade multiplicativa) $\conju{1} = 1$;
+	\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Seja $x \in \R^2$.
+	\begin{enumerate}
+	\item $\nor{x}^2 = \abs{\esc{x}}^2 + \nor{\vec{x}}^2$;
+	\item $\nor{x}^2 = x\conju{x}$;
+%	\item $\conju{x} = \frac{1}{2}(1x(-1) + \ii_1 x (-\ii_1) + \ii_2 x (-\ii_2) + \ii_3 x (-\ii_3))$.
+	\end{enumerate}
+\end{exercise}
+
+
+A multiplicação $\times$ pode também ser vista como uma ação de $\R^2$ aditivo sobre $\R^2$ aditivo. Cada $x \in \R^2$ pode ser identificado com uma transformação linear $x\colon \R^2 \to \R^2$. Os elementos $x \in \S^1 \subseteq \R^2$ são as rotações: se $x \in \S^1$, então existe $\theta \in \intfa{0}{\tau}$ tal que
 	\begin{equation*}
 	x = \cos(\theta) + \sin(\theta) \ii.
 	\end{equation*}
@@ -505,7 +961,7 @@ A função
 é um difeomorfismo e isomorfismo de grupos.
 \end{proposition}
 \begin{proof}
-A função $R$ é diferenciável porque $R_u(x)$ é um polinômio em cada entrada. Primeiro, vamos mostrar que $R$ de fato está bem definida, ou seja, que, para todo $u \in \S^1$, $R_u \in \SO(2)$. Seja $u \in \S^1$. A função $R_u$ é linear, pois, para todos $x,x' \in \R^2$ e $c \in \R$, segue da bilinearidade do produto complexo que
+A função $R$ é diferenciável porque $R_u(x)$ é um polinômio em cada entrada. Primeiro, vamos mostrar que $R$ de fato está bem definida, ou seja, que, para todo $u \in \S^1$, $R_u \in \SO(2)$. Seja $u \in \S^1$. A função $R_u$ é linear, pois, para todos $x,x' \in \R^2$ e $c \in \R$, segue da bilinearidade da multiplicação complexa que
 	\begin{equation*}
 	R_u(cx+c') = u(cx+c') = cux + ux' = cR_u(x) + R_u(x').
 	\end{equation*}
@@ -552,7 +1008,7 @@ Isso mostra que
 
 \subsection{Quatérnios \ensuremath{\R^4}}
 
-\subsubsection{Produto quaterniônico}
+\subsubsection{Multiplicação quaterniônica}
 
 Consideremos o espaço linear $\R^4$ com a norma $2$
 	\begin{align*}
@@ -568,7 +1024,7 @@ A base canônica de $\R^4$ será denotada por
 	\end{align*}
 
 \begin{definition}
-O \emph{produto quaterniônico} em $\R^4$ é a operação
+A \emph{multiplicação quaterniônica} em $\R^4$ é a operação
 %	\begin{align*}
 %	\func{\times}{\R^4 \times \R^4}{\R^4}{(x,y)}{
 %		\begin{aligned}[t]
@@ -591,9 +1047,9 @@ O \emph{produto quaterniônico} em $\R^4$ é a operação
 	\end{align*}
 A \emph{unidade} de $(\R^4,\times)$ é
 	\begin{equation*}
-	\bm 1 := \ii_0 = (1,0,0,0).
+	1_{\R^4} := \ii_0 = (1,0,0,0).
 	\end{equation*}
-A \emph{inversa} de $(\R^4,\times,1)$ é a operação
+A \emph{inversão} de $(\R^4,\times,1)$ é a operação
 %	\begin{align*}
 %	\func{\div}{\R^4 \setminus \{0\}}{\R^4 \setminus \{0\}}{x}{x\inv := \frac{x_0 1 - x_1 \ii_1 - x_2 \ii_2 - x_3 \ii_3}{\nor{x}^2}}.
 %	\end{align*}
@@ -602,7 +1058,7 @@ A \emph{inversa} de $(\R^4,\times,1)$ é a operação
 	\end{align*}
 \end{definition}
 
-Em geral, por não haver ambiguidade, denotaremos $\bm 1$ simplesmente por $1$. Assim, todo $x \in \R^4$ pode ser escrito
+Em geral, por não haver ambiguidade, denotaremos $1_{\R^4}$ simplesmente por $1$. Assim, todo $x \in \R^4$ pode ser escrito
 	\begin{equation*}
 	x = x_0 1 + x_1\ii_1 + x_2\ii_2 + x_3\ii_3.
 	\end{equation*}
@@ -620,14 +1076,59 @@ Como a notação acima sugere, omitiremos o símbolo de multiplicação $\times$
 
 %Pode-se mostrar que $\times$ é um produto bilinear associativo (mas não comutativo), que $1$ é identidade de $(\R^4,\times)$ e que $\div$ é inversa de $(\R^4,\times,1)$, e que além disso todas operações são preservadas pela norma. As contas são longas, mas diretas, portanto não as apresentaremos aqui. Alguns resultados, como a de que $x\inv$ é a operação inversa, serão provados mais à frente usando a notação de componente escalar, vetorial e conjugado de um quatérnio que simplificará as contas. Ressaltamos esse fato na seguinte proposição.% Isso significa que
 
+
+\begin{table}
+	\centering
+
+	\begin{tabular}{c | c c c c}
+	\toprule
+	$\times$&	$1$		&	$\ii_1$	&	$\ii_2$	&	$\ii_3$	\\
+	\hline
+	$1$		&	$1$		&	$\ii_1$	&	$\ii_2$	&	$\ii_3$		\\
+	$\ii_1$	&	$\ii_1$	&	$-1$	&	$\ii_3$	&	$-\ii_2$	\\
+	$\ii_2$	&	$\ii_2$	&	$-\ii_3$&	$-1$	&	$\ii_1$		\\
+	$\ii_3$	&	$\ii_3$	&	$\ii_2$	&	$-\ii_1$&	$-1$		\\
+	\bottomrule
+	\end{tabular}
+
+	\caption{Tabela de multiplicação dos quatérnios.}
+	\label{tab:multiplicacao.quaternionica}
+\end{table}
+
+\begin{figure}
+	\centering
+
+	\begin{tikzpicture}
+	
+	\def \raio{1.5cm}
+
+	\coordinate (A) at (-90:\raio);
+	\coordinate (B) at (30:\raio);
+	\coordinate (C) at (150:\raio);
+
+	\foreach \n in {0,1,2,3}
+		{
+			\draw[->] (-90+120*\n:\raio) arc (-90+120*\n:-29+120*\n:\raio);
+			\draw (-30+120*\n:\raio) arc (-30+120*\n:30+120*\n:\raio);
+		}
+
+	\foreach \P/\n in {A/1, B/2, C/3}
+		\node[draw,circle,fill=amarelo,inner sep=1.5pt] at (\P) {$\ii_\n$};
+
+	\end{tikzpicture}
+
+	\caption{Grafo para memorizar multiplicação quaterniônica.}
+
+\end{figure}
+
 \begin{proposition}
 A lista
 	\begin{equation*}
 	((\R^4,+,-,0,\cdot,\times,\div,1),\nor{\var})
 	\end{equation*}
-é uma álgebra\footnote{A álgebra de $\R^4$ com esse produto costuma ser denotada por $\mathbb{H}$, mas manteremos a notação $\R^4$ por simplicidade de notação, pois nenhuma ambiguidade resultará disso. A letra `H' é usada em homenagem ao matemático irlandês William Rowan Hamilton (1805 -- 1865).} (associativa) invertível normada sobre $\R$.
+é uma álgebra\footnote{A álgebra de $\R^4$ com essa multiplicação costuma ser denotada por $\mathbb{H}$, mas manteremos a notação $\R^4$ por simplicidade de notação, pois nenhuma ambiguidade resultará disso. A letra `H' é usada em homenagem ao matemático irlandês William Rowan Hamilton (1805 -- 1865).} (associativa) invertível normada sobre $\R$.
 \begin{enumerate}
-	\item (Bilinearidade) O produto quaterniônico $\fun{\times}{\R^4 \times \R^4}{\R^4}$ é uma função bilinear;
+	\item (Bilinearidade) A multiplicação quaterniônica $\fun{\times}{\R^4 \times \R^4}{\R^4}$ é uma função bilinear;
 	\item (Associatividade) Para todos $x,y,z \in \R^4$,
 		\begin{equation*}
 		(xy)z = x(yz);
@@ -652,6 +1153,7 @@ A lista
 \end{enumerate}
 \end{proposition}
 \begin{proof}
+Como $(\R^4,+,-,0,\cdot)$ é um espaço linear sobre $\R$, basta mostrar as propriedades de $\times$.
 \begin{itemize}
 	\item (Identidade) Para todo $x \in \R^4$,
 		\begin{align*}
@@ -938,13 +1440,31 @@ e decompor $\R^4$ como a soma direta
 	\R^4 = \esc{\R} + \vec{\R}^3.
 	\end{equation*}
 
+%\begin{definition}
+%Seja $x \in \R^4$. O \emph{conjugado} de $x$ é
+%	\begin{equation*}
+%	\conju{x} := \esc{x}-\vec{x}.
+%	\end{equation*}
+%Um \emph{versor} é um quatérnio $u \in \R^8$ tal que $\esc{u}=0$ e $\nor{\vec{u}}=1$.
+%\end{definition}
+
 \begin{definition}
-Seja $x \in \R^4$. O \emph{conjugado} de $x$ é
-	\begin{equation*}
-	\conju{x} := \esc{x}-\vec{x}.
-	\end{equation*}
-%Um \emph{versor} é um quatérnio $u \in \HH$ tal que $\esc{u}=0$ e $\nor{\vec{u}}=1$.
+A \emph{conjugação} em $\R^4$ é a operação
+	\begin{align*}
+	\func{\conju{}}{\R^4}{\R^4}{x}{\conju{x} := \esc{x}-\vec{x}}.
+	\end{align*}
 \end{definition}
+
+\begin{exercise}
+	\begin{enumerate}
+	\item (Involutividade) Para todo $x \in \R^4$, $\conju{(\conju{x})} = x$;
+	\item (Aditividade) Para todos $x,x' \in \R^4$, $\conju{(x+x')} = \conju{x} + \conju{(x')}$;
+	\item (Identidade aditiva) $\conju{0} = 0$;
+	\item (Invertibilidade aditiva) Para todo $x \in \R^4$, $\conju{(-x)} = -\conju{x}$;
+	\item (Anti-multiplicatividade) Para todos $x,x' \in \R^4$, $\conju{(xx')} = \conju{(x')}\conju{x}$;
+	\item (Identidade multiplicativa) $\conju{1} = 1$;
+	\end{enumerate}
+\end{exercise}
 
 \begin{exercise}
 Seja $x \in \R^4$.
@@ -1019,6 +1539,23 @@ O \emph{produto vetorial} em $\vec{\R}^3$ é a função
 
 O produto interno quaterniônico difere do produto interno usual em $\R^4$, mas os outros dois produtos são o produto interno e o produto vetorial usuais em $\R^3$.
 
+\begin{table}
+	\centering
+
+	\begin{tabular}{c | c c c c}
+	\toprule
+	$\pvec{}{}$&	$\ii_1$	&	$\ii_2$	&	$\ii_3$	\\
+	\hline
+	$\ii_1$	&	$0$		&	$\ii_3$	&	$-\ii_2$	\\
+	$\ii_2$	&	$-\ii_3$&	$0$		&	$\ii_1$		\\
+	$\ii_3$	&	$\ii_2$	&	$-\ii_1$&	$0$			\\
+	\bottomrule
+	\end{tabular}
+
+	\caption{Tabela de produto vetorial em $\vec{\R}^3$.}
+	\label{tab:multiplicacao.quaternionica.vetorial}
+\end{table}
+
 \begin{exercise}
 	\begin{enumerate}
 	\item Para todos $x,y \in \R^4$,
@@ -1026,17 +1563,19 @@ O produto interno quaterniônico difere do produto interno usual em $\R^4$, mas 
 		\inteq{x}{y} = \esc{x}\esc{y}-\pesc{\vec{x}}{\vec{y}}.
 		\end{equation*}
 
-	\item O produto escalar $\bm{\cdot}\colon \vec{\R}^3 \times \vec{\R}^3 \to \R$ é um produto interno no subespaço vetorial $\vec{\R}^3$;
+	\item O produto escalar $\pesc{}{}\colon \vec{\R}^3 \times \vec{\R}^3 \to \R$ é um produto interno no subespaço vetorial $\vec{\R}^3$;
 	
-	\item O produto vetorial $\bm{\times}\colon \vec{\R}^3 \times \vec{\R}^3 \to \vec{\R}^3$ é uma função bilinear alternada tal que, para todos $\vec{x},\vec{y} \in \vec{\R}^3$,
+	\item O produto vetorial $\pvec{}{}\colon \vec{\R}^3 \times \vec{\R}^3 \to \vec{\R}^3$ é uma função bilinear alternada tal que, para todos $\vec{x},\vec{y} \in \vec{\R}^3$,
 		\begin{enumerate}
 		\item $\pesc{(\pvec{\vec{x}}{\vec{y}})}{\vec{x}} = \pesc{(\pvec{\vec{x}}{\vec{y}})}{\vec{y}} = 0$;
 		
-		\item $\pesc{(\pvec{\vec{x}}{\vec{y}})}{(\pvec{\vec{x}}{\vec{y}})} = \det
-				\begin{bmatrix}
-				\pesc{\vec{x}}{\vec{x}} & \pesc{\vec{x}}{\vec{y}} \\
-				\pesc{\vec{y}}{\vec{x}} & \pesc{\vec{y}}{\vec{y}}
-				\end{bmatrix}$.
+		\item $\pesc{(\pvec{\vec{x}}{\vec{y}})}{(\pvec{\vec{x}}{\vec{y}})} =
+				\det{
+					\begin{bmatrix}
+					\pesc{\vec{x}}{\vec{x}} & \pesc{\vec{x}}{\vec{y}} \\
+					\pesc{\vec{y}}{\vec{x}} & \pesc{\vec{y}}{\vec{y}}
+					\end{bmatrix}
+				}$.
 		\end{enumerate}
 	
 	\item Para todos $\vec{x},\vec{y},\vec{z} \in \vec{\R}^3$,
@@ -1216,6 +1755,49 @@ Portanto
 %		\end{equation*}
 \end{enumerate}
 \end{proof}
+
+\begin{comment}
+
+\subsubsection{Construção de Cayley-Dickson}
+
+Todo $x \in \R^4$ pode ser escrito como
+	\begin{equation*}
+	x = (x_0 + x_1\ii_1) + (x_2 + x_3\ii_1)\ii_2,
+	\end{equation*}
+de modo que $(x_0 + x_1\ii_1)$ e $(x_2 + x_3\ii_1)$ podem ser vistos como elementos de $\R^2$. Definimos homomorfismos
+	\begin{align*}
+	\func{h_0}{\R^4}{\R^4}{x}{x_0 + x_1\ii_1}
+	\end{align*}
+	\begin{align*}
+	\func{h_1}{\R^4}{\R^4}{x}{(x_2 + x_3\ii_1)}
+	\end{align*}
+e segue que
+	\begin{equation*}
+	x = (x_0 + x_1\ii_1) + (x_2 + x_3\ii_1)\ii_2 = h_0(x) + h_1(x)\ii_2.
+	\end{equation*}
+Multiplicando $x,y \in \R^4$, obtemos
+%	\begin{align*}
+%	xy &= ((x_0 + x_1\ii_1) + (x_2 + x_3\ii_1)\ii_2)((y_0 + y_1\ii_1) + (y_2 + y_3\ii_1)\ii_2) \\
+%		&= ((x_0 + x_1\ii_1)(y_0 + y_1\ii_1) - \conju{(y_2 + y_3\ii_1)}(x_2 + x_3\ii_1)) \\
+%		&+ ((y_2 + y_3\ii_1)(x_0 + x_1\ii_1) + (x_2 + x_3\ii_1)\conju{(y_0 + y_1\ii_1)})\ii_2
+%	\end{align*}
+	\begin{align*}
+	xy &= (h_0(x) + h_1(x)\ii_2)(h_0(y) + h_1(y)\ii_2) \\
+		&= (h_0(x)h_0(y) - \conju{h_1(y)}h_1(y)) \\
+		&+ (h_1(y)h_0(x) + h_1(x)\conju{h_0(y)})\ii_2.
+	\end{align*}
+%	\begin{align}
+%	xy := &(x_0y_0 - x_1y_1 - x_2y_2 - x_3y_3) 1 \\
+%		+ &(x_0y_1 + x_1y_0 + x_2y_3 - x_3y_2) \ii_1 \\
+%		+ &(x_0y_2 - x_1y_3 + x_2y_0 + x_3y_1) \ii_2 \\
+%		+ &(x_0y_3 + x_1y_2 - x_2y_1 + x_3y_0) \ii_3.
+%	\end{align}
+
+
+
+
+\end{comment}
+
 
 
 
@@ -1729,6 +2311,492 @@ Definimos a função
 	\end{align*}
 
 \end{comment}
+
+
+
+
+\subsection{Classificação das álgebras de divisão reais}
+
+Uma álgebra de divisão associativa real é uma álgebra associativa, unitária e invertível sobre $\R$. Nessa seção usaremos o teorema fundamental da álgebra, o teorema de Cayley-Hamilton e propriedades de produto interno, ou seja, $2$-formas simétricas positivo-definidas, como a existência de uma base ortonormal.
+
+\begin{proposition}
+Seja $\bm A$ uma álgebra de divisão associativa sobre $\R$. Então $\bm A$ é isomorfa a $\R$, $\R^2$ ou $\R^4$.
+\end{proposition}
+\begin{proof}
+Primeiro identificamos $\R$ com $\R 1 = \set{c1}{c \in \R}$, em que $1 \in A$ é a unidade de $A$, e, conforme essa identificação, para todos $a,a' \in \R$, consideramos a ordem induzida $a \leq a'$. Mostraremos que $V := \set{a \in A}{a^2 \in \R \land a^2 \leq 0}$ é um subespaço vetorial de $\bm A$ e $\bm A = \R \oplus \bm V$.
+
+Defina $d := \dim(A)$. Para todo $a \in A$, a função multiplicação à esquerda
+	\begin{align*}
+	\func{a\times}{A}{A}{x}{ax}
+	\end{align*}
+é uma função linear e, da associatividade de $\times$, segue que, para todos $a,a' \in A$, $(a\times) \circ (a' \times) = (aa')\times$. Seja $p_a$ o polinômio característico de $a\times$. pelo teorema fundamental da álgebra, existem números reais $(c_k)_{k \in [n]}$ e números complexos $(z_k)_{k \in [n']}$ tais que
+	\begin{equation*}
+	p_a(x) = (x-c_0) \cdots (x-c_{n-1}) (x-z_0)(x-\conju{(z_0)}) \cdots (x-z_{n-1})(x-\conju{(z_{n-1})}),
+	\end{equation*}
+e, para todo $k \in [n']$, o polinômio $(x-z_k)(x-\conju{(z_k)})$ é irredutível em $\R$. Pelo teorema de Cayley-Hamilton, segue que $p_a(a\times) = 0$. Da linearidade de $a\times$ e de $(a\times) \circ (a' \times) = (aa')\times$ segue que
+	\begin{equation*}
+	p_a(a\times) = p_a(a)\times.
+	\end{equation*}
+Como $\bm A$ é álgebra de divisão, segue que $p_a(a) = 0$ e que, para algum $k \in [n]$, $a-c_k = 0$ ou, para algum $k \in [n']$, $(a-z_k)(a-\conju{(z_k)}) = 0$. No primeiro caso, segue que $a=c_k \in \R$ e, no segunda caso,
+	\begin{equation*}
+	\mu_a(x) := (x-z_k)(x-\conju{(z_k)}) = x^2 - 2\Re(z_k)x + \abs{z_k}^2
+	\end{equation*}
+é o polinômio minimal de $a\times$. Como $p$ é real e tem as mesmas raízes complexas que $\mu_a$, segue que, para algum $p \in \Z_{>}$,
+	\begin{equation*}
+	p_a(x) = (\mu_a(x))^p = (x^2 - 2\Re(z_k)x + \abs{z_k}^2)^p.
+	\end{equation*}
+Como $p_a$ é polinômio característico de $a\times$, o coeficiente de $x^{2p-1}$ em $p_a$ é $-\tr{a\times}$ (inverso aditivo do traço de $a \times$). Mas esse coeficiente é $0$ se, e somente se, $\Re(z_k)=0$, o que por sua vez é equivalente a $a^2 = -\abs{z_k}^2$. Com $-\abs{z_k}^2 < 0$, concluímos que
+	\begin{equation*}
+	V = \set{a \in A}{\tr{a\times}=0},
+	\end{equation*}
+portanto é um subespaço linear de $\bm A$ e tem codimensão $1$, pois é o núcleo do traço $\tr{\var}$, um funcional linear não nulo, e conclui-se que $\bm A = \R \oplus \bm V$.
+
+Isso implica que, para todo $v \in V$, $v^2 \in \R$e segue que, para todos $v,v' \in A$, $vv'+v'v = (v+v')^2 - v^2 - (v')^2 \in \R$. Assim, definimos
+	\begin{align*}
+	\func{\inte{\var}{\var}}{V \times V}{\R}{(v,v')}{-\frac{vv'+v'v}{2}}.
+	\end{align*}
+Essa função é uma $2$-forma simétrica positiva definida em $V$:
+	\begin{itemize}
+		\item (Bilinearidade) Segue da bilinearidade da multiplicação;
+		\item (Simetria) Para todo $v \in V$,
+			\begin{equation*}
+			\inte{v}{v'} = -\frac{vv'+v'v}{2} = -\frac{v'v+vv'}{2} = \inte{v'}{v};
+			\end{equation*}
+		\item (Positiva-definida) Para todo $v \in V$, $v^2 \leq 0$, logo
+			\begin{equation*}
+			\inte{v}{v} = -\frac{vv+vv}{2} = -v^2 \geq 0.
+			\end{equation*}
+	\end{itemize}
+Seja $V'$ o subespaço de $V$ que gera $A$ como álgebra e seja $(b_k)_{k \in [n]}$ uma base ortonormal de $V'$ com respeito a $\inte{\var}{\var}$. A ortonormalidade implica que, para todo $k \in [n]$,
+	\begin{equation*}
+	{b_k}^2 = -\inte{b_k}{b_k} = -1
+	\end{equation*}
+e, para todos $k,k' \in [n]$ distintos,
+	\begin{align*}
+	b_kb_{k'} &= b_kb_{k'} + 0 \\
+		&= b_kb_{k'} + 2\inte{b_k}{b_{k'}} \\
+		&= b_kb_{k'} -(b_kb_{k'}+b_{k'}b_k) \\
+		&= -b_{k'}b_k.
+	\end{align*}
+Disso segue que, para todos $k,k' \in [n]$ distintos,
+	\begin{equation*}
+	(b_kb_{k'})^2 = b_kb_{k'}b_kb_{k'} = -b_{k'}b_kb_kb_{k'} = -b_{k'}(-1)b_{k'} = b_{k'}b_{k'} = -1
+	\end{equation*}
+e, para todos $k,k',k'' \in [n]$ distintos dois a dois,
+	\begin{align*}
+	(b_kb_{k'}b_{k''})^2 &= b_kb_{k'}b_{k''}b_kb_{k'}b_{k''} \\
+		&= -b_kb_{k'}b_kb_{k''}b_{k'}b_{k''} \\
+		&= (b_kb_k)(b_{k'}b_{k''})(b_{k'}b_{k''}) \\
+		&= -(b_{k'}b_{k''})^2 \\
+		&= 1.
+	\end{align*}
+Isso implica que $n \in \{0,1,2\}$. Suponhamos, por absurdo, que $n\geq 3$, e seja $u := b_0b_1b_2$. Pelas relações anteriormente calculadas, seguiria que $u^2 = 1$, portanto $0 = u^2 - 1 = (u+1)(u-1)$. Como $A$ é invertível, valeria $u+1=0$ ou $u-1=0$, o que implicaria que $b_2=b_0b_1$ ou $b_2=-b_0b_1$, o que seria uma contradição com a minimalidade de $V'$.
+Consideramos por fim cada um dos 3 casos.
+\begin{itemize}
+	\item Se $n=0$, segue que $V=\{0\}$ e portanto que $A \simeq \R$.
+	\item Se $n=1$, $V=\set{c_0b_0}{c_0 \in \R}$ e segue que $A \simeq \R^2$ pelo isomorfismo
+		\begin{align*}
+		\func{h}{A}{\R^2}{c+c_0b_0}{(c,c_0)}.
+		\end{align*}
+	\item Se $n=2$, $V=\set{c_0b_0 + c_1b_1 + c_2(b_0b_1)}{c_0,c_1,c_2 \in \R}$ e $A \simeq \R^4$ pelo isomorfismo
+		\begin{align*}
+		\func{h}{A}{\R^4}{c+c_0b_0 + c_1b_1 + c_2(b_0b_1)}{(c,c_0,c_1,c_2)}.
+		\end{align*}
+\end{itemize}
+\end{proof}
+
+
+
+
+
+\subsection{Octônios \ensuremath{\R^8}}
+
+\subsubsection{Multiplicação octoniônica}
+
+Consideremos o espaço linear $\R^8$ com a norma $2$
+	\begin{align*}
+	\func{\nor{\var}}{\R^8}{\R}{x}{({x_0}^2+{x_1}^2+{x_2}^2+{x_3}^2+{x_4}^2+{x_5}^2+{x_6}^2+{x_7}^2)^{\frac{1}{2}}}.
+	\end{align*}
+
+A base canônica de $\R^8$ será denotada por
+	\begin{align*}
+	\ii_0 &:= (1,0,0,0,0,0,0,0) \\
+	\ii_1 &:= (0,1,0,0,0,0,0,0) \\
+	\ii_2 &:= (0,0,1,0,0,0,0,0) \\
+	\ii_3 &:= (0,0,0,1,0,0,0,0) \\
+	\ii_4 &:= (0,0,0,0,1,0,0,0) \\
+	\ii_5 &:= (0,0,0,0,0,1,0,0) \\
+	\ii_6 &:= (0,0,0,0,0,0,1,0) \\
+	\ii_7 &:= (0,0,0,0,0,0,0,1).
+	\end{align*}
+
+\begin{definition}
+A \emph{multiplicação octoniônica} em $\R^8$ é a operação
+%	\begin{align*}
+%	\fun{\times}{\R^8 \times \R^8}{\R^8}
+%	\end{align*}
+%definida pela tabela de multiplicação \ref{tab:multiplicacao.octonionica} na base de $\R^8$ e estendida linearmente.
+%	\begin{align*}
+%	\func{\times}{\R^8 \times \R^8}{\R^8}{(x,y)}{
+%		\begin{aligned}[t]
+%		xy := (&x_0y_0 - x_1y_1 - x_2y_2 - x_3y_3 - x_4y_4 - x_5y_5 - x_6y_6 - x_7y_7)1 \\
+%			+ (&x_0y_1 + x_1y_0 + x_2y_3 - x_3y_2 + x_4y_5 + x_5y_4 - x_6y_7 + x_7y_6)\ii_1 \\
+%			+ (&x_0y_2 - x_1y_3 + x_2y_0 + x_3y_1 + x_4y_6 - x_5y_7 - x_6y_4 - x_7y_5)\ii_2 \\
+%			+ (&x_0y_3 + x_1y_2 - x_2y_1 + x_3y_0 + x_4y_7 - x_5y_6 + x_6y_5 - x_7y_4)\ii_3 \\
+%			+ (&x_0y_4 - x_1y_5 - x_2y_6 - x_3y_7 + x_4y_0 + x_5y_1 + x_6y_2 + x_7y_3)\ii_4 \\
+%			+ (&x_0y_5 + x_1y_4 - x_2y_7 + x_3y_6 - x_4y_1 + x_5y_0 - x_6y_3 + x_7y_2)\ii_5 \\
+%			+ (&x_0y_6 + x_1y_7 + x_2y_4 - x_3y_5 - x_4y_2 + x_5y_3 + x_6y_0 - x_7y_1)\ii_6 \\
+%			+ (&x_0y_7 - x_1y_6 + x_2y_5 + x_3y_4 - x_4y_3 + x_5y_2 + x_6y_1 + x_7y_0)\ii_7 .
+%		\end{aligned}
+%	}
+%	\end{align*}
+	\begin{align*}
+	\func{\times}{\R^8 \times \R^8}{\R^8}{(x,y)}{
+		\begin{aligned}[t]
+		xy := (&x_0y_0 - x_1y_1 - x_2y_2 - x_3y_3 - x_4y_4 - x_5y_5 - x_6y_6 - x_7y_7, \\
+				&x_0y_1 + x_1y_0 + x_2y_3 - x_3y_2 + x_4y_5 + x_5y_4 - x_6y_7 + x_7y_6, \\
+				&x_0y_2 - x_1y_3 + x_2y_0 + x_3y_1 + x_4y_6 - x_5y_7 - x_6y_4 - x_7y_5, \\
+				&x_0y_3 + x_1y_2 - x_2y_1 + x_3y_0 + x_4y_7 - x_5y_6 + x_6y_5 - x_7y_4, \\
+				&x_0y_4 - x_1y_5 - x_2y_6 - x_3y_7 + x_4y_0 + x_5y_1 + x_6y_2 + x_7y_3, \\
+				&x_0y_5 + x_1y_4 - x_2y_7 + x_3y_6 - x_4y_1 + x_5y_0 - x_6y_3 + x_7y_2, \\
+				&x_0y_6 + x_1y_7 + x_2y_4 - x_3y_5 - x_4y_2 + x_5y_3 + x_6y_0 - x_7y_1, \\
+				&x_0y_7 - x_1y_6 + x_2y_5 + x_3y_4 - x_4y_3 + x_5y_2 + x_6y_1 + x_7y_0) .
+		\end{aligned}
+	}
+	\end{align*}
+A \emph{unidade} de $(\R^8,\times)$ é
+	\begin{equation*}
+	1_{\R^8} := \ii_0 = (1,0,0,0,0,0,0,0).
+	\end{equation*}
+A \emph{inversão} de $(\R^8,\times,1)$ é a operação
+	\begin{align*}
+	\func{\div}{\R^8 \setminus \{0\}}{\R^8 \setminus \{0\}}{x}{x\inv := \nor{x}^{-2} (x_0, -x_1, -x_2, -x_3, -x_4, -x_5, -x_6, -x_7)}.
+	\end{align*}
+\end{definition}
+
+Em geral, por não haver ambiguidade, denotaremos $1_{\R^8}$ simplesmente por $1$. Assim, todo $x \in \R^8$ pode ser escrito
+	\begin{equation*}
+	x = x_0 1 + x_1\ii_1 + x_2\ii_2 + x_3\ii_3 + x_4\ii_4 + x_5\ii_5 + x_6\ii_6 + x_7\ii_7.
+	\end{equation*}
+Como a notação acima sugere, omitiremos o símbolo de multiplicação $\times$ sempre que possível pois isso não gerará ambiguidade.
+
+A multiplicação octoniônica, quando restrita à base canônica, é dada pela tabela \ref{tab:multiplicacao.octonionica} e estendida linearmente.
+
+\begin{table}
+	\centering
+
+	\begin{tabular}{c | c c c c c c c c}
+	\toprule
+	$\times$&	$1$		&	$\ii_1$	&	$\ii_2$	&	$\ii_3$	&	$\ii_4$	&	$\ii_5$	&	$\ii_6$	&	$\ii_7$		\\
+%	\midrule
+	\hline
+	$1$		&	$1$		&	$\ii_1$	&	$\ii_2$	&	$\ii_3$	&	$\ii_4$	&	$\ii_5$	&	$\ii_6$	&	$\ii_7$		\\
+	$\ii_1$	&	$\ii_1$	&	$-1$	&	$\ii_3$	&	$-\ii_2$&	$\ii_5$	&	$-\ii_4$&	$-\ii_7$&	$\ii_6$		\\
+	$\ii_2$	&	$\ii_2$	&	$-\ii_3$&	$-1$	&	$\ii_1$	&	$\ii_6$	&	$\ii_7$	&	$-\ii_4$&	$-\ii_5$	\\
+	$\ii_3$	&	$\ii_3$	&	$\ii_2$	&	$-\ii_1$&	$-1$	&	$\ii_7$	&	$-\ii_6$&	$\ii_5$	&	$-\ii_4$	\\
+	$\ii_4$	&	$\ii_4$	&	$-\ii_5$&	$-\ii_6$&	$-\ii_7$&	$-1$	&	$\ii_1$	&	$\ii_2$	&	$\ii_3$		\\
+	$\ii_5$	&	$\ii_5$	&	$\ii_4$	&	$\ii_7$	&	$\ii_6$	&	$\ii_1$	&	$-1$	&	$-\ii_3$&	$-\ii_2$	\\
+	$\ii_6$	&	$\ii_6$	&	$\ii_7$	&	$\ii_4$	&	$-\ii_5$&	$-\ii_2$&	$\ii_3$	&	$-1$	&	$-\ii_1$	\\
+	$\ii_7$	&	$\ii_7$	&	$-\ii_6$&	$\ii_5$	&	$\ii_4$	&	$-\ii_3$&	$-\ii_2$&	$\ii_1$	&	$-1$		\\
+	\bottomrule
+	\end{tabular}
+
+	\caption{Tabela de multiplicação dos octônios.}
+	\label{tab:multiplicacao.octonionica}
+\end{table}
+
+Pela definição da multiplicação, vale que
+%	\begin{equation*}
+%	x = (x_0 1 + x_1\ii) + (x_2 + x_3\ii)\ddot{\text{\i}}_1 + (x_4 + x_5\ii)\ddot{\text{\i}} + (x_6 + x_7\ii)\ddot{\text{\i}}.
+%	\end{equation*}
+	\begin{align*}
+	x &= x_0 + x_1\ii_1 + x_2\ii_2 + x_3\ii_3 + x_4\ii_4 + x_5\ii_5 + x_6\ii_6 + x_7\ii_7 \\
+		&= (x_0 + x_1\ii_1 + x_2\ii_2 + x_3\ii_3) + (x_4 + x_5\ii_1 + x_6\ii_2 + x_7\ii_3)\ii_4 \\
+		&= (x_0 + x_1\ii_1) + (x_2 + x_3\ii_1)\ii_2 + (x_4 + x_5\ii_1)\ii_4 + (x_6 - x_7\ii_1)\ii_6 ,
+	\end{align*}
+%de modo que valem os seguintes isomorfismos
+%	\begin{align*}
+%	\func{h}{\R^8}{(\R^4)^2}{x_0 + x_1\ii_1 + x_2\ii_2 + x_3\ii_3 + x_4\ii_4 + x_5\ii_5 + x_6\ii_6 + x_7\ii_7}{(x_0 + x_1\ii_1 + x_2\ii_2 + x_3\ii_3) + (x_4 + x_5\ii_1 + x_6\ii_2 + x_7\ii_3)\ii}
+%	\end{align*}
+%	\begin{align*}
+%	\func{h}{\Oct}{\HH^2}{(x_0, x_1, x_2, x_3, x_4, x_5, x_6, x_7)}{((x_0, x_1, x_2, x_3), (x_4, x_5, x_6, x_7))}
+%	\end{align*}
+%	\begin{align*}
+%	\func{h}{\R^8}{(\R^2)^4}{(x_0, x_1, x_2, x_3, x_4, x_5, x_6, x_7)}{((x_0, x_1), (x_2, x_3), (x_4, x_5), (x_6, -x_7))}
+%	\end{align*}
+%	\begin{align*}
+%	\func{h}{\R^8}{(\R^2)^4}{(x_0, x_1, x_2, x_3, x_4, x_5, x_6, x_7)}{((x_0, x_1), (x_2, x_3), (x_4, x_5), (x_6, -x_7))}
+%	\end{align*}
+
+%	\begin{align*}
+%	xy &= (x_0 + x_1\ii_1 + x_2\ii_2 + x_3\ii_3 + x_4\ii_4 + x_5\ii_5 + x_6\ii_6 + x_7\ii_7)\\
+%		&\times(y_0 + y_1\ii_1 + y_2\ii_2 + y_3\ii_3 + y_4\ii_4 + y_5\ii_5 + y_6\ii_6 + y_7\ii_7) \\
+%		&= (x_0y_0 - x_1y_1 - x_2y_2 - x_3y_3 - x_4y_4 - x_5y_5 - x_6y_6 - x_7y_7)1 \\
+%		&+ (x_0y_1 + x_1y_0 + x_2y_3 - x_3y_2 + x_4y_5 + x_5y_4 - x_6y_7 + x_7y_6)\ii_1 \\
+%		&+ (x_0y_2 - x_1y_3 + x_2y_0 + x_3y_1 + x_4y_6 - x_5y_7 - x_6y_4 - x_7y_5)\ii_2 \\
+%		&+ (x_0y_3 + x_1y_2 - x_2y_1 + x_3y_0 + x_4y_7 - x_5y_6 + x_6y_5 - x_7y_4)\ii_3 \\
+%		&+ (x_0y_4 - x_1y_5 - x_2y_6 - x_3y_7 + x_4y_0 + x_5y_1 + x_6y_2 + x_7y_3)\ii_4 \\
+%		&+ (x_0y_5 + x_1y_4 - x_2y_7 + x_3y_6 - x_4y_1 + x_5y_0 - x_6y_3 + x_7y_2)\ii_5 \\
+%		&+ (x_0y_6 + x_1y_7 + x_2y_4 - x_3y_5 - x_4y_2 + x_5y_3 + x_6y_0 - x_7y_1)\ii_6 \\
+%		&+ (x_0y_7 - x_1y_6 + x_2y_5 + x_3y_4 - x_4y_3 + x_5y_2 + x_6y_1 + x_7y_0)\ii_7 .
+%	\end{align*}
+
+
+\begin{comment}
+
+\begin{table}
+	\centering
+
+	\begin{tabular}{c | c c c c c c c c}
+	\toprule
+	$\times$&	$1$		&	$\ii_1$	&	$\ii_2$	&	$\ii_3$	&	$\ii_4$	&	$\ii_5$	&	$\ii_6$	&	$\ii_7$		\\
+%	\midrule
+	\hline
+	$1$		&	$1$		&	$\ii_1$	&	$\ii_2$	&	$\ii_3$	&	$\ii_4$	&	$\ii_5$	&	$\ii_6$	&	$\ii_7$		\\
+	$\ii_1$	&	$\ii_1$	&	$-1$	&	$\ii_3$	&	$-\ii_2$&	$\ii_5$	&	$-\ii_4$&	$\ii_7$	&	$-\ii_6$	\\
+	$\ii_2$	&	$\ii_2$	&	$-\ii_3$&	$-1$	&	$-\ii_1$&	$\ii_6$	&	$-\ii_7$&	$-\ii_4$&	$\ii_5$		\\
+	$\ii_3$	&	$\ii_3$	&	$\ii_2$	&	$\ii_1$	&	$-1$	&	$-\ii_7$&	$-\ii_6$&	$\ii_5$	&	$\ii_4$		\\
+	$\ii_4$	&	$\ii_4$	&	$-\ii_5$&	$-\ii_6$&	$\ii_7$	&	$-1$	&	$-\ii_1$&	$\ii_2$	&	$-\ii_3$	\\
+	$\ii_5$	&	$\ii_5$	&	$\ii_4$	&	$\ii_7$	&	$\ii_6$	&	$\ii_1$	&	$-1$	&	$-\ii_3$&	$-\ii_2$	\\
+	$\ii_6$	&	$\ii_6$	&	$-\ii_7$&	$\ii_4$	&	$\ii_5$	&	$-\ii_2$&	$\ii_3$	&	$-1$	&	$-\ii_1$	\\
+	$\ii_7$	&	$\ii_7$	&	$\ii_6$	&	$-\ii_5$&	$-\ii_4$&	$\ii_3$	&	$\ii_2$	&	$\ii_1$	&	$-1$		\\
+	\bottomrule
+	\end{tabular}
+
+	\caption{Tabela de multiplicação dos octônios como $(\R^2)^4$ (tomando a multiplicação em $\R^2 \times (\R^2)^3$ análoga à multiplicação dos quatérnios $\R^4 = \R \times \R^3$, mas adaptando-a para a conjugação complexa de $\R^2$).}
+	\label{tab:multiplicacao.octonionica.antiga}
+\end{table}
+
+
+\begin{table}
+	\centering
+
+	\begin{tabular}{c | c c c c c c c c}
+	\toprule
+	$\times$	&	$1$		&	$\ii_1$	&	$\ii_2$	&	$\ii_3$	&	$\ii_4$	&	$\ii_5$	&	$\ii_6$	&	$\ii_7$	\\
+%	\midrule
+	\hline
+	$1$			&	$1$		&	$\ii_1$	&	$\ii_2$	&	$\ii_3$	&	$\ii_4$	&	$\ii_5$	&	$\ii_6$	&	$\ii_7$	\\
+	$\ii_1$		&	$\ii_1$	&	$-1$	&	$\ii_?$	&	$\ii_?$	&	$\ii_?$	&	$\ii_?$	&	$\ii_?$	&	$\ii_?$	\\
+	$\ii_2$		&	$\ii_2$	&	$\ii_?$	&	$-1$	&	$\ii_?$	&	$\ii_?$	&	$\ii_?$	&	$\ii_?$	&	$\ii_?$	\\
+	$\ii_3$		&	$\ii_3$	&	$\ii_?$	&	$\ii_?$	&	$-1$	&	$\ii_?$	&	$\ii_?$	&	$\ii_?$	&	$\ii_?$	\\
+	$\ii_4$		&	$\ii_4$	&	$\ii_?$	&	$\ii_?$	&	$\ii_?$	&	$-1$	&	$\ii_?$	&	$\ii_?$	&	$\ii_?$	\\
+	$\ii_5$		&	$\ii_5$	&	$\ii_?$	&	$\ii_?$	&	$\ii_?$	&	$\ii_?$	&	$-1$	&	$\ii_?$	&	$\ii_?$	\\
+	$\ii_6$		&	$\ii_6$	&	$\ii_?$	&	$\ii_?$	&	$\ii_?$	&	$\ii_?$	&	$\ii_?$	&	$-1$	&	$\ii_?$	\\
+	$\ii_7$		&	$\ii_7$	&	$\ii_?$	&	$\ii_?$	&	$\ii_?$	&	$\ii_?$	&	$\ii_?$	&	$\ii_?$	&	$-1$	\\
+	\bottomrule
+	\end{tabular}
+
+	\caption{Tabela de multiplicação dos octônios.}
+\end{table}
+\end{comment}
+
+\begin{figure}
+	\centering
+
+	\begin{tikzpicture}
+	
+	\def \raio{1.5cm}
+
+	\coordinate (O) at (0,0);
+	\coordinate (A) at (-90:\raio);
+	\coordinate (B) at (30:\raio);
+	\coordinate (C) at (150:\raio);
+
+	\coordinate (AA) at (90:2*\raio);
+	\coordinate (BB) at (210:2*\raio);
+	\coordinate (CC) at (330:2*\raio);
+
+	\foreach \P/\PP in {A/AA, B/BB, C/CC}
+		{
+			\draw[->] (\P) -- ($ (\P)!.5!(O) $);
+			\draw ($ (\P)!.4!(O) $) -- (O);
+			\draw[->] (O) -- ($ (O)!.75!(\PP) $);
+			\draw ($ (O)!.70!(\PP) $) -- (\PP);
+		}
+
+	\foreach \n in {0,1,2,3}
+		{
+			\draw[->] (-90+120*\n:\raio) arc (-90+120*\n:-29+120*\n:\raio);
+			\draw (-30+120*\n:\raio) arc (-30+120*\n:30+120*\n:\raio);
+		}
+
+	\foreach \P/\PP in {A/CC, CC/B, B/AA, AA/C, C/BB, BB/A}
+		{
+			\draw[->] (\P) -- ($ (\P)!.5!(\PP) $);
+			\draw ($ (\P)!.4!(\PP) $) -- (\PP);
+		}
+
+	\foreach \P/\n in {O/4, A/1, B/2, C/3, AA/5, BB/6, CC/7}
+		\node[draw,circle,fill=amarelo,inner sep=1.5pt] at (\P) {$\ii_\n$};
+
+	\end{tikzpicture}
+
+	\caption{Grafo para memorizar multiplicação octoniônica.}
+
+\end{figure}
+
+
+\begin{comment}
+
+
+\begin{figure}
+	\centering
+
+	\begin{tikzpicture}
+	
+	\def \raio{1.5cm}
+
+	\coordinate (O) at (0,0);
+	\coordinate (A) at (-90:\raio);
+	\coordinate (B) at (30:\raio);
+	\coordinate (C) at (150:\raio);
+
+	\coordinate (AA) at (90:2*\raio);
+	\coordinate (BB) at (210:2*\raio);
+	\coordinate (CC) at (330:2*\raio);
+
+	\foreach \P/\PP in {A/AA, B/BB, C/CC}
+		{
+			\draw[->] (O) -- ($ (O)!.5!(\P) $);
+			\draw ($ (O)!.4!(\P) $) -- (\P);
+			\draw[->] (\PP) -- ($ (\PP)!.6!(O) $);
+			\draw ($ (\PP)!.5!(O) $) -- (O);
+		}
+
+	\foreach \n in {0,1,2,3}
+		{
+			\draw[->] (-90+120*\n:\raio) arc (-90+120*\n:-29+120*\n:\raio);
+			\draw (-30+120*\n:\raio) arc (-30+120*\n:30+120*\n:\raio);
+		}
+
+	\foreach \P/\PP in {A/CC, CC/B, B/AA, AA/C, C/BB, BB/A}
+		{
+			\draw[->] (\P) -- ($ (\P)!.5!(\PP) $);
+			\draw ($ (\P)!.4!(\PP) $) -- (\PP);
+		}
+
+	\foreach \P/\n in {O/1, A/2, B/4, C/6, AA/3, BB/5, CC/7}
+		\node[draw,circle,fill=amarelo,inner sep=1.5pt] at (\P) {$\ii_\n$};
+
+	\end{tikzpicture}
+
+	\caption{Grafo para memorizar multiplicação octoniônica (ANTIGO).}
+
+\end{figure}
+
+
+
+% NOTA: Isso a seguir está incompleto!
+A multiplicação octoniônica está completamente definida pela relações
+	\begin{enumerate}
+		\item Para todo $k \in [7]$, $\ii_k \ii_k = -1$;
+		\item Para toda permutação $\fun{\pi}{\{1,2,3\}}{\{1,2,3\}}$,
+			\begin{equation*}
+			\ii_{\pi(1)} \ii_{\pi(2)} = \prd(\pi)\ii_{\pi(3)};
+			\end{equation*}
+		\item Para toda permutação $\fun{\pi}{\{1,4,5\}}{\{1,4,5\}}$,
+			\begin{equation*}
+			\ii_{\pi(1)} \ii_{\pi(4)} = \prd(\pi)\ii_{\pi(5)};
+			\end{equation*}
+		\item Para toda permutação $\fun{\pi}{\{1,6,7\}}{\{1,6,7\}}$,
+			\begin{equation*}
+			\ii_{\pi(1)} \ii_{\pi(6)} = \prd(\pi)\ii_{\pi(7)};
+			\end{equation*}
+%		\item Para todo $n \in [3]$ e toda permutação $\fun{\pi}{\{1,2+2n,3+2n\}}{\{1,2+2n,3+2n\}}$,
+%			\begin{equation*}
+%			\ii_{\pi(1)} \ii_{\pi(2+2n)} = \prd(\pi)\ii_{\pi(3+2n)},
+%			\end{equation*}
+%		em que o sinal $\prd(\pi)$ da permutação $\pi$ é calculado supondo a ordem usual em $\{1,2+2n,3+2n\}$ induzida de $\N$;
+		\item Para toda permutação $\fun{\pi}{\{2,4,6\}}{\{2,4,6\}}$,
+			\begin{equation*}
+			\ii_{\pi(2)} \ii_{\pi(4)} = \prd(\pi)\ii_{\pi(6)};
+			\end{equation*}
+%		em que o sinal $\prd(\pi)$ da permutação $\pi$ é calculado supondo a ordem usual em $\{2,4,6\}$ induzida de $\N$;
+		\item Para toda permutação $\fun{\pi}{\{2,5,7\}}{\{2,5,7\}}$,
+			\begin{equation*}
+			\ii_{\pi(2)} \ii_{\pi(5)} = -\prd(\pi)\ii_{\pi(7)};
+			\end{equation*}
+%		em que o sinal $\prd(\pi)$ da permutação $\pi$ é calculado supondo a ordem usual em $\{2,5,7\}$ induzida de $\N$;
+		\item Para toda permutação $\fun{\pi}{\{3,4,7\}}{\{3,4,7\}}$,
+			\begin{equation*}
+			\ii_{\pi(3)} \ii_{\pi(4)} = -\prd(\pi)\ii_{\pi(7)};
+			\end{equation*}
+%		em que o sinal $\prd(\pi)$ da permutação $\pi$ é calculado supondo a ordem usual em $\{3,4,7\}$ induzida de $\N$;
+		\item Para toda permutação $\fun{\pi}{\{3,5,6\}}{\{3,5,6\}}$,
+			\begin{equation*}
+			\ii_{\pi(3)} \ii_{\pi(5)} = -\prd(\pi)\ii_{\pi(6)};
+			\end{equation*}
+%		em que o sinal $\prd(\pi)$ da permutação $\pi$ é calculado supondo a ordem usual em $\{3,5,6\}$ induzida de $\N$.
+	\end{enumerate}
+e em cada caso, o sinal $\prd(\pi)$ da permutação $\fun{\pi}{S}{S}$ é calculado supondo a ordem usual em $S$ induzida de $\N$.
+
+Isso nos permite calcular que existem $480$ diferentes escolhas de operações $\times$ que fazem de $\R^8$ uma álgebra isomorfa aos octônios.
+\end{comment}
+
+\begin{exercise}
+A lista
+	\begin{equation*}
+	((\R^8,+,-,0,\cdot,\times,\div,1),\nor{\var})
+	\end{equation*}
+é uma álgebra\footnote{A álgebra de $\R^8$ com essa multiplicação costuma ser denotada por $\mathbb{O}$, mas manteremos a notação $\R^8$ por simplicidade de notação, pois nenhuma ambiguidade resultará disso.} alternativa invertível normada sobre $\R$.
+\begin{enumerate}
+	\item (Bilinearidade) A multiplicação quaterniônica $\fun{\times}{\R^8 \times \R^8}{\R^8}$ é uma função bilinear;
+	\item (Alternatividade) Para todos $x,y \in \R^8$,
+		\begin{align*}
+		(xx)y &= x(xy) \\
+		(xy)y &= x(yy);
+		\end{align*}
+	\item (Identidade) Para todo $x \in \R^8$,
+		\begin{equation*}
+		x1 = 1x = x;
+		\end{equation*}
+	\item (Inversa) Para todo $x \in \R^8$,
+		\begin{equation*}
+		x\inv x = 1 = xx\inv;
+		\end{equation*}
+	\item (Submultiplicatividade) Para todos $x,y \in \R^8$,
+		\begin{equation*}
+		\nor{xx'} \leq \nor{x}\nor{x'}.
+		\end{equation*}
+	\item (Unitariedade) $\nor{1}=1$;
+	\item (Invertibilidade) Para todo $x \in \R^8$,
+		\begin{equation*}
+		\nor{x\inv} = \nor{x}\inv.
+		\end{equation*}
+\end{enumerate}
+\end{exercise}
+
+
+
+
+
+
+
+
+\begin{table}
+	\centering
+
+	\begin{tabular}{c | c c c c c c c}
+	\toprule
+	$\pvec{}{}$&	$\ii_1$	&	$\ii_2$	&	$\ii_3$	&	$\ii_4$	&	$\ii_5$	&	$\ii_6$	&	$\ii_7$		\\
+	\hline
+	$\ii_1$	&	$0$		&	$\ii_3$	&	$-\ii_2$&	$\ii_5$	&	$-\ii_4$&	$-\ii_7$&	$\ii_6$		\\
+	$\ii_2$	&	$-\ii_3$&	$0$		&	$\ii_1$	&	$\ii_6$	&	$\ii_7$	&	$-\ii_4$&	$-\ii_5$	\\
+	$\ii_3$	&	$\ii_2$	&	$-\ii_1$&	$0$		&	$\ii_7$	&	$-\ii_6$&	$\ii_5$	&	$-\ii_4$	\\
+	$\ii_4$	&	$-\ii_5$&	$-\ii_6$&	$-\ii_7$&	$0$		&	$\ii_1$	&	$\ii_2$	&	$\ii_3$		\\
+	$\ii_5$	&	$\ii_4$	&	$\ii_7$	&	$\ii_6$	&	$\ii_1$	&	$0$		&	$-\ii_3$&	$-\ii_2$	\\
+	$\ii_6$	&	$\ii_7$	&	$\ii_4$	&	$-\ii_5$&	$-\ii_2$&	$\ii_3$	&	$0$		&	$-\ii_1$	\\
+	$\ii_7$	&	$-\ii_6$&	$\ii_5$	&	$\ii_4$	&	$-\ii_3$&	$-\ii_2$&	$\ii_1$	&	$0$			\\
+	\bottomrule
+	\end{tabular}
+
+	\caption{Tabela de produto vetorial em $\vec{\R}^7$.}
+	\label{tab:multiplicacao.octonionica.vetorial}
+\end{table}
+
+
+
 
 
 
