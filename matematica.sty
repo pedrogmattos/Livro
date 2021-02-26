@@ -339,13 +339,17 @@
 %	\makeatother
 
 	\newcommand{\N}{\mathbb{N}}
+	\newcommand{\NN}{\accentset{\infty}{\N}}
 %	\newcommand{\Z}{\mathbb{Z}}
+	\newcommand{\ZZ}{\accentset{\infty}{\Z}}
 	\newcommand{\Z}{\mathbb{I}}
 	\newcommand{\Q}{\mathbb{Q}}
 	\newcommand{\R}{\mathbb{R}}
-	\newcommand{\RR}{\R_\infty}
+	\newcommand{\RR}{\accentset{\infty}{\R}}
 	\newcommand{\C}{\mathbb{C}}
+%	\newcommand{\C}{{\R^2}}
 	\newcommand{\HH}{\mathbb{H}}
+	\newcommand{\Oct}{\mathbb{O}}
 	%% Alternativos
 	%\newcommand{\O}{\mathbb{O}} % Números ordinais finitos
 	\newcommand{\I}{\mathbb{I}} % Números inteiros
@@ -451,8 +455,11 @@
 	}
 	
 	% Elemento identidade
-	\newcommand{\id}{\textsc{i}}
-	\renewcommand{\id}{1}
+%	\newcommand{\id}{\textsc{i}}
+	\newcommand{\id}{1}
+	% Elemento nulidade
+	\newcommand{\nulo}{0}
+
 
 	% Conjugação por elemento do grupo
 	\newcommand{\con}{
@@ -607,6 +614,11 @@
 	\newcommand{\zero}{\mathbbm O}
 	% Traço
 	\DeclareMathOperator{\tr}{tr}
+	\newcommand{\newtr}[1]{\left\langle\!\left\langle{#1}\right\rangle\!\right\rangle}
+	\renewcommand{\tr}[1]{\newtr{#1}}
+	% Determinante
+	\newcommand{\newdet}[1]{\left\llbracket{#1}\right\rrbracket}
+	\renewcommand{\det}[1]{\newdet{#1}}
 
 	% Funções chão, teto e arredondamento
 	\newcommand{\chao}[1]{\left\lfloor{#1}\right\rfloor}
@@ -637,9 +649,16 @@
 %------------------------------------
 	\DeclareMathOperator{\adj}{ad}
 %	\DeclareMathOperator{\Der}{Der}
-	\newcommand{\Der}{\mathcal{D}}
+	\newcommand{\Der}{\mathfrak{D}}
 	\newcommand{\col}[2]{\left[{#1},{#2}\right]}
 	\newcommand{\ad}[1]{\left[{#1}\right|}
+
+	% Álgebras derivativas
+	\newcommand{\Linder}{\mathfrak{L}}
+
+	% Involução (conjugação complexa, dual, etc)
+	\newcommand{\invol}[1]{{#1}^*}
+	\newcommand{\invinvol}[1]{{#1}^{-*}}
 
 	% Álgebras clássicas
 	\DeclareMathOperator{\gl}{gl}
@@ -734,8 +753,10 @@
 	\newcommand{\uconv}{\rightrightarrows}
 	% Bola aberta e bola fechada de espaço métrico
 	\newcommand{\bola}{\mathrm{B}}
+	\newcommand{\bolanova}[2]{\mathrm{B}\left[{#1};{#2}\right[}
 %	\newcommand{\bola}{\mbox{\larger[1]$\odot$}}
 	\newcommand{\bolafec}{\Fec{\bola}} % A notação é diferente, e não simplesmente denotamos uma como o fecho da outra, porque nem sempre em um espaço métrico ao fecho da bola aberta é a bola fechada de mesmo raio e centro.
+	\newcommand{\bolafecnova}[2]{\mathrm{B}\left[{#1};{#2}\right]}
 
 % Grupos topológicos
 %------------------------------------
@@ -766,7 +787,8 @@
 	% Produto interno
 	\newcommand{\inte}[2]{\left\langle{#1},{#2}\right\rangle}
 	% Complexo conjugado
-	\newcommand{\conju}[1]{\overline{#1}}
+%	\newcommand{\conju}[1]{\overline{#1}}
+	\newcommand{\conju}[1]{{#1}^*}
 	% Ângulo
 	\newcommand{\ang}[2]{\sphericalangle\left({#1},{#2}\right)}
 	\newcommand{\angf}{\sphericalangle}
@@ -786,6 +808,9 @@
 	\newcommand{\nsin}{\mathop{\Sin}}
 	\newcommand{\ncos}{\mathop{\Cos}}
 
+	% Forma quadrática
+	\newcommand{\qua}[1]{\left\llbracket{#1}\right\rrbracket}
+
 	% Parte escalar e vetorial do quatérnio
 %	\newcommand{\esc}[1]{\dot{#1}}
 %	\newcommand{\esc}[1]{\tilde{#1}}
@@ -795,7 +820,8 @@
 %	\newcommand{\pesc}[2]{\left\langle{#1},{#2}\right\rangle}
 %	\newcommand{\pvec}[2]{{#1} \bm{\times} {#2}}
 	\newcommand{\pvec}[2]{{#1} \Yup {#2}}
-	\newcommand{\inteq}[2]{\left\langle\!\left\langle{#1},{#2}\right\rangle\!\right\rangle}
+%	\newcommand{\inteq}[2]{\left\langle\!\left\langle{#1},{#2}\right\rangle\!\right\rangle}
+	\newcommand{\inteq}[2]{\inte{#1}{#2}_{1,3}}
 
 % Medida
 %------------------------------------
