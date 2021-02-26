@@ -106,12 +106,12 @@ Como, para todo $i \in [n]$, $\dist{p}{p'}_i \geq 0$, então, para todo $i \in [
 	\dist{p}{p'} = \sum_{i=0}^{n-1} 0 = 0.
 	\end{equation*}
 	
-	\item (Simetria) Sejam $p,p' \in M$. Então, pela simetria de $d_i$ para todo $i \in [n]$,
+	\item (Simetria) Sejam $p,p' \in M$. Então, pela simetria de $\dist{\var}{\var}_i$ para todo $i \in [n]$,
 	\begin{equation*}
 	\dist{p}{p'} = \sum_{i=0}^{n-1} \dist{p}{p'}_i = \sum_{i=1}^{n-1} \dist{p}{p'}_i = \dist{p}{p'}.
 	\end{equation*}
 	
-	\item (Desigualdade Triangular) Sejam $p,p',p'' \in M$. Então, para todo $i \in [n]$, vale $\dist{p}{p''}_i \leq \dist{p}{p'}_i+\dist{p'}{p''}_i$ pela desigualdade triangular de $d_i$, e segue que
+	\item (Desigualdade Triangular) Sejam $p,p',p'' \in M$. Então, para todo $i \in [n]$, vale $\dist{p}{p''}_i \leq \dist{p}{p'}_i+\dist{p'}{p''}_i$ pela desigualdade triangular de $\dist{\var}{\var}_i$, e segue que
 	\begin{align*}
 	\dist{p}{p''} &= \sum_{i=0}^{n-1} \dist{p}{p''}_i \\
 				&\leq \sum_{i=0}^{n-1} (\dist{p}{p'}_i+\dist{p'}{p''}_i) \\
@@ -122,9 +122,9 @@ Como, para todo $i \in [n]$, $\dist{p}{p'}_i \geq 0$, então, para todo $i \in [
 \end{proof}
 
 \begin{proposition}
-Sejam $M$ um conjunto não vazio e $d_0, \ldots,d_{n-1}$ métricas em $M$. Então a função
+Sejam $M$ um conjunto não vazio e $\dist{\var}{\var}_0, \ldots,\dist{\var}{\var}_{n-1}$ métricas em $M$. Então a função
 	\begin{align*}
-	\func{d}{M \times M}{\R}{(p,p')}{\max\set{\dist{p}{p'}_i}{i \in [n]}}
+	\func{\dist{\var}{\var}}{M \times M}{\R}{(p,p')}{\max\set{\dist{p}{p'}_i}{i \in [n]}}
 	\end{align*}
 é uma métrica sobre $M$.
 \end{proposition}
@@ -225,7 +225,7 @@ Sejam $\bm M$ um espaço métrico e $C \subseteq M$ um conjunto. Então $C$ é u
 \begin{proof}
 Se $C$ é limitado, basta tomar $r=\diam(C)$ e $c \in C$. Reciprocamente, se existe bola $\bolafec_r(c)$ tal que $C \subseteq \bolafec_r(c)$, então para todos $p,p' \in C$, segue da desigualdade triangular que
 	\begin{equation*}
-	\dist{p}{p'} \leq d(p,c)+\dist{c}{p'} \leq r+r=2r,
+	\dist{p}{p'} \leq \dist{p}{c}+\dist{c}{p'} \leq r+r=2r,
 	\end{equation*}
 portanto $\diam(C) \leq 2r \in \intfa{0}{\infty}$.
 \end{proof}
@@ -320,7 +320,7 @@ Todo espaço métrico $\bm M$ é um espaço topológico separado.
 \begin{proof}
 Sejam $p,p' \in M$ pontos distintos. Mostraremos que existe um número real $r$ tal que $0 < r \leq \frac{1}{2} \dist{p}{p'}$, e que isso implica que $\bola_r(p) \cap \bola_r(p') = \emptyset$. Como $p \neq p'$, então $\dist{p}{p'} > 0$, portanto existe $r \in \R$ tal que $0 < r \leq \frac{1}{2} \dist{p}{p'}$. Suponhamos que existe $p'' \in \bola_r(p) \cap \bola_r(p')$. Então $\dist{p}{p''}<r$ e $\dist{p'}{p''}<r$. Mas, pela desigualdade triangular, segue que
 	\begin{equation*}
-	\dist{p}{p'} \leq \dist{p}{p''} + d(p'',p') < r + r \leq \dist{p}{p'},
+	\dist{p}{p'} \leq \dist{p}{p''} + \dist{p''}{p'} < r + r \leq \dist{p}{p'},
 	\end{equation*}
 o que é absurdo. Portanto $\bola_r(p) \cap \bola_r(p') = \emptyset$.
 \end{proof}
@@ -351,9 +351,9 @@ Toda sequência convergente em um espaço métrico $\bm M$ é limitada.
 \begin{proof}
 	Seja $(p_n)_{n \in \N}$ uma sequência de pontos em $M$ tal que $(p_n) \conv p$. Então, para $\varepsilon = 1$, existe $N \in \N$ tal que, para todo $n \in \N$, se $n \geq N$, então $p_n \in \bola_1(p)$. Assim, seja $l \in \R$ tal que
 	\begin{equation*}
-	l > \max(\{1\} \cup \{d(p,p_n) : n \in [N]\}),
+	l > \max(\{1\} \cup \{\dist{p}{p_n} : n \in [N]\}),
 	\end{equation*}
-seque que, para todo $n \in \N$, $p_n \in \bola_l(p)$ pois, se $0 \leq n \leq N$, $d(p,p_n) < l$ pela definição de $l$ e, se $n \geq N$, então $p_n \in \bola_1(p) \subseteq B_l(p)$, pois $1 < l$. Logo $(p_n)_{n \in \N}$ é limitada.
+seque que, para todo $n \in \N$, $p_n \in \bola_l(p)$ pois, se $0 \leq n \leq N$, $\dist{p}{p_n} < l$ pela definição de $l$ e, se $n \geq N$, então $p_n \in \bola_1(p) \subseteq B_l(p)$, pois $1 < l$. Logo $(p_n)_{n \in \N}$ é limitada.
 \end{proof}
 
 \begin{proposition}
@@ -362,40 +362,40 @@ Sejam $\bm M$ um espaço métrico, $C \subseteq M$ um conjunto e $p \in M$. Ent�
 \begin{proof}
 	Suponhamos que exista uma sequência $(p_n)_{n \in \N}$ de pontos em $C$ tal que $(p_n) \conv p$. Então, para todo número real $\varepsilon > 0$, existe $N \in \N$ tal que, para todo $n \in \N$, se $n \geq N$, então $p_n \in \bola_\varepsilon(p)$. Mas isso implica que $p_n \in C \cap \bola_\varepsilon(p)$. Reciprocamente, suponhamos que, para todo número real $\varepsilon > 0$, $C \cap \bola_\varepsilon(p) \neq \emptyset$. Então, em particular, para todo $n \in \N$, escolhamos $p_n \in C \cap \bola_{\frac{1}{n}}(p)$. Assim, temos a sequência $(p_n)_{n \in \N}$. Para mostrar que $(p_n) \conv p$, seja $\varepsilon \in \R$ tal que $\varepsilon > 0$. Então existe $N \in \N$ tal que $\frac{1}{N} \leq \varepsilon$. Mas isso implica que, para todo número natural $n \geq N$, $\frac{1}{n} \leq \frac{1}{N}$, e segue que
 	\begin{equation*}
-	d(p,p_n) < \frac{1}{n} \leq \frac{1}{N} \leq \varepsilon
+	\dist{p}{p_n} < \frac{1}{n} \leq \frac{1}{N} \leq \varepsilon
 	\end{equation*}
 e, portanto, $(p_n) \conv p$.
 \end{proof}
 
 \begin{proposition}
-Sejam $\bm M$ um espaço métrico, $p,q \in M$ e $(p_n)_{n \in \N}$ e $(q_n)_{n \in \N}$ sequências em $M$ que convergem para $p$ e $q$ respectivamente. Então a sequência $(d(p_n,q_n))_{n \in \N}$ em $\R$ converge para $d(p,q)$.
+Sejam $\bm M$ um espaço métrico, $p,q \in M$ e $(p_n)_{n \in \N}$ e $(q_n)_{n \in \N}$ sequências em $M$ que convergem para $p$ e $q$ respectivamente. Então a sequência $(\dist{p_n}{q_n})_{n \in \N}$ em $\R$ converge para $\dist{p}{q}$.
 \end{proposition}
 \begin{proof}
 	Para todo $n \in \N$, segue da desigualdade triangular que
 	\begin{equation*}
-	d(p_n,q_n) \leq d(p_n,p) + d(p,q) + d(q,q_n).
+	\dist{p_n}{q_n} \leq \dist{p_n}{p} + \dist{p}{q} + \dist{q}{q_n}.
 	\end{equation*}
 Seja $\varepsilon > 0$ um número real. Então existem $N_1,_2 \in \N$ tais que
 	\begin{equation*}
-	\forall n \in \N \qquad n \geq N_1 \Rightarrow d(p,p_n) < \frac{\varepsilon}{2}
+	\forall n \in \N \qquad n \geq N_1 \Rightarrow \dist{p}{p_n} < \frac{\varepsilon}{2}
 	\end{equation*}
 e
 	\begin{equation*}
-	\forall n \in \N \qquad n \geq N_2 \Rightarrow d(q,q_n) < \frac{\varepsilon}{2}.
+	\forall n \in \N \qquad n \geq N_2 \Rightarrow \dist{q}{q_n} < \frac{\varepsilon}{2}.
 	\end{equation*}
 Fazendo $N_3 := \max\{N_1,N_2\}$, segue que
 	\begin{equation*}
-	\forall n \in \N \qquad n \geq N_3 \Rightarrow d(p_n,q_n) \leq d(p_n,p) + d(p,q) + d(q,q_n) < d(p,q) + \varepsilon;
+	\forall n \in \N \qquad n \geq N_3 \Rightarrow \dist{p_n}{q_n} \leq \dist{p_n}{p} + \dist{p}{q} + \dist{q}{q_n} < \dist{p}{q} + \varepsilon;
 	\end{equation*}
-ou seja, $d(p_n,q_n) - d(p,q) < \varepsilon$. Analogamente, achamos $N_6 \in \N$ tal que
+ou seja, $\dist{p_n}{q_n} - \dist{p}{q} < \varepsilon$. Analogamente, achamos $N_6 \in \N$ tal que
 	\begin{equation*}
-	\forall n \in \N \qquad n \geq N_3 \Rightarrow d(p_n,q_n) \leq d(p_n,p) + d(p,q) + d(q,q_n) < d(p,q) + \varepsilon
+	\forall n \in \N \qquad n \geq N_3 \Rightarrow \dist{p_n}{q_n} \leq \dist{p_n}{p} + \dist{p}{q} + \dist{q}{q_n} < \dist{p}{q} + \varepsilon
 	\end{equation*}
 e fazendo $n := \max\{N_3,N_6\}$, segue que
 	\begin{equation*}
-	\forall n \in \N \qquad n \geq N \Rightarrow |d(p,q) - d(p_n,q_n)| < \varepsilon,
+	\forall n \in \N \qquad n \geq N \Rightarrow |\dist{p}{q} - \dist{p_n}{q_n}| < \varepsilon,
 	\end{equation*}
-o que mostra que $(d(p_n,q_n)) \conv d(p,q)$ em $\R$.
+o que mostra que $(\dist{p_n}{q_n}) \conv \dist{p}{q}$ em $\R$.
 	
 \end{proof}
 
@@ -415,10 +415,10 @@ Reciprocamente, suponhamos que $F^\complement$ é aberto. Se $F = \emptyset$, en
 \end{proof}
 
 \begin{proposition}
-Seja $\bm M$ um espaço métrico. Então, para todo $c \in M$ e para todo número real $r > 0$, a bola fechada $\bar\bola_r(c)$ é um conjunto fechado.
+Seja $\bm M$ um espaço métrico. Então, para todo $c \in M$ e para todo número real $r > 0$, a bola fechada $\bolafec_r(c)$ é um conjunto fechado.
 \end{proposition}
 \begin{proof}
-Basta notar que $\bar\bola_r(c)^\complement$ é aberto.
+Basta notar que $\bolafec_r(c)^\complement$ é aberto.
 \end{proof}
 
 \subsection{Conjuntos densos}
@@ -480,7 +480,7 @@ A recíproca nem sempre é verdade. Nos espaços $\R^d$, $ d \in \N$, vale que u
 \begin{definition}
 Sejam $\bm M$ e $\bm M'$ espaços métricos e $p \in M$. Uma função \emph{contínua em $p$} é uma função $f\colon M \to M'$ que satisfaz: para todo $\varepsilon \in \intaa{0}{\infty}$, existe $\delta \intaa{0}{\infty}$ tal que, para todo $x \in M$
 %	\begin{equation*}
-%	\qquad d_1(p,x) < \delta \Rightarrow d_2(f(p),f(x)) < \varepsilon.
+%	\qquad \dist{p}{x}_1 < \delta \Rightarrow \dist{f(p)}{f(x)}_2 < \varepsilon.
 %	\end{equation*}
 	\begin{equation*}
 	x \in \bola_\delta(p) \Rightarrow f(x) \in \bola_\varepsilon(f(p)).
@@ -699,7 +699,7 @@ Como $F \cap F' = \emptyset$, então $f \neq f'$, portanto $\dist{f}{f'} > 0$, o
 \begin{definition}
 Seja $\bm M$ um espaço métrico. Uma sequência \emph{aproximante} em $\bm M$ é uma sequência $(p_n)_{n \in \N}$ de pontos em $M$ tal que, para todo número real $\varepsilon > 0$, existe um número natural $N$ satisfazendo
 	\begin{equation*}
-	\forall n,m \in \N \qquad n,m \geq N \Rightarrow d(p_n,p_m) < \varepsilon.
+	\forall n,m \in \N \qquad n,m \geq N \Rightarrow \dist{p_n}{p_m} < \varepsilon.
 	\end{equation*}
 \end{definition}
 
@@ -711,7 +711,7 @@ Toda sequência convergente em um espaço métrico $\bm M$ é aproximante.
 \begin{proof}
 Seja $(p_n)_{n \in \N}$ uma sequência em $M$ que converge para $p$. Seja $\varepsilon \in \R$ tal que $\varepsilon > 0$. Então $\frac{1}{2}\varepsilon > 0$ é um número real e segue que existe $N \in \N$ tal que, para todo número natural $n \geq N$, $p_n \in \bola_{\frac{1}{2}\varepsilon}(p)$. Assim, segue que	
 	\begin{equation*}
-	\forall n,m \in \N \qquad n,m \geq N \Rightarrow d(p_n,p_m) \leq d(p_n,p) + d(p,p_m) < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon,
+	\forall n,m \in \N \qquad n,m \geq N \Rightarrow \dist{p_n}{p_m} \leq \dist{p_n}{p} + \dist{p}{p_n} < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon,
 	\end{equation*}
 o que mostra que $(p_n)_{n \in \N}$ é uma sequência aproximante.
 \end{proof}
@@ -722,15 +722,15 @@ Toda sequência aproximante em um espaço métrico $\bm M$ que tem uma subsequê
 \begin{proof}
 	Seja $(p_{n_k})_{k \in \N}$ uma subsequência de $(p_n)_{n \in \N}$ que converge  para $p$. Seja $\varepsilon > 0$ um número real. Como $(p_n)_{n \in \N}$ é uma sequência de Cauchy e $\frac{1}{2}\varepsilon > 0$ é um número real, existe um número natural $N$ tal que
 	\begin{equation*}
-	\forall n,m \in \N \qquad n,m \geq N \Rightarrow d(p_n,p_m) < \frac{\varepsilon}{2}.
+	\forall n,m \in \N \qquad n,m \geq N \Rightarrow \dist{p_n}{p_m} < \frac{\varepsilon}{2}.
 	\end{equation*}
 Como $(p_{n_k})_{k \in \N}$ é uma subsequência convergente, existe $K_1 \in \N$ tal que
 	\begin{equation*}
-	\forall k \in \N \qquad k \geq K_1 \Rightarrow d(p,p_{n_k}) < \frac{\varepsilon}{2}.
+	\forall k \in \N \qquad k \geq K_1 \Rightarrow \dist{p}{p_{n_k}} < \frac{\varepsilon}{2}.
 	\end{equation*}
 Como $(n_k)_{k \in \N}$ é uma sequência estritamente crescente, existe $K_2 \in \N$ tal que, para todo número natural $k \geq K_2$, $n_k \geq N$. Assim, tomando $K := \max\{K_1,K_2\}$, segue que, para todo número natural $n \in \N$, existe $k \in \N$ tal que $n_k \geq N$ e,  pela desigualdade triangular, que
 	\begin{equation*}
-	\forall n \in \N \qquad n \geq N \Rightarrow d(p_n,p) \leq d(p_n,p_{n_k}) + d(p_{n_k},p) < \frac{\varepsilon}{2}+\frac{\varepsilon}{2}=\varepsilon.
+	\forall n \in \N \qquad n \geq N \Rightarrow \dist{p_n}{p} \leq \dist{p_n}{p_{n_k}} + \dist{p_{n_k}}{p} < \frac{\varepsilon}{2}+\frac{\varepsilon}{2}=\varepsilon.
 	\end{equation*}
 \end{proof}
 
@@ -740,12 +740,12 @@ Toda sequência aproximante em um espaço métrico $\bm M$ é limitada.
 \begin{proof}
 Seja $(p_n)_{n \in \N}$ uma sequência aproximante em $\bm M$. Então, para $\varepsilon=1$, existe $N \in \N$ tal que
 	\begin{equation*}
-	\forall n,m \in \N \qquad n,m \geq N \Rightarrow d(p_n,p_m)<1.
+	\forall n,m \in \N \qquad n,m \geq N \Rightarrow \dist{p_n}{p_m}<1.
 	\end{equation*}
 	Definamos $P := \{p_n : n \in \N\}$. Então segue que
 	\begin{align*}
-	\diam(P) &= \sup \set{d(p_n,p_m)}{n,m \in \N} \\
-		&= \max\{1 \cup \set{d(p_n,p_m)}{0 \leq n,m \leq N}\} \in \R,
+	\diam(P) &= \sup \set{\dist{p_n}{p_m}}{n,m \in \N} \\
+		&= \max\{1 \cup \set{\dist{p_n}{p_m}}{0 \leq n,m \leq N}\} \in \R,
 	\end{align*}
 o que mostra que $(p_n)_{n \in \N}$ é limitada.
 \end{proof}
@@ -755,7 +755,7 @@ o que mostra que $(p_n)_{n \in \N}$ é limitada.
 \begin{definition}
 Sejam $\bm M_1$ e $\bm M_2$ espaços métricos. Uma função \emph{uniformemente contínua} é uma função $f: M_1 \to M_2$ tal que, para todo número real $\varepsilon > 0$, existe um número real $\delta > 0$ tal que
 	\begin{equation*}
-	\forall p_1,p_2 \in M_1 \qquad d_1(p_1,p_2) < \delta \Rightarrow d_2(f(p_1),f(p_2)) < \varepsilon.
+	\forall p_1,p_2 \in M_1 \qquad \dist{p_1}{p_2}_1 < \delta \Rightarrow \dist{f(p_1)}{f(p_2)}_2 < \varepsilon.
 	\end{equation*}
 \end{definition}
 
@@ -763,13 +763,13 @@ Sejam $\bm M_1$ e $\bm M_2$ espaços métricos. Uma função \emph{uniformemente
 Sejam $\bm M_1$ e $\bm M_2$ espaços métricos, $f: M_1 \to M_2$ uma função uniformemente contínua e $(p_n)_{n \in \N}$ uma sequência aproximante em $M_1$. Então a sequência $(f(p_n))_{n \in \N}$ em $M_2$ é aproximante.
 \end{proposition}
 \begin{proof}
-Seja $\varepsilon > 0$ um número real. Da continuidade uniforme de $f$, existe um número real $\delta > 0$ tal que, para todo $p,p' \in M_1$, $\dist{p}{p'}_1 < \delta$ implica $d_2(f(p),f(p')) < \varepsilon$. Como $(p_n)_{n \in \N}$ é sequência aproximante, existe $N \in \N$ tal que
+Seja $\varepsilon > 0$ um número real. Da continuidade uniforme de $f$, existe um número real $\delta > 0$ tal que, para todo $p,p' \in M_1$, $\dist{p}{p'}_1 < \delta$ implica $\dist{f(p)}{f(p')}_2 < \varepsilon$. Como $(p_n)_{n \in \N}$ é sequência aproximante, existe $N \in \N$ tal que
 	\begin{equation*}
-	\forall n,m \in \N \qquad n,m \geq N \Rightarrow d_1(p_n,p_m) < \delta.
+	\forall n,m \in \N \qquad n,m \geq N \Rightarrow \dist{p_n}{p_m}_1 < \delta.
 	\end{equation*}
 Mas, da continuidade uniforme de $f$, isso implica que
 	\begin{equation*}
-	\forall n,m \in \N \qquad n,m \geq N \Rightarrow d_1(p_n,p_m) < \delta  \Rightarrow d_2(f(p_n),f(p_m)) < \varepsilon,
+	\forall n,m \in \N \qquad n,m \geq N \Rightarrow \dist{p_n}{p_m}_1 < \delta \Rightarrow \dist{f(p_n)}{f(p_m)}_2 < \varepsilon,
 	\end{equation*}
 e isso mostra que $(f(p_n))_{n \in \N}$ é uma sequência aproximante.
 \end{proof}
@@ -817,9 +817,9 @@ A sequência $(r_n)_{n \in \N}$ converge para $p$ e, portanto, é uma sequência
 
 	Agora, devemos mostrar que $f^*$ é uniformemente contínua. Seja $\varepsilon > 0$ um número real, então $\frac{1}{2}\varepsilon > 0$ é um número real e, como $f$ é uniformemente contínua, existe número real $\delta > 0$ tal que
 	\begin{equation*}
-	\forall p,p' \in M_1 \qquad \dist{p}{p'}_1 < \delta \Rightarrow d_2(f(p),f(p')) < \frac{\varepsilon}{2}.
+	\forall p,p' \in M_1 \qquad \dist{p}{p'}_1 < \delta \Rightarrow \dist{f(p)}{f(p')}_2 < \frac{\varepsilon}{2}.
 	\end{equation*}
-Assim, sejam $p,q \in M_1$ tais que $d_1(p,q) < \delta$. Queremos mostrar que $d_2(f(p),f(p')) < \varepsilon$. Sejam $(p_n)_{n \in \N}$ e $(q_n)_{n \in \N}$ sequências que convergem para $p$ e $q$, respectivamente. Então $d_1(p_n,q_n) \conv d_1(p,q)$ em $\R$.
+Assim, sejam $p,q \in M_1$ tais que $\dist{p}{q}_1 < \delta$. Queremos mostrar que $\dist{f(p)}{f(p')}_2 < \varepsilon$. Sejam $(p_n)_{n \in \N}$ e $(q_n)_{n \in \N}$ sequências que convergem para $p$ e $q$, respectivamente. Então $\dist{p_n}{q_n}_1 \conv \dist{p}{q}_1$ em $\R$.
 
 ...
 
@@ -943,7 +943,7 @@ Seja $\bm M$ um espaço métrico. O espaço $\bm M$ é compacto se, e somente se
 \begin{definition}
 Sejam $\bm M_0$ e $\bm M_1$ espaços métricos e $c \in \intfa{0}{\infty}$. Uma função \emph{métrica}\footnote{Essas funções são conhecidas geralmente como funções `Lipschitz' contínuas.} de $\bm M_0$ para $\bm M_1$ (com constante $c$) é uma função $f\colon M_0 \to M_1$ que satisfaz, para todos $p,p' \in M_0$,
 	\begin{equation*}
-	d_1(f(p),f(p')) \leq cd_0(p,p').
+	\dist{f(p)}{f(p')}_1 \leq c\dist{p}{p'}_0.
 	\end{equation*}
 Para $0 \leq c < 1$, a função $f$ é uma \emph{contração}; para $c=1$, é uma \emph{homometria}\footnote{Essas funções são também conhecidas como funções métricas, funções não expansoras, entre outros. Escolhi o nome homometria por uma relação que elas têm com as isometrias que serão definidas mais à frente}.
 \end{definition}
@@ -954,7 +954,7 @@ Sejam $\bm M_0, \bm M_1$ e $\bm M_2$ espaços métricos, $f_0\colon M_0 \to M_1$
 \begin{proof}
 Para todos $p,p' \in M_0$,
 	\begin{equation*}
-	d_2(f_1 \circ f_0(p),f_1 \circ f_0(p')) \leq c_1d_2(f_0(p),f_0(p')) \leq c_1c_0d_0(p,p').
+	\dist{f_1 \circ f_0(p)}{f_1 \circ f_0(p'))}_2 \leq c_1 \dist{f_0(p)}{f_0(p')}_2 \leq c_1c_0\dist{p}{p'}_0.
 	\end{equation*}
 Claramente, se $0 \leq c_0 < 1$ e $0 \leq c_1 < 1$, então $0 \leq c_1c_0 < 1$, e se $c_0=c_1=1$, então $c_1c_0=1$.
 \end{proof}
@@ -963,34 +963,34 @@ Claramente, se $0 \leq c_0 < 1$ e $0 \leq c_1 < 1$, então $0 \leq c_1c_0 < 1$, 
 Sejam $\bm M_0$ e $\bm M_1$ espaços métricos e $f\colon M_0 \to M_1$ uma função métrica (com constante $c$). Então $f$ é uniformemente contínua.
 \end{proposition}
 \begin{proof}
-Se $c=0$, a demonstração é óbvia. Se $c \neq 0$, seja $\varepsilon>0$. Tomando $\delta=\frac{\varepsilon}{c}$, segue que, para todos $p,p' \in M_0$, se $d_0(p,p') \leq \delta$, então
+Se $c=0$, a demonstração é óbvia. Se $c \neq 0$, seja $\varepsilon>0$. Tomando $\delta=\frac{\varepsilon}{c}$, segue que, para todos $p,p' \in M_0$, se $\dist{p}{p'}_0 \leq \delta$, então
 	\begin{equation*}
-	d_1(f(p),f(p')) \leq cd_0(p,p') \leq c\frac{\varepsilon}{c}=\varepsilon. \qedhere
+	\dist{f(p)}{f(p')}_1 \leq c\dist{p}{p'}_0 \leq c\frac{\varepsilon}{c}=\varepsilon. \qedhere
 	\end{equation*}
 \end{proof}
 
 \begin{proposition}
 Sejam $\bm M_0$ e $\bm M_1$ espaços métricos e $f\colon M_0 \to M_1$ uma função métrica (com constante $c$). Então $f$ tem inversa à esquerda que restrita a $f(M_0)$ é métrica (com constante $c$) se, e somente se, para todos $p,p' \in M_0$,
 	\begin{equation*}
-	c\inv d_0(p,p') \leq d_1(f(p),f(p')) \leq cd_0(p,p').
+	c\inv \dist{p}{p'}_0 \leq \dist{f(p)}{f(p')}_1 \leq c\dist{p}{p'}_0.
 	\end{equation*}
 \end{proposition}
 \begin{proof}
 Se $f$ tem inversa à esquerda $c$-métrica, então, para todos $q,q' \in M_1$,
 	\begin{equation*}
-	d_0(f\inv(q),f\inv(q')) \leq c d_1(q,q').
+	\dist{f\inv(q)}{f\inv(q')}_0 \leq c \dist{q}{q'}_1.
 	\end{equation*}
 Assim, para todos $p,p' \in M_0$,
 	\begin{equation*}
-	d_0(p,p') = d_0(f\inv(f(p)),f\inv(f(p'))) \leq c d_1(f(p),f(p')),
+	\dist{p}{p'}_0 = \dist{f\inv(f(p))}{f\inv(f(p'))}_0 \leq c \dist{f(p)}{f(p')}_1,
 	\end{equation*}
-portanto $c\inv d_0(p,p') \leq d_1(f(p),f(p'))$.
+portanto $c\inv \dist{p}{p'}_0 \leq \dist{f(p)}{f(p')}_1$.
 
-Reciprocamente, se valem as desigualdades acima, então para todos $p,p' \in M_0$ tais que $p \neq p'$, logo $d_0(p,p') > 0$. De $0 < c\inv d_0(p,p') \leq d_1(f(p),f(p'))$, segue que $d_1(f(p),f(p'))>0$, o que implica $f(p) \neq f(p')$, portanto $f$ é injetiva. Ainda, temos que $d_0(p,p') \leq c d_1(f(p),f(p'))$, logo para todos $q,q' \in f(M_0)$, existem $p,p' \in M_0$ tais que $q=f(p)$ e $q'=f(p')$, portanto
+Reciprocamente, se valem as desigualdades acima, então para todos $p,p' \in M_0$ tais que $p \neq p'$, logo $\dist{p}{p'}_0 > 0$. De $0 < c\inv \dist{p}{p'}_0 \leq \dist{f(p)}{f(p')}_1$, segue que $\dist{f(p)}{f(p')}_1>0$, o que implica $f(p) \neq f(p')$, portanto $f$ é injetiva. Ainda, temos que $\dist{p}{p'}_0 \leq c \dist{f(p)}{f(p')}_1$, logo para todos $q,q' \in f(M_0)$, existem $p,p' \in M_0$ tais que $q=f(p)$ e $q'=f(p')$, portanto
 	\begin{align*}
-	d_0(f\inv(q),f\inv(q')) &= d_0(f\inv(f(p)),f\inv(f(p'))) \\
-		&= d_0(p,p') \leq c d_1(f(p),f(p')) \\
-		&= c d_1(q,q'),
+	\dist{f\inv(q)}{f\inv(q')}_0 &= \dist{f\inv(f(p))}{f\inv(f(p'))}_0 \\
+		&= \dist{p}{p'}_0 \leq c \dist{f(p)}{f(p')}_1 \\
+		&= c \dist{q}{q'}_1,
 	\end{align*}
 o que mostra que $f\inv$ é $c$-métrica.
 
@@ -1002,7 +1002,7 @@ o que mostra que $f\inv$ é $c$-métrica.
 \begin{definition}
 Sejam $\bm{M_0}$ e $\bm{M_1}$ espaços métricos. Uma \emph{isometria local} ou (\emph{imersão isométrica}) de $\bm{M_0}$ para $\bm{M_1}$ é uma função $f\colon M_0 \to M_1$ que satisfaz, para todos $p,p' \in M_0$,
 	\begin{equation*}
-	d_1(f(p),f(p')) = d_0(p,p').
+	\dist{f(p)}{f(p')}_1 = \dist{p}{p'}_0.
 	\end{equation*}
 Uma \emph{isometria} é isometria local bijetiva.
 \end{definition}
@@ -1011,9 +1011,9 @@ Uma \emph{isometria} é isometria local bijetiva.
 Sejam $\bm{M_0}$ e $\bm{M_1}$ espaços métricos e $f\colon M_0 \to M_1$ uma isometria local. Então $f$ é injetiva.
 \end{proposition}
 \begin{proof}
-Sejam $p,p' \in M_0$ tais que $p \neq p'$. Então $d_0(p,p') \neq 0$, logo
+Sejam $p,p' \in M_0$ tais que $p \neq p'$. Então $\dist{p}{p'}_0 \neq 0$, logo
 	\begin{equation*}
-	d_1(f(p),f(p')) = d_0(p,p') \neq 0,
+	\dist{f(p)}{f(p')}_1 = \dist{p}{p'}_0 \neq 0,
 	\end{equation*}
 o que implica $f(p) \neq f(p')$.
 \end{proof}
@@ -1024,13 +1024,13 @@ Sejam $\bm{M_0}$ e $\bm{M_1}$ espaços métricos e $f\colon M_0 \to M_1$ uma hom
 \begin{proof}
 Sejam $p,p' \in M_0$. Então, como $f$ é homometria,
 	\begin{equation*}
-	d_1(f(p),f(p')) \leq d_0(p,p')
+	\dist{f(p)}{f(p')}_1 \leq \dist{p}{p'}_0
 	\end{equation*}
 e, como $f\inv$ é homometria,
 	\begin{equation*}
-	d_0(p,p') = d_1(f\inv \circ f(p),f\inv \circ f(p')) \leq d_1(f(p),f(p'));
+	\dist{p}{p'}_0 = \dist{(f\inv \circ f(p)}{f\inv \circ f(p')}_1 \leq \dist{f(p)}{f(p')}_1;
 	\end{equation*}
-portanto  $d_0(p,p') = d_1(f(p),f(p'))$.
+portanto  $\dist{p}{p'}_0 = \dist{f(p)}{f(p')}_1$.
 \end{proof}
 
 \begin{proposition}
@@ -1039,7 +1039,7 @@ Sejam $\bm{M_0}$ e $\bm{M_1}$ espaços métricos e $f\colon M_0 \to M_1$ homomet
 \begin{proof}
 Suponhamos que $f$ é isometria. Então $f$ é bijetiva e, portanto, invertível. Sua inversa satisfaz, para todos $p,p' \in M_1$,
 	\begin{equation*}
-	d_0(f\inv(p),f\inv(p')) = d_1(f(f\inv(p)),f(f\inv(p'))) = d_0(p,p').
+	\dist{f\inv(p)}{f\inv(p')}_0 = \dist{f(f\inv(p))}{f(f\inv(p'))}_1 = \dist{p}{p'}_0.
 	\end{equation*}
 Portanto $f\inv$ é isometria local, logo homometria.
 
@@ -1057,22 +1057,22 @@ Sejam $\bm M$ um espaço métrico completo e $f\colon M \to M$ uma contração. 
 \begin{proof}
 Seja $c \in \intfa{0}{\infty}$ a constante de contração de $f$. Mostremos por indução que, para todos $p \in M$ e $n \in \N$,
 	\begin{equation*}
-	d(f^n(p),f^{n+1}(p)) \leq c^n d(p,f(p)).
+	\dist{f^n(p)}{f^{n+1}(p)} \leq c^n \dist{p}{f(p)}.
 	\end{equation*}
 Claramente, para $n=0$ isso claramente vale. Agora, suponhamos que a desigualdade valha para $n=k$ e mostremos que ela vale para $n=k+1$. Como $f$ é contração,
 	\begin{equation*}
-	d(f^k(p),f^{k+1}(p)) \leq c d(f^{k-1}(p),f^k(p)) \leq c c^{k-1} d(p,f(p)) = c^k d(p,f(p)).
+	\dist{f^k(p)}{f^{k+1}(p)} \leq c \dist{f^{k-1}(p)}{f^k(p)} \leq c c^{k-1} \dist{p}{f(p)} = c^k \dist{p}{f(p)}.
 	\end{equation*}
 Agora, notemos que, para todos $n,p \in \N$, segue da desigualdade triangular generalizada que
 	\begin{align*}
-	d(f^n(p),f^{n+p}(p)) &\leq \sum_{i=0}^{p-1} d(f^{n+i}(p),f^{n+i+1}(p)) \\
-		&\leq \sum_{i=0}^{p-1} c^{n+i} d(p,f(p)) \\
-		&= c^n\frac{1-c^p}{1-c} d(p,f(p)) \\
-		&\leq \frac{c^n}{1-c} d(p,f(p)),
+	\dist{f^n(p)}{f^{n+p}(p)} &\leq \sum_{i=0}^{p-1} \dist{f^{n+i}(p)}{f^{n+i+1}(p)} \\
+		&\leq \sum_{i=0}^{p-1} c^{n+i} \dist{p}{f(p)} \\
+		&= c^n\frac{1-c^p}{1-c} \dist{p}{f(p)} \\
+		&\leq \frac{c^n}{1-c} \dist{p}{f(p)},
 	\end{align*}
 pois $c\geq 0$ implica $1-c^p<1$. Como $c<1$, então $\lim_{n \to \infty} \frac{c^n}{1-c} = 0$, portanto, para todos $n,p \in \N$,
 	\begin{equation*}
-	\lim_{n \to \infty} d(f^n(p),f^{n+p}(p)) = 0,
+	\lim_{n \to \infty} \dist{f^n(p)}{f^{n+p}(p)} = 0,
 	\end{equation*}
 o que mostra que $(f^n(p))_{n \in \N}$ é uma sequência aproximante e, como $\bm M$ é completo, converge para $\bar p \in M$. Como $f$ é contínua,
 	\begin{equation*}
@@ -1080,9 +1080,9 @@ o que mostra que $(f^n(p))_{n \in \N}$ é uma sequência aproximante e, como $\b
 	\end{equation*}
 esse ponto $\bar p$ é um ponto fixo. Para mostrarmos que $\bar p$ é único, suponhamos que $p$ é ponto fixo de $f$. Então
 	\begin{equation*}
-	d(\bar p,p) = d(f(\bar p),f(p)) \leq c d(\bar p,p)
+	\dist{\bar p}{p} = \dist{f(\bar p)}{f(p)} \leq c \dist{\bar p}{p}
 	\end{equation*}
-e como $c<1$ isso implica $d(\bar p,p)=0$, logo $\bar p=p$.
+e como $c<1$ isso implica $\dist{\bar p}{p}=0$, logo $\bar p=p$.
 \end{proof}
 
 \subsection{Semelhanças}
@@ -1090,7 +1090,7 @@ e como $c<1$ isso implica $d(\bar p,p)=0$, logo $\bar p=p$.
 \begin{definition}
 Sejam $\bm{M_0}$ e $\bm{M_1}$ espaços métricos e $c \in \intfa{0}{\infty}$. Uma $c$-\emph{semelhança local} ou (\emph{imersão $c$-semelhante}) de $\bm{M_0}$ para $\bm{M_1}$ é uma função $f\colon M_0 \to M_1$ que satisfaz, para todos $p,p' \in M_0$,
 	\begin{equation*}
-	d_1(f(p),f(p')) = c d_0(p,p').
+	\dist{f(p)}{f(p')}_1 = c \dist{p}{p'}_0.
 	\end{equation*}
 Uma \emph{semelhança} é semelhança local bijetiva.
 \end{definition}
