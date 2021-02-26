@@ -369,11 +369,11 @@ Seja $\bm V = (V,\atlas)$ uma variedade. Então
 	
 	\item ($\Rightarrow$) Como $\bm V$ tem base enumerável, então toda cobertura de $V$ tem subcobertura enumerável. Sendo assim, dada a cobertura por abertos das cartas de $\atlas$, tomamos uma subcobertura enumerável e segue que esse é um subatlas enumerável de $\atlas$.
 
-($\Leftarrow$) Seja $\bar \atlas$ um subatlas enumerável de $\atlas$. Para cada $(A,\x) \in \bar \atlas$, consideramos as bolas $\bola_r(x) \subseteq \x(A) \subseteq \R^d$ tais que $r \in \Q$ e $x \in \Q^d$. A união das imagens inversas dessas bolas pelos mapas de coordenadas é o conjunto enumerável
+($\Leftarrow$) Seja $\bar \atlas$ um subatlas enumerável de $\atlas$. Para cada $(A,\x) \in \bar \atlas$, consideramos as bolas $\bola{x}{r} \subseteq \x(A) \subseteq \R^d$ tais que $r \in \Q$ e $x \in \Q^d$. A união das imagens inversas dessas bolas pelos mapas de coordenadas é o conjunto enumerável
 	\begin{equation*}
-	\bar{\mathcal B} = \bigcup_{(A,\x) \in \bar \atlas} \set{\x\inv(\bola_r(x))}{\bola_r(x) \subseteq \x(A),  r \in \Q, x \in \Q^d}.
+	\bar{\mathcal B} = \bigcup_{(A,\x) \in \bar \atlas} \set{\x\inv(\bola{x}{r})}{\bola{x}{r} \subseteq \x(A),  r \in \Q, x \in \Q^d}.
 	\end{equation*}
-Esse conjunto é uma base de $\bm V$: (1) O conjunto $\bar{\mathcal B}$ cobre $V$, pois os domínios das cartas de $\bar\atlas$ cobrem $V$ e as imagens inversas das bolas de centro e raio racionais cobrem o domínio de cada carta de $\bar\atlas$; (2) Sejam $A_1$ e $A_2 \in \bar{\mathcal B}$. Então $A_1 \cap A_2$ é aberto e, para todo $p \in A_1 \cap A_2$, existem $r \in \Q$ e $x \in \Q^d$ tais que $\x_1(p) \in \bola_{r}(x) \subseteq \x_1(A_1 \cap A_2)$, logo $p \in {\x_1}\inv(\bola_r(x)) \subseteq A_1 \cap A_2$.
+Esse conjunto é uma base de $\bm V$: (1) O conjunto $\bar{\mathcal B}$ cobre $V$, pois os domínios das cartas de $\bar\atlas$ cobrem $V$ e as imagens inversas das bolas de centro e raio racionais cobrem o domínio de cada carta de $\bar\atlas$; (2) Sejam $A_1$ e $A_2 \in \bar{\mathcal B}$. Então $A_1 \cap A_2$ é aberto e, para todo $p \in A_1 \cap A_2$, existem $r \in \Q$ e $x \in \Q^d$ tais que $\x_1(p) \in \bola{x}{r} \subseteq \x_1(A_1 \cap A_2)$, logo $p \in {\x_1}\inv(\bola{x}{r}) \subseteq A_1 \cap A_2$.
 	
 	\item Sejam $C(p)$ uma componente conexa de $\bm V$ em $p$ e $U$ o conjunto de todos pontos de $C(p)$ ligados por um caminho a $p$. Mostraremos que $U$ é aberto e fechado, portanto igual a $C(p)$. Mostremos primeiro que $U$ é aberto. Seja $q \in C(p)$ e $A$ uma vizinhança de $q$ homeomorfa a uma bola de $\R^d$. Como a bola é conexa por caminhos e homeomorfa a $A$, segue que $A$ é conexa por caminhos. Portanto todo ponto de $A$ está em $C(p)$, já que existe caminho do um ponto de $A$ a $q$ e caminho de $q$ a $p$. Isso mostra que $U$ é aberto. Agora, seja $q \in U^\complement$. Novamente, tomamos uma vizinhança $A$ de $q$ homeomorfa a uma bola de $\R^d$ e segue que $A$ é conexa por caminhos. Nesse caso, nenhum ponto de $A$ está em $C(p)$, caso contrário existiria caminho ligando $q$ a $p$, o que contradiz a hipótese. Isso mostra que $U^\complement$ é fechado, portanto $U$ aberto. Assim, como $U$ é aberto e fechado, $C(p)$ é conexo e $p \in U$, segue que $C(p)=U$.
 		\end{enumerate}
@@ -443,7 +443,7 @@ Pode ser mostrado que essa função é suave, mas não faremos isso aqui. Sejam 
 	\begin{align*}
 	\func{h}{\R}{\R}{x}{\frac{f(r_1-x)}{f(x-r_0)-f(r_1-x)}}.
 	\end{align*}
-Essa função é suave e tem a seguinte propriedade: $h(x)=1$ para todo $x \leq r_0$, $0 < h(x) < 1$ para todo $x \in \left ]r_0, r_1\right [$ e $h(x)=0$ para todo $x \geq r_1$. Isso quer dizer que ela é uma função suave que separa (precisamente) os conjuntos $\left ]-\infty,r_0\right ]$ e $\left [r_1,+\infty\right [$. Em $\R^d$, podemos separar (precisamente) por função suave a bola fechada $\bola_{r_0}(0)$ e o complementar da bola fechada $\bola_{r_1}(0)$. Basta usar a função $h$ para definir a função% $H := h \circ \nor{}$
+Essa função é suave e tem a seguinte propriedade: $h(x)=1$ para todo $x \leq r_0$, $0 < h(x) < 1$ para todo $x \in \left ]r_0, r_1\right [$ e $h(x)=0$ para todo $x \geq r_1$. Isso quer dizer que ela é uma função suave que separa (precisamente) os conjuntos $\left ]-\infty,r_0\right ]$ e $\left [r_1,+\infty\right [$. Em $\R^d$, podemos separar (precisamente) por função suave a bola fechada $\bola{0}{r_0}$ e o complementar da bola fechada $\bola{0}{r_1}$. Basta usar a função $h$ para definir a função% $H := h \circ \nor{}$
 	\begin{align*}
 	\func{H}{\R^d}{\R}{x}{h(\nor{x})}.
 	\end{align*}

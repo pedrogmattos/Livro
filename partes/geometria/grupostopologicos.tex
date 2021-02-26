@@ -142,37 +142,37 @@ Mostremos que $\dist{\var}{\var}_\alpha$ é uma distância.
 	U = \prod_{i \in I} U_i,
 	\end{equation*}
 	e existe um conjunto finito $F \subseteq I$ tal que, para todo $i \notin F$, $U_i = G$. Se $U = \emptyset$, % então, para algum $i \in F$, $U_i = \emptyset$. Nesse caso, 
-	definindo $c := 0 \in G^{I}$ e $r := 0 \in \R$, segue que $\bola_r(c) = \emptyset \subseteq U$. Caso contrário, seja $u \in U$. Se $F = \emptyset$, então $U = G^{I}$; definindo $r:=1 \in \R$, segue que $u \in \bola_r(u) \subseteq G^{I} = U$. Se $F \neq \emptyset$, defina
+	definindo $c := 0 \in G^{I}$ e $r := 0 \in \R$, segue que $\bola{c}{r} = \emptyset \subseteq U$. Caso contrário, seja $u \in U$. Se $F = \emptyset$, então $U = G^{I}$; definindo $r:=1 \in \R$, segue que $u \in \bola{u}{r} \subseteq G^{I} = U$. Se $F \neq \emptyset$, defina
 		\begin{equation*}
 		r := \alpha^{\max\abs{F}} = \alpha^{\max\set{\abs{i}}{i \in F}}.
 		\end{equation*}
-	Mostremos que $u \in \bola_r(u) \subseteq U$. Note que $r>0$, pois $\alpha \in \intaa{0}{1}$, logo $u \in \bola_r(u)$. Seja $x \in \bola_r(u)$. Se $x=u$, então $x \in U$; caso contrário, $x-u \neq 0$, logo $\dist{u}{x}_\alpha = \alpha^{\ords{x-u}}$. %Como $x \in \bola_r(u)$, segue que $\alpha^{\ords{x-u}} < r = \alpha^{\max\abs{F}}$, o que é equivalente a $\max\abs{F} < \ords{x-u}$, pois $\alpha \in \intaa{0}{1}$. Por sua vez, $\max\abs{F} < \ords{x-u}$ é equivalente a, para todo $i \in I$ tal que $\abs{i} \leq \max\abs{F}$, $x_i - u_i = 0$, ou seja, $x_i = u_i \in U_i$.
-	Como $x \in \bola_r(u)$, segue que
+	Mostremos que $u \in \bola{u}{r} \subseteq U$. Note que $r>0$, pois $\alpha \in \intaa{0}{1}$, logo $u \in \bola{u}{r}$. Seja $x \in \bola{u}{r}$. Se $x=u$, então $x \in U$; caso contrário, $x-u \neq 0$, logo $\dist{u}{x}_\alpha = \alpha^{\ords{x-u}}$. %Como $x \in \bola{u}{r}$, segue que $\alpha^{\ords{x-u}} < r = \alpha^{\max\abs{F}}$, o que é equivalente a $\max\abs{F} < \ords{x-u}$, pois $\alpha \in \intaa{0}{1}$. Por sua vez, $\max\abs{F} < \ords{x-u}$ é equivalente a, para todo $i \in I$ tal que $\abs{i} \leq \max\abs{F}$, $x_i - u_i = 0$, ou seja, $x_i = u_i \in U_i$.
+	Como $x \in \bola{u}{r}$, segue que
 		\begin{equation*}
 		\alpha^{\ords{x-u}} = \dist{u}{x}_\alpha< r = \alpha^{\max\abs{F}},
 		\end{equation*}
-	o que implica que $\max\abs{F} < \ords{x-u}$, pois $\alpha \in \intaa{0}{1}$. Por sua vez, isso implica que, para todo $i \in I$ tal que $\abs{i} \leq \max\abs{F}$, $x_i - u_i = 0$, ou seja, $x_i = u_i$. Como todo $i \in F$ satisfaz $\abs{i} \leq \max\abs{F}$, segue que $x_i = u_i \in U_i$, o que mostra que $x \in U$. Portanto $\bola_r(u) \subseteq U$.
+	o que implica que $\max\abs{F} < \ords{x-u}$, pois $\alpha \in \intaa{0}{1}$. Por sua vez, isso implica que, para todo $i \in I$ tal que $\abs{i} \leq \max\abs{F}$, $x_i - u_i = 0$, ou seja, $x_i = u_i$. Como todo $i \in F$ satisfaz $\abs{i} \leq \max\abs{F}$, segue que $x_i = u_i \in U_i$, o que mostra que $x \in U$. Portanto $\bola{u}{r} \subseteq U$.
 
-	\item (Topologia produto é mais fina que topologia métrica) Usaremos que a topologia de $G$ é discreta. Seja $\bola_r(c) \subseteq G^{I}$ uma bola aberta. Se $r=0$, $\bola_r(c) = \emptyset$; defina $U := \emptyset$, e segue que $U \subseteq \bola_r(c)$. Se $r>0$, $\bola_r(c) = \emptyset$; defina $k := \teto{\log_{\alpha}(r)}$ e $F := \set{i \in I}{\abs{i} \leq k}$, que é finito. Como a topologia de $G$ é discreta, para todo $i \in F$, $\{c_i\} \subseteq G$ é aberto; defina assim o aberto básico
+	\item (Topologia produto é mais fina que topologia métrica) Usaremos que a topologia de $G$ é discreta. Seja $\bola{c}{r} \subseteq G^{I}$ uma bola aberta. Se $r=0$, $\bola{c}{r} = \emptyset$; defina $U := \emptyset$, e segue que $U \subseteq \bola{c}{r}$. Se $r>0$, $\bola{c}{r} = \emptyset$; defina $k := \teto{\log_{\alpha}(r)}$ e $F := \set{i \in I}{\abs{i} \leq k}$, que é finito. Como a topologia de $G$ é discreta, para todo $i \in F$, $\{c_i\} \subseteq G$ é aberto; defina assim o aberto básico
 		\begin{equation*}
 		U := \prod_{i \in I} U_i,
 		\end{equation*}
-	em que $U_i := \{c_i\}$ se $i \in F$ e $U_i = G$ se $i \notin F$. %Mostremos que $u \in U \subseteq \bola_r(c)$. Seja $x \in U$. Então, para todo $i \in F$, $x_i=c_i$. 
-	%Mostremos que $U = \bola_r(c)$, o que em particular implica $u \in U \subseteq \bola_r(c)$. Seja $x \in G^{I}$. Então $x \in U$ se, e somente se, para todo $i \in F$, $x_i=c_i$.
+	em que $U_i := \{c_i\}$ se $i \in F$ e $U_i = G$ se $i \notin F$. %Mostremos que $u \in U \subseteq \bola{c}{r}$. Seja $x \in U$. Então, para todo $i \in F$, $x_i=c_i$. 
+	%Mostremos que $U = \bola{c}{r}$, o que em particular implica $u \in U \subseteq \bola{c}{r}$. Seja $x \in G^{I}$. Então $x \in U$ se, e somente se, para todo $i \in F$, $x_i=c_i$.
 	%Mas $x \neq c$ satisfaz $\ords{x-c} > k$ se, e somente se, para todo $i \in F$, $x_i - c_i = 0$, ou seja, $x_i = c_i$. Isso significa que $\dist{c}{x}_\alpha < \alpha^k$ se, e somente se, para todo $i \in F$, $x_i = c_i$. Como $\alpha \in \intaa{0}{1}$, $k = \teto{\log_{\alpha}(r)} \geq \log_{\alpha}(r)$ é equivalente a $\alpha^k \leq \alpha^{\log_{\alpha}(r)} = r$.
 
-	%Mostremos que $U = \bola_r(c)$.
+	%Mostremos que $U = \bola{c}{r}$.
 	%\begin{itemize}
-	%	\item ($U \subseteq \bola_r(c)$) Seja $x \in U$. Então, para todo $i \in F$, $x_i=c_i$, ou seja, $x_i-c_i=0$. Se $x \neq c$, isso implica que $\ords{x-c} > k$ pela definição de $F$; como $\alpha < 1$, segue que $\dist{c}{x}_\alpha = \alpha^{\ords{x-c}} < \alpha^k$. Se $x=c$, então $\dist{c}{x}_\alpha = 0 < \alpha^k$, pois $\alpha > 0$. Em ambos os casos, $\dist{c}{x}_\alpha < \alpha^k$. Como $\alpha < 1$ e $k = \teto{\log_{\alpha}(r)} \geq \log_{\alpha}(r)$, segue que $\alpha^k \leq \alpha^{\log_{\alpha}(r)} = r$, portanto que $\dist{c}{x}_\alpha < \alpha^k \leq r$, logo $x \in \bola_r(c)$.
+	%	\item ($U \subseteq \bola{c}{r}$) Seja $x \in U$. Então, para todo $i \in F$, $x_i=c_i$, ou seja, $x_i-c_i=0$. Se $x \neq c$, isso implica que $\ords{x-c} > k$ pela definição de $F$; como $\alpha < 1$, segue que $\dist{c}{x}_\alpha = \alpha^{\ords{x-c}} < \alpha^k$. Se $x=c$, então $\dist{c}{x}_\alpha = 0 < \alpha^k$, pois $\alpha > 0$. Em ambos os casos, $\dist{c}{x}_\alpha < \alpha^k$. Como $\alpha < 1$ e $k = \teto{\log_{\alpha}(r)} \geq \log_{\alpha}(r)$, segue que $\alpha^k \leq \alpha^{\log_{\alpha}(r)} = r$, portanto que $\dist{c}{x}_\alpha < \alpha^k \leq r$, logo $x \in \bola{c}{r}$.
 	%
-	%	\item ($\bola_r(c) \subseteq U$) Seja $x \in \bola_r(c)$. Então $\dist{c}{x}_\alpha < r$. Se $x=c$, então, para todo $i \in F$, $x_i=c_i \in \{c_i\}$, logo $x \in U$. Se $x \neq c$, então $\dist{c}{x}_\alpha = \alpha^{\ords{x-c}}$, portanto $\alpha^{\ords{x-c}} < r = \alpha^{\log_{\alpha}(r)}$. Como $\alpha < 1$, segue que $\ords{x-c} > \log_{\alpha}(r)$ e, já que $\ords{x-c} \in \N$, segue que $\ords{x-c} \geq \teto{\log_{\alpha}(r)} = k$. Se $\ords{x-c}>k$, isso implica que, para todo $i \in F$, $x_i-c_i=0$, ou seja, $x_i=c_i$; portanto $x \in U$. Se $\ords{x-c}=k$, então, para todo $i \in I$ tal que $\abs{i}<k$, $x_i-c_i=0$, e para algum $i \in I$ tal que $\abs{i}=k$, $x_i \neq 0$.
+	%	\item ($\bola{c}{r} \subseteq U$) Seja $x \in \bola{c}{r}$. Então $\dist{c}{x}_\alpha < r$. Se $x=c$, então, para todo $i \in F$, $x_i=c_i \in \{c_i\}$, logo $x \in U$. Se $x \neq c$, então $\dist{c}{x}_\alpha = \alpha^{\ords{x-c}}$, portanto $\alpha^{\ords{x-c}} < r = \alpha^{\log_{\alpha}(r)}$. Como $\alpha < 1$, segue que $\ords{x-c} > \log_{\alpha}(r)$ e, já que $\ords{x-c} \in \N$, segue que $\ords{x-c} \geq \teto{\log_{\alpha}(r)} = k$. Se $\ords{x-c}>k$, isso implica que, para todo $i \in F$, $x_i-c_i=0$, ou seja, $x_i=c_i$; portanto $x \in U$. Se $\ords{x-c}=k$, então, para todo $i \in I$ tal que $\abs{i}<k$, $x_i-c_i=0$, e para algum $i \in I$ tal que $\abs{i}=k$, $x_i \neq 0$.
 	%NOTA: TRAVEI AQUI, RESOLVI ADAPTAR A DEMONSTRAÇÃO.
 	%\end{itemize}
-	%Assim, para todo $x \in \bola_r(c)$, vale $x \in U \subseteq \bola_r(c)$.
+	%Assim, para todo $x \in \bola{c}{r}$, vale $x \in U \subseteq \bola{c}{r}$.
 
-	Mostremos que $c \in U \subseteq \bola_r(c)$. Seja $x \in U$. Então, para todo $i \in F$, $x_i=c_i$, ou seja, $x_i-c_i=0$. Se $x \neq c$, isso implica que $\ords{x-c} > k$ pela definição de $F$; como $\alpha < 1$, segue que $\dist{c}{x}_\alpha = \alpha^{\ords{x-c}} < \alpha^k$. Se $x=c$, então $\dist{c}{x}_\alpha = 0 < \alpha^k$, pois $\alpha > 0$. Em ambos os casos, $\dist{c}{x}_\alpha < \alpha^k$. Como $\alpha < 1$ e $k = \teto{\log_{\alpha}(r)} \geq \log_{\alpha}(r)$, segue que $\alpha^k \leq \alpha^{\log_{\alpha}(r)} = r$, portanto que $\dist{c}{x}_\alpha < \alpha^k \leq r$, logo $x \in \bola_r(c)$. Isso mostra que $U \subseteq \bola_r(c)$. Além disso, $c \in U$, pois, para todo $i \in F$, $c_i \in \{c_i\}$, logo $c \in U$.
+	Mostremos que $c \in U \subseteq \bola{c}{r}$. Seja $x \in U$. Então, para todo $i \in F$, $x_i=c_i$, ou seja, $x_i-c_i=0$. Se $x \neq c$, isso implica que $\ords{x-c} > k$ pela definição de $F$; como $\alpha < 1$, segue que $\dist{c}{x}_\alpha = \alpha^{\ords{x-c}} < \alpha^k$. Se $x=c$, então $\dist{c}{x}_\alpha = 0 < \alpha^k$, pois $\alpha > 0$. Em ambos os casos, $\dist{c}{x}_\alpha < \alpha^k$. Como $\alpha < 1$ e $k = \teto{\log_{\alpha}(r)} \geq \log_{\alpha}(r)$, segue que $\alpha^k \leq \alpha^{\log_{\alpha}(r)} = r$, portanto que $\dist{c}{x}_\alpha < \alpha^k \leq r$, logo $x \in \bola{c}{r}$. Isso mostra que $U \subseteq \bola{c}{r}$. Além disso, $c \in U$, pois, para todo $i \in F$, $c_i \in \{c_i\}$, logo $c \in U$.
 
-	Assim, dado $u \in \bola_r(c)$, tomamos $r'>0$ tal que $\bola_{r'}(u) \subseteq \bola_r(c)$, e pela demonstração anterior existe aberto básico $U' \subseteq G^{I}$ tal que $u \in U' \subseteq \bola_{r'}(u) \subseteq \bola_r(c)$.
+	Assim, dado $u \in \bola{c}{r}$, tomamos $r'>0$ tal que $\bola{u}{r'} \subseteq \bola{c}{r}$, e pela demonstração anterior existe aberto básico $U' \subseteq G^{I}$ tal que $u \in U' \subseteq \bola{u}{r'} \subseteq \bola{c}{r}$.
 	\end{itemize}
 \end{proof}
 

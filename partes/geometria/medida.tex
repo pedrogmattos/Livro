@@ -713,7 +713,7 @@ Para mostrar isso, mostraremos que todo conjunto fechado é $\med$-mensurável. 
 	\end{equation*}
 pois a desigualdade contrária sempre vale por subaditividade e a igualdade vale trivialmente se $\med(C) = \infty$. Consideremos as vizinhanças fechadas
 	\begin{equation*}
-	F_j := \overline\bola_{\frac{1}{j}}(F) = \set{p \in M}{\dist{F}{p} \leq \frac{1}{j}}.
+	F_j := \bolafec{F}{\frac{1}{j}} = \set{p \in M}{\dist{F}{p} \leq \frac{1}{j}}.
 	\end{equation*}
 Vale que $\dist{C \cap F}{C \cap F_j^\complement} > 0$, portanto
 	\begin{equation*}
@@ -723,7 +723,7 @@ Resta mostrar agora que $\lim_{j \conv \infty} \med(C \cap F_j^\complement) = \m
 	\begin{equation*}
 	C \cap F^\complement = \set{p \in C}{\dist{F}{p} > 0} = (C \cap F_j^\complement) \cup \bigcup_{k=j}^\infty R_k,
 	\end{equation*}
-em que $R_k := C \cap \overline\bola_{\frac{1}{k}}(F) \setminus \overline\bola_{\frac{1}{k+1}}(F) = \set{p \in C}{\frac{1}{k+1} < \dist{F}{p} \leq \frac{1}{k}}$. Pela subaditividade de $\med$, segue que
+em que $R_k := C \cap \bolafec{F}{\frac{1}{k}} \setminus \bolafec{F}{\frac{1}{k+1}} = \set{p \in C}{\frac{1}{k+1} < \dist{F}{p} \leq \frac{1}{k}}$. Pela subaditividade de $\med$, segue que
 	\begin{equation*}
 	\med(C \cap F_j^\complement) \leq \med(C \cap F^\complement) \leq \med(C \cap F_j^\complement) + \sum_{k=j}^\infty \med(R_k).
 	\end{equation*}

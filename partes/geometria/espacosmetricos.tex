@@ -198,11 +198,11 @@ Isso define uma função
 \begin{definition}
 Sejam $\bm M$ um espaço métrico, $c \in M$ e $r \in \intfa{0}{\infty}$. A \emph{bola aberta} de centro $c$ e raio $r$ em $M$ é o conjunto
 	\begin{equation*}
-	\bola_r(c) := \set{p \in M}{\dist{c}{p} < r}.
+	\bola{c}{r} := \set{p \in M}{\dist{c}{p} < r}.
 	\end{equation*}
 A \emph{bola fechada} de centro $c$ e raio $r$ em $M$ é o conjunto
 	\begin{equation*}
-	\bolafec_r(c) := \set{p \in M}{\dist{c}{p} \leq r}.
+	\bolafec{c}{r} := \set{p \in M}{\dist{c}{p} \leq r}.
 	\end{equation*}
 \end{definition}
 
@@ -220,10 +220,10 @@ A \emph{bola fechada} de centro $c$ e raio $r$ em $M$ é o conjunto
 \end{figure}
 
 \begin{proposition}
-Sejam $\bm M$ um espaço métrico e $C \subseteq M$ um conjunto. Então $C$ é um conjunto limitado se, e somente se, existe bola $\bolafec_r(c)$ tal que $C \subseteq \bolafec_r(c)$.
+Sejam $\bm M$ um espaço métrico e $C \subseteq M$ um conjunto. Então $C$ é um conjunto limitado se, e somente se, existe bola $\bolafec{c}{r}$ tal que $C \subseteq \bolafec{c}{r}$.
 \end{proposition}
 \begin{proof}
-Se $C$ é limitado, basta tomar $r=\diam(C)$ e $c \in C$. Reciprocamente, se existe bola $\bolafec_r(c)$ tal que $C \subseteq \bolafec_r(c)$, então para todos $p,p' \in C$, segue da desigualdade triangular que
+Se $C$ é limitado, basta tomar $r=\diam(C)$ e $c \in C$. Reciprocamente, se existe bola $\bolafec{c}{r}$ tal que $C \subseteq \bolafec{c}{r}$, então para todos $p,p' \in C$, segue da desigualdade triangular que
 	\begin{equation*}
 	\dist{p}{p'} \leq \dist{p}{c}+\dist{c}{p'} \leq r+r=2r,
 	\end{equation*}
@@ -243,14 +243,14 @@ Seja $\bm M$ um espaço métrico.
 		\diam(C \cup C') = \max \{ \diam(C),\diam(C'),\sup\set{\dist{p}{p'}}{p \in C, p' \in C'} \}.
 		\end{equation*}
 	
-	\item Para todos $C, C' \subseteq M$,
-		\begin{equation*}
-		\diam(C \cup C') \leq \min \{ \diam(C),\diam(C') \};
-		\end{equation*}
+%	\item Para todos $C, C' \subseteq M$,
+%		\begin{equation*}
+%		\diam(C \cup C') \leq \min \{ \diam(C),\diam(C') \};
+%		\end{equation*}
 	
 	\item Para todo $r \in \intfa{0}{\infty}$ e todo $p \in M$.
 	\begin{equation*}
-	\diam(\bola_r(p)) \leq 2r.
+	\diam(\bola{p}{r}) \leq 2r.
 	\end{equation*}
 	\end{enumerate}
 \end{exercise}
@@ -270,32 +270,32 @@ Seja $\bm M$ um espaço métrico. Uma função \emph{limitada} em $\bm M$ é uma
 \subsection{Interior e pontos interiores}
 
 \begin{definition}
-Sejam $\bm M$ um espaço métrico e $C \subseteq M$ um conjunto. Um \emph{ponto interior} de $C$ é um ponto $p \in C$ para o qual existe um número real $r > 0$ tal que $\bola_r(p) \subseteq C$. O \emph{interior} de $C$ é o conjunto $\Int{C}$ de todos pontos interiores de $C$. Um \emph{conjunto aberto} de $\bm M$ é um conjunto $A \subseteq M$ tal que $A = A^\circ$. O conjunto dos conjuntos abertos de $\bm M$ é denotado $\topo_{\bm M}$.
+Sejam $\bm M$ um espaço métrico e $C \subseteq M$ um conjunto. Um \emph{ponto interior} de $C$ é um ponto $p \in C$ para o qual existe um número real $r > 0$ tal que $\bola{p}{r} \subseteq C$. O \emph{interior} de $C$ é o conjunto $\Int{C}$ de todos pontos interiores de $C$. Um \emph{conjunto aberto} de $\bm M$ é um conjunto $A \subseteq M$ tal que $A = A^\circ$. O conjunto dos conjuntos abertos de $\bm M$ é denotado $\topo_{\bm M}$.
 \end{definition}
 
 \begin{proposition}
 Seja $\bm M = (M,\dist{\var}{\var})$ um espaço métrico. Então
 	\begin{enumerate}
-	\item Para todo $c \in M$ e para todo número real $r > 0$, a bola aberta $\bola_r(c)$ é um conjunto aberto;
+	\item Para todo $c \in M$ e para todo número real $r > 0$, a bola aberta $\bola{c}{r}$ é um conjunto aberto;
 	\item O conjunto $\topo_{\bm M}$ é uma topologia de $M$.
 	\end{enumerate}
 \end{proposition}
 \begin{proof}
 	\begin{enumerate}
-	\item Sejam $c \in M$ e $r \in \intaa{0}{\infty}$. Queremos mostrar que $\bola_r(c)$ é aberto. Para isso, seja $p \in \bola_r(c)$. Então segue que $d := \dist{c}{p} < r$, pela definição de bola aberta, e, portanto, $r-d \in \intaa{0}{\infty}$. Para mostrar que essa bola centrada em $p$ está contida na bola maior centrada em $c$, seja $p' \in \bola_{r-d}(p)$. Então $\dist{p}{p'}<r-d$ e, pela desigualdade triangular, segue que
+	\item Sejam $c \in M$ e $r \in \intaa{0}{\infty}$. Queremos mostrar que $\bola{c}{r}$ é aberto. Para isso, seja $p \in \bola{c}{r}$. Então segue que $d := \dist{c}{p} < r$, pela definição de bola aberta, e, portanto, $r-d \in \intaa{0}{\infty}$. Para mostrar que essa bola centrada em $p$ está contida na bola maior centrada em $c$, seja $p' \in \bola{p}{r-d}$. Então $\dist{p}{p'}<r-d$ e, pela desigualdade triangular, segue que
 	\begin{equation*}
 	\dist{c}{p'} \leq \dist{c}{p} + \dist{p}{p'} < d + (r-d) = r,
 	\end{equation*}
-o que mostra que $p' \in \bola_r(c)$ e que, portanto, $\bola_s(p) \subseteq \bola_r(c)$. Assim, mostramos que $\bola_r(p)$ é aberta.
+o que mostra que $p' \in \bola{c}{r}$ e que, portanto, $\bola{p}{s} \subseteq \bola{c}{r}$. Assim, mostramos que $\bola{p}{r}$ é aberta.
 	
 	\item
 		\begin{enumerate}
-		\item Podemos notar que $\emptyset$ é aberto por vacuidade, pois, se não fosse, existiria $p \in \emptyset$ para o qual não há $r \in \intaa{0}{\infty}$ satisfazendo $\bola_r(p) \subseteq A$, o que é absurdo.
-	Para mostrar que $M$ é aberto, sejam $p \in M$ e $r \in \intaa{0}{\infty}$. Então $\bola_r(p) \subseteq M$, pois qualquer bola aberta é subconjunto de $M$. Portanto $M$ é aberto.
+		\item Podemos notar que $\emptyset$ é aberto por vacuidade, pois, se não fosse, existiria $p \in \emptyset$ para o qual não há $r \in \intaa{0}{\infty}$ satisfazendo $\bola{p}{r} \subseteq A$, o que é absurdo.
+	Para mostrar que $M$ é aberto, sejam $p \in M$ e $r \in \intaa{0}{\infty}$. Então $\bola{p}{r} \subseteq M$, pois qualquer bola aberta é subconjunto de $M$. Portanto $M$ é aberto.
 	
-		\item Seja $(A_i)_{i \in I}$ uma família de abertos em $\bm M$ e seja $p \in (A_i)_{i \in I}$. Então existe $k \in I$ tal que $p \in A_k$. Como $A_k$ é aberto, então existe $r \in \intaa{0}{\infty}$ tal que $\bola_r(p) \subseteq A_k$. Como $A_k \subseteq (A_i)_{i \in I}$, segue que $\bola_r(p) \subseteq (A_i)_{i \in I}$ e que, portanto, $(A_i)_{i \in I}$ é aberto.
+		\item Seja $(A_i)_{i \in I}$ uma família de abertos em $\bm M$ e seja $p \in (A_i)_{i \in I}$. Então existe $k \in I$ tal que $p \in A_k$. Como $A_k$ é aberto, então existe $r \in \intaa{0}{\infty}$ tal que $\bola{p}{r} \subseteq A_k$. Como $A_k \subseteq (A_i)_{i \in I}$, segue que $\bola{p}{r} \subseteq (A_i)_{i \in I}$ e que, portanto, $(A_i)_{i \in I}$ é aberto.
 	
-		\item Seja $(A_i)_{i \in [n]}$ uma sequência de abertos em $\bm M$ e seja $p \in (A_i)_{i \in [n]}$. Então, para todo $k \in [n]$, $p \in A_k$. Como, para todo $k \in [n]$, $A_k$ é aberto, segue que existe $r_k \in \intaa{0}{\infty}$ tal que $\bola_{r_k}(p) \subseteq A_k$, Seja $r := \min \{r_k : k \in [n]\}$. Então, para todo $k \in [n]$, vale $\bola_r(p) \subseteq \bola_{r_k}(p)$, e segue que $\bola_r(p) \subseteq A_k$ e, portanto, $\bola_r(p) \subseteq (A_i)_{i \in [n]}$, o que mostra que $(A_i)_{i \in [n]}$ é aberto.
+		\item Seja $(A_i)_{i \in [n]}$ uma sequência de abertos em $\bm M$ e seja $p \in (A_i)_{i \in [n]}$. Então, para todo $k \in [n]$, $p \in A_k$. Como, para todo $k \in [n]$, $A_k$ é aberto, segue que existe $r_k \in \intaa{0}{\infty}$ tal que $\bola{p}{r-k} \subseteq A_k$, Seja $r := \min \{r_k : k \in [n]\}$. Então, para todo $k \in [n]$, vale $\bola{p}{r} \subseteq \bola{p}{r-k}$, e segue que $\bola{p}{r} \subseteq A_k$ e, portanto, $\bola{p}{r} \subseteq (A_i)_{i \in [n]}$, o que mostra que $(A_i)_{i \in [n]}$ é aberto.
 		\end{enumerate}		
 	\end{enumerate}
 \end{proof}
@@ -309,7 +309,7 @@ Sejam $M$ um conjunto e $\dist{\var}{\var}$ uma métrica em $M$. A métrica limi
 \begin{definition}
 Sejam $\bm M$ um espaço métrico, $(p_n)_{n \in \N}$ uma sequência de pontos em $M$ e $p \in M$. A sequência $(p_n)_{n \in \N}$  \emph{converge} para o ponto $p$ se, e somente se, para todo número real $\varepsilon > 0$, existe um número natural $N$ tal que
 	\begin{equation*}
-	\forall n \in \N \qquad n \geq N \Rightarrow p_n \in \bola_\varepsilon(p).
+	\forall n \in \N \qquad n \geq N \Rightarrow p_n \in \bola{p}{\varepsilon}.
 	\end{equation*}
 Denota-se $(p_n)_{n \in \N} \conv p$. O ponto $p$ é um \emph{limite} da sequência.  Caso contrário, a sequência não converge para $p$. Uma \emph{sequência convergente} é uma sequência que tem limite. Uma sequência \emph{divergente} é uma sequência que não tem limite.
 \end{definition}
@@ -318,18 +318,18 @@ Denota-se $(p_n)_{n \in \N} \conv p$. O ponto $p$ é um \emph{limite} da sequên
 Todo espaço métrico $\bm M$ é um espaço topológico separado.
 \end{proposition}
 \begin{proof}
-Sejam $p,p' \in M$ pontos distintos. Mostraremos que existe um número real $r$ tal que $0 < r \leq \frac{1}{2} \dist{p}{p'}$, e que isso implica que $\bola_r(p) \cap \bola_r(p') = \emptyset$. Como $p \neq p'$, então $\dist{p}{p'} > 0$, portanto existe $r \in \R$ tal que $0 < r \leq \frac{1}{2} \dist{p}{p'}$. Suponhamos que existe $p'' \in \bola_r(p) \cap \bola_r(p')$. Então $\dist{p}{p''}<r$ e $\dist{p'}{p''}<r$. Mas, pela desigualdade triangular, segue que
+Sejam $p,p' \in M$ pontos distintos. Mostraremos que existe um número real $r$ tal que $0 < r \leq \frac{1}{2} \dist{p}{p'}$, e que isso implica que $\bola{p}{r} \cap \bola{p'}{r} = \emptyset$. Como $p \neq p'$, então $\dist{p}{p'} > 0$, portanto existe $r \in \R$ tal que $0 < r \leq \frac{1}{2} \dist{p}{p'}$. Suponhamos que existe $p'' \in \bola{p}{r} \cap \bola{p'}{r}$. Então $\dist{p}{p''}<r$ e $\dist{p'}{p''}<r$. Mas, pela desigualdade triangular, segue que
 	\begin{equation*}
 	\dist{p}{p'} \leq \dist{p}{p''} + \dist{p''}{p'} < r + r \leq \dist{p}{p'},
 	\end{equation*}
-o que é absurdo. Portanto $\bola_r(p) \cap \bola_r(p') = \emptyset$.
+o que é absurdo. Portanto $\bola{p}{r} \cap \bola{p'}{r} = \emptyset$.
 \end{proof}
 
 \begin{corollary}
 Toda sequência convergente em um espaço métrico $\bm M$ tem limite único.
 \end{corollary}
 \begin{proof}
-Suponhamos que $p,p'$ são limites de $(p_n)_{n \in \N}$. Se $p \neq p'$, então $\dist{p}{p'}>0$. Seja $\varepsilon \in \R$ tal que $0 < \varepsilon \leq \frac{1}{2} \dist{p}{p'}$. Então existe $N_1 \in \N$ tal que, para todo $n \in \N$, se $n \geq N_1$, então $p_n \in \bola_\varepsilon(p)$, e existe $N_2 \in \N$ tal que, para todo $n \in \N$, se $n \geq N_2$, então $p_n \in \bola_\varepsilon(p')$. Assim, definindo $N := \max \{N_1,N_2\}$, segue que, se $n \geq N$, então $n \geq N_1$ e $n \geq N_2$, e, portanto, que $p_n \in \bola_\varepsilon(p)$ e $p_n \in \bola_\varepsilon(p')$; ou seja, $p_n \in \bola_\varepsilon(p) \cap \bola_\varepsilon(p')$, mas isso é absurdo, pois $\bola_\varepsilon(p) \cap \bola_\varepsilon(p')=\emptyset$. Portanto $p=p'$.
+Suponhamos que $p,p'$ são limites de $(p_n)_{n \in \N}$. Se $p \neq p'$, então $\dist{p}{p'}>0$. Seja $\varepsilon \in \R$ tal que $0 < \varepsilon \leq \frac{1}{2} \dist{p}{p'}$. Então existe $N_1 \in \N$ tal que, para todo $n \in \N$, se $n \geq N_1$, então $p_n \in \bola{p}{\varepsilon}$, e existe $N_2 \in \N$ tal que, para todo $n \in \N$, se $n \geq N_2$, então $p_n \in \bola{p'}{\varepsilon}$. Assim, definindo $N := \max \{N_1,N_2\}$, segue que, se $n \geq N$, então $n \geq N_1$ e $n \geq N_2$, e, portanto, que $p_n \in \bola{p}{\varepsilon}$ e $p_n \in \bola{p'}{\varepsilon}$; ou seja, $p_n \in \bola{p}{\varepsilon} \cap \bola{p'}{\varepsilon}$, mas isso é absurdo, pois $\bola{p}{\varepsilon} \cap \bola{p'}{\varepsilon}=\emptyset$. Portanto $p=p'$.
 \end{proof}
 
 Essa proposição nos permite tratar o limite de uma sequência como um número único e, por isso, podemos usar a notação $\displaystyle\lim_{n \in \N} p_n = p$ para quando $(p_n)_{n \in \N} \conv p$.
@@ -338,9 +338,9 @@ Essa proposição nos permite tratar o limite de uma sequência como um número 
 Uma sequência de em um espaço métrico $\bm M$ é convergente se, e somente se, todas suas subsequências são convergentes.
 \end{proposition}
 \begin{proof}
-	Suponhamos que $(p_n) \conv p$ e seja $(p_{n_k})_{k \in \N}$ uma subsequência de $(p_n)_{n \in \N}$. Seja $\varepsilon \in \R$ tal que $\varepsilon > 0$. Como $(p_n) \conv p$, existe $N \in \N$ tal que, para todo $n \in \N$, se $n \geq N$, então $p_n \in \bola_\varepsilon(p)$; como $(n_k)_{k \in \N}$ é estritamente crescente, existe $K \in \N$ tal que, para todo $k \in \N$, se $k \geq K$, então $n_k \geq N$. Mas então
+	Suponhamos que $(p_n) \conv p$ e seja $(p_{n_k})_{k \in \N}$ uma subsequência de $(p_n)_{n \in \N}$. Seja $\varepsilon \in \R$ tal que $\varepsilon > 0$. Como $(p_n) \conv p$, existe $N \in \N$ tal que, para todo $n \in \N$, se $n \geq N$, então $p_n \in \bola{p}{\varepsilon}$; como $(n_k)_{k \in \N}$ é estritamente crescente, existe $K \in \N$ tal que, para todo $k \in \N$, se $k \geq K$, então $n_k \geq N$. Mas então
 	\begin{equation*}
-	k \geq K \Rightarrow n_k \geq N \Rightarrow p_{n_k} \in \bola_\varepsilon(p)
+	k \geq K \Rightarrow n_k \geq N \Rightarrow p_{n_k} \in \bola{p}{\varepsilon}
 	\end{equation*}
 e, portanto, $(p_{n_k}) \to p$.	Reciprocamente, se toda subsequência de $(p_n)_{n \in \N}$ converge para $p$, $(p_n)_{n \in \N}$, em particular, é uma dessas subsequências e, portanto, $(p_n) \conv p$.
 \end{proof}
@@ -349,18 +349,18 @@ e, portanto, $(p_{n_k}) \to p$.	Reciprocamente, se toda subsequência de $(p_n)_
 Toda sequência convergente em um espaço métrico $\bm M$ é limitada.
 \end{proposition}
 \begin{proof}
-	Seja $(p_n)_{n \in \N}$ uma sequência de pontos em $M$ tal que $(p_n) \conv p$. Então, para $\varepsilon = 1$, existe $N \in \N$ tal que, para todo $n \in \N$, se $n \geq N$, então $p_n \in \bola_1(p)$. Assim, seja $l \in \R$ tal que
+	Seja $(p_n)_{n \in \N}$ uma sequência de pontos em $M$ tal que $(p_n) \conv p$. Então, para $\varepsilon = 1$, existe $N \in \N$ tal que, para todo $n \in \N$, se $n \geq N$, então $p_n \in \bola{p}{1}$. Assim, seja $l \in \R$ tal que
 	\begin{equation*}
 	l > \max(\{1\} \cup \{\dist{p}{p_n} : n \in [N]\}),
 	\end{equation*}
-seque que, para todo $n \in \N$, $p_n \in \bola_l(p)$ pois, se $0 \leq n \leq N$, $\dist{p}{p_n} < l$ pela definição de $l$ e, se $n \geq N$, então $p_n \in \bola_1(p) \subseteq B_l(p)$, pois $1 < l$. Logo $(p_n)_{n \in \N}$ é limitada.
+seque que, para todo $n \in \N$, $p_n \in \bola{p}{l}$ pois, se $0 \leq n \leq N$, $\dist{p}{p_n} < l$ pela definição de $l$ e, se $n \geq N$, então $p_n \in \bola{p}{1} \subseteq B_l(p)$, pois $1 < l$. Logo $(p_n)_{n \in \N}$ é limitada.
 \end{proof}
 
 \begin{proposition}
-Sejam $\bm M$ um espaço métrico, $C \subseteq M$ um conjunto e $p \in M$. Então existe uma sequência de pontos em $C$ que converge para $p$ se, e somente se, para todo número real $\varepsilon > 0$, $C \cap \bola_\varepsilon(p) \neq \emptyset$.
+Sejam $\bm M$ um espaço métrico, $C \subseteq M$ um conjunto e $p \in M$. Então existe uma sequência de pontos em $C$ que converge para $p$ se, e somente se, para todo número real $\varepsilon > 0$, $C \cap \bola{p}{\varepsilon} \neq \emptyset$.
 \end{proposition}
 \begin{proof}
-	Suponhamos que exista uma sequência $(p_n)_{n \in \N}$ de pontos em $C$ tal que $(p_n) \conv p$. Então, para todo número real $\varepsilon > 0$, existe $N \in \N$ tal que, para todo $n \in \N$, se $n \geq N$, então $p_n \in \bola_\varepsilon(p)$. Mas isso implica que $p_n \in C \cap \bola_\varepsilon(p)$. Reciprocamente, suponhamos que, para todo número real $\varepsilon > 0$, $C \cap \bola_\varepsilon(p) \neq \emptyset$. Então, em particular, para todo $n \in \N$, escolhamos $p_n \in C \cap \bola_{\frac{1}{n}}(p)$. Assim, temos a sequência $(p_n)_{n \in \N}$. Para mostrar que $(p_n) \conv p$, seja $\varepsilon \in \R$ tal que $\varepsilon > 0$. Então existe $N \in \N$ tal que $\frac{1}{N} \leq \varepsilon$. Mas isso implica que, para todo número natural $n \geq N$, $\frac{1}{n} \leq \frac{1}{N}$, e segue que
+	Suponhamos que exista uma sequência $(p_n)_{n \in \N}$ de pontos em $C$ tal que $(p_n) \conv p$. Então, para todo número real $\varepsilon > 0$, existe $N \in \N$ tal que, para todo $n \in \N$, se $n \geq N$, então $p_n \in \bola{p}{\varepsilon}$. Mas isso implica que $p_n \in C \cap \bola{p}{\varepsilon}$. Reciprocamente, suponhamos que, para todo número real $\varepsilon > 0$, $C \cap \bola{p}{\varepsilon} \neq \emptyset$. Então, em particular, para todo $n \in \N$, escolhamos $p_n \in C \cap \bola{p}{\frac{1}{n}}$. Assim, temos a sequência $(p_n)_{n \in \N}$. Para mostrar que $(p_n) \conv p$, seja $\varepsilon \in \R$ tal que $\varepsilon > 0$. Então existe $N \in \N$ tal que $\frac{1}{N} \leq \varepsilon$. Mas isso implica que, para todo número natural $n \geq N$, $\frac{1}{n} \leq \frac{1}{N}$, e segue que
 	\begin{equation*}
 	\dist{p}{p_n} < \frac{1}{n} \leq \frac{1}{N} \leq \varepsilon
 	\end{equation*}
@@ -409,16 +409,16 @@ Sejam $\bm M$ um espaço métrico e $C \subseteq M$ um conjunto. Um \emph{ponto 
 Sejam $\bm M$ um espaço métrico e $F \subseteq M$. Então $F$ é um conjunto fechado se, e somente se, $F^\complement$ é um conjunto aberto.
 \end{proposition}
 \begin{proof}
-Suponhamos que $F$ é um conjunto fechado. Se $F^\complement = \emptyset$, Mas $\emptyset$ é aberto pois, caso contrário, existe $p \in \emptyset$ para o qual não há número real $\varepsilon > 0$ tal que $\bola_\varepsilon(p) \subseteq \emptyset$, mas isso é absurdo. Se $F^\complement \neq \emptyset$, seja $p \in F^\complement$. Se não existe número real $\varepsilon > 0$ tal que $\bola_\varepsilon(p) \subseteq F^\complement$, então, para todo número real $\varepsilon > 0$, $F \cap \bola_\varepsilon(p) \neq \emptyset$. Mas isso implica que existe uma sequência $(p_n)_{n \in \N}$ de pontos em $F$ tal que $(p_n) \conv p$. Como $F$ é fechado, isso implica $p \in F$, o que é uma contradição. Então existe número real $\varepsilon > 0$ tal que $\bola_\varepsilon(p) \subseteq F^\complement$, e isso mostra que $F^\complement$ é aberto.
+Suponhamos que $F$ é um conjunto fechado. Se $F^\complement = \emptyset$, Mas $\emptyset$ é aberto pois, caso contrário, existe $p \in \emptyset$ para o qual não há número real $\varepsilon > 0$ tal que $\bola{p}{\varepsilon} \subseteq \emptyset$, mas isso é absurdo. Se $F^\complement \neq \emptyset$, seja $p \in F^\complement$. Se não existe número real $\varepsilon > 0$ tal que $\bola{p}{\varepsilon} \subseteq F^\complement$, então, para todo número real $\varepsilon > 0$, $F \cap \bola{p}{\varepsilon} \neq \emptyset$. Mas isso implica que existe uma sequência $(p_n)_{n \in \N}$ de pontos em $F$ tal que $(p_n) \conv p$. Como $F$ é fechado, isso implica $p \in F$, o que é uma contradição. Então existe número real $\varepsilon > 0$ tal que $\bola{p}{\varepsilon} \subseteq F^\complement$, e isso mostra que $F^\complement$ é aberto.
 	
-Reciprocamente, suponhamos que $F^\complement$ é aberto. Se $F = \emptyset$, então $F$ é fechado. Se $F \neq \emptyset$, seja $(p_n)_{n \in \N}$ uma sequência em $F$ que converge para $p \in M$. Suponhamos que $p \notin F$. Então $p \in F^\complement$ e, como $F^\complement$ é aberto, existe um número real $\varepsilon > 0$ tal que $\bola_\varepsilon(p) \subseteq F^\complement$. Como $(p_n) \conv p$, existe $N \in \N$ tal que, para todo $n \in \N$, se $n \geq N$, então $p_n \in \bola_\varepsilon(p)$. Mas isso implica que $p_N \in \bola_\varepsilon(p) \subseteq F^\complement$, o que é absurdo, pois $p_n \in F$. Portanto $p \in F$ e isso mostra que $F$ é fechado.
+Reciprocamente, suponhamos que $F^\complement$ é aberto. Se $F = \emptyset$, então $F$ é fechado. Se $F \neq \emptyset$, seja $(p_n)_{n \in \N}$ uma sequência em $F$ que converge para $p \in M$. Suponhamos que $p \notin F$. Então $p \in F^\complement$ e, como $F^\complement$ é aberto, existe um número real $\varepsilon > 0$ tal que $\bola{p}{\varepsilon} \subseteq F^\complement$. Como $(p_n) \conv p$, existe $N \in \N$ tal que, para todo $n \in \N$, se $n \geq N$, então $p_n \in \bola{p}{\varepsilon}$. Mas isso implica que $p_N \in \bola{p}{\varepsilon} \subseteq F^\complement$, o que é absurdo, pois $p_n \in F$. Portanto $p \in F$ e isso mostra que $F$ é fechado.
 \end{proof}
 
 \begin{proposition}
-Seja $\bm M$ um espaço métrico. Então, para todo $c \in M$ e para todo número real $r > 0$, a bola fechada $\bolafec_r(c)$ é um conjunto fechado.
+Seja $\bm M$ um espaço métrico. Então, para todo $c \in M$ e para todo número real $r > 0$, a bola fechada $\bolafec{c}{r}$ é um conjunto fechado.
 \end{proposition}
 \begin{proof}
-Basta notar que $\bolafec_r(c)^\complement$ é aberto.
+Basta notar que $\bolafec{c}{r}^\complement$ é aberto.
 \end{proof}
 
 \subsection{Conjuntos densos}
@@ -433,11 +433,11 @@ Basta notar que $\bolafec_r(c)^\complement$ é aberto.
 	Sejam $\bm M = (M,\dist{\var}{\var})$ um espaço métrico e $C,D \subseteq M$ conjuntos. Então $D$ é denso em $C$ se, e somente se, para todo conjunto aberto $A$ de $\bm M$, $A \cap C \neq \emptyset$ implica $A \cap D \neq \emptyset$.
 \end{proposition}
 \begin{proof}
-	Suponhamos que $D$ é denso em $C$. Sejam $A$ um conjunto aberto de $\bm M$ tal que $A \cap C \neq \emptyset$ e seja $p \in A \cap C$. Como $D$ é denso em $C$ e $p \in C$, existe uma sequência $(p_n)_{n \in \N}$ em $D$ que converge para $p$. Como $A$ é aberto e $p \in A$, existe um número real $\varepsilon>0$ tal que $\bola_\varepsilon(p) \subseteq A$. Então, como $(p_n) \conv p$, existe um número natural $N$ tal que, para todo natural $n \geq N$, $p_n \in \bola_\varepsilon(p)$. Mas isso implica que $p_n \in A \cap D$.
+	Suponhamos que $D$ é denso em $C$. Sejam $A$ um conjunto aberto de $\bm M$ tal que $A \cap C \neq \emptyset$ e seja $p \in A \cap C$. Como $D$ é denso em $C$ e $p \in C$, existe uma sequência $(p_n)_{n \in \N}$ em $D$ que converge para $p$. Como $A$ é aberto e $p \in A$, existe um número real $\varepsilon>0$ tal que $\bola{p}{\varepsilon} \subseteq A$. Então, como $(p_n) \conv p$, existe um número natural $N$ tal que, para todo natural $n \geq N$, $p_n \in \bola{p}{\varepsilon}$. Mas isso implica que $p_n \in A \cap D$.
 	
-	Reciprocamente, suponhamos que, para todo conjunto aberto $A$ de $\bm M$, $A \cap C \neq \emptyset$ implica $A \cap D \neq \emptyset$. Se $C=\emptyset$, então $C \subseteq \overline D$. Se $C \neq \emptyset$, seja $p \in C$. Para todo $n \in \N$, o conjunto $\bola_\frac{1}{n}(p)$ é um conjunto aberto que contém $p$. Mas então $\bola_\frac{1}{n}(p) \cap C \neq \emptyset$, o que implica $\bola_\frac{1}{n}(p) \cap D \neq \emptyset$. Para cada $n \in \N$, escolhamos $p_n \in B_\frac{1}{n}(p) \cap D$. Assim, temos uma sequência $(p_n)_{n \in \N}$ de pontos em $D$ que converge para $p$, pois, para todo número real $\varepsilon>0$, existe um natural $N$ tal que $\frac{1}{N} \leq \varepsilon$ e, então
+	Reciprocamente, suponhamos que, para todo conjunto aberto $A$ de $\bm M$, $A \cap C \neq \emptyset$ implica $A \cap D \neq \emptyset$. Se $C=\emptyset$, então $C \subseteq \overline D$. Se $C \neq \emptyset$, seja $p \in C$. Para todo $n \in \N$, o conjunto $\bola{p}{\frac{1}{n}}$ é um conjunto aberto que contém $p$. Mas então $\bola{p}{\frac{1}{n}} \cap C \neq \emptyset$, o que implica $\bola{p}{\frac{1}{n}} \cap D \neq \emptyset$. Para cada $n \in \N$, escolhamos $p_n \in B_\frac{1}{n}(p) \cap D$. Assim, temos uma sequência $(p_n)_{n \in \N}$ de pontos em $D$ que converge para $p$, pois, para todo número real $\varepsilon>0$, existe um natural $N$ tal que $\frac{1}{N} \leq \varepsilon$ e, então
 	\begin{equation*}
-	\forall n \in \N \qquad n \geq N \Rightarrow \frac{1}{n} \leq \frac{1}{N} \leq \varepsilon \Rightarrow p_n \in \bola_\frac{1}{n}(p) \subseteq \bola_\frac{1}{N}(p) \subseteq \bola_\varepsilon(p).
+	\forall n \in \N \qquad n \geq N \Rightarrow \frac{1}{n} \leq \frac{1}{N} \leq \varepsilon \Rightarrow p_n \in \bola{p}{\frac{1}{n}} \subseteq \bola{p}{\frac{1}{N}} \subseteq \bola{p}{\varepsilon}.
 	\end{equation*}
 	Isso mostra que $p \in \overline D$ e, portanto, que $C \subseteq \overline D$.
 \end{proof}
@@ -470,7 +470,7 @@ Basta notar que $\bolafec_r(c)^\complement$ é aberto.
 Sejam $\bm M$ um espaço métrico e $C \subseteq M$. Se $C$ é compacto, então é limitado.
 \end{proposition}
 \begin{proof}
-Seja $p \in M$ e consideremos a cobertura $\set{\bola_r(p)}{r \in \intaa{0}{\infty}}$ de $C$. Pela compacidade, existe subcobertura finita $\{\bola_{r_0}(p),\ldots,\bola_{r_{n-1}}(p)\}$ de $C$. Tomando $r := \max\set{r_i}{i \in [n]}$, segue que $\bola_{r_i}(p) \subseteq \bola_{r}(p)$ para todo $i \in [n]$, logo $C \subseteq \bola_r(p)$, o que implica que $\diam(C) \leq 2r < \infty$. 
+Seja $p \in M$ e consideremos a cobertura $\set{\bola{p}{r}}{r \in \intaa{0}{\infty}}$ de $C$. Pela compacidade, existe subcobertura finita $\{\bola{p}{r_0},\ldots,\bola{p}{r_{n-1}}\}$ de $C$. Tomando $r := \max\set{r_i}{i \in [n]}$, segue que $\bola{p}{r_i} \subseteq \bola{p}{r}$ para todo $i \in [n]$, logo $C \subseteq \bola{p}{r}$, o que implica que $\diam(C) \leq 2r < \infty$. 
 \end{proof}
 
 A recíproca nem sempre é verdade. Nos espaços $\R^d$, $ d \in \N$, vale que um conjunto é compacto se, e somente se, é fechado e limitado. Esse resultado é conhecido como Teorema de Heine-Borel. No entanto, isso não vale em qualquer espaço métrico\footnote{Para mais detalhes, conferir \url{https://math.stackexchange.com/questions/674982/difference-between-closed-bounded-and-compact-sets}.}.
@@ -483,12 +483,12 @@ Sejam $\bm M$ e $\bm M'$ espaços métricos e $p \in M$. Uma função \emph{cont
 %	\qquad \dist{p}{x}_1 < \delta \Rightarrow \dist{f(p)}{f(x)}_2 < \varepsilon.
 %	\end{equation*}
 	\begin{equation*}
-	x \in \bola_\delta(p) \Rightarrow f(x) \in \bola_\varepsilon(f(p)).
+	x \in \bola{p}{\delta} \Rightarrow f(x) \in \bola{f(p)}{\varepsilon}.
 	\end{equation*}
 Uma função \emph{descontínua} em $p$ é uma função que não é contínua em $p$.
 \end{definition}
 
-Denotamos as bolas abertas em $\bm M$ e em $\bm M'$ por $\bola$, mas deve-se perceber que elas são relativas a métricas possivelmente diferentes.
+Denotamos as bolas abertas em $\bm M$ e em $\bm M'$ por $\bola{\var}{\var}$, mas deve-se perceber que elas são relativas a métricas possivelmente diferentes.
 
 \begin{proposition}
 Sejam $\bm M_1$ e $\bm M_2$ espaços métricos, $f: M_1 \to M_2$ uma função e $p \in M_1$. Então $f$ é contínua em $p$ se, e somente se, para toda sequência $(p_n)_{n \in \N}$ de pontos em $M_1$ que converge para $p$, a sequência $(f(p_n))_{n \in \N}$ de pontos em $M_2$ converge para $f(p)$; ou seja
@@ -497,17 +497,17 @@ Sejam $\bm M_1$ e $\bm M_2$ espaços métricos, $f: M_1 \to M_2$ uma função e 
 	\end{equation*}
 \end{proposition}
 \begin{proof}
-	Suponhamos que $f$ é contínua em $p$. Seja $(p_n)_{n \in \N}$ uma sequência de pontos em $M_1$ que converge para $p$. Seja um número real $\varepsilon > 0$. Como $f$ é contínua, existe um número real $\delta > 0$ tal que $p_n \in \bola_\delta(p)$ implica $f(p_n) \in \bola_\varepsilon(f(p))$. Mas, como $(p_n) \conv p$, existe $N \in \N$ tal que
+	Suponhamos que $f$ é contínua em $p$. Seja $(p_n)_{n \in \N}$ uma sequência de pontos em $M_1$ que converge para $p$. Seja um número real $\varepsilon > 0$. Como $f$ é contínua, existe um número real $\delta > 0$ tal que $p_n \in \bola{p}{\delta}$ implica $f(p_n) \in \bola{f(p)}{\varepsilon}$. Mas, como $(p_n) \conv p$, existe $N \in \N$ tal que
 	\begin{equation*}
-	\forall n \in \N \qquad n \geq N \Rightarrow p_n \in \bola_\delta(p) \Rightarrow f(p_n) \in \bola_\varepsilon(f(p))
+	\forall n \in \N \qquad n \geq N \Rightarrow p_n \in \bola{p}{\delta} \Rightarrow f(p_n) \in \bola{f(p)}{\varepsilon}
 	\end{equation*}
 o que mostra que $(f(p_n)) \conv f(p)$.
 	
-	Reciprocamente, suponhamos que, para toda sequência $(p_n)_{n \in \N}$ em $M_1$ que converge para $p$, a sequência $(f(p_n))_{n \in \N}$ converge para $f(p)$. Suponhamos, por absurdo, que $f$ não é contínua em $p$. Então existe um número real $\varepsilon > 0$ tal que, para todo número real $\delta > 0$, existe $x \in M_1$ tal que $x \in \bola_\delta(p)$, mas $f(x) \notin \bola_\varepsilon(f(p))$. Vamos mostrar que isso implica que existe uma sequência $(p_n)_{n \in \N}$ em $M_1$ que converge para $p$, mas que a sequência $(f(p_n))_{n \in \N}$ não converge para $f(p)$; ou seja, que existe um número real $\varepsilon > 0$ tal que, para todo número natural $N$, existe $n \in \N$ tal que $n \geq N$, mas $f(p_n) \notin \bola_\varepsilon(f(p))$. Seja $n \in \N$ e tomemos $\delta = \frac{1}{n}$. Então existe $x \in M_1$ tal que $x \in \bola_\frac{1}{n}(p)$, mas $f(x) \notin \bola_\varepsilon(f(p))$. Nomeando esse $x \in M_1$ de $p_n$, obtemos uma sequência $(p_n)_{n \in \N}$ que converge para $p$ pois, para todo número real $\varepsilon' > 0$, existe um número natural $N \in \N$ tal que $\frac{1}{N} \leq \varepsilon'$ e isso implica que
+	Reciprocamente, suponhamos que, para toda sequência $(p_n)_{n \in \N}$ em $M_1$ que converge para $p$, a sequência $(f(p_n))_{n \in \N}$ converge para $f(p)$. Suponhamos, por absurdo, que $f$ não é contínua em $p$. Então existe um número real $\varepsilon > 0$ tal que, para todo número real $\delta > 0$, existe $x \in M_1$ tal que $x \in \bola{p}{\delta}$, mas $f(x) \notin \bola{f(p)}{\varepsilon}$. Vamos mostrar que isso implica que existe uma sequência $(p_n)_{n \in \N}$ em $M_1$ que converge para $p$, mas que a sequência $(f(p_n))_{n \in \N}$ não converge para $f(p)$; ou seja, que existe um número real $\varepsilon > 0$ tal que, para todo número natural $N$, existe $n \in \N$ tal que $n \geq N$, mas $f(p_n) \notin \bola{f(p)}{\varepsilon}$. Seja $n \in \N$ e tomemos $\delta = \frac{1}{n}$. Então existe $x \in M_1$ tal que $x \in \bola{p}{\frac{1}{n}}$, mas $f(x) \notin \bola{f(p)}{\varepsilon}$. Nomeando esse $x \in M_1$ de $p_n$, obtemos uma sequência $(p_n)_{n \in \N}$ que converge para $p$ pois, para todo número real $\varepsilon' > 0$, existe um número natural $N \in \N$ tal que $\frac{1}{N} \leq \varepsilon'$ e isso implica que
 \begin{equation*}
-	\forall n \in \N \qquad n \geq N \Rightarrow \frac{1}{n} \leq \frac{1}{N} \leq \varepsilon' \Rightarrow p_n \in \bola_\frac{1}{n}(p) \subseteq \bola_\frac{1}{N}(p) \subseteq \bola_{\varepsilon'}(p).
+	\forall n \in \N \qquad n \geq N \Rightarrow \frac{1}{n} \leq \frac{1}{N} \leq \varepsilon' \Rightarrow p_n \in \bola{p}{\frac{1}{n}} \subseteq \bola{p}{\frac{1}{N}} \subseteq \bola{p}{\varepsilon'}.
 	\end{equation*}
-	No entanto, $(f(p_n))_{n \in \N}$ é uma sequência que não converge para $f(p)$ pois, considerando o $\varepsilon$ original tomado da descontinuidade de $f$, para todo número natural $N$, $f(p_N) \notin \bola_\varepsilon(f(p))$ e isso contradiz a hipótese de que, para toda sequência $(p_n)_{n \in \N}$ em $M_1$ que converge para $p$, a sequência $(f(p_n))_{n \in \N}$ converge para $f(p)$. Portanto $f$ é contínua.	
+	No entanto, $(f(p_n))_{n \in \N}$ é uma sequência que não converge para $f(p)$ pois, considerando o $\varepsilon$ original tomado da descontinuidade de $f$, para todo número natural $N$, $f(p_N) \notin \bola{f(p)}{\varepsilon}$ e isso contradiz a hipótese de que, para toda sequência $(p_n)_{n \in \N}$ em $M_1$ que converge para $p$, a sequência $(f(p_n))_{n \in \N}$ converge para $f(p)$. Portanto $f$ é contínua.	
 \end{proof}
 
 \begin{definition}
@@ -543,62 +543,62 @@ Essa definição, em particular, estabelece a distância de pontos para conjunto
 \begin{definition}
 Sejam $\bm M$ um espaço métrico e $C \subseteq M$ e $r \in \intaa{0}{\infty}$. A $r$-\emph{vizinhança} de $C$ é o conjunto
 %	\begin{equation*}
-%	\bola_r(C) := \set{p \in M}{\exists_{c \in C} \dist{c}{p} < r}.
+%	\bola{C}{r} := \set{p \in M}{\exists_{c \in C} \dist{c}{p} < r}.
 %	\end{equation*}
 	\begin{equation*}
-	\bola_r(C) := \set{p \in M}{\dist{C}{p} < r}.
+	\bola{C}{r} := \set{p \in M}{\dist{C}{p} < r}.
 	\end{equation*}
  A $r$-\emph{vizinhança fechada} de $C$ é o conjunto
 %	\begin{equation*}
-%	\bolafec_r(C) := \set{p \in M}{\exists_{c \in C} \dist{c}{p} \leq r}.
+%	\bolafec{C}{r} := \set{p \in M}{\exists_{c \in C} \dist{c}{p} \leq r}.
 %	\end{equation*}
 	\begin{equation*}
-	\bolafec_r(C) := \set{p \in M}{\dist{C}{p} \leq r}.
+	\bolafec{C}{r} := \set{p \in M}{\dist{C}{p} \leq r}.
 	\end{equation*}
 \end{definition}
 
-Note que excluímos $r=0$ da definição pois basicamente teríamos $\bola_0(C) = \emptyset$ e $\bolafec_0(C) = \Fec{C}$.
+Note que excluímos $r=0$ da definição pois basicamente teríamos $\bola{C}{0} = \emptyset$ e $\bolafec{C}{0} = \Fec{C}$.
 	
 \begin{exercise}
 Sejam $\bm M$ um espaço métrico e $C \subseteq M$ e $r \in \intaa{0}{\infty}$.
 	\begin{enumerate}
-	\item A vizinhança $\bola_r(C) $ é um conjunto aberto e
+	\item A vizinhança $\bola{C}{r} $ é um conjunto aberto e
 		\begin{equation*}
-		\bola_r(C) = \bigcup_{c \in C} \bola_r(c);
+		\bola{C}{r} = \bigcup_{c \in C} \bola{c}{r};
 		\end{equation*}
 	\item  Para todo $r' \in \intaa{0}{\infty}$ tais que $r \leq r'$,
 		\begin{equation*}
-		C \subseteq \bola_r(C) \subseteq \bola_{r'}(C);
+		C \subseteq \bola{C}{r} \subseteq \bola{C}{r'};
 		\end{equation*}
-	\item A vizinhança fechada $\bolafec_r(C) $ é um conjunto fechado e
+	\item A vizinhança fechada $\bolafec{C}{r} $ é um conjunto fechado e
 		\begin{equation*}
-		\bolafec_r(C) \supseteq \bigcup_{c \in C} \bolafec_r(c);
+		\bolafec{C}{r} \supseteq \bigcup_{c \in C} \bolafec{c}{r};
 		\end{equation*}
 	\item  Para todo $r' \in \intaa{0}{\infty}$ tais que $r \leq r'$,
 		\begin{equation*}
-		\Fec{C} \subseteq \bolafec_r(C) \subseteq \bolafec_{r'}(C);
+		\Fec{C} \subseteq \bolafec{C}{r} \subseteq \bolafec{C}{r'};
 		\end{equation*}
 	\item Para $r \in \intaa{0}{\infty}$,
 		\begin{equation*}
-		\bolafec_r(C) = \Fec{\bola_r(C)}
+		\bolafec{C}{r} = \Fec{\bola{C}{r}}
 		\end{equation*}
 	\end{enumerate}
 \end{exercise}
 \begin{proof}
 	\begin{enumerate}
-	\item Primeiro, mostramos a igualdade dos conjuntos. ($\supseteq$) Seja $p \in \bigcup_{c \in C} \bola_r(c)$. Então existe $c \in C$ tal que $\dist{c}{p} < r$, o que implica que
+	\item Primeiro, mostramos a igualdade dos conjuntos. ($\supseteq$) Seja $p \in \bigcup_{c \in C} \bola{c}{r}$. Então existe $c \in C$ tal que $\dist{c}{p} < r$, o que implica que
 	\begin{equation*}
 	\dist{C}{p} = \inf \set{\dist{c}{p}}{c \in C} \leq \dist{c}{p} < r,
 	\end{equation*}
-logo $p \in \bola_r(C)$.
+logo $p \in \bola{C}{r}$.
 
-($\subseteq$) Seja $p \in \bola_r(C)$. Então
+($\subseteq$) Seja $p \in \bola{C}{r}$. Então
 	\begin{equation*}
 	\dist{C}{p} = \inf \set{\dist{c}{p}}{c \in C} < r.
 	\end{equation*}
-Isso significa que existe sequência $(c_n)_{n \in \N}$ em $C$ tal que $\lim_{n \conv \infty} \dist{c}{p} < r$, o que implica existe $n \in \N$ tal que $\dist{c_n}{p}<r$, logo $p \in \bigcup_{c \in C} \bola_r(c)$.
+Isso significa que existe sequência $(c_n)_{n \in \N}$ em $C$ tal que $\lim_{n \conv \infty} \dist{c}{p} < r$, o que implica existe $n \in \N$ tal que $\dist{c_n}{p}<r$, logo $p \in \bigcup_{c \in C} \bola{c}{r}$.
 
-Como as bolas $\bola_r(c)$ são abertas, segue que $\bola_r(C) = \bigcup_{c \in C} \bola_r(c)$ é aberto.
+Como as bolas $\bola{c}{r}$ são abertas, segue que $\bola{C}{r} = \bigcup_{c \in C} \bola{c}{r}$ é aberto.
 	\end{enumerate}
 \end{proof}
 
@@ -613,7 +613,7 @@ Seja $\bm M$ um espaço métrico. Conjuntos \emph{metricamente separados} são c
 Sejam $\bm M$ um espaço métrico e $C,C' \subseteq M$ conjuntos metricamente separados. Então $C$ e $C'$ são separados por vizinhanças.
 \end{proposition}
 \begin{proof}
-Seja $\delta := \dist{C}{C'}$. Pela separação métrica, $\delta > 0$. Então $C \subseteq \bola_\frac{\delta}{2}(C)$ e $C' \subseteq \bola_\frac{\delta}{2}(C')$ e $\bola_\frac{\delta}{2}(C) \cap \bola_\frac{\delta}{2}(C') = \emptyset$, já que, se existe $p \in \bola_\frac{\delta}{2}(C) \cap \bola_\frac{\delta}{2}(C')$, então existem $c \in C$ e $c' \in C'$ tais que $\dist{c}{p} < \frac{\delta}{2}$ e $\dist{c'}{p} < \frac{\delta}{2}$, portanto
+Seja $\delta := \dist{C}{C'}$. Pela separação métrica, $\delta > 0$. Então $C \subseteq \bola{C}{\frac{\delta}{2}}$ e $C' \subseteq \bola{C'}{\frac{\delta}{2}}$ e $\bola{C}{\frac{\delta}{2}} \cap \bola{C'}{\frac{\delta}{2}} = \emptyset$, já que, se existe $p \in \bola{C}{\frac{\delta}{2}} \cap \bola{C'}{\frac{\delta}{2}}$, então existem $c \in C$ e $c' \in C'$ tais que $\dist{c}{p} < \frac{\delta}{2}$ e $\dist{c'}{p} < \frac{\delta}{2}$, portanto
 	\begin{equation*}
 	\dist{c}{c'} \leq \dist{c}{p} + \dist{c'}{p} < \frac{\delta}{2}+\frac{\delta}{2} = \delta,
 	\end{equation*}
@@ -630,19 +630,19 @@ Sejam $F,F' \subseteq M$ fechados disjuntos. Mostraremos que $F$ e $F'$ são
 % metricamente separados e portanto 
 separados por vizinhanças, o que mostrará que o espaço é normal.
 
-Para todo $f \in F$, existe $\delta_f \in \intaa{0}{infty}$ tal que
+Para todo $f \in F$, existe $\delta_f \in \intaa{0}{\infty}$ tal que
 	\begin{equation*}
-	\bola_{\delta_f}(f) \cap F' = \emptyset,
+	\bola{f}{\delta_f} \cap F' = \emptyset,
 	\end{equation*}
 pois $F'$ é fechado e $f \notin F'$. Definimos
 	\begin{equation*}
-	V := \bigcup_{f \in F} \bola_{\frac{\delta_f}{2}}(f).
+	V := \bigcup_{f \in F} \bola{f}{\frac{\delta_f}{2}}.
 	\end{equation*}
 Esse conjunto é uma vizinhança aberta de $F$. Analogamente, definimos $V'$ uma vizinhança aberta de $F'$. Claramente $V \cap V'=\empty$, pois caso contrário, se existe $p \in V \cap V'$, então existem $f \in F$e $f' \in F'$ tais que
 	\begin{equation*}
-	p \in \bola_{\frac{\delta_f}{2}}(f) \cap \bola_{\frac{\delta_{f'}}{2}}(f'),
+	p \in \bola{f}{\frac{\delta_f}{2}} \cap \bola{f'}{\frac{\delta_{f'}}{2}},
 	\end{equation*}
-portanto se $\delta_f \leq \delta_{f'}$, então $f \in \bola_{\frac{\delta_{f'}}{2}}(f')$ e, se $\delta_{f'} \leq \delta_f$, então $f' \in \bola_{\frac{\delta_f}{2}}(f)$, ambos contradições.
+portanto se $\delta_f \leq \delta_{f'}$, então $f \in \bola{f'}{\frac{\delta_{f'}}{2}}$ e, se $\delta_{f'} \leq \delta_f$, então $f' \in \bola{f}{\frac{\delta_f}{2}}$, ambos contradições.
 %
 %Outra demonstração usa os conjuntos:
 %Defina
@@ -709,7 +709,7 @@ Essa sequências são conhecidas como \emph{sequências de Cauchy}. O nome aprox
 Toda sequência convergente em um espaço métrico $\bm M$ é aproximante.
 \end{proposition}
 \begin{proof}
-Seja $(p_n)_{n \in \N}$ uma sequência em $M$ que converge para $p$. Seja $\varepsilon \in \R$ tal que $\varepsilon > 0$. Então $\frac{1}{2}\varepsilon > 0$ é um número real e segue que existe $N \in \N$ tal que, para todo número natural $n \geq N$, $p_n \in \bola_{\frac{1}{2}\varepsilon}(p)$. Assim, segue que	
+Seja $(p_n)_{n \in \N}$ uma sequência em $M$ que converge para $p$. Seja $\varepsilon \in \R$ tal que $\varepsilon > 0$. Então $\frac{1}{2}\varepsilon > 0$ é um número real e segue que existe $N \in \N$ tal que, para todo número natural $n \geq N$, $p_n \in \bola{p}{\frac{1}{2}\varepsilon}$. Assim, segue que	
 	\begin{equation*}
 	\forall n,m \in \N \qquad n,m \geq N \Rightarrow \dist{p_n}{p_m} \leq \dist{p_n}{p} + \dist{p}{p_n} < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon,
 	\end{equation*}
@@ -869,23 +869,23 @@ Seja $\bm M$ um espaço métrico.
 	\begin{enumerate}
 	\item $\bm M$ é uniformemente limitado se, e somente se, para todo $\varepsilon \in \intaa{0}{\infty}$, existem $p_0,\cdots,p_{n-1}$ tais que
 		\begin{equation*}
-		M \subseteq \bigcup_{i \in [n]} \bola_\varepsilon(p);
+		M \subseteq \bigcup_{i \in [n]} \bola{p}{\varepsilon};
 		\end{equation*}
 	\item Se $\bm M$ é uniformemente limitado, então é limitado.
 	\end{enumerate}
 \end{proposition}
 \begin{proof}
 	\begin{enumerate}
-	\item ($\Rightarrow$) Seja $\varepsilon \in \intaa{0}{\infty}$. Como $M$ é uniformemente limitado, existe uma $\frac{\varepsilon}{2}$-cobertura finita $\{C_i\}_{i \in [n]}$ de $M$. Tome, para cada $i \in [n]$, $c_i \in C_i$. Então $\diam(\bola_{\frac{\varepsilon}{2}}(c_i)) \leq \varepsilon$ e $C_i \subseteq \bola_{\frac{\varepsilon}{2}}(c_i)$, portanto
+	\item ($\Rightarrow$) Seja $\varepsilon \in \intaa{0}{\infty}$. Como $M$ é uniformemente limitado, existe uma $\frac{\varepsilon}{2}$-cobertura finita $\{C_i\}_{i \in [n]}$ de $M$. Tome, para cada $i \in [n]$, $c_i \in C_i$. Então $\diam(\bola{c_i}{\frac{\varepsilon}{2}}) \leq \varepsilon$ e $C_i \subseteq \bola{c_i}{\frac{\varepsilon}{2}}$, portanto
 	\begin{equation*}
-	M \subseteq \bigcup_{i \in [n]} C_i \subseteq \bigcup_{i \in [n]} \bola_{\frac{\varepsilon}{2}}(c_i).
+	M \subseteq \bigcup_{i \in [n]} C_i \subseteq \bigcup_{i \in [n]} \bola{c_i}{\frac{\varepsilon}{2}}.
 	\end{equation*}
 
 ($\Leftarrow$) Reciprocamente, seja $\varepsilon \in \intaa{0}{\infty}$. Existem existem $p_0,\cdots,p_{n-1}$ tais que
 		\begin{equation*}
-		M \subseteq \bigcup_{i \in [n]} \bola_{\frac{\varepsilon}{2}}(p_i);
+		M \subseteq \bigcup_{i \in [n]} \bola{p_i}{\frac{\varepsilon}{2}};
 		\end{equation*}
-Como, para todo $i \in [n]$, $\diam(\bola_{\frac{\varepsilon}{2}}(p)) \leq \varepsilon$, segue que $(\bola_{\frac{\varepsilon}{2}}(p_i))_{i \in [n]}$ é uma $\varepsilon$-cobertura de $M$, portanto $M$ é uniformemente limitado.
+Como, para todo $i \in [n]$, $\diam(\bola{p}{\frac{\varepsilon}{2}}) \leq \varepsilon$, segue que $(\bola{p_i}{\frac{\varepsilon}{2}})_{i \in [n]}$ é uma $\varepsilon$-cobertura de $M$, portanto $M$ é uniformemente limitado.
 	
 	\item Seja $(C_i)_{i \in [n]}$ uma cobertura $1$-precisa de $M$. Então, como para todo $i \in [n]$, $\diam(C_i) < \infty$, e a cobertura é finita, $\diam(M) < \infty$.
 	\end{enumerate}

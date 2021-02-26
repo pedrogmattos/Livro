@@ -400,13 +400,13 @@ e a \emph{esfera unitária} de $\E$ é o conjunto
 	\end{equation*}
 \end{definition}
 
-A bola unitária é a bola fechada, de raio 1 e centro na origem, com respeito à métrica induzida pela norma. Isto é, $\B = \overline\bola_1(0)$. Com essa notação para a bola unitária, podemos representar qualquer bola de centro $c$ e raio $r$ como $c+r\B$, pois
+A bola unitária é a bola fechada, de raio 1 e centro na origem, com respeito à métrica induzida pela norma. Isto é, $\B = \bolafec{0}{1}$. Com essa notação para a bola unitária, podemos representar qualquer bola de centro $c$ e raio $r$ como $c+r\B$, pois
 	\begin{align*}
 	c+r\B &= \set{c+rv}{v \in \B} \\
 		&= \set{c+rv}{\nor{v} \leq 1} \\
 		&= \set{v}{\nor{\frac{v-c}{r}} \leq 1} \\
 		&= \set{v}{\nor{v-c} \leq r} \\
-		&= \overline\bola_r(c).
+		&= \bolafec{c}{r}.
 	\end{align*}
 
 \begin{proposition}
@@ -478,20 +478,20 @@ Seja $\bm E$ um espaço linear sobre um corpo normado $(\bm C,\abs{\var})$. Norm
 %\end{proposition}
 \begin{proof}
 Demonstraremos a volta pois a ida é evidente.
-Basta mostrar que as bases de bolas são equivalentes. Para isso, mostramos primeiro que uma bola de uma topologia contém uma bola de outra. Sejam $\nor{\var}, \nor{\var}'$ normas equivalentes em $\bm E$. Tomemos uma bola $\bola_r(v)$ da norma $\nor{\var}$. Como existe $C \in \intaa{0}{\infty}$ tal que, para todo $v \in E$, $\nor{v} \leq C \nor{v}'$, segue que
+Basta mostrar que as bases de bolas são equivalentes. Para isso, mostramos primeiro que uma bola de uma topologia contém uma bola de outra. Sejam $\nor{\var}, \nor{\var}'$ normas equivalentes em $\bm E$. Tomemos uma bola $\bola{v}{r}$ da norma $\nor{\var}$. Como existe $C \in \intaa{0}{\infty}$ tal que, para todo $v \in E$, $\nor{v} \leq C \nor{v}'$, segue que
 	\begin{equation*}
-	\bola'_{rC\inv}(v) \subseteq \bola_r(v),
+	\bola{v}{rC\inv}' \subseteq \bola{v}{r},
 	\end{equation*}
-pois se $v' \in \bola'_{rC\inv}(v)$, então $\nor{v'-v} < rC\inv$, logo $C\nor{v'-v} < r$, o que implica que $\nor{v'-v} < r$, portanto $v' \in \bola_r(v)$.
+pois se $v' \in \bola{v}{rC\inv}'$, então $\nor{v'-v} < rC\inv$, logo $C\nor{v'-v} < r$, o que implica que $\nor{v'-v} < r$, portanto $v' \in \bola{v}{r}$.
 
-Sendo assim, tomemos uma bola $\bola_r(v)$ da norma $\nor{\var}$ e $x \in \bola_r(v)$. Então temos que $\bola_{r-\nor{x-v}}(x) \subseteq \bola_r(v)$
-e portanto temos que, pelo argumento do parágrafo anterior, $\bola'_{(r-\nor{x-v})C\inv}(x) \subseteq \bola_{r-\nor{x-v}}(x)$, logo
+Sendo assim, tomemos uma bola $\bola{v}{r}$ da norma $\nor{\var}$ e $x \in \bola{v}{r}$. Então temos que $\bola{x}{r-\nor{x-v}} \subseteq \bola{v}{r}$
+e portanto temos que, pelo argumento do parágrafo anterior, $\bola{x}{(r-\nor{x-v})C\inv}' \subseteq \bola{x}{r-\nor{x-v}}$, logo
 	\begin{equation*}
-	\bola'_{(r-\nor{x-v})C\inv}(x) \subseteq \bola_r(v).
+	\bola{x}{(r-\nor{x-v})C\inv}' \subseteq \bola{v}{r}.
 	\end{equation*}
 Simetricamente, mostra-se que
 	\begin{equation*}
-	\bola_{(r-\nor{x-v}')c}(x) \subseteq \bola'_r(v),
+	\bola{x}{(r-\nor{x-v}')c} \subseteq \bola{v}{r}',
 	\end{equation*}
 portanto as bases de bolas são equivalentes, o que quer dizer que as topologias são a mesma.
 \end{proof}
