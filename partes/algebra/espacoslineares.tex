@@ -3,7 +3,7 @@
 \section{Espaço e subespaço lineares}
 
 \begin{definition}
-Seja $\bm C=(C,+,-,0,\cdot,1)$ um corpo. Um \emph{espaço linear} sobre $\bm C$ é um módulo $(\bm V,\bm \cdot)$ sobre $\bm C$; ou seja,
+Seja $\bm C=(C,+,-,0,\times,1)$ um corpo. Um \emph{espaço linear} sobre $\bm C$ é um módulo $(\bm V,\bm \cdot)$ sobre $\bm C$; ou seja,
 	\begin{enumerate}
 	\item  Para todo $c \in C$, a função $c \bm \cdot \colon \bm V \to \bm V$ é um homomorfismo de grupo:
 		\begin{enumerate}
@@ -20,7 +20,7 @@ Seja $\bm C=(C,+,-,0,\cdot,1)$ um corpo. Um \emph{espaço linear} sobre $\bm C$ 
 			\end{equation*}
 		\item Para todos $c_0,c_1 \in C$ e $v \in V$,
 			\begin{equation*}
-			(c_0 \cdot c_1) \bm \cdot v = c_0 \bm \cdot (c_1 \bm \cdot v);
+			(c_0c_1) \bm \cdot v = c_0 \bm \cdot (c_1 \bm \cdot v);
 			\end{equation*}
 		\item Para todo $v \in V$,
 			\begin{equation*}
@@ -1282,20 +1282,20 @@ Em particular, isso mostra que formas $d$-lineares num espaço de dimensão $d$ 
 \begin{definition}
 Seja $d \in \N$. O \emph{determinante} em $\R^d$ é a forma $d$-linear
 	\begin{equation*}
-	\det := {\ii_0}\dual \wedge \ldots \wedge {\ii_{d-1}}\dual.
+	\det{\var,\cdots,\var} := {\ii_0}\dual \wedge \ldots \wedge {\ii_{d-1}}\dual.
 	\end{equation*}
 %Sejam $\bm V$ um espaço linear de dimensão finita $d$ sobre um corpo $\bm C$ e $b=(b_i)_{i \in [d]}$ uma base de $\bm V$. O \emph{determinante} em $\bm V$ com respeito a $b$ é a forma $d$-linear
 %	\begin{equation*}
-%	\det\nolimits_{b} := {b_0}\dual \wedge \ldots \wedge {b_{d-1}}\dual.
+%	\det{\var,\cdots,\var}\nolimits_{b} := {b_0}\dual \wedge \ldots \wedge {b_{d-1}}\dual.
 %	\end{equation*}
 %No caso de $V = \R^d$, o determinante é definido com respeito à base canônica
 %	\begin{equation*}
-%	\det := {\ii_0}\dual \wedge \ldots \wedge {\ii_{d-1}}\dual.
+%	\det{\var,\cdots,\var} := {\ii_0}\dual \wedge \ldots \wedge {\ii_{d-1}}\dual.
 %	\end{equation*}
 \end{definition}
 
 Como comentado, essa é a única forma $d$-linear em $\R^d$ tal que	\begin{equation*}
-	\det(\ii_0,\ldots,\ii_{d-1})=1.
+	\det{\ii_0,\ldots,\ii_{d-1}}=1.
 	\end{equation*}
 
 Na seção seguinte, definiremos o conceito de determinante de modo mais geral e independente de base.
@@ -1339,49 +1339,125 @@ Sejam $\bm V$, $\bm V'$ e $\bm V''$ espaços lineares sobre um corpo $\bm C$ e $
 \end{proof}
 
 
-Essas funções $k$-adjuntas estão também definidas se restringimos os espaços de funcionais $\lin^k$ para espaços de funcionais alternados $\alter^k$. Se considerarmos um espaço linear $d$-dimensional $\bm V$, o espaço $\alter^d(\bm V)$ é um espaço $1$-dimensional, o que implica que todas funções lineares são multiplicações por constantes. Isso nos permite definir o determinante de uma função linear intrinsecamente como a constante de é seu $d$-adjunto.
+Essas funções $k$-adjuntas estão também definidas se restringimos os espaços de funcionais $\lin^k$ para espaços de funcionais alternados $\alter^k$. Se considerarmos um espaço linear $d$-dimensional $\bm V$, o espaço $\alter^d(\bm V)$ é um espaço $1$-dimensional, o que implica que todas funções lineares são multiplicações por escalares. Isso nos permite definir o determinante de uma função linear intrinsecamente como o escalar que representa seu $d$-adjunto.
 
 \begin{definition}
-Sejam $\bm V$ um espaço linear $d$-dimensional sobre um um corpo $\bm C$, $L\colon V \to V$ uma função linear e $L\dual\colon \alter^d(V) \to \alter^d(V)$. O \emph{determinante} de $L$ é a constante $\det(L) \in C$ tal que, para todas formas $f \in \alter^d(\bm V)$,
+Sejam $\bm V$ um espaço linear $d$-dimensional sobre um um corpo $\bm C$, $L\colon V \to V$ uma função linear e $L\dual\colon \alter^d(V) \to \alter^d(V)$. O \emph{determinante} de $L$ é o escalar $\det{L} \in C$ tal que, para toda forma $f \in \alter^d(\bm V)$,
 	\begin{equation*}
-	L\dual f = \det(L) f.
+	L\dual f = \det{L} f.
 	\end{equation*}
 \end{definition}
 
 Isso nos dá por definição a igualdade
 	\begin{equation*}
-	f(L(v_0),\ldots,L(v_{d-1})) = \det(L)f(v_0,\ldots,v_{d-1}).
+	f(L(v_0),\ldots,L(v_{d-1})) = \det{L}f(v_0,\ldots,v_{d-1}).
 	\end{equation*}
 
 \begin{proposition}
 Sejam $\bm V$ um espaço linear $d$-dimensional sobre um um corpo $\bm C$ e $L,L' \in \lin(V,V)$. Então
 	\begin{equation*}
-	\det(L' \circ L) = \det(L)\det(L').
+	\det{L' \circ L} = \det{L}\det{L'}.
 	\end{equation*}
 \end{proposition}
 \begin{proof}
 Seja $f \in \alter^n(V)$ tal que $f \neq 0$. Então
 	\begin{equation*}
-	\det(L' \circ L)f = (L' \circ L)\dual f = ({L}\dual \circ {L'}\dual) f = \det(L)\det(L') f.
+	\det{L' \circ L}f = (L' \circ L)\dual f = ({L}\dual \circ {L'}\dual) f = \det{L}\det{L'} f.
 	\end{equation*}
 \end{proof}
 
 \begin{proposition}
-Sejam $\bm V$ um espaço linear $d$-dimensional sobre um um corpo $\bm C$ e $L\colon V \to V$ uma função linear. Então $L$ é invertível se, e somente se, $\det(L) \neq 0$.
+Sejam $\bm V$ um espaço linear $d$-dimensional sobre um um corpo $\bm C$ e $L\colon V \to V$ uma função linear. Então $L$ é invertível se, e somente se, $\det{L} \neq 0$.
 \end{proposition}
 \begin{proof}
 Basta notar que $L$ é invertível se, e somente se, leva base em base e $f \in \alter^d(V)$ é nula em um conjunto linearmente independente de vetores.
 \end{proof}
 
 
-\subsection{\ensuremath{2}-Formas reais e os espaços \ensuremath{\R^{p,q}}}
 
-Definimos agora espaços reais munidos de formas bilineares simétricas não-degeneradas.
+
+\subsection{Formas bilineares simétricas e formas quadráticas}
 
 \begin{definition}
-Sejam $p,q \in \Z_{>}$. A \emph{$2$-forma simétrica canônica de assinatura $(p,q)$} é a $2$-forma
+Seja $\bm V$ um espaço linear sobre um corpo $\bm C$. Uma \emph{forma quadrática} em $\bm V$ é uma função $\fun{\qua{\var}}{V}{C}$ que satisfaz
+	\begin{enumerate}
+	\item ($2$-Homogeneidade) Para todos $c \in C$ e $v \in V$, $\qua{cv} = c^2 \qua{v}$;
+	\item (Bilinearidade polar) A função
+		\begin{align*}
+		\func{b}{V \times V}{C}{(v,v')}{\qua{v+v'} - \qua{v} - \qua{v'}}
+		\end{align*}
+	é uma forma bilinear.
+	\end{enumerate}
+Um \emph{espaço quadrático} é um par $(\bm V,\qua{\var})$ em que $\bm V$ é um espaço linear (de dimensão finita) e $\qua{\var}$ uma forma quadrática em $\bm V$.
+\end{definition}
+
+\begin{proposition}
+Seja $\bm V$ um espaço linear sobre um corpo $\bm C$ de característica diferente de $2$.
+	\begin{enumerate}
+	\item Se $\qua{\var}$ uma forma quadrática em $\bm V$, a função
+		\begin{align*}
+		\func{\inte{\var}{\var}}{V \times V}{C}{(v,v')}{\frac{\qua{v+v'} - \qua{v} - \qua{v'}}{2}}
+		\end{align*}
+	é uma $2$-forma simétrica e, para todo $v \in V$, $\qua{v} = \inte{v}{v}$.
+	\item Se ${\inte{\var}{\var}}$ uma $2$-forma simétrica em $\bm V$. A função
+		\begin{align*}
+		\func{\qua{\var}}{V}{C}{v}{\inte{v}{v}}
+		\end{align*}
+	é uma forma quadrática e, para todos $v,v' \in V$, $\inte{v}{v'} = \frac{\qua{v+v'} - \qua{v} - \qua{v'}}{2}$.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item Primeiro mostramos que $\inte{\var}{\var}$ é bilinear simétrica.
+		\begin{itemize}
+		\item (Bilinearidade) Segue da bilinearidade de $b(v,v') = \qua{v+v'} - \qua{v} - \qua{v'}$ que $\inte{\var}{\var} = \frac{1}{2}b$ é bilinear.
+		\item (Simetria) Para todos $v,v' \in V$,
+			\begin{align*}
+			\inte{v}{v'} = \frac{\qua{v+v'} - \qua{v} - \qua{v'}}{2} = \frac{\qua{v'+v} - \qua{v'} - \qua{v}}{2} = \inte{v'}{v}.
+			\end{align*}
+		\end{itemize}
+	Por fim, segue da $2$-homogeneidade de $\qua{\var}$ que, para todo $v \in V$,
+		\begin{align*}
+		\inte{v}{v} &= \frac{\qua{v+v} - \qua{v} - \qua{v}}{2} \\
+			&= \frac{\qua{2v} - 2\qua{v}}{2} \\
+			&= \frac{4\qua{v} - 2\qua{v}}{2} \\
+			&= \frac{2\qua{v}}{2} \\
+			&= \qua{v}.
+		\end{align*}
+	
+	\item Primeiro mostramos que $\qua{\var}$ é forma quadrática.
+		\begin{itemize}
+			\item ($2$-Homogeneidade) Para todos $c \in C$ e $v \in V$, segue da bilinearidade de $\inte{\var}{\var}$ que
+				\begin{equation*}
+				\qua{cv} = \inte{cv}{cv} = c^2\inte{v}{v} = c^2\qua{v}.
+				\end{equation*}
+			\item (Bilinearidade polar) Para todos $v,v' \in V$, segue da bilinearidade e simetria de $\inte{\var}{\var}$ que
+				\begin{align*}
+				b(v,v') &= \qua{v+v'} - \qua{v} - \qua{v'} \\
+					&= \inte{v+v'}{v+v'} - \inte{v}{v} - \inte{v'}{v'} \\
+					&= \inte{v}{v} + \inte{v}{v'} + \inte{v'}{v} + \inte{v'}{v'} - \inte{v}{v} - \inte{v'}{v'} \\
+					&= \inte{v}{v'} + \inte{v}{v'} \\
+					&= 2\inte{v}{v'},
+				\end{align*}
+			portanto $b$ é bilinear.
+		\end{itemize}
+	Por fim, segue da igualdade anterior que, para todos $v,v' \in V$,
+		\begin{equation*}
+		\inte{v}{v'} = \frac{\qua{v+v'} - \qua{v} - \qua{v'}}{2}.
+		\qedhere
+		\end{equation*}
+	\end{enumerate}
+\end{proof}
+
+
+\subsubsection{\ensuremath{2}-Formas reais e os espaços \ensuremath{\R^{p,q}}}
+
+Definimos agora espaços reais munidos de formas bilineares simétricas não-degeneradas. Todas formas bilineares simétricas não-degeneradas em $\R^d$ são equivalentes a uma dessas formas.
+
+\begin{definition}
+Sejam $p,q \in \N$. A \emph{$2$-forma simétrica canônica de assinatura $(p,q)$} é a $2$-forma
 	\begin{align*}
-	\func{\inte{\var}{\var}_{p,q}}{\R^{p+q} \times \R^{p+q}}{\R}{(x,x')}{\sum_{k=0}^{p-1}{x_k}^2 - \sum_{k=p}^{p+q-1}{x_k}^2}
+	\func{\inte{\var}{\var}_{p,q}}{\R^{p+q} \times \R^{p+q}}{\R}{(x,x')}{\sum_{k=0}^{p-1} x_k x'_k - \sum_{k=p}^{p+q-1} x_k x'_k}
 	\end{align*}
 \end{definition}
 
@@ -1401,10 +1477,17 @@ e que a partir disso obtemos
 		&+ \inte{\sum_{k=p}^{p+q-1} x_k\ii_k}{\sum_{k'=0}^{p-1} x_{k'}\ii_{k'}}_{p,q} + \inte{\sum_{k=p}^{p+q-1} x_k\ii_k}{\sum_{k'=p}^{p+q-1} x_{k'}\ii_{k'}}_{p,q} \\
 		&= \sum_{k=0}^{p-1} \sum_{k'=0}^{p-1} x_kx_{k'}\inte{\ii_k}{\ii_{k'}}_{p,q} + \sum_{k=0}^{p-1} \sum_{k'=p}^{p+q-1} x_k x_{k'} \inte{\ii_k}{\ii_{k'}}_{p,q} \\
 		&+ \sum_{k=p}^{p+q-1} \sum_{k'=0}^{p-1} x_k x_{k'} \inte{\ii_k}{\ii_{k'}}_{p,q} + \sum_{k=p}^{p+q-1} \sum_{k'=p}^{p+q-1} x_k x_{k'} \inte{\ii_k}{\ii_{k'}}_{p,q} \\
-		&= \sum_{k=0}^{p-1}{x_k}^2 - \sum_{k=p}^{p+q-1}{x_k}^2.
+		&= \sum_{k=0}^{p-1} x_k x'_k - \sum_{k=p}^{p+q-1} x_k x'_k.
 	\end{align*}
 
+A forma quadrática associada a $\inte{\var}{\var}_{p,q}$ é a forma
+	\begin{equation*}
+	\qua{x}_{p,q} = \sum_{k=0}^{p-1}{x_k}^2 - \sum_{k=p}^{p+q-1}{x_k}^2.
+	\end{equation*}
 O espaço linear $\R^{p+q}$ dotado dessa forma é denotado $\R^{p,q}$.
+
+
+
 
 
 \cleardoublepage

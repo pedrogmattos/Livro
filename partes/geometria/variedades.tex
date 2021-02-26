@@ -167,28 +167,62 @@ Por definição da topologia de $\bm V$, temos imediatamente que $\bar\topo \sub
 
 Uma consequência óbvia das definições é que qualquer subconjunto aberto de $\R^d$ é uma variedade. Antes de continuar a discussão sobre as propriedades topológicas de variedades, um comentário importante é que alguns autores definem uma variedade a partir de um espaço topológico desde o início, exigindo que os mapas de coordenadas sejam homeomorfismos com sua imagem no espaço real. A partir dessa definição, a topologia da variedade já existe desde o começo e não é induzida pelas cartas.
 
+\begin{exercise}
+Sejam $(\bm V_i)_{i \in [n]} = ((V_i,\atlas_i))_{i \in [n]}$ variedades $\Cont^k$ de dimensões $(d_i)_{i \in [n]}$, respectivamente. O par
+	\begin{equation*}
+	\prod_{i \in [n]} V_i = \left( \prod_{i \in [n]} V_i, \prod_{i \in [n]} \atlas_i \right),
+	\end{equation*}
+em que $\prod_{i \in [n]} V_i$ é o produto de conjuntos e
+	\begin{equation*}
+	\prod_{i \in [n]} \atlas_i := \set{ \left(\prod_{i \in [n]} A_i, \prod_{i \in [n]} \x_i \right)}{\forall_{i \in [n]} (A_i,\x_i) \in \atlas_i}
+	\end{equation*}
+é uma variedade $\Cont^k$ de dimensão $\sum_{i \in [n]} d_i$
+% e, para todo $i \in [n]$, as projeções $\proj_i\colon \prod_{i \in [n]} V_i \to V_i$ são $\Cont^k$-diferenciáveis.
+\end{exercise}
+
+\begin{comment}
+\begin{proof}
+Sejam $\left(\prod_{i \in [n]} A_i, \prod_{i \in [n]} \x_i \right),\left(\prod_{i \in [n]} A'_i, \prod_{i \in [n]} \x'_i \right) \in \prod_{i \in [n]} \atlas_i$ cartas. Queremos mostrar que elas são $\Cont^k$-compatíveis. Notemos que
+	\begin{equation*}
+	\left( \prod_{i \in [n]} A_i \right) \cap \left( \prod_{i \in [n]} A'_i \right) = \prod_{i \in [n]} \left( A_i \cap A'_i \right),
+	\end{equation*}
+logo
+	\begin{align*}
+	\left( \prod_{i \in [n]} \x_i \right) \left( \prod_{i \in [n]} A_i \right) \cap \left( \prod_{i \in [n]} A'_i \right) &= \left( \prod_{i \in [n]} \x_i \right) \prod_{i \in [n]} \left( A_i \cap A'_i \right) \\
+		&= \prod_{i \in [n]} \x_i\left( A_i \cap A'_i \right),
+	\end{align*}
+que é aberto pois $\x_i\left( A_i \cap A'_i \right)$ são abertos, já que $(A_i,\x_i)$ e $(A'_i,\x'_i)$ são $\Cont^k$-compatíveis, e
+	\begin{equation*}
+	\left( \prod \x_i \right) \left( \prod_{i \in [n]} A_i \right) \cap \left( \prod_{i \in [n]} A'_i \right) = \prod_{i \in [n]} \x_i\left( A_i \cap A'_i \right),
+	\end{equation*}
+que é aberto pois $\x'_i\left( A_i \cap A'_i \right)$ são abertos, já que $(A_i,\x_i)$ e $(A'_i,\x'_i)$ são $\Cont^k$-compatíveis. Agora,
+	\begin{align*}
+	,
+	\end{align*}
+\end{proof}
+
+\end{comment}
+
 \subsection{Exemplos de variedades}
 
 \subsubsection{Esfera}
 
-\begin{definition}
-A \emph{esfera} $d$-dimensional é o conjunto
+A esfera $d$-dimensional é o conjunto
 	\begin{equation*}
-	\S^d := \set{x \in \R^{d+1}}{\nor{x}=1}.
+	\S^d = \set{x \in \R^{d+1}}{\nor{x}=1}.
 	\end{equation*}
-\end{definition}
 
 A partir dessa notação de esfera unitária, podemos escrever facilmente qualquer $n$-esfera de raio $r \in \R$ e centro $c \in \R^{d+1}$ em $\R^{d+1}$ como $c + r\S^d$ usando a notação de adição e multiplicação de um elemento de um anel com um subconjunto do anel.
 
 Vamos considerar, na esfera, um atlas com apenas duas cartas: as \emph{projeções estereográficas} focadas no norte e no sul.
 
 \begin{definition}
-O \emph{pólo norte} de $\S^d$ é o ponto $N := (0,\ldots,0,1)$ e a \emph{projeção estereográfica norte} de $\S^d$ é a função
+O \emph{pólo norte} de $\S^d$ é o ponto $N := \ii_d = (0,\ldots,0,1)$ e a \emph{projeção estereográfica norte} de $\S^d$ é a função
 	\begin{align*}
 	\func{\pi_N}{\S^d \setminus\{N\}}{\R^d}{x}{\frac{1}{1-x_d}(x_0,\ldots,x_{d-1})}.
 	\end{align*}
 
-O \emph{pólo sul} de $\S^d$ é o ponto $S := -N = (0,\ldots,0,-1)$ e a \emph{projeção estereográfica sul} de $\S^d$ é a função
+O \emph{pólo sul} de $\S^d$ é o ponto $S := -N = = -\ii_d = (0,\ldots,0,-1)$ e a \emph{projeção estereográfica sul} de $\S^d$ é a função
 	\begin{align*}
 	\func{\pi_S}{\S^d \setminus\{S\}}{\R^d}{x}{\frac{1}{1+x_d}(x_0,\ldots,x_{d-1})}.
 	\end{align*}
@@ -218,10 +252,10 @@ A transição de coordenadas entre as cartas é dada por
 Claramente, todas as funções são suaves.
 \end{proof}
 
-\begin{figure}[!h]
+\begin{figure}
 \centering
 \includegraphics[width=3in]{./imagens/esfera}
-\caption{Esfera $2$-dimensional}
+\caption{Esfera $2$-dimensional \ensuremath{\S^2}}
 \end{figure}
 
 \subsubsection{Espaço projetivo}
@@ -280,7 +314,7 @@ que é homomorfismo pois $(-1)^{n+n'} = (-1)^n(-1)^{n'}$ e é claramente bijeç�
 	\end{equation*}
 \end{definition}
 
-\begin{figure}[!h]
+\begin{figure}
 \centering
 \includegraphics[width=3in]{./imagens/toro}
 \caption{Toro}
@@ -288,52 +322,27 @@ que é homomorfismo pois $(-1)^{n+n'} = (-1)^n(-1)^{n'}$ e é claramente bijeç�
 
 \subsubsection{Hiperboloide}
 
+Relembremos que $\R^{1,d}$ é o espaço vetorial $\R^{1+d}$ munido da $2$-forma simétrica não degenerada $\inte{\var}{\var}_{1,d}$ de assinatura $(1,d)$, definida para todos $x,x' \in \R^{1,d}$ por
+	\begin{equation*}
+	\inte{x}{x'}_{1,d} = x_0x'_0 - \sum_{k=1}^{d} x_k x'_k,
+	\end{equation*}
+em que $x = (x_0,\ldots,x_d)$ e $x' = (x'_0,\ldots,x'_d)$. A forma quadrática associada a $\inte{\var}{\var}_{1,d}$ é $\qua{\var}_{1,d}$, definida para todo $x \in \R^{1,d}$ por
+	\begin{equation*}
+	\qua{x}_{1,d} = {x_0}^2 - \sum_{k=1}^{d} {x_k}^2.
+	\end{equation*}
+
 \begin{definition}
 O \emph{hiperboloide} $d$-dimensional é o conjunto
+%	\begin{equation*}
+%	\Hip^d := \set{(x,t) \in \R^d \times \R = \R^{d+1}}{\nor{x}^2+1=t^2 \text{\ \ e\ \ } t>0}.
+%	\end{equation*}
 	\begin{equation*}
-	\Hip^d := \set{(x,t) \in \R^d \times \R = \R^{d+1}}{\nor{x}^2+1=t^2 \text{\ \ e\ \ } t>0}.
+	\Hip^d := \set{x \in \R^{1,d}}{\qua{x}_{1,d} = 1 \land x_0 > 0}.
 	\end{equation*}
 \end{definition}
 
 
 
-
-
-\begin{exercise}
-Sejam $(\bm V_i)_{i \in [n]} = ((V_i,\atlas_i))_{i \in [n]}$ variedades $\Cont^k$ de dimensões $(d_i)_{i \in [n]}$, respectivamente. O par
-	\begin{equation*}
-	\prod_{i \in [n]} V_i = \left( \prod_{i \in [n]} V_i, \prod_{i \in [n]} \atlas_i \right),
-	\end{equation*}
-em que $\prod_{i \in [n]} V_i$ é o produto de conjuntos e
-	\begin{equation*}
-	\prod_{i \in [n]} \atlas_i := \set{ \left(\prod_{i \in [n]} A_i, \prod_{i \in [n]} \x_i \right)}{\forall_{i \in [n]} (A_i,\x_i) \in \atlas_i}
-	\end{equation*}
-é uma variedade $\Cont^k$ de dimensão $\sum_{i \in [n]} d_i$
-% e, para todo $i \in [n]$, as projeções $\proj_i\colon \prod_{i \in [n]} V_i \to V_i$ são $\Cont^k$-diferenciáveis.
-\end{exercise}
-
-\begin{comment}
-\begin{proof}
-Sejam $\left(\prod_{i \in [n]} A_i, \prod_{i \in [n]} \x_i \right),\left(\prod_{i \in [n]} A'_i, \prod_{i \in [n]} \x'_i \right) \in \prod_{i \in [n]} \atlas_i$ cartas. Queremos mostrar que elas são $\Cont^k$-compatíveis. Notemos que
-	\begin{equation*}
-	\left( \prod_{i \in [n]} A_i \right) \cap \left( \prod_{i \in [n]} A'_i \right) = \prod_{i \in [n]} \left( A_i \cap A'_i \right),
-	\end{equation*}
-logo
-	\begin{align*}
-	\left( \prod_{i \in [n]} \x_i \right) \left( \prod_{i \in [n]} A_i \right) \cap \left( \prod_{i \in [n]} A'_i \right) &= \left( \prod_{i \in [n]} \x_i \right) \prod_{i \in [n]} \left( A_i \cap A'_i \right) \\
-		&= \prod_{i \in [n]} \x_i\left( A_i \cap A'_i \right),
-	\end{align*}
-que é aberto pois $\x_i\left( A_i \cap A'_i \right)$ são abertos, já que $(A_i,\x_i)$ e $(A'_i,\x'_i)$ são $\Cont^k$-compatíveis, e
-	\begin{equation*}
-	\left( \prod \x_i \right) \left( \prod_{i \in [n]} A_i \right) \cap \left( \prod_{i \in [n]} A'_i \right) = \prod_{i \in [n]} \x_i\left( A_i \cap A'_i \right),
-	\end{equation*}
-que é aberto pois $\x'_i\left( A_i \cap A'_i \right)$ são abertos, já que $(A_i,\x_i)$ e $(A'_i,\x'_i)$ são $\Cont^k$-compatíveis. Agora,
-	\begin{align*}
-	,
-	\end{align*}
-\end{proof}
-
-\end{comment}
 
 \subsection{Propriedades topológicas}
 
@@ -1879,7 +1888,7 @@ Denotaremos como $\mathcal{B}(L)$ o conjunto de bases ordenadas de $\bm L$, ou s
 \begin{definition}
 Seja $\bm L$ um espaço linear finito sobre um corpo $\bm C$. Duas bases ordenadas $b, b' \in \mathcal{B}(L)$ são \emph{coorientadas} se, e somente se,
 	\begin{equation*}
-	\det [\Id]^b_{b'} > 0,
+	\det{[\Id]^b_{b'}} > 0,
 	\end{equation*}
 em que $[\Id]_{b'}^b$ é a mudança de base de $b$ para $b'$.
 \end{definition}
@@ -1888,34 +1897,34 @@ em que $[\Id]_{b'}^b$ é a mudança de base de $b$ para $b'$.
 Seja $\bm L$ um espaço linear finito sobre um corpo $\bm C$. A relação de coorientação de bases ordenadas em $\mathcal{B}(L)$ é uma relação de equivalência.
 \end{proposition}
 \begin{proof}
-(Reflexividade) Seja $b$ uma base ordenada de $\bm L$. Como $[\Id]^b_b = \Id$, segue que $\det [\Id]^b_b = \det \Id = 1 >0$, portanto $b$ é coorientada consigo mesma.
-(Simetria) Sejam $b$ e $b'$ bases ordenadas de $\bm L$ tais que $b$ e $b'$ são coorientadas. Isso significa que $\det [\Id]^b_{b'} >0$. Mas como $[\Id]_b^{b'} = ([\Id]^b_{b'})\inv$, segue que
+(Reflexividade) Seja $b$ uma base ordenada de $\bm L$. Como $[\Id]^b_b = \Id$, segue que $\det{[\Id]^b_b} = \det{\Id} = 1 >0$, portanto $b$ é coorientada consigo mesma.
+(Simetria) Sejam $b$ e $b'$ bases ordenadas de $\bm L$ tais que $b$ e $b'$ são coorientadas. Isso significa que $\det{[\Id]^b_{b'}} >0$. Mas como $[\Id]_b^{b'} = ([\Id]^b_{b'})\inv$, segue que
 	\begin{equation*}
-	\det [\Id]_b^{b'} = \det(([\Id]^b_{b'})\inv) = (\det [\Id]^b_{b'})\inv > 0,
+	\det{[\Id]_b^{b'}} = \det{([\Id]^b_{b'})\inv} = \det{[\Id]^b_{b'}}\inv > 0,
 	\end{equation*}
 portanto $b'$ e $b$ são coorientadas.
-(Transitividade) Sejam $b,b'$ e $b''$ bases ordenadas de $\bm L$ tais que $b$ e $b'$ são coorientadas e $b'$ e $b''$ são coorientadas. Isso significa que $\det [\Id]^b_{b'} > 0$ e $\det [\Id]^{b'}_{b''} > 0$. Como $[\Id]^b_{b''} = [\Id]^b_{b'} \circ [\Id]^{b'}_{b''}$, segue que
+(Transitividade) Sejam $b,b'$ e $b''$ bases ordenadas de $\bm L$ tais que $b$ e $b'$ são coorientadas e $b'$ e $b''$ são coorientadas. Isso significa que $\det{[\Id]^b_{b'}} > 0$ e $\det{[\Id]^{b'}_{b''}} > 0$. Como $[\Id]^b_{b''} = [\Id]^b_{b'} \circ [\Id]^{b'}_{b''}$, segue que
 	\begin{equation*}
-	\det [\Id]^b_{b''} = \det ( [\Id]^b_{b'} \circ [\Id]^{b'}_{b''}) = \det  [\Id]^b_{b'} \det [\Id]^{b'}_{b''} > 0,
+	\det{[\Id]^b_{b''}} = \det{[\Id]^b_{b'} \circ [\Id]^{b'}_{b''}} = \det{[\Id]^b_{b'}} \det{[\Id]^{b'}_{b''}} > 0,
 	\end{equation*}
 logo $b$ e $b''$ são coorientadas.
 \end{proof}
 
-Isso permite que se quociente o espaço de bases ordenadas de $\bm L$ em classes de equivalências, e esse quociente é o conjunto de classes de bases coorientadas de $\bm L$, definido a seguir.
+Isso permite que se quociente o espaço de bases ordenadas de $\bm L$ em classes de equivalências, e esse quociente é o conjunto de classes de bases coorientadas de $\bm L$, definido a seguir. Lembremos que $\S^0 = \{+1,-1\}$.
 
 \begin{definition}
 Sejam $\bm L$ um espaço linear finito sobre um corpo $\bm C$ e $b$ uma base ordenada de $\bm L$. A \emph{classe de orientação} gerada por $b$ é o conjunto
 	\begin{equation*}
-	[b] = \set{b' \in \mathcal{B}(L)}{\det [\Id]^b_{b'} > 0}.
+	[b] = \set{b' \in \mathcal{B}(L)}{\det{[\Id]^b_{b'}} > 0}.
 	\end{equation*}
 O conjunto dessas classes de equivalência é denotado $[\mathcal{B}(L)]$. Uma \emph{orientação} de $\bm L$ é uma função injetiva
 	\begin{equation*}
-	O\colon [\mathcal{B}(L)] \to \{+1,-1\}
+	O\colon [\mathcal{B}(L)] \to \S^0
 	\end{equation*}
 O conjunto de orientações de $\bm L$ é denotado $\orient(L)$.
 \end{definition}
 
-Em geral, pode-se considerar que $O$ está definida em $\mathcal{B}(L)$ por simplicidade de notação, pois teremos $O(b) \in \{+1,-1\}$ em vez de $O([b])\{+1,-1\}$.
+Em geral, pode-se considerar que $O$ está definida em $\mathcal{B}(L)$ por simplicidade de notação, pois teremos $O(b) \in \S^0$ em vez de $O([b]) \in \S^0$.
 
 A classe de orientações gerada por uma base ordenada $b$ é o conjunto de todas as bases ordenadas de $\bm L$ que são coorientadas com essa base, a classe de equivalência dessa base com respeito à relação de coorientação. 
 
@@ -1930,21 +1939,23 @@ Seja $\bm L$ um espaço linear finito sobre um corpo $\bm C$. Então
 \begin{proof}
 Separamos a demonstração em dois casos: $\dim(L)=0$ e $\dim(L)>0$. No primeiro caso, a única base de $\bm L$ é $\emptyset$, o que implica que existem duas funções injetivas do conjunto de classes de orientação de bases para $\{+1,-1\}$: a função $O(\emptyset) = +1$ e a função $O(\emptyset) = -1$. Portanto $\card{\orient(L)}=2$.
 
-No segundo caso, se $\dim(L)>0$, denotemos $d = \dim(L)$ e seja $b = (b_0,\ldots,b_{d-1})$ uma base ordenada de $\bm L$. Definimos a base $\bar b := (-b_0,\ldots,b_{d-1})$. Mostraremos que as únicas classes de orientação de $\bm L$ são $[b]$ e $[\bar b]$. Seja $b'$ uma base de $\bm L$. Se $\det [\Id]^b_{b'} > 0$, então $[b'] = [b]$; caso contrário, $\det [\Id]^b_{b'} < 0$. Mas
+No segundo caso, se $\dim(L)>0$, denotemos $d = \dim(L)$ e seja $b = (b_0,\ldots,b_{d-1})$ uma base ordenada de $\bm L$. Definimos a base $\bar b := (-b_0,\ldots,b_{d-1})$. Mostraremos que as únicas classes de orientação de $\bm L$ são $[b]$ e $[\bar b]$. Seja $b'$ uma base de $\bm L$. Se $\det{[\Id]^b_{b'}} > 0$, então $[b'] = [b]$; caso contrário, $\det{[\Id]^b_{b'}} < 0$. Mas
 	\begin{align*}
-	\det [\Id]^b_{b'} &= \det \begin{bmatrix}
-	\vdots &   & \vdots \\ 
-	[b_0]_{b'} & \cdots & [b_{d-1}]_{b'} \\ 
-	\vdots &   & \vdots
-	\end{bmatrix} \\
-	&=	- \det \begin{bmatrix}
-	\vdots &   & \vdots \\ 
-	[-b_0]_{b'} & \cdots & [b_{d-1}]_{b'} \\ 
-	\vdots &   & \vdots
-	\end{bmatrix} \\
-	&= -\det [\Id]^{\bar b}_{b'},
+	\det{[\Id]^b_{b'}} &= \det{[[b_0]_{b'} \cdots [b_{d-1}]_{b'}]} \\
+%		\begin{bmatrix}
+%		\vdots &   & \vdots \\ 
+%		[b_0]_{b'} & \cdots & [b_{d-1}]_{b'} \\ 
+%		\vdots &   & \vdots
+%		\end{bmatrix}} \\
+	&=	- \det{[[-b_0]_{b'} \cdots [b_{d-1}]_{b'}]} \\
+%		\begin{bmatrix}
+%		\vdots &   & \vdots \\ 
+%		[-b_0]_{b'} & \cdots & [b_{d-1}]_{b'} \\ 
+%		\vdots &   & \vdots
+%		\end{bmatrix}} \\
+	&= -\det{[\Id]^{\bar b}_{b'}},
 	\end{align*}
-portanto $\det  [\Id]^{\bar b}_{b'} > 0$, o que mostra que $b' \in [\bar b]$. Isso implica que só existem duas orientações de $\bm L$, pois da injetividade segue que $O([b])=+1$ e $O([\bar b])=-1$, ou $O([b])=-1$ e $O([\bar b])=+1$. Logo $\card{\orient(L)}=2$.
+portanto $\det{[\Id]^{\bar b}_{b'}} > 0$, o que mostra que $b' \in [\bar b]$. Isso implica que só existem duas orientações de $\bm L$, pois da injetividade segue que $O([b])=+1$ e $O([\bar b])=-1$, ou $O([b])=-1$ e $O([\bar b])=+1$. Logo $\card{\orient(L)}=2$.
 \end{proof}
 
 A orientação canônica em $\R^d$ é a função $O$ definida por $O([e_0,\ldots,e_{d-1}]) = +1$ e $O([-e_0,\ldots,e_{d-1}]) = -1$.
@@ -1953,13 +1964,13 @@ A orientação canônica em $\R^d$ é a função $O$ definida por $O([e_0,\ldots
 
 Definimos a orientação de um isomorfismo linear $f\colon L \to L$ por
 	\begin{equation*}
-	O(f) := \frac{\det f}{\abs{\det f}}.
+	O(f) := \frac{\det{f}}{\abs{\det{f}}}.
 	\end{equation*}
 Essa é uma função $O\colon \lin(L) \to \{+1,-1\}$. Assim, segue que, para todos isomorfismos $f,f' \in \lin(L)$,
 	\begin{equation*}
 	O(f' \circ f) = O(f')O(f),
 	\end{equation*}
-pois $\det(f' \circ f) = \det(f')\det(f)$.
+pois $\det{f' \circ f} = \det{f'}\det{f}$.
 
 Definimos, para toda classe de equivalência $[b]$ de bases ordenadas de $\bm L$ coorientadas e todo isomorfismo $f \in \lin(L)$,
 	\begin{equation*}
@@ -2034,15 +2045,15 @@ Uma variedade diferencial \emph{orientável} é uma variedade diferencial que ad
 \begin{definition}
 Seja $\bm V$ uma variedade diferencial. Duas cartas $(A,\x)$, $(A',\x')$ de $\bm V$ são \emph{coorientadas} se, e somente se, para todo $p \in A \cap A'$,
 	\begin{equation*}
-	\det(\D(\x' \circ \x\inv)|_p) > 0.
+	\det{\D(\x' \circ \x\inv)|_p} > 0.
 	\end{equation*}
 Caso contrário, elas são \emph{contraorientadas}, e existe $p \in A \cap A'$ tal que
 	\begin{equation*}
-	\det(\D(\x' \circ \x\inv)|_p) < 0.
+	\det{\D(\x' \circ \x\inv)|_p} < 0.
 	\end{equation*}
 \end{definition}
 
-O caso em que $\det(\D(\x' \circ \x\inv)|_p) = 0$ não ocorre, pois as cartas são diferencialmente compatíveis, o que implica que a transição de coordenadas é um difeomorfismo, logo $\D(\x' \circ \x\inv)(p)\colon \R^d \to \R^d$ é invertível.
+O caso em que $\det{\D(\x' \circ \x\inv)|_p} = 0$ não ocorre, pois as cartas são diferencialmente compatíveis, o que implica que a transição de coordenadas é um difeomorfismo, logo $\D(\x' \circ \x\inv)(p)\colon \R^d \to \R^d$ é invertível.
 
 \begin{definition}
 Um atlas diferencial \emph{orientado} é um atlas cujas cartas são coorientadas duas a duas. Atlas diferenciais orientados \emph{consistentes} são atlas diferenciais orientados cuja união é um atlas orientado.
@@ -2073,9 +2084,9 @@ Sejam $p \in V$ e $(A,\x)$ uma carta em $p$. Sejam $b,b' \in \mathcal{B}(\Tg V|_
 	\end{equation*}
 é uma mudança de base em $\R^d$, que leva a base $\D\x|_p(b)$ para a base $\D\x|_p(b')$. Mas
 	\begin{align*}
-	[\Id]^{\D\x|_p(b)}_{\D\x|_p(b')} &= \det(\D\x|_p \circ [\Id]^{b}_{b'} \circ \D\x\inv|_{\x(p)}) \\
-		&= \det(\D\x|_p \circ \D\x\inv|_{\x(p)}) \det([\Id]^{b}_{b'}) \\
-		&= \det([\Id]^{b}_{b'}),
+	[\Id]^{\D\x|_p(b)}_{\D\x|_p(b')} &= \det{\D\x|_p \circ [\Id]^{b}_{b'} \circ \D\x\inv|_{\x(p)}} \\
+		&= \det{\D\x|_p \circ \D\x\inv|_{\x(p)}} \det{[\Id]^{b}_{b'}} \\
+		&= \det{[\Id]^{b}_{b'}},
 	\end{align*}
 portanto a mudança de base de $b$ para $b'$ pode ser positiva ou negativa, pois assim o é a mudança de base de $\D\x|_p(b)$ para a $\D\x|_p(b')$ em $\R^d$.
 Agora, devemos mostrar que
