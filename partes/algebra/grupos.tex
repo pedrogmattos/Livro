@@ -115,13 +115,18 @@ portanto $s\inv$ é o inverso de $s$ em $\bm S$.
 Sejam $\bm G$ um grupo e $\mathcal G$ o conjunto dos subgrupos de $\bm G$. Então $(\mathcal G,\leq)$ é um conjunto parcialmente ordenado.
 \end{proposition}
 \begin{proof}
-Claramente, $\bm G \in \mathcal G$, portanto $\mathcal G$ não é vazio. Mostremos que $\leq$ é uma ordem parcial em $\mathcal G$. (Reflexividade) Seja $\bm S \in \mathcal G$. Então $\bm S \leq \bm S$, pois $\bm S$ é um grupo, $S \subseteq S$ e $\times|_{S \times S} = \times|_{S \times S}$. (Antissimetria) Sejam $\bm{S_1},\bm{S_2} \in \mathcal G$ tais que $\bm{S_1} \leq \bm{S_2}$ e $\bm{S_2} \leq \bm{S_1}$. Então $S_1 \subseteq S_2$ e $S_2 \subseteq S_1$, o que implica $S_1=S_2$, e portanto $\times|_{S_1 \times S_1} = \times|_{S_2 \times S_2}$, o que implica $\bm{S_1} = \bm{S_2}$. (Transitividade) Sejam  $\bm{S_1},\bm{S_2},\bm{S_3} \in \mathcal G$ tais que $\bm{S_1} \leq \bm{S_2}$ e $\bm{S_2} \leq \bm{S_3}$. Então $S_1 \subseteq S_2$ e $S_2 \subseteq S_3$, o que implica $S_1 \subseteq S_3$ e, portanto, $\times_{S_1} = \times|_{S_3 \times S_3}$.
+Claramente, $\bm G \in \mathcal G$, portanto $\mathcal G$ não é vazio. Mostremos que $\leq$ é uma ordem parcial em $\mathcal G$.
+	\begin{itemize}
+	\item (Reflexividade) Seja $\bm S \in \mathcal G$. Então $\bm S \leq \bm S$, pois $\bm S$ é um grupo, $S \subseteq S$ e $\times|_{S \times S} = \times|_{S \times S}$.
+	\item (Antissimetria) Sejam $\bm{S_1},\bm{S_2} \in \mathcal G$ tais que $\bm{S_1} \leq \bm{S_2}$ e $\bm{S_2} \leq \bm{S_1}$. Então $S_1 \subseteq S_2$ e $S_2 \subseteq S_1$, o que implica $S_1=S_2$, e portanto $\times|_{S_1 \times S_1} = \times|_{S_2 \times S_2}$, o que implica $\bm{S_1} = \bm{S_2}$.
+	\item (Transitividade) Sejam  $\bm{S_1},\bm{S_2},\bm{S_3} \in \mathcal G$ tais que $\bm{S_1} \leq \bm{S_2}$ e $\bm{S_2} \leq \bm{S_3}$. Então $S_1 \subseteq S_2$ e $S_2 \subseteq S_3$, o que implica $S_1 \subseteq S_3$ e, portanto, $\times_{S_1} = \times|_{S_3 \times S_3}$.
+	\end{itemize}
 \end{proof}
 
-\begin{proposition}
+\begin{exercise}
 \label{alge:prop.subgru.triv}
 Seja $\bm G$ um grupo. Então $\bm{\{1\}}$ e $\bm G$ são subgrupos de $\bm G$.
-\end{proposition}
+\end{exercise}
 
 \begin{proposition}
 \label{alge:prop.subgru.inter}
@@ -149,17 +154,15 @@ Então $\bm S$ é um subgrupo de $\bm G$.
 
 A propriedade definida acima é equivalente a dizer que a família $(S_i)_{i \in I}$ é um conjunto dirigido com respeito a $\subseteq$.
 
-\begin{definition}
-	Seja $\bm M$ um monoide. O conjunto dos elementos invertíveis de $M$ é denotado por $M^*$.
-\end{definition}
+Lembremos que o conjunto dos elementos invertíveis de um monoide $\bm M$ é denotado por $M^{\div}$.
 
 %O asterisco não tem a ver com a operação $\times$ do monoide.
 
 \begin{proposition}
-Seja $\bm M = (M,\times,1)$ um monoide. Então existe uma operação unária $\div \colon M^* \to M^*$ tal que $\bm{M^*}=(M^*,\times|_{M^* \times M^*},\div,1)$ é um grupo.
+Seja $\bm M = (M,\times,1)$ um monoide. Então existe uma operação unária $\fun{\div}{M^{\div}}{M^{\div}}$ tal que $\bm{M^{\div}}=(M^{\div},\times|_{M^{\div} \times M^{\div}},\div,1)$ é um grupo.
 \end{proposition}
 \begin{proof}
-	Sejam $m_1,m_2 \in M^*$. Então existem $m_1^{-1},m_2^{-1} \in M$ tais que
+	Sejam $m_1,m_2 \in M^{\div}$. Então existem $m_1^{-1},m_2^{-1} \in M$ tais que
 	\begin{equation*}
 	m_1m_1^{-1}=1 \text{\ \ e\ \ } m_2m_2^{-1}=1.
 	\end{equation*}
@@ -167,7 +170,7 @@ Portanto
 	\begin{equation*}
 	(m_1m_2)(m_2^{-1}m_1^{-1}) = m_1(m_2m_2^{-1})m_1^{-1} = m_1m_1^{-1} = 1,
 	\end{equation*}
-o que mostra que $m_1m_2 \in M^*$. Ainda, note que $1 \in M^*$, pois $1 \times 1 = 1$. Como $M^*$ é contém a identidade e é fechado sob $\times$, segue que $(M^*,\times,1)$ é um monoide (\ref{alge:prop.submon}). Por fim, $\bm{M^*}$ é um grupo pois, por definição, todo elemento tem inverso e ele é único.
+o que mostra que $m_1m_2 \in M^{\div}$. Ainda, note que $1 \in M^{\div}$, pois $1 \times 1 = 1$. Como $M^{\div}$ é contém a identidade e é fechado sob $\times$, segue que $(M^{\div},\times,1)$ é um monoide (\ref{alge:prop.submon}). Por fim, $\bm{M^{\div}}$ é um grupo pois, por definição, todo elemento tem inverso e ele é único, o que define a operação $\div$.
 \end{proof}
 
 \begin{definition}

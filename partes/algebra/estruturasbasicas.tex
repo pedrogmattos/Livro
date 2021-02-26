@@ -346,7 +346,7 @@ o que implica que $\suce(m) \in I$ e, portanto, que $I=N$.
 	\begin{enumerate}
 	\item Seja $I := \{k \in N: \forall n,m \in N \quad n+k=m+k \entao n=m\}$. Primeiro, notemos que $0 \in I$, pois, para todos $n,m \in N$, se $n+0=m+0$, então $n=m$. Agora, seja $k \in I$ e $n,m \in N$. Se $n+\suce(k)=m+\suce(k)$, então $\suce(n+k)=\suce(m+k)$ e, como $\suce$ é injetiva, $n+k=m+k$, o que implica que $n=m$ e, assim, temos que $\suce(k) \in I$ e, portanto, $I=N$.
 	
-	\item Suponhamos, por absurdo, que $n \neq 0$ ou $m \neq 0$. Notemos que $n+m=m+n$; então, sem perda de generalidade, seja $m \neq 0$. Então existe $k \in N$ tal que $m=\suce(k)$ e segue que $n+m=n+\suce(k)=\suce(n+k)=0$, o que é absurdo, pois $\suce^{-1}(\{0\})=\emptyset$. Logo $n=m=0$.
+	\item Suponhamos, por absurdo, que $n \neq 0$ ou $m \neq 0$. Notemos que $n+m=m+n$; então, sem perda de generalidade, seja $m \neq 0$. Então existe $k \in N$ tal que $m=\suce(k)$ e segue que $n+m=n+\suce(k)=\suce(n+k)=0$, o que é absurdo, pois $\suce\inv(\{0\})=\emptyset$. Logo $n=m=0$.
 	\end{enumerate}
 \end{proof}
 
@@ -675,69 +675,193 @@ e, portanto, $(n_1 m_1 + n_2 m_2,n_2 m_1+n_1 m_2) \sim (n'_1 m'_1 + n'_2 m'_2,n'
 Grupoides\footnote{Essas estruturas são às vezes chamadas na literatura de `magmas' para distinguí-las de objetos distintos da teoria de categorias que também são chamados `grupoides'.} são talvez a estrutura algébrica mais simples que se pode estudar. Eles consistem em um conjunto e uma operação binária nesse conjunto, sem que nenhuma propriedade adicional seja esperada dessa operação binária. O nome `grupoide' vem por sua semelhança aos grupos, estruturas algébricas muito importantes que serão estudadas detalhadamente mais à frente. O sufixo `-oide' vem do latim e indica semelhança.
 
 \begin{definition}
-Um \emph{grupoide} é um par $\bm X=(X,\opb)$ em que $X$ é um conjunto e $\opb$ é uma operação binária em $X$.
+Um \emph{grupoide} é um par $\bm G=(G,\opb)$ em que $G$ é um conjunto e $\opb$ é uma operação binária em $G$.
+\end{definition}
+
+\begin{example}
+Considere os seguintes exemplos.
+	\begin{enumerate}
+	\item $(\N,+)$ e $(\Z,+)$ são grupoides, em que $+$ é a adição dos números inteiros;
+	\item $(\N,\times)$ e $(\Z,\times)$ são grupoides, em que $\times$ é a multiplicação dos números inteiros;
+	\item $(\N,\opmin)$ e $(\Z,\opmin)$ são grupoides, em que $\opmin$ é o mínimo dos números inteiros;
+	\item $(\N,\opmax)$ e $(\Z,\opmax)$ são grupoides, em que $\opmax$ é o máximo dos números inteiros.
+	\end{enumerate}
+\end{example}
+
+\begin{example}
+O jogo de pedra-papel-tesoura define um grupoide cuja operação é comutativa, mas não associativa. Representamos pedra por $r$, papel por $p$ e tesoura por $t$. A operação entre dois elementos distintos resulta no elemento que vence e entre um elemento com ele mesmo resulta nele mesmo. As regras de operação estão resumidas na tabela \ref{tab:operacao.pedrapapeltesousa}. 
+\end{example}
+
+\begin{table}
+	\centering
+
+	\begin{tabular}{c | c c c}
+	\toprule
+	$\opb$	&	$r$	&	$p$	&	$t$ \\
+	\hline
+	$r$		&	$r$	&	$p$	&	$r$ \\
+	$p$		&	$p$	&	$p$	&	$t$ \\
+	$t$		&	$r$	&	$t$	&	$t$ \\
+	\bottomrule
+	\end{tabular}
+%
+%	\begin{tabular}{c | c c c}
+%	$\opb$	&	$0$	&	$1$	&	$2$ \\
+%	\hline
+%	$0$		&	$0$	&	$1$	&	$0$ \\
+%	$1$		&	$1$	&	$1$	&	$2$ \\
+%	$2$		&	$0$	&	$2$	&	$2$ \\
+%	\end{tabular}
+
+	\caption{Tabela de pedra-papel-tesoura ($r$, $p$ e $t$).}
+	\label{tab:operacao.pedrapapeltesousa}
+\end{table}
+
+\begin{comment}
+
+\begin{table}
+	\centering
+
+	\begin{tabular}{c | c c c c c}
+%	\toprule
+	$\opb$	&	$r$	&	$p$	&	$t$	&	$s$	&	$l$ \\
+	\hline
+	$r$		&	$r$	&	$p$	&	$r$	&	$?$	&	$?$ \\
+	$p$		&	$p$	&	$p$	&	$t$	&	$?$	&	$?$ \\
+	$t$		&	$r$	&	$t$	&	$t$	&	$?$	&	$?$ \\
+	$s$		&	$?$	&	$?$	&	$?$	&	$?$	&	$?$ \\
+	$l$		&	$?$	&	$?$	&	$?$	&	$?$	&	$?$ \\
+%	\bottomrule
+	\end{tabular}
+%
+%	\begin{tabular}{c | c c c}
+%	$\opb$	&	$0$	&	$1$	&	$2$ \\
+%	\hline
+%	$0$		&	$0$	&	$1$	&	$0$ \\
+%	$1$		&	$1$	&	$1$	&	$2$ \\
+%	$2$		&	$0$	&	$2$	&	$2$ \\
+%	\end{tabular}
+
+	\caption{Tabela de pedra-papel-tesoura-Spock-lagarto ($r$, $p$ e $t$).}
+	\label{tab:operacao.pedrapapeltesousa}
+\end{table}
+
+\end{comment}
+
+Por completude, definimos aqui a operação binária entre subconjuntos de um grupoide.
+
+\begin{definition}[Operação com conjuntos]
+Sejam $\bm G$ um grupoide, $S,S' \subseteq G$ subconjuntos. Denota-se
+	\begin{equation*}
+	S \opb S' := \set{s \opb s'}{s \in S \land s' \in S'}.
+	\end{equation*}
+Para todo $x \in G$, denotam-se $x \opb S := \{x\} \opb S$ e $S \opb x := S \opb \{x\}$.
 \end{definition}
 
 Em um grupoide, pode-se ter um elemento que é neutro com relação à operação binária no sentido que qualquer elemento do grupoide é levado em si mesmo quando operado com esse elemento neutro. Esses elementos são chamados de `identidades'.
 
 \begin{definition}[Identidade]
-Seja $\bm X=(X,\opb)$ um grupoide.
+Seja $\bm G=(G,\opb)$ um grupoide.
 	\begin{itemize}
-	\item Uma \emph{identidade à esquerda} de $(X, \opb)$ é um elemento $\id \in X$ que satisfaz, para todo $x \in X$,
+	\item Uma \emph{identidade à esquerda} de $\bm G$ é um elemento $\id \in G$ que satisfaz, para todo $x \in G$,
 		\begin{equation*}
 		\id \opb x = x;
 		\end{equation*}
-	\item Uma \emph{identidade à direita} de $(X, \opb)$ é um elemento $\id \in X$ que satisfaz, para todo $x \in X$,
+	\item Uma \emph{identidade à direita} de $\bm G$ é um elemento $\id \in G$ que satisfaz, para todo $x \in G$,
 		\begin{equation*}
 		x \opb \id = x;
 		\end{equation*}
-	\item Uma \emph{identidade} de $(X, \opb)$ é um elemento $\id \in X$ que satisfaz, para todo $x \in X$,
+	\item Uma \emph{identidade} de $\bm G$ é um elemento $\id \in G$ que satisfaz, para todo $x \in G$,
 		\begin{equation*}
 		\id \opb x = x = x \opb \id.
 		\end{equation*}
 	\end{itemize}
 \end{definition}
 
+\begin{example}
+Considere os seguintes exemplos.
+	\begin{enumerate}
+	\item $0$ é uma identidade de $(\N,+)$ e $(\Z,+)$;
+	\item $1$ é uma identidade de $(\N,\times)$ e $(\Z,\times)$;
+	\item $\infty$ é uma identidade de $(\NN,\opmin)$ e $(\ZZ,\opmin)$, em que $\NN = \N \cup \{\infty\}$ e $\ZZ = \Z \cup \{\infty,-\infty\}$;
+	\item $0$ é uma identidade de $(\N,\opmax)$;
+	\item $-\infty$ é uma identidade de $(\ZZ,\opmax)$.
+	\end{enumerate}
+\end{example}
+
 As identidade são elementos importantes de qualquer grupoide e pode-se mostrar que, se existem identidades aos dois lados, elas são a mesma e a identidade nesse grupoide é única. Em particular, isso implica que identidades à esquerda ou à direita são únicas se a operação binária por comutativa.
 
 \begin{proposition}
 \label{prop:unic.elem.neut}
-Seja $\bm X = (X,\opb)$ um grupoide. Se $\id$ é uma identidade à esquerda e $\id'$ é uma identidade à direita de $(X, \opb)$, então $\id = \id'$ e $\id$ é a única identidade de $(X,\opb)$.
+Seja $\bm G = (G,\opb)$ um grupoide. Se $\id$ é uma identidade à esquerda e $\id'$ é uma identidade à direita de $\bm G$, então $\id = \id'$ e $\id$ é a única identidade de $\bm G$.
 \end{proposition}
 \begin{proof}
-Como $\id'$ é identidade à direita e $\id$ é identidade à esquerda de $(X, \opb)$, segue que
+Como $\id'$ é identidade à direita e $\id$ é identidade à esquerda de $\bm G$, segue que
 	\begin{equation*}
 	\id = \id \opb \id' = \id'.
 	\end{equation*}
-A unicidade segue pois qualquer identidade de $(X,\opb)$ é identidade à esquerda.
+A unicidade segue pois qualquer identidade de $\bm G$ é identidade à esquerda.
 \end{proof}
 
-Por completude, definimos aqui a operação binária entre subconjuntos de um grupoide.
-
-\begin{definition}[Operação com conjuntos]
-Sejam $\bm X$ um grupoide, $S,S' \subseteq X$ subconjuntos. Denota-se
-	\begin{equation*}
-	S \opb S' := \set{s \opb s'}{s \in S \land s' \in S'}.
-	\end{equation*}
-Para todo $x \in X$, denotam-se $x \opb S := \{x\} \opb S$ e $S \opb x := S \opb \{x\}$.
+\begin{definition}[Nulidade]
+Seja $\bm G=(G,\opb)$ um grupoide.
+	\begin{itemize}
+	\item Uma \emph{nulidade à esquerda} de $\bm G$ é um elemento $\nulo \in G$ que satisfaz, para todo $x \in G$,
+		\begin{equation*}
+		\nulo \opb x = \nulo;
+		\end{equation*}
+	\item Uma \emph{nulidade à direita} de $\bm G$ é um elemento $\nulo \in G$ que satisfaz, para todo $x \in G$,
+		\begin{equation*}
+		x \opb \nulo = \nulo;
+		\end{equation*}
+	\item Uma \emph{nulidade} de $\bm G$ é um elemento $\nulo \in G$ que satisfaz, para todo $x \in G$,
+		\begin{equation*}
+		\nulo \opb x = \nulo = x \opb \nulo.
+		\end{equation*}
+	\end{itemize}
 \end{definition}
+
+\begin{example}
+Considere os seguintes exemplos.
+	\begin{enumerate}
+	\item $\infty$ é uma nulidade de $(\NN,+)$;% e $(\Z \cup \{\infty\},+)$;
+	\item $0$ é uma nulidade de $(\N,\times)$ e $(\Z,\times)$;
+	\item $0$ é uma nulidade de $(\N,\opmin)$;
+	\item $-\infty$ é uma nulidade de $(\ZZ,\opmin)$;
+	\item $\infty$ é uma nulidade de $(\NN,\opmax)$ e $(\ZZ,\opmax)$.
+	\end{enumerate}
+\end{example}
+
+\begin{proposition}
+\label{prop:unic.nulidade}
+Seja $\bm G = (G,\opb)$ um grupoide. Se $\nulo$ é uma nulidade à esquerda e $\nulo'$ é uma nulidade à direita de $\bm G$, então $\nulo = \nulo'$ e $\nulo$ é a única nulidade de $\bm G$.
+\end{proposition}
+\begin{proof}
+Como $\nulo'$ é nulidade à direita e $\nulo$ é nulidade à esquerda de $\bm G$, segue que
+	\begin{equation*}
+	\nulo = \nulo \opb \nulo' = \nulo'.
+	\end{equation*}
+A unicidade segue pois qualquer nulidade de $\bm G$ é nulidade à esquerda.
+\end{proof}
+
+
 
 \subsubsection{Homomorfismo de grupoide}
 
 \begin{definition}
-Sejam $\bm X=(X,\opb)$ e $\bm X'=(X',\opb')$ grupoide. Um \emph{homomorfismo de grupoide} de $\bm X$ para $\bm X'$ é uma função $\fun{h}{X}{X'}$ que satisfaz, para todos $x,x' \in X$
+Sejam $\bm G=(G,\opb)$ e $\bm G'=(G',\opb')$ grupoide. Um \emph{homomorfismo de grupoide} de $\bm G$ para $\bm G'$ é uma função $\fun{h}{G}{G'}$ que satisfaz, para todos $x,x' \in G$
 	\begin{equation*}
 	h(x \opb x')=h(x') \opb' h(x').
 	\end{equation*}
-Denota-se $\fun{h}{\bm X}{\bm X'}$ e o conjunto de todos esses homomorfismos de grupoide é denotado por $\Homo(\bm X,\bm X')$.
+Denota-se $\fun{h}{\bm G}{\bm G'}$ e o conjunto de todos esses homomorfismos de grupoide é denotado por $\Homo(\bm G,\bm G')$.
 \end{definition}
 
 \begin{proposition}[Composição de homomorfismos]
 \label{comp.hom.grupoide}
-Sejam $\bm X=(X,\opb)$, $\bm X'=(X',\opb')$ e $\bm X''=(X'',\opb'')$ grupoides e $\fun{h}{\bm X }{\bm X'}$ e $\fun{h'}{\bm X'}{\bm X''}$ homomorfismos de grupoide. Então $\fun{h' \circ h}{\bm X}{\bm X''}$ é homomorfismo de grupoide.
+Sejam $\bm G=(G,\opb)$, $\bm G'=(G',\opb')$ e $\bm G''=(G'',\opb'')$ grupoides e $\fun{h}{\bm G }{\bm G'}$ e $\fun{h'}{\bm G'}{\bm G''}$ homomorfismos de grupoide. Então $\fun{h' \circ h}{\bm G}{\bm G''}$ é homomorfismo de grupoide.
 \end{proposition}
 \begin{proof}
-Para todos $x,x' \in X$,
+Para todos $x,x' \in G$,
 	\begin{align*}
 	(h' \circ h)(x \opb x') &= h'(h(x \opb x')) \\
 		&= h'(h(x) \opb' h(x')) \\
@@ -750,11 +874,11 @@ Para todos $x,x' \in X$,
 \subsection{Semigrupo (grupoide associativo)}
 
 \begin{definition}
-Um \emph{semigrupo} (ou \emph{grupoide associativo}) é um grupoide $\bm X=(X,\opb)$ cuja operação binária $\opb$ é associativa. Um semigrupo \emph{comutativo} é um semigrupo cuja operação binária $\opb$ é comutativa.
+Um \emph{semigrupo} (ou \emph{grupoide associativo}) é um grupoide $\bm G=(G,\opb)$ cuja operação binária $\opb$ é associativa. Um semigrupo \emph{comutativo} é um semigrupo cuja operação binária $\opb$ é comutativa.
 \end{definition}
 
 \begin{definition}
-Sejam $\bm X=(X,\opb)$ um semigrupo, $n \in \N \setminus \{0\}$ e $(x_i)_{i \in [n]}$ elementos de $X$. O \emph{operatório} desses elementos é definido indutivamente por
+Sejam $\bm G=(G,\opb)$ um semigrupo, $n \in \N \setminus \{0\}$ e $(x_i)_{i \in [n]}$ elementos de $G$. O \emph{operatório} desses elementos é definido indutivamente por
 	\begin{equation*}
 	\bigopb _{i \in [n]} x_i :=
 		\begin{cases}
@@ -767,7 +891,7 @@ Sejam $\bm X=(X,\opb)$ um semigrupo, $n \in \N \setminus \{0\}$ e $(x_i)_{i \in 
 O símbolo usado para a soma $+$ é o \emph{somatório} $\displaystyle\bigplus$ e o símbolo usado para o produto $\times$ é o \emph{produtório} $\displaystyle\bigtimes$. Essa definição considera que as operações vão sendo feitas à esquerda, mas uma mesma definição poderia ter sido feita para operações à direita --- todas demonstrações ainda valeriam, considerando que as ordens fossem devidamente trocadas.
 
 \begin{proposition}
-Sejam $\bm X=(X,\opb)$ um semigrupo, $n,k \in \N \setminus \{0\}$ e $(x_i)_{i \in [n+k]}$ elementos de $X$. Então
+Sejam $\bm G=(G,\opb)$ um semigrupo, $n,k \in \N \setminus \{0\}$ e $(x_i)_{i \in [n+k]}$ elementos de $G$. Então
 	\begin{equation*}
 	\bigopb_{i \in [n+k]} x_i = \bigopb_{i \in [k]} x_{n+i} \opb \bigopb_{i \in [n]} x_i.
 	\end{equation*}
@@ -788,7 +912,7 @@ Considere agora que vale a igualdade para algum $k \in \N \setminus \{0\}$. Ent�
 \end{proof}
 
 \begin{proposition}[Associatividade Generalizada]
-Sejam $\bm X=(X,\opb)$ um semigrupo, $n \in \N \setminus \{0\}$, $(x_i)_{i \in [n]}$ elementos de $X$ e $(k_j)_{j \in [p]}$ uma partição de $[n]$ (ou seja: $n = \sum_{j \in [p]} k_j$ e, para todos $j \in [p]$, $k_j \neq 0$). Então
+Sejam $\bm G=(G,\opb)$ um semigrupo, $n \in \N \setminus \{0\}$, $(x_i)_{i \in [n]}$ elementos de $G$ e $(k_j)_{j \in [p]}$ uma partição de $[n]$ (ou seja: $n = \sum_{j \in [p]} k_j$ e, para todos $j \in [p]$, $k_j \neq 0$). Então
 	\begin{equation*}
 	\bigopb_{i \in [n]} x_i = \bigopb_{j \in [p]}\left(\bigopb_{i \in [k_j]} x_{i + k_0 + \cdots + k_{j-1}}\right).
 	\end{equation*}
@@ -813,7 +937,7 @@ Por causa da associatividade generalizada, denota-se essa operação por
 Além da associatividade generalizada, também vale a comutatividade generalizada se o semigrupo é comutativo. Pode-se enunciar uma comutatividade generalizada para grupoides comutativos, sem supor associatividade, mas a associatividade em geral vale quando a comutatividade vale e ela facilita a notação.
 
 \begin{proposition}[Comutatividade Generalizada]
-Sejam $\bm X=(X,\opb)$ um semigrupo comutativo e $n \in \N \setminus \{0\}$. Então, para toda bijeção $\pi \in \Iso{\Func}(n)$,% $\pi\colon [n] \to [n]$,
+Sejam $\bm G=(G,\opb)$ um semigrupo comutativo e $n \in \N \setminus \{0\}$. Então, para toda bijeção $\pi \in \Iso{\Func}(n)$,% $\pi\colon [n] \to [n]$,
 	\begin{equation*}
 	\bigopb_{i \in [n]} x_{\pi(i)} = \bigopb_{i \in [n]} x_i.
 	\end{equation*}
@@ -843,21 +967,25 @@ Da associatividade generalizada, da comutatividade e da hipótese para $n$, segu
 
 
 \begin{definition}[Operatório de conjuntos]
-Sejam $\bm X=(X,\opb)$ um semigrupo, $n \in \N \setminus \{0\}$ e $(C_i)_{i \in [n]}$ uma família de subgrupos de $X$. Define-se
+Sejam $\bm G=(G,\opb)$ um semigrupo, $n \in \N \setminus \{0\}$ e $(C_i)_{i \in [n]}$ uma família de subgrupos de $G$. Define-se
 	\begin{equation*}
 	\bigopb _{i \in [n]} C_i := \set{\bigopb _{i \in [n]} x_i}{\forall_{i \in [n]} x_i \in C_i}.
 	\end{equation*}
 \end{definition}
 
+\begin{example}
+$(\N,+)$, $(\N,\times)$, $(\N,\opmin)$ e $(\N,\opmax)$ são semigrupos.
+\end{example}
+
 \subsubsection{Homomorfismo de semigrupo}
 
 \begin{definition}
-Sejam $\bm X=(X,\opb)$ e $\bm X'=(X',\opb')$ semigrupos. Um \emph{homomorfismo de semigrupo} de $\bm X$ para $\bm X'$ é um homomorfismo de grupoide $\fun{h}{\bm X}{\bm X'}$. Denota-se $\fun{h}{\bm X}{\bm X'}$ e o conjunto de todos esses homomorfismos de semigrupo é denotado por $\Homo(\bm X,\bm X')$.
+Sejam $\bm G=(G,\opb)$ e $\bm G'=(G',\opb')$ semigrupos. Um \emph{homomorfismo de semigrupo} de $\bm G$ para $\bm G'$ é um homomorfismo de grupoide $\fun{h}{\bm G}{\bm G'}$. Denota-se $\fun{h}{\bm G}{\bm G'}$ e o conjunto de todos esses homomorfismos de semigrupo é denotado por $\Homo(\bm G,\bm G')$.
 \end{definition}
 
 \begin{proposition}[Composição de homomorfismos]
 \label{comp.hom.sem}
-Sejam $\bm X=(X,\opb)$, $\bm X'=(X',\opb')$ e $\bm X''=(X'',\opb'')$ semigrupos e $\fun{h}{\bm X }{\bm X'}$ e $\fun{h'}{\bm X'}{\bm X''}$ homomorfismos de semigrupo. Então $\fun{h' \circ h}{\bm X}{\bm X''}$ é homomorfismo de semigrupo.
+Sejam $\bm G=(G,\opb)$, $\bm G'=(G',\opb')$ e $\bm G''=(G'',\opb'')$ semigrupos e $\fun{h}{\bm G }{\bm G'}$ e $\fun{h'}{\bm G'}{\bm G''}$ homomorfismos de semigrupo. Então $\fun{h' \circ h}{\bm G}{\bm G''}$ é homomorfismo de semigrupo.
 \end{proposition}
 \begin{proof}
 A mesma demonstração de \ref{comp.hom.grupoide}.
@@ -882,23 +1010,19 @@ Sejam $\bm G = (G,\opb,\id)$ um grupídeo e $g \in G$.
 	\begin{itemize}
 	\item Um \emph{inverso à esquerda} de $g$ em $\bm G$ é um elemento $g \vid \in G$ que satisfaz
 		\begin{equation*}
-		(g \vid) \opb g = \id.
+		(g \vid) \opb g = \id;
 		\end{equation*}
+	
 	\item Um \emph{inverso à direita} de $g$ em $\bm G$ é um elemento $\div g \in G$ que satisfaz
 		\begin{equation*}
 		g \opb (\div g) = \id;
 		\end{equation*}
+	
 	\item Um \emph{inverso} de $g$ em $\bm G$ é um elemento $\div g \in G$ que satisfaz
 		\begin{equation*}
 		(\div g) \opb g = \id = g \opb (\div g).
 		\end{equation*}
 	\end{itemize}
-
-Uma \emph{inversão} de $\bm G$ é uma operação unária
-	\begin{align*}
-	\func{\div}{G}{G}{g}{\div g}
-	\end{align*}
-tal que, para todo $g \in G$, $\div g$ é o inverso de $g$ em $(G,\opb,\id)$.
 \end{definition}
 
 \begin{proposition}
@@ -925,6 +1049,30 @@ Sejam $\bm G = (G,\opb,\id)$ um grupídeo e $g \in G$.
 	\qedhere
 	\end{enumerate}
 \end{proof}
+
+\begin{definition}[Inversão]
+Sejam $\bm G = (G,\opb,\id)$ um grupídeo.
+	\begin{itemize}
+	\item Uma \emph{inversão à esquerda} de $\bm G$ é uma operação unária
+		\begin{align*}
+		\func{\vid}{G}{G}{g}{g \vid}
+		\end{align*}
+	tal que, para todo $g \in G$, $g \vid$ é o inverso à esquerda de $g$ em $\bm G$;
+
+	\item Uma \emph{inversão à direita} de $\bm G$ é uma operação unária
+		\begin{align*}
+		\func{\div}{G}{G}{g}{\div g}
+		\end{align*}
+	tal que, para todo $g \in G$, $\div g$ é o inverso à direita de $g$ em $\bm G$;
+
+	\item Uma \emph{inversão} de $\bm G$ é uma operação unária
+		\begin{align*}
+		\func{\div}{G}{G}{g}{\div g}
+		\end{align*}
+	tal que, para todo $g \in G$, $\div g$ é o inverso de $g$ em $\bm G$.
+	\end{itemize}
+\end{definition}
+
 
 \subsubsection{Homomorfismos de grupídeo}
 
@@ -1010,28 +1158,79 @@ Denotaremos a identidade de um monoide $\bm M$ por $\id_M$ quando houver ambigui
 \end{notation}
 
 \begin{example}
-A tripla $(\N,+,0)$ é um monoide comutativo.
+Considere os seguintes exemplos.
+	\begin{enumerate}
+	\item $(\N,+)$ e $(\Z,+)$ são monoides comutativos;
+	\item $(\N,\times,1)$ e $(\Z,\times,1)$ são monoides comutativos;
+	\item $(\NN,\opmin,\infty)$ e $(\ZZ,\opmin,\infty)$ são monoides comutativos;
+	\item $(\N,\opmax,0)$ é monoide comutativo;
+	\item $(\Z \cup \{-\infty,+\infty\},\opmax,-\infty)$ é monoide comutativo.
+	\end{enumerate}
 \end{example}
 
-\begin{example}
-A tripla $(\N,\times,1)$ é um monoide comutativo.
-\end{example}
+%\begin{example}
+%A tripla $(\N,\opmax,0)$ é um monoide comutativo, em que $\N$ é o conjunto de números naturais, $\opmax$ é a operação máximo dada por
+%	\begin{align*}
+%	\func{\opmax}{\N \times \N}{\N}{(n,n')}{n \opmax n' := \max \{n,n'\}}
+%	\end{align*}
+%e $0$ é o zero.
+%\end{example}
 
-\begin{example}
-A tripla $(\N,\opmax,0)$ é um monoide comutativo, em que $\N$ é o conjunto de números naturais, $\opmax$ é a operação máximo dada por
-	\begin{align*}
-	\func{\opmax}{\N \times \N}{\N}{(n,n')}{n \opmax n' := \max \{n,n'\}}
-	\end{align*}
-e $0$ é o zero.
-\end{example}
+%\begin{example}
+%A tripla $(\N_{\infty},\opmin,\infty)$ é um monoide comutativo, em que $\N_{\infty} := \NN$ é o conjunto de números naturais com infinito, $\opmin$ é a operação mínimo dada por
+%	\begin{align*}
+%	\func{\opmin}{\N_{\infty} \times \N_{\infty}}{\N}{(n,n')}{n \opmin n' := \min \{n,n'\}}
+%	\end{align*}
+%e $\infty$ é o infinito.
+%\end{example}
 
-\begin{example}
-A tripla $(\N_{\infty},\opmin,\infty)$ é um monoide comutativo, em que $\N_{\infty} := \N \cup \{\infty\}$ é o conjunto de números naturais com infinito, $\opmin$ é a operação mínimo dada por
-	\begin{align*}
-	\func{\opmin}{\N_{\infty} \times \N_{\infty}}{\N}{(n,n')}{n \opmin n' := \min \{n,n'\}}
-	\end{align*}
-e $\infty$ é o infinito.
-\end{example}
+\begin{proposition}[Leis de corte]
+Seja $\bm G = (G,\opb,1)$ um monoide.
+	\begin{enumerate}
+	\item (Corte à esquerda) Para todos $g,g',g'' \in G$ tais que $g$ tem inverso à esquerda $g \vid$, se $g \opb g' = g \opb g''$ então $g'=g''$;
+	\item (Corte à direita) Para todos $g,g',g'' \in G$ tais que $g$ tem inverso à direita $\div g$, se $g' \opb g = g'' \opb g$ então $g'=g''$;
+	\item Para todos $g,g' \in G$ que têm inversos à esquerda $g \vid$ e $g' \vid$, respectivamente, $g \opb g'$ tem inverso à esquerda $(g' \vid) \opb (g \vid)$;
+	\item Para todos $g,g' \in G$ que têm inversos à direita $\div g$ e $\div g'$, respectivamente, $g \opb g'$ tem inverso à direita $(\div g') \opb (\div g)$.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item Segue da associatividade que
+		\begin{align*}
+		g' &= 1 \opb g' \\
+			&= ((g \vid) \opb g) \opb g' \\
+			&= (g \vid) \opb (g \opb g') \\
+			&= (g \vid) \opb (g \opb g'') \\
+			&= ((g \vid) \opb g) \opb g'' \\
+			&= 1 \opb g'' \\
+			&= g''.
+		\end{align*}
+	\item Segue da associatividade que
+		\begin{align*}
+		g' &= g' \opb 1 \\
+			&= g' \opb (g \opb (\div g)) \\
+			&= (g' \opb g) \opb (\div g)) \\
+			&= (g'' \opb g) \opb (\div g) \\
+			&= g'' \opb (g \opb (\div g)) \\
+			&= g'' \opb 1 \\
+			&= g''.
+		\end{align*}
+	\item Segue da associatividade que
+		\begin{align*}
+		((g' \vid) \opb (g \vid)) \opb (g \opb g') &= g' \vid) \opb ((g \vid) \opb g) \opb g' \\
+			&= (g' \vid) \opb 1 \opb g' \\
+			&= (g' \vid) \opb g' \\
+			&= 1.
+		\end{align*}
+	\item Segue da associatividade que
+		\begin{align*}
+		(g \opb g') \opb ((\div g') \opb (\div g)) &= g \opb g' \opb (\div g') \opb (\div g) \\
+			&= g \opb 1 \opb (\div g) \\
+			&= g \opb (\div g) \\
+			&= 1.
+		\end{align*}
+	\end{enumerate}
+\end{proof}
 
 \begin{proposition}
 \label{prop:unic.inv}
@@ -1053,7 +1252,7 @@ A unicidade segue pois qualquer inverso de $m$ em $\bm M$ é inverso à esquerda
 \end{proof}
 
 \begin{notation}
-A unicidade do inverso nos permite denotar o inverso de um elemento $m \in M$ de algum modo fixo. Quando a operação binária é a adição (denotada $+$), denotamos o inverso por $-m$; quando é a multiplicação (denotada $\times$, $\cdot$, $\circ$), denotamo-lo por $\div m$, $m^{-}$ ou, mais comumente, por $m\inv$. Para $m \in M$ com inverso $\div m$ e $m'$, denota-se $m' \div m := m' \opb (\div m)$ por simplicidade.
+A unicidade do inverso nos permite denotar o inverso de um elemento $m \in M$ de algum modo fixo. Quando a operação binária é a adição (denotada $+$), denotamos o inverso por $-m$; quando é a multiplicação (denotada $\times$, $\cdot$, $\circ$), denotamo-lo por $\div m$, $m^{-}$ ou, mais comumente, por $m\inv$. Para $m \in M$ com inverso $\div m$ e $m'$, denota-se $m' \div m := m' \opb (\div m)$ por simplicidade. O conjunto de elementos invertíveis de $M$ é denotado $M^{\div}$.
 \end{notation}
 
 \begin{proposition}
@@ -1073,6 +1272,7 @@ Como $\div m$ é inverso de $m$, então $m$ é inverso de $\div m$ e, da unicida
 %	\end{align*}
 \end{proof}
 
+\subsubsection{Submonoides}
 
 \begin{definition}
 Seja $\bm M=(M,\opb,\id)$ um monoide. Um \emph{submonoide} de $\bm M$ é um monoide $\bm S=(S,\opb _S,\id_S)$ em que $S \subseteq M$, $\opb _S= \opb |_{S \times S}$ e $\id_S=\id$. Denota-se $\bm S \leq \bm M$. Um submonoide \emph{próprio} de $\bm M$ é um monoide $\bm S \leq \bm M$ em que $S$ é um subconjunto próprio de $M$ ($S \subset M$). Denota-se $\bm S < \bm M$.
@@ -1093,22 +1293,26 @@ Então $\bm S=(S,\opb|_{S \times S},\id)$ é um monoide. Ainda, se $\bm M$ é co
 %($\Rightarrow$) Suponhamos que $\bm S$ é um monoide com $\id \in S$. (Identidade) Então vale a identidade. (Fechamento) Como $\bm S$ é um monoide, $\star$ é uma operação binária, portanto segue a propriedade de fechamento (\ref{prop:restri.op.bin}).
 
 %($\Leftarrow$)
-Suponhamos que valem as propriedades listadas. (Operação binária) Pela identidade, segue que $S \neq \emptyset$, e disso e do fechamento, segue que $\star$ é uma operação binária (\ref{prop:restri.op.bin}).
-(Associatividade) Sejam $s_1,s_2,s_3 \in S$. Da associatividade de $ \opb $ segue que
-	\begin{equation*}
-	 (s_1 \star s_2) \star s_3 = (s_1 \opb s_2) \opb s_3 = s_1 \opb (s_2  \opb  s_3) = s_1 \star (s_2 \star s_3).
-	 \end{equation*}
-Logo $\star$ é associativa. (Identidade) Seja $s \in S$. Como $\id \in S$, da identidade de $ \opb $ segue que
-	\begin{equation*}
-	\id \star s = \id \opb s = s = s \opb \id = s \star \id.
-	\end{equation*}
-Logo $\id$ é identidade de $\bm S$.
-
-Por fim, suponhamos que $\bm M$ é um monoide comutativo. Sejam $s_1,s_2 \in S$. Como $ \opb $ é comutativa, então
-	\begin{equation*}
-	s_1 \star s_2 = s_1 \opb s_2 = s_2 \opb s_1 = s_2 \star s_1.
-	\end{equation*}
-Logo $\star$ é comutativa.
+Suponhamos que valem as propriedades listadas.
+	\begin{itemize}
+	\item (Operação binária) Pela identidade, segue que $S \neq \emptyset$, e disso e do fechamento, segue que $\star$ é uma operação binária (\ref{prop:restri.op.bin}).
+	\item (Associatividade) Sejam $s_1,s_2,s_3 \in S$. Da associatividade de $ \opb $ segue que
+		\begin{equation*}
+		(s_1 \star s_2) \star s_3 = (s_1 \opb s_2) \opb s_3 = s_1 \opb (s_2  \opb  s_3) = s_1 \star (s_2 \star s_3).
+		\end{equation*}
+	Logo $\star$ é associativa.
+	\item (Identidade) Seja $s \in S$. Como $\id \in S$, da identidade de $ \opb $ segue que
+		\begin{equation*}
+		\id \star s = \id \opb s = s = s \opb \id = s \star \id.
+		\end{equation*}
+	Logo $\id$ é identidade de $\bm S$.
+	\item (Comutatividade) Por fim, suponhamos que $\bm M$ é um monoide comutativo. Sejam $s_1,s_2 \in S$. Como $ \opb $ é comutativa, então
+		\begin{equation*}
+		s_1 \star s_2 = s_1 \opb s_2 = s_2 \opb s_1 = s_2 \star s_1.
+		\end{equation*}
+	Logo $\star$ é comutativa.
+	\qedhere
+	\end{itemize}
 \end{proof}
 
 Vale observar que, somente sabendo que $\bm S$ é um monoide, isto é, que um subconjunto $S$ de um monoide $\bm M$ com a operação do monoide restrita a esse subconjunto formam um monoide, não podemos garantir que a identidade de $\bm S$ é a mesmo que a de $\bm M$.
@@ -1137,6 +1341,294 @@ Sejam $\bm M=(M,\opb,\id)$, $\bm M'=(M',\opb',\id')$ e $\bm M''=(M'',\opb'',\id'
 \begin{proof}
 A mesma demonstração de \ref{comp.hom.grupideo}.
 \end{proof}
+
+
+
+\begin{comment}
+
+\subsection{Monoides de anulação}
+
+\begin{definition}
+Um \emph{monoide de anulação} é uma lista $\bm M = (M,\opb,\id,\nulo)$ tal que $(M,\opb,\id)$ é um monoide e $\nulo \in M$ é uma nulidade de $(M,\opb)$.
+\end{definition}
+
+\begin{proposition}
+Seja $\bm M = (M,\opb,\id,\nulo)$ um monoide de anulação. Se $\nulo = \id$, então $M = \{0\}$.
+\end{proposition}
+\begin{proof}
+Para todo $m \in M$,
+	\begin{equation*}
+	m = 1 \opb m = 0 \opb m = 0.
+	\qedhere
+	\end{equation*}
+\end{proof}
+
+\begin{definition}
+Um \emph{domínio de anulação} é um monoide de anulação $\bm M = (M,\opb,\id,\nulo)$ tal que, para todos $m,m' \in M$ tais que $mm'=0$, vale $m=0$ ou $m'=0$.
+\end{definition}
+
+\subsubsection{Fatores e divisão}
+
+\begin{definition}
+Sejam $\bm M$ um monoide e $m \in M$. Um \emph{fator (à esquerda)} (ou \emph{divisor (à esquerda)}) de $m$ é um elemento $d \in M$ tal que, para algum $q \in M$, $dq=m$. Diz-se que $m$ é um \emph{múltiplo} de $d$ em $\bm M$, que $d$ \emph{divide} $m$ em $\bm M$ e denota-se $d \dleq_{\bm M} m$.A relação $\dleq_{\bm M}$ é a relação de \emph{divisão} em $\bm M$.
+\end{definition}
+
+Sempre que possível, o subíndice de $\dleq_{\bm M}$ será omitido.
+
+\begin{proposition}
+Seja $\bm M$ um monoide. A relação de divisão $\dleq$ em $M$ é uma pré-ordem.
+\end{proposition}
+\begin{proof}
+	\begin{itemize}
+	\item (Reflexividade) Para todo $m \in M$, vale $m1 = m$, portanto $m \dleq m$.
+	\item (Transitividade) Sejam $m,m',m'' \in M$ tais que $m \dleq m'$ e $m' \dleq m''$. Então, para alguns $q,q' \in M$, vale $mq=m'$ e $m'q'=m''$. Segue da associatividade que $mqq'=m''$, portanto $m \dleq m''$.
+	\end{itemize}
+\end{proof}
+
+Em geral, a antissimetria não vale pois se $i \in M^{\div}$ é um elemento invertível e $i \neq 1$, então $1 \dleq i$ e $i \dleq 1$, mas disso não segue que $1=i$. Um exemplo simples são $1$ e $-1$ no monoide multiplicativo dos números inteiros $(\Z,\times,1)$. No entanto, veremos mais à frente que, a menos desse problema, a relação é uma ordem.
+
+\begin{proposition}
+Seja $\bm M$ um monoide de anulação.
+	\begin{enumerate}
+	\item Para todos $a \in M$ e $u \in M^{\div}$,
+		\begin{equation*}
+		u \dleq a \dleq 0;
+		\end{equation*}
+	\item Para todos $a \in M$ e $u \in M^{\div}$,
+		\begin{equation*}
+		a \dleq u \Leftrightarrow a \in M^{\div};
+		\end{equation*}
+	\item Para todo $a \in M$,
+		\begin{equation*}
+		0 \dleq a \Leftrightarrow a=0.
+		\end{equation*}
+	\item Para todos $a,a',a'' \in M$ tais que $a' \dleq a''$,
+		\begin{equation*}
+		aa' \dleq aa''.
+		\end{equation*}
+	\item Se $\bm M$ é comutativo, para todos $u \in M^{\div}$ e $a,a' \in M$ tais que $a \dleq a'$ vale
+		\begin{equation*}
+		ua \dleq a' \text{\ \ e\ \ } a \dleq ua'.
+		\end{equation*}
+	\end{enumerate}
+\end{proposition}
+\begin{proof} Sejam $a \in M$ e $u \in M^{\div}$.
+	\begin{enumerate}
+	\item Como $u \in M^{\div}$, existe $u\inv \in M^{\div}$. Então $u(u\inv a) = a$ e segue que $u \dleq a$; como $a0 = 0$, segue que $a \dleq 0$;
+	\item Se $a \dleq u$, existe $q \in M$ tal que $aq=u$. Como $u \in M^{\div}$, segue que $aqu\inv = uu\inv = 1$. Logo $a \in M^{\div}$. Reciprocamente, se $a \in M^{\div}$, existe $a\inv$ tal que $aa\inv=1$. Então $aa\inv u = u$ Logo $a \dleq u$;
+	\item Se $0 \dleq a$, existe $q \in M$ tal que $0q=a$. Mas então $a=0$. A recíproca segue da reflexividade de $\dleq$.
+	\item Se $a' \dleq a''$, existe $q \in D$ tal que $a'q=a''$, logo $aa'q=aa''$, portanto $aa' \dleq aa''$.
+	\item Se $a \dleq a'$, existe $q \in M$ tal que $aq=a'$, portanto da comutatividade segue que
+		\begin{equation*}
+		a' = uu\inv aq = uau\inv q,
+		\end{equation*}
+logo $ua \dleq a'$, e
+		\begin{equation*}
+		ua' = uaq = auq,
+		\end{equation*}
+logo $a \dleq ua'$.
+	 \qedhere
+	\end{enumerate}
+\end{proof}
+
+\begin{proposition}
+Sejam $\bm M$ um monoide e $a,a' \in M$. Então $aM \subseteq a'M$ se, e somente se, $a' \dleq a$.
+\end{proposition}
+\begin{proof}
+Se $aM \subseteq a'M$, então $a \in a'M$. Mas isso significa que existe $q \in M$ tal que $a=a'q$, o que mostra que $a' \dleq a$. A implicação contrária segue a mesma demonstração com as implicação invertidas.
+\end{proof}
+
+\begin{definition}
+Sejam $\bm M$ um monoide e $Q \subseteq M$. Um \emph{divisor comum} de $Q$ em $\bm M$ é um elemento $d \in M$ que satisfaz, para todo $q \in Q$,
+	\begin{equation*}
+	d \dleq q.
+	\end{equation*}
+O conjunto dos divisores comuns de $Q$ em $\bm M$ é $\divv_{\bm M}(Q)$. O subíndice $\bm M$ será omitido sempre que possível.
+
+Dualmente, um \emph{múltiplo comum} de $Q$ em $\bm M$ é um elemento $m \in M$ que satisfaz, para todo $q \in Q$,
+	\begin{equation*}
+	q \dleq m.
+	\end{equation*}
+O conjunto dos múltiplos comuns de $Q$ em $\bm M$ é $\mul_{\bm M}(Q)$. O subíndice $\bm M$ será omitido sempre que possível.
+\end{definition}
+
+\begin{proposition}
+Sejam $\bm M$ um monoide de anulação e $Q \subseteq M$. Então
+	\begin{enumerate}
+	\item $\divv(M) = \divv(M^{\div}) = M^{\div}$ e $\divv(\emptyset) = \divv(\{0\}) = M$;
+	\item $M^{\div} \subseteq \divv(Q) \subseteq M$;
+	\item $\{0\} \cap \divv(Q) \neq \emptyset \Leftrightarrow Q \subseteq \{0\} \Leftrightarrow \divv(Q)=M$.
+	\end{enumerate}
+
+	Dualmente,
+	\begin{enumerate}
+	\item $\mul(M) = \mul(\{0\}) = \{0\}$ e $\mul(\emptyset) = \mul(M^{\div}) = M$;
+	\item $\{0\} \subseteq \mul(Q) \subseteq M$;
+	\item $M^{\div} \cap \mul(Q) \neq \emptyset \Leftrightarrow Q \subseteq M^{\div} \Leftrightarrow \mul(Q) = M$.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item Seja $u \in M^{\div}$. Então $u \dleq a$ para todo $a \in M$. Logo $u \in \divv(M)$. Por outro lado, seja $d \in \divv(M)$. Então $d \dleq a$ para todo $a \in M$. Em particular, $d \dleq 1$. Como $1 \in M^{\div}$, então $d \in M^{\div}$.
+
+	Seja $u \in M^{\div}$. Então $u \dleq v$ para todo $v \in M^{\div}$. Logo $u \in \divv(M^{\div})$. Por outro lado, seja $d \in \divv(M^{\div})$. Então $d \dleq u$ para todo $u \in M^{\div}$. Logo $d \in M^{\div}$.
+
+	Seja $a \in M$. Se $a \notin \divv(\emptyset)$, existe $q \in \emptyset$ tal que $a \ndleq q$, o que é absurdo. Logo $a \in \divv(\emptyset)$.
+
+	Seja $a \in M$. Então $a \dleq 0$, o que implica $a \in \divv(\{0\})$. A inclusão contrária é óbvia pela definição do conjunto dos divisores comuns.
+
+	\item Se $Q = \emptyset$, então $\divv(Q) = M$. Se $Q \neq \emptyset$, sejam $q \in Q$ e $u \in M^{\div}$. Então $u \dleq q$. Logo $u \in \divv(Q)$. A inclusão $\divv(Q) \subseteq M$ é óbvia pela definição do conjunto de divisores comuns;
+
+	\item Suponhamos que $\{0\} \cap \divv(Q) \neq \emptyset$. Então $0 \in \divv(Q)$. Se $Q = \emptyset$, então $Q \subseteq \{0\}$. Caso contrário, seja $q \in Q$. Como $0 \dleq q$, segue que $q=0$. Em ambos os casos, $Q \subseteq \{0\}$.
+
+	Suponhamos que $Q \subseteq \{0\}$. Então $Q=\emptyset$ ou $Q=\{0\}$. Pelo item 1, segue que $\divv(Q)=M$.
+
+	Suponhamos que $\divv(Q)=M$. Então $\{0\} \cap \divv(Q) = \{0\} \neq \emptyset$.
+	\end{enumerate}
+
+Dualmente,
+	\begin{enumerate}
+	\item Note que $a \dleq 0$ para todo $a \in M$. Logo $0 \in \mul(M)$. Por outro lado, seja $m \in \mul(M)$. Então $a \dleq m$ para todo $a \in M$. Em particular, $0 \dleq m$, o que implica $m=0$.
+
+	Note que $0 \dleq 0$, o que implica $0 \in \mul(\{0\})$. Por outro lado, seja $m \in \mul(\{0\})$. Então $0 \dleq m$, o que implica $m=0$.
+
+	Seja $a \in M$. Se $a \notin \mul(\emptyset)$, existe $q \in \emptyset$ tal que $q \ndleq a$, o que é absurdo. Logo $a \in \mul(\emptyset)$.
+
+	Sejam $a \in M$ e $u \in M^{\div}$. Então $u \dleq a$, o que implica $a \in \mul_{\bm M}(M^{\div})$. A inclusão contrária é óbvia pela definição do conjunto dos múltiplos comuns.
+
+	\item Se $Q = \emptyset$, então $\mul(Q) = M$. Se $Q \neq \emptyset$, seja $q \in Q$. Então $q \dleq 0$, o que implica $\{0\} \in \mul(Q)$. A inclusão $\mul(Q) \subseteq M$ é óbvia pela definição do conjunto dos múltiplos comuns;
+
+	\item Suponhamos que $M^{\div} \cap \mul(Q) \neq \emptyset$. Seja $m \in M^{\div} \cap \mul(Q)$. Se $Q = \emptyset$, então $Q \subseteq M^{\div}$. Caso contrário, seja $q \in Q$. Como $q \dleq m$, pois $m \in \mul(Q)$, então $q \in M^{\div}$, pois $m \in M^{\div}$. Logo $Q \subseteq M^{\div}$.
+
+	Suponhamos que $Q \subseteq M^{\div}$. Se $Q = \emptyset$, do item 1 segue que $\mul(Q)=M$. Caso contrário, sejam $q \in Q$ e $a \in M$. Então $q \in M^{\div}$ e segue que $q \dleq a$. Logo $a \in \mul(Q)$. Por outro lado, a  inclusão $\mul(Q) \subseteq M$ é óbvia pela definição do conjunto de múltiplos comuns;
+
+	Suponhamos que $\mul(Q) = M$. Então $M^{\div} \cap \mul(Q) = M^{\div}$. Como $1 \in M^{\div}$, segue que $M^{\div} \cap \mul(Q) \neq \emptyset$. \qedhere
+	\end{enumerate}
+\end{proof}
+
+%\begin{definition}
+%	Seja $\bm M$ um monoide de anulação. A relação binária $\preceq$ em $\p(M)$ é definida por
+%	\begin{equation*}
+%	\forall Q,R \in \p(M) \qquad Q \preceq R \text{\ \ em $\bm M$\ \ } \quad \Leftrightarrow \quad \divv_{\bm M}(Q) \subseteq \divv_{\bm M}(R).
+%	\end{equation*}
+%\end{definition}
+
+%\begin{proposition}
+%	Seja $\bm M$ um monoide de anulação. M relação $\preceq$ em $M$ é uma ordem parcial.
+%\end{proposition}
+%\begin{proof}
+%	\emph{Reflexividade:} Seja $Q \in \p(M)$. Claramente $\divv_{\bm M}(Q) \subseteq \divv_{\bm M}(Q)$, o que implica $Q \preceq Q$.
+
+%	\emph{Antissimetria:} Sejam $Q,R \in \p(M)$ tais que $Q \preceq R$ e $R \preceq Q$. Então $\divv_{\bm M}(Q) \subseteq \divv_{\bm M}(R)$ e $\divv_{\bm M}(R) \subseteq \divv_{\bm M}(Q)$. Mas isso implica que $\divv_{\bm M}(R) = \divv_{\bm M}(Q)$. Queremos mostrar que $Q=R$.
+
+%	\emph{Transitividade:} Sejam $Q,R,S \in \p(M)$ tais que $Q \preceq R$ e $R \preceq S$. Então $\divv_{\bm M}(Q) \subseteq \divv_{\bm M}(R) \subseteq \divv_{\bm M}(S)$, o que implica $\divv_{\bm M}(Q) \subseteq \divv_{\bm M}(S)$ e, portanto, $Q \preceq S$.
+
+%\end{proof}
+
+\begin{definition}
+Sejam $\bm A$ um monoide e $Q \subseteq A$. Um \emph{máximo divisor comum} de $Q$ em $\bm A$ é um elemento $d \in A$ que satisfaz
+	\begin{enumerate}
+	\item $d \in \divv(Q)$;
+	\item Para todo $d' \in \divv(Q)$, $d' \dleq d$.
+	\end{enumerate}
+O conjunto dos máximos divisores comuns de $Q$ em $\bm A$ é $\mdc_{\bm A}(Q)$. Se $Q$ é um conjunto finito $Q=\{a_1,\ldots,a_n\}$, denota-se $\mdc_{\bm A}(Q)=\mdc_{\bm A}(a_1,\ldots,a_n)$ ou $\mdc_{\bm A}(Q)=(a_1,\ldots,a_n)$. O subíndice $\bm A$ será omitido sempre que possível.
+
+Dualmente, um \emph{mínimo múltiplo comum} de $Q$ em $\bm A$ é um elemento $m \in A$ que satisfaz
+	\begin{enumerate}
+	\item $m \in \mul_{\bm A}(Q)$;
+	\item Para todo $m' \in \mul(Q)$, $m \dleq m'$.
+	\end{enumerate}
+	O conjunto dos mínimos múltiplos comuns de $Q$ em $\bm A$ é $\mmc_{\bm A}(Q)$. Se $Q$ é um conjunto finito $Q=\{a_1, \ldots, a_n\}$, denota-se $\mmc_{\bm A} = \mmc_{\bm A}(a_1, \ldots, a_n)$ ou $\mmc_{\bm A}(Q) = [a_1, \ldots, a_n]$. O subíndice $\bm A$ será omitido sempre que possível.
+\end{definition}
+
+\begin{proposition}
+Sejam $\bm A$ um monoide de anulação e $Q \subseteq A$. Então
+	\begin{enumerate}
+	\item $Q \subseteq \{0\} \Leftrightarrow \mdc(Q) = \{0\}$;
+	\item $A^{\div} \cap Q \neq \emptyset \Rightarrow \mdc(Q) = A^{\div}$.
+	\end{enumerate}
+
+	Dualmente,
+	\begin{enumerate}
+	\item $Q \subseteq A^{\div} \Leftrightarrow \mmc(Q) = A^{\div}$;
+	\item $\{0\} \cap Q \neq \emptyset \Rightarrow \mmc(Q) = \{0\}$.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item Suponha que $Q \subseteq \{0\}$. Então $A = \divv(Q)$. Em particular, $0 \in \divv(Q)$. Ainda, para todo $d \in \divv(Q)$, vale que $d \dleq 0$, pois $d \in A$. Logo $0 \in \mdc(Q)$. Ainda, se $d \in \mdc(Q)$, então $0 \dleq d$, pois $0 \in \divv(Q)$ e $d \in \mdc(Q)$. Portanto $d=0$. Reciprocamente, se $\mdc(Q)=\{0\}$, então $0 \in \divv(Q)$; ou seja, $\{0\} \cap \divv(Q) \neq \emptyset$, o que implica que $Q \subseteq \{0\}$.
+
+	\item Como $A^{\div} \cap Q \neq \emptyset$, seja $a \in A^{\div} \cap Q$. Se $u \in A^{\div}$, então $u \in \divv(Q)$. Ainda, se $d \in \divv(Q)$, então, em particular, $d \dleq a$. Mas como $a \in A^{\div}$, segue que $d \in A^{\div}$. Logo $d \dleq u$, o que mostra que $u \in \mdc(Q)$. Por outro lado, se $d \in \mdc(Q)$, então $d \dleq a$. Como $a \in A^{\div}$, então $d \in A^{\div}$, e concluímos que $A^{\div}=\mdc(Q)$.
+	\end{enumerate}
+
+Dualmente,
+	\begin{enumerate}
+	\item Suponha que $Q \subseteq A^{\div}$. Então $A = \mul(Q)$. Seja $u \in A^{\div}$. Então $u \in \mul(Q)$. Ainda, para todo $m \in \mul(Q)$, vale que $u \dleq m$, pois $m \in A$. Logo $u \in \mmc(Q)$. Ainda, se $m \in \mmc(Q)$, então $m \dleq u$, pois $u \in \mul(Q)$ e $m \in \mmc(Q)$. Portanto $m \in A^{\div}$. Reciprocamente, se $\mmc(Q)=A^{\div}$, então $1 \in \mul(Q)$; ou seja, $A^{\div} \cap \mul(Q) \neq \emptyset$, o que implica $Q \subseteq A^{\div}$.
+
+	\item Como $\{0\} \cap Q \neq \emptyset$, então $0 \in Q$. Note que $0 \in \mul(Q)$. Ainda, se $m \in \mul(Q)$, então $0 \dleq m$. Então segue que $0 \in \mmc(Q)$. Por outro lado, se $m \in \mmc(Q)$, então $0 \dleq m$, o que implica $m=0$, e concluímos que $\mmc(Q) = \{0\}$.
+	\qedhere
+	\end{enumerate}
+\end{proof}
+
+%\begin{proposition}
+%	Sejam $\bm A$ um monoide de anulação e $B$ e $C$ conjuntos tais que $C \subseteq B %\subseteq A$. Então, se $\mdc(B) \neq \emptyset$ e $\mdc(C) \neq \emptyset$,
+%	\begin{equation*}
+%	\mdc(B) = \mdc(\mdc(C) \cup (B \setminus C)).
+%	\end{equation*}
+%\end{proposition}
+%\begin{proof}
+%	Seja $d \in \mdc(B)$. Então $d \in \divv(B)$. Seja $x \in \mdc(C) \cup (B \setminus C)$. Se $x \in B \setminus C$, então $x \in B$, o que implica $d \dleq x$. Se $x \in \mdc(C)$
+% ...
+%	Então, como $C \subseteq B$, para todo $c \in C$, segue que $c \in B$ e, portanto, $d \dleq c$. Ainda, para todo $b \in B \setminus C$, segue que $b \in B$ e, portanto, $d \dleq b$.
+% ...
+%\end{proof}
+
+\subsubsection{Relação de associação}
+
+\begin{definition}
+Sejam $\bm A$ um monoide e $a,a' \in A$. O elemento $a$ é \emph{associado} ao elemento $a'$ em $\bm A$ se, e somente se, $a \dleq_{\bm A} a'$ e $a' \dleq_{\bm A} a$. Denota-se $a \sim_{\bm A} a'$. A relação $\sim_{\bm A}$ é a relação de \emph{associação} em $\bm A$. Sempre que possível, o subíndice de $\sim_{\bm A}$ será omitido.
+\end{definition}
+
+A relação $\sim$ de associação em anéis é uma equivalência, pois é a equivalência induzida pela pré-ordem de divisão $\dleq$ em anéis. Quando o monoide $\bm A$ é um domínio de anulação, essa relação é equivalente a existir $u \in A^{\div}$ tal que $au=a'$.
+
+\begin{proposition}
+Sejam $\bm A$ um domínio de anulação e $a,a' \in A$. Então $a \sim a'$ se, e somente se, existe $u \in A^{\div}$ tal que $au=a'$.
+\end{proposition}
+\begin{proof}
+Se $a \sim a'$, então $a \dleq a'$ e $a' \dleq a$. Isso é equivalente a existirem $q,q' \in A$ tais que $aq=a'$ e $a'q'=a$, o que é equivalente a $a=aqq'$ e $a'=a'q'q$.
+Como $\bm A$ é um domínio, $a$ e $a'$ não são divisores de $0$, e concluímos que $qq'=q'q=1$, portanto $q,q' \in A^{\div}$.
+
+Reciprocamente, se existe $u \in A^{\div}$ tal que $au=a'$, então $a=a'u\inv$, portanto $a \dleq a'$ e $a' \dleq a$, logo $a \sim a'$.
+\end{proof}
+
+\begin{proposition}
+Seja $\bm A$ um monoide de anulação.
+	\begin{enumerate}
+	\item Para todos $a_0,\ldots,a_{n-1},a'_0,\ldots,a'_{n-1} \in A$, se para todo $i \in [n]$ vale $a_i \sim a'_i$, então
+		\begin{equation*}
+		\bigtimes_{i \in [n]} a_i \sim \bigtimes_{i \in [n]} a'_i.
+		\end{equation*}
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item Sejam $a_0,\ldots,a_{n-1},a'_0,\ldots,a'_{n-1} \in A$ e $i \in [n]$. Se $a_i \sim a'_i$, então existe $u_i \in A^{\div}$ tal que $a_iu_i = a'_i$. Logo $a_0 \cdots a_{n-1} \cdot u_0 \cdots u_{n-1} = a'_0 \cdots a'_{n-1}$. Como $u_0 \cdots u_{n-1} \in A^{\div}$, segue que
+		\begin{equation*}
+		\bigtimes_{i \in [n]} a_i \sim \bigtimes_{i \in [n]} a'_i. \qedhere
+		\end{equation*}
+	\end{enumerate}
+\end{proof}
+
+\begin{proposition}
+Sejam $\bm D$ um domínio e $d_0, \ldots, d_{n-1} \in D$ não todos nulos. Se $d,d'$ são máximos divisores comuns de $d_0,\ldots,d_{n-1}$, então $d \sim d'$.
+\end{proposition}
+\begin{proof}
+Como $d$ é máximo divisor comum de $d_0,\ldots,d_{n-1}$ e $d'$ é divisor comum de $d_0,\ldots,d_{n-1}$, então $d' \dleq d$. Analogamente, $d \dleq d'$.
+Portanto $d \sim d'$.
+%Então existem $u,v \in D$ tais que $d=d'u$ e $d'=dv$. Então $d=dvu$. Como $d \neq 0$ e $\bm D$ é domínio, segue que e $vu=1$. Portanto $u,v \in D^*$, o que implica $d \sim d'$.
+\end{proof}
+
+\end{comment}
 
 
 
