@@ -96,14 +96,14 @@ Seja $\bm A$ um anel. Então, para todos $a,a' \in A$,
 \end{proof}
 
 \begin{definition}
-Seja $\bm A$ um anel. O conjunto dos elementos invertíveis sob multiplicação de $\bm A$ é denotado por $A^*$.
+Seja $\bm A$ um anel. O conjunto dos elementos invertíveis sob multiplicação de $\bm A$ é denotado por $A^{\div}$.
 \end{definition}
 
 \begin{proposition}
-Seja $\bm A$ um anel. A lista $(A^*,\times|_{A^* \times A^*},\div,1)$ é um grupo comutativo.
+Seja $\bm A$ um anel. A lista $(A^{\div},\times|_{A^{\div} \times A^{\div}},\div,1)$ é um grupo comutativo.
 \end{proposition}
 \begin{proof}
-A tripla $(A,\times,1)$ é um monoide comutativo com identidade $1$. Portanto segue que a quádrupla $(A^*,\times|_{A^* \times A^*},\div,1)$ é um grupo (em que $\div a = a\inv$ denota o inverso de $a$ sob $\times$). Como $\times$ é comutativa, então $(A^*,\times|_{(A^*)^2},\inv,1)$ também o é.
+A tripla $(A,\times,1)$ é um monoide comutativo com identidade $1$. Portanto segue que a quádrupla $(A^{\div},\times|_{A^{\div} \times A^{\div}},\div,1)$ é um grupo (em que $\div a = a\inv$ denota o inverso de $a$ sob $\times$). Como $\times$ é comutativa, então $(A^{\div},\times|_{A^{\div} \times A^{\div}},\inv,1)$ também o é.
 \end{proof}
 
 \begin{definition}
@@ -1207,46 +1207,46 @@ Assim, concluímos que $M\id_d=M$. Analogamente, mostra-se que $\Id_dM=M$, e con
 	\end{enumerate}
 \end{definition}
 
-\subsubsection{Traço e determinante}
+\subsubsection{Traço}
 
 \begin{definition}
-	Sejam $\bm A$ um anel e $M \in \M_d(\bm A)$. O \emph{traço} de $M$ é o elemento $\tr(M) \in A$ definido por
+	Sejam $\bm A$ um anel e $M \in \M_d(\bm A)$. O \emph{traço} de $M$ é o elemento $\tr{M} \in A$ definido por
 	\begin{equation*}
-	\tr(M) := \sum_{i=1}^d m_{i,i}.
+	\tr{M} := \sum_{i=1}^d m_{i,i}.
 	\end{equation*}
 \end{definition}
 
 \begin{proposition}
 	Sejam $\bm A$ um anel, $a \in A$ e $M,N \in \M_d(\bm A)$. Então
 	\begin{enumerate}
-	\item $\tr(M^\intercal)=\tr(M)$;
-	\item $\tr(MN)=\tr(NM)$;
-	\item $\tr(M+N)=\tr(M)+\tr(N)$;
-	\item $\tr(aM)=a\tr(M)$.
+	\item $\tr{M^\intercal}=\tr{M}$;
+	\item $\tr{MN}=\tr{NM}$;
+	\item $\tr{M+N}=\tr{M}+\tr{N}$;
+	\item $\tr{aM}=a\tr{M}$.
 	\end{enumerate}
 \end{proposition}
 \begin{proof}
 	\begin{enumerate}
 	\item
 		\begin{equation*}
-		\tr(M) = \sum_{i=1}^d m_{i,i} = \tr(M^\intercal).
+		\tr{M} = \sum_{i=1}^d m_{i,i} = \tr{M^\intercal}.
 		\end{equation*}
 	\item
 		\begin{align*}
-		\tr(MN) &= \sum_{i=1}^d \left(\sum_{k=1}^d m_{i,k}n_{k,i}\right) \\
+		\tr{MN} &= \sum_{i=1}^d \left(\sum_{k=1}^d m_{i,k}n_{k,i}\right) \\
 		&= \sum_{i=1}^d \left(\sum_{k=1}^d n_{k,i}m_{i,k}\right) \\
 		&= \sum_{k=1}^d \left(\sum_{i=1}^d n_{k,i}m_{i,k}\right) \\
-		&= \tr(NM).
+		&= \tr{NM}.
 		\end{align*}
 	\item
 		\begin{align*}
-		\tr(M+N) &= \sum_{i=1}^d (m_{i,i} + n_{i,i}) \\
+		\tr{M+N} &= \sum_{i=1}^d (m_{i,i} + n_{i,i}) \\
 		&= \sum_{i=1}^d m_{i,i} + \sum_{i=1}^d n_{i,i} \\
-		&= \tr(M) + \tr(N).
+		&= \tr{M} + \tr{N}.
 		\end{align*}
 	\item
 		\begin{equation*}
-		\tr(aM) = \sum_{i=1}^d am_{i,i} = a\sum_{i=1}^d m_{i,i} = a\tr(M).
+		\tr{aM} = \sum_{i=1}^d am_{i,i} = a\sum_{i=1}^d m_{i,i} = a\tr{M}.
 		\end{equation*}
 \qedhere
 	\end{enumerate}
@@ -2096,13 +2096,13 @@ Seja $\bm A$ um anel. A relação de divisão $\dleq$ em $A$ é uma pré-ordem.
 \begin{proposition}
 Seja $\bm A$ um anel.
 	\begin{enumerate}
-	\item Para todos $a \in A$ e $u \in A^*$,
+	\item Para todos $a \in A$ e $u \in A^{\div}$,
 		\begin{equation*}
 		u \dleq a \dleq 0;
 		\end{equation*}
-	\item Para todos $a \in A$ e $u \in A^*$,
+	\item Para todos $a \in A$ e $u \in A^{\div}$,
 		\begin{equation*}
-		a \dleq u \Leftrightarrow a \in A^*;
+		a \dleq u \Leftrightarrow a \in A^{\div};
 		\end{equation*}
 	\item Para todo $a \in A$,
 		\begin{equation*}
@@ -2112,16 +2112,16 @@ Seja $\bm A$ um anel.
 		\begin{equation*}
 		aa' \dleq aa''.
 		\end{equation*}
-	\item Para todos $u \in A^*$ e $a,a' \in A$ tais que $a \dleq a'$,
+	\item Para todos $u \in A^{\div}$ e $a,a' \in A$ tais que $a \dleq a'$,
 		\begin{equation*}
 		ua \dleq a \text{\ \ e\ \ } a \dleq ua'.
 		\end{equation*}
 	\end{enumerate}
 \end{proposition}
-\begin{proof} Sejam $a \in A$ e $u \in A^*$.
+\begin{proof} Sejam $a \in A$ e $u \in A^{\div}$.
 	\begin{enumerate}
-	\item Como $u \in A^*$, existe $u^{-1} \in A^*$. Então $u\cdot(u^{-1}a) = a$ e segue que $u \dleq a$; como $a \cdot 0 = 0$, segue que $a \dleq 0$;
-	\item Se $a \dleq u$, existe $q \in A$ tal que $aq=u$. Como $u \in A^*$, segue que $aqu^{-1}=uu^{-1}=1$. Logo $a \in A^*$. Reciprocamente, se $a \in A^*$, existe $a^{-1}$ tal que $aa^{-1}=1$. Então $aa^{-1}u=u$ Logo $a \dleq u$;
+	\item Como $u \in A^{\div}$, existe $u^{-1} \in A^{\div}$. Então $u\cdot(u^{-1}a) = a$ e segue que $u \dleq a$; como $a \cdot 0 = 0$, segue que $a \dleq 0$;
+	\item Se $a \dleq u$, existe $q \in A$ tal que $aq=u$. Como $u \in A^{\div}$, segue que $aqu^{-1}=uu^{-1}=1$. Logo $a \in A^{\div}$. Reciprocamente, se $a \in A^{\div}$, existe $a^{-1}$ tal que $aa^{-1}=1$. Então $aa^{-1}u=u$ Logo $a \dleq u$;
 	\item Se $0 \dleq a$, existe $q \in A$ tal que $0q=a$. Mas então $a=0$. A recíproca segue da reflexividade de $\dleq$.
 	\item Se $a' \dleq a''$, existe $q \in D$ tal que $a'q=a''$, logo $aa'q=aa''$, portanto $aa' \dleq aa''$.
 	\item Usaremos a comutatividade. Se $a \dleq a'$, existe $q \in A$ tal que $aq=a'$, portanto
@@ -2161,29 +2161,29 @@ O conjunto dos múltiplos comuns de $Q$ em $\bm A$ é $\mul_{\bm A}(Q)$. O subí
 \begin{proposition}
 Sejam $\bm A$ um anel e $Q \subseteq A$. Então
 	\begin{enumerate}
-	\item $\divv(A) = \divv(A^*) = A^*$ e $\divv(\emptyset) = \divv(\{0\}) = A$;
-	\item $A^* \subseteq \divv(Q) \subseteq A$;
+	\item $\divv(A) = \divv(A^{\div}) = A^{\div}$ e $\divv(\emptyset) = \divv(\{0\}) = A$;
+	\item $A^{\div} \subseteq \divv(Q) \subseteq A$;
 	\item $\{0\} \cap \divv(Q) \neq \emptyset \Leftrightarrow Q \subseteq \{0\} \Leftrightarrow \divv(Q)=A$.
 	\end{enumerate}
 
 	Dualmente,
 	\begin{enumerate}
-	\item $\mul(A) = \mul(\{0\}) = \{0\}$ e $\mul(\emptyset) = \mul(A^*) = A$;
+	\item $\mul(A) = \mul(\{0\}) = \{0\}$ e $\mul(\emptyset) = \mul(A^{\div}) = A$;
 	\item $\{0\} \subseteq \mul(Q) \subseteq A$;
-	\item $A^* \cap \mul(Q) \neq \emptyset \Leftrightarrow Q \subseteq A^* \Leftrightarrow \mul(Q) = A$.
+	\item $A^{\div} \cap \mul(Q) \neq \emptyset \Leftrightarrow Q \subseteq A^{\div} \Leftrightarrow \mul(Q) = A$.
 	\end{enumerate}
 \end{proposition}
 \begin{proof}
 	\begin{enumerate}
-	\item Seja $u \in A^*$. Então $u \dleq a$ para todo $a \in A$. Logo $u \in \divv(A)$. Por outro lado, seja $d \in \divv(A)$. Então $d \dleq a$ para todo $a \in A$. Em particular, $d \dleq 1$. Como $1 \in A^*$, então $d \in A^*$.
+	\item Seja $u \in A^{\div}$. Então $u \dleq a$ para todo $a \in A$. Logo $u \in \divv(A)$. Por outro lado, seja $d \in \divv(A)$. Então $d \dleq a$ para todo $a \in A$. Em particular, $d \dleq 1$. Como $1 \in A^{\div}$, então $d \in A^{\div}$.
 
-	Seja $u \in A^*$. Então $u \dleq v$ para todo $v \in A^*$. Logo $u \in \divv(A^*)$. Por outro lado, seja $d \in \divv(A^*)$. Então $d \dleq u$ para todo $u \in A^*$. Logo $d \in A^*$.
+	Seja $u \in A^{\div}$. Então $u \dleq v$ para todo $v \in A^{\div}$. Logo $u \in \divv(A^{\div})$. Por outro lado, seja $d \in \divv(A^{\div})$. Então $d \dleq u$ para todo $u \in A^{\div}$. Logo $d \in A^{\div}$.
 
 	Seja $a \in A$. Se $a \notin \divv(\emptyset)$, existe $q \in \emptyset$ tal que $a \ndleq q$, o que é absurdo. Logo $a \in \divv(\emptyset)$.
 
 	Seja $a \in A$. Então $a \dleq 0$, o que implica $a \in \divv(\{0\})$. A inclusão contrária é óbvia pela definição do conjunto dos divisores comuns.
 
-	\item Se $Q = \emptyset$, então $\divv(Q) = A$. Se $Q \neq \emptyset$, sejam $q \in Q$ e $u \in A^*$. Então $u \dleq q$. Logo $u \in \divv(Q)$. A inclusão $\divv(Q) \subseteq A$ é óbvia pela definição do conjunto de divisores comuns;
+	\item Se $Q = \emptyset$, então $\divv(Q) = A$. Se $Q \neq \emptyset$, sejam $q \in Q$ e $u \in A^{\div}$. Então $u \dleq q$. Logo $u \in \divv(Q)$. A inclusão $\divv(Q) \subseteq A$ é óbvia pela definição do conjunto de divisores comuns;
 
 	\item Suponhamos que $\{0\} \cap \divv(Q) \neq \emptyset$. Então $0 \in \divv(Q)$. Se $Q = \emptyset$, então $Q \subseteq \{0\}$. Caso contrário, seja $q \in Q$. Como $0 \dleq q$, segue que $q=0$. Em ambos os casos, $Q \subseteq \{0\}$.
 
@@ -2200,15 +2200,15 @@ Dualmente,
 
 	Seja $a \in A$. Se $a \notin \mul(\emptyset)$, existe $q \in \emptyset$ tal que $q \ndleq a$, o que é absurdo. Logo $a \in \mul(\emptyset)$.
 
-	Sejam $a \in A$ e $u \in A^*$. Então $u \dleq a$, o que implica $a \in \mul_{\\bm A}(A^*)$. A inclusão contrária é óbvia pela definição do conjunto dos múltiplos comuns.
+	Sejam $a \in A$ e $u \in A^{\div}$. Então $u \dleq a$, o que implica $a \in \mul_{\\bm A}(A^{\div})$. A inclusão contrária é óbvia pela definição do conjunto dos múltiplos comuns.
 
 	\item Se $Q = \emptyset$, então $\mul(Q) = A$. Se $Q \neq \emptyset$, seja $q \in Q$. Então $q \dleq 0$, o que implica $\{0\} \in \mul(Q)$. A inclusão $\mul(Q) \subseteq A$ é óbvia pela definição do conjunto dos múltiplos comuns;
 
-	\item Suponhamos que $A^* \cap \mul(Q) \neq \emptyset$. Seja $m \in A^* \cap \mul(Q)$. Se $Q = \emptyset$, então $Q \subseteq A^*$. Caso contrário, seja $q \in Q$. Como $q \dleq m$, pois $m \in \mul(Q)$, então $q \in A^*$, pois $m \in A^*$. Logo $Q \subseteq A^*$.
+	\item Suponhamos que $A^{\div} \cap \mul(Q) \neq \emptyset$. Seja $m \in A^{\div} \cap \mul(Q)$. Se $Q = \emptyset$, então $Q \subseteq A^{\div}$. Caso contrário, seja $q \in Q$. Como $q \dleq m$, pois $m \in \mul(Q)$, então $q \in A^{\div}$, pois $m \in A^{\div}$. Logo $Q \subseteq A^{\div}$.
 
-	Suponhamos que $Q \subseteq A^*$. Se $Q = \emptyset$, do item 1 segue que $\mul(Q)=A$. Caso contrário, sejam $q \in Q$ e $a \in A$. Então $q \in A^*$ e segue que $q \dleq a$. Logo $a \in \mul(Q)$. Por outro lado, a  inclusão $\mul(Q) \subseteq A$ é óbvia pela definição do conjunto de múltiplos comuns;
+	Suponhamos que $Q \subseteq A^{\div}$. Se $Q = \emptyset$, do item 1 segue que $\mul(Q)=A$. Caso contrário, sejam $q \in Q$ e $a \in A$. Então $q \in A^{\div}$ e segue que $q \dleq a$. Logo $a \in \mul(Q)$. Por outro lado, a  inclusão $\mul(Q) \subseteq A$ é óbvia pela definição do conjunto de múltiplos comuns;
 
-	Suponhamos que $\mul(Q) = A$. Então $A^* \cap \mul(Q) = A^*$. Como $1 \in A^*$, segue que $A^* \cap \mul(Q) \neq \emptyset$. \qedhere
+	Suponhamos que $\mul(Q) = A$. Então $A^{\div} \cap \mul(Q) = A^{\div}$. Como $1 \in A^{\div}$, segue que $A^{\div} \cap \mul(Q) \neq \emptyset$. \qedhere
 	\end{enumerate}
 \end{proof}
 
@@ -2251,12 +2251,12 @@ Dualmente, um \emph{mínimo múltiplo comum} de $Q$ em $\bm A$ é um elemento $m
 Sejam $\bm A$ um anel e $Q \subseteq A$. Então
 	\begin{enumerate}
 	\item $Q \subseteq \{0\} \Leftrightarrow \mdc(Q) = \{0\}$;
-	\item $A^* \cap Q \neq \emptyset \Rightarrow \mdc(Q) = A^*$.
+	\item $A^{\div} \cap Q \neq \emptyset \Rightarrow \mdc(Q) = A^{\div}$.
 	\end{enumerate}
 
 	Dualmente,
 	\begin{enumerate}
-	\item $Q \subseteq A^* \Leftrightarrow \mmc(Q) = A^*$;
+	\item $Q \subseteq A^{\div} \Leftrightarrow \mmc(Q) = A^{\div}$;
 	\item $\{0\} \cap Q \neq \emptyset \Rightarrow \mmc(Q) = \{0\}$.
 	\end{enumerate}
 \end{proposition}
@@ -2264,12 +2264,12 @@ Sejam $\bm A$ um anel e $Q \subseteq A$. Então
 	\begin{enumerate}
 	\item Suponha que $Q \subseteq \{0\}$. Então $A = \divv(Q)$. Em particular, $0 \in \divv(Q)$. Ainda, para todo $d \in \divv(Q)$, vale que $d \dleq 0$, pois $d \in A$. Logo $0 \in \mdc(Q)$. Ainda, se $d \in \mdc(Q)$, então $0 \dleq d$, pois $0 \in \divv(Q)$ e $d \in \mdc(Q)$. Portanto $d=0$. Reciprocamente, se $\mdc(Q)=\{0\}$, então $0 \in \divv(Q)$; ou seja, $\{0\} \cap \divv(Q) \neq \emptyset$, o que implica que $Q \subseteq \{0\}$.
 
-	\item Como $A^* \cap Q \neq \emptyset$, seja $a \in A^* \cap Q$. Se $u \in A^*$, então $u \in \divv(Q)$. Ainda, se $d \in \divv(Q)$, então, em particular, $d \dleq a$. Mas como $a \in A^*$, segue que $d \in A^*$. Logo $d \dleq u$, o que mostra que $u \in \mdc(Q)$. Por outro lado, se $d \in \mdc(Q)$, então $d \dleq a$. Como $a \in A^*$, então $d \in A^*$, e concluímos que $A^*=\mdc(Q)$.
+	\item Como $A^{\div} \cap Q \neq \emptyset$, seja $a \in A^{\div} \cap Q$. Se $u \in A^{\div}$, então $u \in \divv(Q)$. Ainda, se $d \in \divv(Q)$, então, em particular, $d \dleq a$. Mas como $a \in A^{\div}$, segue que $d \in A^{\div}$. Logo $d \dleq u$, o que mostra que $u \in \mdc(Q)$. Por outro lado, se $d \in \mdc(Q)$, então $d \dleq a$. Como $a \in A^{\div}$, então $d \in A^{\div}$, e concluímos que $A^{\div}=\mdc(Q)$.
 	\end{enumerate}
 
 Dualmente,
 	\begin{enumerate}
-	\item Suponha que $Q \subseteq A^*$. Então $A = \mul(Q)$. Seja $u \in A^*$. Então $u \in \mul(Q)$. Ainda, para todo $m \in \mul(Q)$, vale que $u \dleq m$, pois $m \in A$. Logo $u \in \mmc(Q)$. Ainda, se $m \in \mmc(Q)$, então $m \dleq u$, pois $u \in \mul(Q)$ e $m \in \mmc(Q)$. Portanto $m \in A^*$. Reciprocamente, se $\mmc(Q)=A^*$, então $1 \in \mul(Q)$; ou seja, $A^* \cap \mul(Q) \neq \emptyset$, o que implica $Q \subseteq A^*$.
+	\item Suponha que $Q \subseteq A^{\div}$. Então $A = \mul(Q)$. Seja $u \in A^{\div}$. Então $u \in \mul(Q)$. Ainda, para todo $m \in \mul(Q)$, vale que $u \dleq m$, pois $m \in A$. Logo $u \in \mmc(Q)$. Ainda, se $m \in \mmc(Q)$, então $m \dleq u$, pois $u \in \mul(Q)$ e $m \in \mmc(Q)$. Portanto $m \in A^{\div}$. Reciprocamente, se $\mmc(Q)=A^{\div}$, então $1 \in \mul(Q)$; ou seja, $A^{\div} \cap \mul(Q) \neq \emptyset$, o que implica $Q \subseteq A^{\div}$.
 
 	\item Como $\{0\} \cap Q \neq \emptyset$, então $0 \in Q$. Note que $0 \in \mul(Q)$. Ainda, se $m \in \mul(Q)$, então $0 \dleq m$. Então segue que $0 \in \mmc(Q)$. Por outro lado, se $m \in \mmc(Q)$, então $0 \dleq m$, o que implica $m=0$, e concluímos que $\mmc(Q) = \{0\}$.
 	\qedhere
@@ -2295,16 +2295,16 @@ Dualmente,
 Sejam $\bm A$ um anel e $a,a' \in A$. O elemento $a$ é \emph{associado} ao elemento $a'$ em $\bm A$ se, e somente se, $a \dleq_{\bm A} a'$ e $a' \dleq_{\bm A} a$. Denota-se $a \sim_{\bm A} a'$. A relação $\sim_{\bm A}$ é a relação de \emph{associação} em $\bm A$. Sempre que possível, o subíndice de $\sim_{\bm A}$ será omitido.
 \end{definition}
 
-A relação $\sim$ de associação em anéis é uma equivalência, pois é a equivalência induzida pela pré-ordem de divisão $\dleq$ em anéis. Quando o anel $A$ é um domínio, essa relação é equivalente a existir $u \in A^*$ tal que $au=a'$.
+A relação $\sim$ de associação em anéis é uma equivalência, pois é a equivalência induzida pela pré-ordem de divisão $\dleq$ em anéis. Quando o anel $A$ é um domínio, essa relação é equivalente a existir $u \in A^{\div}$ tal que $au=a'$.
 
 \begin{proposition}
-Sejam $\bm A$ um domínio e $a,a' \in A$. Então $a \sim a'$ se, e somente se, existe $u \in A^*$ tal que $au=a'$.
+Sejam $\bm A$ um domínio e $a,a' \in A$. Então $a \sim a'$ se, e somente se, existe $u \in A^{\div}$ tal que $au=a'$.
 \end{proposition}
 \begin{proof}
 Se $a \sim a'$, então $a \dleq a'$ e $a' \dleq a$. Isso é equivalente a existirem $q,q' \in A$ tais que $aq=a'$ e $a'q'=a$, o que é equivalente a $a=aqq'$ e $a'=a'q'q$.
-Como $\bm A$ é um domínio, $a$ e $a'$ não são divisores de $0$, e concluímos que $qq'=q'q=1$, portanto $q,q' \in A^*$.
+Como $\bm A$ é um domínio, $a$ e $a'$ não são divisores de $0$, e concluímos que $qq'=q'q=1$, portanto $q,q' \in A^{\div}$.
 
-Reciprocamente, se existe $u \in A^*$ tal que $au=a'$, então $a=a'u\inv$, portanto $a \dleq a'$ e $a' \dleq a$, logo $a \sim a'$.
+Reciprocamente, se existe $u \in A^{\div}$ tal que $au=a'$, então $a=a'u\inv$, portanto $a \dleq a'$ e $a' \dleq a$, logo $a \sim a'$.
 \end{proof}
 
 \begin{proposition}
@@ -2318,7 +2318,7 @@ Seja $\bm A$ um anel.
 \end{proposition}
 \begin{proof}
 	\begin{enumerate}
-	\item Sejam $a_0,\ldots,a_{n-1},a'_0,\ldots,a'_{n-1} \in A$ e $i \in [n]$. Se $a_i \sim a'_i$, então existe $u_i \in A^*$ tal que $a_iu_i = a'_i$. Logo $a_0 \cdots a_{n-1} \cdot u_0 \cdots u_{n-1} = a'_0 \cdots a'_{n-1}$. Como $u_0 \cdots u_{n-1} \in A^*$, segue que
+	\item Sejam $a_0,\ldots,a_{n-1},a'_0,\ldots,a'_{n-1} \in A$ e $i \in [n]$. Se $a_i \sim a'_i$, então existe $u_i \in A^{\div}$ tal que $a_iu_i = a'_i$. Logo $a_0 \cdots a_{n-1} \cdot u_0 \cdots u_{n-1} = a'_0 \cdots a'_{n-1}$. Como $u_0 \cdots u_{n-1} \in A^{\div}$, segue que
 		\begin{equation*}
 		\bigtimes_{i \in [n]} a_i \sim \bigtimes_{i \in [n]} a'_i. \qedhere
 		\end{equation*}
@@ -2690,7 +2690,7 @@ pois, para todo $j \in [n']$, existe $k \in [n]$ tal que $I_j = P_k$ e, como $j 
 	\end{equation*}
 
 Sendo assim, seja $k \in [n]$. Definamos $p_k := p'_{\min P_k}$ e $e_k := \card{P_k}$. Segue claramente que $p_k$ é irredutível e que $e_k \in \N^*$. Como, para todo $i \in P_k$, vale $p'_i \sim p_k$, 
-%então existe $u'_i \in A^*$ tal que $p'_i = u'_ip_k$. Assim, definindo $u_k := \displaystyle\bigtimes_{i \in P_k} u'_i$, temos que $u_k \in A^*$ e
+%então existe $u'_i \in A^{\div}$ tal que $p'_i = u'_ip_k$. Assim, definindo $u_k := \displaystyle\bigtimes_{i \in P_k} u'_i$, temos que $u_k \in A^{\div}$ e
 %	\begin{equation*}
 %	\bigtimes_{i \in P_k} p'_i = \bigtimes_{i \in P_k} u'_ip_k = \left( \bigtimes_{i \in P_k}u'_i \right) p_k^{\alpha_k} = u_kp_k^{\alpha_k}.
 %	\end{equation*}
@@ -2704,7 +2704,7 @@ Assim, segue que
 	\begin{equation*}
 	d \sim \bigtimes_{k \in [n]} \bigtimes_{i \in P_k} p'_i = \bigtimes_{k \in [n]} p_k^{e_k}.
 	\end{equation*}
-%Definindo $u := \displaystyle\bigtimes_{k=1}^n u_k$, temos que $u \in A^*$ e segue a existência da fatoração reduzida
+%Definindo $u := \displaystyle\bigtimes_{k=1}^n u_k$, temos que $u \in A^{\div}$ e segue a existência da fatoração reduzida
 %	\begin{equation*}
 %	d = \left( \bigtimes_{k=1}^n u_k \right) \left(\bigtimes_{k=1}^n p_k^{\alpha_k} \right) = u \bigtimes_{k=1}^n p_k^{\alpha_k}.
 %	\end{equation*}
