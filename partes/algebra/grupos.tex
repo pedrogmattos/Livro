@@ -173,20 +173,24 @@ Portanto
 o que mostra que $m_1m_2 \in M^{\div}$. Ainda, note que $1 \in M^{\div}$, pois $1 \times 1 = 1$. Como $M^{\div}$ é contém a identidade e é fechado sob $\times$, segue que $(M^{\div},\times,1)$ é um monoide (\ref{alge:prop.submon}). Por fim, $\bm{M^{\div}}$ é um grupo pois, por definição, todo elemento tem inverso e ele é único, o que define a operação $\div$.
 \end{proof}
 
+\begin{comment}
+
 \begin{definition}
 Sejam $\bm G$ um grupo e $g \in G$. A \emph{conjugação} por $g$ é a função
 	\begin{align*}
-	\func{C_g}{G}{G}{h}{ghg\inv}.
+	\func{\con{g}}{G}{G}{h}{ghg\inv}.
 	\end{align*}
 A \emph{translação à direita} por $g$ é a função
 	\begin{align*}
-	\func{D_g}{G}{G}{h}{hg}.
+	\func{\trD{g}}{G}{G}{h}{hg}.
 	\end{align*}
 A \emph{translação à esquerda} por $g$ é a função
 	\begin{align*}
-	\func{E_g}{G}{G}{h}{gh}.
+	\func{\trE{g}}{G}{G}{h}{gh}.
 	\end{align*}
 \end{definition}
+
+\end{comment}
 
 \subsection{Coclasses e índice de subgrupo}
 
@@ -823,65 +827,65 @@ Por simplicidade, seja $G := \ger{\coprod_{i \in I} G_i}$. Para mostrar que $h$ 
 \begin{definition}
 Sejam $\bm G$ um grupo e $g \in G$. A \emph{conjugação} por $g$ é a função
 	\begin{align*}
-	\func{C_g}{G}{G}{h}{ghg\inv},
+	\func{\con{g}}{G}{G}{h}{ghg\inv},
 	\end{align*}
 a \emph{translação à direita} por $g$ é a função
 	\begin{align*}
-	\func{D_g}{G}{G}{h}{hg}
+	\func{\trD{g}}{G}{G}{h}{hg}
 	\end{align*}
 e a \emph{translação à esquerda} por $g$ é a função
 	\begin{align*}
-	\func{E_g}{G}{G}{h}{gh}.
+	\func{\trE{g}}{G}{G}{h}{gh}.
 	\end{align*}
 \end{definition}
 
 \begin{proposition}
-Sejam $\bm G$ um grupo e $g \in G$. As funções $C$, $D$ e $E$ são bijeções.
+Sejam $\bm G$ um grupo e $g \in G$. As funções $\con{\var}$, $\trD{}$ e $\trE{}$ são bijeções.
 \end{proposition}
 \begin{proof}
-Basta mostrarmos para $D_g$ e $E_g$, pois $C_g = E_{g} \circ D_{g\inv}$. Primeiro, mostremos que as translações são homomorfismos. Para todos $g,g',h \in G$,
+Basta mostrarmos para $\trD{g}$ e $\trE{g}$, pois $\con{g} = \trE{g} \circ \trD{g\inv}$. Primeiro, mostremos que as translações são homomorfismos. Para todos $g,g',h \in G$,
 	\begin{equation*}
-		E_{g} \circ E_{g'}(h) = gg'h = E_{gg'}(h)
+		\trE{g} \circ \trE{g}(h) = gg'h = \trE{gg'}(h)
 	\end{equation*}
 e
 	\begin{equation*}
-		D_{g} \circ D_{g'}(h) = hg'g = D_{g'g}(h),
+		\trD{g} \circ \trD{g'}(h) = hg'g = \trD{g'g}(h),
 	\end{equation*}
-o que mostra que $E_{gg'} = E_g \circ E_{g'}$
+o que mostra que $\trE{gg'} = \trE{g} \circ \trE{g}$
 
-Isso mostra que as translações à esquerda e à direita têm inversa $E_{g\inv}$ e $D_{g\inv}$, respectivamente, pois
+Isso mostra que as translações à esquerda e à direita têm inversa $\trE{g\inv}$ e $\trD{g\inv}$, respectivamente, pois
 	\begin{equation*}
-		E_{g} \circ E_{g\inv} = E_{gg\inv} = \Id = E_{g\inv g} = E_{g\inv} \circ E_{g}
+		\trE{g} \circ \trE{g\inv} = \trE{gg\inv} = \Id = \trE{g\inv g} = \trE{g\inv} \circ \trE{g}
 	\end{equation*}
 e
 	\begin{equation*}
-		D_{g} \circ D_{g\inv} = D_{gg\inv} = \Id = D_{g\inv g} = D_{g\inv} \circ D_{g}.
+		\trD{g} \circ \trD{g\inv} = \trD{gg\inv} = \Id = \trD{g\inv g} = \trD{g\inv} \circ \trD{g}.
 	\end{equation*}
 \end{proof}
 
 \begin{proposition}
-Sejam $\bm G$ um grupo e $g \in G$. A conjugação $C_g$ é isomorfismo de grupo.
+Sejam $\bm G$ um grupo e $g \in G$. A conjugação $\con{g}$ é isomorfismo de grupo.
 \end{proposition}
 \begin{proof}
-Como $C_g$ é bijeção, basta mostrar que é homomorfismo de grupo. Para todos $h,h' \in G$,
+Como $\con{g}$ é bijeção, basta mostrar que é homomorfismo de grupo. Para todos $h,h' \in G$,
 	\begin{equation*}
-		C_g(hh') = ghh'g\inv = ghg\inv gh'g\inv = C_g(h)C_g(h').
+		\con{g}(hh') = ghh'g\inv = ghg\inv gh'g\inv = \con{g}(h)\con{g}(h').
 	\end{equation*}
 \end{proof}
 
 A \emph{conjugação} em $\bm G$ é a função
 	\begin{align*}
-		\func{C}{G}{\Iso{\Homo}(G)}{g}{C_g}
+		\func{C}{G}{\Iso{\Homo}(G)}{g}{\con{g}}
 	\end{align*}
 
 %A \emph{translação à direita} em $\bm G$ é a função
 %	\begin{align*}
-%		\func{D}{G}{\Iso{\Func}(G)}{g}{D_g}
+%		\func{D}{G}{\Iso{\Func}(G)}{g}{\trD{g}}
 %	\end{align*}
 %
 %A \emph{translação à esquerda} em $\bm G$ é a função
 %	\begin{align*}
-%		\func{E}{G}{\Iso{\Func}(G)}{g}{E_g}
+%		\func{E}{G}{\Iso{\Func}(G)}{g}{\trE{g}}
 %	\end{align*}
 
 \subsection{Centro, automorfismos internos e externos}
@@ -889,24 +893,24 @@ A \emph{conjugação} em $\bm G$ é a função
 \begin{definition}
 Seja $\bm G$ um grupo. O \emph{centro} de $\bm G$ é o conjunto
 	\begin{equation*}
-		\Zen(G) := \set{g \in G}{\forall_{h \in G}\ C_g(h)=h}
+		\Zen(G) := \set{g \in G}{\forall_{h \in G}\ \con{g}(h)=h}
 	\end{equation*}
 \end{definition}
 
 
 Notemos que, como $C$ é homomorfismo de grupos e 
 	\begin{align*}
-		\Zen(G) &= \set{g \in G}{\forall_{h \in G}\ C_g(h) = h} \\
-				&= \set{g \in G}{C_g = \Id} \\
+		\Zen(G) &= \set{g \in G}{\forall_{h \in G}\ \con{g}(h) = h} \\
+				&= \set{g \in G}{\con{g} = \Id} \\
 				&= \nuc{C},
 	\end{align*}
 o centro de $\bm G$ é um subgrupo normal de $\bm G$.
 
 \begin{definition}
-Seja $\bm G$ um grupo. Um \emph{automorfismo interno} de $\bm G$ é um automorfismo da forma $C_g$ para algum $g \in G$.
+Seja $\bm G$ um grupo. Um \emph{automorfismo interno} de $\bm G$ é um automorfismo da forma $\con{g}$ para algum $g \in G$.
 \end{definition}
 
-Pode-se mostrar que um automorfismo $\fun{h}{G}{G}$ é interno (ou seja, é conjugação por algum elemento de $G$) se, e somente se, para todo supergrupo $\bm H \geq \bm G$, esse automorfismo pode ser estendido para $\bm H$. A ida é evidente mas a volta é um pouco mais complicada\cite{art:Schupp-CharacterizationInnerAutomorphisms}.
+Pode-se mostrar que um automorfismo $\fun{h}{G}{G}$ é interno (ou seja, é conjugação por algum elemento de $G$) se, e somente se, para todo supergrupo $\bm H \geq \bm G$, esse automorfismo pode ser estendido para $\bm H$. A ida é evidente mas a volta é um pouco mais complicada \cite{art:Schupp-CharacterizationInnerAutomorphisms}.
 
 	\begin{equation*}
 	1 \to \Zen(G) \to G \to \Aut(G) \to Out(G) \to 1
@@ -984,19 +988,19 @@ Sejam $\bm G$ e $\bm H$ grupos e $A\colon \bm G \age \bm H$ uma ação do grupo 
 		}
 	\end{align*}
 
-	\item Seja $n \in \N$. $\OO(n) \simeq \S^0 \ltimes \SO(n)$ com ação dada por
+	\item Seja $n \in \N$. $\GO(n) \simeq \S^0 \ltimes \SO(n)$ com ação dada por
 		\begin{align*}
-			\func{A}{\S^0}{\Aut(\SO(n))}{i}{
+			\func{A}{\S^0}{\Aut(\SO(n))}{u}{
 				\begin{aligned}[t]
-					\func{C_{\Id_{n-1} \oplus i}}{\SO(n)}{\SO(n)}{N}{(\Id_{n-1} \oplus i) \circ N \circ (\Id_{n-1} \oplus i)\inv}.
+					\func{\con{\Id_{n-1} \oplus u}}{\SO(n)}{\SO(n)}{N}{(\Id_{n-1} \oplus u) \circ N \circ (\Id_{n-1} \oplus u)\inv}.
 				\end{aligned}
 			}
 		\end{align*}
-	A transformação linear $\Id_{n-1} \oplus i \in \OO(n)$ é uma reflexão de $\R^n$ que pode ser representada pela matrix
+	A transformação linear $\Id_{n-1} \oplus i \in \GO(n)$ é uma reflexão de $\R^n$ que pode ser representada pela matrix
 		\begin{equation*}
 			\begin{pmatrix}
 				\Id_{n-1}	&	0 \\
-				0			&	i
+				0			&	u
 			\end{pmatrix}.
 		\end{equation*}
 	\end{enumerate}

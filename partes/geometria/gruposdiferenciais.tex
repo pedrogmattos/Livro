@@ -24,13 +24,13 @@ a inversa. Para a teoria geral, usaremos a notação multiplicativa.
 
 Denotamos as translações à esquerda e à direita e a conjugação por um elemento $g \in G$ respectivamente por
 	\begin{align*}
-	\func{g \times}{G}{G}{h}{gh}
+	\func{\trE{g}}{G}{G}{h}{gh}
 	\end{align*}
 	\begin{align*}
-	\func{\times g}{G}{G}{h}{hg}
+	\func{\trD{g}}{G}{G}{h}{hg}
 	\end{align*}
 	\begin{align*}
-	\func{g\con}{G}{G}{h}{ghg\inv}.
+	\func{\con{g}}{G}{G}{h}{ghg\inv}.
 	\end{align*}
 
 \begin{definition}
@@ -44,10 +44,10 @@ são diferenciáveis\footnote{Assumiremos aqui, como de costume, que o grau de d
 Diferentemente do caso de grupos topológicos, em que é necessário exigir que a operação binária e a inversa do grupo sejam contínuas, para que um grupo com estrutura de variedade seja um grupo diferencial basta que sua operação binária seja diferenciável, não é necessário assumir a diferenciabilidade da inversa $\fun{\div}{G}{G}$. Para demonstrar isso, primeiro deve-se notar que as translações à esquerda e à direita e a conjugação são difeomorfismos se a operação binária é diferenciável. A seguir, a diferencial parcial de $\fun{\times}{G \times G}{G}$ com relação à entrada $0$ é denotada $\D_0$ e a diferencial parcial com relação à entrada $1$ é denotada $\D_1$.
 
 \begin{exercise}
-Seja $\bm G = ((G,\atlas),\times,\div,1)$ uma lista em que $(G,\atlas)$ é uma variedade diferencial, $(G,\times,\div,1)$ é um grupo e a operação binária $\fun{\times}{G^2}{G}$ é diferenciável. Então, para todo $g \in G$, as translações à esquerda e à direita $g\times$, $\times g$ e a conjugação $g\con$ são difeomorfismos e
+Seja $\bm G = ((G,\atlas),\times,\div,1)$ uma lista em que $(G,\atlas)$ é uma variedade diferencial, $(G,\times,\div,1)$ é um grupo e a operação binária $\fun{\times}{G^2}{G}$ é diferenciável. Então, para todo $g \in G$, as translações à esquerda e à direita $\trE{g}$, $\trD{g}$ e a conjugação $\con{g}$ são difeomorfismos e
 	\begin{enumerate}
-	\item $\D_0(\times)|_{(g,g')} = \D (\times g')|_{g}$;
-	\item $\D_1(\times)|_{(g,g')} = \D (g \times)|_{g'}$;
+	\item $\D_0(\times)|_{(g,g')} = \D (\trD{g'})|_{g}$;
+	\item $\D_1(\times)|_{(g,g')} = \D (\trE{g})|_{g'}$;
 	\end{enumerate}
 \end{exercise}
 
@@ -59,31 +59,31 @@ Seja $\bm G = ((G,\atlas),\times,\div,1)$ uma lista em que $(G,\atlas)$ é uma v
 %	\D (\div)|_g = - \D E_{g\inv}|_{1} \circ \D D_{g\inv}|_g.
 %	\end{equation*}
 	\begin{equation*}
-	\D (\div)|_g = - \D (g\inv \times)|_{1} \circ \D (\times g\inv)|_g.
+	\D (\div)|_g = - \D (\trE{g\inv})|_{1} \circ \D (\trD{g\inv})|_g.
 	\end{equation*}
 \end{proposition}
 \begin{proof}
 Para todo $(g,g') \in G \times G$, a diferencial parcial de $\times$ relativa à entrada $1$ é
 	\begin{equation*}
-	\D_1(\times)|_{(g,g')} = \D (g \times)|_{g'}.
+	\D_1(\times)|_{(g,g')} = \D (\trE{g})|_{g'}.
 	\end{equation*}
-Como $g\times$ é difeomorfismo, $\D (g \times)|_{g'}$ é bijeção, portanto sobrejetiva. Como $g \times g\inv = 1$, pelo teorema da função implícita existem vizinhanças abertas $A \subseteq G$ de $g$ e $A' \subseteq G$ de $g\inv$ e função diferenciável $\fun{f}{A}{A'}$ tal que $g \times f(g) = 1$. Da unicidade da inversa segue que $f=\div$, portanto que $\div$ é diferenciável em $g$, logo diferenciável. Como $\div$ é sua própria função inversa ($\div \circ \div = \Id$), segue que é difeomorfismo.
+Como $\trE{g}$ é difeomorfismo, $\D (\trE{g})|_{g'}$ é bijeção, portanto sobrejetiva. Como $g \times g\inv = 1$, pelo teorema da função implícita existem vizinhanças abertas $A \subseteq G$ de $g$ e $A' \subseteq G$ de $g\inv$ e função diferenciável $\fun{f}{A}{A'}$ tal que $g \times f(g) = 1$. Da unicidade da inversa segue que $f=\div$, portanto que $\div$ é diferenciável em $g$, logo diferenciável. Como $\div$ é sua própria função inversa ($\div \circ \div = \Id$), segue que é difeomorfismo.
 
 O teorema da função implícita implica ainda que
 	\begin{equation*}
 	\D(\div)|_g = - \D_1(\times)|_{(g,g\inv)} \circ \D_0(\times)|_{(g,g\inv)}.
 	\end{equation*}
-Como $(\D (g \times)|_{g\inv})\inv = \D (g\inv \times)|_{1}$, segue que
+Como $(\D (\trE{g})|_{g\inv})\inv = \D (g\inv \times)|_{1}$, segue que
 	\begin{align*}
 	\D(\div)|_g &= - \D_1(\times)|_{(g,g\inv)} \circ \D_0(\times)|_{(g,g\inv)} \\
-		&= - (\D (g \times)|_{g\inv})\inv \circ \D (\times g\inv)|_{g} \\
-		&= - \D (g\inv \times)|_{1} \circ \D (\times g\inv)|_g.
+		&= - (\D (\trE{g})|_{g\inv})\inv \circ \D (\trD{g\inv})|_{g} \\
+		&= - \D (g\inv \times)|_{1} \circ \D (\trD{g\inv})|_g.
 	\end{align*}
 \end{proof}
 
-Em particular, isso implica que $\D(\div)|_1 = \fun{-\Id|_1}{\Tg G|_1}{\Tg G|_1}$, pois $1\inv=1$ e $1\times = \times 1 = \fun{\Id}{G}{G}$, logo
+Em particular, isso implica que $\D(\div)|_1 = \fun{-\Id|_1}{\Tg G|_1}{\Tg G|_1}$, pois $1\inv=1$ e $\trE{1} = \trD{1} = \fun{\Id}{G}{G}$, logo
 	\begin{equation*}
-	\D (\div)|_1 = - \D (1\inv \times)|_{1} \circ \D (\times 1\inv)|_1 = -\Id|_1 \circ \Id|-1 = - \Id|_1.
+	\D (\div)|_1 = - \D (\trE{1\inv})|_{1} \circ \D (\trD{1\inv})|_1 = -\Id|_1 \circ \Id|-1 = - \Id|_1.
 	\end{equation*}
 
 
@@ -98,17 +98,17 @@ Seja $\bm G$ um grupo diferencial. Os fibrados tangente $\Tg G$ e cotangente $\T
 \begin{itemize}
 \item ($\Tg G$) Basta mostrar que a função
 	\begin{align*}
-	\func{\Phi}{G \times \Tg G|_1}{\Tg G}{(g,v)}{\D(g \times)|_1 v}
+	\func{\Phi}{G \times \Tg G|_1}{\Tg G}{(g,v)}{\D(\trE{g})|_1 v}
 	\end{align*}
-é um difeomorfismo. Como, para todo $g \in G$, $\fun{g\times}{G}{G}$ é difeomorfismo, sua diferencial $\fun{\D(g\times)|_1}{\Tg G|_1}{\Tg G|_g}$ é um isomorfismo linear, portanto $\Phi$ é bijeção. Notemos que $\Phi(g,v) = \D_1(\times)|_{(g,1)}v$, portanto é diferenciável. A inversa de $\Phi$ é dada por
+é um difeomorfismo. Como, para todo $g \in G$, $\fun{\trE{g}}{G}{G}$ é difeomorfismo, sua diferencial $\fun{\D(\trE{g})|_1}{\Tg G|_1}{\Tg G|_g}$ é um isomorfismo linear, portanto $\Phi$ é bijeção. Notemos que $\Phi(g,v) = \D_1(\times)|_{(g,1)}v$, portanto é diferenciável. A inversa de $\Phi$ é dada por
 	\begin{align*}
-		\func{\Phi\inv}{\Tg G}{G \times \Tg G|_1}{v}{(\proj(v),\D(g \times)|_{\proj(v)\inv}v)}
+		\func{\Phi\inv}{\Tg G}{G \times \Tg G|_1}{v}{(\proj(v),\D(\trE{g})|_{\proj(v)\inv}v)}
 	\end{align*}
 que também é diferenciável, portanto $\Phi$ é um difeomorfismo.
 
 \item ($\Tg^* G$) Analogamente, basta mostrar que a função
 	\begin{align*}
-	\func{\Psi}{G \times \Tg^* G|_1}{\Tg G}{(g,\alpha)}{\D(g \times)|_1^* \alpha}
+	\func{\Psi}{G \times \Tg^* G|_1}{\Tg G}{(g,\alpha)}{\D(\trE{g})|_1^* \alpha}
 	\end{align*}
 é um difeomorfismo.
 \end{itemize}
@@ -121,21 +121,21 @@ que também é diferenciável, portanto $\Phi$ é um difeomorfismo.
 \begin{definition}
 Seja $\bm G$ um grupo diferencial. Um \emph{campo vetorial invariante à esquerda} em $\bm G$ é um campo vetorial $v \in \tens^1((G,\atlas))$ tal que, para todo $g \in G$,
 	\begin{equation*}
-	\D(g \times)\emp v = v,
+	\D(\trE{g})\emp v = v,
 	\end{equation*}
 ou seja, para todo $g,g' \in G$,
 	\begin{equation*}
-	\D(g \times)|_{g'} (v|_{g'}) = v|_{gg'}.
+	\D(\trE{g})|_{g'} (v|_{g'}) = v|_{gg'}.
 	\end{equation*}
 O conjunto desses campos é denotado $\tens^1_E(\bm G)$.
 
 Um \emph{campo vetorial invariante à direita} em $\bm G$ é um campo vetorial $v \in \tens^1((G,\atlas))$ tal que, para todo $g \in G$,
 	\begin{equation*}
-	\D(\times g)\emp v = v,
+	\D(\trD{g})\emp v = v,
 	\end{equation*}
 ou seja, para todo $g,g' \in G$,
 	\begin{equation*}
-	\D(\times g)|_{g'} (v|_{g'}) = v|_{g'g}.
+	\D(\trD{g})|_{g'} (v|_{g'}) = v|_{g'g}.
 	\end{equation*}
 O conjunto desses campos é denotado $\tens^1_D(\bm G)$.
 \end{definition}
@@ -146,32 +146,32 @@ Os espaços dos campos invariantes são subespaços lineares de $\tens((G,\atlas
 
 Para definir um campo invariante, basta definirmos seu valor $v \in \Tg G|_1$ em $1 \in G$, pois todos os outros valores podem ser obtidos empurrando $v$ pela diferencial da translação. Para campos invariante à esquerda,
 	\begin{equation*}
-	v|_p := \D(g \times)|_{1} (v),
+	v|_p := \D(\trE{g})|_{1} (v),
 	\end{equation*}
 e para campos invariantes à direita,
 	\begin{equation*}
-	v|_{g} = \D(\times g)|_{1} (v).
+	v|_{g} = \D(\trD{g})|_{1} (v).
 	\end{equation*}
 
 Denotaremos esses campos por $v_E$ e $v_D$, respectivamente. Eles induzem isomorfismos de espaços lineares
 	\begin{align*}
 	\func{\Phi_E}{\Tg G|_1}{\tens^1_E(G)}{v}{
 		\begin{aligned}[t]
-		\func{v_E}{G}{\Tg G}{g}{v_E|_g := \D(g \times)|_{1} (v)}
+		\func{v_E}{G}{\Tg G}{g}{v_E|_g := \D(\trE{g})|_{1} (v)}
 		\end{aligned}
 	}
 	\end{align*}
 	\begin{align*}
 	\func{\Phi_D}{\Tg G|_1}{\tens^1_D(G)}{v}{
 		\begin{aligned}[t]
-		\func{v_D}{G}{\Tg G}{g}{v_E|_g := \D(\times g)|_{1} (v)}.
+		\func{v_D}{G}{\Tg G}{g}{v_E|_g := \D(\trD{g})|_{1} (v)}.
 		\end{aligned}
 	}
 	\end{align*}
 
 \subsubsection{Álgebra infinitesimal}
 
-Lembremos que o espaço de campos vetoriais $\tens^1(G,\atlas)$ da variedade $(G,\atlas)$ é uma álgebra de derivação adjunta\footnote{Álgebra de Lie.} sobre $\R$ cujo produto é o colchete de campos vetoriais $\col{\var}{\var}$. Os espaços de campos vetoriais invariantes à esquerda e à direita são subálgebras da álgebra de campos vetoriais, pois são subespaços lineares e o colchete é fechado. Esses colchetes, dos campos invariantes à esquerda e à direita, induzem colchetes em $\Tg G|_1$ pelos isomorfismos $\Phi_E$ e $\Phi_D$ anteriormente enunciados.
+Lembremos que o espaço de campos vetoriais $\tens^1(G,\atlas)$ da variedade $(G,\atlas)$ é uma álgebra derivativa\footnote{Álgebra de Lie.} sobre $\R$ cujo produto é o colchete de campos vetoriais $\col{\var}{\var}$. Os espaços de campos vetoriais invariantes à esquerda e à direita são subálgebras da álgebra de campos vetoriais, pois são subespaços lineares e o colchete é fechado. Esses colchetes, dos campos invariantes à esquerda e à direita, induzem colchetes em $\Tg G|_1$ pelos isomorfismos $\Phi_E$ e $\Phi_D$ anteriormente enunciados.
 
 \begin{proposition}
 Seja $\bm G$ um grupo diferencial.
@@ -181,9 +181,9 @@ Seja $\bm G$ um grupo diferencial.
 	\end{enumerate}
 \end{proposition}
 \begin{proof}
-A demonstração de que são subespaços lineares é direta. Para vermos que o colchete é fechado, basta notarmos que, como $\fun{g\times}{G}{G}$ é difeomorfismo, segue que, para todos campos vetoriais $v,v' \in \tens^1_E(\bm G)$,
+A demonstração de que são subespaços lineares é direta. Para vermos que o colchete é fechado, basta notarmos que, como $\fun{\trE{g}}{G}{G}$ é difeomorfismo, segue que, para todos campos vetoriais $v,v' \in \tens^1_E(\bm G)$,
 	\begin{equation*}
-	\D (g\times)\col{v}{v'} = \col{\D(g \times)\emp v}{\D(g \times)\emp v'} = \col{v}{v'},
+	\D (\trE{g})\col{v}{v'} = \col{\D(\trE{g})\emp v}{\D(\trE{g})\emp v'} = \col{v}{v'},
 	\end{equation*}
 portanto se $\col{v}{v'} \in \tens^1_E(\bm G)$. A demonstração é análoga para campos invariantes à direita.
 \end{proof}
@@ -201,7 +201,7 @@ O \emph{colchete} (à direita) em $\Tg G|_1$ é
 \end{definition}
 
 \begin{definition}
-Seja $\bm G$ um grupo diferencial. A \emph{álgebra infinitesimal} de $\bm G$ é a álgebra de derivação adjunta
+Seja $\bm G$ um grupo diferencial. A \emph{álgebra infinitesimal} de $\bm G$ é a álgebra derivativa
 	\begin{equation*}
 	\bm{\Tg G|_1} := (\Tg G|_1,\col{\var}{\var}_E).
 	\end{equation*}

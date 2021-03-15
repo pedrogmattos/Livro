@@ -14,22 +14,22 @@ Por simplicidade, denotamos $gg' := g \times g'$ e $\div g := g\inv$. Note que n
 
 Lembremos que para um grupo $\bm G$ e $g \in G$, a conjugação por $g$ é a função
 	\begin{align*}
-	\func{C_g}{G}{G}{h}{ghg\inv},
+	\func{\con{g}}{G}{G}{h}{ghg\inv},
 	\end{align*}
 a translação à direita por $g$ é a função
 	\begin{align*}
-	\func{D_g}{G}{G}{h}{hg}
+	\func{\trD{g}}{G}{G}{h}{hg}
 	\end{align*}
 e a translação à esquerda por $g$ é a função
 	\begin{align*}
-	\func{E_g}{G}{G}{h}{gh}.
+	\func{\trE{g}}{G}{G}{h}{gh}.
 	\end{align*}
 
 \begin{proposition}
-Seja $\bm G$ um grupo topológico. As funções $C_h$, $D_h$ e $E_h$ são homeomorfismos para todo $h \in G$.
+Seja $\bm G$ um grupo topológico. As funções $\con{g}$, $\trD{g}$ e $\trE{g}$ são homeomorfismos para todo $h \in G$.
 \end{proposition}
 \begin{proof}
-Para ver que as funções são bijeções, basta notar que $(C_h)\inv = C_{h \inv}$, $(D_h)\inv = D_{h \inv}$ e $(E_h)\inv = E_{h \inv}$. Para mostrar a continuidade, basta notar que da continuidade de $\times$ e das relações $E_h = \times \circ (\bm\var,h)$ e $D_h = \times \circ (h,\bm\var)$, segue que $E_h$ e $D_h$ são contínuas, e que da continuidade de $\div$ e da relação $C_h = D_h \circ E_{h\inv}$, segue que $C_h$ é contínua.
+Para ver que as funções são bijeções, basta notar que $(\con{g})\inv = \con{g \inv}$, $(\trD{g})\inv = \trD{g \inv}$ e $(\trE{g})\inv = \trE{g \inv}$. Para mostrar a continuidade, basta notar que da continuidade de $\times$ e das relações $\trE{g} = \times \circ (\var,g)$ e $\trD{g} = \times \circ (g,\var)$, segue que $\trE{g}$ e $\trD{g}$ são contínuas, e que da continuidade de $\div$ e da relação $\con{g} = \trD{g} \circ \trE{g\inv}$, segue que $\con{g}$ é contínua.
 \end{proof}
 
 \begin{example}
@@ -51,8 +51,8 @@ Seja $\bm G$ um grupo topológico.
 \end{proposition}
 \begin{proof}
 	\begin{enumerate}
-	\item Segue do fato de que $E_g$ e $D_g$ são homeomorfismos e $gA = E_g(A)$, $Ag = D_g(A)$.
-	\item Segue do fato de que $E_g$ e $D_g$ são homeomorfismos e $gA = E_g(A)$, $Ag = D_g(A)$.
+	\item Segue do fato de que $\trE{g}$ e $\trD{g}$ são homeomorfismos e $gA = \trE{g}(A)$, $Ag = \trD{g}(A)$.
+	\item Segue do fato de que $\trE{g}$ e $\trD{g}$ são homeomorfismos e $gA = \trE{g}(A)$, $Ag = \trD{g}(A)$.
 	\item Segue do fato de que
 		\begin{equation*}
 		AC = \bigcup_{c \in C} Ac \text{\ \ e\ \ } CA = \bigcup_{c \in C} cA
@@ -234,7 +234,7 @@ Seja $\bm G$ um grupo topológico. São equivalentes:
 \section{Distância em grupos}
 
 \begin{definition}
-Seja $\bm G$ um grupo. Uma distância \emph{invariante por translação à esquerda} em $\bm G$ é uma distância $\dist{\var}{\var}\colon G \times G \to \intfa{0}{\infty}$ em $G$ tal que, para todo $g \in G$, a translação à esquerda $E_g$ é uma isometria local em $(G,\dist{\var}{\var})$. Uma distância \emph{invariante por translação à direita} em $\bm G$ é uma distância em $G$ tal que, para todo $g \in G$, a translação à direita $D_g$ é uma isometria local. Uma distância \emph{invariante por translação} em $\bm G$ é uma distância invariante à esquerda e à direita em $\bm G$.
+Seja $\bm G$ um grupo. Uma distância \emph{invariante por translação à esquerda} em $\bm G$ é uma distância $\dist{\var}{\var}\colon G \times G \to \intfa{0}{\infty}$ em $G$ tal que, para todo $g \in G$, a translação à esquerda $\trE{g}$ é uma isometria local em $(G,\dist{\var}{\var})$. Uma distância \emph{invariante por translação à direita} em $\bm G$ é uma distância em $G$ tal que, para todo $g \in G$, a translação à direita $\trD{g}$ é uma isometria local. Uma distância \emph{invariante por translação} em $\bm G$ é uma distância invariante à esquerda e à direita em $\bm G$.
 \end{definition}
 
 No caso da invariância à esquerda, isso quer dizer que, para todos $g,g',g'' \in G$,
@@ -254,7 +254,7 @@ Seja $\bm G$ um grupo topológico e $\viz$ um sistema de vizinhanças da identid
 Sejam $\bm G$ e $\bm H$ grupos topológicos e $\phi\colon G \to H$ um homomorfismo de grupos. Então $\phi$ é contínuo se, e somente se, $\phi$ é contínuo na identidade $\id \in G$.
 \end{proposition}
 \begin{proof}
-A ida é evidente; basta mostrar a volta. Como $\phi$ é homomorfismo, $\phi \circ E_g = E_{\phi(g)} \circ \phi$ para todo $g \in G$. Mas $E_{\phi(g)} \circ \phi$ é contínua em $\id$, o que implica que $\phi \circ E_g$ é contínuo em $\id$ e, como $E_g$ é um homeomorfismo, segue que $\phi$ é contínuo em $g=E_g(\id)$.
+A ida é evidente; basta mostrar a volta. Como $\phi$ é homomorfismo, $\phi \circ \trE{g} = \trE{\phi(g)} \circ \phi$ para todo $g \in G$. Mas $\trE{\phi(g)} \circ \phi$ é contínua em $\id$, o que implica que $\phi \circ \trE{g}$ é contínuo em $\id$ e, como $\trE{g}$ é um homeomorfismo, segue que $\phi$ é contínuo em $g=\trE{g}(\id)$.
 \end{proof}
 
 \begin{proposition}
