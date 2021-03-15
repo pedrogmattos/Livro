@@ -319,7 +319,7 @@
 	% REFERÊNCIA: https://tex.stackexchange.com/questions/525405/new-symbol-of-infinity-similar-to-a-w-or-omega/525407?noredirect=1#comment1329000_525407
 
 	% Cardinalidade
-	\newcommand{\card}[1]{\left\lvert{#1}\right\rvert}
+	\newcommand{\card}[1]{\#\left\lvert{#1}\right\rvert}
 
 % Conjuntos numéricos
 %------------------------------------
@@ -340,9 +340,9 @@
 
 	\newcommand{\N}{\mathbb{N}}
 	\newcommand{\NN}{\accentset{\infty}{\N}}
-%	\newcommand{\Z}{\mathbb{Z}}
+	\newcommand{\Z}{\mathbb{Z}}
+%	\newcommand{\Z}{\mathbb{I}}
 	\newcommand{\ZZ}{\accentset{\infty}{\Z}}
-	\newcommand{\Z}{\mathbb{I}}
 	\newcommand{\Q}{\mathbb{Q}}
 	\newcommand{\R}{\mathbb{R}}
 	\newcommand{\RR}{\accentset{\infty}{\R}}
@@ -461,14 +461,17 @@
 	\newcommand{\nulo}{0}
 
 
-	% Conjugação por elemento do grupo
-	\newcommand{\con}{
-		\mathord{
-			\mathpalette\superimpose{
-				{\mkern3mu\times}{\times\mkern3mu}
-			}
-		}
-	}
+	% Translação e conjugação por elemento do grupo
+	\newcommand{\trE}[1]{E_{#1}}
+	\newcommand{\trD}[1]{D_{#1}}
+%	\newcommand{\con}{
+%		\mathord{
+%			\mathpalette\superimpose{
+%				{\mkern3mu\times}{\times\mkern3mu}
+%			}
+%		}
+%	}
+	\newcommand{\con}[1]{\left({#1}\right|}
 
 	% Grupos normais, análogo ao ideal
 	\newcommand{\ide}{\mathrel{\unlhd}}
@@ -526,9 +529,9 @@
 	% Grupos lineares
 	\DeclareMathOperator{\GL}{GL}
 	\DeclareMathOperator{\SL}{SL}
-	\DeclareMathOperator{\OO}{O}
+	\DeclareMathOperator{\GO}{O}
 	\DeclareMathOperator{\SO}{SO}
-	\DeclareMathOperator{\UU}{U}
+	\DeclareMathOperator{\GU}{U}
 	\DeclareMathOperator{\SU}{SU}
 	\DeclareMathOperator{\Sp}{Sp}
 
@@ -726,6 +729,9 @@
 	\vphantom{\bigoplus}%
 	}
 
+	% Concatenação de caminhos
+	\newcommand{\conca}{\smile}
+
 	\newcommand{\homot}{\approx}
 	\newcommand{\comp}{\cdot}
 
@@ -757,6 +763,16 @@
 	\newcommand{\bola}[2]{\mathrm{B}\left[{#1};{#2}\right[}
 %	\newcommand{\bolafec}{\Fec{\bola}} % A notação é diferente, e não simplesmente denotamos uma como o fecho da outra, porque nem sempre em um espaço métrico ao fecho da bola aberta é a bola fechada de mesmo raio e centro.
 	\newcommand{\bolafec}[2]{\mathrm{B}\left[{#1};{#2}\right]}
+
+	% Funções métricas: controladas, homometrias
+%	\newcommand{\Met}{\mathrm{Met}}
+%	\newcommand{\Met}{\left\vert\Cont\right\vert}
+	\newcommand{\Met}{\Cont_{\vert \var \vert}}
+	% Distorção
+	\newcommand{\distor}[1]{\left\Vert{#1}\right\Vert}
+
+	% Comprimento de caminhos
+	\newcommand{\compr}[1]{L(#1)}
 
 % Grupos topológicos
 %------------------------------------
