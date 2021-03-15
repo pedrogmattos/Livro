@@ -478,7 +478,7 @@ A recíproca nem sempre é verdade. Nos espaços $\R^d$, $ d \in \N$, vale que u
 \subsection{Continuidade}
 
 \begin{definition}
-Sejam $\bm M$ e $\bm M'$ espaços métricos e $p \in M$. Uma função \emph{contínua em $p$} é uma função $f\colon M \to M'$ que satisfaz: para todo $\varepsilon \in \intaa{0}{\infty}$, existe $\delta \intaa{0}{\infty}$ tal que, para todo $x \in M$
+Sejam $\bm M$ e $\bm M'$ espaços métricos e $p \in M$. Uma função \emph{contínua em $p$} é uma função $\fun{f}{M}{M'}$ que satisfaz: para todo $\varepsilon \in \intaa{0}{\infty}$, existe $\delta \intaa{0}{\infty}$ tal que, para todo $x \in M$
 %	\begin{equation*}
 %	\qquad \dist{p}{x}_1 < \delta \Rightarrow \dist{f(p)}{f(x)}_2 < \varepsilon.
 %	\end{equation*}
@@ -848,9 +848,9 @@ Sejam $K \subseteq M$ compacto e $f: M \to \bar M$ contínua. Então $f$ é unif
 \begin{proof}
 Suponhamos, por absurdo, que $f$ não é uniformemente contínua. Então existem $\varepsilon > 0$ e $(x_n)_{n \in \N},(y_n)_{n \in \N}$ sequências em $K$ tais que
 	\begin{equation*}
-	\nor{x_n - y_n} < \frac{1}{n} \text{\ \ e\ \ } \nor{f(x_n)-f(y_n)} \geq \varepsilon.
+	\dist{x_n}{y_n} < \frac{1}{n} \text{\ \ e\ \ } \dist{f(x_n)}{f(y_n)} \geq \varepsilon.
 	\end{equation*}
-Como $K$ é compacto, existem subsequências $(x_{n_k})_{k \in \N}$  e $(y_{n_k})_{k \in \N}$ convergindo a $x \in K$ com $\nor{f(x_{n_k})-f(y_{n_k})} \geq \varepsilon$. Por continuidade de $f$, existe $\delta > 0$ tal que, se $x_{n_k},y_{n_k} \in B(x,\delta)$, então $\nor{f(x_{n_k})-f(x)} < \frac{\varepsilon}{2}$ e $\nor{f(y_{n_k})-f(x)} < \frac{\varepsilon}{2}$. Pela desigualdade triangular, temos um absurdo.
+Como $K$ é compacto, existem subsequências $(x_{n_k})_{k \in \N}$  e $(y_{n_k})_{k \in \N}$ convergindo a $x \in K$ com $\dist{f(x_{n_k})}{f(y_{n_k})} \geq \varepsilon$. Por continuidade de $f$, existe $\delta > 0$ tal que, se $x_{n_k},y_{n_k} \in B(x,\delta)$, então $\dist{f(x_{n_k})}{f(x)} < \frac{\varepsilon}{2}$ e $\dist{f(y_{n_k})}{f(x)} < \frac{\varepsilon}{2}$. Pela desigualdade triangular, temos um absurdo.
 \end{proof}
 
 
@@ -936,110 +936,264 @@ Seja $\bm M$ um espaço métrico. O espaço $\bm M$ é compacto se, e somente se
 
 
 
-\section{Funções que preservam distância}
+\section{Funções métricas}
 
-\subsection{Funções métricas (ou subsemelhanças)}
+\subsection{Funções controladas}
+
+Neste seção, definiremos funções de um espaço métrico para outro que de certa forma preserva alguma informação da estrutura métrica do espaço. Essas funções não preservam o valor da distância entre dois pontos, mas são limitadas de em um sentido específico, o que garante sua continuidade (uniforme) e traduz alguma propriedades de um espaço para o outro. No que segue, não distinguiremos a notação das distâncias em espaços métricos diferentes.
 
 \begin{definition}
-Sejam $\bm M_0$ e $\bm M_1$ espaços métricos e $c \in \intfa{0}{\infty}$. Uma função \emph{métrica}\footnote{Essas funções são conhecidas geralmente como funções `Lipschitz' contínuas.} de $\bm M_0$ para $\bm M_1$ (com constante $c$) é uma função $f\colon M_0 \to M_1$ que satisfaz, para todos $p,p' \in M_0$,
+Sejam $\bm M$ e $\bm M'$ espaços métricos. Uma \emph{função controlada}% subsemelhança, métrica...
+	\footnote{Essas funções são conhecidas na literatura como funções `Lipschitz contínuas'.} %
+de $\bm M$ para $\bm M'$ é uma função $\fun{f}{M}{M'}$ tal que, para algum $c \in \intfa{0}{\infty}$, $f$ satisfaz que, para todos $p,p' \in M$,
 	\begin{equation*}
-	\dist{f(p)}{f(p')}_1 \leq c\dist{p}{p'}_0.
+	\dist{f(p)}{f(p')} \leq c\dist{p}{p'}.
 	\end{equation*}
-Para $0 \leq c < 1$, a função $f$ é uma \emph{contração}; para $c=1$, é uma \emph{homometria}\footnote{Essas funções são também conhecidas como funções métricas, funções não expansoras, entre outros. Escolhi o nome homometria por uma relação que elas têm com as isometrias que serão definidas mais à frente}.
+A \emph{distorção} (ou \emph{norma de distorção}) de $f$ é
+	\begin{equation*}
+	\distor{f} := \inf\set{c \in \intfa{0}{\infty}}{\forall_{p,p' \in M} \dist{f(p)}{f(p')} \leq c\dist{p}{p'}}.
+	\end{equation*}
 \end{definition}
 
+A distorção de uma função controlada $f$ é portanto o menor valor tal que vale a desigualdade entre as distâncias da definição. Vale que
+	\begin{equation*}
+	\dist{f(p)}{f(p')} \leq \distor{f}\dist{p}{p'}.
+	\end{equation*}
+Além disso, a distorção de $f$ satisfaz a seguinte definição em termos do supremo:
+	\begin{equation*}
+	\distor{f} = \sup \set{\frac{\dist{f(p)}{f(p')}}{\dist{p}{p'}}}{p,p' \in M \land p \neq p'}.
+	\end{equation*}
+Note que, caso $\card{M} \leq 1$, o conjunto nesse supremos é vazio, e nesse caso devemos ressaltar que o supremo é tomado sobre $\intfa{0}{\infty}$, portanto o supremo de $\emptyset$ é $0$.
+
+%\begin{exercise}
+%Sejam $\bm M$ e $\bm M'$ espaços métricos e $\fun{f}{M}{M'}$ uma função controlada.
+%	\begin{enumerate}
+%	\item Para todos $p,p' \in M$,
+%		\begin{equation*}
+%		\dist{f(p)}{f(p')} \leq \distor{f}\dist{p}{p'};
+%		\end{equation*}
+%		
+%	\item Valem a seguinte igualdade:
+%		\begin{equation*}
+%		\distor{L} = \sup \set{\frac{\dist{f(p)}{f(p')}}{\dist{p}{p'}}}{\forall_{p,p' \in M} p \neq p'}.
+%		\end{equation*}
+%	\end{enumerate}
+%\end{exercise}
+
+\begin{exercise}
+Seja $\bm M$ um espaço métrico. A identidade $\fun{\Id}{M}{M}$ é função controlada e $\distor{\Id}=1$.
+\end{exercise}
+
 \begin{proposition}
-Sejam $\bm M_0, \bm M_1$ e $\bm M_2$ espaços métricos, $f_0\colon M_0 \to M_1$ uma função métrica (com constante $c_0$) e $f_1\colon M_1 \to M_2$ uma função métrica (com constante $c_1$). Então $f_1 \circ f_0\colon M_0 \to M_2$ é uma função métrica (com constante $c_1c_0$). Se $f_0$ e $f_1$ são contrações, $f_1 \circ f_0$ é uma contração, e se $f_0$ e $f_1$ são funções métricas, então $f_1 \circ f_0$ é uma função métrica.
+\label{prop:composicao.controlada}
+Sejam $\bm M, \bm M'$ e $\bm M''$ espaços métricos e $\fun{f}{M}{M'}$ e $\fun{f'}{M'}{M''}$ funções controladas. Então $\fun{f' \circ f}{M}{M''}$ é uma função controlada e
+	\begin{equation*}
+		\distor{f' \circ f} \leq \distor{f'}\distor{f}.
+	\end{equation*}
 \end{proposition}
 \begin{proof}
-Para todos $p,p' \in M_0$,
+Para todos $p,p' \in M$,
 	\begin{equation*}
-	\dist{f_1 \circ f_0(p)}{f_1 \circ f_0(p'))}_2 \leq c_1 \dist{f_0(p)}{f_0(p')}_2 \leq c_1c_0\dist{p}{p'}_0.
+	\dist{f' \circ f(p)}{f' \circ f(p'))} \leq \distor{f'} \dist{f(p)}{f(p')} \leq \distor{f'}\distor{f}\dist{p}{p'},
 	\end{equation*}
-Claramente, se $0 \leq c_0 < 1$ e $0 \leq c_1 < 1$, então $0 \leq c_1c_0 < 1$, e se $c_0=c_1=1$, então $c_1c_0=1$.
+o que mostra que $f' \circ f$ é controlada e $\distor{f' \circ f} \leq \distor{f'}\distor{f}$.
 \end{proof}
 
 \begin{proposition}
-Sejam $\bm M_0$ e $\bm M_1$ espaços métricos e $f\colon M_0 \to M_1$ uma função métrica (com constante $c$). Então $f$ é uniformemente contínua.
+\label{prop:continuidade.controlada}
+Sejam $\bm M$ e $\bm M'$ espaços métricos e $\fun{f}{M}{M'}$ uma função controlada. Então $f$ é uniformemente contínua.
 \end{proposition}
 \begin{proof}
-Se $c=0$, a demonstração é óbvia. Se $c \neq 0$, seja $\varepsilon>0$. Tomando $\delta=\frac{\varepsilon}{c}$, segue que, para todos $p,p' \in M_0$, se $\dist{p}{p'}_0 \leq \delta$, então
+Se $\distor{f}=0$, a demonstração é óbvia. Se $\distor{f} \neq 0$, seja $\varepsilon>0$. Tomando $\delta=\frac{\varepsilon}{\distor{f}}$, segue que, para todos $p,p' \in M$, se $\dist{p}{p'}_0 \leq \delta$, então
 	\begin{equation*}
-	\dist{f(p)}{f(p')}_1 \leq c\dist{p}{p'}_0 \leq c\frac{\varepsilon}{c}=\varepsilon. \qedhere
+	\dist{f(p)}{f(p')} \leq \distor{f}\dist{p}{p'} \leq \distor{f}\frac{\varepsilon}{\distor{f}} = \varepsilon.
+	\qedhere
 	\end{equation*}
 \end{proof}
 
 \begin{proposition}
-Sejam $\bm M_0$ e $\bm M_1$ espaços métricos e $f\colon M_0 \to M_1$ uma função métrica (com constante $c$). Então $f$ tem inversa à esquerda que restrita a $f(M_0)$ é métrica (com constante $c$) se, e somente se, para todos $p,p' \in M_0$,
-	\begin{equation*}
-	c\inv \dist{p}{p'}_0 \leq \dist{f(p)}{f(p')}_1 \leq c\dist{p}{p'}_0.
-	\end{equation*}
+\label{prop:distorcao.injetiva.sobrejetiva}
+Sejam $\bm M$ e $\bm M'$ espaços métricos e $\fun{f}{M}{M'}$ uma função controlada.
+	\begin{enumerate}
+	\item $f$ é constante se, e somente se, $\distor{f} = 0$;
+	\item Se $\card{M} > 1$ e $f$ é injetiva, $\distor{f} > 0$;
+	\item Se $\card{M'} > 1$ e $f$ é sobrejetiva, $\distor{f} > 0$.
+	\end{enumerate}
 \end{proposition}
 \begin{proof}
-Se $f$ tem inversa à esquerda $c$-métrica, então, para todos $q,q' \in M_1$,
+	\begin{enumerate}
+	\item Se $f$ é constante, então para todos $p,p' \in M$ vale $f(p)=f(p')$, portanto
+		\begin{equation*}
+		\dist{f(p)}{f(p')} = 0 \leq 0 \dist{p}{p'},
+		\end{equation*}
+	o que mostra que $\distor{f} = 0$.
+	
+	Reciprocamente, se $\distor{f}=0$, então para todos $p,p' \in M$ vale
+		\begin{equation*}
+		\dist{f(p)}{f(p')} \leq \distor{f}\dist{p}{p'} = 0,
+		\end{equation*}
+	portanto $f(p) = f(p')$.
+
+	\item Como $\card{M} > 1$, existem $p,p' \in M$ tais que $p \neq p'$; como $f$ é injetiva, segue que $f(p) \neq f(p')$, portanto $f$ não é constante; do primeiro item segue que $\distor{f} > 0$.
+
+	\item Como $\card{M'} > 1$, existem $q,q' \in M'$ tais que $q \neq q'$; como $f$ é sobrejetiva, $f(M) = M'$, logo $\card{f(M)} > 1$, o que significa que $f$ não é constante; do primeiro item segue que $\distor{f} > 0$.
+	\end{enumerate}
+\end{proof}
+
+\begin{proposition}
+Sejam $\bm M$ e $\bm M'$ espaços métricos e $\fun{f}{M}{M}$ função controlada.
+	\begin{enumerate}
+		\item Se $\card{M} > 1$ e $f$ é injetiva com inversa à esquerda $\fun{f\inv}{f(M)}{M}$ controlada, então
+			\begin{equation*}
+\textstyle	1 \leq \distor{f}\distor{f\inv}.
+			\end{equation*}
+		\item Se $\card{M'} > 1$ e $f$ é sobrejetiva com inversa à direita $\fun{f\inv}{M'}{M}$ controlada, então
+			\begin{equation*}
+\textstyle	1 \leq \distor{f}\distor{f\inv}.
+			\end{equation*}
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item Sejam $p,p' \in M$ tais que $p \neq p'$ e $q := f(p)$ e $q' := f(p')$. Como $f$ e $f\inv$ são controladas e $f\inv(q) = p$ e $f\inv(q')=p'$, segue que
+		\begin{align*}
+		\dist{p}{p'} &= \dist{f\inv(q)}{f\inv(q')} \\
+			&\leq \distor{f\inv}\dist{q}{q'} \\
+			&= \distor{f\inv}\dist{f(p)}{f(p')} \\
+			&\leq \distor{f\inv}\distor{f}\dist{p}{p'}.
+		\end{align*}
+	Como $\dist{p}{p'} \neq 0$, segue que $1 \leq \distor{f\inv}\distor{f}$.
+	
+	\item Segue do item anterior, pois $f\inv$ é injetiva com inversa à esquerda $f$.
+	\qedhere
+%	\item Sejam $q,q' \in M'$ tais que $q \neq q'$ e, da sobrejetividade de $f$, sejam $p,p' \in M$ tais que $q = f(p)$ e $q' = f(p')$. Como $f$ e $f\inv$ são controladas e $f\inv(q) = p$ e $f\inv(q')=p'$, segue que
+%		\begin{align*}
+%		\dist{q}{q'}' &= \dist{f(p)}{f(p')}' \\
+%			&\leq \distor{f}\dist{p}{p'} \\
+%			&= \distor{f}\dist{f\inv(q)}{f\inv(q')} \\
+%			&\leq \distor{f}\distor{f\inv}\dist{q}{q'}'.
+%		\end{align*}
+%	Como $\dist{q}{q'} \neq 0$, segue que $1 \leq \distor{f\inv}\distor{f}$.
+	\end{enumerate}
+\end{proof}
+
+\begin{definition}
+Sejam $\bm M$ e $\bm M'$ espaços métricos. Um \emph{mergulho métrico} de $\bm M$ para $\bm M'$ é uma função $\fun{f}{M}{M'}$ tal que, para algum $c \in \intaa{0}{\infty}$, $f$ satisfaz que, para todos $p,p' \in M$,
 	\begin{equation*}
-	\dist{f\inv(q)}{f\inv(q')}_0 \leq c \dist{q}{q'}_1.
+	c\inv \dist{p}{p'} \leq \dist{f(p)}{f(p')} \leq c\dist{p}{p'}.
 	\end{equation*}
-Assim, para todos $p,p' \in M_0$,
-	\begin{equation*}
-	\dist{p}{p'}_0 = \dist{f\inv(f(p))}{f\inv(f(p'))}_0 \leq c \dist{f(p)}{f(p')}_1,
-	\end{equation*}
-portanto $c\inv \dist{p}{p'}_0 \leq \dist{f(p)}{f(p')}_1$.
+\end{definition}
 
-Reciprocamente, se valem as desigualdades acima, então para todos $p,p' \in M_0$ tais que $p \neq p'$, logo $\dist{p}{p'}_0 > 0$. De $0 < c\inv \dist{p}{p'}_0 \leq \dist{f(p)}{f(p')}_1$, segue que $\dist{f(p)}{f(p')}_1>0$, o que implica $f(p) \neq f(p')$, portanto $f$ é injetiva. Ainda, temos que $\dist{p}{p'}_0 \leq c \dist{f(p)}{f(p')}_1$, logo para todos $q,q' \in f(M_0)$, existem $p,p' \in M_0$ tais que $q=f(p)$ e $q'=f(p')$, portanto
-	\begin{align*}
-	\dist{f\inv(q)}{f\inv(q')}_0 &= \dist{f\inv(f(p))}{f\inv(f(p'))}_0 \\
-		&= \dist{p}{p'}_0 \leq c \dist{f(p)}{f(p')}_1 \\
-		&= c \dist{q}{q'}_1,
-	\end{align*}
-o que mostra que $f\inv$ é $c$-métrica.
+A proposição a seguir dá uma caracterização alternativa de mergulho métrico.
 
+\begin{proposition}
+\label{prop:mergulho.metrico}
+Sejam $\bm M$ e $\bm M'$ espaços métricos e $\fun{f}{M}{M'}$. Então $f$ é mergulho métrico se, e somente se, $f$ é função controlada injetiva e sua inversa à esquerda $\fun{f\inv}{f(M)}{M}$ é controlada.
+\end{proposition}
+\begin{proof}
+Notemos que se $\card{M} \leq 1$, a demonstração é trivial, portanto supomos $\card{M} > 1$.
+	\begin{itemize}
+	\item ($\Rightarrow$) Seja $c \in \intaa{0}{\infty}$ tal que valem as desigualdades na definição de mergulho métrico. Segue direto que $f$ é controlada. Para todos $p,p' \in M$ tais que $p \neq p'$, vale $\dist{p}{p'} > 0$, logo de $0 < c\inv \dist{p}{p'} \leq \dist{f(p)}{f(p')}$ segue que $\dist{f(p)}{f(p')}>0$, o que implica $f(p) \neq f(p')$, portanto $f$ é injetiva. Ainda, temos que $\dist{p}{p'} \leq c \dist{f(p)}{f(p')}$, logo para todos $q,q' \in f(M)$, existem $p,p' \in M$ tais que $q=f(p)$ e $q'=f(p')$, portanto
+		\begin{align*}
+		\dist{f\inv(q)}{f\inv(q')} &= \dist{f\inv(f(p))}{f\inv(f(p'))} \\
+			&= \dist{p}{p'} \\
+			&\leq c \dist{f(p)}{f(p')} \\
+			&= c \dist{q}{q'},
+		\end{align*}
+	o que mostra que $f\inv$ é controlada.
 
+	\item ($\Leftarrow$) Como $f$ é função controlada injetiva e $\card{M}>1$, segue de \ref{prop:distorcao.injetiva.sobrejetiva} que $\distor{f}>0$. A injetividade de $f$ implica que $f\inv$ é sobrejetiva e que $\card{f(M)}>0$, segue de \ref{prop:distorcao.injetiva.sobrejetiva} que $\distor{f\inv}>0$. Definindo $c := \distor{f} \opmax \distor{f\inv}$, segue que $c > 0$, $c \geq \distor{f}$ e $c\inv \leq \distor{f\inv}\inv$.
+	
+	Como $f$ é função controlada, então, para todos $p,p' \in M$,
+		\begin{equation*}
+		\dist{f(p)}{f(p')} \leq \distor{f} \dist{p}{p'} \leq c \dist{p}{p'}.
+		\end{equation*}
+	
+	Como a inversa à esquerda $f\inv$ é função controlada, então, para todos $p,p' \in M$,
+		\begin{align*}
+		c\inv \dist{p}{p'} &= c\inv \dist{f\inv(f(p))}{f\inv(f(p'))} \\
+			&\leq c\inv \distor{f\inv} \dist{f(p)}{f(p')} \\
+			&\leq c\inv c\dist{f(p)}{f(p')} \\
+			&= \dist{f(p)}{f(p')}.
+		\end{align*}
+	Portanto
+		\begin{equation*}
+		c\inv \dist{p}{p'} \leq \dist{f(p)}{f(p')} \leq c \dist{p}{p'}.
+		\qedhere
+		\end{equation*}
+	\end{itemize}
+\end{proof}
+
+\begin{proposition}
+Sejam $\bm M$ e $\bm M'$ espaços métricos e $\fun{f}{M}{M'}$ um mergulho métrico. Então $f$ é mergulho topológico.
+\end{proposition}
+\begin{proof}
+Segue direto de \ref{prop:mergulho.metrico} que $f$ é contínua, injetiva e sua inversa à esquerda é contínua, portanto $\fun{f}{M}{f(M)}$ é homeomorfismo.
 \end{proof}
 
 \subsection{Homometrias e isometrias}
 
 \begin{definition}
-Sejam $\bm{M_0}$ e $\bm{M_1}$ espaços métricos. Uma \emph{isometria local} ou (\emph{imersão isométrica}) de $\bm{M_0}$ para $\bm{M_1}$ é uma função $f\colon M_0 \to M_1$ que satisfaz, para todos $p,p' \in M_0$,
+Sejam $\bm M$ e $\bm M'$ espaços métricos. Uma \emph{homometria}%
+	\footnote{Essas funções são também conhecidas como funções métricas, funções não expansoras, entre outros. O nome homometria faz referência a uma relação que essas funções têm com as isometrias, pois elas representam morfismos de espaços métricos cujos respectivos isomorfismos são as isometrias.} %
+de $\bm M$ para $\bm M'$ é uma função controlada $\fun{f}{M}{M'}$ tal que $\distor{f} \leq 1$.
+O conjunto das homometrias de $\bm M$ para $\bm M'$ é denotado $\Met(\bm M,\bm M')$.
+\end{definition}
+
+Uma homometria $f$ satisfaz portanto
 	\begin{equation*}
-	\dist{f(p)}{f(p')}_1 = \dist{p}{p'}_0.
+	\dist{f(p)}{f(p')} \leq \dist{p}{p'}.
+	\end{equation*}
+
+\begin{proposition}
+\label{prop:composicao.homometria}
+Sejam $\bm M, \bm M'$ e $\bm M''$ espaços métricos e $\fun{f}{M}{M'}$ e $\fun{f'}{M'}{M''}$ homometrias. Então $\fun{f' \circ f}{M}{M''}$ é uma homometria.
+\end{proposition}
+\begin{proof}
+Segue de \ref{prop:composicao.controlada} que se $\distor{f} \leq 1$ e $\distor{f'} \leq 1$, então $\distor{f' \circ f} \leq 1$, portanto $f' \circ f$ é uma homometria.
+\end{proof}
+
+\begin{definition}
+Sejam $\bm{M}$ e $\bm{M'}$ espaços métricos. Uma \emph{isometria local} (ou \emph{imersão isométrica}) de $\bm{M}$ para $\bm{M'}$ é uma função $\fun{f}{M}{M'}$ que satisfaz, para todos $p,p' \in M$,
+	\begin{equation*}
+	\dist{f(p)}{f(p')} = \dist{p}{p'}.
 	\end{equation*}
 Uma \emph{isometria} é isometria local bijetiva.
 \end{definition}
 
 \begin{proposition}
-Sejam $\bm{M_0}$ e $\bm{M_1}$ espaços métricos e $f\colon M_0 \to M_1$ uma isometria local. Então $f$ é injetiva.
+Sejam $\bm{M}$ e $\bm{M'}$ espaços métricos e $\fun{f}{M}{M'}$ uma isometria local. Então $f$ é injetiva.
 \end{proposition}
 \begin{proof}
-Sejam $p,p' \in M_0$ tais que $p \neq p'$. Então $\dist{p}{p'}_0 \neq 0$, logo
+Sejam $p,p' \in M$ tais que $p \neq p'$. Então $\dist{p}{p'}_0 \neq 0$, logo
 	\begin{equation*}
-	\dist{f(p)}{f(p')}_1 = \dist{p}{p'}_0 \neq 0,
+	\dist{f(p)}{f(p')} = \dist{p}{p'} \neq 0,
 	\end{equation*}
 o que implica $f(p) \neq f(p')$.
 \end{proof}
 
 \begin{proposition}
-Sejam $\bm{M_0}$ e $\bm{M_1}$ espaços métricos e $f\colon M_0 \to M_1$ uma homometria injetiva cuja inversa à esquerda é homometria. Então $f$ é uma isometria local.
+Sejam $\bm{M}$ e $\bm{M'}$ espaços métricos e $\fun{f}{M}{M'}$ uma homometria injetiva cuja inversa à esquerda é homometria. Então $f$ é uma isometria local.
 \end{proposition}
 \begin{proof}
-Sejam $p,p' \in M_0$. Então, como $f$ é homometria,
+Sejam $p,p' \in M$. Então, como $f$ é homometria,
 	\begin{equation*}
-	\dist{f(p)}{f(p')}_1 \leq \dist{p}{p'}_0
+	\dist{f(p)}{f(p')} \leq \dist{p}{p'}
 	\end{equation*}
 e, como $f\inv$ é homometria,
 	\begin{equation*}
-	\dist{p}{p'}_0 = \dist{(f\inv \circ f(p)}{f\inv \circ f(p')}_1 \leq \dist{f(p)}{f(p')}_1;
+	\dist{p}{p'} = \dist{f\inv \circ f(p)}{f\inv \circ f(p')} \leq \dist{f(p)}{f(p')};
 	\end{equation*}
-portanto  $\dist{p}{p'}_0 = \dist{f(p)}{f(p')}_1$.
+portanto  $\dist{p}{p'} = \dist{f(p)}{f(p')}$.
 \end{proof}
 
 \begin{proposition}
-Sejam $\bm{M_0}$ e $\bm{M_1}$ espaços métricos e $f\colon M_0 \to M_1$ homometria. A função $f$ é isometria se, e somente se, é invertível e sua inversa é homometria.
+Sejam $\bm{M}$ e $\bm{M'}$ espaços métricos e $\fun{f}{M}{M'}$ homometria. A função $f$ é isometria se, e somente se, é invertível e sua inversa é homometria.
 \end{proposition}
 \begin{proof}
-Suponhamos que $f$ é isometria. Então $f$ é bijetiva e, portanto, invertível. Sua inversa satisfaz, para todos $p,p' \in M_1$,
+Suponhamos que $f$ é isometria. Então $f$ é bijetiva e, portanto, invertível. Sua inversa satisfaz, para todos $p,p' \in M'$,
 	\begin{equation*}
-	\dist{f\inv(p)}{f\inv(p')}_0 = \dist{f(f\inv(p))}{f(f\inv(p'))}_1 = \dist{p}{p'}_0.
+	\dist{f\inv(p)}{f\inv(p')} = \dist{f(f\inv(p))}{f(f\inv(p'))} = \dist{p}{p'}.
 	\end{equation*}
 Portanto $f\inv$ é isometria local, logo homometria.
 
@@ -1048,29 +1202,48 @@ Reciprocamente, suponhamos que $f$ é invertível e sua inversa é homometria. S
 
 \subsection{Contrações}
 
-\begin{proposition}[Ponto Fixo para Contrações]
-Sejam $\bm M$ um espaço métrico completo e $f\colon M \to M$ uma contração. Existe único ponto fixo $\bar p \in M$ para $f$ e, para todo $p \in M$,
+\begin{definition}
+Sejam $\bm M$ e $\bm M'$ espaços métricos. Uma \emph{contração} de $\bm M$ para $\bm M'$ é uma função controlada $\fun{f}{M}{M'}$ tal que $\distor{f} < 1$.
+\end{definition}
+
+Uma contração $f$ satisfaz portanto
+	\begin{equation*}
+	\dist{f(p)}{f(p')} < \dist{p}{p'}.
+	\end{equation*}
+Em particular, uma contração é uma homometria.
+
+\begin{proposition}
+\label{prop:composicao.contracao}
+Sejam $\bm M, \bm M'$ e $\bm M''$ espaços métricos e $\fun{f}{M}{M'}$ e $\fun{f'}{M'}{M''}$ contrações. Então $\fun{f' \circ f}{M}{M''}$ é uma contração.
+\end{proposition}
+\begin{proof}
+Segue de \ref{prop:composicao.controlada} que se $\distor{f} < 1$ e $\distor{f'} < 1$, então $\distor{f' \circ f} < 1$, portanto $f' \circ f$ é uma contração.
+\end{proof}
+
+\begin{proposition}[Ponto fixo para contrações]
+\label{prop:ponto.fixo.contracao}
+Sejam $\bm M$ um espaço métrico completo não vazio e $\fun{f}{M}{M}$ uma contração. Existe único ponto fixo $\bar p \in M$ para $f$ e, para todo $p \in M$,
 	\begin{equation*}
 	\lim_{n \to \infty} f^n(p) = \bar p.
 	\end{equation*}
 \end{proposition}
 \begin{proof}
-Seja $c \in \intfa{0}{\infty}$ a constante de contração de $f$. Mostremos por indução que, para todos $p \in M$ e $n \in \N$,
+Mostremos por indução que, para todos $p \in M$ e $n \in \N$,
 	\begin{equation*}
-	\dist{f^n(p)}{f^{n+1}(p)} \leq c^n \dist{p}{f(p)}.
+	\dist{f^n(p)}{f^{n+1}(p)} \leq \distor{f}^n \dist{p}{f(p)}.
 	\end{equation*}
 Claramente, para $n=0$ isso claramente vale. Agora, suponhamos que a desigualdade valha para $n=k$ e mostremos que ela vale para $n=k+1$. Como $f$ é contração,
 	\begin{equation*}
-	\dist{f^k(p)}{f^{k+1}(p)} \leq c \dist{f^{k-1}(p)}{f^k(p)} \leq c c^{k-1} \dist{p}{f(p)} = c^k \dist{p}{f(p)}.
+	\dist{f^k(p)}{f^{k+1}(p)} \leq \distor{f} \dist{f^{k-1}(p)}{f^k(p)} \leq \distor{f} \distor{f}^{k-1} \dist{p}{f(p)} = \distor{f}^k \dist{p}{f(p)}.
 	\end{equation*}
 Agora, notemos que, para todos $n,p \in \N$, segue da desigualdade triangular generalizada que
 	\begin{align*}
 	\dist{f^n(p)}{f^{n+p}(p)} &\leq \sum_{i=0}^{p-1} \dist{f^{n+i}(p)}{f^{n+i+1}(p)} \\
-		&\leq \sum_{i=0}^{p-1} c^{n+i} \dist{p}{f(p)} \\
-		&= c^n\frac{1-c^p}{1-c} \dist{p}{f(p)} \\
-		&\leq \frac{c^n}{1-c} \dist{p}{f(p)},
+		&\leq \sum_{i=0}^{p-1} \distor{f}^{n+i} \dist{p}{f(p)} \\
+		&= \distor{f}^n\frac{1-\distor{f}^p}{1-\distor{f}} \dist{p}{f(p)} \\
+		&\leq \frac{\distor{f}^n}{1-\distor{f}} \dist{p}{f(p)},
 	\end{align*}
-pois $c\geq 0$ implica $1-c^p<1$. Como $c<1$, então $\lim_{n \to \infty} \frac{c^n}{1-c} = 0$, portanto, para todos $n,p \in \N$,
+pois $\distor{f}\geq 0$ implica $1-\distor{f}^p<1$. Como $\distor{f}<1$, então $\lim_{n \to \infty} \frac{\distor{f}^n}{1-\distor{f}} = 0$, portanto, para todos $n,p \in \N$,
 	\begin{equation*}
 	\lim_{n \to \infty} \dist{f^n(p)}{f^{n+p}(p)} = 0,
 	\end{equation*}
@@ -1080,17 +1253,225 @@ o que mostra que $(f^n(p))_{n \in \N}$ é uma sequência aproximante e, como $\b
 	\end{equation*}
 esse ponto $\bar p$ é um ponto fixo. Para mostrarmos que $\bar p$ é único, suponhamos que $p$ é ponto fixo de $f$. Então
 	\begin{equation*}
-	\dist{\bar p}{p} = \dist{f(\bar p)}{f(p)} \leq c \dist{\bar p}{p}
+	\dist{\bar p}{p} = \dist{f(\bar p)}{f(p)} \leq \distor{f} \dist{\bar p}{p}
 	\end{equation*}
-e como $c<1$ isso implica $\dist{\bar p}{p}=0$, logo $\bar p=p$.
+e como $\distor{f}<1$ isso implica $\dist{\bar p}{p}=0$, logo $\bar p=p$.
 \end{proof}
+
+Esse resultado pode parecer trivial por sua demonstração, mas suas consequências na matemática são enormes. Como consequência dessa proposição seguem por exemplo o teorema da função inversa do cálculo diferencial e o teorema de existência e unicidade de equações diferenciais.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \subsection{Semelhanças}
 
 \begin{definition}
-Sejam $\bm{M_0}$ e $\bm{M_1}$ espaços métricos e $c \in \intfa{0}{\infty}$. Uma $c$-\emph{semelhança local} ou (\emph{imersão $c$-semelhante}) de $\bm{M_0}$ para $\bm{M_1}$ é uma função $f\colon M_0 \to M_1$ que satisfaz, para todos $p,p' \in M_0$,
+Sejam $\bm{M}$ e $\bm{M'}$ espaços métricos. Uma \emph{semelhança local} ou (\emph{imersão semelhante}) de $\bm{M}$ para $\bm{M'}$ é uma função $\fun{f}{M}{M'}$ tal que, para algum $c \in \intfa{0}{\infty}$, $f$ satisfaz que, para todos $p,p' \in M$,
 	\begin{equation*}
-	\dist{f(p)}{f(p')}_1 = c \dist{p}{p'}_0.
+	\dist{f(p)}{f(p')} = c \dist{p}{p'}.
 	\end{equation*}
 Uma \emph{semelhança} é semelhança local bijetiva.
 \end{definition}
+
+\begin{proposition}
+Sejam $\bm{M}$ e $\bm{M'}$ espaços métricos e $\fun{f}{M}{M'}$ uma semelhança local. Então, para todos $p,p' \in M$,
+	\begin{equation*}
+	\dist{f(p)}{f(p')} = \distor{f} \dist{p}{p'}.
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+Para algum $c \in \intfa{0}{\infty}$, $f$ satisfaz que, para todos $p,p' \in M$,
+	\begin{equation*}
+	\dist{f(p)}{f(p')} = c \dist{p}{p'},
+	\end{equation*}
+o que implica $\distor{f} \leq c$. Se valesse $\distor{f}<c$, então, para todos $p,p' \in M$ tais que $p \neq p'$, seguiria que
+	\begin{equation*}
+	c \dist{p}{p'} = \dist{f(p)}{f(p')} \leq \distor{f}\dist{p}{p'} < c \dist{p}{p'},
+	\end{equation*}
+o que seria uma contradição. Assim $\distor{f} \geq c$, portanto $\distor{f}=c$ e concluímos que
+	\begin{equation*}
+	\dist{f(p)}{f(p')} = \distor{f} \dist{p}{p'}.
+	\qedhere
+	\end{equation*}
+\end{proof}
+
+\begin{proposition}
+\label{prop:}
+Sejam $\bm{M}$ e $\bm{M'}$ espaços métricos e $\fun{f}{M}{M'}$ uma função controlada com $\distor{f}>0$. Então $f$ é semelhança local se, e somente se, $f$ é mergulho métrico e $\distor{f\inv}=\distor{f}\inv$.
+\end{proposition}
+\begin{proof}
+	\begin{itemize}
+	\item ($\Rightarrow$) Suponhamos que $f$ é semelhança local. Mostremos que $f$ é injetiva, sua inversa à esquerda $\fun{f\inv}{f(M)}{M}$ é semelhança e $\distor{f\inv}=\distor{f}\inv$, e seguirá de \ref{prop:mergulho.metrico} que $f$ é mergulho métrico.
+
+	Sejam $p,p' \in M$ tais que $p \neq p'$. Então
+		\begin{equation*}
+		\dist{f(p)}{f(p')} = \distor{f}\dist{p}{p'} > 0
+		\end{equation*}
+	portanto $f(p) \neq f(p')$, o que mostra que $f$ é injetiva.
+
+	Para todos $q,q' \in f(M)$, sejam $p,p' \in M$ tais que $f(p)=q$ e $f(p')=q'$. Então
+		\begin{equation*}
+		\dist{f\inv(q)}{f\inv(q')} = \dist{p}{p'} = \distor{f}\inv\dist{f(p)}{f(p')} = \distor{f}\inv\dist{q}{q'},
+		\end{equation*}
+	o que mostra que $f\inv$ é semelhança e $\distor{f\inv}=\distor{f}\inv$.
+
+	\item ($\Leftarrow$) Se $f$ é mergulho métrico, segue de \ref{prop:mergulho.metrico} que $f$ é função controlada injetiva e sua inversa à esquerda $\fun{f\inv}{f(M)}{M}$ é controlada. Para todos $p,p' \in M$, vale
+		\begin{equation*}
+		\dist{f(p)}{f(p')} \leq \distor{f}\dist{p}{p'}.
+		\end{equation*}
+	Como $\distor{f\inv} = \distor{f}\inv$, vale
+		\begin{equation*}
+			\distor{f}\dist{f\inv(f(p))}{f\inv(f(p'))} \leq \distor{f}\distor{f}\inv\dist{f(p)}{f(p')} = \inv\dist{f(p)}{f(p')}.
+		\end{equation*}
+	Disso concluímos que $\dist{f(p)}{f(p')} = \distor{f}\dist{p}{p'}$.
+	\qedhere
+	\end{itemize}
+\end{proof}
+
+
+
+
+
+
+
+
+\section{Comprimento de caminhos}
+
+Seja $\bm M$ um espaço métrico. Lembremos que um caminho em $\bm M$ é uma função contínua $\fun{c}{\intff{a}{a'}}{M}$, em que $\intff{a}{a'} \subseteq \R$ é um intervalo compacto não degenerado, e o ponto inicial de $c$ é $c(a)$ e o ponto final de $c$ é $c(a')$. Uma reparametrização de $c$ é um caminho $\fun{c'}{\intff{b}{b'}}{X}$ tal que, para algum homeomorfismo $\fun{h}{\intff{b}{b'}}{\intff{a}{a'}}$,
+	\begin{equation*}
+	c' = c \circ h.
+	\end{equation*}
+Além disso, a concatenação de um caminho $\fun{c}{\intff{a}{a'}}{M}$ com um caminho $\fun{c'}{\intff{a'}{a''}}{M}$ é o caminho
+	\begin{align*}
+	\func{c \conca c'}{\intff{a}{a''}}{M}{t}{
+		\begin{cases}
+		c(t),	& t \in \intff{a}{a'} \\
+		c'(t),	& t \in \intff{a'}{a''}.
+		\end{cases}
+	}
+	\end{align*}
+
+Para a definição do comprimento de um caminho, usamos o conceito de uma partição por intervalos de $\intff{a}{a'}$.
+
+\begin{definition}
+Sejam $\intff{a}{a'} \subseteq \R$ um intervalo compacto não degenerado e $n \in \N \setminus \{0\}$. Uma \emph{$n$-partição por intervalos} (ou \emph{partição por $n$ intervalos}) de $\intff{a}{a'}$ é uma lista $(t_i)_{i \in [n+1]} \in \R^{n+1}$ tal que
+	\begin{equation*}
+	a = t_0 < \cdots < t_n = a'.
+	\end{equation*}
+O conjunto dessas partições é denotado $\Part_{\intff{a}{a'}}$.
+\end{definition}
+
+Claramente, o conjunto $\{\intfa{t_0}{t_1},\ldots,\intfa{t_{n-2}}{t_{n-1}},\intff{t_{n-1}}{t_{n}}\}$ é uma partição de $\intff{a}{a'}$ e qualquer partição desse tipo define uma $n$-partição por intervalos de $\intff{a}{a'}$.
+
+\begin{definition}
+Sejam $\bm M$ um espaço métrico e $\fun{c}{\intff{a}{a'}}{M}$ um caminho em $\bm M$. O \emph{comprimento} de $c$ é
+	\begin{equation*}
+	\compr{c} := \sup\set{\sum_{i \in [n]} \dist{c(t_i)}{c(t_{i+1})}}{(t_i)_{i \in [n+1]} \in \Part_{\intff{a}{a'}}}.
+	\end{equation*}
+Um caminho \emph{retificável} é um caminho cujo comprimento é finito.
+\end{definition}
+
+O comprimento de uma curva é um número real positivo ou $\infty$.
+
+\begin{proposition}
+Sejam $\bm M$ um espaço métrico e $\fun{c}{\intff{a}{a'}}{M}$, $\fun{c'}{\intff{a'}{a''}}{M}$ caminhos em $\bm M$ tais que $c(a') = c'(a')$. Então
+	\begin{equation*}
+	\compr{c \conca c'} = \compr{c} + \compr{c'}.
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+	\begin{itemize}
+	\item ($\leq$) Seja $(t''_i)_{i \in [n''+1]} \in \Part_{\intff{a}{a''}}$ uma partição por intervalos. Defina $n := \min\set{i \in [n'']}{a' \leq t_i}$, de modo que valha $t_{n-1} < a' \leq t_n$. Defina a partição por intervalos $(t_i)_{i \in [n+1]}$ de $\intff{a}{a'}$ por
+		\begin{equation*}
+		t_i := \begin{cases}
+				t''_i,	& 0 \leq i \leq n-1 \\
+				a',		& i = n.
+				\end{cases}
+		\end{equation*}
+	Se $a' = t_n$, defina $n' := n''-n$ e a partição por intervalos $(t'_i)_{i \in [n'+1]} := (t''_{i-n})_{i \in [n'+1]}$ de $\intff{a'}{a''}$; se $a' < t_n$, defina $n' := n''+1-n$ e a partição por intervalos $(t'_i)_{i \in [n'+1]}$ de $\intff{a'}{a''}$ por
+		\begin{equation*}
+		t_i := \begin{cases}
+				a',				& i=0 \\
+				t''_{i+1-n},	& 1 \leq i \leq n'.
+				\end{cases}
+		\end{equation*}
+	Em ambos os casos, vale
+		\begin{align*}
+		\dist{c \conca c'(t''_{n-1})}{c \conca c'(t''_n)} &\leq \dist{c \conca c'(t''_{n-1})}{c \conca c'(a')} + \dist{c \conca c'(a')}{c \conca c'(t''_n)} \\
+			&= \dist{c(t''_{n-1})}{c(a')} + \dist{c'(a')}{c'(t''_n)},
+		\end{align*}
+	portanto
+		\begin{align*}
+		\sum_{i \in [n'']} \dist{c \conca c'(t''_i)}{c \conca c'(t''_{i+1})} &= \sum_{i=0}^{n-2} \dist{c \conca c'(t''_i)}{c \conca c'(t''_{i+1})} \\
+			&+ \dist{c \conca c'(t''_{n-1})}{c \conca c'(t''_n)} \\
+			&+ \sum_{i=n}^{n''-1} \dist{c \conca c'(t''_i)}{c \conca c'(t''_{i+1})} \\
+			&\leq \sum_{i=0}^{n-2} \dist{c(t''_i)}{c(t''_{i+1})} \\
+			&+ \dist{c(t_{n-1})}{c(a')} + \dist{c'(a')}{c'(t_n)} \\
+			&+ \sum_{i=n}^{n''-1} \dist{c'(t''_i)}{c'(t''_{i+1})} \\
+			&= \sum_{i=0}^{n-1} \dist{c(t_i)}{c(t_{i+1})} + \sum_{i=0}^{n'-1} \dist{c'(t'_i)}{c'(t'_{i+1})}.
+		\end{align*}
+	Disso concluímos que $\compr{c \conca c'} \leq \compr{c} + \compr{c'}$.
+
+	\item ($\geq$) Sejam $(t_i)_{i \in [n+1]} \in \Part_{\intff{a}{a'}}$ e $(t'_i)_{i \in [n'+1]} \in \Part_{\intff{a'}{a''}}$ partições por intervalos. Defina $n'' := n+n'$ e a partição por intervalos $(t''_i)_{i \in [n''+1]}$ de $\intff{a}{a''}$ por
+		\begin{equation*}
+		t''_i := \begin{cases}
+				t_i,	& 0 \leq i \leq n \\
+				t'_i,	& 1 \leq i \leq n'.
+				\end{cases}
+		\end{equation*}
+	Segue então que
+		\begin{align*}
+		\sum_{i=0}^{n-1}& \dist{c(t_i)}{c(t_{i+1})} + \sum_{i=0}^{n'-1} \dist{c'(t'_i)}{c'(t'_{i+1})} \\
+			&= \sum_{i=0}^{n-1} \dist{c \conca c'(t''_i)}{c \conca c'(t''_{i+1})} + \sum_{i=n}^{n''-1} \dist{c \conca c'(t''_i)}{c \conca c'(t''_{i+1})} \\
+			&= \sum_{i \in [n'']} \dist{c \conca c'(t''_i)}{c \conca c'(t''_{i+1})}.
+		\end{align*}
+	Disso concluímos que $\compr{c} + \compr{c'} \leq \compr{c \conca c'}$.
+	\end{itemize}
+\end{proof}
+
+\begin{proposition}
+Sejam $\bm M$ um espaço métrico, $\fun{c}{\intff{a}{a'}}{M}$ um caminho e $\fun{h}{\intff{b}{b'}}{\intff{a}{a'}}$ um homeomorfismo. Então
+	\begin{equation*}
+	\compr{c \circ h} = \compr{c}.
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+Basta mostrar que $\compr{c \circ h} \leq \compr{c}$ pois, como $h$ é homeomorfismo, sua inversa $\fun{h\inv}{\intff{a}{a'}}{\intff{b}{b'}}$ é homeomorfismo e $(c \circ h) \circ h\inv = c$, portanto seguirá que
+	\begin{equation*}
+	\compr{c} = \compr{(c \circ h) \circ h\inv} \leq \compr{c \circ h},
+	\end{equation*}
+logo $\compr{c \circ h} = \compr{c}$.
+
+Seja $(t_i)_{i \in [n+1]} \in \Part_{\intff{b}{b'}}$ uma partição por intervalos. Como $h$ é homeomorfismo, existem duas possibilidades: $h(b)=a$ ou $h(b)=a'$. No primeiro caso, em que $h(b)=a$, vale
+	\begin{equation*}
+	a = h(t_0) < \cdots < h(t_n) = a',
+	\end{equation*}
+portanto, definindo a partição por intervalos $(t'_i)_{i \in [n+1]} := (h(t_i))_{i \in [n+1]}$ de $\intff{a}{a'}$, segue que
+	\begin{equation*}
+	\sum_{i=0}^{n-1} \dist{c\circ h(t_i)}{c \circ h(t_{i+1})} = \sum_{i=0}^{n-1} \dist{c(t'_i)}{c(t'_{i+1})}.
+	\end{equation*}
+Disso concluímos que $\compr{c \circ h} \leq \compr{c}$. No segundo caso, em que $h(b)=a'$, vale
+	\begin{equation*}
+	a = h(t_n) < \cdots < h(t_0) = a',
+	\end{equation*}
+portanto, definindo a partição por intervalos $(t'_i)_{i \in [n+1]} := (h(t_{n-i}))_{i \in [n+1]}$ de $\intff{a}{a'}$, segue que
+	\begin{equation*}
+	\sum_{i=0}^{n-1} \dist{c\circ h(t_i)}{c \circ h(t_{i+1})} = \sum_{i=0}^{n-1} \dist{c(t'_{n-i})}{c(t'_{n-i+1})} = \sum_{i=0}^{n-1} \dist{c(t'_{i})}{c(t'_{i+1})}.
+	\end{equation*}
+Disso concluímos que $\compr{c \circ h} \leq \compr{c}$.
+\end{proof}

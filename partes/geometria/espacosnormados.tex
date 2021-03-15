@@ -499,77 +499,141 @@ portanto as bases de bolas são equivalentes, o que quer dizer que as topologias
 
 
 
-\section{Funções limitadas e norma de funções lineares}
+\section{Funções lineares contínuas}
 
-\begin{definition}
-Sejam $\E$ e $\E'$ espaços normados. Uma função linear \emph{limitada} é uma função linear $L\colon E \to E'$ para a qual existe $c \in \intfa{0}{\infty}$ satisfazendo, para todo $v \in E$,
+%Sejam $\E$ e $\E'$ espaços normados. Um \emph{função linear contínua} de $\E$ para $\E'$ é uma função linear $\fun{L}{\E}{\E'}$ que é linear e contínua. O conjunto dessas funções é denotado $\toplin(\E,\E')$.
+
+Nesta seção, trataremos de funções lineares contínuas entre espaços normados. Espaços normados são ao mesmo tempo espaços topológicos e espaços métricos. Por isso, podemos considerar tanto as funções lineares que são contínuas com respeito à topologia como as que são controladas com respeito à métrica. Vamos a seguir mostrar que para funções lineares essas duas propriedades são equivalentes. Lembremos que uma função $\fun{f}{M}{M'}$ entre espaços métricos $\bm M$ e $\bm M'$ é controlada quando, para algum $c \in \intfa{0}{\infty}$, $f$ satisfaz que, para todos $p,p' \in M$,
 	\begin{equation*}
-	\nor{L(v)}' \leq c \nor{v}.
+	\dist{f(p)}{f(p')} \leq c\dist{p}{p'}.
 	\end{equation*}
-%O conjunto dessas funções é denotado $\toplin(\E,\E')$.
-% Tirei essa parte da definição pois já defini no capítulo de espaços lineares topológicos o conjunto de funções lineares contínuas e aqui o que convém é mostrar que as funções limitadas são dos espaços normados são essas funções.
-\end{definition}
+A norma de uma função controlada é definida como
+	\begin{equation*}
+	\nor{f} = \inf\set{c \in \intfa{0}{\infty}}{\forall_{p,p' \in M} \dist{f(p)}{f(p')} \leq c\dist{p}{p'}}.
+	\end{equation*}
+Essa definição em espaços normados, considerando a distância definida pela norma, é equivalente à seguinte propriedade.
+
+%\begin{definition}
+%Sejam $\E$ e $\E'$ espaços normados. Uma função linear \emph{controlada}%
+%	\footnote{O termo usual é \emph{limitada}, mas esse termo também é usado para funções entre espaços métricos e para subconjuntos de espaços métricos, incluindo sequências limitadas. Para evitar ambiguidade, adotamos aqui o nome alternativo que expressa igualmente --- talvez melhor --- a ideia por trás do conceito.} %
+%é uma função linear $\fun{L}{E}{E'}$ tal que, para algum $c \in \intfa{0}{\infty}$, $L$ satisfaz, para todo $v \in E$,
+%	\begin{equation*}
+%	\nor{L(v)}' \leq c \nor{v}.
+%	\end{equation*}
+%\end{definition}
 
 %Claramente, segue direto da definição que $\Linmet(\E,\E') \subseteq \toplin(\E,\E')$.
 
+\begin{exercise}
+Sejam $\E$ e $\E'$ espaços normados e $\fun{L}{E}{E'}$ uma função linear. Então $f$ é controlada se, e somente se, para algum $c \in \intfa{0}{\infty}$, $L$ satisfaz que, para todo $v \in E$,
+	\begin{equation*}
+	\nor{L(v)} \leq c \nor{v}.
+	\end{equation*}
+Nesse caso, a norma de $L$ satisfaz
+	\begin{equation*}
+	\nor{L} = \inf\set{c \in \intfa{0}{\infty}}{\forall_{v \in \E} \nor{L(v)} \leq c\nor{v}}.
+	\end{equation*}
+\end{exercise}
+
+A norma de uma função linear controlada $L$ é portanto o menor valor tal que vale a desigualdade entre as normas. Vale que
+	\begin{equation*}
+	\nor{L(v)} \leq \nor{L}\nor{v}.
+	\end{equation*}
+
+O termo usual para funções lineares entre espaços normados que satisfazem a condição anterior é `limitada', mas esse termo também é usado com um significado diferente para funções entre espaços métricos e para subconjuntos de espaços métricos, incluindo sequências limitadas. Para evitar ambiguidade, adotamos aqui o nome alternativo que expressa igualmente --- talvez melhor --- a ideia por trás do conceito.
+
 \begin{proposition}
-Sejam $\E$ e $\E'$ espaços normados e $L\colon E \to E'$ uma função linear. Então $L$ é limitada se, e somente se, é contínua.
-%	\begin{equation*}
-%	\toplin(\E,\E') = \lin(\E,\E') \cap \Cont(\E,\E').
-%	\end{equation*}
+Sejam $\E$ e $\E'$ espaços normados e $\fun{L}{E}{E'}$ uma função linear. Então $L$ é controlada se, e somente se, é contínua.
 \end{proposition}
 \begin{proof}
-Se $L$ é limitada por uma constante $c \in \intfa{0}{\infty}$, então $L$ é uma função $c$-métrica e, portanto, é contínua.
+Se $L$ é controlada, é uniformemente contínua, portanto contínua (\ref{prop:continuidade.controlada}).
 
 Reciprocamente, suponhamos que $L$ é contínua. Para $v=0$, claramente vale $\nor{L(0)} = 0 \leq 0 - \nor{0}$. Consideremos o seguinte para $v \neq 0$: como $L$ é contínua, é contínua em $0$; portanto existe $\delta \in \intaa{0}{\infty}$ tal que, para todo $v \in E$, se $\nor{v} \leq \delta$ então $\nor{L(v)}' \leq 1$. Sendo assim, seja $v \in \E \setminus \{0\}$. Então, como $\nor{\delta\frac{v}{\nor{v}}}=\delta$, segue que
 	\begin{equation*}
 	\nor{L(v)}' = \nor{L\left(\frac{\nor{v}}{\delta}\frac{\delta}{\nor{v}}v\right)}' = \nor{\frac{\nor{v}}{\delta}L\left(\delta\frac{v}{\nor{v}}\right)}' = \frac{\nor{v}}{\delta}\nor{L\left(\delta\frac{v}{\nor{v}}\right)}' \leq \frac{1}{\delta}\nor{v},
 	\end{equation*}
-o que mostra que $L$ é limitada.
+o que mostra que $L$ é controlada.
 \end{proof}
 
-\begin{definition}
-Sejam $\E$ e $\E'$ espaços normados e $L \in \toplin(\E, \E')$ uma função linear contínua. A \emph{norma} de $L$ é
-	\begin{equation*}
-	\nor{L} := \inf\set{c \in \intfa{0}{\infty}}{\forall_{v \in \E} \nor{L(v)} \leq c\nor{v}}.
-	\end{equation*}
-\end{definition}
+%\begin{definition}
+%Sejam $\E$ e $\E'$ espaços normados e $L \in \toplin(\E, \E')$ uma função linear contínua. A \emph{norma} de $L$ é
+%	\begin{equation*}
+%	\nor{L} := \inf\set{c \in \intfa{0}{\infty}}{\forall_{v \in \E} \nor{L(v)} \leq c\nor{v}}.
+%	\end{equation*}
+%\end{definition}
 
+%Essa definição coincide com a norma de uma função controlada entre espaços métricos.
 
-
-\begin{proposition}
+\begin{exercise}
 Sejam $\E$ e $\E'$ espaços normados e $L \in \toplin(\E, \E')$ uma função linear contínua.
 	\begin{enumerate}
 	\item Para todo $v \in E$,
 		\begin{equation*}
-		\nor{Lv} \leq \nor{L}\nor{v};
+		\nor{L(v)} \leq \nor{L}\nor{v};
 		\end{equation*}
 		
-	\item 
+	\item Valem as seguintes igualdades:
 		\begin{align*}
-		\nor{L} &= \sup \set{\frac{\nor{L(v)}}{\nor{v}}}{v \in \E \setminus \{0\}} \\
-		& = \sup \set{\frac{\nor{L(v)}}{\nor{v}}}{v \in \B} \\
-		&= \sup\set{\nor{L(v)}}{v \in \S}.
+		\nor{L} &= \inf\set{c \in \intfa{0}{\infty}}{\forall_{v \in \E} \nor{L(v)} \leq c\nor{v}} \\
+			&= \sup \set{\nor{L(v)}}{v \in \Fec{\B}} \\
+			&= \sup \set{\nor{L(v)}}{v \in \B} \\
+			&= \sup \set{\nor{L(v)}}{v \in \S \cup \{0\}} \\
+			&= \sup\set{\nor{L(v)}}{v \in \S} \\
+			&= \sup \set{\frac{\nor{L(v)}}{\nor{v}}}{v \in \B \setminus \{0\}}.
 		\end{align*}
 	\end{enumerate}
+\end{exercise}
+%\begin{proof}
+%	\begin{enumerate}
+%	\item Segue direto da definição.
+%
+%	\item Como $L$ é linear, segue que, para todo $v \in E\setminus\{0\}$,
+%	\begin{equation*}
+%	\nor{L(v)} = \nor{\nor{v}L\left(\frac{v}{\nor{v}}\right)} = \nor{v}\nor{L\left(\frac{v}{\nor{v}}\right)},
+%	\end{equation*}
+%portanto $\nor{L(v)} \leq c\nor{v}$ se, e somente se, $\nor{L\left(\frac{v}{\nor{v}}\right)} \leq c$. Isso implica que
+%	\begin{equation*}
+%	\nor{L} = \sup\set{\nor{L(v)}}{v \in \S}.
+%	\end{equation*}
+%	\end{enumerate}
+%\end{proof}
+
+Note que, caso $E = \{0\}$, os conjuntos das duas últimas igualdades são vazios, e nesse caso devemos ressaltar que o supremo é tomado sobre $\intfa{0}{\infty}$, portanto o supremo de $\emptyset$ é $0$.
+
+
+\begin{proposition}
+\label{prop:distorcao.seminorma}
+Sejam $\bm M$ um espaço métrico e $\E$ um espaço normado sobre um corpo normado $(\bm C,\abs{\var})$. A função
+	\begin{align*}
+	\func{\nor{\var}}{\Met(\bm M,\E)}{\R}{f}{\nor{f}}
+	\end{align*}
+é uma seminorma no espaço $\Met(\bm M,\E)$ das funções controladas de $\bm M$ para $\E$.
 \end{proposition}
 \begin{proof}
 	\begin{enumerate}
-	\item Segue direto da definição.
+	\item (Homogeneidade absoluta) Para $c=0$ a demonstração é imediata; suponhamos $c \neq 0$. Para todos $p,p' \in M$,
+		\begin{equation*}
+		\nor{cf(p)-cf(p')} = \abs{c}\nor{f(p)-f(p')} \leq \abs{c}\nor{f}\dist{p}{p'},
+		\end{equation*}
+	o que mostra que $\nor{cf} \leq \abs{c}\nor{f}$. Por outro lado,
+		\begin{align*}
+		\nor{f(p)-f(p')} &= \abs{c}\inv\abs{c}\nor{f(p)-f(p')} \\
+			&= \abs{c}\inv\nor{cf(p)-cf(p')} \\
+			&\leq \abs{c}\inv\nor{cf}\dist{p}{p'},
+		\end{align*}
+	o que mostra que $\nor{f} \leq \abs{c}\inv\nor{cf}$. Assim segue que $\nor{cf} = \abs{c}\nor{f}$.
 
-	\item Como $L$ é linear, segue que, para todo $v \in E\setminus\{0\}$,
-	\begin{equation*}
-	\nor{L(v)} = \nor{\nor{v}L\left(\frac{v}{\nor{v}}\right)} = \nor{v}\nor{L\left(\frac{v}{\nor{v}}\right)},
-	\end{equation*}
-portanto $\nor{L(v)} \leq c\nor{v}$ se, e somente se, $\nor{L\left(\frac{v}{\nor{v}}\right)} \leq c$. Isso implica que
-	\begin{equation*}
-	\nor{L} = \sup\set{\nor{L(v)}}{v \in \S}.
-	\end{equation*}
+	\item (Subaditividade) Para todos $p,p' \in M$,
+		\begin{align*}
+		\nor{(f+f')(p) - (f+f')(p')} &= \nor{f(p)+f'(p) - f(p')-f'(p')} \\
+			&\leq \nor{f(p) - f(p')} + \nor{f'(p) - f'(p')} \\
+			&\leq \nor{f}\dist{p}{p'} + \nor{f'}\dist{p}{p'} \\
+			&= (\nor{f} + \nor{f'})\dist{p}{p'},
+		\end{align*}
+	o que mostra que $\nor{f+f'} \leq \nor{f} + \nor{f'}$.
+	\qedhere
 	\end{enumerate}
 \end{proof}
-
-
-
 
 \begin{proposition}
 Sejam $\E$ e $\E'$ espaços normados. A função
@@ -580,42 +644,14 @@ Sejam $\E$ e $\E'$ espaços normados. A função
 \end{proposition}
 \begin{proof}
 	\begin{enumerate}
-	\item (Separação) Seja $0 \in \toplin(\E,\E')$. Para todo $v \in E$,
-	\begin{equation*}
-	\nor{0(v)} = \nor{0}=0\nor{v},
-	\end{equation*}
-portanto $\nor{0}=0$.
+	\item (Separação) Seja $L \in \toplin(\E,\E')$ tal que $\nor{L}=0$. De \ref{prop:norma.injetiva.sobrejetiva} segue que $L$ é constante e, como $L(0)=0$, $L=0$.
 	
-	\item (Homogeneidade absoluta) Sejam $c \in C$ e $L \in \toplin(\E,\E')$. Se $c=0$, $\nor{0L}=\nor{0}=0$. Se $c \neq 0$, para todo $v \in E$ vale
-	\begin{equation*}
-	\nor{(cL)(v)} = \nor{cL(v)} = \abs{c}\nor{L(v)} \leq \abs{c}\nor{L}\nor{v}.
-	\end{equation*}
-Como $\nor{L}$ é ínfimo, então $\abs{c}\nor{L}$ deve ser também; caso contrário existiria $c \in \intfa{0}{\infty}$ tal que
-	\begin{equation*}
-	\abs{c}\nor{L(v)} \leq c\nor{v} < \abs{c}\nor{L}\nor{v},
-	\end{equation*}
-e seguiria que
-	\begin{equation*}
-	\nor{L(v)} \leq \frac{c}{\abs{c}}\nor{v} < \nor{L}\nor{v},
-	\end{equation*}
-o que contradiz a infimidade de $\nor{L}$.
+	\item (Homogeneidade absoluta) Segue de \ref{prop:distorcao.seminorma}.
 	
-	\item (Subaditividade) Sejam $L,L' \in \toplin(\E,\E')$. Para todo $v \in E$,
-	\begin{align*}
-	\nor{(L+L')(v)} &= \nor{L(v)+L'(v)} \\
-		&\leq \nor{L(v)} + \nor{L'(v)} \\
-		&\leq \nor{L}\nor{v} + \nor{L'}\nor{v} \\
-		&= (\nor{L}+\nor{L'})\nor{v},
-	\end{align*}
-portanto $\nor{L+L'} \leq \nor{L}+\nor{L'}$. \qedhere
+	\item (Subaditividade) Segue de \ref{prop:distorcao.seminorma}.
+	\qedhere
 	\end{enumerate}
 \end{proof}
-
-
-
-
-
-
 
 
 
@@ -632,15 +668,15 @@ Espaços normados completos são espaços normados que são completos com respei
 Sejam $\bm E$ um espaço linear sobre um corpo normado $(\bm C,\abs{\var})$ e $\nor{\var}, \nor{\var}'$ normas equivalentes em $\bm E$. O espaço $(\bm E,\nor{\var})$ é completo se, e somente se, $(\bm E,\nor{\var}')$ é completo.
 \end{proposition}
 
-Essa proposição mostra que, além de induzirem a mesma topologia, a propriedade completude --- que faz parte da estrutura uniforme, e não topológica, do espaço --- também é induzida por normas equivalentes.
+Essa proposição mostra que, além de induzirem a mesma topologia, a propriedade de completude --- que faz parte da estrutura uniforme, e não topológica, do espaço --- também é induzida por normas equivalentes.
 
-\begin{proposition}
+\begin{exercise}
 Sejam $\bm X$ um espaço topológico separado compacto e $(\bm C,\abs{\var})$ um corpo normado. A função
 	\begin{align*}
 	\func{\nor{\var}}{\Cont(X,C)}{\intfa{0}{\infty}}{f}{\sup_{x \in X} \abs{f(x)} = \max_{x \in X} \abs{f(x)}}
 	\end{align*}
 é uma norma em $\Cont(\bm X,\bm C)$ e, se $(\bm C,\abs{\var})$ é completo, o espaço $(\Cont(\bm X,\bm C),\nor{\var})$ é completo.
-\end{proposition}
+\end{exercise}
 
 
 
@@ -1065,9 +1101,9 @@ Nesta seção, trabalharemos com pares de números $p,q \in \intff{1}{\infty}$ t
 	\begin{equation*}
 	p\inv + q\inv = 1.
 	\end{equation*}
-Esses números $p$ e $q$ são às vezes chamados de `conjugados de Hölder'. Como $p\inv + q\inv = 1$, segue que $q = \frac{p}{p-1}$. Além disso, esses são os pares de números cuja média harmônica é igual a $2$, já que
+Esses números $p$ e $q$ são às vezes chamados de `conjugados de Hölder'. Como $p\inv + q\inv = 1$, segue que $q = \frac{p}{p-1}$. Além disso, esses são os pares de números cuja média harmônica $M_{-1}$ é igual a $2$, já que
 	\begin{equation*}
-	H(p,q) = \frac{2}{p\inv + q\inv} = 2.
+	M_{-1}(p,q) = \frac{2}{p\inv + q\inv} = 2.
 	\end{equation*}
 Por causa disso, chamaremos esses números de \textit{duais harmônicos}\footnote{A escolha do termo \textit{dual} ficará clara mais adiante, quando forem analisadas as propriedades do espaço dual de $\Intg^p$}. O fato de $2$ ser o dual de $2$ será relevante na teoria de espaços com produto interno completos. Sob essa perspectiva, $2$ está no `meio da caminho' entre $1$ e $\infty$. Deve-se comentar a respeito de $p=1$ ou $p=\infty$. Consideraremos que $1$ e $\infty$ são duais harmônicos, como se tivéssemos $\infty\inv=0$, de modo que $1\inv + \infty\inv = 1$. Em geral, no entanto, tomaremos cuidado para não realizarmos operações mal definidas com $0$ e $\infty$, e na prática bastará a afirmação de que $1$ e $\infty$ são conjugados.
 
@@ -1461,7 +1497,7 @@ Seja $\bm X$ um espaço de medida e $(\bm C,\abs{\var})$ um corpo normado (compl
 \begin{definition}
 Sejam $\E$ e $\E'$ espaços normados. Uma \emph{isometria linear local} de $\E$ para $\E'$ é uma função linear $L\colon E \to E'$ tal que, para todo $v \in E$,
 	\begin{equation*}
-	\nor{L(v)}' = \nor{v}.
+	\nor{L(v)} = \nor{v}.
 	\end{equation*}
 O conjunto dessas funções é $\Linmet(\E,\E')$. Uma \emph{isometria linear} é uma isometria linear local bijetiva.
 \end{definition}
@@ -1473,30 +1509,127 @@ Uma isometria linear local é uma isometria local com respeito à distância ind
 
 De modo mais geral, para $c \in \intfa{0}{\infty}$ podemos definir funções $c$-métricas lineares como funções que satisfazem, para todo $v \in E$,
 	\begin{equation*}
-	\nor{L(v)}' \leq c \nor{v}.
+	\nor{L(v)} \leq c \nor{v}.
 	\end{equation*}
 
-Essas funções lineares são as funções lineares limitadas.
+Essas funções lineares são as funções lineares controladas.
 
 
 
 \subsection{Os grupos lineares geral e especial de transformações e de isometrias}
 
-O espaço normado $\Iso{\toplin}(\E)$ das transformações lineares contínuas invertíveis é um grupo com respeito à operação de composição, chamado \emph{grupo de transformações lineares de $\E$}. Esse grupo é geralmente chamado de \emph{grupo linear geral} e denotado $GL(\E)$ e, se $\E=C^d$, $C$ o corpo de escalares, denota-se $GL_d(C)$.
+O espaço normado $\Iso{\toplin}(\E)$ das transformações lineares contínuas invertíveis é um grupo com respeito à operação de composição, chamado \emph{grupo de transformações lineares de $\E$}. Esse grupo é geralmente chamado de \emph{grupo linear geral} e denotado $\GL(\E)$ e, se $\E=C^d$, $C$ o corpo de escalares, denota-se $\GL_d(C)$.
 
-O conjunto das transformações de $\Iso{\toplin}(\E)$ que têm determinante unitário é um subgrupo, pois se $\det(f)=\det(f')=1$, então $\det(f' \circ f)=\det(f')\det(f)=1$. Esse grupo é geralmente chamado de \emph{grupo linear especial} e denotado $SL(\E)$ e, se $\E=C^d$, $C$ o corpo de escalares, denota-se $SL_d(C)$.
+O conjunto das transformações de $\Iso{\toplin}(\E)$ que têm determinante unitário é um subgrupo, pois se $\det{f}=\det{f'}=1$, então $\det{f' \circ f}=\det{f'}\det{f}=1$. Esse grupo é geralmente chamado de \emph{grupo linear especial} e denotado $\SL(\E)$ e, se $\E=C^d$, $C$ o corpo de escalares, denota-se $\SL_d(C)$.
 
-O espaço normado $\Iso{\Linmet}(\E)$ das transformações lineares contínuas invertíveis que preservam a norma é um subgrupo de $\Iso{\toplin}(\E)$, chamado \emph{grupo linear de isometrias de $\E$}. Esse grupo é geralmente chamado de \emph{grupo ortogonal} e denotado $O(\E)$ e, se $\E=C^d$, $C$ o corpo de escalares, denota-se $O_d(C)$.
+O espaço normado $\Iso{\Linmet}(\E)$ das transformações lineares contínuas invertíveis que preservam a norma é um subgrupo de $\Iso{\toplin}(\E)$, chamado \emph{grupo linear de isometrias de $\E$}. Esse grupo é geralmente chamado de \emph{grupo ortogonal} e denotado $\GO(\E)$ e, se $\E=C^d$, $C$ o corpo de escalares, denota-se $\GO_d(C)$.
 
-O conjunto das transformações de $\Iso{\Linmet}(\E)$ que têm determinante unitário é um subgrupo, pois se $\det(f)=\det(f')=1$, então $\det(f' \circ f)=\det(f')\det(f)=1$. Esse grupo é geralmente chamado de \emph{grupo ortogonal especial} e denotado $SO(\E)$ e, se $\E=C^d$, $C$ o corpo de escalares, denota-se $SO_d(C)$.
+O conjunto das transformações de $\Iso{\Linmet}(\E)$ que têm determinante unitário é um subgrupo, pois se $\det{f}=\det{f'}=1$, então $\det{f' \circ f}=\det{f'}\det{f}=1$. Esse grupo é geralmente chamado de \emph{grupo ortogonal especial} e denotado $\SO(\E)$ e, se $\E=C^d$, $C$ o corpo de escalares, denota-se $\SO_d(C)$.
 
 Temos que
 	\begin{align*}
-	SL(\E) &\subseteq GL(\E) \\
-	O(\E) &\subseteq GL(\E) \\
-	SO(\E) &\subseteq O(\E) \\
-	SO(\E) &\subseteq SL(\E)
+	\SL(\E) &\subseteq \GL(\E) \\
+	\GO(\E) &\subseteq \GL(\E) \\
+	\SO(\E) &\subseteq \GO(\E) \\
+	\SO(\E) &\subseteq \SL(\E)
 	\end{align*}
+
+
+\subsection{Perturbação de uma transformação linear}
+
+\begin{proposition}
+\label{prop:lema.contracao}
+Sejam $(\bm E,\nor{\var})$ um espaço normado completo, $X \subseteq E$ um subconjunto e $\fun{f}{X}{E}$ uma contração ($\distor{f}<1$). Para todos $x \in X$ e $r \in \intaa{0}{\infty}$ tal que $\bolafec{x}{r} \subseteq X$ e $\nor{f(x)-x} \leq (1-\distor{f})r$. Então $f$ tem ponto fixo na bola fechada $\bolafec{x}{r}$.
+\end{proposition}
+\begin{proof}
+Basta provar que $f(\bolafec{x}{r}) \subseteq \bolafec{x}{r}$, pois como $\bolafec{x}{r}$ é fechado, é um espaço métrico completo não vazio, e segue do teorema do ponto fixo de contração (\ref{prop:ponto.fixo.contracao}) que $\fun{f}{\bolafec{x}{r}}{\bolafec{x}{r}}$ tem ponto fixo.
+
+Seja $x' \in \bolafec{x}{r}$. Então $\nor{x'-x} \leq r$, portanto
+	\begin{align*}
+	\nor{f(x')-x} &= \nor{f(x') - f(x) + f(x) - x} \\
+		&\leq \nor{f(x') - f(x)} + \nor{f(x) - x} \\
+		&\leq \distor{f}\nor{x'-x} + (1-\distor{f})r \\
+		&\leq \distor{f}r + (1-\distor{f})r \\
+		&= r,
+	\end{align*}
+o que mostra que $f(x') \in \bolafec{x}{r}$, logo $f(\bolafec{x}{r}) \subseteq \bolafec{x}{r}$.
+\end{proof}
+
+\begin{proposition}
+\label{prop:perturbacao.identidade}
+Sejam $(\bm E,\nor{\var})$ um espaço normado completo, $A \subseteq E$ aberto e $\fun{f}{A}{E}$ contração ($\distor{f}<1$). Então
+	\begin{align*}
+	\func{\Id+f}{A}{(\Id+f)(A)}{v}{v+f(v)}
+	\end{align*}
+é um mergulho métrico, $\distor{(\Id+f)\inv} \leq \frac{\distor{f}}{1-\distor{f}}$ e $(\Id+f)(A)$ é aberto. Se $A=E$, então $(\Id + f)(A)=E$.
+\end{proposition}
+\begin{proof}
+Primeiro mostremos que $\Id+f$ é mergulho métrico. Por \ref{prop:distorcao.seminorma} vale $\distor{\Id+f} \leq \distor{\Id} + \distor{f} = 1+\distor{f}$, o que mostra que $\Id + f$ é controlada. Para todos $x,x' \in A$,
+	\begin{align*}
+	(1-\distor{f})\nor{x'-x} &= \nor{x'-x}-\distor{f}\nor{x'-x} \\
+		&\leq \nor{x'-x} - \nor{f(x')-f(x)} \\
+		&\leq \nor{x'-x+f(x')-f(x)} \\
+		&= \nor{(\Id+f)(x') - (\Id+f)(x)},
+	\end{align*}
+o que mostra que $\Id+f$ é injetiva e sua inversa à esquerda é controlada, portanto $f$ é mergulho métrico (\ref{prop:mergulho.metrico}). Ainda, $\distor{(\Id+f)\inv} \leq \frac{\distor{f}}{1-\distor{f}}$.
+
+Agora, mostremos que $(\Id+f)(A)$ é aberto. Seja $y_0 \in (\Id+f)(A)$. Para algum $x_0 \in A$, $y_0 = (\Id + f)(x_0) = x_0 + f(x_0)$. Como $A$ é aberto, para algum $r \in \intaa{0}{\infty}$ vale $\bolafec{x_0}{r} \subseteq A$.
+Seja $y \in \bolafec{y_0}{(1-\distor{f})r}$ e definamos
+	\begin{align*}
+	\func{\phi_y}{\bolafec{x_0}{r}}{E}{x}{y-f(x)}.
+	\end{align*}
+A função $\phi_y$ é uma contração com $\distor{\phi_y} \leq \distor{f}$ pois, para todos $x,x' \in \bolafec{x_0}{r}$,
+	\begin{equation*}
+	\nor{\phi_y(x')-\phi_y(x)} = \nor{y-f(x')-y+f(x)} = \nor{f(x')-f(x)} \leq \distor{f}\nor{x'-x}.
+	\end{equation*}
+Assim, temos $1-\distor{f} \leq 1-\distor{\phi_y}$. Como $y \in \bolafec{y_0}{(1-\nor{f})r}$, segue que
+	\begin{align*}
+	\nor{\phi_y(x_0) - x_0} &= \nor{y-f(x_0)-x_0} \\
+		&= \nor{y-y_0} \\
+		&\leq (1-\distor{f})r \\
+		&\leq (1-\distor{\phi_y})r.
+	\end{align*}
+Assim, por \ref{prop:lema.contracao} existe ponto fixo $\bar x \in \bolafec{x_0}{r}$ de $\phi_y$, ou seja, $\bar x = \phi_y(\bar x) = y-f(\bar x)$, o que equivale a $y = \bar x + f(\bar x) = (\Id+f)(\bar x)$. Concluímos que $y \in (\Id + f)(\bolafec{x_0}{r})$ e portanto que
+	\begin{equation*}
+	\bola{y_0}{(1-\distor{f})r} \subseteq \bolafec{y_0}{(1-\distor{f})r} \subseteq (\Id + f)(\bolafec{x_0}{r}) \subseteq (\Id + f)(A),
+	\end{equation*}
+logo $(\Id + f)(A)$ é aberto.
+
+Por fim, se $A=E$, então para todos $x \in A$ e $r \in \intaa{0}{\infty}$ vale $\bolafec{x}{r} \subseteq A$, portanto $\bolafec{f(x)}{(1-\distor{f})r} \subseteq f(A)$. Para todo $n \in \N$, tomando $r = n \div (1-\distor{f})$ segue que
+	\begin{equation*}
+	\bolafec{f(x)}{n} = \bolafec{f(x)}{(1-\distor{f})n \div (1-\distor{f})} \subseteq f(A),
+	\end{equation*}
+portanto $E = \bigcup_{n \in \N} \bolafec{f(x)}{n} \subseteq f(A)$, o que mostra que $f(A)=E$.
+\end{proof}
+
+Em particular, isso mostra que $\fun{\Id+f}{A}{(\Id+f)(A)}$ é um homeomorfismo. O conjunto $(\Id + f)(A)$ ser aberto equivale à função $\Id + f$ ser aberta.
+
+\begin{proposition}
+\label{prop:perturbacao.linear}
+Sejam $(\bm E,\nor{\var})$ um espaço normado completo, $A \subseteq E$ aberto, $\fun{L}{E}{E}$ isomorfismo linear contínuo e $\fun{f}{A}{E}$ função controlada tal que $\nor{L\inv}\nor{f} < 1$. Então
+	\begin{align*}
+	\func{L+f}{A}{(L+f)(A)}{v}{L(v)+f(v)}
+	\end{align*}
+é um mergulho métrico e $\distor{L+f} \leq \frac{\distor{L}\distor{f}}{\distor{L\inv}\inv-\distor{f}}$.
+\end{proposition}
+\begin{proof}
+A função $\fun{L\inv \circ f}{A}{E}$ é uma contração pois $\distor{L\inv \circ f} \leq \distor{L\inv}\distor{f} < 1$. Como $L\inv \circ (L+f) = \Id + (L\inv \circ f)$, segue de \ref{prop:perturbacao.identidade} que $\fun{L\inv \circ (L+f)}{A}{L\inv \circ (L+f)(A)}$ é mergulho métrico, $\distor{L\inv \circ (L+f)} \leq \frac{\distor{L\inv \circ f}}{1-\distor{L\inv \circ f}}$ e $L\inv \circ (L+f)(A)$ é aberto. Como $L$ é isomorfismo linear contínuo e $L+f = L \circ L\inv \circ (L+f)$, segue que $\fun{L+f}{A}{(L+f)(A)}$ é mergulho métrico e $(L+f)(A)$ é aberto. Como $\distor{L\inv \circ f} \leq \distor{L\inv}\distor{f} < 1$, então $1-\distor{L\inv \circ f} \geq 1-\distor{L\inv}\distor{f} > 0$; segue que
+	\begin{equation*}
+	\distor{L\inv \circ (L+f)} \leq \frac{\distor{L\inv \circ f}}{1-\distor{L\inv \circ f}} 
+		\leq \frac{\distor{L\inv}\distor{f}}{1-\distor{L\inv}\distor{f}} 
+		= \frac{\distor{f}}{\distor{L\inv}\inv-\distor{f}},
+	\end{equation*}
+portanto
+	\begin{equation*}
+	\distor{L+f} = \distor{L \circ L\inv \circ (L+f)} 
+		\leq \distor{L}\distor{L\inv \circ (L+f)} 
+		\leq \frac{\distor{L}\distor{f}}{\distor{L\inv}\inv-\distor{f}}.
+		\qedhere
+	\end{equation*}
+\end{proof}
+
+
+
 
 \section{Funções multilineares}
 
@@ -1532,6 +1665,7 @@ Definindo
 segue que
 	\begin{equation*}
 	\nor{L(v_0,\ldots,v_{n-1})} \leq C \nor{v_0}\cdots\nor{v_{n-1}}.
+	\qedhere
 	\end{equation*}
 \end{proof}
 
@@ -1729,7 +1863,7 @@ e concluímos que $f' \circ f$ é diferenciável em $p$ e $\D f'|_{f(p)} \circ \
 Sejam $d,d' \in \N$, $p \in \R^d$ e $\fun{f,f'}{\R^d}{\R^{d'}}$ diferenciáveis em $p$. Então
 	\begin{enumerate}
 	\item $\D (f+f')_p = \D f|_p + \D f'|_p$;
-	\item $\D (ff')|_p = \D f|_p f'(p) + f(p)\D f'|_p;$
+	\item Se $d'=1$, $\D (ff')|_p = \D f|_p f'(p) + f(p)\D f'|_p;$
 	\item Se, para todo $p \in \R^d$, $f'(p) \neq 0$,
 	\begin{equation*}
 	\D \left. \left(\frac{f}{f'}\right) \right|_p = \frac{\D f|_p f'(p) - f(p)\D f'|_p}{f'(p)^2}
@@ -1843,7 +1977,7 @@ que satisfaz
 Sejam $d,d' \in \N$, $p \in \R^d$ e $\fun{f}{\R^d}{\R^{d'}}$ uma função $r$-diferenciável em $p$. Então $f$ é $(r-1)$-diferenciável em $p$.
 \end{proposition}
 \begin{proof}
-Primeiro notemos que, como $D^{(r)}$ é limitada, $\nor{D^{(r)}}$ é finita, logo
+Primeiro notemos que, como $D^{(r)}$ é controlada, $\nor{D^{(r)}}$ é finita, logo
 	\begin{equation*}
 	\lim_{v \conv 0} \frac{D^{(r)}(v^{\otimes r})}{\nor{v}^{r-1}} \leq \lim_{v \conv 0} \frac{\nor{D^{(r)}} \nor{v}^r}{\nor{v}^{r-1}} = \lim_{v \conv 0} \nor{D^{(r)}}\nor{v} = 0.
 	\end{equation*}
@@ -2353,15 +2487,15 @@ logo $\nor{\exp(x)} \leq \e^{\nor{x}}$.
 	
 	\item Primeiro notamos que, para todos $x,y \in A$,
 		\begin{align*}
-		\nor{y^n-x^n} &= \nor{\sum_{i=1}^{n-1} y^{n-i}(y-x)x^i} \\
-			&\leq n\max(\nor{x},\nor{y})^{n-1}\nor{y-x},
+		\nor{y^n-x^n} &= \nor{\sum_{i=1}^{n} y^{n-i}(y-x)x^{i-1}} \\
+			&\leq n(\nor{x} \opmax \nor{y})^{n-1}\nor{y-x},
 		\end{align*}
 portanto
 	\begin{align*}
 	\nor{\exp(y) - \exp(x)} &= \nor{\sum_{n=1}^\infty \frac{y^n-x^n}{n!}} \\
 		&\leq \sum_{n=1}^\infty \frac{\nor{y^n-x^n}}{n!} \\
-		&\leq \sum_{n=1}^\infty \frac{n\max(\nor{x},\nor{y})^{n-1}}{n!} \nor{y-x} \\
-		&= \e^{\max(\nor{x},\nor{y})}\nor{y-x},
+		&\leq \sum_{n=1}^\infty \frac{n(\nor{x} \opmax \nor{y})^{n-1}}{n!} \nor{y-x} \\
+		&= \e^{(\nor{x} \opmax \nor{y})}\nor{y-x},
 	\end{align*}
 o que mostra que $\exp$ é contínua.
 	
