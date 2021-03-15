@@ -414,3 +414,40 @@ Nesse caso, temos um homomorfismo de grupos topológicos (homomorfismo contínuo
 \end{proof}
 
 \end{comment}
+
+
+
+
+
+
+
+
+
+
+
+\section{Medidas em grupos topológicos}
+
+\begin{definition}
+Sejam $\bm G$ um grupo topológico. Uma medida \emph{invariante por translação à direita} sobre $(G,\mens_\topo)$ é uma medida $\med$ sobre $(G,\mens_\topo)$ tal que, para todo $g \in G$ e todo mensurável $M \subseteq G$,
+	\begin{equation*}
+	\med(gM) = \med(M).
+	\end{equation*}
+Uma medida \emph{invariante por translação à esquerda} sobre $(G,\mens_\topo)$ é uma medida $\med$ sobre $(G,\mens_\topo)$ tal que, para todo $g \in G$ e todo mensurável $M \subseteq G$,
+	\begin{equation*}
+	\med(Mg) = \med(M).
+	\end{equation*}
+\end{definition}
+
+\begin{proposition}[\footnote{Este teorema é conhecido como `Teorema de Haar', em homenagem ao matemático húngaro \textit{Alfréd Haar} (11/10/1885 -- 16/03/1933). \url{https://en.wikipedia.org/wiki/Haar_measure}.}]
+Seja $\bm G$ um grupo topológico localmente compacto. Existe uma única (a menos de constante multiplicativa) medida não trivial sobre $(G,\mens_\topo)$ que é
+	\begin{enumerate}
+	\item Invariante por translação à esquerda;
+	\item Finita em conjuntos compactos;
+	\item Exteriormente regular (em conjuntos mensuráveis);
+	\item Interiormente regular em conjuntos abertos.
+	\end{enumerate}
+
+Se $\bm G$ é compacto, existe única medida como acima tal que $\med(G)=1$.
+\end{proposition}
+
+

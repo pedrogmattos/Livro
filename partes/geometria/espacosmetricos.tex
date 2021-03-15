@@ -1346,11 +1346,220 @@ Sejam $\bm{M}$ e $\bm{M'}$ espaços métricos e $\fun{f}{M}{M'}$ uma função co
 
 
 
+\section{Medida em espaços métricos}
+
+\subsection{Medidas exteriores métricas}
+
+\begin{definition}
+Seja $\bm M$ um espaço métrico. Uma medida exterior \emph{métrica} em $\bm M$ é uma medida exterior $\med\colon \p(M) \to \intff{0}{\infty}$ sobre $M$ tal que, para todos $C,C' \subseteq M$ metricamente separados,
+	\begin{equation*}
+	\med(C \cup C') = \med(C) + \med(C').
+	\end{equation*}
+\end{definition}
+
+\begin{proposition}
+\label{prop:criterio.mensur.med.metrica}
+Sejam $\bm M$ um espaço métrico, com $\sigma$-álgebra topológica $\mens_\topo$ e $\med$ uma medida exterior métrica em $\bm M$. Então todo $M \in \mens_\topo$ é $\med$-mensurável.
+\end{proposition}
+\begin{proof}
+Para mostrar isso, mostraremos que todo conjunto fechado é $\med$-mensurável. Basta mostrar que, para todo $C \subseteq M$ com $\med(C) < \infty$ e todo fechado $F \subseteq M$,
+	\begin{equation*}
+	\med(C) \geq \med(C \cap F) + \med(C \cap F^\complement),
+	\end{equation*}
+pois a desigualdade contrária sempre vale por subaditividade e a igualdade vale trivialmente se $\med(C) = \infty$. Consideremos as vizinhanças fechadas
+	\begin{equation*}
+	F_j := \bolafec{F}{\frac{1}{j}} = \set{p \in M}{\dist{F}{p} \leq \frac{1}{j}}.
+	\end{equation*}
+Vale que $\dist{C \cap F}{C \cap F_j^\complement} > 0$, portanto
+	\begin{equation*}
+	\med(C) \geq \med\left( (C \cap F) \cup (C \cap F_j^\complement) \right) = \med(C \cap F) + \med(C \cap F_j^\complement).
+	\end{equation*}
+Resta mostrar agora que $\lim_{j \conv \infty} \med(C \cap F_j^\complement) = \med(C \cap F^\complement)$. Como $F$ é fechado, podemos escrever, para todo $j \in \N^*$,
+	\begin{equation*}
+	C \cap F^\complement = \set{p \in C}{\dist{F}{p} > 0} = (C \cap F_j^\complement) \cup \bigcup_{k=j}^\infty R_k,
+	\end{equation*}
+em que $R_k := C \cap \bolafec{F}{\frac{1}{k}} \setminus \bolafec{F}{\frac{1}{k+1}} = \set{p \in C}{\frac{1}{k+1} < \dist{F}{p} \leq \frac{1}{k}}$. Pela subaditividade de $\med$, segue que
+	\begin{equation*}
+	\med(C \cap F_j^\complement) \leq \med(C \cap F^\complement) \leq \med(C \cap F_j^\complement) + \sum_{k=j}^\infty \med(R_k).
+	\end{equation*}
+Mas note que $\sum_{k=1}^\infty \med(R_k) < \infty$. Isso ocorre pois, para todo $j \geq i+2$, $\dist{F_i}{F_j} > 0$, portanto por indução em $N$ segue que
+	\begin{equation*}
+	\sum_{k=1}^N \med(R_{2k}) = \med\left( \bigcup_{k=1}^N R_{2k} \right) \leq \med(C) < \infty
+	\end{equation*}
+e
+	\begin{equation*}
+	\sum_{k=1}^N \med(R_{2k-1}) = \med\left( \bigcup_{k=1}^N R_{2k-1} \right) \leq \med(C) < \infty.
+	\end{equation*}
+Portanto $\sum_{k=1}^\infty \med(R_k) < \infty$, o que implica que $\lim_{j \conv \infty} \med(C \cap F_j^\complement) = \med(C \cap F^\complement)$, e concluímos que $F$ é $\med$-mensurável, resultando que todo $M \in \mens_\topo$ é $\med$-mensurável.
+\end{proof}
+
+%A recíproca também vale.
+
+\subsection{Medidas por coberturas métricas}
+
+Nesta seção, definiremos uma família de medidas exteriores em um espaço métrico e usaremos essas medidas para definir a dimensão do espaço métrico e de seus subconjuntos mensuráveis. No entanto, é importante ressaltar que existem diferentes definições de medida e de dimensão em espaços métricos e aqui abordaremos somente uma delas, a medida por coberturas métricas. Uma outra abordagem considera, em vez de coberturas métricas, empacotamentos, e essa abordagem chega a resultados semelhantes, mas às vezes distintos dos que chegaremos aqui. Essa abordagem por empacotamentos é, de certa forma, a noção dual da abordagem que estudaremos usando coberturas. No entanto, um paradigma que é em geral seguido é que as dimensões definidas coincidam com as dimensões de espaços lineares como a reta, o plano, e de variedades.
+
+Consideremos a função diâmetro em $\bm M$
+	\begin{align*}
+	\func{\diam}{\p(M)}{[0,\infty]}{C}{\diam(C)}.
+	\end{align*}
+
+Essa função $\diam$ não é uma medida exterior em $M$. Ela satisfaz (1) $\diam(\emptyset)=0$ e (2) Para todos $C,D \subseteq M$ tais que $C \subseteq D$, então $C \times C \subseteq D \times D$, portanto $d(C \times C) \subseteq d(D \times D)$, o que implica
+	\begin{equation*}
+	\diam(C) \leq \diam(D);
+	\end{equation*}
+No entanto, não satisfaz 
+(3) Para todos $(C_i)_{i \in \N}$ subconjuntos de $M$,
+	\begin{equation*}
+	\diam\left( \bigcup_{i \in \N} C_i \right) \leq \sum_{i \in \N} \diam\left( C_i \right).
+	\end{equation*}
+Para ver isso, considere o intervalo $[0,1]$ e os conjuntos $C_i$ como os intervalos de tamanho $\frac{1}{2^{i+2}}$ e que tocam pela direita nos pontos $\frac{1}{2^i}$ do intervalo $[0,1]$. Facilmente nota-se que
+	\begin{equation*}
+	\diam\left( \bigcup_{i \in \N} C_i \right) = 1 > \frac{1}{2} = \sum_{i \in \N} \diam\left( C_i \right).
+	\end{equation*}
+
+Isso ocorre porque a distância entre os conjuntos $C_i$ não é considerada na soma dos diâmetros individuais, mas é considerada na união, e essa distância resulta em $\frac{1}{2}$ nesse caso. Pode-se fazer com que essa diferença seja tão grande quanto se queira.
+
+Definiremos uma família de medidas exteriores em $\bm M$ com um parâmetro $d$, que representa a `dimensão' da medida utilizando a função diâmetro $\diam$. Mas antes brevemente comentamos a definição de cobertura que usaremos.
+
+\begin{definition}
+Sejam $\bm M$ um espaço métrico, $C \subseteq M$ e $\delta \in \intaa{0}{\infty}$. Uma \emph{$\delta$-cobertura} de $C$ é uma cobertura $(C_i)_{i \in I}$ de $C$ tal que, para todo $i \in I$, $\diam(C_i) \leq \delta$. O conjunto de $\delta$-coberturas de $C$ é $\mathcal C_\delta (C)$.
+\end{definition}
+
+\begin{definition}
+Sejam $\bm M$ um espaço métrico, $C \subseteq M$, $d \in \intfa{0}{\infty}$ e $\delta \in \intaa{0}{\infty}$. A \emph{medida $d$-dimensional $\delta$-precisa} de $C$ em $\bm M$ é
+%	\begin{equation*}
+%	H^d_\delta(C) := \inf\set{\sum_{i \in \N} \diam(U_i)^d}{C \subseteq \bigcup_{i \in \N} U_i, \forall i \in \N\ \diam(U_i) \leq \delta}.
+%	\end{equation*}
+	\begin{equation*}
+	H^d_\delta(C) := \inf\set{\sum_{i \in \N} \diam(U_i)^d}{(U_i)_{i \in \N} \in \mathcal C_\delta(C)}.
+	\end{equation*}
+ A \emph{medida $d$-dimensional $\delta$-precisa} em $\bm M$ é a função
+ 	\begin{align*}
+ 	\func{H^d_\delta}{\p(M)}{\intff{0}{\infty}}{C}{H^d_\delta(C)}.
+ 	\end{align*}
+\end{definition}
+
+A sequência $(U_i)_{i \in \N}$ é uma $\delta$-\emph{cobertura} de $C$. Mostremos que $H^d_\delta$ é uma medida exterior em $M$.
+
+\begin{proposition}
+Sejam $\bm M$ um espaço métrico, $d \in \intfa{0}{\infty}$ e $\delta \in \intaa{0}{\infty}$. A função $H^d_\delta\colon \p(M) \to \intff{0}{\infty}$ é uma medida exterior sobre $M$.
+\end{proposition}
+\begin{proof}
+(Conjunto vazio) $H^d_\delta(\emptyset)=0$, pois se tomamos a cobertura vazia $(\emptyset)_{i \in \N}$, temos que $\emptyset \subseteq \bigcup_{i \in \N} \emptyset$ e $\diam(\emptyset)\leq \delta$; (Monotonicidade) Para todos $C,C' \subseteq M$ tais que $C \subseteq C'$, temos que uma $\delta$-cobertura de $C'$ é uma $\delta$-cobertura de $C$, logo $H^d_\delta(C) \leq H^d_\delta(C')$; (Subaditividade contável) Seja $(C_i)_{i \in \N}$ uma sequência de subconjuntos de $M$. Para todos $i \in \N$ e $\varepsilon \in \left]0,\infty\right[$, seja $U^i=(U_{i,j})_{j \in \N}$ é uma cobertura de $C_i$ tal que
+	\begin{equation*}
+	\sum_{j \in \N} \diam(U_{i,j})^d \leq H^d_\delta(C_i) + \frac{\varepsilon}{2^{i+1}}.
+	\end{equation*}
+Essa cobertura existe porque $H^d_\delta(C_i)$ é um ínfimo. Então $(U_{i,j})_{(i,j) \in \N^2}$ é uma cobertura de $\bigcup_{i \in \N} C_i$ e segue que
+	\begin{align*}
+	H^d_\delta\left( \bigcup_{i \in \N} C_i \right) &\leq H^d_\delta\left( \bigcup_{(i,j) \in \N^2} U_{i,j} \right) \\
+		&\leq \sum_{(i,j) \in \N^2} \diam(U_{i,j})^d \\
+		&\leq \sum_{i \in \N} \left( H^d_\delta(C_i) + \frac{\varepsilon}{2^{i+1}} \right) \\
+		&= \sum_{i \in \N} \left( H^d_\delta(C_i)\right) + \sum_{i \in \N}\frac{\varepsilon}{2^{i+1}} \\
+		&= \sum_{i \in \N} \left( H^d_\delta(C_i)\right) + \varepsilon.
+	\end{align*}
+A primeira desigualdade vem da monotonicidade de $H^d_\delta$, a segunda de $H^d_\delta$ ser ínfimo, e a terceira vem da condição para as coberturas $(U_{i,j})_{j \in \N}$. Como isso vale para qualquer $\varepsilon$, segue que
+	\begin{equation*}
+	H^d_\delta\left( \bigcup_{i \in \N} C_i \right) \leq \sum_{i \in \N} H^d_\delta(C_i). \qedhere
+	\end{equation*}
+\end{proof}
+
+
+Definimos agora a medida $H^d$ que independe de $\delta$. Notemos que, se $\delta \leq \delta'$, então $H^d_{\delta'}(C) \leq H^d_\delta(C)$, pois toda cobertura de $C$ com diâmetro $\delta$ é uma cobertura com diâmetro $\delta'$. Isso implica que existe em $\intff{0}{\infty}$ o limite
+	\begin{equation*}
+	\lim_{\delta \conv 0} H^d_\delta(C) = \sup_{\delta \in \intaa{0}{\infty}} H^d_\delta(C).
+	\end{equation*}
+
+\begin{definition}
+Sejam $\bm M$ um espaço métrico e $d \in \intfa{0}{\infty}$. A \emph{medida $d$-dimensional} em $\bm M$ é a função
+ 	\begin{align*}
+ 	\func{H^d}{\p(M)}{\intff{0}{\infty}}{C}{H^d(C) := \sup_{\delta \in \intaa{0}{\infty}} H^d_\delta(C).}
+ 	\end{align*}
+\end{definition}
+
+\begin{proposition}
+Sejam $\bm M$ um espaço métrico e $d \in \intfa{0}{\infty}$. A função
+	\begin{equation*}
+	H^d\colon \p(M) \to \intff{0}{\infty}
+	\end{equation*}
+é uma medida exterior métrica em $M$.
+\end{proposition}
+\begin{proof}
+(Conjunto vazio) $H^d(\emptyset)=0$, pois $H^d_\delta(\emptyset)=0$ para todo $\delta \in \intaa{0}{\infty}$; (Monotonicidade) Para todos $C,C' \subseteq M$ tais que $C \subseteq C'$, temos que $H^d_\delta(C) \leq H^d_\delta(C')$ para todo $\delta \in \intaa{0}{\infty}$, logo $H^d(C) \leq H^d(C')$; (Subaditividade contável) Seja $(C_i)_{i \in \N}$ uma sequência de subconjuntos de $M$. Como para todo $i \in \N$ e $\delta \in \intaa{0}{\infty}$ vale por definição que $H^d_\delta(C_i) \leq H^d(C_i)$, segue que
+	\begin{equation*}
+	H^d_\delta\left( \bigcup_{i \in \N} C_i \right) \leq \sum_{i \in \N} H^d_\delta(C_i) \leq  \sum_{i \in \N} H^d(C_i).
+	\end{equation*}
+Como isso vale para todo $\delta$, segue que
+	\begin{equation*}
+	H^d\left( \bigcup_{i \in \N} C_i \right) \leq \sum_{i \in \N} H^d\left( C_i \right).
+	\end{equation*}
+
+Por fim, pode-se mostrar que, para todos conjuntos $C,C' \in M$ e para todo $\delta < d(C,C')$, tem-se
+	\begin{equation*}
+	H^d_\delta(C \cup C') = H^d_\delta(C) + H^d_\delta(C'),
+	\end{equation*}
+portanto, se $d(C,C') > 0$, tem-se
+	\begin{equation*}
+	H^d(C \cup C') = H^d(C) + H^d(C'). \qedhere
+	\end{equation*}
+\end{proof}
+
+Essa medida é comumente chamada de \emph{medida de Hausdorff} $d$-dimensional. Definem-se os conjuntos mensuráveis como usual para medidas exteriores. Um conjunto $E \subseteq M$ é mensurável se, e somente se, para todo conjunto $C \in M$,
+	\begin{equation*}
+	H^d(C) = H^d(C \cap E) + H^d(C \cap E^\complement).
+	\end{equation*}
+
+A proposição mostra que $H^d$ é uma medida exterior métrica, todos os conjuntos da $\sigma$-álgebra topológica (conjuntos de Borel) são mensuráveis pela medida exterior $H^d$ (\ref{prop:criterio.mensur.med.metrica}) e $H^d$ pode ser restringida para uma medida em $M$. Em geral, não se pode garantir o mesmo para as medidas exteriores\footnote{\url{https://web.stanford.edu/class/math285/ts-gmt.pdf}} $H^d_\delta$. Pode-se ainda mostrar a seguinte proposição.
+
+\begin{proposition}
+Seja $n \in \N$ e $\R^n$ o espaço métrico real $n$-dimensional. A medida $H^n$ é um múltiplo da medida de volume  $\vol^n$ em $\R^n$ (Lebesgue):
+	\begin{equation*}
+	H^n = \frac{2^n}{\vol^n(\mathbb B^n)}\vol^n.
+	\end{equation*}
+\end{proposition}
+
+Lembrando que
+	\begin{equation*}
+	\vol^n(\mathbb B^n) = \frac{(\quo{\tau}{2})^{\frac{n}{2}}}{\left( \quo{n}{2} \right)!}
+	\end{equation*}
+em que $\tau = 6,28\ldots$ é a constante do círculo (razão da circunferência pelo raio) e a função fatorial $!$ é entendida como a extensão dada pela função $\Gamma$, definida $x! = \Gamma(x+1)$, ou mais explicitamente por
+	\begin{align*}
+	\func{!}{\intff{0}{\infty}}{\intff{0}{\infty}}{x}{\int_0^\infty t^x \e^{-t} \dd t.}
+	\end{align*}
+Alguns casos particulares são
+	\begin{align*}
+	H^0 &= \vol^0 = \# &&\qquad	H^1 = \vol^1 \\
+	H^2 &= \frac{8}{\tau}\vol^2 &&\qquad H^3 = \frac{12}{\tau}\vol^3
+	\end{align*}
+O fator $\vol^n(\mathbb{B}^n)$ poderia ser evitado multiplicando-o na definição de $H^n_\delta$, e o fator $2^n$ poderia ser evitado avaliando a soma de $\left (\frac{\diam(U_i)}{2}\right )^n$ em vez de somente $\diam(U_i)^n$. O número $\frac{\diam(C)}{2}$ pode ser naturalmente entendido como o \emph{raio} do conjunto $C$.
+
+\subsection{Dimensão métrica e fractais}
+
+Seja $C \subseteq M$ um conjunto. A função
+	\begin{align*}
+	\func{H^{(\var)}(C)}{\intfa{0}{\infty}}{\intff{0}{\infty}}{d}{H^d(C)}
+	\end{align*}
+é uma função com uma propriedade interessante. Ela admite no máximo três valores. Pode-se notar que, se $d \leq d'$, então $H^{d'}(C) \leq H^d(C)$. Além disso, existe $d \in \intfa{0}{\infty}$ tal que $H^d(C) = 0$. Portanto podemos definir a \emph{dimensão métrica} de $C$ como
+	\begin{equation*}
+	\dim(C) := \inf\set{d \in \intfa{0}{\infty}}{H^d(C)=0}.
+	\end{equation*}
+Nesse caso, pode-se mostrar que, para todo $d>\dim(C)$, $H^d(C) = 0$ e, para todo $d < \dim(C)$, $H^d(C) = \infty$. No entanto, o valor $H^{\dim(C)}(C)$ pode ser qualquer número em $\intff{0}{\infty}$. O valor de $H^{\dim(C)}(C)$ pode ser qualquer valor na linha tracejada do gráfico da figura~\ref{fig:dimensaometrica}. Exitem subconjuntos de $\R^d$ que têm dimensões não inteiras. Esses conjuntos são conhecidos como \emph{fractais}.
+
+\begin{figure}
+\centering
+\begin{tikzpicture}
+	\draw[<->] (0,3) node[anchor=east] {$H^{(\var)}(C)$} -- (0,0) node[anchor=east] {$0$} -- (12,0);
+	\draw (0,2) node[anchor=east] {$\infty$} -- (6,2);
+	\draw[dotted] (6,2) -- (6,0) node[anchor=north] {$\dim(C)$};
+\end{tikzpicture}
+\caption{Gráfico de $H^d(C)$ em função de $d$.}
+\label{fig:dimensaometrica}
+\end{figure}
 
 
 
 
-\section{Comprimento de caminhos}
+\subsection{Comprimento de caminhos}
 
 Seja $\bm M$ um espaço métrico. Lembremos que um caminho em $\bm M$ é uma função contínua $\fun{c}{\intff{a}{a'}}{M}$, em que $\intff{a}{a'} \subseteq \R$ é um intervalo compacto não degenerado, e o ponto inicial de $c$ é $c(a)$ e o ponto final de $c$ é $c(a')$. Uma reparametrização de $c$ é um caminho $\fun{c'}{\intff{b}{b'}}{X}$ tal que, para algum homeomorfismo $\fun{h}{\intff{b}{b'}}{\intff{a}{a'}}$,
 	\begin{equation*}
