@@ -1319,9 +1319,36 @@ Na prática, podemos sempre reduzir o estudo de um espaço topológico ao estudo
 
 \subsubsection{Conexidade por caminhos}
 
+\begin{definition}
+Seja $\bm X$ um espaço topológico. Um \emph{caminho} em $\bm X$ é uma função contínua $\fun{c}{\intff{a}{a'}}{X}$, em que $\intff{a}{a'} \subseteq \R$ é um intervalo compacto não degenerado ($a \neq a'$). O \emph{ponto inicial} de $c$ é $c(a)$ e o \emph{ponto final} de $c$ é $c(a')$. Sejam $x,x' \in X$. Um \emph{caminho de $x$ para $x'$} é um caminho $c$ em $\bm X$ cujo ponto inicial é $x$ e cujo ponto final é $x'$. Nesse caso o caminho $c$ \emph{conecta} $x$ a $x'$.
+\end{definition}
 
+\begin{definition}
+Sejam $\bm X$ um espaço topológico e $\fun{c}{\intff{a}{a'}}{X}$ um caminho em $\bm X$. Uma \emph{reparametrização} de $c$ é um caminho $\fun{c'}{\intff{b}{b'}}{X}$ tal que, para algum homeomorfismo $\fun{h}{\intff{b}{b'}}{\intff{a}{a'}}$,
+	\begin{equation*}
+	c' = c \circ h.
+	\end{equation*}
+\end{definition}
 
+\begin{definition}
+Sejam $\bm X$ um espaço topológico e $\fun{c}{\intff{a}{a'}}{X}$, $\fun{c'}{\intff{a'}{a''}}{X}$ caminhos em $\bm X$ tais que $c(a') = c'(a')$. A \emph{concatenação} de $c$ com $c'$ é o caminho
+	\begin{align*}
+	\func{c \conca c'}{\intff{a}{a''}}{X}{t}{
+		\begin{cases}
+		c(t),	& t \in \intff{a}{a'} \\
+		c'(t),	& t \in \intff{a'}{a''}.
+		\end{cases}
+	}
+	\end{align*}
+\end{definition}
 
+\begin{definition}
+Um espaço topológico \emph{conexo por caminhos} é um espaço topológico $\bm X$ tal que, para todos $x,x' \in X$, algum caminho em $\bm X$ conecta $x$ a $x'$.
+\end{definition}
+
+\begin{exercise}
+Um espaço topológico conexo por caminhos é conexo.
+\end{exercise}
 
 
 
