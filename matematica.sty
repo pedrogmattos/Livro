@@ -71,6 +71,10 @@
 \RequirePackage{amssymb}
 \usepackage{stmaryrd} % Colchetes duplos, \bigsqcap, \merge
 \RequirePackage{mathrsfs} % Letras cursivas na matemática
+% Esses comandos supostamente consertam o uso indevido do tantos alfabetos amtemáticos pelo pacote bm
+% https://www.texfaq.org/FAQ-manymathalph.html
+\newcommand\bmmax{3}
+\newcommand\hmmax{0}
 \RequirePackage{bm,bbm} % Negrito de qualquer símbolo
 \RequirePackage{mathbbol} % Negrito de lousa para letras gregas
 	\DeclareSymbolFontAlphabet{\mathbbol}{bbold}
