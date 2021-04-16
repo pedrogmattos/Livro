@@ -820,7 +820,7 @@ Vale lembrar que $\partial_i f(p)$ é a derivada direcional da função $f$ na d
 	\partial_i f(p) = \D f(p) \cdot e_i.
 	\end{equation*}
 
-A motivação da notação $\der{}{\x^i}$, além do uso histórico, vem da ideia de que vale a regra da cadeia
+A motivação da notação $\derantiga{}{\x^i}$, além do uso histórico, vem da ideia de que vale a regra da cadeia
 	\begin{align*}
 	\partial_i(f \circ \x\inv)|_{x(p)} \text{`='} \partial_i f|_{\x\inv(\x(p))} \circ \partial_i(\x\inv)|_{x(p)} \text{`='} \partial_i f|_p \circ (\partial_i \x|_p)\inv \text{`='} \left.\frac{\partial_i f}{\partial_i \x}\right|_p.
 	\end{align*}
@@ -833,9 +833,9 @@ A motivação da notação $\der{}{\x^i}$, além do uso histórico, vem da ideia
 
 A função
 	\begin{align*}
-	\func{\der{}{\x^i}}{A}{\Tg V|_A}{p}{\derr{\x^i}_p}
+	\func{\derantiga{}{\x^i}}{A}{\Tg V|_A}{p}{\derr{\x^i}_p}
 	\end{align*}
-é um campo vetorial em $A$ --- uma seção de $\Tg V|_A$ --- e $\der{}{\x} = \left( \der{}{\x^i} \right)_{i \in [d]}$ é um referencial local de $A$.
+é um campo vetorial em $A$ --- uma seção de $\Tg V|_A$ --- e $\derantiga{}{\x} = \left( \derantiga{}{\x^i} \right)_{i \in [d]}$ é um referencial local de $A$.
 
 
 \subsection{Curvas equivelozes}
@@ -1228,26 +1228,26 @@ O campo vetorial $\col{v}{v'}$ é chamado de \emph{colchete} dos campos $v,v' \i
 	\end{equation*}
 
 \begin{proposition}[Colchete em Coordenadas Locais]
-Sejam $\bm V$ uma variedade diferencial e $v,w \in \tens^1(\bm V)$ campos vetoriais. Para toda carta $(A,\x)$ de $\bm V$, se $v = v^i \der{}{\x^i}$ e $w = w^i \der{}{\x^i}$ em $A$, então o colchete entre $v$ e $w$ em $A$ é
+Sejam $\bm V$ uma variedade diferencial e $v,w \in \tens^1(\bm V)$ campos vetoriais. Para toda carta $(A,\x)$ de $\bm V$, se $v = v^i \derantiga{}{\x^i}$ e $w = w^i \derantiga{}{\x^i}$ em $A$, então o colchete entre $v$ e $w$ em $A$ é
 	\begin{equation*}
-	\col{v}{w} = \sum_{(i,j) \in [d]^2} \left(v^i\der{w^j}{\x^i} -  w^i\der{v^j}{\x^i}\right) \der{}{\x^j}.
+	\col{v}{w} = \sum_{(i,j) \in [d]^2} \left(v^i\derantiga{w^j}{\x^i} -  w^i\derantiga{v^j}{\x^i}\right) \derantiga{}{\x^j}.
 	\end{equation*}
 \end{proposition}
 \begin{proof}
 Basta notar que, para toda $f \in \tens^0(\bm V)$
 	\begin{align*}
-	\col{v}{w}f &= \sum_{i \in [d]} v^i \der{}{\x^i} \left( \sum_{j \in [d]} w^j \der{f}{\x^j} \right) - \sum_{j \in [d]} w^j \der{}{\x^j} \left( \sum_{i \in [d]} v^i \der{f}{\x^i} \right) \\
-		&= \sum_{(i,j) \in [d]^2} \left( v^i \der{w^j}{\x^i}\der{f}{\x^j} + v^iw^j \der{^2 f}{\x^i \partial \x^j} - w^j \der{v^i}{\x^j}\der{f}{\x^i} - w^jv^i \der{^2 f}{\x^j \partial \x^i} \right)\\
-		&= \sum_{(i,j) \in [d]^2} \left(v^i\der{w^j}{\x^i} -  w^i\der{v^j}{\x^i}\right) \der{f}{\x^j},
+	\col{v}{w}f &= \sum_{i \in [d]} v^i \derantiga{}{\x^i} \left( \sum_{j \in [d]} w^j \derantiga{f}{\x^j} \right) - \sum_{j \in [d]} w^j \derantiga{}{\x^j} \left( \sum_{i \in [d]} v^i \derantiga{f}{\x^i} \right) \\
+		&= \sum_{(i,j) \in [d]^2} \left( v^i \derantiga{w^j}{\x^i}\derantiga{f}{\x^j} + v^iw^j \derantiga{^2 f}{\x^i \partial \x^j} - w^j \derantiga{v^i}{\x^j}\derantiga{f}{\x^i} - w^jv^i \derantiga{^2 f}{\x^j \partial \x^i} \right)\\
+		&= \sum_{(i,j) \in [d]^2} \left(v^i\derantiga{w^j}{\x^i} -  w^i\derantiga{v^j}{\x^i}\right) \derantiga{f}{\x^j},
 	\end{align*}
-pois $\der{^2 f}{\x^i \partial \x^j} = \der{^2 f}{\x^j \partial \x^i}$.
+pois $\derantiga{^2 f}{\x^i \partial \x^j} = \derantiga{^2 f}{\x^j \partial \x^i}$.
 \end{proof}
 
 Usando a notação de Einstein e simplificando a fórmula da proposição, temos
 	\begin{equation*}
-	\col{v}{w} = (vw^i - wv^i)\der{}{\x^i}.
+	\col{v}{w} = (vw^i - wv^i)\derantiga{}{\x^i}.
 	\end{equation*}
-Em particular, temos que $\col{\der{}{\x^i}}{\der{}{\x^j}} = 0$ para todos $i,j \in [d]$, fato essencial na demonstração da proposição anterior.
+Em particular, temos que $\col{\derantiga{}{\x^i}}{\derantiga{}{\x^j}} = 0$ para todos $i,j \in [d]$, fato essencial na demonstração da proposição anterior.
 
 O colchete satisfaz as seguintes propriedades.
 
@@ -1321,7 +1321,7 @@ Se $0 \in I$, $\gamma(0) \in M$ é o \emph{ponto inicial} de $\gamma$ e $\gamma$
 
 Em coordenadas locais $(A,\x)$, a condição $\dot \gamma(t) = v|_{\gamma(t)}$ se torna
 	\begin{equation*}
-	\dot \gamma^i(t) \left. \der{}{\x^i} \right|_{\gamma(t)} = v^i(\gamma(t)) \left. \der{}{\x^i} \right|_{\gamma(t)},
+	\dot \gamma^i(t) \left. \derantiga{}{\x^i} \right|_{\gamma(t)} = v^i(\gamma(t)) \left. \derantiga{}{\x^i} \right|_{\gamma(t)},
 	\end{equation*}
 que se reduz a um sistema autônomo de equações diferenciais parciais: para todo $i \in [d]$,
 	\begin{align*}
@@ -1485,25 +1485,25 @@ Sejam $\bm V$ um variedade diferencial e $v \in \tens^1(\bm V)$. Existe único f
 
 Esse fluxo gerado por $v \in \tens^1(\bm V)$ será denotado
 	\begin{align*}
-	\func{\flux^{(\var)v}(\var)}{\mathscr{D}}{V}{(t,p)}{\flux^{tv}(p)},
+	\func{\flux{(\var)}{v}(\var)}{\mathscr{D}}{V}{(t,p)}{\flux{t}{v}(p)},
 	\end{align*}
 de modo que valem as seguintes propriedades. Pela propriedade de curvas integrais maximais, para todo $p \in V$,
 	\begin{equation*}
-	\frac{\dd}{\dd t} \flux^{tv}(p) = v \circ \flux^{tv}(p) = v|_{\flux^{tv}(p)}.
+	\frac{\dd}{\dd t} \flux{t}{v}(p) = v \circ \flux{t}{v}(p) = v|_{\flux{t}{v}(p)}.
 	\end{equation*}
 Pela propriedades de fluxo local,
 	\begin{equation*}
-	\flux^{0v}(p) = \Id(p) = p
+	\flux{0}{v}(p) = \Id(p) = p
 	\end{equation*}
 e
 	\begin{equation*}
-	\flux^{(t+t')v}(p) = \flux^{tv} \circ \flux^{t'v}(p)
+	\flux{(t+t')}{v}(p) = \flux{t}{v} \circ \flux{t'}{v}(p)
 	\end{equation*}
 Além disso, pelo lema de reescala, temos que, para todo $t' \in \R$, o fluxo de do campo vetorial $t'v$ é dado por
 	\begin{equation*}
-	\flux^{t(t'v)}(p) = \flux^{(tt')v}(p),
+	\flux{t}{(t'v)}(p) = \flux{(tt')}{v}(p),
 	\end{equation*}
-o que significa que a notação $\flux^{tt'v}$ não é ambígua. Essas similaridades de propriedades com a exponencial justificam a notação. Além da similaridade, a função exponencial de grupos diferenciais é de fato definida a partir do fluxo de um campo vetorial invariante, e como um caso particular, a função exponencial em álgebras normadas está também relacionada ao fluxo acima definido.
+o que significa que a notação $\flux{tt'}{v}$ não é ambígua. Essas similaridades de propriedades com a exponencial justificam a notação. Além da similaridade, a função exponencial de grupos diferenciais é de fato definida a partir do fluxo de um campo vetorial invariante, e como um caso particular, a função exponencial em álgebras normadas está também relacionada ao fluxo acima definido.
 
 \subsection{Espaço cotangente}
 
@@ -1825,12 +1825,12 @@ Como a função é avaliada em um espaço vetorial, o ponto $p$ e o vetor de des
 
 \subsubsection{Derivada de campos escalares}
 
-Denotamos o fluxo local do campo vetorial $v \in \tens^1(\bm V)$ no tempo $t$ por $\flux^{tv}$.
+Denotamos o fluxo local do campo vetorial $v \in \tens^1(\bm V)$ no tempo $t$ por $\flux{t}{v}$.
 
 \begin{definition}
 Sejam $\bm V$ uma variedade diferencial, $v \in \tens^1(\bm V)$ um campo vetorial e $f \in \tens^0(\bm V)$ um campo escalar. A \emph{derivada por fluxo} de $f$ ao longo de $v$ (ou na direção de $v$) é
 	\begin{equation*}
-	\Dir_v f(p) := \frac{f(\flux^{tv}(p))-f(p)}{t}.
+	\Dir_v f(p) := \frac{f(\flux{t}{v}(p))-f(p)}{t}.
 	\end{equation*}
 \end{definition}
 
@@ -1843,7 +1843,7 @@ Sejam $\bm V$ uma variedade diferencial, $v \in \tens^1(\bm V)$ um campo vetoria
 
 %\subsubsection{Derivada de campos tensoriais}
 
-%Dado um campo vetorial $v \in \tens^1(\bm V)$, denotamos seu fluxo local por $\flux^{tv}$. Para cada $t \in \R$, a função $\fun{\flux^{tv}}{V_t}{V_{-t}}$ é um difeomorfismo
+%Dado um campo vetorial $v \in \tens^1(\bm V)$, denotamos seu fluxo local por $\flux{t}{v}$. Para cada $t \in \R$, a função $\fun{\flux{t}{v}}{V_t}{V_{-t}}$ é um difeomorfismo
 
 \subsubsection{Definição algébrica}
 
