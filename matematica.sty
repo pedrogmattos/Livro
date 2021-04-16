@@ -72,11 +72,15 @@
 \usepackage{stmaryrd} % Colchetes duplos, \bigsqcap, \merge
 \RequirePackage{mathrsfs} % Letras cursivas na matemática
 \RequirePackage{bm,bbm} % Negrito de qualquer símbolo
+\RequirePackage{mathbbol} % Negrito de lousa para letras gregas
+	\DeclareSymbolFontAlphabet{\mathbbol}{bbold}
+	\DeclareSymbolFontAlphabet{\mathbb}{AMSb}
 \RequirePackage{eucal} % Muda o \mathcal de Computer Modern pra Euler
 \RequirePackage{accents} % Acentos matemáticos. Uso para \Iso, \Mono, \Epi.
 
 \RequirePackage{graphicx}
 \RequirePackage{relsize,scalerel} % Mudança de tamanho e definição de operador
+\usepackage{pict2e,picture} % Para uso na definição do \bbDelta de simplexos
 
 \RequirePackage{trimclip} % Para fazer o símbolo de infinity dos ordinais
 %\RequirePackage{stackengine} % Para fazer o símbolo de infinity dos ordinais segunda versão
@@ -93,6 +97,7 @@
 	}
 %\RequirePackage{pgfplots}
 % https://tikzcd.yichuanshen.de/
+\RequirePackage{tikz-3dplot}
 
 
 %------------------------------------------------------------
@@ -345,7 +350,7 @@
 	\newcommand{\ZZ}{\accentset{\infty}{\Z}}
 	\newcommand{\Q}{\mathbb{Q}}
 	\newcommand{\R}{\mathbb{R}}
-	\newcommand{\RR}{\accentset{\infty}{\R}}
+	\newcommand{\RR}[1][]{\accentset{#1\infty}{\R}}
 	\newcommand{\C}{\mathbb{C}}
 %	\newcommand{\C}{{\R^2}}
 	\newcommand{\HH}{\mathbb{H}}
@@ -453,6 +458,14 @@
 			\vphantom{\usebox{\z@}}%
 		\endgroup
 	}
+	% Um outro método, melhor, que transforma o solidus / em \newdiv dentro do math mode
+	\mathcode`/="8000
+	{\catcode`\/=\active
+	\global\let/\newdiv}
+	% Comando análogo para transformar * em \times
+%	\mathcode`*="8000
+%	{\catcode`\*=\active
+%	\global\let*\times}
 	
 	% Elemento identidade
 %	\newcommand{\id}{\textsc{i}}
@@ -641,7 +654,7 @@
 	% Espectro, conjunto de autovalores
 	\DeclareMathOperator{\Esp}{Esp}
 	% Espaço dual, vetor dual...
-	\newcommand{\dual}{^*}
+	\newcommand{\dual}{^{\ast}}
 	% Funções multilineares alternadas
 	\newcommand{\alter}{\mathcal{A}}
 
@@ -660,8 +673,8 @@
 	\newcommand{\Linder}{\mathfrak{L}}
 
 	% Involução (conjugação complexa, dual, etc)
-	\newcommand{\invol}[1]{{#1}^*}
-	\newcommand{\invinvol}[1]{{#1}^{-*}}
+	\newcommand{\invol}[1]{{#1}^{\ast}}
+	\newcommand{\invinvol}[1]{{#1}^{-{\ast}}}
 
 	% Álgebras clássicas
 	\DeclareMathOperator{\gl}{gl}
@@ -702,8 +715,9 @@
 	%\DeclareMathOperator{\fro}{fro}
 	\newcommand{\viz}{\mathcal{V}}
 	
-	% Funções contínuas
+	% Funções contínuas e homeomorfismos
 	\newcommand{\Cont}{\mathscr{C}}
+	\newcommand{\Homeo}{\accentset{\leftrightarrow\ }{\Cont}}
 	% Suporte topológico
 	\newcommand{\supptop}{\supp^{\bullet}}
 	
@@ -735,6 +749,43 @@
 	\newcommand{\homot}{\approx}
 	\newcommand{\comp}{\cdot}
 
+	% Simplexos
+	\newcommand{\simp}{\Delta}
+	\newcommand{\simpger}[2][1]{\left[{#2}\right]_{\simp^{#1}}}
+	\newcommand{\simpgera}[2][1]{\left]{#2}\right[_{\simp^{#1}}}
+
+%	\DeclareRobustCommand{\bbDelta}{{\mathpalette\bb@Delta\relax}}
+%	\newcommand{\bb@Delta}[2]{%
+%		\begingroup
+%		\sbox\z@{$\m@th#1\Delta$}%
+%		\dimendef\Dht=6 \dimendef\Dwd=8
+%		\setlength{\Dwd}{\wd\z@}%
+%		\setlength{\Dht}{\ht\z@}%
+%		\begin{picture}(\Dwd,\Dht)
+%		\put(0,0){$\m@th#1\Delta$}
+%		\put(.42\Dwd,.7\Dht){\line(10,-20){.25\Dht}}
+%		\end{picture}%
+%		\endgroup
+%	}
+	% NOTA: https://tex.stackexchange.com/questions/360245/blackboard-bold-capital-delta-with-euler-fonts/360299#360299
+
+%	\newcommand{\Sx}{\mathbbol{\Delta}}
+%	\newcommand{\Sx}{\bbDelta}
+%	\newcommand{\Sx}{\resizebox{0.8em}{1.6ex}{$\mathbbol{\Delta}$}}
+	\newcommand{\Sx}{%
+		\mathord{\mathpalette\Sim@plexo\relax}
+	}
+	\newcommand\Sim@plexo[2]{%
+		\hbox{%
+			\sbox\z@{$#1\Delta$}%
+			\resizebox{1.1\dimexpr\ht\z@+\dp\z@}{\dimexpr\ht\z@+\dp\z@}{$\m@th#1\mathbbol{\Delta}$}%
+		}%
+	}	
+
+	\newcommand{\Sxger}[2][1]{\left[{#2}\right]_{\Sx^{#1}}}
+	\newcommand{\Sxgera}[2][1]{\left]{#2}\right[_{\Sx^{#1}}}
+	
+
 	% Limites inferior e superior
 	\renewcommand{\limsup}{\varlimsup}
 	\renewcommand{\liminf}{\varliminf}
@@ -746,12 +797,13 @@
 	\newcommand{\dist}[2]{\left\vert{#1},{#2}\right\vert}
 	
 	% Diâmetro
-	\DeclareFontEncoding{LS1}{}{}
-	\DeclareFontSubstitution{LS1}{stix}{m}{n}
-	\DeclareRobustCommand{\diameter}{%
-		\text{\usefont{LS1}{stixscr}{m}{n}\symbol{"60}}%
-	}
-	\newcommand{\diam}{\diameter}
+%	\DeclareFontEncoding{LS1}{}{}
+%	\DeclareFontSubstitution{LS1}{stix}{m}{n}
+%	\DeclareRobustCommand{\diameter}{%
+%		\text{\usefont{LS1}{stixscr}{m}{n}\symbol{"60}}%
+%	}
+%	\newcommand{\diam}{\diameter}
+	\newcommand{\diam}{\Theta}
 %	\DeclareMathOperator{\diam}{diam}
 	% Convergência/ convergência pontual
 	\newcommand{\conv}{\rightarrow}
@@ -768,6 +820,7 @@
 %	\newcommand{\Met}{\mathrm{Met}}
 %	\newcommand{\Met}{\left\vert\Cont\right\vert}
 	\newcommand{\Met}{\Cont_{\vert \var \vert}}
+%	\newcommand{\Isomet}{\Cont_{\vert \var \vert}}
 	% Distorção
 	\newcommand{\distor}[1]{\left\Vert{#1}\right\Vert}
 
@@ -804,7 +857,7 @@
 	\newcommand{\inte}[2]{\left\langle{#1},{#2}\right\rangle}
 	% Complexo conjugado
 %	\newcommand{\conju}[1]{\overline{#1}}
-	\newcommand{\conju}[1]{{#1}^*}
+	\newcommand{\conju}[1]{{#1}^{\ast}}
 	% Ângulo
 	\newcommand{\ang}[2]{\sphericalangle\left({#1},{#2}\right)}
 	\newcommand{\angf}{\sphericalangle}
@@ -847,6 +900,7 @@
 	\newcommand{\med}{m}
 	% Volume / medida de Lebesgue
 	\DeclareMathOperator{\vol}{vol}
+%	\newcommand{\vol}{\mathrm{v}}
 	
 	% Funções mensuráveis
 	\newcommand{\Men}{\mathscr{M}}
@@ -867,6 +921,9 @@
 	\newcommand{\qeq}{\circeq}
 	\newcommand{\qleq}{\overset{{\mbox{\smaller[4]$\circ$}}}{\leq}}
 
+	% Medida diferencial
+	\newcommand{\medd}{\dd}
+
 % Integração
 %------------------------------------
 	% Funções simples
@@ -879,13 +936,38 @@
 
 % Diferenciação
 %------------------------------------
+	% Derivada de uma trajetória (velocidade, aceleração)
+%	\newcommand{\der}{\dot{d}} % Derivada (velocidade)
+	\newcommand{\der}{\dot{\partial}} % Derivada (velocidade)
+
+	%	\newcommand{\dder}{\ddot{d}} % Segunda derivada (aceleração)
+	\newcommand{\dder}{\ddot{\partial}} % Segunda derivada (aceleração)
+	
+	% Derivada com variável explícita
+	%NOTA: Resolvi não usar mais esse comando por simplicidade. Quando preciso explicitar a variável escrevo \der_t f(t)|_{t=t'}
+%	\newcommand{\dervar}[3]{\dot{\partial}_{#1} \left. {#2} \right|_{#1 = #3}}
+
+	% Derivada com notação fracionária
+	\newcommand{\derfrac}[2][]{\frac{\der {#1}}{\der {#2}}}
+%	\newcommand{\derfracvar}[3][.]{\left. \frac{\mathrm{d}}{\mathrm{d}{#2}}{#3} \right#1}
+	
+	% Derivada direcional
+	\newcommand{\dir}[1]{\partial_{#1}}
+	\newcommand{\dirfrac}[2]{\frac{\partial {#1}}{\partial {#2}}}
+	
 	% Diferencial
 	\newcommand{\D}{\mathrm{D}}
+%	\newcommand[1][]{\D}{\mathrm{D}^{(#1)}}
+%	\newcommand{\DD}{\mathrm{D}}
+
+
+	% PRETENDO EXCLUIR OS COMANDOS ABAIXO EVENTUALMENTE
 	% Derivada direcional
-	\newcommand{\der}[2]{\frac{\partial{#1}}{\partial{#2}}}
-%	\newcommand{\der}[2]{\partial_{#1}{#2}}
+	\newcommand{\derantiga}[2]{\frac{\partial{#1}}{\partial{#2}}}
+%	\newcommand{\derantiga}[2]{\partial_{#1}{#2}}
 	\newcommand{\res}[1]{\left.{#1}\right|}
-	\newcommand{\derr}[1]{\res{\der{}{#1}}}
+	\newcommand{\derr}[1]{\res{\derantiga{}{#1}}}
+	
 	% Derivada direcional
 	\newcommand{\Dir}{\nabla}
 
@@ -903,7 +985,8 @@
 	\DeclareMathOperator{\Diff}{Diff}
 
 	% Fluxo de campo vetorial
-	\newcommand{\flux}{\e}
+%	\newcommand{\flux}{\Phi}
+	\newcommand{\flux}[3][]{#1{\Phi}^{{#2}{#3}}} % O argumento opcional #1 é para adicionar o comando \dot e termos a derivada do fluxo.
 
 	% Campos tensoriais
 	\newcommand{\tens}{\mathfrak{T}}
