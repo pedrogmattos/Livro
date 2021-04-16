@@ -212,7 +212,7 @@ Sejam $\bm L$ um espaço linear real\footnote{Mais geralmente, poderiam ser cons
 
 A função está bem definida pois $A$ é absorvedor (proposição anterior).
 
-\begin{proposition}
+\begin{exercise}
 Sejam $\bm L$ um espaço linear real e $A \subseteq L$ um conjunto absorvedor.
 	\begin{enumerate}
 	\item Para todos $v \in L$ e $c \in \intaa{0}{\infty}$,
@@ -226,19 +226,19 @@ Sejam $\bm L$ um espaço linear real e $A \subseteq L$ um conjunto absorvedor.
 	\item Se $A$ é convexo e balanceado, $p_A$ é uma seminorma;
 	\item Definindo $\Int{A} := \set{v \in L}{p_A(v) < 1}$ e $\Fec{A} := \set{v \in L}{p_A(v) \leq 1}$, vale $\Int{A} \subseteq A \subseteq \Fec{A}$ e $p_{\Int{A}} = p_{A} = p_{\Fec{A}}$.
 	\end{enumerate}
-\end{proposition}
-\begin{proof}
-	\begin{enumerate}
-	\item Sejam $v \in L$ e $c \in \intaa{0}{\infty}$. Então
-		\begin{align*}
-		p_A(cv) &= \inf\set{c'>0}{cv \in c'A} \\
-					&= \\
-					&= \\
-					&= c\inf\set{c'>0}{v \in c'A} \\
-					&= c p_A(v).
-		\end{align*}
-	\end{enumerate}
-\end{proof}
+\end{exercise}
+%\begin{proof}
+%	\begin{enumerate}
+%	\item Sejam $v \in L$ e $c \in \intaa{0}{\infty}$. Então
+%		\begin{align*}
+%		p_A(cv) &= \inf\set{c'>0}{cv \in c'A} \\
+%					&= \\
+%					&= \\
+%					&= c\inf\set{c'>0}{v \in c'A} \\
+%					&= c p_A(v).
+%		\end{align*}
+%	\end{enumerate}
+%\end{proof}
 
 
 
@@ -283,7 +283,7 @@ Sejam $\bm E$ um espaço linear sobre um corpo normado $(\bm C,\abs{\var})$ e $\
 \end{proposition}
 
 \begin{definition}
-Um \emph{espaço normado} é um par $\E = (\bm E,\nor{\cdot})$ em que $\bm E$ é um espaço linear sobre um corpo normado $(\bm C,\abs{\var})$ e $\nor{\cdot}$ é uma norma em $\bm E$. A dimensão de $\E$ é a dimensão do espaço linear $\bm E$.
+Um \emph{espaço normado} é um par $(\bm E,\nor{\var})$ em que $\bm E$ é um espaço linear sobre um corpo normado $(\bm C,\abs{\var})$ e $\nor{\cdot}$ é uma norma em $\bm E$. A \emph{dimensão} de $(\bm E,\nor{\var})$ é a dimensão do espaço linear $\bm E$.
 \end{definition}
 
 \begin{definition}
@@ -301,17 +301,17 @@ Seja $\bm E$ um espaço linear sobre um corpo normado $(\bm C,\abs{\var})$. Uma 
 \end{definition}
 
 \begin{definition}
-Seja $\E$ um espaço normado. A \emph{métrica} (induzida pela norma) de $\E$ é a função
+Seja $(\bm E,\nor{\var})$ um espaço normado. A \emph{métrica} (induzida pela norma) de $(\bm E,\nor{\var})$ é a função
 	\begin{align*}
 	\func{\dist{\var}{\var}}{E \times E}{\R}{(v,v')}{\nor{v - v'}}.
 	\end{align*}	
-A \emph{topologia de $\E$} é a topologia de $(E,\dist{\var}{\var})$.
+A \emph{topologia de $(\bm E,\nor{\var})$} é a topologia de $(E,\dist{\var}{\var})$.
 \end{definition}
 
 Para que essa definição seja boa, mostramos a seguir a proposição.
 
 \begin{proposition}
-Seja $\E$ um espaço normado. A função
+Seja $(\bm E,\nor{\var})$ um espaço normado. A função
 	\begin{align*}
 	\func{\dist{\var}{\var}}{E \times E}{\R}{(v,v')}{\nor{v - v'}}.
 	\end{align*}
@@ -390,11 +390,11 @@ Agora, mostremos que a métrica $\dist{\var}{\var}'$ induzida por essa norma é 
 \subsection{Bolas e esferas unitárias e topologia}
 
 \begin{definition}
-Seja $\E$ um espaço normado. A \emph{bola unitária} de $\E$ é o conjunto
+Seja $(\bm E,\nor{\var})$ um espaço normado. A \emph{bola unitária} de $(\bm E,\nor{\var})$ é o conjunto
 	\begin{equation*}
 	\B := \set{v \in E}{\nor{v} \leq 1}
 	\end{equation*}
-e a \emph{esfera unitária} de $\E$ é o conjunto
+e a \emph{esfera unitária} de $(\bm E,\nor{\var})$ é o conjunto
 	\begin{equation*}
 	\S := \set{v \in E}{\nor{v} = 1}.
 	\end{equation*}
@@ -410,7 +410,7 @@ A bola unitária é a bola fechada, de raio 1 e centro na origem, com respeito �
 	\end{align*}
 
 \begin{proposition}
-Seja $\E$ um espaço normado. A bola unitária $\B$ é um conjunto convexo e centrossimétrico na origem.
+Seja $(\bm E,\nor{\var})$ um espaço normado. A bola unitária $\B$ é um conjunto convexo e centrossimétrico na origem.
 \end{proposition}
 \begin{proof}
 Sejam $t \in \intaa{0}{1}$ e $v,v' \in \B$. Então
@@ -423,7 +423,7 @@ logo $(1-t)v+tv' \in \B$, o que mostra que $\B$ é convexo. Agora, seja $v \in \
 A topologia de um espaço normado é dada pela sua norma, através da base de abertos formadas pelas bolas. Essa é a topologia dada pela métrica induzida pela norma.
 
 \begin{proposition}
-Seja $\E$ um espaço normado.
+Seja $(\bm E,\nor{\var})$ um espaço normado.
 	\begin{enumerate}
 	\item A norma $\nor{\var}\colon E \to \R$ é uma função contínua.
 	\item $\bm E$ é um espaço linear topológico.
@@ -507,7 +507,7 @@ Nesta seção, trataremos de funções lineares contínuas entre espaços normad
 	\begin{equation*}
 	\dist{f(p)}{f(p')} \leq c\dist{p}{p'}.
 	\end{equation*}
-A norma de uma função controlada é definida como
+A distorção de uma função controlada é definida como
 	\begin{equation*}
 	\nor{f} = \inf\set{c \in \intfa{0}{\infty}}{\forall_{p,p' \in M} \dist{f(p)}{f(p')} \leq c\dist{p}{p'}}.
 	\end{equation*}
@@ -525,30 +525,31 @@ Essa definição em espaços normados, considerando a distância definida pela n
 %Claramente, segue direto da definição que $\Linmet(\E,\E') \subseteq \toplin(\E,\E')$.
 
 \begin{exercise}
-Sejam $\E$ e $\E'$ espaços normados e $\fun{L}{E}{E'}$ uma função linear. Então $f$ é controlada se, e somente se, para algum $c \in \intfa{0}{\infty}$, $L$ satisfaz que, para todo $v \in E$,
+Sejam $(\bm E,\nor{\var})$ e $(\bm E',\nor{\var}')$ espaços normados e $\fun{L}{\bm E}{\bm E'}$ uma função linear. Então $L$ é controlada se, e somente se, para algum $c \in \intfa{0}{\infty}$, $L$ satisfaz que, para todo $v \in E$,
 	\begin{equation*}
-	\nor{L(v)} \leq c \nor{v}.
+	\nor{L(v)}' \leq c \nor{v}.
 	\end{equation*}
-Nesse caso, a norma de $L$ satisfaz
+Nesse caso, a distorção de $L$ satisfaz
 	\begin{equation*}
-	\nor{L} = \inf\set{c \in \intfa{0}{\infty}}{\forall_{v \in \E} \nor{L(v)} \leq c\nor{v}}.
+	\nor{L} = \inf\set{c \in \intfa{0}{\infty}}{\forall_{v \in E} \nor{L(v)}' \leq c\nor{v}}.
 	\end{equation*}
 \end{exercise}
 
-A norma de uma função linear controlada $L$ é portanto o menor valor tal que vale a desigualdade entre as normas. Vale que
+A distorção de uma função linear controlada $L$ é portanto o menor valor tal que vale a desigualdade entre as normas. Vale que
 	\begin{equation*}
-	\nor{L(v)} \leq \nor{L}\nor{v}.
+	\nor{L(v)}' \leq \nor{L}\nor{v}.
 	\end{equation*}
+Veremos a seguir que essa distorção é uma norma.
 
 O termo usual para funções lineares entre espaços normados que satisfazem a condição anterior é `limitada', mas esse termo também é usado com um significado diferente para funções entre espaços métricos e para subconjuntos de espaços métricos, incluindo sequências limitadas. Para evitar ambiguidade, adotamos aqui o nome alternativo que expressa igualmente --- talvez melhor --- a ideia por trás do conceito.
 
 \begin{proposition}
-Sejam $\E$ e $\E'$ espaços normados e $\fun{L}{E}{E'}$ uma função linear. Então $L$ é controlada se, e somente se, é contínua.
+Sejam $(\bm E,\nor{\var})$ e $(\bm E',\nor{\var}')$ espaços normados e $\fun{L}{\bm E}{\bm E'}$ uma função linear. Então $L$ é controlada se, e somente se, é contínua.
 \end{proposition}
 \begin{proof}
 Se $L$ é controlada, é uniformemente contínua, portanto contínua (\ref{prop:continuidade.controlada}).
 
-Reciprocamente, suponhamos que $L$ é contínua. Para $v=0$, claramente vale $\nor{L(0)} = 0 \leq 0 - \nor{0}$. Consideremos o seguinte para $v \neq 0$: como $L$ é contínua, é contínua em $0$; portanto existe $\delta \in \intaa{0}{\infty}$ tal que, para todo $v \in E$, se $\nor{v} \leq \delta$ então $\nor{L(v)}' \leq 1$. Sendo assim, seja $v \in \E \setminus \{0\}$. Então, como $\nor{\delta\frac{v}{\nor{v}}}=\delta$, segue que
+Reciprocamente, suponhamos que $L$ é contínua. Para $v=0$, claramente vale $\nor{L(0)} = 0 \leq 0 - \nor{0}$. Consideremos o seguinte para $v \neq 0$: como $L$ é contínua, é contínua em $0$; portanto existe $\delta \in \intaa{0}{\infty}$ tal que, para todo $v \in E$, se $\nor{v} \leq \delta$ então $\nor{L(v)}' \leq 1$. Sendo assim, seja $v \in E \setminus \{0\}$. Então, como $\nor{\delta\frac{v}{\nor{v}}}=\delta$, segue que
 	\begin{equation*}
 	\nor{L(v)}' = \nor{L\left(\frac{\nor{v}}{\delta}\frac{\delta}{\nor{v}}v\right)}' = \nor{\frac{\nor{v}}{\delta}L\left(\delta\frac{v}{\nor{v}}\right)}' = \frac{\nor{v}}{\delta}\nor{L\left(\delta\frac{v}{\nor{v}}\right)}' \leq \frac{1}{\delta}\nor{v},
 	\end{equation*}
@@ -565,18 +566,18 @@ o que mostra que $L$ é controlada.
 %Essa definição coincide com a norma de uma função controlada entre espaços métricos.
 
 \begin{exercise}
-Sejam $\E$ e $\E'$ espaços normados e $L \in \toplin(\E, \E')$ uma função linear contínua.
+Sejam $(\bm E,\nor{\var})$ e $(\bm E',\nor{\var}')$ espaços normados e $L \in \toplin(\bm E, \bm E')$ uma função linear contínua.
 	\begin{enumerate}
 	\item Para todo $v \in E$,
 		\begin{equation*}
-		\nor{L(v)} \leq \nor{L}\nor{v};
+		\nor{L(v)}' \leq \nor{L}\nor{v};
 		\end{equation*}
 		
 	\item Valem as seguintes igualdades:
 		\begin{align*}
-		\nor{L} &= \inf\set{c \in \intfa{0}{\infty}}{\forall_{v \in \E} \nor{L(v)} \leq c\nor{v}} \\
-			&= \sup \set{\nor{L(v)}}{v \in \Fec{\B}} \\
+		\nor{L} &= \inf\set{c \in \intfa{0}{\infty}}{\forall_{v \in E} \nor{L(v)} \leq c\nor{v}} \\
 			&= \sup \set{\nor{L(v)}}{v \in \B} \\
+			&= \sup \set{\nor{L(v)}}{v \in \Int{\B}} \\
 			&= \sup \set{\nor{L(v)}}{v \in \S \cup \{0\}} \\
 			&= \sup\set{\nor{L(v)}}{v \in \S} \\
 			&= \sup \set{\frac{\nor{L(v)}}{\nor{v}}}{v \in \B \setminus \{0\}}.
@@ -598,16 +599,16 @@ Sejam $\E$ e $\E'$ espaços normados e $L \in \toplin(\E, \E')$ uma função lin
 %	\end{enumerate}
 %\end{proof}
 
-Note que, caso $E = \{0\}$, os conjuntos das duas últimas igualdades são vazios, e nesse caso devemos ressaltar que o supremo é tomado sobre $\intfa{0}{\infty}$, portanto o supremo de $\emptyset$ é $0$.
+Note que, caso $E = \{0\}$, os conjuntos das duas últimas igualdades são vazios, e então devemos ressaltar que o supremo é tomado sobre $\intfa{0}{\infty}$, portanto o supremo de $\emptyset$ é $0$.
 
 
 \begin{proposition}
 \label{prop:distorcao.seminorma}
-Sejam $\bm M$ um espaço métrico e $\E$ um espaço normado sobre um corpo normado $(\bm C,\abs{\var})$. A função
+Sejam $\bm M$ um espaço métrico e $(\bm E,\nor{\var})$ um espaço normado sobre um corpo normado $(\bm C,\abs{\var})$. A função
 	\begin{align*}
-	\func{\nor{\var}}{\Met(\bm M,\E)}{\R}{f}{\nor{f}}
+	\func{\nor{\var}}{\Met(\bm M,\bm E)}{\R}{f}{\nor{f}}
 	\end{align*}
-é uma seminorma no espaço $\Met(\bm M,\E)$ das funções controladas de $\bm M$ para $\E$.
+é uma seminorma no espaço $\Met(\bm M,\bm E)$ das funções controladas de $\bm M$ para $\bm E$.
 \end{proposition}
 \begin{proof}
 	\begin{enumerate}
@@ -636,15 +637,15 @@ Sejam $\bm M$ um espaço métrico e $\E$ um espaço normado sobre um corpo norma
 \end{proof}
 
 \begin{proposition}
-Sejam $\E$ e $\E'$ espaços normados. A função
+Sejam $(\bm E,\nor{\var})$ e $(\bm E',\nor{\var}')$ espaços normados. A função
 	\begin{align*}
-	\func{\nor{\var}}{\toplin(\E,\E')}{\R}{L}{\nor{L}}
+	\func{\nor{\var}}{\toplin(\bm E,\bm E')}{\R}{L}{\nor{L}}
 	\end{align*}
-é uma norma em $\toplin(\E,\E')$.
+é uma norma em $\toplin(\bm E,\bm E')$.
 \end{proposition}
 \begin{proof}
 	\begin{enumerate}
-	\item (Separação) Seja $L \in \toplin(\E,\E')$ tal que $\nor{L}=0$. De \ref{prop:norma.injetiva.sobrejetiva} segue que $L$ é constante e, como $L(0)=0$, $L=0$.
+	\item (Separação) Seja $L \in \toplin(\bm E,\bm E')$ tal que $\nor{L}=0$. De \ref{prop:distorcao.injetiva.sobrejetiva} segue que $L$ é constante e, como $L(0)=0$, $L=0$.
 	
 	\item (Homogeneidade absoluta) Segue de \ref{prop:distorcao.seminorma}.
 	
@@ -1124,7 +1125,7 @@ A função \emph{dual harmônico} em $\intff{1}{\infty}$ é
 \centering
 \begin{tikzpicture}[scale=1]
 %	\draw (1,1) node[anchor=east] {$1$} -- (2,1) node[anchor=north] {$2$} -- (6,1) node[anchor=north] {$\infty$};
-	\draw (6/5,6/5) node[anchor=east] {$1$} -- (2,6/5) node[anchor=north] {$2$} -- (6,6/5) node[anchor=north] {$\infty$};
+	\draw (6/5,6/5) node[anchor=north east] {$1$} -- (2,6/5) node[anchor=north] {$2$} -- (6,6/5) node[anchor=north] {$\infty$};
 %	\draw (1,1) -- (1,2) node[anchor=east] {$2$} -- (1,6) node[anchor=east] {$\infty$};
 	\draw (6/5,6/5) -- (6/5,2) node[anchor=east] {$2$} -- (6/5,6) node[anchor=east] {$\infty$};
 %	\draw[dotted] (2,1) -- (2,2) -- (1,2);
@@ -1495,11 +1496,11 @@ Seja $\bm X$ um espaço de medida e $(\bm C,\abs{\var})$ um corpo normado (compl
 \section{Isometrias lineares}
 
 \begin{definition}
-Sejam $\E$ e $\E'$ espaços normados. Uma \emph{isometria linear local} de $\E$ para $\E'$ é uma função linear $L\colon E \to E'$ tal que, para todo $v \in E$,
+Sejam $(\bm E,\nor{\var})$ e $(\bm E',\nor{\var}')$ espaços normados. Uma \emph{isometria linear local} de $(\bm E,\nor{\var})$ para $(\bm E',\nor{\var}')$ é uma função linear $L\colon E \to E'$ tal que, para todo $v \in E$,
 	\begin{equation*}
-	\nor{L(v)} = \nor{v}.
+	\nor{L(v)}' = \nor{v}.
 	\end{equation*}
-O conjunto dessas funções é $\Linmet(\E,\E')$. Uma \emph{isometria linear} é uma isometria linear local bijetiva.
+O conjunto dessas funções é $\Linmet(\bm E,\bm E')$. Uma \emph{isometria linear} é uma isometria linear local bijetiva.
 \end{definition}
 
 Uma isometria linear local é uma isometria local com respeito à distância induzida pela norma, pois, para todos $v,v' \in E$,
@@ -1507,31 +1508,31 @@ Uma isometria linear local é uma isometria local com respeito à distância ind
 	\dist{L(v)}{L(v')} = \nor{L(v) - L(v')} = \nor{L(v - v')} = \nor{v - v'} = \dist{v}{v'}.
 	\end{equation*}
 
-De modo mais geral, para $c \in \intfa{0}{\infty}$ podemos definir funções $c$-métricas lineares como funções que satisfazem, para todo $v \in E$,
-	\begin{equation*}
-	\nor{L(v)} \leq c \nor{v}.
-	\end{equation*}
+%De modo mais geral, para $c \in \intfa{0}{\infty}$ podemos definir funções $c$-métricas lineares como funções que satisfazem, para todo $v \in E$,
+%	\begin{equation*}
+%	\nor{L(v)}' \leq c \nor{v}.
+%	\end{equation*}
 
-Essas funções lineares são as funções lineares controladas.
+%Essas funções lineares são as funções lineares controladas.
 
 
 
 \subsection{Os grupos lineares geral e especial de transformações e de isometrias}
 
-O espaço normado $\Iso{\toplin}(\E)$ das transformações lineares contínuas invertíveis é um grupo com respeito à operação de composição, chamado \emph{grupo de transformações lineares de $\E$}. Esse grupo é geralmente chamado de \emph{grupo linear geral} e denotado $\GL(\E)$ e, se $\E=C^d$, $C$ o corpo de escalares, denota-se $\GL_d(C)$.
+O espaço normado $\Iso{\toplin}(\bm E)$ das transformações lineares contínuas invertíveis é um grupo com respeito à operação de composição, chamado \emph{grupo de transformações lineares de $(\bm E,\nor{\var})$}. Esse grupo é geralmente chamado de \emph{grupo linear geral} e denotado $\GL(\bm E)$ e, se $\bm E = \bm C^d$, $\bm C$ o corpo de escalares, denota-se $\GL_d(\bm C)$.
 
-O conjunto das transformações de $\Iso{\toplin}(\E)$ que têm determinante unitário é um subgrupo, pois se $\det{f}=\det{f'}=1$, então $\det{f' \circ f}=\det{f'}\det{f}=1$. Esse grupo é geralmente chamado de \emph{grupo linear especial} e denotado $\SL(\E)$ e, se $\E=C^d$, $C$ o corpo de escalares, denota-se $\SL_d(C)$.
+O conjunto das transformações de $\Iso{\toplin}(\bm E)$ que têm determinante unitário é um subgrupo, pois se $\det{f}=\det{f'}=1$, então $\det{f' \circ f}=\det{f'}\det{f}=1$. Esse grupo é geralmente chamado de \emph{grupo linear especial} e denotado $\SL(\bm E)$ e, se $\bm E = \bm C^d$, $\bm C$ o corpo de escalares, denota-se $\SL_d(\bm C)$.
 
-O espaço normado $\Iso{\Linmet}(\E)$ das transformações lineares contínuas invertíveis que preservam a norma é um subgrupo de $\Iso{\toplin}(\E)$, chamado \emph{grupo linear de isometrias de $\E$}. Esse grupo é geralmente chamado de \emph{grupo ortogonal} e denotado $\GO(\E)$ e, se $\E=C^d$, $C$ o corpo de escalares, denota-se $\GO_d(C)$.
+O espaço normado $\Iso{\Linmet}(\bm E)$ das transformações lineares contínuas invertíveis que preservam a norma é um subgrupo de $\Iso{\toplin}(\bm E)$, chamado \emph{grupo linear de isometrias de $(\bm E,\nor{\var})$}. Esse grupo é geralmente chamado de \emph{grupo ortogonal} e denotado $\GO(\bm E)$ e, se $\bm E = \bm C^d$, $\bm C$ o corpo de escalares, denota-se $\GO_d(\bm C)$.
 
-O conjunto das transformações de $\Iso{\Linmet}(\E)$ que têm determinante unitário é um subgrupo, pois se $\det{f}=\det{f'}=1$, então $\det{f' \circ f}=\det{f'}\det{f}=1$. Esse grupo é geralmente chamado de \emph{grupo ortogonal especial} e denotado $\SO(\E)$ e, se $\E=C^d$, $C$ o corpo de escalares, denota-se $\SO_d(C)$.
+O conjunto das transformações de $\Iso{\Linmet}(\bm E)$ que têm determinante unitário é um subgrupo, pois se $\det{f}=\det{f'}=1$, então $\det{f' \circ f}=\det{f'}\det{f}=1$. Esse grupo é geralmente chamado de \emph{grupo ortogonal especial} e denotado $\SO(\bm E)$ e, se $\bm E = \bm C^d$, $C$ o corpo de escalares, denota-se $\SO_d(\bm C)$.
 
 Temos que
 	\begin{align*}
-	\SL(\E) &\subseteq \GL(\E) \\
-	\GO(\E) &\subseteq \GL(\E) \\
-	\SO(\E) &\subseteq \GO(\E) \\
-	\SO(\E) &\subseteq \SL(\E)
+	\SL(\bm E) &\subseteq \GL(\bm E) \\
+	\GO(\bm E) &\subseteq \GL(\bm E) \\
+	\SO(\bm E) &\subseteq \GO(\bm E) \\
+	\SO(\bm E) &\subseteq \SL(\bm E)
 	\end{align*}
 
 
@@ -1633,26 +1634,43 @@ portanto
 
 \section{Funções multilineares}
 
-\begin{proposition}
-Sejam $\bm{E_0},\dots,\bm{E_{n-1}},\bm{E}$ espaços normados e $L\colon E_0 \times \cdots \times E_{n-1} \to E$ uma função $n$-linear. São equivalentes
+Lembremos que, para espaços lineares topológicos $\bm E_0,\dots,\bm E_{n-1}$ e $\bm E'$. o conjunto das funções multilineares contínuas de $\bm E_0 \times \cdots \times \bm E_{n-1}$ para $\bm E'$ é denotado $\toplin(\bm E_0, \ldots, \bm E_{n-1}; \bm E')$ e, caso $\bm E_0 = \cdots = \bm E_{n-1} = \bm E$, denota-se $\toplin^n(\bm E, \bm E')$.
+
+\begin{definition}
+Sejam $\bm E_0,\dots,\bm E_{n-1}$ e $\bm E'$ espaços normados. Um função $n$-linear \emph{controlada} de $\bm E_0 \times \cdots \times \bm E_{n-1}$ para $\bm E'$ é uma função $n$-linear
+	\begin{equation*}
+	\fun{L}{\bm E_0 \times \cdots \times \bm E_{n-1}}{\bm E'}
+	\end{equation*}
+tal que algum $c \in \intfa{0}{\infty}$ satisfaz que, para todos $v_0 \in E_0$, $\ldots$, $v_{n-1} \in E_{n-1}$,
+	\begin{equation*}
+	\nor{L(v_0,\dots,v_{n-1})} \leq c\nor{v_0}\cdots\nor{v_{n-1}}.
+	\end{equation*}
+%O conjunto dessas funções é denotado $\toplin(\bm E_0, \ldots, \bm E_{n-1}; \bm E')$. Caso $\bm E_0 = \cdots = \bm E_{n-1} = \bm E$, denota-se $\toplin^n(\bm E, \bm E')$.
+
+A \emph{norma} de uma função controlada $L$ é
+	\begin{equation*}
+	\nor{L} := \inf\set{c \in \intfa{0}{\infty}}{\forall_{v_0 \in E_0, \ldots, v_{n-1} \in E_{n-1}} \nor{L(v_0,\dots,v_{n-1})} \leq c\nor{v_0}\cdots\nor{v_{n-1}}}.
+	\end{equation*}
+\end{definition}
+
+\begin{exercise}
+Sejam $\bm E_0,\dots,\bm E_{n-1}$, $\bm E'$ espaços normados e
+	\begin{equation*}
+	\fun{L}{\bm E_0 \times \cdots \times \bm E_{n-1}}{\bm E'}
+	\end{equation*}
+uma função $n$-linear. São equivalentes
 	\begin{enumerate}
-	\item $T$ é contínua;
-	\item $T$ é contínua em $0$;
-	\item Existe real $C>0$ tal que, para todos $v_0 \in E_0$, $\ldots$, $v_{n-1} \in E_{n-1}$,
-		\begin{equation*}
-		\nor{L(v_0,\dots,v_{n-1})} \leq C\nor{v_0}\cdots\nor{v_{n-1}};
-		\end{equation*}	
+	\item $L$ é controlada;
+	\item $L$ é contínua;
+	\item $L$ é contínua em $0$.
 	\end{enumerate}
-\end{proposition}
+\end{exercise}
 
 \begin{proposition}
-Sejam $\bm{E_1},\dots,\bm{E_{n-1}}$ espaços normados de dimensão finita, $\bm{E}$ um espaço normado e $L\colon E_1 \times \cdots \times E_{n-1} \to E$ uma função $n$-linear. Então existe real $C > 0$ tal que, para todos $v_1 \in E_1$, $\ldots$, $v_n \in E_n$,
-	\begin{equation*}
-	\nor{L(v_1,\ldots,v_{n-1})} \leq C\nor{v_1}\cdots\nor{v_{n-1}}.
-	\end{equation*}
+Sejam $\bm E_0,\dots,\bm E_{n-1}$ espaços normados de dimensão finita, $\bm{E}$ um espaço normado e $\fun{L}{\bm E_0 \times \cdots \times \bm E_{n-1}}{\bm E'}$ uma função $n$-linear. Então $L$ é contínua.
 \end{proposition}
 \begin{proof}
-Para todo $i \in [n]$, sejam $d_i := \dim E_i$ e $(b^{(i)}_j)_{j \in [d_i]}$ uma base ordenada de $\bm{E_i}$. Todas normas em $\bm{E_i}$ são equivalentes, portanto usaremos a norma $\nor{\var}_\infty$. Assim, para todos $v_1 \in E_1$, $\ldots$, $v_{n-1} \in E_{n-1}$,
+Mostraremos que $L$ é controlada. Para todo $i \in [n]$, sejam $d_i := \dim E_i$ e $(b^{(i)}_j)_{j \in [d_i]}$ uma base ordenada de $\bm{E_i}$. Todas normas em $\bm{E_i}$ são equivalentes, portanto usaremos a norma $\nor{\var}_\infty$. Assim, para todos $v_1 \in E_1$, $\ldots$, $v_{n-1} \in E_{n-1}$,
 	\begin{align*}
 	\nor{L(v_0,\ldots,v_{n-1})} &= \nor{\sum_{\substack{0 \leq k_0 < d_0\\\cdots\\0\leq k_{n-1}< d_{n-1}}} v^{k_0}_{(0)} \cdots v^{k_{n-1}}_{(n-1)} L\big(b_{k_0}^{(0)},\cdots,b_{k_{n-1}}^{(n-1)}\big)} \\
 		&\leq \sum_{\substack{0 \leq k_0 < d_0\\\cdots\\0\leq k_{n-1}< d_{n-1}}} \abs{v^{k_0}_{(0)}}\cdots\abs{v^{k_{n-1}}_{(n-1)}}\nor{L\big(b_{k_0}^{(0)},\cdots,b_{k_{n-1}}^{(n-1)}\big)} \\
@@ -1660,11 +1678,11 @@ Para todo $i \in [n]$, sejam $d_i := \dim E_i$ e $(b^{(i)}_j)_{j \in [d_i]}$ uma
 	\end{align*}
 Definindo
 	\begin{equation*}
-	C := \sum_{\substack{0 \leq k_0 < d_0\\\cdots\\0\leq k_{n-1}< d_{n-1}}} \nor{L\big(b_{k_0}^{(0)},\cdots,b_{k_{n-1}}^{(n-1)}\big)},
+	c := \sum_{\substack{0 \leq k_0 < d_0\\\cdots\\0\leq k_{n-1}< d_{n-1}}} \nor{L\big(b_{k_0}^{(0)},\cdots,b_{k_{n-1}}^{(n-1)}\big)},
 	\end{equation*}
 segue que
 	\begin{equation*}
-	\nor{L(v_0,\ldots,v_{n-1})} \leq C \nor{v_0}\cdots\nor{v_{n-1}}.
+	\nor{L(v_0,\ldots,v_{n-1})} \leq c \nor{v_0}\cdots\nor{v_{n-1}}.
 	\qedhere
 	\end{equation*}
 \end{proof}
@@ -1673,15 +1691,2163 @@ segue que
 
 
 
-%\section{Norma de Funções Multilineares}
+%\subsection{Norma de Funções Multilineares}
+
+
+\subsection{Espaço de funções multilineares contínuas}
+
+Lembremos que para espaços lineares $\bm V$ e $\bm V'$, definimos indutivamente para todo $n \in \N$ os espaços
+	\begin{itemize}
+	\item $\lin^0(\bm V, \bm V') := \bm V'$;
+	\item $\lin^m(\bm V, \bm V') := \lin(\bm V, \lin^{m-1}(\bm V, \bm V'))$.
+	\end{itemize}
+Cada espaço $\lin^m(\bm V, \bm V')$ é linearmente isomorfo ao espaço $\lin^{(m)}(\bm V, \bm V')$ das funções $m$-lineares de $V^m$ para $V'$. O isomorfismo é dado por $I^{(m)}$, que é definida indutivamente por
+	\begin{itemize}
+	\item Para $m=1$, $I^{(1)} := \fun{\Id}{\lin^1(\bm V, \bm V')}{\lin^{(1)}(\bm V, \bm V')}$;
+	\item Para $m>1$,
+		\begin{align*}
+		\func{I^{(m)}}{\lin^m(\bm V, \bm V')}{\lin^{(m)}(\bm V, \bm V')}{T}{
+			\begin{aligned}[t]
+			\func{I^{(m)}(T)}{V \times \cdots \times V}{V'}{(v_0,\ldots, v_{m-1})}{I^{(m-1)}(T(v_0))(v_1,\ldots, v_{m-1})}
+			\end{aligned}
+		}
+		\end{align*}
+	\end{itemize}
+
+Isso nos dá a relação
+	\begin{equation*}
+	I^{(m)}(T)(v_0, \ldots, v_{m-1}) = I^{(m-1)}(T(v_0))(v_1,\ldots, v_{m-1}) = T(v_0)\cdots(v_{m-1}).
+	\end{equation*}
+
+Definimos espaços análogos para funções lineares contínuas.
+
+\begin{definition}
+Sejam $\bm E$ e $\bm E'$ espaços normados. Definimos indutivamente para todo $m \in \N$:
+	\begin{itemize}
+	\item $\toplin^0(\bm E, \bm E') := \bm E'$;
+	\item $\toplin^m(\bm E, \bm E') := \toplin(\bm E, \toplin^{m-1}(\bm E, \bm E'))$.
+	\end{itemize}
+\end{definition}
+
+Os mesmos isomorfismo lineares $\fun{I^{(m)}}{\lin^m(\bm E, \bm E')}{\lin^{(m)}(\bm E, \bm E')}$, quando restritos a $\toplin^m(\bm E, \bm E')$ e $\toplin^{(m)}(\bm E, \bm E')$, são isomorfismos isométricos, como mostraremos a seguir.
+
+\begin{proposition}
+\label{prop:isometria.espacolinear.espacobilinear}
+Sejam $\bm E$, $\bm E'$ e $\bm E''$ espaços normados. A função
+\begin{align*}
+	\func{I}{\toplin(\bm E,\lin(\bm E',\bm E''))}{\toplin(\bm E,\bm E';\bm E'')}{f}{
+		\begin{aligned}[t]
+		\func{I(f)}{E \times E'}{E''}{(v,v')}{f_v(v')}
+		\end{aligned}
+	}
+	\end{align*}
+é um isomorfismo isométrico.
+\end{proposition}
+\begin{proof}
+O isomorfismo linear segue de \ref{prop:isomorfismo.espacolinear.espacobilinear} pelas funções
+	\begin{align*}
+	\func{I}{\lin(\bm E,\lin(\bm E',\bm E''))}{\lin(\bm E,\bm E';\bm E'')}{f}{
+		\begin{aligned}[t]
+		\func{I(f)}{E \times E'}{E''}{(v,v')}{f_v(v')}
+		\end{aligned}
+	}
+	\end{align*}
+e
+	\begin{align*}
+	\func{I\inv}{\lin(\bm E,\bm E';\bm E'')}{\lin(\bm E,\lin(\bm E',\bm E''))}{f}{
+		\begin{aligned}[t]
+		\func{J(f)}{E}{\lin(\bm E',\bm E'')}{v}{
+			\begin{aligned}[t]
+			\func{J(f)_v}{E'}{E''}{v'}{f(v,v')}.
+			\end{aligned}
+		}
+		\end{aligned}
+	}
+	\end{align*}
+Devemos mostrar que essas funções se restringem a $\toplin(\bm E,\toplin(\bm E',\bm E''))$ e $\toplin(\bm E',\bm E'')$ e que $I$ é isometria.
+
+Assim como em \ref{prop:isomorfismo.espacolinear.espacobilinear}, denotaremos uma função $f \in \toplin(\bm E,\toplin(\bm E',\bm E''))$ por
+	\begin{align*}
+	\func{f}{E}{\toplin(\bm E',\bm E'')}{v}{
+		\begin{aligned}[t]
+		\func{f_v}{E'}{E''}{v'}{f_v(v')}.
+		\end{aligned}
+	}
+	\end{align*}
+
+\begin{itemize}
+	\item ($I$ é homometria) Seja $f \in \toplin(\bm E,\toplin(\bm E',\bm E''))$. Por \ref{prop:isomorfismo.espacolinear.espacobilinear} vale que $I(f) \in \lin(\bm E,\bm E';\bm E'')$. Como $f$ é contínua vale que, para todo $v \in E$, $\nor{f_v} \leq \nor{f}\nor{v}$; como $f_v \in \toplin(\bm E',\bm E'')$ é contínua vale que, para todo $v' \in E'$, $\nor{f_v(v')} \leq \nor{f_v}\nor{v'}$. Disso segue que, como $I(f)(v,v') = f_v(v')$,
+		\begin{equation*}
+		\nor{I(f)(v,v')} = \nor{f_v(v')} \leq \nor{f_v}\nor{v'} \leq \nor{f}\nor{v}\nor{v'}.
+		\end{equation*}
+	Portanto $\nor{I(f)} \leq \nor{f}$, o que mostra que $I(f) \in \toplin(\bm E,\bm E';\bm E'')$. Concluímos portanto que
+		\begin{equation*}
+		\nor{I} = \sup_{f \in \toplin(\bm E,\toplin(\bm E',\bm E'')) \setminus \{0\}} \frac{\nor{I(f)}}{\nor{f}} \leq 1.
+		\end{equation*}
+
+	\item ($I\inv$ é homometria) Seja $f \in \toplin(\bm E,\bm E';\bm E'')$. Por \ref{prop:isomorfismo.espacolinear.espacobilinear} vale que $J(f) \in \lin(\bm E,\lin(\bm E',\bm E''))$. Como $f$ é contínua vale que, para todos $v \in E$ e $v' \in E'$, $\nor{f(v,v')} \leq \nor{f}\nor{v}\nor{v'}$. Disso segue que, como $I\inv(f)_v(v') = f(v,v')$,
+		\begin{equation*}
+		\nor{I\inv(f)_v(v')} = \nor{f(v,v')} \leq \nor{f}\nor{v}\nor{v'}.
+		\end{equation*}
+	Portanto $\nor{I\inv(f)_v} \leq \nor{f}\nor{v}$, o que mostra que $I\inv(f)_v \in \toplin(\bm E',\bm E'')$, e $\nor{I\inv(f)} \leq \nor{f}$, o que mostra que $I\inv(f) \in \toplin(\bm E, \toplin(\bm E',\bm E''))$. Concluímos portanto que
+		\begin{equation*}
+		\nor{I\inv} = \sup_{f \in \toplin(\bm E,\bm E';\bm E'') \setminus \{0\}} \frac{\nor{I\inv(f)}}{\nor{f}} \leq 1.
+		\qedhere
+		\end{equation*}
+\end{itemize}
+\end{proof}
+
+Analogamente a \ref{prop:isomorfismos.multilineares.tensoriais}, segue por indução que, para todos espaços normados $\bm E$ e $\bm E'$ e todo $m \in \N$, são isometricamente isomorfismos
+	\begin{equation*}
+	\toplin^m(\bm E, \bm E')\simeq \toplin^{(m)}(\bm E,\bm E').% \simeq \toplin(\bm E^{\otimes m}, \bm E') .
+	\end{equation*}
+
+\begin{proposition}
+\label{prop:isometria.estratificada.multilinear}
+Sejam $\bm E$ e $\bm E'$ espaços normados e $m \in \N \setminus \{0\}$. A função
+	\begin{equation*}
+	\fun{I^{(m)}}{\toplin^m(\bm E, \bm E')}{\toplin^{(m)}(\bm E, \bm E')}
+	\end{equation*}
+é isomorfismo isométrico.
+\end{proposition}
+\begin{proof}
+Segue de \ref{prop:isometria.espacolinear.espacobilinear} por indução em $m$.
+\end{proof}
+
+\begin{comment}
+
+\begin{proposition}
+\label{prop:isometrias.multilineares.tensoriais}
+Valem os seguintes isomorfismos isométricos:
+\begin{enumerate}
+	\item Para todos espaços normados $\bm E_0,\ldots,\bm E_{n-1}$ e $\bm E'$,
+		\begin{equation*}
+		\toplin(\bm E_0,\ldots,\bm E_{n-1}; \bm E') \simeq \toplin(\bm E_0 \otimes \cdots \otimes \bm E_{n-1}; \bm E').
+		\end{equation*}
+	\item Para todos espaços normados $\bm E$ e $\bm E'$ e todo $n \in \N$,
+		\begin{equation*}
+		\toplin^n(\bm E, \bm E') \simeq \toplin(\bm E^{\otimes n}, \bm E').
+		\end{equation*}
+	\item Para todos espaços normados $\bm E_0,\ldots,\bm E_{n-1}$ e $\bm E'$,
+		\begin{equation*}
+		\toplin(\bm E_0,\ldots,\bm E_{n-1}; \bm E') \simeq \toplin(\bm E_0, \toplin(\bm E_1, \ldots, \toplin(\bm E_{n-1}, \bm E')\ldots)).
+		\end{equation*}
+	\item Para todos espaços normados $\bm E$ e $\bm E'$ e todo $n \in \N$,
+		\begin{equation*}
+		\toplin^n(\bm E, \bm E') \simeq \toplin(\bm E, \toplin(\bm E,\ldots, \toplin(\bm E, \bm E')\ldots)).
+		\end{equation*}
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+Segue facilmente de \ref{prop:isomorfismos.multilineares.tensoriais} e \ref{prop:isometria.espacolinear.espacobilinear}.
+\end{proof}
+
+\end{comment}
+
+\section{Diferenciação}
+
+A derivada de uma função real $\fun{f}{I}{\R}$, em que $I \subseteq \R$ é um intervalo, pode ser generalizada para funções entre espaços normados de duas formas principais:
+	\begin{enumerate}
+	\item a diferencial $\D f$ de uma função $\fun{f}{A}{E'}$, em que $A \subseteq E$ é um aberto e $\bm E, \bm E'$ são espaços normados, é uma transformação linear em cada ponto do domínio de $f$;
+	\item a derivada $\der f$ de uma função (ou trajetória) $\fun{f}{I}{E}$, em que $I \subseteq \R$ é intervalo e $\bm E$ é um espaço normado, que é também uma função (ou trajetória) em $\bm E$.
+	\end{enumerate}
+
+Esses dois conceitos estão intimamente relacionados, mas são distintos, pois a diferencial produz, a partir de uma função entre espaços normados, uma família de transformações lineares entre esses espaços, uma para cada ponto do domínio, enquanto a derivada produz, a partir de uma trajetória em um espaço normado, uma outra trajetória no mesmo espaço.
+
+Nesta seção, definiremos esses dois conceitos e mostraremos como eles se relacionam.
+
+\subsection{Diferenciabilidade}
+
+\subsubsection{Diferencial e propriedade básicas}
+
+Consideremos espaços normados $\bm E$ e $\bm E'$ e um aberto $A \subseteq E$. A ideia por trás dessa definição de diferenciabilidade é a de que a função $\fun{f}{A}{E'}$ pode ser aproximada em uma vizinhança de um ponto $x \in A$ por seu valor no ponto mais o valor de uma função linear aplicada num vetor $v \in E$ de variação que mede quanto a função se afastou do ponto $x$. Ser aproximada, nesse sentido, quer dizer que o erro da aproximação será da ordem da norma do vetor variação $v$, de modo que a razão entre os dois vá a zero quando a variação vai a zero. A definição de função contínua pode ser pensada como um caso análogo de ordem menor: a função $f$ numa vizinhança do ponto $x$ pode ser aproximada por seu valor em $x$, e aproximada aqui quer dizer que a norma da diferença vai a zero quando o vetor variação vai a zero.% Mais à frente, as $k$-ésimas diferenciais da função $f$ serão definidas analogamente, considerando nesses casos funções multilineares.
+
+\begin{definition}[Diferenciabilidade]
+Sejam $\bm E$ e $\bm E'$ espaços normados, $A \subseteq E$ um aberto e $X \subseteq A$. Uma função de $A$ para $E'$ \emph{diferenciável em $X$} (ou \emph{diferenciável em $x$} para $X=\{x\}$) é uma função $\fun{f}{A}{E'}$ tal que, para todo $x \in X$, alguma função linear contínua $\fun{D}{E}{E'}$ satisfaz
+	\begin{equation}
+	\label{eq:condicao.diferenciabilidade}
+	\lim_{v \to 0} \frac{f(x+v) - f(x) - D(v)}{\nor{v}} = 0.
+	\end{equation}
+Uma função \emph{diferenciável} de $A$ para $E'$ é uma função $\fun{f}{A}{E'}$ diferenciável em $A$.
+\end{definition}
+
+Vale notar que em \ref{eq:condicao.diferenciabilidade} poderíamos calcular limite com a norma de $\bm E'$ que o resultado seria equivalente por causa da definição de convergência em espaços normados ser pela métrica dada pela norma. Na literatura adota-se às vezes o limite com ambas as normas, mas assim alguns cálculos ficam mais simples. Usaremos a definição com a norma também quando for conveniente para algum cálculo.
+
+\begin{exercise}[Definição alternativa]
+Sejam $(\bm E,\nor{\var})$ e $(\bm E',\nor{\var}')$ espaços normados, $A \subseteq E$ um aberto, $X \subseteq A$ e $\fun{f}{A}{E'}$. A função $f$ é diferenciável em $X$ se, e somente se, para todo $x \in X$, alguma função linear contínua $\fun{D}{E}{E'}$ satisfaz
+	\begin{equation*}
+	\lim_{v \to 0} \frac{\nor{f(x+v) - f(x) - D(v)}'}{\nor{v}} = 0.
+	\end{equation*}
+\end{exercise}
+
+Pode-se mostrar também que a noção de diferenciabilidade coincide para normas topologicamente equivalentes tanto no espaço $\bm E$ como no espaço $\bm E'$. Em particular, em espaços normados de dimensão finita todas normas são equivalentes e portanto a noção de diferenciabilidade é sempre a mesma.
+
+\begin{exercise}[Equivalência de normas]
+Sejam $\bm E$ e $\bm E'$ espaços normados, $\nor{\var}_0$ e $\nor{\var}_1$ normas equivalentes em $\bm E$, $\nor{\var}'_0$ e $\nor{\var}'_1$ normas equivalentes em $\bm E'$, $A \subseteq E$ um aberto, $X \subseteq A$ e $\fun{f}{A}{E'}$. São equivalentes:
+	\begin{itemize}
+	\item Para todo $x \in X$, alguma função linear contínua $\fun{D}{E}{E'}$ satisfaz
+		\begin{equation*}
+		\lim_{v \to 0} \frac{\nor{f(x+v) - f(x) - D(v)}'_0}{\nor{v}_0} = 0.
+		\end{equation*}
+	\item Para todo $x \in X$, alguma função linear contínua $\fun{D}{E}{E'}$ satisfaz
+		\begin{equation*}
+		\lim_{v \to 0} \frac{\nor{f(x+v) - f(x) - D(v)}'_1}{\nor{v}_1} = 0.
+		\end{equation*}
+	\end{itemize}
+\end{exercise}
+
+A transformação linear na definição de uma função diferenciável é única, como mostraremos a seguir, e é denominada a diferencial da função no ponto. Além disso, vale também notar que permitimos $\dim \bm E = 0$ na nossa definição, mas que nesse caso simplesmente definimos que todas funções são diferenciáveis e suas diferenciais são nulas.
+
+\begin{proposition}[Unicidade da diferencial]
+Sejam $\bm E$ e $\bm E'$ espaços normados, $A \subseteq E$ um aberto, $x \in A$ e $\fun{f}{A}{E'}$ uma função diferenciável em $x$ . Uma única função linear contínua $\fun{D}{E}{E'}$ satisfaz \ref{eq:condicao.diferenciabilidade}.
+\end{proposition}
+\begin{proof}
+Sejam $\fun{D,D'}{E}{E'}$ funções lineares que satisfazem \ref{eq:condicao.diferenciabilidade}. Nesse caso,
+	\begin{align*}
+	\lim_{v \to 0} &\frac{D(v) - D'(v)}{\nor{v}} = \\
+	&= \lim_{v \to 0} \frac{D(v) - (f(x+v)-f(x)) + (f(x+v)-f(x)) - D'(v)}{\nor{v}} \\
+	&= -\lim_{v \to 0} \frac{f(x+v)-f(x) - D(v)}{\nor{v}} + \lim_{v \to 0} \frac{f(x+v)-f(x) - D'(v)}{\nor{v}} \\
+	&= 0.
+	\end{align*}
+%	\begin{align*}
+%	\lim_{v \to 0} &\frac{\nor{D(v) - D'(v)}}{\nor{v}} = \\
+%	&= \lim_{v \to 0} \frac{\nor{D(v) - (f(x+v)-f(x)) + (f(x+v)-f(x)) - D'(v)}}{\nor{v}} \\
+%	&\leq \lim_{v \to 0} \frac{\nor{f(x+v)-f(x) - D(v)}}{\nor{v}} + \lim_{v \to 0} \frac{\nor{f(x+v)-f(x) - D'(v)}}{\nor{v}} \\
+%	&= 0.
+%	\end{align*}
+
+Como $D$ e $D'$ são funções lineares, vale que $D(0) = 0 = D'(0)$; resta mostrar que, para todo $v \in E \setminus \{0\}$, $D(v) = D'(v)$. Seja $v \in E \setminus \{0\}$. Então $\nor{v} \neq 0$ e, para todo $t \in \R$, como $D$ e $D'$ são lineares vale que $D(tv) = tD(v)$ e $D'(tv) = tD'(v)$. Ainda, como $\lim_{t \to 0} tv = 0$, segue do limite calculado acima que
+%	\begin{align*}
+%	0 &= \lim_{tv \to 0} \frac{\nor{D(tv) - D'(tv)}}{\nor{tv}} \\
+%		&= \lim_{t \to 0} \frac{\abs{t}\nor{D(v) - D'(v)}}{\abs{t} \nor{v}} \\
+%		&= \frac{\nor{D(v) - D'(v)}}{\nor{v}},
+%	\end{align*}
+	\begin{align*}
+	\nor{D(v) - D'(v)} &= \nor{v} \frac{\nor{D(v) - D'(v)}}{\nor{v}} \\
+		&= \nor{v} \lim_{t \to 0} \frac{\abs{t}\nor{D(v) - D'(v)}}{\abs{t} \nor{v}} \\
+		&= \nor{v} \lim_{t \to 0} \frac{\nor{D(tv) - D'(tv)}}{\nor{tv}} \\
+%		&= \nor{v} \lim_{v \to 0} \frac{\nor{D(v) - D'(v)}}{\nor{v}} \\
+		&= 0.
+	\end{align*}
+o que implica $D(v) = D'(v)$. Portanto $D=D'$.
+\end{proof}
+
+\begin{definition}[Diferencial]
+Sejam $\bm E$ e $\bm E'$ espaços normados, $A \subseteq E$ um aberto, $X \subseteq A$ e $\fun{f}{A}{E'}$ uma função diferenciável em $X$. Para todo $x \in X$, a \emph{diferencial de $f$ em $x$} é a única função linear contínua
+	\begin{equation*}
+	\fun{\D f|_x}{E}{E'}
+	\end{equation*}
+que satisfaz
+	\begin{equation*}
+	\lim_{v \to 0} \frac{f(x+v) - f(x) - \D f|_x(v)}{\nor{v}} = 0.
+	\end{equation*}
+A \emph{diferencial} de $f$ é a função
+	\begin{align*}
+	\func{\D f}{X}{\toplin(\bm E, \bm E')}{x}{\D f|_x}.
+	\end{align*}
+\end{definition}
+
+Como comentado anteriormente, a definição de diferenciabilidade pode ser entendida como uma generalização da continuidade, mas para uma ordem superior de aproximação. A seguir, mostramos que se uma função é diferenciável --- ou seja, pode ser aproximada dessa forma superior --- então ela é contínua ---pode ser aproximada da forma inferior.
+
+\begin{proposition}[Diferenciabilidade implica continuidade]
+Sejam $\bm E$ e $\bm E'$ espaços normados, $A \subseteq E$ um aberto, $X \subseteq A$ e $\fun{f}{A}{E'}$ uma função diferenciável em $X$. Então $f$ é contínua em $X$.
+\end{proposition}
+\begin{proof}
+Seja $x \in X$. Como $\D f|_x$ é linear e contínua, $\lim_{v \to 0} \D f|_x(v) = 0$, portanto segue que
+	\begin{align*}
+	\lim_{v \to 0} (f(x+v) - f(x)) &= \lim_{v \to 0} (f(x+v) - f(x) - \D f|_x(v)) \\
+		&= \lim_{v \to 0} \nor{v}\frac{f(x+v) - f(x) - \D f|_x(v)}{\nor{v}} \\
+		&= 0.
+	\qedhere
+	\end{align*}
+%Seja $x \in X$. Como $\D f|_x$ é linear e contínua, para todo $v \in E$ vale $\nor{\D f|_x(v)} \leq \nor{\D f|_x}\nor{v}$, portanto segue que
+%	\begin{align*}
+%	\lim_{v \to 0} \nor{f(x+v) - f(x)} &= \lim_{v \to 0} \nor{v}\frac{\nor{f(x+v) - f(x)}}{\nor{v}} \\
+%		&= \lim_{v \to 0} \nor{v}\frac{\nor{f(x+v) - f(x) - \D f|_x(v) + \D f|_x(v)}}{\nor{v}} \\
+%		&\leq \lim_{v \to 0} \nor{v}\frac{\nor{f(x+v) - f(x) - \D f|_x(v)}}{\nor{v}} + \nor{v}\frac{\D f|_x(v)}{\nor{v}} \\
+%		&\leq \lim_{v \to 0} \nor{v}\frac{\nor{f(x+v) - f(x) - \D f|_x(v)}}{\nor{v}} + \nor{v}\frac{\nor{\D f|_x}\nor{v}}{\nor{v}} \\
+%		&= 0.
+%	\end{align*}
+\end{proof}
+
+\subsubsection{Operações com funções diferenciáveis}
+
+A partir da estrutura algébrica dos espaços vetoriais (ou álgebras) dos espaços normados $\bm E$ e $\bm E'$, podem-se induzir operações entre funções desses espaços, como a adição de funções, a multiplicação de função por escalar e, no caso do espaço imagem ser uma álgebra, a multiplicação de funções. Quando realizamos essas operações entre funções diferenciáveis, as funções resultantes ainda serão diferenciáveis e a expressão de sua diferencial em termos das diferenciais das funções usadas na operação são muito simples. Essas propriedades são de fato análogas a propriedades de uma derivação em uma álgebra (ou anel): são lineares e satisfazem uma regra do produto, ou regra de derivação. No entanto, para que a diferencial seja de fato uma derivação, algumas restrições devem ser feitas; as propriedades a seguir podem portanto ser compreendidas como casos mais gerais das propriedades de uma derivação, pois são pontuais.
+
+\begin{exercise}[Propriedades de derivação]
+\label{prop:diferencial.propriedades}
+Sejam $\bm E$ e $\bm E'$ espaços normados, $A \subseteq E$ um aberto e $X \subseteq A$.
+	\begin{enumerate}
+	\item Para todas funções $\fun{f,f'}{A}{E'}$ diferenciáveis em $X$, a função $\fun{f+f'}{A}{E'}$ é diferenciável em $X$ e, para todo $x \in X$,
+		\begin{equation*}
+		\D (f+f')|_x = \D f|_x + \D f'|_x;
+		\end{equation*}
+	\item Para todo $c \in \R$ e toda função $\fun{f}{A}{E'}$ diferenciável em $X$, a função $\fun{c f}{A}{E'}$ é diferenciável em $X$ e, para todo $x \in X$,
+		\begin{equation*}
+		\D (c f)|_x = c\D f|_x;
+		\end{equation*}
+	\item Se $\bm E'$ é uma álgebra normada, para todas funções $\fun{f,f'}{A}{E'}$ diferenciáveis em $X$, a função $\fun{f f'}{A}{E'}$ é diferenciável em $X$ e, para todo $x \in X$ e todo $v \in E$,
+		\begin{equation*}
+		\D (f f')|_x(v) = \D f|_x(v)f'(x) + f(x)\D f'|_x(v);
+		\end{equation*}
+	\item Toda função linear $\fun{L}{E}{E'}$ é diferenciável e, para todo $x \in E$,
+		\begin{equation*}
+		\D L|_x = L;
+		\end{equation*}
+	\item Toda função constante $\fun{f}{A}{E'}$ é diferenciável e, para todo $x \in A$,
+		\begin{equation*}
+		\D f|_x = 0.
+		\end{equation*}
+	\end{enumerate}
+\end{exercise}
+\begin{comment}
+\begin{proof}
+	\begin{enumerate}
+	\item Para todo $t \in X$,
+		\begin{align*}
+		\der (\gamma+\gamma')(t) &= \lim_{t \to 0} \frac{(\gamma+\gamma')(t+t')-(\gamma+\gamma')(t)}{t'} \\
+			&= \lim_{t' \to 0} \frac{\gamma(t+t') + \gamma'(t+t') - \gamma(t) - \gamma'(t)}{t'} \\
+			&= \lim_{t' \to 0} \frac{\gamma(t+t') - \gamma(t)}{t} + \lim_{t' \to 0} \frac{\gamma'(t+t') - \gamma'(t)}{t'} \\
+			&= \der \gamma(t) + \der \gamma'(t).
+		\end{align*}
+
+	\item Para todo $t \in X$,
+		\begin{align*}
+		\der (c \gamma)(t) &= \lim_{t' \to 0} \frac{(c \gamma)(t+t')-(c \gamma)(t)}{t'} \\
+			&= \lim_{t' \to 0} \frac{c \gamma(t+t') - c \gamma(t)}{t'} \\
+			&= c\lim_{t' \to 0} \frac{\gamma(t+t') - \gamma(t)}{t'} \\
+			&= c\der \gamma(t).
+		\end{align*}
+	
+	\item Para todo $t \in X$, da continuidade do produto da álgebra e da continuidade de $\gamma'$ em $t$ segue que
+		\begin{align*}
+		\der (\gamma \gamma')(t) &= \lim_{t' \to 0} \frac{(\gamma \gamma')(t+t') - (\gamma \gamma')(t)}{t'} \\
+			&= \lim_{t' \to 0} \frac{\gamma(t+t')\gamma'(t+t') - \gamma(t)\gamma'(t)}{t'} \\
+			&= \lim_{t' \to 0} \frac{\gamma(t+t')\gamma'(t+t') - \gamma(t)\gamma'(t+t') + \gamma(t)\gamma'(t+t') - \gamma(t)\gamma'(t)}{t'} \\
+			&= \lim_{t' \to 0} \frac{\gamma(t+t')\gamma'(t+t') - \gamma(t)\gamma'(t+t')}{t'} \\
+			&+ \lim_{t' \to 0} \frac{\gamma(t)\gamma'(t+t') - \gamma(t)\gamma'(t)}{t'} \\
+			&= \left( \lim_{t' \to 0} \frac{\gamma(t+t') - \gamma(t)}{t'} \right) \left( \lim_{t' \to 0} \gamma'(t+t') \right) \\
+			&+ \lim_{t' \to 0} \gamma(t) \left( \lim_{t' \to 0} \frac{\gamma'(t+t') - \gamma'(t)}{t'} \right) \\
+			&= \der \gamma(t) \gamma'(t) + \gamma(t) \der \gamma'(t).
+		\qedhere
+		\end{align*}
+	\end{enumerate}
+\end{proof}
+\end{comment}
+
+Além das operações entre funções diferenciáveis provenientes da estrutura algébrica dos espaços vetoriais (ou álgebras) em questão, uma operação possível entre funções diferenciáveis é a composição. Como é de se esperar, a composição de funções diferenciáveis é diferenciável e a expressão de sua diferencial em termos das diferenciais da funções envolvidas na composição é conhecida como a \textit{regra da cadeia}, pois as diferenciais são `encadeadas', calculadas uma em seguida da outra e compostas. Essa regra é uma das fórmulas mais úteis na teoria de diferenciação.
+
+\begin{proposition}[Regra da cadeia]
+\label{prop:regra.cadeia}
+Sejam $\bm E$, $\bm E'$ e $\bm E'$ espaços normados, $A \subseteq E$ e $A' \subseteq E'$ abertos, $X \subseteq A$, $\fun{f}{A}{E'}$ diferenciável em $X$ tal que $f(A) \subseteq A'$ e $\fun{f}{A'}{E''}$ diferenciável em $f(X)$. A função composta $\fun{f' \circ f}{A}{E''}$ é diferenciável em $X$ e, para todo $x \in X$,
+	\begin{equation*}
+	\D(f' \circ f)|_x = \D f'|_{f(x)} \circ \D f|_x.
+	\end{equation*}
+\end{proposition}
+\begin{proof} Seja $x \in X$. Definamos, para todo $v \in E$,
+	\begin{align*}
+	r(v) &:= f(x+v) - f(x) - \D f|_x(v), \\
+	r'(v) &:= f'(f(x)+v) - f'(f(x)) - \D f'|_{f(x)}(v), \\
+	r''(v) &:= (f' \circ f)(x+v) - (f' \circ f)(x) - \D f'|_{f(x)} \circ \D f|_x(v),
+	\end{align*}
+de modo que as diferenciabilidades de $f$ em $x$ e de $f'$ em $f(x)$ equivalem a
+	\begin{equation*}
+	\lim_{v \conv 0} \frac{r(v)}{\nor{v}} = \lim_{v \conv 0} \frac{r'(v)}{\nor{v}} = 0
+	\end{equation*}
+e, como $\fun{\D f'|_{f(x)} \circ \D f|_x}{E}{E''}$ é linear e contínua, o limite
+	\begin{equation*}
+	\lim_{v \conv 0} \frac{r''(v)}{\nor{v}} = 0
+	\end{equation*}
+implica a diferenciabilidade de $f' \circ f$ em $x$. Calculemos esse limite.
+
+Calculando $(f' \circ f)(x+v)$, obtemos
+	\begin{align*}
+	(f' \circ f)(x+v) &= f'(f(x+v)) \\
+		&= f'(f(x)+\D f|_x(v) + r(v)) \\
+		&= f'(f(x)) + \D f'|_{f(x)} (\D f|_x(v) + r(v)) + r'(\D f|_x(v) + r(v)) \\
+		&= (f' \circ f)(x) + \D f'|_{f(x)} \circ \D f|_x(v) + \D f'|_{f(x)}(r(v)) + r'(\D f|_x(v) + r(v)).
+	\end{align*}
+portanto
+	\begin{align*}
+	r''(v) &= (f' \circ f)(x+v) - (f' \circ f)(x) - \D f'|_{f(x)} \circ \D f|_x(v) \\
+		&= \D f'|_{f(x)}(r(v)) + r'(\D f|_x(v) + r(v)).
+	\end{align*}
+e
+	\begin{equation*}
+	\lim_{v \conv 0} \frac{r''(v)}{\nor{v}} = \lim_{v \conv 0} \frac{\D f'|_{f(x)}(r(v)) + r'(\D f|_x(v) + r(v))}{\nor{v}}.
+	\end{equation*}
+
+A primeira parcela do limite é $0$, pois da linearidade e continuidade de $\D f|_x$ segue que
+	\begin{equation*}
+	\lim_{v \conv 0} \frac{\D f'|_{f(x)} (r(v))}{\nor{v}} = \lim_{v \conv 0} \D f'|_{f(x)} \left( \frac{r(v)}{\nor{v}} \right) = \D f'|_{f(x)} \left( \lim_{v \conv 0} \frac{r(v)}{\nor{v}} \right) = 0.
+	\end{equation*}
+A segunda parcela do limite também é $0$, pois como $\lim_{v \conv 0} \D f|_x(v) + r(v) = 0$ e $\D f|_x \left( \frac{v}{\nor{v}} \right)$ é limitado, segue que
+	\begin{align*}
+	\lim_{v \conv 0} \frac{r'(\D f|_x(v) + r(v))}{\nor{v}} &= \lim_{v \conv 0} \frac{r'(\D f|_x(v) + r(v))}{\nor{\D f|_x(v) + r(v)}} \frac{\nor{\D f|_x(v) + r(v)}}{\nor{v}}\\
+		&= \lim_{v \conv 0} \frac{r'(\D f|_x(v) + r(v))}{\nor{\D f|_x(v) + r(v)}} \nor{\D f|_x \left( \frac{v}{\nor{v}} \right) + \frac{r(v)}{\nor{v}}} \\
+		&= 0.
+	\end{align*}
+
+Segue então que
+	\begin{equation*}
+	\lim_{v \conv 0} \frac{(f' \circ f)(x+v) - (f' \circ f)(x) - \D f'|_{f(x)} \circ \D f|_x(v)}{\nor{v}} = 0,
+	\end{equation*}
+e concluímos que $f' \circ f$ é diferenciável em $x$ e $\D f'|_{f(x)} \circ \D f|_x$ é sua diferencial em $x$.
+\end{proof}
+
+\begin{proposition}[Restrição de contradomínio]
+\label{prop:restricao.imagem.diferencial}
+Sejam $\bm E$ e $\bm E'$ espaços normados, $\bm S' \subseteq \bm E'$ subespaço fechado, $A \subseteq E$ um aberto, $X \subseteq A$ e $\fun{f}{A}{E'}$ uma função diferenciável em $X$ tal que $f(A) \subseteq S'$. Então $\fun{f}{A}{S'}$ é diferenciável em $X$.
+\end{proposition}
+% Não sei se esse argumento é válido quando os espaços não são completos, mas no livro do Coleman tem outro argumento na proposição 2.8.
+%\begin{proof}
+%Como $S'$ é fechado, $\fun{\proj_{S'}}{E'}{S}$ é linear e contínua, logo segue da regra da cadeia que $\proj_{S'} \circ f$ é diferenciável em $X$ e, para todo $x \in X$,
+%	\begin{equation*}
+%	\D (\proj_{S'} \circ f)|_x = \proj_{S'} \circ \D f|_x = \D f|_x.
+%	\end{equation*}
+%\end{proof}
+
+% Seria legal também tentar achar uma proposição sobre restrição de domínio, provavelmente seria um subconjunto aberto.
+
+\subsection{Derivabilidade}
+
+\subsubsection{Derivada de uma trajetória}
+
+Para a definição de derivada, definiremos antes o conceito de uma trajetória em um espaço normado. A ideia é formalizar as propriedades do movimento de uma partícula ou objeto em um espaço que seja parametrizado pelo tempo. Aqui, definiremos uma trajetória simplesmente como uma função de um intervalo real, que representará o parâmetro temporal, para um espaço normado, que representará o espaço. Em geral, espera-se que a trajetória de uma partícula seja de certa forma suave, ou ao menos contínua, mas por simplicidade de notação não imporemos nenhuma condição sobre a função, para que a partir de definições adicionais sobre a continuidade e derivabilidade de uma tal trajetória possamos obter condições adequadas para tais trajetórias. Na prática, quase todas trajetórias que considerarmos serão contínuas ou mesmo deriváveis.
+
+\begin{definition}
+Sejam $\bm E$ um espaço normado. Uma \emph{trajetória em $E$} é uma função $\fun{\gamma}{I}{E}$ de um intervalo aberto $I \subseteq \R$ para $E$.
+\end{definition}
+
+Na literatura matemática, o termo \textit{curva} às vezes é denomina o que aqui chamamos de trajetória, em geral impondo a condição de continuidade, e outras vezes denomina o conjunto imagem de uma trajetória que seja bem comportada. Aqui, reservaremos o nome \textit{curva} para variedades $1$-dimensionais, que serão definidas mais adiante; em particular, o conjunto imagem de uma trajetória suficientemente bem comportada é uma curva. Um outro termo também usado na literatura é \textit{curva parametrizada}.
+
+O conceito de derivada de uma trajetória vem de sua interpretação física. A derivada em um tempo $t \in I$ da trajetória é a `taxa de variação instantânea' ou a \emph{velocidade} do objeto que se move conforme a trajetória. Esse é o conceito usado na definição de derivada de funções reais e se estende facilmente para o caso de espaços normados.
+
+\begin{definition}[Derivabilidade]
+Sejam $\bm E$ um espaço normado, $I \subseteq \R$ um intervalo aberto e $X \subseteq I$. Uma trajetória de $I$ para $E$ \emph{derivável em $X$} (ou \emph{derivável em $t$} para $X=\{t\}$) é uma trajetória $\fun{\gamma}{I}{E}$ tal que, para todo $t \in X$, algum $v \in E$ satisfaz
+	\begin{equation*}
+	v = \lim_{\delta \to 0} \frac{\gamma(t+\delta)-\gamma(t)}{\delta}.
+	\end{equation*}
+Nesse caso, a \emph{derivada de $\gamma$ em $t$} é o vetor
+	\begin{equation*}
+	\dot{\gamma} (t) := \lim_{\delta \to 0} \frac{\gamma(t+\delta)-\gamma(t)}{\delta}.
+	\end{equation*}
+Caso seja necessário explicitar a operação de derivação, denota-se
+	\begin{equation*}
+	\der \gamma(t) := \dot{\gamma} (t);
+	\end{equation*}
+caso seja necessário explicitar a variável da função $\gamma$, denota-se
+	\begin{equation*}
+	\der_{t'} \gamma(t')|_{t'=t} := \der \gamma(t) = \dot \gamma(t).
+	\end{equation*}
+Uma trajetória \emph{derivável} de $I$ para $E$ é uma trajetória $\fun{\gamma}{I}{E}$ derivável em $I$. Nesse caso, a \emph{derivada} de $f$ é a trajetória
+	\begin{align*}
+	\func{\der \gamma = \dot \gamma}{I}{E}{t}{\dot \gamma(t)}.
+	\end{align*}
+\end{definition}
+
+Mais geralmente, pode-se definir derivabilidade inferior e superior de uma trajetória em um ponto através de limites superior e inferior, já que o domínio de uma trajetória é um subconjunto de $\R$. Não abordaremos essas definições mais gerais aqui, mas elas podem ser conferidas em \cite{liv:Cartan-DifferentialCalculus}.
+
+\begin{proposition}[Derivabilidade implica continuidade]
+Sejam $\bm E$ um espaço normado, $I \subseteq \R$ um intervalo aberto, $X \subseteq I$ e $\fun{\gamma}{I}{E}$ uma trajetória derivável em $X$. Então $\gamma$ é contínua em $X$.
+\end{proposition}
+\begin{proof}
+Basta notar que, para todo $t \in X$,
+	\begin{align*}
+	\lim_{\delta \to 0} (\gamma(t+\delta)-\gamma(t)) &= \lim_{\delta \to 0} \delta\frac{\gamma(t+\delta)-\gamma(t)}{\delta} \\
+%		&= \left( \lim_{\delta \to 0} \delta \right) \left( \lim_{\delta \to 0}\frac{\gamma(t+\delta)-\gamma(t)}{\delta} \right) \\
+		&= 0\dot \gamma(t) \\
+		&= 0,
+	\end{align*}
+portanto $\lim_{\delta \to 0} \gamma(t+\delta) = \gamma(t)$, o que mostra que $\gamma$ é contínua em $t$.
+\end{proof}
+
+\subsubsection{Operaões entre trajetórias deriváveis}
+
+\begin{proposition}[Propriedades de derivação]
+\label{prop:derivada.propriedades}
+Sejam $\bm E$ um espaço normado, $I \subseteq \R$ um intervalo aberto e $X \subseteq I$.
+	\begin{enumerate}
+	\item Para todas trajetórias $\fun{\gamma,\gamma'}{I}{E}$ deriváveis em $X$, a trajetória $\fun{\gamma+\gamma'}{I}{E}$ é derivável em $X$ e, para todo $t \in X$,
+		\begin{equation*}
+		\der (\gamma+\gamma')(t) = \der \gamma(t) + \der \gamma'(t);
+		\end{equation*}
+	\item Para todo $c \in \R$ e toda trajetória $\fun{\gamma}{I}{E}$ derivável em $X$, a trajetória $\fun{c \gamma}{I}{E}$ é derivável em $X$ e, para todo $t \in X$,
+		\begin{equation*}
+		\der (c \gamma)(t) = c\der \gamma(t);
+		\end{equation*}
+	\item Se $\bm E$ é uma álgebra normada, para todas trajetórias $\fun{\gamma,\gamma'}{I}{E}$ deriváveis em $X$, a trajetória $\fun{\gamma \gamma'}{I}{E}$ é derivável em $X$ e, para todo $t \in X$,
+		\begin{equation*}
+		\der (\gamma \gamma')(t) = \der \gamma(t)\gamma'(t) + \gamma(t)\der \gamma'(t).
+		\end{equation*}
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item Para todo $t \in X$,
+		\begin{align*}
+		\der (\gamma+\gamma')(t) &= \lim_{t \to 0} \frac{(\gamma+\gamma')(t+\delta)-(\gamma+\gamma')(t)}{\delta} \\
+			&= \lim_{\delta \to 0} \frac{\gamma(t+\delta) + \gamma'(t+\delta) - \gamma(t) - \gamma'(t)}{\delta} \\
+			&= \lim_{\delta \to 0} \frac{\gamma(t+\delta) - \gamma(t)}{t} + \lim_{\delta \to 0} \frac{\gamma'(t+\delta) - \gamma'(t)}{\delta} \\
+			&= \der \gamma(t) + \der \gamma'(t).
+		\end{align*}
+
+	\item Para todo $t \in X$,
+		\begin{align*}
+		\der (c \gamma)(t) &= \lim_{\delta \to 0} \frac{(c \gamma)(t+\delta)-(c \gamma)(t)}{\delta} \\
+			&= \lim_{\delta \to 0} \frac{c \gamma(t+\delta) - c \gamma(t)}{\delta} \\
+			&= c\lim_{\delta \to 0} \frac{\gamma(t+\delta) - \gamma(t)}{\delta} \\
+			&= c\der \gamma(t).
+		\end{align*}
+	
+	\item Para todo $t \in X$, da continuidade do produto da álgebra e da continuidade de $\gamma'$ em $t$ segue que
+		\begin{align*}
+		\der (\gamma \gamma')(t) &= \lim_{\delta \to 0} \frac{(\gamma \gamma')(t+\delta) - (\gamma \gamma')(t)}{\delta} \\
+			&= \lim_{\delta \to 0} \frac{\gamma(t+\delta)\gamma'(t+\delta) - \gamma(t)\gamma'(t)}{\delta} \\
+			&= \lim_{\delta \to 0} \frac{\gamma(t+\delta)\gamma'(t+\delta) - \gamma(t)\gamma'(t+\delta) + \gamma(t)\gamma'(t+\delta) - \gamma(t)\gamma'(t)}{\delta} \\
+			&= \lim_{\delta \to 0} \frac{\gamma(t+\delta)\gamma'(t+\delta) - \gamma(t)\gamma'(t+\delta)}{\delta} \\
+			&+ \lim_{\delta \to 0} \frac{\gamma(t)\gamma'(t+\delta) - \gamma(t)\gamma'(t)}{\delta} \\
+			&= \left( \lim_{\delta \to 0} \frac{\gamma(t+\delta) - \gamma(t)}{\delta} \right) \left( \lim_{\delta \to 0} \gamma'(t+\delta) \right) \\
+			&+ \lim_{\delta \to 0} \gamma(t) \left( \lim_{\delta \to 0} \frac{\gamma'(t+\delta) - \gamma'(t)}{\delta} \right) \\
+			&= \der \gamma(t) \gamma'(t) + \gamma(t) \der \gamma'(t).
+		\qedhere
+		\end{align*}
+	\end{enumerate}
+\end{proof}
+
+\begin{exercise}
+Se $\fun{p}{\R}{\R}$ é uma função polinomial dada por $p(x) = \sum_{i=0}^n c_ix^i$, então $\dot{p}(x) = \sum_{i=0}^{n-1} ic_ix^{i-1}$.
+\end{exercise}
+
+\subsubsection{Diferenciabilidade e derivabilidade}
+
+A proposição a seguir mostra que os conceitos de diferenciabilidade e derivabilidade coincidem para trajetórias. Mais à frente, definiremos as derivadas direcionais de uma função entre espaços normados, que estendem o conceito de derivação de trajetórias para essas funções. Nesse caso, nem toda função derivável em todas as direções será será diferenciável, mas a recíproca ainda valerá.
+
+\begin{proposition}
+\label{prop:diferenciabilidade.derivabilidade}
+Sejam $\bm E$ um espaço normado, $I \subseteq \R$ aberto e $X \subseteq I$. Uma função $\fun{\gamma}{I}{E}$ é diferenciável em $X$ se, e somente se, é derivável em $X$. Nesse caso, para todo $t \in X$ vale $\nor{\D \gamma|_t} = \nor{\dot \gamma(t)}$ e, para todo $\delta \in \R$,
+	\begin{equation*}
+	\D \gamma|_t(\delta) = \delta\dot \gamma(t).
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+	\begin{itemize}
+	\item ($\Rightarrow$) Suponhamos que $\gamma$ é diferenciável e seja $t \in X$. Então
+		\begin{align*}
+		\lim_{\delta \to 0} \nor{\frac{\gamma(t+\delta) - \gamma(t)}{\delta} - \D \gamma|_t(1)} &= \lim_{\delta \to 0} \nor{\frac{\gamma(t+\delta) - \gamma(t) - \delta\D \gamma|_t(1)}{\delta}} \\
+			&= \lim_{\delta \to 0} \frac{\nor{\gamma(t+\delta) - \gamma(t) - \D \gamma|_t(\delta)}}{\abs{\delta}} \\
+			&= 0,
+		\end{align*}
+	o que mostra que $\D \gamma|_t(1)$ é a derivada de $\gamma$ em $t$.
+
+	\item ($\Leftarrow$) Suponhamos que $\gamma$ é derivável e seja $t \in X$. Defina
+		\begin{align*}
+		\func{D}{\R}{E}{\delta}{\delta \dot \gamma(t)}.
+		\end{align*}
+	A função $D$ é claramente linear e contínua. Da derivabilidade de $\gamma$ em $t$ segue que
+		\begin{align*}
+		\lim_{\delta \to 0} \frac{\nor{\gamma(t+\delta) - \gamma(t) - D(\delta)}}{\abs{\delta}} &= \lim_{\delta \to 0} \nor{\frac{\gamma(t+\delta) - \gamma(t) - \delta \dot \gamma(t)}{\delta}} \\
+			&= \lim_{\delta \to 0} \nor{\frac{\gamma(t+\delta) - \gamma(t)}{\delta} - \dot \gamma(t)} \\
+			&= 0,
+		\end{align*}
+	o que mostra que $D$ é a diferencial de $\gamma$ em $t$.
+	\end{itemize}
+No caso em que $\gamma$ é diferenciável, para todos $t \in X$ e $\delta \in \R$ vale
+	\begin{equation*}
+	\D \gamma|_t(\delta) = \delta\dot \gamma(t)
+	\end{equation*}
+e portanto
+	\begin{equation*}
+	\nor{\D \gamma|_t} = \sup_{\delta \in \R \setminus \{0\}} \frac{\nor{\D \gamma|_t(\delta)}}{\abs{\delta}} = \sup_{\delta \in \R \setminus \{0\}} \frac{\nor{\delta \dot \gamma(t)}}{\nor{\delta}} = \sup_{\delta \in \R \setminus \{0\}} \frac{\abs{\delta}\nor{\dot \gamma(t)}}{\nor{\delta}} = \nor{\dot \gamma(t)}.
+	\qedhere
+	\end{equation*}
+\end{proof}
+
+Note que as proposições sobre derivabilidade implicar continuidade e propriedades de derivação demonstradas nesta seção seguem diretamente como corolário dessa caracterização da derivada de uma trajetória pela diferencial e das respectivas propriedades da diferencial, mas elas foram demonstradas independentemente para motivar o conceito de derivada.
+
+\subsubsection{Classes de derivabilidade}
+
+%\begin{definition}[Derivabilidade]
+%Sejam $\bm E$ um espaço normado e $I \subseteq \R$ um intervalo aberto. Uma função \emph{derivável} de $I$ para $E$ é uma função $\fun{\gamma}{I}{E}$ derivável em $I$. Nesse caso, a \emph{derivada} de $\gamma$ é a função
+%	\begin{align*}
+%	\func{\der \gamma = \dot{\gamma}}{I}{E}{t}{\dot{\gamma}(t)}.
+%	\end{align*}
+%\end{definition}
+
+Como derivabilidade implica continuidade, se $\gamma$ é derivável então $\gamma$ é contínua, ou seja, $\gamma \in \Cont(\bm I,\bm E)$. Podemos nos perguntar se a derivada $\dot{\gamma}$ de $\gamma$ é também contínua. Isso nem sempre vale, embora seja possível mostrar que uma descontinuidade de uma função derivável sempre é uma descontinuidade essencial e nunca é uma descontinuidade de salto.
+
+%O conjunto das funções contínuas $\Cont(\bm I,\bm E)$ será também denotado $\Cont^0(\bm I,\bm E) := \Cont(\bm I,\bm E)$ e a função $\gamma$ será também denotada $\der^0 \gamma$.
+
+\begin{definition}[\ensuremath{\Cont^k}-derivabilidade]
+Sejam $\bm E$ um espaço normado e $I \subseteq \R$ um intervalo aberto. Para todo $k \in \N$, definimos indutivamente: 
+	\begin{enumerate}
+	\item Uma trajetória $\Cont^0$-\emph{derivável} de $I$ para $E$ é uma trajetória contínua $\fun{\gamma}{I}{E}$ e sua $0$-ésima derivada é $\der^0 \gamma := \gamma$. O conjunto dessas trajetórias é denotado $\Cont^0(\bm I,\bm E) := \Cont(\bm I,\bm E)$.
+	\item Uma trajetória $\Cont^k$-\emph{derivável} de $I$ para $E$ é uma trajetória derivável $\fun{\gamma}{I}{E}$ tal que $\fun{\der \gamma}{I}{E}$ é $\Cont^{k-1}$-derivável. Sua $k$-ésima derivada é
+		\begin{equation*}
+		\der^k \gamma := \der^{k-1} (\der \gamma).
+		\end{equation*}
+	O conjunto dessas trajetórias é denotado $\Cont^k(\bm I,\bm E)$.
+	\item Uma trajetória $\Cont^\infty$-\emph{derivável} (ou \emph{suave}) de $I$ para $E$ é uma trajetória $\fun{\gamma}{I}{E}$ tal que, para todo $k \in \N$, $\gamma$ é $\Cont^{k}$-derivável. O conjunto dessas trajetórias é denotado $\Cont^\infty(\bm I,\bm E)$.
+	\end{enumerate}
+\end{definition}
+
+\subsection{Derivabilidade direcional}
+
+Antes de definirmos a derivada direcional, definiremos o fluxo em um espaço normado $E$ por um vetor $v \in E$. Essa ferramenta a princípio parece trivial, mas o benefício de introduzir a ideia de um fluxo é que quando os conceitos de derivação forem generalizados para variedades o uso do fluxo, que não será trivial como neste caso, será essencial.
+
+\subsubsection{Fluxo linear}
+
+\begin{definition}
+Sejam $\bm E$ um espaço normado e $v \in E$. O \emph{fluxo de $v$} em $\bm E$ é a função
+	\begin{align*}
+	\func{\flux{}{v}}{\R}{\Cont(\bm E,\bm E)}{t}{
+		\begin{aligned}[t]
+		\func{\flux{(t)}{v}}{E}{E}{x}{\flux{(t)}{v}(x) := x+tv}.
+		\end{aligned}
+	}
+	\end{align*}
+Para todo $x \in E$, a \emph{trajetória} de $\flux{}{v}$ baseada em $x$ é a trajetória
+	\begin{align*}
+	\func{\flux{(\var)}{v}_{x}}{\R}{E}{t}{\flux{(t)}{v}(x)}.
+	\end{align*}
+\end{definition}
+
+O fluxo de $v$ também pode ser visto como uma função
+	\begin{align*}
+	\func{\flux{}{v}}{\R \times E}{E}{(t,x)}{\flux{(t)}{v}(x) = x+tv}.
+	\end{align*}
+Esse ponto de vista será importante na generalização dos fluxos. Dado $x \in E$, denotaremos a derivada da trajetória $\flux{(\var)}{v}_{x}$ em $t \in \R$ por
+	\begin{equation*}
+	\flux[\dot]{(t)}{v}_{x} := \der \flux{(t)}{v}_{x} = \lim_{\delta \to 0} \frac{\flux{(t+\delta)}{v}_{x} - \flux{(t)}{v}_{x}}{\delta}.
+	\end{equation*}
+
+Ressaltamos na proposição seguinte as principais propriedades do fluxo.
+
+\begin{proposition}
+Seja $\bm E$ um espaço normado.
+	\begin{enumerate}
+	\item Para todo $v \in E$ e todos $t,t' \in \R$,
+		\begin{equation*}
+		\flux{(t)}{t'v} = \flux{(tt')}{v};
+		\end{equation*}
+	\item Para todo $v \in E$,
+		\begin{equation*}
+		\flux{(0)}{v} = \Id;
+		\end{equation*}
+	\item Para todo $v \in E$ e todos $t,t' \in \R$,
+		\begin{equation*}
+		\flux{(t+t')}{v} = \flux{(t)}{v} \circ \flux{(t')}{v};
+		\end{equation*}
+	\item Para todo $v \in E$, todo $x \in E$ e todo $t \in \R$,
+		\begin{equation*}
+		\flux[\dot]{(t)}{v}_{x} = v;
+		\end{equation*}
+	\item Para todos $v,v' \in E$ e todo $t \in \R$,
+		\begin{equation*}
+		\flux{(t)}{(v+v')} = \flux{(t)}{v} \circ \flux{(t)}{v'}.
+		\end{equation*}
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item Para todo $x \in E$,
+		\begin{equation*}
+		\flux{(t)}{(t'v)}(x) = x + t(t'v) = x + (tt')v = \flux{(tt')}{v}(x).
+		\end{equation*}
+	
+	\item Para todo $x \in E$,
+		\begin{equation*}
+		\flux{(0)}{v}(x) = x + 0v = x = \Id(x).
+		\end{equation*}
+
+	\item Para todo $x \in E$,
+		\begin{equation*}
+		\flux{(t+t')}{v}(x) = x + (t + t')v = (x + tv) + t'v = \flux{(t)}{v} \circ \flux{(t')}{v}(x).
+		\end{equation*}
+
+	\item Para todo $x \in E$,
+		\begin{align*}
+		\flux[\dot]{(t)}{v}_{x} &= \lim_{\delta \to 0} \frac{\flux{(t+\delta)}{v}_{x} - \flux{(t)}{v}_{x}}{\delta} \\
+			&= \lim_{\delta \to 0} \frac{x + (t + \delta)v - (x + tv)}{\delta} \\
+			&= \lim_{\delta \to 0} \frac{\delta v}{\delta} \\
+			&= v.
+		\end{align*}
+	
+	\item Para todo $x \in E$ e todo $t \in \R$,
+		\begin{align*}
+		\flux{t}{(v+v')}(x) &= \flux{t}{(v'+v)}(x) \\
+			&= x + t(v'+v) \\
+			&= x + tv' + tv \\
+			&= \flux{t}{v}(x+tv') \\
+			&= \flux{t}{v}(\flux{t}{v'}(x)) \\
+			&= \flux{t}{v} \circ \flux{t}{v} (x),
+		\end{align*}
+	o que mostra que $\flux{t}{(v+v')} = \flux{t}{v} \circ \flux{t}{v}$.
+	\qedhere
+	\end{enumerate}
+\end{proof}
+
+A primeira proposição esclarece uma possível ambiguidade de notação e serve como justificativa para a escolha de notação de fluxo. Como para todo $v \in E$ e todos $t,t' \in \R$ vale
+	\begin{equation*}
+	\flux{(t)}{(t'v)} = \flux{(tt')}{v},
+	\end{equation*}
+então a notação $\flux{tt'}{v}$ não é ambígua e podemos em geral denotar
+	\begin{equation*}
+	\flux{t}{v} := \flux{(t)}{v}.
+	\end{equation*}
+A segunda e a terceira proposições são de fato a propriedade de um fluxo. Elas significam que $\flux{}{v}$ é um homomorfismo de grupos de $\R$ para $\Cont(\bm E, \bm E)$, o que mostra que na verdade temos
+	\begin{align*}
+	\func{\flux{}{v}}{\R}{\Homeo(\bm E)}{t}{\flux{t}{v}}
+	\end{align*}
+
+Consideremos espaços normados $\bm E$ e $\bm E'$, $A \subseteq E$ um aberto, $v \in E$ e $x \in A$. Como $A$ é aberto, para algum $r \in \intaa{0}{\infty}$ vale que $\bola{x}{r} \subseteq A$, o que implica que, para todo $t \in \intaa{-r}{r}$, $x + tv \in \bola{x}{r}$ se, e somente $\nor{(x+tv)-x}<r$; como
+	\begin{equation*}
+	\abs{t}\nor{v} = \nor{tv} = \nor{(x+tv)-x}<r,
+	\end{equation*}
+isso equivale a $t \in \intaa{-r \nor{v}\inv}{r \nor{v}\inv}$. Tomando $\varepsilon := r \nor{v}\inv$, para toda função $\fun{f}{A}{E'}$ a função
+	\begin{align*}
+	\func{f \circ \flux{(\var)}{v}(x)}{\intaa{-\varepsilon}{\varepsilon}}{E'}{t}{f \circ \flux{t}{v}(x) = f(x+tv)}
+	\end{align*}
+está bem definida.
+
+%Dado $x \in A$, definimos o intervalo aberto máximo de $x$ em $A$ de fluxo de $v$ por
+%	\begin{equation*}
+%	I_x := \bigcup \set{\intaa{\varepsilon}{\varepsilon'}}{\varepsilon,\varepsilon' \in \R \land \forall_{t \in \intaa{\varepsilon}{\varepsilon'}} x+tv \in A}.
+%	\end{equation*}
+%Domínio de fluxo
+%	\begin{equation*}
+%	D
+%	\end{equation*}
+
+\subsubsection{Derivada direcional}
+
+\begin{comment}
+
+\begin{definition}
+Sejam $(\bm E,\nor{\var})$ um espaço normado, $A \subseteq E$ um aberto, $v \in E$ e $x \in A$. Uma função de $A$ para $\R$ \emph{derivável em $x$ na direção $v$} é uma função $\fun{f}{A}{\R}$ tal que existe o limite
+	\begin{equation*}
+	\lim_{t \to 0} \frac{f(x+tv)-f(x)}{t}.
+	\end{equation*}
+Nesse caso, a \emph{derivada direcional de $f$ em $x$ na direção $v$} é
+	\begin{equation*}
+	\dir{v} f(x) := \lim_{t \to 0} \frac{f(x+tv)-f(x)}{t}.
+	\end{equation*}
+\end{definition}
+
+\end{comment}
+
+\begin{definition}[Derivabilidade direcional]
+Sejam $\bm E$ e $\bm E'$ espaços normados, $A \subseteq E$ um aberto, $v \in E$ e $X \subseteq A$. Uma função de $A$ para $E'$ \emph{derivável em $X$ na direção $v$} (ou \emph{derivável em $x$ na direção $v$} para $X=\{x\}$) é uma função $\fun{f}{A}{E'}$ tal que, para todo $x \in X$, a trajetória
+	\begin{align*}
+	\func{f \circ \flux{(\var)}{v}_{x}}{\intaa{-\varepsilon}{\varepsilon}}{E'}{t}{f \circ \flux{t}{v}(x) = f(x+tv)}
+	\end{align*}
+é derivável em $0$.
+
+Nesse caso, para todo $x \in X$, a \emph{derivada direcional de $f$ em $x$ na direção $v$} é
+	\begin{equation*}
+	\dir{v} f(x) := \der_{t}( f \circ \flux{(t)}{v}(x))|_{t=0} = \lim_{t \to 0} \frac{f(x+tv)-f(x)}{t}.
+	\end{equation*}
+\end{definition}
+
+Listamos a seguir algumas das propriedades da derivada direcional.
+
+\begin{proposition}
+Sejam $\bm E$ e $\bm E'$ espaços normados, $A \subseteq E$ um aberto, $v \in E$ e $x \in A$.
+	\begin{enumerate}
+	\item Para todas funções $\fun{f,f'}{A}{E'}$ deriváveis em $x$ na direção $v$, a função $\fun{f+f'}{A}{E'}$ é derivável em $x$ na direção $v$ e
+		\begin{equation*}
+		\dir{v} (f+f')(x) = \dir{v} f(x) + \dir{v} f'(x);
+		\end{equation*}
+	\item Para todo $c \in \R$ e toda função $\fun{f}{A}{E'}$ derivável em $x$ na direção $v$, a função $\fun{cf}{A}{E'}$ é derivável em $x$ na direção $v$ e
+		\begin{equation*}
+		\dir{v} (cf)(x) = c\dir{v} f(x);
+		\end{equation*}
+	\item Para todas funções $\fun{f,f'}{A}{\R}$ deriváveis em $x$ na direção $v$, a função $\fun{ff'}{A}{\R}$ é derivável em $x$ na direção $v$ e
+		\begin{equation*}
+		\dir{v} (ff')(x) = \dir{v} f(x) f'(x) + f(x) \dir{v} f'(x);
+		\end{equation*}
+	\item Para todo $c \in \R$ e toda função $\fun{f}{A}{E'}$ derivável em $x$ na direção $v$, a função $\fun{f}{A}{E'}$ é derivável em $x$ na direção $cv$ e
+		\begin{equation*}
+		\dir{cv} f(x) = c\dir{v} f(x).
+		\end{equation*}
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item Segue direto de \ref{prop:derivada.propriedades}.
+%		\begin{align*}
+%		\dir{v} (f+f')(x) &= \lim_{t \to 0} \frac{(f+f')(x+tv)-(f+f')(x)}{t} \\
+%			&= \lim_{t \to 0} \frac{f(x+tv) + f'(x+tv) - f(x) - f'(x)}{t} \\
+%			&= \lim_{t \to 0} \frac{f(x+tv) - f(x)}{t} + \lim_{t \to 0} \frac{f'(x+tv) - f'(x)}{t} \\
+%			&= \dir{v} f(x) + \dir{v} f'(x).
+%		\end{align*}
+
+	\item Segue direto de \ref{prop:derivada.propriedades}.
+%		\begin{align*}
+%		\dir{v} (cf)(x) &= \lim_{t \to 0} \frac{(cf)(x+tv)-(cf)(x)}{t} \\
+%			&= \lim_{t \to 0} \frac{cf(x+tv) - cf(x)}{t} \\
+%			&= c\lim_{t \to 0} \frac{f(x+tv) - f(x)}{t} \\
+%			&= c\dir{v} f(x).
+%		\end{align*}
+
+	\item Segue direto de \ref{prop:derivada.propriedades}.
+%		\begin{align*}
+%		\dir{v} (ff')(x) &= \lim_{t \to 0} \frac{(ff')(x+tv) - (ff')(x)}{t} \%\
+%			&= \lim_{t \to 0} \frac{f(x+tv)f'(x+tv) - f(x)f'(x)}{t} \\
+%			&= \dir{v} f(x) f'(x) + f(x) \dir{v} f'(x).
+%		\end{align*}
+
+	\item Se $c=0$, então
+		\begin{equation*}
+		\dir{0v} f(x) = \lim_{t \to 0} \frac{f(x+t0v) - f(x)}{t} = \lim_{t \to 0} \frac{f(x) - f(x)}{t} = 0 = 0\dir{v} f(x).
+		\end{equation*}
+	
+	Se $c \neq 0$, como $\lim_{t \to 0} ct = 0$, tomando $t' := ct$ segue que
+		\begin{align*}
+		\dir{cv} f(x) &= \lim_{t \to 0} \frac{f(x+tcv) - f(x)}{t} \\
+			&= \lim_{t' \to 0} \frac{f(x+t'v) - f(x)}{(t' \div c)} \\
+			&= c\lim_{t' \to 0} \frac{f(x+t'v) - f(x)}{t'} \\
+			&= c\dir{v} f(x).
+		\qedhere
+		\end{align*}
+	\end{enumerate}
+\end{proof}
+
+
+
+\begin{proposition}
+Sejam $\bm E$ e $\bm E'$ espaços normados, $A \subseteq E$ um aberto, $X \subseteq A$ e $\fun{f}{A}{E'}$ uma função diferenciável em $X$. Para todo $v \in E$, $f$ é derivável em $X$ na direção $v$ e, para todo $x \in X$,
+	\begin{equation*}
+	\dir{v} f(x) = \D f|_x(v).
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+Seja $x \in X$. Da diferenciabilidade de $f$ em $x$ segue que, como $\lim_{t \to 0} tv = 0$,
+	\begin{align*}
+	\lim_{t \to 0} \frac{f(x+tv) - f(x)}{t} &= \lim_{t \to 0} \frac{f(x+tv) - f(x)}{t} - \D f|_x(v) + \D f|_x(v) \\
+		&= \lim_{t \to 0} \frac{f(x+tv) - f(x) - \D f|_x(tv)}{t} + \D f|_x(v) \\
+		&= \D f|_x(v),
+	\end{align*}
+o que mostra que $f$ é derivável em $x$ na direção $v$ e $\dir{v} f(x) = \D f|_x(v)$.
+\end{proof}
+
+Em particular, no caso de $E = \R^d$, cuja base canônica é $(\ii_k)_{k \in [d]}$ e cuja base canônica dual é $(\ii_k\dual)_{k \in [d]}$, vale
+	\begin{equation*}
+	\D f|_x(v) = \D f|_x \left( \sum_{k \in [d]} v_k \ii_k \right) = \sum_{k \in [d]} v_k \D f|_x(\ii_k) = \sum_{k \in [d]} v_k \dir{\ii_k} f(x) = \sum_{k \in [d]} \dir{\ii_k} f(x)\ii_k\dual(v),
+	\end{equation*}
+portanto
+	\begin{equation*}
+	\D f|_x = \sum_{k \in [d]} \dir{\ii_k} f(x) \ii_k\dual.
+	\end{equation*}
+
+
+\subsection{Extremos locais e pontos críticos}
+
+\subsubsection{Campos escalares e pontos extremos locais}
+
+Definimos aqui uma nomenclatura para um tipo específico de função entre espaços normados, aquelas que tem como contradomínio o corpo dos números reais. Elas são chamadas de campos escalares.
+
+\begin{definition}
+Sejam $\bm E$ um espaço normado e $X \subseteq E$ um conjunto. Um \emph{campo escalar} em $X$ é uma função $\fun{f}{X}{\R}$.
+\end{definition}
+
+Os campos escalares são objetos que formalizam a ideia de função densidade, campo de energia potencial, entre outros conceitos físicos relevantes. Mais à frente, definiremos outros objetos que recebem também o nome de `campos', os `campos tensoriais', e os campos escalares aqui definidos são casos especiais desses campos.
+
+No contexto físico, uma propriedade importante dessas funções é se elas têm pontos de máximo e mínimo: pontos em que elas atingem valores reais máximos ou mínimos da sua imagem.
+
+\begin{definition}[Ponto extremo]
+Sejam $\bm E$ um espaço normado, $X \subseteq E$ um conjunto e $\fun{f}{X}{\R}$ um campo escalar.
+	\begin{itemize}
+	\item Um \emph{ponto de máximo} de $f$ é um ponto $x \in X$ tal que, para todo $x' \in X$,
+		\begin{equation*}
+		f(x') \leq f(x).
+		\end{equation*}
+	\item Um \emph{ponto de mínimo} de $f$ é um ponto $x \in X$ tal que, para todo $x' \in X$,
+		\begin{equation*}
+		f(x) \leq f(x').
+		\end{equation*}
+	\end{itemize}
+Um \emph{ponto extremo} de $f$ é um ponto é um ponto de máximo ou de mínimo de $f$.
+\end{definition}
+
+Mais geralmente, podem-se considerar pontos que têm localmente essa propriedades, como definidos a seguir.
+
+\begin{comment}
+\begin{definition}[Ponto extremo local]
+Sejam $\bm E$ um espaço normado, $X \subseteq E$ um conjunto e $\fun{f}{X}{\R}$ um campo escalar.
+	\begin{itemize}
+	\item Um \emph{ponto de máximo local} de $f$ é um ponto $x \in X$ tal que, para alguma vizinhança $V \subseteq E$ de $x$, $f$ satisfaz que, para todo $x' \in V \cap X$,
+		\begin{equation*}
+		f(x') \leq f(x).
+		\end{equation*}
+	\item Um \emph{ponto de mínimo local} de $f$ é um ponto $x \in X$ tal que, para alguma vizinhança $V \subseteq E$ de $x$, $f$ satisfaz que, para todo $x' \in V \cap X$,
+		\begin{equation*}
+		f(x) \leq f(x').
+		\end{equation*}
+	\end{itemize}
+Um \emph{ponto extremo local} de $f$ é um ponto é um ponto de máximo local ou de mínimo local de $f$.
+\end{definition}
+\end{comment}
+
+\begin{definition}[Ponto extremo local]
+Sejam $\bm E$ um espaço normado, $X \subseteq E$ um conjunto e $\fun{f}{X}{\R}$ um campo escalar.
+	\begin{itemize}
+	\item Um \emph{ponto de máximo local} de $f$ é um ponto $x \in X$ tal que, para alguma vizinhança $V \subseteq E$ de $x$, $x$ é ponto de máximo de $f|_{V \cap X}$;
+	\item Um \emph{ponto de mínimo local} de $f$ é um ponto $x \in X$ tal que, para alguma vizinhança $V \subseteq E$ de $x$, $x$ é ponto de mínimo de $f|_{V \cap X}$.
+	\end{itemize}
+Um \emph{ponto extremo local} de $f$ é um ponto é um ponto de máximo local ou de mínimo local de $f$.
+\end{definition}
+
+Quando $K \subseteq E$ é compacto, uma função contínua $\fun{f}{K}{\R}$ tem pontos de máximo e mínimo: como $f$ é contínua, sua imagem é compacta, portanto fechada e limitada, o que implica que o supremo e o ínfimo da imagem pertencem à imagem. Esse resultado, que depende somente da continuidade da função e das propriedades de completude de $\R$, não nos permite achar os pontos de máximo e mínimo, somente afirmar sua existência. Usando diferenciação, podem-se estudar algumas características desses pontos que facilitam encontrá-los localmente.
+
+\begin{comment}
+Lembremos que o $d$-simplexo unitário (ou simplexo unitário $d$-dimensional) real é o conjunto
+	\begin{align*}
+	\Sx^d &= \set{x \in \R_{\geq}^{d+1}}{\sum_{k \in [d+1]} x_k = 1} \\
+		&= \set{x \in \R_{\geq}^{d+1}}{\nor{x}_1 = 1}.
+	\end{align*}
+ou seja, os pontos $x = (x_0,\ldots,x_d) \in \R^{d+1}$ tais que, para todo $k \in [d+1]$, $x_k \geq 0$ e satisfazendo $\sum_{k \in [d+1]} x_k = 1$.
+
+Dados um espaço normado $\bm E$ e $v_0, \ldots, v_d \in E$ tais que $\{v_1 - v_0,\ldots, v_d-v_0\}$ é linearmente independente, o simplexo gerado por esses vetores é o conjunto
+	\begin{equation*}
+	\Sxger[d]{v_0, \ldots, v_d} = \set{\sum_{k \in [d+1]} x_k v_k = 1}{x \in \Sx^d}
+	\end{equation*}
+e o interior desse simplexo é
+	\begin{equation*}
+	\Sxgera[d]{v_0, \ldots, v_d} = \set{\sum_{k \in [d+1]} x_k v_k = 1}{x \in \Sx^d}.
+	\end{equation*}
+
+Em particular, o $1$-simplexo é o conjunto $\simp^1 = \set{(1-t,t)}{t \in \intff{0}{1}}$ e dados $v,v' \in E$,
+	\begin{equation*}
+	\Sxger{v,v'} = \set{(1-t)v + tv'}{t \in \intff{0}{1}}
+	\end{equation*}
+e o interior desse simplexo é
+	\begin{equation*}
+	\Sxgera{v,v'} = \set{(1-t)v + tv'}{t \in \intaa{0}{1}}.
+	\end{equation*}
+\end{comment}
+
+Para a proposição seguinte, usaremos o conceito de conjunto convexo.% e de $1$-simplexo.
+Lembremos que% o $1$-simplexo unitário é o conjunto $\simp^1 = \set{(1-t,t)}{t \in \intff{0}{1}}$ e
+, dados $x,x' \in E$, o $1$-simplexo (ou intervalo) de vértices $x,x'$ é o conjunto
+	\begin{equation*}
+	\Sxger{x,x'} = \set{(1-t)x + tx'}{t \in \intff{0}{1}}
+	\end{equation*}
+e o interior desse simplexo é
+	\begin{equation*}
+	\Sxgera{x,x'} = \set{(1-t)x + tx'}{t \in \intaa{0}{1}}.
+	\end{equation*}
+Ainda, um conjunto convexo em $E$ é um conjunto $X \subseteq E$ que, para todos $x,x' \in X$, satisfaz que $\Sxger{x,x'} \subseteq X$.
+
+\begin{proposition}
+\label{prop:extremo.local.diferencial}
+Sejam $\bm E$ um espaço normado, $A \subseteq E$ aberto, $X \subseteq A$ convexo, $x \in X$ e $\fun{f}{A}{\R}$ um campo escalar diferenciável em $x$.
+	\begin{itemize}
+		\item Se $x$ é ponto de máximo local de $\fun{f|_X}{X}{\R}$, então, para todo $x' \in X$,
+%			\begin{equation*}
+%			\D f|_x(x'-x) \leq 0;
+%			\end{equation*}
+			\begin{equation*}
+			\D f|_x(x') \leq \D f|_x(x);
+			\end{equation*}
+		\item Se $x$ é ponto de mínimo local de $\fun{f|_X}{X}{\R}$, então, para todo $x' \in X$,
+%			\begin{equation*}
+%			\D f|_x(x'-x) \geq 0.
+%			\end{equation*}
+			\begin{equation*}
+			\D f|_x(x) \leq \D f|_x(x').
+			\end{equation*}
+	\end{itemize}
+\end{proposition}
+\begin{proof}
+O caso em que $x$ é ponto de mínimo local de $f|_X$ segue do caso em que $x$ ponto de máximo local de $-f|_X$, portanto demonstraremos  só o caso em que $x$ é máximo local.
+
+Sejam $x$ um ponto de máximo local, $V \subseteq E$ uma vizinhança convexa de $x$ tal que $x$ é ponto de máximo em $V \cap X$, $t \in \intaa{0}{1}$ e $x' \in V \cap X$. O teorema é evidente para $x'=x$, portanto consideramos $x' \neq x$. Como $V \cap X$ é convexo, vale que $x + t(x'-x) = (1-t)x + tx' \in V \cap X$; como $f$ é diferenciável em $x$, definimos o resto
+	\begin{equation*}
+	r(v) := f(x + v) - f(x) - \D f|_x(v)
+	\end{equation*}
+e vale que $\lim_{v \to 0} \frac{r(v)}{\nor{v}} = 0$ e
+	\begin{equation*}
+	\D f|_x(v) + r(v) = f(x+v) - f(x).
+	\end{equation*}
+Para $v=t(x'-x)$,
+	\begin{align*}
+	r(t(x'-x)) &= f(x + t(x'-x)) - f(x) - \D f|_x(t(x'-x)) \\
+		&= f(x + t(x'-x)) - f(x) - t\D f|_x(x'-x),
+	\end{align*}
+portanto, como $x$ é ponto de máximo local
+	\begin{equation*}
+	\D f|_x(x'-x) + \frac{r(t(x'-x))}{t} = \frac{f(x + t(x'-x)) - f(x)}{t} \leq 0.
+	\end{equation*}
+Assim segue que
+	\begin{align*}
+	\D f|_x(x'-x) &= \D f|_x(x'-x) + \nor{x'-x}\lim_{t \to 0} \frac{\abs{t}}{t}\frac{r(t(x'-x))}{\nor{t(x'-x)}} \\
+		&= \D f|_x(x'-x) + \lim_{t \to 0} \nor{x'-x}\frac{r(t(x'-x))}{t\nor{x'-x}} \\
+		&= \lim_{t \to 0} \left( \D f|_x(x'-x) + \frac{r(t(x'-x))}{t} \right) \\
+		&\leq 0
+	\end{align*}
+e da linearidade de $\D f|_x$ resulta $\D f|_x(x') \leq \D f|_x(x)$.
+\end{proof}
+
+Vale ressaltar que a desigualdade $\D f|_x(x') \leq \D f|_x(x)$ da proposição é equivalente à desigualdade
+	\begin{equation*}
+	\D f|_x(x'-x) \leq 0,
+	\end{equation*}
+que foi a obtida durante a demonstração.
+
+Para a proposição a seguir, lembremos que um subespaço afim de $S \subseteq \bm E$ pode ser escrito como $S = s+V$ para algum $s \in S$ e $V \subseteq E$ é um subespaço linear, e escrevemos $V = \vec{S}$.
+
+\begin{proposition}
+\label{prop:extremo.afim.critico}
+Sejam $\bm E$ um espaço normado, $A \subseteq E$ aberto, $S \subseteq E$ um subespaço afim% tal que $A \cap S \neq \emptyset$
+, $x \in S \cap A$ e $\fun{f}{A}{\R}$ um campo escalar diferenciável em $x$. Se $x$ é um ponto de extremo local de $f|_S$, então, para todo $v \in \vec{S}$,
+	\begin{equation*}
+	\D f|_x(v) = 0.
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+O caso em que $x$ é ponto de mínimo local de $f|_X$ segue do caso em que $x$ ponto de máximo local de $-f|_X$, portanto demonstraremos só o caso em que $x$ é máximo local.
+
+Seja $v \in \vec{S}$ e suponhamos que $\D f|_x(v) \neq 0$. Então $\D f|_x(v) > 0$ ou $\D f|_x(v) < 0$. No primeiro caso, defina $v':=-v$ e, no segundo caso, $v':=v$, de modo que em ambos os casos $\D f|_x(v') < 0$. Seja $r \in \intaa{0}{\infty}$ tal que $\bola{x}{r} \subseteq A$ e $X := \bola{x}{r} \cap S$. Como $\bola{x}{r}$ e $S$ são convexos, então $X$ é convexo. Disso segue que, para algum $t \in \intaa{0}{\infty}$, vale $x-tv' \in X$ e então segue de \ref{prop:extremo.local.diferencial} que
+	\begin{equation*}
+	-t\D f|_x(v') = \D f|_x((x-tv') - x) \leq 0,
+	\end{equation*}
+portanto $\D f|_x(v') \geq 0$, o que contradiz $\D f|_x(v') < 0$. Assim concluímos que $\D f|_x (v) = 0$.
+\end{proof}
+
+\subsubsection{Pontos críticos}
+
+Definimos aqui o conceito de ponto crítico de campos escalares. Esse conceito será posteriormente generalizado para quaisquer funções entre espaços normados, mas no momento usaremos esse caso específico.
+
+\begin{definition}
+Sejam $\bm E$ um espaço normado, $A \subseteq E$ aberto e $\fun{f}{A}{\R}$ um campo escalar. Um \emph{ponto crítico} de $f$ é um ponto $x \in A$ tal que $f$ é diferenciável em $x$ e $\D f|_x = 0$.
+\end{definition}
+
+\begin{proposition}
+\label{prop:extremo.critico}
+Sejam $\bm E$ um espaço normado, $A \subseteq E$ aberto, $x \in A$ e $\fun{f}{A}{\R}$ um campo escalar diferenciável em $x$. Se $x$ é um ponto de extremo local de $f$, então $x$ é um ponto crítico de $f$.
+\end{proposition}
+\begin{proof}
+Segue direto de \ref{prop:extremo.afim.critico} para $S = E$.
+\end{proof}
+
+No entanto, nem todo ponto crítico é um ponto de extremo local. Consideremos por exemplo a função
+	\begin{align*}
+	\func{f}{\R}{\R}{x}{x^3}
+	\end{align*}
+que é diferenciável e cuja derivada é
+	\begin{align*}
+	\func{\der f}{\R}{\R}{x}{3x^2}.
+	\end{align*}
+O ponto $0 \in \R$ é um ponto crítico, pois $\der f(0) = 3 \times 0^2 = 0$, mas não é um ponto de extremo local pois, para todo $x>0$, vale $f(x)>0$ e, para todo $x<0$, vale $f(x)<0$. Esse ponto é o que se chama de ponto de sela, que definiremos mais adiante.
+
+\begin{proposition}
+\label{prop:compacto.critico}
+Sejam $\bm E$ um espaço normado, $K \subseteq E$ compacto tal que $\Int{K} \neq \emptyset$ e $\fun{f}{K}{\R}$ um campo escalar contínuo que é diferenciável em $\Int{K}$. Se $f$ é constante em $\fro{K}$%, então algum $m \in \Int{K}$ é ponto crítico de $f$ em $\Int{K}$.
+, então $f$ tem ponto crítico em $\Int{K}$.
+\end{proposition}
+\begin{proof}
+Seja $c \in \R$ o valor de $f$ em $\fro{K}$. Se $f$ é constante, então para todo $x \in \Int{K}$ vale $\D f|_x = 0$, logo todo ponto de $\Int{K}$ é crítico. Se $f$ não é constante, seja $x \in K$ tal que $f(x) \neq c$. Como $K \setminus \fro{K} = \Int{K}$, isso implica que $x \in Int{K}$. Como $K$ é compacto e $f$ é contínua, $f$ tem ponto de mínimo e de máximo, que em particular são pontos de mínimo e máximo locais. Se $f(x) > c$, seja $m \in K$ o ponto de máximo de $f$. Nesse caso $m \in \Int{K}$, pois $f(m) \geq f(x) > c$, e como $f$ é diferenciável em $\Int{K}$ segue de \ref{prop:extremo.critico} que $m$ é ponto crítico de $f$ em $\Int{K}$. Se $f(x) < c$, seja $m \in K$ o ponto de mínimo de $f$. Nesse caso $m \in \Int{K}$, pois $f(m) \leq f(x) < c$, e como $f$ é diferenciável em $\Int{K}$ segue de \ref{prop:extremo.critico} que $m$ é ponto crítico de $f$ em $\Int{K}$.
+\end{proof}
+
+\subsection{Valor médio}
+
+\subsubsection{Valor médio para campos escalares}
+
+A proposição a seguir é uma generalização direta do teorema do valor médio para funções de um intervalo compacto real para o corpo dos números reais.
+
+% NOTA: Acho que essa é a versão mais geral que engloba todos os casos, e em particular o caso no corpo real.
+\begin{proposition}[Valor médio em campos escalares]
+\label{prop:valor.medio.campo.escalar}
+Sejam $\bm E$ um espaço normado, $C \subseteq E$ um conjunto, $\fun{f}{C}{\R}$ um campo escalar e $x,x' \in C$ tais que $x \neq x'$, $\Sxger{x,x'} \subseteq C$ e $f$ é contínuo em $\Sxger{x,x'}$ e diferenciável em $\Sxgera{x,x'}$. Então, para algum $m \in \Sxgera{x,x'}$,
+	\begin{equation*}
+	f(x') - f(x) = \D f|_m(x'-x).
+	\end{equation*}
+\end{proposition}
+%\begin{proposition}[Valor médio em campos escalares]
+%\label{prop:valor.medio.campo.escalar}
+%Sejam $\bm E$ um espaço normado, $C \subseteq E$ um conjunto, $X \subseteq C$ convexo e $\fun{f}{C}{\R}$ um campo escalar contínuo em $X$ e diferenciável em $\Int{X}$. Para todos $x,x' \in X$ tais que $x \neq x'$, algum $m \in \Sxgera{x,x'}$ satisfaz
+%	\begin{equation*}
+%	f(x') - f(x) = \D f|_m(x'-x).
+%	\end{equation*}
+%\end{proposition}
+%
+%\begin{proposition}[Valor médio em campos escalares]
+%\label{prop:valor.medio.campo.escalar}
+%Sejam $\bm E$ um espaço normado, $K \subseteq E$ compacto tal que $\Int{K} \neq \emptyset$ e $\fun{f}{K}{\R}$ um campo escalar contínuo que é diferenciável em $\Int{K}$. Para todos $x,x' \in \fro{K}$ tais que $x \neq x'$ e $\Sxgera{x,x'} \subseteq \Int{K}$, algum $m \in \Sxgera{x,x'}$ satisfaz
+%	\begin{equation*}
+%	f(x') - f(x) = \D f|_m(x'-x).
+%	\end{equation*}
+%\end{proposition}
+\begin{proof}
+A trajetória
+	\begin{align*}
+	\func{\gamma}{\intff{0}{1}}{\Sxger{x,x'}}{t}{x + t(x'-x)}.
+	\end{align*}
+é contínua em $\intff{0}{1}$, diferenciável em $\intaa{0}{1}$, para todo $t \in \intaa{0}{1}$, $\dot \gamma(t) = x'-x$.
+
+Definamos o campo escalar
+	\begin{align*}
+	\func{f'}{\intff{0}{1}}{\R}{t}{f \circ \gamma(t) - (f(x') - f(x))t}.
+	\end{align*}
+Esse campo $f'$ é contínuo porque é a soma de $f \circ \gamma$, que é composição de funções contínuas, com um múltiplo da identidade, que também é contínuo. Analogamente, o campo escalar $f'$ é diferenciável em $\intaa{0}{1}$, pois $\gamma$ é diferenciável em $\intaa{0}{1}$ e, para todo $t \in \intaa{0}{1}$, $\gamma(t) \in \Sxgera{x,x'}$, logo $f$ é diferenciável em $\gamma(t)$, o que implica que a composta $f \circ \gamma$ é diferenciável em $\intaa{0}{1}$. Segue da regra da cadeia que
+	\begin{align*}
+	\der f'(t) &= \D f'|_t(1) \\
+		&= \D (f \circ \gamma)|_t(1) - (f(x') - f(x)) \\
+		&= \D f|_{\gamma(t)}(\der \gamma(t)) - (f(x') - f(x)) \\
+		&= \D f|_{\gamma(t)}(x'-x) - (f(x') - f(x)).
+	\end{align*}
+
+Além disso, como $\gamma(0) = x$ e $\gamma(1) = x'$,
+	\begin{equation*}
+	f'(1) = f(x') - (f(x') - f(x))1 = f(x) - (f(x') - f(x))0 = f'(0),
+	\end{equation*}
+o que mostra que $f'$ é constante em $\fro{\intff{0}{1}} = \{0,1\}$.
+Como $\intff{0}{1}$ é compacto, segue de \ref{prop:compacto.critico} que $f'$ tem um ponto crítico $t_m \in \intaa{0}{1}$; ou seja, esse ponto satisfaz
+	\begin{equation*}
+	\der f'(t_m) = \D f'|_{t_m}(1) = 0.
+	\end{equation*}
+
+Segue que
+	\begin{equation*}
+	0 = \der f'(t_m) = \D f|_{\gamma(t_m)}(x'-x) - (f(x') - f(x))
+	\end{equation*}
+e, definindo $m := \gamma(t_m) \in \Sxgera{x,x'}$, conclui-se que
+	\begin{equation*}
+	f(x') - f(x) = \D f|_m(x'-x).
+	\qedhere
+	\end{equation*}
+\end{proof}
+
+\begin{comment}
+Uma versão alternativa dessa proposição (que de fato é um corolário) também é útil e será enunciada a seguir, mas a demonstração será deixada como exercício.
+
+%\begin{exercise}
+%\label{prop:valor.medio.campo.escalar.convexo}
+%Sejam $\bm E$ um espaço normado, $A \subseteq E$ um aberto, $X \subseteq A$ convexo e $\fun{f}{A}{\R}$ um campo escalar diferenciável em $X$. Para todos $x,x' \in X$ tais que $x \neq x'$, algum $m \in \Sxgera{x,x'}$ satisfaz
+%	\begin{equation*}
+%	f(x') - f(x) = \D f|_m(x'-x).
+%	\end{equation*}
+%\end{exercise}
+
+\begin{exercise}
+\label{prop:valor.medio.campo.escalar.alternativo}
+Sejam $\bm E$ um espaço normado, $A \subseteq E$ um aberto e $\fun{f}{A}{\R}$ um campo escalar diferenciável. Para todos $x,x' \in A$ tais que $x \neq x'$ e $\Sxger{x,x'} \subseteq A$, algum $m \in \Sxgera{x,x'}$ satisfaz
+	\begin{equation*}
+	f(x') - f(x) = \D f|_m(x'-x).
+	\end{equation*}
+\end{exercise}
+
+\end{comment}
+
+%NOTA: Não vejo necessidade de provar essa proposição, sendo que a versão mais geral está provada logo à frente.
+\begin{comment}
+
+Em espaços normados, conjuntos conexos são conexos por caminhos e em particular todos pontos do conjunto podem ser conectados por um caminho poligonal. Usaremos esse fato na seguinte proposição.
+
+\begin{proposition}
+\label{prop:campo.diferenciavel.constante}
+Sejam $\bm E$ um espaço normado, $A \subseteq E$ aberto e conexo e $\fun{f}{A}{\R}$ um campo escalar diferenciável. %Se, para todo $x \in A$, $\D f|_x = 0$, então $f$ é constante.
+Se $\D f = 0$, então $f$ é constante.
+\end{proposition}
+\begin{proof}
+Sejam $v,v' \in A$. Como $A$ é conexo, alguma trajetória poligonal $\fun{\gamma}{\intff{0}{1}}{A}$ conecta $v$ a $v'$; ou seja, $\gamma(0)=v$, $\gamma(1)=v'$ e alguma $n$-partição por intervalos $(t_k)_{k \in [n+1]} \in \R^{n+1}$ satisfaz, para todo $k \in [n]$, que $\gamma|_{\intff{t_k}{t_{k+1}}}$ é afim e $\gamma(\intff{t_k}{t_{k+1}}) = \Sxger{\gamma(t_k),\gamma(t_{k+1})}$. Assim, como para todo $x \in A$ vale $\D f|_x = 0$, então segue de \ref{prop:valor.medio.campo.escalar} que, para todo $k \in [n]$ vale
+	\begin{equation*}
+	f(\gamma(t_{k+1})) - f(\gamma(t_k)) = 0.
+	\end{equation*}
+Por indução em $n$, obtemos que $f(\gamma(t_0)) = f(\gamma(t_n))$; ou seja,
+	\begin{equation*}
+	f(v) = f(\gamma(0)) = f(\gamma(t_0)) = f(\gamma(t_n)) = f(\gamma(1)) = f(v'),
+	\end{equation*}
+o que mostra que $f$ é constante.
+\end{proof}
+
+\end{comment}
+
+\subsubsection{Majoração de trajetória}
+
+%Alguns resultados nesta seção não serão demonstrados mas as demonstrações podem ser achadas em \cite{liv:Coleman-CalculusNormedVectorSpaces}.
+
+A proposição \ref{prop:valor.medio.campo.escalar} não pode ser generalizada para qualquer função entre espaços normados. Em especial, nem mesmo para trajetórias ela é válida. Consideremos por exemplo a trajetória
+	\begin{align*}
+	\func{f}{t}{\R^2}{t}{(\cos(t), \sin(t))}
+	\end{align*}
+em $\R^2$, que é diferenciável. Sua derivada é
+	\begin{align*}
+	\func{\dot f}{t}{\R^2}{t}{(-\sin(t), \cos(t))}.
+	\end{align*}
+Vale\footnote{
+	A constante $\tau \in \R$ aqui é o período de $\cos$ e $\sin$.
+}
+$f(0) = (1,0) = f(\tau)$, logo $f(\tau) - f(0) = 0$, mas não existe $t \in \intaa{0}{\tau}$ tal que $\dot f(t) = 0$. No entanto, podemos obter um tipo de desigualdade do valor médio, que descreveremos a seguir.
+
+A proposição a seguir será a ferramenta para demonstrar várias proposições relacionadas ao teorema do valor médio.
+
+\begin{proposition}[Majoração de trajetória]
+\label{prop:majoracao.trajetoria}
+%\label{prop:superlema.valor.medio}
+Sejam $I=\intff{a}{a'} \subseteq \R$ um intervalo compacto, $\bm E$ um espaço normado e $\fun{\gamma}{I}{E}$ e $\fun{f}{I}{\R}$ trajetórias contínuas que são diferenciáveis em $\Int{I}$. Se, para todo $t \in \Int{I}$, $\nor{\dot \gamma(t)} \leq \dot f(t)$, então
+	\begin{equation*}
+	\nor{\gamma(a') - \gamma(a)} \leq f(a') - f(a).
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+Seja $\varepsilon \in \intaa{0}{\infty}$ e $I_\varepsilon$ o conjunto dos $x \in I = \intff{a}{a'}$ tais que, para todos $x' \in \intff{a}{x}$, vale
+	\begin{equation*}
+	\nor{\gamma(x') - \gamma(a)} \leq f(x') - f(a) + \varepsilon(x'-a).
+	\end{equation*}
+Primeiro notemos que $I_\varepsilon \neq \emptyset$ porque $a \in I_\varepsilon$. Agora, para todo $x \in I_\varepsilon$, se $x' \in \intff{a}{x}$ então por definição $x' \in I_\varepsilon$, portanto $I_\varepsilon$ é um intervalo. Seja $s_\varepsilon := \sup I_\varepsilon$ o supremo desse intervalo. Mostremos que $s_\varepsilon \in I_\varepsilon$. Se $s_\varepsilon = a$, está provado, Caso contrário, seja $(x_n)_{n \in \infty}$ uma sequência em $\intaa{a}{s_\varepsilon}$ tal que $\lim_{n \to \infty} x_n = s_\varepsilon$. Como $\gamma$ e $f$ são contínuas, segue que
+	\begin{align*}
+	\nor{\gamma(s_\varepsilon) - \gamma(a)} &= \nor{\gamma(\lim_{x \to \infty} x_n) - \gamma(a)} \\
+		&= \lim_{x \to \infty} \nor{\gamma(x_n) - \gamma(a)} \\
+		&\leq \lim_{x \to \infty} f(x_n) - f(a) + \varepsilon(x'-a) \\
+		&\leq f(\lim_{x \to \infty} x_n) - f(a) + \varepsilon(x'-a) \\
+		&\leq f(s_\varepsilon) - f(a) + \varepsilon(x'-a),
+	\end{align*}
+o que mostra que $s_\varepsilon \in I_\varepsilon$. Mostraremos agora que $s_\varepsilon = a'$. Suponhamos por absurdo que valesse $s_\varepsilon < a'$. Pela hipótese das derivadas, seguiria que, para algum $\delta \in \intaa{0}{a'-s_\varepsilon}$, valeria para todo $x \in \intaa{s_\varepsilon}{s_\varepsilon+\delta}$ que
+	\begin{equation*}
+	\nor{\frac{\gamma(x) - \gamma(s_\varepsilon)}{x - s_\varepsilon}} \leq \frac{f(x) - f(s_\varepsilon)}{x - s_\varepsilon} + \varepsilon,
+	\end{equation*}
+portanto, como $\nor{x-c} = x - c$, seguiria que
+	\begin{equation*}
+	\nor{\gamma(x) - \gamma(s_\varepsilon)} \leq f(x) - f(s_\varepsilon) + \varepsilon(x - s_\varepsilon).
+	\end{equation*}
+Assim, a desigualdade triangular implicaria que
+	\begin{align*}
+	\nor{\gamma(x) - \gamma(a)} &\leq \nor{\gamma(x) - \gamma(s_\varepsilon)} + \nor{\gamma(s_\varepsilon) - \gamma(a)} \\
+	&\leq f(x) - f(s_\varepsilon) + \varepsilon(x - s_\varepsilon) + f(s_\varepsilon) - f(a) + \varepsilon(s_\varepsilon - a) \\
+	&= f(x) - f(a) + \varepsilon(x - a),
+	\end{align*}
+logo que $x \in I_\varepsilon$, o que contradiria $s_\varepsilon$ ser supremo. Conclui-se então que $s_\varepsilon = a'$, logo que $I_\varepsilon = I$. Como isso vale para todo $\varepsilon$, segue que
+	\begin{equation*}
+	\nor{\gamma(a') - \gamma(a)} \leq f(a') - f(a).
+	\qedhere
+	\end{equation*}
+\end{proof}
+
+Essa proposição tem algumas formulações um pouco mais gerais que não abordaremos aqui. Em vez da condição ser entre as derivadas de $\gamma$ e $f$, poderíamos considerar as derivadas à esquerda ou à direita definidas com limites inferior ou superior, respectivamente. Além disso, poderíamos considerar que as trajetórias são deriváveis em um conjunto co-contável, ou seja, derivável em todo ponto a menos de um conjunto contável de pontos. Essas generalizações podem ser conferidas em \cite{liv:Cartan-DifferentialCalculus}.
+
+A proposição \ref{prop:majoracao.trajetoria} tem várias consequências importantes. A primeira é o caso (degenerado) em que $E = \{0\}$, que implica que $f$ é crescente. A recíproca também é válida.
+
+\begin{proposition}[Derivada positiva equivale a crescente]
+\label{prop:derivada.positiva.crescente}
+Sejam $I \subseteq \R$ um intervalo e $\fun{f}{I}{\R}$ uma função contínua que é diferenciável em $\Int{I}$. Então $\dot f \geq 0$ se, e somente se, $f$ é crescente.
+\end{proposition}
+\begin{proof}
+\begin{itemize}
+\item ($\Rightarrow$) Suponhamos que $\dot f \geq 0$. Para todos $x,x' \in I$, $\intff{x}{x'}$ é um intervalo compacto. Definimos $E=\{0\}$ e $\funclin{\gamma}{\intff{x}{x'}}{E}{t}{0}$. Como é constante, a trajetória $\gamma$ é contínua em $\intff{x}{x'}$, diferenciável em $\intaa{x}{x'}$ e, para todo $t \in \Int{I}$, vale $\dot \gamma(t) = 0$. Portanto $\nor{\dot \gamma(t)} = 0 \leq \dot f(t)$ e segue de \ref{prop:majoracao.trajetoria} que
+	\begin{equation*}
+	0 = \nor{\gamma(x') - \gamma(x)} \leq f(x') - f(x),
+	\end{equation*}
+o que mostra que $f(x) \leq f(x')$, logo que $f$ é crescente.
+
+\item ($\Rightarrow$) Suponhamos que $f$ é crescente e seja $t \in \Int{I}$. Para todo $\delta \in \intfa{0}{\infty}$, vale $f(t+\delta) \geq f(t)$, logo
+	\begin{equation*}
+	0 \leq \frac{f(t+\delta) - f(t)}{\delta}.
+	\end{equation*}
+Como $f$ é diferenciável, segue que $\dot f(t) \geq 0$.
+\end{itemize}
+\end{proof}
+
+Uma outra consequência é que se a derivada de uma trajetória é limitada (por uma constante), então a trajetória é controlada (pela mesma constante).
+
+\begin{proposition}[Controle diferencial de trajetória]
+\label{prop:derivada.limitada.trajetoria.controlada}
+Sejam $I \subseteq \R$ um intervalo, $\bm E$ um espaço normado e $\fun{\gamma}{I}{E}$ uma trajetória contínua que é diferenciável em $\Int{I}$. Se $\dot \gamma$ é limitada por alguma constante $c \in \R$ (para todo $t \in \Int{I}$, $\nor{\dot \gamma(t)} \leq c$), então $\gamma$ é controlada e sua distorção satisfaz $\distor{\gamma} \leq c$; isto é, para todos $x,x' \in I$,
+	\begin{equation*}
+	\nor{\gamma(x') - \gamma(x)} \leq c\nor{x' - x}.
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+Sejam $x,x' \in I$. Se $x=x'$, a desigualdade segue trivialmente. Se $x \neq x'$, consideremos o caso $x < x'$ e o intervalo compacto $\intff{x}{x'}$, a restrição $\gamma|_{\intff{x}{x'}}$ e a função $\funclin{f}{\intff{x}{x'}}{\R}{t}{ct}$. Como é um múltiplo da identidade, a função $f$ é contínua em $\intff{x}{x'}$, diferenciável em $\intaa{x}{x'}$ e, para todo $t \in \intaa{x}{x'}$, vale $\dot f(t) = c$. Portanto $\nor{\dot \gamma(t)} \leq c = \dot f(t)$ e segue de \ref{prop:majoracao.trajetoria} que
+	\begin{equation*}
+	\nor{\gamma(x') - \gamma(x)} \leq f(x') - f(x) = c(x' - x) = c \nor{x' - x}.
+	\end{equation*}
+Por fim, caso $x' < x$, o resultado segue trivialmente do caso anterior.
+\end{proof}
+
+\subsubsection{Desigualdade do valor médio e consequências}
+
+Consideramos agora o caso de uma função entre espaços normados quaisquer. A seguinte proposição é uma alternativa à proposição \ref{prop:valor.medio.campo.escalar} e é conhecida como \textit{desigualdade do valor médio}; algumas versões levemente diferentes também existem e recebem o mesmo nome.
+
+\begin{proposition}[Desigualdade do valor médio]
+\label{prop:desigualdade.valor.medio}
+Sejam $\bm E$ e $\bm E'$ espaços normados, $C \subseteq E$ um conjunto, $\fun{f}{C}{E'}$ uma função e $x,x' \in C$ tais que $\Sxger{x,x'} \subseteq C$, $f$ é contínua em $\Sxger{x,x'}$ e diferenciável em $\Sxgera{x,x'}$. Então
+	\begin{equation*}
+	\nor{f(x') - f(x)} \leq \sup_{m \in \Sxgera{x,x'}} \nor{\D f|_m} \nor{x'-x}.
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+Se $\sup_{m \in \Sxgera{x,x'}} \nor{\D f|_m} = \infty$, a desigualdade de enunciado vale trivialmente. Suponhamos então que $\sup_{m \in \Sxgera{x,x'}} \nor{\D f|_m} < \infty$. A trajetória
+	\begin{align*}
+	\func{\gamma}{\intff{0}{\infty}}{\Sxger{x,x'}}{t}{x + t(x'-x)}
+	\end{align*}
+é contínua em $\intff{0}{1}$, diferenciável em $\intaa{0}{1}$ e, para todo $t \in \intaa{0}{1}$, vale $\dot \gamma(t) = x' - x$. Disso segue que $f \circ \gamma$ é contínua em $\intff{0}{1}$, diferenciável em $\intaa{0}{1}$ e, para todo $t \in \intaa{0}{1}$, segue da regra da cadeia que
+	\begin{equation*}
+	\der (f \circ \gamma)(t) = \D f_{\gamma(t)}(\dot \gamma(t)) = \D f|_{\gamma(t)}(x'-x).
+	\end{equation*}
+
+Isso implica que
+	\begin{equation*}
+	\nor{\der (f \circ \gamma)(t)} \leq \sup_{m \in \Sxgera{x,x'}} \nor{\D f|_m} \nor{x'-x}
+	\end{equation*}
+e, como $\gamma(0) = x$ e $\gamma(1) = x'$, segue de \ref{prop:derivada.limitada.trajetoria.controlada} que
+	\begin{align*}
+	\nor{f(x') - f(x)} &= \nor{f(\gamma(1)) - f(\gamma(0))} \\
+		&\leq \sup_{m \in \Sxgera{x,x'}} \nor{\D f|_m} \nor{x'-x} (1-0) \\
+		&= \sup_{m \in \Sxgera{x,x'}} \nor{\D f|_m} \nor{x'-x}.
+		\qedhere
+	\end{align*}
+\end{proof}
+
+Um corolário imediato é uma versão multidimensional de \ref{prop:derivada.limitada.trajetoria.controlada}.
+
+\begin{proposition}[Controle diferencial de função]
+\label{prop:diferencial.limitada.funcao.controlada}
+Sejam $\bm E$ e $\bm E'$ espaços normados, $A \subseteq E$ um aberto convexo e $\fun{f}{A}{E'}$ uma função diferenciável. Se, para algum $c \in \intfa{0}{\infty}$, todo $x \in A$ satisfaz $\nor{\D f|_x} \leq c$, então $f$ é controlada e sua distorção satisfaz $\nor{f} \leq c$; isto é, para todos $x,x' \in A$,
+	\begin{equation*}
+	\nor{f(x') - f(x)} \leq c \nor{x'-x}.
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+Sejam $x,x' \in A$. Como $A$ é convexo, $\Sxger{x,x'} \subseteq A$; como $f$ é diferenciável, é contínua em $\Sxger{x,x'}$ e diferenciável em $\Sxgera{x,x'}$. Pela hipótese da norma da diferencial, segue de \ref{prop:desigualdade.valor.medio} que
+	\begin{equation*}
+	\nor{f(x') - f(x)} \leq \sup_{m \in \Sxgera{x,x'}} \nor{\D f|_m} \nor{x'-x} \leq c\nor{x'-x}.
+	\qedhere
+	\end{equation*}
+\end{proof}
+
+Um outro corolário importante da desigualdade do valor médio é o seguinte, que será usado adiante na demonstração de uma condição suficiente para diferenciabilidade de uma função em um ponto em termos de suas diferenciais parciais.
+
+\begin{proposition}
+\label{prop:diferencial.limitada.funcao.controlada.corolario}
+Sejam $\bm E$ e $\bm E'$ espaços normados, $A \subseteq E$ um aberto convexo, $\fun{f}{A}{E'}$ uma função diferenciável e $\fun{T}{E}{E'}$ um função linear contínua. Se, para algum $\varepsilon \in \intaa{0}{\infty}$, todo $x \in A$ satisfaz $\nor{\D f|_x - T} \leq \varepsilon$, então, para todos $x \in A$ e $v \in E$ tal que $x+v \in A$,
+%	\begin{equation*}
+%	\nor{f(x') - f(x) - T(x'-x)} \leq \varepsilon \nor{x'-x}.
+%	\end{equation*}
+	\begin{equation*}
+	\nor{f(x+v) - f(x) - T(v)} \leq \varepsilon \nor{v}.
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+%Segue direto de \ref{prop:diferencial.limitada.funcao.controlada} para $f' := f - T$.
+Definamos $f' := f - T$. Então $f'$ é diferenciável em $A$, pois é soma de funções diferenciáveis, e, para todo $x \in A$,
+	\begin{equation*}
+	\D f'|_x = \D f|_x - T.
+	\end{equation*}
+%Ainda, vale que, para todos $x,x' \in A$,
+%	\begin{equation*}
+%	f'(x') - f(x) = f(x') - T(x') - f(x) + T(x) = f(x') - f(x) - T(x'-x),
+%	\end{equation*}
+Portanto $\nor{\D f'|_x} \leq \varepsilon$ e então segue de \ref{prop:diferencial.limitada.funcao.controlada} que, para todos $x \in A$ e $v \in E$ tal que $x+v \in A$,
+%	\begin{align*}
+%	\nor{f(x') - f(x) - T(x'-x)} &\leq \varepsilon \nor{x'-x}.
+%	\end{align*}
+	\begin{align*}
+	\nor{f(x+v) - f(x) - T(v)} &= \nor{f(x+v) - f(x) - T(x+v) + T(x)} \\
+		&= \nor{f'(x+v) - f'(x)} \\
+		&= \varepsilon \nor{v}.
+	\qedhere
+	\end{align*}
+\end{proof}
+
+\subsubsection{Diferencial nula}
+
+Por fim, uma consequência importante da desigualdade do valor médio é que uma função com diferencial zero é constante em cada componente conexa. Enunciaremos o caso em que $f$ é definida em um conjunto conexo, pois a generalização para cada componente conexa é evidente. Essa proposição é um recíproca da propriedade de que se $f$ é constante, sua diferencial é $0$.
+
+\begin{proposition}
+\label{prop:diferencial.zero.constante}
+Sejam $\bm E$ e $\bm E'$ espaços normados, $A \subseteq E$ um aberto conexo não vazio e $\fun{f}{A}{E'}$ uma função diferenciável. Se $\D f = 0$, então $f$ é constante.
+\end{proposition}
+\begin{proof}
+Sejam $x \in A$ e $r \in \intaa{0}{\infty}$ tal que $\bola{x}{r}\subseteq A$. Como $\bola{x}{r}$ é convexa e, para todo $x' \in \bola{x}{r}$, $\nor{\D f|_{x'}} = 0$, segue de \ref{prop:diferencial.limitada.funcao.controlada} que, para todos $x',x'' \in \bola{x}{r}$,
+	\begin{equation*}
+	\nor{f(x'') - f(x')} \leq 0 \nor{x''-x'} = 0,
+	\end{equation*}
+portanto $f(x') = f(x'')$, o que mostra que $f$ é constante em $\bola{x}{r}$, logo que $f$ é localmente constante. Como $A$ é um espaço topológico não vazio e conexo e $E'$ é um espaço topológico separado, segue de \ref{prop:separado.localmente.constante} que $f$ é constante.
+\end{proof}
+\begin{comment}
+\begin{proof}
+Sejam $x,x' \in A$. Como $A$ é conexo, então $x$ e $x'$ são conectados por alguma trajetória poligonal $\fun{\gamma}{\intff{0}{1}}{A}$. Assim, $\gamma(0)=x$, $\gamma(1)=x'$ e alguma $n$-partição por intervalos $(t_k)_{k \in [n+1]} \in \R^{n+1}$ satisfaz, para todo $k \in [n]$, que $\gamma|_{\intff{t_k}{t_{k+1}}}$ é afim e $\gamma(\intff{t_k}{t_{k+1}}) = \Sxger{\gamma(t_k),\gamma(t_{k+1})}$.
+
+Para todo $k \in [n]$, como $\D f = 0$, segue de \ref{prop:desigualdade.valor.medio} que
+	\begin{equation*}
+	\nor{f(\gamma(t_{k+1})) - f(\gamma(t_k))} \leq \sup_{y \in \Sxger{x,x'}} \nor{\D f|_y} \nor{x'-x} = 0.
+	\end{equation*}
+Por indução em $n$, obtemos que $f(\gamma(t_0)) = f(\gamma(t_n))$; ou seja,
+	\begin{equation*}
+	f(x) = f(\gamma(0)) = f(\gamma(t_0)) = f(\gamma(t_n)) = f(\gamma(1)) = f(x'),
+	\end{equation*}
+o que mostra que $f$ é constante.
+\end{proof}
+\end{comment}
+
+
+
+\subsection{Diferenciabilidade parcial}
+
+Nessa seção estudaremos a diferenciabilidade de funções entre produtos de espaços normados. Lembremos que dados $\bm E_0, \ldots, \bm E_{n-1}$ espaços normados, o produto $\bm E_0 \times \ldots \times \bm E_{n-1}$ é um espaço normado com qualquer uma das normas $p$, e essas normas são todas equivalentes. No que segue, usaremos qualquer uma dessas normas.
+
+\subsubsection{Contradomínio produto}
+
+Primeiro, estudamos o caso mais simples em que o contradomínio de uma função é um produto de espaços normados. Relembremos alguma notações relacionadas á projeção canônica e ressaltemos alguns resultados.
+
+Sejam $\bm E'_0, \ldots, \bm E'_{n-1}$ espaços normados e $k \in [n]$. A \emph{projeção} de $E'_0 \times \cdots \times E'_{n-1}$ sobre $E'_k$ é a função
+	\begin{align*}
+	\func{\proj_k}{E'_0 \times \cdots \times E'_{n-1}}{E'_k}{(x_0,\ldots,v_{n-1})}{v_k}.
+	\end{align*}
+A projeção $\proj_k$ é linear e contínua. Como $\proj_k$ é linear, sua diferencial, para todo $x \in E'_0 \times \cdots \times E'_{n-1}$, é
+	\begin{equation*}
+	\D \proj_k|_x = \proj_k.
+	\end{equation*}
+
+Sejam $\bm E$ um espaço normado, $A \subseteq E$ um aberto e $\fun{f}{A}{\bm E'_0 \times \ldots \times \bm E'_{n-1}}$ uma função. Definimos a função coordenada $f_k := \fun{\proj_k \circ f}{A}{E'_k}$. A função $f$ pode ser escrita como
+	\begin{align*}
+	\func{f}{A}{E'_0 \times \cdots \times E'_{n-1}}{x}{(f_0(x), \ldots, f_{n-1}(x))}.
+	\end{align*}
+
+\begin{proposition}
+\label{prop:diferenciabilidade.componentes}
+Sejam $\bm E$ e $\bm E'_0, \ldots, \bm E'_{n-1}$ espaços normados, $A \subseteq E$ um aberto, $X \subseteq A$ e $\fun{f}{A}{E'_0 \times \cdots \times E'_{n-1}}$ uma função. Então $f$ é diferenciável em $X$ se, e somente se, para todo $k \in [n]$, $\fun{f_k}{A}{E'_k}$ é diferenciável em $X$. Nesse caso, para todo $x \in X$,
+	\begin{equation*}
+	\D f|_x = (\D f_0|_x, \ldots, \D f_{n-1}|_x) = \sum_{k \in [n]} \inclu_k \circ \D f_k|_x.
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+	\begin{itemize}
+%	\item ($\Rightarrow$) Suponhamos que $f$ é diferenciável em $X$ e seja $x \in X$. Para todo $k \in [n]$, defina
+%		\begin{equation*}
+%		D_k := \fun{\proj_k \circ \D f|_x}{E}{E'_k},
+%		\end{equation*}
+%	em que $\fun{\proj_k}{E'_0 \times \cdots \times E'_{n-1}}{E'_k}$ é a projeção canônica. As funções $D_k$ são claramente diferenciáveis e contínuas. Da diferenciabilidade de $f$ segue que
+%		\begin{align*}
+%		0 &= \lim_{v \to 0} \frac{f(x+v) - f(x) - \D f|_x(v)}{\nor{v}} \\
+%			&= \lim_{v \to 0} \frac{(f_k(x+v))_{k \in [n]} - (f_k(x))_{k \in [n]} - (D_k(v))_{k \in [n]}}{\nor{v}} \\
+%			&= \left( \lim_{v \to 0} \frac{f_k(x+v) - f_k(x) - D_k(v)}{\nor{v}} \right)_{k \in [n]}.
+%		\end{align*}
+%	Portanto, para todo $k \in [n]$,
+%		\begin{equation*}
+%		\lim_{v \to 0} \frac{f_k(x+v) - f_k(x) - D_k(v)}{\nor{v}} = 0,
+%		\end{equation*}
+%	o que mostra que, $\fun{f_k}{A}{E_k}$ é diferenciável em $x$ e sua diferencial é
+%		\begin{equation*}
+%		\D f_k|_x = \proj_k \circ \D f|_x.
+%		\end{equation*}
+
+	\item ($\Rightarrow$) Suponhamos que $f$ é diferenciável em $X$ e sejam $k \in [n]$ e $x \in X$. Como $f$ é diferenciável em $x$ e $\proj_k$ é diferenciável em $f(x)$, então $f_k := \proj_k \circ f$ é diferenciável em $x$ e
+		\begin{equation*}
+		\D f_k|_x = \D (\proj_k \circ f)|_x = \D \proj_k|_{f(x)} \circ \D f|_x = \proj_k \circ \D f|_x.
+		\end{equation*}
+
+	\item ($\Leftarrow$) Suponhamos que, para todo $k \in [n]$, $\fun{f_k}{A}{E_k}$ é diferenciável em $X$ e seja $x \in X$. Defina
+		\begin{align*}
+		\func{D}{E}{E'_0 \times \cdots \times E'_{n-1}}{v}{(\D f_0|_x(v), \ldots, \D f_{n-1}|_x(v))}.
+		\end{align*}
+	Claramente $D$ é linear e contínua. Da diferenciabilidade das $f_k$ em $x$ segue que
+		\begin{align*}
+		\lim_{v \to 0} \frac{f(x+v) - f(x) - D(v)}{\nor{v}} &= \lim_{v \to 0} \frac{(f_k(x+v))_{k \in [n]} - (f_k(x))_{k \in [n]} - (\D f_k|_x(v))_{k \in [n]}}{\nor{v}} \\
+			&= \left( \lim_{v \to 0} \frac{f_k(x+v) - f_k(x) - \D f_k|_x(v)}{\nor{v}} \right)_{k \in [n]} \\
+			&= 0
+		\end{align*}
+	o que mostra que $f$ é diferenciável em $x$ e sua diferencial é
+		\begin{equation*}
+		\D f|_x = (\D f_0|_x, \ldots, \D f_{n-1}|_x).
+		\qedhere
+		\end{equation*}
+	\end{itemize}
+\end{proof}
+
+\begin{definition}[\ensuremath{\Cont^1}-Diferenciabilidade (local)]
+Sejam $\bm E$ e $\bm E'$ espaços normados, $A \subseteq E$ um aberto e $X \subseteq A$. Uma função de $A$ para $E'$ \emph{$\Cont^1$-diferenciável em $X$} (ou \emph{continuamente diferenciável em $X$}) é uma função $\fun{f}{A}{E'}$ que, para todo $x \in X$, satisfaz o seguinte: para alguma vizinhança $V \subseteq A$ de $x$, $f$ é diferenciável em $V$ e
+	\begin{align*}
+	\func{\D f}{V}{\toplin(\bm E,\bm E')}{y}{\D f|_y}
+	\end{align*}
+é contínua em $x$.
+% TALVEZ DEVA MUDAR A DEFINIÇÃO PARA Df CONTÍNUA EM V.
+\end{definition}
+
+
+% ADICIONAR UM ANÁLOGO AO TEOREMA ANTERIOR, MAS PARA $\Cont^1$-DIFERENCIABILIDADE.
+
+
+\subsubsection{Domínio produto}
+
+Para tratar da diferenciabilidade de uma função definida em um subconjunto de um produto de espaços normados, precisamos relembrar noções e notações de espaços e subespaços afins, e definir mais alguns conceitos: a noção de diferenciabilidade parcial e da diferencial parcial de uma função.
+
+Sejam $\bm E_0, \ldots, \bm E_{n-1}$ espaços normados e $k \in [n]$. A \emph{inclusão} de $E_k$ em $E_0 \times \cdots \times E_{n-1}$ é a função
+	\begin{align*}
+	\func{\inclu_k}{E_k}{E_0 \times \cdots \times E_k \times \cdots \times E_{n-1}}{y}{(0,\ldots,0,\underbrace{y}_k,0,\ldots,0)}.
+	\end{align*}
+A inclusão $\inclu_k$ é linear e contínua.
+
+Sejam $x \in E_0 \times \cdots \times E_{n-1}$ e $x_{\hat{k}} := (x_0,\ldots,x_{k-1},0,x_{k+1},\ldots,x_{n-1}) \in E_0 \times \cdots \times E_{n-1}$. A \emph{inclusão afim transladada por $x_{\hat{k}}$} de $E_k$ em $E_0 \times \cdots \times E_{n-1}$ é a função $\inclu_{k,x} := x_{\hat{k}} + \iota_k$, dada explicitamente por
+	\begin{align*}
+	\func{\inclu_{k,x}}{E_k}{E_0 \times \cdots \times E_{n-1}}{y}{x_{\hat{k}}+\inclu_k(y) = (x_0,\ldots,x_{k-1},y,x_{k+1},\ldots,x_{n-1})}.
+	\end{align*}
+A função $\inclu_{k,x}$ é contínua. A imagem de $\inclu_{k,x}$ é o subespaço afim de $E_0 \times \cdots \times E_{n-1}$
+	\begin{equation*}
+	\inclu_{k,x}(E_k) = x_{\hat{k}} + \inclu_k(E_k) = \set{(x_0,\ldots,x_{k-1},y,x_{k+1},\ldots,x_{n-1})}{y \in E_k}
+	\end{equation*}
+e $\inclu_{k,x}(x_k) = x$. Como $\inclu_{k,x}$ é afim, então é diferenciável e sua diferencial é a diferencial da função linear $\inclu_k$, ou seja
+	\begin{equation*}
+	\D \inclu_{k,x}|_y = \inclu_k.
+	\end{equation*}
+%Explicitamente, para todo $y \in E_k$ e todo $w \in E_k$,
+%	\begin{equation*}
+%	\D \inclu_{k,x}|_y(w) = \inclu_k(w) = (0,\ldots,0,w,0,\ldots,0).
+%	\end{equation*}
+
+Seja $A \subseteq E_0 \times \cdots \times E_{n-1}$ um aberto e $x \in A$. O conjunto
+	\begin{equation*}
+	A_{k,x} := {\inclu_{k,x}}\inv(A) = \set{y \in E_k}{(x_0,\ldots,x_{k-1},y,x_{k+1},\ldots,x_{n-1}) \in A}
+	\end{equation*}
+é aberto em $E_k$, pois $A$ é aberto e $\inclu_{k,x}$ é contínua. Além disso, $x_k \in A_{k,x}$.
+
+Sejam $\bm E'$ um espaço normado e $\fun{f}{A}{E'}$ uma função. Definimos $f_{k,x} := f \circ \inclu_{k,x}$, dada explicitamente por
+	\begin{align*}
+	\func{f_{k,x}}{A_k}{E'}{y}{f(x_0,\ldots,x_{k-1},y,x_{k+1},\ldots,x_{n-1})}.
+	\end{align*}
+
+\begin{definition}[Diferenciabilidade parcial (local)]
+Sejam $\bm E_0, \ldots, \bm E_{n-1}$ e $\bm E'$ espaços normados, $A \subseteq E_0 \times \cdots \times E_{n-1}$ um aberto, $X \subseteq A$ e $k \in [n]$. Uma função de $A$ para $E'$ \emph{$k$-parcialmente diferenciável em $X$} é uma função $\fun{f}{A}{E'}$ tal que, para todo $x \in X$, $\fun{f_{k,x}}{A_{k,x}}{E'}$ é diferenciável em $x_k$. A \emph{diferencial $k$-parcial} de $f$ em $x$ é a diferencial
+	\begin{equation*}
+	\D_k f|_x := \fun{\D f_{k,x}|_{x_k}}{E_k}{E'}.
+	\end{equation*}
+\end{definition}
+
+\begin{proposition}
+\label{prop:diferenciabilidade.diferenciabilidade.parcial}
+Sejam $\bm E_0, \ldots, \bm E_{n-1}$ e $\bm E'$ espaços normados, $A \subseteq E_0 \times \cdots \times E_{n-1}$ um aberto, $X \subseteq A$ e $\fun{f}{A}{E'}$ uma função diferenciável em $X$. Para todo $k \in [n]$, $f$ é $k$-parcialmente diferenciável em $X$ e, para todo $x \in X$,
+	\begin{equation*}
+	\D_k f|_x = \D f|_x \circ \inclu_k.
+	\end{equation*}
+Para todo $v \in E_0 \times \cdots \times E_{n-1}$,
+	\begin{equation*}
+	\D f|_x(v) = \sum_{k \in [n]} \D_k f|_x(v_k).
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+Sejam $k \in [n]$ $x \in X$. Como $f$ é diferenciável em $x$ e $\inclu_{k,x}$ é diferenciável em $x_k$, segue da regra da cadeia que $f_{k,x} = f \circ \inclu_{k,x}$ é diferenciável em $x$ e que
+	\begin{align*}
+	\D_k f|_x = \D f_{k,x}|_{x_k} = \D (f \circ \inclu_{k,x})|_x = \D f|_{\inclu_{k,x}(x_k)} \circ \D \inclu_{k,x}|_{x_k} = \D f|_x \circ \inclu_k.
+	\end{align*}
+Para todo $v \in E_0 \times \cdots \times E_{n-1}$, segue da linearidade de $\D f|_x$ que
+	\begin{align*}
+	\D f|_x(v) &= \D f|_x(v_0,\ldots,v_{n-1}) \\
+		&= \sum_{k \in [n]} \D f|_x(0,\ldots,0,v_k,0,\ldots,0) \\
+		&= \sum_{k \in [n]} \D f|_x \circ \inclu_k(v_k) \\
+		&= \sum_{k \in [n]} \D_k f|_x(v_k).
+		\qedhere
+	\end{align*}
+\end{proof}
+
+A recíproca, no entanto, não é verdadeira. Algumas funções são parcialmente diferenciáveis sobre todos $E_k$ em um ponto $x$ sem serem diferenciáveis em $x$. Para achar uma recíproca, devemos definir uma propriedade um pouco mais forte de diferenciabilidade parcial, que é chamada de diferenciabilidade contínua parcial.
+
+\begin{definition}[\ensuremath{\Cont^1}-Diferenciabilidade parcial (local)]
+%Sejam $\bm E_0, \ldots, \bm E_{n-1}$ e $\bm E'$ espaços normados, $A \subseteq E_0 \times \cdots \times E_{n-1}$ um aberto, $X \subseteq A$ e $k \in [n]$. Uma função de $A$ para $E'$ \emph{$k$-parcialmente continuamente diferenciável em $X$} é uma função $\fun{f}{A}{E'}$ tal que, para todo $x \in X$, $\fun{f_{k,x}}{A_{k,x}}{E'}$ é continuamente diferenciável em $x_k$.
+
+% Acho que a definição acima está errada.
+
+Sejam $\bm E_0, \ldots, \bm E_{n-1}$ e $\bm E'$ espaços normados, $A \subseteq E_0 \times \cdots \times E_{n-1}$ um aberto, $X \subseteq A$ e $k \in [n]$. Uma função de $A$ para $E'$ \emph{$k$-parcialmente $\Cont^1$-diferenciável em $X$} (ou \emph{$k$-parcialmente continuamente diferenciável em $X$}) é uma função $\fun{f}{A}{E'}$ que, para todo $x \in X$, satisfaz seguinte: para alguma vizinhança $V \subseteq A$ de $x$, $f$ é $k$-parcialmente diferenciável em $V$ e
+	\begin{align*}
+		\func{\D_k f}{V}{\toplin(\bm E_k,\bm E')}{y}{\D f|_y}
+		\end{align*}
+é contínua em $x$.
+\end{definition}
+
+Primeiro mostramos que vale uma versão de \ref{prop:diferenciabilidade.diferenciabilidade.parcial} para $\Cont^1$-diferenciabilidade.
+
+\begin{proposition}
+\label{prop:diferenciabilidade.continua.diferenciabilidade.parcial.continua}
+Sejam $\bm E_0, \ldots, \bm E_{n-1}$ e $\bm E'$ espaços normados, $A \subseteq E_0 \times \cdots \times E_{n-1}$ um aberto, $X \subseteq A$ e $\fun{f}{A}{E'}$ uma função $\Cont^1$-diferenciável em $X$. Para todo $k \in [n]$, $f$ é $k$-parcialmente $\Cont^1$-diferenciável em $X$.
+\end{proposition}
+\begin{comment}
+\begin{proof}
+Sejam $\bm E := \bm E_0 \times \ldots \times \bm E_{n-1}$, $k \in [n]$, $x \in X$ e $V \subseteq A$ uma vizinhança de $x$ em que $f$ é diferenciável e tal que $\D f$ é contínua em $x$. Seja $r \in \intaa{0}{\infty}$ tal que $\bola{x}{r} \subseteq V$. Por \ref{prop:diferenciabilidade.diferenciabilidade.parcial}, para todo $x' \in \bola{x}{r}$ e todo $v_k \in E_k$ vale que $f$ é $k$-parcialmente diferenciável em $x'$ e $\D_k f|_{x'}(v_k) = \D f|_{x'}(\inclu_k(v_k))$. Como $\nor{\inclu_k(v_k)}_{E} = \nor{v_k}_{E_k}$ (em qualquer norma $p$ no produto), da continuidade da diferencial em $V$ segue que
+	\begin{align*}
+	\nor{(\D_k f|_{x'} - \D_k f|_x)(v_k)}_{E'} &= \nor{(\D f|_{x'} - \D f|_x)(\inclu_k(v_k))}_{E'} \\
+		&\leq \nor{\D f|_{x'} - \D f|_x}_{\toplin(E,E')}\nor{\inclu_k(v_k)}_{E} \\
+		&= \nor{\D f|_{x'} - \D f|_x}_{\toplin(E,E')}\nor{v_k}_{E_k},
+	\end{align*}
+portanto
+	\begin{equation*}
+	\nor{(\D_k f|_{x'} - \D_k f|_x)}_{\toplin(E_k,E')} \leq \nor{\D f|_{x'} - \D f|_x}_{\toplin(E,E')}.
+	\end{equation*}
+Pela continuidade de $\D f$ em $x$, segue que $\D_k f$ é contínua em $x$.
+\end{proof}
+\end{comment}
+\begin{proof}
+Sejam $\bm E := \bm E_0 \times \ldots \times \bm E_{n-1}$, $k \in [n]$, $x \in X$ e $V \subseteq A$ uma vizinhança de $x$ em que $f$ é diferenciável e tal que $\D f$ é contínua em $x$. Por \ref{prop:diferenciabilidade.diferenciabilidade.parcial}, para todo $x' \in V$ vale que $f$ é $k$-parcialmente diferenciável em $x'$ e $\D_k f|_{x'} = \D f|_{x'} \circ \inclu_k$.
+
+Seja $\varepsilon \in \intaa{0}{\infty}$. Como $\D f$ é contínua em $x$, para algum $\delta \in \intaa{0}{\infty}$ vale que, para todo $x' \in \bola{x}{\delta} \cap V$,
+	\begin{equation*}
+	\nor{\D f|_{x'} - \D f|_x}_{\toplin(E,E')} \leq \varepsilon.
+	\end{equation*}
+Disso segue que, para todo $k \in [n]$, como $\nor{\inclu_k}_{\toplin(E_k,E)} = 1$ (em qualquer norma $p$ no produto), então
+	\begin{align*}
+	\nor{\D_k f|_{x'} - \D_k f|_x}_{\toplin(E_k,E')} &= \nor{(\D f|_{x'} - \D f|_x) \circ \inclu_k}_{\toplin(E_k,E')} \\
+		&\leq \nor{\D f|_{x'} - \D f|_x}_{\toplin(E,E')}\nor{\inclu_k}_{\toplin(E_k,E)} \\
+		&= \nor{\D f|_{x'} - \D f|_x}_{\toplin(E,E')} \\
+		& \leq \varepsilon,
+	\end{align*}
+o que mostra que $\D_k f$ é contínua em $x$.
+\end{proof}
+
+\begin{proposition}
+\label{prop:diferenciabilidade.parcial.continua.diferenciabilidade.pontual}
+Sejam $\bm E_0, \ldots, \bm E_{n-1}$ e $\bm E'$ espaços normados, $A \subseteq E_0 \times \cdots \times E_{n-1}$ um aberto, $X \subseteq A$ e $\fun{f}{A}{E'}$ uma função tal que, para todo $k \in [n]$, é $k$-parcialmente $\Cont^1$-diferenciável em $X$. Então a função $f$ é diferenciável em $X$ e, para todo $x \in X$,
+	\begin{equation*}
+	\D f|_x = \sum_{k \in [n]} \D_k f|_x \circ \proj_k.
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+Sejam $\bm E := \bm E_0, \ldots, \bm E_{n-1}$, $x \in X$ e, para cada $k \in [n]$, $V_k \subseteq A$ uma vizinhança aberta de $x$ na qual $f$ é $k$-parcialmente diferenciável e $\fun{\D_k f}{V_k}{\toplin(\bm E_k, \bm E')}$ é contínua em $x$. Definamos $V := \bigcap_{k \in [n]} V_k$, de modo que $V$ é uma vizinhança aberta de $x$ na qual, para todo $k \in [n]$, $f$ é $k$-parcialmente diferenciável e $\fun{\D_k f}{V}{\toplin(\bm E_k, \bm E')}$ é contínua em $x$.
+
+Seja $\delta' \in \intaa{0}{\infty}$ tal que $\bola{x}{\delta'} \subseteq V$. Para todo $x' \in \bola{x}{\delta'}$, definamos
+	\begin{equation*}
+	g(x') := f(x') - f(x) - \sum_{k \in [n]} \D_k f|_x(x'_k - x_k)
+	\end{equation*}
+Mostraremos que $\lim_{x' \to x} \frac{\nor{g(x')}}{\nor{x'-x}} = 0$, o que implica que $f$ é diferenciável em $x$ e $\D f|_x = \sum_{k \in [n]} \D_k f|_x \circ \proj_k$.
+
+Para todo $k \in [n]$, a função $\fun{g}{\bola{x}{\delta'} \subseteq E}{E'}$ é $k$-parcialmente diferenciável em $\bola{x}{\delta'}$. Isso vale porque, para todo $k' \in [n]$,
+	\begin{equation*}
+	\proj_{k'} \circ \inclu_{k,x'}(y) = \proj_{k'}({x'}_0,\ldots,{x'}_{k-1},y,{x'}_{k+1},\ldots,{x'}_{n-1}) =
+		\begin{cases}
+		y,			& k = k' \\
+		{x'}_{k'},	& k \neq k',
+		\end{cases}
+	\end{equation*}
+logo
+	\begin{align*}
+	g_{k,x'}(y) &= g(\inclu_{k,x'}(y)) \\
+		&= f(\inclu_{k,x'}(y)) - f(x) - \sum_{k' \in [n]} \D_{k'} f|_x(\proj_{k'} \circ \inclu_{k,x'}(y) - x_{k'}) \\
+		&= f_{k,x'}(y) - f(x) - \D_k f|_x(y) + \D_k f|_x(x_k) - \sum_{k' \in [n] \setminus \{k\}} \D_{k'} f|_x({x'}_{k'} - x_{k'}),
+	\end{align*}
+e então, como $- f(x) + \D_k f|_x(x_k) - \sum_{k' \in [n] \setminus \{k\}} \D_{k'} f|_x({x'}_{k'} - x_{k'})$ é constante (com relação a $y$) e $\D_k f|_x$ é linear, segue que
+	\begin{equation*}
+	\D_k g|_{x'} = \D g_{k,x'}|_{{x'}_k} = \D f_{k,x'}|_{{x'}_k} - \D_k f|_x = \D_k f|_{x'} - \D_k f|_x.
+	\end{equation*}
+
+Seja $\varepsilon \in \intaa{0}{\infty}$. Para todo $k \in [n]$, a função $\D_k f$ é contínua em $x$, logo para algum $\delta \in \intaa{0}{\delta'}$ vale que, para todo $x' \in \bola{x}{\delta}$,
+	\begin{equation*}
+	\nor{\D_k f|_{x'} - \D_k f|_x} < \frac{\varepsilon}{n}.
+	\end{equation*}
+
+Seja $v \in E$ tal que $\nor{v} \leq \delta'$ e, para todo $k \in [n]$, $v_{(0)} := (0,\ldots,0)$ e $v_{(k+1)} := (v_0,\ldots,v_k,0,\ldots,0)$. Vale $v_{(n)} = v$, $v_{(k+1)} - v_{(k)} = v_k$ e $\nor{v_{(k)}} \leq \nor{v}$ (para qualquer norma $p$).
+
+Da desigualdade do valor médio (\ref{prop:desigualdade.valor.medio}) segue que, para todo $k \in [n]$,
+	\begin{equation*}
+	\nor{g_{k,{x'}_{(k)}}(x_k+v_k) - g_{k,{x'}_{(k)}}(x_k)} \leq \sup_{y \in \Sxgera{x_k, x_k+v_k}} \nor{\D g_{k,x'}|_{y}} \nor{x_k + v_k - x_k} \leq \frac{\varepsilon}{n} \nor{v_k}
+	\end{equation*}
+Como $g(x) = 0$, vale que
+	\begin{equation*}
+	g(x+v) = \sum_{k \in [n]} g(x+v_{(k+1)}) - g(x+v_{(k)}),
+	\end{equation*}
+portanto
+	\begin{align*}
+	\nor{g(x+v)} %&= \nor{\sum_{k \in [n]} g(x+v_{(k+1)}) - g(x+v_{(k)})} \\
+		&\leq \sum_{k \in [n]} \nor{g(x+v_{(k+1)}) - g(x+v_{(k)})} \\
+		&= \sum_{k \in [n]} \nor{g_{k,{x'}_{(k)}}(x_k+v_k) - g_{k,{x'}_{(k)}}(x_k)} \\
+%		&= \sum_{k \in [n]} \sup_{y \in \Sxger{x_k, x_k+v_k}} \nor{\D g_{k,x'}|_{y}} \nor{x_k + v_k - x_k} \\
+		&\leq \sum_{k \in [n]} \frac{\varepsilon}{n} \nor{v_k} \\
+		& \leq \sum_{k \in [n]} \frac{\varepsilon}{n} \nor{v} \\
+		&= \varepsilon \nor{v}.
+	\end{align*}
+
+Disso segue que $f$ é diferenciável em $x$ e, para todo $v \in E$,
+%	\begin{equation*}
+%	\D f|_x = \sum_{k \in [n]} \D_k f|_x \circ \proj_k.
+%	\end{equation*}
+	\begin{equation*}
+	\D f|_x(v) = \sum_{k \in [n]} \D_k f|_x(v_k).
+	\qedhere
+	\end{equation*}
+\end{proof}
+\begin{comment}
+\begin{proof}[PROVA 2 COM r]
+Sejam $\bm E := \bm E_0, \ldots, \bm E_{n-1}$, $x \in X$ e, para cada $k \in [n]$, $V_k \subseteq A$ uma vizinhança aberta de $x$ na qual $f$ é $k$-parcialmente diferenciável e $\fun{\D_k f}{V_k}{\toplin(\bm E_k, \bm E')}$ é contínua em $x$. Definamos $V := \bigcap_{k \in [n]} V_k$, de modo que $V$ é uma vizinhança aberta de $x$ na qual, para todo $k \in [n]$, $f$ é $k$-parcialmente diferenciável e $\fun{\D_k f}{V}{\toplin(\bm E_k, \bm E')}$ é contínua em $x$.
+
+Sejam $x' \in V$ e $\delta' \in \intaa{0}{\infty}$ tal que $\bola{x'}{\delta'} \subseteq V$. Para todo $v \in \bola{0}{\delta'}$, vale $x'+v \in \bola{x'}{\delta'}$, e definimos
+	\begin{equation*}
+	r(v) := f(x'+v) - f(x') - \sum_{k \in [n]} \D_k f|_{x'}(v_k)
+	\end{equation*}
+Mostraremos que $\lim_{v \to 0} \frac{\nor{r(v)}}{\nor{v}} = 0$. Como $\sum_{k \in [n]} \D_k f|_{x'} \circ \proj_k$ é linear e contínua, isso implica que $f$ é diferenciável em $x'$ e $\D f|_{x'} = \sum_{k \in [n]} \D_k f|_{x'} \circ \proj_k$.
+
+Primeiro, mostremos que, para todo $k \in [n]$, a função $\fun{r}{\bola{0}{\delta'} \subseteq E}{E'}$ é $k$-parcialmente diferenciável. Para todo $k' \in [n]$, vale
+	\begin{equation*}
+	\proj_{k'} \circ \inclu_{k,v}(y) = \proj_{k'}({v}_0,\ldots,{v}_{k-1},y,{v}_{k+1},\ldots,{v}_{n-1}) =
+		\begin{cases}
+		y,			& k = k', \\
+		{v}_{k'},	& k \neq k',
+		\end{cases}
+	\end{equation*}
+%	\begin{equation*}
+%	\proj_{k'} \circ \inclu_{k,v} =
+%		\begin{cases}
+%		\Id,	& k = k', \\
+%		v_{k'},	& k \neq k',
+%		\end{cases}
+%	\end{equation*}
+logo
+	\begin{align*}
+	r_{k,v}(y) %&= r(\inclu_{k,v}(y)) \\
+		&= f(x'+\inclu_{k,v}(y)) - f(x') - \sum_{k' \in [n]} \D_{k'} f|_{x'}(\proj_{k'} \circ \inclu_{k,v}(y)) \\
+		&= f_{k,x'+v}({x'}_k+y) - f(x) - \D_k f|_x(y) - \sum_{k' \in [n] \setminus \{k\}} \D_{k'} f|_x({v}_{k'});
+	\end{align*}
+%	\begin{equation*}
+%	r := f \circ T_{x'} - f(x') - \sum_{k \in [n]} \D_k f|_{x'} \circ \proj_k
+%	\end{equation*}
+%	\begin{align*}
+%	r_{k,v} &= r \circ \iota_{k,v} \\
+%		&= f \circ T_{x'} \circ \iota_{k,v} - f(x') - \sum_{k' \in [n]} \D_{k'} f|_{x'} \circ \proj_{k'} \circ \iota_{k,v} \\
+%		&= f_{k,x'+v} \circ T_{{x'}_k} - f(x') - \D_k f|_{x'} - \sum_{k' \in [n] \setminus \{k\}} \D_{k'} f|_{x'}(v_{k'}) \circ \iota_{k,v} \\
+%	\end{align*}
+como $T_{{x'}_k}(y) = {x'}_k + y$ é afim, $\D_k f|_{x'}$ é linear e $-f(x') - \sum_{k' \in [n] \setminus \{k\}} \D_{k'} f|_{x'}(v_{k'})$ é constante (com relação a $y$), segue que
+	\begin{equation*}
+	\D_k r|_v = \D r_{k,v}|_{v_k} = \D f_{k,x'+v}|_{{x'}_k + v_k} - \D_k f|_{x'} = \D_k f|_{x'+v} - \D_k f|_{x'}.
+	\end{equation*}
+
+Agora, mostremos que $f$ é diferenciável em $x'$. Seja $\varepsilon \in \intaa{0}{\infty}$. Para todo $k \in [n]$, a função $\D_k f$ é contínua em $x'$, logo para algum $\delta_k \in \intaa{0}{\delta'}$ vale que, para todo $v \in \bola{0}{\delta_k}$,
+	\begin{equation*}
+	\nor{\D_k f|_{x'+v} - \D_k f|_{x'}} < \frac{\varepsilon}{n}.
+	\end{equation*}
+Definamos $\delta := \min_{k \in [k]} \delta_k$. Seja $v \in \bola{0}{\delta}$ e, para todo $k \in [n]$, $v_{(0)} := (0,\ldots,0)$
+	\begin{equation*}
+	v_{(k+1)} := (v_0,\ldots,v_k,0,\ldots,0).
+	\end{equation*}
+Vale $v_{(n)} = v$, $v_{(k+1)} - v_{(k)} = v_k$ e $\nor{v_{(k)}} \leq \nor{v}$ (para qualquer norma $p$).
+
+Da desigualdade do valor médio (\ref{prop:desigualdade.valor.medio}) segue que, para todo $k \in [n]$,
+	\begin{equation*}
+	\nor{r_{k,v_{(k)}}(v_k) - r_{k,v_{(k)}}(0)} \leq \sup_{y \in \Sxger{0, v_k}} \nor{\D r_{k,v_{(k)}}|_{y}} \nor{v_k} \leq \frac{\varepsilon}{n} \nor{v_k}
+	\end{equation*}
+Como $r(0) = 0$, vale que
+	\begin{equation*}
+	r(v) = \sum_{k \in [n]} r(v_{(k+1)}) - r(v_{(k)}),
+	\end{equation*}
+portanto
+	\begin{align*}
+	\nor{r(v)} &\leq \sum_{k \in [n]} \nor{\sum_{k \in [n]} r(v_{(k+1)}) - r(v_{(k)})} \\
+		&= \sum_{k \in [n]} \nor{\sum_{k \in [n]} r(v_{(k+1)}) - r(v_{(k)})} \\
+		&\leq \sum_{k \in [n]} \frac{\varepsilon}{n} \nor{v_k} \\
+		& \leq \sum_{k \in [n]} \frac{\varepsilon}{n} \nor{v} \\
+		&= \varepsilon \nor{v}.
+	\end{align*}
+
+Disso segue que $f$ é diferenciável em $x$ e
+	\begin{equation*}
+	\D f|_x = \sum_{k \in [n]} \D_k f|_x.
+	\end{equation*}
+
+\end{proof}
+\end{comment}
+
+\begin{proposition}
+Sejam $\bm E_0, \ldots, \bm E_{n-1}$ e $\bm E'$ espaços normados, $A \subseteq E_0 \times \cdots \times E_{n-1}$ um aberto e $\fun{f}{A}{E'}$ uma função. Então $f$ é $\Cont^1$-diferenciável se, e somente se, para todo $k \in [n]$, $f$ é $k$-parcialmente $\Cont^1$-diferenciável. Nesse caso, para todo $x \in A$% e todo $v \in E_0 \times \cdots \times E_{n-1}$
+,
+%	\begin{equation*}
+%	\D f|_x(v) = \sum_{k \in [n]} \D_k f|_x(v_k).
+%	\end{equation*}
+	\begin{equation*}
+	\D f|_x = \sum_{k \in [n]} \D_k f|_x \circ \proj_k.
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+A ida segue direto de \ref{prop:diferenciabilidade.continua.diferenciabilidade.parcial.continua}. Para a volta, segue de
+de \ref{prop:diferenciabilidade.parcial.continua.diferenciabilidade.pontual} que $f$ é diferenciável e que, para todo $x \in A$,
+	\begin{equation*}
+	\D f|_x = \sum_{k \in [n]} \D_k f|_x \circ \proj_k.
+	\end{equation*}
+Seja $\varepsilon \in \intaa{0}{\infty}$. Como para todo $k \in [n]$ as funções $\D_k f$ são contínuas em $x$, algum $\delta_k$ satisfaz que, para todo $x' \in \bola{x}{\delta_k} \cap A$,
+	\begin{equation*}
+	\nor{\D_k f|_{x'} - \D_k f|_x} \leq \frac{\varepsilon}{n}.
+	\end{equation*}
+Logo, para $\delta := \inf_{k \in [n]} \delta_k$, segue que, para todo $x' \in \bola{x}{\delta_k} \cap A$,
+	\begin{align*}
+	\nor{\D f|_{x'} - \D f|_x} &= \nor{\sum_{k \in [n]} (\D_k f|_{x'} - \D_k f|_x) \circ \proj_k} \\
+		&\leq \sum_{k \in [n]} \nor{(\D_k f|_{x'} - \D_k f|_x) \circ \proj_k} \\
+		&\leq \sum_{k \in [n]} \nor{\D_k f|_{x'} - \D_k f|_x} \nor{\proj_k} \\
+		&\leq \sum_{k \in [n]} \nor{\D_k f|_{x'} - \D_k f|_x} \\
+		&= \varepsilon,
+	\end{align*}
+o que mostra que $\D f$ é contínua em $x$.
+\end{proof}
+
+Combinando os dois casos, em que
+	\begin{equation*}
+	\fun{f}{A \subseteq E_0 \times \cdots \times E_{n-1}}{E'_0 \times \cdots \times E'_{n'-1}}
+	\end{equation*}
+é uma função $\Cont^1$-diferenciável, para todo $x \in A$ vale que
+	\begin{equation*}
+	\D f|_x = \sum_{(k,k') \in [n] \times [n']} \inclu_{k'} \circ \D_k f_{k'}|_x \circ \proj_k.
+	\end{equation*}
+
+No caso em que $\fun{f}{A \subseteq \R^d}{E'}$, as diferenciais parciais estão relacionadas com as derivadas direcionais ao longo de cada vetor da base canônica. A relação é
+	\begin{equation*}
+	\D_k f|_x(c) = c \dir{\ii_k} f(x).
+	\end{equation*}
+
+% Possivelmente acrescentar a regra da cadeia nos casos em que domínio ou contradomínio são espaços produtos.
+
+
+
+\subsection{Multidiferenciabilidade}
+
+\subsubsection{Multidiferencial}
+
+Consideremos espaços normados $\bm E$ e $\bm E'$, um aberto $A \subseteq E$, $X \subseteq A$ e uma função $\fun{f}{A}{E'}$ diferenciável em $X$. Sua diferencial em $X$ é a função
+	\begin{align*}
+	\func{\D f}{X}{\toplin(\bm E, \bm E')}{x}{\D f|_x}.
+	\end{align*}
+
+Lembremos que adotamos a seguinte notação
+	\begin{equation*}
+	\toplin^{m}(\bm E, \bm E') := \toplin(\bm E, \toplin(\bm E, \cdots \toplin(\bm E, \bm E')\cdots)).
+	\end{equation*}
+e que denotamos o conjunto das transformações $m$-lineares contínuas de $\bm E$ para $\bm E'$ por
+	\begin{equation*}
+	\toplin^{(m)}(\bm E, \bm E') := \toplin(\bm E,\cdots, \bm E; \bm E').
+	\end{equation*}
+Esses dois espaços são isometricamente isomorfos (\ref{prop:isometria.estratificada.multilinear}) e o isomorfismo é dado por
+	\begin{equation*}
+	\fun{I^{(m)}}{\toplin^m(\bm E, \bm E')}{\toplin^{(m)}(\bm E, \bm E')}.
+	\end{equation*}
+Além disso, o subespaço das funções $m$-lineares simétricas $\toplin_{S}^{(m)}(\bm E, \bm E')$ é um subespaço fechado de $\toplin^{(m)}(\bm E, \bm E')$.
+
+Se a função $f$ é diferenciável em uma vizinhança aberta $V$ de $X$, podemos considerar a diferenciabilidade de sua diferencial
+	\begin{align*}
+	\func{\D f}{V}{\toplin(\bm E, \bm E')}{x}{\D f|_x}.
+	\end{align*}
+Se $\D f$ for diferenciável em $X$, ela admite uma diferencial
+	\begin{equation*}
+	\fun{\D^2 f := \D (\D f)}{X}{\toplin^2(\bm E, \bm E')}.
+	\end{equation*}
+Se por sua vez a função $\D^2 f$ estiver definida na vizinhança $V$, então pode-se considerar sua diferencial $\D^3 f := \fun{\D(\D^2 f)}{X}{\toplin^3(\bm E, \bm E')}$ e assim por diante até algum $m \in \N$
+	\begin{equation*}
+	\D^m f := \fun{\D (\D^{m-1} f)}{X}{\toplin^m(\bm E, \bm E')}.
+	\end{equation*}
+
+Definimos a seguir o conceito de multidiferenciabilidade baseado nessa discussão preliminar. No entanto, queremos entender a função $\D^m f|_x \in \toplin^m(\bm E, \bm E')$ como uma função $m$-linear, pois elas têm propriedades melhores. Para isso, usaremos o isomorfismo isométrico $I^{(m)}$.
+
+\begin{definition}[Multidiferenciabilidade]
+Sejam $\bm E$ e $\bm E'$ espaços normados, $A \subseteq E$ um aberto e $X \subseteq A$. Para todo $k \in \NN$, definimos indutivamente:
+	\begin{enumerate}
+	\item Uma função de $A$ para $E'$ \emph{$0$-diferenciável} \emph{em $X$} (ou \emph{em $x$} para $X = \{x\}$) é uma função $\fun{f}{A}{E'}$. Sua \emph{diferencial $0$-composta} é $\D^0 f := \fun{f}{A}{E'}$.
+	
+	Uma função de $A$ para $E'$ \emph{$0$-diferenciável} é uma função contínua $\fun{f}{A}{E'}$;
+
+	\item Uma função de $A$ para $E'$ \emph{$k$-diferenciável} \emph{em $X$} (ou \emph{em $x$} para $X = \{x\}$) é uma função $\fun{f}{A}{E'}$ tal que, para alguma vizinhança $V \subseteq A$ de $X$, $f$ é $(k-1)$-diferenciável em $V$ e sua diferencial $(k-1)$-composta $\fun{\D^{k-1} f}{V}{\toplin^{k-1}(\bm E, \bm E')}$ é diferenciável em $X$. Sua \emph{diferencial $k$-composta} é
+		\begin{equation*}
+		\D^k f := \fun{\D (\D^{k-1} f)}{X}{\toplin^k(\bm E, \bm E')}
+		\end{equation*}
+	e, para todo $x \in X$, a \emph{$k$-diferencial} de $f$ em $x$ é a função $k$-linear
+		\begin{equation*}
+		\D^{(k)} f|_x := I^{(k)}(D^k f|_x).
+		\end{equation*}
+
+	Uma função \emph{$k$-diferenciável} de $A$ para $E'$ é uma função $\fun{f}{A}{E'}$ $k$-diferenciável em $A$;
+	
+	\item Uma função de $A$ para $E'$ \emph{$\infty$-diferenciável} (ou \emph{suave}) \emph{em $X$} (ou \emph{em $x$} para $X = \{x\}$) é uma função $\fun{f}{A}{E'}$ tal que, para todo $k \in \N$, $f$ é $k$-diferenciável em $X$.
+	
+	Uma função \emph{$\infty$-diferenciável} (ou \emph{suave}) de $A$ para $E'$ é uma função $\fun{f}{A}{E'}$ $\infty$-diferenciável em $A$.
+	\end{enumerate}
+\end{definition}
+% A proposição valeria para $k=0$ se definíssemos $(-1)$-diferenciável como sendo sinônimo de função.
+\begin{proposition}[Equivalência das diferenciais]
+\label{prop:multidiferencial.multilinear}
+Sejam $\bm E$ e $\bm E'$ espaços normados, $A \subseteq E$ um aberto, $X \subseteq A$ e $\fun{f}{A}{E'}$ uma função e $k \in \N \setminus \{0\}$. A função $f$ é $k$-diferenciável em $X$ se, e somente se, para alguma vizinhança de $X$, $f$ é $(k-1)$-diferenciável em $V$ e $\D^{(k-1)} f$ é diferenciável em $X$. Nesse caso, para todo $x \in X$ e todos $v_0, \ldots, v_{k-1} \in E$,
+	\begin{equation*}
+	\D^{(k)} f|_x(v_0,\ldots, v_{k-1}) = \D (\D^{(k-1)} f)|_x (v_0)(v_1,\ldots, v_{k-1}).
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+Para $k=1$ é direto. Consideremos $k \geq 2$.
+	\begin{itemize}
+	\item ($\Rightarrow$) Suponhamos que $f$ é $k$-diferenciável em $X$ e seja $V$ uma vizinhança de $X$ em que $f$ é $(k-1)$-diferenciável e tal que $\fun{\D^{k-1} f}{V}{\toplin^{k-1}(\bm E, \bm E')}$ é diferenciável em $X$. Como para todo $x' \in V$ vale que $\D^{(k-1)} f|_{x'} = I^{(k-1)} \circ \D^{k-1} f|_{x'}$, então $\D^{(k-1)} f = I^{(k-1)} \circ \D^{k-1} f$ e segue da linearidade e continuidade de $I^{(k)}$ que $\D^{(k-1)} f$ é diferenciável em $X$ e, pela regra da cadeia, para todo $x \in X$,
+		\begin{equation*}
+		\D (\D^{(k-1)} f)|_x = \D (I^{(k-1)} \circ \D^{k-1} f)|_x = I^{(k-1)} \circ \D^k f|_x.
+		\end{equation*}
+
+	\item ($\Leftarrow$) Suponhamos que, para alguma vizinhança $V$ de $X$, $f$ é $(k-1)$-diferenciável em $V$ e $\D^{(k-1)} f$ é diferenciável em $X$. Para todo $x' \in V$, vale que $\D^{k-1} f|_{x'} = (I^{(k)})\inv \circ \D^{(k-1)} f|_{x'}$, portanto $\D^{k-1} f = (I^{(k)})\inv \circ \D^{(k-1)} f$ e segue da linearidade e continuidade de $(I^{(k)})\inv$ que $\D^{k-1} f$ é diferenciável em $X$ e, pela regra da cadeia, para todo $x \in X$,
+		\begin{equation*}
+		\D^k f|_x = \D (\D^{k-1} f)|_x = \D ((I^{(k)})\inv \circ \D^{(k-1)} f)|_x = (I^{(k)})\inv \circ \D(\D^{(k-1)} f)|_x.
+		\end{equation*}
+	\end{itemize}
+
+Assim, concluímos que, caso $f$ seja $k$-diferenciável em $X$, vale que, para todo $x \in X$ e todos $v_0, \ldots, v_{k-1} \in E$,
+	\begin{align*}
+	\D (\D^{(k-1)} f)|_x(v_0) (v_1, \ldots, v_{k-1}) &= I^{(k-1)} \circ \D^k f|_x (v_0) (v_1, \ldots, v_{k-1}) \\
+		&= I^{(k)} \circ \D^k f|_x (v_0, v_1, \ldots, v_{k-1}) \\
+		&= \D^{(k)} f|_x (v_0, v_1, \ldots, v_{k-1}).
+	\end{align*}
+\end{proof}
+
+\begin{proposition}
+\label{prop:multidiferencial.simetrica}
+Sejam $\bm E$ e $\bm E'$ espaços normados, $A \subseteq E$ um aberto, $X \subseteq A$ e $\fun{f}{A}{E'}$ uma função $k$-diferenciável em $X$. Para todo $x \in X$, a função $k$-linear $\fun{\D^{(k)} f|_x}{E \times \cdots \times E}{E'}$ é simétrica.
+\end{proposition}
+\begin{proof}
+Seja $x \in X$. Demostraremos a proposição por indução em $k$. Os casos $k=0$ e $k=1$ são triviais. Consideramos o caso $k=2$. Seja $V \subseteq A$ uma vizinhança de $x$ tal que $f$ é diferenciável em $V$ e $\fun{\D f}{V}{\toplin(\bm E, \bm E')}$ é diferenciável em $x$.
+
+Sejam $v_0, v_1 \in E$. Se $v_0 = 0$ ou $v_1 = 0$, então
+	\begin{equation*}
+	\D^{(2)} f|_x(v_0,v_1) = 0 = \D^{(2)} f|_x(v_1,v_0).
+	\end{equation*}
+Consideremos $v_0 \neq 0$ e $v_1 \neq 0$.
+
+Seja $\varepsilon \in \intaa{0}{\infty}$. Como $f$ é $2$-diferenciável em $x$, para algum $\delta \in \intaa{0}{\infty}$ vale que $\bola{x}{\delta} \subseteq V$ e, para todo $x' \in \bola{x}{\delta}$,
+	\begin{align*}
+	\nor{\D f|_{x'} - \D f|_x - \D^2 f|_x (x'-x)} &\leq \frac{\varepsilon}{2^4\nor{v_0}\nor{v_1}} \nor{x'-x}.
+	\end{align*}
+
+Sejam $v,v' \in E$ tais que $x+v, x+v', x+v+v' \in \bola{x}{\delta}$. Definimos
+	\begin{equation*}
+	r(v,v') = f(x+v+v') - f(x+v) - f(x+v') + f(x) - \D^{(2)} f(v,v')
+	\end{equation*}
+e então segue que
+	\begin{align*}
+	\D^{(2)} f|_x(v,v') - \D^{(2)} f|_x(v',v) &= \D^{(2)} f|_x(v,v') \\
+		&\quad - f(x+v+v') + f(x+v) + f(x+v') - f(x) \\
+		&\quad + f(x+v'+v) - f(x+v') - f(x+v) + f(x) \\
+		&\quad - \D^{(2)} f|_x(v',v) \\
+		&= -r(v,v') + r(v',v),
+	\end{align*}
+portanto
+	\begin{equation*}
+	\nor{\D^{(2)} f|_x(v,v') - \D^{(2)} f|_x(v',v)} \leq \nor{r(v,v')} + \nor{r(v',v)}.
+	\end{equation*}
+
+Agora, como $f$ é diferenciável em $V$, definimos
+	\begin{align*}
+	r'(v') := f(x+v+v') - f(x+v') - \D f|_{x+v}(v') + \D f|_x(v').
+	\end{align*}
+Como $f$ é $2$-diferenciável em $x$, segue de \ref{prop:multidiferencial.multilinear} que $\D^{(2)} f|_x(v,v') = \D^2 f|_x(v)(v')$, logo
+	\begin{align*}
+	r(v,v') &= f(x+v+v') - f(x+v') - \D f|_{x+v}(v') + \D f|_x(v') \\
+		&\quad - (f(x+v) - f(x)) \\
+		&\quad + (\D f|_{x+v} - \D f|_x - \D^2 f|_x(v))(v') \\
+		&= r'(v') - r'(0) + (\D f|_{x+v} - \D f|_x - \D^2 f|_x(v))(v'),
+	\end{align*}
+portanto
+	\begin{equation*}
+	\nor{r(v,v')} \leq \nor{r'(v') - r'(0)} + \nor{\D f|_{x+v} - \D f|_x - \D^2 f|_x(v)}\nor{v'}.
+	\end{equation*}
+Como $\bola{0}{\delta}$ é convexa, segue da desigualdade do valor médio (\ref{prop:desigualdade.valor.medio}) que
+	\begin{equation*}
+	\nor{r'(v') - r'(0)} \leq \sup_{t \in \intaa{0}{1}} \nor{\D r'|_{tv'}} \nor{v'}.
+	\end{equation*}
+Mas $r'$ é diferenciável, pois é soma de funções diferenciáveis, e vale que
+	\begin{align*}
+	\D r'|_{v'} &= \D f_{x+v+v'} - \D f|_{x+v} - \D f|_{x+v'} + \D f|_x \\
+		&= \D f_{x+v+v'} - \D f|_x - \D^2 f|_x (v+v') \\
+		&\quad - (\D f|_{x+v} - \D f|_x - \D^2 f|_x (v)) \\
+		&\quad - (\D f|_{x+v'} - \D f|_x - \D^2 f|_x (v'));
+	\end{align*}
+como $v$ e $v'$ são tais que $x+v, x+v', x+v+v' \in \bola{x}{\delta}$, segue da $2$-diferenciabilidade de $f$ que
+	\begin{align*}
+	\nor{\D r'|_{v'}} &\leq \nor{\D f_{x+v+v'} - \D f|_x - \D^2 f|_x (v+v')} \\
+		&\quad + \nor{\D f|_{x+v} - \D f|_x - \D^2 f|_x (v)} \\
+		&\quad + \nor{\D f|_{x+v'} - \D f|_x - \D^2 f|_x (v')} \\
+		&\leq \frac{\varepsilon}{2^4\nor{v_0}\nor{v_1}} (\nor{v+v'} + \nor{v} + \nor{v'}) \\
+		&\leq \frac{\varepsilon}{2^3\nor{v_0}\nor{v_1}} (\nor{v} + \nor{v'}).
+	\end{align*}
+Para $t \in \intaa{0}{1}$, vale $\nor{tv'} \leq \nor{v'}$, o que implica que
+	\begin{align*}
+	\nor{r'(v') - r'(0)} &\leq \sup_{t \in \intaa{0}{1}} \nor{\D r'|_{tv'}} \nor{v'} \\
+		&\leq \frac{\varepsilon}{2^3\nor{v_0}\nor{v_1}} (\nor{v} + \nor{tv'})\nor{v'} \\
+		&\leq \frac{\varepsilon}{2^3\nor{v_0}\nor{v_1}} (\nor{v} + \nor{v'})\nor{v'}.
+	\end{align*}
+Disso segue que
+	\begin{align*}
+	\nor{r(v,v')} &\leq \nor{r'(v') - r'(0)} + \nor{\D f|_{x+v} - \D f|_x - \D^2 f|_x(v)}\nor{v'} \\
+		&\leq \frac{\varepsilon}{2^3\nor{v_0}\nor{v_1}} (\nor{v} + \nor{v'})\nor{v'} + \frac{\varepsilon}{2^4\nor{v_0}\nor{v_1}} \nor{v}\nor{v'} \\
+		&= \frac{\varepsilon}{2^4\nor{v_0}\nor{v_1}} \left(3\nor{v}\nor{v'} + 2\nor{v'}^2 \right) \\
+		&\leq \frac{\varepsilon}{2^4\nor{v_0}\nor{v_1}} \left( 2\nor{v}^2 + 4\nor{v}\nor{v'} + 2\nor{v'}^2 \right) \\
+		&= \frac{\varepsilon}{2^3\nor{v_0}\nor{v_1}} (\nor{v} + \nor{v'})^2.
+	\end{align*}
+
+Assim, obtém-se
+	\begin{align*}
+	\nor{\D^{(2)} f|_x(v,v') - \D^{(2)} f|_x(v',v)} &\leq \frac{\varepsilon}{2^3\nor{v_0}\nor{v_1}} (\nor{v} + \nor{v'})^2 \\
+		&\quad + \frac{\varepsilon}{2^3\nor{v_0}\nor{v_1}} (\nor{v'} + \nor{v})^2 \\
+		& = \frac{\varepsilon}{2^2\nor{v_0}\nor{v_1}} (\nor{v} + \nor{v'})^2.
+	\end{align*}
+
+Finalmente, sejam $c \in \intaa{0}{\delta}$ e $v := \frac{c}{2}\frac{v_0}{\nor{v_0}}, v' := \frac{c}{2}\frac{v_0}{\nor{v_0}}$, de modo que
+	\begin{equation*}
+	\nor{v} = \nor{v'} = \frac{c}{2},
+	\end{equation*}
+logo $x+v, x+v',x+v+v' \in \bola{x}{\delta}$. Da bilinearidade de $\D^{(2)} f|_x$, segue que
+	\begin{align*}
+		\D^{(2)} f|_x(v_0,v_1) &= \D^{(2)} f|_x \left( \frac{2\nor{v_0}}{c} v, \frac{2\nor{v_1}}{c} v' \right) = \frac{2^2\nor{v_0}\nor{v_1}}{c^2} \D^{(2)} f|_x(v,v'), \\
+		\D^{(2)} f|_x(v_1,v_0) &= \D^{(2)} f|_x \left( \frac{2\nor{v_1}}{c} v', \frac{2\nor{v_0}}{c} v \right) = \frac{2^2\nor{v_1}\nor{v_0}}{c^2} \D^{(2)} f|_x(v',v),
+	\end{align*}
+portanto
+	\begin{align*}
+	\nor{\D^{(2)} f|_x(v_0,v_1) - \D^{(2)} f|_x(v_1,v_0)} &= \frac{2^2\nor{v_0}\nor{v_1}}{c^2}\nor{\D^{(2)} f|_x(v,v') - \D^{(2)} f|_x(v',v)} \\
+		&\leq \frac{2^2\nor{v_0}\nor{v_1}}{c^2} \frac{\varepsilon}{2^2\nor{v_0}\nor{v_1}} (\nor{v} + \nor{v'})^2 \\
+		&\leq \frac{\varepsilon}{c^2} \left( \frac{c}{2} + \frac{c}{2} \right)^2 \\
+		&\leq \varepsilon,
+	\end{align*}
+o que implica que $\D^{(2)} f|_x(v_0,v_1) = \D^{(2)} f|_x(v_1,v_0)$.
+
+Agora, consideramos o caso em que $k>2$. Suponhamos que $f$ é $k$-diferenciável em $x$ e que toda função $(k-1)$-diferenciável tem $(k-1)$-diferencial simétrica. Seja $V \subseteq A$ uma vizinhança convexa de $x$ tal que $f$ é $(k-1)$-diferenciável em $V$ e $\fun{\D^{(k-1)} f}{V}{\toplin(\bm E, \bm E')}$ é diferenciável em $x$.
+
+Por hipótese de indução, $\D^{(k-1)} f|_x$ é uma função $(k-1)$-linear simétrica. Como $\toplin_{S}^{(k-1)}(\bm E, \bm E')$ é um subespaço fechado de $\toplin^{(k-1)}(\bm E, \bm E')$ e $(I^{(k-1)})\inv$ é isomorfismo isométrico, então
+	\begin{equation*}
+	S' := (I^{(k-1)})\inv(\toplin_{S}^{(k-1)}(\bm E, \bm E'))
+	\end{equation*}
+é subespaço fechado de $\toplin^{k-1}(\bm E, \bm E')$, portanto segue de \ref{prop:restricao.imagem.diferencial} que $\fun{\D^{k-1} f}{V}{S'}$ é diferenciável e $\D^k f|_x = \D (\D^{k-1} f)|_x$ tem imagem em $S'$, ou seja, para todo $v \in E$ a função $\D (\D^{k-1} f)|_x(v) \in S'$, o que implica que $I^{(k-1)}(\D (\D^{k-1} f)|_x(v))$ é $(k-1)$-linear simétrica. Assim, segue de \ref{prop:multidiferencial.multilinear} que a função $k$-linear $\D^{(k)} f|_x$ é simétrica nas entradas $1, \ldots, k-1$; ou seja, para todos $v, v'_0, \ldots, v'_{k-2} \in E$ toda permutação $\fun{\sigma'}{[k-1]}{[k-1]}$,
+	\begin{equation*}
+	\D^{(k)} f|_x (v, v'_{\sigma(0)} \ldots, v'_{\sigma(k-2)}) = \D^{(k)} f|_x (v, v'_0 \ldots, v'_{k-2}).
+	\end{equation*}
+
+Para obter simetria em todas as entradas, consideremos a função $\D^{k-2} f$. Vale que $\D^2(\D^{k-2} f)|_x = \D^k f|_x$ e que $\D^2(\D^{k-2} f)|_x \in \toplin^2(\bm E, \toplin^{k-2}(\bm E, \bm E')) = \toplin^k(\bm E, \bm E')$. Pelo caso base para $k=2$, vale que, para todos $v,v' \in E$,
+	\begin{equation*}
+	\D^{(2)}(\D^{k-2} f)|_x (v, v') = \D^{(2)}(\D^{k-2} f)|_x (v, v'),
+	\end{equation*}
+portanto, para todos $v, v', v''_0, \ldots, v''_{k-3} \in E$,
+	\begin{equation*}
+	\D^{(k)} f|_x (v, v', v''_0, \ldots, v''_{k-3}) = \D^{(k)} f|_x (v', v, v''_0, \ldots, v''_{k-3}).
+	\end{equation*}
+
+Finalmente, sejam $v_0, \ldots, v_{k-1} \in E$ e $\fun{\sigma}{[k]}{[k]}$ uma permutação. Se $\sigma(0) = 0$, então $\sigma|_{\{1,\ldots,k-1\}}$ é uma permutação de $\{1,\ldots,k-1\}$, portanto
+	\begin{align*}
+	\D^{(k)} f|_x (v_{\sigma(0)}, v_{\sigma(1)}, \ldots, v_{\sigma(k-1)}) &= \D^{(k)} f|_x (v_0, v_{\sigma(1)}, \ldots, v_{\sigma(k-1)}) \\
+		&= \D^{(k)} f|_x (v_0, v_1 \ldots, v_{k-1}).
+	\end{align*}
+
+S $\sigma(0) \neq 0$, seja $k_0 \in \{1, \ldots, k-1\}$ tal que $\sigma(k_0) = 0$. Podemos permutar as entradas $v_{\sigma(1)}$ e $v_{\sigma(k_0)} = v_0$, então as entradas $v_{\sigma(0)}$ com $v_{\sigma(k_0)} = v_0$, e por fim as restantes entradas $v_{\sigma(k')}$ para $k' \in [k] \setminus \{k_0\}$, e obtemos
+	\begin{align*}
+	\D^{(k)} f|_x (v_{\sigma(0)}, v_{\sigma(1)}, \ldots, v_{\sigma(k-1)}) &= \D^{(k)} f|_x (v_{\sigma(0)}, v_{\sigma(1)}, \ldots, v_{\sigma(k_0)}, \ldots, v_{\sigma(k-1)}) \\
+		&= \D^{(k)} f|_x (v_{\sigma(0)}, v_{\sigma(1)}, \ldots, v_0, \ldots, v_{\sigma(k-1)}) \\
+		&= \D^{(k)} f|_x (v_{\sigma(0)}, v_0, \ldots, v_{\sigma(1)}, \ldots, v_{\sigma(k-1)}) \\
+		&= \D^{(k)} f|_x (v_0, v_{\sigma(0)}, \ldots, v_{\sigma(1)}, \ldots, v_{\sigma(k-1)}) \\
+		&= \D^{(k)} f|_x (v_0, v_1, \ldots, v_{k-1}).
+		\qedhere
+	\end{align*}
+\end{proof}
 
 
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 
+\subsubsection{Multidiferenciabilidade contínua}
+
+Como diferenciabilidade implica continuidade, se $f$ é diferenciável então $f$ é contínua, ou seja, $f \in \Cont(\bm A, \bm E)$. O espaço $\toplin(\bm E, \bm E')$ é um espaço normado e então podemos nos perguntar se a diferencial $\fun{\D f}{A}{\toplin(\bm E, \bm E')}$ de $f$ é também contínua. Isso nem sempre vale. Na seção sobre a diferenciabilidade parcial de uma função, usamos o conceito de $\Cont^1$-diferenciabilidade para achar condições necessárias e suficientes para a diferenciabilidade de uma função. Nesta seção, generalizaremos o conceito de diferenciabilidade contínua para outras ordens.
+
+\begin{definition}[\ensuremath{\Cont^k}-Diferenciabilidade]
+Sejam $\bm E$ e $\bm E'$ espaços normados, $A \subseteq E$ um aberto e $X \subseteq A$. Para todo $k \in \NN$, definimos indutivamente:
+	\begin{enumerate}
+	\item Uma função de $A$ para $E'$ \emph{$\Cont^0$-diferenciável} (ou \emph{$0$-continuamente diferenciável}) \emph{em $X$} (ou \emph{em $x$} para $X = \{x\}$) é uma função $\fun{f}{A}{E'}$ contínua em $X$.
+	
+	Uma função de $A$ para $E'$ \emph{$\Cont^0$-diferenciável} (ou \emph{$0$-continuamente diferenciável}) é uma função contínua $\fun{f}{A}{E'}$ e o conjunto dessas funções é denotado $\Cont^0(\bm A,\bm E') := \Cont(\bm A,\bm E')$.
+
+	\item Uma função de $A$ para $E'$ \emph{$\Cont^k$-diferenciável} (ou \emph{$k$-continuamente diferenciável}) \emph{em $X$} (ou \emph{em $x$} para $X = \{x\}$) é uma função $\fun{f}{A}{E'}$ tal que, para alguma vizinhança $V \subseteq A$ de $X$, $f$ é diferenciável em $V$ e sua diferencial $\fun{\D f}{V}{\toplin(\bm E, \bm E')}$ é $\Cont^{k-1}$-diferenciável em $X$.
+	
+%	Uma função de $A$ para $E'$ \emph{$\Cont^k$-diferenciável} (ou $k$-\emph{continuamente diferenciável}) \emph{em $X$} (ou \emph{em $x$} para $X = \{x\}$) é uma função $\fun{f}{A}{E'}$ tal que, para todo $x \in X$, vale o seguinte: para alguma vizinhança $V_x \subseteq A$ de $x$, $f$ é diferenciável em $V_x$ e sua diferencial $\fun{\D f}{V_x}{\toplin(\bm E, \bm E')}$ é $\Cont^{k-1}$-diferenciável em $x$.
+	
+	Uma função \emph{$\Cont^k$-diferenciável} de $A$ para $E'$ é uma função $\fun{f}{A}{E'}$ $\Cont^k$-diferenciável em $A$ e o conjunto dessas funções é denotado $\Cont^k(\bm A,\bm E')$.
+
+	\item Uma função de $A$ para $E'$ \emph{$\Cont^\infty$-diferenciável} (ou \emph{$\infty$-continuamente diferenciável} ou \emph{suave}) \emph{em $X$} (ou \emph{em $x$} para $X = \{x\}$) é uma função $\fun{f}{A}{E'}$ tal que, para todo $k \in \N$, $f$ é $\Cont^{k}$-diferenciável em $X$.
+	
+	Uma função \emph{$\Cont^\infty$-diferenciável} (ou \emph{$\infty$-continuamente diferenciável} ou \emph{suave}) de $A$ para $E'$ é uma função $\fun{f}{A}{E'}$ $\Cont^{\infty}$-diferenciável em $A$ e o conjunto dessas funções é denotado $\Cont^\infty(\bm A,\bm E')$.
+	\end{enumerate}
+\end{definition}
+
+\begin{comment}
+\begin{definition}[\ensuremath{\Cont^k}-Diferenciabilidade]
+Sejam $\bm E$ e $\bm E'$ espaços normados e $A \subseteq E$ um aberto. Para todo $k \in \N$, definimos indutivamente:
+	\begin{enumerate}
+	\item Uma função $\Cont^0$-\emph{diferenciável} de $A$ para $E'$ é uma função contínua $\fun{f}{A}{E'}$ e sua \emph{$0$-ésima diferencial} é $\D^0 f := f$. O conjunto dessas funções é denotado $\Cont^0(\bm A,\bm E') := \Cont(\bm A,\bm E')$.
+	\item Uma função $\Cont^k$-\emph{diferenciável} de $A$ para $E'$ é uma função diferenciável $\fun{f}{A}{E'}$ tal que $\fun{\D f}{A}{\toplin(\bm E, \bm E')}$ é $\Cont^{k-1}$-diferenciável. Sua \emph{$k$-ésima diferencial} é
+		\begin{equation*}
+		\D^k f := \D^{k-1} (\D f).
+		\end{equation*}
+	O conjunto dessas funções é denotado $\Cont^k(\bm A,\bm E')$.
+	\item Uma função $\Cont^\infty$-\emph{diferenciável} (ou \emph{suave}) de $A$ para $E'$ é uma função $\fun{f}{A}{E'}$ tal que, para todo $k \in \N$, $f$ é $\Cont^{k}$-diferenciável. O conjunto dessas funções é denotado $\Cont^\infty(\bm A,\bm E')$.
+	\end{enumerate}
+\end{definition}
+\end{comment}
+
+Por \ref{prop:diferenciabilidade.derivabilidade}, a notação $\Cont^k(\bm A,\bm E')$ não é ambígua no caso $A = I \subseteq \R$. Para todo $k \in \N$, a diferencial é uma função
+	\begin{align*}
+	\func{\D}{\Cont^{k}(\bm A, \bm E')}{\Cont^{k-1}(\bm A, \bm E)}{f}{\D f}
+	\end{align*}
+e, quando nos restringimos a $\Cont^\infty(\bm A, \bm E')$,
+	\begin{align*}
+	\func{\D}{\Cont^\infty(\bm A, \bm E')}{\Cont^\infty(\bm A, \bm E)}{f}{\D f}.
+	\end{align*}
+
+O espaço $\Cont^\infty(\bm A, \bm E')$ é um espaço linear sobre $\R$ e \ref{prop:diferencial.propriedades} mostra que $\D$ é uma função linear em $\Cont^\infty(\bm A, \bm E')$. No entanto, ela nem sempre é contínua. No caso em que $\bm E'$ é uma álgebra, também por \ref{prop:diferencial.propriedades} concluímos que $\D$ é uma derivação em $\Cont^\infty(\bm A, \bm E')$. Em especial, para $E' = \R$, $\D$ é uma derivação em $\Cont^\infty(\bm A, \R)$. Essa perspectiva será importante no estudo da derivada exterior de formas, abordado mais à frente.
+
+\begin{exercise}
+Sejam $\bm E$ e $\bm E'$ espaços normados, $A \subseteq E$ um aberto, $X \subseteq A$ e $\fun{f}{A}{E'}$ uma função. Então $f$ é $\Cont^r$-diferenciável em $X$ se, e somente se, para todo $k \in [n]$, $f$ é $\Cont^k$-diferenciável em $X$ e $\D^k f$ é $\Cont^{r-k}$-diferenciável em $X$.
+\end{exercise}
+
+
+
+
+
+
+
+
+
+%\subsection{Teoremas fundamentais}
+
+
+
+\subsection{Campos tensoriais}
+
+\subsubsection{Campos vetoriais}
+
+\begin{definition}
+Sejam $\bm E$ um espaço normado e $A \subseteq E$ um aberto. Um \emph{campo vetorial} em $A$ é uma função $\fun{v}{A}{E}$. Para todo $x \in A$, o \emph{vetor tangente a $A$ de $v$ em $x$} é
+	\begin{equation*}
+	v|_x := v(x).
+	\end{equation*}
+\end{definition}
+
+\begin{definition}
+Sejam $\bm E$ um espaço normado, $A \subseteq E$ um aberto e $\fun{v}{A}{E}$ um campo vetorial em $A$. Uma \emph{trajetória integral} de $v$ é uma trajetória derivável $\fun{\gamma}{I}{A}$ tal que, para todo $t \in I$,
+	\begin{equation*}
+	\dot \gamma(t) = v|_{\gamma(t)}.
+	\end{equation*}
+Uma \emph{trajetória integral maximal} de $v$ é uma trajetória integral $\fun{\gamma}{I}{A}$ de $v$ tal que, para todo intervalo aberto $I' \subseteq \R$ tal que $I \subseteq I'$, não existe trajetória integral $\fun{\gamma'}{I'}{A}$ de $v$ tal que, para todo $t \in I$, $\gamma'(t) = \gamma(t)$.
+\end{definition}
+
+Em outras palavras, uma trajetória integral é uma solução da equação diferencial ordinária
+	\begin{equation*}
+	\dot x = v(x).
+	\end{equation*}
+
+\begin{proposition}
+Sejam $\bm E$ um espaço normado, $A \subseteq E$ um aberto, $\fun{v}{A}{E}$ um campo vetorial em $A$ e $\fun{\gamma}{I}{A}$ uma trajetória integral de $v$. Se $v$ é  $\Cont^k$-diferenciável, então $\gamma$ é $\Cont^{k+1}$-diferenciável.
+\end{proposition}
+
+
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ANTIGO %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ANTIGO %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ANTIGO %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ANTIGO %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ANTIGO %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ANTIGO %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{comment}
+
+\cleardoublepage
 \section{Diferenciação}
 
 Nesta seção, estudaremos o conceito de diferenciação de função em espaços normados de dimensão finita. Praticamente toda a teoria pode ser desenvolvida de modo semelhante para espaços normados completos, sem que se exija a finitude da dimensão. A generalização ficará evidente e portanto nos restringiremos para o caso finito. O espaço normado $\E$ estudado nesta seção será o espaço vetorial normado $\R^d$ sobre $\R$. A base canônica de $\R^d$ será representada pelos vetores $\{e_0, \ldots, e_{d-1}\}$. Um ponto $x \in \R^d$ será representado por $x=(x_0,\ldots,x_{d-1})$, em que $x_i := \proj_i(x)$ e $\fun{\proj_i}{\R^d}{\R}$ a $i$-ésima projeção canônica de $\R^d$ para $\R$, e uma função $\fun{f}{\R^d}{\R^{d'}}$ será também representada por $f=(f_0,\ldots,f_{d'-1})$, de modo que $f_i := \fun{\proj_i \circ f}{\R^d}{\R}$, sendo $\fun{\proj_i}{\R^{d'}}{\R}$. Como todas normas em $\R^d$ são equivalentes, não será feita referência à norma utilizada, apenas será usado o fato de que $\R^d$ é um espaço vetorial normado completo. Se necessário, a norma utilizada será explicitada e, quando não for, a norma usada será $\nor{\cdot}_2$.
@@ -1692,42 +3858,6 @@ Desenvolveremos a seguir a teoria de diferenciabilidade de funções entre espa�
 	\fun{f}{\R^d}{\R^{d'}},
 	\end{equation*}
 mas toda teoria poderia ser desenvolvida para funções definidas em abertos de $\R^d$. O tratamento que adotaremos, no entanto, não prejudica a generalidade, pois todas propriedades investigadas podem ser compreendidas localmente.
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{comment}
-
-\subsection{Espaço real}
-
-\subsection{Compactos}
-
-\begin{theorem}[Heine-Borel]
-	Seja $C \subseteq \R^n$ um conjunto. Então são equivalentes:
-	\begin{enumerate}
-	\item $C$ é compacto.
-	\item $C$ é fechado e limitado.
-	\item Para toda sequência $(x_n)_{n \in \N} \subseteq C$, existe subsequência $(x_{n_k})_{k \in \N}$ que converge a $x \in C$.
-	\end{enumerate}
-\end{theorem}
-
-\begin{proposition}
-Um conjunto $C \subseteq \R^n$ é compacto se, e somente se, para toda função $f: C \to \R^m$ contínua, $f(C)$ é limitado.
-\end{proposition}
-\begin{proof}
-
-\end{proof}
-
-\paragraph*{Exercício} Vale o mesmo se trocarmos limitado por fechado na proposição anterior?
-
-\begin{proposition}
-	Sejam $C \subseteq \R^n$ compacto, $X \subseteq \R^m$ e $f: X \times C \to \R^l$ contínua. Seja $x_0 \in X$. Então, para todo $\varepsilon > 0$, existe $\delta > 0$ tal que, se $x \in X$ e $|x-x_0| < \delta$, então, para todo $\alpha \in C$, $|f(x,\alpha)-f(x_0,\alpha)|<\varepsilon$.
-\end{proposition}
-\begin{proof}
-	Suponha que existe $\varepsilon>0$ e $x_k \to x_0$ e $\alpha_k \in C$ tal que $|f(x_k,\alpha_k)-f(x_0, \alpha_k)| \geq \varepsilon$, $\alpha_k$ tem subcobertura $\alpha_{k_n} \to \alpha_0$
-\end{proof}
-
-\end{comment}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Diferenciabilidade}
 
@@ -1785,7 +3915,7 @@ que satisfaz
 	\end{equation*}
 \end{definition}
 
-Podemos ver que, se $f$ é diferenciável, então $\fun{\D f}{\R^d}{\lin(\R^d,\R^{d'})}$ é uma função que leva $p \in \R^d$ na diferencial $\D f|_p$ de $f$ em $p$. Essa função é a diferencial de $f$.
+Podemos ver que, se $f$ é diferenciável, então $\fun{\D f}{\R^d}{\toplin(\R^d,\R^{d'})}$ é uma função que leva $p \in \R^d$ na diferencial $\D f|_p$ de $f$ em $p$. Essa função é a diferencial de $f$.
 
 Mostramos a seguir que diferenciabilidade da função em um ponto implica continuidade da função naquele ponto, e calculamos a diferencial de uma composição de funções diferenciáveis.
 
@@ -2061,19 +4191,16 @@ O polinômio
 \end{definition}
 
 
-\begin{comment}
+%\begin{exercise}[Regra da cadeia iterada]
+%Sejam $d,d',d'' \in \N$, $p \in \R^d$, $\fun{f}{\R^d}{\R^{d'}}$ $2$-diferenciável em $p$ e $\fun{f'}{\R^{d'}}{\R^{d''}}$ diferenciável em $f(p)$. Então $\fun{f' \circ f}{\R^d}{\R^{d''}}$ é diferenciável em $p$ e
+%	\begin{equation*}
+%	\D^2 (f' \circ f)(p,p) = \D^2 f'(f(p),f(p)) \circ \D f(p) + \D f'(f(p)) \circ \D^2 f(p)
+%	\end{equation*}
+%	\begin{equation*}
+%	\D^2 \left. (f' \circ f)\right|_{(p,p)} = \D^2 f'|_{(f(p),f(p))} \circ \D f|_p + \D f'|_{f(p)} \circ \D^2 f|_p.
+%	\end{equation*}
+%\end{exercise}
 
-\begin{exercise}[Regra da cadeia iterada]
-Sejam $d,d',d'' \in \N$, $p \in \R^d$, $\fun{f}{\R^d}{\R^{d'}}$ $2$-diferenciável em $p$ e $\fun{f'}{\R^{d'}}{\R^{d''}}$ diferenciável em $f(p)$. Então $\fun{f' \circ f}{\R^d}{\R^{d''}}$ é diferenciável em $p$ e
-	\begin{equation*}
-	\D^2 (f' \circ f)(p,p) = \D^2 f'(f(p),f(p)) \circ \D f(p) + \D f'(f(p)) \circ \D^2 f(p)
-	\end{equation*}
-	\begin{equation*}
-	\D^2 \left. (f' \circ f)\right|_{(p,p)} = \D^2 f'|_{(f(p),f(p))} \circ \D f|_p + \D f'|_{f(p)} \circ \D^2 f|_p.
-	\end{equation*}
-\end{exercise}
-
-\end{comment}
 
 Para a demonstração a seguir, lembremos que toda função $k$-linear $L$ avaliada em uma soma $p+v$, sendo $p=(p_0,\cdots,p_{k-1})$ e $v=(v_0,\ldots,v_{k-1})$, vale
 	\begin{align*}
@@ -2109,7 +4236,7 @@ Isso nos permite escrever uma função $r$-linear avaliada em uma soma como
 
 \subsection{Derivadas direcionais e a geometria da diferenciabilidade}
 
-A partir dessa seção, consideraremos funções $\fun{f}{A}{\R^{d'}}$, em que $A \subseteq \R^d$ é um aberto. Toda a discussão feita na seção anterior considerou a diferenciabilidade em pontos do domínio. Agora, consideraremos a diferenciabilidade em conjuntos. A definição de diferenciabilidade da seção anterior pode ser facilmente adaptada parra funções $\fun{f}{A}{\R^{d'}}$ pois essa função pode ser definida em $\R^d$ todo escolhendo qualquer valor para $f$ em $A^\complement$. Como as definições e resultados trataram de pontos, isso não é um problema. Os abertos serão necessários agora pois consideraremos curvas numa vizinhança de um ponto e relacionaremos as derivadas por essas curvas com derivadas parciais da função $f$.
+A partir dessa seção, consideraremos funções $\fun{f}{A}{\R^{d'}}$, em que $A \subseteq \R^d$ é um aberto. Toda a discussão feita na seção anterior considerou a diferenciabilidade em pontos do domínio. Agora, consideraremos a diferenciabilidade em conjuntos. A definição de diferenciabilidade da seção anterior pode ser facilmente adaptada para funções $\fun{f}{A}{\R^{d'}}$ pois essa função pode ser definida em $\R^d$ todo escolhendo qualquer valor para $f$ em $A^\complement$. Como as definições e resultados trataram de pontos, isso não é um problema. Os abertos serão necessários agora pois consideraremos curvas numa vizinhança de um ponto e relacionaremos as derivadas por essas curvas com derivadas parciais da função $f$.
 
 \begin{definition}
 Sejam $d,d' \in \N$, $A \subseteq \R^d$ aberto, $p \in A$ e $v \in \R^d$. % (tal que $p+v \in A$). 
@@ -2249,134 +4376,7 @@ Seja $f\colon \R^{d} \times \R^{d_0} \to \R^{d} \times \R^{d_1}$ uma função $\
 \end{proposition}
 
 
-
-
-
-
-
-
-
-
-
-
-\begin{comment}
-
-\cleardoublepage
-\subsection{Cálculo em espaços normados de dimensão finita}
-
-\subsubsection{Diferencial}
-
-\begin{definition}
-Sejam $\E_0$ e $\E_1$ espaços normados de dimensão finita, $p \in \E_0$, $A \subseteq E_0$ uma vizinhança aberta de $p$ e $f\colon A \to \E_1$ uma função. Uma \emph{diferencial} de $f$ em $p$ é uma função linear $L\colon \E_0 \to \E_1$ que satisfaz
-	\begin{equation*}
-	\lim_{v \to 0} \frac{f(p+v) - f(p)-L \cdot v}{\nor{v}} = 0.
-	\end{equation*}
-Uma função \emph{diferenciável} em $p$ é uma função definida numa vizinhança aberta de $p$ que tem diferencial em $p$. Uma função diferenciável em um conjunto $C \subseteq \E_0$ é uma função diferenciável em todo $p \in C$, ou seja, uma função definida numa vizinhança aberta de $C$ e diferenciável em todos seus pontos.
-\end{definition}
-
-%\begin{definition}
-%Sejam $\E_0$ e $\E_1$ espaços normados de dimensão finita e $p \in \E_0$. Uma função \emph{diferenciável} em $p$ de $\E_0$ para $\E_1$ é uma função $f\colon \E_0 \to \E_1$ para a qual existe função linear $L\colon \E_0 \to \E_1$ que satisfaz
-%	\begin{equation*}
-%	\lim_{v \to 0} \frac{f(p+v) - f(p)-L \cdot v}{\nor{v}} = 0.
-%	\end{equation*}
-%Uma função diferenciável em um conjunto $C \subseteq \E_0$ é uma função diferenciável em todo $p \in C$, ou seja, uma função definida numa vizinhança aberta de $C$ e diferenciável em todos seus pontos.
-%\end{definition}
-
-Relembremos que a norma escolhida para o espaço linear é irrelevante, já que elas são todas equivalentes quando a dimensão do espaço normado é finita. A necessidade de definirmos a função em uma vizinhança aberta do ponto é para que a noção de limite esteja bem definida. %Em geral, não ressaltaremos a vizinhança aberta em que uma função está definida.
-A diferencial é única quando existe, como mostraremos na proposição a seguir. Isso permite que denotemos essa função linear de um jeito específico que será definido depois da demonstração da proposição.
-
-\begin{proposition}[Unicidade da diferencial]
-Sejam $\E_0$ e $\E_1$ espaços normados de dimensão finita, $A \subseteq E_0$ um aberto, $p \in A$ e $f\colon A \to \E_1$ uma função diferenciável em $p$. Então existe uma única diferencial de $f$ em $p$.
-\end{proposition}
-\begin{proof}
-Sejam $L,\bar L\colon \E_0 \to \E_1$ diferenciais de $f$ em $p$. Nesse caso, temos que
-	\begin{align*}
-	\lim_{v \conv 0} &\frac{L \cdot v - \bar L \cdot v}{\nor{v}} = \\
-	&= \lim_{v \conv 0} \frac{L \cdot v - (f(p+v)-f(p)) + (f(p+v)-f(p)) - \bar L \cdot v}{\nor{v}} \\
-	& =  -\lim_{v \conv 0} \frac{f(p+v)-f(p) - L \cdot v}{\nor{v}} + \lim_{v \conv 0} \frac{f(p+v)-f(p) - \bar L \cdot v}{\nor{v}} \\
-	&=0.
-	\end{align*}
-Como $L$ e $\bar L$ são funções lineares, sabemos que $L \cdot 0 = \bar L \cdot 0=0$. Para todo $v \in \E_0 \setminus \{0\}$, temos que, quando $t \conv 0$, $tv \conv 0$. Ainda, como $L$ e $\bar L$ são funções lineares, $L \cdot (tv) = t(L \cdot v)$ e $\bar L \cdot (tv) = t (\bar L \cdot v)$, e segue que
-	\begin{align*}
-	0 &= \lim_{tv \conv 0} \frac{\nor{L \cdot (tv) - \bar L \cdot (tv)}}{\nor{tv}} \\
-		&= \lim_{t \conv 0} \frac{\abs{t}\nor{L \cdot v - \bar L \cdot v}}{\abs{t} \nor{v}} \\
-		&= \frac{\nor{L \cdot v - \bar L \cdot v}}{\nor{v}},
-	\end{align*}
-o que implica $L \cdot v = \bar L \cdot v$, pois $\nor{v} \neq 0$. Portanto $L=\bar L$.
-\end{proof}
-
-\begin{notation}
-Sejam $\E_0$ e $\E_1$ espaços normados de dimensão finita, $A \subseteq E_0$ um aberto, $p \in A$ e $f\colon A \to \E_1$ uma função diferenciável em $p$. A diferencial de $f$ em $p$ é denotada $\D f(p): \E_0 \to \E_1$ e satisfaz
-	\begin{equation*}
-	\lim_{v \conv 0} \frac{f(p+v) - f(p) - \D f(p) \cdot v}{\nor{v}} = 0.
-	\end{equation*}
-\end{notation}
-
-\begin{proposition}[Diferenciabilidade implica continuidade]
-Sejam $\E_0$ e $\E_1$ espaços normados de dimensão finita, $A \subseteq E_0$ um aberto, $p \in A$ e $f\colon A \to \E_1$ uma função diferenciável em $p$. Então $f$ é contínua em $p$.
-\end{proposition}
-\begin{proof}
-Se $f$ é diferenciável em $p$, como vale $\lim_{v \conv 0}\D f(p) \cdot v = 0$, segue que
-	\begin{align*}
-	\lim_{v \conv 0} (f(p+v)-f(p)) &= \lim_{v \conv 0}(f(p+v)-f(p)-\D f(p) \cdot v) \\
-		&= \lim_{v \conv 0}\nor{v} \frac{f(p+v)-f(p)-\D f(p) \cdot v}{\nor{v}} \\
-		&= 0,
-	\end{align*}
-o que implica que $f$ é contínua em $p$.
-\end{proof}
-
-\begin{proposition}[Regra da Cadeia]
-Sejam $\E_0, \E_1$ e $\E_2$ espaços normados de dimensão finita, $A_0 \subseteq E_0$ e $A_1 \subseteq E_1$ abertos e $f_0\colon A_0 \to \E_1$ e $f_1\colon A_1 \to \E_2$ funções. Se $f_0$ é diferenciável em $p \in A_0$ e $f_1$ é diferenciável em $f_0(p) \in A_1$, então $f_1 \circ f_0$ é diferenciável em $p$ e
-	\begin{equation*}
-	\D (f_1 \circ f_0)(p) = \D f_1(f_0(p)) \circ \D f_0(p).
-	\end{equation*}
-\end{proposition}
-\begin{proof} Definamos
-	\begin{equation*}
-	r_0(v) := f_0(p+v) - f_0(p) - \D f_0(p) \cdot v
-	\end{equation*}
-e
-	\begin{equation*}
-	r_1(v) := f_1(f_0(p)+v) - f_1(f_0(p)) - \D f_1(f_0(p)) \cdot v,
-	\end{equation*}
-de modo que da diferenciabilidade de $f_0$ em $p$ e de $f_1$ em $f_0(p)$ segue
-	\begin{equation*}
-	\lim_{v \conv 0} \frac{r_0(v)}{\nor{v}} = \lim_{v \conv 0} \frac{r_1(v)}{\nor{v}} = 0.
-	\end{equation*}	
-Calculando $(f_1 \circ f_0)(p+v)$, obtemos
-	\begin{align*}
-	(f_1 \circ f_0)(p+v) &= f_1(f_0(p+v)) = f_1(f_0(p)+\D f_0(p) \cdot v + r_0(v)) \\
-		&= f_1(f_0(p)) + \D f_1(f_0(p)) \cdot (\D f_0(p) \cdot v + r_0(v)) \\
-		&\qquad + r_1(\D f_0(p) \cdot v + r_0(v)) \\
-		&= (f_1 \circ f_0)(p) + \big(\D f_1(f_0(p)) \circ \D f_0(p)\big) \cdot v + \D f_1(f_0(p)) \cdot r_0(v) \\
-		&\qquad + r_1(\D f_0(p) \cdot v + r_0(v)).
-	\end{align*}
-Portanto
-	\begin{align*}
-	(f_1 \circ f_0)(p+v) - (f_1 \circ f_0)(p) - \big(\D f_1(f_0(p)) \circ \D f_0(p)\big) \cdot v \\
-	\qquad = \D f_1(f_0(p)) \cdot r_0(v) + r_1(\D f_0(p) \cdot v + r_0(v)).
-	\end{align*}
-Como $\D f_1(f_0(p)) \circ \D f_0(p)$ é uma função linear de $\R^n$ para $\R^l$, basta mostrar que a expressão acima, dividida por $\nor{v}$, vai a zero. Mas
-	\begin{equation*}
-	\lim_{v \conv 0} \frac{\D f_1(f_0(p)) \cdot r_0(v)}{\nor{v}} = \lim_{v \conv 0} \D f_1(f_0(p)) \cdot \frac{r_0(v)}{\nor{v}} = 0
-	\end{equation*}
-e, como $\lim_{v \conv 0} \D f_0(p) \cdot v + r_0(v) = 0$ e $\D f_0(p) \cdot \frac{v}{\nor{v}}$ é limitado,
-	\begin{align*}
-	\lim_{v \conv 0} &\frac{r_1(\D f_0(p) \cdot v + r_0(v))}{\nor{v}} \\
-		&= \lim_{v \conv 0} \frac{r_1(\D f_0(p) \cdot v + r_0(v))}{\nor{\D f_0(p) \cdot v + r_0(v)}} \frac{\nor{\D f_0(p) \cdot v + r_0(v)}}{\nor{v}}\\
-		&= \lim_{v \conv 0} \frac{r_1(\D f_0(p) \cdot v + r_0(v))}{\nor{\D f_0(p) \cdot v + r_0(v)}} \nor{\D f_0(p) \cdot \frac{v}{\nor{v}}+ \frac{r_0(v)}{\nor{v}}} = 0.
-	\end{align*}
-Logo
-	\begin{equation*}
-	\lim_{v \conv 0} \frac{(f_1 \circ f_0)(p+v) - (f_1 \circ f_0)(p) - \big(\D f_1(f_0(p)) \circ \D f_0(p)\big) \cdot v}{\nor{v}} = 0,
-	\end{equation*}
-e concluímos que $\D f_1(f_0(p)) \circ \D f_0(p)$ é a diferencial de $f_1 \circ f_0$ em $p$.
-\end{proof}
-
 \end{comment}
-
-
-
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2390,8 +4390,7 @@ e concluímos que $\D f_1(f_0(p)) \circ \D f_0(p)$ é a diferencial de $f_1 \cir
 
 
 
-
-
+\cleardoublepage
 
 \section{Álgebras normadas}
 
