@@ -295,7 +295,7 @@ o que mostra que $p' \in \bola{c}{r}$ e que, portanto, $\bola{p}{s} \subseteq \b
 	
 		\item Seja $(A_i)_{i \in I}$ uma família de abertos em $\bm M$ e seja $p \in (A_i)_{i \in I}$. Então existe $k \in I$ tal que $p \in A_k$. Como $A_k$ é aberto, então existe $r \in \intaa{0}{\infty}$ tal que $\bola{p}{r} \subseteq A_k$. Como $A_k \subseteq (A_i)_{i \in I}$, segue que $\bola{p}{r} \subseteq (A_i)_{i \in I}$ e que, portanto, $(A_i)_{i \in I}$ é aberto.
 	
-		\item Seja $(A_i)_{i \in [n]}$ uma sequência de abertos em $\bm M$ e seja $p \in (A_i)_{i \in [n]}$. Então, para todo $k \in [n]$, $p \in A_k$. Como, para todo $k \in [n]$, $A_k$ é aberto, segue que existe $r_k \in \intaa{0}{\infty}$ tal que $\bola{p}{r-k} \subseteq A_k$, Seja $r := \min \{r_k : k \in [n]\}$. Então, para todo $k \in [n]$, vale $\bola{p}{r} \subseteq \bola{p}{r-k}$, e segue que $\bola{p}{r} \subseteq A_k$ e, portanto, $\bola{p}{r} \subseteq (A_i)_{i \in [n]}$, o que mostra que $(A_i)_{i \in [n]}$ é aberto.
+		\item Seja $(A_i)_{i \in [n]}$ uma sequência de abertos em $\bm M$ e seja $p \in (A_i)_{i \in [n]}$. Então, para todo $k \in [n]$, $p \in A_k$. Como, para todo $k \in [n]$, $A_k$ é aberto, segue que existe $r_k \in \intaa{0}{\infty}$ tal que $\bola{p}{r-k} \subseteq A_k$, Seja $r := \min \set{r_k}{k \in [n]}$. Então, para todo $k \in [n]$, vale $\bola{p}{r} \subseteq \bola{p}{r-k}$, e segue que $\bola{p}{r} \subseteq A_k$ e, portanto, $\bola{p}{r} \subseteq (A_i)_{i \in [n]}$, o que mostra que $(A_i)_{i \in [n]}$ é aberto.
 		\end{enumerate}		
 	\end{enumerate}
 \end{proof}
@@ -306,12 +306,28 @@ Sejam $M$ um conjunto e $\dist{\var}{\var}$ uma métrica em $M$. A métrica limi
 
 \subsection{Limites e convergência de sequências}
 
-\begin{definition}
-Sejam $\bm M$ um espaço métrico, $(p_n)_{n \in \N}$ uma sequência de pontos em $M$ e $p \in M$. A sequência $(p_n)_{n \in \N}$  \emph{converge} para o ponto $p$ se, e somente se, para todo número real $\varepsilon > 0$, existe um número natural $N$ tal que
+%\begin{definition}
+%Sejam $\bm M$ um espaço métrico, $(p_n)_{n \in \N}$ uma sequência de pontos em $M$ e $p \in M$. A sequência $(p_n)_{n \in \N}$  \emph{converge} para o ponto $p$ se, e somente se, para todo número real $\varepsilon > 0$, existe um número natural $N$ tal que
+%	\begin{equation*}
+%	\forall n \in \N \qquad n \geq N \Rightarrow p_n \in \bola{p}{\varepsilon}.
+%	\end{equation*}
+%Denota-se $(p_n)_{n \in \N} \conv p$. O ponto $p$ é um \emph{limite} da sequência. Caso contrário, a sequência não converge para $p$. Uma \emph{sequência convergente} é uma sequência que tem limite. Uma sequência \emph{divergente} é uma sequência que não tem limite.
+%\end{definition}
+
+\begin{definition}[Limite e convergência]
+Sejam $\bm M$ um espaço métrico e $(p_n)_{n \in \N}$ uma sequência de pontos em $M$. Um \emph{limite} da sequência $(p_n)_{n \in \N}$ é um ponto $p_\infty \in M$ que satisfaz:
+	\begin{itemize}
+	\item para todo $\varepsilon \in \intaa{0}{\infty}$, algum $n_\varepsilon \in \N$ satisfaz que, para todo $n \in \N$ tal que $n \geq n_\varepsilon$,
+		\begin{equation*}
+		p_n \in \bola{p_\infty}{\varepsilon}.
+		\end{equation*}
+	\end{itemize}
+Nesse caso, a sequência $(p_n)_{n \in \N}$ \emph{converge} para $p_\infty$ e denota-se $(p_n)_{n \in \N} \conv p_\infty$ ou
 	\begin{equation*}
-	\forall n \in \N \qquad n \geq N \Rightarrow p_n \in \bola{p}{\varepsilon}.
+	(p_n)_{n \in \N} \underset{n \to \infty}{\longrightarrow} p_\infty.
 	\end{equation*}
-Denota-se $(p_n)_{n \in \N} \conv p$. O ponto $p$ é um \emph{limite} da sequência.  Caso contrário, a sequência não converge para $p$. Uma \emph{sequência convergente} é uma sequência que tem limite. Uma sequência \emph{divergente} é uma sequência que não tem limite.
+
+Uma \emph{sequência convergente} é uma sequência que tem limite. Uma sequência \emph{divergente} é uma sequência que não tem limite.
 \end{definition}
 
 \begin{proposition}
@@ -329,7 +345,7 @@ o que é absurdo. Portanto $\bola{p}{r} \cap \bola{p'}{r} = \emptyset$.
 Toda sequência convergente em um espaço métrico $\bm M$ tem limite único.
 \end{corollary}
 \begin{proof}
-Suponhamos que $p,p'$ são limites de $(p_n)_{n \in \N}$. Se $p \neq p'$, então $\dist{p}{p'}>0$. Seja $\varepsilon \in \R$ tal que $0 < \varepsilon \leq \frac{1}{2} \dist{p}{p'}$. Então existe $N_1 \in \N$ tal que, para todo $n \in \N$, se $n \geq N_1$, então $p_n \in \bola{p}{\varepsilon}$, e existe $N_2 \in \N$ tal que, para todo $n \in \N$, se $n \geq N_2$, então $p_n \in \bola{p'}{\varepsilon}$. Assim, definindo $N := \max \{N_1,N_2\}$, segue que, se $n \geq N$, então $n \geq N_1$ e $n \geq N_2$, e, portanto, que $p_n \in \bola{p}{\varepsilon}$ e $p_n \in \bola{p'}{\varepsilon}$; ou seja, $p_n \in \bola{p}{\varepsilon} \cap \bola{p'}{\varepsilon}$, mas isso é absurdo, pois $\bola{p}{\varepsilon} \cap \bola{p'}{\varepsilon}=\emptyset$. Portanto $p=p'$.
+Suponhamos que $p,p'$ são limites de $(p_n)_{n \in \N}$. Se $p \neq p'$, então $\dist{p}{p'}>0$. Seja $\varepsilon \in \R$ tal que $0 < \varepsilon \leq \frac{1}{2} \dist{p}{p'}$. Então existe $N_1 \in \N$ tal que, para todo $n \in \N$, se $n \geq N_1$, então $p_n \in \bola{p}{\varepsilon}$, e existe $N_2 \in \N$ tal que, para todo $n \in \N$, se $n \geq N_2$, então $p_n \in \bola{p'}{\varepsilon}$. Assim, definindo $N := N_1 \opmax N_2$, segue que, se $n \geq N$, então $n \geq N_1$ e $n \geq N_2$, e, portanto, que $p_n \in \bola{p}{\varepsilon}$ e $p_n \in \bola{p'}{\varepsilon}$; ou seja, $p_n \in \bola{p}{\varepsilon} \cap \bola{p'}{\varepsilon}$, mas isso é absurdo, pois $\bola{p}{\varepsilon} \cap \bola{p'}{\varepsilon}=\emptyset$. Portanto $p=p'$.
 \end{proof}
 
 Essa proposição nos permite tratar o limite de uma sequência como um número único e, por isso, podemos usar a notação $\displaystyle\lim_{n \in \N} p_n = p$ para quando $(p_n)_{n \in \N} \conv p$.
@@ -375,7 +391,7 @@ Sejam $\bm M$ um espaço métrico, $p,q \in M$ e $(p_n)_{n \in \N}$ e $(q_n)_{n 
 	\begin{equation*}
 	\dist{p_n}{q_n} \leq \dist{p_n}{p} + \dist{p}{q} + \dist{q}{q_n}.
 	\end{equation*}
-Seja $\varepsilon > 0$ um número real. Então existem $N_1,_2 \in \N$ tais que
+Seja $\varepsilon > 0$ um número real. Então existem $N_1,N_2 \in \N$ tais que
 	\begin{equation*}
 	\forall n \in \N \qquad n \geq N_1 \Rightarrow \dist{p}{p_n} < \frac{\varepsilon}{2}
 	\end{equation*}
@@ -383,7 +399,7 @@ e
 	\begin{equation*}
 	\forall n \in \N \qquad n \geq N_2 \Rightarrow \dist{q}{q_n} < \frac{\varepsilon}{2}.
 	\end{equation*}
-Fazendo $N_3 := \max\{N_1,N_2\}$, segue que
+Fazendo $N_3 := N_1 \opmax N_2$, segue que
 	\begin{equation*}
 	\forall n \in \N \qquad n \geq N_3 \Rightarrow \dist{p_n}{q_n} \leq \dist{p_n}{p} + \dist{p}{q} + \dist{q}{q_n} < \dist{p}{q} + \varepsilon;
 	\end{equation*}
@@ -391,7 +407,7 @@ ou seja, $\dist{p_n}{q_n} - \dist{p}{q} < \varepsilon$. Analogamente, achamos $N
 	\begin{equation*}
 	\forall n \in \N \qquad n \geq N_3 \Rightarrow \dist{p_n}{q_n} \leq \dist{p_n}{p} + \dist{p}{q} + \dist{q}{q_n} < \dist{p}{q} + \varepsilon
 	\end{equation*}
-e fazendo $n := \max\{N_3,N_6\}$, segue que
+e fazendo $N := N_3 \opmax N_6$, segue que
 	\begin{equation*}
 	\forall n \in \N \qquad n \geq N \Rightarrow |\dist{p}{q} - \dist{p_n}{q_n}| < \varepsilon,
 	\end{equation*}
@@ -474,6 +490,10 @@ Seja $p \in M$ e consideremos a cobertura $\set{\bola{p}{r}}{r \in \intaa{0}{\in
 \end{proof}
 
 A recíproca nem sempre é verdade. Nos espaços $\R^d$, $ d \in \N$, vale que um conjunto é compacto se, e somente se, é fechado e limitado. Esse resultado é conhecido como Teorema de Heine-Borel. No entanto, isso não vale em qualquer espaço métrico\footnote{Para mais detalhes, conferir \url{https://math.stackexchange.com/questions/674982/difference-between-closed-bounded-and-compact-sets}.}.
+
+\begin{exercise}
+Seja $\bm M$ um espaço métrico e $C \subseteq M$. Então $C$ é compacto se, e somente se, é sequencialmente compacto.
+\end{exercise}
 
 \subsection{Continuidade}
 
@@ -1446,22 +1466,31 @@ A sequência $(U_i)_{i \in \N}$ é uma $\delta$-\emph{cobertura} de $C$. Mostrem
 Sejam $\bm M$ um espaço métrico, $d \in \intfa{0}{\infty}$ e $\delta \in \intaa{0}{\infty}$. A função $H^d_\delta\colon \p(M) \to \intff{0}{\infty}$ é uma medida exterior sobre $M$.
 \end{proposition}
 \begin{proof}
-(Conjunto vazio) $H^d_\delta(\emptyset)=0$, pois se tomamos a cobertura vazia $(\emptyset)_{i \in \N}$, temos que $\emptyset \subseteq \bigcup_{i \in \N} \emptyset$ e $\diam(\emptyset)\leq \delta$; (Monotonicidade) Para todos $C,C' \subseteq M$ tais que $C \subseteq C'$, temos que uma $\delta$-cobertura de $C'$ é uma $\delta$-cobertura de $C$, logo $H^d_\delta(C) \leq H^d_\delta(C')$; (Subaditividade contável) Seja $(C_i)_{i \in \N}$ uma sequência de subconjuntos de $M$. Para todos $i \in \N$ e $\varepsilon \in \left]0,\infty\right[$, seja $U^i=(U_{i,j})_{j \in \N}$ é uma cobertura de $C_i$ tal que
-	\begin{equation*}
-	\sum_{j \in \N} \diam(U_{i,j})^d \leq H^d_\delta(C_i) + \frac{\varepsilon}{2^{i+1}}.
-	\end{equation*}
-Essa cobertura existe porque $H^d_\delta(C_i)$ é um ínfimo. Então $(U_{i,j})_{(i,j) \in \N^2}$ é uma cobertura de $\bigcup_{i \in \N} C_i$ e segue que
-	\begin{align*}
-	H^d_\delta\left( \bigcup_{i \in \N} C_i \right) &\leq H^d_\delta\left( \bigcup_{(i,j) \in \N^2} U_{i,j} \right) \\
-		&\leq \sum_{(i,j) \in \N^2} \diam(U_{i,j})^d \\
-		&\leq \sum_{i \in \N} \left( H^d_\delta(C_i) + \frac{\varepsilon}{2^{i+1}} \right) \\
-		&= \sum_{i \in \N} \left( H^d_\delta(C_i)\right) + \sum_{i \in \N}\frac{\varepsilon}{2^{i+1}} \\
-		&= \sum_{i \in \N} \left( H^d_\delta(C_i)\right) + \varepsilon.
-	\end{align*}
-A primeira desigualdade vem da monotonicidade de $H^d_\delta$, a segunda de $H^d_\delta$ ser ínfimo, e a terceira vem da condição para as coberturas $(U_{i,j})_{j \in \N}$. Como isso vale para qualquer $\varepsilon$, segue que
-	\begin{equation*}
-	H^d_\delta\left( \bigcup_{i \in \N} C_i \right) \leq \sum_{i \in \N} H^d_\delta(C_i). \qedhere
-	\end{equation*}
+Segue direto de \ref{prop:medida.exterior.calibre}, pois $(\mathcal C_\delta, \diam)$ é um pré-sistema de medida.
+
+\begin{comment}
+	\begin{itemize}
+	\item (Conjunto vazio) $H^d_\delta(\emptyset)=0$, pois se tomamos a cobertura vazia $(\emptyset)_{i \in \N}$, temos que $\emptyset \subseteq \bigcup_{i \in \N} \emptyset$ e $\diam(\emptyset)\leq \delta$;
+	\item (Monotonicidade) Para todos $C,C' \subseteq M$ tais que $C \subseteq C'$, temos que uma $\delta$-cobertura de $C'$ é uma $\delta$-cobertura de $C$, logo $H^d_\delta(C) \leq H^d_\delta(C')$;
+	\item (Subaditividade contável) Seja $(C_i)_{i \in \N}$ uma sequência de subconjuntos de $M$. Para todos $i \in \N$ e $\varepsilon \in \left]0,\infty\right[$, seja $U^i=(U_{i,j})_{j \in \N}$ é uma cobertura de $C_i$ tal que
+		\begin{equation*}
+		\sum_{j \in \N} \diam(U_{i,j})^d \leq H^d_\delta(C_i) + \frac{\varepsilon}{2^{i+1}}.
+		\end{equation*}
+	Essa cobertura existe porque $H^d_\delta(C_i)$ é um ínfimo. Então $(U_{i,j})_{(i,j) \in \N^2}$ é uma cobertura de $\bigcup_{i \in \N} C_i$ e segue que
+		\begin{align*}
+		H^d_\delta\left( \bigcup_{i \in \N} C_i \right) &\leq H^d_\delta\left( \bigcup_{(i,j) \in \N^2} U_{i,j} \right) \\
+			&\leq \sum_{(i,j) \in \N^2} \diam(U_{i,j})^d \\
+			&\leq \sum_{i \in \N} \left( H^d_\delta(C_i) + \frac{\varepsilon}{2^{i+1}} \right) \\
+			&= \sum_{i \in \N} \left( H^d_\delta(C_i)\right) + \sum_{i \in \N}\frac{\varepsilon}{2^{i+1}} \\
+			&= \sum_{i \in \N} \left( H^d_\delta(C_i)\right) + \varepsilon.
+		\end{align*}
+	A primeira desigualdade vem da monotonicidade de $H^d_\delta$, a segunda de $H^d_\delta$ ser ínfimo, e a terceira vem da condição para as coberturas $(U_{i,j})_{j \in \N}$. Como isso vale para qualquer $\varepsilon$, segue que
+		\begin{equation*}
+		H^d_\delta\left( \bigcup_{i \in \N} C_i \right) \leq \sum_{i \in \N} H^d_\delta(C_i). \qedhere
+		\end{equation*}
+	\end{itemize}
+\end{comment}
+
 \end{proof}
 
 
@@ -1684,3 +1713,187 @@ portanto, definindo a partição por intervalos $(t'_i)_{i \in [n+1]} := (h(t_{n
 	\end{equation*}
 Disso concluímos que $\compr{c \circ h} \leq \compr{c}$.
 \end{proof}
+
+
+\begin{comment}
+
+
+\subsection{Medidas diferenciais}
+
+\subsubsection{Funções semicontínuas}
+
+Nesta seção, definimos funções semicontínuas em espaços topológicos e depois as caracterizamos no caso em que o espaço topológico é um espaço métrico. As demonstrações serão omitidas, mas são todas simples.
+
+Denotamos aqui $\RR = \R \cup \{\infty,-\infty\}$, $\RR[+] = \R \cup {\infty}$ e $\RR[-] = \R \cup {-\infty}$.
+
+\begin{definition}[Semicontinuidade]
+Sejam $\bm X$ um espaço topológico e $x \in X$.
+	\begin{itemize}
+	\item Uma função \emph{superiormente semicontínua} em $x$ é uma função $\fun{f}{X}{\RR}$ tal que, para todo $\varepsilon \in \intaa{0}{\infty}$, alguma vizinhança $V_\varepsilon \subseteq X$ de $x$ satisfaz que, para todo $x' \in V_\varepsilon$,
+		\begin{itemize}
+		\item Se $f(x) > -\infty$,
+			\begin{equation*}
+			f(x') \leq f(x) + \varepsilon;
+			\end{equation*}
+		\item Se $f(x) = -\infty$,
+			\begin{equation*}
+			\lim_{x' \to x} f(x') = -\infty.
+			\end{equation*}
+		\end{itemize}
+	Uma função \emph{superiormente semicontínua} em um conjunto $C \subseteq X$ é uma função $\fun{f}{X}{\RR}$ tal que, para todo $x \in C$, $f$ superiormente semicontínua em $x$. Uma função \emph{superiormente semicontínua} é uma função $\fun{f}{X}{\RR}$ superiormente semicontínua em $x$.
+
+	\item Uma função \emph{inferiormente semicontínua} é uma função $\fun{f}{X}{\RR}$ tal que, para todo $\varepsilon \in \intaa{0}{\infty}$, alguma vizinhança $V_\varepsilon \subseteq X$ de $x$ satisfaz que, para todo $x' \in V_\varepsilon$,
+		\begin{itemize}
+		\item Se $f(x) < \infty$,
+			\begin{equation*}
+			f(x') \geq f(x) - \varepsilon;
+			\end{equation*}
+		\item Se $f(x) = \infty$,
+			\begin{equation*}
+			\lim_{x' \to x} f(x') = \infty.
+			\end{equation*}
+		\end{itemize}
+	Uma função \emph{inferiormente semicontínua} em um conjunto $C \subseteq X$ é uma função $\fun{f}{X}{\RR}$ tal que, para todo $x \in C$, $f$ inferiormente semicontínua em $x$. Uma função \emph{inferiormente semicontínua} é uma função $\fun{f}{X}{\RR}$ inferiormente semicontínua em $x$.
+	\end{itemize}
+\end{definition}
+
+\begin{exercise}
+Sejam $\bm X$ um espaço topológico e $\fun{f}{X}{\RR}$ uma função.
+	\begin{itemize}
+	\item A função $f$ é superiormente semicontínua se, e somente se, para todo $c \in \R$, o conjunto $\set{x \in X}{f(x) < c}$ é aberto;
+	\item A função $f$ é inferiormente semicontínua se, e somente se, para todo $c \in \R$, o conjunto $\set{x \in X}{f(x) > c}$ é aberto;
+	\item A função $f$ é superiormente semicontínua se, e somente se, a função $-f$ é inferiormente semicontínua;
+	\item Para todo $x \in X$, a função $f$ é contínua em $x$ se, e somente se, é superiormente e inferiormente semicontínua em $x$.
+	\end{itemize}
+\end{exercise}
+
+\begin{exercise}
+Seja $\bm X$ um espaço topológico.
+	\begin{itemize}
+	\item Para todo aberto $A \subseteq X$, a função indicadora $\fun{\idc_A}{X}{\R}$ é inferiormente semicontínua;
+	\item Para todo fechado $F \subseteq X$, a função indicadora $\fun{\idc_F}{X}{\R}$ é superiormente semicontínua.
+	\end{itemize}
+\end{exercise}
+
+\begin{exercise}
+Sejam $\bm M$ um espaço métrico, $x \in M$ e $\fun{f}{M}{\RR}$ uma função.
+	\begin{itemize}
+	\item A função $f$ é superiormente semicontínua em $x$ se, e somente se,
+		\begin{equation*}
+		\limsup_{x' \to x} f(x') \leq f(x);
+		\end{equation*}
+	\item A função $f$ é inferiormente semicontínua em $x$ se, e somente se,
+		\begin{equation*}
+		\liminf_{x' \to x} f(x') \geq f(x);
+		\end{equation*}
+	\end{itemize}
+\end{exercise}
+
+\subsubsection{Medida diferencial}
+
+\begin{definition}
+Seja $\fun{f}{\intff{a}{a'}}{\R}$ uma função. A \emph{variação} de $f$ é seu comprimento $L(f)$ e uma função de \emph{variação limitada} é uma função $f$ cuja variação é finita.
+\end{definition}
+
+Sejam $I \subseteq \R$ um intervalo compacto e $\fun{f}{I}{\R}$ uma função semicontínua (superior ou inferiormente) e de variação limitada. Definiremos uma medida $\medd f$ a partir dessa função. Denotemos por $\mathcal J(I)$ o conjunto de subintervalos de $I$ unido com o conjunto vazio.
+
+\begin{definition}
+Sejam $I \subseteq \R$ um intervalo compacto e $\fun{f}{I}{\R}$ uma função% semicontínua (superior ou inferiormente) e de variação limitada
+. O \emph{calibre diferencial} de $f$ é a função
+	\begin{align*}
+	\func{\medd f}{\mathcal J(I)}{\intff{0}{\infty}}{J}{
+		\medd f (J) :=
+			\begin{cases}
+			0,	& J= \emptyset \\
+			f(\sup J) - f(\inf J),	& J \neq \emptyset.
+			\end{cases}
+		}
+	\end{align*}
+\end{definition}
+
+Explicitamente, para intervalos $\intaa{a}{a'}$, $\intff{a}{a'}$, $\intfa{a}{a'}$ e $\intaf{a}{a'}$, vale
+	\begin{equation*}
+	\medd f (\intaa{a}{a'}) = \medd f (\intff{a}{a'}) = \medd f (\intfa{a}{a'}) = \medd f (\intaf{a}{a'}) = a'-a.
+	\end{equation*}
+
+\begin{proposition}
+Sejam $I \subseteq \R$ um intervalo compacto e $\fun{f}{I}{\R}$ uma função% semicontínua (superior ou inferiormente) e de variação limitada
+. O par $(\mathcal J(I),\medd f)$ é um pré-sistema de medida.
+\end{proposition}
+\begin{proof}
+Segue da definição de $\mathcal J(I)$ que $\emptyset \in \mathcal J(I)$ e da definição de $\medd f$ que $\medd f(\emptyset) = 0$.
+\end{proof}
+
+% NÃO MOSTREI QUE A MEDIDA \medd f É POSITIVA, POIS TENHO QUE EXIGIR QUE A FUNÇÃO f SEJA CRESCENTE! OU DECRESCENTE E MUDAR A DEFINIÇÃO.
+
+Assim, por \ref{prop:medida.exterior.calibre} que a medida exterior de cobertura %$\med^{(\mathcal J(I), \medd f)}$ 
+induzida por $(\mathcal J(I), \medd f)$ é a uma medida exterior sobre $I$. Denotaremos essa medida também por $\medd f$. Ressaltamos essa definição a seguir.
+
+\begin{definition}
+Sejam $I \subseteq \R$ um intervalo compacto e $\fun{f}{I}{\R}$ uma função% semicontínua (superior ou inferiormente) e de variação limitada
+. A {medida exterior diferencial} de $f$ é a medida exterior induzida por $(\mathcal J(I), \medd f)$, definida por
+	\begin{align*}
+	\func{\medd f}{\p(X)}{\intff{0}{\infty}}{C}{
+		\inf \set{\sum_{n \in \N} \medd f(J_n)}{\{J_n\}_{n \in \N} \subseteq \mathcal J(I),\ C \subseteq \bigcup_{n \in \N} J_i}
+	}.
+	\end{align*}
+\end{definition}
+
+\begin{proposition}
+Sejam $I \subseteq \R$ um intervalo compacto e $\fun{f}{I}{\R}$ uma função semicontínua (superior ou inferiormente) e de variação limitada. A medida exterior diferencial $\medd f$ é uma medida exterior métrica.
+\end{proposition}
+
+% EU ESTAVA DEFININDO DE UM JEITO QUE NÃO SEI SE STÁ TÃO CORRETO, NÃO SEI SE ESSE CAMINHO USANDO O TEOREMA DE MEDIDAS EXTERIORES É UM BOM CAMINHO. TERIA QUE MOSTRAR QUE É UMA MEDIDA EXTERIOR MÉTRICA E ENTÃO MOSTRAR QUE ELA COINCIDE EM INTERVALOS. NÃO SEI ONDE ISSO USARIA QUE A FUNÇÃO DEVE SER SEMICONTÍNUA ETC.
+% ACHO QUE UM JEITO MAIS DIRETO É USAR O TEOREMA DE EXTENSÃO DE CARATHEODORY, USANDO A EXTENSÃO DE PRE-MEDIDAS.
+
+\end{comment}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{comment}
+
+\subsection{Espaço real}
+
+\subsection{Compactos}
+
+\begin{theorem}[Heine-Borel]
+Seja $C \subseteq \R^n$ um conjunto. Então são equivalentes:
+	\begin{enumerate}
+	\item $C$ é compacto.
+	\item $C$ é fechado e limitado.
+	\item Para toda sequência $(x_n)_{n \in \N} \subseteq C$, existe subsequência $(x_{n_k})_{k \in \N}$ que converge a $x \in C$.
+	\end{enumerate}
+\end{theorem}
+
+\begin{proposition}
+Um conjunto $C \subseteq \R^n$ é compacto se, e somente se, para toda função $f: C \to \R^m$ contínua, $f(C)$ é limitado.
+\end{proposition}
+\begin{proof}
+
+\end{proof}
+
+\paragraph*{Exercício} Vale o mesmo se trocarmos limitado por fechado na proposição anterior?
+
+\begin{proposition}
+Sejam $C \subseteq \R^n$ compacto, $X \subseteq \R^m$ e $f: X \times C \to \R^l$ contínua. Seja $x_0 \in X$. Então, para todo $\varepsilon > 0$, existe $\delta > 0$ tal que, se $x \in X$ e $|x-x_0| < \delta$, então, para todo $\alpha \in C$, $|f(x,\alpha)-f(x_0,\alpha)|<\varepsilon$.
+\end{proposition}
+\begin{proof}
+	Suponha que existe $\varepsilon>0$ e $x_k \to x_0$ e $\alpha_k \in C$ tal que $|f(x_k,\alpha_k)-f(x_0, \alpha_k)| \geq \varepsilon$, $\alpha_k$ tem subcobertura $\alpha_{k_n} \to \alpha_0$
+\end{proof}
+
+\end{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
