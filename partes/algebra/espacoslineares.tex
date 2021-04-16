@@ -1160,6 +1160,51 @@ O caso em que $p$ é bijetiva recai na definição de formas antissimétricas, e
 Sejam $\bm V$ e $\bm W$ espaços lineares sobre um corpo $\bm C$. Os espaços $\mathcal S^k(\bm V,\bm W)$ e $\mathcal A^k(\bm V,\bm W)$ são subespaços lineares de $\lin^k(\bm V,\bm W)$.
 \end{proposition}
 
+
+\subsection{Espaços de funções multilineares}
+
+\begin{proposition}
+\label{prop:isomorfismo.espacolinear.espacobilinear}
+Sejam $\bm V$ e $\bm V'$ e $\bm V''$ espaços lineares sobre um corpo $\bm C$. Os espaços são linearmente isomorfos.
+	\begin{equation*}
+	\lin(\bm V,\lin(\bm V',\bm V'')) \simeq \lin(\bm V,\bm V';\bm V'').
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+Denotaremos uma função $f \in \lin(\bm V,\lin(\bm V',\bm V''))$ por
+	\begin{align*}
+	\func{f}{V}{\lin(\bm V',\bm V'')}{v}{
+		\begin{aligned}[t]
+		\func{f_v}{V'}{V''}{v'}{f_v(v')}.
+		\end{aligned}
+	}
+	\end{align*}
+Definimos as funções
+	\begin{align*}
+	\func{I}{\lin(\bm V,\lin(\bm V',\bm V''))}{\lin(\bm V,\bm V';\bm V'')}{f}{
+		\begin{aligned}[t]
+		\func{I(f)}{V \times V'}{V''}{(v,v')}{f_v(v')}
+		\end{aligned}
+	}
+	\end{align*}
+e
+	\begin{align*}
+	\func{J}{\lin(\bm V,\bm V';\bm V'')}{\lin(\bm V,\lin(\bm V',\bm V''))}{f}{
+		\begin{aligned}[t]
+		\func{J(f)}{V}{\lin(\bm V',\bm V'')}{v}{
+			\begin{aligned}[t]
+			\func{J(f)_v}{V'}{V''}{v'}{f(v,v')}.
+			\end{aligned}
+		}
+		\end{aligned}
+	}
+	\end{align*}
+É simples mostrar que $I$ e $J$ estão bem definidas, são lineares e uma é inversa da outra.
+\end{proof}
+
+
+
+
 \section{Formas multilineares}
 
 \begin{definition}
@@ -1603,6 +1648,7 @@ A classe de equivalência de $(v_0,\ldots,v_{n-1}) \in V_0 \times \cdots \times 
 
 
 \begin{proposition}[Propriedade Característica de Produto Tensorial]
+\label{prop:caracteristica.tensorial}
 Sejam $\bm V_0,$ $\ldots,$ $\bm V_{n-1},$ $\bm W$ espaços lineares sobre um corpo $\bm C$.
 	\begin{enumerate}
 	\item O mapa tensorial canônico
@@ -1645,9 +1691,9 @@ e
 Isso implica que existe função linear $\bar L: V_0 \otimes \cdots \otimes V_{n-1} \to W$ que satisfaz $\bar L \circ \pi = \tilde L$. Como $\otimes = \pi \circ \iota$, segue que
 	\begin{equation*}
 	\bar L \circ \otimes = \bar L \circ \pi \circ \iota = \tilde L \circ \iota = L.
+	\qedhere
 	\end{equation*}
 	\end{enumerate}
-
 \end{proof}
 
 Algumas identidades importantes. Os espaços lineares das funções multilineares é isomorfo ao espaço das funções lineares no produto tensorial:
@@ -1659,7 +1705,31 @@ Algumas identidades importantes. Os espaços lineares das funções multilineare
 %	\bm{C^{V_0 \times \cdots \times V_{n-1}}} \simeq \bm{C^{V_0} \otimes \cdots \otimes C^{V_{n-1}}}
 %	\end{equation*}
 
-
+\begin{proposition}
+\label{prop:isomorfismos.multilineares.tensoriais}
+Valem os seguintes isomorfismos lineares:
+\begin{enumerate}
+	\item Para todos espaços lineares $\bm V_0,\ldots,\bm V_{n-1}$ e $\bm V'$,
+		\begin{equation*}
+		\lin(\bm V_0,\ldots,\bm V_{n-1}; \bm V') \simeq \lin(\bm V_0 \otimes \cdots \otimes \bm V_{n-1}; \bm V').
+		\end{equation*}
+	\item Para todos espaços lineares $\bm V$ e $\bm V'$ e todo $n \in \N$,
+		\begin{equation*}
+		\lin^n(\bm V, \bm V') \simeq \lin(\bm V^{\otimes n}, \bm V').
+		\end{equation*}
+	\item Para todos espaços lineares $\bm V_0,\ldots,\bm V_{n-1}$ e $\bm V'$,
+		\begin{equation*}
+		\lin(\bm V_0,\ldots,\bm V_{n-1}; \bm V') \simeq \lin(\bm V_0, \lin(\bm V_1, \ldots, \lin(\bm V_{n-1}, \bm V')\ldots)).
+		\end{equation*}
+	\item Para todos espaços lineares $\bm V$ e $\bm V'$ e todo $n \in \N$,
+		\begin{equation*}
+		\lin^n(\bm V, \bm V') \simeq \lin(\bm V, \lin(\bm V,\ldots, \lin(\bm V, \bm V')\ldots)).
+		\end{equation*}
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+Segue facilmente de \ref{prop:caracteristica.tensorial} e \ref{prop:isomorfismo.espacolinear.espacobilinear}.
+\end{proof}
 
 
 \subsection{Tensores}
@@ -1680,7 +1750,7 @@ A \emph{$(p,q)$-potência tensorial} de $\bm V$ é o espaço
 %	\end{equation*}
 Um $(p,q)$-tensor de $\bm V$ é um elemento de $V^{\otimes (p,q)}$. A \emph{álgebra tensorial} de $\bm V$ é o espaço
 	\begin{equation*}
-	\bigotimes V := \bigoplus_{(p,q) \in \N \times \N} V^{\otimes (p,q)}.
+	V^{\otimes} := \bigoplus_{(p,q) \in \N \times \N} V^{\otimes (p,q)}.
 	\end{equation*}
 \end{definition}
 
