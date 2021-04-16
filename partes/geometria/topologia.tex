@@ -519,7 +519,7 @@ A topologia $\ger{\bigcup_{i \in I}{\pi_i}^\star(\topo_i)}$ é a \emph{topologia
 Sejam $(\bm{X_i})_{i \in I} = (X_i,\topo_i)_{i \in I}$ uma família de espaços topológicos e $X = \prod_{i \in I} X_i$ o produto de conjuntos. A topologia produto de $X$ é a topologia gerada pela base cujos elementos são $\prod_{i \in I} A_i$, tal que $A_i \in \topo_i$ e existe $J \subseteq I$ finito com $A_i = X_i$ para $i \in I \setminus J$.
 \end{proposition}
 \begin{proof}
-Como $\pi_i = \pi_i \circ \Id_X$, segue de uma propriedades básica de imagem inversa de produto (\ref{conj:prop.im.inv.prod}) que
+Como $\pi_i = \pi_i \circ \Id_X$, segue de uma propriedades básica de imagem inversa de produto (\ref{conj:proposition.im.inv.prod}) que
 	\begin{equation*}
 	\prod_{i \in I} A_i = \Id_X\inv \left(\prod_{i \in I} A_i\right) = \bigcap_{i \in I} \pi_i\inv(A_i)
 	\end{equation*}
@@ -557,7 +557,7 @@ Defina a função
 	\begin{align*}
 	\func{f}{T}{ \prod_{i \in I} X_i}{ x}{ (f_i(x))_{i \in I}}.
 	\end{align*}
-Pela propriedade universal do produto de conjuntos, $f$ é única e $\pi_i \circ f = f_i$. Resta mostrar que $f$ é contínua. Seja $A \in \topo_X$. Então $A=\bigcup_{k \in K} A_k$ é uma união de abertos básicos $A_k \in \topo$. Isso significa que, para todo $k \in K$, $A_k = \prod_{i \in I} A_{ki}$, com $A_{ki} \in \topo_i$ para todo $i \in I$ e existe $J_k \subseteq I$ finito tal que, para todo $i \in I \setminus J_k$, $A_{ki} = X_i$. Assim, por propriedades básicas de imagem inversa de união e produto (\ref{conj:prop.im.inv.prod}),
+Pela propriedade universal do produto de conjuntos, $f$ é única e $\pi_i \circ f = f_i$. Resta mostrar que $f$ é contínua. Seja $A \in \topo_X$. Então $A=\bigcup_{k \in K} A_k$ é uma união de abertos básicos $A_k \in \topo$. Isso significa que, para todo $k \in K$, $A_k = \prod_{i \in I} A_{ki}$, com $A_{ki} \in \topo_i$ para todo $i \in I$ e existe $J_k \subseteq I$ finito tal que, para todo $i \in I \setminus J_k$, $A_{ki} = X_i$. Assim, por propriedades básicas de imagem inversa de união e produto (\ref{conj:proposition.im.inv.prod}),
 		\begin{equation*}
 		f\inv(A) = f\inv\left(\bigcup_{k \in K}\prod_{i \in I} A_{ki}\right) = \bigcup_{k \in K} f\inv \left( \prod_{i \in I} A_{ki} \right) = \bigcup_{k \in K}\bigcap_{i \in I}f_i\inv(A_{ki}).
 		\end{equation*}
@@ -1300,7 +1300,7 @@ Sejam $\bm X$ um espaço topológico e $C$ um conjunto. Uma função \emph{local
 Sejam $\bm X$ um espaço topológico conexo não vazio e $\bm X'$ um espaço topológico acessível. Se $\fun{f}{X}{X'}$ é uma função contínua localmente constante, então $f$ é constante.
 \end{proposition}
 \begin{proof}
-Como $X$ é não vazio, $f(X)$ é não vazio. Seja $c \in f(X)$. Como $X'$ é acessível, $\{c\}$ é fechado; como $f$ é contínua, $f\inv(c)$ é fechado. Como $f$ é localmente constante, para todo $x \in f\inv(c)$, alguma vizinhnça aberta $V$ de $x$ satisfaz $f|_V$ constante, ou seja, $V \subseteq f\inv(c)$, o que mostra que $f\inv(c)$ é aberto. Assim, segue de $X$ é conexo e, por definição $f\inv(c) \neq \emptyset$, concluímos que $f\inv(c) = X$, logo $f$ é constante.
+Como $X$ é não vazio, $f(X)$ é não vazio. Seja $c \in f(X)$. Como $X'$ é acessível, $\{c\}$ é fechado; como $f$ é contínua, $f\inv(c)$ é fechado. Como $f$ é localmente constante, para todo $x \in f\inv(c)$, alguma vizinhança aberta $V$ de $x$ satisfaz $f|_V$ constante, ou seja, $V \subseteq f\inv(c)$, o que mostra que $f\inv(c)$ é aberto. Assim, segue de $X$ é conexo e, por definição $f\inv(c) \neq \emptyset$, concluímos que $f\inv(c) = X$, logo $f$ é constante.
 \end{proof}
 
 \subsubsection{Componentes conexas}
