@@ -553,7 +553,7 @@ Esse método nos permite traduzir o problema de construir medida ao problema de 
 Seja $X$ um conjunto. Um \emph{pré-sistema de medida} sobre $X$ é um par $(\mathcal E, \rho)$, em que $\mathcal E \subseteq \p(X)$, $\emptyset \in \mathcal E$ e $\rho\colon \mathcal E \to \intff{0}{\infty}$ é uma função tal que $\rho(\emptyset) = 0$.
 \end{definition}
 
-Na definição seguinte, consideramos $\inf \{\emptyset\} = \infty$, pois o ínfimo é considerado no conjunto $\intff{0}{\infty}$.
+Na definição seguinte, consideramos $\inf (\emptyset) = \infty$, pois o ínfimo é considerado no conjunto $\intff{0}{\infty}$.
 
 \begin{definition}
 Sejam $X$ um conjunto e $(\mathcal E, \rho)$ um pré-sistema de medida sobre $X$. A \emph{medida exterior de cobertura} induzida por $(\mathcal E, \rho)$ é a função
@@ -565,14 +565,14 @@ Sejam $X$ um conjunto e $(\mathcal E, \rho)$ um pré-sistema de medida sobre $X$
 \end{definition}
 
 \begin{proposition}
+\label{prop:medida.exterior.calibre}
 Sejam $X$ um conjunto e $(\mathcal E, \rho)$ um pré-sistema de medida sobre $X$. A medida exterior de cobertura $\med^{(\mathcal E, \rho)}$ induzida por $(\mathcal E, \rho)$ é a uma medida exterior sobre $X$.
 \end{proposition}
 \begin{proof}
-(Conjunto vazio) $\med^{(\mathcal E, \rho)}(\emptyset)=0$, pois se tomamos a cobertura vazia $(\emptyset)_{i \in \N}$, temos que $\emptyset \subseteq \bigcup_{i \in \N} \emptyset$ e $\rho(\emptyset)=0$;
-
-(Monotonicidade crescente) Para todos $C,C' \subseteq M$ tais que $C \subseteq C'$, temos que uma cobertura de $C'$ por conjuntos de $\mathcal E$ é uma cobertura de $C$ por conjuntos de $\mathcal E$, logo $\med^{(\mathcal E, \rho)}(C) \leq \med^{(\mathcal E, \rho)}(C')$;
-
-(Subaditividade contável) Seja $(C_i)_{i \in \N}$ uma sequência de subconjuntos de $M$. Para todos $i \in \N$ e $\varepsilon \in \left]0,\infty\right[$, seja $U^i=(U_{i,j})_{j \in \N}$ é uma cobertura de $C_i$ por conjuntos de $\mathcal E$ tal que
+	\begin{itemize}
+		\item (Conjunto vazio) $\med^{(\mathcal E, \rho)}(\emptyset)=0$, pois se tomamos a cobertura vazia $(\emptyset)_{i \in \N}$, temos que $\emptyset \subseteq \bigcup_{i \in \N} \emptyset$ e $\rho(\emptyset)=0$;
+		\item (Monotonicidade crescente) Para todos $C,C' \subseteq M$ tais que $C \subseteq C'$, temos que uma cobertura de $C'$ por conjuntos de $\mathcal E$ é uma cobertura de $C$ por conjuntos de $\mathcal E$, logo $\med^{(\mathcal E, \rho)}(C) \leq \med^{(\mathcal E, \rho)}(C')$;
+		\item (Subaditividade contável) Seja $(C_i)_{i \in \N}$ uma sequência de subconjuntos de $M$. Para todos $i \in \N$ e $\varepsilon \in \left]0,\infty\right[$, seja $U^i=(U_{i,j})_{j \in \N}$ é uma cobertura de $C_i$ por conjuntos de $\mathcal E$ tal que
 	\begin{equation*}
 	\sum_{j \in \N} \rho(U_{i,j}) \leq \med^{(\mathcal E, \rho)}(C_i) + \frac{\varepsilon}{2^{i+1}}.
 	\end{equation*}
@@ -588,6 +588,12 @@ A primeira desigualdade vem da monotonicidade de $\med^{(\mathcal E, \rho)}$, a 
 	\begin{equation*}
 	\med^{(\mathcal E, \rho)}\left( \bigcup_{i \in \N} C_i \right) \leq \sum_{i \in \N} \med^{(\mathcal E, \rho)}(C_i). \qedhere
 	\end{equation*}
+	\end{itemize}
+
+
+
+
+
 \end{proof}
 
 \begin{proposition}
