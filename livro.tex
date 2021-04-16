@@ -14,7 +14,7 @@
 %------------------------------------------------------------
 
 %\includeonly{%
-% Elementos pré-textuais
+	% Elementos pré-textuais
 %	elementos/capa,%
 %	elementos/atencao,%
 %	elementos/rosto,%
@@ -22,11 +22,13 @@
 %	elementos/prefacio,%
 %	elementos/agradecimentos,%
 %	elementos/introducao,%
-% Elementos textuais
+	% Elementos textuais
+		% Conjuntos
 %	partes/conjuntos/axiomas,%
 %	partes/conjuntos/familias,%
 %	partes/conjuntos/relacoes,%
 %	partes/conjuntos/cardinalidade,%
+		% Álgebra
 %	partes/algebra/estruturasbasicas,%
 %	partes/algebra/grupos,%
 %	partes/algebra/aneis,%
@@ -36,17 +38,18 @@
 %	partes/algebra/ordememestruturasalgebricas,%
 %	partes/algebra/espacosafins,%
 %	partes/algebra/algebrauniversal,%
+		% Geometria
 %	partes/geometria/topologia,%
+%	partes/geometria/medida,%
 %	partes/geometria/espacosmetricos,%
 %	partes/geometria/grupostopologicos,%
 %	partes/geometria/espacoslinearestopologicos,%
 %	partes/geometria/espacosnormados,%
 %	partes/geometria/espacosprodutointerno,%
-%	partes/geometria/medida,%
 %	partes/geometria/variedades,%
 %	partes/geometria/fibrados,%
 %	partes/geometria/gruposdiferenciais,%
-% Elementos pós-textuais
+	% Elementos pós-textuais
 %	elementos/apendice,%
 %	elementos/licenca,%
 %}
@@ -62,7 +65,7 @@
 \newcommand{\autor}{Pedro G. Mattos}
 \newcommand{\autorinv}{Mattos, Pedro G.}
 \newcommand{\ecorreio}{pedrogmattos@riseup.net}
-\newcommand{\versao}{0.12}
+\newcommand{\versao}{0.13}
 
 % Metadados do .pdf
 %------------------------------------------------
@@ -107,13 +110,13 @@
 
 % Lista de figuras
 %------------------------------------------------
-%\renewcommand{\listfigurename}{Figuras}
-%\listoffigures
+\renewcommand{\listfigurename}{Figuras}
+\listoffigures
 
 % Lista de tabelas
 %------------------------------------------------
-%\renewcommand{\listtablename}{Tabelas}
-%\listoftables
+\renewcommand{\listtablename}{Tabelas}
+\listoftables
 
 % Lista de símbolos
 %------------------------------------------------
@@ -164,12 +167,12 @@
 \part{Geometria}
 \label{pt:geometria}
 \include{partes/geometria/topologia}
+\include{partes/geometria/medida}
 \include{partes/geometria/espacosmetricos}
 \include{partes/geometria/grupostopologicos}
 \include{partes/geometria/espacoslinearestopologicos}
 \include{partes/geometria/espacosnormados}
 \include{partes/geometria/espacosprodutointerno}
-\include{partes/geometria/medida}
 \include{partes/geometria/variedades}
 \include{partes/geometria/fibrados}
 \include{partes/geometria/gruposdiferenciais}
