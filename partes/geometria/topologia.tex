@@ -1229,7 +1229,7 @@ Sejam $(\bm X_i)_{i \in I}$ uma família de espaços topológicos e $(x_\lambda)
 
 
 
-\section{Conexidade e compacidade}
+\section{Conexidade}
 
 \subsection{Conexidades}
 
@@ -1287,6 +1287,20 @@ Sejam $\bm X$ e $\bm Y$ espaços topológicos e $f: \bm X \to \bm Y$ uma funçã
 \end{proposition}
 \begin{proof}
 Se $\bm Y$ fosse desconexo, existiria uma partição de $Y$ por abertos $\{A,B\}$, e como $f$ é contínua, $\{f\inv(A),f\inv(B)\}$ seria uma partição de $X$ por abertos, contradizendo a conexidade de $\bm X$.
+\end{proof}
+
+A seguir, definimos uma função localmente constante e provamos um resultado simples, mas útil.
+
+\begin{definition}
+Sejam $\bm X$ um espaço topológico e $C$ um conjunto. Uma função \emph{localmente constante} de $X$ para $C$ é uma função $\fun{f}{X}{C}$ tal que, para todo $x \in X$, alguma vizinhança $V$ de $x$ satisfaz que $f|_V$ é constante.
+\end{definition}
+
+\begin{proposition}
+\label{prop:separado.localmente.constante}
+Sejam $\bm X$ um espaço topológico conexo não vazio e $\bm X'$ um espaço topológico acessível. Se $\fun{f}{X}{X'}$ é uma função contínua localmente constante, então $f$ é constante.
+\end{proposition}
+\begin{proof}
+Como $X$ é não vazio, $f(X)$ é não vazio. Seja $c \in f(X)$. Como $X'$ é acessível, $\{c\}$ é fechado; como $f$ é contínua, $f\inv(c)$ é fechado. Como $f$ é localmente constante, para todo $x \in f\inv(c)$, alguma vizinhnça aberta $V$ de $x$ satisfaz $f|_V$ constante, ou seja, $V \subseteq f\inv(c)$, o que mostra que $f\inv(c)$ é aberto. Assim, segue de $X$ é conexo e, por definição $f\inv(c) \neq \emptyset$, concluímos que $f\inv(c) = X$, logo $f$ é constante.
 \end{proof}
 
 \subsubsection{Componentes conexas}
@@ -1367,33 +1381,31 @@ Um espaço topológico conexo por caminhos é conexo.
 
 
 
+\section{Compacidade}
 
+As propriedade de compacidade de um espaço topológico são propriedades relacionadas a coberturas de um espaço. De certa forma, a compacidade é uma noção de `finitude topológica'.
 
-\subsection{Compacidades}
-
-As propriedade de compacidade de um espaço topológico são propriedades relacionadas a coberturas de um espaço.
-
-\subsubsection{Compacidade}
+\subsection{Compacidade}
 
 \begin{definition}
-Um espaço topológico \emph{compacto} é um espaço topológico $\bm X$ em que toda cobertura aberta $\mathcal C$ de $\bm X$ tem subcobertura finita. Um subconjunto \emph{compacto} de $\bm X$ é um conjunto $C \subseteq X$ que é compacto com a topologia de subespaço.
+Um espaço topológico \emph{compacto} é um espaço topológico $\bm X$ em que toda cobertura aberta de $\bm X$ tem subcobertura finita. Um subconjunto \emph{compacto} de $\bm X$ é um subconjunto de $X$ que é compacto com a topologia de subespaço.
 \end{definition}
 
-\begin{proposition}
+\begin{exercise}
 Seja $\bm X$ um espaço topológico. São equivalentes
 	\begin{enumerate}
 	\item $\bm X$ é compacto;
 	\item Toda rede em $\bm X$ tem sub-rede convergente.
 	\end{enumerate}
-\end{proposition}
+\end{exercise}
 
-\begin{proposition}
-Seja $\bm X$ um espaço topológico. Se $C \subseteq X$ é compacto e $F \subseteq C$ é fechado, então $F$ é compacto.
-%	\begin{enumerate}
-%	\item Se $\bm X$ é compacto, todo fechado $F \subseteq X$ é compacto;
-%	\item Se $\bm X$ é separado, todo compacto $C \subseteq X$ é fechado;
-%	\end{enumerate}
-\end{proposition}
+\begin{exercise}
+Seja $\bm X$ um espaço topológico. 
+	\begin{enumerate}
+	\item Para todo $C \subseteq X$ e todo $F \subseteq X$, se $C$ é compacto e $F$ é fechado, então $F$ é compacto;
+	\item Para todo $S \subseteq X$ e todo $C \subseteq X'$, $C$ é compacto em $\bm S$ se, e somente se, é compacto em $\bm X$.
+	\end{enumerate}
+\end{exercise}
 
 \begin{proposition}
 \label{topo:prop.esp.sep.comp.pont}
@@ -1407,13 +1419,13 @@ Como $\bm X$ é separado, para todo $c \in C$ existem vizinhanças abertas $V'_c
 Definindo $V' := \bigcup_{i \in [n]} V'_{c_i}$ e $V := \bigcap_{i \in [n]} V_{c_i}$, segue que $V'$ e $V$ são vizinhanças abertas de $C$ e $x$, respectivamente, e $V' \cap V = \emptyset$.
 \end{proof}
 
-\begin{proposition}
+\begin{exercise}
 Seja $\bm X$ um espaço topológico separado.
 	\begin{enumerate}
-	\item Se $C \subseteq X$ é compacto, então é fechado;
-	\item Se $C \subseteq X$ é compacto e $F \subseteq X$ é fechado, então $C \cap F$ é compacto.
+	\item Para todo $C \subseteq X$, se $C$ é compacto, então $C$ é fechado;
+	\item Para todos $C,F \subseteq X$, se $C$ é compacto e $F$ é fechado, então $C \cap F$ é compacto.
 	\end{enumerate}
-\end{proposition}
+\end{exercise}
 
 \begin{proposition}
 Sejam $\bm X_0$ e $\bm X_1$ espaços topológicos e $f\colon X_0 \to X_1$ uma função contínua. Se $\bm X_0$ é compacto, então $f(\bm X_0)$ é compacto.
@@ -1434,51 +1446,92 @@ Isso mostra que $f(\bm X_0)$ é compacto.
 Sejam $\bm X$ um espaço topológico e $\bm L$ um espaço linear topológico. O espaço das funções contínuas de $\bm X$ para $\bm L$ com suporte compacto é denotado $\Cont_c(X,L)$.
 \end{definition}
 
-\subsubsection{Compacidade contável (Lindelöf)}
+\subsubsection{Compacidade relativa}
 
 \begin{definition}
-Um espaço topológico \emph{contavelmente compacto} (\emph{Lindelöf}) é um espaço topológico $\bm X$ em que toda cobertura aberta $\mathcal C$ de $\bm X$ tem subcobertura contável.
+Seja $\bm X$ um espaço topológico. Um subconjunto \emph{relativamente compacto} de $\bm X$ é um subconjunto de $X$ cujo fecho em $\bm X$ é compacto.
+\end{definition}
+
+\subsection{Compacidade contável}
+
+\begin{definition}
+Um espaço topológico \emph{contavelmente compacto}\footnote{Conhecido na literatura por `Lindelöf'.}  é um espaço topológico $\bm X$ em que toda cobertura aberta $\mathcal C$ de $\bm X$ tem subcobertura contável.
 \end{definition}
 
 Alguns autores definem compacidade contável como a propriedade de que toda cobertura aberta contável admite subcobertura finita.
 
-\subsubsection{Compacidade local}
+\subsection{Compacidade regional e local}
 
 \begin{definition}
-Um espaço topológico \emph{localmente compacto} é um espaço topológico $\bm X$ em que todo ponto $x \in X$ tem uma vizinhança compacta.
+Um espaço topológico \emph{regionalmente compacto} é um espaço topológico $\bm X$ em que todo ponto tem uma vizinhança compacta.
+
+Um espaço topológico \emph{localmente compacto} é um espaço topológico $\bm X$ em que todo ponto tem uma base de vizinhanças compacta.
+
+Um espaço topológico \emph{localmente relativamente compacto} é um espaço topológico $\bm X$ em que todo ponto tem uma base de vizinhanças relativamente compactas.
 \end{definition}
 
-\begin{proposition}
-Seja $\bm X$ um espaço topológico localmente compacto. Se $\bm X$ é separado, então todo ponto $x \in X$ tem uma vizinhança aberta com fecho compacto.
-\end{proposition}
+\begin{exercise}
+Seja $\bm X$ um espaço topológico.
+	\begin{enumerate}
+	\item Se $\bm X$ é localmente compacto, então é regionalmente compacto;
+	\item Se $\bm X$ é localmente relativamente compacto, então é regionalmente compacto.
+	\end{enumerate}
+\end{exercise}
 
-\begin{proposition}
-Seja $\bm X$ um espaço topológico separado e localmente compacto. Para todo compacto $C \subseteq X$ e toda vizinhança aberta $A \subseteq X$ de $C$, existe aberto $V \subseteq X$ com fecho compacto tal que
-	\begin{equation*}
-	C \subseteq V \subseteq \Fec{V} \subseteq A.
-	\end{equation*}
-\end{proposition}
+\begin{exercise}
+Seja $\bm X$ um espaço topológico. São equivalentes:
+	\begin{enumerate}
+	\item $\bm X$ é localmente compacto;
+	\item Toda vizinhança de um ponto de $\bm X$ contém uma uma vizinhanças compacta.
+	\end{enumerate}
+\end{exercise}
 
-\begin{proposition}
-Seja $\bm X$ um espaço topológico separado e localmente compacto. Para todo compacto $C$ e todo aberto $A$ de $X$, existe função $f \in \Cont_c(X,\intff{0}{1})$ que separa $C$ e $A^\complement$.
-\end{proposition}
+\begin{exercise}
+Seja $\bm X$ um espaço topológico. São equivalentes:
+	\begin{enumerate}
+	\item $\bm X$ é localmente relativamente compacto;
+	\item Todo ponto de $\bm X$ tem uma vizinhança relativamente compacta;
+	\item Todo ponto de $\bm X$ tem uma vizinhança fechada e compacta.
+	\end{enumerate}
+\end{exercise}
+
+As recíprocas são possíveis quando o espaço topológico é separado.
+
+\begin{exercise}
+Seja $\bm X$ um espaço topológico separado e regionalmente compacto. Então $\bm X$ é localmente compacto e localmente relativamente compacto.
+\end{exercise}
+
+\begin{exercise}
+Seja $\bm X$ um espaço topológico separado e regionalmente compacto.
+	\begin{enumerate}
+	\item Para todo compacto $C \subseteq X$ e toda vizinhança aberta $A \subseteq X$ de $C$, existe aberto $V \subseteq X$ com fecho compacto tal que
+		\begin{equation*}
+		C \subseteq V \subseteq \Fec{V} \subseteq A.
+		\end{equation*}
+	\item Para todo compacto $C$ e todo aberto $A$ de $X$, existe função $f \in \Cont_c(X,\intff{0}{1})$ que separa $C$ e $A^\complement$.
+	\end{enumerate}
+\end{exercise}
 
 
-\subsubsection{Paracompacidade}
+\subsection{Paracompacidade}
 
 \begin{definition}
 Um espaço topológico \emph{paracompacto} é um espaço topológico $\bm X$ em que toda cobertura aberta $\mathcal C$ de $\bm X$ tem refinamento aberto localmente finito.
 \end{definition}
 
-\subsubsection{Compacidade sequencial}
+\subsection{Compacidade sequencial}
+
+\begin{definition}
+Um espaço topológico \emph{sequencialmente compacto} é um espaço topológico $\bm X$ em que toda sequência convergente tem subsequência convergente.
+\end{definition}
 
 
 
-\subsection{Contabilidades}
+\section{Contabilidades}
 
-\subsubsection{Base de vizinhanças contável (1º contável)}
+\subsection{Base de vizinhanças contável (1º contável)}
 
-\subsubsection{Base contável (2º contável)}
+\subsection{Base contável (2º contável)}
 
 
 
