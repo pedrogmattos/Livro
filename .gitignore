@@ -13,4 +13,6 @@
 *.run.xml
 *.synctex.gz
 *.toc
+*.lof
+*.lot
 .vscode/settings.json
