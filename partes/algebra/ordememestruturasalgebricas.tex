@@ -544,16 +544,244 @@ Sejam $\bm V$ um espaço linear sobre um corpo ordenado $(\bm C,\leq)$ e $v_0,\c
 Um conjunto convexo é um conjunto fechado por combinações convexas.
 
 \begin{proposition}
-Seja $\bm V$ um espaço linear sobre um corpo ordenado $(\bm C,\leq)$ e $X$ um conjunto convexo em $V$. Para todos $c_0,\cdots,c_{n-1} \in C_{\geq 0}$ tais que $\sum_{i \in [n]} c_i = 1$,
+Sejam $\bm V$ um espaço linear sobre um corpo ordenado $(\bm C,\leq)$ e $X$ um conjunto convexo em $V$. Para todos $c_0,\cdots,c_{n-1} \in C_{\geq 0}$ tais que $\sum_{i \in [n]} c_i = 1$,
 	\begin{equation*}
 	\sum_{i \in [n]} c_iX \subseteq X.
 	\end{equation*}
-
 %Para todos $x_0,\cdots,x_{n-1} \in X$ e $c_0,\cdots,c_{n-1} \in C_{\geq 0}$ tais que $\sum_{i \in [n]} c_i = 1$,
 %	\begin{equation*}
 %	\sum_{i \in [n]} c_ix_i \in X.
 %	\end{equation*}
 \end{proposition}
+
+\begin{definition}[Independência convexa (afim)]
+Seja $\bm V$ um espaço linear sobre um corpo ordenado $(\bm C,\leq)$. Uma lista de vetores \emph{convexamente independentes} (ou \emph{afimente independentes}) é uma lista $v_0, \ldots, v_d \subseteq V$ tais que $v_1-v_0, \ldots, v_d-v_0$ são linearmente independentes.
+\end{definition}
+
+\subsubsection{Simplexos}
+
+\begin{definition}
+Sejam $(\bm C,\leq)$ um corpo ordenado e $d \in \N$. O \emph{$d$-simplexo unitário} (ou simplexo unitário $d$-dimensional) sobre $\bm C$ é o conjunto
+	\begin{equation*}
+	\simp^d_{\bm C} = \set{c \in C_{\geq 0}^{d+1}}{\sum_{k \in [d+1]} c_k = 1}.
+	\end{equation*}
+
+O \emph{$d$-simplexo unitário real} é o $d$-simplexo unitário sobre o corpo dos números reais, denotado
+	\begin{equation*}
+	\Sx^d := \simp^d_{\R} = \set{x \in \R_{\geq 0}^{d+1}}{\sum_{k \in [d+1]} x_k = 1}.
+	\end{equation*}
+\end{definition}
+
+O simplexo unitário é portanto o conjunto de pontos de $c = (c_0,\ldots,c_d) \in C^{d+1}$ tais que, para todo $k \in [d+1]$, $c_k \geq 0$ e satisfazendo $\sum_{k \in [d+1]} c_k = 1$.
+
+\begin{figure}
+\centering
+
+%%%%%%%%%%%%
+% 0-Simplexo
+%%%%%%%%%%%%
+\begin{subfigure}[b]{0.5\textwidth}
+	\centering
+
+	\begin{tikzpicture}[
+		scale=2,
+		eixo/.style={dotted,cinza},
+		vertice/.style={preto,circle,fill,minimum size=1pt,inner sep=0pt,outer sep=0pt},
+		]
+		% Coordenadas
+		\coordinate (O) at (0,0);
+		\coordinate (A) at (1,0);
+		% Eixos
+	%	\draw[eixo] (O) node {$0$};
+		\node[vertice,eixo] at (O) {};
+		\draw[eixo] (O) node[anchor=east] {$0$};
+		\draw[eixo] (O) -- (A) node[anchor=west] {$1$};
+		% Simplexo
+		\node[anchor=south] at (A) {$\Sx^0$};
+		%% Vértice
+		\node[vertice] at (A) {};
+	\end{tikzpicture}
+
+	\caption{O $0$-simplexo é um ponto.}
+	\label{sfig:simplexos.ponto}
+\end{subfigure}%\hfill
+%%%%%%%%%%%%
+% 1-Simplexo
+%%%%%%%%%%%%
+\begin{subfigure}[b]{0.5\textwidth}
+	\centering
+
+	\begin{tikzpicture}[
+		scale=2,
+		eixo/.style={dotted,cinza},
+		vertice/.style={preto,circle,fill,minimum size=1pt,inner sep=0pt,outer sep=0pt},
+		aresta/.style={preto,line width=1pt}
+		]
+		% Coordenadas
+		\coordinate (O) at (0,0);
+		\coordinate (A) at (1,0);
+		\coordinate (B) at (0,1);
+		% Eixos
+	%	\draw[eixo] (O) node {$0$};
+		\node[vertice,eixo] at (O) {};
+		\draw[eixo] (O) node[anchor=north east] {$0$};
+		\draw[eixo] (O) -- (A) node[anchor=west] {$(1,0)$};
+		\draw[eixo] (O) -- (B) node[anchor=south] {$(0,1)$};
+		% Simplexo
+	%	\draw (0.5,0.5) node[anchor=south west] {$\Sx^1$};
+		\node[anchor=south west] at ($(A)!0.5!(B)$) {$\Sx^1$};
+		%% Vértices
+		\node[vertice] at (A) {};
+		\node[vertice] at (B) {};
+		%% Aresta
+		\draw[aresta] (A) -- (B);
+	\end{tikzpicture}
+
+	\caption{O $1$-simplexo é um intervalo.}
+	\label{sfig:simplexos.intervalo}
+\end{subfigure}
+
+%%%%%%%%%%%%
+% 2-Simplexo
+%%%%%%%%%%%%
+\begin{subfigure}[b]{0.5\textwidth}
+	\centering
+
+	\tdplotsetmaincoords{60}{60}
+	\begin{tikzpicture}[
+		scale=2,
+		tdplot_main_coords,
+		eixo/.style={dotted,cinza},
+		vertice/.style={preto,circle,fill,minimum size=1pt,inner sep=0pt,outer sep=0pt},
+		aresta/.style={preto,line width=1pt},
+		face/.style={preto,opacity=0.75},% opacity=0.9
+		]
+		% Coordenadas
+		\coordinate (O) at (0,0,0);
+		\coordinate (A) at (1,0,0);
+		\coordinate (B) at (0,1,0);
+		\coordinate (C) at (0,0,1);
+		% Eixos
+	%	\draw[eixo] (O) node {$0$};
+		\node[vertice,eixo] at (O) {};
+		\draw[eixo] (O) node[anchor=north east] {$0$};
+		\draw[eixo] (O) -- (A) node[anchor=north] {$(1,0,0)$};
+		\draw[eixo] (O) -- (B) node[anchor=west] {$(0,1,0)$};
+		\draw[eixo] (O) -- (C) node[anchor=south] {$(0,0,1)$};
+		% Simplexo
+	%	\node[tdplot_main_coords,anchor=south west] at (0,1/2,1/2) {$\Sx^2$};
+		\node[tdplot_main_coords,anchor=south west] at ($(B)!0.5!(C)$) {$\Sx^2$};
+		%% Vértices
+		\node[vertice] at (A) {};
+		\node[vertice] at (B) {};
+		\node[vertice] at (C) {};
+		%% Arestas
+		\draw[aresta] (A) -- (B);
+		\draw[aresta] (B) -- (C);
+		\draw[aresta] (C) -- (A);
+		%% Face
+		\fill[face] (A) -- (B) -- (C) -- cycle;
+	\end{tikzpicture}
+	
+	\caption{O $2$-simplexo é um triângulo.}
+	\label{sfig:simplexos.triangulo}
+\end{subfigure}%\hfill
+%%%%%%%%%%%%
+% 3-Simplexo
+%%%%%%%%%%%%
+\begin{subfigure}[b]{0.5\textwidth}
+	\centering
+
+	\tdplotsetmaincoords{60}{60}
+	\begin{tikzpicture}[
+		scale=2,
+		tdplot_main_coords,
+		eixo/.style={dotted,cinza},
+		vertice/.style={preto,circle,fill,minimum size=1pt,inner sep=0pt,outer sep=0pt},
+		aresta/.style={preto,line width=1pt},
+		face/.style={preto,opacity=0.5},% opacity=0.75
+		]
+		% Coordenadas
+		\coordinate (O) at (0,0,0);
+		\coordinate (A) at (1,0,0);
+		\coordinate (B) at (0,1,0);
+		\coordinate (C) at (0,0,1);
+		\coordinate (D) at (-1/3,-1/3,-1/3);
+		% Eixos
+	%	\draw[eixo] (O) node {$0$};
+		\node[vertice,eixo] at (O) {};
+		\draw[eixo] (O) node[anchor=south east] {$0$};
+		\draw[eixo] (O) -- (A) node[anchor=north] {$(1,0,0,0)$};
+		\draw[eixo] (O) -- (B) node[anchor=west] {$(0,1,0,0)$};
+		\draw[eixo] (O) -- (C) node[anchor=south] {$(0,0,1,0)$};
+		\draw[eixo] (O) -- (D) node[anchor=east] {$(0,0,0,1)$};
+		% Simplexo
+		\node[tdplot_main_coords,anchor=south west] at ($(B)!0.5!(C)$) {$\Sx^3$};
+		%% Vértices
+		\node[vertice] at (A) {};
+		\node[vertice] at (B) {};
+		\node[vertice] at (C) {};
+		\node[vertice] at (D) {};
+		%% Arestas
+		\draw[aresta] (A) -- (B);
+		\draw[aresta] (A) -- (C);
+		\draw[aresta] (A) -- (D);
+		\draw[aresta] (B) -- (C);
+		\draw[aresta,dashed] (B) -- (D);
+		\draw[aresta] (C) -- (D);
+		%% Faces
+		\fill[face] (A) -- (B) -- (C) -- cycle;
+		\fill[face] (A) -- (B) -- (D) -- cycle;
+		\fill[face] (B) -- (C) -- (D) -- cycle;
+		\fill[face] (A) -- (C) -- (D) -- cycle;
+	\end{tikzpicture}
+	
+	\caption{O $3$-simplexo é um tetraedro.}
+	\label{sfig:simplexos.tetraedro}
+\end{subfigure}
+
+\caption[Simplexos unitários reais de dimensões $0$, $1$, $2$ e $3$]{
+	Simplexos unitários reais $\Sx^0$, $\Sx^1$, $\Sx^2$ e $\Sx^3$. Os eixos estão representados em cinza para referência; os simplexos estão representados em preto e, nos casos de dimensão $2$ e $3$, suas faces estão representadas com opacidade para que os eixos sejam visíveis.% Os vértices são a base canônica $\ii_k$.
+}
+\label{fig:simplexos}
+\end{figure}
+
+\begin{definition}
+Sejam $\bm V$ um espaço linear sobre um corpo ordenado $(\bm C,\leq)$ e $v_0, \ldots, v_d \in E$ convexamente independentes. O \emph{simplexo gerado} por $v_0, \ldots, v_d$ é o conjunto
+	\begin{equation*}
+	\simpger[d]{v_0, \ldots, v_d} = \set{\sum_{k \in [d+1]} c_k v_k = 1}{c \in \simp^d_C}
+	\end{equation*}
+e o interior desse simplexo é
+	\begin{equation*}
+	\simpgera[d]{v_0, \ldots, v_d} = \set{\sum_{k \in [d+1]} c_k v_k = 1}{c \in \simp^d_C}.
+	\end{equation*}
+\end{definition}
+
+No caso real, denota-se
+\begin{equation*}
+	\Sxger[d]{v_0, \ldots, v_d} = \set{\sum_{k \in [d+1]} x_k v_k = 1}{x \in \Sx^d}
+	\end{equation*}
+e
+	\begin{equation*}
+	\Sxgera[d]{v_0, \ldots, v_d} = \set{\sum_{k \in [d+1]} x_k v_k = 1}{x \in \Sx^d}.
+	\end{equation*}
+
+Em particular, o $1$-simplexo é o conjunto $\simp^1 = \set{(1-t,t)}{t \in \intff{0}{1}}$ e dados $v,v' \in E$,
+	\begin{equation*}
+	\simpger{v,v'} = \set{(1-t)v + tv'}{t \in \intff{0}{1}}
+	\end{equation*}
+e
+	\begin{equation*}
+	\simpgera{v,v'} = \set{(1-t)v + tv'}{t \in \intaa{0}{1}}.
+	\end{equation*}
+
+
+
+
+
+
+
+
 
 
 
