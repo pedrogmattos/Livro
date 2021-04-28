@@ -1631,6 +1631,263 @@ portanto
 
 
 
+\section{Álgebras normadas}
+
+Em geral, álgebra são definidas como espaços lineares com um produto bilinear associativo, e nós usaremos a propriedade de associatividade na grande maioria dos casos. No entanto, a propriedade de associatividade é às vezes dispensável, ou não vale (como no caso dos octônios), e por isso ressaltamos abaixo que as definições ainda valem sem a hipótese de associatividade.
+
+\begin{definition}
+Uma \emph{álgebra (associativa) normada} é um par $\mathbb A = (\bm A,\nor{\var})$ em que $\bm A = (A,\cdot)$ é uma álgebra (associativa) sobre um corpo $\bm C \subseteq \C$ e $\nor{\var}\colon A \to \R$ é uma norma em $\bm A$ satisfazendo, para todos $a,a' \in A$,
+	\begin{equation*}
+	\nor{aa'} \leq \nor{a}\nor{a'};
+	\end{equation*}
+Uma \emph{álgebra unitária normada} é uma álgebra normada $\mathbb A = (\bm A,\nor{\var})$ tal que $\bm A = (A,\cdot,1)$ é uma álgebra unitária e
+	\begin{equation*}
+	\nor{1} = 1.
+	\end{equation*}
+Uma \emph{álgebra invertível normada} é uma álgebra unitária normada $\mathbb A = (\bm A,\nor{\var})$ tal que $(A,\cdot,\inv,1)$ é uma álgebra invertível e, para todos $a \in A \setminus \{0\}$,
+	\begin{equation*}
+	\nor{a\inv} = \nor{a}\inv.
+	\end{equation*}
+\end{definition}
+
+Na proposição a seguir, usamos a associatividade do produto, mas de fato bastaria que o produto fosse alternativo, como no caso dos octônios.
+
+\begin{exercise}
+Seja $\mathbb A = (\bm A,\nor{\var})$ uma álgebra (associativa) invertível normada. Para todos $a,a' \in A$,
+	\begin{equation*}
+	\nor{aa'} = \nor{a}\nor{a'}.
+	\end{equation*}
+\end{exercise}
+\begin{proof}
+Se $a=0$, então $aa' = 0$ e $\nor{a}=0$, logo $\nor{a}\nor{a'}=0$, o que implica
+	\begin{equation*}
+	\nor{aa'} = \nor{0} = 0 = \nor{a}\nor{a'}.
+	\end{equation*}
+Se $a \in A \setminus \{0\}$,
+	\begin{align*}
+	\nor{a}\nor{a'} &= \nor{a}\nor{(a\inv a)a'} \\
+		&= \nor{a}\nor{a\inv (aa')} \\
+		&\leq \nor{a}\nor{a\inv} \nor{aa'} \\
+		&= \nor{a}\nor{a}\inv \nor{aa'} \\
+		&= \nor{aa'}.
+	\end{align*}
+Como vale $\nor{aa'} \leq \nor{a}\nor{a'}$, concluímos que
+	\begin{equation*}
+	\nor{aa'} = \nor{a}\nor{a'}.
+	\qedhere
+	\end{equation*}
+\end{proof}
+
+
+\subsection{Função exponencial}
+
+Consideremos uma álgebra normada unitária completa $\mathbb A$. Para todo $x \in A$, a sequência
+	\begin{equation*}
+	e_n(x) := \sum_{i=0}^{n} \frac{x^i}{i!}
+	\end{equation*}
+é uma sequência aproximante\footnote{Sequência de Cauchy.}, já que, para todos $n,n' \in \N^*$ com $n' > n$,
+	\begin{equation*}
+	\nor{e_{n'}(x)-e_n(x)} = \nor{\sum_{i=n+1}^{n'} \frac{x^i}{i!}} \leq \sum_{i=n+1}^{n'} \frac{\nor{x}^i}{i!}.
+	\end{equation*}
+Como a álgebra é completa, isso significa que $e_n(x)$ converge para um elemento
+	\begin{equation*}
+	\e^{x} := \lim_{n \to \infty} e_n(x) = \sum_{n \in \N} \frac{x^n}{n!}.
+	\end{equation*}
+
+\begin{definition}
+Seja $\mathbb A$ uma álgebra unitária normada completa. A \emph{função exponencial} em $\mathbb A$ é a função
+	\begin{align*}
+	\func{\exp}{A}{A}{x}{\e^{x} := \sum_{n \in \N} \frac{x^n}{n!}.}
+	\end{align*}
+\end{definition}
+
+\begin{proposition}
+Seja $\mathbb A$ uma álgebra unitária normada completa.
+	\begin{enumerate}
+	\item Para todo $x \in A$, $\nor{\exp(x)} \leq \e^{\nor{x}}$;
+	\item A função exponencial $\exp\colon A \to A$ é contínua;
+	\item $\exp(0) = 1$;
+	\item Para todos $x,y \in A$ tais que $xy=yx$,
+		\begin{equation*}
+		\exp(x+y) = \exp(x)\exp(y);
+		\end{equation*}
+	\item Para todo $x \in A$, $\exp(x)\inv = \exp(-x)$;
+	\item Para todo $x \in A$, $\exp(x) = \lim_{n \to \infty} \left( 1 + \frac{x}{n} \right)^n$.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item Basta notar que, para todos $x \in A$ e $n \in \N$,
+		\begin{equation*}
+		\nor{e_n(x)} = \nor{\sum_{i=0}^{n} \frac{x^i}{i!}} \leq \sum_{i=0}^{n} \frac{\nor{x}^i}{i!} = e_n(\nor{x}),
+		\end{equation*}
+logo $\nor{\exp(x)} \leq \e^{\nor{x}}$.
+	
+	\item Primeiro notamos que, para todos $x,y \in A$,
+		\begin{align*}
+		\nor{y^n-x^n} &= \nor{\sum_{i=1}^{n} y^{n-i}(y-x)x^{i-1}} \\
+			&\leq n(\nor{x} \opmax \nor{y})^{n-1}\nor{y-x},
+		\end{align*}
+portanto
+	\begin{align*}
+	\nor{\exp(y) - \exp(x)} &= \nor{\sum_{n=1}^\infty \frac{y^n-x^n}{n!}} \\
+		&\leq \sum_{n=1}^\infty \frac{\nor{y^n-x^n}}{n!} \\
+		&\leq \sum_{n=1}^\infty \frac{n(\nor{x} \opmax \nor{y})^{n-1}}{n!} \nor{y-x} \\
+		&= \e^{(\nor{x} \opmax \nor{y})}\nor{y-x},
+	\end{align*}
+o que mostra que $\exp$ é contínua.
+	
+	\item Segue de
+		\begin{equation*}
+		\exp(0) = \sum_{n \in \N} \frac{0^n}{n!} = 1 + \sum_{n \in \N^*} \frac{0^n}{n!} = 1.
+		\end{equation*}
+
+	\item Sejam $n \in \N$ e
+		\begin{equation*}
+		s_n := e_{2n}(x+y) - e_n(x)e_n(y) = \sum_{k=0}^{2n} \frac{(x+y)^k}{k!} - \left( \sum_{i=1}^n \frac{x^i}{i!} \right)\left( \sum_{j=1}^n \frac{y^j}{j!} \right).
+		\end{equation*}
+Como $xy=yx$,
+	\begin{equation*}
+	\frac{(x+y)^k}{k!} = \frac{1}{k!} \sum_{i=0}^k \frac{k!}{i!(k-i)!}x^i y^{k-i} = \sum_{i+j=k} \frac{x^i y^j}{i!j!}.
+	\end{equation*}
+Portanto
+	\begin{align*}
+	s_n &= \sum_{0 \leq i+j \leq 2n} \frac{x^i y^j}{i!j!} - \sum_{0 \leq i \leq n, 0 \leq j \leq n} \frac{x^i y^j}{i!j!} \\
+		&= \sum_{k=0}^{n-1} \frac{x^k}{k!} \sum_{n+1}^{2n-k} \frac{y^j}{j!} +  \sum_{k=0}^{n-1} \frac{y^k}{k!} \sum_{n+1}^{2n-k} \frac{x^j}{j!},
+	\end{align*}
+o que implica que
+	\begin{align*}
+	\nor{s_n} &\leq \sum_{k=0}^{n-1} \frac{\nor{x}^k}{k!} \sum_{n+1}^{2n-k} \frac{\nor{y}^j}{j!} +  \sum_{k=0}^{n-1} \frac{\nor{y}^k}{k!} \sum_{n+1}^{2n-k} \frac{\nor{x}^j}{j!} \\
+		&= \sum_{k=0}^{2n} \frac{(\nor{x}+\nor{y})^k}{k!} - \left( \sum_{i=1}^n \frac{\nor{x}^i}{i!} \right)\left( \sum_{j=1}^n \frac{\nor{y}^j}{j!} \right) \\
+		&= e_{2n}(\nor{x}+\nor{y}) - e_n(\nor{x})e_n(\nor{y}).
+	\end{align*}
+Assim segue que
+	\begin{equation*}
+	\nor{\exp(x+y) - \exp(x)\exp(y)} \leq \e^{\nor{x}\nor{y}}-\e^{\nor{x}}\e^{\nor{y}} = 0.
+	\end{equation*}
+	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{comment}
+	\item Para todo $n \in \N$, como $xy=yx$,
+	\begin{equation*}
+	(x+y)^n = \sum_{i=0}^n \frac{n!}{i!(n-i)!}x^i y^{n-i} = n! \sum_{i+j=n} \frac{x^i}{i!}\frac{y^j}{j!}.
+	\end{equation*}
+Portanto
+	\begin{align*}
+	\exp(x+y) &= \sum_{n=0}^\infty \frac{(x+y)^n}{n!} \\
+		&= \sum_{n=0}^\infty \sum_{i+j=n} \frac{x^i y^j}{i!j!} \\
+		&= \left(\sum_{i=0}^\infty \frac{x^i}{i!} \right) \left(\sum_{i=0}^\infty \frac{y^j}{j!} \right) \\
+		&= \exp(x) \exp(y).
+	\end{align*}
+\end{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	\item Basta notar que, como $x(-x)=(-x)x$,
+		\begin{equation*}
+		\exp(x)\exp(-x) = \exp(x-x) = \exp(0) = 1.
+		\end{equation*}
+	
+	\item Exercício. \qedhere
+	\end{enumerate}
+\end{proof}
+
+
+\subsubsection{Exponencial dos complexos $\R^2$}
+
+Seja $x = x_0 + x_1 \ii \in \R^2$. Como $\R^2$ é comutativo,
+	\begin{equation*}
+	\e^{x} = \e^{x_0 + x_1 \ii} = \e^{x_0}\e^{x_1 \ii}.
+	\end{equation*}
+Devemos calcular, portanto, somente a exponencial $\e^{x_1 \ii}$. Como $\ii^2 = -1$, segue que, para todo $n \in \N$,
+	\begin{align*}
+	(x_1 \ii)^{2n} &= (x_1)^{2n}(\ii)^{2n} = (-1)^n (x_1)^{2n} \\
+	(x_1 \ii)^{2n+1} &= (x_1)^{2n+1}(\ii)^{2n+1} = (-1)^n (x_1)^{2n+1}\ii,
+	\end{align*}
+o que implica que
+	\begin{align*}
+	\e^{x_1 \ii} &= \sum_{n \in \N} \frac{(x_1 \ii)^n}{n!} \\
+		&= \sum_{n \in \N} \frac{(x_1 \ii)^{2n}}{(2n)!} + \sum_{n \in \N} \frac{(x_1 \ii)^{2n+1}}{(2n+1)!} \\
+		&= \sum_{n \in \N} (-1)^n \frac{(x_1)^{2n}}{(2n)!} + \sum_{n \in \N} (-1)^n \frac{(x_1)^{2n+1}}{(2n+1)!}\ii \\
+		&= \cos(x_1) + \sin(x_1)\ii.
+	\end{align*}
+
+Concluímos que
+	\begin{equation*}
+	\e^{x} = \e^{x_0}\e^{x_1 \ii} = \e^{x_0}(\cos(x_1) + \sin(x_1)\ii).
+	\end{equation*}
+
+\paragraph{Logaritmo} Pela decomposição polar, para todo $x \in \R^2 \setminus \{0\}$,
+	\begin{equation*}
+	x = \nor{x}(\cos(\theta)+\sin(\theta)\ii).
+	\end{equation*}
+Assim, definimos
+	\begin{equation*}
+	\log(x) := \log(\nor{x}) + \theta \ii,
+	\end{equation*}
+Concluímos que
+	\begin{align*}
+	x &= \nor{x}(\cos(\theta)+\sin(\theta) \ii) \\
+		&= \e^{\log(\nor{x})}\e^{\theta \ii} \\
+		&= \e^{\log(\nor{x}) + \theta \ii} \\
+		&= \e^{\log(x)}.
+	\end{align*}
+
+No entanto, é importante notar que, para todo $n \in \N$,
+	\begin{equation*}
+	\e^{(\theta+n\tau) \ii} = \cos(\theta+n\tau)+\sin(\theta+n\tau) \ii = \cos(\theta)+\sin(\theta) \ii = \e^{\theta \ii}
+	\end{equation*}
+
+\subsubsection{Exponencial dos quatérnios $\R^4$}
+
+Seja $x = \esc{x} + \vec{x} \in \R^4$, em que $\esc{x} = x_0$ e $\vec{x} = x_1 \ii_1 + x_2 \ii_2 + x_3 \ii_3$. Como $\esc{x}\vec{x} = \vec{x}\esc{x}$, segue que
+	\begin{equation*}
+	\e^{x} = \e^{\esc{x}+\vec{x}} = \e^{\esc{x}}\e^{\vec{x}}.
+	\end{equation*}
+
+Devemos calcular, portanto, somente a exponencial $\e^{\vec{x}}$. Lembremos que $\hat{x} = \frac{\vec{x}}{\nor{\vec{x}}}$ e que $\hat{x} \in \vec{\S}^2$, portanto $\hat{x}^2 = -1$. Segue que, para todo $n \in \N$,
+	\begin{align*}
+	(\vec{x})^{2n} &= (\nor{\vec{x}} \hat{x})^{2n} = (-1)^n \nor{\vec{x}}^{2n} \\
+	(\vec{x})^{2n+1} &= (\nor{\vec{x}} \hat{x})^{2n+1} = (-1)^n \nor{\vec{x}}^{2n+1}\hat{x},
+	\end{align*}
+o que implica que
+	\begin{align*}
+	\e^{\vec{x}} &= \sum_{n \in \N} \frac{(\vec{x})^n}{n!} \\
+		&= \sum_{n \in \N} \frac{(\vec{x})^{2n}}{(2n)!} + \sum_{n \in \N} \frac{(\vec{x})^{2n+1}}{(2n+1)!} \\
+		&= \sum_{n \in \N} (-1)^n \frac{\nor{\vec{x}}^{2n}}{(2n)!} + \sum_{n \in \N} (-1)^n \frac{\nor{\vec{x}}^{2n+1}}{(2n+1)!}\hat{x} \\
+		&= \cos(\nor{\vec{x}}) + \sin(\nor{\vec{x}}) \hat{x}.
+	\end{align*}
+
+Concluímos que
+	\begin{equation*}
+		\e^{x} = \e^{\esc{x}}\e^{\vec{x}} = \e^{\esc{x}}\left( \cos(\nor{\vec{x}}) + \sin(\nor{\vec{x}}) \hat{x} \right).
+	\end{equation*}
+
+\paragraph{Logaritmo}
+
+Pela decomposição polar, para todo $x \in \R^4 \setminus \{0\}$,
+	\begin{equation*}
+	x = \nor{x}(\cos(\phi_0 + \sin(\phi_0)\hat{x})).
+	\end{equation*}
+Assim, definimos
+	\begin{equation*}
+	\log(x) := \log(\nor{x}) + \phi_0 \hat{x}.
+	\end{equation*}
+Denotando $y := \log(x)$, vale $\esc{y} = \log(\nor{x})$ e $\vec{y}=\phi_0 \hat{x}$, portanto $\nor{\vec{y}} = \nor{\phi_0\hat{x}} = \phi_0$ e
+	\begin{equation*}
+	\hat{y} = \frac{\vec{y}}{\nor{\vec{y}}} = \frac{\phi_0 \hat{x}}{\phi_0} = \hat{x}.
+	\end{equation*}
+Concluímos que
+	\begin{align*}
+	x &= \nor{x}(\cos(\phi_0 + \sin(\phi_0)\hat{x})) \\
+		&= \e^{\log(\nor{x})}\e^{\phi_0 \hat{x}} \\
+		&= \e^{\log(\nor{x}) + \phi_0 \hat{x}} \\
+		&= \e^{\log(x)}.
+	\end{align*}
+
+
+
+
+
 
 \section{Funções multilineares}
 
@@ -1844,7 +2101,18 @@ Segue facilmente de \ref{prop:isomorfismos.multilineares.tensoriais} e \ref{prop
 
 \end{comment}
 
-\section{Diferenciação}
+
+
+
+
+
+
+
+
+
+
+
+\section{Diferenciação em espaços normados}
 
 A derivada de uma função real $\fun{f}{I}{\R}$, em que $I \subseteq \R$ é um intervalo, pode ser generalizada para funções entre espaços normados de duas formas principais:
 	\begin{enumerate}
@@ -1858,7 +2126,7 @@ Nesta seção, definiremos esses dois conceitos e mostraremos como eles se relac
 
 \subsection{Diferenciabilidade}
 
-\subsubsection{Diferencial e propriedade básicas}
+\subsubsection{Diferencial e propriedades}
 
 Consideremos espaços normados $\bm E$ e $\bm E'$ e um aberto $A \subseteq E$. A ideia por trás dessa definição de diferenciabilidade é a de que a função $\fun{f}{A}{E'}$ pode ser aproximada em uma vizinhança de um ponto $x \in A$ por seu valor no ponto mais o valor de uma função linear aplicada num vetor $v \in E$ de variação que mede quanto a função se afastou do ponto $x$. Ser aproximada, nesse sentido, quer dizer que o erro da aproximação será da ordem da norma do vetor variação $v$, de modo que a razão entre os dois vá a zero quando a variação vai a zero. A definição de função contínua pode ser pensada como um caso análogo de ordem menor: a função $f$ numa vizinhança do ponto $x$ pode ser aproximada por seu valor em $x$, e aproximada aqui quer dizer que a norma da diferença vai a zero quando o vetor variação vai a zero.% Mais à frente, as $k$-ésimas diferenciais da função $f$ serão definidas analogamente, considerando nesses casos funções multilineares.
 
@@ -1974,34 +2242,49 @@ Seja $x \in X$. Como $\D f|_x$ é linear e contínua, $\lim_{v \to 0} \D f|_x(v)
 
 A partir da estrutura algébrica dos espaços vetoriais (ou álgebras) dos espaços normados $\bm E$ e $\bm E'$, podem-se induzir operações entre funções desses espaços, como a adição de funções, a multiplicação de função por escalar e, no caso do espaço imagem ser uma álgebra, a multiplicação de funções. Quando realizamos essas operações entre funções diferenciáveis, as funções resultantes ainda serão diferenciáveis e a expressão de sua diferencial em termos das diferenciais das funções usadas na operação são muito simples. Essas propriedades são de fato análogas a propriedades de uma derivação em uma álgebra (ou anel): são lineares e satisfazem uma regra do produto, ou regra de derivação. No entanto, para que a diferencial seja de fato uma derivação, algumas restrições devem ser feitas; as propriedades a seguir podem portanto ser compreendidas como casos mais gerais das propriedades de uma derivação, pois são pontuais.
 
-\begin{exercise}[Propriedades de derivação]
+\begin{proposition}[Propriedades de derivação]
 \label{prop:diferencial.propriedades}
 Sejam $\bm E$ e $\bm E'$ espaços normados, $A \subseteq E$ um aberto e $X \subseteq A$.
 	\begin{enumerate}
-	\item Para todas funções $\fun{f,f'}{A}{E'}$ diferenciáveis em $X$, a função $\fun{f+f'}{A}{E'}$ é diferenciável em $X$ e, para todo $x \in X$,
+	\item Para todas funções $\fun{f,f'}{A}{E'}$ diferenciáveis em $X$, a função
+		\begin{equation*}
+		\fun{f+f'}{A}{E'}
+		\end{equation*}
+	é diferenciável em $X$ e, para todo $x \in X$,
 		\begin{equation*}
 		\D (f+f')|_x = \D f|_x + \D f'|_x;
 		\end{equation*}
-	\item Para todo $c \in \R$ e toda função $\fun{f}{A}{E'}$ diferenciável em $X$, a função $\fun{c f}{A}{E'}$ é diferenciável em $X$ e, para todo $x \in X$,
+	\item Para todo $c \in \R$ e toda função $\fun{f}{A}{E'}$ diferenciável em $X$, a função
+		\begin{equation*}
+		\fun{c f}{A}{E'}
+		\end{equation*}
+	é diferenciável em $X$ e, para todo $x \in X$,
 		\begin{equation*}
 		\D (c f)|_x = c\D f|_x;
 		\end{equation*}
-	\item Se $\bm E'$ é uma álgebra normada, para todas funções $\fun{f,f'}{A}{E'}$ diferenciáveis em $X$, a função $\fun{f f'}{A}{E'}$ é diferenciável em $X$ e, para todo $x \in X$ e todo $v \in E$,
+	\item Se $\bm E'$ é uma álgebra normada, para todas funções $\fun{f,f'}{A}{E'}$ diferenciáveis em $X$, a função
+		\begin{equation*}
+		\fun{f f'}{A}{E'}
+		\end{equation*}
+	é diferenciável em $X$ e, para todo $x \in X$ e todo $v \in E$,
 		\begin{equation*}
 		\D (f f')|_x(v) = \D f|_x(v)f'(x) + f(x)\D f'|_x(v);
 		\end{equation*}
-	\item Toda função linear $\fun{L}{E}{E'}$ é diferenciável e, para todo $x \in E$,
-		\begin{equation*}
-		\D L|_x = L;
-		\end{equation*}
 	\item Toda função constante $\fun{f}{A}{E'}$ é diferenciável e, para todo $x \in A$,
 		\begin{equation*}
-		\D f|_x = 0.
+		\D f|_x = 0;
+		\end{equation*}
+	\item Toda função linear $\fun{l}{E}{E'}$ é diferenciável e, para todo $x \in E$,
+		\begin{equation*}
+		\D l|_x = l.
 		\end{equation*}
 	\end{enumerate}
-\end{exercise}
-\begin{comment}
+\end{proposition}
 \begin{proof}
+Exercício.
+
+\begin{comment}
+
 	\begin{enumerate}
 	\item Para todo $t \in X$,
 		\begin{align*}
@@ -2032,8 +2315,10 @@ Sejam $\bm E$ e $\bm E'$ espaços normados, $A \subseteq E$ um aberto e $X \subs
 		\qedhere
 		\end{align*}
 	\end{enumerate}
-\end{proof}
+
 \end{comment}
+
+\end{proof}
 
 Além das operações entre funções diferenciáveis provenientes da estrutura algébrica dos espaços vetoriais (ou álgebras) em questão, uma operação possível entre funções diferenciáveis é a composição. Como é de se esperar, a composição de funções diferenciáveis é diferenciável e a expressão de sua diferencial em termos das diferenciais da funções envolvidas na composição é conhecida como a \textit{regra da cadeia}, pois as diferenciais são `encadeadas', calculadas uma em seguida da outra e compostas. Essa regra é uma das fórmulas mais úteis na teoria de diferenciação.
 
@@ -2108,6 +2393,36 @@ Sejam $\bm E$ e $\bm E'$ espaços normados, $\bm S' \subseteq \bm E'$ subespaço
 %\end{proof}
 
 % Seria legal também tentar achar uma proposição sobre restrição de domínio, provavelmente seria um subconjunto aberto.
+\begin{proof}
+Exercício.
+\end{proof}
+
+\subsubsection{Diferenciabilidade contínua}
+
+Como diferenciabilidade implica continuidade, se $f$ é diferenciável então $f$ é contínua, ou seja, $f \in \Cont(\bm A, \bm E)$. O espaço $\toplin(\bm E, \bm E')$ das funções lineares contínuas de $\bm E$ para $\bm E'$ é um espaço normado e então podemos nos perguntar se a diferencial $\fun{\D f}{A}{\toplin(\bm E, \bm E')}$ de $f$ é também contínua. Isso nem sempre vale.
+% Na seção sobre a diferenciabilidade parcial de uma função, usamos o conceito de $\Cont^1$-diferenciabilidade para achar condições necessárias e suficientes para a diferenciabilidade de uma função. Nesta seção, generalizaremos o conceito de diferenciabilidade contínua para outras ordens.
+
+A seguir, quando falamos de uma vizinhança de um conjunto $X$, queremos dizer um conjunto $V$ tal que $X \subseteq \Int{V}$, o que equivale a unirmos vizinhanças de cada ponto $x \in X$.
+
+\begin{definition}[Diferenciabilidade contínua]
+Sejam $\bm E$ e $\bm E'$ espaços normados, $A \subseteq E$ um aberto e $X \subseteq A$. Uma função de $A$ para $E'$ \emph{$\Cont^1$-diferenciável} (ou \emph{continuamente diferenciável}) \emph{em $X$} (ou \emph{em $x$} para $X = \{x\}$) é uma função $\fun{f}{A}{E'}$ tal que, para alguma vizinhança $V \subseteq A$ de $X$, $f$ é $m$-diferenciável em $V$ e sua diferencial $\fun{\D f}{V}{\toplin(\bm E, \bm E')}$ é contínua em $X$.
+
+Uma função \emph{$\Cont^1$-diferenciável} (ou \emph{continuamente diferenciável}) de $A$ para $E'$ é uma função $\fun{f}{A}{E'}$ $\Cont^1$-diferenciável em $A$ e o conjunto dessas funções é denotado $\Cont^1(\bm A,\bm E')$.
+\end{definition}
+
+
+\begin{exercise}
+\label{prop:diferencial.continua.propriedades}
+Sejam $\bm E$ e $\bm E'$ espaços normados, $A \subseteq E$ um aberto e $X \subseteq A$.
+	\begin{enumerate}
+	\item Para todas funções $\fun{f,f'}{A}{E'}$ $\Cont^1$-diferenciáveis em $X$, a função $\fun{f+f'}{A}{E'}$ é $\Cont^1$-diferenciável em $X$;
+	\item Para todo $c \in \R$ e toda função $\fun{f}{A}{E'}$ $\Cont^1$-diferenciável em $X$, a função $\fun{c f}{A}{E'}$ é $\Cont^1$-diferenciável em $X$;
+	\item Se $\bm E'$ é uma álgebra normada, para todas funções $\fun{f,f'}{A}{E'}$ $\Cont^1$-diferenciáveis em $X$, a função $\fun{f f'}{A}{E'}$ é $\Cont^1$-diferenciável em $X$;
+	\item Toda função constante $\fun{f}{A}{E'}$ é $\Cont^1$-diferenciável;
+	\item Toda função linear $\fun{l}{E}{E'}$ é $\Cont^1$-diferenciável.
+	\end{enumerate}
+\end{exercise}
+
 
 \subsection{Derivabilidade}
 
@@ -2264,32 +2579,6 @@ e portanto
 \end{proof}
 
 Note que as proposições sobre derivabilidade implicar continuidade e propriedades de derivação demonstradas nesta seção seguem diretamente como corolário dessa caracterização da derivada de uma trajetória pela diferencial e das respectivas propriedades da diferencial, mas elas foram demonstradas independentemente para motivar o conceito de derivada.
-
-\subsubsection{Classes de derivabilidade}
-
-%\begin{definition}[Derivabilidade]
-%Sejam $\bm E$ um espaço normado e $I \subseteq \R$ um intervalo aberto. Uma função \emph{derivável} de $I$ para $E$ é uma função $\fun{\gamma}{I}{E}$ derivável em $I$. Nesse caso, a \emph{derivada} de $\gamma$ é a função
-%	\begin{align*}
-%	\func{\der \gamma = \dot{\gamma}}{I}{E}{t}{\dot{\gamma}(t)}.
-%	\end{align*}
-%\end{definition}
-
-Como derivabilidade implica continuidade, se $\gamma$ é derivável então $\gamma$ é contínua, ou seja, $\gamma \in \Cont(\bm I,\bm E)$. Podemos nos perguntar se a derivada $\dot{\gamma}$ de $\gamma$ é também contínua. Isso nem sempre vale, embora seja possível mostrar que uma descontinuidade de uma função derivável sempre é uma descontinuidade essencial e nunca é uma descontinuidade de salto.
-
-%O conjunto das funções contínuas $\Cont(\bm I,\bm E)$ será também denotado $\Cont^0(\bm I,\bm E) := \Cont(\bm I,\bm E)$ e a função $\gamma$ será também denotada $\der^0 \gamma$.
-
-\begin{definition}[\ensuremath{\Cont^k}-derivabilidade]
-Sejam $\bm E$ um espaço normado e $I \subseteq \R$ um intervalo aberto. Para todo $k \in \N$, definimos indutivamente: 
-	\begin{enumerate}
-	\item Uma trajetória $\Cont^0$-\emph{derivável} de $I$ para $E$ é uma trajetória contínua $\fun{\gamma}{I}{E}$ e sua $0$-ésima derivada é $\der^0 \gamma := \gamma$. O conjunto dessas trajetórias é denotado $\Cont^0(\bm I,\bm E) := \Cont(\bm I,\bm E)$.
-	\item Uma trajetória $\Cont^k$-\emph{derivável} de $I$ para $E$ é uma trajetória derivável $\fun{\gamma}{I}{E}$ tal que $\fun{\der \gamma}{I}{E}$ é $\Cont^{k-1}$-derivável. Sua $k$-ésima derivada é
-		\begin{equation*}
-		\der^k \gamma := \der^{k-1} (\der \gamma).
-		\end{equation*}
-	O conjunto dessas trajetórias é denotado $\Cont^k(\bm I,\bm E)$.
-	\item Uma trajetória $\Cont^\infty$-\emph{derivável} (ou \emph{suave}) de $I$ para $E$ é uma trajetória $\fun{\gamma}{I}{E}$ tal que, para todo $k \in \N$, $\gamma$ é $\Cont^{k}$-derivável. O conjunto dessas trajetórias é denotado $\Cont^\infty(\bm I,\bm E)$.
-	\end{enumerate}
-\end{definition}
 
 \subsection{Derivabilidade direcional}
 
@@ -3157,14 +3446,14 @@ Sejam $\bm E$ e $\bm E'_0, \ldots, \bm E'_{n-1}$ espaços normados, $A \subseteq
 	\end{itemize}
 \end{proof}
 
-\begin{definition}[\ensuremath{\Cont^1}-Diferenciabilidade (local)]
-Sejam $\bm E$ e $\bm E'$ espaços normados, $A \subseteq E$ um aberto e $X \subseteq A$. Uma função de $A$ para $E'$ \emph{$\Cont^1$-diferenciável em $X$} (ou \emph{continuamente diferenciável em $X$}) é uma função $\fun{f}{A}{E'}$ que, para todo $x \in X$, satisfaz o seguinte: para alguma vizinhança $V \subseteq A$ de $x$, $f$ é diferenciável em $V$ e
-	\begin{align*}
-	\func{\D f}{V}{\toplin(\bm E,\bm E')}{y}{\D f|_y}
-	\end{align*}
-é contínua em $x$.
+%\begin{definition}[\ensuremath{\Cont^1}-Diferenciabilidade (local)]
+%Sejam $\bm E$ e $\bm E'$ espaços normados, $A \subseteq E$ um aberto e $X \subseteq A$. Uma função de $A$ para $E'$ \emph{$\Cont^1$-diferenciável em $X$} (ou \emph{continuamente diferenciável em $X$}) é uma função $\fun{f}{A}{E'}$ que, para todo $x \in X$, satisfaz o seguinte: para alguma vizinhança $V \subseteq A$ de $x$, $f$ é diferenciável em $V$ e
+%	\begin{align*}
+%	\func{\D f}{V}{\toplin(\bm E,\bm E')}{y}{\D f|_y}
+%	\end{align*}
+%é contínua em $x$.
 % TALVEZ DEVA MUDAR A DEFINIÇÃO PARA Df CONTÍNUA EM V.
-\end{definition}
+%\end{definition}
 
 
 % ADICIONAR UM ANÁLOGO AO TEOREMA ANTERIOR, MAS PARA $\Cont^1$-DIFERENCIABILIDADE.
@@ -3443,7 +3732,8 @@ Disso segue que $f$ é diferenciável em $x$ e
 \end{comment}
 
 \begin{proposition}
-Sejam $\bm E_0, \ldots, \bm E_{n-1}$ e $\bm E'$ espaços normados, $A \subseteq E_0 \times \cdots \times E_{n-1}$ um aberto e $\fun{f}{A}{E'}$ uma função. Então $f$ é $\Cont^1$-diferenciável se, e somente se, para todo $k \in [n]$, $f$ é $k$-parcialmente $\Cont^1$-diferenciável. Nesse caso, para todo $x \in A$% e todo $v \in E_0 \times \cdots \times E_{n-1}$
+\label{prop:continuamente.diferenciavel.parcialmente}
+Sejam $\bm E_0, \ldots, \bm E_{n-1}$ e $\bm E'$ espaços normados, $A \subseteq E_0 \times \cdots \times E_{n-1}$ um aberto e $\fun{f}{A}{E'}$ uma função. A função $f$ é $\Cont^1$-diferenciável se, e somente se, para todo $k \in [n]$, $f$ é $k$-parcialmente $\Cont^1$-diferenciável. Nesse caso, para todo $x \in A$% e todo $v \in E_0 \times \cdots \times E_{n-1}$
 ,
 %	\begin{equation*}
 %	\D f|_x(v) = \sum_{k \in [n]} \D_k f|_x(v_k).
@@ -3489,11 +3779,38 @@ No caso em que $\fun{f}{A \subseteq \R^d}{E'}$, as diferenciais parciais estão 
 
 % Possivelmente acrescentar a regra da cadeia nos casos em que domínio ou contradomínio são espaços produtos.
 
+Uma consequência direta desses resultados é a diferenciabilidade contínua de uma função multilinear.
+
+\begin{proposition}[Diferencial de função multilinear]
+Sejam $\bm E_0, \ldots, \bm E_{n-1}$ e $\bm E'$ espaços normados e $\fun{l}{E_0 \times \cdots \times E_{n-1}}{E'}$ uma função $n$-linear. A função $l$ é $\Cont^1$-diferenciável e, para todos $x,v \in E_0 \times \cdots \times E_{n-1}$,
+	\begin{equation*}
+	\D l|_x(v) = \sum_{k \in [n]} l(x_0,\ldots,x_{k-1},v_k,x_{k+1},\ldots,x_{n-1}).
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+Sejam $x \in E_0 \times \cdots \times E_{n-1}$ e $k \in [n]$. Da definição multilinearidade, $\fun{l \circ \inclu_{k,x}}{E_k}{E'}$ é linear, portanto $\Cont^1$-diferenciável e, para todo $w \in E_k$,
+	\begin{equation*}
+	l \circ \inclu_{k,x}(w) = l(x_0,\ldots,x_{k-1},w,x_{k+1},\ldots,x_{n-1}).
+	\end{equation*}
+
+Segue de \ref{prop:continuamente.diferenciavel.parcialmente} que $l$ é $\Cont^1$-diferenciável e
+	\begin{equation*}
+	\D l|_x(v) = \sum_{k \in [n]} l(x_0,\ldots,x_{k-1},v_k,x_{k+1},\ldots,x_{n-1}).
+	\qedhere
+	\end{equation*}
+\end{proof}
+
+
+
+
+
 
 
 \subsection{Multidiferenciabilidade}
 
-\subsubsection{Multidiferencial}
+Nesta seção, estudaremos a generalização dos tópicos estudados até agora para diferenciais de ordem superior. Brevemente, definiremos uma função multidiferenciável como uma função que pode ser diferenciada múltiplas vezes no sentido de que sua diferencial é diferenciável (para ordem $2$), a diferencial de sua diferencial é diferenciável (para ordem $3$), e assim por diante. As propriedades de diferenciabilidade relacionadas às operações algébricas, à composição e às diferenciais parciais serão também generalizadas, dessa vez com uma apresentação mais sucinta.
+
+\subsubsection{Multidiferencial e propriedades}
 
 Consideremos espaços normados $\bm E$ e $\bm E'$, um aberto $A \subseteq E$, $X \subseteq A$ e uma função $\fun{f}{A}{E'}$ diferenciável em $X$. Sua diferencial em $X$ é a função
 	\begin{align*}
@@ -3528,66 +3845,77 @@ Se por sua vez a função $\D^2 f$ estiver definida na vizinhança $V$, então p
 	\end{equation*}
 
 Definimos a seguir o conceito de multidiferenciabilidade baseado nessa discussão preliminar. No entanto, queremos entender a função $\D^m f|_x \in \toplin^m(\bm E, \bm E')$ como uma função $m$-linear, pois elas têm propriedades melhores. Para isso, usaremos o isomorfismo isométrico $I^{(m)}$.
-
+\ref{def:multidiferenciabilidade}
 \begin{definition}[Multidiferenciabilidade]
-Sejam $\bm E$ e $\bm E'$ espaços normados, $A \subseteq E$ um aberto e $X \subseteq A$. Para todo $k \in \NN$, definimos indutivamente:
+\label{def:multidiferenciabilidade}
+Sejam $\bm E$ e $\bm E'$ espaços normados, $A \subseteq E$ um aberto e $X \subseteq A$. Para todo $m \in \NN$, definimos indutivamente:
 	\begin{enumerate}
-	\item Uma função de $A$ para $E'$ \emph{$0$-diferenciável} \emph{em $X$} (ou \emph{em $x$} para $X = \{x\}$) é uma função $\fun{f}{A}{E'}$. Sua \emph{diferencial $0$-composta} é $\D^0 f := \fun{f}{A}{E'}$.
-	
-	Uma função de $A$ para $E'$ \emph{$0$-diferenciável} é uma função contínua $\fun{f}{A}{E'}$;
+	\item Uma função de $A$ para $E'$ \emph{$0$-diferenciável} \emph{em $X$} (ou \emph{em $x$} para $X = \{x\}$) é uma função $\fun{f}{A}{E'}$. Sua \emph{$0$-diferencial composta} é $\D^0 f := \fun{f}{A}{E'}$.
 
-	\item Uma função de $A$ para $E'$ \emph{$k$-diferenciável} \emph{em $X$} (ou \emph{em $x$} para $X = \{x\}$) é uma função $\fun{f}{A}{E'}$ tal que, para alguma vizinhança $V \subseteq A$ de $X$, $f$ é $(k-1)$-diferenciável em $V$ e sua diferencial $(k-1)$-composta $\fun{\D^{k-1} f}{V}{\toplin^{k-1}(\bm E, \bm E')}$ é diferenciável em $X$. Sua \emph{diferencial $k$-composta} é
+	Uma função \emph{$0$-diferenciável} de $A$ para $E'$ é uma função $\fun{f}{A}{E'}$;
+
+	\item Uma função de $A$ para $E'$ \emph{$m$-diferenciável} \emph{em $X$} (ou \emph{em $x$} para $X = \{x\}$) é uma função $\fun{f}{A}{E'}$ tal que, para alguma vizinhança $V \subseteq A$ de $X$, $f$ é $(m-1)$-diferenciável em $V$ e sua $(m-1)$-diferencial composta $\fun{\D^{m-1} f}{V}{\toplin^{m-1}(\bm E, \bm E')}$ é diferenciável em $X$. Sua \emph{$m$-diferencial composta} é
 		\begin{equation*}
-		\D^k f := \fun{\D (\D^{k-1} f)}{X}{\toplin^k(\bm E, \bm E')}
+		\D^m f := \fun{\D (\D^{m-1} f)}{X}{\toplin^m(\bm E, \bm E')}
 		\end{equation*}
-	e, para todo $x \in X$, a \emph{$k$-diferencial} de $f$ em $x$ é a função $k$-linear
+%	e, para todo $x \in X$, sua \emph{$m$-diferencial multilinear} em $x$ é a função $m$-linear
+%		\begin{equation*}
+%		\D^{(m)} f|_x := I^{(m)}(D^m f|_x).
+%		\end{equation*}
+	e sua \emph{$m$-diferencial multilinear} é
 		\begin{equation*}
-		\D^{(k)} f|_x := I^{(k)}(D^k f|_x).
+		\D^{(m)} f := \fun{I^{(m)} \circ (D^m f)}{X}{\toplin^{(m)}(\bm E, \bm E')}.
 		\end{equation*}
 
-	Uma função \emph{$k$-diferenciável} de $A$ para $E'$ é uma função $\fun{f}{A}{E'}$ $k$-diferenciável em $A$;
+	Uma função \emph{$m$-diferenciável} de $A$ para $E'$ é uma função $\fun{f}{A}{E'}$ $m$-diferenciável em $A$;
 	
-	\item Uma função de $A$ para $E'$ \emph{$\infty$-diferenciável} (ou \emph{suave}) \emph{em $X$} (ou \emph{em $x$} para $X = \{x\}$) é uma função $\fun{f}{A}{E'}$ tal que, para todo $k \in \N$, $f$ é $k$-diferenciável em $X$.
+	\item Uma função de $A$ para $E'$ \emph{$\infty$-diferenciável} (ou \emph{suave}) \emph{em $X$} (ou \emph{em $x$} para $X = \{x\}$) é uma função $\fun{f}{A}{E'}$ tal que, para todo $m \in \N$, $f$ é $m$-diferenciável em $X$.
 	
 	Uma função \emph{$\infty$-diferenciável} (ou \emph{suave}) de $A$ para $E'$ é uma função $\fun{f}{A}{E'}$ $\infty$-diferenciável em $A$.
 	\end{enumerate}
 \end{definition}
-% A proposição valeria para $k=0$ se definíssemos $(-1)$-diferenciável como sendo sinônimo de função.
-\begin{proposition}[Equivalência das diferenciais]
+
+Denominamos a função $\D^m f$ de $m$-diferencial composta de $f$ e a função $\D^{(m)} f$ de $m$-diferencial multilinear, mas essa nomenclatura não é padrão. Em geral, $\D^{(m)} f$ é considerada a $m$-diferencial e a função não recebe nome, mas preferimos enfatizar que elas estão relacionadas, embora sejam distintas, e ter como nos referirmos a cada uma delas. A proposição a seguir mostra que a diferenciabilidade de $\D^m f$ é equivalente à diferenciabilidade de $\D^{(m)} f$.
+
+% A proposição valeria para $m=0$ se definíssemos $(-1)$-diferenciável como sendo sinônimo de função.
+\begin{proposition}[Equivalência das multidiferenciais]
 \label{prop:multidiferencial.multilinear}
-Sejam $\bm E$ e $\bm E'$ espaços normados, $A \subseteq E$ um aberto, $X \subseteq A$ e $\fun{f}{A}{E'}$ uma função e $k \in \N \setminus \{0\}$. A função $f$ é $k$-diferenciável em $X$ se, e somente se, para alguma vizinhança de $X$, $f$ é $(k-1)$-diferenciável em $V$ e $\D^{(k-1)} f$ é diferenciável em $X$. Nesse caso, para todo $x \in X$ e todos $v_0, \ldots, v_{k-1} \in E$,
+Sejam $\bm E$ e $\bm E'$ espaços normados, $A \subseteq E$ um aberto, $X \subseteq A$ e $\fun{f}{A}{E'}$ uma função e $m \in \N \setminus \{0\}$. A função $f$ é $m$-diferenciável em $X$ se, e somente se, para alguma vizinhança de $X$, $f$ é $(m-1)$-diferenciável em $V$ e sua $(m-1)$-diferencial multilinear $\D^{(m-1)} f$ é diferenciável em $X$. Nesse caso, para todo $x \in X$ e todos $v_0, \ldots, v_{m-1} \in E$,
 	\begin{equation*}
-	\D^{(k)} f|_x(v_0,\ldots, v_{k-1}) = \D (\D^{(k-1)} f)|_x (v_0)(v_1,\ldots, v_{k-1}).
+	\D (\D^{(m-1)} f)|_x (v_0)(v_1,\ldots, v_{m-1}) = \D^{(m)} f|_x(v_0,\ldots, v_{m-1}).
 	\end{equation*}
 \end{proposition}
 \begin{proof}
-Para $k=1$ é direto. Consideremos $k \geq 2$.
+Para $m=1$ é direto. Consideremos $m \geq 2$.
 	\begin{itemize}
-	\item ($\Rightarrow$) Suponhamos que $f$ é $k$-diferenciável em $X$ e seja $V$ uma vizinhança de $X$ em que $f$ é $(k-1)$-diferenciável e tal que $\fun{\D^{k-1} f}{V}{\toplin^{k-1}(\bm E, \bm E')}$ é diferenciável em $X$. Como para todo $x' \in V$ vale que $\D^{(k-1)} f|_{x'} = I^{(k-1)} \circ \D^{k-1} f|_{x'}$, então $\D^{(k-1)} f = I^{(k-1)} \circ \D^{k-1} f$ e segue da linearidade e continuidade de $I^{(k)}$ que $\D^{(k-1)} f$ é diferenciável em $X$ e, pela regra da cadeia, para todo $x \in X$,
+	\item ($\Rightarrow$) Suponhamos que $f$ é $m$-diferenciável em $X$ e seja $V$ uma vizinhança de $X$ em que $f$ é $(m-1)$-diferenciável e tal que $\fun{\D^{m-1} f}{V}{\toplin^{m-1}(\bm E, \bm E')}$ é diferenciável em $X$. Como para todo $x' \in V$ vale que $\D^{(m-1)} f|_{x'} = I^{(m-1)} \circ \D^{m-1} f|_{x'}$, então $\D^{(m-1)} f = I^{(m-1)} \circ \D^{m-1} f$ e segue da linearidade e continuidade de $I^{(m)}$ que $\D^{(m-1)} f$ é diferenciável em $X$ e, pela regra da cadeia, para todo $x \in X$,
 		\begin{equation*}
-		\D (\D^{(k-1)} f)|_x = \D (I^{(k-1)} \circ \D^{k-1} f)|_x = I^{(k-1)} \circ \D^k f|_x.
+		\D (\D^{(m-1)} f)|_x = \D (I^{(m-1)} \circ \D^{m-1} f)|_x = I^{(m-1)} \circ \D^m f|_x.
 		\end{equation*}
 
-	\item ($\Leftarrow$) Suponhamos que, para alguma vizinhança $V$ de $X$, $f$ é $(k-1)$-diferenciável em $V$ e $\D^{(k-1)} f$ é diferenciável em $X$. Para todo $x' \in V$, vale que $\D^{k-1} f|_{x'} = (I^{(k)})\inv \circ \D^{(k-1)} f|_{x'}$, portanto $\D^{k-1} f = (I^{(k)})\inv \circ \D^{(k-1)} f$ e segue da linearidade e continuidade de $(I^{(k)})\inv$ que $\D^{k-1} f$ é diferenciável em $X$ e, pela regra da cadeia, para todo $x \in X$,
+	\item ($\Leftarrow$) Suponhamos que, para alguma vizinhança $V$ de $X$, $f$ é $(m-1)$-diferenciável em $V$ e $\D^{(m-1)} f$ é diferenciável em $X$. Para todo $x' \in V$, vale que $\D^{m-1} f|_{x'} = (I^{(m)})\inv \circ \D^{(m-1)} f|_{x'}$, portanto $\D^{m-1} f = (I^{(m)})\inv \circ \D^{(m-1)} f$ e segue da linearidade e continuidade de $(I^{(m)})\inv$ que $\D^{m-1} f$ é diferenciável em $X$ e, pela regra da cadeia, para todo $x \in X$,
 		\begin{equation*}
-		\D^k f|_x = \D (\D^{k-1} f)|_x = \D ((I^{(k)})\inv \circ \D^{(k-1)} f)|_x = (I^{(k)})\inv \circ \D(\D^{(k-1)} f)|_x.
+		\D^m f|_x = \D (\D^{m-1} f)|_x = \D ((I^{(m)})\inv \circ \D^{(m-1)} f)|_x = (I^{(m)})\inv \circ \D(\D^{(m-1)} f)|_x.
 		\end{equation*}
 	\end{itemize}
 
-Assim, concluímos que, caso $f$ seja $k$-diferenciável em $X$, vale que, para todo $x \in X$ e todos $v_0, \ldots, v_{k-1} \in E$,
+Assim, concluímos que, caso $f$ seja $m$-diferenciável em $X$, vale que, para todo $x \in X$ e todos $v_0, \ldots, v_{m-1} \in E$,
 	\begin{align*}
-	\D (\D^{(k-1)} f)|_x(v_0) (v_1, \ldots, v_{k-1}) &= I^{(k-1)} \circ \D^k f|_x (v_0) (v_1, \ldots, v_{k-1}) \\
-		&= I^{(k)} \circ \D^k f|_x (v_0, v_1, \ldots, v_{k-1}) \\
-		&= \D^{(k)} f|_x (v_0, v_1, \ldots, v_{k-1}).
+	\D (\D^{(m-1)} f)|_x(v_0) (v_1, \ldots, v_{m-1}) &= I^{(m-1)} \circ \D^m f|_x (v_0) (v_1, \ldots, v_{m-1}) \\
+		&= I^{(m)} \circ \D^m f|_x (v_0, v_1, \ldots, v_{m-1}) \\
+		&= \D^{(m)} f|_x (v_0, v_1, \ldots, v_{m-1}).
+		\qedhere
 	\end{align*}
 \end{proof}
 
-\begin{proposition}
+Além de ser multilinear, a multidiferencial $\D^{(m)} f|_x$ é simétrica, mais um dos motivos pelos quais ela é mais vantajosa em aplicações. Demonstraremos isso a seguir, primeiro para o caso $m=2$, então para o caso geral.
+
+\begin{proposition}[Simetria da multidiferencial]
 \label{prop:multidiferencial.simetrica}
-Sejam $\bm E$ e $\bm E'$ espaços normados, $A \subseteq E$ um aberto, $X \subseteq A$ e $\fun{f}{A}{E'}$ uma função $k$-diferenciável em $X$. Para todo $x \in X$, a função $k$-linear $\fun{\D^{(k)} f|_x}{E \times \cdots \times E}{E'}$ é simétrica.
+Sejam $\bm E$ e $\bm E'$ espaços normados, $A \subseteq E$ um aberto, $X \subseteq A$ e $\fun{f}{A}{E'}$ uma função $m$-diferenciável em $X$. Para todo $x \in X$, a função $m$-linear $\fun{\D^{(m)} f|_x}{E \times \cdots \times E}{E'}$ é simétrica.
 \end{proposition}
 \begin{proof}
-Seja $x \in X$. Demostraremos a proposição por indução em $k$. Os casos $k=0$ e $k=1$ são triviais. Consideramos o caso $k=2$. Seja $V \subseteq A$ uma vizinhança de $x$ tal que $f$ é diferenciável em $V$ e $\fun{\D f}{V}{\toplin(\bm E, \bm E')}$ é diferenciável em $x$.
+Seja $x \in X$. Demostraremos a proposição por indução em $m$. Os casos $m=0$ e $m=1$ são triviais. Consideramos o caso $m=2$. Seja $V \subseteq A$ uma vizinhança de $x$ tal que $f$ é diferenciável em $V$ e $\fun{\D f}{V}{\toplin(\bm E, \bm E')}$ é diferenciável em $x$.
 
 Sejam $v_0, v_1 \in E$. Se $v_0 = 0$ ou $v_1 = 0$, então
 	\begin{equation*}
@@ -3691,90 +4019,153 @@ portanto
 	\end{align*}
 o que implica que $\D^{(2)} f|_x(v_0,v_1) = \D^{(2)} f|_x(v_1,v_0)$.
 
-Agora, consideramos o caso em que $k>2$. Suponhamos que $f$ é $k$-diferenciável em $x$ e que toda função $(k-1)$-diferenciável tem $(k-1)$-diferencial simétrica. Seja $V \subseteq A$ uma vizinhança convexa de $x$ tal que $f$ é $(k-1)$-diferenciável em $V$ e $\fun{\D^{(k-1)} f}{V}{\toplin(\bm E, \bm E')}$ é diferenciável em $x$.
+Agora, consideramos o caso em que $m>2$. Suponhamos que $f$ é $m$-diferenciável em $x$ e que toda função $(m-1)$-diferenciável tem $(m-1)$-diferencial simétrica. Seja $V \subseteq A$ uma vizinhança convexa de $x$ tal que $f$ é $(m-1)$-diferenciável em $V$ e $\fun{\D^{(m-1)} f}{V}{\toplin(\bm E, \bm E')}$ é diferenciável em $x$.
 
-Por hipótese de indução, $\D^{(k-1)} f|_x$ é uma função $(k-1)$-linear simétrica. Como $\toplin_{S}^{(k-1)}(\bm E, \bm E')$ é um subespaço fechado de $\toplin^{(k-1)}(\bm E, \bm E')$ e $(I^{(k-1)})\inv$ é isomorfismo isométrico, então
+Por hipótese de indução, $\D^{(m-1)} f|_x$ é uma função $(m-1)$-linear simétrica. Como $\toplin_{S}^{(m-1)}(\bm E, \bm E')$ é um subespaço fechado de $\toplin^{(m-1)}(\bm E, \bm E')$ e $(I^{(m-1)})\inv$ é isomorfismo isométrico, então
 	\begin{equation*}
-	S' := (I^{(k-1)})\inv(\toplin_{S}^{(k-1)}(\bm E, \bm E'))
+	S' := (I^{(m-1)})\inv(\toplin_{S}^{(m-1)}(\bm E, \bm E'))
 	\end{equation*}
-é subespaço fechado de $\toplin^{k-1}(\bm E, \bm E')$, portanto segue de \ref{prop:restricao.imagem.diferencial} que $\fun{\D^{k-1} f}{V}{S'}$ é diferenciável e $\D^k f|_x = \D (\D^{k-1} f)|_x$ tem imagem em $S'$, ou seja, para todo $v \in E$ a função $\D (\D^{k-1} f)|_x(v) \in S'$, o que implica que $I^{(k-1)}(\D (\D^{k-1} f)|_x(v))$ é $(k-1)$-linear simétrica. Assim, segue de \ref{prop:multidiferencial.multilinear} que a função $k$-linear $\D^{(k)} f|_x$ é simétrica nas entradas $1, \ldots, k-1$; ou seja, para todos $v, v'_0, \ldots, v'_{k-2} \in E$ toda permutação $\fun{\sigma'}{[k-1]}{[k-1]}$,
+é subespaço fechado de $\toplin^{m-1}(\bm E, \bm E')$, portanto segue de \ref{prop:restricao.imagem.diferencial} que $\fun{\D^{m-1} f}{V}{S'}$ é diferenciável e $\D^m f|_x = \D (\D^{m-1} f)|_x$ tem imagem em $S'$, ou seja, para todo $v \in E$ a função $\D (\D^{m-1} f)|_x(v) \in S'$, o que implica que $I^{(m-1)}(\D (\D^{m-1} f)|_x(v))$ é $(m-1)$-linear simétrica. Assim, segue de \ref{prop:multidiferencial.multilinear} que a função $m$-linear $\D^{(m)} f|_x$ é simétrica nas entradas $1, \ldots, m-1$; ou seja, para todos $v, v'_0, \ldots, v'_{m-2} \in E$ toda permutação $\fun{\sigma'}{[m-1]}{[m-1]}$,
 	\begin{equation*}
-	\D^{(k)} f|_x (v, v'_{\sigma(0)} \ldots, v'_{\sigma(k-2)}) = \D^{(k)} f|_x (v, v'_0 \ldots, v'_{k-2}).
-	\end{equation*}
-
-Para obter simetria em todas as entradas, consideremos a função $\D^{k-2} f$. Vale que $\D^2(\D^{k-2} f)|_x = \D^k f|_x$ e que $\D^2(\D^{k-2} f)|_x \in \toplin^2(\bm E, \toplin^{k-2}(\bm E, \bm E')) = \toplin^k(\bm E, \bm E')$. Pelo caso base para $k=2$, vale que, para todos $v,v' \in E$,
-	\begin{equation*}
-	\D^{(2)}(\D^{k-2} f)|_x (v, v') = \D^{(2)}(\D^{k-2} f)|_x (v, v'),
-	\end{equation*}
-portanto, para todos $v, v', v''_0, \ldots, v''_{k-3} \in E$,
-	\begin{equation*}
-	\D^{(k)} f|_x (v, v', v''_0, \ldots, v''_{k-3}) = \D^{(k)} f|_x (v', v, v''_0, \ldots, v''_{k-3}).
+	\D^{(m)} f|_x (v, v'_{\sigma(0)} \ldots, v'_{\sigma(m-2)}) = \D^{(m)} f|_x (v, v'_0 \ldots, v'_{m-2}).
 	\end{equation*}
 
-Finalmente, sejam $v_0, \ldots, v_{k-1} \in E$ e $\fun{\sigma}{[k]}{[k]}$ uma permutação. Se $\sigma(0) = 0$, então $\sigma|_{\{1,\ldots,k-1\}}$ é uma permutação de $\{1,\ldots,k-1\}$, portanto
+Para obter simetria em todas as entradas, consideremos a função $\D^{m-2} f$. Vale que $\D^2(\D^{m-2} f)|_x = \D^m f|_x$ e que $\D^2(\D^{m-2} f)|_x \in \toplin^2(\bm E, \toplin^{m-2}(\bm E, \bm E')) = \toplin^m(\bm E, \bm E')$. Pelo caso base para $m=2$, vale que, para todos $v,v' \in E$,
+	\begin{equation*}
+	\D^{(2)}(\D^{m-2} f)|_x (v, v') = \D^{(2)}(\D^{m-2} f)|_x (v, v'),
+	\end{equation*}
+portanto, para todos $v, v', v''_0, \ldots, v''_{m-3} \in E$,
+	\begin{equation*}
+	\D^{(m)} f|_x (v, v', v''_0, \ldots, v''_{m-3}) = \D^{(m)} f|_x (v', v, v''_0, \ldots, v''_{m-3}).
+	\end{equation*}
+
+Finalmente, sejam $v_0, \ldots, v_{m-1} \in E$ e $\fun{\sigma}{[m]}{[m]}$ uma permutação. Se $\sigma(0) = 0$, então $\sigma|_{\{1,\ldots,m-1\}}$ é uma permutação de $\{1,\ldots,m-1\}$, portanto
 	\begin{align*}
-	\D^{(k)} f|_x (v_{\sigma(0)}, v_{\sigma(1)}, \ldots, v_{\sigma(k-1)}) &= \D^{(k)} f|_x (v_0, v_{\sigma(1)}, \ldots, v_{\sigma(k-1)}) \\
-		&= \D^{(k)} f|_x (v_0, v_1 \ldots, v_{k-1}).
+	\D^{(m)} f|_x (v_{\sigma(0)}, v_{\sigma(1)}, \ldots, v_{\sigma(m-1)}) &= \D^{(m)} f|_x (v_0, v_{\sigma(1)}, \ldots, v_{\sigma(m-1)}) \\
+		&= \D^{(m)} f|_x (v_0, v_1 \ldots, v_{m-1}).
 	\end{align*}
 
-S $\sigma(0) \neq 0$, seja $k_0 \in \{1, \ldots, k-1\}$ tal que $\sigma(k_0) = 0$. Podemos permutar as entradas $v_{\sigma(1)}$ e $v_{\sigma(k_0)} = v_0$, então as entradas $v_{\sigma(0)}$ com $v_{\sigma(k_0)} = v_0$, e por fim as restantes entradas $v_{\sigma(k')}$ para $k' \in [k] \setminus \{k_0\}$, e obtemos
+Se $\sigma(0) \neq 0$, seja $k_0 \in \{1, \ldots, m-1\}$ tal que $\sigma(k_0) = 0$. Podemos permutar as entradas $v_{\sigma(1)}$ e $v_{\sigma(k_0)} = v_0$, então as entradas $v_{\sigma(0)}$ com $v_{\sigma(k_0)} = v_0$, e por fim as restantes entradas $v_{\sigma(k)}$ para $k \in [m] \setminus \{k_0\}$, e obtemos
 	\begin{align*}
-	\D^{(k)} f|_x (v_{\sigma(0)}, v_{\sigma(1)}, \ldots, v_{\sigma(k-1)}) &= \D^{(k)} f|_x (v_{\sigma(0)}, v_{\sigma(1)}, \ldots, v_{\sigma(k_0)}, \ldots, v_{\sigma(k-1)}) \\
-		&= \D^{(k)} f|_x (v_{\sigma(0)}, v_{\sigma(1)}, \ldots, v_0, \ldots, v_{\sigma(k-1)}) \\
-		&= \D^{(k)} f|_x (v_{\sigma(0)}, v_0, \ldots, v_{\sigma(1)}, \ldots, v_{\sigma(k-1)}) \\
-		&= \D^{(k)} f|_x (v_0, v_{\sigma(0)}, \ldots, v_{\sigma(1)}, \ldots, v_{\sigma(k-1)}) \\
-		&= \D^{(k)} f|_x (v_0, v_1, \ldots, v_{k-1}).
+	\D^{(m)} f|_x (v_{\sigma(0)}, v_{\sigma(1)}, \ldots, v_{\sigma(m-1)}) &= \D^{(m)} f|_x (v_{\sigma(0)}, v_{\sigma(1)}, \ldots, v_{\sigma(k_0)}, \ldots, v_{\sigma(m-1)}) \\
+		&= \D^{(m)} f|_x (v_{\sigma(0)}, v_{\sigma(1)}, \ldots, v_0, \ldots, v_{\sigma(m-1)}) \\
+		&= \D^{(m)} f|_x (v_{\sigma(0)}, v_0, \ldots, v_{\sigma(1)}, \ldots, v_{\sigma(m-1)}) \\
+		&= \D^{(m)} f|_x (v_0, v_{\sigma(0)}, \ldots, v_{\sigma(1)}, \ldots, v_{\sigma(m-1)}) \\
+		&= \D^{(m)} f|_x (v_0, v_1, \ldots, v_{m-1}).
 		\qedhere
 	\end{align*}
 \end{proof}
 
+Assim como em \ref{prop:diferencial.propriedades}, também podemos demonstrar que adição, ação por escalar e (no caso de uma álgebra normada como contradomínio) multiplicação de funções preservam a multidiferenciabilidade das funções.
 
-
-
-
-
-
-\subsubsection{Multidiferenciabilidade contínua}
-
-Como diferenciabilidade implica continuidade, se $f$ é diferenciável então $f$ é contínua, ou seja, $f \in \Cont(\bm A, \bm E)$. O espaço $\toplin(\bm E, \bm E')$ é um espaço normado e então podemos nos perguntar se a diferencial $\fun{\D f}{A}{\toplin(\bm E, \bm E')}$ de $f$ é também contínua. Isso nem sempre vale. Na seção sobre a diferenciabilidade parcial de uma função, usamos o conceito de $\Cont^1$-diferenciabilidade para achar condições necessárias e suficientes para a diferenciabilidade de uma função. Nesta seção, generalizaremos o conceito de diferenciabilidade contínua para outras ordens.
-
-\begin{definition}[\ensuremath{\Cont^k}-Diferenciabilidade]
-Sejam $\bm E$ e $\bm E'$ espaços normados, $A \subseteq E$ um aberto e $X \subseteq A$. Para todo $k \in \NN$, definimos indutivamente:
+\begin{exercise}
+\label{prop:multidiferencial.propriedades}
+Sejam $\bm E$ e $\bm E'$ espaços normados, $A \subseteq E$ um aberto, $X \subseteq A$ e $m \in \NN$.
 	\begin{enumerate}
-	\item Uma função de $A$ para $E'$ \emph{$\Cont^0$-diferenciável} (ou \emph{$0$-continuamente diferenciável}) \emph{em $X$} (ou \emph{em $x$} para $X = \{x\}$) é uma função $\fun{f}{A}{E'}$ contínua em $X$.
-	
-	Uma função de $A$ para $E'$ \emph{$\Cont^0$-diferenciável} (ou \emph{$0$-continuamente diferenciável}) é uma função contínua $\fun{f}{A}{E'}$ e o conjunto dessas funções é denotado $\Cont^0(\bm A,\bm E') := \Cont(\bm A,\bm E')$.
+	\item Para todas funções $\fun{f,f'}{A}{E'}$ $m$-diferenciáveis em $X$, a função
+		\begin{equation*}
+		\fun{f+f'}{A}{E'}
+		\end{equation*}
+	é $m$-diferenciável em $X$;
+	\item Para todo $c \in \R$ e toda função $\fun{f}{A}{E'}$ $m$-diferenciável em $X$, a função
+		\begin{equation*}
+		\fun{c f}{A}{E'}
+		\end{equation*}
+	é $m$-diferenciável em $X$;
+	\item Se $\bm E'$ é uma álgebra normada, para todas funções $\fun{f,f'}{A}{E'}$ $m$-diferenciáveis em $X$, a função
+		\begin{equation*}
+		\fun{f f'}{A}{E'}
+		\end{equation*}
+	é $m$-diferenciável em $X$;
+	\item Toda função constante $\fun{f}{A}{E'}$ é $m$-diferenciável;
+	\item Toda função linear $\fun{l}{E}{E'}$ é $m$-diferenciável.
+	\end{enumerate}
+\end{exercise}
 
-	\item Uma função de $A$ para $E'$ \emph{$\Cont^k$-diferenciável} (ou \emph{$k$-continuamente diferenciável}) \emph{em $X$} (ou \emph{em $x$} para $X = \{x\}$) é uma função $\fun{f}{A}{E'}$ tal que, para alguma vizinhança $V \subseteq A$ de $X$, $f$ é diferenciável em $V$ e sua diferencial $\fun{\D f}{V}{\toplin(\bm E, \bm E')}$ é $\Cont^{k-1}$-diferenciável em $X$.
-	
-%	Uma função de $A$ para $E'$ \emph{$\Cont^k$-diferenciável} (ou $k$-\emph{continuamente diferenciável}) \emph{em $X$} (ou \emph{em $x$} para $X = \{x\}$) é uma função $\fun{f}{A}{E'}$ tal que, para todo $x \in X$, vale o seguinte: para alguma vizinhança $V_x \subseteq A$ de $x$, $f$ é diferenciável em $V_x$ e sua diferencial $\fun{\D f}{V_x}{\toplin(\bm E, \bm E')}$ é $\Cont^{k-1}$-diferenciável em $x$.
-	
-	Uma função \emph{$\Cont^k$-diferenciável} de $A$ para $E'$ é uma função $\fun{f}{A}{E'}$ $\Cont^k$-diferenciável em $A$ e o conjunto dessas funções é denotado $\Cont^k(\bm A,\bm E')$.
 
-	\item Uma função de $A$ para $E'$ \emph{$\Cont^\infty$-diferenciável} (ou \emph{$\infty$-continuamente diferenciável} ou \emph{suave}) \emph{em $X$} (ou \emph{em $x$} para $X = \{x\}$) é uma função $\fun{f}{A}{E'}$ tal que, para todo $k \in \N$, $f$ é $\Cont^{k}$-diferenciável em $X$.
+\subsubsection{Multiderivabilidade}
+
+Da mesma forma que podemos repetidamente diferenciar uma função, podemos repetidamente derivar uma trajetória. A seguir definiremos o conceito de derivadas múltiplas e demonstraremos que ele é equivalente à diferenciação múltipla para trajetórias.
+
+\begin{definition}[Multiderivabilidade]
+Sejam $\bm E$ um espaço normado, $I \subseteq E$ um intervalo aberto e $X \subseteq I$. Para todo $m \in \NN$, definimos indutivamente:
+	\begin{enumerate}
+	\item Uma trajetória de $I$ para $E$ \emph{$0$-derivável} \emph{em $X$} (ou \emph{em $t$} para $X = \{t\}$) é uma trajetória $\fun{\gamma}{I}{E}$. Sua \emph{$0$-derivada} é $\der^0 f := \fun{f}{A}{E'}$.
 	
-	Uma função \emph{$\Cont^\infty$-diferenciável} (ou \emph{$\infty$-continuamente diferenciável} ou \emph{suave}) de $A$ para $E'$ é uma função $\fun{f}{A}{E'}$ $\Cont^{\infty}$-diferenciável em $A$ e o conjunto dessas funções é denotado $\Cont^\infty(\bm A,\bm E')$.
+	Uma trajetória \emph{$0$-derivável} de $I$ para $E$ é uma trajetória $\fun{f}{I}{E}$;
+
+	\item Uma trajetória de $I$ para $E$ \emph{$m$-derivável} \emph{em $X$} (ou \emph{em $t$} para $X = \{t\}$) é uma trajetória $\fun{\gamma}{I}{E}$ tal que, para alguma vizinhança $V \subseteq I$ de $X$, $\gamma$ é $(m-1)$-diferenciável em $V$ e sua $(m-1)$-derivada $\fun{\der^{m-1} f}{V}{E}$ é derivável em $X$. Sua \emph{$m$-derivada} é
+		\begin{equation*}
+		\der^m f := \fun{\der (\der^{m-1} f)}{X}{E}
+		\end{equation*}
+	e, para todo $t \in X$, a \emph{$m$-derivada} de $f$ em $x$ é $\der^m f(t)$.
+
+	Uma trajetória \emph{$m$-derivável} de $I$ para $E$ é uma trajetória $\fun{\gamma}{I}{E}$ $m$-derivável em $I$;
+	
+	\item Uma trajetória de $I$ para $E$ \emph{$\infty$-derivável} (ou \emph{suave}) \emph{em $X$} (ou \emph{em $t$} para $X = \{t\}$) é uma trajetória $\fun{\gamma}{I}{E}$ tal que, para todo $m \in \N$, $\gamma$ é $m$-derivável em $X$.
+	
+	Uma trajetória \emph{$\infty$-derivável} (ou \emph{suave}) de $I$ para $E$ é uma trajetória $\fun{\gamma}{I}{E}$ $\infty$-derivável em $I$.
 	\end{enumerate}
 \end{definition}
 
+\begin{proposition}
+\label{prop:multidiferenciabilidade.multiderivabilidade}
+Sejam $\bm E$ um espaço normado, $I \subseteq \R$ aberto, $X \subseteq I$ e $m \in \N \setminus \{0\}$. Uma trajetória $\fun{\gamma}{I}{E}$ é $m$-diferenciável em $X$ se, e somente se, é $m$-derivável em $X$. Nesse caso, para todo $t \in X$, vale $\nor{\D^{(m)} f|_t} = \nor{\der^m f(t)}$ e, para todos $c_0, \ldots, c_{m-1} \in \R$,
+	\begin{equation*}
+	\D^{(m)} f|_t(c_0, \ldots, c_{m-1}) = c_0 \cdots c_{m-1} \der^m f(t).
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+Exercício.
+\end{proof}
+
+\subsubsection{Multidiferenciabilidade contínua}
+
+Assim como no caso da continuidade da diferencial, a multidiferencial de uma função $f$ nem sempre é contínua. Nesta seção, generalizaremos o conceito de diferenciabilidade contínua para multidiferenciabilidade.
+
 \begin{comment}
-\begin{definition}[\ensuremath{\Cont^k}-Diferenciabilidade]
-Sejam $\bm E$ e $\bm E'$ espaços normados e $A \subseteq E$ um aberto. Para todo $k \in \N$, definimos indutivamente:
+\begin{definition}[Multidiferenciabilidade contínua]
+Sejam $\bm E$ e $\bm E'$ espaços normados, $A \subseteq E$ um aberto e $X \subseteq A$. Para todo $m \in \NN$, definimos indutivamente:
 	\begin{enumerate}
-	\item Uma função $\Cont^0$-\emph{diferenciável} de $A$ para $E'$ é uma função contínua $\fun{f}{A}{E'}$ e sua \emph{$0$-ésima diferencial} é $\D^0 f := f$. O conjunto dessas funções é denotado $\Cont^0(\bm A,\bm E') := \Cont(\bm A,\bm E')$.
-	\item Uma função $\Cont^k$-\emph{diferenciável} de $A$ para $E'$ é uma função diferenciável $\fun{f}{A}{E'}$ tal que $\fun{\D f}{A}{\toplin(\bm E, \bm E')}$ é $\Cont^{k-1}$-diferenciável. Sua \emph{$k$-ésima diferencial} é
-		\begin{equation*}
-		\D^k f := \D^{k-1} (\D f).
-		\end{equation*}
-	O conjunto dessas funções é denotado $\Cont^k(\bm A,\bm E')$.
-	\item Uma função $\Cont^\infty$-\emph{diferenciável} (ou \emph{suave}) de $A$ para $E'$ é uma função $\fun{f}{A}{E'}$ tal que, para todo $k \in \N$, $f$ é $\Cont^{k}$-diferenciável. O conjunto dessas funções é denotado $\Cont^\infty(\bm A,\bm E')$.
+	\item Uma função de $A$ para $E'$ \emph{$\Cont^0$-diferenciável} (ou \emph{continuamente $0$-diferenciável}) \emph{em $X$} (ou \emph{em $x$} para $X = \{x\}$) é uma função $\fun{f}{A}{E'}$ contínua em $X$.
+	
+	Uma função de $A$ para $E'$ \emph{$\Cont^0$-diferenciável} (ou \emph{continuamente $0$-diferenciável}) é uma função contínua $\fun{f}{A}{E'}$ e o conjunto dessas funções é denotado $\Cont^0(\bm A,\bm E') := \Cont(\bm A,\bm E')$.
+
+	\item Uma função de $A$ para $E'$ \emph{$\Cont^m$-diferenciável} (ou \emph{continuamente $m$-diferenciável}) \emph{em $X$} (ou \emph{em $x$} para $X = \{x\}$) é uma função $\fun{f}{A}{E'}$ tal que, para alguma vizinhança $V \subseteq A$ de $X$, $f$ é diferenciável em $V$ e sua diferencial $\fun{\D f}{V}{\toplin(\bm E, \bm E')}$ é $\Cont^{m-1}$-diferenciável em $X$.
+	
+%	Uma função de $A$ para $E'$ \emph{$\Cont^m$-diferenciável} (ou $m$-\emph{continuamente diferenciável}) \emph{em $X$} (ou \emph{em $x$} para $X = \{x\}$) é uma função $\fun{f}{A}{E'}$ tal que, para todo $x \in X$, vale o seguinte: para alguma vizinhança $V_x \subseteq A$ de $x$, $f$ é diferenciável em $V_x$ e sua diferencial $\fun{\D f}{V_x}{\toplin(\bm E, \bm E')}$ é $\Cont^{m-1}$-diferenciável em $x$.
+	
+	Uma função \emph{$\Cont^m$-diferenciável} (ou \emph{continuamente $m$-diferenciável}) de $A$ para $E'$ é uma função $\fun{f}{A}{E'}$ $\Cont^m$-diferenciável em $A$ e o conjunto dessas funções é denotado $\Cont^m(\bm A,\bm E')$.
+
+	\item Uma função de $A$ para $E'$ \emph{$\Cont^\infty$-diferenciável} (ou \emph{continuamente $\infty$-diferenciável} ou \emph{suave}) \emph{em $X$} (ou \emph{em $x$} para $X = \{x\}$) é uma função $\fun{f}{A}{E'}$ tal que, para todo $m \in \N$, $f$ é $\Cont^{m}$-diferenciável em $X$.
+	
+	Uma função \emph{$\Cont^\infty$-diferenciável} (ou \emph{continuamente $\infty$-diferenciável} ou \emph{suave}) de $A$ para $E'$ é uma função $\fun{f}{A}{E'}$ $\Cont^{\infty}$-diferenciável em $A$ e o conjunto dessas funções é denotado $\Cont^\infty(\bm A,\bm E')$.
 	\end{enumerate}
 \end{definition}
 \end{comment}
 
-Por \ref{prop:diferenciabilidade.derivabilidade}, a notação $\Cont^k(\bm A,\bm E')$ não é ambígua no caso $A = I \subseteq \R$. Para todo $k \in \N$, a diferencial é uma função
+\begin{definition}[Multidiferenciabilidade contínua]
+Sejam $\bm E$ e $\bm E'$ espaços normados, $A \subseteq E$ um aberto e $X \subseteq A$. Para todo $m \in \NN$, definimos indutivamente:
+	\begin{enumerate}
+	\item Uma função de $A$ para $E'$ \emph{$\Cont^0$-diferenciável} (ou \emph{continuamente $0$-diferenciável}) \emph{em $X$} (ou \emph{em $x$} para $X = \{x\}$) é uma função $\fun{f}{A}{E'}$ contínua em $X$.
+	
+	Uma função \emph{$\Cont^0$-diferenciável} (ou \emph{continuamente $0$-diferenciável}) de $A$ para $E'$ é uma função contínua $\fun{f}{A}{E'}$ e o conjunto dessas funções é denotado $\Cont^0(\bm A,\bm E') := \Cont(\bm A,\bm E')$;
+
+	\item Uma função de $A$ para $E'$ \emph{$\Cont^m$-diferenciável} (ou \emph{continuamente $m$-diferenciável}) \emph{em $X$} (ou \emph{em $x$} para $X = \{x\}$) é uma função $\fun{f}{A}{E'}$ tal que, para alguma vizinhança $V \subseteq A$ de $X$, $f$ é $m$-diferenciável em $V$ e %sua diferencial $m$-composta 
+	$\fun{\D^m f}{V}{\toplin^m(\bm E, \bm E')}$ é contínua em $X$.
+	
+	Uma função \emph{$\Cont^m$-diferenciável} (ou \emph{continuamente $m$-diferenciável}) de $A$ para $E'$ é uma função $\fun{f}{A}{E'}$ $\Cont^m$-diferenciável em $A$ e o conjunto dessas funções é denotado $\Cont^m(\bm A,\bm E')$;
+
+	\item Uma função de $A$ para $E'$ \emph{$\Cont^\infty$-diferenciável} (ou \emph{continuamente $\infty$-diferenciável} ou \emph{suave}) \emph{em $X$} (ou \emph{em $x$} para $X = \{x\}$) é uma função $\fun{f}{A}{E'}$ tal que, para todo $m \in \N$, $f$ é $\Cont^{m}$-diferenciável em $X$.
+	
+	Uma função \emph{$\Cont^\infty$-diferenciável} (ou \emph{continuamente $\infty$-diferenciável} ou \emph{suave}) de $A$ para $E'$ é uma função $\fun{f}{A}{E'}$ $\Cont^{\infty}$-diferenciável em $A$ e o conjunto dessas funções é denotado $\Cont^\infty(\bm A,\bm E')$.
+	\end{enumerate}
+\end{definition}
+
+%Por \ref{prop:diferenciabilidade.derivabilidade}, a notação $\Cont^m(\bm A,\bm E')$ não é ambígua no caso $A = I \subseteq \R$.
+Para todo $m \in \N$, a diferencial é uma função
 	\begin{align*}
-	\func{\D}{\Cont^{k}(\bm A, \bm E')}{\Cont^{k-1}(\bm A, \bm E)}{f}{\D f}
+	\func{\D}{\Cont^{m}(\bm A, \bm E')}{\Cont^{m-1}(\bm A, \bm E)}{f}{\D f}
 	\end{align*}
 e, quando nos restringimos a $\Cont^\infty(\bm A, \bm E')$,
 	\begin{align*}
@@ -3784,16 +4175,120 @@ e, quando nos restringimos a $\Cont^\infty(\bm A, \bm E')$,
 O espaço $\Cont^\infty(\bm A, \bm E')$ é um espaço linear sobre $\R$ e \ref{prop:diferencial.propriedades} mostra que $\D$ é uma função linear em $\Cont^\infty(\bm A, \bm E')$. No entanto, ela nem sempre é contínua. No caso em que $\bm E'$ é uma álgebra, também por \ref{prop:diferencial.propriedades} concluímos que $\D$ é uma derivação em $\Cont^\infty(\bm A, \bm E')$. Em especial, para $E' = \R$, $\D$ é uma derivação em $\Cont^\infty(\bm A, \R)$. Essa perspectiva será importante no estudo da derivada exterior de formas, abordado mais à frente.
 
 \begin{exercise}
-Sejam $\bm E$ e $\bm E'$ espaços normados, $A \subseteq E$ um aberto, $X \subseteq A$ e $\fun{f}{A}{E'}$ uma função. Então $f$ é $\Cont^r$-diferenciável em $X$ se, e somente se, para todo $k \in [n]$, $f$ é $\Cont^k$-diferenciável em $X$ e $\D^k f$ é $\Cont^{r-k}$-diferenciável em $X$.
+Sejam $\bm E$ e $\bm E'$ espaços normados, $A \subseteq E$ um aberto, $X \subseteq A$, $\fun{f}{A}{E'}$ uma função e $m \in \N$. Então $f$ é $\Cont^m$-diferenciável em $X$ se, e somente se, para todo $k \in [m]$, $f$ é $\Cont^k$-diferenciável em $X$ e $\D^k f$ é $\Cont^{m-k}$-diferenciável em $X$.
 \end{exercise}
 
 
+\begin{exercise}
+\label{prop:multidiferencial.continua.propriedades}
+Sejam $\bm E$ e $\bm E'$ espaços normados, $A \subseteq E$ um aberto, $X \subseteq A$ e $m \in \NN$.
+	\begin{enumerate}
+	\item Para todas funções $\fun{f,f'}{A}{E'}$ $\Cont^m$-diferenciáveis em $X$, a função $\fun{f+f'}{A}{E'}$ é $\Cont^m$-diferenciável em $X$;
+	\item Para todo $c \in \R$ e toda função $\fun{f}{A}{E'}$ $\Cont^m$-diferenciável em $X$, a função $\fun{c f}{A}{E'}$ é $\Cont^m$-diferenciável em $X$;
+	\item Se $\bm E'$ é uma álgebra normada, para todas funções $\fun{f,f'}{A}{E'}$ $\Cont^m$-diferenciáveis em $X$, a função $\fun{f f'}{A}{E'}$ é $\Cont^m$-diferenciável em $X$;
+	\item Toda função constante $\fun{f}{A}{E'}$ é $\Cont^m$-diferenciável;
+	\item Toda função linear $\fun{l}{E}{E'}$ é $\Cont^m$-diferenciável.
+	\end{enumerate}
+\end{exercise}
+
+
+\subsubsection{Multiderivabilidade contínua}
+
+Como no caso da diferencial, podemos generalizar derivabilidade contínua para multiderivabilidade contínua. Como derivabilidade implica continuidade, se $\gamma$ é derivável então $\gamma$ é contínua, ou seja, $\gamma \in \Cont(\bm I,\bm E)$. Podemos nos perguntar se a derivada $\dot{\gamma}$ de $\gamma$ é também contínua. Isso nem sempre vale, embora seja possível mostrar que uma descontinuidade de uma função derivável sempre é uma descontinuidade essencial e nunca é uma descontinuidade de salto.
+
+\begin{comment}
+
+\begin{definition}[Multiderivabilidade]
+Sejam $\bm E$ um espaço normado e $I \subseteq \R$ um intervalo aberto. Para todo $k \in \N$, definimos indutivamente: 
+	\begin{enumerate}
+	\item Uma trajetória $\Cont^0$-\emph{derivável} de $I$ para $E$ é uma trajetória contínua $\fun{\gamma}{I}{E}$ e sua $0$-ésima derivada é $\der^0 \gamma := \gamma$. O conjunto dessas trajetórias é denotado $\Cont^0(\bm I,\bm E) := \Cont(\bm I,\bm E)$.
+	\item Uma trajetória $\Cont^k$-\emph{derivável} de $I$ para $E$ é uma trajetória derivável $\fun{\gamma}{I}{E}$ tal que $\fun{\der \gamma}{I}{E}$ é $\Cont^{k-1}$-derivável. Sua $k$-ésima derivada é
+		\begin{equation*}
+		\der^k \gamma := \der^{k-1} (\der \gamma).
+		\end{equation*}
+	O conjunto dessas trajetórias é denotado $\Cont^k(\bm I,\bm E)$.
+	\item Uma trajetória $\Cont^\infty$-\emph{derivável} (ou \emph{suave}) de $I$ para $E$ é uma trajetória $\fun{\gamma}{I}{E}$ tal que, para todo $k \in \N$, $\gamma$ é $\Cont^{k}$-derivável. O conjunto dessas trajetórias é denotado $\Cont^\infty(\bm I,\bm E)$.
+	\end{enumerate}
+\end{definition}
+
+\end{comment}
+
+\begin{definition}[Multiderivabilidade contínua]
+Sejam $\bm E$ um espaço normado, $I \subseteq \R$ um intervalo aberto e $X \subseteq I$. Para todo $m \in \NN$, definimos indutivamente:
+	\begin{enumerate}
+	\item Uma trajetória de $I$ para $E$ \emph{$\Cont^0$-derivável} (ou \emph{continuamente $0$-derivável}) em $X$ (ou \emph{em $t$} para $X=\{t\}$) é uma trajetória $\fun{\gamma}{I}{E}$ contínua em $X$ e sua $0$-ésima derivada é $\der^0 \gamma := \gamma$.
+
+	Uma trajetória \emph{$\Cont^0$-derivável} de $I$ para $E$ é uma trajetória contínua $\fun{\gamma}{I}{E}$ e sua $0$-ésima derivada é $\der^0 \gamma := \gamma$. O conjunto dessas trajetórias é denotado $\Cont^0(\bm I,\bm E) := \Cont(\bm I,\bm E)$.
+
+	\item
+
+	Uma trajetória $\Cont^m$-\emph{derivável} de $I$ para $E$ é uma trajetória derivável $\fun{\gamma}{I}{E}$ tal que $\fun{\der \gamma}{I}{E}$ é $\Cont^{m-1}$-derivável. Sua $m$-ésima derivada é
+		\begin{equation*}
+		\der^m \gamma := \der^{m-1} (\der \gamma).
+		\end{equation*}
+	O conjunto dessas trajetórias é denotado $\Cont^m(\bm I,\bm E)$;
+
+	\item
+
+	Uma trajetória $\Cont^\infty$-\emph{derivável} (ou \emph{suave}) de $I$ para $E$ é uma trajetória $\fun{\gamma}{I}{E}$ tal que, para todo $m \in \N$, $\gamma$ é $\Cont^{m}$-derivável. O conjunto dessas trajetórias é denotado $\Cont^\infty(\bm I,\bm E)$.
+	\end{enumerate}
+\end{definition}
+
+Por \ref{prop:multidiferenciabilidade.multiderivabilidade}, a notação $\Cont^m(\bm A,\bm E')$ não é ambígua no caso $A = I \subseteq \R$.
+
+
+
+\subsubsection{Multidiferenciabilidade da composição}
+
+\begin{proposition}
+Sejam $\bm E$, $\bm E'_0$, $\bm E'_1$ e $\bm E''$ espaços normados, $A \subseteq E$ um aberto, $X \subseteq A$, $m \in \N$, $\fun{f_0}{A}{E'_0}$ e $\fun{f_1}{A}{E'_1}$ funções $\Cont^m$-diferenciáveis em $X$ e $\fun{b}{E'_0 \times E'_1}{E''}$ função bilinear contínua. A função
+	\begin{align*}
+	\func{b(f,f')}{A}{E''}{x}{b(f(x),f'(x))}
+	\end{align*}
+é $\Cont^m$-diferenciável em $X$.
+\end{proposition}
+\begin{proof}
+Seja $x \in X$ e definamos $B := b(f,f')$. Provaremos por indução em $m$. Para $m=0$ é direto; consideremos o caso $m=1$. A função $b$ é bilinear e portanto $\Cont^\infty$-diferenciável e a função $(f,g)$ $B$ é composição de $b$ e $(f,f')$ e portanto é diferenciável em $x$ e, para todo $v \in E$,
+	\begin{equation*}
+	\D B|_x(v) = b(\D f_x(v),f'(x)) + b(f(x), \D f'|_x(v)).
+	\end{equation*}
+
+\end{proof}
 
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\cleardoublepage
 
 %\subsection{Teoremas fundamentais}
 
@@ -3824,7 +4319,7 @@ Em outras palavras, uma trajetória integral é uma solução da equação difer
 	\end{equation*}
 
 \begin{proposition}
-Sejam $\bm E$ um espaço normado, $A \subseteq E$ um aberto, $\fun{v}{A}{E}$ um campo vetorial em $A$ e $\fun{\gamma}{I}{A}$ uma trajetória integral de $v$. Se $v$ é  $\Cont^k$-diferenciável, então $\gamma$ é $\Cont^{k+1}$-diferenciável.
+Sejam $\bm E$ um espaço normado, $A \subseteq E$ um aberto, $\fun{v}{A}{E}$ um campo vetorial em $A$ e $\fun{\gamma}{I}{A}$ uma trajetória integral de $v$. Se $v$ é $\Cont^m$-diferenciável, então $\gamma$ é $\Cont^{m+1}$-diferenciável.
 \end{proposition}
 
 
@@ -4378,269 +4873,3 @@ Seja $f\colon \R^{d} \times \R^{d_0} \to \R^{d} \times \R^{d_1}$ uma função $\
 
 \end{comment}
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-
-
-
-
-
-
-
-
-\cleardoublepage
-
-\section{Álgebras normadas}
-
-Em geral, álgebra são definidas como espaços lineares com um produto bilinear associativo, e nós usaremos a propriedade de associatividade na grande maioria dos casos. No entanto, a propriedade de associatividade é às vezes dispensável, ou não vale (como no caso dos octônios), e por isso ressaltamos abaixo que as definições ainda valem sem a hipótese de associatividade.
-
-\begin{definition}
-Uma \emph{álgebra (associativa) normada} é um par $\mathbb A = (\bm A,\nor{\var})$ em que $\bm A = (A,\cdot)$ é uma álgebra (associativa) sobre um corpo $\bm C \subseteq \C$ e $\nor{\var}\colon A \to \R$ é uma norma em $\bm A$ satisfazendo, para todos $a,a' \in A$,
-	\begin{equation*}
-	\nor{aa'} \leq \nor{a}\nor{a'};
-	\end{equation*}
-Uma \emph{álgebra unitária normada} é uma álgebra normada $\mathbb A = (\bm A,\nor{\var})$ tal que $\bm A = (A,\cdot,1)$ é uma álgebra unitária e
-	\begin{equation*}
-	\nor{1} = 1.
-	\end{equation*}
-Uma \emph{álgebra invertível normada} é uma álgebra unitária normada $\mathbb A = (\bm A,\nor{\var})$ tal que $(A,\cdot,\inv,1)$ é uma álgebra invertível e, para todos $a \in A \setminus \{0\}$,
-	\begin{equation*}
-	\nor{a\inv} = \nor{a}\inv.
-	\end{equation*}
-\end{definition}
-
-Na proposição a seguir, usamos a associatividade do produto, mas de fato bastaria que o produto fosse alternativo, como no caso dos octônios.
-
-\begin{exercise}
-Seja $\mathbb A = (\bm A,\nor{\var})$ uma álgebra (associativa) invertível normada. Para todos $a,a' \in A$,
-	\begin{equation*}
-	\nor{aa'} = \nor{a}\nor{a'}.
-	\end{equation*}
-\end{exercise}
-\begin{proof}
-Se $a=0$, então $aa' = 0$ e $\nor{a}=0$, logo $\nor{a}\nor{a'}=0$, o que implica
-	\begin{equation*}
-	\nor{aa'} = \nor{0} = 0 = \nor{a}\nor{a'}.
-	\end{equation*}
-Se $a \in A \setminus \{0\}$,
-	\begin{align*}
-	\nor{a}\nor{a'} &= \nor{a}\nor{(a\inv a)a'} \\
-		&= \nor{a}\nor{a\inv (aa')} \\
-		&\leq \nor{a}\nor{a\inv} \nor{aa'} \\
-		&= \nor{a}\nor{a}\inv \nor{aa'} \\
-		&= \nor{aa'}.
-	\end{align*}
-Como vale $\nor{aa'} \leq \nor{a}\nor{a'}$, concluímos que
-	\begin{equation*}
-	\nor{aa'} = \nor{a}\nor{a'}.
-	\qedhere
-	\end{equation*}
-\end{proof}
-
-
-\subsection{Função exponencial}
-
-Consideremos uma álgebra normada unitária completa $\mathbb A$. Para todo $x \in A$, a sequência
-	\begin{equation*}
-	e_n(x) := \sum_{i=0}^{n} \frac{x^i}{i!}
-	\end{equation*}
-é uma sequência aproximante\footnote{Sequência de Cauchy.}, já que, para todos $n,n' \in \N^*$ com $n' > n$,
-	\begin{equation*}
-	\nor{e_{n'}(x)-e_n(x)} = \nor{\sum_{i=n+1}^{n'} \frac{x^i}{i!}} \leq \sum_{i=n+1}^{n'} \frac{\nor{x}^i}{i!}.
-	\end{equation*}
-Como a álgebra é completa, isso significa que $e_n(x)$ converge para um elemento
-	\begin{equation*}
-	\e^{x} := \lim_{n \to \infty} e_n(x) = \sum_{n \in \N} \frac{x^n}{n!}.
-	\end{equation*}
-
-\begin{definition}
-Seja $\mathbb A$ uma álgebra unitária normada completa. A \emph{função exponencial} em $\mathbb A$ é a função
-	\begin{align*}
-	\func{\exp}{A}{A}{x}{\e^{x} := \sum_{n \in \N} \frac{x^n}{n!}.}
-	\end{align*}
-\end{definition}
-
-\begin{proposition}
-Seja $\mathbb A$ uma álgebra unitária normada completa.
-	\begin{enumerate}
-	\item Para todo $x \in A$, $\nor{\exp(x)} \leq \e^{\nor{x}}$;
-	\item A função exponencial $\exp\colon A \to A$ é contínua;
-	\item $\exp(0) = 1$;
-	\item Para todos $x,y \in A$ tais que $xy=yx$,
-		\begin{equation*}
-		\exp(x+y) = \exp(x)\exp(y);
-		\end{equation*}
-	\item Para todo $x \in A$, $\exp(x)\inv = \exp(-x)$;
-	\item Para todo $x \in A$, $\exp(x) = \lim_{n \to \infty} \left( 1 + \frac{x}{n} \right)^n$.
-	\end{enumerate}
-\end{proposition}
-\begin{proof}
-	\begin{enumerate}
-	\item Basta notar que, para todos $x \in A$ e $n \in \N$,
-		\begin{equation*}
-		\nor{e_n(x)} = \nor{\sum_{i=0}^{n} \frac{x^i}{i!}} \leq \sum_{i=0}^{n} \frac{\nor{x}^i}{i!} = e_n(\nor{x}),
-		\end{equation*}
-logo $\nor{\exp(x)} \leq \e^{\nor{x}}$.
-	
-	\item Primeiro notamos que, para todos $x,y \in A$,
-		\begin{align*}
-		\nor{y^n-x^n} &= \nor{\sum_{i=1}^{n} y^{n-i}(y-x)x^{i-1}} \\
-			&\leq n(\nor{x} \opmax \nor{y})^{n-1}\nor{y-x},
-		\end{align*}
-portanto
-	\begin{align*}
-	\nor{\exp(y) - \exp(x)} &= \nor{\sum_{n=1}^\infty \frac{y^n-x^n}{n!}} \\
-		&\leq \sum_{n=1}^\infty \frac{\nor{y^n-x^n}}{n!} \\
-		&\leq \sum_{n=1}^\infty \frac{n(\nor{x} \opmax \nor{y})^{n-1}}{n!} \nor{y-x} \\
-		&= \e^{(\nor{x} \opmax \nor{y})}\nor{y-x},
-	\end{align*}
-o que mostra que $\exp$ é contínua.
-	
-	\item Segue de
-		\begin{equation*}
-		\exp(0) = \sum_{n \in \N} \frac{0^n}{n!} = 1 + \sum_{n \in \N^*} \frac{0^n}{n!} = 1.
-		\end{equation*}
-
-	\item Sejam $n \in \N$ e
-		\begin{equation*}
-		s_n := e_{2n}(x+y) - e_n(x)e_n(y) = \sum_{k=0}^{2n} \frac{(x+y)^k}{k!} - \left( \sum_{i=1}^n \frac{x^i}{i!} \right)\left( \sum_{j=1}^n \frac{y^j}{j!} \right).
-		\end{equation*}
-Como $xy=yx$,
-	\begin{equation*}
-	\frac{(x+y)^k}{k!} = \frac{1}{k!} \sum_{i=0}^k \frac{k!}{i!(k-i)!}x^i y^{k-i} = \sum_{i+j=k} \frac{x^i y^j}{i!j!}.
-	\end{equation*}
-Portanto
-	\begin{align*}
-	s_n &= \sum_{0 \leq i+j \leq 2n} \frac{x^i y^j}{i!j!} - \sum_{0 \leq i \leq n, 0 \leq j \leq n} \frac{x^i y^j}{i!j!} \\
-		&= \sum_{k=0}^{n-1} \frac{x^k}{k!} \sum_{n+1}^{2n-k} \frac{y^j}{j!} +  \sum_{k=0}^{n-1} \frac{y^k}{k!} \sum_{n+1}^{2n-k} \frac{x^j}{j!},
-	\end{align*}
-o que implica que
-	\begin{align*}
-	\nor{s_n} &\leq \sum_{k=0}^{n-1} \frac{\nor{x}^k}{k!} \sum_{n+1}^{2n-k} \frac{\nor{y}^j}{j!} +  \sum_{k=0}^{n-1} \frac{\nor{y}^k}{k!} \sum_{n+1}^{2n-k} \frac{\nor{x}^j}{j!} \\
-		&= \sum_{k=0}^{2n} \frac{(\nor{x}+\nor{y})^k}{k!} - \left( \sum_{i=1}^n \frac{\nor{x}^i}{i!} \right)\left( \sum_{j=1}^n \frac{\nor{y}^j}{j!} \right) \\
-		&= e_{2n}(\nor{x}+\nor{y}) - e_n(\nor{x})e_n(\nor{y}).
-	\end{align*}
-Assim segue que
-	\begin{equation*}
-	\nor{\exp(x+y) - \exp(x)\exp(y)} \leq \e^{\nor{x}\nor{y}}-\e^{\nor{x}}\e^{\nor{y}} = 0.
-	\end{equation*}
-	
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{comment}
-	\item Para todo $n \in \N$, como $xy=yx$,
-	\begin{equation*}
-	(x+y)^n = \sum_{i=0}^n \frac{n!}{i!(n-i)!}x^i y^{n-i} = n! \sum_{i+j=n} \frac{x^i}{i!}\frac{y^j}{j!}.
-	\end{equation*}
-Portanto
-	\begin{align*}
-	\exp(x+y) &= \sum_{n=0}^\infty \frac{(x+y)^n}{n!} \\
-		&= \sum_{n=0}^\infty \sum_{i+j=n} \frac{x^i y^j}{i!j!} \\
-		&= \left(\sum_{i=0}^\infty \frac{x^i}{i!} \right) \left(\sum_{i=0}^\infty \frac{y^j}{j!} \right) \\
-		&= \exp(x) \exp(y).
-	\end{align*}
-\end{comment}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	
-	\item Basta notar que, como $x(-x)=(-x)x$,
-		\begin{equation*}
-		\exp(x)\exp(-x) = \exp(x-x) = \exp(0) = 1.
-		\end{equation*}
-	
-	\item Exercício. \qedhere
-	\end{enumerate}
-\end{proof}
-
-
-\subsubsection{Exponencial dos complexos $\R^2$}
-
-Seja $x = x_0 + x_1 \ii \in \R^2$. Como $\R^2$ é comutativo,
-	\begin{equation*}
-	\e^{x} = \e^{x_0 + x_1 \ii} = \e^{x_0}\e^{x_1 \ii}.
-	\end{equation*}
-Devemos calcular, portanto, somente a exponencial $\e^{x_1 \ii}$. Como $\ii^2 = -1$, segue que, para todo $n \in \N$,
-	\begin{align*}
-	(x_1 \ii)^{2n} &= (x_1)^{2n}(\ii)^{2n} = (-1)^n (x_1)^{2n} \\
-	(x_1 \ii)^{2n+1} &= (x_1)^{2n+1}(\ii)^{2n+1} = (-1)^n (x_1)^{2n+1}\ii,
-	\end{align*}
-o que implica que
-	\begin{align*}
-	\e^{x_1 \ii} &= \sum_{n \in \N} \frac{(x_1 \ii)^n}{n!} \\
-		&= \sum_{n \in \N} \frac{(x_1 \ii)^{2n}}{(2n)!} + \sum_{n \in \N} \frac{(x_1 \ii)^{2n+1}}{(2n+1)!} \\
-		&= \sum_{n \in \N} (-1)^n \frac{(x_1)^{2n}}{(2n)!} + \sum_{n \in \N} (-1)^n \frac{(x_1)^{2n+1}}{(2n+1)!}\ii \\
-		&= \cos(x_1) + \sin(x_1)\ii.
-	\end{align*}
-
-Concluímos que
-	\begin{equation*}
-	\e^{x} = \e^{x_0}\e^{x_1 \ii} = \e^{x_0}(\cos(x_1) + \sin(x_1)\ii).
-	\end{equation*}
-
-\paragraph{Logaritmo} Pela decomposição polar, para todo $x \in \R^2 \setminus \{0\}$,
-	\begin{equation*}
-	x = \nor{x}(\cos(\theta)+\sin(\theta)\ii).
-	\end{equation*}
-Assim, definimos
-	\begin{equation*}
-	\log(x) := \log(\nor{x}) + \theta \ii,
-	\end{equation*}
-Concluímos que
-	\begin{align*}
-	x &= \nor{x}(\cos(\theta)+\sin(\theta) \ii) \\
-		&= \e^{\log(\nor{x})}\e^{\theta \ii} \\
-		&= \e^{\log(\nor{x}) + \theta \ii} \\
-		&= \e^{\log(x)}.
-	\end{align*}
-
-No entanto, é importante notar que, para todo $n \in \N$,
-	\begin{equation*}
-	\e^{(\theta+n\tau) \ii} = \cos(\theta+n\tau)+\sin(\theta+n\tau) \ii = \cos(\theta)+\sin(\theta) \ii = \e^{\theta \ii}
-	\end{equation*}
-
-\subsubsection{Exponencial dos quatérnios $\R^4$}
-
-Seja $x = \esc{x} + \vec{x} \in \R^4$, em que $\esc{x} = x_0$ e $\vec{x} = x_1 \ii_1 + x_2 \ii_2 + x_3 \ii_3$. Como $\esc{x}\vec{x} = \vec{x}\esc{x}$, segue que
-	\begin{equation*}
-	\e^{x} = \e^{\esc{x}+\vec{x}} = \e^{\esc{x}}\e^{\vec{x}}.
-	\end{equation*}
-
-Devemos calcular, portanto, somente a exponencial $\e^{\vec{x}}$. Lembremos que $\hat{x} = \frac{\vec{x}}{\nor{\vec{x}}}$ e que $\hat{x} \in \vec{\S}^2$, portanto $\hat{x}^2 = -1$. Segue que, para todo $n \in \N$,
-	\begin{align*}
-	(\vec{x})^{2n} &= (\nor{\vec{x}} \hat{x})^{2n} = (-1)^n \nor{\vec{x}}^{2n} \\
-	(\vec{x})^{2n+1} &= (\nor{\vec{x}} \hat{x})^{2n+1} = (-1)^n \nor{\vec{x}}^{2n+1}\hat{x},
-	\end{align*}
-o que implica que
-	\begin{align*}
-	\e^{\vec{x}} &= \sum_{n \in \N} \frac{(\vec{x})^n}{n!} \\
-		&= \sum_{n \in \N} \frac{(\vec{x})^{2n}}{(2n)!} + \sum_{n \in \N} \frac{(\vec{x})^{2n+1}}{(2n+1)!} \\
-		&= \sum_{n \in \N} (-1)^n \frac{\nor{\vec{x}}^{2n}}{(2n)!} + \sum_{n \in \N} (-1)^n \frac{\nor{\vec{x}}^{2n+1}}{(2n+1)!}\hat{x} \\
-		&= \cos(\nor{\vec{x}}) + \sin(\nor{\vec{x}}) \hat{x}.
-	\end{align*}
-
-Concluímos que
-	\begin{equation*}
-		\e^{x} = \e^{\esc{x}}\e^{\vec{x}} = \e^{\esc{x}}\left( \cos(\nor{\vec{x}}) + \sin(\nor{\vec{x}}) \hat{x} \right).
-	\end{equation*}
-
-\paragraph{Logaritmo}
-
-Pela decomposição polar, para todo $x \in \R^4 \setminus \{0\}$,
-	\begin{equation*}
-	x = \nor{x}(\cos(\phi_0 + \sin(\phi_0)\hat{x})).
-	\end{equation*}
-Assim, definimos
-	\begin{equation*}
-	\log(x) := \log(\nor{x}) + \phi_0 \hat{x}.
-	\end{equation*}
-Denotando $y := \log(x)$, vale $\esc{y} = \log(\nor{x})$ e $\vec{y}=\phi_0 \hat{x}$, portanto $\nor{\vec{y}} = \nor{\phi_0\hat{x}} = \phi_0$ e
-	\begin{equation*}
-	\hat{y} = \frac{\vec{y}}{\nor{\vec{y}}} = \frac{\phi_0 \hat{x}}{\phi_0} = \hat{x}.
-	\end{equation*}
-Concluímos que
-	\begin{align*}
-	x &= \nor{x}(\cos(\phi_0 + \sin(\phi_0)\hat{x})) \\
-		&= \e^{\log(\nor{x})}\e^{\phi_0 \hat{x}} \\
-		&= \e^{\log(\nor{x}) + \phi_0 \hat{x}} \\
-		&= \e^{\log(x)}.
-	\end{align*}
