@@ -16,3 +16,5 @@
 *.lof
 *.lot
 .vscode/settings.json
+.kile/livro.kilepr.gui
+livro.kilepr
