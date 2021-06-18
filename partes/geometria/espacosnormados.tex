@@ -61,7 +61,7 @@ Sejam $\bm C$ um corpo e $\abs{\var}$ uma norma em $\bm C$.
 		\begin{equation*}
 		\abs{\sum_{i \in [n]} c_i} \leq \sum_{i \in [n]} \abs{c_i};
 		\end{equation*}
-	\item Para todos $c,c' \in C$, $\abs{\abs{c'}-\abs{c}} \leq \abs{c'-c}$.		
+	\item Para todos $c,c' \in C$, $\abs{\abs{c'}-\abs{c}} \leq \abs{c'-c}$.
 	\end{enumerate}
 \end{proposition}
 \begin{proof}
@@ -76,15 +76,15 @@ logo $\abs{1}=0$ ou $\abs{1}=1$. Da separação de $\abs{\var}$, segue que $\abs
 		\begin{equation*}
 		\abs{-c} = \abs{-1}\abs{c}=\abs{c}.
 		\end{equation*}
-	
+
 	\item Seja $c \in C$. Temos que
 		\begin{equation*}
 		0 = \abs{0} = \abs{c-c} \leq \abs{c} + \abs{-c} = 2 \abs{c},
 		\end{equation*}
 logo $\abs{c} \geq 0$
-	
+
 	\item Segue por indução da subaditividade de $\abs{\var}$.
-	
+
 		\item Da subaditividade, segue que
 		\begin{equation*}
 		\abs{c'} = \abs{(c'-c)+c} \leq \abs{c'-c} + \abs{c},
@@ -139,7 +139,7 @@ Seja $(\bm C,\abs{\var})$ um corpo normado.
 		\begin{equation*}
 		\dist{\abs{c}}{\abs{c'}} = \abs{\abs{c'}-\abs{c}} \leq \abs{c'-c} \leq \delta = \varepsilon.
 		\end{equation*}
-	
+
 	\item Para mostrar a continuidade de $+$, podemos usar qualquer norma em $C \times C$; escolhemos a norma
 		\begin{align*}
 		\func{\abs{\var}_{C \times C}}{C \times C}{\intfa{0}{\infty}}{(c,c')}{\abs{c}+\abs{c'}}.
@@ -304,7 +304,7 @@ Seja $\bm E$ um espaço linear sobre um corpo normado $(\bm C,\abs{\var})$. Uma 
 Seja $(\bm E,\nor{\var})$ um espaço normado. A \emph{métrica} (induzida pela norma) de $(\bm E,\nor{\var})$ é a função
 	\begin{align*}
 	\func{\dist{\var}{\var}}{E \times E}{\R}{(v,v')}{\nor{v - v'}}.
-	\end{align*}	
+	\end{align*}
 A \emph{topologia de $(\bm E,\nor{\var})$} é a topologia de $(E,\dist{\var}{\var})$.
 \end{definition}
 
@@ -330,14 +330,14 @@ Reciprocamente, se $\dist{v}{v'}=0$, então $\nor{v-v'}=0$. Segue da separação
 	\begin{equation*}
 	\dist{v}{v'}=\nor{v-v'}=\nor{-1(v' - v)}=\abs{-1}\nor{v' - v}=\dist{v'}{v}.
 	\end{equation*}
-	
+
 	\item (Desigualdade triangular) Sejam $v,v',v'' \in E$. Então segue da subaditividade que
 	\begin{align*}
 	\dist{v}{v''} &= \nor{v-v''} \\
 		&=\nor{v-v'+v'-v''} \\
 		&\leq \nor{v-v'}+\nor{v'-v''} \\
 		&=\dist{v}{v'}+\dist{v'}{v''}.
-	\end{align*}	
+	\end{align*}
 	\end{enumerate}
 Agora, mostremos que $\dist{\var}{\var}$ é métrica linear.
 	\begin{enumerate}
@@ -345,7 +345,7 @@ Agora, mostremos que $\dist{\var}{\var}$ é métrica linear.
 		\begin{equation*}
 		\dist{v+w}{v'+w} = \nor{(v+w) - (v'+w)} = \nor{v-v'} = \dist{v}{v'}.
 		\end{equation*}
-	
+
 	\item (Homogeneidade absoluta) Sejam $v,v' \in E$ e $c \in C$. Então
 		\begin{equation*}
 		\dist{cv}{cv'} = \nor{cv-cv'} = \nor{c(v-v')} = \abs{c}\nor{v-v'} = \abs{c}\dist{v}{v'}. \qedhere
@@ -366,12 +366,12 @@ Sejam $\bm E$ um espaço linear sobre um corpo normado $(\bm C,\abs{\var})$ e $\
 Mostremos primeiro que a função é uma norma.
 	\begin{enumerate}
 	\item (Separação) Seja $v \in E$. Então $\nor{v} = \dist{v}{0} = 0$, logo da separação de $\dist{\var}{\var}$ segue que $v=0$.
-	
+
 	\item (Homogeneidade absoluta) Sejam $c \in C$ e $v \in E$. Então segue da homogeneidade absoluta de $\dist{\var}{\var}$ que
 		\begin{equation*}
 		\nor{cv} = \dist{cv}{0} = \abs{c}\dist{v}{0} = \abs{c}\nor{v}.
 		\end{equation*}
-	
+
 	\item (Subaditividade) Sejam $v,v' \in E$. Então da invariância por translação, da simetria e da desigualdade triangular de $\dist{\var}{\var}$ que
 		\begin{align*}
 		\nor{v+v'} &= \dist{v+v'}{0} \\
@@ -435,8 +435,8 @@ Seja $(\bm E,\nor{\var})$ um espaço normado.
 %		\begin{equation*}
 %		\abs{\nor{v'}-\nor{v}} \leq \nor{v'-v}.
 %		\end{equation*}
-%	
-%	\item 
+%
+%	\item
 %	\end{enumerate}
 %\end{proof}
 
@@ -460,7 +460,7 @@ Seja $(\bm E,\nor{\var})$ um espaço normado.
 %Seja $\bm E$ um espaço linear. Equivalência de normas em $\bm E$ é uma relação de equivalência.
 %\end{proposition}
 %\begin{proof}
-%(Reflexividade) Claramente vale, para todo $v \in E$, $\nor{v} \leq \nor{v}$. (Simetria) Vale por definição. (Transitividade) 
+%(Reflexividade) Claramente vale, para todo $v \in E$, $\nor{v} \leq \nor{v}$. (Simetria) Vale por definição. (Transitividade)
 %\end{proof}
 
 \begin{definition}
@@ -572,7 +572,7 @@ Sejam $(\bm E,\nor{\var})$ e $(\bm E',\nor{\var}')$ espaços normados e $L \in \
 		\begin{equation*}
 		\nor{L(v)}' \leq \nor{L}\nor{v};
 		\end{equation*}
-		
+
 	\item Valem as seguintes igualdades:
 		\begin{align*}
 		\nor{L} &= \inf\set{c \in \intfa{0}{\infty}}{\forall_{v \in E} \nor{L(v)} \leq c\nor{v}} \\
@@ -646,9 +646,9 @@ Sejam $(\bm E,\nor{\var})$ e $(\bm E',\nor{\var}')$ espaços normados. A funçã
 \begin{proof}
 	\begin{enumerate}
 	\item (Separação) Seja $L \in \toplin(\bm E,\bm E')$ tal que $\nor{L}=0$. De \ref{prop:distorcao.injetiva.sobrejetiva} segue que $L$ é constante e, como $L(0)=0$, $L=0$.
-	
+
 	\item (Homogeneidade absoluta) Segue de \ref{prop:distorcao.seminorma}.
-	
+
 	\item (Subaditividade) Segue de \ref{prop:distorcao.seminorma}.
 	\qedhere
 	\end{enumerate}
@@ -809,13 +809,13 @@ Sejam $\bm E$ um espaço vetorial sobre um corpo normado completo $(\bm C,\abs{\
 	\begin{enumerate}
 	\item A bola $\B$ é compacta se, e somente se, a dimensão de $\bm E$ é finita.
 	\item Se a dimensão de $\bm E$ é finita, todas normas em $\bm E$ são equivalentes;
-	\item Se a dimensão de $\bm E$ é finita, todas as normas fazem de $\bm E$ um espaço completo. 
+	\item Se a dimensão de $\bm E$ é finita, todas as normas fazem de $\bm E$ um espaço completo.
 	\end{enumerate}
 \end{proposition}
 \begin{proof}
 	\begin{enumerate}
 	\item Será demonstrado mais adiante.
-	
+
 	\item Vamos mostrar que toda norma em $\bm E$ é equivalente a $\nor{\cdot}_1$ e, como equivalência de normas é uma relação de equivalência, seguirá que todas normas são equivalentes em $\bm E$. Seja $\nor{\cdot}$ uma norma em $\bm E$. Para todo $v \in E$, definindo $c := \max_{i \in [d]} \nor{e_i}$, em que $\{e_i\}_{i \in [d]}$ é a base canônica de $\bm E$, segue que
 	\begin{equation*}
 	\nor{v} = \nor{\sum_{i=0}^{d-1} v_ie_i} \leq \sum_{i=0}^{d-1}\abs{v_i}\nor{e_i} \leq c\nor{v}_1.
@@ -836,7 +836,7 @@ segue que, para todo $i \in [d]$, a sequência $(v_n^i)_{n \in \N}$ é aproximan
 	\begin{equation*}
 	\lim_{n \conv \infty} \nor{v_n - v_\infty}_1 = \lim_{n \conv \infty} \sum_{i \in [d]} \abs{v_n^i - v_\infty^i} = 0,
 	\end{equation*}
-ou seja, $(v_n)_{n \in \N} \conv v_\infty$ e o espaço é completo.	
+ou seja, $(v_n)_{n \in \N} \conv v_\infty$ e o espaço é completo.
 	\end{enumerate}
 \end{proof}
 
@@ -896,7 +896,7 @@ pois $\sum_{x \in X} \abs{f(x)}^p < \infty$ e $\sum_{x \in X} \abs{f'(x)}^p < \i
 	\begin{equation*}
 	\sup_{x \in X} \abs{(cf+f')(x)} \leq \abs{c}\sup_{x \in X} \abs{f(x)} + \sup_{x \in X} \abs{f'(x)} < \infty,
 	\end{equation*}
-pois $\sup_{x \in X} \abs{f(x)} < \infty$ e $\sup_{x \in X} \abs{f'(x)} < \infty$. Isso mostra que $cf+f' \in \Smvl^\infty(X,C)$, portanto que $\Smvl^\infty(X,C)$ é um espaço linear, subespaço de $C^X$.	
+pois $\sup_{x \in X} \abs{f(x)} < \infty$ e $\sup_{x \in X} \abs{f'(x)} < \infty$. Isso mostra que $cf+f' \in \Smvl^\infty(X,C)$, portanto que $\Smvl^\infty(X,C)$ é um espaço linear, subespaço de $C^X$.
 \end{proof}
 
 Embora esses espaços possam ser definidos para quaisquer $p \in \intff{0}{\infty}$ e sejam espaços lineares em todos os casos, nem todos esses espaços admitem os mesmos tipos de estrutura além da de espaço linear.
@@ -988,7 +988,7 @@ Esta proposição auxiliará a demonstração da proposição seguinte.
 \label{ana:prop.desig.pot.soma}
 Sejam $a,b \in \intff{0}{\infty}$.
 	\begin{enumerate}
-%	\item 
+%	\item
 %		\begin{equation*}
 %		\frac{a+b}{1+a+b} \leq \frac{a}{1+a} + \frac{b}{1+b};
 %		\end{equation*}
@@ -1016,7 +1016,7 @@ Sejam $a,b \in \intff{0}{\infty}$.
 %			&\leq aa^{-q} + bb^{-q} \\
 %			&= a^p + b^p.
 %		\end{align*}
-	
+
 	\item Para $p \in \intfa{1}{\infty}$, como a função
 		\begin{align*}
 		\func{(\var)^p}{\intfa{0}{\infty}}{\intfa{0}{\infty}}{t}{t^p}
@@ -1046,7 +1046,7 @@ Como $\int \abs{f}^p \dd\med < \infty$ e $\int \abs{f'}^p \dd\med < \infty$,
 			&< \infty,
 		\end{align*}
 o que mostra que $cf+f' \in \Intg^p(\bm X,\bm C)$.
-	
+
 	\item Seja $p \in \intfa{1}{\infty}$. Segue de \ref{ana:prop.desig.pot.soma} e da homogeneidade absoluta e subaditividade de $\abs{\var}$ que
 		\begin{equation*}
 		\abs{cf+f'}^p \leq \abs{\abs{cf}+\abs{f'}}^p \leq 2^{p-1}\left( \abs{c}^p\abs{f}^p +  \abs{f'}^p \right).
@@ -1059,7 +1059,7 @@ Como $\int \abs{f}^p \dd\med < \infty$ e $\int \abs{f'}^p \dd\med < \infty$, seg
 		&< \infty,
 	\end{align*}
 o que mostra que $cf+f' \in \Intg^p(\bm X,\bm C)$.
-	
+
 	\item Para $p=\infty$, é claro que, como $\abs{cf+f'} \leq \abs{c}\abs{f} + \abs{f'}$,
 	\begin{equation*}
 	\supess(\abs{cf+f'}) \leq \abs{c}\supess(\abs{f}) + \supess(\abs{f'}) < \infty,
@@ -1069,7 +1069,7 @@ pois $\supess(\abs{f}) < \infty$ e $\supess(\abs{f'}) < \infty$, o que mostra qu
 \end{proof}
 
 \begin{definition}
-Sejam $\bm X$ um espaço de medida e $(\bm C, \abs{\var})$ um corpo normado. 
+Sejam $\bm X$ um espaço de medida e $(\bm C, \abs{\var})$ um corpo normado.
 	\begin{enumerate}
 %	\item A \emph{distância $0$} entre $f,f' \in \Menq(X,C)$ é
 %		\begin{equation*}
@@ -1111,12 +1111,12 @@ Por causa disso, chamaremos esses números de \textit{duais harmônicos}\footnot
 \begin{definition}
 A função \emph{dual harmônico} em $\intff{1}{\infty}$ é
 	\begin{align*}
-	\func{\dual}{\intff{1}{\infty}}{\intff{1}{\infty}}{p}{p\dual = 
+	\func{\dual}{\intff{1}{\infty}}{\intff{1}{\infty}}{p}{p\dual =
 	\begin{cases}
 		\infty,& p=1 \\
 		\displaystyle\frac{p}{p-1},& p \in \intaa{1}{\infty} \\
 		1,& p=\infty
-	\end{cases}	
+	\end{cases}
 	}.
 	\end{align*}
 \end{definition}
@@ -1166,12 +1166,12 @@ Sejam $p \in \intaa{1}{\infty}$, $q:= \frac{p}{p-1} \in \intaa{0}{\infty}$ (de m
 	\end{align*}
 	\begin{enumerate}
 	\item O mínimo de $f$ é atingido em $t=1$ e vale $f(1)=-\frac{1}{q}$;
-	
+
 	\item Para todo $t \in \intfa{0}{\infty}$,
 		\begin{equation*}
 		t \leq \frac{t^p}{p} + \frac{1}{q};
 		\end{equation*}
-	
+
 	\item Para todos $r,s \in \intfa{0}{\infty}$,
 		\begin{equation*}
 		rs \leq \frac{r^p}{p} + \frac{s^q}{q}.
@@ -1182,7 +1182,7 @@ Sejam $p \in \intaa{1}{\infty}$, $q:= \frac{p}{p-1} \in \intaa{0}{\infty}$ (de m
 Primeiro, ressaltamos que $q p\inv = (p-1)\inv$, $q p\inv - q = -1$ e $q p\inv +1=q$, pois isso facilitará as contas.
 	\begin{enumerate}
 	\item A função $f$ é claramente contínua e diferenciável em $\intaa{0}{\infty}$. A diferencial de $f$ é $\D f(t) = t^{p-1}-1$, o que implica que, se $\D f(t)=0$, $t=1$. Temos que $f(1)=\frac{1^p}{p}-1 = -\frac{p-1}{p} = -\frac{1}{q}$. Para mostrar que esse é o mínimo, basta notar que $f(0)=0 > -\frac{p-1}{p}$.
-	
+
 	\item Como $t=1$ é um ponto de mínimo, segue que
 		\begin{equation*}
 		-\frac{1}{q} = f(1) \leq \frac{t^p}{p}-t,
@@ -1191,7 +1191,7 @@ logo
 		\begin{equation*}
 		t \leq \frac{t^p}{p} + \frac{1}{q}.
 		\end{equation*}
-	
+
 	\item Para $r=0$ ou $s=0$, é direto notar que a desigualdade é válida. Para $r \neq 0$ e $s \neq 0$, tomamos $t=r s^{-qp\inv}$ na desigualdade do item anterior e segue que
 		\begin{equation*}
 		r s^{-qp\inv} \leq \left( r s^{-q p\inv} \right)^p p\inv + q\inv = r^p s^{-q} p\inv + q\inv,
@@ -1226,7 +1226,7 @@ portanto
 \label{prop:ana.desig.holder}
 Sejam $\bm X$ um espaço de medida, $(\bm C,\abs{\var})$ um corpo normado e $p \in \intff{1}{\infty}$. Para todas funções $f,f' \in \Menq(\bm X,\bm C)$,
 	\begin{equation*}
-%	\abs{\inte{f}{f'}}^2 \leq 
+%	\abs{\inte{f}{f'}}^2 \leq
 	\nor{ff'}_1 \leq \nor{f}_p \nor{f'}_{p\dual}.
 	\end{equation*}
 \end{proposition}
@@ -1254,16 +1254,16 @@ Para $p \in \intfa{0}{1}$, não se pode definir uma norma desse mesmo modo, pois
 Sejam $\bm X$ um espaço de medida e $(\bm C,\abs{\var})$ um corpo normado.
 	\begin{enumerate}
 	\item Para todo $p \in \intfa{0}{1}$, o espaço $(\Intg^p(\bm X,\bm C),\dist{\var}{\var}_p)$ é um espaço métrico invariante por translação. Se $(\bm C,\abs{\var})$ é completo, então $(\Intg^p(\bm X,\bm C),\dist{\var}{\var}_p)$ é completo.
-	
+
 	\item Para todo $p \in \intff{1}{\infty}$. O espaço $(\Intg^p(\bm X,\bm C),\nor{\var}_p)$ é um espaço normado. Se $(\bm C,\abs{\var})$ é completo, então $(\Intg^p(\bm X,\bm C),\nor{\var}_p)$ é completo.
 	\end{enumerate}
 \end{proposition}
 \begin{proof}
 	\begin{enumerate}
 	\item Exercício.
-	
+
 	\item (Separação) Seja $f \in \Intg^p(\bm X,\bm C)$ tal que $\nor{f}_p = 0$. Então $\abs{f}^p = 0$, portanto $f=0$.
-	
+
 (Homogeneidade absoluta) Sejam $c \in C$ e $f \in \Intg^p(\bm X,\bm C)$. Então
 		\begin{align*}
 		\nor{cf}_p &= \left( \int \abs{cf}^p \dd\med \right)^{p\inv} \\
@@ -1289,14 +1289,14 @@ Multiplicando por $\left( \nor{f+f'}_p \right)^{1-p}$ em ambos os lados, conclui
 		\begin{equation*}
 		\nor{f+f'}_p \leq \nor{f}_p + \nor{f'}_p.
 		\end{equation*}
-Isso mostra que $(\Intg^p(\bm X,\bm C),\nor{\var}_p)$ é um espaço normado. 
+Isso mostra que $(\Intg^p(\bm X,\bm C),\nor{\var}_p)$ é um espaço normado.
 
-Suponhamos agora que $(\bm C,\abs{\var})$ é completo. Para mostrar que $(\Intg^p(\bm X,\bm C),\nor{\var}_p)$ é completo, basta mostrar toda sequência absolutamente somável é somável (\ref{ana:prop.abs.som.e.som}). Seja $(f_n)_{n \in \N}$ uma sequência absolutamente somável em $(\Intg^p(\bm X,\bm C),\nor{\var}_p)$. Consideramos dois casos.
+Suponhamos agora que $(\bm C,\abs{\var})$ é completo. Para mostrar que o espaço $(\Intg^p(\bm X,\bm C),\nor{\var}_p)$ é completo, basta mostrar toda sequência absolutamente somável é somável (\ref{ana:prop.abs.som.e.som}). Seja $(f_n)_{n \in \N}$ uma sequência absolutamente somável em $(\Intg^p(\bm X,\bm C),\nor{\var}_p)$. Consideramos dois casos.
 	\begin{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\begin{comment}
-	
+
 	\item Para $p \in \intfa{1}{\infty}$. Seja
 		\begin{equation*}
 		 M := \sum_{k \in \N} \nor{f_k}_p.
@@ -1332,7 +1332,7 @@ portanto
 o que mostra que $s \in \Intg^p(\bm X, \bm C)$.
 
 
-Temos que 
+Temos que
 	\begin{equation*}
 	\abs{s - \sum_{k \in [n]} f_k(x)}^p \leq 2^p \left( \sum_{k \in \N} \abs{f_k} \right)^p.
 	\end{equation*}
@@ -1403,9 +1403,9 @@ Como a função do lado direito é integrável e, para quase todo $x \in X$, $\a
 	\end{equation*}
 portanto $\nor{s - \sum_{k \in [n]} f_k}_p^p \to 0$, o que implica que $\nor{s - \sum_{k \in [n]} f_k}_p \to 0$.
 
-	
-	
-	\item Para $p=\infty$, a demonstração se reduz a uma questão de convergência fora de conjuntos quase vazios.	
+
+
+	\item Para $p=\infty$, a demonstração se reduz a uma questão de convergência fora de conjuntos quase vazios.
 	\end{enumerate}
 	\end{enumerate}
 \end{proof}
@@ -1437,7 +1437,7 @@ e
 %	\begin{equation*}
 %	\nor{f}_p = \left(\int \abs{f}^p \dd\#\right)^{p\inv} = \left(\sum_{i \in I} \abs{f(i)}^p\right)^{p\inv}
 %	\end{equation*}
-Também segue que, se $\nor{f}_p < \infty$, então $\card{\supp(f)} \leq \card{\N}$. 
+Também segue que, se $\nor{f}_p < \infty$, então $\card{\supp(f)} \leq \card{\N}$.
 
 Como o único conjunto de medida nula na medida de contagem é o conjunto vazio, segue que as funções são quase-iguais se, e somente se, elas são iguais, portanto funções e quase-funções representam o mesmo objeto. Sendo assim, as definições dos espaços de funções absolutamente somáveis e de funções absolutamente integráveis coincidem nesse caso, e por isso têm a mesma notação.
 
@@ -1449,7 +1449,7 @@ Novamente, consideramos $(\bm C,\abs{\var})$ como $\R$ ou $\C$.
 \begin{proposition}
 Sejam $\bm X$ um espaço de medida e $(\bm C,\abs{\var})$ um corpo normado.
 	\begin{enumerate}
-	\item Para todo $p \in \intaa{1}{\infty}$, 
+	\item Para todo $p \in \intaa{1}{\infty}$,
 		\begin{equation*}
 		\Intg^{p\dual}(\bm X,\bm C) \simeq \Intg^p(\bm X,\bm C)\dual.
 		\end{equation*}
@@ -1461,11 +1461,11 @@ O isomorfismo de espaços normados é
 			\end{aligned}
 		}
 		\end{align*}
-	
+
 	\item Se $\bm X$ é $\sigma$-finito,
 		\begin{equation*}
 		\Intg^\infty(\bm X,\bm C) \simeq \Intg^1(\bm X,\bm C)\dual.
-		\end{equation*}	
+		\end{equation*}
 	\end{enumerate}
 \end{proposition}
 \begin{proof}
@@ -1485,7 +1485,7 @@ Para $p,q \in \intff{1}{\infty}$ tais que $p < q$, devemos entender $\Intg^p$ co
 Seja $\bm X$ um espaço de medida e $(\bm C,\abs{\var})$ um corpo normado (completo) e $p,q \in \intaf{0}{\infty}$ tais que $p < q$.
 	\begin{enumerate}
 	\item $\Intg^q(\bm X,\bm C) \subset \Intg^p(\bm X,\bm C)$ se, e somente se, $X$ não contém conjuntos de medida finita mas arbitrariamente grande;
-	
+
 	\item $\Intg^p(\bm X,\bm C) \subset \Intg^q(\bm X,\bm C)$ se, e somente se, $X$ não contém conjuntos de medida não nula mas arbitrariamente pequena.
 	\end{enumerate}
 \end{proposition}
@@ -1616,14 +1616,14 @@ Sejam $(\bm E,\nor{\var})$ um espaço normado completo, $A \subseteq E$ aberto, 
 \begin{proof}
 A função $\fun{L\inv \circ f}{A}{E}$ é uma contração pois $\distor{L\inv \circ f} \leq \distor{L\inv}\distor{f} < 1$. Como $L\inv \circ (L+f) = \Id + (L\inv \circ f)$, segue de \ref{prop:perturbacao.identidade} que $\fun{L\inv \circ (L+f)}{A}{L\inv \circ (L+f)(A)}$ é mergulho métrico, $\distor{L\inv \circ (L+f)} \leq \frac{\distor{L\inv \circ f}}{1-\distor{L\inv \circ f}}$ e $L\inv \circ (L+f)(A)$ é aberto. Como $L$ é isomorfismo linear contínuo e $L+f = L \circ L\inv \circ (L+f)$, segue que $\fun{L+f}{A}{(L+f)(A)}$ é mergulho métrico e $(L+f)(A)$ é aberto. Como $\distor{L\inv \circ f} \leq \distor{L\inv}\distor{f} < 1$, então $1-\distor{L\inv \circ f} \geq 1-\distor{L\inv}\distor{f} > 0$; segue que
 	\begin{equation*}
-	\distor{L\inv \circ (L+f)} \leq \frac{\distor{L\inv \circ f}}{1-\distor{L\inv \circ f}} 
-		\leq \frac{\distor{L\inv}\distor{f}}{1-\distor{L\inv}\distor{f}} 
+	\distor{L\inv \circ (L+f)} \leq \frac{\distor{L\inv \circ f}}{1-\distor{L\inv \circ f}}
+		\leq \frac{\distor{L\inv}\distor{f}}{1-\distor{L\inv}\distor{f}}
 		= \frac{\distor{f}}{\distor{L\inv}\inv-\distor{f}},
 	\end{equation*}
 portanto
 	\begin{equation*}
-	\distor{L+f} = \distor{L \circ L\inv \circ (L+f)} 
-		\leq \distor{L}\distor{L\inv \circ (L+f)} 
+	\distor{L+f} = \distor{L \circ L\inv \circ (L+f)}
+		\leq \distor{L}\distor{L\inv \circ (L+f)}
 		\leq \frac{\distor{L}\distor{f}}{\distor{L\inv}\inv-\distor{f}}.
 		\qedhere
 	\end{equation*}
@@ -1722,7 +1722,7 @@ Seja $\mathbb A$ uma álgebra unitária normada completa.
 		\nor{e_n(x)} = \nor{\sum_{i=0}^{n} \frac{x^i}{i!}} \leq \sum_{i=0}^{n} \frac{\nor{x}^i}{i!} = e_n(\nor{x}),
 		\end{equation*}
 logo $\nor{\exp(x)} \leq \e^{\nor{x}}$.
-	
+
 	\item Primeiro notamos que, para todos $x,y \in A$,
 		\begin{align*}
 		\nor{y^n-x^n} &= \nor{\sum_{i=1}^{n} y^{n-i}(y-x)x^{i-1}} \\
@@ -1736,7 +1736,7 @@ portanto
 		&= \e^{(\nor{x} \opmax \nor{y})}\nor{y-x},
 	\end{align*}
 o que mostra que $\exp$ é contínua.
-	
+
 	\item Segue de
 		\begin{equation*}
 		\exp(0) = \sum_{n \in \N} \frac{0^n}{n!} = 1 + \sum_{n \in \N^*} \frac{0^n}{n!} = 1.
@@ -1765,7 +1765,7 @@ Assim segue que
 	\begin{equation*}
 	\nor{\exp(x+y) - \exp(x)\exp(y)} \leq \e^{\nor{x}\nor{y}}-\e^{\nor{x}}\e^{\nor{y}} = 0.
 	\end{equation*}
-	
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{comment}
 	\item Para todo $n \in \N$, como $xy=yx$,
@@ -1781,12 +1781,12 @@ Portanto
 	\end{align*}
 \end{comment}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	
+
 	\item Basta notar que, como $x(-x)=(-x)x$,
 		\begin{equation*}
 		\exp(x)\exp(-x) = \exp(x-x) = \exp(0) = 1.
 		\end{equation*}
-	
+
 	\item Exercício. \qedhere
 	\end{enumerate}
 \end{proof}
@@ -2301,7 +2301,7 @@ Exercício.
 			&= c\lim_{t' \to 0} \frac{\gamma(t+t') - \gamma(t)}{t'} \\
 			&= c\der \gamma(t).
 		\end{align*}
-	
+
 	\item Para todo $t \in X$, da continuidade do produto da álgebra e da continuidade de $\gamma'$ em $t$ segue que
 		\begin{align*}
 		\der (\gamma \gamma')(t) &= \lim_{t' \to 0} \frac{(\gamma \gamma')(t+t') - (\gamma \gamma')(t)}{t'} \\
@@ -2322,9 +2322,9 @@ Exercício.
 
 Além das operações entre funções diferenciáveis provenientes da estrutura algébrica dos espaços vetoriais (ou álgebras) em questão, uma operação possível entre funções diferenciáveis é a composição. Como é de se esperar, a composição de funções diferenciáveis é diferenciável e a expressão de sua diferencial em termos das diferenciais da funções envolvidas na composição é conhecida como a \textit{regra da cadeia}, pois as diferenciais são `encadeadas', calculadas uma em seguida da outra e compostas. Essa regra é uma das fórmulas mais úteis na teoria de diferenciação.
 
-\begin{proposition}[Regra da cadeia]
-\label{prop:regra.cadeia}
-Sejam $\bm E$, $\bm E'$ e $\bm E'$ espaços normados, $A \subseteq E$ e $A' \subseteq E'$ abertos, $X \subseteq A$, $\fun{f}{A}{E'}$ diferenciável em $X$ tal que $f(A) \subseteq A'$ e $\fun{f}{A'}{E''}$ diferenciável em $f(X)$. A função composta $\fun{f' \circ f}{A}{E''}$ é diferenciável em $X$ e, para todo $x \in X$,
+\begin{proposition}[Diferenciabilidade da composição ou Regra da cadeia]
+\label{prop:diferenciabilidade.composicao}
+Sejam $\bm E$, $\bm E'$ e $\bm E''$ espaços normados, $A \subseteq E$ e $A' \subseteq E'$ abertos, $X \subseteq A$, $\fun{f}{A}{E'}$ diferenciável em $X$ tal que $f(A) \subseteq A'$ e $\fun{f}{A'}{E''}$ diferenciável em $f(X)$. A função composta $\fun{f' \circ f}{A}{E''}$ é diferenciável em $X$ e, para todo $x \in X$,
 	\begin{equation*}
 	\D(f' \circ f)|_x = \D f'|_{f(x)} \circ \D f|_x.
 	\end{equation*}
@@ -2350,7 +2350,8 @@ Calculando $(f' \circ f)(x+v)$, obtemos
 	(f' \circ f)(x+v) &= f'(f(x+v)) \\
 		&= f'(f(x)+\D f|_x(v) + r(v)) \\
 		&= f'(f(x)) + \D f'|_{f(x)} (\D f|_x(v) + r(v)) + r'(\D f|_x(v) + r(v)) \\
-		&= (f' \circ f)(x) + \D f'|_{f(x)} \circ \D f|_x(v) + \D f'|_{f(x)}(r(v)) + r'(\D f|_x(v) + r(v)).
+		&= (f' \circ f)(x) + \D f'|_{f(x)} \circ \D f|_x(v) + \D f'|_{f(x)}(r(v)) \\
+		&\quad + r'(\D f|_x(v) + r(v)),
 	\end{align*}
 portanto
 	\begin{align*}
@@ -2422,6 +2423,14 @@ Sejam $\bm E$ e $\bm E'$ espaços normados, $A \subseteq E$ um aberto e $X \subs
 	\item Toda função linear $\fun{l}{E}{E'}$ é $\Cont^1$-diferenciável.
 	\end{enumerate}
 \end{exercise}
+
+\begin{proposition}[Diferenciabilidade contínua da composição]
+\label{prop:diferenciabilidade.continua.composicao}
+Sejam $\bm E$, $\bm E'$ e $\bm E'$ espaços normados, $A \subseteq E$ e $A' \subseteq E'$ abertos, $X \subseteq A$, $\fun{f}{A}{E'}$ $\Cont^1$-diferenciável em $X$ tal que $f(A) \subseteq A'$ e $\fun{f}{A'}{E''}$ $\Cont^1$-diferenciável em $f(X)$. A função composta $\fun{f' \circ f}{A}{E''}$ é $\Cont^1$-diferenciável em $X$.
+\end{proposition}
+\begin{proof}
+Segue de \ref{prop:diferenciabilidade.composicao} e do fato de que composição de funções contínuas é contínua.
+\end{proof}
 
 
 \subsection{Derivabilidade}
@@ -2514,7 +2523,7 @@ Sejam $\bm E$ um espaço normado, $I \subseteq \R$ um intervalo aberto e $X \sub
 			&= c\lim_{\delta \to 0} \frac{\gamma(t+\delta) - \gamma(t)}{\delta} \\
 			&= c\der \gamma(t).
 		\end{align*}
-	
+
 	\item Para todo $t \in X$, da continuidade do produto da álgebra e da continuidade de $\gamma'$ em $t$ segue que
 		\begin{align*}
 		\der (\gamma \gamma')(t) &= \lim_{\delta \to 0} \frac{(\gamma \gamma')(t+\delta) - (\gamma \gamma')(t)}{\delta} \\
@@ -2643,7 +2652,7 @@ Seja $\bm E$ um espaço normado.
 		\begin{equation*}
 		\flux{(t)}{(t'v)}(x) = x + t(t'v) = x + (tt')v = \flux{(tt')}{v}(x).
 		\end{equation*}
-	
+
 	\item Para todo $x \in E$,
 		\begin{equation*}
 		\flux{(0)}{v}(x) = x + 0v = x = \Id(x).
@@ -2661,7 +2670,7 @@ Seja $\bm E$ um espaço normado.
 			&= \lim_{\delta \to 0} \frac{\delta v}{\delta} \\
 			&= v.
 		\end{align*}
-	
+
 	\item Para todo $x \in E$ e todo $t \in \R$,
 		\begin{align*}
 		\flux{t}{(v+v')}(x) &= \flux{t}{(v'+v)}(x) \\
@@ -2790,7 +2799,7 @@ Sejam $\bm E$ e $\bm E'$ espaços normados, $A \subseteq E$ um aberto, $v \in E$
 		\begin{equation*}
 		\dir{0v} f(x) = \lim_{t \to 0} \frac{f(x+t0v) - f(x)}{t} = \lim_{t \to 0} \frac{f(x) - f(x)}{t} = 0 = 0\dir{v} f(x).
 		\end{equation*}
-	
+
 	Se $c \neq 0$, como $\lim_{t \to 0} ct = 0$, tomando $t' := ct$ segue que
 		\begin{align*}
 		\dir{cv} f(x) &= \lim_{t \to 0} \frac{f(x+tcv) - f(x)}{t} \\
@@ -3434,7 +3443,8 @@ Sejam $\bm E$ e $\bm E'_0, \ldots, \bm E'_{n-1}$ espaços normados, $A \subseteq
 		\end{align*}
 	Claramente $D$ é linear e contínua. Da diferenciabilidade das $f_k$ em $x$ segue que
 		\begin{align*}
-		\lim_{v \to 0} \frac{f(x+v) - f(x) - D(v)}{\nor{v}} &= \lim_{v \to 0} \frac{(f_k(x+v))_{k \in [n]} - (f_k(x))_{k \in [n]} - (\D f_k|_x(v))_{k \in [n]}}{\nor{v}} \\
+		\lim_{v \to 0}& \frac{f(x+v) - f(x) - D(v)}{\nor{v}} \\
+			&= \lim_{v \to 0} \frac{(f_k(x+v))_{k \in [n]} - (f_k(x))_{k \in [n]} - (\D f_k|_x(v))_{k \in [n]}}{\nor{v}} \\
 			&= \left( \lim_{v \to 0} \frac{f_k(x+v) - f_k(x) - \D f_k|_x(v)}{\nor{v}} \right)_{k \in [n]} \\
 			&= 0
 		\end{align*}
@@ -3845,7 +3855,7 @@ Se por sua vez a função $\D^2 f$ estiver definida na vizinhança $V$, então p
 	\end{equation*}
 
 Definimos a seguir o conceito de multidiferenciabilidade baseado nessa discussão preliminar. No entanto, queremos entender a função $\D^m f|_x \in \toplin^m(\bm E, \bm E')$ como uma função $m$-linear, pois elas têm propriedades melhores. Para isso, usaremos o isomorfismo isométrico $I^{(m)}$.
-\ref{def:multidiferenciabilidade}
+%\ref{def:multidiferenciabilidade}
 \begin{definition}[Multidiferenciabilidade]
 \label{def:multidiferenciabilidade}
 Sejam $\bm E$ e $\bm E'$ espaços normados, $A \subseteq E$ um aberto e $X \subseteq A$. Para todo $m \in \NN$, definimos indutivamente:
@@ -3868,9 +3878,9 @@ Sejam $\bm E$ e $\bm E'$ espaços normados, $A \subseteq E$ um aberto e $X \subs
 		\end{equation*}
 
 	Uma função \emph{$m$-diferenciável} de $A$ para $E'$ é uma função $\fun{f}{A}{E'}$ $m$-diferenciável em $A$;
-	
+
 	\item Uma função de $A$ para $E'$ \emph{$\infty$-diferenciável} (ou \emph{suave}) \emph{em $X$} (ou \emph{em $x$} para $X = \{x\}$) é uma função $\fun{f}{A}{E'}$ tal que, para todo $m \in \N$, $f$ é $m$-diferenciável em $X$.
-	
+
 	Uma função \emph{$\infty$-diferenciável} (ou \emph{suave}) de $A$ para $E'$ é uma função $\fun{f}{A}{E'}$ $\infty$-diferenciável em $A$.
 	\end{enumerate}
 \end{definition}
@@ -3880,7 +3890,7 @@ Denominamos a função $\D^m f$ de $m$-diferencial composta de $f$ e a função 
 % A proposição valeria para $m=0$ se definíssemos $(-1)$-diferenciável como sendo sinônimo de função.
 \begin{proposition}[Equivalência das multidiferenciais]
 \label{prop:multidiferencial.multilinear}
-Sejam $\bm E$ e $\bm E'$ espaços normados, $A \subseteq E$ um aberto, $X \subseteq A$ e $\fun{f}{A}{E'}$ uma função e $m \in \N \setminus \{0\}$. A função $f$ é $m$-diferenciável em $X$ se, e somente se, para alguma vizinhança de $X$, $f$ é $(m-1)$-diferenciável em $V$ e sua $(m-1)$-diferencial multilinear $\D^{(m-1)} f$ é diferenciável em $X$. Nesse caso, para todo $x \in X$ e todos $v_0, \ldots, v_{m-1} \in E$,
+Sejam $\bm E$ e $\bm E'$ espaços normados, $A \subseteq E$ um aberto, $X \subseteq A$ e $\fun{f}{A}{E'}$ uma função e $m \in \N \setminus \{0\}$. A função $f$ é $m$-diferenciável em $X$ se, e somente se, para alguma vizinhança $V$ de $X$, $f$ é $(m-1)$-diferenciável em $V$ e sua $(m-1)$-diferencial multilinear $\D^{(m-1)} f$ é diferenciável em $X$. Nesse caso, para todo $x \in X$ e todos $v_0, \ldots, v_{m-1} \in E$,
 	\begin{equation*}
 	\D (\D^{(m-1)} f)|_x (v_0)(v_1,\ldots, v_{m-1}) = \D^{(m)} f|_x(v_0,\ldots, v_{m-1}).
 	\end{equation*}
@@ -3907,6 +3917,15 @@ Assim, concluímos que, caso $f$ seja $m$-diferenciável em $X$, vale que, para 
 		\qedhere
 	\end{align*}
 \end{proof}
+
+\begin{exercise}
+Sejam $\bm E$ e $\bm E'$ espaços normados, $A \subseteq E$ um aberto, $X \subseteq A$ e $\fun{f}{A}{E'}$ uma função, $m \in \N \setminus \{0\}$ e $k \in [m]$. A função $f$ é $m$-diferenciável em $X$ se, e somente se, para alguma vizinhança $V$ de $X$, $f$ é $k$-diferenciável em $V$ e $\fun{\D^{(k)} f}{V}{\toplin^{(k)}(\bm E, \bm E')}$ é $m-k$-diferenciável em $X$. Nesse caso, para todo $x \in X$,
+	\begin{equation*}
+	\D^{(m-k)}\D^{(k)} f|_x = \D^{(m)} f|_x.
+	\end{equation*}
+
+\end{exercise}
+
 
 Além de ser multilinear, a multidiferencial $\D^{(m)} f|_x$ é simétrica, mais um dos motivos pelos quais ela é mais vantajosa em aplicações. Demonstraremos isso a seguir, primeiro para o caso $m=2$, então para o caso geral.
 
@@ -4078,45 +4097,40 @@ Sejam $\bm E$ e $\bm E'$ espaços normados, $A \subseteq E$ um aberto, $X \subse
 		\end{equation*}
 	é $m$-diferenciável em $X$;
 	\item Toda função constante $\fun{f}{A}{E'}$ é $m$-diferenciável;
-	\item Toda função linear $\fun{l}{E}{E'}$ é $m$-diferenciável.
+	\item Toda função linear $\fun{l}{E}{E'}$ é $m$-diferenciável;
+	\item Toda função $n$-multilinear $\fun{l}{E_0 \times \cdots \times E_{n-1}}{E'}$ é $m$-diferenciável.
 	\end{enumerate}
 \end{exercise}
 
+Assim como no caso da diferencial (\ref{prop:diferenciabilidade.composicao}), a composição de funções multidiferenciáveis também é multidiferenciável. A seguir, provamos esse resultado, mas não exibiremos uma expressão análoga à da regra da cadeia para multidiferenciais; tal expressão fica a cargo do leitor.
 
-\subsubsection{Multiderivabilidade}
-
-Da mesma forma que podemos repetidamente diferenciar uma função, podemos repetidamente derivar uma trajetória. A seguir definiremos o conceito de derivadas múltiplas e demonstraremos que ele é equivalente à diferenciação múltipla para trajetórias.
-
-\begin{definition}[Multiderivabilidade]
-Sejam $\bm E$ um espaço normado, $I \subseteq E$ um intervalo aberto e $X \subseteq I$. Para todo $m \in \NN$, definimos indutivamente:
-	\begin{enumerate}
-	\item Uma trajetória de $I$ para $E$ \emph{$0$-derivável} \emph{em $X$} (ou \emph{em $t$} para $X = \{t\}$) é uma trajetória $\fun{\gamma}{I}{E}$. Sua \emph{$0$-derivada} é $\der^0 f := \fun{f}{A}{E'}$.
-	
-	Uma trajetória \emph{$0$-derivável} de $I$ para $E$ é uma trajetória $\fun{f}{I}{E}$;
-
-	\item Uma trajetória de $I$ para $E$ \emph{$m$-derivável} \emph{em $X$} (ou \emph{em $t$} para $X = \{t\}$) é uma trajetória $\fun{\gamma}{I}{E}$ tal que, para alguma vizinhança $V \subseteq I$ de $X$, $\gamma$ é $(m-1)$-diferenciável em $V$ e sua $(m-1)$-derivada $\fun{\der^{m-1} f}{V}{E}$ é derivável em $X$. Sua \emph{$m$-derivada} é
-		\begin{equation*}
-		\der^m f := \fun{\der (\der^{m-1} f)}{X}{E}
-		\end{equation*}
-	e, para todo $t \in X$, a \emph{$m$-derivada} de $f$ em $x$ é $\der^m f(t)$.
-
-	Uma trajetória \emph{$m$-derivável} de $I$ para $E$ é uma trajetória $\fun{\gamma}{I}{E}$ $m$-derivável em $I$;
-	
-	\item Uma trajetória de $I$ para $E$ \emph{$\infty$-derivável} (ou \emph{suave}) \emph{em $X$} (ou \emph{em $t$} para $X = \{t\}$) é uma trajetória $\fun{\gamma}{I}{E}$ tal que, para todo $m \in \N$, $\gamma$ é $m$-derivável em $X$.
-	
-	Uma trajetória \emph{$\infty$-derivável} (ou \emph{suave}) de $I$ para $E$ é uma trajetória $\fun{\gamma}{I}{E}$ $\infty$-derivável em $I$.
-	\end{enumerate}
-\end{definition}
-
-\begin{proposition}
-\label{prop:multidiferenciabilidade.multiderivabilidade}
-Sejam $\bm E$ um espaço normado, $I \subseteq \R$ aberto, $X \subseteq I$ e $m \in \N \setminus \{0\}$. Uma trajetória $\fun{\gamma}{I}{E}$ é $m$-diferenciável em $X$ se, e somente se, é $m$-derivável em $X$. Nesse caso, para todo $t \in X$, vale $\nor{\D^{(m)} f|_t} = \nor{\der^m f(t)}$ e, para todos $c_0, \ldots, c_{m-1} \in \R$,
-	\begin{equation*}
-	\D^{(m)} f|_t(c_0, \ldots, c_{m-1}) = c_0 \cdots c_{m-1} \der^m f(t).
-	\end{equation*}
+\begin{proposition}[Multidiferenciabilidade da composição]
+\label{prop:multidiferenciabilidade.composicao}
+Sejam $\bm E$, $\bm E'$ e $\bm E'$ espaços normados, $m \in \N \setminus \{0\}$, $A \subseteq E$ e $A' \subseteq E'$ abertos, $X \subseteq A$, $\fun{f}{A}{E'}$ $m$-diferenciável em $X$ tal que $f(A) \subseteq A'$ e $\fun{f}{A'}{E''}$ $m$-diferenciável em $f(X)$. A função composta $\fun{f' \circ f}{A}{E''}$ é $m$-diferenciável em $X$.% e, para todo $x \in X$,
+%	\begin{equation*}
+%	\D^2(f' \circ f)|_x = \D f'|_{f(x)} \circ \D^2 f|_x + \D^2 f'|_{f(x)} \circ \D f|_x \circ \D f|_x.
+%	\end{equation*}
+%	\begin{equation*}
+%	\D^{(2)}(f' \circ f)|_x = \D f'|_{f(x)} \circ \D^{(2)} f|_x + \D^{(2)} f'|_{f(x)} \circ (\D f|_x, \D f|_x).
+%	\end{equation*}
 \end{proposition}
 \begin{proof}
-Exercício.
+Mostraremos por indução em $m$. Seja $x \in X$. Para $m=1$, segue direto de \ref{prop:diferenciabilidade.composicao}. Suponhamos que a proposição vale para $m \geq 2$ e mostremos que vale também para $m+1$. Como $f$ e $f'$ são diferenciáveis, da regra da cadeia segue que
+	\begin{equation*}
+	\D(f' \circ f)|_x = \D f'|_{f(x)} \circ \D f|_x.
+	\end{equation*}
+
+Para mostrar que $f' \circ f$ é $(m+1)$-diferenciável, mostraremos que sua diuferencial $\D(f' \circ f)$ é $m$-diferenciável. Note que $\D(f' \circ f)$ é composição de duas funções. A primeira é a composição de funções
+	\begin{align*}
+	\func{\circ}{\toplin(E',E'') \times \toplin(E,E')}{\toplin(E,E'')}{(l',l)}{l' \circ l},
+	\end{align*}
+que é função bilinear, logo $\infty$-diferenciável e portanto $m$-diferenciável; a segunda é a função
+	\begin{align*}
+	\func{g}{X}{\toplin(E',E'') \times \toplin(E,E')}{x}{(\D f'|_{f(x)}, \D f|_x)}.
+	\end{align*}
+A função $f$ é $(m+1)$-diferenciável por hipótese, logo $m$-diferebciável; a função $\D f'$ é $m$-diferenciável pois por hipótese $f'$ é $(m+1)$-diferenciável. Assim, por hipótese de indução, a primeira componente de $g$, que é a composição $\D f' \circ f$, é $m$-diferenciável. A segunda componente de $g$ é a função $\D f$, que é $m$-diferenciável pois por hipótese $f$ é $(m+1)$-diferenciável. Assim segue que a função $g$ é $m$-diferenciável, pois cada uma de suas componentes é $m$-diferenciável.
+
+Agora, novamente pela hipótese de indução, a diferencial $\D(f' \circ f)$ é $m$-diferenciável, pois é composição de duas funções $m$-diferenciáveis, e portanto $f' \circ f$ é $(m+1)$-diferenciável.
 \end{proof}
 
 \subsubsection{Multidiferenciabilidade contínua}
@@ -4128,17 +4142,17 @@ Assim como no caso da continuidade da diferencial, a multidiferencial de uma fun
 Sejam $\bm E$ e $\bm E'$ espaços normados, $A \subseteq E$ um aberto e $X \subseteq A$. Para todo $m \in \NN$, definimos indutivamente:
 	\begin{enumerate}
 	\item Uma função de $A$ para $E'$ \emph{$\Cont^0$-diferenciável} (ou \emph{continuamente $0$-diferenciável}) \emph{em $X$} (ou \emph{em $x$} para $X = \{x\}$) é uma função $\fun{f}{A}{E'}$ contínua em $X$.
-	
+
 	Uma função de $A$ para $E'$ \emph{$\Cont^0$-diferenciável} (ou \emph{continuamente $0$-diferenciável}) é uma função contínua $\fun{f}{A}{E'}$ e o conjunto dessas funções é denotado $\Cont^0(\bm A,\bm E') := \Cont(\bm A,\bm E')$.
 
 	\item Uma função de $A$ para $E'$ \emph{$\Cont^m$-diferenciável} (ou \emph{continuamente $m$-diferenciável}) \emph{em $X$} (ou \emph{em $x$} para $X = \{x\}$) é uma função $\fun{f}{A}{E'}$ tal que, para alguma vizinhança $V \subseteq A$ de $X$, $f$ é diferenciável em $V$ e sua diferencial $\fun{\D f}{V}{\toplin(\bm E, \bm E')}$ é $\Cont^{m-1}$-diferenciável em $X$.
-	
+
 %	Uma função de $A$ para $E'$ \emph{$\Cont^m$-diferenciável} (ou $m$-\emph{continuamente diferenciável}) \emph{em $X$} (ou \emph{em $x$} para $X = \{x\}$) é uma função $\fun{f}{A}{E'}$ tal que, para todo $x \in X$, vale o seguinte: para alguma vizinhança $V_x \subseteq A$ de $x$, $f$ é diferenciável em $V_x$ e sua diferencial $\fun{\D f}{V_x}{\toplin(\bm E, \bm E')}$ é $\Cont^{m-1}$-diferenciável em $x$.
-	
+
 	Uma função \emph{$\Cont^m$-diferenciável} (ou \emph{continuamente $m$-diferenciável}) de $A$ para $E'$ é uma função $\fun{f}{A}{E'}$ $\Cont^m$-diferenciável em $A$ e o conjunto dessas funções é denotado $\Cont^m(\bm A,\bm E')$.
 
 	\item Uma função de $A$ para $E'$ \emph{$\Cont^\infty$-diferenciável} (ou \emph{continuamente $\infty$-diferenciável} ou \emph{suave}) \emph{em $X$} (ou \emph{em $x$} para $X = \{x\}$) é uma função $\fun{f}{A}{E'}$ tal que, para todo $m \in \N$, $f$ é $\Cont^{m}$-diferenciável em $X$.
-	
+
 	Uma função \emph{$\Cont^\infty$-diferenciável} (ou \emph{continuamente $\infty$-diferenciável} ou \emph{suave}) de $A$ para $E'$ é uma função $\fun{f}{A}{E'}$ $\Cont^{\infty}$-diferenciável em $A$ e o conjunto dessas funções é denotado $\Cont^\infty(\bm A,\bm E')$.
 	\end{enumerate}
 \end{definition}
@@ -4148,16 +4162,16 @@ Sejam $\bm E$ e $\bm E'$ espaços normados, $A \subseteq E$ um aberto e $X \subs
 Sejam $\bm E$ e $\bm E'$ espaços normados, $A \subseteq E$ um aberto e $X \subseteq A$. Para todo $m \in \NN$, definimos indutivamente:
 	\begin{enumerate}
 	\item Uma função de $A$ para $E'$ \emph{$\Cont^0$-diferenciável} (ou \emph{continuamente $0$-diferenciável}) \emph{em $X$} (ou \emph{em $x$} para $X = \{x\}$) é uma função $\fun{f}{A}{E'}$ contínua em $X$.
-	
+
 	Uma função \emph{$\Cont^0$-diferenciável} (ou \emph{continuamente $0$-diferenciável}) de $A$ para $E'$ é uma função contínua $\fun{f}{A}{E'}$ e o conjunto dessas funções é denotado $\Cont^0(\bm A,\bm E') := \Cont(\bm A,\bm E')$;
 
-	\item Uma função de $A$ para $E'$ \emph{$\Cont^m$-diferenciável} (ou \emph{continuamente $m$-diferenciável}) \emph{em $X$} (ou \emph{em $x$} para $X = \{x\}$) é uma função $\fun{f}{A}{E'}$ tal que, para alguma vizinhança $V \subseteq A$ de $X$, $f$ é $m$-diferenciável em $V$ e %sua diferencial $m$-composta 
+	\item Uma função de $A$ para $E'$ \emph{$\Cont^m$-diferenciável} (ou \emph{continuamente $m$-diferenciável}) \emph{em $X$} (ou \emph{em $x$} para $X = \{x\}$) é uma função $\fun{f}{A}{E'}$ tal que, para alguma vizinhança $V \subseteq A$ de $X$, $f$ é $m$-diferenciável em $V$ e %sua diferencial $m$-composta
 	$\fun{\D^m f}{V}{\toplin^m(\bm E, \bm E')}$ é contínua em $X$.
-	
+
 	Uma função \emph{$\Cont^m$-diferenciável} (ou \emph{continuamente $m$-diferenciável}) de $A$ para $E'$ é uma função $\fun{f}{A}{E'}$ $\Cont^m$-diferenciável em $A$ e o conjunto dessas funções é denotado $\Cont^m(\bm A,\bm E')$;
 
 	\item Uma função de $A$ para $E'$ \emph{$\Cont^\infty$-diferenciável} (ou \emph{continuamente $\infty$-diferenciável} ou \emph{suave}) \emph{em $X$} (ou \emph{em $x$} para $X = \{x\}$) é uma função $\fun{f}{A}{E'}$ tal que, para todo $m \in \N$, $f$ é $\Cont^{m}$-diferenciável em $X$.
-	
+
 	Uma função \emph{$\Cont^\infty$-diferenciável} (ou \emph{continuamente $\infty$-diferenciável} ou \emph{suave}) de $A$ para $E'$ é uma função $\fun{f}{A}{E'}$ $\Cont^{\infty}$-diferenciável em $A$ e o conjunto dessas funções é denotado $\Cont^\infty(\bm A,\bm E')$.
 	\end{enumerate}
 \end{definition}
@@ -4187,10 +4201,95 @@ Sejam $\bm E$ e $\bm E'$ espaços normados, $A \subseteq E$ um aberto, $X \subse
 	\item Para todo $c \in \R$ e toda função $\fun{f}{A}{E'}$ $\Cont^m$-diferenciável em $X$, a função $\fun{c f}{A}{E'}$ é $\Cont^m$-diferenciável em $X$;
 	\item Se $\bm E'$ é uma álgebra normada, para todas funções $\fun{f,f'}{A}{E'}$ $\Cont^m$-diferenciáveis em $X$, a função $\fun{f f'}{A}{E'}$ é $\Cont^m$-diferenciável em $X$;
 	\item Toda função constante $\fun{f}{A}{E'}$ é $\Cont^m$-diferenciável;
-	\item Toda função linear $\fun{l}{E}{E'}$ é $\Cont^m$-diferenciável.
+	\item Toda função linear $\fun{l}{E}{E'}$ é $\Cont^m$-diferenciável;
+	\item Toda função $n$-multilinear $\fun{l}{E_0 \times \cdots \times E_{n-1}}{E'}$ é $\Cont^m$-diferenciável.
 	\end{enumerate}
 \end{exercise}
 
+\begin{comment}
+
+
+
+
+
+
+\begin{proposition}
+Sejam $\bm E$, $\bm E'_0$, $\bm E'_1$ e $\bm E''$ espaços normados, $A \subseteq E$ um aberto, $X \subseteq A$, $m \in \N$, $\fun{f_0}{A}{E'_0}$ e $\fun{f_1}{A}{E'_1}$ funções $\Cont^m$-diferenciáveis em $X$ e $\fun{b}{E'_0 \times E'_1}{E''}$ função bilinear contínua. A função
+	\begin{align*}
+	\func{b(f,f')}{A}{E''}{x}{b(f(x),f'(x))}
+	\end{align*}
+é $\Cont^m$-diferenciável em $X$.
+\end{proposition}
+\begin{proof}
+Seja $x \in X$ e definamos $B := b(f,f')$. Provaremos por indução em $m$. Para $m=0$ é direto; consideremos o caso $m=1$. A função $b$ é bilinear e portanto $\Cont^\infty$-diferenciável e a função $(f,g)$ $B$ é composição de $b$ e $(f,f')$ e portanto é diferenciável em $x$ e, para todo $v \in E$,
+	\begin{equation*}
+	\D B|_x(v) = b(\D f_x(v),f'(x)) + b(f(x), \D f'|_x(v)).
+	\end{equation*}
+
+\end{proof}
+
+\end{comment}
+
+
+\begin{proposition}[Multidiferenciabilidade contínua da composição]
+\label{prop:multidiferenciabilidade.continua.composicao}
+Sejam $\bm E$, $\bm E'$ e $\bm E'$ espaços normados, $m \in \N \setminus \{0\}$, $A \subseteq E$ e $A' \subseteq E'$ abertos, $X \subseteq A$, $\fun{f}{A}{E'}$ $\Cont^m$-diferenciável em $X$ tal que $f(A) \subseteq A'$ e $\fun{f}{A'}{E''}$ $\Cont^m$-diferenciável em $f(X)$. A função composta $\fun{f' \circ f}{A}{E''}$ é $\Cont^m$-diferenciável em $X$.
+\end{proposition}
+\begin{proof}
+Segue de \ref{prop:multidiferenciabilidade.composicao} e do fato de que composição de funções contínuas é contínua.
+% Mostraremos por indução em $m$. Seja $x \in X$. Para $m=1$, segue direto de \ref{prop:diferenciabilidade.composicao}. Suponhamos que a proposição vale para $m \geq 2$ e mostremos que vale também para $m+1$. Como $f$ e $f'$ são diferenciáveis, da regra da cadeia segue que
+% 	\begin{equation*}
+% 	\D(f' \circ f)|_x = \D f'|_{f(x)} \circ \D f|_x.
+% 	\end{equation*}
+% 
+% Para mostrar que $f' \circ f$ é $(m+1)$-diferenciável, mostraremos que sua diuferencial $\D(f' \circ f)$ é $m$-diferenciável. Note que $\D(f' \circ f)$ é composição de duas funções. A primeira é a composição de funções
+% 	\begin{align*}
+% 	\func{\circ}{\toplin(E',E'') \times \toplin(E,E')}{\toplin(E,E'')}{(l',l)}{l' \circ l},
+% 	\end{align*}
+% que é função bilinear, logo $\infty$-diferenciável e portanto $m$-diferenciável; a segunda é a função
+% 	\begin{align*}
+% 	\func{g}{X}{\toplin(E',E'') \times \toplin(E,E')}{x}{(\D f'|_{f(x)}, \D f|_x)}.
+% 	\end{align*}
+% A função $f$ é $(m+1)$-diferenciável por hipótese, logo $m$-diferebciável; a função $\D f'$ é $m$-diferenciável pois por hipótese $f'$ é $(m+1)$-diferenciável. Assim, por hipótese de indução, a primeira componente de $g$, que é a composição $\D f' \circ f$, é $m$-diferenciável. A segunda componente de $g$ é a função $\D f$, que é $m$-diferenciável pois por hipótese $f$ é $(m+1)$-diferenciável. Assim segue que a função $g$ é $m$-diferenciável, pois cada uma de suas componentes é $m$-diferenciável.
+% 
+% Agora, novamente pela hipótese de indução, a diferencial $\D(f' \circ f)$ é $m$-diferenciável, pois é composição de duas funções $m$-diferenciáveis, e portanto $f' \circ f$ é $(m+1)$-diferenciável.
+\end{proof}
+
+\subsubsection{Multiderivabilidade}
+
+Da mesma forma que podemos repetidamente diferenciar uma função, podemos repetidamente derivar uma trajetória. A seguir definiremos o conceito de derivadas múltiplas e demonstraremos que ele é equivalente à diferenciação múltipla para trajetórias.
+
+\begin{definition}[Multiderivabilidade]
+Sejam $\bm E$ um espaço normado, $I \subseteq E$ um intervalo aberto e $X \subseteq I$. Para todo $m \in \NN$, definimos indutivamente:
+	\begin{enumerate}
+	\item Uma trajetória de $I$ para $E$ \emph{$0$-derivável} \emph{em $X$} (ou \emph{em $t$} para $X = \{t\}$) é uma trajetória $\fun{\gamma}{I}{E}$. Sua \emph{$0$-derivada} é $\der^0 f := \fun{f}{A}{E'}$.
+
+	Uma trajetória \emph{$0$-derivável} de $I$ para $E$ é uma trajetória $\fun{f}{I}{E}$;
+
+	\item Uma trajetória de $I$ para $E$ \emph{$m$-derivável} \emph{em $X$} (ou \emph{em $t$} para $X = \{t\}$) é uma trajetória $\fun{\gamma}{I}{E}$ tal que, para alguma vizinhança $V \subseteq I$ de $X$, $\gamma$ é $(m-1)$-diferenciável em $V$ e sua $(m-1)$-derivada $\fun{\der^{m-1} f}{V}{E}$ é derivável em $X$. Sua \emph{$m$-derivada} é
+		\begin{equation*}
+		\der^m f := \fun{\der (\der^{m-1} f)}{X}{E}
+		\end{equation*}
+	e, para todo $t \in X$, a \emph{$m$-derivada} de $f$ em $x$ é $\der^m f(t)$.
+
+	Uma trajetória \emph{$m$-derivável} de $I$ para $E$ é uma trajetória $\fun{\gamma}{I}{E}$ $m$-derivável em $I$;
+
+	\item Uma trajetória de $I$ para $E$ \emph{$\infty$-derivável} (ou \emph{suave}) \emph{em $X$} (ou \emph{em $t$} para $X = \{t\}$) é uma trajetória $\fun{\gamma}{I}{E}$ tal que, para todo $m \in \N$, $\gamma$ é $m$-derivável em $X$.
+
+	Uma trajetória \emph{$\infty$-derivável} (ou \emph{suave}) de $I$ para $E$ é uma trajetória $\fun{\gamma}{I}{E}$ $\infty$-derivável em $I$.
+	\end{enumerate}
+\end{definition}
+
+\begin{proposition}
+\label{prop:multidiferenciabilidade.multiderivabilidade}
+Sejam $\bm E$ um espaço normado, $I \subseteq \R$ aberto, $X \subseteq I$ e $m \in \N \setminus \{0\}$. Uma trajetória $\fun{\gamma}{I}{E}$ é $m$-diferenciável em $X$ se, e somente se, é $m$-derivável em $X$. Nesse caso, para todo $t \in X$, vale $\nor{\D^{(m)} f|_t} = \nor{\der^m f(t)}$ e, para todos $c_0, \ldots, c_{m-1} \in \R$,
+	\begin{equation*}
+	\D^{(m)} f|_t(c_0, \ldots, c_{m-1}) = c_0 \cdots c_{m-1} \der^m f(t).
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+Exercício.
+\end{proof}
 
 \subsubsection{Multiderivabilidade contínua}
 
@@ -4199,7 +4298,7 @@ Como no caso da diferencial, podemos generalizar derivabilidade contínua para m
 \begin{comment}
 
 \begin{definition}[Multiderivabilidade]
-Sejam $\bm E$ um espaço normado e $I \subseteq \R$ um intervalo aberto. Para todo $k \in \N$, definimos indutivamente: 
+Sejam $\bm E$ um espaço normado e $I \subseteq \R$ um intervalo aberto. Para todo $k \in \N$, definimos indutivamente:
 	\begin{enumerate}
 	\item Uma trajetória $\Cont^0$-\emph{derivável} de $I$ para $E$ é uma trajetória contínua $\fun{\gamma}{I}{E}$ e sua $0$-ésima derivada é $\der^0 \gamma := \gamma$. O conjunto dessas trajetórias é denotado $\Cont^0(\bm I,\bm E) := \Cont(\bm I,\bm E)$.
 	\item Uma trajetória $\Cont^k$-\emph{derivável} de $I$ para $E$ é uma trajetória derivável $\fun{\gamma}{I}{E}$ tal que $\fun{\der \gamma}{I}{E}$ é $\Cont^{k-1}$-derivável. Sua $k$-ésima derivada é
@@ -4238,43 +4337,39 @@ Por \ref{prop:multidiferenciabilidade.multiderivabilidade}, a notação $\Cont^m
 
 
 
-\subsubsection{Multidiferenciabilidade da composição}
+
+
+
+
+
+
+
+
+
+\subsection{Invertibilidade}
+
+Nesta seção, enunciaremos alguns resultados importantes sem prová-los. Demosntrações podem ser encontradas em \cite{liv:Cartan-DifferentialCalculus} ou \cite{liv:Coleman-CalculusNormedVectorSpaces} e são consequências diretas dos resultados das seções anteriores.
 
 \begin{proposition}
-Sejam $\bm E$, $\bm E'_0$, $\bm E'_1$ e $\bm E''$ espaços normados, $A \subseteq E$ um aberto, $X \subseteq A$, $m \in \N$, $\fun{f_0}{A}{E'_0}$ e $\fun{f_1}{A}{E'_1}$ funções $\Cont^m$-diferenciáveis em $X$ e $\fun{b}{E'_0 \times E'_1}{E''}$ função bilinear contínua. A função
+Seja $\bm E$ uma álgebra normada completa. A inversão multiplicativa
 	\begin{align*}
-	\func{b(f,f')}{A}{E''}{x}{b(f(x),f'(x))}
+	\func{/}{E^{/}}{E}{x}{x\inv}
 	\end{align*}
-é $\Cont^m$-diferenciável em $X$.
+é uma função $\Cont^\infty$-diferenciável.
 \end{proposition}
-\begin{proof}
-Seja $x \in X$ e definamos $B := b(f,f')$. Provaremos por indução em $m$. Para $m=0$ é direto; consideremos o caso $m=1$. A função $b$ é bilinear e portanto $\Cont^\infty$-diferenciável e a função $(f,g)$ $B$ é composição de $b$ e $(f,f')$ e portanto é diferenciável em $x$ e, para todo $v \in E$,
-	\begin{equation*}
-	\D B|_x(v) = b(\D f_x(v),f'(x)) + b(f(x), \D f'|_x(v)).
-	\end{equation*}
 
-\end{proof}
-
-
-
+\begin{proposition}
+Sejam $\bm E$ e $\bm E'$ espaços normados completos e $m \in \N$. A inversão de função
+	\begin{align*}
+	\func{\inv}{\Isolin(E,E')}{\Isolin(E',E)}{f}{f\inv}
+	\end{align*}
+é uma função $\Cont^\infty$-diferenciável.
+\end{proposition}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+\begin{proposition}[Difeomorfismo multidiferenciável]
+Sejam $\bm E$ e $\bm E'$ espaços normados completos, $A \subseteq E$ e $A' \subseteq E'$ abertos, $m \in \N$ e $\fun{f}{A}{A'}$ um difeomorfismo $\Cont^m$-diferenciável. A inversa $\fun{f\inv}{A'}{A}$ é $\Cont^m$-diferenciável.
+\end{proposition}
 
 
 
@@ -4447,7 +4542,7 @@ e, como $\fun{\D f'|_{f(p)} \circ \D f|_p}{\R^d}{\R^{d''}}$ é linear, o limite
 	\begin{equation*}
 	\lim_{v \conv 0} \frac{r''(v)}{\nor{v}} = 0
 	\end{equation*}
-implica a diferenciabilidade de $f' \circ f$ em $p$. Calculemos esse limite. 
+implica a diferenciabilidade de $f' \circ f$ em $p$. Calculemos esse limite.
 
 Calculando $(f' \circ f)(p+v)$, obtemos
 	\begin{align*}
@@ -4734,7 +4829,7 @@ Isso nos permite escrever uma função $r$-linear avaliada em uma soma como
 A partir dessa seção, consideraremos funções $\fun{f}{A}{\R^{d'}}$, em que $A \subseteq \R^d$ é um aberto. Toda a discussão feita na seção anterior considerou a diferenciabilidade em pontos do domínio. Agora, consideraremos a diferenciabilidade em conjuntos. A definição de diferenciabilidade da seção anterior pode ser facilmente adaptada para funções $\fun{f}{A}{\R^{d'}}$ pois essa função pode ser definida em $\R^d$ todo escolhendo qualquer valor para $f$ em $A^\complement$. Como as definições e resultados trataram de pontos, isso não é um problema. Os abertos serão necessários agora pois consideraremos curvas numa vizinhança de um ponto e relacionaremos as derivadas por essas curvas com derivadas parciais da função $f$.
 
 \begin{definition}
-Sejam $d,d' \in \N$, $A \subseteq \R^d$ aberto, $p \in A$ e $v \in \R^d$. % (tal que $p+v \in A$). 
+Sejam $d,d' \in \N$, $A \subseteq \R^d$ aberto, $p \in A$ e $v \in \R^d$. % (tal que $p+v \in A$).
 Uma função \emph{derivável em $p$ na direção de $v$} é uma função $\fun{f}{A}{\R^{d'}}$ tal que existe o limite
 	\begin{equation*}
 	\lim_{t \conv 0} \frac{f(p+tv)-f(p)}{t}.
@@ -4863,7 +4958,7 @@ Observação: A diferencial $\D f(p)\colon \R^{d_0} \times \R^{d_1} \to \R^{d_1}
 \subsubsection{Teorema do posto}
 
 \begin{proposition}
-Seja $f\colon \R^{d} \times \R^{d_0} \to \R^{d} \times \R^{d_1}$ uma função $\Cont^r$-diferenciável ($r \geq 1$) num aberto $A \subseteq \R^{d} \times \R^{d_0}$. Se $\D f(p)\colon \R^{d} \times \R^{d_0} \to \R^{d} \times \R^{d_1}$ tem o mesmo posto para todo $p \in A$ ($f$ tem posto constante em $A$), então, para todo $p \in A$, existem vizinhanças abertas $V_0 \subseteq \R^{d} \times \R^{d_0}$ de $p$ e $V_1 \subseteq \R^{d} \times \R^{d_1}$ de $f(p)$ e $\Cont^r$-difeomorfismos $g_0\colon V_0 \to g_0(V_0) \subseteq \R^{d} \times \R^{d_0}$ e $g_1\colon V_1 \to g_1(V_1) \subseteq \R^{d} \times \R^{d_1}$ tais que, para todo $(x,y) \in V_0$, 
+Seja $f\colon \R^{d} \times \R^{d_0} \to \R^{d} \times \R^{d_1}$ uma função $\Cont^r$-diferenciável ($r \geq 1$) num aberto $A \subseteq \R^{d} \times \R^{d_0}$. Se $\D f(p)\colon \R^{d} \times \R^{d_0} \to \R^{d} \times \R^{d_1}$ tem o mesmo posto para todo $p \in A$ ($f$ tem posto constante em $A$), então, para todo $p \in A$, existem vizinhanças abertas $V_0 \subseteq \R^{d} \times \R^{d_0}$ de $p$ e $V_1 \subseteq \R^{d} \times \R^{d_1}$ de $f(p)$ e $\Cont^r$-difeomorfismos $g_0\colon V_0 \to g_0(V_0) \subseteq \R^{d} \times \R^{d_0}$ e $g_1\colon V_1 \to g_1(V_1) \subseteq \R^{d} \times \R^{d_1}$ tais que, para todo $(x,y) \in V_0$,
 	\begin{equation*}
 	g_1 \circ f \circ {g_0}\inv(x,y))=(x,0).
 	\end{equation*}

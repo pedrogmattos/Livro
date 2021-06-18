@@ -210,9 +210,9 @@ No caso do fibrado tangente $\Tg \bm V$ de uma variedade diferencial $\bm V$, da
 Sejam $\bm V$ uma variedade diferencial $d$-dimensional, $(E|_p)_{p \in V}$ uma família de espaços lineares reais $n$-dimensionais, $E := \coprod_{p \in V} E|_p$, $\proj\colon E \to V$ uma função tal que $\proj(E|_p) = \{p\}$ e $\atlas$ um conjunto de pares $(A,h)$ tais que
 	\begin{enumerate}
 	\item $(A)_{(A,h) \in \atlas}$ é uma cobertura aberta de $V$;
-	
+
 	\item Para toda $(A,h) \in \atlas$, com $E|_A := \proj\inv(A)$, $h\colon E|_A \to A \times \R^n$ é uma bijeção tal que $h\downharpoonright_{E|_p}\colon E|_p \to \{p\} \times \R^n \simeq \R^n$ é um isomorfismo linear;
-	
+
 	\item Para todas $(A,h), (A',h') \in \atlas$, existe função diferenciável $T^h_{h'}\colon A \cap A' \to \Iso{\toplin}(\R^n)$ tal que, para todo $(p,v) \in (A \cap A') \times \R^n$,
 		\begin{equation*}
 		h' \circ h\inv(p,v) = (p,T^h_{h'}|_p(v)).
@@ -314,7 +314,7 @@ Seja $(\bm E,\proj)$ um fibrado vetorial diferencial de $\R^n$ sobre uma varieda
 		\begin{equation*}
 		T^h_h|_p = \Id_{\R^n};
 		\end{equation*}
-	
+
 	\item Para todas trivializações locais $(A,h)$ e $(A',h')$ de $\bm E$ e todo $p \in A \cap A'$,
 		\begin{equation*}
 		T^{h'}_h|_p = {T^h_{h'}|_p}\inv;
@@ -340,7 +340,7 @@ o que mostra que
 		\begin{equation*}
 		T^h_h|_p = T^h_h|_p \circ (T^h_h|_p)\inv = \Id_{\R^n}.
 		\end{equation*}
-	
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Fiz a demostração mas percebi que segue de 1.
 \begin{comment}
@@ -399,12 +399,12 @@ tais que
 %		\begin{equation*}
 %		T^i_i|_p = \Id_{\R^n};
 %		\end{equation*}
-%	
+%
 %	\item (Simetria) Para todos $i,i' \in I$ e todo $p \in A_i \cap A_{i'}$,
 %		\begin{equation*}
 %		T^{i'}_i|_p = {T^i_{i'}|_p}\inv;
 %		\end{equation*}
-%	
+%
 	\item (Cociclicidade) Para todos $i,i',i'' \in I$ e todo $p \in A_i \cap A_{i'} \cap A_{i''}$,
 		\begin{equation*}
 		T^i_{i''}|_p = T^{i'}_{i''}|_p \circ T^i_{i'}|_p.
@@ -488,18 +488,18 @@ A soma é associativa: para todos $[(i,(p,v))], [(i',(p,v'))], [(i'',(p,v''))] \
 	([(i,(p,v))] + &[(i',(p,v'))]) + [(i'',(p,v''))] \\
 		&= [(i,(p,v + T^{i'}_i|_p(v')))] + [(i'',(p,v''))] \\
 		&= [(i,(p,v + T^{i'}_i|_p(v') + T^{i''}_i|_p (v'')))] \\
-		&= [(i,(p,v + T^{i'}_i|_p(v') + T^{i'}_i|_p \circ T^{i''}_{i'}|_p (v'')))]) \\ 
-		&= [(i,(p,v + T^{i'}_i|_p(v' + T^{i''}_{i'}|_p (v''))))]) \\ 
-		&= [(i,(p,v))] + [(i',(p,v' + T^{i''}_{i'}|_p (v'')))]) \\ 
+		&= [(i,(p,v + T^{i'}_i|_p(v') + T^{i'}_i|_p \circ T^{i''}_{i'}|_p (v'')))]) \\
+		&= [(i,(p,v + T^{i'}_i|_p(v' + T^{i''}_{i'}|_p (v''))))]) \\
+		&= [(i,(p,v))] + [(i',(p,v' + T^{i''}_{i'}|_p (v'')))]) \\
 		&= [(i,(p,v))] + ([(i',(p,v'))]) + [(i'',(p,v''))]).
 	\end{align*}
 %	\begin{align*}
 %	([i,p,v] + &[i',p,v']) + [i'',p,v''] \\
 %		&= [i,p,v + T^{i'}_i|_p v'] + [i'',p,v''] \\
 %		&= [i,p,v + T^{i'}_i|_p v' + T^{i''}_i|_p v''] \\
-%		&= [(i,p,v + T^{i'}_i|_p v' + T^{i'}_i|_p \circ T^{i''}_{i'}|_p v'']) \\ 
-%		&= [i,p,v + T^{i'}_i|_p (v' + T^{i''}_{i'}|_p v'')]) \\ 
-%		&= [i,p,v] + [i',p,v' + T^{i''}_{i'}|_p v'']) \\ 
+%		&= [(i,p,v + T^{i'}_i|_p v' + T^{i'}_i|_p \circ T^{i''}_{i'}|_p v'']) \\
+%		&= [i,p,v + T^{i'}_i|_p (v' + T^{i''}_{i'}|_p v'')]) \\
+%		&= [i,p,v] + [i',p,v' + T^{i''}_{i'}|_p v'']) \\
 %		&= [i,p,v] + ([i',p,v']) + [i'',p,v''])
 %	\end{align*}
 
@@ -518,7 +518,7 @@ A soma é comutativa: para todos $[(i,(p,v))], [(i',(p,v'))] \in E|_p$, segue da
 %		&= [i',p,v' + T^i_{i'}|_p v] \\
 %		&= [i',p,v'] + [i,p,v].
 %	\end{align*}
-	
+
 	\item ($0$) A identidade em $E|_p$ é
 	\begin{equation*}
 	0 := [(i,(p,0))],
@@ -532,7 +532,7 @@ Ela é identidade de $+$: para todo $[(i,(p,v))] \in E|_p$, segue da reflexivida
 	\begin{equation*}
 	0 + [(i,(p,v))] = [(i,(p,0))] + [(i,(p,v))] = [(i,(p,0 + v))] = [(i,(p,v))].
 	\end{equation*}
-	
+
 	\item ($-$) A inversa em $E|_p$ é a função
 	\begin{align*}
 	\func{-}{E|_p}{E|_p}{[(i,(p,v))]}{[(i,(p,-v))]},
@@ -575,7 +575,7 @@ que está bem definida pois se $(i,(p,v)) \sim (i',(p,v'))$, segue da linearidad
 			&= [(i,(p,cv)] + [(i',(p,cv')] \\
 			&= c[(i,(p,v)] + c[(i',(p,v')].
 		\end{align*}
-	
+
 	\item Para todos $c,c' \in \R$ e $[(i,(p,v)] \in E|_p$,
 		\begin{align*}
 		(c+c')[(i,(p,v)] &= [(i,(p,(c+c')v)] \\
@@ -588,7 +588,7 @@ que está bem definida pois se $(i,(p,v)) \sim (i',(p,v'))$, segue da linearidad
 			&= [(i,(p,c(c'v))] \\
 			&= c[(i,(p,c'v)] \\
 			&= c(c'[(i,(p,v)])
-		\end{align*}	
+		\end{align*}
 e
 		\begin{equation*}
 		1[(i,(p,v)] = [(i,(p,1v)] = [(i,(p,v)].
@@ -706,18 +706,18 @@ Por simplicidade, denotaremos $(i,(p,v)) \in E'$ por $(i,p,v)$. Definimos a rela
 	(i,p,v) \sim (i',p',v') \sse p=p' \text{\ \ e\ \ } v'=T^i_{i'}|_p v.
 	\end{equation*}
 Mostremos que $\sim$ é relação de equivalência.
-	
+
 	\begin{enumerate}
 	\item (Reflexividade) Primeiro notemos que, pelo mesmo argumento de \ref{topo:prop.func.trans}, para todo $i \in I$ vale que $T^i_i|_p = \Id_{\R^n}$. Seja $(i,p,v) \in E$. %Da identidade de $\{T^i_{i'}\}_{(i,i') \in I^2}$
 Disso segue que $T^i_i|_p v = v$, portanto $(i,p,v) \sim (i,p,v)$.
-	
-	\item (Simetria) Sejam $(i,p,v), (i',p',v') \in E'$ tais que $(i,p,v) \sim (i',p',v')$. Então $p=p'$ e $v'=T^i_{i'}|_p v$. Da % identidade e a 
+
+	\item (Simetria) Sejam $(i,p,v), (i',p',v') \in E'$ tais que $(i,p,v) \sim (i',p',v')$. Então $p=p'$ e $v'=T^i_{i'}|_p v$. Da % identidade e a
 cociclicidade de $\{T^i_{i'}\}_{(i,i') \in I^2}$ segue que
 	\begin{equation*}
 	v = T^i_i|_p v = T^{i'}_i|_p \circ T^i_{i'}|_p v = T^{i'}_i|_p v'.
 	\end{equation*}
 Como $p'=p$, segue que $(i',p',v') \sim (i,p,v)$.
-	
+
 	\item (Transitividade) Sejam $(i,p,v), (i',p',v'), (i'',p'',v'') \in E'$ tais que $(i,p,v) \sim (i',p',v')$ e $(i',p',v') \sim (i'',p'',v'')$. Então $p=p'$, $p'=p''$, $v'=T^i_{i'}|_p v$ e $v''=T^{i'}_{i''}|_p v'$. Da cociclicidade de $\{T^i_{i'}\}_{(i,i') \in I^2}$ segue que
 	\begin{equation*}
 	T^i_{i''}|_p v = T^{i'}_{i''}|_p \circ T^i_{i'}|_p v = T^{i'}_{i''}|_p v' = v''.
@@ -748,8 +748,8 @@ Para todo $[j,p,u] \in E|_p$ e todo $i \in I$ tal que $p \in A_i$, existe único
 	\begin{equation*}
 	(j,p,u) \sim (i,p,T^j_i|_p u) = (i,p,v).
 	\end{equation*}
-Agora, suponha que existem $v,v' \in \R^n$ tais que $(i,p,v), (i,p,v') \in [j,p,u]$. Então $(i,p,v) \sim (i,p,v')$, portanto $v' = T^i_i|_p v = v$.	
-% e segue da identidade de $\{T^i_{i'}\}_{(i,i') \in I^2}$ que $v'=v$. 
+Agora, suponha que existem $v,v' \in \R^n$ tais que $(i,p,v), (i,p,v') \in [j,p,u]$. Então $(i,p,v) \sim (i,p,v')$, portanto $v' = T^i_i|_p v = v$.
+% e segue da identidade de $\{T^i_{i'}\}_{(i,i') \in I^2}$ que $v'=v$.
 Sendo assim, a partir de agora podemos sempre tomar um representante de $[j,p,u] \in E|_p$ com um $i \in I$ conveniente, contanto que $p \in A_i$.
 
 Vamos dar estrutura de grupo para $E|_p$.
@@ -779,7 +779,7 @@ A soma é comutativa: para todos $[i,p,v], [i,p,v'] \in E|_p$,
 	\begin{equation*}
 	[i,p,v] + [i,p,v'] = [i,p,v + v'] = [i,p,v' + v] = [i,p,v'] + [i,p,v].
 	\end{equation*}
-	
+
 	\item ($0$) A identidade em $E|_p$ é
 	\begin{equation*}
 	0 := [i,p,0],
@@ -793,7 +793,7 @@ Ela é identidade de $+$: para todo $[i,p,v] \in E|_p$,
 	\begin{equation*}
 	0 + [i,p,v] = [i,p,0] + [i,p,v] = [i,p,0 + v] = [i,p,v].
 	\end{equation*}
-	
+
 	\item ($-$) A inversa em $E|_p$ é a função
 	\begin{align*}
 	\func{-}{E|_p}{E|_p}{[i,p,v]}{[i,p,-v]},
@@ -835,7 +835,7 @@ Para mostrar que $\cdot$ é ação de corpo, devemos mostrar o seguinte.
 			&= [i,p,cv] + [i,p,cv'] \\
 			&= c[i,p,v] + c[i,p,v'].
 		\end{align*}
-	
+
 	\item Para todos $c,c' \in \R$ e $[i,p,v] \in E|_p$,
 		\begin{align*}
 		(c+c')[i,p,v] &= [i,p,(c+c')v] \\
@@ -848,7 +848,7 @@ Para mostrar que $\cdot$ é ação de corpo, devemos mostrar o seguinte.
 			&= [i,p,c(c'v)] \\
 			&= c[i,p,c'v] \\
 			&= c(c'[i,p,v])
-		\end{align*}	
+		\end{align*}
 e
 		\begin{equation*}
 		1[i,p,v] = [i,p,1v] = [i,p,v].
@@ -934,7 +934,7 @@ Embora a proposição~\ref{topo:atlas.fibrado} garanta que a estrutura diferenci
 	\begin{align*}
 	\func{h_i}{E|_{A_i}}{A_i \times \R^n}{[i,p,v]}{(p,L v)}
 	\end{align*}
-com inversa	
+com inversa
 	\begin{align*}
 	\func{{h_i}\inv}{A_i \times \R^n}{E|_{A_i}}{(p,v)}{[i,p,L\inv v]},
 	\end{align*}
@@ -1018,7 +1018,7 @@ A \emph{multiplicação por função}
 		\begin{aligned}[t]
 		\func{fs}{V}{E}{p}{f(p)s|_p.}
 		\end{aligned}
-	}	
+	}
 	\end{align*}
 Isso é uma ação do anel $\Cont^\infty(V)$ que dá ao espaço $\Sec(E)$ uma estrutura de módulo.
 \end{definition}
@@ -1043,9 +1043,9 @@ Sejam $(\bm E,\proj)$ um fibrado vetorial diferencial de $\R^n$ sobre uma varied
 Seja $(\bm E,\proj)$ um fibrado vetorial diferencial de $\R^n$ sobre uma variedade diferencial $\bm V$.
 	\begin{enumerate}
 	\item Se $G=\{\Id\}$ é um grupo estrutural de $\bm E$, então $\bm E$ é trivial;
-	
+
 	\item Uma $\Iso{\toplin}(\R^n)^+$-estrutura sobre $\Tg V$ é equivalente a uma orientação de $\bm V$;
-	
+
 	\item Uma $\Iso{\toplin_{\nor{}}}(\R^n)$-estrutura (também denotado $O(n)$ ou  $O_n(\R)$) sobre $\bm E$ é equivalente a um produto interno em cada fibra $E|_p$, dado por
 		\begin{equation*}
 		\inte{v}{v'}|_p := {v'}^* T^i_{i'}|_p v.
@@ -1125,9 +1125,9 @@ Além disso, consideraremos também a seguinte propriedade da ação.
 %	\begin{equation*}
 %	x' = x \centerdot g.
 %	\end{equation*}
-%	
+%
 	\item (Livre) Para todo $g \in G$, se existe $x \in X$ tal que $x \centerdot g = x$, então $g=\id$;
-%	
+%
 %	\item (Transitiva) Para todos $x,x' \in X$, existe $g \in G$ tal que $x' = x \centerdot g$.
 	\end{enumerate}
 %
@@ -1141,9 +1141,9 @@ Além disso, consideraremos também a seguinte propriedade da ação.
 Sejam $\bm X$ um espaço topológico e $\bm G$ um grupo topológico. Um \emph{fibrado principal de $\bm G$ sobre $\bm X$} é um fibrado topológico $(\bm E,\proj)$ junto com uma ação à direita contínua $\bm E \curvearrowleft \bm G$ tal que
 	\begin{enumerate}
 	\item (Preserva fibras) Para todo $x \in X$, todo $e \in E|_x$ e todo $g \in G$, $e \centerdot g \in E|_x$;
-	
+
 	\item (Regularidade) Para todo $x \in X$, a ação restrita à fibra $E|_x \curvearrowleft \bm G$ é regular --- ou seja, para todos $x,x' \in X$, existe único $g \in G$ tal que $x' = x \centerdot g$.
-	
+
 	\item Para todo $x \in X$ e todo $e \in E|_x$,
 		\begin{align*}
 		\func{e \centerdot}{G}{E|_x}{g}{e \centerdot g}
@@ -1247,7 +1247,7 @@ o que finalmente implica que
 	\begin{equation*}
 	h\inv (p,\proj_G \circ h (e)g) = {h'}\inv(p,\proj_G \circ h' (e) g).
 	\end{equation*}
-	
+
 \end{comment}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1436,7 +1436,7 @@ para todo $k$ tal que, para todas $\omega \in \Omega^k(B)$ e $s \in \Sec(E)$,
 %	\func{\nabla}{\Omega^k_B(E)}{\Omega^{k+1}_B(E)}{\sigma}{
 %		\begin{aligned}[t]
 %		\func{\nabla \sigma}{•}{•}{•}{•}
-%		\end{aligned}	
+%		\end{aligned}
 %	}
 %	\end{align*}
 
@@ -1505,7 +1505,7 @@ Localmente, temos
 
 
 
-
+\begin{comment}
 
 \cleardoublepage
 
@@ -1545,3 +1545,5 @@ Localmente, temos
 		&= (\dd r)^2 + r^2 ( (\dd\phi_0)^2 + \sin^2 \phi_0 (\dd \phi_1)^2 ) \\
 		&= (\dd r)^2 + r^2 \dd S^2 .
 	\end{align*}
+
+\end{comment}
