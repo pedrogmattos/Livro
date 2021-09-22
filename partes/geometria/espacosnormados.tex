@@ -509,7 +509,7 @@ Nesta seção, trataremos de funções lineares contínuas entre espaços normad
 	\end{equation*}
 A distorção de uma função controlada é definida como
 	\begin{equation*}
-	\nor{f} = \inf\set{c \in \intfa{0}{\infty}}{\forall_{p,p' \in M} \dist{f(p)}{f(p')} \leq c\dist{p}{p'}}.
+	\distor{f} = \inf\set{c \in \intfa{0}{\infty}}{\forall_{p,p' \in M} \dist{f(p)}{f(p')} \leq c\dist{p}{p'}}.
 	\end{equation*}
 Essa definição em espaços normados, considerando a distância definida pela norma, é equivalente à seguinte propriedade.
 
@@ -1540,7 +1540,7 @@ Temos que
 
 \begin{proposition}
 \label{prop:lema.contracao}
-Sejam $(\bm E,\nor{\var})$ um espaço normado completo, $X \subseteq E$ um subconjunto e $\fun{f}{X}{E}$ uma contração ($\distor{f}<1$). Para todos $x \in X$ e $r \in \intaa{0}{\infty}$ tal que $\bolafec{x}{r} \subseteq X$ e $\nor{f(x)-x} \leq (1-\distor{f})r$. Então $f$ tem ponto fixo na bola fechada $\bolafec{x}{r}$.
+Sejam $(\bm E,\nor{\var})$ um espaço normado completo, $X \subseteq E$ um subconjunto e $\fun{f}{X}{E}$ uma contração ($\distor{f}<1$). Para todos $x \in X$ e $r \in \intaa{0}{\infty}$ tais que $\bolafec{x}{r} \subseteq X$ e $\nor{f(x)-x} \leq (1-\distor{f})r$, a função $f$ tem ponto fixo na bola fechada $\bolafec{x}{r}$.
 \end{proposition}
 \begin{proof}
 Basta provar que $f(\bolafec{x}{r}) \subseteq \bolafec{x}{r}$, pois como $\bolafec{x}{r}$ é fechado, é um espaço métrico completo não vazio, e segue do teorema do ponto fixo de contração (\ref{prop:ponto.fixo.contracao}) que $\fun{f}{\bolafec{x}{r}}{\bolafec{x}{r}}$ tem ponto fixo.
@@ -1556,7 +1556,7 @@ Seja $x' \in \bolafec{x}{r}$. Então $\nor{x'-x} \leq r$, portanto
 o que mostra que $f(x') \in \bolafec{x}{r}$, logo $f(\bolafec{x}{r}) \subseteq \bolafec{x}{r}$.
 \end{proof}
 
-\begin{proposition}
+\begin{proposition}[Perturbação da identidade]
 \label{prop:perturbacao.identidade}
 Sejam $(\bm E,\nor{\var})$ um espaço normado completo, $A \subseteq E$ aberto e $\fun{f}{A}{E}$ contração ($\distor{f}<1$). Então
 	\begin{align*}
@@ -1605,9 +1605,9 @@ portanto $E = \bigcup_{n \in \N} \bolafec{f(x)}{n} \subseteq f(A)$, o que mostra
 
 Em particular, isso mostra que $\fun{\Id+f}{A}{(\Id+f)(A)}$ é um homeomorfismo. O conjunto $(\Id + f)(A)$ ser aberto equivale à função $\Id + f$ ser aberta.
 
-\begin{proposition}
+\begin{proposition}[Perturbação de isomorfismo linear]
 \label{prop:perturbacao.linear}
-Sejam $(\bm E,\nor{\var})$ um espaço normado completo, $A \subseteq E$ aberto, $\fun{L}{E}{E}$ isomorfismo linear contínuo e $\fun{f}{A}{E}$ função controlada tal que $\nor{L\inv}\nor{f} < 1$. Então
+Sejam $\bm E$ e $\bm E'$ espaços normados completos, $A \subseteq E$ aberto, $\fun{L}{E}{E'}$ isomorfismo linear contínuo e $\fun{f}{A}{E'}$ função controlada tal que $\distor{L\inv}\distor{f} < 1$. Então
 	\begin{align*}
 	\func{L+f}{A}{(L+f)(A)}{v}{L(v)+f(v)}
 	\end{align*}
@@ -2139,9 +2139,13 @@ Sejam $\bm E$ e $\bm E'$ espaços normados, $A \subseteq E$ um aberto e $X \subs
 Uma função \emph{diferenciável} de $A$ para $E'$ é uma função $\fun{f}{A}{E'}$ diferenciável em $A$.
 \end{definition}
 
-Vale notar que em \ref{eq:condicao.diferenciabilidade} poderíamos calcular limite com a norma de $\bm E'$ que o resultado seria equivalente por causa da definição de convergência em espaços normados ser pela métrica dada pela norma. Na literatura adota-se às vezes o limite com ambas as normas, mas assim alguns cálculos ficam mais simples. Usaremos a definição com a norma também quando for conveniente para algum cálculo.
+Notemos que o limite \ref{eq:condicao.diferenciabilidade} acima também poderia ser calculado como
+	\begin{equation*}
+	\lim_{x' \to x} \frac{f(x') - f(x) - D(x'-x)}{\nor{x'-x}} = 0.
+	\end{equation*}
+Vale notar também que na equação \ref{eq:condicao.diferenciabilidade} poderíamos calcular o limite usando a norma de $\bm E'$ que o resultado seria equivalente, porque a definição de convergência em espaços normados é dada pela métrica induzida pela norma. Na literatura adota-se às vezes o limite com ambas as normas, mas alguns cálculos ficam mais simples se a definição acima é adotada. Usaremos a definição com a norma também quando for conveniente para algum cálculo.
 
-\begin{exercise}[Definição alternativa]
+\begin{exercise}[Diferenciabilidade --- alternativa]
 Sejam $(\bm E,\nor{\var})$ e $(\bm E',\nor{\var}')$ espaços normados, $A \subseteq E$ um aberto, $X \subseteq A$ e $\fun{f}{A}{E'}$. A função $f$ é diferenciável em $X$ se, e somente se, para todo $x \in X$, alguma função linear contínua $\fun{D}{E}{E'}$ satisfaz
 	\begin{equation*}
 	\lim_{v \to 0} \frac{\nor{f(x+v) - f(x) - D(v)}'}{\nor{v}} = 0.
@@ -2240,7 +2244,7 @@ Seja $x \in X$. Como $\D f|_x$ é linear e contínua, $\lim_{v \to 0} \D f|_x(v)
 
 \subsubsection{Operações com funções diferenciáveis}
 
-A partir da estrutura algébrica dos espaços vetoriais (ou álgebras) dos espaços normados $\bm E$ e $\bm E'$, podem-se induzir operações entre funções desses espaços, como a adição de funções, a multiplicação de função por escalar e, no caso do espaço imagem ser uma álgebra, a multiplicação de funções. Quando realizamos essas operações entre funções diferenciáveis, as funções resultantes ainda serão diferenciáveis e a expressão de sua diferencial em termos das diferenciais das funções usadas na operação são muito simples. Essas propriedades são de fato análogas a propriedades de uma derivação em uma álgebra (ou anel): são lineares e satisfazem uma regra do produto, ou regra de derivação. No entanto, para que a diferencial seja de fato uma derivação, algumas restrições devem ser feitas; as propriedades a seguir podem portanto ser compreendidas como casos mais gerais das propriedades de uma derivação, pois são pontuais.
+A partir da estrutura algébrica dos espaços vetoriais (ou álgebras) dos espaços normados $\bm E$ e $\bm E'$, podem-se induzir operações entre funções desses espaços, como a adição de funções, a multiplicação de função por escalar e, no caso do espaço imagem ser uma álgebra, a multiplicação de funções. Quando realizamos essas operações entre funções diferenciáveis, as funções resultantes ainda são diferenciáveis e a expressão de sua diferencial em termos das diferenciais das funções usadas na operação são muito simples. Essas propriedades são de fato análogas a propriedades de uma derivação em uma álgebra (ou anel): são lineares e satisfazem uma regra do produto, ou regra de derivação. No entanto, para que a diferencial seja de fato uma derivação, algumas restrições devem ser feitas; as propriedades a seguir podem portanto ser compreendidas como casos mais gerais das propriedades de uma derivação, pois são pontuais.
 
 \begin{proposition}[Propriedades de derivação]
 \label{prop:diferencial.propriedades}
@@ -2406,7 +2410,7 @@ Como diferenciabilidade implica continuidade, se $f$ é diferenciável então $f
 A seguir, quando falamos de uma vizinhança de um conjunto $X$, queremos dizer um conjunto $V$ tal que $X \subseteq \Int{V}$, o que equivale a unirmos vizinhanças de cada ponto $x \in X$.
 
 \begin{definition}[Diferenciabilidade contínua]
-Sejam $\bm E$ e $\bm E'$ espaços normados, $A \subseteq E$ um aberto e $X \subseteq A$. Uma função de $A$ para $E'$ \emph{$\Cont^1$-diferenciável} (ou \emph{continuamente diferenciável}) \emph{em $X$} (ou \emph{em $x$} para $X = \{x\}$) é uma função $\fun{f}{A}{E'}$ tal que, para alguma vizinhança $V \subseteq A$ de $X$, $f$ é $m$-diferenciável em $V$ e sua diferencial $\fun{\D f}{V}{\toplin(\bm E, \bm E')}$ é contínua em $X$.
+Sejam $\bm E$ e $\bm E'$ espaços normados, $A \subseteq E$ um aberto e $X \subseteq A$. Uma função de $A$ para $E'$ \emph{$\Cont^1$-diferenciável} (ou \emph{continuamente diferenciável}) \emph{em $X$} (ou \emph{em $x$} para $X = \{x\}$) é uma função $\fun{f}{A}{E'}$ tal que, para alguma vizinhança $V \subseteq A$ de $X$, $f$ é diferenciável em $V$ e sua diferencial $\fun{\D f}{V}{\toplin(\bm E, \bm E')}$ é contínua em $X$.
 
 Uma função \emph{$\Cont^1$-diferenciável} (ou \emph{continuamente diferenciável}) de $A$ para $E'$ é uma função $\fun{f}{A}{E'}$ $\Cont^1$-diferenciável em $A$ e o conjunto dessas funções é denotado $\Cont^1(\bm A,\bm E')$.
 \end{definition}
@@ -2432,6 +2436,100 @@ Sejam $\bm E$, $\bm E'$ e $\bm E'$ espaços normados, $A \subseteq E$ e $A' \sub
 Segue de \ref{prop:diferenciabilidade.composicao} e do fato de que composição de funções contínuas é contínua.
 \end{proof}
 
+%O conceito de diferenciabilidade contínua exige que a função $f$ seja diferenciável em uma vizinhança de um ponto $x$ para que se possa falar da continuidade da diferencial naquele ponto. De outra maneira, a diferencial não estaria definida numa vizinhança do ponto e portanto sua continuidade não poderia ser significativamente estudada ali. No entanto, quando definimos a diferenciabilidade da $f$, definimos o conceito pontualmente, e não em uma vizinhança. A propriedade de diferenciabilidade contínua pode ser definida
+
+
+\subsubsection{Diferenciabilidade forte}
+
+% ESTAVA TENTANDO DEFINIR UM TIPO DE DIFERENCIABILIDADE CONTÍNUA PARA UM PONTO DO DOMÍNIO EM VEZ DE PARA O DOMÍNIO INTEIRO DA FUNÇÃO, MAS NÃO CONSEGUI. A ÚNICA SAÍDA QUE ACHEI FOI DEFINIR EM UM ABERTO DO PONTO, POIS PARA QUE SE POSSA DIZER QUE A DIFERENCIAL Df DE UMA FUNÇÃO f É CONTÍNUA NO PONTO, DEVE-SE PELO MENOS TÊ-LA DEFINIDA EM UMA VIZINHANÇA DESSE PONTO, O QUE EXIGE QUE A f SEJA DIFERENCIÁVEL EM UMA VIZINHANÇA DO PONTO.
+% NO ENTANTO, ALGUNS MESES DEPOIS FINALMENTE PERCEBI QUE A DEFINIÇÃO DO ELON DE DIFERENCIABILIDADE FORTE É JUSTAMENTE O JEITO DE DEFINIR ISSO. ELA NÃO EXIGE DIFERENCIABILIDADE EM UMA VIZINHANÇA DO PONTO, SOMENTE NO PONTO, MAS ALÉM DISSO PEDE QUE A FUNÇÃO RESTO SEJA CONTROLADA EM UMA VIZINHANÇA DO PONTO. QUANDO A FUNÇÃO É DIFERENCIÁVEL EM UMA VIZINHANÇA DO PONTO, ESSA DEFINIÇÃO COINCIDE COM A DE DIFERENCIABILIDADE CONTÍNUA, E ESSA DEFINIÇÃO PERMITE TAMBÉM GENERALIZAR OUTROS TEOREMAS QUE EM GERAL USAM DIFERENCIABILIDADE CONTÍNUA, COMO O TEOREMA DA FUNÇÃO INVERSA.
+% GOSTARIA DE SABER SE É POSSÍVEL GENERALIZAR OUTROS TEOREMAS PARA VERSÕES PONTUAIS ASSIM, COMO OS QUE ENVOLVEM A DIFERENCIABILIDADE PARCIAL EM RELAÇÃO COM A DIFERENCIABILIDADE DA FUNÇÃO.
+
+Quando definimos diferenciabilidade de uma função, definimos primeiro para um ponto ou conjunto de pontos no domínio, sem levar em consideração a diferenciabilidade dos pontos na vizinhança desse ponto. A definição de diferenciabilidade contínua, porém, não pode ser definida somente pontualmente, pois para que a diferencial $\D f$ de uma função $f$ seja contínua em um ponto, ela primeiro precisa estar definida em uma vizinhança desse ponto. Assim, se torna necessário que a função $f$ seja diferenciável numa vizinhança do ponto em consideração. Isso faz com que as proposições envolvendo diferenciabilidade contínua da função não possam ser enunciadas pontualmente, mas sim para funções diferenciáveis em uma vizinhança do ponto.
+
+Existe, no entanto, uma definição mais forte de diferenciabilidade que pode ser definida pontualmente e que, quando válida numa vizinhança do ponto, coincide com a propriedade de diferenciabilidade contínua. Isso permite que essa propriedade estenda resultados geralmente apresentados para funções $\Cont^1$-diferenciáveis. Casos notáveis são o Teorema da Função Inversa e o Teorema da Função Implícita, que serão apresentados mais adiante.
+
+\begin{definition}[Diferenciabilidade forte]
+Sejam $\bm E$ e $\bm E'$ espaços normados, $A \subseteq E$ um aberto e $X \subseteq A$. Uma função de $A$ para $\bm E'$ \emph{fortemente diferenciável} em $X$ (ou em $x$ para $X = \{x\}$) é uma função $\fun{f}{A}{E'}$ diferenciável em $X$ tal que, para todo $x \in X$ e $\varepsilon \in \R_{>0}$, algum $\delta \in \R_{>0}$ satisfaz que a função resto restrita a $\bola{0}{\delta}$, dada por
+	\begin{align*}
+	\func{r_x}{\bola{0}{\delta}}{E'}{v}{f(x+v) - f(x) - \D f|_x(v)},
+	\end{align*}
+é controlada e sua distorção satisfaz $\distor{r_x} \leq \varepsilon$.
+\end{definition}
+
+A definição adotada por \citeauthor{liv:Lima-CursoAnalise2} em seu \citetitle{liv:Lima-CursoAnalise2} é equivalente a essa, mas como usaremos a propriedade acima mais usualmente, essa equivalência %fica como exercício e sua demonstração
+pode ser conferida em \cite[p. 279]{liv:Lima-CursoAnalise2}.
+
+%Essa abordagem é adotada e tais resultados podem ser conferidos lá \cite[pp. 286, 287]{liv:Lima-CursoAnalise2}.
+
+%\begin{exercise}[Diferenciabilidade forte --- alternativa]
+%Sejam $\bm E$ e $\bm E'$ espaços normados, $A \subseteq E$ um aberto e $X \subseteq A$. Uma função $\fun{f}{A}{E'}$ é fortemente diferenciável em $X$ se, e somente se, para todo $x \in X$, alguma função linear contínua $\fun{D}{E}{E'}$ satisfaz
+%	\begin{equation*}
+%	\lim_{(x',v) \to (x,0)} \frac{f(x'+v) - f(x') - D(v)}{\nor{v}} = 0.
+%	\end{equation*}
+%%	\begin{equation*}
+%%	\lim_{(x',x'') \to (x,x)} \frac{f(x'') - f(x') - D(x''-x')}{\nor{x''-x'}} = 0.
+%%	\end{equation*}
+%\end{exercise}
+
+A proposição a seguir é a mais importante aqui, pois mostra a equivalência dos conceito de diferenciabilidade contínua e diferenciabilidade forte quando em uma vizinhança do ponto, portanto justifica a afirmação de que o segunda generaliza o primeira.
+
+\begin{proposition}
+%\label{prop:diferenciabilidade.continua.forte}
+\label{prop:equiv.continuamente.fortemente.diferenciavel}
+Sejam $\bm E$ e $\bm E'$ espaços normados, $A \subseteq E$ um aberto, $X \subseteq A$ e $\fun{f}{A}{E'}$ uma função diferenciável. A função $f$ é fortemente diferenciável em $X$ se, e somente se, é continuamente diferenciável em $X$.
+\end{proposition}
+\begin{proof}
+Seja $x \in X$. Suponhamos que $f$ é continuamente diferenciável em $x$, o que significa que $\D f$ é contínua em $x$. A função resto em $x$ é dada por
+	\begin{equation*}
+	r_x(v) = f(x+v) - f(x) - \D f|_x(v)
+	\end{equation*}
+e, como é soma de funções diferenciáveis, é diferenciável e
+	\begin{equation*}
+	\D r_x|_v = \D f|_{x+v} - \D f|_x.
+	\end{equation*}
+Isso implica que $\D r_x|_0 = 0$ e, como $\D f$ é contínua em $x$, $\D r_x$ é contínua em $0$. Assim, para todo $\varepsilon \in \R_{>0}$, algum $\delta \in \R_{>0}$ satisfaz que, para todo $v \in \bola{0}{\delta}$,
+	\begin{equation*}
+	\nor{\D r_x|_v} = \nor{\D r_x|_v - \D r_x|_0} < \varepsilon.
+	\end{equation*}
+Segue então de \ref{prop:diferencial.limitada.funcao.controlada} que $r_x$ é controlada e sua distorção satisfaz $\distor{r} \leq \varepsilon$, o que mostra que $f$ é fortemente diferenciável em $x$.
+
+A recíproca é exercício, mas sua demonstração pode ser conferida em \cite[p. 279]{liv:Lima-CursoAnalise2}.
+%Reciprocamente, suponhamos que $f$ é fortemente diferenciável em $x$. Seja $\varepsilon \in \R_{>0}$.
+\end{proof}
+
+
+\begin{comment}
+
+
+\begin{proposition}
+\label{prop:diferenciavel.propriedade}
+Sejam $\bm E$ e $\bm E'$ espaços normados, $A \subseteq E$ um aberto, $x \in A$ e $\fun{f}{A}{E'}$ uma função diferenciável em $x$.
+Se $\fun{\D f|_x}{E}{E'}$ é injetiva, então existem $\delta,c \in \R_{>0}$ tais que, para todos $x',x'' \in \bola{x}{\delta}$,
+	\begin{equation*}
+	\nor{f(x'') - f(x')} \geq c\nor{x''-x'}.
+	\end{equation*}
+Segue que $\fun{f|_{\bola{x}{\delta}}}{\bola{x}{\delta}}{f(\bola{x}{\delta})}$ é um homeomorfismo.
+\end{proposition}
+
+\begin{proposition}
+\label{prop:fortemente.diferenciavel.propriedade}
+Sejam $\bm E$ e $\bm E'$ espaços normados, $A \subseteq E$ um aberto, $x \in A$ e $\fun{f}{A}{E'}$ uma função fortemente diferenciável em $x$ tal que $\fun{\D f|_x}{E}{E'}$ é injetiva. Existem $\delta,c \in \R_{>0}$ tais que, para todos $x',x'' \in \bola{x}{\delta}$,
+	\begin{equation*}
+	\nor{f(x'') - f(x')} \geq c\nor{x''-x'}.
+	\end{equation*}
+Segue que $\fun{f|_{\bola{x}{\delta}}}{\bola{x}{\delta}}{f(\bola{x}{\delta})}$ é um homeomorfismo.
+\end{proposition}
+\begin{proof}
+Da injetividade de $\D f|_x$ segue que existe $c \in \R_{>0}$ tal que, para todo $v \in E$,
+	\begin{equation*}
+	\nor{\D f|_x(v)} \geq 2c\nor{v}.
+	\end{equation*}
+
+\end{proof}
+
+
+\end{comment}
 
 \subsection{Derivabilidade}
 
@@ -2443,7 +2541,7 @@ Para a definição de derivada, definiremos antes o conceito de uma trajetória 
 Sejam $\bm E$ um espaço normado. Uma \emph{trajetória em $E$} é uma função $\fun{\gamma}{I}{E}$ de um intervalo aberto $I \subseteq \R$ para $E$.
 \end{definition}
 
-Na literatura matemática, o termo \textit{curva} às vezes é denomina o que aqui chamamos de trajetória, em geral impondo a condição de continuidade, e outras vezes denomina o conjunto imagem de uma trajetória que seja bem comportada. Aqui, reservaremos o nome \textit{curva} para variedades $1$-dimensionais, que serão definidas mais adiante; em particular, o conjunto imagem de uma trajetória suficientemente bem comportada é uma curva. Um outro termo também usado na literatura é \textit{curva parametrizada}.
+Na literatura matemática, o termo \textit{curva} às vezes denomina o que aqui chamamos de trajetória, em geral impondo a condição de continuidade, e outras vezes denomina o conjunto imagem de uma trajetória que seja bem comportada. Aqui, reservaremos o nome \textit{curva} para variedades $1$-dimensionais, que serão definidas mais adiante; em particular, o conjunto imagem de uma trajetória suficientemente bem comportada é uma curva. Um outro termo também usado na literatura é \textit{curva parametrizada}.
 
 O conceito de derivada de uma trajetória vem de sua interpretação física. A derivada em um tempo $t \in I$ da trajetória é a `taxa de variação instantânea' ou a \emph{velocidade} do objeto que se move conforme a trajetória. Esse é o conceito usado na definição de derivada de funções reais e se estende facilmente para o caso de espaços normados.
 
@@ -3045,7 +3143,7 @@ Sejam $\bm E$ um espaço normado, $K \subseteq E$ compacto tal que $\Int{K} \neq
 , então $f$ tem ponto crítico em $\Int{K}$.
 \end{proposition}
 \begin{proof}
-Seja $c \in \R$ o valor de $f$ em $\fro{K}$. Se $f$ é constante, então para todo $x \in \Int{K}$ vale $\D f|_x = 0$, logo todo ponto de $\Int{K}$ é crítico. Se $f$ não é constante, seja $x \in K$ tal que $f(x) \neq c$. Como $K \setminus \fro{K} = \Int{K}$, isso implica que $x \in Int{K}$. Como $K$ é compacto e $f$ é contínua, $f$ tem ponto de mínimo e de máximo, que em particular são pontos de mínimo e máximo locais. Se $f(x) > c$, seja $m \in K$ o ponto de máximo de $f$. Nesse caso $m \in \Int{K}$, pois $f(m) \geq f(x) > c$, e como $f$ é diferenciável em $\Int{K}$ segue de \ref{prop:extremo.critico} que $m$ é ponto crítico de $f$ em $\Int{K}$. Se $f(x) < c$, seja $m \in K$ o ponto de mínimo de $f$. Nesse caso $m \in \Int{K}$, pois $f(m) \leq f(x) < c$, e como $f$ é diferenciável em $\Int{K}$ segue de \ref{prop:extremo.critico} que $m$ é ponto crítico de $f$ em $\Int{K}$.
+Seja $c \in \R$ o valor de $f$ em $\fro{K}$. Se $f$ é constante, então para todo $x \in \Int{K}$ vale $\D f|_x = 0$, logo todo ponto de $\Int{K}$ é crítico. Se $f$ não é constante, seja $x \in K$ tal que $f(x) \neq c$. Como $K \setminus \fro{K} = \Int{K}$, isso implica que $x \in \Int{K}$. Como $K$ é compacto e $f$ é contínua, $f$ tem ponto de mínimo e de máximo, que em particular são pontos de mínimo e máximo locais. Se $f(x) > c$, seja $m \in K$ o ponto de máximo de $f$. Nesse caso $m \in \Int{K}$, pois $f(m) \geq f(x) > c$, e como $f$ é diferenciável em $\Int{K}$ segue de \ref{prop:extremo.critico} que $m$ é ponto crítico de $f$ em $\Int{K}$. Se $f(x) < c$, seja $m \in K$ o ponto de mínimo de $f$. Nesse caso $m \in \Int{K}$, pois $f(m) \leq f(x) < c$, e como $f$ é diferenciável em $\Int{K}$ segue de \ref{prop:extremo.critico} que $m$ é ponto crítico de $f$ em $\Int{K}$.
 \end{proof}
 
 \subsection{Valor médio}
@@ -3319,7 +3417,7 @@ Um outro corolário importante da desigualdade do valor médio é o seguinte, qu
 
 \begin{proposition}
 \label{prop:diferencial.limitada.funcao.controlada.corolario}
-Sejam $\bm E$ e $\bm E'$ espaços normados, $A \subseteq E$ um aberto convexo, $\fun{f}{A}{E'}$ uma função diferenciável e $\fun{T}{E}{E'}$ um função linear contínua. Se, para algum $\varepsilon \in \intaa{0}{\infty}$, todo $x \in A$ satisfaz $\nor{\D f|_x - T} \leq \varepsilon$, então, para todos $x \in A$ e $v \in E$ tal que $x+v \in A$,
+Sejam $\bm E$ e $\bm E'$ espaços normados, $A \subseteq E$ um aberto convexo, $\fun{f}{A}{E'}$ uma função diferenciável e $\fun{T}{E}{E'}$ um função linear contínua. Se, para algum $\varepsilon \in \intaa{0}{\infty}$, todo $x \in A$ satisfaz $\nor{\D f|_x - T} \leq \varepsilon$, então, para todos $x \in A$ e $v \in E$ tais que $x+v \in A$,
 %	\begin{equation*}
 %	\nor{f(x') - f(x) - T(x'-x)} \leq \varepsilon \nor{x'-x}.
 %	\end{equation*}
@@ -4120,7 +4218,7 @@ Mostraremos por indução em $m$. Seja $x \in X$. Para $m=1$, segue direto de \r
 	\D(f' \circ f)|_x = \D f'|_{f(x)} \circ \D f|_x.
 	\end{equation*}
 
-Para mostrar que $f' \circ f$ é $(m+1)$-diferenciável, mostraremos que sua diuferencial $\D(f' \circ f)$ é $m$-diferenciável. Note que $\D(f' \circ f)$ é composição de duas funções. A primeira é a composição de funções
+Para mostrar que $f' \circ f$ é $(m+1)$-diferenciável, mostraremos que sua diferencial $\D(f' \circ f)$ é $m$-diferenciável. Note que $\D(f' \circ f)$ é composição de duas funções. A primeira é a composição de funções
 	\begin{align*}
 	\func{\circ}{\toplin(E',E'') \times \toplin(E,E')}{\toplin(E,E'')}{(l',l)}{l' \circ l},
 	\end{align*}
@@ -4128,7 +4226,7 @@ que é função bilinear, logo $\infty$-diferenciável e portanto $m$-diferenci�
 	\begin{align*}
 	\func{g}{X}{\toplin(E',E'') \times \toplin(E,E')}{x}{(\D f'|_{f(x)}, \D f|_x)}.
 	\end{align*}
-A função $f$ é $(m+1)$-diferenciável por hipótese, logo $m$-diferebciável; a função $\D f'$ é $m$-diferenciável pois por hipótese $f'$ é $(m+1)$-diferenciável. Assim, por hipótese de indução, a primeira componente de $g$, que é a composição $\D f' \circ f$, é $m$-diferenciável. A segunda componente de $g$ é a função $\D f$, que é $m$-diferenciável pois por hipótese $f$ é $(m+1)$-diferenciável. Assim segue que a função $g$ é $m$-diferenciável, pois cada uma de suas componentes é $m$-diferenciável.
+A função $f$ é $(m+1)$-diferenciável por hipótese, logo $m$-diferenciável; a função $\D f'$ é $m$-diferenciável pois por hipótese $f'$ é $(m+1)$-diferenciável. Assim, por hipótese de indução, a primeira componente de $g$, que é a composição $\D f' \circ f$, é $m$-diferenciável. A segunda componente de $g$ é a função $\D f$, que é $m$-diferenciável pois por hipótese $f$ é $(m+1)$-diferenciável. Assim segue que a função $g$ é $m$-diferenciável, pois cada uma de suas componentes é $m$-diferenciável.
 
 Agora, novamente pela hipótese de indução, a diferencial $\D(f' \circ f)$ é $m$-diferenciável, pois é composição de duas funções $m$-diferenciáveis, e portanto $f' \circ f$ é $(m+1)$-diferenciável.
 \end{proof}
@@ -4241,7 +4339,7 @@ Segue de \ref{prop:multidiferenciabilidade.composicao} e do fato de que composi�
 % 	\begin{equation*}
 % 	\D(f' \circ f)|_x = \D f'|_{f(x)} \circ \D f|_x.
 % 	\end{equation*}
-% 
+%
 % Para mostrar que $f' \circ f$ é $(m+1)$-diferenciável, mostraremos que sua diuferencial $\D(f' \circ f)$ é $m$-diferenciável. Note que $\D(f' \circ f)$ é composição de duas funções. A primeira é a composição de funções
 % 	\begin{align*}
 % 	\func{\circ}{\toplin(E',E'') \times \toplin(E,E')}{\toplin(E,E'')}{(l',l)}{l' \circ l},
@@ -4251,7 +4349,7 @@ Segue de \ref{prop:multidiferenciabilidade.composicao} e do fato de que composi�
 % 	\func{g}{X}{\toplin(E',E'') \times \toplin(E,E')}{x}{(\D f'|_{f(x)}, \D f|_x)}.
 % 	\end{align*}
 % A função $f$ é $(m+1)$-diferenciável por hipótese, logo $m$-diferebciável; a função $\D f'$ é $m$-diferenciável pois por hipótese $f'$ é $(m+1)$-diferenciável. Assim, por hipótese de indução, a primeira componente de $g$, que é a composição $\D f' \circ f$, é $m$-diferenciável. A segunda componente de $g$ é a função $\D f$, que é $m$-diferenciável pois por hipótese $f$ é $(m+1)$-diferenciável. Assim segue que a função $g$ é $m$-diferenciável, pois cada uma de suas componentes é $m$-diferenciável.
-% 
+%
 % Agora, novamente pela hipótese de indução, a diferencial $\D(f' \circ f)$ é $m$-diferenciável, pois é composição de duas funções $m$-diferenciáveis, e portanto $f' \circ f$ é $(m+1)$-diferenciável.
 \end{proof}
 
@@ -4348,28 +4446,361 @@ Por \ref{prop:multidiferenciabilidade.multiderivabilidade}, a notação $\Cont^m
 
 \subsection{Invertibilidade}
 
-Nesta seção, enunciaremos alguns resultados importantes sem prová-los. Demosntrações podem ser encontradas em \cite{liv:Cartan-DifferentialCalculus} ou \cite{liv:Coleman-CalculusNormedVectorSpaces} e são consequências diretas dos resultados das seções anteriores.
+Nesta seção, enunciaremos alguns resultados importantes sem prová-los. Demonstrações podem ser encontradas em \cite{liv:Cartan-DifferentialCalculus} ou \cite{liv:Coleman-CalculusNormedVectorSpaces} e são consequências diretas dos resultados das seções anteriores.
 
 \begin{proposition}
 Seja $\bm E$ uma álgebra normada completa. A inversão multiplicativa
 	\begin{align*}
 	\func{/}{E^{/}}{E}{x}{x\inv}
 	\end{align*}
-é uma função $\Cont^\infty$-diferenciável.
+é uma função $\Cont^\infty$-diferenciável e, para todo $x \in E^{/}$ e todo $v \in E$,
+	\begin{align*}
+	\D(/)|_x(v) = -x\inv v x\inv.
+	\end{align*}
 \end{proposition}
+\begin{proof}
+A demonstração de que $/$ é $\Cont^\infty$-diferenciável será indutiva. Mostraremos que, para todo $m \in \N$, $/$ é $\Cont^m$-diferenciável.
+
+O caso base será mostrar para $m=1$. Primeiro, mostremos que $/$ é diferenciável. Seja $x \in E^{/}$ e definamos a função
+	\begin{align*}
+	\func{l_x}{E}{E}{v}{-x\inv v x\inv}.
+	\end{align*}
+A função $l_x$ é linear e, como vale
+	\begin{equation}
+	\nor{-x\inv v x\inv} \leq \nor{-x\inv}^2 \nor{v},
+	\end{equation}
+também é contínua. Notemos que, para todo $v \in E$, vale que
+	\begin{align*}
+	\nor{/(x+v) - /(x) - l_x(v)} &= \nor{(x+v)\inv - x\inv + x\inv v x\inv} \\
+		&= \nor{(x+v)\inv(x-(x+v)+(x+v)x\inv v )x\inv} \\
+		&=\nor{(x+v)\inv (vx\inv)^2} \\
+		&\leq \nor{(x+v)\inv} \nor{x\inv}^2 \nor{v}^2.
+	\end{align*}
+Isso mostra que $/$ é diferenciável e $\D(/)|_x = l_x$.
+
+Mostremos agora que $/$ é $\Cont^1$-diferenciável. Definamos a função
+	\begin{align*}
+	\func{\alpha}{E \times E}{\toplin(\bm E)}{(a,b))}{
+		\begin{aligned}[t]
+			\func{\alpha(w,w'')}{E}{E}{v}{-wvw'}
+		\end{aligned}
+		}
+	\end{align*}
+A função $\alpha$ é claramente bilinear; para mostrar sua continuidade, notemos que
+	\begin{equation*}
+	\nor{\alpha(w,w')(v)} \leq \nor{w}\nor{w'}\nor{v},
+	\end{equation*}
+logo $\nor{\alpha(w,w')}_{\toplin(\bm E)} \leq \nor{w}\nor{w'}$. Assim, como $\D(/)|_x = \alpha(x\inv,x\inv)$, segue que $\D(/)$ é composição de funções contínuas, logo é contínua, o que mostra que $/$ é $\Cont^1$-diferenciável.
+
+Agora mostraremos o passo indutivo. Seja $m \in \N$ e suponhamos que $/$ seja $\Cont^m$-diferenciável. A função $\alpha$ é bilinear, logo $\Cont^m$-diferenciável, o que implica que a diferencial $\D(/)$, dada pela composição $\D(/)_x = \alpha(x\inv, x\inv)$ é $\Cont^m$-diferenciável. Isso significa que $/$ é $\Cont^{m+1}$-diferenciável.
+\end{proof}
 
 \begin{proposition}
+\label{prop:suavidade.inversao.funcao}
 Sejam $\bm E$ e $\bm E'$ espaços normados completos e $m \in \N$. A inversão de função
 	\begin{align*}
-	\func{\inv}{\Isolin(E,E')}{\Isolin(E',E)}{f}{f\inv}
+	\func{(\var)\inv}{\Isolin(E,E')}{\Isolin(E',E)}{f}{f\inv}
 	\end{align*}
 é uma função $\Cont^\infty$-diferenciável.
 \end{proposition}
 
+\subsubsection{Difeomorfismos}
+
+\begin{definition}[Difeomorfismo]
+Sejam $\bm E$ e $\bm E'$ espaços normados e $A \subseteq E$ e $A' \subseteq E'$ abertos. Um \emph{difeomorfismo} de $A$ para $A'$ é uma bijeção $\fun{f}{A}{A'}$ tal que $f$ e $f\inv$ são diferenciáveis.
+\end{definition}
+
+\begin{definition}[Multidifeomorfismo]
+Sejam $\bm E$ e $\bm E'$ espaços normados e $A \subseteq E$ e $A' \subseteq E'$ abertos e $m \in \N$. Um \emph{$m$-difeomorfismo} de $A$ para $A'$ é uma bijeção $\fun{f}{A}{A'}$ tal que $f$ e $f\inv$ são $m$-diferenciáveis.
+\end{definition}
+
+\begin{definition}[Multidifeomorfismo contínuo]
+Sejam $\bm E$ e $\bm E'$ espaços normados, $A \subseteq E$ e $A' \subseteq E'$ abertos e $m \in \N$. Um \emph{$\Cont^m$-difeomorfismo} de $A$ para $A'$ é um difeomorfismo $\fun{f}{A}{A'}$ tal que $f$ e $f\inv$ são $\Cont^m$-diferenciáveis.
+\end{definition}
+
+\begin{proposition}[Invertibilidade da diferencial de difeomorfismo]
+\label{prop:invertibilidade.diferencial.difeomorfismo}
+Sejam $\bm E$ e $\bm E'$ espaços normados completos, $A \subseteq E$ e $A' \subseteq E'$ abertos e $\fun{f}{A}{A'}$ um difeomorfismo. Para todo $x \in A$, $\D f|_x$ é invertível e
+	\begin{equation*}
+	(\D f|_{x})\inv = \D (f\inv)|_{f(x)}.
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+Da invertibilidade de $f$ vale que $f\inv \circ f = \Id_{A}$ e $f \circ f\inv = \Id_{A'}$. Como $f$ é um difeomorfismo, segue da regra da cadeia que, para todo $x \in A$ e todo $x' \in A'$,
+	\begin{align*}
+	\D (f\inv)|_{f(x)} \circ \D f|_x &= \Id_{E} \\
+	\D f|_{f\inv(x')} \circ \D (f\inv)|_{x'} &= \Id_{E'}.
+	\end{align*}
+Tomando $x'=f(x)$, segue que $f\inv(x')=x$, logo que
+	\begin{equation*}
+	\D f|_{x} \circ \D (f\inv)|_{f(x)} = \D f|_{f\inv(x')} \circ \D (f\inv)|_{x'} = \Id_{E'}.
+	\end{equation*}
+Disso segue que $\D f|_x$ é invertível e
+	\begin{equation*}
+	(\D f|_{x})\inv = \D (f\inv)|_{f(x)}.
+	\qedhere
+	\end{equation*}
+\end{proof}
+
+Em particular, essa proposição implica que se as dimensões dos espaços $\bm E$ e $\bm E'$ são diferentes, não pode existir um difeomorfismo entre abertos desses espaços, pois a diferencial desses difeomorfismo em cada ponto seria um isomorfismo linear entre espaços de dimensões distintas.
 
 \begin{proposition}[Difeomorfismo multidiferenciável]
-Sejam $\bm E$ e $\bm E'$ espaços normados completos, $A \subseteq E$ e $A' \subseteq E'$ abertos, $m \in \N$ e $\fun{f}{A}{A'}$ um difeomorfismo $\Cont^m$-diferenciável. A inversa $\fun{f\inv}{A'}{A}$ é $\Cont^m$-diferenciável.
+\label{prop:difeomorfismo.multidiferenciavel}
+Sejam $\bm E$ e $\bm E'$ espaços normados completos, $A \subseteq E$ e $A' \subseteq E'$ abertos, $m \in \N$ e $\fun{f}{A}{A'}$ um difeomorfismo $\Cont^m$-diferenciável. A inversa $\fun{f\inv}{A'}{A}$ é $\Cont^m$-diferenciável, ou seja, $f$ é um $\Cont^m$-difeomorfismo.
 \end{proposition}
+\begin{proof}
+A demonstração se dará por indução em $m$. Primeiro consideramos o caso base $m=1$. Como $f$ é difeomorfismo, segue de \ref{prop:invertibilidade.diferencial.difeomorfismo} que $\D f|_x$ é invertível e $(\D f|_{x})\inv = \D (f\inv)|_{f(x)}$.
+Aplicando isso em $y \in A'$, obtém-se
+	\begin{equation*}
+	\D (f\inv)|_{y} = (\D f|_{f\inv(y)})\inv,
+	\end{equation*}
+portanto vale que
+	\begin{equation*}
+	\D (f\inv) = (\var)\inv \circ \D f \circ f\inv,
+	\end{equation*}
+em que $\fun{(\var)\inv}{\Isolin(E,E')}{\Isolin(E',E)}$ é a inversão de função. Como $f$ é $\Cont^1$-diferenciável, então $\D f$ é contínua, logo $\D (f\inv)$ é composição de funções contínuas. Isso implica que $f\inv$ é $\Cont^1$-diferenciável, o que significa que $f$ é um $\Cont^1$-difeomorfismo.
+
+Para demonstrarmos o passo indutivo, seja $m \in \N$ e suponhamos que a proposição vale para $m$. Suponhamos que $f$ seja um difeomorfismo $\Cont^{m+1}$-diferenciável. Devemos mostrar que $f\inv$ é também $\Cont^{m+1}$-diferenciável. Como $f$ é $\Cont^{m+1}$-diferenciável, é também $\Cont^m$-diferenciável, portanto segue da hipótese de indução que $f\inv$ é $\Cont^m$-diferenciável. Além disso, $\D f$ é $\Cont^m$-diferenciável e a inversão de função $\fun{\inv}{\Isolin(E,E')}{\Isolin(E',E)}$ é $\Cont^m$-diferenciável (\ref{prop:suavidade.inversao.funcao}). Como vale $\D (f\inv) = (\var)\inv \circ \D f \circ f\inv$ e todas a funções da composição são $\Cont^m$-diferenciáveis, segue que $\D (f\inv)$ é $\Cont^m$-diferenciável, logo $f\inv$ é $\Cont^{m+1}$-diferenciável.
+\end{proof}
+
+\subsubsection{Teorema da Função Inversa}
+
+Na seção anterior, demonstramos que a diferencial de um difeomorfismo é invertível em cada ponto do domínio. Agora, procuramos uma recíproca. Se a diferencial de uma função é invertível em um ponto, é possível afirmar que a função em si é invertível? Isso nem sempre vale, pois diferenciabilidade é um conceito local, mas sob certas condições é possível garantir a invertibilidade local da função. Para isso, antes definimos um conceito local de difeomorfismo.
+
+\begin{definition}[Difeomorfismo local]
+Sejam $\bm E$ e $\bm E'$ espaços normados, $A \subseteq E$ um aberto e $x \in A$. Um \emph{difeomorfismo local em $x$} de $A$ para $E'$ é uma função diferenciável $\fun{f}{A}{E'}$ tal que, para alguma vizinhança $V \subseteq A$ de $x$, $f(V)$ é aberto em $E'$ e $\fun{f|_V}{V}{f(V)}$ é um difeomorfismo.
+Um \emph{difeomorfismo local} de $A$ para $E'$ é uma função diferenciável $\fun{f}{A}{E'}$ que é um difeomorfismo local em todos pontos de seu domínio.
+
+Seja $m \in \N$. Um \emph{$\Cont^m$-difeomorfismo local} de $A$ para $E'$ é um difeomorfismo local $\fun{f}{A}{E'}$ $\Cont^m$-diferenciável.
+\end{definition}
+
+As proposições apresentadas nesta seção vão em geral considerar funções $\Cont^1$-diferenciáveis ou com uma regularidade maior. A menos de alguns resultados, não será suficiente supor a diferenciabilidade somente em um ponto do domínio. No entanto, resultados análogos podem ser obtidos supondo diferenciabilidade forte em somente um ponto do domínio, que de certa forma representa uma diferenciabilidade contínua somente naquele único ponto. Essa abordagem é adotada por \citeauthor{liv:Lima-CursoAnalise2} em seu \citetitle{liv:Lima-CursoAnalise2} e tais resultados podem ser conferidos lá \cite[pp. 286, 287]{liv:Lima-CursoAnalise2}.
+
+% PROPOSIÇÃO DO ELON, TEOREMA 3, MAS NÃO SEI SE VALE PARA QUALQUER ESPAÇO NORMADO. ELE DEMONSTRA PARA R^N.
+%\begin{proposition}
+%\label{prop:lema.diferencial.injetiva.limitacao}
+%Sejam $\bm E$ e $\bm E'$ espaços normados, $A \subseteq E$ um aberto, $x \in A$ e $\fun{f}{A}{E'}$ uma função diferenciável em $x$. Se $\D f|_x$ é injetiva, então para algum $\delta \in \R_{>0}$ e algum $c \in \R_{>0}$ vale que, se $\nor{v} < \delta$ então $\nor{f(x+v)-f(x)} \geq c\nor{v}$.
+%\end{proposition}
+%\begin{proof}
+%Exercício.
+%\end{proof}
+
+
+
+\begin{proposition}[Diferenciabilidade do homeomorfismo inverso]
+\label{prop:diferenciabilidade.homeomorfismo.inverso}
+Sejam $\bm E$ e $\bm E'$ espaços normados completos, $A \subseteq E$ e $A' \subseteq E'$ abertos, $x \in A$ e $\fun{f}{A}{A'}$ um homeomorfismo diferenciável em $x$. Se $\D f|_x$ é invertível, então a inversa $f\inv$ é diferenciável em $f(x)$ e
+	\begin{equation*}
+	\D f\inv|_{f(x)} = (\D f|_x)\inv.
+	\end{equation*}
+%Se $f$ é fortemente diferenciável em $x$, então $f \inv$ é fortemente diferenciável em $f(x)$.
+Para todo $m \in \N \setminus \{0\}$, se $f$ é $\Cont^m$-diferenciável, então $f$ é $\Cont^m$-difeomorfismo local em $x$.
+\end{proposition}
+% A versão usando diferenciabilidade forte é uma alternativa pontual à segunda parte da proposição, que fala sobre a diferenciabilidade contínua ($\Cont^1$). A demonstração para espaços de dimensão finita ($\R^n$) pode ser achada no livro Curso de Análise 2 do Elon, mas eu não sei se ela é válida em espaços normados completos quaisquer, pois os teoremas 4 e 5 (e outros) que estabelecem algumas propriedades para que seja possível demonstrar essa proposição para diferenciabilidade forte parecem não ser diretamente generalizáveis para dimensão infinita --- eles usam que a injetividade implica bijetividade quando restrita ao domínio e coisas desse tipo que não tenho certeza se vale para dimensão infinita.
+\begin{proof}
+Mostremos que a inversa diferencial de $f\inv$ em $f(x)$ é $(\D f|_x)\inv$. Como $\D f|_x$ é linear e invertível, sua inversa $(\D f|_x)\inv$ é linear e, como os espaços $\bm E$ e $\bm E'$ são completos, contínua. Como $A'$ é aberto, algum $\delta \in \R_{>0}$ satisfaz que, para todo $v' \in \bola{0}{\delta}$, $f(x)+v' \in A'$. Pela bijetividade de $f$, para cada $v' \in \bola{0}{\delta}$ um único $v \in E$ satisfaz $f(x+v) = f(x) + v'$, o que significa que $v$ é função de $v'$ e implica que
+	\begin{equation*}
+	f\inv(f(x) + v') - f\inv(f(x)) = f\inv(f(x+v)) - x = x + v - x = v.
+	\end{equation*}
+Da continuidade de $f\inv$, segue $\lim_{v' \to 0} v = 0$. Da diferenciabilidade de $f$ em $x$, a função resto $r(v)$ definida por
+	\begin{equation*}
+	r(v) := f(x+v) - f(x) - \D f|_x(v)
+	\end{equation*}
+satisfaz $\lim_{v \to 0} r(v)/\nor{v} = 0$. De
+	\begin{equation*}
+	v' = f(x+v) - f(x) = \D f|_x(v) + r(v)
+	\end{equation*}
+e da expressão anterior para $v$ em termos de $f\inv$ segue que
+	\begin{align*}
+	(\D f|_x)\inv (v') &= v + (\D f|_x)\inv(r(v)) \\
+		&= f\inv(f(x) + v') - f\inv(f(x)) + (\D f|_x)\inv(r(v)).
+	\end{align*}
+Definamos
+	\begin{equation*}
+	r'(v') := f\inv(f(x) + v') - f\inv(f(x)) - (\D f|_x)\inv (v'),
+	\end{equation*}
+de modo que (lembrando que $v$ é função de $v'$)
+	\begin{equation*}
+	r'(v') = -(\D f|_x)\inv(r(v)),
+	\end{equation*}
+e então, para mostrar que $f\inv$ é diferenciável em $f(x)$, devemos mostrar que
+	\begin{equation*}
+	\lim_{v' \to 0} \frac{r'(v')}{\nor{v'}} = \lim_{v' \to 0} \frac{f\inv(f(x) + v') - f\inv(f(x)) - (\D f|_x)\inv (v')}{\nor{v'}} = 0.
+	\end{equation*}
+
+Notemos que
+	\begin{equation*}
+	\frac{r'(v')}{\nor{v'}} = - (\D f|_x)\inv \left( \frac{r(v)}{\nor{v}} \right) \frac{\nor{v}}{\nor{v'}}
+	\end{equation*}
+Como $\lim_{v \to 0} r(v)/\nor{v} = 0$ e $(\D f|_x)\inv$ é  contínua, vale $\lim_{v \to 0} (\D f|_x)\inv \left( \frac{r(v)}{\nor{v}} \right) = 0$. Resta mostrar que $\frac{\nor{v}}{\nor{v'}}$ é limitado nas proximidades de $v=0$.
+
+Da expressão $(\D f|_x)\inv (v') = v + (\D f|_x)\inv(r(v))$ segue que
+	\begin{align*}
+	\nor{v} &\leq \nor{(\D f|_x)\inv(r(v))} + \nor{(\D f|_x)\inv (v')} \\
+		&\leq \nor{v} \nor{(\D f|_x)\inv \left(\frac{r(v)}{\nor{v}}\right) } + \nor{(\D f|_x)\inv} \nor{v'},
+	\end{align*}
+portanto
+	\begin{equation*}
+	\frac{\nor{v}}{\nor{v'}} \leq \frac{\nor{(\D f|_x)\inv}}{1-\nor{(\D f|_x)\inv \left(\frac{r(v)}{\nor{v}}\right)}}.
+	\end{equation*}
+Como $\lim_{v \to 0} r(v)/\nor{v} = 0$ e $(\D f|_x)\inv$ é contínua, segue que $\lim_{v \to 0} (\D f|_x)\inv \left(\frac{r(v)}{\nor{v}}\right) = 0$, logo
+	\begin{equation*}
+	\lim_{v \to 0} \frac{\nor{v}}{\nor{v'}} \leq \nor{(\D f|_x)\inv}.
+	\end{equation*}
+Assim segue que
+	\begin{equation*}
+	\lim_{v \to 0} \frac{r'(v')}{\nor{v'}} = \lim_{v \to 0} - (\D f|_x)\inv \left( \frac{r(v)}{\nor{v}} \right) \frac{\nor{v}}{\nor{v'}}  = 0
+	\end{equation*}
+e, como $\lim_{v' \to 0} v = 0$, segue que
+	\begin{equation*}
+	\lim_{v' \to 0} \frac{r'(v')}{\nor{v'}} = 0,
+	\end{equation*}
+o que mostra que $f\inv$ é diferenciável em $f(x)$.
+%ESSA ERA A DEMONSTRAÇÃO USANDO COLEMAN, MAS ADAPTEI PARA A DEMONSTRAÇÃO BASEADA NO ELON CURSO DE ANÁLISE VOL II POR SER MAIS SIMPLES.
+
+\begin{comment}
+% DIFERENCIABILIDADE FORTE
+Agora, suponhamos que $f$ é fortemente diferenciável em $x$. Seja $\varepsilon \in \R_{>0}$. Como $f$ é fortemente diferenciável em $x$, para algum $\delta' \in \R_{>0}$ vale que, para todos $v,w \in \bola{0}{\delta'}$,
+	\begin{equation*}
+	\nor{r(w) - r(v)} \leq \varepsilon\nor{w-v}.
+	\end{equation*}
+
+Para $v = f\inv(f(x) + v') - f\inv(f(x))$ e $w = f\inv(f(x) + w') - f\inv(f(x))$, tem-se
+	\begin{equation*}
+	r'(v') - r'(w') = \D f|_x(r(w) - r(v)),
+	\end{equation*}
+logo
+	\begin{equation*}
+	\nor{r'(v') - r'(w')} \leq \nor{\D f|_x}\nor{(r(w) - r(v))},
+	\end{equation*}
+pois $\D f|_x$ é linear e contínua.% Além disso, tem-se
+%	\begin{equation*}
+%	w-v = f\inv(f(x) + w') - f\inv(f(x) + v')
+%	\end{equation*}
+Assim, segue que
+	\begin{equation*}
+	\nor{r'(v') - r'(w')} \leq \nor{\D f|_x}\varepsilon\nor{w-v}
+	\end{equation*}
+
+Portanto $r'$
+\end{comment}
+
+Agora, suponhamos que $f$ é $\Cont^m$-diferenciável, com $m \in \N \setminus \{0\}$. Isso implica que $\D f$ é contínua. O conjunto $\Iso{\toplin}(\bm E, \bm E')$ de isomorfismos lineares contínuos é um subconjunto aberto de $\toplin(\bm E, \bm E')$, portanto dada uma vizinhança aberta $U \subseteq \Iso{\toplin}(\bm E, \bm E')$ de $\D f|_x$, o conjunto $V := (\D f)\inv (U) \subseteq E$ é aberto e, para todo $x' \in V$, $\D f|_{x'}$ é invertível. Pela primeira parte da proposição, segue que $f\inv$ é diferenciável em todo $y \in f(V)$, portanto $f|_V$ é um difeomorfismo. Como $f$ é $\Cont^m$-diferenciável, de \ref{prop:difeomorfismo.multidiferenciavel} segue que $f$ é um $\Cont^m$-difeomorfismo local em $x$.
+\end{proof}
+
+Usando essa proposição, demonstraremos uma das proposições mais importantes da teoria de diferenciabilidade, o Teorema da Função Inversa. Esse teorema é a base de muitos resultados da teoria de diferenciabilidade em espaços normados e também da teoria de diferenciabilidade em variedades, que será tratada mais à frente. Ele implica, em particular, o Teorema da Função Implícita, e o Teorema do Posto, que é válido em dimensão finita.
+
+\begin{theorem}[Função Inversa]
+\label{prop:teorema.funcao.inversa}
+Sejam $\bm E$ e $\bm E'$ espaços normados completos, $A \subseteq E$ um aberto, $x \in A$, $m \in \N \setminus \{0\}$ e $\fun{f}{A}{E'}$ uma função $\Cont^m$-diferenciável. Se $\D f|_x$ é invertível, então $f$ é um $\Cont^m$-difeomorfismo local em $x$ e
+	\begin{equation*}
+	\D f\inv|_{f(x)} = (\D f|_x)\inv.
+	\end{equation*}
+
+% VERSÃO PONTUAL usando DIFERENCIABILIDADE FORTE
+%Sejam $\bm E$ e $\bm E'$ espaços normados completos, $A \subseteq E$ um aberto, $x \in A$ e $\fun{f}{A}{E'}$ uma função fortemente diferenciável em $x$. Se $\D f|_x$ é invertível, então $f$ é um homeomorfismo local em $x$, $f\inv$ é fortemente diferenciável em $f(x)$ e
+%	\begin{equation*}
+%	\D f\inv|_{f(x)} = (\D f|_x)\inv.
+%	\end{equation*}
+%Para $m \in \N \setminus \{0\}$, se $f$ é $\Cont^m$-diferenciável, então $\Cont^m$-difeomorfismo local em $x$.
+\end{theorem}
+\begin{proof}
+Começaremos considerando o caso simplificado em que $x = 0$ e  $f(x) = 0$. Como $f$ é $\Cont^1$-diferenciável, a função $\fun{\D f}{A}{\toplin(\bm E, \bm E')}$ é contínua. Consideremos a função resto %$r(v) = f(x+v) - f(x) - \D f|_x(v)$, que satisfaz $\lim_{v \to 0} r(v) / \nor{v} = 0$
+$r(x'-x) = f(x') - f(x) - \D f|_x(x'-x)$.
+% e .
+No caso simplificado, isso se resume a
+%	\begin{equation*}
+%	r(v) = f(x+v) - f(x) - \D f|_x(v) = f(v) - \D f|_x(v),
+%	\end{equation*}
+	\begin{equation*}
+	r(x') = f(x') - f(x) - \D f|_x(x'-x) = f(x') - \D f|_x(x'),
+	\end{equation*}
+logo
+	\begin{equation*}
+	f = r + \D f|_x.
+	\end{equation*}
+Segue $f$ é uma distorção do isomorfismo linear $\D f|_x$ numa vizinhança de $x=0$, portanto de \ref{prop:equiv.continuamente.fortemente.diferenciavel} concluímos que, para $\varepsilon < \nor{(\D f|_x)\inv}\inv$, algum $\delta \in \R_{>0}$ satisfaz que $r$ restrita a $V := \bola{0}{\delta} \cap A$ é controlada e a distorção de $r$ satisfaz $\distor{r} \leq \varepsilon$, portanto $\nor{(\D f|_x)\inv}\distor{r} < 1$. Assim, por \ref{prop:perturbacao.linear} concluímos que $f$ restrita a $V$ é um mergulho métrico, portanto um mergulho topológico (\ref{prop:mergulho.metrico.topologico}), ou seja, um homeomorfismo com sua imagem. Finalmente, como $f$ é $\Cont^m$-diferenciável, segue de \ref{prop:diferenciabilidade.homeomorfismo.inverso} que $f$ é um $\Cont^m$-difeomorfismo local em $x$.
+
+Devemos agora considerar o caso geral. Para isso, definimos a função
+	\begin{equation*}
+	\phi(v) := f(x+v) - f(x),
+	\end{equation*}
+que é $\Cont^m$-diferenciável e satisfaz $\phi(0)=0$ e $\D \phi|_0 = \D f|_x$, portanto invertível. Do caso simplificado existem vizinhanças $U \subseteq E$ de $v=0$ e $U' \subseteq E'$ de $f(v)=0$ tais que $\fun{\phi|_{U}}{U}{U'}$ é um $\Cont^m$-difeomorfismo. Definindo $V := x + U$, segue que
+	\begin{equation*}
+	f|_{V}(x') = f(x) + \phi(x'-x)
+	\end{equation*}
+e $f|_{V}$ é uma bijeção sobre $V' := f(x) + U'$. A inversa de $f|_{V}$ é
+	\begin{equation*}
+	f|_{V}\inv(y) = x + \phi\inv(y-f(x)),
+	\end{equation*}
+também $\Cont^m$-diferenciável, portanto $f$ é um $\Cont^m$-difeomorfismo local em $x$.
+\end{proof}
+% ESSA PROVA ABAIXO ERA A PROVA DE COLEMAN. ACABEI USANDO ACIMA UMA ADAPTAÇÃO DA PROVA DE ELON.
+%\begin{proof}
+%Começaremos considerando o caso simplificado em que $E=E'$, $f(x) = x = 0$ e $\D f|_x = \Id_E$. Como $f$ é $\Cont^1$-diferenciável, algum $r \in \R_{>0}$ satisfaz que $\bolafec{0}{r} \subseteq A$ e, para todo $v \in \bolafec{0}{r}$,
+%	\begin{equation*}
+%	\nor{\D f|_{v} - \Id_E} \leq \frac{1}{2}.
+%	\end{equation*}
+%Definindo $g(v) := f(v) - v$, segue que $\D g|_{v} = \D f|_{v} - \Id_E$, portanto por segue de \ref{prop:diferencial.limitada.funcao.controlada} que
+%	\begin{equation*}
+%	\nor{f(v)-v} = \nor{g(v) - g(0)} \leq \frac{1}{2}\nor{v}.
+%	\end{equation*}
+%Para todo $y \in \bola{0}{r/2}$, vale que
+%	\begin{equation*}
+%	\nor{y + v - f(v)} \leq \nor{y} + \nor{v-f(v)} \leq \nor{y} + \frac{1}{2}\nor{v} < r,
+%	\end{equation*}
+%logo $y + v - f(v) \in \bolafec{0}{r}$. Definamos então a função
+%	\begin{align*}
+%	\func{\phi_{y}}{\bolafec{0}{r}}{\bolafec{0}{r}}{v}{y + v - f(v)}
+%	\end{align*}
+%Novamente de \ref{prop:diferencial.limitada.funcao.controlada} segue que, para todos $v,v' \in \bolafec{0}{r}$,
+%	\begin{align*}
+%	\nor{\phi_y(v') - \phi_y(v)} &= \nor{y + v' - f(v') - y - v - f(v)} \\
+%		&= \nor{g(v') - g(v)} \\
+%		&\leq \frac{1}{2}\nor{v'-v},
+%	\end{align*}
+%o que mostra que $\phi_y$ é uma contração. Pelo teorema do ponto fixo de contração (\ref{prop:ponto.fixo.contracao}), a função $\phi_y$ tem único ponto fixo $v \in \bolafec{0}{r}$, que por definição satisfaz $v = \phi_y(v) = y + v - f(v)$. Como a imagem de $\phi_y$ está contida em $\bola{0}{r}$, segue que $v \in \bola{0}{r}$. Isso mostra que existe único $v \in \bola{0}{r}$ tal que $f(v) = y$. Definindo $V := f\inv \left( \bola{0}{r/2} \right) \cap \bola{0}{r}$, $V$ é uma vizinhança aberta de $0$ tal que $f(V) = \bola{0}{r/2}$ e $\fun{f|_{V}}{V}{\bola{0}{r/2}}$ é uma bijeção contínua. Além disso, para todos $v,v' \in V$,
+%	\begin{align*}
+%	\nor{v'-v} - \nor{f(v')-f(v)} &\leq \nor{v'-v-f(v')+f(v)} \\
+%		&= \nor{g(v')-g(v)} \\
+%		&\leq \frac{1}{2}\nor{v'-v},
+%	\end{align*}
+%logo $\nor{v'-v} \leq 2\nor{f(v')-f(v)}$, o que mostra que $f\inv|_{V}$ é controlada e portanto contínua. Isso demonstra que $\fun{f|_{V}}{V}{\bola{0}{r/2}}$ é um homeomorfismo. Como $f$ é $\Cont^1$-diferenciável, segue de \ref{prop:diferenciabilidade.homeomorfismo.inverso} que $f|_{V}$ é um $\Cont^1$-difeomorfismo.
+%\end{proof}
+
+\subsubsection{Teorema da função implícita}
+
+\begin{proposition}
+Sejam $\bm E_0$, $\bm E_1$ e $\bm E'$ espaços normados completos, $A \subseteq E_0 \times E_1$ um aberto, $m \in \N \setminus \{0\}$, $\fun{f}{A}{E'}$ uma função $\Cont^m$-diferenciável, $x=(x_0,x_1) \in A$ e $c := f(x) \in E'$. Se a diferencial parcial $\fun{\D_1 f|_{x}}{E_1}{E'}$ é invertível, então alguma vizinhança aberta $V \subseteq A$ de $x$,  alguma vizinhança $U \subseteq E_0$ de $x_0$ e alguma função $\Cont^m$-diferenciável $\fun{\phi}{U}{E_1}$ satisfazem
+	\begin{equation*}
+	V \cap f\inv(\{c\}) = \graf(\phi)
+	\end{equation*}
+e, para todo $x'=(x'_0,x'_1) \in V$,
+	\begin{equation*}
+	\D \phi|_{x'_0} = - \D_1 f|_{x'} \circ \D_0 f|_{x'}.
+	\end{equation*}
+\end{proposition}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -4384,10 +4815,6 @@ Sejam $\bm E$ e $\bm E'$ espaços normados completos, $A \subseteq E$ e $A' \sub
 
 
 \cleardoublepage
-
-%\subsection{Teoremas fundamentais}
-
-
 
 \subsection{Campos tensoriais}
 

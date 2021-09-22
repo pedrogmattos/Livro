@@ -105,12 +105,12 @@ Como, para todo $i \in [n]$, $\dist{p}{p'}_i \geq 0$, então, para todo $i \in [
 	\begin{equation*}
 	\dist{p}{p'} = \sum_{i=0}^{n-1} 0 = 0.
 	\end{equation*}
-	
+
 	\item (Simetria) Sejam $p,p' \in M$. Então, pela simetria de $\dist{\var}{\var}_i$ para todo $i \in [n]$,
 	\begin{equation*}
 	\dist{p}{p'} = \sum_{i=0}^{n-1} \dist{p}{p'}_i = \sum_{i=1}^{n-1} \dist{p}{p'}_i = \dist{p}{p'}.
 	\end{equation*}
-	
+
 	\item (Desigualdade Triangular) Sejam $p,p',p'' \in M$. Então, para todo $i \in [n]$, vale $\dist{p}{p''}_i \leq \dist{p}{p'}_i+\dist{p'}{p''}_i$ pela desigualdade triangular de $\dist{\var}{\var}_i$, e segue que
 	\begin{align*}
 	\dist{p}{p''} &= \sum_{i=0}^{n-1} \dist{p}{p''}_i \\
@@ -136,12 +136,12 @@ Demonstraremos para $n=2$, pois o caso geral é análogo.
 	\dist{p}{p'}=\max\{\dist{p}{p'}_1,\dist{p}{p'}_2\}=0.
 	\end{equation*}
 Então $\dist{p}{p'}_1=0$ ou $\dist{p}{p'}_2=0$. Em ambos os casos, temos $p=p'$. Reciprocamente, suponhamos que $p=p'$. Então $\dist{p}{p'}_1=0$ e $\dist{p}{p'}_2=0$, o que implica $\dist{p}{p'}=\max\{\dist{p}{p'}_1,\dist{p}{p'}_2\}=0$.
-	
+
 	\item (Simetria) Sejam $p,p' \in M$. Então
 	\begin{equation*}
 	\dist{p}{p'} = \max\{\dist{p}{p'}_1,\dist{p}{p'}_2\} = \max\{\dist{p'}{p}_1,\dist{p'}{p}_2\} = \dist{p'}{p}.
 	\end{equation*}
-	
+
 	\item (Desigualdade Triangular) Sejam $p,p',p'' \in M$. Então $\dist{p}{p''}=\dist{p}{p''}_1$ ou $\dist{p}{p''}=\dist{p}{p''}_2$. No primeiro caso, segue que
 	\begin{equation*}
 	\dist{p}{p''} = \dist{p}{p''}_1 \leq \dist{p}{p'}_1 + \dist{p'}{p''}_1 \leq \dist{p}{p'} + \dist{p'}{p''}.
@@ -231,23 +231,23 @@ portanto $\diam(C) \leq 2r \in \intfa{0}{\infty}$.
 \end{proof}
 
 \begin{exercise}
-Seja $\bm M$ um espaço métrico. 
+Seja $\bm M$ um espaço métrico.
 	\begin{enumerate}
 	\item Para todos $C,C' \subseteq M$ tais que $C \subseteq C'$,
 		\begin{equation*}
 		\diam(C) \leq \diam (C').
 		\end{equation*}
-	
+
 	\item Para todos $C, C' \subseteq M$,
 		\begin{equation*}
 		\diam(C \cup C') = \max \{ \diam(C),\diam(C'),\sup\set{\dist{p}{p'}}{p \in C, p' \in C'} \}.
 		\end{equation*}
-	
+
 %	\item Para todos $C, C' \subseteq M$,
 %		\begin{equation*}
 %		\diam(C \cup C') \leq \min \{ \diam(C),\diam(C') \};
 %		\end{equation*}
-	
+
 	\item Para todo $r \in \intfa{0}{\infty}$ e todo $p \in M$.
 	\begin{equation*}
 	\diam(\bola{p}{r}) \leq 2r.
@@ -287,16 +287,16 @@ Seja $\bm M = (M,\dist{\var}{\var})$ um espaço métrico. Então
 	\dist{c}{p'} \leq \dist{c}{p} + \dist{p}{p'} < d + (r-d) = r,
 	\end{equation*}
 o que mostra que $p' \in \bola{c}{r}$ e que, portanto, $\bola{p}{s} \subseteq \bola{c}{r}$. Assim, mostramos que $\bola{p}{r}$ é aberta.
-	
+
 	\item
 		\begin{enumerate}
 		\item Podemos notar que $\emptyset$ é aberto por vacuidade, pois, se não fosse, existiria $p \in \emptyset$ para o qual não há $r \in \intaa{0}{\infty}$ satisfazendo $\bola{p}{r} \subseteq A$, o que é absurdo.
 	Para mostrar que $M$ é aberto, sejam $p \in M$ e $r \in \intaa{0}{\infty}$. Então $\bola{p}{r} \subseteq M$, pois qualquer bola aberta é subconjunto de $M$. Portanto $M$ é aberto.
-	
+
 		\item Seja $(A_i)_{i \in I}$ uma família de abertos em $\bm M$ e seja $p \in (A_i)_{i \in I}$. Então existe $k \in I$ tal que $p \in A_k$. Como $A_k$ é aberto, então existe $r \in \intaa{0}{\infty}$ tal que $\bola{p}{r} \subseteq A_k$. Como $A_k \subseteq (A_i)_{i \in I}$, segue que $\bola{p}{r} \subseteq (A_i)_{i \in I}$ e que, portanto, $(A_i)_{i \in I}$ é aberto.
-	
+
 		\item Seja $(A_i)_{i \in [n]}$ uma sequência de abertos em $\bm M$ e seja $p \in (A_i)_{i \in [n]}$. Então, para todo $k \in [n]$, $p \in A_k$. Como, para todo $k \in [n]$, $A_k$ é aberto, segue que existe $r_k \in \intaa{0}{\infty}$ tal que $\bola{p}{r-k} \subseteq A_k$, Seja $r := \min \set{r_k}{k \in [n]}$. Então, para todo $k \in [n]$, vale $\bola{p}{r} \subseteq \bola{p}{r-k}$, e segue que $\bola{p}{r} \subseteq A_k$ e, portanto, $\bola{p}{r} \subseteq (A_i)_{i \in [n]}$, o que mostra que $(A_i)_{i \in [n]}$ é aberto.
-		\end{enumerate}		
+		\end{enumerate}
 	\end{enumerate}
 \end{proof}
 
@@ -412,7 +412,7 @@ e fazendo $N := N_3 \opmax N_6$, segue que
 	\forall n \in \N \qquad n \geq N \Rightarrow |\dist{p}{q} - \dist{p_n}{q_n}| < \varepsilon,
 	\end{equation*}
 o que mostra que $(\dist{p_n}{q_n}) \conv \dist{p}{q}$ em $\R$.
-	
+
 \end{proof}
 
 \subsection{Fecho e pontos aderentes}
@@ -426,7 +426,7 @@ Sejam $\bm M$ um espaço métrico e $F \subseteq M$. Então $F$ é um conjunto f
 \end{proposition}
 \begin{proof}
 Suponhamos que $F$ é um conjunto fechado. Se $F^\complement = \emptyset$, Mas $\emptyset$ é aberto pois, caso contrário, existe $p \in \emptyset$ para o qual não há número real $\varepsilon > 0$ tal que $\bola{p}{\varepsilon} \subseteq \emptyset$, mas isso é absurdo. Se $F^\complement \neq \emptyset$, seja $p \in F^\complement$. Se não existe número real $\varepsilon > 0$ tal que $\bola{p}{\varepsilon} \subseteq F^\complement$, então, para todo número real $\varepsilon > 0$, $F \cap \bola{p}{\varepsilon} \neq \emptyset$. Mas isso implica que existe uma sequência $(p_n)_{n \in \N}$ de pontos em $F$ tal que $(p_n) \conv p$. Como $F$ é fechado, isso implica $p \in F$, o que é uma contradição. Então existe número real $\varepsilon > 0$ tal que $\bola{p}{\varepsilon} \subseteq F^\complement$, e isso mostra que $F^\complement$ é aberto.
-	
+
 Reciprocamente, suponhamos que $F^\complement$ é aberto. Se $F = \emptyset$, então $F$ é fechado. Se $F \neq \emptyset$, seja $(p_n)_{n \in \N}$ uma sequência em $F$ que converge para $p \in M$. Suponhamos que $p \notin F$. Então $p \in F^\complement$ e, como $F^\complement$ é aberto, existe um número real $\varepsilon > 0$ tal que $\bola{p}{\varepsilon} \subseteq F^\complement$. Como $(p_n) \conv p$, existe $N \in \N$ tal que, para todo $n \in \N$, se $n \geq N$, então $p_n \in \bola{p}{\varepsilon}$. Mas isso implica que $p_N \in \bola{p}{\varepsilon} \subseteq F^\complement$, o que é absurdo, pois $p_n \in F$. Portanto $p \in F$ e isso mostra que $F$ é fechado.
 \end{proof}
 
@@ -444,13 +444,13 @@ Basta notar que $\bolafec{c}{r}^\complement$ é aberto.
 \end{definition}
 
 	Isso que dizer que, para todo ponto de $C$, existe uma sequência em $D$ que converge para esse ponto.
-	
+
 \begin{proposition}
 	Sejam $\bm M = (M,\dist{\var}{\var})$ um espaço métrico e $C,D \subseteq M$ conjuntos. Então $D$ é denso em $C$ se, e somente se, para todo conjunto aberto $A$ de $\bm M$, $A \cap C \neq \emptyset$ implica $A \cap D \neq \emptyset$.
 \end{proposition}
 \begin{proof}
 	Suponhamos que $D$ é denso em $C$. Sejam $A$ um conjunto aberto de $\bm M$ tal que $A \cap C \neq \emptyset$ e seja $p \in A \cap C$. Como $D$ é denso em $C$ e $p \in C$, existe uma sequência $(p_n)_{n \in \N}$ em $D$ que converge para $p$. Como $A$ é aberto e $p \in A$, existe um número real $\varepsilon>0$ tal que $\bola{p}{\varepsilon} \subseteq A$. Então, como $(p_n) \conv p$, existe um número natural $N$ tal que, para todo natural $n \geq N$, $p_n \in \bola{p}{\varepsilon}$. Mas isso implica que $p_n \in A \cap D$.
-	
+
 	Reciprocamente, suponhamos que, para todo conjunto aberto $A$ de $\bm M$, $A \cap C \neq \emptyset$ implica $A \cap D \neq \emptyset$. Se $C=\emptyset$, então $C \subseteq \overline D$. Se $C \neq \emptyset$, seja $p \in C$. Para todo $n \in \N$, o conjunto $\bola{p}{\frac{1}{n}}$ é um conjunto aberto que contém $p$. Mas então $\bola{p}{\frac{1}{n}} \cap C \neq \emptyset$, o que implica $\bola{p}{\frac{1}{n}} \cap D \neq \emptyset$. Para cada $n \in \N$, escolhamos $p_n \in B_\frac{1}{n}(p) \cap D$. Assim, temos uma sequência $(p_n)_{n \in \N}$ de pontos em $D$ que converge para $p$, pois, para todo número real $\varepsilon>0$, existe um natural $N$ tal que $\frac{1}{N} \leq \varepsilon$ e, então
 	\begin{equation*}
 	\forall n \in \N \qquad n \geq N \Rightarrow \frac{1}{n} \leq \frac{1}{N} \leq \varepsilon \Rightarrow p_n \in \bola{p}{\frac{1}{n}} \subseteq \bola{p}{\frac{1}{N}} \subseteq \bola{p}{\varepsilon}.
@@ -459,7 +459,7 @@ Basta notar que $\bolafec{c}{r}^\complement$ é aberto.
 \end{proof}
 
 \begin{proposition}
-	Sejam $\bm M_1$ e $\bm M_2$ espaços métricos e $f,g\colon M_1 \to M_2$ funções contínuas. Então o conjunto 
+	Sejam $\bm M_1$ e $\bm M_2$ espaços métricos e $f,g\colon M_1 \to M_2$ funções contínuas. Então o conjunto
 	\begin{equation*}
 	F := \set{p \in M_1}{f(p)=g(p)}
 	\end{equation*}
@@ -477,7 +477,7 @@ Basta notar que $\bolafec{c}{r}^\complement$ é aberto.
 	Sejam $\bm M_1$ e $\bm M_2$ espaços métricos, $f,g: M_1 \to M_2$ funções contínuas e $C,D \subseteq M_1$ conjuntos tais que $D$ é denso em $C$. Se $f|_D = g|_D$, então $f|_C = g|_C$.
 \end{proposition}
 \begin{proof}
-	Pela proposição anterior, sabemos que $F := \{p \in M_1 : f(p)=g(p)\}$ é um conjunto fechado. Como $f|_D = g|_D$, então $D \subseteq F$. Mas isso significa que $\overline D \subseteq \overline F = F$ e, como $D$ é denso em $C$, segue que $C \subseteq \overline D \subseteq F$ e, portanto, que $f|_C = g|_C$. 
+	Pela proposição anterior, sabemos que $F := \{p \in M_1 : f(p)=g(p)\}$ é um conjunto fechado. Como $f|_D = g|_D$, então $D \subseteq F$. Mas isso significa que $\overline D \subseteq \overline F = F$ e, como $D$ é denso em $C$, segue que $C \subseteq \overline D \subseteq F$ e, portanto, que $f|_C = g|_C$.
 \end{proof}
 
 \subsection{Conjuntos compactos}
@@ -486,7 +486,7 @@ Basta notar que $\bolafec{c}{r}^\complement$ é aberto.
 Sejam $\bm M$ um espaço métrico e $C \subseteq M$. Se $C$ é compacto, então é limitado.
 \end{proposition}
 \begin{proof}
-Seja $p \in M$ e consideremos a cobertura $\set{\bola{p}{r}}{r \in \intaa{0}{\infty}}$ de $C$. Pela compacidade, existe subcobertura finita $\{\bola{p}{r_0},\ldots,\bola{p}{r_{n-1}}\}$ de $C$. Tomando $r := \max\set{r_i}{i \in [n]}$, segue que $\bola{p}{r_i} \subseteq \bola{p}{r}$ para todo $i \in [n]$, logo $C \subseteq \bola{p}{r}$, o que implica que $\diam(C) \leq 2r < \infty$. 
+Seja $p \in M$ e consideremos a cobertura $\set{\bola{p}{r}}{r \in \intaa{0}{\infty}}$ de $C$. Pela compacidade, existe subcobertura finita $\{\bola{p}{r_0},\ldots,\bola{p}{r_{n-1}}\}$ de $C$. Tomando $r := \max\set{r_i}{i \in [n]}$, segue que $\bola{p}{r_i} \subseteq \bola{p}{r}$ para todo $i \in [n]$, logo $C \subseteq \bola{p}{r}$, o que implica que $\diam(C) \leq 2r < \infty$.
 \end{proof}
 
 A recíproca nem sempre é verdade. Nos espaços $\R^d$, $ d \in \N$, vale que um conjunto é compacto se, e somente se, é fechado e limitado. Esse resultado é conhecido como Teorema de Heine-Borel. No entanto, isso não vale em qualquer espaço métrico\footnote{Para mais detalhes, conferir \url{https://math.stackexchange.com/questions/674982/difference-between-closed-bounded-and-compact-sets}.}.
@@ -522,12 +522,12 @@ Sejam $\bm M_1$ e $\bm M_2$ espaços métricos, $f: M_1 \to M_2$ uma função e 
 	\forall n \in \N \qquad n \geq N \Rightarrow p_n \in \bola{p}{\delta} \Rightarrow f(p_n) \in \bola{f(p)}{\varepsilon}
 	\end{equation*}
 o que mostra que $(f(p_n)) \conv f(p)$.
-	
+
 	Reciprocamente, suponhamos que, para toda sequência $(p_n)_{n \in \N}$ em $M_1$ que converge para $p$, a sequência $(f(p_n))_{n \in \N}$ converge para $f(p)$. Suponhamos, por absurdo, que $f$ não é contínua em $p$. Então existe um número real $\varepsilon > 0$ tal que, para todo número real $\delta > 0$, existe $x \in M_1$ tal que $x \in \bola{p}{\delta}$, mas $f(x) \notin \bola{f(p)}{\varepsilon}$. Vamos mostrar que isso implica que existe uma sequência $(p_n)_{n \in \N}$ em $M_1$ que converge para $p$, mas que a sequência $(f(p_n))_{n \in \N}$ não converge para $f(p)$; ou seja, que existe um número real $\varepsilon > 0$ tal que, para todo número natural $N$, existe $n \in \N$ tal que $n \geq N$, mas $f(p_n) \notin \bola{f(p)}{\varepsilon}$. Seja $n \in \N$ e tomemos $\delta = \frac{1}{n}$. Então existe $x \in M_1$ tal que $x \in \bola{p}{\frac{1}{n}}$, mas $f(x) \notin \bola{f(p)}{\varepsilon}$. Nomeando esse $x \in M_1$ de $p_n$, obtemos uma sequência $(p_n)_{n \in \N}$ que converge para $p$ pois, para todo número real $\varepsilon' > 0$, existe um número natural $N \in \N$ tal que $\frac{1}{N} \leq \varepsilon'$ e isso implica que
 \begin{equation*}
 	\forall n \in \N \qquad n \geq N \Rightarrow \frac{1}{n} \leq \frac{1}{N} \leq \varepsilon' \Rightarrow p_n \in \bola{p}{\frac{1}{n}} \subseteq \bola{p}{\frac{1}{N}} \subseteq \bola{p}{\varepsilon'}.
 	\end{equation*}
-	No entanto, $(f(p_n))_{n \in \N}$ é uma sequência que não converge para $f(p)$ pois, considerando o $\varepsilon$ original tomado da descontinuidade de $f$, para todo número natural $N$, $f(p_N) \notin \bola{f(p)}{\varepsilon}$ e isso contradiz a hipótese de que, para toda sequência $(p_n)_{n \in \N}$ em $M_1$ que converge para $p$, a sequência $(f(p_n))_{n \in \N}$ converge para $f(p)$. Portanto $f$ é contínua.	
+	No entanto, $(f(p_n))_{n \in \N}$ é uma sequência que não converge para $f(p)$ pois, considerando o $\varepsilon$ original tomado da descontinuidade de $f$, para todo número natural $N$, $f(p_N) \notin \bola{f(p)}{\varepsilon}$ e isso contradiz a hipótese de que, para toda sequência $(p_n)_{n \in \N}$ em $M_1$ que converge para $p$, a sequência $(f(p_n))_{n \in \N}$ converge para $f(p)$. Portanto $f$ é contínua.
 \end{proof}
 
 \begin{definition}
@@ -537,7 +537,7 @@ Sejam $\bm M_1$ e $\bm M_2$ espaços métricos, $D \subseteq M_1$ e $f: D \to M_
 \subsection{Ponto limite e conjunto derivado}
 
 \begin{definition}
-Sejam $\bm M$ um espaço métrico e $C \subseteq M$ um conjunto. Um \emph{ponto limite} (ou \emph{ponto de acumulação}) de $C$ é um ponto $p \in M$ para o qual existe uma sequência $(p_n)_{n \in \N}$ de pontos de $C \setminus \{p\}$ que converge para $p$. O \emph{derivado} de $C$ é o conjunto de todos os pontos limites de $C$. 
+Sejam $\bm M$ um espaço métrico e $C \subseteq M$ um conjunto. Um \emph{ponto limite} (ou \emph{ponto de acumulação}) de $C$ é um ponto $p \in M$ para o qual existe uma sequência $(p_n)_{n \in \N}$ de pontos de $C \setminus \{p\}$ que converge para $p$. O \emph{derivado} de $C$ é o conjunto de todos os pontos limites de $C$.
 \end{definition}
 
 Da definição, segue que $C' \subseteq \overline C$. A inclusão contrária caracteriza a seção a seguir.
@@ -578,7 +578,7 @@ Sejam $\bm M$ um espaço métrico e $C \subseteq M$ e $r \in \intaa{0}{\infty}$.
 \end{definition}
 
 Note que excluímos $r=0$ da definição pois basicamente teríamos $\bola{C}{0} = \emptyset$ e $\bolafec{C}{0} = \Fec{C}$.
-	
+
 \begin{exercise}
 Sejam $\bm M$ um espaço métrico e $C \subseteq M$ e $r \in \intaa{0}{\infty}$.
 	\begin{enumerate}
@@ -647,7 +647,7 @@ Todo espaço métrico $\bm M$ é um espaço topológico normal.
 \end{proposition}
 \begin{proof}
 Sejam $F,F' \subseteq M$ fechados disjuntos. Mostraremos que $F$ e $F'$ são
-% metricamente separados e portanto 
+% metricamente separados e portanto
 separados por vizinhanças, o que mostrará que o espaço é normal.
 
 Para todo $f \in F$, existe $\delta_f \in \intaa{0}{\infty}$ tal que
@@ -729,7 +729,7 @@ Essa sequências são conhecidas como \emph{sequências de Cauchy}. O nome aprox
 Toda sequência convergente em um espaço métrico $\bm M$ é aproximante.
 \end{proposition}
 \begin{proof}
-Seja $(p_n)_{n \in \N}$ uma sequência em $M$ que converge para $p$. Seja $\varepsilon \in \R$ tal que $\varepsilon > 0$. Então $\frac{1}{2}\varepsilon > 0$ é um número real e segue que existe $N \in \N$ tal que, para todo número natural $n \geq N$, $p_n \in \bola{p}{\frac{1}{2}\varepsilon}$. Assim, segue que	
+Seja $(p_n)_{n \in \N}$ uma sequência em $M$ que converge para $p$. Seja $\varepsilon \in \R$ tal que $\varepsilon > 0$. Então $\frac{1}{2}\varepsilon > 0$ é um número real e segue que existe $N \in \N$ tal que, para todo número natural $n \geq N$, $p_n \in \bola{p}{\frac{1}{2}\varepsilon}$. Assim, segue que
 	\begin{equation*}
 	\forall n,m \in \N \qquad n,m \geq N \Rightarrow \dist{p_n}{p_m} \leq \dist{p_n}{p} + \dist{p}{p_n} < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon,
 	\end{equation*}
@@ -844,7 +844,7 @@ Assim, sejam $p,q \in M_1$ tais que $\dist{p}{q}_1 < \delta$. Queremos mostrar q
 ...
 
 	A unicidade de $f^*$ ocorre pois, se existem $f^*$ e $f'^*$ uniformemente contínuas que estendem $f$, como $D$ é denso em $M_1$ e $f^*|_D = f'^*|_D$, segue que $f^* = f'^*$ .
-	
+
 	Por fim, mostramos que a isometria se preserva...
 \end{proof}
 
@@ -857,7 +857,7 @@ Seja $\bm M$ um espaço métrico e $\bm M_1$ e $\bm M_2$ completamentos de $\bm 
 \end{exercise}
 %\begin{proof}
 %	Seja $f$ a função identidade em $M$. Pela proposição anterior, existe uma única extensão uniformemente contínua de $f^*$ em $M_1$ ...
-%	
+%
 %	...
 %\end{proof}
 
@@ -906,7 +906,7 @@ Seja $\bm M$ um espaço métrico.
 		M \subseteq \bigcup_{i \in [n]} \bola{p_i}{\frac{\varepsilon}{2}};
 		\end{equation*}
 Como, para todo $i \in [n]$, $\diam(\bola{p}{\frac{\varepsilon}{2}}) \leq \varepsilon$, segue que $(\bola{p_i}{\frac{\varepsilon}{2}})_{i \in [n]}$ é uma $\varepsilon$-cobertura de $M$, portanto $M$ é uniformemente limitado.
-	
+
 	\item Seja $(C_i)_{i \in [n]}$ uma cobertura $1$-precisa de $M$. Então, como para todo $i \in [n]$, $\diam(C_i) < \infty$, e a cobertura é finita, $\diam(M) < \infty$.
 	\end{enumerate}
 \end{proof}
@@ -944,7 +944,7 @@ portanto
 Seja $\bm M$ um espaço métrico. O espaço $\bm M$ é uniformemente limitado se, e somente se, toda sequência tem subsequência aproximante.
 \end{proposition}
 %\begin{proof}
-%($\Rightarrow$) Suponha que $\bm M$ é uniformemente limitado. Seja 
+%($\Rightarrow$) Suponha que $\bm M$ é uniformemente limitado. Seja
 %\end{proof}
 
 \begin{proposition}
@@ -992,7 +992,7 @@ Note que, caso $\card{M} \leq 1$, o conjunto nesse supremos é vazio, e nesse ca
 %		\begin{equation*}
 %		\dist{f(p)}{f(p')} \leq \distor{f}\dist{p}{p'};
 %		\end{equation*}
-%		
+%
 %	\item Valem a seguinte igualdade:
 %		\begin{equation*}
 %		\distor{L} = \sup \set{\frac{\dist{f(p)}{f(p')}}{\dist{p}{p'}}}{\forall_{p,p' \in M} p \neq p'}.
@@ -1047,7 +1047,7 @@ Sejam $\bm M$ e $\bm M'$ espaços métricos e $\fun{f}{M}{M'}$ uma função cont
 		\dist{f(p)}{f(p')} = 0 \leq 0 \dist{p}{p'},
 		\end{equation*}
 	o que mostra que $\distor{f} = 0$.
-	
+
 	Reciprocamente, se $\distor{f}=0$, então para todos $p,p' \in M$ vale
 		\begin{equation*}
 		\dist{f(p)}{f(p')} \leq \distor{f}\dist{p}{p'} = 0,
@@ -1083,7 +1083,7 @@ Sejam $\bm M$ e $\bm M'$ espaços métricos e $\fun{f}{M}{M}$ função controlad
 			&\leq \distor{f\inv}\distor{f}\dist{p}{p'}.
 		\end{align*}
 	Como $\dist{p}{p'} \neq 0$, segue que $1 \leq \distor{f\inv}\distor{f}$.
-	
+
 	\item Segue do item anterior, pois $f\inv$ é injetiva com inversa à esquerda $f$.
 	\qedhere
 %	\item Sejam $q,q' \in M'$ tais que $q \neq q'$ e, da sobrejetividade de $f$, sejam $p,p' \in M$ tais que $q = f(p)$ e $q' = f(p')$. Como $f$ e $f\inv$ são controladas e $f\inv(q) = p$ e $f\inv(q')=p'$, segue que
@@ -1123,12 +1123,12 @@ Notemos que se $\card{M} \leq 1$, a demonstração é trivial, portanto supomos 
 	o que mostra que $f\inv$ é controlada.
 
 	\item ($\Leftarrow$) Como $f$ é função controlada injetiva e $\card{M}>1$, segue de \ref{prop:distorcao.injetiva.sobrejetiva} que $\distor{f}>0$. A injetividade de $f$ implica que $f\inv$ é sobrejetiva e que $\card{f(M)}>0$, segue de \ref{prop:distorcao.injetiva.sobrejetiva} que $\distor{f\inv}>0$. Definindo $c := \distor{f} \opmax \distor{f\inv}$, segue que $c > 0$, $c \geq \distor{f}$ e $c\inv \leq \distor{f\inv}\inv$.
-	
+
 	Como $f$ é função controlada, então, para todos $p,p' \in M$,
 		\begin{equation*}
 		\dist{f(p)}{f(p')} \leq \distor{f} \dist{p}{p'} \leq c \dist{p}{p'}.
 		\end{equation*}
-	
+
 	Como a inversa à esquerda $f\inv$ é função controlada, então, para todos $p,p' \in M$,
 		\begin{align*}
 		c\inv \dist{p}{p'} &= c\inv \dist{f\inv(f(p))}{f\inv(f(p'))} \\
@@ -1145,6 +1145,7 @@ Notemos que se $\card{M} \leq 1$, a demonstração é trivial, portanto supomos 
 \end{proof}
 
 \begin{proposition}
+\label{prop:mergulho.metrico.topologico}
 Sejam $\bm M$ e $\bm M'$ espaços métricos e $\fun{f}{M}{M'}$ um mergulho métrico. Então $f$ é mergulho topológico.
 \end{proposition}
 \begin{proof}
@@ -1428,7 +1429,7 @@ Essa função $\diam$ não é uma medida exterior em $M$. Ela satisfaz (1) $\dia
 	\begin{equation*}
 	\diam(C) \leq \diam(D);
 	\end{equation*}
-No entanto, não satisfaz 
+No entanto, não satisfaz
 (3) Para todos $(C_i)_{i \in \N}$ subconjuntos de $M$,
 	\begin{equation*}
 	\diam\left( \bigcup_{i \in \N} C_i \right) \leq \sum_{i \in \N} \diam\left( C_i \right).
@@ -1826,7 +1827,7 @@ Segue da definição de $\mathcal J(I)$ que $\emptyset \in \mathcal J(I)$ e da d
 
 % NÃO MOSTREI QUE A MEDIDA \medd f É POSITIVA, POIS TENHO QUE EXIGIR QUE A FUNÇÃO f SEJA CRESCENTE! OU DECRESCENTE E MUDAR A DEFINIÇÃO.
 
-Assim, por \ref{prop:medida.exterior.calibre} que a medida exterior de cobertura %$\med^{(\mathcal J(I), \medd f)}$ 
+Assim, por \ref{prop:medida.exterior.calibre} que a medida exterior de cobertura %$\med^{(\mathcal J(I), \medd f)}$
 induzida por $(\mathcal J(I), \medd f)$ é a uma medida exterior sobre $I$. Denotaremos essa medida também por $\medd f$. Ressaltamos essa definição a seguir.
 
 \begin{definition}
