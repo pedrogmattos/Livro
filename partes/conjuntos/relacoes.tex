@@ -412,20 +412,20 @@ Costumamos denotar uma relação de equivalência com símbolos $\sim, \simeq, \
 
 \begin{theorem}[Teorema Fundamental das Relações de Equivalência]
 \label{conj:teo.rel.equiv.part}
-	Seja $A$ um conjunto. Se $\sim$ é uma relação de equivalência em $A$, então $\quo{A}{\sim}$ é uma partição de $A$. Reciprocamente, se $P$ é uma partição de $A$, então existe uma relação de equivalência $\sim$ em $A$ tal que $P = \quo{A}{\sim}$.
+	Seja $A$ um conjunto. Se $\sim$ é uma relação de equivalência em $A$, então $\quo{A}{\sim}$ é uma partição de $A$. Reciprocamente, se $\parti$ é uma partição de $A$, então existe uma relação de equivalência $\sim$ em $A$ tal que $\parti = \quo{A}{\sim}$.
 \end{theorem}
 \begin{proof}
-	Seja $\sim$ uma relação de equivalência em $A$ e $P := \quo{A}{\sim}$. Claramente, $\emptyset \notin P$. Ainda, para todo $a \in A$, como $a \sim a$, então $a \in \cla{a}$. Logo
+Seja $\sim$ uma relação de equivalência em $A$ e $\parti := \quo{A}{\sim}$. Claramente, $\emptyset \notin \parti$. Ainda, para todo $a \in A$, como $a \sim a$, então $a \in \cla{a}$. Logo
 	\begin{equation*}
-	\bigcup_{\cla{a} \in P} \cla{a} = A.
+	\bigcup_{\cla{a} \in \parti} \cla{a} = A.
 	\end{equation*}
-Por fim, sejam $\cla{a_1},\cla{a_2} \in P$ tais que $\cla{a_1} \neq \cla{a_2}$. Se existir $a \in \cla{a_1} \cap \cla{a_2}$, então, para todo $b \in \cla{a_1}$, $b \sim a_1$ e $a_1 \sim a$, o que implica $b \sim a$. Ainda, $a \sim a_2$. Então $b \in \cla{a_2}$; ou seja, $\cla{a_1} \subseteq \cla{a_2}$. Por outro lado, $b \sim a_2 \sim a \sim a_1$, o que implica $\cla{a_2} \subseteq \cla{a_1}$. Isso implica $\cla{a_1}=\cla{a_2}$, contradição. Logo $\cla{a_1} \cap \cla{a_2}=\emptyset$. Assim, concluímos que $P$ é uma partição de $A$.
+Por fim, sejam $\cla{a_1},\cla{a_2} \in \parti$ tais que $\cla{a_1} \neq \cla{a_2}$. Se existir $a \in \cla{a_1} \cap \cla{a_2}$, então, para todo $b \in \cla{a_1}$, $b \sim a_1$ e $a_1 \sim a$, o que implica $b \sim a$. Ainda, $a \sim a_2$. Então $b \in \cla{a_2}$; ou seja, $\cla{a_1} \subseteq \cla{a_2}$. Por outro lado, $b \sim a_2 \sim a \sim a_1$, o que implica $\cla{a_2} \subseteq \cla{a_1}$. Isso implica $\cla{a_1}=\cla{a_2}$, contradição. Logo $\cla{a_1} \cap \cla{a_2}=\emptyset$. Assim, concluímos que $\parti$ é uma partição de $A$.
 	
-	Seja $P$ uma partição de $A$. A relação binária $\sim$ em $A$, definida por
+Seja $\parti$ uma partição de $A$. A relação binária $\sim$ em $A$, definida por
 	\begin{equation*}
-	\forall a_1,a_2 \in A \qquad a_1 \sim a_2 \Leftrightarrow \exists Q \in P \quad a_1,a_2 \in Q,
+	\forall a_1,a_2 \in A \qquad a_1 \sim a_2 \Leftrightarrow \exists Q \in \parti \quad a_1,a_2 \in Q,
 	\end{equation*}
-é uma relação de equivalência. Claramente, para todo $a \in A$, existe $Q \in P$ tal que $a \in Q$, pois $\displaystyle \bigcup_{R \in P} R = A$. Então $a \sim a$, o que mostra a reflexividade. Ainda, a simetria é trivial pela definição da relação $\sim$. Por fim, para $a_1,a_2,a_3 \in A$, se $a_1 \sim a_2$ e $a_2 \sim a_3$, existem conjuntos $Q,R \in P$ tais que $a_1,a_2 \in Q$ e $a_2,a_3 \in R$. Como $a_2 \in Q \cap R$, pela definição de partição $Q=R$. Então $a_1 \sim a_3$, o que mostra a transitividade. Logo $\sim$ é uma relação de equivalência em $A$.
+é uma relação de equivalência. Claramente, para todo $a \in A$, existe $Q \in \parti$ tal que $a \in Q$, pois $\displaystyle \bigcup_{R \in \parti} R = A$. Então $a \sim a$, o que mostra a reflexividade. Ainda, a simetria é trivial pela definição da relação $\sim$. Por fim, para $a_1,a_2,a_3 \in A$, se $a_1 \sim a_2$ e $a_2 \sim a_3$, existem conjuntos $Q,R \in \parti$ tais que $a_1,a_2 \in Q$ e $a_2,a_3 \in R$. Como $a_2 \in Q \cap R$, pela definição de partição $Q=R$. Então $a_1 \sim a_3$, o que mostra a transitividade. Logo $\sim$ é uma relação de equivalência em $A$.
 \end{proof}
 
 \subsection{Funções bem definidas}
@@ -921,9 +921,9 @@ Isso mostra que $\leq$ está bem definida. Agora, mostremos que $\leq$ é ordem.
 Um \emph{conjunto direcionado} (\emph{superiormente}) é um par $(X,\preceq)$ em que $X$ é um conjunto não vazio e $\preceq$ é uma pré-ordem em $X$ que satisfaz: para todos $x,x' \in X$, existe $s \in X$ tal que $x \leq s$ e $x' \leq s$.
 \end{definition}
 
-\begin{proposition}
+\begin{exercise}
 Sejam $(X,\preceq)$ um conjunto direcionado e $x_0,\ldots,x_{n-1} \in X$. Existe $s \in X$ tal que, para todo $i \in [n]$, $x_i \leq s$.
-\end{proposition}
+\end{exercise}
 
 \subsection{Reticulados}
 
@@ -1135,3 +1135,384 @@ Sejam $X$ um conjunto, $A,B \subseteq X$, $n \in \N$ $(A_i)_{i \in [n]} \subsete
 %			&= \idc_A+\idc_B+\idc_C-2(\idc_A\idc_B+\idc_A\idc_C+\idc_B\idc_C)+4\idc_A\idc_B\idc_C.
 %	\end{align*}
 %\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Coberturas e partições}
+
+\subsection{Coberturas e subcoberturas}
+
+\begin{definition}[Cobertura e subcobertura]
+Seja $X$ um conjunto. Uma \emph{cobertura} de $X$ é um conjunto $\cober \subseteq \p(X)$ tal que $X = \bigcup \cober$. O conjunto das coberturas de $X$ é denotado $\Cober(X)$.
+Uma \emph{subcobertura} de uma cobertura $\cober$ é uma cobertura $\mathcal S$ de $X$ tal que $\mathcal S \subseteq \cober$.
+\end{definition}
+
+\begin{example}
+Seja $X$ um conjunto.
+	\begin{enumerate}
+	\item O conjunto $\{X\}$ é a \emph{cobertura trivial} de $X$;
+	\item O conjunto $\p(X)$ é a \emph{cobertura total} de $X$;
+	\item O conjunto
+		\begin{equation*}
+		\p_1(X) = \set{C \in \p(X)}{\card{C}=1} = \set{\{x\}}{x \in X}
+		\end{equation*}
+	é a \emph{cobertura atômica} de $X$.
+	\end{enumerate}
+\end{example}
+
+Às vezes é conveniente considerar uma cobertura de um subconjunto $S \subseteq X$. Nesse caso, uma cobertura de $S$ pode ser considerada como um conjunto $\cober \subseteq \p(X)$ tal que $S \subseteq \bigcup \cober$. Não é preciso restringir a cobertura a $S$, isto é, considerar somente subconjuntos de $S$, pois para todo $C \in \cober$, sendo $C \subseteq X$, basta considerar $C \cap S$ e têm-se $C \cap S \subseteq S$ e $S = \bigcup_{C \in \cober} C \cap S$.
+
+\subsection{Refinamento de coberturas}
+
+Definiremos uma relação de pré-ordem entre coberturas que difere da relação de contenção usual entre conjuntos.
+
+\begin{definition}[Refinamento]
+Sejam $X$ um conjunto e $\cober$ uma cobertura de $X$. Um \emph{refinamento} de $\cober$ é uma cobertura $\cober'$ de $X$ tal que, para todo $C' \in \cober'$, algum $C \in \cober$ satisfaz $C' \subseteq C$. A cobertura $\cober'$ é dita \emph{mais fina} que $\cober$ e a cobertura $\cober$ é dita \emph{mais grossa} que $\cober'$ e um \emph{engrossamento} de $\cober'$. Denota-se $\cober \refin \cober'$ e a relação binária $\refin$ em $\Cober(X)$ é a relação de \emph{refinamento}.
+\end{definition}
+
+Aqui o importante é notar que ser mais fino significa ter conjuntos menores, por isso as ordens de $\subseteq$ e $\refin$ são contrárias.
+
+\begin{proposition}[Refinamento é pré-ordem]
+\label{prop:refinamento.preordem}
+Seja $X$ um conjunto. A relação de refinamento $\refin$ é uma relação de pré-ordem no conjunto de coberturas $\Cober(X)$.
+\end{proposition}
+\begin{proof}
+Devemos mostrar que a relação é reflexiva e transitiva.
+	\begin{itemize}
+	\item (Reflexividade) Seja $\cober \in \Cober(X)$ uma cobertura. Para todo $C \in \cober$, vale $C \subseteq C$, portanto $\cober \refin \cober$.
+	
+	\item (Transitividade) Sejam $\cober, \cober', \cober'' \in \Cober(X)$. Para todo $C'' \in \cober''$, algum $C' \in \cober'$ satisfaz $C'' \subseteq C'$, pois $\cober' \refin \cober''$; além disso, algum $C \in \cober$ satisfaz $C' \subseteq C$, pois $\cober \refin \cober'$, o que implica $C'' \subseteq C' \subseteq C$, e isso mostra que $\cober \refin \cober''$.
+	\qedhere
+	\end{itemize}
+\end{proof}
+
+No entanto, não é possível mostrar que a relação de refinamento é antissimétrica. O exemplo a seguir deixa claro um dos problemas que pode ocorrer.
+
+\begin{example}
+Seja $X := \{0, 1\}$, $\cober := \{\{0\}, X\}$ e $\cober' := \{\{1\}, X\}$. Vale $\cober \refin \cober'$, pois $\{1\} \subseteq X$ e $X \subseteq X$, e vale $\cober' \refin \cober$, pois $\{0\} \subseteq X$ e $X \subseteq X$. Como $\cober \neq \cober'$, isso mostra que a relação de refinamento não pode ser antissimétrica.
+\end{example}
+
+Nas seções seguintes, estudaremos um tipo de cobertura chamado partição. Quando restrita a essas coberturas, a relação será antissimétrica, portanto uma ordem.
+
+\begin{exercise}
+\label{prop:refinamento.propriedades}
+Seja $X$ um conjunto.
+	\begin{enumerate}
+	\item Para toda cobertura $\cober$ de $X$ e toda subcobertura $\mathcal S \subseteq \cober$, vale $\cober \refin \mathcal S$;
+	\item Para toda cobertura $\cober$ de $X$, $\{X\} \refin \cober \refin \p_1(X)$.
+	\end{enumerate}
+\end{exercise}
+
+% Não defini cardinalidade ainda nesse ponto e quero simplificar a demosntração para não usar subcoberturas finitas.
+\begin{comment}
+\begin{proposition}
+\label{prop:lema.cardinalidade.subcobertura.refinamento}
+Sejam $X$ um conjunto e $\cober$ e $\cober'$ coberturas de $X$ tais que $\cober \refin \cober'$. Para toda subcobertura $\mathcal{S'} \subseteq \cober'$, alguma subcobertura $\mathcal{S} \subseteq \cober$ satisfaz
+	\begin{equation*}
+	\card{\mathcal{S}} \leq \card{\mathcal{S'}}.
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+Seja $\mathcal{S'} \subseteq \cober'$ uma subcobertura finita, $\kappa := \card{\mathcal{S'}}$ sua cardinalidade e indexemos seus elementos como $\mathcal{S'} =: \set{S'_k}{k \in \kappa}$. Primeiro notemos que, como $\cober \refin \cober'$ e $\cober' \refin \mathcal{S'}$ (pois $\mathcal{S'}$ é subcobertura), segue da transitividade de $\refin$ que $\cober \refin \mathcal{S'}$. Isso significa que, para todo $S'_i \in \mathcal{S'}$, algum $S_i \in \cober$ satisfaz $S'_i \subseteq S_i$. Definamos $\mathcal{S} := \set{S_i}{i \in \kappa}$. Como pode valer $S_i = S_j$ para $i \neq j$, segue que $\card{\mathcal{S}} \leq \card{\mathcal{S'}}$. Ainda, como $\mathcal{S'}$ é cobertura de $X$, $\mathcal{S}$ também é, pois
+	\begin{equation*}
+	X = \bigcup_{i \in [n]} S'_i \subseteq \bigcup_{i \in [n]} S_i.
+	\qedhere
+	\end{equation*}
+\end{proof}
+\end{comment}
+
+
+\subsection{Correfinamento de coberturas}
+
+%Podemos definir uma operação entre duas coberturas que mantém informação de ambas as coberturas, mas de modo que as refine.
+
+\begin{definition}[Correfinamento de coberturas]
+Sejam $X$ um conjunto e $\cober$ e $\cober'$ coberturas de $X$. O \emph{correfinamento} de $\cober$ e $\cober'$ é o conjunto
+	\begin{equation*}
+	\cober \corref \cober' := \set{C \cap C'}{C \in \cober, C' \in \cober'}.
+	\end{equation*}
+	
+Seja $(\cober_i)_{i \in I}$ uma família de coberturas de $X$. O \emph{correfinamento} de $(\cober_i)_{i \in I}$ é o conjunto
+	\begin{equation*}
+	\bigcorref_{i \in I} \cober_i := \set{\bigcap_{i \in I} C_i}{\forall_{i \in I} C_i \in \cober_i}.
+	\end{equation*}
+\end{definition}
+
+As definições coincidem se consideramos uma família de duas coberturas $(\cober_0, \cober_1)$. Nesse caso,
+	\begin{equation*}
+	\bigcorref_{i \in [2]} \cober_i = \set{\bigcap_{i \in [2]} C_i}{\forall_{i \in [2]} C_i \in \cober_i} = \set{C_0 \cap C_1}{C_0 \in \cober_0, C_1 \in \cober_1} = \cober_0 \corref \cober_1.
+	\end{equation*}
+
+Algumas nomenclaturas utilizadas na literatura para essa operação entre coberturas são \textit{soma} e \textit{junção}, mas adotamos aqui \textit{correfinamento} para ressaltar que esse conjunto é a menor cobertura que é mais fina que ambas as coberturas, portanto o refinamento comum delas. A proposição seguinte formaliza esse fato.
+
+\begin{proposition}
+\label{prop:correfinamento.caracteristica.definidora}
+Sejam $X$ um conjunto e $\cober$ e $\cober'$ coberturas de $X$. O correfinamento $\cober \corref \cober'$ é a menor cobertura de $X$ (com respeito à pré-ordem $\refin$) que é mais fina que $\cober$ e $\cober'$.
+\end{proposition}
+\begin{proof}
+O conjunto $\cober \corref \cober'$ é uma cobertura pois
+	\begin{align*}
+	X &= \bigcup_{C \in \cober} C \\
+		&= \bigcup_{C \in \cober} C \cap X \\
+		&= \bigcup_{C \in \cober} C \cap \left( \bigcup_{C' \in \cober'} C' \right) \\
+		&= \bigcup_{C \in \cober} \bigcup_{C' \in \cober'} C \cap C' \\
+		&=\bigcup_{C \cap C' \in \cober \corref \cober'} C \cap C' .
+	\end{align*}
+
+Mostremos agora que $\cober \corref \cober'$ refina ambas coberturas. Seja $C \cap C' \in \cober \corref \cober'$. Como $C \cap C' \subseteq C$ e $C \cap C' \subseteq C'$, segue que $\cober \refin \cober \corref \cober'$ e $\cober' \refin \cober \corref \cober'$.
+
+Por fim, para mostrar que ele é o menor refinamento com essa propriedade, seja $\cober'' \in \Cober(X)$ tal que $\cober \refin \cober''$ e $\cober' \refin \cober''$. Seja $C'' \in \cober''$. Por refinar $\cober$ e $\cober'$, segue que para algum $C \in \cober$ e algum $C' \in \cober'$, vale $C'' \subseteq C$ e $C'' \subseteq C'$. Isso implica que $C'' \subseteq C \cap C'$, portanto $\cober \corref \cober' \refin \cober''$.
+\end{proof}
+
+\begin{exercise}
+Sejam $X$ um conjunto e $(\cober_i)_{i \in I}$ uma família de coberturas de $X$. O correfinamento $\bigcorref_{i \in I} \cober_i$ é a menor cobertura de $X$ (com respeito à pré-ordem $\refin$) que, para todo $i \in I$, é mais fina que $\cober_i$.
+\end{exercise}
+
+\begin{proposition}
+\label{prop:correfinamento.propriedades}
+Seja $X$ um conjunto.
+\begin{enumerate}
+	\item Para todas coberturas $\cober$, $\cober'$, $\mathcal{R}$ e $\mathcal{R'}$ de $X$ tais que $\cober \refin \mathcal{R}$ e $\cober' \refin \mathcal{R'}$, vale
+		\begin{equation*}
+		\cober \corref \cober' \refin \mathcal{R} \corref \mathcal{R'};
+		\end{equation*}
+	\item Para todas coberturas $\cober$ e $\cober'$ de $X$ e todas subcoberturas $\mathcal{S} \subseteq \cober$ e $\mathcal{S'} \subseteq \cober'$, vale
+		\begin{equation*}
+		\mathcal{S} \corref \mathcal{S'} \subseteq \cober \corref \cober';
+		\end{equation*}
+\end{enumerate}
+%Se $\mathcal{S}$ $\cober'_0$ são subcoberturas, então $\mathcal{S} \corref \mathcal{S'} \subseteq \cober \corref \cober'$.
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item Seja $R \cap R' \in \mathcal{R} \corref \mathcal{R'}$, com $R \in \mathcal{R}$ e $R' \in \mathcal{R'}$. Como $\mathcal{R}$ é refinamento de $\cober$ e $\mathcal{R'}$ é refinamento de $\cober'$, segue que, para algum $C \in \cober$ e algum $C' \in \cober'$, vale que $R \subseteq C$ e $R' \subseteq C'$, o que implica que $R \cap R' \subseteq C \cap C'$. Como $C \cap C' \in \cober \corref \cober'$, segue que $\cober \corref \cober \refin \mathcal{R} \corref \mathcal{R'}$.
+
+	\item Exercício.
+	\end{enumerate}
+\end{proof}
+
+\begin{exercise}[Propriedades de reticulado]
+Seja $X$ um conjunto.
+	\begin{enumerate}
+	\item (Associatividade) Para todas coberturas $\cober, \cober', \cober'' \in \Cober(X)$,
+		\begin{equation*}
+		(\cober \corref \cober') \corref \cober'' = \cober \corref (\cober' \corref \cober'');
+		\end{equation*}
+	\item (Comutatividade) Para todas coberturas $\cober, \cober' \in \Cober(X)$,
+		\begin{equation*}
+		\cober \corref \cober' = \cober' \corref \cober;
+		\end{equation*}
+	\item (Idempotência) Para toda cobertura $\cober \in \Cober(X)$,
+		\begin{equation*}
+		\cober \corref \cober = \cober;
+		\end{equation*}
+
+	\item (Limitação inferior) Para toda cobertura $\cober \in \Cober(X)$,
+		\begin{equation*}
+		\cober \corref \{X\} = \cober;
+		\end{equation*}
+	% Essa seguinte não é verdade pois o correfinamento com $\p_1(X)$ pode ter o conjunto vazio $\emptyset$ como elemento.
+%	\item Para toda cobertura $\cober \in \Cober(X)$,
+%		\begin{equation*}
+%		\cober \corref \p_1(X) = \p_1(X).
+%		\end{equation*}
+	\end{enumerate}
+\end{exercise}
+
+%Vale comentar que a última propriedade nem sempre vale quando consideramos coberturas abertas de espaços topológicos, pois a cobertura atômica $\p_1(X)$ (composta dos subconjuntos de cardinalidade $1$) não necessariamente é uma cobertura aberta --- esses conjuntos nem sempre são abertos.
+
+O correfinamento pode ser calculado repetidas vezes entre várias coberturas e a ordem em que ele é calculado não importa por causa da associatividade; por isso, podemos usar, para coberturas $\cober_0, \ldots, \cober_{n-1} \in \Cober(X)$, a notação
+	\begin{equation*}
+	\cober_0 \corref \cdots \corref \cober_{n-1} := \bigcorref_{i \in [n]} \cober_i. 
+	\end{equation*}
+
+%O mesmo vale para qualquer conjunto de coberturas, mesmo que infinito ou até não enumerável, mas esses refinamentos nem sempre são úteis na prática.
+
+\subsection{Coberturas puxadas}
+
+\begin{definition}
+Sejam $X$ e $X'$ conjuntos, $\fun{f}{X}{X'}$ uma função e $\cober'$ uma cobertura de $X'$. A \emph{cobertura puxada de $\cober'$ por $f$} é o conjunto
+	\begin{equation*}
+	f\inv(\cober') := \set{f\inv(C')}{C' \in \cober'}.
+	\end{equation*}
+\end{definition}
+
+\begin{proposition}
+\label{prop:cobertura.puxada.propriedades}
+Sejam $X$ e $X'$ conjuntos, $\fun{f}{X}{X'}$ uma função e $\cober'$ uma cobertura de $X'$. A cobertura puxada $f\inv(\cober')$ é uma cobertura de $X$.
+\end{proposition}
+\begin{proof}
+Segue direto de
+	\begin{equation*}
+	X = f\inv(X') = f\inv \left( \bigcup_{C' \in \cober'} C' \right) = \bigcup_{C' \in \cober'} f\inv(C').
+	\qedhere
+	\end{equation*}
+\end{proof}
+
+\begin{proposition}
+Sejam $X$, $X'$ e $X''$ conjuntos, $\fun{f}{X}{X'}$ e $\fun{f'}{X'}{X''}$ funções e $\cober''$ uma cobertura de $X''$. Então
+	\begin{equation*}
+	(f' \circ f)\inv (\cober'') = f\inv ((f')\inv(\cober'')).
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+Basta notarmos que, para todo $C'' \in \cober''$, vale
+	\begin{equation*}
+	(f' \circ f)\inv(C'') = f\inv ((f')\inv(C'')).
+	\qedhere
+	\end{equation*}
+%Assim, para todo $C' \in (f_1 \circ f_0)\inv (\cober)$, algum $C \in \cober$ satisfaz $C' = (f_1 \circ f_0)\inv(C)$, o que implica que $C' \in f_0\inv (f_1\inv(\cober))$ e a recíproca é análoga.
+%Reciprocamente, seja $C' \in f_0\inv (f_1\inv(\cober))$. Então, para algum $C \in \cober$, vale $C' = f_0\inv(f_1\inv(C)$, logo $C' = (f_1 \circ f_0)\inv(C)$, portanto $C' \in (f_1 \circ f_0)\inv (\cober)$.
+\end{proof}
+
+Isso nos permite usar sem ambiguidade, para $\fun{f}{X}{X}$ e uma cobertura $\cober$ de $X$, a notação
+	\begin{equation*}
+	f^{-n}(\cober) := \set{f^{-n}(C)}{C \in \cober}.
+	\end{equation*}
+
+\begin{exercise}
+\label{prop:cobertura.puxada.refinamento.propriedades}
+Sejam $X$ e $X'$ conjuntos, $\fun{f}{X}{X'}$ uma função e $\cober'_0$ e $\cober'_1$ coberturas de $\bm X'$.
+	\begin{enumerate}
+	\item Se $\cober'_0 \refin \cober'_1$, então $f\inv(\cober'_0) \refin f\inv(\cober'_1)$;
+	\item $f\inv(\cober'_0 \corref \cober'_1) = f\inv(\cober'_0) \corref f\inv(\cober'_1)$.
+	\end{enumerate}
+\end{exercise}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection{Partições}
+
+\begin{definition}[Partição]
+Seja $X$ um conjunto. Uma \emph{partição} de $X$ é um conjunto $\parti \subseteq \p(X)$ que satisfaz
+	\begin{enumerate}
+	\item (Cobertura) $X = \bigcup \parti$;
+	\item (Não vacuidade) $\emptyset \notin \parti$;
+	\item (Não coincidência) Para todos conjuntos distintos $P,P' \in \parti$, $P \cap P = \emptyset$.
+	\item (Não coincidência) Para todos $P,P' \in \parti$, se $P \neq P'$ então $P \cap P = \emptyset$.
+	\end{enumerate}
+Os conjuntos $P \in \parti$ são as \emph{partes} de $\parti$. O conjunto das partições de $X$ é denotado $\Parti(X)$.
+\end{definition}
+
+Uma partição é uma cobertura de $X$ por conjuntos disjuntos (logo distintos) que não contém o conjunto vazio.
+
+\begin{example}
+Seja $X$ um conjunto.
+	\begin{enumerate}
+	\item O conjunto $\{X\}$ é a \emph{partição trivial} de $X$;
+	\item O conjunto
+		\begin{equation*}
+		\p_1(X) = \set{C \in \p(X)}{\card{C}=1} = \set{\{x\}}{x \in X}
+		\end{equation*}
+	é a \emph{partição atômica} de $X$.
+	\end{enumerate}
+\end{example}
+
+Alguns tipos especiais de partições são úteis na teoria de integração de Riemann. Em $\R^1$, essas partições são chamadas de partições de intervalo, e são representadas como um número finito de pontos em um intervalo. Quando generaliza-se para dimensões maiores, usam-se $d$-retângulos, que são conjuntos em $\R^d$ dados pelo produto de $d$ intervalos limitados. Podemos fixar um critério a mais, o de que um $d$-retângulo é produto de intervalos fechados em baixo e abertos em cima. Nesse caso, podemos definir que uma partição cujos elementos são $d$-retângulos é uma \emph{malha}.
+
+Alternativamente, quando temos uma medida, que é o caso de $\R^d$, podemos enfraquecer a restrição de que as partes de uma partição são iguais ou disjuntas para a de que são iguais ou \emph{quase disjuntas} (a interseção tem medida zero) e a restrição de que cobrem para a restrição de que a união da partição é quase total (seu complementar tem medida nula) e por fim, de que nenhum elemento da partição é quase vazio (tem medida nula) e definir que isso é uma $\mu$-partição ou \emph{quase partição com respeito a $\mu$}. Como um exemplo, poderíamos considerar retângulos em $\R^d$ formados como produto de intervalos fechados, de modo que eles se intersecionem somente nas fronteiras, que tem medida nula; alernaivamente, poderíamos considerar retângulo formados como produtos de intervalos abertos, de modo que as fronteiras não seriam parte da partição, mas a união ainda teria medida total pois as froneiras têm medida nula.
+
+\subsection{Refinamento de partições}
+
+Como partições são tipos específicos de coberturas, podemos considerar a pré-ordem de refinamento entre partições. Devido à estrutura mais específica das partições, essa pré-ordem, quando restrita ao conjunto de partições, é uma ordem.
+
+\begin{proposition}[Refinamento é ordem]
+\label{prop:refinamento.particao.ordem}
+Seja $X$ um conjunto. A relação de refinamento $\refin$ é uma relação de ordem no conjunto de partições $\Parti(X)$.
+\end{proposition}
+\begin{proof}
+A proposição \ref{prop:refinamento.preordem} mostra que $\refin$ é reflexiva e transitiva. Mostremos que quando restrita ao conjunto $\Parti(X)$, vale a antissimetria. Sejam $\parti, \parti' \in \Parti(X)$ tais que $\parti \refin \parti'$ e $\parti' \refin \parti$. Seja $P \in \parti$. Como $\parti \refin \parti'$, algum $P' \in \parti'$ satisfaz $P' \subseteq P$. Mas, como $\parti' \refin \parti$, algum $Q \in \parti$ satisfaz $Q \subseteq P'$. Isso implica que $Q \subseteq P$, logo que $Q \cap P = Q$; como $\parti$ é uma partição, segue que $Q \cap P = Q \neq \emptyset$, portanto $Q = P$. Assim, $P \subseteq P' \subseteq P$, e concluímos que $P' = P$, logo $P \in \parti'$, resultando em $\parti \subseteq \parti'$. A contenção contrária $\parti' \subseteq \parti$ segue por simetria, invertendo os papéis de $\parti$ e $\parti'$, e assim concluímos que $\parti = \parti'$.
+\end{proof}
+
+\begin{definition}[Subpartição e superpartição]
+Sejam $X$ um conjunto e $\parti$ uma partição de $X$. Uma \emph{subpartição} de $\parti$ é uma partição mais grossa que $\parti$. Uma \emph{superpartição} de $\parti$ é uma partição mais fina que $\parti$.
+\end{definition}
+
+Notemos que o conceito de subpartição não coincide com o de subcobertura. Uma subcobertura é menor que uma cobertura referência com relação à ordem de contenção de conjuntos $\subseteq$, enquanto que uma subpartição é menor que uma partição referência com relação à ordem de refinamento de partições $\refin$. Não falamos em subcoberturas com respeito ao refinamento $\refin$ pois essa relação não é uma ordem no conjunto de coberturas, somente no conjunto de partições.
+
+\begin{proposition}
+Sejam $X$ um conjunto e $\parti,\parti'$ partições de $X$ tais que $\parti \refin \parti'$. Então
+	\begin{enumerate}
+	\item $\card{\parti} \leq \card{\parti'}$;
+	\item Para todo $P \in \parti$, o conjunto
+		\begin{equation*}
+		\parti'|_P := \set{P' \in \parti'}{P' \subseteq P}
+		\end{equation*}
+é uma partição de $P$.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item Por definição de refinamento, para todo $P' \in \parti'$ existe $P \in \parti$ tal que $P' \subseteq P$. Notemos que $P$ é única pois, se existir $Q \in \parti$ tal que $P' \subseteq Q$, então $P' \subseteq P \cap Q$ e, como $P' \neq \emptyset$, segue que $P = Q$. Assim, consideramos a função que mapeia, para cada $P' \in \parti'$ a parte $P_{P'} \in \parti$ tal que $P' \subseteq P_{P'}$:
+	\begin{align*}
+	\func{f}{\parti'}{\parti}{P'}{P_{P'}}.
+	\end{align*}
+Mostremos que essa função é sobrejetiva. Para isso, seja $P \in \parti$. Como $\bigcup \parti' = X$, para todo $x \in P \subseteq X$ existe $P' \in \parti'$ tal que $x \in P'$. Como $P \neq \emptyset$, existe $x \in P$, logo existe $P' \in \parti'$ tal que $x \in P'$. Por definição de refinamento, existe $Q \in \parti$ tal que $P' \subseteq Q$, o que implica $x \in Q$. Como $x \in Q \cap P$, segue que $P=Q$, e concluímos que $P' \subseteq P$. Isso mostra que $f(P')=P$, logo que $f$ é sobrejetiva. Concluímos, então, que $\card{\parti} \leq \card{\parti'}$.
+	
+	\item As propriedades de não coincidência e não vacuidade são evidentes porque $\parti'$ é partição. Para a propriedade de cobertura, seja $P \in \parti$ e $U := \bigcup \set{P' \in \parti'}{P' \subseteq P}$. Notemos que $P=U$. Para mostrar isso, seja $x \in P$. Então existe $P' \in \parti'$ tal que $x \in P'$, pois $\bigcup \parti=X$. Por definição de refinamento, existe $Q \in \parti$ tal que $P' \subseteq Q$, portanto $x \in Q$. Como $x \in Q \cap P$, segue que $P=Q$. Concluímos que $P' \subseteq P$, portanto que $x \in U$, o que mostra $P \subseteq U$. Reciprocamente, para todo $P' \in U$, $P' \subseteq P$, portanto $U \subseteq P$, e concluímos que $P=U$.
+	\qedhere
+	\end{enumerate}
+\end{proof}
+
+\subsection{Correfinamento de partições}
+
+A operação de correfinamento de coberturas também pode ser calculada em partições, pois elas são tipos específicos de cobertura. Porém, o que se deve mostrar é que o correfinamento de partições ainda é uma partição, para que assim a operação possa de fato ser restrita ao conjunto de partições. De fato isso não é verdade, mas somente pelo motivo técnico de que quando se calcula o correfinamento, o conjunto vazio pode passar a ser um elemento da cobertura resultante, e não permitimos conjuntos vazios em partições. Assim, adaptamos a definição de correfinamento de coberturas para excluir esse conjunto.
+
+\begin{definition}[Correfinamento de partições]
+Sejam $X$ um conjunto e $\parti$ e $\parti'$ partições de $X$. O \emph{correfinamento} de $\parti$ e $\parti'$ é o conjunto
+	\begin{equation*}
+	\parti \corref \parti' := \set{P \cap P'}{P \in \parti, P' \in \parti'} \setminus \{\emptyset\}.
+	\end{equation*}
+
+Seja $(\parti_i)_{i \in I}$ uma família de partições de $X$. O \emph{correfinamento} de $(\parti_i)_{i \in I}$ é o conjunto
+	\begin{equation*}
+	\bigcorref_{i \in I} \parti_i := \set{\bigcap_{i \in I} P_i}{\forall_{i \in I} P_i \in \parti_i} \setminus \{\emptyset\}.
+	\end{equation*}
+\end{definition}
+
+\begin{proposition}
+Sejam $X$ um conjunto e $(\parti_i)_{i \in I}$ uma família de partições de $X$. O correfinamento $\bigcorref_{i \in I} \parti_i$ de $(\parti_i)_{i \in I}$ é a menor partição de que $X$ (com respeito à ordem $\refin$) que, para todo $i \in I$, é mais fina que $\parti_i$.
+\end{proposition}
+\begin{proof}
+Denotemos $\parti := \bigcorref_{i \in I} \parti_i$ por simplicidade. Primeiro, mostremos que $\parti$ é uma partição.
+	\begin{itemize}
+	\item (Cobertura) Seja $x \in X$. Para todo $i \in I$, como $X = \bigcup \parti_i$, segue que algum $P_i \in \parti_i$ satisfaz $x \in P_i$. Sendo assim, $x \in \bigcap_{i \in I} P_i$, portanto $X \subseteq \bigcup \parti$, e segue que $X = \bigcup \parti$.
+	
+	\item (Não vacuidade) Por definição, $\emptyset \notin \parti$.
+	
+	\item (Não coincidência) Sejam $P = \bigcap_{i \in I} P_i, P' = \bigcap_{i \in I} P'_i \in \parti$. Se $P \neq P'$, então existe $x \in P \setminus P'$ ou existe $x \in P' \setminus P$. Sem perda de generalidade, suponhamos o primeiro. Então, existe $i \in I$ tal que $x \notin P'_i$. Como $x \in P$, então $x \in P_i$, portanto $P_i \neq P'_i$. Mas então, como $\parti_i$ é partição, $P_i \cap P'_i = \emptyset$. Por fim, como $P \subseteq P_i$ e $P' \subseteq P'_i$, segue que $P \cap P' = \emptyset$.
+	\end{itemize}  
+
+Agora mostraremos que, para todo $i \in I$, $\parti_i \refin \parti$. Sejam $i \in I$ e $P \in \parti$. Então $P = \bigcap_{i \in I} P_i$, com $P_i \in \parti_i$. Isso significa que, para todo $i \in I$, $P \subseteq P_i$, portanto $\parti_i \refin \parti$.
+
+Por fim, $\parti$ é a menor partição com essa propriedade. Sejam $\parti'$ partição de $X$ que refina $\parti_i$ para todo $i \in I$ e $P' \in \parti'$. Então, para todo $i \in I$, algum $P_i \in \parti_i$ satisfaz $P' \subseteq P_i$. Portanto $P' \subseteq \bigcap_{i \in I} P_i$, e como $\bigcap_{i \in I} P_i \in \parti$, segue que $\parti \refin \parti'$.
+\end{proof}
