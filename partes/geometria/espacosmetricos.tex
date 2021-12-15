@@ -965,7 +965,7 @@ Neste seção, definiremos funções de um espaço métrico para outro que de ce
 \begin{definition}
 Sejam $\bm M$ e $\bm M'$ espaços métricos. Uma \emph{função controlada}% subsemelhança, métrica...
 	\footnote{Essas funções são conhecidas na literatura como funções `Lipschitz contínuas'.} %
-de $\bm M$ para $\bm M'$ é uma função $\fun{f}{M}{M'}$ tal que, para algum $c \in \intfa{0}{\infty}$, $f$ satisfaz que, para todos $p,p' \in M$,
+de $\bm M$ para $\bm M'$ é uma função $\fun{f}{M}{M'}$ tal que, para algum $c \in \intfa{0}{\infty}$,  todos $p,p' \in M$ satisfazem
 	\begin{equation*}
 	\dist{f(p)}{f(p')} \leq c\dist{p}{p'}.
 	\end{equation*}
@@ -1289,16 +1289,6 @@ Esse resultado pode parecer trivial por sua demonstração, mas suas consequênc
 
 
 
-
-
-
-
-
-
-
-
-
-
 \subsection{Semelhanças}
 
 \begin{definition}
@@ -1363,6 +1353,78 @@ Sejam $\bm{M}$ e $\bm{M'}$ espaços métricos e $\fun{f}{M}{M'}$ uma função co
 	\qedhere
 	\end{itemize}
 \end{proof}
+
+
+
+
+\subsection{Funções $\alpha$-controladas}
+
+Nesta seção, espandimos o conceito de uma função controlada usando um parâmetro.
+
+\begin{definition}
+Sejam $\bm M$ e $\bm M'$ espaços métricos e $\alpha \in \R_{>0}$. Uma \emph{função $\alpha$-controlada}%
+	\footnote{Essas funções são conhecidas na literatura como funções `Hölder contínuas', em homenagem ao matemático alemão \emph{Otto Ludwig Hölder} (22/12/1859 – 29/08/1937) \url{https://en.wikipedia.org/wiki/Otto_H\%C3\%B6lder}.} %
+de $\bm M$ para $\bm M'$ é uma função $\fun{f}{M}{M'}$ tal que, para algum $c \in \intfa{0}{\infty}$, todos $p,p' \in M$ satisfazem
+	\begin{equation*}
+	\dist{f(p)}{f(p')} \leq c\dist{p}{p'}^\alpha.
+	\end{equation*}
+O conjunto dessas funções é denotado $\Cont^{0,\alpha}(\bm M, \bm M')$. A \emph{$\alpha$-distorção} (ou \emph{norma de $\alpha$-distorção}) de $f$ é
+	\begin{equation*}
+	\distor{f}_{\Cont^{0,\alpha}} := \inf\set{c \in \intfa{0}{\infty}}{\forall_{p,p' \in M} \dist{f(p)}{f(p')} \leq c\dist{p}{p'}^\alpha}.
+	\end{equation*}
+\end{definition}
+
+A $\alpha$-distorção de uma função $\alpha$-controlada $f$ é portanto o menor valor tal que vale a desigualdade entre as distâncias da definição. Vale que
+	\begin{equation*}
+	\dist{f(p)}{f(p')} \leq \distor{f}_{\Cont^{0,\alpha}}\dist{p}{p'}^\alpha.
+	\end{equation*}
+Além disso, a $\alpha$-distorção de $f$ satisfaz a seguinte definição em termos do supremo:
+	\begin{equation*}
+	\distor{f}_{\Cont^{0,\alpha}} = \sup \set{\frac{\dist{f(p)}{f(p')}}{\dist{p}{p'}^\alpha}}{p,p' \in M \land p \neq p'}.
+	\end{equation*}
+Note que, caso $\card{M} \leq 1$, o conjunto nesse supremos é vazio, e nesse caso devemos ressaltar que o supremo é tomado sobre $\intfa{0}{\infty}$, portanto o supremo de $\emptyset$ é $0$.
+
+
+
+
+O parâmetro $\alpha$ é geralmente tomado em $\intaa{0}{1}$ quando o domínio da função é um intervalo real, pois os casos restantes são triviais, como mostra a proposição a seguir.
+
+\begin{proposition}
+Sejam $I \subseteq \R$ um intervalo, $\bm M$ um espaço métrico, $\alpha \in \R_{>0}$ e $f \in \Cont^{0,\alpha}(I, \bm M)$. Se $\alpha>1$, então $f$ é constante.
+\end{proposition}
+\begin{proof}
+Sejam $x, x' \in I$ . Para todo $n \in \N_{\setminus\{0\}}$, definimos $\delta_n := \frac{x'-x}{n}$ e, para todo $k \in [n]$, definimos os pontos $x_{n,k} := x + k\delta_n$, $x_{n,n} := x'$, e os intervalos
+	\begin{equation*}
+	I_{n,k} := \intaa{x_{n,k}}{x_{n,k+1}}.
+	\end{equation*}
+
+Disso segue que
+	\begin{equation*}
+	\dist{f(x_{n,k})}{f(x_{n,k+1})} \leq c \abs{x_{n,k+1} - x_{n,k}}^\alpha = c \abs{x'-x}^\alpha n^{-\alpha}.
+	\end{equation*}
+e então, da desigualdade triangular, segue que
+	\begin{equation*}
+	\dist{f(x)}{f(x')} \leq \sum_{k \in [n]} \dist{f(x_{n,k})}{f(x_{n,k+1})} \leq c \abs{x'-x}^\alpha n^{1-\alpha}.
+	\end{equation*}
+
+Como $\alpha > 1$, então $\lim_{n \to \infty} n^{1-\alpha} = 0$, portanto
+	\begin{equation*}
+	\dist{f(x)}{f(x')} \leq \lim_{n \to \infty} c \abs{x'-x}^\alpha n^{1-\alpha} = 0,
+	\end{equation*}
+o que mostra que $f(x) = f(x')$, logo $f$ é constante.
+\end{proof}
+
+% QUERIA GENERALIZAR PARA QUALQUER ESPAÇO CONEXO POR CAMINHOS NO DOMÍNIO, MAS NÃO CONSEGUI FAZER TRIVIALMENTE. ACHO QUE É POSSÍVEL, MAS TALVEZ COM MAIS ALGUMA HIPÓTESE.
+%\begin{proposition}
+%Sejam $\bm M$ e $\bm M'$ espaços métricos, $\bm M$ conexo por caminhos, $\alpha \in \R_{>0}$ e $f \in \Cont^{0,\alpha}(\bm M, \bm M')$. Se $\alpha>1$, então $f$ é constante.
+%\end{proposition}
+%\begin{proof}
+%Sejam $p, p' \in M$ e $\fun{\gamma}{\intff{0}{1}}{M}$ um caminho ligando $p$ a $p'$. Como $\intff{0}{1}$ é compacto e $\gamma$ é contínuo, então $\gamma(\intff{0}{1})$ é compacto. Isso implica que, para todo $n \in \N_{\setminus\{0\}}$, se consideramos a cobertura $\bola{}{}$
+%\end{proof}
+
+
+
+
 
 
 
@@ -1612,7 +1674,7 @@ Sejam $\intff{a}{a'} \subseteq \R$ um intervalo compacto não degenerado e $n \i
 	\begin{equation*}
 	a = t_0 < \cdots < t_n = a'.
 	\end{equation*}
-O conjunto dessas partições é denotado $\Part_{\intff{a}{a'}}$.
+O conjunto dessas partições é denotado $\parti_{\intff{a}{a'}}$.
 \end{definition}
 
 Claramente, o conjunto $\{\intfa{t_0}{t_1},\ldots,\intfa{t_{n-2}}{t_{n-1}},\intff{t_{n-1}}{t_{n}}\}$ é uma partição de $\intff{a}{a'}$ e qualquer partição desse tipo define uma $n$-partição por intervalos de $\intff{a}{a'}$.
@@ -1620,7 +1682,7 @@ Claramente, o conjunto $\{\intfa{t_0}{t_1},\ldots,\intfa{t_{n-2}}{t_{n-1}},\intf
 \begin{definition}
 Sejam $\bm M$ um espaço métrico e $\fun{c}{\intff{a}{a'}}{M}$ um caminho em $\bm M$. O \emph{comprimento} de $c$ é
 	\begin{equation*}
-	\compr{c} := \sup\set{\sum_{i \in [n]} \dist{c(t_i)}{c(t_{i+1})}}{(t_i)_{i \in [n+1]} \in \Part_{\intff{a}{a'}}}.
+	\compr{c} := \sup\set{\sum_{i \in [n]} \dist{c(t_i)}{c(t_{i+1})}}{(t_i)_{i \in [n+1]} \in \parti_{\intff{a}{a'}}}.
 	\end{equation*}
 Um caminho \emph{retificável} é um caminho cujo comprimento é finito.
 \end{definition}
@@ -1635,7 +1697,7 @@ Sejam $\bm M$ um espaço métrico e $\fun{c}{\intff{a}{a'}}{M}$, $\fun{c'}{\intf
 \end{proposition}
 \begin{proof}
 	\begin{itemize}
-	\item ($\leq$) Seja $(t''_i)_{i \in [n''+1]} \in \Part_{\intff{a}{a''}}$ uma partição por intervalos. Defina $n := \min\set{i \in [n'']}{a' \leq t_i}$, de modo que valha $t_{n-1} < a' \leq t_n$. Defina a partição por intervalos $(t_i)_{i \in [n+1]}$ de $\intff{a}{a'}$ por
+	\item ($\leq$) Seja $(t''_i)_{i \in [n''+1]} \in \parti_{\intff{a}{a''}}$ uma partição por intervalos. Defina $n := \min\set{i \in [n'']}{a' \leq t_i}$, de modo que valha $t_{n-1} < a' \leq t_n$. Defina a partição por intervalos $(t_i)_{i \in [n+1]}$ de $\intff{a}{a'}$ por
 		\begin{equation*}
 		t_i := \begin{cases}
 				t''_i,	& 0 \leq i \leq n-1 \\
@@ -1666,7 +1728,7 @@ Sejam $\bm M$ um espaço métrico e $\fun{c}{\intff{a}{a'}}{M}$, $\fun{c'}{\intf
 		\end{align*}
 	Disso concluímos que $\compr{c \conca c'} \leq \compr{c} + \compr{c'}$.
 
-	\item ($\geq$) Sejam $(t_i)_{i \in [n+1]} \in \Part_{\intff{a}{a'}}$ e $(t'_i)_{i \in [n'+1]} \in \Part_{\intff{a'}{a''}}$ partições por intervalos. Defina $n'' := n+n'$ e a partição por intervalos $(t''_i)_{i \in [n''+1]}$ de $\intff{a}{a''}$ por
+	\item ($\geq$) Sejam $(t_i)_{i \in [n+1]} \in \parti_{\intff{a}{a'}}$ e $(t'_i)_{i \in [n'+1]} \in \parti_{\intff{a'}{a''}}$ partições por intervalos. Defina $n'' := n+n'$ e a partição por intervalos $(t''_i)_{i \in [n''+1]}$ de $\intff{a}{a''}$ por
 		\begin{equation*}
 		t''_i := \begin{cases}
 				t_i,	& 0 \leq i \leq n \\
@@ -1696,7 +1758,7 @@ Basta mostrar que $\compr{c \circ h} \leq \compr{c}$ pois, como $h$ é homeomorf
 	\end{equation*}
 logo $\compr{c \circ h} = \compr{c}$.
 
-Seja $(t_i)_{i \in [n+1]} \in \Part_{\intff{b}{b'}}$ uma partição por intervalos. Como $h$ é homeomorfismo, existem duas possibilidades: $h(b)=a$ ou $h(b)=a'$. No primeiro caso, em que $h(b)=a$, vale
+Seja $(t_i)_{i \in [n+1]} \in \parti_{\intff{b}{b'}}$ uma partição por intervalos. Como $h$ é homeomorfismo, existem duas possibilidades: $h(b)=a$ ou $h(b)=a'$. No primeiro caso, em que $h(b)=a$, vale
 	\begin{equation*}
 	a = h(t_0) < \cdots < h(t_n) = a',
 	\end{equation*}
