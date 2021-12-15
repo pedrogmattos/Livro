@@ -170,8 +170,8 @@
 	% Conjunto dado propriedade
 	\newcommand{\set}[2]{\left\{{#1}\;\middle\vert\;{#2}\right\}}
 	% Conjunto das partes
-	\newcommand{\p}{\scalebox{1.1}{\ensuremath{\mathsf{P}}}}
-	%\newcommand{\p}{\scalebox{1.2}{$\mathcal{P}$}}
+%	\newcommand{\p}{\scalebox{1.1}{\ensuremath{\mathsf{P}}}}
+	\newcommand{\p}{\raisebox{.25em}{\scalebox{1.1}{\ensuremath{\wp}}}}
 	
 	% Diferença de conjuntos
 	\renewcommand{\setminus}{\smallsetminus}
@@ -198,6 +198,18 @@
 
 % Famílias e propriedades
 %------------------------------------
+
+	% Coberturas
+	\newcommand{\cober}{\mathcal{C}}
+	\newcommand{\Cober}{\scalebox{1.1}{\ensuremath{\mathsf{C}}}}
+	% Partições
+	\newcommand{\parti}{\mathcal{P}}
+	\newcommand{\Parti}{\scalebox{1.1}{\ensuremath{\mathsf{P}}}}
+	% Relação de refinamento
+	\newcommand{\refin}{\preceq}
+	% Operação de correfinamento
+	\newcommand{\corref}{\curlyvee}
+	\newcommand{\bigcorref}{\bigcurlyvee}
 
 % Funções
 %------------------------------------
@@ -261,8 +273,6 @@
 				#1\,/\,#2
 			}
 	}
-	% Partição
-	\newcommand{\Part}{\mathcal{P}}
 
 	% Intervalos abertos, fechados e outros
 	\newcommand{\intaa}[2]{\left]{#1},{#2}\right[}
@@ -735,6 +745,9 @@
 	\newcommand{\Hip}{\mathbb{H}} % Espaço Hiperbólico
 	\newcommand{\T}{\mathbb{T}} % Toro
 	
+	% Coberturas abertas
+	\newcommand{\Cobera}{\scalebox{1.1}{\ensuremath{\mathsf{C}^\circ}}}
+	
 	% Somatório pontual
 	\newcommand{\bigdotplus}{%
 	\DOTSB\mathop{\mathpalette\mattos@bigdotplus\relax}\slimits@
@@ -1033,7 +1046,7 @@
 
 % Geometria simplética
 %------------------------------------
-\newcommand{\Symp}{\mathrm{Simp}} % Acabei usando \Sp em vez de \Symp
+	\newcommand{\Symp}{\mathrm{Simp}} % Acabei usando \Sp em vez de \Symp
 
 
 
@@ -1059,6 +1072,8 @@
 
 % Sistemas dinâmicos métricos
 %------------------------------------
+	% Bola dinâmica
+	\newcommand{\boladin}[3]{\mathrm{B}^{#3}\left[{#1};{#2}\right[}
 
 
 % Sistemas dinâmicos de medida
@@ -1071,6 +1086,21 @@
 
 % Sistemas dinâmicos diferenciais
 %------------------------------------
+
+
+% Entropia
+%------------------------------------
+	% Entropia métrica (de medida)
+	\newcommand{\Enm}[1][\med]{H_{#1}}
+	\newcommand{\enm}[1][\med]{h_{#1}}
+	
+	% Entropia topológica
+	\newcommand{\Ent}[1][\topo]{H_{#1}}
+	\newcommand{\ent}[1][\topo]{h_{#1}}
+	
+	% Entropia uniforme
+	\newcommand{\Enu}[1][\mathcal{U}]{H_{#1}}
+	\newcommand{\enu}[1][\mathcal{U}]{h_{#1}}
 
 
 % OUTROS
