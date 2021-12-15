@@ -2155,6 +2155,7 @@ Sejam $(\bm E,\nor{\var})$ e $(\bm E',\nor{\var}')$ espaços normados, $A \subse
 Pode-se mostrar também que a noção de diferenciabilidade coincide para normas topologicamente equivalentes tanto no espaço $\bm E$ como no espaço $\bm E'$. Em particular, em espaços normados de dimensão finita todas normas são equivalentes e portanto a noção de diferenciabilidade é sempre a mesma.
 
 \begin{exercise}[Equivalência de normas]
+\label{prop:equivalencia.norma.diferenciacao}
 Sejam $\bm E$ e $\bm E'$ espaços normados, $\nor{\var}_0$ e $\nor{\var}_1$ normas equivalentes em $\bm E$, $\nor{\var}'_0$ e $\nor{\var}'_1$ normas equivalentes em $\bm E'$, $A \subseteq E$ um aberto, $X \subseteq A$ e $\fun{f}{A}{E'}$. São equivalentes:
 	\begin{itemize}
 	\item Para todo $x \in X$, alguma função linear contínua $\fun{D}{E}{E'}$ satisfaz
@@ -2530,6 +2531,47 @@ Da injetividade de $\D f|_x$ segue que existe $c \in \R_{>0}$ tal que, para todo
 
 
 \end{comment}
+
+
+\subsubsection{Diferenciabilidade da norma}
+
+A norma é uma função $\fun{\nor{\var}}{E}{\R}$ e portanto pode-se considerar sua diferenciabilidade. Em um ponto $x \in E$, a diferencial de $\nor{\var}$ em $x$ é denotada $\D \nor{\var}|_{x}$. Em geral, a diferenciabilidade vai depender da norma que se adota no espaço normado $\bm E$. Mesmo normas equivalentes, que de acordo com \ref{prop:equivalencia.norma.diferenciacao} geram a mesma classe de funções diferenciáveis, podem diferir quanto à própria diferenciabilidade em algum ponto. Como veremos mais adiante, para $p \in \intaa{1}{\infty}$, as normas $p$ em $\R^d$ são diferenciáveis em todos os pontos além da origem. Para $p = 1$ e $p=\infty$, a situação é um pouco mais complexa, embora todas essas normas sejam equivalentes. No entanto, sempre podemos afirmar que a norma não é diferenciável na origem. Os resultados dessa seção serão apresentados sem as demonstrações, mas todas podem ser conferidas em \cite[\textsection 2.6]{liv:Coleman-CalculusNormedVectorSpaces}.
+
+\begin{proposition}
+Seja $\bm E = (E, \nor{\var})$ um espaço normado. A norma $\fun{\nor{\var}}{E}{\R}$ não é diferenciável em $0$.
+\end{proposition}
+
+Para normas em espaços arbitrários, não podemos estabelecer resultados muito específicos, mas a seguinte proposição dá uma condição necessária para que a norma seja diferenciável em algum ponto: ela deve ser diferenciável na semirreta positiva iniciada na origem e passando pelo ponto em questão. Isso resume o estudo da diferenciabilidade para os pontos na esfera de norma 1, por exemplo. Além disso, a norma de operador dessa da diferencial, uma norma no espaço dual $E\dual$, é igual a $1$.
+
+\begin{proposition}
+Sejam $\bm E = (E, \nor{\var})$ um espaço normado e $x \in E \setminus \{0\}$. Se a norma $\nor{\var}$ é diferenciável em $x$, então, para todo $c \in \R_{>0}$, a norma $\nor{\var}$ é diferenciável em $cx$
+	\begin{equation*}
+	\nor{\D \nor{\var}|_{x}}_{E\dual} = 1.
+	\end{equation*}
+\end{proposition}
+%\begin{proof}
+%Suponhamos que $\nor{\var}$ é diferenciável em $x$ e seja $c \in \R_{>0}$.
+%\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \subsection{Derivabilidade}
 
@@ -2938,6 +2980,7 @@ portanto
 
 
 \subsection{Extremos locais e pontos críticos}
+\label{ssec:extremos.locais.pontos.criticos}
 
 \subsubsection{Campos escalares e pontos extremos locais}
 
@@ -2947,7 +2990,7 @@ Definimos aqui uma nomenclatura para um tipo específico de função entre espa�
 Sejam $\bm E$ um espaço normado e $X \subseteq E$ um conjunto. Um \emph{campo escalar} em $X$ é uma função $\fun{f}{X}{\R}$.
 \end{definition}
 
-Os campos escalares são objetos que formalizam a ideia de função densidade, campo de energia potencial, entre outros conceitos físicos relevantes. Mais à frente, definiremos outros objetos que recebem também o nome de `campos', os `campos tensoriais', e os campos escalares aqui definidos são casos especiais desses campos.
+Os campos escalares são objetos que formalizam a ideia de função densidade e de campo de energia potencial, entre outros conceitos físicos relevantes. Mais à frente, definiremos outros objetos que recebem também o nome de `campos', os `campos tensoriais'; os campos escalares aqui definidos são casos especiais desses campos.
 
 No contexto físico, uma propriedade importante dessas funções é se elas têm pontos de máximo e mínimo: pontos em que elas atingem valores reais máximos ou mínimos da sua imagem.
 
@@ -2958,12 +3001,20 @@ Sejam $\bm E$ um espaço normado, $X \subseteq E$ um conjunto e $\fun{f}{X}{\R}$
 		\begin{equation*}
 		f(x') \leq f(x).
 		\end{equation*}
+	Um \emph{ponto de máximo estrito} de $f$ é um ponto $x \in X$ tal que, para todo $x' \in X \setminus \{x\}$,
+		\begin{equation*}
+		f(x') < f(x).
+		\end{equation*}
 	\item Um \emph{ponto de mínimo} de $f$ é um ponto $x \in X$ tal que, para todo $x' \in X$,
 		\begin{equation*}
 		f(x) \leq f(x').
 		\end{equation*}
+	Um \emph{ponto de mínimo estrito} de $f$ é um ponto $x \in X$ tal que, para todo $x' \in X \setminus \{x\}$,
+		\begin{equation*}
+		f(x) < f(x').
+		\end{equation*}
 	\end{itemize}
-Um \emph{ponto extremo} de $f$ é um ponto é um ponto de máximo ou de mínimo de $f$.
+Um \emph{ponto extremo} de $f$ é um ponto de máximo ou de mínimo de $f$ e um \emph{ponto extremo estrito} de $f$ é um ponto é um ponto de máximo estrito ou de mínimo estrito de $f$.
 \end{definition}
 
 Mais geralmente, podem-se considerar pontos que têm localmente essa propriedades, como definidos a seguir.
@@ -2988,10 +3039,10 @@ Um \emph{ponto extremo local} de $f$ é um ponto é um ponto de máximo local ou
 \begin{definition}[Ponto extremo local]
 Sejam $\bm E$ um espaço normado, $X \subseteq E$ um conjunto e $\fun{f}{X}{\R}$ um campo escalar.
 	\begin{itemize}
-	\item Um \emph{ponto de máximo local} de $f$ é um ponto $x \in X$ tal que, para alguma vizinhança $V \subseteq E$ de $x$, $x$ é ponto de máximo de $f|_{V \cap X}$;
-	\item Um \emph{ponto de mínimo local} de $f$ é um ponto $x \in X$ tal que, para alguma vizinhança $V \subseteq E$ de $x$, $x$ é ponto de mínimo de $f|_{V \cap X}$.
+	\item Um \emph{ponto de máximo local (estrito)} de $f$ é um ponto $x \in X$ tal que, para alguma vizinhança $V \subseteq E$ de $x$, $x$ é ponto de máximo (estrito) de $f|_{V \cap X}$.
+	\item Um \emph{ponto de mínimo local (estrito)} de $f$ é um ponto $x \in X$ tal que, para alguma vizinhança $V \subseteq E$ de $x$, $x$ é ponto de mínimo (estrito) de $f|_{V \cap X}$.
 	\end{itemize}
-Um \emph{ponto extremo local} de $f$ é um ponto é um ponto de máximo local ou de mínimo local de $f$.
+Um \emph{ponto extremo local (estrito)} de $f$ é um ponto é um ponto de máximo local (estrito) ou de mínimo local (estrito) de $f$.
 \end{definition}
 
 Quando $K \subseteq E$ é compacto, uma função contínua $\fun{f}{K}{\R}$ tem pontos de máximo e mínimo: como $f$ é contínua, sua imagem é compacta, portanto fechada e limitada, o que implica que o supremo e o ínfimo da imagem pertencem à imagem. Esse resultado, que depende somente da continuidade da função e das propriedades de completude de $\R$, não nos permite achar os pontos de máximo e mínimo, somente afirmar sua existência. Usando diferenciação, podem-se estudar algumas características desses pontos que facilitam encontrá-los localmente.
@@ -3089,7 +3140,22 @@ Vale ressaltar que a desigualdade $\D f|_x(x') \leq \D f|_x(x)$ da proposição 
 	\begin{equation*}
 	\D f|_x(x'-x) \leq 0,
 	\end{equation*}
-que foi a obtida durante a demonstração.
+que foi a obtida durante a demonstração. Assim, vale também o seguinte resultado.
+
+\begin{proposition}
+\label{prop:extremo.local.diferencial.alternativa}
+Sejam $\bm E$ um espaço normado, $A \subseteq E$ aberto, $X \subseteq A$ convexo, $x \in X$ e $\fun{f}{A}{\R}$ um campo escalar diferenciável em $x$.
+	\begin{itemize}
+		\item Se $x$ é ponto de máximo local de $\fun{f|_X}{X}{\R}$, então, para todo $v \in E$ tal que $x+v \in X$,
+			\begin{equation*}
+			\D f|_x(v) \leq 0;
+			\end{equation*}
+		\item Se $x$ é ponto de mínimo local de $\fun{f|_X}{X}{\R}$, então, para todo $v \in E$ tal que $x+v \in X$,
+			\begin{equation*}
+			\D f|_x(v) \geq 0.
+			\end{equation*}
+	\end{itemize}
+\end{proposition}
 
 Para a proposição a seguir, lembremos que um subespaço afim de $S \subseteq \bm E$ pode ser escrito como $S = s+V$ para algum $s \in S$ e $V \subseteq E$ é um subespaço linear, e escrevemos $V = \vec{S}$.
 
@@ -3911,6 +3977,56 @@ Segue de \ref{prop:continuamente.diferenciavel.parcialmente} que $l$ é $\Cont^1
 
 
 
+\subsubsection{Diferenciabilidade das normas $p$}
+
+Nesta seção, analisamos o caso das normas $p$ em $\R^d$. Consideraremos $\R^d$ como produto de $d$ espaços $\R$ para poder calcular as diferenciais parciais $\D_k$. As demonstrações não serão apresentadas, mas podem ser conferidas em \cite[\textsection 2.6]{liv:Coleman-CalculusNormedVectorSpaces}.
+
+\begin{proposition}
+Sejam $d \in \N \setminus \{0\}$ e $p \in \intff{1}{\infty}$.
+	\begin{enumerate}
+		\item Se $p = 1$, a norma $\nor{\var}_1$ é $\Cont^1$-diferenciável no aberto
+			\begin{equation*}
+			A := \set{x \in \R^d}{\forall_{k \in [d]} x_k \neq 0}
+			\end{equation*}
+		e, para todos $x \in A$ e $k \in [d]$,
+			\begin{equation*}
+			\D_k (\nor{\var}_1)|_{x} =
+				\begin{cases}
+				1,	& x_k > 0 \\
+				-1,	& x_k < 0.
+				\end{cases}
+			\end{equation*}
+		A norma $\nor{\var}_1$ não é diferenciável em $E \setminus A$.
+
+		\item Se $p \in \intaa{1}{\infty}$, a norma $\nor{\var}_p$ é $\Cont^1$-diferenciável em $E \setminus \{0\}$ e, para todos $x \in E \setminus \{0\}$ e $k \in [d]$,
+			\begin{equation*}
+			\D_k (\nor{\var}_p)|_{x} =
+				\begin{cases}
+				\nor{x}_p^{1-p} x_k^{p-1},		& x_k > 0 \\
+				0,								& x_k = 0 \\
+				\nor{x}_p^{1-p} (-x_k)^{p-1},	& x_k < 0.
+				\end{cases}
+			\end{equation*}
+
+		\item Se $p = \infty$, a norma $\nor{\var}_{\infty}$ é $\Cont^1$-diferenciável no aberto
+			\begin{equation*}
+			A := \set{x \in \R^d}{\exists_{k \in [d]} x_k = \nor{x}_{\infty} \land \forall_{k' \in [d] \setminus \{k\}} x_{k'} \neq \nor{x}_{\infty}}
+			\end{equation*}
+		e, para todos $x \in A$ e $k \in [d]$,
+			\begin{equation*}
+			\D_k (\nor{\var}_{\infty})|_{x} =
+				\begin{cases}
+				0,	& x_k \neq \nor{x}_{\infty} x_k > 0 \\
+				1,	& x_k = \nor{x}_{\infty}, x_k > 0 \\
+				-1,	& x_k = \nor{x}_{\infty}, x_k < 0.
+				\end{cases}
+			\end{equation*}
+		A norma $\nor{\var}_{\infty}$ não é diferenciável em $E \setminus A$.
+	\end{enumerate}
+\end{proposition}
+
+
+
 
 
 
@@ -4437,6 +4553,107 @@ Por \ref{prop:multidiferenciabilidade.multiderivabilidade}, a notação $\Cont^m
 
 
 
+\subsection{Extremos locais e pontos críticos degenerados}
+
+Na seção \ref{ssec:extremos.locais.pontos.criticos}, analisamos pontos extremos locais de campos escalares usando informações sobre a primeira diferencial do campo no ponto. Definimos o conceito de ponto crítico e o relacioamos aos pontos extremos locais. Nesta seção, o objetivo é analisar pontos extremos locais com informações sobre a segunda diferencial do campo escalar; além disso, definimos o conceito de ponto degenerado. As demonstrações serão omitidas, mas podem ser encontradas em \cite[p.115]{liv:Coleman-CalculusNormedVectorSpaces}.
+
+\subsubsection{Extremos locais e a segunda diferencial}
+
+Analogamente à proposição \ref{prop:extremo.local.diferencial.alternativa}, a seguinte proposição oferece uma condição necessária para que pontos sejam extremos, mas usando a segunda diferencial.
+
+\begin{proposition}
+\label{prop:extremo.local.2-diferencial}
+Seja $\bm E$ um espaço normado, $A \subseteq E$ um aberto, $x \in A$ e $\fun{f}{A}{\R}$ um campo escalar $2$-diferenciável em $x$.
+	\begin{itemize}
+		\item Se $x$ é ponto de máximo local de $f$, então, para todo $v \in E$,
+			\begin{equation*}
+			\D^{(2)} f|_x(v,v) \leq 0.
+			\end{equation*}
+		\item Se $x$ é ponto de mínimo local de $f$, então, para todo $v \in E$,
+			\begin{equation*}
+			\D^{(2)} f|_x(v,v) \geq 0.
+			\end{equation*}
+	\end{itemize}
+\end{proposition}
+
+Apresentamos então duas condições suficientes, mas não necessárias, para que um ponto seja extremo. A primeira apresenta uma condição para que o ponto seja um extremo e a segunda, para que seja um ponto extremo estrito.
+
+\begin{proposition}
+Seja $\bm E$ um espaço normado, $A \subseteq E$ um aberto, $\fun{f}{A}{\R}$ um campo escalar $2$-diferenciável e $x \in A$ um ponto crítico de $f$.
+	\begin{itemize}
+		\item Se, para alguma bola aberta $\bola{x}{\varepsilon}$, vale que, para todo $x' \in \bola{x}{\varepsilon}$ e todo $v \in E$,
+			\begin{equation*}
+			\D^{(2)} f|_{x'}(v,v) \leq 0,
+			\end{equation*}
+		então $x$ é ponto de máximo local de $f$.
+		\item Se, para alguma bola aberta $\bola{x}{\varepsilon}$, vale que, para todo $x' \in \bola{x}{\varepsilon}$ e todo $v \in E$,
+			\begin{equation*}
+			\D^{(2)} f|_{x'}(v,v) \geq 0,
+			\end{equation*}
+		então $x$ é ponto de mínimo local de $f$.
+	\end{itemize}
+\end{proposition}
+
+
+\begin{proposition}
+Seja $\bm E$ um espaço normado, $A \subseteq E$ um aberto, $\fun{f}{A}{\R}$ um campo escalar e $x \in A$ um ponto crítico de $f$ tal que $f$ é $2$-diferenciável em $x$.
+	\begin{itemize}
+		\item Se, para algum $\varepsilon \in \R_{>0}$, todo $v \in E$ satisfaz
+			\begin{equation*}
+			\D^{(2)} f|_x(v,v) \leq \varepsilon \nor{v}^2,
+			\end{equation*}
+		então $x$ é ponto de máximo local estrito de $f$.
+		\item Se, para algum $\varepsilon \in \R_{>0}$, todo $v \in E$ satisfaz
+			\begin{equation*}
+			\D^{(2)} f|_{x'}(v,v) \geq \varepsilon \nor{v}^2,
+			\end{equation*}
+		então $x$ é ponto de mínimo local estrito de $f$.
+	\end{itemize}
+\end{proposition}
+
+
+\subsubsection{Pontos críticos degenerados}
+
+
+\begin{definition}
+Sejam $\bm E$ um espaço normado, $A \subseteq E$ aberto e $\fun{f}{A}{\R}$ um campo escalar. Um ponto crítico \emph{degenerado} de $f$ é um ponto crítico $x \in A$ de $f$ tal que $f$ é $2$-diferenciável em $x$ e
+	\begin{equation*}
+	\fun{\D^2 f|_x}{E}{E\dual}
+	\end{equation*}
+não é um isomorfismo de espaços lineares topológicos. %Umponto crítico  \emph{não-degenerado} de $f$ é um ponto crítico $x \in A$ de $f$ tal que $f$ é $2$-diferenciável em $x$ e $x$ não é degenerado, ou seja, $\fun{\D^2 f|_x}{E}{E\dual}$ é isomorfismo de espaços lineares topológicos.
+Um ponto crítico \emph{não-degenerado} de $f$ é um ponto crítico $x \in A$ de $f$ que não é degenerado.
+\end{definition}
+
+
+\begin{proposition}
+Seja $\bm E$ um espaço normado, $A \subseteq E$ um aberto, $\fun{f}{A}{\R}$ um campo escalar e $x \in A$ um ponto crítico não-degenerado de $f$.
+	\begin{itemize}
+		\item Se, para todo $v \in E$,
+			\begin{equation*}
+			\D^{(2)} f|_x(v,v) \leq 0,
+			\end{equation*}
+		então, para algum $\varepsilon \in \R_{>0}$, todo $v \in E$ satisfaz
+			\begin{equation*}
+			\D^{(2)} f|_x(v,v) \leq \varepsilon \nor{v}^2.
+			\end{equation*}
+		\item Se, para todo $v \in E$,
+			\begin{equation*}
+			\D^{(2)} f|_x(v,v) \geq 0,
+			\end{equation*}
+		então, para algum $\varepsilon \in \R_{>0}$, todo $v \in E$ satisfaz
+			\begin{equation*}
+			\D^{(2)} f|_{x'}(v,v) \geq \varepsilon \nor{v}^2.
+			\end{equation*}
+	\end{itemize}
+\end{proposition}
+
+
+
+
+
+
+
+
 
 
 
@@ -4451,7 +4668,7 @@ Nesta seção, enunciaremos alguns resultados importantes sem prová-los. Demons
 \begin{proposition}
 Seja $\bm E$ uma álgebra normada completa. A inversão multiplicativa
 	\begin{align*}
-	\func{/}{E^{/}}{E}{x}{x\inv}
+	\func{/}{E^{/}}{E^{/}}{x}{x\inv}
 	\end{align*}
 é uma função $\Cont^\infty$-diferenciável e, para todo $x \in E^{/}$ e todo $v \in E$,
 	\begin{align*}
@@ -4768,9 +4985,9 @@ também $\Cont^m$-diferenciável, portanto $f$ é um $\Cont^m$-difeomorfismo loc
 %logo $\nor{v'-v} \leq 2\nor{f(v')-f(v)}$, o que mostra que $f\inv|_{V}$ é controlada e portanto contínua. Isso demonstra que $\fun{f|_{V}}{V}{\bola{0}{r/2}}$ é um homeomorfismo. Como $f$ é $\Cont^1$-diferenciável, segue de \ref{prop:diferenciabilidade.homeomorfismo.inverso} que $f|_{V}$ é um $\Cont^1$-difeomorfismo.
 %\end{proof}
 
-\subsubsection{Teorema da função implícita}
+\subsubsection{Teorema da Função Implícita}
 
-\begin{proposition}
+\begin{theorem}[Função Implícita]
 Sejam $\bm E_0$, $\bm E_1$ e $\bm E'$ espaços normados completos, $A \subseteq E_0 \times E_1$ um aberto, $m \in \N \setminus \{0\}$, $\fun{f}{A}{E'}$ uma função $\Cont^m$-diferenciável, $x=(x_0,x_1) \in A$ e $c := f(x) \in E'$. Se a diferencial parcial $\fun{\D_1 f|_{x}}{E_1}{E'}$ é invertível, então alguma vizinhança aberta $V \subseteq A$ de $x$,  alguma vizinhança $U \subseteq E_0$ de $x_0$ e alguma função $\Cont^m$-diferenciável $\fun{\phi}{U}{E_1}$ satisfazem
 	\begin{equation*}
 	V \cap f\inv(\{c\}) = \graf(\phi)
@@ -4779,7 +4996,7 @@ e, para todo $x'=(x'_0,x'_1) \in V$,
 	\begin{equation*}
 	\D \phi|_{x'_0} = - \D_1 f|_{x'} \circ \D_0 f|_{x'}.
 	\end{equation*}
-\end{proposition}
+\end{theorem}
 
 
 
