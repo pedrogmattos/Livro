@@ -115,7 +115,7 @@ Seja $(\bm V,\inte{\var}{\var})$ um espaço com produto interno sobre um corpo $
 	\begin{equation*}
 	\nor{cv} = \inte{cv}{cv}^{\frac{1}{2}} = \left(c\conju{c}\inte{v}{v}\right)^{\frac{1}{2}} = \abs{c}\nor{v}.
 	\end{equation*}
-	
+
 	\item (Subaditividade) Para todos $v,v' \in V$, da desigualdade do produto interno segue que
 	\begin{align*}
 	\nor{v+v'}^2 &= \inte{v+v'}{v+v'} \\
@@ -240,7 +240,7 @@ Mostremos que $\inte{\var}{\var}$ é um produto interno.
 			&+ \nor{v}^2 + \nor{v'}^2 \\
 			&- \frac{\nor{v+\ii^kv''-v'}^2 + \nor{v'+\ii^kv''-v}^2}{2}.
 		\end{align*}
-	
+
 	Como
 		\begin{equation*}
 		\nor{v'+\ii^kv''-v}^2 = \nor{-(v-\ii^kv''-v')}^2 = \nor{v+\ii^{k+2}v''-v'}^2,
@@ -262,9 +262,9 @@ Mostremos que $\inte{\var}{\var}$ é um produto interno.
 			&= \frac{1}{4} \sum_{k=0}^{3} \nor{v+\ii^kv''}^2\ii^k + \frac{1}{4} \sum_{k=0}^{3} \nor{v'+\ii^kv''}^2\ii^k \\
 			&= \inte{v}{v''} + \inte{v'}{v''}.
 		\end{align*}
-	
+
 	\item (Homogeneidade) Sejam $v,v' \in V$. Mostraremos a homogeneidade por partes: para os números naturais, inteiros, racionais, reais e então complexos.
-	
+
 	(Números naturais) Mostremos por indução. Para $n=0$, basta notar que
 		\begin{align*}
 		\inte{0v}{v'} &= \frac{1}{4} \sum_{k=0}^{3} \nor{0v+\ii^kv'}^2 \ii^k \\
@@ -281,7 +281,7 @@ Mostremos que $\inte{\var}{\var}$ é um produto interno.
 			&= n\inte{v}{v'} + \inte{v}{v'} \\
 			&= (n+1)\inte{v}{v'}.
 		\end{align*}
-	
+
 	(Números inteiros) Seja $n \in \N$. A homogeneidade vale para $-1$ pois, como $\ii^2 = \ii^{-2} = -1$,
 		\begin{align*}
 		\inte{-v}{v'} &= \frac{1}{4} \sum_{k=0}^{3} \nor{-v+\ii^kv'}^2 \ii^k \\
@@ -296,7 +296,7 @@ Mostremos que $\inte{\var}{\var}$ é um produto interno.
 		\begin{align*}
 		\inte{(-n)v}{v'} = \inte{-(nv)}{n'} = -\inte{nv}{v'} = -n\inte{v}{v'}.
 		\end{align*}
-	
+
 	(Números racionais) Seja $\frac{n}{d} \in \Q$. Segue da homogeneidade para números inteiros que
 		\begin{align*}
 		\inte{\frac{n}{d}v}{v'} = \frac{d}{d}\inte{\frac{n}{d}v}{v'} = \frac{n}{d}\inte{\frac{d}{d}v}{v'} = \frac{n}{d}\inte{v}{v'}.
@@ -426,7 +426,7 @@ Segue direto da definição que
 		\begin{align*}
 			\inte{-v}{v} = \frac{\nor{-v+v'}^2 - \nor{-v-v'}^2}{4} = \frac{\nor{v'-v}^2 - \nor{v'+v}^2}{4} = -\inte{v}{v'}.
 		\end{align*}
-	
+
 		A homogeneidade vale para números naturais. Mostremos por indução. Para $n=0$, basta notar que
 		\begin{equation*}
 			\inte{0v}{v'} = \frac{\nor{0v+v'}^2 - \nor{0v-v'}^2}{4} = \frac{\nor{v'}^2 - \nor{-v'}^2}{4} = 0 = 0\inte{v}{v'}.
@@ -438,12 +438,12 @@ Segue direto da definição que
 				&= n\inte{v}{v'} + \inte{v}{v'} \\
 				&= (n+1)\inte{v}{v'}.
 		\end{align*}
-	
+
 	A homogeneidade vale para inteiros negativos, pois segue da homogeneidade para $-1$ que
 		\begin{align*}
 			\inte{(-n)v}{v'} = \inte{-(nv)}{n'} = -\inte{nv}{v'} = -n\inte{v}{v'}.
 		\end{align*}
-	
+
 	A homogeneidade vale para números racionais. Seja $\frac{n}{d} \in \Q$. Segue da homogeneidade para números inteiros que
 		\begin{align*}
 			\inte{\frac{n}{d}v}{v'} = \frac{d}{d}\inte{\frac{n}{d}v}{v'} = \frac{n}{d}\inte{\frac{d}{d}v}{v'} = \frac{n}{d}\inte{v}{v'}.
@@ -570,14 +570,14 @@ Seja $(\bm V,\inte{\var}{\var})$ um espaço com produto interno sobre um corpo $
 \begin{proof}
 	\begin{enumerate}
 	\item Direto da definição.
-	
+
 	\item O caso em que $u = 0$ é consequência do item anterior, pois $0$ e $\Id$ são lineares e idempotentes. Consideremos $u \in V \setminus \{0\}$.
 
 	(Linearidade) Sejam $v,v' \in V$ e $c \in C$.
 	\begin{equation*}
 	\proj_{\parallel u}(cv+v') = \frac{\inte{cv+v'}{u}}{\nor{u}^2}u = \frac{c\inte{v}{u} + \inte{v'}{u}}{\nor{u}^2}u = c\proj_{\parallel u}(v) + \proj_{\parallel u}(v').
-	\end{equation*}	
-	
+	\end{equation*}
+
 (Idempotência) Seja $v \in V$.
 		\begin{equation*}
 		\proj_{\parallel u}\left( \proj_{\parallel u}(v) \right) = \frac{\inte{\frac{\inte{v}{u}}{\nor{u}^2}u}{u}}{\nor{u}^2}u = \frac{\inte{v}{u}}{\nor{u}^2}\frac{\inte{u}{u}}{\nor{u}^2}u = \frac{\inte{v}{u}}{\nor{u}^2}u = \proj_{\parallel u}(v).
@@ -586,7 +586,7 @@ Seja $(\bm V,\inte{\var}{\var})$ um espaço com produto interno sobre um corpo $
 	Segue direto da definição $\proj_{\perp u} = \Id-\proj_{\parallel u}$ e de $\proj_{\parallel u}$ ser projeção linear.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{comment}		
+\begin{comment}
 (Linearidade) Sejam $v,v' \in V$ e $c \in C$.
 	\begin{equation*}
 	\proj_{\perp u}(cv+v') = cv+v' - \proj_{\parallel u}(cv+v') = cv+v' - c\proj_{\parallel u}(v) + \proj_{\parallel u}(v') = c\proj_{\perp u}(v) + \proj_{\perp u}(v').
@@ -605,10 +605,10 @@ Seja $(\bm V,\inte{\var}{\var})$ um espaço com produto interno sobre um corpo $
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-	\item	
+	\item
 		\begin{enumerate}
 		\item Se $u \not\perp v$, $\inte{u}{v} \neq 0$, o que implica que $u \neq 0$ e $\frac{\inte{v}{u}}{\nor{u}^2} \neq 0$. Como por definição $\proj_{\parallel u}(v) = \frac{\inte{v}{u}}{\nor{u}^2}u$, segue que $\proj_{\parallel u}(v) \parallel u$.
-		
+
 		\item Se $u = 0$, $\proj_{\perp u}(v) \perp u$. Se $u \neq 0$,
 	\begin{align*}
 	\inte{\proj_{\parallel u}(v)}{u} = \inte{\frac{\inte{v}{u}}{\nor{u}^2}u}{u} = \frac{\inte{v}{u}}{\nor{u}^2}\inte{u}{u} = \inte{v}{u},
@@ -618,12 +618,12 @@ portanto
 	\inte{\proj_{\perp u}(v)}{u} = \inte{v - \proj_{\parallel u}(v)}{u} = \inte{v}{u} - \inte{\proj_{\parallel u}(v)}{u} = 0,
 	\end{align*}
 o que mostra que $\proj_{\perp u}(v) \perp u$.
-		
+
 		\item Se $v \parallel u$, existe $c \in C \setminus \{0\}$ tal que $v = cu$. Se $u = 0$, então $v=0$, logo $\proj_{\parallel u}(v) = \proj_{\parallel 0}(0) = 0 = v$. Se $u \neq 0$, então
 		\begin{equation*}
 		\proj_{\parallel u}(v) = \frac{\inte{v}{u}}{\nor{u}^2}u = \frac{\inte{cu}{u}}{\nor{u}^2}u = cu = v.
 		\end{equation*}
-		
+
 		\item Se $v \perp u$, então $\inte{u}{v}=0$. Se $u=0$, então $\proj_{\perp u} = \Id$, logo $\proj_{\perp u}(v) = v$. Se $u \neq 0$,
 	\begin{equation*}
 	\proj_{\perp u}(v) = v - \frac{\inte{v}{u}}{\nor{u}^2} = v.
@@ -699,7 +699,7 @@ Sejam $(\bm V, \inte{\var}{\var})$ um espaço com produto interno (completo) e $
 		\begin{equation*}
 		\inte{p(v)}{v' - p(v')} = \inte{v-p(v)}{p(v')} = 0;
 		\end{equation*}
-	
+
 	\item Para todos $v,v' \in V$,
 		\begin{equation*}
 		\inte{p(v)}{v'} = \inte{p(v)}{p(v')} = \inte{v}{p(v')};
@@ -850,13 +850,13 @@ Seja $(\bm V,\inte{\var}{\var})$ um espaço com produto interno real.
 		\displaystyle\frac{\tau}{2} - \ang{v}{v'},& cc'<0;
 	\end{cases}
 	\end{equation*}
-	
+
 	\item Para todos $v,v' \in V \setminus \{0\}$,
 	\begin{equation*}
 	v \parallel v' \sse \ang{v}{v'} \in \{0,\tau \div 2\}.
 	\end{equation*}
 Se existe $c \in \intaa{0}{\infty}$ tal que $v' =cv$, então $\ang{v}{v'} = 0$, e se existe $c \in \intaa{-\infty}{0}$ tal que $v' =cv$, então $\ang{v}{v'} = \frac{\tau}{2}$;
-	
+
 	\item Para todos $v,v' \in V \setminus \{0\}$,
 	\begin{equation*}
 	v \perp  v' \sse \ang{v}{v'} = \frac{\tau}{4}.
@@ -884,7 +884,7 @@ e, se $cc' < 0$, então
 	\begin{equation*}
 	\ang{cv}{c'v'} = \cos\inv\left(-1\frac{\inte{v}{v'}}{\nor{v}\nor{v'}}\right) = \frac{\tau}{2} - \ang{v}{v'}.
 	\end{equation*}
-	
+
 	\item Notemos que, para todo $v \in V \setminus \{0\}$,
 		\begin{equation*}
 			\ang{v}{v} = \cos\inv\left(\frac{\inte{v}{v}}{\nor{v}\nor{v}}\right) = \cos\inv(1) = 0.
@@ -910,6 +910,95 @@ Reciprocamente, suponhamos que $\ang{v}{v'}=0$. Da bijetividade de $\cos\inv$ se
 %	\ang{cv}{v'} = \pm_c\ang{v}{v'},
 %	\end{equation*}
 %pois em $\frac{\tau}{2}\T^1$ vale a igualdade $\frac{\tau}{2} - \ang{v}{v'} = - \ang{v}{v'}$. Isso é uma curiosidade interessante.
+
+\begin{definition}
+Seja $d \in \N$. A \emph{métrica esférica} sobre $\S^d$ é a função
+	\begin{align*}
+	\func{\dist{\var}{\var}_{\S^d}}{\S^d}{\S^d}{(x,x')}{\ang{x}{x'} = \cos\inv(\inte{x}{x'})}.
+	\end{align*}
+\end{definition}
+
+\begin{proposition}
+A métrica esférica é uma métrica sobre $\S^d$.
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item (Separação) Para todo $x \in \S^d$, $\inte{x}{x} = \nor{x}^2 = 1$, portanto $\ang{x}{x} = 0$.
+
+	\item (Simetria) Para todos $x, x' \in \S^d$, segue da simetria de $\inte{\var}{\var}$ que
+		\begin{equation*}
+		\ang{x}{x'} = \cos\inv(\inte{x}{x'}) = \cos\inv(\inte{x'}{x}) = \ang{x'}{x}.
+		\end{equation*}
+
+	\item (Desigualdade triangular) Sejam $x,x',x'' \in \S^d$. Para simplificar a notação, denotemos
+		\begin{align*}
+		\theta_{xx'} &:= \ang{x}{x'} \\
+		\theta_{x'x''} &:= \ang{x'}{x''} \\
+		\theta_{xx''} &:= \ang{x}{x''} \\
+		\end{align*}
+
+	A matriz de produtos internos
+		\begin{align*}
+			G(x,x',x'') &=
+			\begin{pmatrix}
+			\inte{x}{x}		& \inte{x}{x'}		& \inte{x}{x''} \\
+			\inte{x'}{x}	& \inte{x'}{x'}		& \inte{x'}{x''} \\
+			\inte{x''}{x}	& \inte{x''}{x'}	& \inte{x''}{x''} \\
+			\end{pmatrix} \\
+			&=
+			\begin{pmatrix}
+			1 & \cos(\theta_{xx'}) & \cos(\theta_{xx''}) \\
+			\cos(\theta_{xx'}) & 1 & \cos(\theta_{x'x''}) \\
+			\cos(\theta_{xx''}) & \cos(\theta_{x'x''}) & 1 \\
+			\end{pmatrix}
+		\end{align*}
+	tem determinante positivo, portanto
+		\begin{equation*}
+		1 - \cos(\theta_{xx'})^2 - \cos(\theta_{x'x''})^2 - \cos(\theta_{xx''})^2 + 2\cos(\theta_{xx'})\cos(\theta_{x'x''})\cos(\theta_{xx''}) \geq 0.
+		\end{equation*}
+	Reorganizando os ternos e somando $(\cos(\theta_{xx'})\cos(\theta_{x'x''}))^2$ a ambos os lados, obtém-se
+		\begin{align*}
+		1& - \cos(\theta_{xx'})^2 - \cos(\theta_{x'x''})^2 + (\cos(\theta_{xx'})\cos(\theta_{x'x''}))^2  \\
+			&\geq (\cos(\theta_{xx'})\cos(\theta_{x'x''}))^2 - 2\cos(\theta_{xx'})\cos(\theta_{x'x''})\cos(\theta_{xx''}) + \cos(\theta_{xx''})^2.
+		\end{align*}
+	Por um lado, vale que
+		\begin{align*}
+		(\sin(\theta_{xx'}) \sin(\theta_{x'x''}))^2 &= \sin(\theta_{xx'})^2 \sin(\theta_{x'x''})^2 \\
+			&= (1 - \cos(\theta_{xx'})^2) (1 - \cos(\theta_{x'x''})^2) \\
+			&= 1 - \cos(\theta_{xx'})^2 - \cos(\theta_{x'x''})^2 + (\cos(\theta_{xx'})\cos(\theta_{x'x''}))^2
+		\end{align*}
+	e, por outro,
+		\begin{align*}
+		(\cos(&\theta_{xx'})\cos(\theta_{x'x''}) - \cos(\theta_{xx''}))^2 \\
+			&= (\cos(\theta_{xx'})\cos(\theta_{x'x''}))^2 - 2\cos(\theta_{xx'})\cos(\theta_{x'x''})\cos(\theta_{xx''}) + \cos(\theta_{xx''})^2.
+		\end{align*}
+	Dessas igualdades, segue que
+		\begin{equation*}
+		(\sin(\theta_{xx'}) \sin(\theta_{x'x''}))^2 \geq (\cos(\theta_{xx'})\cos(\theta_{x'x''}) - \cos(\theta_{xx''}))^2.
+		\end{equation*}
+	Como $\theta_{xx'}, \theta_{x'x''} \in \intff{0}{\tau/2}$, então $\sin(\theta_{xx'}) \geq 0$ e $\sin(\theta_{x'x''}) \geq 0$, e portanto
+		\begin{equation*}
+		\sin(\theta_{xx'}) \sin(\theta_{x'x''}) \geq \cos(\theta_{xx'})\cos(\theta_{x'x''}) - \cos(\theta_{xx''}).
+		\end{equation*}
+	Reorganizando essa desigualdade, segue que
+		\begin{align*}
+		\cos(\theta_{xx''}) &\geq \cos(\theta_{xx'})\cos(\theta_{x'x''}) - \sin(\theta_{xx'}) \sin(\theta_{x'x''}) \\
+			&= \cos(\theta_{xx'} + \theta_{x'x''}).
+		\end{align*}
+	Por fim, como $\cos\inv$ é decrescente, conclui-se
+		\begin{align*}
+		\theta_{xx''} &= \cos\inv(\cos(\theta_{xx''})) \\
+			&\leq \cos\inv(\cos(\theta_{xx'} + \theta{x'x''})) \\
+			&= \theta_{xx'} + \theta_{x'x''},
+		\end{align*}
+	ou seja,
+		\begin{equation*}
+		\ang{x}{x''} \leq \ang{x}{x'} + \ang{x'}{x''}.
+		\qedhere
+		\end{equation*}
+	\end{enumerate}
+
+\end{proof}
 
 
 
@@ -955,7 +1044,7 @@ Seja $(\bm V, \nor{\var},\angf)$ um espaço angulado.
 	\begin{enumerate}
 		\item A homogeneidade vale para $\N \setminus \{0\}$. Mostremos por indução. Para $n=1$, claramente vale. Suponhamos que vale para $n \in \N \setminus \{0\}$. Da compatibilidade segue que
 			\begin{align*}
-				\nor{(n+1)v}\cos(\ang{(n+1)v}{v'}) &= \nor{nv}\cos(\ang{nv}{v'}) + \nor{v}\cos(\ang{v}{v'}) \\	
+				\nor{(n+1)v}\cos(\ang{(n+1)v}{v'}) &= \nor{nv}\cos(\ang{nv}{v'}) + \nor{v}\cos(\ang{v}{v'}) \\
 					&=n\nor{v}\cos(\ang{v}{v'}) + \nor{v}\cos(\ang{v}{v'}) \\
 					&= (n+1)\nor{v}\cos(\ang{v}{v'}) \\
 					&= \nor{(n+1)v}\cos(\ang{v}{v'}),
@@ -968,12 +1057,12 @@ Seja $(\bm V, \nor{\var},\angf)$ um espaço angulado.
 			\begin{equation*}
 				\ang{(n+1)v}{v'} = \ang{v}{v'}.
 			\end{equation*}
-		
+
 		A homogeneidade vale para os números racionais estritamente positivos. Seja $\frac{n}{d} \in \Q \cap \intaa{0}{\infty}$. Da homogeneidade para números naturais positivos segue que
 			\begin{equation*}
 				\ang{\frac{n}{d}v}{v'} = \ang{d\frac{n}{d}v}{v'} = \ang{nv}{v'} = \ang{v}{v'}.
 			\end{equation*}
-		
+
 		A homogeneidade vale para os números reais positivos. Seja $c \in \intaa{0}{\infty}$ e $(c_n)_{n \in \N}$ uma sequência de números racionais estritamente positivos tais que $\lim_{n \to \infty} c_n = c$. Então, da continuidade do ângulo, segue que
 			\begin{equation*}
 				\ang{cv}{v'} = \ang{\lim_{n \to \infty} c_n v}{v'} = \lim_{n \to \infty} \ang{c_n v}{v'} = \ang{v}{v'}.
@@ -1021,7 +1110,7 @@ Os casos em que $v=0$ ou $v'=0$ são todos imediatos, portanto assumiremos que o
 					\begin{equation*}
 						\nor{v+v'}\cos(\ang{v+v'}{v''}) = \nor{v}\cos(\ang{v}{v''}) + \nor{v'}\cos(\ang{v'}{v''}).
 					\end{equation*}
-				
+
 				\item (Homogeneidade) Sejam $v,v' \in V$ e $c \in \R$. Separamos em caos.
 					\begin{enumerate}
 						\item ($c=0$) Esse caso é trivial.
@@ -1040,7 +1129,7 @@ Os casos em que $v=0$ ou $v'=0$ são todos imediatos, portanto assumiremos que o
 							\end{align*}
 					\end{enumerate}
 			\end{enumerate}
-	
+
 		\item (Simetria) Sejam $v,v' \in V$. Segue da simetria do produto e da simetria do ângulo que
 			\begin{equation*}
 				\inte{v}{v'} = \nor{v}\nor{v'}\cos(\ang{v}{v'}) = \nor{v'}\nor{v}\cos(\ang{v'}{v}) = \inte{v'}{v}.
@@ -1080,7 +1169,7 @@ Para começar a discussão, listamos algumas propriedades interessantes e espera
 			\begin{equation*}
 				\ang{v}{v''} \leq \ang{v}{v'} + \ang{v'}{v''};
 			\end{equation*}
-		
+
 		\item (Aditividade) Para todos $v,v' \in V \setminus \{0\}$ e $c,c' \in \intfa{0}{\infty}$ tais que $cv+c'v' \neq 0$,
 			\begin{equation*}
 				\ang{v}{v'} = \ang{v}{cv+c'v'} + \ang{cv+c'v'}{v'};
@@ -1089,12 +1178,12 @@ Para começar a discussão, listamos algumas propriedades interessantes e espera
 		\begin{equation*}
 			\ang{v}{-v} = \ang{v}{v'} + \ang{v'}{-v};
 		\end{equation*}
-		
+
 		\item (Isotropia) Para todos $v,v' \in V \setminus \{0\}$,
 			\begin{equation*}
 				\ang{v}{-v} = \ang{v'}{-v'}
 			\end{equation*}
-		\item (Radiano) Para todo $v \in V \setminus \{0\}$ 
+		\item (Radiano) Para todo $v \in V \setminus \{0\}$
 			\begin{equation*}
 				\ang{v}{-v} = \tau \div 2;
 			\end{equation*}
@@ -1106,7 +1195,7 @@ Para começar a discussão, listamos algumas propriedades interessantes e espera
 			\begin{equation*}
 				\ang{v}{v'} + \ang{-v}{v'} = \tau \div 2;
 			\end{equation*}
-		
+
 		\item (Lado-ângulo-lado) Para todos $v,v',w,w' \in V \setminus \{0\}$ tais que $\nor{v}=\nor{w}$, $\nor{v'}=\nor{w'}$ e $\ang{v}{v'}=\ang{w}{w'}$, valem
 			\begin{enumerate}
 				\item $\nor{v+v'}=\nor{w+w'}$;
@@ -1181,12 +1270,12 @@ uma função contínua que satisfaz $0$-homogeneidade, aditividade e isotropia.
 			&= \lim_{c \to \infty} \ang{\frac{cv+v'}{\nor{cv+v'}}}{v'} + \ang{v'}{\frac{v'-cv}{\nor{v'-cv}}} \\
 			&= \ang{v}{v'} + \ang{v'}{-v}.
 		\end{align*}
-	
+
 	\item Definimos $\pi := \ang{v}{-v}$ e a unicidade segue da isotropia, pois $\ang{v'}{-v'} = \ang{v}{-v} = \pi$. Agora, da positividade temos $\ang{v'}{-v} \geq 0$, portanto da aditividade limite segue que
 		\begin{equation*}
 		\ang{v}{v'} \leq \ang{v}{v'} + \ang{v'}{-v} = \ang{v}{-v} = \pi.
 		\end{equation*}
-	
+
 	\item Da aditividade limite e da isotropia segue que
 		\begin{align*}
 		\ang{v}{v'} &= \frac{\ang{v}{v'}+\ang{v}{v'}}{2} \\
@@ -1250,7 +1339,7 @@ Seja $(\bm V, \nor{\var},\angf)$ um espaço angulado.
 			\begin{equation*}
 			\ang{v}{v'} = \ang{-v}{-v'};
 			\end{equation*}
-	
+
 	\item (Ângulos externos) Para todos $v,v' \in V \setminus \{0\}$,
 			\begin{enumerate}
 			\item (Adjacente) $\ang{v'}{v'-v} < \ang{v'}{-v}$;
@@ -1272,13 +1361,13 @@ Seja $(\bm V, \nor{\var},\angf)$ um espaço angulado.
 			\item (Positivo) $\ang{v}{v+v'} = \ang{v'}{v+v'}$;
 			\item (Negativo) $\ang{v}{v-v'} = \ang{v'}{v'-v}$.
 			\end{enumerate}
-		
+
 		\item (Oposição lado-ângulo) Para todos $v,v' \in V \setminus \{0\}$ tais que $v'-v \neq 0$,
 			\begin{enumerate}
 			\item $\nor{v}<\nor{v'}$ se, e somente se, $\ang{v'}{v'-v} < \ang{v}{v-v'}$;
 			\item $\nor{v}=\nor{v'}$ se, e somente se, $\ang{v'}{v'-v} = \ang{v}{v-v'}$.
 			\end{enumerate}
-		
+
 		\item (Monotonicidade lado-ângulo) Para todos $v,v',w,w' \in V \setminus \{0\}$ tais que $\nor{v}=\nor{w}$, $\nor{v'}=\nor{w'}$ e $\ang{v}{v'} < \ang{w}{w'}$,
 			\begin{equation*}
 			\nor{v'-v} < \nor{w'-w}.
@@ -1305,7 +1394,7 @@ Seja $(\bm V, \nor{\var},\angf)$ um espaço angulado.
 			\ang{v}{v+v'} = \ang{v'}{v'+v} = \ang{v'}{v+v'}.
 		\end{equation*}
 	A outra igualdade segue analogamente usando LAL (negativo).
-	
+
 	\item Assumamos que $\nor{v} < \nor{v'}$. Seja $c := \nor{v} \div \nor{v'} \in \intaa{0}{1}$. Como $(1-c)>0$ e $v'-v = (1-c)v'+(cv'-v)$, da homogeneidade e da aditividade do ângulo segue que
 		\begin{align*}
 		\ang{v'}{v'-v}&= \ang{(1-c)v'}{v'-v} \\
@@ -1334,7 +1423,7 @@ Seja $(\bm V, \nor{\var},\angf)$ um espaço angulado.
 	Assim, se $\ang{v}{v-v'} = \ang{v'}{v-v'}$, então $\nor{v}=\nor{v'}$ e, da proposição do triângulo isósceles segue a recíproca.
 
 	\item Como $\ang{v}{v'} < \ang{w}{w'}$, tomamos\footnote{Isso segue da continuidade da função ângulo $\ang{w}{w+kw'}$ para achar $k$ que satisfaça a condição do ângulo, e então por normalização para igualar a norma de $v'$.} $c,c' \in \intaa{0}{\infty}$ tais que $\nor{v'} = \nor{cw+c'w'}$ e $\ang{v}{v'} = \ang{w}{cw+c'w'}$ e definimos $u := cw+c'w'$. Por LAL (negativo) segue que $\nor{v-v'} = \nor{w-u}$.
-	
+
 	Para estimar a norma de $w-u$, consideramos $3$ casos.
 		\begin{itemize}
 		\item ($c+c' = 1$) Nesse caso temos, $0 < c' = 1-c < 1$, logo
@@ -1345,7 +1434,7 @@ Seja $(\bm V, \nor{\var},\angf)$ um espaço angulado.
 				&= \abs{1-c}\nor{w-w'} \\
 				&< \nor{w-w'};
 			\end{align*}
-		
+
 		\item ($c+c'<1$) Como $w'-w = (u-w) + (w'-u)$, segue da positividade e da aditividade que
 			\begin{align*}
 			\ang{w'-w}{w'-u} &< \ang{u-w}{w'-w} + \ang{w'-w}{w'-u} \\
@@ -1406,7 +1495,7 @@ Seja $(\bm V, \nor{\var},\angf)$ um espaço angulado.
 				&= kcw'-kcw \\
 				&= kc(w'-w).
 			\end{align*}
-		
+
 		Como $k>0$, $1-k>0$ e $w'-ku = k(w'-u) + (1-k)w'$, segue da $0$-homogeneidade, da positividade e da aditividade que
 			\begin{align*}
 			\ang{w'-w}{w'-u} &= \ang{w'-u}{w'-w} \\
@@ -1427,7 +1516,7 @@ Seja $(\bm V, \nor{\var},\angf)$ um espaço angulado.
 			\ang{u-w'}{u} &< \ang{u-w'}{u} + \ang{u}{u-w} \\
 				&= \ang{u-w'}{u-w}.
 			\end{align*}
-		
+
 		Assim, concluímos que
 			\begin{align*}
 			\ang{w'-w}{(w'-w)-(u-w)} &= \ang{w'-w}{w'-u} \\
@@ -1474,12 +1563,12 @@ Seja $(\bm V, \nor{\var},\angf)$ um espaço angulado.
 		\begin{equation*}
 		\ang{v}{v'}=\ang{w}{w'}.
 		\end{equation*}
-	
+
 	\item (ALA) Para todos $v,v',w,w' \in V \setminus \{0\}$ tais que $\nor{v}=\nor{w}$, $\ang{v}{v'}=\ang{w}{w'}$ e $\ang{v}{v+v'} = \ang{w}{w+w'}$,
 		\begin{equation*}
 		\nor{v+v'}=\nor{w+w'}
 		\end{equation*}
-	
+
 	\item (LAA) Para todos $v,v',w,w' \in V \setminus \{0\}$ tais que $\nor{v+v'}=\nor{w+w'}$, $\ang{v}{v'}=\ang{w}{w'}$ e $\ang{v}{v+v'} = \ang{w}{w+w'}$,
 		\begin{enumerate}
 		\item $\nor{v}=\nor{w}$;
@@ -1744,17 +1833,17 @@ Seja $(\bm V, \nor{\var},\angf)$ um espaço angulado.
 			\begin{equation*}
 				\ang{v}{v'} = \frac{\tau}{4}.
 			\end{equation*}
-		
+
 		\item (Alternos internos) Para todos $v,v' \in V \setminus \{0\}$,
 			\begin{equation*}
 				\ang{v}{v'} = \ang{-v}{-v'}.
 			\end{equation*}
-		
+
 		\item (Monotonicidade complementar) Para todos $v,v' \in V \setminus \{0\}$ linearmente independentes e $c,c' \intaa{0}{\infty}$ tais que $c < c'$,
 		\begin{equation*}
 			\ang{v}{v+cv'} < \ang{v}{v+c'v'}.
 		\end{equation*}
-		
+
 		\item (Monotonicidade suplementar) Para todos $v,v' \in V \setminus \{0\}$ linearmente independentes e $c,c' \intaa{0}{\infty}$ tais que $c < c'$,
 %			\begin{equation*}
 %				\ang{v}{v'} + \ang{v'}{v'+c(-v)} < \ang{v}{v'} + \ang{v'}{v'+c'(-v)}.
@@ -1801,12 +1890,12 @@ Seja $(\bm V, \nor{\var},\angf)$ um espaço angulado.
 				\begin{equation*}
 					\ang{v}{v'} = \frac{\tau}{4} = \frac{\tau}{2} - \ang{v}{v'} = \ang{-v}{v'}.
 				\end{equation*}
-		
+
 		\item Segue da suplementação e da simetria que
 				\begin{equation*}
 					\ang{v}{v'} = \frac{\tau}{2} - \ang{-v}{v'} = \frac{\tau}{2} - \left(\frac{\tau}{2} - \ang{-v}{-v'}\right) = \ang{-v}{-v'}.
 				\end{equation*}
-		
+
 		\item Como $c<c'$, então para todo $k \in \intaa{0}{\infty}$ temos $v+cv' \neq k(v+c'v')$, portanto da separação e da positividade do ângulo segue que $0 < \ang{v+cv'}{v+c'v'}$. Definindo $k := 1 - c \div c'$ e $k' := c \div c'$, temos que $k'>0$, pois $c,c'>0$, e $k>0$, pois $c<c'$, portanto
 				\begin{equation*}
 					v+cv' = (k+k')v + (k'c')v'= kv+k'(v+c'v').
@@ -1817,14 +1906,14 @@ Seja $(\bm V, \nor{\var},\angf)$ um espaço angulado.
 					\ang{v}{v+cv'} &< \ang{v}{v+cv'} + \ang{v+cv'}{v+c'v'} \\
 						&= \ang{v}{v+c'v'}
 				\end{align*}
-		
+
 		\item Análogo ao item anterior.
 
 		\item Como $\angf$ é homogênea e contínua,
 				\begin{equation*}
 					\ang{v}{v+cv'} = \ang{v}{\frac{v+cv'}{\nor{v+cv'}}} \conv \ang{v}{v'}.
 				\end{equation*}
-		
+
 		\item Análogo ao item anterior.
 	\end{enumerate}
 \end{proof}
@@ -1848,13 +1937,13 @@ Seja $(\bm V, \nor{\var},\angf)$ um espaço angulado.
 									&= \inte{v}{v''} + \inte{cv}{v''} \\
 									&= \inte{v}{v''} + \inte{v'}{v''}.
 							\end{align*}
-						
+
 						\item ($v$ e $v'$ são linearmente independentes e $v''$ é gerado por eles) Nesse caso, existem $c,c' \in \R$ tais que $v'' = cv+c'v' \neq 0$.
-						
+
 						TERMINAR
-						
+
 						\item ($v$, $v'$ e $v''$ são linearmente independentes)
-						
+
 						TERMINAR
 
 					\end{enumerate}
@@ -2029,7 +2118,7 @@ Seja $(\bm V,\inte{\var}{\var})$ um espaço com produto interno. A função $\an
 	\begin{equation*}
 	\ang{r}{r''} \leq \ang{r}{r'} + \ang{r'}{r''}.
 	\end{equation*}
-Isso é o mesmo que	
+Isso é o mesmo que
 	\begin{equation*}
 	\cos\inv (\abs{\inte{u}{u''}}) \leq \cos\inv (\abs{\inte{u}{u'}}) + \cos\inv (\abs{\inte{u'}{u''}}).
 	\end{equation*}
@@ -2063,14 +2152,14 @@ Reciprocamente, sejam $r,r' \in \pro V$, $v \in r$ e $v' \in r'$. Se $\ang{r}{r'
 	\begin{equation*}
 	\ang{r}{r''} \leq \ang{r}{r'} + \ang{r'}{r''}.
 	\end{equation*}
-%Isso é o mesmo que	
+%Isso é o mesmo que
 %	\begin{equation*}
 %	\cos\inv \left( \frac{\abs{\inte{v}{v''}}}{\nor{v}\nor{v''}} \right) \leq \cos\inv \left( \frac{\abs{\inte{v}{v'}}}{\nor{v}\nor{v'}} \right) + \cos\inv \left( \frac{\abs{\inte{v'}{v''}}}{\nor{v'}\nor{v''}} \right).
 %	\end{equation*}
 %
 % A função $\cos\colon \intff{0}{\frac{\tau}{4}} \to \intff{0}{1}$ é decrescente, o que implica que
 
-Consideremos a projeção $\bar v$ de $v'$ no plano $\ger{\{v,v''\}}$. 	
+Consideremos a projeção $\bar v$ de $v'$ no plano $\ger{\{v,v''\}}$.
 
 Se mostrarmos que
 	\begin{equation*}
@@ -2138,8 +2227,8 @@ Sejam $(\bm V,\inte{\var}{\var})$ e $(\bm V',\inte{\var}{\var}')$ espaços com p
 	\begin{equation*}
 	\nor{f(v)}' = {\inte{f(v)}{f(v)}'}^\frac{1}{2} = {\inte{v}{v}}^\frac{1}{2} = \nor{v}.
 	\end{equation*}
-	
-Reciprocamente, como a característica de $\bm C$ é diferente de $2$, vale que, para todos $v,v' \in V$,		
+
+Reciprocamente, como a característica de $\bm C$ é diferente de $2$, vale que, para todos $v,v' \in V$,
 		\begin{equation*}
 		\inte{v}{v'} = \frac{1}{4} \left( \left(\nor{v+v'}^2 - \nor{v-v'}^2\right) + \ii \left(\nor{v+\ii v'}^2 - \nor{v-\ii v'}^2\right) \right).
 		\end{equation*}
@@ -2152,7 +2241,7 @@ Se $f$ é isometria local, então, para todos $v,v' \in V$,
 		&= \frac{1}{4} \left( \left(\nor{v+v'}^2 - \nor{v-v'}^2\right) + \ii \left(\nor{v+\ii v'}^2 - \nor{v-\ii v'}^2\right) \right) \\
 		&= \inte{v}{v'}.
 	\end{align*}
-	
+
 %	\item Se o produto interno é real, então, para todos $v,v' \in V$,
 %	\begin{align*}
 %	\sphericalangle'(f(v),f(v')) = \cos\inv\left(\frac{\inte{f(v)}{f(v')}'}{\nor{f(v)}'\nor{f(v')}'}\right) = \cos\inv\left(\frac{\inte{v}{v'}}{\nor{v}\nor{v'}}\right) = \sphericalangle(v,v').
@@ -2162,7 +2251,7 @@ Se $f$ é isometria local, então, para todos $v,v' \in V$,
 %	\begin{align*}
 %	\sphericalangle'(f(v),f(v')) = \cos\inv\left(\frac{\abs{\inte{f(v)}{f(v')}'}}{\nor{f(v)}'\nor{f(v')}'}\right) = \cos\inv\left(\frac{\abs{\inte{v}{v'}}}{\nor{v}\nor{v'}}\right) = \sphericalangle(v,v').
 %	\end{align*}
-	
+
 %	\item Como $f$ é conforme, para todos $v,v' \in V$ vale
 %		\begin{equation*}
 %		\sphericalangle'(f(v),f(v')) = \ang{v}{v'}.
@@ -2175,7 +2264,7 @@ Se $f$ é isometria local, então, para todos $v,v' \in V$,
 %	\begin{equation*}
 %	\inte{f(v)}{f(v')}' = \inte{v}{v'}.
 %	\end{equation*}
-	
+
 	\item Se $f$ é conforme, para todos $v,v' \in V$ vale
 		\begin{equation*}
 		\sphericalangle'(f(v),f(v')) = \ang{v}{v'}.
@@ -2199,14 +2288,14 @@ Notemos que, como $f$ preserva ângulo, então se $v \perp v'$ segue que $f(v) \
 	\D N|_v (h) = \D N|_v (h^\parallel + h^\perp) =  \D N|_v (h^\parallel) + \D N|_v (h^\perp).
 	\end{equation*}
 Calculemos $\D N|_v (h^\parallel)$.
-%Se $h^\parallel = 0$, então $f(h^\parallel) = 0$ e portanto $\inte{v}{h^\parallel} = \inte{f(v)}{f(h^\parallel)} = 0$, logo $\D N|_v (h^\parallel)$. Caso contrário, $h^\parallel \parallel v$, ou seja, 
+%Se $h^\parallel = 0$, então $f(h^\parallel) = 0$ e portanto $\inte{v}{h^\parallel} = \inte{f(v)}{f(h^\parallel)} = 0$, logo $\D N|_v (h^\parallel)$. Caso contrário, $h^\parallel \parallel v$, ou seja,
 Como $h^\parallel = cv$, com $c=\frac{\inte{h}{v}}{\nor{v}^2}$, segue que
 	\begin{align*}
 	\D N|_v (h^\parallel) &= \frac{\nor{v}^2\inte{f(v)}{f(cv)}' - {\nor{f(v)}'}^2\inte{v}{cv}}{\nor{f(v)}'\nor{v}^3} \\
 		&= \frac{c\nor{v}^2\inte{f(v)}{f(v)}' - c{\nor{f(v)}'}^2\inte{v}{v}}{\nor{f(v)}'\nor{v}^3} \\
 		&= \frac{c\nor{v}^2{\nor{f(v)}'}^2 - c{\nor{f(v)}'}^2\nor{v}^2}{\nor{f(v)}'\nor{v}^3} \\
 		&= 0.
-	\end{align*}	
+	\end{align*}
 Calculemos agora $\D N|_v (h^\perp)$. Como $\inte{h^\perp}{v} = 0$, então $\inte{f(v)}{f(h^\perp)} = 0$, logo
 	\begin{equation*}
 	\D N|_v (h^\perp) = \frac{\nor{v}^2\inte{f(v)}{f(h^\perp)}' - {\nor{f(v)}'}^2\inte{v}{h^\perp}}{\nor{f(v)}'\nor{v}^3} = 0.
@@ -2215,7 +2304,7 @@ Assim, concluímos que $\D N|_v (h) = \D N|_v (h^\parallel) + \D N|_v (h^\perp) 
 	\begin{equation*}
 	\inte{f(v)}{f(v')}' = \frac{\nor{f(v)}'\nor{f(v')}'}{\nor{v}\nor{v'}}\inte{v}{v'} = (c')^2\inte{v}{v'} = c\inte{v}{v'}.
 	\end{equation*}
-	
+
 Reciprocamente, se existe $c \in \intaa{0}{\infty}$ tal que
 	\begin{equation*}
 	\inte{f(v)}{f(v')}' = c\inte{v}{v'},
