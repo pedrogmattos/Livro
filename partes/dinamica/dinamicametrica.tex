@@ -1,0 +1,305 @@
+\chapter{Sistemas dinâmicos métricos}
+
+%\begin{definition}
+%Um sistema dinâmico \emph{metrizável} é um sistema dinâmico topológico $\bm{\Sist}=(\bm X,f)$, em que $\bm X$ metrizável (com distância $\dist{\var}{\var}$).
+%\end{definition}
+
+\begin{definition}
+Um sistema dinâmico \emph{métrico} é um par $(\bm{\Sist}=(\bm X,f))$ em que $\bm X = (X,\dist{\var}{\var})$ é um espaço métrico e $\bm{\Sist}=((X,\topo),f)$, é um sistema dinâmico topológico.
+\end{definition}
+
+\section{Conjuntos estáveis e instáveis}
+
+\begin{definition}
+Sejam $\bm{\Sist}=(\bm X,f)$ um sistema dinâmico métrico e $p \in X$. O \emph{conjunto estável} de $p$ é o conjunto
+	\begin{equation*}
+	W^+_{\bm \Sist}(p) := \set{q \in X}{\dist{f^n(p)}{f^n(q)} \overset{n \conv \infty}{\to} 0}.
+	\end{equation*}
+%	\begin{equation*}
+%	W^+_f(p) := \set{q \in X}{\lim_{n \to \infty}\dist{f^n(p)}{f^n(q)} = 0}.
+%	\end{equation*}
+Se o sistema é revertível, o \emph{conjunto instável} de $p$ é o conjunto $W^-_{(\bm X,f)}(p) := W^+_{(\bm X,f\inv)}(p)$. Denota-se também $W^+_f(p)$ e $W^+(p)$.
+\end{definition}
+
+Mostraremos na proposição seguinte que a definição de conjunto estável não depende da métrica escolhida para gerar a estrtutura uniforme de $X$, ou seja, que se uma métrica é uniformemente equivalente à métrica de $\bm X$, então a variedade estável de pode ser definida com aquela métrica. No entanto, em espaços métricos compactos todas funções contínuas são uniformemente contínuas, o que implica que todas métricas topologicamente equivalente são uniformemente equivalentes, que por sua vez implica que os conjuntos só dependem da estrutura topológica do espaço, isto é, que podem ser definidos paara espaços metrizáveis.
+
+Se $\bm{\Sist}=((X,\dist{\var}{\var}),f)$ é um sistema dinâmico métrico e $\dist{\var}{\var}'$ é uma métrica sobre $X$ uniformemente equivalente a $\dist{\var}{\var}$, então $\bm{\Sist}=((X,\dist{\var}{\var}'),f)$ também é um sistema dinâmico métrico, pois $f$ também é contínua com relação a $\dist{\var}{\var}'$.
+
+%% Tentativa falha de mostrar para métricas que são somente topologicamente equivalentes.
+%
+%Para que esses objetos estejam bem definidos, devemos mostrar que eles não dependem da métrica escolhida para gerar a topologia de $\bm X$. Sejam $\dist{\var}{\var},\dist{\var}{\var}'$ métricas que geram a topologia de $\bm X$. Seja $q \in W^+_f(p)$. Então $\dist{f^n(p)}{f^n(q)} \overset{n \conv \infty}{\to} 0$. Queremos mostrar que $\dist{f^n(p)}{f^n(q)}' \overset{n \conv \infty}{\to} 0$.
+%
+%Seja $\varepsilon \intaa{0}{\infty}$. Como $\dist{\var}{\var}$ e $\dist{\var}{\var}'$ são topologicamente equivalentes, para todo $n \in \N$ existe $\delta \in \intaa{0}{\infty}$ tal que, se $\dist{f^n(p)}{f^n(q)} < \delta$ então $\dist{f^n(p)}{f^n(q)}' < \varepsilon$.
+%
+%Como $\dist{f^n(p)}{f^n(q)} \overset{n \conv \infty}{\to} 0$, existe $N_k \in \N$ tal que, para todo $n \in \N$, $n \geq N_k$ implica $\dist{f^n(p)}{f^n(q)} < \delta_k$. Mas então, para todo $n \geq N_k$,
+%	\begin{equation*}
+%	\dist{f^n(p)}{f^n(q)} < \delta_k \Rightarrow \dist{f^n(p)}{f^n(q)}' < \varepsilon,
+%	\end{equation*}
+%o que mostra que $\dist{f^n(p)}{f^n(q)}' \overset{n \conv \infty}{\to} 0$.
+% Acho que não mostra não!!
+
+\begin{proposition}
+Sejam $\bm{\Sist}=((X,\dist{\var}{\var}),f)$ um sistema dinâmico métrico e $\dist{\var}{\var}'$ é uma métrica sobre $X$ uniformemente equivalente a $\dist{\var}{\var}$. Para todo $p \in X$,
+	\begin{equation*}
+	W^+_{((X,\dist{\var}{\var}),f)}(p) = W^+_{((X,\dist{\var}{\var}'),f)}(p).
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+Seja $q \in W^+_{((X,\dist{\var}{\var}),f)}$. Então $\dist{f^n(p)}{f^n(q)} \overset{n \conv \infty}{\to} 0$. Queremos mostrar que $\dist{f^n(p)}{f^n(q)}' \overset{n \conv \infty}{\to} 0$. Seja $\varepsilon \intaa{0}{\infty}$. Como $\dist{\var}{\var}$ e $\dist{\var}{\var}'$ são uniformemente equivalentes, existe $\delta \in \intaa{0}{\infty}$ tal que, para todo $ \in \N$, se $\dist{f^n(p)}{f^n(q)} < \delta$ então $\dist{f^n(p)}{f^n(q)}' < \varepsilon$. Como $\dist{f^n(p)}{f^n(q)} \overset{n \conv \infty}{\to} 0$, existe $N \in \N$ tal que, para todo $n \in \N$, $n \geq N$ implica $\dist{f^n(p)}{f^n(q)} < \delta$. Mas então, para todo $n \geq N$,
+	\begin{equation*}
+	\dist{f^n(p)}{f^n(q)} < \delta \Rightarrow \dist{f^n(p)}{f^n(q)}' < \varepsilon,
+	\end{equation*}
+o que mostra que $\dist{f^n(p)}{f^n(q)}' \overset{n \conv \infty}{\to} 0$. Assim, temos que $W^+_{(X,\dist{\var}{\var}),f}(p) \subseteq W^+_{(X,\dist{\var}{\var}'),f}(p)$. Analogamente, tem-se que $W^+_{((X,\dist{\var}{\var}'),f)}(p) \subseteq W^+_{((X,\dist{\var}{\var}),f)}(p)$.
+\end{proof}
+
+
+\section{Conjuntos estáveis e instáveis locais}
+
+\begin{definition}
+Sejam $\bm{\Sist}=(\bm X,f)$ um sistema dinâmico métrico $p \in X$ e $\varepsilon \in \intaa{0}{\infty}$. O \emph{conjunto estável $\varepsilon$-local} de $p$ é o conjunto
+	\begin{equation*}
+	W^+_f(p)_\varepsilon := \set{q \in X}{\forall_{n \in \I^+} \dist{f^n(p)}{f^n(q)} < \varepsilon}.
+	\end{equation*}
+Se o sistema é revertível, o \emph{conjunto instável $\varepsilon$-local} de $p$ é o conjunto $W^-_f(p)_\varepsilon := W^+_{f\inv}(p)_\varepsilon$.
+\end{definition}
+
+$W^{+,-}_\varepsilon(p)$ é a componente conexa de $W^{+,-}(p) \cap \bola{x}{\varepsilon}$.
+
+$W^{+,-}_\varepsilon(p)$ varia continuamente com $p$ e $W^+_\varepsilon(p) \cap W^-_\varepsilon(p) = \{p\}$.
+
+Existem $\varepsilon,\delta \in \intaa{0}{\infty}$ tais que, para todos $q \in X$, se $\dist{p}{q} < \delta$, então $W^+_\varepsilon(p) \cap W^-_\varepsilon(q)$ tem somente um ponto. Esse ponto é definido como
+	\begin{equation*}
+	[p,q] := W^+_\varepsilon(p) \cap W^-_\varepsilon(q).
+	\end{equation*}
+Isso é chamado de estrutura de produto local.
+
+\begin{definition}
+Um sistema dinâmico \emph{(positivamente) expansivo} é um sistema dinâmico metrizável compacto $\bm{\Sist}=(\bm X,f)$ para o qual existe $c \in \intaa{0}{\infty}$ tal que, para todos $x,x' \in X$ tais que $x \neq x'$, existe $t \in \I^+$ tal que
+	\begin{equation*}
+	\dist{x}{x'} > c.
+	\end{equation*}
+\end{definition}
+
+A compacidade implica que a expansividade não depende da distância escolhida.
+
+Essa estrutura de produto local implica que é expansivo.
+
+
+\section{Pseudo órbitas}
+
+\begin{definition}
+Seja $\bm{\Sist}=(\bm X,f)$ um sistema dinâmico metrizável. Uma \emph{pseudo órbita (positiva)} do sistema é uma sequência $(x_i)_{i \in \I^+}$ em $X$ para a qual existe $\varepsilon \in \intaa{0}{\infty}$ tal que, para todo $i \in \I^+$,
+	\begin{equation*}
+	\dist{f(x_i)}{x_{i+1}} < \varepsilon.
+	\end{equation*}
+\end{definition}
+
+\begin{definition}
+Seja $\bm{\Sist}=(\bm X,f)$ um sistema dinâmico metrizável. Uma \emph{pseudo órbita} do sistema é uma sequência $x=(x_i)_{i=a}^{b}$ em $X$, com $a,b \in \I \cup \{-\infty,\infty\}$ e $a \leq b$, para a qual existe $\varepsilon \in \intaa{0}{\infty}$ tal que, para todo $i \in \intff{a}{b-1}$,
+	\begin{equation*}
+	\dist{f(x_i)}{x_{i+1}} < \varepsilon.
+	\end{equation*}
+Uma pseudo órbita \textit{positiva} é uma pseudo órbita tal que $a \geq 0$, uma pseudo órbita \textit{negativa} é uma pseudo órbita tal que $b \leq 0$; uma pseudo \textit{finita} é uma pseudo órbita tal que $a,b \in \I$
+\end{definition}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Distância no espaços de símbolos}
+
+Uma distância pode ser definida em $\Sigma^+$ e $\Sigma$ de modo a gerar a mesma topologia definida na seção anterior. Com essa distância, esses espaços são compactos.
+
+\begin{definition}
+A \emph{distância} em $\Sigma$ é a função
+	\begin{align*}
+	\func{d}{\Sigma \times \Sigma}{\intfa{0}{\infty}}{(x,x')}{\sum_{i \in \I}\frac{\abs{x_i-x'_i}}{2^{\abs{i}}}}.
+	\end{align*}
+\end{definition}
+
+
+\begin{comment}
+\cleardoublepage
+
+\section{Medidas de Bowen (apresentação do Carlos)}
+
+\begin{definition}
+Seja $(\bm X,f)$ um sistema dinâmico métrico compacto.
+	\begin{equation*}
+	\dist{p}{p'}_{f,n} := \max \set{\dist{f^i(p)}{f^i(p')}}{i \in [n]}.
+	\end{equation*}
+\end{definition}
+
+Essa sequência de métricas é crescente. A sua bola é denotada
+	\begin{equation*}
+	\boladin[f]{n}{p}{r}
+	\end{equation*}
+e vale
+	\begin{equation*}
+	\boladin[f]{n}{p}{r} = \bigcap_{i \in [n]} f^{-i} \bola{p}{r}.
+	\end{equation*}
+
+\begin{definition}
+$E \subseteq X$ $(n,r)$-gerrador de $X$ se
+	\begin{equation*}
+	X \subseteq \bigcup_{p \in E} \boladin[f]{n}{p}{r}.
+	\end{equation*}
+
+$S_d(f,r,n)$ é a menor cardinalidade de um conjunto $(n,r)$-gerador de $X$.
+
+	\begin{equation*}
+	h_d(f,r) := \limsup_{n \to \infty} \frac{1}{n}\log S_d(f,r,n)
+	\end{equation*}
+	\begin{equation*}
+	h_\topo(f) := \lim_{r \to 0} h(f,r)
+	\end{equation*}
+\end{definition}
+
+A função $r \to h_d(f,r)$ é monótona não-crescente.
+
+\begin{definition}
+Um conjunto $A \subseteq X$ é $(n,r)$-separado se para todos $p,p' \in A$ existe $j \in [n]$ tal que
+	\begin{equation*}
+	\dist{f^j(p)}{f^j(p')} \geq r.
+	\end{equation*}
+\end{definition}
+
+\begin{definition}
+Sejam $\bm X$ um espaço de probabilidade e $\parti$ uma partição enumerável em subconjuntos mensuráveis de $X$. A \emph{entropia} de $\parti$ é
+	\begin{equation*}
+	H_\med(\parti) := \sum_{P \in \parti} (-\med(P))\log(\med(P)).
+	\end{equation*}
+\end{definition}
+
+\begin{definition}
+Sejam $(\bm X,f)$ um sistema dinâmico de medida e $\parti$ uma partição em subconjuntos mensuráveis de $X$ com entropia finita. Definimos
+	\begin{equation*}
+	f^{-i}(\parti) := \set{f^{-i}(P)}{P \in \parti}
+	\end{equation*}
+	\begin{equation*}
+	\parti^n := \bigvee_{i \in [n]} f^{-i}(\parti)
+	\end{equation*}
+\end{definition}
+
+Temos que
+	\begin{equation*}
+	\parti^n(p) = \bigcap_{i \in [n]} \parti^i(p).
+	\end{equation*}
+
+Ainda, temos que $(\parti^n)_{n \in \N}$ é crescente.
+
+\begin{definition}
+A \emph{entropia} de $f$ com respeito a $\med$ e a $\parti$ é
+	\begin{equation*}
+	h_\med(f,\parti) := \lim_{n \to \infty} \frac{1}{n} H_\med(\parti^n) = \inf_{n \in \N} \frac{1}{n} H_\med(\parti^n).
+	\end{equation*}
+
+A \emph{entropia} do sistema $(\bm X,f)$ é
+	\begin{equation*}
+	h_\med(f) := \sup_{\parti} h_\med(f,\parti).
+	\end{equation*}
+\end{definition}
+
+\begin{definition}
+Uma \emph{medida de máxima entropia} é uma medida que satisfaz
+		\begin{equation*}
+		h_\med(f) = h_\topo(f)
+		\end{equation*}
+\end{definition}
+
+\begin{proposition}[Princípio Variacional]
+	\begin{equation*}
+	\sup_{\med \in M(f)} h_\med(f) = h_\topo(f).
+	\end{equation*}
+\end{proposition}
+
+Isso mostra que
+	\begin{equation*}
+	h_\med(f) \leq h_\topo(f).
+	\end{equation*}
+
+\begin{definition}
+Seja $f \colon X \to X$ (homeomorfismo). Uma \emph{especificação} é um par $(\tau,T)$ tais que $\tau = \{I_i\}_{i \in [m]}$, $I_i = \intff{a_i}{b_i} \subseteq \Z$ um intervalo de números inteiros e
+	\begin{equation*}
+	T \colon \bigcup_{i \in [m]} I_i \to X
+	\end{equation*}
+satisfaz que, para todos $I \in \tau$ e $t,t' \in I$,
+	\begin{equation*}
+	f^{t'-t} (T(t)) = T(t').
+	\end{equation*}
+
+O par $(\tau,T)$ é um $n$-espaço se $a_{i+1} > b_i + n$ para todo $i \in [m]$.
+
+O par $(\tau,T)$ é $\varepsilon$-sombreada por $x \in X$ tal que, para todo $n \in \bigcup_{i \in [m]} I_i$,
+	\begin{equation*}
+	\dist{f^n(x)}{T(n)} < \varepsilon.
+	\end{equation*}
+
+A função $f$ tem a propriedade de especificação se, para todo $\varepsilon > 0$, existe $M \in \N$ tal que toda especificação que é $M$-espaço é $\varepsilon$-sombreada.
+\end{definition}
+
+\begin{theorem}
+Se $f \colon X \to X$ é homeomorfismo expansivo, então $\med$ tem uma medida de máxima entropia.
+\end{theorem}
+
+
+Sejam $X$ compacto, $f\colon X \to X$ homeomorfismo expansivo e $\delta_x$ uma medida atômica em $x$. A sequência de medidas
+	\begin{equation*}
+	\med_n = \sum_{x \in \Per_1(f^n)} \frac{1}{\card{\Per_n}(f)} \delta_x.
+	\end{equation*}
+$\med_n \in M(f)$ tem subsequência convergente.
+
+OBS: Se $f$ é expansivo e $X$ compacto, $\Per_n(X)$ tem cardinalidade finita.
+
+\begin{theorem}
+Seja $(\bm X,f)$ sistema dinâmico métrico compacto e expansivo com propriedade de especificação. Existe existe única medida $\med \in M(f)$ de máxima entropia (chamada medida de Bowen) e
+	\begin{equation*}
+	\med = \lim_{n \to \infty} \frac{1}{\card{\Per_n(f)}} \sum_{x \in \Per_1(f^n)} \delta_x.
+	\end{equation*}
+\end{theorem}
+Usaremos alguns lemas para a demonstração.
+
+\begin{lemma}
+$\med$ é ergódica.
+\end{lemma}
+
+\begin{lemma}
+Dado $\varepsilon$, existem constantes $K_\varepsilon$, $M_\varepsilon$ e $C$ tais que
+	\begin{equation*}
+	A_\varepsilon = \frac{1}{K_\varepsilon C}\e^{-2M_\varepsilon}h_\topo(f)
+	\end{equation*}
+Para $y \in X$ e $n \in \N$ temos que
+	\begin{equation*}
+	\med(\Fec{\boladin[f]{n}{y}{\varepsilon}}) \geq A_\varepsilon \e^{-n h_\topo(f)}.
+	\end{equation*}
+\end{lemma}
+
+\begin{lemma}
+Se $\mu \perp \nu$, então $h_\nu(f) \leq h_\topo(f)$.
+\end{lemma}
+
+$M(f)$ é convexo. Existe medida de máxima entropia $\nu \in M(f)$ e $t \in \intff{0}{1}$, $\med',\nu' \in M(f)$ tal que
+	\begin{equation*}
+	\nu = t \nu' + (1-t) \mu'
+	\end{equation*}
+com $\mu' \ll \mu$ e $\nu \perp \mu$.
+
+Essa parte está bem confusa.
+
+\end{comment}
+
+
+
+

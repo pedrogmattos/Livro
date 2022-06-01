@@ -1,0 +1,527 @@
+\chapter{Sistemas dinâmicos topológicos}
+
+\begin{definition}
+Um \emph{sistema dinâmico topológico} é uma dupla $\bm{\Sist}=(\bm X,f)$ em que $\bm X$ é um espaço topológico, $(X,f)$ é um sistema dinâmico e $f$ é uma ação contínua em $\bm X$.
+\end{definition}
+
+\section{Conjugação topológica}
+
+\begin{definition}
+Sejam $\bm{\Sist_1} = (\bm{X_1},f_1)$ e $\bm{\Sist_2} = (X_2,f_2)$ sistemas dinâmicos topológicos. Uma \emph{semiconjugação topológica} (morfismo de sistemas dinâmicos topológico) de $\bm{\Sist_1}$ para $\bm{\Sist_2}$ é uma semiconjugação $\phi: \Sist_1 \to \Sist_2$ que é uma função contínua de $\bm{X_1}$ para $\bm{X_2}$. Denota-se $\phi: \bm{\Sist_1} \to \bm{\Sist_2}$. Uma \emph{conjugação topológica} (isomorfismo de sistemas dinâmicos topológicos) de $\bm{\Sist_1}$ para $\bm{\Sist_2}$ é uma semiconjugação topológica $\phi: \bm{\Sist_1} \to \bm{\Sist_2}$ que é um homeomorfismo de $\bm{X_1}$ para $\bm{X_2}$.
+\end{definition}
+
+\section{Transitividade topológica e minimalidade}
+
+\begin{proposition}
+Seja $\bm\Sist = (\bm X,f)$ um sistema dinâmico topológico. São equivalentes
+	\begin{enumerate}
+	\item Não existe partição $X = P \cup P'$ cujas partes têm interior vazio e umas delas é positivamente invariante;
+
+	\item Para todos abertos não vazios $A,A' \subseteq X$, existe $t \in \I^+$ tal que $f^t(A) \cap A' \neq \emptyset$;
+
+	\item Para todo aberto não vazio $A \subseteq X$,
+		\begin{equation*}
+		\Fec{\orb^+(A)} = X;
+		\end{equation*}
+
+	\item Para todo aberto não vazio $A \subseteq X$,
+		\begin{equation*}
+		\Fec{\orb^-(A)} = X.
+		\end{equation*}
+	\end{enumerate}
+\end{proposition}
+
+Essas propriedades são importantes e recebem o nome de transitividade topológica.
+
+\begin{definition}
+Um  sistema dinâmico \emph{topologicamente transitivo} é um sistema dinâmico topológico $\bm\Sist = (\bm X,f)$ tal que, para todos abertos não vazios $A,A' \subseteq X$, existe $t \in \I^+$ tal que $f^t(A) \cap A' \neq \emptyset$.
+\end{definition}
+
+\begin{proposition}
+Seja $\bm\Sist = (\bm X,f)$ um sistema dinâmico topológico revertível. Então $(\bm X,f)$ é topologicamente transitivo se, e somente se, $(\bm X,f\inv)$ o é.
+\end{proposition}
+\begin{proof}
+Segue diretamente das últimas equivalências da proposição anterior.
+\end{proof}
+
+
+\begin{proposition}
+Sejam $\bm X$ um espaço métrico sem pontos isolados e $\bm\Sist = (\bm X,f)$ um sistema dinâmico topológico.
+	\begin{enumerate}
+	\item Se $x \in X$ tem órbita densa, então, para todo $t \in \I^+$, $f^t(x)$ também tem;
+	\item Se existe $x \in X$ cuja órbita é densa em $X$, então $\bm\Sist$ é topologicamente transitivo.
+	\end{enumerate}
+\end{proposition}
+
+A propriedade de órbita densa nem sempre é equivalente à transitividade topológica, e recebe o nome de transitividade por órbitas.
+
+\begin{definition}
+Um sistema dinâmico \emph{transitivo por órbitas} é um sistema dinâmico topológico $\bm\Sist=(\bm X,f)$ em que existe ponto $x \in X$ cuja órbita é densa em $X$.
+\end{definition}
+
+Em um caso clássico, pode-se mostrar que transitividade por órbitas implica transitividade topológica. Esse teorema foi provado por Birkhoff para $\R^d$, mas pode ser enunciado como segue.
+
+\begin{proposition}
+Sejam $\bm X$ um espaço métrico completo separável e $\bm\Sist = (\bm X,f)$ um sistema dinâmico topológico. Se $\bm\Sist$ é topologicamente transitivo, então é transitivo por órbitas.
+\end{proposition}
+
+
+
+
+
+
+
+
+
+
+
+\begin{definition}
+Um sistema dinâmico \emph{mínimo} é um sistema dinâmico topológico $\bm\Sist=(\bm X,f)$ cujos pontos têm órbita densa em $X$.
+\end{definition}
+
+
+
+
+\begin{proposition}
+O sistema de rotação $(\T^1,R_\alpha)$ é mínimo se $\alpha$ é irracional.
+\end{proposition}
+
+
+
+\begin{proposition}
+Seja $\bm G$ um grupo topológico, $\alpha \in G$ e $E_\alpha\colon G \to G$ a translação à esquerda por $\alpha$. Se o sistema $(\bm G, E_\alpha)$ é topologicamente transitivo, então ele é mínimo.
+\end{proposition}
+
+
+
+\section{Pontos errantes, conjuntos limites e pontos recorrentes}
+
+%Talvez devesse falar de conjuntos limites antes de pontos errante, para seguir as inclusões.
+
+\subsection{Pontos errantes}
+
+\begin{definition}
+Seja $\bm{\Sist}=(\bm X,f)$ um sistema dinâmico topológico. Um ponto \emph{errante} do sistema é um ponto $p \in X$ para o qual existe vizinhança $V \subseteq X$ de $p$ satisfazendo
+	\begin{equation*}
+	V \cap \bigcup_{t \in \I^+_*}f^t(V) = \emptyset.
+	\end{equation*}
+Um ponto \emph{não-errante} do sistema é um ponto $p \in X$ que não é errante: para toda vizinhança $V \subseteq X$ de $p$,
+	\begin{equation*}
+	V \cap \bigcup_{t \in \I^+_*}f^t(V) \neq \emptyset.
+	\end{equation*}
+O conjunto dos pontos não-errantes do sistema $\Sist$ é denotado $\Nerr(\Sist)$ (ou $\Nerr$, ou ainda $\Nerr(f)$, de acordo com o que for mais relevante ressaltar).
+\end{definition}
+
+%MSOTRAR QUE A DEFINIÇÃO ACIMA E A ABAIXO SÃO EQUIVALENTES. Acredito que basta tirar os pontos $f(x),...,f^N-1(x) de V.$
+%\begin{definition}
+%Seja $\bm{\Sist}=(\bm X,f)$ um sistema dinâmico topológico. Um ponto \emph{errante} do sistema é um ponto $p \in X$ para o qual existem vizinhança $V \subseteq X$ de $p$ e inteiro positivo $N \in \I^+$ tais que
+%	\begin{equation*}
+%	V \cap \bigcup_{t \in \I^+}f^{N+t}(V) = \emptyset.
+%	\end{equation*}
+%Um ponto \emph{não-errante} do sistema é um ponto $p \in X$ que não é errante: para toda vizinhança $V \subseteq X$ de $p$ e inteiro positivo $N \in \I^+$,
+%	\begin{equation*}
+%	V \cap \bigcup_{t \in \I^+}f^{N+t}(V) \neq \emptyset.
+%	\end{equation*}
+%\end{definition}
+
+Um ponto errante é um ponto para o qual, em alguma vizinhança, nenhuma semiórbita positiva da vizinhança retorna para a vizinhança, e um não-errante é um ponto para o qual, em toda vizinhança, alguma semiórbita positiva da vizinhança retorna para a vizinhança.
+
+Essa propriedade é, de certa forma, um tipo de periodicidade topológica. Por isso, pode-se esperar que pontos periódicos sejam não-errantes.
+
+\begin{proposition}
+Seja $\bm{\Sist}=(\bm X,f)$ um sistema dinâmico topológico. Todo ponto periódico do sistema é não-errante:
+	\begin{equation*}
+	\Per(f) \subseteq \Nerr(f).
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+Seja $p \in X$ um ponto $t$-periódico. Para toda vizinhança de $V$ de $p$,  segue que $V \cap f^t(V) \neq \emptyset$, pois $p = f^t(p) \in f^t(V)$, logo $p$ é não-errante.
+%Mostraremos a contrapositiva. Seja $p \in X$ um ponto errante e $V$ uma vizinhança de $p$ tal que
+%	\begin{equation*}
+%	V \cap \bigcup_{t \in \I^+}f^t(V) = \emptyset.
+%	\end{equation*}
+%Então $V \cap f(V) = \emptyset$, e como $p \in V$, segue que $p \notin f(V)$, portanto $p$ não é periódico.
+\end{proof}
+
+\begin{proposition}
+Seja $\bm{\Sist}=(\bm X,f)$ um sistema dinâmico topológico.
+	\begin{enumerate}
+	\item O conjunto dos pontos não-errantes $\Nerr$ é fechado;
+	\item O conjunto dos pontos não-errantes $\Nerr$ é positivamente invariante ($f(\Nerr) \subseteq \Nerr$);
+	\item Se $\Sist$ é revertível, $\Nerr(f\inv) = \Nerr(f)$ e $\Nerr$ é invariante ($f\inv(\Nerr) = \Nerr$).
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item O conjunto de pontos errantes é aberto, pois se $p$ é um ponto não-errante, existe vizinhança $V$ de $p$ tal que
+	\begin{equation*}
+	V \cap \bigcup_{t \in \I^+_*}f^t(V) = \emptyset,
+	\end{equation*}
+logo todo $q \in \Int{V}$ também é não-errante. Isso implica que o complementar desse conjunto, o conjunto $\Nerr$, é fechado.
+
+	\item Sejam $p \in \Nerr$. Para toda vizinhança $V$ de $f(p)$, $V' := f\inv(V)$ é vizinhança de $p$. Como $p$ é não-errante, existe $t \in \I^+_*$ tal que $V' \cap f^t(V') \neq \emptyset$. Disso segue que
+	\begin{equation*}
+	\emptyset \neq f(V' \cap f^t(V')) \subseteq f(V') \cap f(f^t(V')) = f(V') \cap f^t(f(V')) \subseteq V \cap f^t(V),
+	\end{equation*}
+portanto $f(p)$ é não-errante, o que mostra que $f(\Nerr) \subseteq \Nerr$.
+
+	\item Seja $p \in \Nerr(f)$. Para toda vizinhança $V$ de $p$, existe $t \in \I^+_*$ tal que $ V \cap f^t(V) \neq \emptyset$. Assim, segue da injetividade de $f$(usada na segunda contenção) que
+	\begin{equation*}
+	\emptyset \neq f^{-t}(f^t(V) \cap V) \subseteq f^{-t}(f^t(V)) \cap f^{-t}(V) \subseteq V \cap f^{-t}(V),
+	\end{equation*}
+logo $p \in \Nerr(f\inv)$. A contenção contrária segue ao trocar os papéis de $f$ e $f\inv$, portanto $\Nerr(f\inv) = \Nerr(f)$. Dessa igualdade, tem-se do item 1 que $f(\Nerr) \subseteq \Nerr$ e $f\inv(\Nerr) \subseteq \Nerr$. Usando essa segunda contenção, segue da sobrejetividade de $f$ que
+	\begin{equation*}
+	\Nerr = f(f\inv(\Nerr)) \subseteq f(\Nerr),
+	\end{equation*}
+portanto $\Nerr = f(\Nerr)$, e conclui-se da injetividade de $f$ que $\Nerr$ é invariante.
+\qedhere
+	\end{enumerate}
+\end{proof}
+
+\subsection{Pontos limite}
+
+\begin{definition}
+Sejam $\bm{\Sist}=(\bm X,f)$ um sistema dinâmico topológico e $p \in X$. O \emph{conjunto limite positivo}\footnote{Chamado comumente de $\omega$-limite e denotado $\omega_f(p)$.} de $p$ é o conjunto de pontos limites\footnote{O conjunto de pontos limites de um conjunto é às vezes chamado de o \emph{derivado} do conjunto.} de $\orb^+(p)$, dado por
+	\begin{equation*}
+	\Lim^+_f(p) := \bigcap_{t \in \I^+}\Fec{\set{f^{t'}(p)}{t'>t}}.
+%	 = \bigcap_{n \in \N} \Fec{\orb^+(f^n(p))}.
+	\end{equation*}
+%	\begin{equation*}
+%	\Lim^+_f(p) := \set{q \in X}{\exists (t_n)_{n \in \N} \in (\I^+)^\N,\ f^{t_n}(p) \conv q}.
+%	\end{equation*}
+Se $\Sist$ é revertível, então o \emph{conjunto limite negativo}\footnote{Chamado comumente de $\alpha$-limite e denotado $\alpha_f(p)$.} de $p$ é o conjunto $\Lim^-_f(p) := \Lim^+_{f\inv}(p)$.
+%	\begin{equation*}
+%	\Lim^-_f(p) := \set{q \in X}{\exists (t_n)_{n \in \N} \in (\I^+)^\N,\ f^{-t_n}(p) \conv q}.
+%	\end{equation*}
+
+O \emph{conjunto limite positivo} do sistema é o conjunto
+	\begin{equation*}
+	\Lim^+(f) := \Fec{\bigcup_{p \in X} \Lim^+_f(p)},
+	\end{equation*}
+o \emph{conjunto limite negativo} é o conjunto $\Lim^-(f) := \Lim^+(f\inv)$
+%	\begin{equation*}
+%	\Lim^-(f) := \Fec{\bigcup_{p \in X} \Lim^-_f(p)}
+%	\end{equation*}
+e o \emph{conjunto limite} é o conjunto
+	\begin{equation*}
+	\Lim(f) := \Lim^+(f) \cup \Lim^-(f).
+	\end{equation*}
+\end{definition}
+
+Ou seja, os pontos de $\Lim^+_f(p)$ são aqueles que são limites de $(f^{t_n}(p))_{n \in \N}$ para alguma sequência $(t_n)_{n \in \N} \in (\I^+)^\N$ que tende ao infinito.
+
+%Note que
+%	\begin{align*}
+%	\omega_f(p) &= \set{q \in X}{\exists (t_n)_{n \in \N} \in (\I^+)^\N,\ f^{t_n}(p) \conv q} \\
+%		&= \set{\lim_{t_n \conv \infty} (f^{t_n}(p))}{(t_n)_{n \in \N} \in (\I^+)^\N} \\
+%		&= \bigcup_{t \in (\I^+)^\N} \{\lim_t (f^t(p)\}.
+%	\end{align*}
+%Por isso, algumas notações possíveis são
+%	\begin{equation*}
+%	L^+_f(p) = \mathrm{Lim}^+_f(p) = \omega_f(p) \e L^-_f(p) = \mathrm{Lim}^-_f(p)= \alpha_f(p).
+%	\end{equation*}
+
+\begin{proposition}
+Sejam $\bm{\Sist}=(\bm X,f)$ um sistema dinâmico topológico e $p \in X$. Então
+	\begin{enumerate}
+	\item O conjunto limite positivo $\Lim^+(p)$ é não-vazio, fechado e positivamente invariante
+	\end{enumerate}
+\end{proposition}
+
+\begin{proposition}
+Seja $\bm{\Sist}=(\bm X,f)$ um sistema dinâmico topológico. Todo ponto periódico do sistema é um ponto limite e todo ponto limite é um ponto não-errrante:
+	\begin{equation*}
+	\Per(f) \subseteq \Lim(f) \subseteq \Nerr(f).
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+Para a primeira inclusão, seja $p \in X$ um ponto periódico. Então existe $t \in \I^+$ tal que $f^t(p)=p$. Tomando a sequência $(nt)_{n \in \N}$, segue que $f^{nt}(p) = p$, logo $f^{nt}(p) \conv p$, o que mostra que $p \in \Lim(f)$.
+
+Agora, seja $q \in \Lim(f)$. Consideraremos o caso em que $q \in \Lim^+(f)$. Existe $p \in X$ tal que $q \in \Lim^+_f(p)$. Assim,  para toda vizinhança $V$ de $q$, existem $t,t' \in \I^+$, $t'>t$, tais que $f^t(p) \in V$ e $f^{t'}(p) \in V$. Como $f^{t'-t}(f^t(p)) = f^t(p)$, isso implica que
+	\begin{equation*}
+	V \cap f^{t'-t}(V) \neq \emptyset,
+	\end{equation*}
+logo $q \in \Nerr(f)$.
+\end{proof}
+
+
+% DEMONSTRAR, NÃO SEI SE É VERDADE
+\begin{proposition}
+Seja $\bm{\Sist}=(\bm X,f)$ um sistema dinâmico topológico.
+	\begin{enumerate}
+	\item O conjunto dos pontos limite $\Lim(f)$ é fechado;
+	\item O conjunto dos pontos limite $\Lim$ é positivamente invariante ($f(\Lim) \subseteq \Lim$);
+	\item Se $\Sist$ é revertível, $\Lim$ é invariante ($f\inv(\Lim) = \Lim$).
+	\end{enumerate}
+\end{proposition}
+
+\subsection{Pontos recorrentes}
+
+\begin{definition}
+Seja $\bm{\Sist}=(\bm X,f)$ um sistema dinâmico topológico. Um ponto \emph{(positivamente) recorrente} é um ponto $p \in X$ tal que $p \in \Lim^+(p)$. O conjunto dos pontos recorrentes do sistema é denotado $\Rec(f)$.
+\end{definition}
+
+Sejam $X$ um espaço topológico com base enumerável $(U_i)_{i \in \N}$ e $f: X \to X$ uma função contínua. O conjunto dos pontos de $U_i$ que retornam para $U_i$ finitas vezes é
+	\begin{equation*}
+	\tilde U_i := U_i \cap \liminf_{n \in \N} f^{-n}({U_i}^\complement).
+	\end{equation*}
+O limite inferior é o conjunto de pontos do espaço que passam por $U_i$ finitas vezes, que é dado por
+	\begin{equation*}
+	\liminf_{n \in \N} f^{-n}({U_i}^\complement) = \bigcup_{n \in \N} \bigcap_{m \in \N} f^{-n+m}({U_i}^\complement).
+	\end{equation*}
+Esse conjunto é o complementar do conjunto de pontos do espaço que passam por $U_i$ infinitas vezes, dado pelo limite superior
+	\begin{equation*}
+	\limsup_{n \in \N} f^{-n}(U_i) = \bigcap_{n \in \N} \bigcup_{m \in \N} f^{-n+m}(U_i).
+	\end{equation*}
+
+Agora, notemos que o complementar da união dos $\tilde{U_i}$ é o conjunto $\Rec(f)$ dos pontos recorrentes de $f$. Para isso, primeiro notemos que
+e notemos que
+	\begin{align*}
+	R &:= \left( \bigcup_{i \in \N} \tilde U_i \right)^\complement \\
+		&= \bigcap_{i \in \N} {\tilde U_i}^\complement \\
+		&= \bigcap_{i \in \N} \left( U_i \cap \liminf_{n \in \N} f^{-n}({U_i}^\complement) \right)^\complement \\
+		&= \bigcap_{i \in \N} \left( {U_i}^\complement \cup \limsup_{n \in \N} f^{-n}(U_i) \right).
+	\end{align*}
+
+\begin{proposition}
+\label{prop:recorr}
+Seja $\bm{\Sist}=(\bm X,f)$ um sistema dinâmico topológico, $\bm X$ com base enumerável $(U_i)_{i \in \N}$.
+	\begin{equation*}
+	\Rec(f) = \bigcap_{i \in \N} \left( {U_i}^\complement \cup \limsup_{n \in \N} f^{-n}(U_i) \right).
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+($R \subseteq \Rec(f)$) Sejam $x \in R$ e $U$ vizinhança de $x$. Como $(U_i)_{i \in \N}$ é base, seja $U_i$ tal que $x \in U_i \subseteq U$. Como $x \in R$, então $x \notin \tilde U_i$, portanto $x$ retorna a $U_i$ infinitas vezes, o que mostra que $x \in \Rec(f)$.
+
+($\Rec(f) \subseteq R$) Sejam $x \in \Rec(f)$ e $U_i$ aberto básico. Existem dois casos: $x \notin U_i$ ou $x \in U_i$. No segundo caso, como $x$ é ponto recorrente, $x$ retorna infinitamente a $U_i$, portanto $x \in \limsup_{n \in \N} f^{-n}(U_i)$. Assim, em ambos os casos, $x \in {U_i}^\complement \cup \limsup_{n \in \N} f^{-n}(U_i)$, o que mostra que $x \in R$.
+\end{proof}
+
+\section{Conjuntos estável e instável}
+
+%\begin{definition}
+%Sejam $\bm{\Sist}=(\bm X,f)$ um sistema dinâmico topológico e $p \in X$ um ponto fixo. O \emph{conjunto estável} de $p$ é o conjunto
+%	\begin{equation*}
+%	W^+_f(p) := \set{q \in X}{f^t(q) \conv p,\ t \conv \infty}.
+%	\end{equation*}
+%Se o sistema é revertível, o \emph{conjunto instável} de $p$ é o conjunto $W^-%_f(p) := W^+_{f\inv}(p)$.
+%\end{definition}
+
+\begin{definition}
+Sejam $\bm{\Sist}=(\bm X,f)$ um sistema dinâmico topológico e $C \in X$ um conjunto positivamente invariante.
+%%%% Porque a hipótese de ser positivamente invariante é importante? Na definição poderia ser qualquer conjunto, mas a ideia é que $C$ fica parado enquanto $f$ é aplicada. Será que para mostrar a equivalência de definição quando for definido usando a função distância?
+O \emph{conjunto estável} de $C$ é o conjunto
+	\begin{equation*}
+	W^+_f(C) := \set{p \in X}{f^t(p) \conv C,\ t \conv \infty}.
+	\end{equation*}
+Se o sistema é revertível, o \emph{conjunto instável} de $C$ é $W^-_f(C) := W^+_{f\inv}(C)$.
+%Se $C$ é negativamente invariante, o \emph{conjunto instável} de $C$ é o conjunto
+%	\begin{equation*}
+%	W^+_f(C) := \set{p \in X}{f^{-t}(p) \conv C,\ t \conv \infty}.
+%	\end{equation*}
+Quando $p \in X$ é um ponto fixo, denotam-se $W^+_f(p) := W^+_f(\{p\})$ e $W^-_f(p) := W^-_f(\{p\})$.
+\end{definition}
+
+Os superíndices `$+$' e `$-$' podem gerar certa confusão, pois o índice `$+$' poderia tanto indicar que a \textit{distância} entre os pontos $q$ e o ponto $p$ \textit{aumenta} ou que no tempo \textit{futuro} os pontos $q$ tendem ao ponto $p$; problema análogo ocorre para o índice `$-$	'. Escolhemos aqui a segunda opção porque ela segue o padrão que de outras notações, em que `$+$' indica a evolução positiva (futura) do sistema e `$-$' indica sua evolução negativa (passada).
+
+\begin{proposition}
+Sejam $\bm{\Sist}=(\bm X,f)$ um sistema dinâmico topológico e $C \subseteq X$ um conjunto positivamente invariante. Então $W^+(C)$ é invariante.
+\end{proposition}
+\begin{proof}
+Seja $p \in W^+(C)$. Para todo $s \in T^+$, temos que $f^t(f^s(p)) = f^{t+s}(p) \conv C$ quando $t \conv \infty$, portanto $f^s(p) \in W^+(C)$, o que mostra que o conjunto é positivamente invariante. Para mostrar que é negativamente invariante, basta notar que se $q \in f^{-s}(p)$, então $f^s(q)=p$, logo $f^t(q) \conv C$.
+\end{proof}
+
+
+
+\section{Exemplos}
+
+\subsection{Topologia dos deslocamentos}
+
+Queremos definir uma topologia para os espaços de sequências $N^{\I^+}$ e $N^\I$ de modo que os deslocamentos $\sigma$ neles definidos sejam contínuos. Para isso, vamos induzir o espaço produto $N^\I$ com a topologia discreta de $N$, pois essa é uma abordagem bem natural. A princípio, não sabemos se isso garantirá que o deslocamento $\sigma$ é contínuo, mas veremos que ele de fato será. Construiremos a seguir a topologia de $N^\I$, mas o caso de $N^{\I^+}$ é análogo.
+
+A topologia discreta em $N$ é a topologia em que todo subconjunto de $N$ é aberto. Uma base para essa topologia é o conjunto dos conjuntos da forma $\{k\}$, com $k \in N=\{0,\ldots,N-1\}$. Essa topologia é o conjunto $\p(N)$. A topologia induzida em $N^\I$ é a topologia puxada pelas projeções na $t$-ésima entrada $\pi_t: N^\I \to N$ (também conhecida como topologia produto ou topologia inicial com respeito às projeções), ou seja,
+	\begin{equation*}
+	\ger{\bigcup_{t \in \I} {\pi_t}\pux(\p(N))}.
+	\end{equation*}
+Uma sub-base da topologia produto de $N^\I$ são os conjuntos
+	\begin{equation*}
+	C_t[k] := {\pi_t}\inv(\{k\}) = \set{x \in N^\I}{x_t=k}
+	\end{equation*}
+para cada $t \in \I$ e $k \in N$ (chamados às vezes de \emph{cilindros abertos}). Uma base para essa topologia são interseções finitas de conjuntos da sub-base, ou seja, conjuntos da forma
+	\begin{equation*}
+	C_{t_0,\ldots,t_n}(k_0,\ldots,k_n) := \bigcap_{i=0}^n C_{t_i}[k_i] = \set{x \in N^\I}{x_{t_0}=k_0,\ldots,x_{t_n}=k_n}
+	\end{equation*}
+para cada $t_0,\ldots,t_n \in \I$ e $k_0,\ldots,k_n \in N$, chamados de \emph{cilindros}.
+
+Estando assim definida a topologia de $N^\I$, vamos agora mostrar que $\sigma$ é contínua. Seja $C_t[k]$ um cilindro sub-básico. Então
+	\begin{equation*}
+	\sigma\inv(C_t[k]) = \sigma\inv({\pi_t}\inv(\{k\})) = (\pi_t \circ \sigma)\inv(\{k\}) = {\pi_{t-1}}\inv(\{k\}) = C_{t-1}[k],
+	\end{equation*}
+que é aberto pois é um cilindro sub-básico. Isso mostra que $\sigma$ é contínua. Está provado, assim, a seguinte proposição.
+
+\begin{proposition}
+Os sistemas $(N^{\I^+},\sigma)$ e $(N^\I,\sigma)$ são sistemas dinâmicos topológicos.
+\end{proposition}
+
+\subsection{Itinerários topológicos}
+
+Lembremos que se $\mathcal{P}=(P_i)_{i \in N}$ é uma partição finita de $X$, então o itinerário de um ponto $x \in X$ com respeito a $\mathcal{P}$ é a sequência $(x_t)_{t \in T} \in N^T$ tal que $x_t=k$ se, e somente se, $f^t(x) \in P_k$. Denotamos a função que leva $x$ em seu itinerário por $\phi: X \to N^T$. Queremos investigar as condições em $\mathcal{P}$ para que $\phi$ seja uma função contínua.
+
+Notemos que $x_t = \pi_t(\phi(x))$, portanto podemos escrever que $\pi_t(\phi(x)) = k$ se, e somente se, $f^t(x) \in P_k$. Isso é o mesmo que dizer que
+	\begin{equation*}
+	(\pi_t \circ \phi)\inv(k) = f^{-t}(P_k).
+	\end{equation*}
+Essa identidade é a chave para a demonstração da proposição a seguir.
+
+\begin{proposition}
+Sejam $(\bm X,f)$ um sistema dinâmico topológico discreto, $\mathcal P=(P_i)_{i \in N}$ uma partição aberta finita de $\bm X$ e $\phi: X \to N^T$ a função que leva $x \in X$ em seu itinerário com respeito a $\mathcal{P}$. Então $\phi$ é uma função contínua.
+\end{proposition}
+\begin{proof}
+Para isso, seja $C_t[k]$ um cilindro sub-básico de $N^\T$. Nesse caso, segue que
+%	\begin{align*}
+%	\phi\inv(C_t[k]) &= \set{x \in X}{\phi(x) \in C_t[k]} \\
+%		&= \set{x \in X}{(\phi(x))_t = k} \\
+%		&= \set{x \in X}{f^t(x) \in P_k} \\
+%		&= f^{-t}(P_k)
+%	\end{align*}
+	\begin{equation*}
+	\phi\inv(C_t[k]) = \phi\inv({\pi_t}\inv(k)) = (\pi_t \circ \phi)\inv(k) = f^{-t}(P_k),
+	\end{equation*}
+que é aberto pois $f$ é contínua e $P_k$ é aberto.
+\end{proof}
+
+Note que se existe uma partição aberta não trivial ($\mathcal{P}=(X)$) de $\bm X$, o espaço $\bm X$ é não conexo, pois as partes das partições são abertas e disjuntas. Em particular isso não é muito desejável, pois queremos estudar espaços topológicos conexos, nos quais por definição não existe partição aberta. Para que essa dificuldade seja superada, consideraremos mais a frente outro tipo de partição, as partições de medida, em que a exigência de que as partes sejam disjuntas será enfraquecida para que sejam quase disjuntas.
+
+
+\subsection{Automorfismos no toro}
+
+Após essa discussão inicial sobre o sistema $(\T^2, [A])$, seguimos para abordar a ideia de variedades estável e instável de um ponto do toro. Para um ponto $p$ do toro, definimos a variedade estável de $p$ como a projeção no toro da reta em $\R^2$ que passa por $p$ e é paralela ao autovetor $v_{\lambda_-}$ de $A$ associado ao autovalor $\lambda_- < 1$. Analogamente, definimos a variedade instável de $p$ como a projeção no toro da reta em $\R^2$ que passa por $p$ e é paralela ao autovetor $v_{\lambda_+}$ de $A$ associado ao autovalor $\lambda_+ > 1$. Segue a definição rigorosa.
+
+\begin{definition}
+Seja $[p] \in \T^2$. A \textit{variedade estável} de $[p]$ é o conjunto
+	\begin{equation*}
+	W^-([p]) := \set{[p + \alpha v_{\lambda_-}]}{\alpha \in \R},
+	\end{equation*}
+Analogamente, a \textit{variedade instável} de $[p]$ é o conjunto
+	\begin{equation*}
+	W^+([p]) := \set{[p + \alpha v_{\lambda_+}]}{\alpha \in \R}.
+	\end{equation*}
+\end{definition}
+
+Note que as variedades estável e instável estão bem definidas pois, para todo $q \in [p]$, temos $q = p + m$, com $m \in \I^2$. Assim, $[q + \alpha v_{\lambda_-}] = [p + m + \alpha v_{\lambda_-}] = [p + \alpha v_{\lambda_-}]$ e $[q + \alpha v_{\lambda_+}] = [p + m + \alpha v_{\lambda_+}] = [p + \alpha v_{\lambda_+}]$, e segue que $W^-([q]) = W^-([p])$ e $W^+([q]) = W^+([p])$. A próxima proposição justifica a nomeação dos conjuntos $W^-([p])$ e $W^+([p])$.
+
+\begin{theorem}
+	Seja $[p]$ um ponto do toro. Então, para um ponto $[p'] \in W^s([p])$,
+	\begin{equation*}
+	\lim_{n \to \infty} d_{\T^2}([A]^n([p']),[A]^n([p])) = 0.
+	\end{equation*}
+Da mesma forma, para um ponto $[p'] \in W^u([p])$,
+	\begin{equation*}
+	\lim_{n \to \infty} d_{\T^2}([A]^{-n}([p']),[A]^{-n}([p])) = 0.
+	\end{equation*}
+\end{theorem}
+\begin{proof}
+	Vamos demonstrar a proposição para a variedade instável. A outra demonstração é análoga. Se $[p'] \in W^s([p])$, ele é da forma $[p'] = [p + \alpha v_{\lambda_-}]$, para $\alpha \in \R$. Assim,
+	\begin{equation*}
+	[A]([p']) = [A]([p + \alpha v_{\lambda_-}]) = [A^n(p + \alpha v_{\lambda_-})] = [A^np + \alpha (\lambda_-)^n v_{\lambda_-}]
+	\end{equation*}
+e $[A]^n([p]) = [A^np]$. Notemos que, como $|\lambda_-| \leq 1$, para $n$ suficientemente grande a distância no toro é igual à distância no plano, pois $|\lambda_-|^n \rightarrow 0$. Assim, vale
+	\begin{equation*}
+	d_{\T^2}([A^np + \alpha (\lambda_-)^n v_{\lambda_-}],[A^np]) = d_{\R^2}(A^np + \alpha (\lambda_-)^n v_{\lambda_-},A^np) = d_{\R^2}(\alpha (\lambda_-)^n v_{\lambda_-},0)
+	\end{equation*}
+e segue o enunciado.
+\end{proof}
+
+\begin{proposition}
+As variedades estável e instável de um ponto $[p]$ do toro são invariavéis sob ação do automorfismo $[A]$ no sentido que valem $[A](W^s([p])) = W^s([A]([p]))$ e $[A](W^u([p])) = W^u([A]([p]))$.
+	\end{proposition}
+\begin{proof}
+	Na demosntração, usaremos $W$ para representar qualquer uma das duas variedades estável e instável. Da mesma forma, $v$ para o autovetor e $\lambda$ para o autovalor associado à respectiva variedade.
+
+	Primeiro demonstraremos que $[A](W([p])) \subset W([A]([p]))$. Seja $[x] \in [A](W([p]))$. Então existe $\alpha \in \R$ tal que $[x] = [A]([p + \alpha v])$. Logo
+	\begin{equation*}
+	[x] = [A(p + \alpha v)] = [Ap + \alpha Av] = [Ap + \alpha \lambda v].
+	\end{equation*}
+Fazendo $\beta := \alpha \lambda$, temos $\beta \in \R$ e $[x] = [Ap + \beta v] = [[A]([p]) + \beta v]$. Portanto $[x] \in W([A]([p])$.
+
+	Agora demonstramos que $W([A]([p])) \subset [A](W([p]))$. Tomamos $[x] \in W([A]([p]))$. Então existe $\alpha \in \R$ tal que $[x] = [[A]([p]) + \alpha v]$. Como $\lambda \neq 0$, fazemos $\beta := \frac{\alpha}{\lambda}$. Então temos $\beta \in \R$ e
+	\begin{equation*}
+	[x] = [Ap + \beta \lambda v] = [Ap + \beta Av] = [A(p + \beta v)] = [A]([p + \beta v])
+		\end{equation*}
+e, portanto, $x \in [A](W^s(p))$.
+	\end{proof}
+
+\begin{proposition}
+As variedades estável e instável de um ponto do toro são densas em $\T^2$.	\end{proposition}
+\begin{proof}
+Seja $[p]=[(p_1,p_2)]$ um ponto de $\T^2$. Na demosntração, usaremos $W([p])$ para representar qualquer uma das duas variedades de $[p]$. Queremos mostrar que, dado $\varepsilon > 0$ e $[t]=[(t_1,t_2)] \in \T^2$, existe $[w]=[w_1,w_2] \in W([p])$ tal que $d_{\T^2}([t],[w]) \leq \varepsilon$. Sem perda de generalidade, consideraremos que $p,t,w \in S^1 \times S^1$ para facilitar a demonstração.
+
+Consideremos o conjunto $C := \{[(t_1,r)] : r \in \R \}$. Esse conjunto é um subconjunto de $\T^2$ e auxiliará na demonstração. Acharemos o ponto $[w]$ nesse conjunto, considerando o conjunto $W([p]) \cap C$. Esse conjunto interseção é interessante pois a distância entre seus potos pode ser calculada usando a distância do círculo. Tomemos $[c] \in C$, com $c=(t_1,r) \in S^1 \times S^1$ sem perda de generalidade. Notamos que
+	\begin{align*}
+		d_{\T^2}([t],[c])& = \min\{ d_{\R^2}(t+m,c+n) : m,n \in \I^2 \} \\
+			& = \min\{ \sqrt{(t_1+m_1-t_1-n_1)^2 + (t_2+m_2-r-n_2)^2} : m_1,m_2,n_1,n_2 \in \I \} \\
+			& = \min\{ \sqrt{(t_2-r-z)^2} : z \in \I \} \\
+			& = \min\{ |t_2-r-z| : z \in \I \} \\
+			& = d_{S^1}(t_2,r),
+	\end{align*}
+pois $t_2, r \in S^1$. Isso mostra que a distância de um ponto de $C$ ao ponto $[t]$ é igual à distância de suas segundas coordenadas no círculo.
+
+Agora, definamos $l := \frac{\lambda - a_{11}}{a_{12}}$, sendo $\lambda$ o autovalor $\lambda_+$ ou $\lambda_-$, de acordo com qual variedade estamos considerando, e seja $\alpha \in \R$. Os pontos de $W([p]) \cap C$ são da forma
+	\begin{equation*}
+	[p + \alpha v_\lambda] = [(p_1 + \alpha, p_2 + \alpha l)],
+	\end{equation*}
+de modo que $p_1 + \alpha = t_1 + k$, com $k \in \I$; ou seja, definindo $m := p_2 - (p_1 - t_1)l \bmod 1$, temos pontos da forma
+	\begin{equation*}
+	[(t_1,m + kl)].
+	\end{equation*}
+
+Isso significa que os pontos de $W([p]) \cap C$ podem ser obtido atráves de uma rotação irracional $R_l$ aplicada em $m \in S^1$. Como sabemos pelo teorema \ref{teo:orbita.densa} que as rotações irracionais são densas em $S^1$ para qualquer ponto do círculo, dados $\varepsilon > 0$ e $t_2 \in S^1$, existe inteiro $a$ tal que
+	\begin{equation*}
+	d_{S^1}(t_2,m + al) = d_{S^1}(t_2,R_l^a(m)) \leq \varepsilon \text{.}
+	\end{equation*}
+
+Por fim, tomando $[w]=[t_1,m+al]$, temos $[w] \in W([p]) \cap C$; ou seja, $[w] \in W([p])$, vale
+	\begin{equation*}
+	d_{\T^2}([t],[w]) = d_{S^1}(t_2,m+al) \leq \varepsilon
+	\end{equation*}
+e está provada a proposição.
+\end{proof}
+
+
+\begin{theorem}
+A dinâmica do sistema $(\T^2, [A])$ é topologicamente transitiva.
+\end{theorem}
+\begin{proof}
+Para demonstrar isso, tomemos dois conjuntos não-vazios abertos quaisquer no toro, $U$ e $V$. Agora, como a variedade estável é densa no toro, pegamos um ponto $u \in U$ e tomamos um segmento de reta $I_U$ passando por $u$ que esteja contido de $U$ e seja paralelo a $v_{\lambda_-}$. Da mesma forma, pegamos um ponto $v \in V$ e tomamos um segmento de reta $I_V$ passando por $v$ que esteja contido em $V$ e seja paralelo a $v_{\lambda_+}$. Como as variedades estável e instável são densas em $\T^2$ e o comprimento dos intervalo em $U$ e $V$ ambos aumentam ao aplicarmos neles, respectivamente, $[A]^-1$ e $[A]$, existem $p,q \in \N$ tais que $[A]^{-p}(I_U) \cap [A]^q(I_V) \neq \emptyset$. Assim, tomamos um ponto $w'$ nesse conjunto. Segue que $[A]^{-q}(w') \in V$ e $[A]^p(w') \in U$. Definindo $w := [A]{-q}(w')$ e tomando $n=p+q$, temos que $w \in [A]^{-n}(V) \cap U$ e está provado o teorema.
+\end{proof}
+
+
+\paragraph{Entropia}
+
+\begin{definition}
+A \textit{entropia} de um sistema dinâmico $(X,f)$ é definida como
+	\begin{equation*}
+	h_f := \lim_{n \to \infty} \frac{\card{Per_n(f)}}{n}
+	\end{equation*}
+em que $Per_n(f) := \{x \in X : f^n(x)=x\}$.
+\end{definition}
+
+\begin{theorem}
+A entropia de sistema $(\T^2, [A])$ associado à matriz $A$ é
+	\begin{equation*}
+	h_{[A]} = \log|\lambda_+|.
+	\end{equation*}
+\end{theorem}
+\begin{proof}
+De fato, dos resultados anteriores vem que
+	\begin{align*}
+	h_{[A]} &= \frac{\log|\det(A^n - I)|}{n}\\
+		&= \frac{\log|2 - (\lambda_+)^n - (\lambda_-)^n|}{n}\\
+		&= \frac{\log|(\lambda_+)^n[1 - 2(\lambda_-)^n + (\lambda_-)^{2n}]|}{n}\\
+		&= \log|\lambda_+| + \frac{\log|1 - 2(\lambda_-)^n + (\lambda_-)^{2n}|}{n}\\
+	\end{align*}
+Daí, segue claramente o resultado procurado, pois $|\lambda_-| < 1$.
+\end{proof}
+
+
+
+

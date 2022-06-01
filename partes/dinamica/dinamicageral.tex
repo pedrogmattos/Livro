@@ -1,0 +1,1120 @@
+\chapter{Sistemas dinâmicos}
+
+\section{Sistemas dinâmicos, órbitas e periodicidade}
+
+\begin{definition}
+Um \emph{sistema dinâmico} é uma dupla $\Sist=(X,f)$ em que
+\begin{enumerate}
+\item $X$ é um conjunto, o \emph{espaço de fase} do sistema;
+\item $f\colon \bm T \age X$ é uma ação de monoides em $X$, a \emph{dinâmica} do sistema, e $\bm T$ é um monoide, o \emph{espaço temporal} do sistema, que pode ser\footnote{Pode-se se considerar a ação de monoides/grupos mais gerais, mas não abordaremos esses casos aqui.} $(\I^+,+,0)$, $(\R^+,+,0)$, $(\I,+,0)$ ou $(\R,+,0)$.
+
+Um sistema dinâmico é
+	\begin{enumerate}
+	\item \emph{revertível} se $\bm T$ é um grupo, ou seja, se $\bm T = (\I,+,0)$ ou $\bm T = (\R,+,0)$;
+
+	\emph{irrevetível} caso contrário, ou seja, se $\bm T = (\I^+,+,0)$ ou $\bm T = (\R^+,+,0)$.
+
+	\item  \emph{discreto} se $\bm T = (\I^+,+,0)$ ou $\bm T = (\I,+,0)$;
+
+	\emph{contínuo} se $\bm T = (\R^+,+,0)$ ou $\bm T = (\R,+,0)$.
+	\end{enumerate}
+\end{enumerate}
+\end{definition}
+
+Estudaremos principalmente \textbf{sistemas dinâmicos discretos}, ou seja, sistemas cujo espaço temporal é $\I^+$ ou $\I$. Nesse caso, identificamos a dinâmica $f\colon \bm T \age X$ com a função $f^1\colon X \to X$, já que todas funções da ação podem ser representadas como composições de $f^1$, e também de $(f^1)\inv$ caso o sistema seja revertível.
+
+\begin{definition}[Iterados, Órbitas e Periodicidade]
+Seja $\Sist=(X,f)$ um sistema dinâmico.
+	\begin{enumerate}
+	\item O \emph{$t$-ésimo iterado} de um ponto $x \in X$, para $t \in T$, é o ponto $f^t(x)$;
+	\item A \emph{órbita} de um ponto $x \in X$ é o conjunto
+	\begin{equation*}
+	\orb(x) := \set{f^t(x)}{t \in T},
+	\end{equation*}
+a órbita de $x$ sob a ação de $f$; a \emph{(semi)órbita positiva} de $x$ é o conjunto $\orb^+(x) := \set{f^t(x)}{t \in T^+}$ (em que $T^+$ é o monoide positivo associado a $\I$ ou $\R$);
+	\item Um ponto \emph{periódico} é um ponto $x \in X$ que satisfaz, para algum $t \in T$, $f^t(x)=x$, e $t$ é um \emph{período} de $x$; sua órbita é uma \emph{órbita periódica} (ou $t$-periódica). O conjunto dos pontos periódicos é denotado\footnote{Denotam-se $\Per(\Sist)$ ou $\Per(f)$ caso se queira ressaltar o sistema ou a dinâmica, respectivamente.} $\Per$ e o conjunto dos pontos $t$-periódicos é denotado $\Per_t$.
+% Um ponto \emph{não-periódico} é um ponto que não é periódico e o conjunto desses pontos é denotado $\Per_0$.
+	\end{enumerate}
+\end{definition}
+
+%%%%%%%%%%%%COMENTÁRIO%%%%%%%%%%%%%
+\begin{comment}
+Claramente, quando $T=\I^+$, vale que, para todos $t,t' \in \I^+$ tais que $t \dleq t'$,
+	\begin{equation*}
+	\Per_{t'} \subseteq \Per_t,
+	\end{equation*}
+e que
+	\begin{equation*}
+	\Per = \bigcup_{t \in T^+} \Per_t.
+	\end{equation*}
+Ainda,
+	\begin{equation*}
+	\Per_t := \set{x \in X}{f^t(x)=x}.
+	\end{equation*}
+Uma definição explícita do período de $x$ é o número
+	\begin{equation*}
+	\min\nolimits_{\dleq}\set{t' \in \I^+}{f^{t'}(x)=x},
+	\end{equation*}
+em que $\min_{\dleq}$ representa o mínimo em relação à ordem de divisão $\dleq$. Essa definição é interessante porque nesse caso $\Per_0$ seria o conjunto dos pontos não periódicos, visto que ele é o menor número de $\I^+$ com relação à ordem de divisão tal que $f^t(x)=x$ quando $x$ não é periódico. Esse valor não é $0$ no caso de pontos periódicos pois todo número divide $0$. O conjunto dos períodos de um ponto é um subgrupo de $T^+$.
+\end{comment}
+%%%%%%%%%%%%COMENTÁRIO%%%%%%%%%%%%%
+
+Quando um sistema é irrevertível, cada órbita de um ponto do sistema é igual a sua (semi)órbita positiva. Se o sistema é revertível, pode-se definir a \emph{(semi)órbita negativa} de $x$ como o conjunto $\orb^-(x) := \set{f^{-t}(x)}{t \in T^+}$, mas não faremos uso dessa estrutura nestas notas.
+
+\section{Conjuntos invariantes}
+
+\begin{definition}
+Seja $\Sist=(X,f)$ um sistema dinâmico. Um conjunto \emph{invariante} de $\Sist$ é um conjunto $C \subseteq X$ tal que $f^t(C) \subseteq C$ para todo $t \in T$. Um conjunto \emph{positivamente invariante} de $\Sist$ é um conjunto $C \subseteq X$ tal que $f^t(C) \subseteq C$ para todo $t \in T^+$. Um conjunto \emph{negativamente invariante} de $\Sist$ é um conjunto $C \subseteq X$ tal que $f^{-t}(C) \subseteq C$ para todo $t \in T^+$.
+\end{definition}
+
+Para estudar melhor o conceito de conjunto invariante e entender a diferença entre os conjuntos positivamente e negativamente invariantes, definimos os seguintes objetos.
+
+\begin{definition}
+Sejam $\Sist=(X,f)$ um sistema dinâmico e $C \subseteq X$. O \emph{fecho positivamente invariante} de $C$ é o conjunto
+	\begin{equation*}
+	\orb^+(C) := \bigcup_{t \in T^+} f^t(C),
+	\end{equation*}
+o \emph{fecho negativamente invariante} de $C$ é o conjunto
+	\begin{equation*}
+	\orb^-(C) := \bigcup_{t \in T^+} f^{-t}(C)
+	\end{equation*}
+e o \emph{fecho invariante} de $C$ é o conjunto $\orb(C) := \orb^+(C) \cup \orb^-(C)$.
+\end{definition}
+
+Primeiro justificamos a nomenclatura de fecho para esses operadores. As propriedades valem para os três operadores $\orb^+$, $\orb^-$ e $\orb$.
+
+\begin{proposition}
+Seja $\Sist=(X,f)$ um sistema dinâmico.
+	\begin{enumerate}
+	\item Os operadores $\orb^+, \orb^-,\orb\colon \p(X) \to \p(X)$ são operadores de fecho que preservam união qualquer;
+	\item $\orb^+(C)^\complement \subseteq \orb^+(C^\complement)$.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item Demonstraremos as propriedades somente para o operador $\orb^+$, pois para os outros as contas são análogas.
+
+($C \subseteq \orb^+(C)$)
+Basta notar que $f^0(C)=C$, portanto $C \subseteq \orb^+(C)$.
+
+($\orb^+(\orb^+(C)) = \orb^+(C)$)
+Basta notar que
+		\begin{align*}
+		\orb^+(\orb^+(C)) &= \orb^+\left( \bigcup_{t \in T^+} f^t(C) \right) \\
+			&= \bigcup_{s \in T^+} f^s\left( \bigcup_{t \in T^+} f^t(C) \right) \\
+			&= \bigcup_{s \in T^+} \bigcup_{t \in T^+} f^{s+t}(C) \\
+			&= \bigcup_{t \in T^+} f^t(C) \\
+			&= \orb^+(C).
+		\end{align*}
+
+($C \subseteq D \entao \orb^+(C) \subseteq \orb^+(D)$)
+Para todo $t \in T^+$, $f^t(C) \subseteq f^t(D)$, portanto $\orb^+(C) \subseteq \orb^+(D)$.
+
+($\orb^+(\emptyset)=\emptyset$)
+Segue de $f^t(\emptyset) = \emptyset$ para todo $t \in T^+$.
+
+($\orb^+(\bigcup_{i \in I} C_i) = \bigcup_{i \in I} \orb^+(C_i)$)
+Basta notar que
+		\begin{align*}
+		\orb^+ \left(\bigcup_{i \in I} C_i \right) &= \bigcup_{t \in T^+} f^t\left(\bigcup_{i \in I} C_i \right) = \bigcup_{i \in I}\bigcup_{t \in T^+} f^t(C_i) = \bigcup_{i \in I} \orb^+(C_i).
+		\end{align*}
+
+	\item Segue de
+		\begin{equation*}
+		X = \orb^+(X) = \orb^+(C \cup C^\complement) = \orb^+(C) \cup \orb^+(C^\complement). \qedhere
+		\end{equation*}
+	\end{enumerate}
+\end{proof}
+
+A proposição a seguir dá um significado mais fácil de imaginar para os fechos invariantes.
+
+\begin{proposition}
+Sejam $\Sist=(X,f)$ um sistema dinâmico e $C \subseteq X$.
+	\begin{enumerate}
+	\item O conjunto $\orb^+(C)$ é o conjunto das órbitas positivas dos pontos de $C$:
+		\begin{equation*}
+		\orb^+(C) = \bigcup_{x \in C} \orb^+(x);
+		\end{equation*}
+	\item O conjunto $\orb^-(C)$ é o conjunto dos pontos cujas órbitas positivas passam por $C$:
+		\begin{equation*}
+		\orb^-(C) = \set{x \in X}{\orb^+(x) \cap C \neq \emptyset};
+		\end{equation*}
+%Se $\Sist$ é revertível, então $\orb^-(C)$ é o conjunto das órbitas positivas dos pontos de $C$:
+%		\begin{equation*}
+%		\orb^-(C) = \bigcup_{x \in C} \orb^-(x);
+%		\end{equation*}
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item Para a primeira igualdade, basta notar que
+	\begin{equation*}
+	\orb^+(C) = \bigcup_{t \in T^+} f^t(C) = \bigcup_{t \in T^+} \bigcup_{x \in C} \{f^t(x)\} = \bigcup_{x \in C} \bigcup_{t \in T^+} \{f^t(x)\} = \bigcup_{x \in C} \orb^+(x).
+	\end{equation*}
+
+	\item Para a segunda igualdade, basta notar que
+	\begin{align*}
+	x \in \bigcup_{t \in T^+} f^{-t}(C) &\Leftrightarrow \exists t \in T^+\ x \in f^{-t}(C) \\
+		&\Leftrightarrow \exists t \in T^+\ f^{t}(x) \in C \\
+		&\Leftrightarrow \orb^+(x) \cap C \neq \emptyset.
+	\end{align*}
+	\end{enumerate}
+\end{proof}
+
+Agora, relacionamos os fechos invariantes com conjuntos invariantes.
+
+\begin{proposition}
+Sejam $\Sist=(X,f)$ um sistema dinâmico e $C \subseteq X$.
+	\begin{enumerate}
+	\item $C$ é positivamente invariante se, e somente se, $\orb^+(C) \subseteq C$ (as órbitas positivas dos pontos de $C$ estão em $C$);
+	\item $C$ é negativamente invariante se, e somente se, $\orb^-(C) \subseteq C$ (os pontos cujas órbitas positivas passam por $C$ estão em $C$);
+	\item $C$ é positivamente invariante se, e somente se, $C^\complement$ é negativamente invariante:
+		\begin{equation*}
+		\orb^+(C) \subseteq C \sse \orb^-(C^\complement) \subseteq C^\complement.
+		\end{equation*}
+	\item O menor conjunto positivamente invariante que contém $C$ é $\orb^+(C)$;
+	\item O menor conjunto negativamente invariante que contém $C$ é $\orb^-(C)$.
+	\item $C$ é invariante se, e somente se, para todo $t \in T^+$, $f^{-t}(C)=C$;
+	\item Se $C$ é invariante e, para todo $t \in T^+$, $f^t$ é sobrejetiva, então $f^t(C)=C$;
+	\item Se, para todo $t \in T^+$, $f^t$ é injetiva e $f^t(C)=C$, então $C$ é invariante.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item Segue diretamente da definição.
+
+	\item Análogo ao item anterior.
+
+	\item %Primeiro, notemos que $\emptyset$ e $X$ são invariantes. Suponhamos, assim, que $C$ e $C^\complement$ são não-vazios.
+
+Se $C$ é positivamente invariante, então para todo $t \in T^+$ vale $f^t(C) \subseteq C$, logo $f^{-t}(f^t(C)) \subseteq f^{-t}(C)$. Como $C \subseteq f^{-t}(f^t(C))$, segue que $C \subseteq f^{-t}(C)$. Portanto $f^{-t}(C)^\complement \subseteq C^\complement$. Como $f^{-t}(C)^\complement = f^{-t}(C^\complement)$, segue que $f^{-t}(C^\complement) \subseteq C^\complement$.  Isso significa que $C^\complement$ é negativamente invariante.
+
+Se $C$ é negativamente invariante, então para todo $t \in T^+$ vale $f^{-t}(C) \subseteq C$, logo $C^\complement \subseteq f^{-t}(C)^\complement = f^{-t}(C^\complement)$, portanto $f^t(C^\complement) \subseteq f^t(f^{-t}(C^\complement)) \subseteq C^\complement$. Isso significa que $C^\complement$ é positivamente invariante.
+
+	\item Como $\orb^+(\orb^+(C)) = \orb^+(C)$, ele é positivamente invariante. Para notar que é o menor, suponhamos que $D \subseteq X$ é positivamente invariante e $C \subseteq D$. Então $\orb^+(D) \subseteq D$ e $\orb^+(C) \subseteq \orb^+(D)$, logo $\orb^+(C) \subseteq D$.
+
+	\item Análogo ao item anterior.
+
+	\item ($\Rightarrow$) Como $C$ é positivamente invariante, para todo $t \in T^+$ vale $f^t(C) \subseteq C$, logo $f^{-t}(f^t(C)) \subseteq f^{-t}(C)$. Mas para qualquer função vale que $C \subseteq f^{-t}(f^t(C))$, portanto $C \subseteq f^{-t}(f^t(C)) \subseteq f^{-t}(C)$. Como $C$ é negativamente invariante, $f^{-t}(C) \subseteq C$, o que mostra que $f^{-t}(C)=C$.
+
+($\Leftarrow$) Como para todo $t \in T^+$ vale $f^{-t}(C) = C$, segue que $C$ é negativamente invariante. Também dessa relação segue que $f^t(C) = f^t(f^{-t}(C))$ e, como $f^t(f^{-t}(C) \subseteq C$ para qualquer função, segue que $f^t(C) \subseteq C$, portanto $C$ é positivamente invariante, o que mostra que ele é invariante.
+
+	\item Como, para todo $t \in T^+$, $f^t$ é sobrejetiva, $f^t(f^{-t}(C))=C$. Da invariância negativa de $C$, segue que $f^{-t}(C) \subseteq C$, portanto $f^t(f^{-t}(C)) \subseteq f^t(C)$. Mas então $C \subseteq f^t(C)$. Da invariância positiva de $C$, segue que $f^t(C) \subseteq C$ e, portanto, $f^t(C)=C$.
+
+	\item Como $f^t(C) = C$, segue que $f^{-t}(C) = f^{-t}(f^t(C))$ e, como $f^{-t}(f^t(C)) = C$ para função injetiva, segue que $f^{-t}(C) = C$, portanto $C$ é invariante pela proposição acima. \qedhere
+	\end{enumerate}
+\end{proof}
+
+Essa proposição mostra, basicamente, que invariância positiva quer dizer que órbitas não saem do conjunto e que invariância negativa quer dizer que órbitas não entram no conjunto.
+
+%\begin{proposition}\label{prop:inva.discre}
+%Sejam $\Sist=(X,f)$ um sistema dinâmico e $C \subseteq X$.
+%	\begin{enumerate}
+%	\item Se, para todo $t \in T^+ \cap (0,1]$, $f^t(C) \subseteq C$, então $C$ é positivamente invariante;
+%	\item Se, para todo $t \in T^+ \cap (0,1]$, $f^{-t}(C) \subseteq C$, então $C$ é negativamente invariante.
+%	\end{enumerate}
+%\end{proposition}
+
+No caso de sistemas dinâmicos discretos, pode-se mostrar por indução que invariância positiva e negativa são respectivamente equivalentes a exigir que $f(C) \subseteq C$ e $f\inv(C) \subseteq C$. Além disso, valem mais algumas propriedades.
+
+\begin{proposition}\label{prop:inva.discre}
+Sejam $\Sist=(X,f)$ um sistema dinâmico discreto e $C \subseteq X$.
+	\begin{enumerate}
+	\item Se $f(C) \subseteq C$, então $C$ é positivamente invariante;
+	\item Se $f\inv(C) \subseteq C$, então $C$ é negativamente invariante;
+%	\item $C$ é invariante se, e somente se, $f\inv(C)=C$;
+%	\item Se $f$ é sobrejetiva e $C$ é invariante, então $f(C)=C$;
+%	\item Se $f$ é injetiva e $f(C)=C$, então $C$ é invariante.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item Mostraremos por indução que, para todo $t \in \I^+$, $f^t(C) \subseteq C$. Para $t=0$, temos que $f^0(C) = C \subseteq C$. Agora seja $t \in \I^+_*$ e suponha que $f^{t-1}(C) \subseteq C$. Então, como $f(C) \subseteq C$,
+		\begin{equation*}
+		f^t(C) = f^{t-1}(f(C)) \subseteq f(C) \subseteq C.
+		\end{equation*}
+
+	\item A mesma demonstração vale ao substituir $f^t$ por $f^{-t}$.
+
+%	\item ($\Rightarrow$) Como $C$ é positivamente invariante, vale $f(C) \subseteq C$, logo $f\inv(f(C)) \subseteq f\inv(C)$. Mas para qualquer função vale que $C \subseteq f\inv(f(C))$, portanto $C \subseteq f\inv(f(C)) \subseteq f\inv(C)$. Como $C$ é negativamente invariante, $f\inv(C) \subseteq C$, o que mostra que $f\inv(C)=C$.
+
+%($\Leftarrow$) Como $f\inv(C) = C$, segue da proposição \ref{prop:inva.discre} que $C$ é negativamente invariante. Também dessa relação segue que $f(C) = f(f\inv(C))$ e, como $f(f\inv(C) \subseteq C$ para qualquer função, segue que $f(C) \subseteq C$, portanto $C$ é positivamente invariante, o que mostra que ele é invariante.
+
+%	\item Como $f$ é sobrejetiva, $f(f\inv(C))=C$. Da invariância negativa de $C$, segue que $f\inv(C) \subseteq C$, portanto $f(f\inv(C)) \subseteq f(C)$. Mas então $C \subseteq f(C)$. Da invariância positiva de $C$, segue que $f(C) \subseteq C$ e, portanto, $f(C)=C$.
+
+%	\item Como $f(C) = C$, % segue da proposição \ref{prop:inva.discre} que $C$ é positivamente invariante. Também dessa relação
+%	 segue que $f\inv(C) = f\inv(f(C))$ e, como $f\inv(f(C)) = C$ para função injetiva, segue que $f\inv(C) = C$, portanto $C$ é invariante pela proposição acima.
+	\end{enumerate}
+\end{proof}
+
+%O que é o conjunto $\bigcap_{t \in T^+} f^t(C)$??
+
+\begin{definition}
+Sejam $\Sist=(X,f)$ um sistema dinâmico e $C \subseteq X$. Definem-se
+	\begin{equation*}
+	I^+(C) := \bigcap_{t \in T^+}f^t(C) \qquad\e\qquad I^-(C) := \bigcap_{t \in T^+} f^{-t}(C).
+	\end{equation*}
+\end{definition}
+
+\begin{proposition}
+Seja $\Sist=(X,f)$ um sistema dinâmico.
+	\begin{enumerate}
+	\item O operador $I^-\colon \p(X) \to \p(X)$ é um operador de interior; se $f$ é injetiva, o operador $I^+\colon \p(X) \to \p(X)$ é um operador de interior.
+	\item Se $C$ é positivamente invariante, então $I^+(C)$ é positivamente invariante.
+	\item Se $C$ é negativamente invariante, então $I^-(C)$ é invariante.
+	\end{enumerate}
+também é.
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item Como $C$ é positivamente invariante, para todo $t' \in T^+$ vale que $f^{t'}(C) \subseteq C$, logo $\bigcap_{t=0}^{t'}f^t(C) = f^{t'}(C)$, o que implica
+		\begin{equation*}
+		f^{t'}\left( \bigcap_{t \in T^+} f^t(C) \right) \subseteq \bigcap_{t \in T^+} f^{t+t'}(C) = \bigcap_{t \in T^+} f^t(C).
+		\end{equation*}
+	\item Como $C$ é negativamente invariante, para todo $t' \in T^+$ vale que $f^{-t'}(C) \subseteq C$, logo $\bigcap_{t=0}^{t'}f^{-t}(C) = f^{-t'}(C)$, o que implica
+		\begin{equation*}
+		f^{-t'}\left( \bigcap_{t \in T^+} f^{-t}(C) \right) = \bigcap_{t \in T^+} f^{-(t+t')}(C) = \bigcap_{t \in T^+} f^{-t}(C).
+		\end{equation*}
+	\end{enumerate}
+\end{proof}
+
+
+\begin{definition}
+Um \emph{conjunto invariante mínimo} é um conjunto invariante que não tem subconjuntos invariantes próprios e não vazios.
+\end{definition}
+
+O espaço de fase sempre pode ser particionado em partes invariantes, embora o conjunto dessas partes possa ter qualquer cardinalidade. Para ver que isso é verdade, basta considerar o conjunto de órbitas $\set{\orb(x)}{x \in X}$. Cada órbitas é um conjunto invariante.
+
+Ressaltamos na proprosição a seguir algumas equivalências para um conjunto bem importante na teoria de sistemas dinâmicos.
+
+\begin{proposition}[Núcleo de Recorrência]
+Sejam $\Sist=(X,f)$ um sistema dinâmico discreto e $C \subseteq X$. O limite superior de $\{f^{-t}(C)\}_{t \in \I^+}$ é o conjunto dos pontos cujas órbitas positivas passam infinitamente por $C$:
+		\begin{equation*}
+		\limsup_{t \in \I^+} f^{-t}(C) = \bigcap_{n=0}^\infty\bigcup_{t=n}^\infty f^{-t}(C) = \bigcap_{t \in \I^+} \orb^-(f^{-t}(C)) = \set{x \in X}{\card{\orb^+(x) \cap C} = \card{\N}}.
+		\end{equation*}
+\end{proposition}
+\begin{proof}
+O conjunto $\limsup_{t \in \I^+} f^{-t}(C)$ é o conjunto dos pontos que pertencem a infinitos dos conjuntos $f^{-t}(C)$, ou seja, os pontos cujas órbitas intersecionam $C$ infinitas vezes.
+\end{proof}
+
+\section{Conjugação de sistemas dinâmicos}
+
+\begin{definition}
+Sejam $\Sist_1 = (X_1,f_1)$ e $\Sist_2 = (X_2,f_2)$ sistemas dinâmicos. Uma \emph{semiconjugação} (morfismo de sistemas dinâmicos) de $\Sist_1$ para $\Sist_2$ é uma função sobrejetiva $\phi: X_1 \to X_2$ que satisfaz $\phi \circ f_1 = f_2 \circ \phi$ (o diagrama comuta).
+\begin{figure}
+\centering
+\begin{tikzpicture}[node distance=2.5cm, auto]
+	\node (X) {$X_1$};
+	\node (XX) [right of=X] {$X_1$};
+	\node (Y) [below of=X] {$X_2$};
+	\node (YY) [right of=Y] {$X_2$};
+	\draw[->] (X) to node {$f_1$} (XX);
+	\draw[->] (X) to node [swap] {$\phi$} (Y);
+	\draw[->] (Y) to node [swap] {$f_2$} (YY);
+	\draw[->] (XX) to node {$\phi$} (YY);
+\end{tikzpicture}
+\end{figure}
+\noindent Denota-se $\phi: \Sist_1 \to \Sist_2$. Uma \emph{conjugação} (isomorfismo de sistemas dinâmicos) de $\Sist_1$ para $\Sist_2$ é uma semiconjugação $\phi: \Sist_1 \to \Sist_2$ que é invertível.
+\end{definition}
+
+\begin{figure}
+\centering
+
+
+\begin{tikzpicture}
+\draw plot [smooth cycle] coordinates {(5,0.25) (6,0.35) (6.5, 0.2) (7,0.5) (7,1.65) (6.5,2.75) (5.8,2.75) (5.3,1.45) (4.8,0.85) } node at (6,1.7) {$D'$};
+\path[->] (3.1,1.7) edge [bend left] node[above] {$\varphi$} (5.0,1.7);
+\draw plot [smooth cycle] coordinates {(1.0,.1)(1.5,.2)(2.8,.5)(2.9,1.5)(2.8,2.8)(1.4,2.5)(0.5,0.5)} node at (1.8,1.7) {$D$};
+\end{tikzpicture}
+
+\begin{tikzpicture}
+\draw plot [smooth cycle] coordinates {(1,0)(3.8,0.5)(3.9,1.5)(3.8,2.8)(1.4,2.5)(0.5,0.5)} node at (1.8,1.7) {$D$};
+\end{tikzpicture}
+
+\begin{tikzpicture}
+\draw plot [smooth cycle] coordinates {(0,0)(1,1/4)(3,0)(3,3)(1,3+1/4)(0,2.5)};
+\end{tikzpicture}
+
+
+
+\end{figure}
+
+Sempre que temos uma função sobrejetiva $\phi: X_1 \to X_2$, para todo $y \in X_2$ existe $x \in X_1$ tal que $y=\phi(x)$. Assim podemos induzir a dinâmica de $(X_1,f_1)$ em $X_2$, definindo $f_2(y) := \phi(f_1 (x))$, de modo que a dinâmica $f_2$ é uma função de $X_2$ para $X_2$ e vale $f_2 \circ \phi = \phi \circ f_1$. Isso faz com que os sistemas $(X_1,f_1)$ e $(X_2,f_2)$ sejam semiconjugados.
+
+A partir das propriedade da conjugação, vamos deduzir alguns resultados imediatos. Podemos notar que as funções compostas ${f_1}^n$ e ${f_2}^n$ ainda satisfazem a propriedade comutativa que $f_1$ e $f_2$ satisfazem. Isso basicamente diz que em sistemas discretos, preservar a função $f$ é preservar a ação da dinâmica. Segue a proposição.
+
+\begin{proposition}
+Sejam $(X_1,f_1)$ e $(X_2,f_2)$ sistemas dinâmicos e $\phi: X_1 \to X_2$ uma semiconjugação. Então, para todo natural $n \geq 1$, vale $\phi \circ {f_1}^n = {f_2}^n \circ \phi$ (o diagrama comuta).
+
+\begin{figure}
+\centering
+\begin{tikzpicture}[node distance=2.5cm, auto]
+	\node (X) {$X_1$};
+	\node (XX) [right of=X] {$X_1$};
+	\node (Y) [below of=X] {$X_2$};
+	\node (YY) [right of=Y] {$X_2$};
+	\draw[->] (X) to node {${f_1}^n$} (XX);
+	\draw[->] (X) to node [swap] {$\phi$} (Y);
+	\draw[->] (Y) to node [swap] {${f_2}^n$} (YY);
+	\draw[->] (XX) to node {$\phi$} (YY);
+\end{tikzpicture}
+\end{figure}
+\end{proposition}
+\begin{proof}
+Vamos provar a proposição acima usando indução. Primeiro, notamos que a propriedade vale para $n = 1$ por definição. Agora, supondo que valha $\phi \circ {f_1}^{n-1} = {f_2}^{n-1} \circ \phi$, temos que
+	\begin{align*}
+	\phi \circ {f_1}^n & = \phi \circ ({f_1}^{n-1} \circ {f_1}) \\
+						& = (\phi \circ {f_1}^{n-1}) \circ {f_1} \\
+						& = ({f_2}^{n-1} \circ \phi) \circ {f_1} \\
+						& = {f_2}^{n-1} \circ (\phi \circ {f_1}) \\
+						& = {f_2}^{n-1} \circ ({f_2} \circ \phi) \\
+						& = ({f_2}^{n-1} \circ {f_2}) \circ \phi \\
+						& = {f_2}^n \circ \phi,
+	\end{align*}
+o que conclui a indução.
+	\end{proof}
+
+Ainda, podemos ver que a semiconjugação preserva órbitas periódicas, no sentido em que, se algum elemento do conjunto inicial tem órbita periódica, então sua imagem pela semicojugação terá, também, órbita periódica.
+
+\begin{proposition}[Semiconjugação preserva peridiocidade da órbita.]
+Sejam $(X_1,f_1)$ e $(X_2,f_2)$ sistemas dinâmicos e $\phi: X_1 \to X_2$ uma semiconjugação. Para todo $x \in X$, se $x$ é um ponto $n$-periódico, então $\phi(x)$ é um ponto $n$-periódico. Ainda, o período mínimo de $\phi(x)$ divide o período mínimo de $x$.
+\end{proposition}
+\begin{proof} Seja $x \in X$ tal que $x = {f_1}^n(x)$. Pela propriedade da semiconjugação,
+	\begin{align*}
+	\phi(x) & = \phi({f_1}^n(x)) \\
+      		  	 & = (\phi \circ {f_1}^n)(x) \\
+      		  	 & = ({f_2}^n \circ \phi)(x) \\
+      		  	 & = {f_2}^n(\phi(x)).
+	\end{align*}
+Como $\phi(x)$ é $n$-periódico, segue que seu período mínimo divide $n$.
+\end{proof}
+
+
+\section{Translação em grupos}
+
+\begin{definition}
+Sejam $\bm G$ um grupo e $\alpha \in G$. A \emph{translação à esquerda} por $\alpha$ é a função
+	\begin{align*}
+	\func{E_\alpha}{G}{G}{g}{\alpha g.}
+	\end{align*}
+\end{definition}
+
+\subsection{Translação no toro $1$-dimensional}
+
+\begin{definition}
+Seja $[\alpha] \in \T$. A \emph{rotação} por $[\alpha]$ em $\T^1$ é a função
+	\begin{align*}
+	\func{R_\alpha}{\T^1}{\T^1}{[x]}{[x+\alpha]}.
+	\end{align*}
+Uma \emph{rotação racional} é uma rotação cuja constante $\alpha$ é racional e uma \emph{rotação irracional} é uma rotação cuja constante $\alpha$ é irracional.
+\end{definition}
+
+\begin{proposition}
+A dupla $(\T^1,R_\alpha)$ é um sistema dinâmico discreto revertível para todo $\alpha \in \R$ e
+	\begin{enumerate}
+	\item se $\alpha$ é racional, todos os pontos de $\T^1$ são periódicos;
+	\item se $\alpha$ é irracional, nenhum ponto de $\T^1$ é periódico.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+Por definição a dupla é um sistema dinâmico discreto e, como $R_{-\alpha}={R_\alpha}\inv$, segue que o sistema é invertível.
+	\begin{enumerate}
+	\item Seja $[x] \in \T^1$. Para mostrar que $[x]$ é periódico, devemos achar um natural $n$ tal que ${R_\alpha}^n([x]) = [x]$. A constante $\alpha$ é um número racional e, por isso, pode ser escrita em forma de fração como $\alpha = \frac{p}{q}$, sendo $p$ e $q$ inteiros e $q$ não nulo. Tomando $n = q$, e notando que $q\alpha=p$ é um inteiro, segue que
+	\begin{equation*}
+	{R_\alpha}^q([x]) = [x+q\alpha] = [x]
+	\end{equation*}
+o que mostra que $[x]$ é $q$-periódico.
+
+	\item Seja $[x] \in \T^1$. Podemos provar a afirmação acima por contradição, notando que, se houvesse algum inteiro $n$ tal que ${R_\alpha}^n([x]) = [x]$, como ${R_\alpha}^n([x]) = [x + n\alpha]$, teríamos $n\alpha$ inteiro. Mas como $n$ é inteiro e $\alpha$ irracional, isso é impossível.
+	\qedhere
+	\end{enumerate}
+\end{proof}
+
+\subsection{Translação no toro $d$-dimensional}
+
+Um caso mais geral que a rotação no círculo $\T^1$ é o caso da tranlação no toro $\T^d$. Ela é basicamente uma rotação em cada entrada e é chamada de translação pois é a transformação induzida no espaço quociente $\T^d$ de uma translação em $\R^d$. Ela é também um caso específico de translações em grupos topológicos.
+
+\begin{definition}
+Seja $[\alpha] \in \T^d$. A \emph{translação} por $[\alpha]$ em $\T^d$ é a função
+	\begin{align*}
+	\func{T_\alpha}{\T^d}{\T^d}{[x]}{[x+\alpha].}
+	\end{align*}
+\end{definition}
+
+%\begin{proposition}
+%A dupla $(\T^d,T_\alpha)$ é um sistema dinâmico discreto revertível para todo $\alpha \in \R^d$ e
+%	\begin{enumerate}
+%	\item se $\alpha$ é racional, todos os pontos de $\T^1$ são periódicos;
+%	\item se $\alpha$ é irracional, nenhum ponto de $\T^1$ é periódico.
+%	\end{enumerate}
+%\end{proposition}
+
+\section{Expansão em \ensuremath{\T^1}}
+
+\begin{definition}
+Seja $N \in \I^+$. A \emph{expansão por $N$} em $\T^1$ é a função
+	\begin{align*}
+	\func{E_N}{\T^1}{\T^1}{[x]}{[Nx]}.
+	\end{align*}
+\end{definition}
+
+Note que a função está bem definida porque $N$ é um número inteiro.
+
+
+\section{Deslocamentos simbólicos}
+
+Adotaremos a convenção de que o natural $N \in \N$ é o conjunto dos naturais menores que ele, seguindo a construção de ordinais do Von Neumann. Isso simplificará a notação. Assim temos que $N = \{0,\cdots,N-1\}$. Nesta seção consideraremos duas dinâmicas semelhantes, pois ambas agem em sequências, mas diferentes, pois uma considera sequências unilaterais e outra, bilaterais.
+
+\subsection{Deslocamento unilateral}
+
+Consideremos o conjunto
+	\begin{equation*}
+	N^{\I^+} = \set{(x_i)_{i \in \I^+}}{\forall i \in \I^+ \quad x_i \in N}
+	\end{equation*}
+das \emph{sequências unilaterais} em $N$ símbolos, as funções do tipo
+	\begin{align*}
+	\func{x}{\I^+}{N}{i}{x_i}.
+	\end{align*}
+
+\begin{definition}
+O \emph{deslocamento unilateral} em $N^{\I^+}$ é a função
+	\begin{align*}
+	\func{\sigma}{N^{\I^+}}{N^{\I^+}}{(x_i)_{i \in \I^+}}{(x_{i+1})_{i \in \I^+}.}
+	\end{align*}
+\end{definition}
+
+ Essa dinâmica é conhecida como \emph{deslocamento de Bernoulli} \footnote{\emph{Jacob Bernoulli} (1655 -- 1705), matemático suíço.}. Basicamente, o deslocamento desloca cada entrada de uma sequência $(x_0,x_1,x_2,\ldots)$ à esquerda, levando-a para sequência $(x_1,x_2,x_3,\ldots)$. Claramente essa função não é invertível, logo o sistema dinâmico formado por ela não é invertível. Rassaltamos isso na proposição a seguir.
+
+\begin{proposition}
+A dupla $(N^{\I^+},\sigma)$ é um sistema dinâmico discreto irrevertível.
+\end{proposition}
+
+\begin{proposition}
+Seja $k \in \I^+$. Uma sequência unilateral $(x_i)_{i \in \I^+} \in N^{\I^+}$ é um ponto $k$-periódico de $(N^{\I^+},\sigma)$  se, e somente se, para todo $i \in \I^+$, vale $x_i = x_{i+k}$.
+\end{proposition}
+\begin{proof}
+Se vale $x_i = x_{i+k}$ para todo $i \in \I^+$, a sequência $(x_i)_{i \in \I^+}$ claramente será $k$-periódica, pois
+	\begin{equation*}
+	\sigma^k((x_i)_{i \in \I^+}) = (x_{i+k})_{i \in \I^+} = (x_i)_{i \in \I^+}.
+	\end{equation*}
+
+Por outro lado, se $(x_i)_{i \in \I^+}$ tiver órbita periódica, valerá $\sigma^k((x_i)_{i \in \I^+}) = (x_i)_{i \in \I^+}$ para algum $k$. Nesse caso, teremos que $x_i = x_{i+k}$ para todo $i \in \I^+$.
+\end{proof}
+
+\begin{proposition}
+A função
+	\begin{align*}
+	\func{\phi}{N^{\I^+}}{\T^1}{(x_i)_{i \in \I^+}}{\left[\sum_{i \in \I^+} \frac{x_i}{N^{i+1}}\right]}
+	\end{align*}
+é uma semiconjugação de $(N^{\I^+},\sigma)$ para $(\T^1,E_N)$.
+\end{proposition}
+\begin{proof}
+Seja $(x_i)_{i \in \I^+} \in N^{\I^+}$. Então
+	\begin{align*}
+	\phi \circ \sigma((x_i)_{i \in \I^+}) &= \phi((x_{i+1})_{i \in \I^+}) \\
+			&=\left[\sum_{i \in \I^+} \frac{x_{i+1}}{N^{i+1}}\right] \\
+			&=\left[N\sum_{i \in \I^+} \frac{x_{i+1}}{N^{i+2}}\right] \\
+			&=\left[N \left(\frac{x_0}{N} + \sum_{i \in \I^+_*} \frac{x_{i}}{N^{i+1}}\right)\right] \\
+			&=\left[N \sum_{i \in \I^+} \frac{x_{i}}{N^{i+1}}\right] \\
+			&=E_N \circ \phi((x_i)_{i \in \I^+}).
+	\end{align*}
+Somamos $x_0$ na quarta lilnha pois é um inteiro, não altera a classe de equivalência.
+\end{proof}
+
+Notemos que a função $\phi$ não é uma conjugação porque não é invertível --- existe mais de uma representação $N$-ária para alguns números reais em $[0,1]$, portanto mais de uma sequência em $N^{\I^+}$ que o representa. No entanto, veremos mais à frente que isso não será problema quando considerarmos sistemas dinâmicos de medida, pois o conjunto desses pontos problemáticos terá medida nula e, portanto, a conjugação poderá ser definida. Isso será importante pois significa que os dois sistemas são o mesmo sob a ótica de sistemas dinâmicos de medida.
+
+
+\subsection{Deslocamento bilateral}
+
+Consideremos o conjunto
+	\begin{equation*}
+	N^\I = \set{(x_i)_{i \in \I}}{\forall i \in \I \quad x_i \in N}
+	\end{equation*}
+das \emph{sequências bilaterais} em $N$ símbolos, as funções do tipo
+	\begin{align*}
+	\func{x}{\I}{N}{i}{x_i}.
+	\end{align*}
+
+\begin{definition}
+O \emph{deslocamento bilateral (à esquerda)} em $N^\I$ é a função
+	\begin{align*}
+	\func{\sigma}{N^\I}{N^\I}{(x_i)_{i \in \I}}{(x_{i+1})_{i \in \I}.}
+	\end{align*}
+O \emph{deslocamento bilateral à direita} é $\sigma\inv$.
+\end{definition}
+
+
+\begin{proposition}
+A dupla $(N^\I,\sigma)$ é um sistema dinâmico discreto revertível.
+\end{proposition}
+
+\subsection{Subdeslocamentos}
+
+Os deslocamentos definidos anteriormente são deslocamentos completos, no sentido de que todas as sequências são consideradas no sistema. É possível, porém, selecionar subconjuntos dessas sequências tal que o deslocamento ainda está bem definido nelas. Definimos que cada entrada de uma sequência $(x_i)_{i \in \I} \in N^\I$ tem entradas em $\{0,\ldots,N-1\}$. Esses subconjuntos são escolhidos a partir de uma regra que indica qual entrada de uma sequência pode ser seguida de qual outra entra --- por exemplo, para $N=9$, sequências em que uma entrada $4$ só pode ser segida de uma entrada $2$ ou uma entrada $8$. Para ter toda a informação necessária, essas sequências são definidas a partir de uma \emph{matriz de adjacência}, uma matriz que indica qual entrada pode ser adjacente a qual outra.
+
+\begin{definition}
+Uma \emph{matriz de adjacência} de ordem $N$ é uma matriz $A \in \M_N(\I)$ de entradas $0$ ou $1$ tal que $a_{i,j}=0$ se uma entrada com valor $i$ não pode ser seguida de uma entrada com valor $j$ e $a_{i,j}=1$ se uma entrada de valor $i$ pode ser seguida de uma entrada de valor $j$.
+\end{definition}
+
+\begin{definition}
+Sejam $N \in \I^+_*$ e $A$ uma matriz de adjacência de ordem $N$. O conjunto das sequências de $N^\I$ \emph{admissíveis} por $A$ é o conjunto
+	\begin{equation*}
+	N^\I|_A := \set{(x_i)_{i \in \I}}{\forall i \in \I, a_{x_i,x_{i+1}}=1}.
+	\end{equation*}
+O conjunto das sequências de $N^{\I^+}$ restritas por $A$ é o conjunto
+	\begin{equation*}
+	N^{\I^+}|_A := \set{(x_i)_{i \in {\I^+}}}{\forall i \in {\I^+}, a_{x_i,x_{i+1}}=1}.
+	\end{equation*}
+O \emph{subdeslocamento bilateral} com \emph{matriz de adjacência} $A$ é a função $\sigma|_A := \sigma|_{N^\I|_A}$ e o \emph{subdeslocamento unilateral} com \emph{matriz de adjacência} $A$ é a função $\sigma|_A := \sigma|_{N^{\I^+}|_A}$. Os sistemas $(N^\I|_A,\sigma|_A)$ e $(N^{\I^+}|_A,\sigma|_A)$ são \emph{sistemas de deslocamento parcial} e a matriz $A$ é a \emph{matriz de adjacência} dos sistemas.
+\end{definition}
+
+Esses sistemas também são conhecidos como \emph{cadeias de Markov} \footnote{\emph{Andrei Andreyevich Markov} (1856 -- 1922), matemático russo.}.
+
+\begin{proposition}
+Sejam $N \in \I^+_*$ e $A$ uma matriz de adjacência de ordem $N$. A inclusão $\iota\colon N^\I|_A \to N^\I$ é uma semiconjugação do sistema $(N^\I|_A,\sigma|_A)$ para o sistema $(N^\I|_A,\sigma|_A)$.
+\end{proposition}
+\begin{proof}
+Queremos mostrar que $\iota \circ \sigma|_A = \sigma \circ \iota$. Seja $(x_i)_{i \in \I} \in N^\I|_A$. Então
+	\begin{align*}
+	\iota \circ \sigma|_A ((x_i)_{i \in \I}) &= \iota (\sigma|_A((x_i)_{i \in \I})) \\
+		&= \iota((x_{i+1})_{i \in \I}) \\
+		&= (x_{i+1})_{i \in \I} \\
+		&= \sigma ((x_i)_{i \in \I}) \\
+		&= \sigma (\iota((x_i)_{i \in \I})) \\
+		& =\sigma \circ \iota ((x_i)_{i \in \I}).
+	\end{align*}
+\end{proof}
+
+O mesmo vale para os sistemas unilaterais. A partir da matriz da matriz de adjacência podemos determinar quantos pontos periódicos de um determinado período existem.
+
+\begin{proposition}
+Sejam $p \in \I^+_*$ e $(N^\I|_A,\sigma|_A)$ um sistema de subdeslocamento com matriz de adjacência $A$. A quantidade de pontos $p$-periódicos de $(N^\I|_A,\sigma|_A)$ é $\tr(A^p)$.
+\end{proposition}
+\begin{proof}
+Sabemos que $(x_i)_{i \in \I}$ é $p$-periódico se, e somente se, para todo $i \in \I$ vale $x_i = x_{i+p}$. Sendo assim, procuramos os pontos da forma
+	\begin{equation*}
+	(\ldots,x_{i_0},x_{i_1},\ldots,x_{i_{p-2}},x_{p-1},\ldots)
+	\end{equation*}
+e pportanto devemos achar os vetores $(i_0,\ldots,i_{p-1}) \in N^p$ tais que a sequência de entradas
+	\begin{equation*}
+	i_0 \rightarrow i_1 \rightarrow \cdots i_{p-2} \cdots i_{p-1}
+	\end{equation*}
+é uma sequência permitida pela matriz de adjacência. Isso é equivalente a termos
+	\begin{equation*}
+	\bigtimes_{k=0}^{p-2} a_{i_k,i_{k+1}} = a_{i_0,i_1}a_{i_1,i_2}\cdots a_{i_{p-3},i_{p-2}}a_{i_{p-2},i_{p-1}} = 1,
+	\end{equation*}
+pois esse produto é $1$ se, e somente se todos os fatores são $1$. Assim, a quantidade de pontos periódicos é a soma de todos esses produtos
+	\begin{align*}
+	\abs{\Per_p(\sigma_A)} &= \sum_{(i_0,\ldots,i_{p-1}) \in N^p} \bigtimes_{k=0}^{p-2} a_{i_k,i_{k+1}} \\
+		&= \sum_{i_0=0}^{N-1} \sum_{(i_1,\ldots,i_{p-1}) \in N^{p-1}} \bigtimes_{k=0}^{p-2} a_{i_k,i_{k+1}} \\
+		&= \sum_{i_0=0}^{N-1} (A^p)_{i_0,i_0} = \tr(A^p).
+	\end{align*}
+\end{proof}
+
+\subsection{Itinerários}
+
+\begin{definition}
+Sejam $(X,f)$ um sistema dinâmico discreto, $\mathcal P=(P_i)_{i \in N}$ uma partição finita de $X$ ($N \in \N$) e $x \in X$. O \emph{itinerário} de $x$ com respeito a $\mathcal P$ é a sequência
+%	\begin{equation*}
+%	(\mathcal P\inv(f^i(x)))_{i \in T};
+%	\end{equation*}
+%ou seja, é a sequência
+$(x_t)_{t \in T} \in N^T$ tal que $x_t=k$ se, e somente se, $f^t(x) \in P_k$.
+\end{definition}
+
+\begin{proposition}
+Sejam $(X,f)$ um sistema dinâmico discreto, $\mathcal P=(P_i)_{i \in N}$ uma partição finita de $X$ e $\phi: X \to N^T$ a função que leva $x \in X$ em seu itinerário com respeito a $\mathcal P$. Então
+	\begin{equation*}
+	\phi \circ f = \sigma \circ \phi.
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+Sejam $x \in X$ e $\phi(x) = (x_t)_{t \in T}$. Então $\phi(f(x)) = (x_{t+1})_{t \in T}$, pois $f^t(f(x)) = f^{t+1}(x)$. Portanto
+	\begin{equation*}
+	\phi \circ f(x) = \phi(f(x)) = (x_{t+1})_{t \in T} = \sigma ((x_t)_{t \in T}) = \sigma(\phi(x)) = \sigma \circ \phi (x),
+	\end{equation*}
+o mostra que $\phi \circ f = \sigma \circ \phi$.
+\end{proof}
+
+A imagem $\phi(X)$ é invariante por $\sigma$, pois
+	\begin{equation*}
+	\sigma(\phi(X)) = \phi(f(X)) = \phi(X),
+	\end{equation*}
+de modo que $\phi$ é uma semiconjugação de $X$\(X\) para $\phi(X)$, pois satisfaz a propriedade comutativa e é sobrejetiva por definição. Nem sempre tem-se $\phi$ injetiva, isso depende da partição e do sistema que se estuda. Ainda, nem sempre $\phi$ preserva as estruturas adicionais de $X$. Nas seções posteriores serão apresentadas partições que preservam tais estruturas.
+
+Sejam $(X,f)$ um sistema dinâmico discreto, $\mathcal P=(P_i)_{i \in N}$ uma partição finita de $X$ e $(x_t)_{t \in T} \in N^T$. O conjunto
+	\begin{equation*}
+	\bigcap_{t \in T} f^{-t}(P_{x_t}).
+	\end{equation*}
+é o conjunto dos pontos $x \in X$ tal que $f^t(x) \in P_{x_t}$ para todo $t \in T$, pois $f^t(x) \in P_{x_t}$ se, e somente se, $x \in f^{-t}(P_{x_t})$; ou seja, o conjunto de todos os pontos tais que $\phi(x)=(x_t)_{t \in T}$.
+
+%	\begin{equation*}
+%	f^{-t}(P_k) = C_{t}[k] \cap \phi(X)
+%	\end{equation*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%COMENTÁRIO%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{comment}
+
+\subsection{Ferradura}
+
+Nesta seção, trataremos de um sistema dinâmico conhecido por Ferradura de Smale. O conjunto usado nesta seção será criado a partir de um conjunto $D \subseteq \R^2$. Esse conjunto $D$ é particionado em cinco conjuntos: $D = D_1 \cup D_2 \cup D_3 \cup D_4 \cup D_5$. Os conjuntos $D_2, D_3, D_4$ formam um quadrado unitário $R := D_2 \cup D_3 \cup D_4$ e os conjuntos $D_1,D_5$ são semicírculos de diâmetro unitário, como na figura abaixo.
+
+\begin{figure}[!ht]
+  \centering
+	\begin{tikzpicture}[scale=2]
+
+		\filldraw[fill=black, fill opacity=0.1] (-1,1) arc [start angle=90, end angle=270, radius=1];
+		\filldraw[fill=black, fill opacity=0.2]	(-1,-1) rectangle (-0.333,1);
+		\filldraw[fill=black, fill opacity=0.3]	(-0.333,-1) rectangle (0.333,1);
+		\filldraw[fill=black, fill opacity=0.4]	(0.333,-1) rectangle (1,1);
+		\filldraw[fill=black, fill opacity=0.5]	(1,-1) arc [start angle=-90, end angle=90, radius=1];
+
+		\foreach \x/\xtext in {-1.5/D_1,-0.666/D_2,0/D_3,0.666/D_4,1.5/D_5}
+		\draw (\x cm,0pt) -- (\x cm,0pt) node {$\xtext$};
+
+		\end{tikzpicture}
+  \caption{O conjunto $D = D_1 \cup R \cup D_5$}
+\end{figure}
+
+Associamos ao conjunto $D$ o endomorfismo diferenciável $f: D \to D$ que estica e entorta o conjunto $D$ nele mesmo, como na figura a seguir.
+
+\begin{figure}[!ht]
+  \centering
+	\begin{tikzpicture}[scale=2]
+		\draw (-1,-1) rectangle (1,1);
+		\draw (-1,1) arc [start angle=90, end angle=270, radius=1];
+		\draw (1,-1) arc [start angle=-90, end angle=90, radius=1];
+
+		\filldraw[fill=black, fill opacity=0.1] (1.2,0.3) arc [start angle=-90, end angle=90, radius=0.2];
+		\filldraw[fill=black, fill opacity=0.2] (1.2,0.3) rectangle (-1.2,0.7);
+		\filldraw[fill=black, fill opacity=0.3] (-1.2,0.7) arc [start angle=90, end angle=270, radius=0.7] ;
+		\filldraw[fill=white, fill opacity=1] (-1.2,0.3) arc [start angle=90, end angle=270, radius=0.3];
+		\draw[draw=white] (-1.2,0.3) -- (-1.2,-0.3);
+		\filldraw[fill=black, fill opacity=0.4] (1.2,-0.3) rectangle (-1.2,-0.7);
+		\filldraw[fill=black, fill opacity=0.5] (1.2,-0.7) arc [start angle=-90, end angle=90, radius=0.2];
+
+		\draw (1.3,-0.4) node {{\tiny $\bullet$}};
+		\draw (1.3,-0.35) node[anchor=south] {{$p$}};
+
+		\end{tikzpicture}
+  \caption{A imagem de $D$ sob o endomorfismo $f$}
+\end{figure}
+
+Assuma que $f$ estica $D_2 \cup D_4$ uniformemente na direção horizontal por um fator $\med > 2$ e contrai uniformemente $D_2 \cup D_4$ na direção vertical por um fator $\lambda < \frac{1}{2}$. Ainda, note que, pelo teorema do ponto fixo de Brower, existe um ponto fixo $p \in f(D_5)$, pois $f(D_5) \in D_5$.
+
+Queremos estudar esse sistema usando uma conjugação com o deslocamento simbólico. Vamos definir os seguintes conjuntos:
+	\begin{equation*}
+	R_0 := f(D_2) \cap R \qquad \qquad R_1 := f(D_4) \cap R.
+	\end{equation*}
+
+Note que $f(R) \cap R = R_0 \cup R_1$. A partir desses conjuntos, vamos definir uma sequência de conjuntos da mesma forma. Assim como $f(R) \cap R$ consiste em dois retângulos, que nomeamos $R_0$ e $R_1$, o conjunto $f^2(R) \cap f(R) \cap R = f^2(R) \cap R$ consiste em quatro retângulos que nomearemos $R_{00}, R_{01}, R_{10}$ e $R_{11}$. Vale notar que a altura dos retângulos $R_0$ e $R_1$ é $\lambda$ e a dos retângulos $R_{00}, R_{01}, R_{10}$ e $R_{11}$ é $\lambda^2$.
+
+\begin{figure}[!ht]
+\centering
+	\begin{tikzpicture}[scale=3]
+
+	\draw (-1,-1) rectangle (1,1);
+	\filldraw[fill=black, fill opacity=0.2] (-1,0.3) rectangle (1,0.7);
+	\filldraw[fill=black, fill opacity=0.2] (-1,-0.3) rectangle (1,-0.7);
+
+	\filldraw[fill=black, fill opacity=0.2] (-1,0.62) rectangle (1,0.78);
+	\filldraw[fill=black, fill opacity=0.2] (-1,0.38) rectangle (1,0.22);
+	\filldraw[fill=black, fill opacity=0.2] (-1,-0.62) rectangle (1,-0.78);
+	\filldraw[fill=black, fill opacity=0.2] (-1,-0.38) rectangle (1,-0.22);
+
+
+	\draw (-1,0.5) node[anchor=east] {{$R_0$}};
+	\draw (-1,-0.5) node[anchor=east] {{$R_1$}};
+
+	\draw (1,0.65) node[anchor=west] {{$R_{01}$}};
+	\draw (1,0.35) node[anchor=west] {{$R_{00}$}};
+	\draw (1,-0.35) node[anchor=west] {{$R_{10}$}};
+	\draw (1,-0.65) node[anchor=west] {{$R_{11}$}};
+
+	\end{tikzpicture}
+	\caption{O quadrado $R$ e conjuntos $R_\omega$ horizontais usados na conjugação}
+\end{figure}
+
+De modo geral, para qualquer sequência finita $\omega = (\omega_0,\omega_1, \ldots, \omega_n) \in 2^{n+1}$ de zeros e uns, definimos
+	\begin{equation*}
+	R_\omega := \bigcap_{i=0}^n f^i(R_{\omega_i}) = R_{\omega_0} \cap f(R_{\omega_1})  \cap f^2(R_{\omega_2}) \cap \cdots \cap f^n(R_{\omega_n}),
+	\end{equation*}
+que será um retângulo horizontal de altura $\lambda^n$ e $f^n(R) \cap R$ será a união dos $2^n$ possíveis retângulos dessa forma. Para uma sequência unilateral $\omega = (\omega_i)_{i \in \I^+} \in 2^{\I^+}$, o retângulo $R_\omega$ é definido como
+	\begin{equation*}
+	R_\omega := \bigcap_{i \in \I^+} f^i(R_{\omega_i}).
+	\end{equation*}
+
+Construiremos, de modo semelhante, retângulos verticais a parir da função inversa $f^{-1}$. Note que $f^{-1} (R_0) = f^{-1} (R) \cap D_2$ e $f^{-1} (R_1) = f^{-1} (R) \cap D_4$ são retângulos verticais de largura $\med^{-1}$. Assim, para uma sequência finita $\omega = (\omega_1, \ldots, \omega_n) \in 2^n$ de zeros e uns, definimos
+	\begin{equation*}
+	R'_\omega := \bigcap_{i=1}^n f^{-i}(R_{\omega_i}) = f^{-1}(R_{\omega_1}) \cap f^{-2}(R_{\omega_2}) \cap \cdots \cap f^{-n}(R_{\omega_n}),
+	\end{equation*}
+que será um retângulo vertical de largura $\med^{-n}$ e $f^{-n}(R) \cap R$ será a união dos $2^n$ possíveis retângulos dessa forma. Para uma sequência unilateral $\omega = (\omega)_{i \in \I^+_*} \in 2^{\I^+_*}$, definimos
+	\begin{equation*}
+	R'_\omega := \bigcap_{i \in \I^+_*} f^{-i}(R_{\omega_i}).
+	\end{equation*}
+
+\begin{definition}
+A \textit{ferradura} é o conjunto $F$ definido como
+	\begin{equation*}
+	F := \bigcap_{i \in \I} f^i(R).
+	\end{equation*}
+\end{definition}
+
+Lembrando das definições dos retângulos no começo da seção, podemos perceber que $F$ é a união de todos os conjuntos $R_\omega \cap R'_\omega$, com $\omega$ variando em $2^\I$.
+
+\begin{definition}
+A conjugação $\phi$ do sistema da ferradura $(H,f)$ para o deslocamento bilateral $(2^\I,\sigma\inv)$ é definida como
+	\begin{align*}
+	\func{\phi}{F}{2^\I}{x}{(x_i)_{i \in \I}}
+	\end{align*}
+tal que $x_i = k$ se $f^i(x) \in R_k$.
+\end{definition}
+
+\begin{proposition}
+A função $\phi$ é uma conjugação do sistema $(F,f)$ para o sistema $(2^\I,\sigma\inv)$.
+\end{proposition}
+\begin{proof}
+Primeiramente, vamos demonstrar que a função $\phi$ é bijetiva. Para mostrar a sobrejetividade, consideremos $(x_i)_{i \in \I} \in 2^\I$. Definamos as sequências positiva e negativa de $(x_i)$ como as sequências unilaterais
+	\begin{equation*}
+	(x_i)^+ := (x_0,x_1,\ldots) \e (x_i)^- := (x_{-1},x_{-2},...).
+	\end{equation*}
+
+Consideremos os retângulos horizontais $R_{x_0},  R_{(x_0,x_1)}, R_{(x_0,x_1,x_2)}, \ldots \ $. Esses retâgulos estão cada um contido no anterior, $R_{x_0} \supset  R_{(x_0,x_1)} \supset R_{(x_0,x_1,x_2)} \supset \ldots \ $. Se consideramos suas interseções com alguma reta vertical em $R$, temos intervalos encaixados $I_{x_0}, I_{(x_0,x_1)}, I_{(x_0, x_1, x_2)}, \ldots$, respectivamente, que são intervalos fechados e satisfazem $I_{x_0} \supset I_{(x_0,x_1)} \supset I_{(x_0, x_1, x_2)} \supset \ldots \ $. Portanto, pelo teorema dos intervalos encaixados, concluímos que a interseção desses intervalos é não vazia: $I_{x_0} \cap I_{(x_0,x_1)} \cap I_{(x_0, x_1, x_2)} \cap \ldots \neq \emptyset$. Ainda, podemos concluir que existe um único elemento pertencente a essa interseção, pois o comprimento de cadaend intervalo é a altura de seu respectivo retângulo e, portanto, diminui geometricamente por um fator de $\lambda < 1$, tal que o comprimento final da interseção é 0. Como esse argumento vale para qualquer reta vertical em $R$, concluímos que $R_{(x_n)^+} = \bigcap_{i \in \N} f^i(R_{x_i})$, que é o conjunto de todos esses pontos, é uma reta horizontal em $R$. Da mesma forma, consideramos os retângulos verticais $R'_{x_{-1}},  R'_{(x_{-1},x_{-2})}, R'_{(x_{-1},x_{-2},x_{-3})}, \ldots \ $. Suas interseções com uma reta horizontal em $R$ são intervalos encaixados $I'_{x_{-1}}, I'_{(x_{-1},x_{-2})}, I'_{(x_{-1}, x_{-2}, x_{-3})}, \ldots$, respectivamente, que são intervalos fechados e e satisfazem $I'_{x_{-1}} \supset I'_{(x_{-1},x_{-2})}  \supset I'_{(x_{-1}, x_{-2}, x_{-3})} \supset \ldots \ $. Pelo teorema dos intervalos encaixados, concluímos que a interseção desses intervalos é não vazia e, como anteriormente, como o comprimento de cada intervalo é a largura de seu respectivo retângulo e, portanto, diminui geometricamente por um fator de $\med^{-1} < 1$, a interseção desses intervalos terá um único elemento. Novamente, esse argumento vale para qualquer reta horizontal em $R$, e concluímos que $R'_{(x_n)^-} = \bigcap_{i \in \N \setminus \{0\}} f^{-i}(R_{x_{-i}})$, o conjunto de todos esses pontos, é uma reta vertical em $R$. Por fim, notamos que as retas horizontal e vertical definidas acima se tocam em um único ponto $x$. Isso que dizer que $R_{(x_n)^+} \cap R'_{(x_n)^-} = \{x\}$. Portanto, por construção, vale que $f^n(x) \in R_{x_n}$ para todo inteiro $n$ e, assim, concluímos que $\phi(x) = (x_i)_{i \in \I}$. Isso prova a sobrejetividade.
+
+Para mostrar a injetividade, consideremos dois elementos $a,b \in F$ e sejam suas imagens $\phi(a) = (a_n)_{n \in \I}$ e $\phi(b) = (b_n)_{n \in \I}$. Suponhamos que $(a_n)_{n \in \I} = (b_n)_{n \in \I}$. Nesse caso, sabemos que $R_{(a_n)_{n \in \I}} = R_{(b_n)_{n \in \I}}$ e que, portanto, $a$ e $b$ pentencem a $R_{(a_n)_{n \in \I}}$. Mas foi demonstrado acima que, dado $\omega \in 2^\I$, o conjunto $R_\omega$ tem somente um elemento, o que implica que $a=b$.
+
+Vamos agora mostrar que vale a relação comutativa $\phi \circ f = \sigma \circ \phi$. Seja $x \in F$ e $\phi(x) = (x_n)_{n \in \I}$. Nesse caso, sabemos que $x \in R_{(x_n)_{n \in \I}}$. Aplicando $f$ a $R_{(x_n)}$, temos
+	\begin{align*}
+	f(R_{(x_n)_{n \in \I}}) &= f\left( \bigcap_{i \in \I}f^i(R_{x_i})\right) \\
+				&= \bigcap_{i \in \I}f^{i+1}(R_{x_i}) \\
+				&= \bigcap_{i \in \I}f^i(R_{x_{i-1}}) \\
+				&= R_{(x_{n-1})_{n \in \I}}.
+	\end{align*}
+Mas isso implica que $f(x) \in R_{(x_{n-1})_{n \in \I}}$ e, portanto, pela bijetividade de $\phi$, temos $\phi(f(x)) = (x_{n-1})_{n \in \I}$. Por outro lado, como $\phi(x) = (x_n)_{n \in \I}$, temos $\sigma(\phi(x)) = (x_{n-1})_{n \in \I}$. Logo $\phi \circ f = \sigma \circ \phi$.
+\end{proof}
+
+\end{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%COMENTÁRIO%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Automorfismos hiperbólicos em \ensuremath{\T^2}}
+
+Após o estudo de duas dinâmicas envolvendo o círculo, a dinâmica de rotação na  e a de expansão, voltamos nossa atenção nesta seção a um novo objeto geométrico: o toro. O sistema dinâmico a ser estudado nesta seção tem como conjunto o toro $\T^2$, descrito acima, e a dinâmica que age nele é chamada de automorfismo hiperbólico. Essa função é dada por uma matriz de dimensão $2 \times 2$ com algumas características específicas. Como a próxima definição dependente muito da utilização de matrizes, convém definir algumas coisas sobre elas antes de abordarmos a dinâmica no toro. Denotaremos uma matriz sempre com uma letra maiúscula e seus elementos com a respectiva letra minúscula acompanhados dos índices; escrevemos $A = [a_{i,j}]$. A dimensão de uma matriz será explicitada somente quando necessário e será simplificada para matrizes quadradas, como em $A_{2x2}=A_{2}$. Denotaremos o determinante de uma matriz $A$ por $|A|$ ou $\det(A)$ e sua matriz inversa por $A^{-1}$. Convenções esclarecidas, definimos o automorfismo.
+
+\begin{definition}
+Seja $A \in \SL_2(\I)$ uma matriz cujos autovalors têm valor absoluto não unitário. O \textit{automorfismo hiperbólico} no toro é definido a partir de $A$ como
+	\begin{align*}
+	\func{[A]}{\T^2}{\T^2}{[x]}{[Ax]}.
+	\end{align*}
+\end{definition}
+
+Para justificar a nomenclatura dessa classe de funções como automorfismos hiperbólicos, devemos demonstrar algumas propriedades tanto da matriz $A$ como da função $[A]$. A matriz é dada por
+	\begin{equation*}
+	A = \begin{bmatrix}
+		a_{11} & a_{12} \\
+		a_{21} & a_{22}
+		\end{bmatrix}
+	\end{equation*}
+As entradas devem ser inteiras para que a operação $[A](x)$ esteja bem definida no toro. Isso ocorre pois, para todo $y \in [x]$, temos $y = x + k$, com $k \in \I^2$, e segue que
+	\begin{equation*}
+	[Ay] = [A(x+k)] = [Ax + Ak] = [Ak],
+	\end{equation*}
+pois $Ak \in \I^2$.
+
+Devemos justificar por que essa função é um automorfismo. Claramente, a função $[A]$ é um endomorfismo por ter como domínio e contradomínio o mesmo conjunto. Para ser um automorfismo, deve ser também um isomorfismo. Isso ocorre porque o determinante da matriz $A$ é igual a 1, o que faz com que sua matriz inversa
+	\begin{equation*}
+	A^{-1} = \begin{bmatrix}
+		a_{22} & -a_{12} \\
+		-a_{21} & a_{11}
+		\end{bmatrix}
+	\end{equation*}
+seja também uma matriz com entradas inteiras, determinante unitário e autovalores distintos, e a função inversa $L_{A^{-1}} := [A^{-1}x]$ esteja bem definida no toro. O automorfismo $[A]$ recebe o nome de hiperbólico porque matrizes cujos autovalores têm valor absoluto diferente de 1 recebem esse nome. Vale notar, por fim, que para todo inteiro $k$, vale
+	\begin{equation*}
+	[A]^k = [A^k].
+	\end{equation*}
+
+A partir da definição da matriz $A$, podemos deduzir algumas características imediatas dos autovalores, autovetores e determinante da matriz.
+
+\begin{proposition}
+Seja $A \in \SL_2(\I)$ uma matriz cujos autovalors têm valor absoluto não unitário. Então
+	\begin{enumerate}
+	\item Os autovalores de $A$ são
+		\begin{align*}
+		\lambda_+ &:= \frac{1}{2}\left(a_{11}+a_{22} + \sqrt{(a_{11}+a_{22})^2 - 4}\right) \\
+		\lambda_- &:= \frac{1}{2}\left(a_{11}+a_{22} - \sqrt{(a_{11}+a_{22})^2 - 4}\right)
+		\end{align*}
+e as entradas de $A$ satisfazem $a_{11}+a_{22} \neq \pm 2$, $a_{12} \neq 0$ e $a_{21} \neq 0$.
+	\item Os autovalores de $\lambda_+$ e $\lambda_-$ são irracionais;
+	\item Os autovetores de $A$ são
+	\begin{align*}
+	v_{\lambda_+} &:= \left(1, \frac{\lambda_+ -a_{11}}{a_{12}}\right) \\
+	 v_{\lambda_-} &:= \left(1, \frac{\lambda_- -a_{11}}{a_{12}}\right) .
+	\end{align*}
+	\end{enumerate}
+
+
+	\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item Primeiro, notemos que o polinômio característico de $A$ será
+	\begin{equation*}
+	\chi_A(\lambda) = \lambda^2 -(a_{11}+a_{22})\lambda+1.
+	\end{equation*}
+Assim, isolando $\lambda$ pela fórmula quadrática, obtemos $\lambda_+$ e $\lambda_-$ como no enunciado. Para termos $\lambda_+ \neq \lambda_-$, devemos ter $\sqrt{(a_{11}+a_{22})^2 - 4} \neq 0$, o que implica $a_{11}+a_{22} \neq \pm 2$. Por fim, se $a_{12} = 0$ ou $a_{21} = 0$, temos $a_{12}a_{21} = 0$, o que implica $\det A = a_{11}a_{22} = 1$. Teríamos, portanto, $a_{22} = \frac{1}{a_{11}}$, mas como todas entradas são inteiras, isso implicaria $a_{11} = a_{22} = \pm 1$, e teríamos a contradição $a_{11} + a_{22} = \pm 2$.
+
+	\item Vamos demonstrar o lema por absurdo. Primeiramente notamos que os autovalores de $A$ devem ser reais pois, caso contrário, seriam complexos conjugados. Então seu produto seria $\lambda_+ \lambda_- = |\lambda_+|^2 = |\lambda_-|^2 = \pm 1$. Mas isso é absurdo, pois os módulos dos autovalores são diferentes de $1$. Consideremos o autovalor $\lambda_{+}$ e suponhamos que ele é um número racional. Ao isolar a raiz na expressão de $\lambda_{+}$ obtemos
+	\begin{equation*}
+	\sqrt{(a_{11}+a_{22})^2 - 4} = 2\lambda_{+}-(a_{11}+a_{22}).
+	\end{equation*}
+Mas $(a_{11}+a_{22})^2 - 4$ é inteiro e sabemos que a raiz de um número inteiro é inteira ou irracional. Devemos ter $2\lambda_{+}-(a_{11}+a_{22})$ inteiro, portanto. Fazendo $x = a_{11}+a_{22}$ e $y = 2\lambda_{+}-(a_{11}+a_{22})$, devemos ter $x$ e $y$ inteiros e, rearrumando a equação,
+	\begin{equation*}
+	x^2 - y^2 = 4.
+	\end{equation*}
+De fato, para achar uma solução inteira da equação acima, notamos que $x^2 - y^2 = (x+y)(x-y)$ e temos três opções, já que $4=2 \cdot 2 = 4 \cdot 1$. A primeira é $x+y = 2$ e $x-y = 2$. Isso implica $x+y = x-y$, que implica $y=0$ e, por fim, $a_{11}+a_{22} = x = 2$, o que contradiz a proposição \ref{prop:autovalores.A}. As outras duas opções são $x+y = 4$ e $x-y = 1$ ou $x+y = 1$ e $x-y = 4$. Ambas, no entanto, implicam $x = \frac{5}{2}$, o que é um absurdo porque $x = a_{11}+a_{22}$ é um número inteiro. Assim, concluímos que o autovalor $\lambda_{+}$ é irracional. Como $\lambda_- = \frac{1}{\lambda_+}$, ambos autovalores são ambos irracionais.
+
+	\item Para calcular os autovalores de $A$, devemos resolver o sistema de equações $(A-\lambda I)v = 0$, em que $\lambda$ representa qualquer um dos dois autovalores. De fato,
+	\begin{equation*}
+		(A-\lambda I) = \begin{bmatrix}
+		a_{11} - \lambda & a_{12} \\
+		a_{21} & a_{22} - \lambda
+		\end{bmatrix} \text{.}
+		\end{equation*}
+
+Notemos que $a_{11} \neq \lambda$, pois $a_{11}$ é um inteiro e os autovalores de $A$ são irracionais. Assim, concluímos que $a_{11} \neq \lambda$, seja $\lambda = \lambda_{+}$ ou $\lambda = \lambda_{-}$. Podemos, portanto, resolver o sistema inicial $(A-\lambda I)v = 0$ usando a matriz $M$ a seguir, obtida a partir da matriz $(A-\lambda I)$ ao se dividir a primeira linha por $a_{11}-\lambda$ e subtraí-la, multiplicada por $a_{21}$, da segunda linha. Nota-se que, ao se dar o trabalho de calcular o descrito anteriormente, a expressão que aparece na segunda entrada da linha debaixo da matriz $M$ vale $0$, pois o numerador é o determinante de $(A-\lambda I)$.
+	\begin{equation*}
+		M = \begin{bmatrix}
+		1 & \frac{a_{12}}{a_{11}-\lambda} \\
+		0 & 0
+		\end{bmatrix} \text{.}
+		\end{equation*}
+
+Ao resolvermos $Mv = 0$ para $v = (x,y)$, obtemos a expressão $x + \frac{a_{12}}{a_{11}-\lambda}y = 0$. Por fim, notemos que $a_{12} \neq 0$, e temos $y = \frac{\lambda-a_{11}}{a_{12}}x$. Tomando $x = 1$, resultam os autoveotres como no enunciado.
+	\end{enumerate}
+\end{proof}
+
+\begin{definition}
+Um \textit{ponto racional} de $\T^2$ é um ponto $[r] \in \T^2$ tal que $r \in \Q^2$.
+\end{definition}
+De fato, esses pontos estão bem definidos pois, para todo $s \in [r]$, temos $s = r + m$, com $m \in \I^2$. Logo temos $y \in \Q^2$, já que a soma de um racional com um inteiro ainda é racional.
+
+\begin{proposition}
+O conjunto $Per([A])$ é o conjunto dos pontos racionais de $\T^2$.
+\end{proposition}
+\begin{proof}
+Seja $r$ um ponto racional de $\T^2$ da forma $r := [(\frac{a}{k}, \frac{b}{k})]$, em que $a$, $b$ e $k$ são naturais, $k$ não nulo. Notemos que, ao aplicarmos $[A]$ em $r$, temos
+	\begin{equation*}
+	[A](r) = \left[ \left(\frac{(a_{11}a + a_{12}b)}{k}, \frac{(a_{21}a + a_{22}b)}{k} \right) \right] \text{,}
+	\end{equation*}
+que é da mesma forma que $r$, pois $(a_{11}a + a_{12}b)$ e $(a_{21}a + a_{22}b)$ são inteiros. Assim concluímos que pontos da forma $[(\frac{a}{k}, \frac{b}{k})]$ continuam dessa forma após aplicarmos $[A]$ e, de fato, $[A]$ simplesmente permuta pontos dessa forma. Como, para termos classes de equivalência diferentes, há $k$ escolhas de valores tanto para $a$ como para $b$, existem $k^2$ pontos do toro dessa forma. Pelo princípio das gavetas, deve haver inteiros $i$ e $j$ tais que $[A]^i(r) = [A]^j(r)$ e $|i-j| \leq k^2$. Sem perda de generalidade, supomos $j \geq i$ e, aplicando $[A]^{-i}$ ao dois lados dessa igualdade, temos $r = [A]^{j-i}(r)$; ou seja, $r$ tem órbita periódica de período menor ou igual a $k^2$.
+\end{proof}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%COMENTÁRIO%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{comment}
+
+
+\begin{proposition}
+A $n$-ésima potência da matriz $A$ é dada por
+	\begin{equation*}
+	A^n =
+		\begin{bmatrix}
+		a_{11} \cdot \alpha_n - \alpha_{n-1} & a_{12} \cdot \alpha_n \\
+		a_{21} \cdot \alpha_n & a_{22} \cdot \alpha_n - \alpha_{n-1}
+			\end{bmatrix}
+		\end{equation*}
+em que $\lambda_+$ e $\lambda_-$ são os autovalores de $A$ e
+	\begin{equation*}
+		\alpha_n := \frac{(\lambda_+)^n - (\lambda_-)^n}{(\lambda_+) - (\lambda_-)}.
+		\end{equation*}
+	\end{proposition}
+\begin{proof}
+	Primeiramente, notamos que $\alpha_n$ satisfaz a relação de recorrência
+	\begin{equation*}
+		\alpha_{n+1} = (a_{11}+a_{22})\alpha_n - \alpha_{n-1}.
+		\end{equation*}
+De fato, como os autovalores de $A$ são raízes do polinômio $\lambda^2 -(a_{11}+a_{22})\lambda + 1$, temos
+	\begin{align*}
+		\alpha_{n+1} &= \frac{(\lambda_+)^{n+1} - (\lambda_-)^{n+1}}{(\lambda_+) - (\lambda_-)} = \frac{(\lambda_+)^{n-1}(\lambda_+)^2 - (\lambda_-)^{n-1}(\lambda_-)^2}{(\lambda_+) - (\lambda_-)}\\
+				 	&= \frac{(\lambda_+)^{n-1}((a_{11}+a_{22})\lambda_+ - 1) - (\lambda_-)^{n-1}((a_{11}+a_{22})\lambda_- - 1)}{(\lambda_+) - (\lambda_-)}\\
+					&= (a_{11}+a_{22})\frac{(\lambda_+)^n - (\lambda_-)^n}{(\lambda_+) - (\lambda_-)} - \frac{(\lambda_+)^{n-1} - (\lambda_-)^{n-1}}{(\lambda_+) - (\lambda_-)}\\
+					&= (a_{11}+a_{22})\alpha_n - \alpha_{n-1}.
+		\end{align*}
+
+	Os autovetores de $A$ são dados por
+	\begin{equation*}
+		v_{\lambda_{+}} = \left(1, \frac{\lambda_{+}-a_{11}}{a_{12}} \right) \text{\ \ e\ \ } v_{\lambda_{-}} = \left(1, \frac{\lambda_{-}-a_{11}}{a_{12}} \right) \text{.}
+		\end{equation*}
+Como $\lambda_+ \neq \lambda_-$, eles são linearmente independentes. Isso garante que a matriz $A$ pode ser escrita como conjugada de uma matriz diagonal, como na fórmula $A = PDP^{-1}$. As matrizes $D$ e $P$ são dadas por
+	\begin{align*}
+		D =
+			\begin{bmatrix}
+				\lambda_+ & 0\\
+				0 & \lambda_-
+				\end{bmatrix}
+		&& \text{e} &&
+		P =
+			\begin{bmatrix}
+				1 & 1\\
+				\frac{\lambda_+ - a_{11}}{a_{12}} & \frac{\lambda_- - a_{11}}{a_{12}}
+				\end{bmatrix}.
+		\end{align*}
+Invertendo $P$, temos
+	\begin{equation*}
+		P^{-1} =
+			\begin{bmatrix}
+				\frac{\lambda_- - a_{11}}{\lambda_- - \lambda_+} & -a_{12}\\
+				-\frac{\lambda_+ - a_{11}}{\lambda_- - \lambda_+} & a_{12}
+				\end{bmatrix}.
+		\end{equation*}
+Assim, calculando $A^n$, temos que
+	\begin{equation*}
+		A^n = (PDP^{-1})^n = PD^nP^{-1},
+		\end{equation*}
+pois os fatores $P$ e $P^{-1}$ se calcelam no produto. Logo, temos
+	\begin{align*}
+		A^n &=
+			\begin{bmatrix}
+				1 & 1\\
+				\frac{\lambda_+ - a_{11}}{a_{12}} & \frac{\lambda_- - a_{11}}{a_{12}}
+				\end{bmatrix}
+			\begin{bmatrix}
+				(\lambda_+)^n & 0\\
+				0 & (\lambda_-)^n
+				\end{bmatrix}
+			\begin{bmatrix}
+				\frac{\lambda_- - a_{11}}{\lambda_- - \lambda_+} & -a_{12}\\
+				-\frac{\lambda_+ - a_{11}}{\lambda_- - \lambda_+} & a_{12}
+				\end{bmatrix}\\
+			&=
+			\begin{bmatrix}
+				1 & 1\\
+				\frac{\lambda_+ - a_{11}}{a_{12}} & \frac{\lambda_- - a_{11}}{a_{12}}
+				\end{bmatrix}
+			\begin{bmatrix}
+				(\lambda_+)^n\frac{\lambda_- - a_{11}}{\lambda_- - \lambda_+} & -a_{12}(\lambda_+)^n\\
+				-(\lambda_-)^n\frac{\lambda_+ - a_{11}}{\lambda_- - \lambda_+} & a_{12}(\lambda_-)^n
+				\end{bmatrix}\\
+			&=
+			\begin{bmatrix}
+				\frac{(\lambda_+)^n(\lambda_- - a_{11})-(\lambda_-)^n(\lambda+-a_{11})}{\lambda_- - \lambda_+} & -a_{12}((\lambda_+)^n - (\lambda_-)^n)\\
+				\frac{(\lambda_+ - a_{11})(\lambda_- - a_{11})((\lambda_+)^n - (\lambda_-)^n)}{a_{12}(\lambda_- - \lambda_+)} & -						\frac{(\lambda_+)^n(\lambda_+ - a_{11})-(\lambda_-)^n(\lambda_ - a_{11})}{\lambda_- - \lambda_+}
+				\end{bmatrix}.
+		\end{align*}
+Notando que
+	\begin{align*}
+		(\lambda_+ - a_{11})(\lambda_- - a_{11})
+		&= \lambda_+\lambda_- - 2a_{11}(\lambda_+ + \lambda_-) + a_{11}^2\\
+		&= 1 - a_{11}(a_{11}+a_{22}) + a_{11}^2\\
+		&= 1 - a_{11}(a_{11}+a_{22}) + a_{11}^2\\
+		&= -a_{12}a_{21}
+		\end{align*}
+e que
+	\begin{equation*}
+		\alpha_{n+1} -a_{11}\alpha_n = a_{22}\alpha_n - \alpha_{n-1},
+		\end{equation*}
+concluímos que
+	\begin{equation*}
+		A^n =
+			\begin{bmatrix}
+				a_{11} \cdot \alpha_n - \alpha_{n-1} & a_{12} \cdot \alpha_n \\
+				a_{21} \cdot \alpha_n & a_{22} \cdot \alpha_n - \alpha_{n-1}
+				\end{bmatrix}.
+		\end{equation*}
+	\end{proof}
+
+\begin{proposition}
+	O determinante de $A^n - I$ é $\det(A^n - I) = 2 - (\lambda_+)^n - (\lambda_-)^n$.
+	\end{proposition}
+\begin{proof}
+	Vamos calcular $\det(A^n - I)$.
+	\begin{align*}
+	\det(A^n - I)
+		&=
+		\begin{vmatrix}
+			a_{11}\alpha_n - \alpha_{n-1}-1 & a_{12}\alpha_n \\
+			a_{21}\alpha_n & a_{22}\alpha_n - \alpha_{n-1} - 1
+			\end{vmatrix}\\
+		&= (a_{11}\alpha_n - (\alpha_{n-1}+1))(a_{22}\alpha_n - (\alpha_{n-1}+1)) - a_{12}a_{21}(\alpha_n)^2\\
+		&= (a_{11}a_{22}-a_{12}a_{21})(\alpha_n)^2-(a_{11}+a_{22})\alpha_n(\alpha_{n-1}+1) + (\alpha_{n-1}+1)^2\\
+		&= 1 +[2\alpha_{n-1}-(a_{11}+a_{22})\alpha_n] + [(\alpha_n)^2 - (a_{11}+a_{22})\alpha_n\alpha_{n-1} + (\alpha_{n-1})^2].
+		\end{align*}
+Como, pela relação de recorrência de $\alpha_n$,
+	\begin{align*}
+		2\alpha_{n-1}-(a_{11}+a_{22})\alpha_n = \alpha_{n-1} - \alpha_{n+1}\\
+		(a_{11}+a_{22})\alpha_n\alpha_{n-1} - (\alpha_{n-1})^2 = \alpha_{n+1}\alpha_{n-1},
+		\end{align*}
+seque que
+	\begin{equation*}
+		\det(A^n - I) = 1 -\alpha_{n+1} + \alpha_{n-1} + (\alpha_n)^2 - \alpha_{n+1}\alpha_{n-1}.
+		\end{equation*}
+Vamos provar algumas relações úteis para prosseguir.
+\begin{align*}
+(\alpha_n)^2 - \alpha_{n+1}\alpha_{n-1}
+&= \frac{[(\lambda_+)^n - (\lambda_-)^n]^2 - [(\lambda_+)^{n+1} - (\lambda_-)^{n+1}][(\lambda_+)^{n-1} - (\lambda_-)^{n-1}]}{(\lambda_+ - \lambda_-)^2}\\
+&= \frac{(\lambda_+)^{2n} - 2 + (\lambda_-)^{2n} - (\lambda_+)^{2n} + (\lambda_+)^2 + (\lambda_-)^2 -(\lambda_-)^{2n}}{(\lambda_+ - \lambda_-)^2}\\
+&= \frac{(\lambda_+)^2 - 2 + (\lambda_-)^2}{(\lambda_+ - \lambda_-)^2} = 1.
+\end{align*}
+\begin{align*}
+\alpha_{n-1} - \alpha_{n+1}
+&= \frac{(\lambda_+)^{n-1} - (\lambda_-)^{n-1} - (\lambda_+)^{n+1} + (\lambda_-)^{n+1}}{\lambda_+ - \lambda_-}\\
+&= \frac{(\lambda_+)^n (\lambda_+^{-1} - \lambda_+) - (\lambda_-)^n(\lambda_-^{-1} - \lambda_-)}{\lambda_+ - \lambda_-}\\
+&= - (\lambda_+)^n - (\lambda_-)^n
+\end{align*}
+Daí, segue facilmente que $\det(A^n - I) = 2 - (\lambda_+)^n - (\lambda_-)^n$.
+\end{proof}
+
+\begin{proposition}
+Seja $A \in \SL_2(\I)$ uma matriz cujos autovalores não são raízes da unidade. Então
+	\begin{equation*}
+	\abs{\Per_n([A])} = \abs{\det(A^n - I)}.
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+Vamos calcular a quantidade de pontos fixos de $A$ e mostrar que $|\Per_1([A])| = |\det(A - I)|$. Como $A^n$ é uma matriz da forma de $A$, segue que $|\Per_n([A])| = |\det(A^n - I)|$. Para achar a quantidade fixos sob $[A]$, temos que achar as soluções de $Ax = x + m$, com $x \in [0,1]^2$ e $m \in \I^2$; ou seja, as soluções de
+	\begin{equation}
+	\label{eq.per_n}
+	(A-I)x = m,
+	\end{equation}
+sendo $x \in [0,1]^2$ e $m \in \I^2$. De fato, se observamos a transformação $T := A - I$ aplicada ao quadrado $[0,1]^2$, subconjunto de $\R^2$, vemos que o quadrado é levado em um paralelogramo $T([0,1]^2)$ cujos vértices são pontos inteiros de $\R^2$. Os pontos inteiros que pertencem ao paralelogramo são as soluções $m$ de (\ref{eq.per_n}). Pelo Teorema de Pick, sabemos que, se $a$ é a área de $T([0,1]^2)$, $i$ a quatidade de pontos inteiros internos a $T([0,1]^2)$ e $f$ a quatidade de pontos inteiros na fronteira de $T([0,1]^2)$, então
+	\begin{equation*}
+	a = i + \frac{f}{2} - 1.
+	\end{equation*}
+É possível mostrar que os únicos pontos na fronteira do paralelogramo $T([0,1]^2)$ são seus vértices e assim concluir que $a = i+1$. A partir disso, como os vértices do paralelogramo representam todos o mesmo ponto de $\T^2$, concluímos que os pontos que satisfazem (\ref{eq.per_n}) são somente o ponto $(0,0)$ e os pontos internos do paralelogramo, e a quatidade deles é, portanto, igual à área do paralelogramo.
+
+Para mostrar que os únicos pontos da fronteira do paralelogramo são seus vértices, mostraremos que cada um de seus lados tem 2 pontos inteiros. Note que basta mostrar a afirmação para dois lados não paralelos do paralelogramo. O lado de extremidades $(0,0)$ e $(1,0)$ do quadrado é levado no lado de extremidades $(0,0)$ e $(a_{11},a_{21})$. A inclinação desse lado é $m := \frac{a_{21}}{a_{11}}$ e, portanto, qualquer ponto inteiro nesse lado deve ter essa inclinação. A quantidade de pontos inteiros $(x,y) \neq (0,0)$ que satisfazem $\frac{y}{x}= m$, tal que $x \leq a_{11}$ é $\text{mdc}(a_{11},a_{21})$. Mas, como $|A| = 1$, temos que $\text{mdc}(a_{11},a_{21}) = 1$, pois $a_{11}$ e $a_{21}$ estão na mesma coluna de $A$, o que implica que $|A|$ é múltiplo de $\text{mdc}(a_{11},a_{21})$. Assim, concluímos que há dois pontos inteiros nesse lado, $(0,0)$ e $(a_{11},a_{21})$. Da mesma forma, como $\text{mdc}(a_{12},a_{22}) = 1$, conluímos o mesmo para o lado de extremidades $(0,0)$ e $(a_{12},a_{22})$ do paralelogramo, a imagem do lado de extremidades $(0,0)$ e $(0,1)$ do quadrado. Assim, concluímos que todos lados têm somente os vértices como pontos inteiros.
+
+Basta-nos, portanto, calcular a área do paralelogramo $T([0,1]^2)$. Mas isso é simples, pois ela é igual ao módulo do determinante da tranformação, já que a área de $[0,1]^2$ é $1$. Assim, concluímos que $|\Per_1([A])| = |\det(A - I)|$.
+\end{proof}
+
+\begin{figure}[!ht]
+  \centering
+  \begin{tikzpicture}[scale=0.6]
+
+  \path (-6,-3) coordinate (O);
+
+	\foreach \x in {-8,...,8}{% Two indices running over each
+      \foreach \y in {-8,...,8}{% node on the grid we have drawn
+        \node[draw,circle,inner sep=1pt,fill] at (\x,\y) {};}}
+
+	\filldraw[fill=black, fill opacity=0.3, draw=black] (O) rectangle +(1,1);
+
+	\draw (O) node [below] {$(0,0)$} -- +(7,1) node [below right] {$(a_{11},a_{21})$} -- +(13,6) node [above] {$(a_{11}+a_{12},a_{21}+a_{22})$} -- +(6,5) node [above left] {$(a_{12},a_{22})$} -- cycle;
+
+	\filldraw[fill=black, fill opacity=0.3] (O) -- +(7,1) -- +(13,6) -- +(6,5) -- cycle;
+
+  \end{tikzpicture}
+  \caption{O quadrado $[0,1]^2$ e o paralelogramo $T([0,1]^2)$}
+\end{figure}
+
+\end{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%COMENTÁRIO%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+

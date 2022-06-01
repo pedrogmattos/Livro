@@ -1,0 +1,130 @@
+\chapter{Sistemas dinâmicos lineares}
+
+\begin{definition}
+Um \emph{sistema dinâmico linear} é uma dupla $\bm{\Sist}=(\bm X,f)$ em que $\bm X$ é um espaço linear, $(X,f)$ é um sistema dinâmico e $f$ é uma ação linear em $\bm X$.
+\end{definition}
+
+%\begin{proposition}
+%Seja $\bm{\Sist}=(\bm X,f)$ um sistema dinâmico linear. Então
+%	\begin{enumerate}
+%	\item $0 \in \Per(f)$.
+%	\end{enumerate}
+%\end{proposition}
+%\begin{proof}
+%	\begin{enumerate}
+%	\item Claramente, temos que $f(0)=0$ por linearidade.
+%	\end{enumerate}
+%\end{proof}
+
+Estudaremos somente sistemas dinâmicos lineares em espaços normados de dimensão finita.
+
+\section{Sistemas dinâmicos lineares hiperbólicos}
+
+\begin{definition}
+Um \emph{sistema dinâmico linear hiperbólico} é um sistema dinâmico linear revertível $\bm{\Sist}=(\bm E,f)$, em que $\bm E$ é um espaço normado de dimensão finita\footnote{Mais geralmente, espaços normados completos podem ser considerados.}, para o qual existem $c \in \intaa{0}{\infty}$, $\lambda \in \intaa{0}{1}$ e
+uma decomposição
+	\begin{equation*}
+	E = E^+ \oplus E^-
+	\end{equation*}
+em subespaços lineares invariantes $E^+$ e $E^-$ de $E$ tais que, para todo $t \in \I^+$,
+	\begin{equation*}
+	\nor{f^t|_{E^+}} \leq c\lambda^t \qquad\e\qquad \nor{f^{-t}|_{E^-}} \leq c\lambda^t.
+	\end{equation*}
+O espaço $E^+$ é o subespaço \emph{estável}\footnote{Aqui, os superíndices podem novamente gerar confusão. A mesma definição para os conjuntos estável e instável é usada.} e o espaço $E^-$ é o subespaço \emph{instável} do sistema.
+\end{definition}
+
+Note que, como $c \in \intaa{0}{\infty}$ e $\lambda \in \intaa{0}{1}$, então $c' := \log(c) \in \intaa{-\infty}{\infty}$ e $\lambda' := \log(\lambda) \in \intaa{-\infty}{0}$, logo $c\lambda^t = \exp(c'+\lambda't) = \e^{c'+\lambda't}$, o que explicita o fato de que as normas vão a zero exponencialmente. Ainda, note que $E^+$ ou $E^-$ podem ser $\{0\}$. Além disso, como as normas são equivalentes em $\bm E$, a definição de hiperbolicidade não depende da norma.
+
+\begin{proposition}
+Seja $\bm{\Sist}=(\bm E,f)$ um sistema dinâmico linear revertível. O sistema $\bm{\Sist}$ é hiperbólico se, e somente se, os autovalores de $f$ têm valor absoluto diferente de $1$.
+\end{proposition}
+
+As proposições a seguir são enunciadas para $E^+$, mas proposições análogas valem para $E^-$.
+
+\begin{proposition}
+Seja $\bm{\Sist}=(\bm E,f)$ um sistema dinâmico linear hiperbólico.
+	\begin{enumerate}
+	\item Para todo $t \in \I^+$ e todo $v \in E^+$
+		\begin{equation*}
+		c\inv\lambda^{-t}\nor{v} \leq  \nor{f^{-t}(v)}.
+		\end{equation*}
+%e, para todo $v \in E^-$,
+%	\begin{equation*}
+%	\nor{f^{-t+s}(v))} \leq c\lambda^t \nor{f^s(v)}.
+%	\end{equation*}
+	\item Para todo $v \in E^+$, quando $t \conv \infty$ tem-se
+		\begin{equation*}
+		\nor{f^t(v)} \conv 0 \qquad\qquad e \qquad\qquad \nor{f^{-t}(v)} \conv \infty.
+		\end{equation*}
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item	 Mostraremos primeiro que, para todo $t \in \I^+$, todo $t' \in \I$ e todo $v \in E^+$,
+		\begin{equation*}
+		\nor{f^{t+t'}(v)} \leq c\lambda^t \nor{f^{t'}(v)}.
+		\end{equation*}
+Como $E^+$ é invariante, para todo $t' \in \I$ tem-se $f^{t'}(v) \in E^+$, portanto
+		\begin{equation*}
+		\nor{f^{t+t'}(v)} = \nor{f^t(f^{t'}(v))} \leq c\lambda^t \nor{f^{t'}(v)}.
+		\end{equation*}
+Tomando $t'=-t$, segue que $\nor{v^+} \leq c\lambda^t \nor{f^{-t}(v)}$, logo da positividade de $c$ e $\lambda$ temos que
+		\begin{equation*}
+		c\inv\lambda^{-t}\nor{v} \leq  \nor{f^{-t}(v)}.
+		\end{equation*}
+	\item Como $\lambda \in \left]0,1\right[$, temos que, quando $t \conv \infty$, $\lambda^t \conv 0$ e $\lambda^{-t} \conv \infty$, logo
+		\begin{equation*}
+		\nor{f^t(v)} \conv 0 \qquad\e\qquad \nor{f^{-t}(v)} \conv \infty. \qedhere
+		\end{equation*}
+	\end{enumerate}
+\end{proof}
+
+Definimos as projeções $\proj_+\colon E \to E^+$ e $\proj_-\colon E \to E^-$ e, para cada $v \in E$, $v_+ := \proj_+(v)$ e $v_- := \proj_-(v)$, de modo que $v=v_+ + v_-$.
+
+\subsection{Cones}
+
+\begin{definition}
+Seja $\bm{\Sist}=(\bm E,f)$ um sistema dinâmico linear hiperbólico. Para todo $\varepsilon \in \left] 0,\infty \right[$, o \emph{$\varepsilon$-cone} ao redor de $E^+$ é o conjunto
+	\begin{equation*}
+	C_\varepsilon(E^+) := \set{v \in E}{\nor{\proj_-(v)} \leq \varepsilon\nor{\proj_+(v)}}
+	\end{equation*}
+e o \emph{$\varepsilon$-cone} ao redor de $E^-$ é o conjunto
+	\begin{equation*}
+	C_\varepsilon(E^-) := \set{v \in E}{\nor{\proj_+(v)} \leq \varepsilon\nor{\proj_-(v)}}.
+	\end{equation*}
+\end{definition}
+
+Vale notar que, se definíssemos os cones para $\varepsilon=0$, teríamos $C_0(E^+) = E^+$ e $C_0(E^-) = E^-$. Também por isso, temos que $E^+ \subseteq C_\varepsilon(E^+)$ e $E^- \subseteq C_\varepsilon(E^-)$ para todo $\varepsilon$. Ainda, obtemos a seguinte proposição.
+
+\begin{proposition}
+Seja $\bm{\Sist}=(\bm E,f)$ um sistema dinâmico linear hiperbólico. A decomposição hiperbólica $E = E^+ + E^-$ é única e
+	\begin{equation*}
+	E^+ = \set{v \in E}{\exists_{\varepsilon \in \left] 0,\infty \right[} \forall_{t \in \I^+} f^t(v) \in C_\varepsilon(E^+)}
+	\end{equation*}
+e
+	\begin{equation*}
+	E^- = \set{v \in E}{\exists_{\varepsilon \in \left] 0,\infty \right[} \forall_{t \in \I^+} f^{-t}(v) \in C_\varepsilon(E^-)}.
+	\end{equation*}
+\end{proposition}
+
+A constante $c$ da definição de hiperbolicidade pode ser omitida se mudarmos a norma de $\bm E$ para uma norma adequada.
+
+\begin{proposition}
+Seja $\bm{\Sist}=(\bm E,f)$ um sistema dinâmico linear hiperbólico, $\nor{\var}$ a norma de $E$. Existem norma $\nor{\var}'$ de $E$ e $\lambda' \in \intaa{0}{1}$ tais que, para todo $t \in \I^+$,
+	\begin{equation*}
+	\nor{f^t|_{E^+}}' \leq (\lambda')^t \qquad\qquad e \qquad\qquad \nor{f^{-t}|_{E^-}}' \leq (\lambda')^t.
+	\end{equation*}
+\end{proposition}
+
+Essa norma é chamada de \emph{norma adaptada} do sistema $(E,f)$.
+
+
+
+
+
+
+
+
+
+
+

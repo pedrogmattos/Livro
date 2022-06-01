@@ -1,0 +1,132 @@
+\chapter{Sistemas dinâmicos diferenciais}
+
+\begin{definition}
+Um \emph{sistema dinâmico diferencial} é uma dupla $\bm{\Sist}=(\bm X,f)$ em que $\bm X$ é uma variedade diferencial, $(X,f)$ é um sistema dinâmico e $f$ é uma ação diferencial em $\bm X$.
+\end{definition}
+
+\section{Estrutura hiperbólica}
+
+%%%%%%%%%%%%COMENTÁRIO%%%%%%%%%%%%%%%%%%%%%
+\begin{comment}
+\begin{definition}
+Seja $\bm \Sist = (\bm X,f)$ um sistema dinâmico diferencial discreto e revertível em que $\bm X$ é uma variedade diferencial métrica\footnote{Tem métrica riemanniana.}. Um conjunto \emph{(uniformemente) hiperbólico} do sistema é um conjunto $f$-invariante
+%positivamente, negativamente, ambos?
+$H \subseteq X$ que satisfaz: existem constantes reais $c >0$
+% Vi em algumas fontes usar $c \geq 1$. Tanto faz??
+e $\lambda \in \left]0,1\right[$ de modo que, para todo $p \in H$, existem espaços lineares $\D f$-invariantes $E^+|_p,E^-|_p \subseteq \Tg V|_p$ tais que
+ 	\begin{equation*}
+ 	 \Tg V|_p = E^+|_p \oplus E^-|_p,
+ 	 \end{equation*}
+e, para todo $t \in \I^+$ e todos $v^+ \in E^+|_p$, $v^- \in E^-|_p$,
+	\begin{equation*}
+	\nor{\D f^t|_p v^+} \leq c\lambda^t \nor{v^+} \qquad\e\qquad \nor{\D f^{-t}|_p v^-} \leq c\lambda^t \nor{v^-}.
+	\end{equation*}
+\footnote{A notação $\D f^t$ não é ambígua, pois $\D(f^t) = (\D f)^t$.}
+%	\begin{equation*}
+%	\nor{\D f^n(p) v} \geq c\inv\lambda^{-n} \nor{v}.
+%	\end{equation*}
+O espaço $E^+|_p$ é o espaço tangente \emph{estável}\footnote{Os superíndices podem novamente gerar confusão. A mesma definição para os conjuntos estável e instável sé usada.} e o espaço $E^-|_p$ é o espaço tangente \emph{instável} em $p$.
+\end{definition}
+
+\begin{definition}
+Seja $\bm\Sist = (\bm X,f)$ um sistema dinâmico diferencial discreto e revertível em que $\bm X$ é uma variedade diferencial compacta, conexa e métrica\footnote{Tem métrica riemanniana.}. Um conjunto \emph{(uniformemente) hiperbólico} de $\bm\Sist$ é um conjunto invariante
+% Positivamente, negativamente, ambos?
+$H \subseteq X$ para o qual existem constantes reais $c \in \intaa{0}{+\infty}$, $\lambda \in \intaa{0}{1}$ e uma decomposição	\footnote{Isso quer dizer que $\Tg X|_H = E^+ + E^-$.} de $\Tg X|_H$ em subfibrados vetoriais $E^+$ e $E^-$ invariantes\footnote{Isso quer dizer que, para todo $p \in X$, $\D f|_p(E^{+,-}|_p) = E^{+,-}|_{f(p)}$.} por $\D f$ tais que, para todo $p \in H$, $(\Tg X|_p, \D f|_p)$ é um sistema dinâmico linear hiperbólico (com respeito a $c$ e $\lambda$).
+
+Os fibrados vetoriais $E^+$ e $E^-$ são os fibrados tangentes \emph{estável} e \emph{instável}\footnote{	Os superíndices podem novamente gerar confusão. A mesma definição para os conjuntos estável e instável é usada.} de $\bm X$, respectivamente, e, para todo $p \in H$, os espaços $E^+|_p$ e $E^-|_p$ são os espaços \emph{estável} e \emph{instável} tangentes a $p$, respectivamente.
+\end{definition}
+
+\end{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{definition}
+Seja $\bm\Sist = (\bm X,f)$ um sistema dinâmico diferencial discreto e revertível em que $\bm X$ é uma variedade diferencial compacta, conexa e métrica\footnote{Tem métrica riemanniana.}. Um conjunto \emph{(uniformemente) hiperbólico} de $\bm\Sist$ é um conjunto invariante
+% Positivamente, negativamente, ambos?
+$H \subseteq X$ para o qual existem constantes reais $c \in \intaa{0}{+\infty}$, $\lambda \in \intaa{0}{1}$ e uma decomposição	 de $\Tg X|_H$ em subfibrados vetoriais $E^+$ e $E^-$, isto é,
+	\begin{equation*}
+	\Tg X|_H = E^+ + E^-,
+	\end{equation*}
+invariantes por $\D f$, isto é, para todo $p \in X$,
+	\begin{equation*}
+	\D f|_p(E^{+,-}|_p) = E^{+,-}|_{f(p)},
+	\end{equation*}
+tais que, para todo $p \in H$, todo $t \in \I^+$ e todos $v^+ \in E^+|_p$, $v^- \in E^-|_p$,
+	\begin{equation*}
+	\nor{\D f^t|_p v^+} \leq c\lambda^t \nor{v^+} \qquad\e\qquad \nor{\D f^{-t}|_p v^-} \leq c\lambda^t \nor{v^-}.
+	\end{equation*}
+\footnote{A notação $\D f^t$ não é ambígua, pois $\D(f^t) = (\D f)^t$.}
+
+Os fibrados vetoriais $E^+$ e $E^-$ são os fibrados tangentes \emph{estável} e \emph{instável}\footnote{	Os superíndices podem novamente gerar confusão. A mesma definição para os conjuntos estável e instável é usada.} de $\bm X$, respectivamente, e, para todo $p \in H$, os espaços $E^+|_p$ e $E^-|_p$ são os espaços \emph{estável} e \emph{instável} tangentes a $p$, respectivamente.
+\end{definition}
+
+% Tem como descrever esses espaços estável e instável com interseção de cones empurrados pela derivada.
+
+\begin{example}[Automorfismo Hiperbólico (mapa do gato)]
+Consideremos o difeomorfismo
+	\begin{align*}
+	\func{[A]}{\T^2}{\T^2}{x}{
+		\begin{bmatrix}
+		2 & 1 \\
+		1 & 1
+		\end{bmatrix}x
+	}.
+	\end{align*}
+\end{example}
+
+\begin{proposition}
+Os conjuntos estável e instável de $W^+(x)$ e $W^-(x)$ para $x \in H$ um conjunto hiperbólico, são subvariedade (imersas, não mergulhadas).
+\end{proposition}
+
+\begin{proposition}[Teorema das variedades estável e instável]
+Seja $\bm\Sist = (\bm X,f)$ um sistema dinâmico diferencial discreto e revertível em que $\bm X$ é uma variedade diferencial compacta, conexa e métrica e $H \subseteq X$ um conjunto hiperbólico. Para todo $x \in H$,
+	\begin{equation*}
+	\Tg W^+(x)|_x = E^+|_x \qquad\e\qquad \Tg W^-(x)|_x = E^-|_x
+	\end{equation*}
+\end{proposition}
+
+\section{Axioma A}
+
+\begin{definition}
+Um sistema dinâmico \emph{Axioma A} é um sistema dinâmico diferencial discreto e revertível $\bm\Sist = (\bm X,f)$ tal que
+	\begin{enumerate}
+	\item $\Fec{\Per(f)} = \Nerr(f)$; isto é, o conjunto dos pontos periódicos de $f$ é denso no conjunto dos pontos não-errantes;
+	\item $\Nerr(f)$ é um conjunto hiperbólico.
+	\end{enumerate}
+\end{definition}
+
+\begin{theorem}[Decomposição Espectral de Smale]
+Seja $\bm\Sist = (\bm X,f)$ um sistema dinâmico Axioma A. O conjunto não-errante $\Nerr$ pode ser particionado em uma quantidade finita $n$ de conjuntos compactos $(\Nerr_i)_{i \in N}$ topologicamente transitivos:
+	\begin{equation*}
+	\Nerr = \bigcup_{i \in [n]} \Nerr_i.
+	\end{equation*}
+Para cada $i \in [n]$, $\Nerr_i$ pode ser particionado em $m_i$ conjuntos compactos $(\Nerr_{i,j})_{j \in [m_i]}$ tais que $f(\Nerr_{i,j}) = \Nerr_{i,j+1}$ (com $j+1$ interpretado $\mod m_i$) e $\Nerr_{i,j}$ topologicamente misturador com respeito a $f^{m_i}$.
+\end{theorem}
+
+Os conjuntos $\Nerr_i$ são chamaods de \emph{peças básicas}.
+
+\section{Anosov}
+
+\begin{definition}
+Um sistema dinâmico \emph{de Anosov} é um sistema dinâmico diferencial discreto e revertível $\bm\Sist = (\bm X,f)$ em que $X$ é hiperbólico.
+\end{definition}
+
+
+As variedades $\{W^+(x)\}_{x \in X}$ e $\{W^-(x)\}_{x \in X}$ são folheações, as folheações estável e instável de $X$.
+
+Os fibrados estável e instável são integraveis porque existe folheação cujo espaço tangente são esses fibrados.
+
+
+
+
+
+
+\section{Partições de Markov}
+
+
+
+
+
+
+
+
+
