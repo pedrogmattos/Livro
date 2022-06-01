@@ -72,7 +72,7 @@
 \usepackage{stmaryrd} % Colchetes duplos, \bigsqcap, \merge
 	\SetSymbolFont{stmry}{bold}{U}{stmry}{m}{n} % Desabilita fonte negrito do stmrd porque ele não tem nenhuma e dava erro
 \RequirePackage{mathrsfs} % Letras cursivas na matemática
-% Esses comandos supostamente consertam o uso indevido do tantos alfabetos amtemáticos pelo pacote bm
+% Esses comandos supostamente consertam o uso indevido do tantos alfabetos matemáticos pelo pacote bm
 % https://www.texfaq.org/FAQ-manymathalph.html
 \newcommand\bmmax{3}
 \newcommand\hmmax{0}
@@ -85,7 +85,7 @@
 
 \RequirePackage{graphicx}
 \RequirePackage{relsize,scalerel} % Mudança de tamanho e definição de operador
-\usepackage{pict2e,picture} % Para uso na definição do \bbDelta de simplexos
+\RequirePackage{pict2e,picture} % Para uso na definição do \bbDelta de simplexos
 
 \RequirePackage{trimclip} % Para fazer o símbolo de infinity dos ordinais
 %\RequirePackage{stackengine} % Para fazer o símbolo de infinity dos ordinais segunda versão

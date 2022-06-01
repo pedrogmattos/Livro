@@ -159,6 +159,19 @@
 %	autolang=hyphen		Hifeniza referência na respectiva língua
 %	backref=true		Ligação interna às citações nas Referências
 
+%	\DeclareSourcemap{
+%		\maps[datatype=bibtex]{
+%			\map[overwrite]{
+%				\step[fieldsource=doi, final]
+%				\step[fieldset=url, null]
+%				\step[fieldset=eprint, null]
+%			}
+%		}
+%	}
+% NOTA: Esse comando não imprime o URL caso exista o DOI.
+% REFERÊNCIA: https://tex.stackexchange.com/questions/424774/print-url-only-if-doi-not-present/424799#424799
+% REFERÊNCIA: https://tex.stackexchange.com/questions/154864/biblatex-use-doi-only-if-there-is-no-url/154875#154875
+
 % Índice
 %------------------------------------
 \RequirePackage{imakeidx}
@@ -261,6 +274,7 @@
 % Importar imagens
 %------------------------------------
 \RequirePackage{graphicx}
+	\graphicspath{{./imagens/}}
 \RequirePackage{eso-pic}
 
 % Tabelas
