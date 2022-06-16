@@ -18,3 +18,9 @@
 .vscode/settings.json
 .kile/livro.kilepr.gui
 livro.kilepr
+livro.synctex(busy)
+partes/algebra/.hidden
+partes/conjuntos/.hidden
+partes/geometria/.hidden
+partes/dinamica/.hidden
+.hidden
