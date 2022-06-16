@@ -49,7 +49,7 @@ Sejam $\bm G = (G,\times,\div,1)$ um grupo, $g \in G$ e $n \in \N$. Definimos
 \begin{proposition}[Leis de corte e inversão]
 	Seja $\bm G$ um grupo. Então
 	\begin{enumerate}
-	\item Para todos $g,g_1,g_2 \in G$ 
+	\item Para todos $g,g_1,g_2 \in G$
 		\begin{align*}
 		gg_1 = gg_2 &\entao g_1 = g_2 \\
 		g_1g = g_2g &\entao g_1 = g_2;
@@ -78,7 +78,7 @@ Sejam $\bm G$ um grupo e $S \subseteq G$ que satisfaz
 	\item \label{SG1} (Não-vacuidade) $S \neq \emptyset$;
 	\item \label{SG2} (Fechamento) Para todos $s_1,s_2 \in S$, $s_1s_2 \in S$;
 	\item \label{SG3} (Invertibilidade) Para todo $s \in S$,  $s\inv \in S$.
-	\end{enumerate}	
+	\end{enumerate}
 \noindent
 Então $\bm S=(S,\times|_{S \times S}, \div|_S,1)$ é um grupo. Ainda, se $\bm G$ é comutativo, então $\bm S$ é comutativo.
 \end{proposition}
@@ -219,7 +219,7 @@ Sejam $\bm G$ um grupos, $\bm S \leq \bm G$ um subgrupo e $g_1g_2 \in G$. Então
 	\begin{enumerate}
 	\item ($\subseteq$) Seja $g \in g_1(g_2S)$. Existem $g' \in g_2S$ tal que $g=g_1g'$ e, portanto, existe $s \in S$ tal que $g'=g_2s$. Mas então, pela associatividade, $g=g_1(g_2s) = (g_1g_2)s$, e segue que $g \in (g_1g_2)S$.
 ($\supseteq$) Seja $g \in (g_1g_2)S$. Então existe $s \in S$ tal que $g=(g_1g_2)s$ e, da associatividade, segue que $g=g_1(g_2s)$, logo $g \in g_1(g_2S)$. A outra igualdade é análoga.
-	
+
 	\item ($\Leftarrow$) Seja $g \in g_1S=g_2S$. Então existem $s,s' \in S$ tais que $g=g_1s=g_2s'$, logo $g_2^{-1}g_1=s's^{-1}$. Como $\bm S$ é subgrupo, segue que $g_2^{-1}g_1=s's^{-1} \in S$.
 
 \noindent
@@ -468,7 +468,7 @@ Sejam $\bm{G_1}$ e $\bm{G_2}$ grupos e $h: \bm{G_1} \to \bm{G_2}$ um homomorfism
 \begin{proof}
 (\ref{SG1}) Como $e_2 \in S$ e $h$ é homomorfismo segue que $h(e_1)=e_2$, portanto $e_1 \in h^{-1}(S)$.
 (\ref{SG2}) Sejam $s_1,s_2 \in h^{-1}(S)$. Então $h(s_1),h(s_2) \in S$ e, como $\bm S$ é subgrupo, $h(s_1)h(s_2) \in S$. Logo, como $h$ é homomorfismo, $h(s_1s_2) = h(s_1)h(s_2) \in S$ e, portanto, $s_1s_2 \in h^{-1}(S)$.
-(\ref{SG3}) Seja $s \in h^{-1}(S)$. Então $h(s) \in S$ e, como $\bm S$ é subgrupo, $h(s)^{-1} \in S$. Como $h$ é homomorfismo, segue que $h(s^{-1})=h(s)^{-1} \in S$ e, portanto, $s^{-1} \in h^{-1}(S)$.  
+(\ref{SG3}) Seja $s \in h^{-1}(S)$. Então $h(s) \in S$ e, como $\bm S$ é subgrupo, $h(s)^{-1} \in S$. Como $h$ é homomorfismo, segue que $h(s^{-1})=h(s)^{-1} \in S$ e, portanto, $s^{-1} \in h^{-1}(S)$.
 (\ref{SGN}) Sejam $g \in G_1$ e $n \in h^{-1}(N)$. Então $h(g) \in G_2$ e $h(n) \in N$. Como $h$ é homomorfismo, segue que $h(gng^{-1})=h(g)h(n)h(g)^{-1}$ e, como $\bm N$ é subgrupo normal, segue que $h(g)h(n)h(g)^{-1} \in N$. Logo $gng^{-1} \in h^{-1}(N)$.
 \end{proof}
 
@@ -555,7 +555,7 @@ Não dizemos que $\simeq$ é uma relação de equivalência porque ela não est�
 \subsection{Teoremas de isomorfismo}
 
 \begin{theorem}[1º teorema de isomorfismo]
-Sejam $\bm{G_1}$ e $\bm{G_2}$ grupos e $h: \bm{G_1} \to \bm{G_2}$ um homomorfismo de grupos. Então $\bm{\nuc(h)} \ide \bm{G_1}$, $\bm{\im(h)} \leq \bm{G_2}$ e 
+Sejam $\bm{G_1}$ e $\bm{G_2}$ grupos e $h: \bm{G_1} \to \bm{G_2}$ um homomorfismo de grupos. Então $\bm{\nuc(h)} \ide \bm{G_1}$, $\bm{\im(h)} \leq \bm{G_2}$ e
 	\begin{equation*}
 	\bm{\quo{G_1}{\nuc(h)}} \simeq \bm{\im(h)}.
 	\end{equation*}
@@ -682,7 +682,7 @@ Seja $p=c_1 \cdots c_n$ uma palavra em $C$. A \emph{palavra inversa} de $p$ é a
 Seja $C$ um conjunto e $p_1,p_2 $ palavras em $C \times \{1,-1\}$. A relação de equivalência entre as palavras $p_1$ e $p_2$ é definida por
 	\begin{equation*}
 	p_1 \sim p_2 \sse p_1p_2\inv \leadsto e.
-	\end{equation*}	
+	\end{equation*}
 \end{definition}
 
 	\begin{equation*}
@@ -693,7 +693,7 @@ Seja $C$ um conjunto e $p_1,p_2 $ palavras em $C \times \{1,-1\}$. A relação d
 	\begin{equation*}
 	\ger{C} := C^*/\sim
 	\end{equation*}
-	
+
 	A inclusão é definida.
 	\begin{align*}
 	\func{\iota}{C}{\ger{C}}{c}{[c]}.
@@ -898,7 +898,7 @@ Seja $\bm G$ um grupo. O \emph{centro} de $\bm G$ é o conjunto
 \end{definition}
 
 
-Notemos que, como $C$ é homomorfismo de grupos e 
+Notemos que, como $C$ é homomorfismo de grupos e
 	\begin{align*}
 		\Zen(G) &= \set{g \in G}{\forall_{h \in G}\ \con{g}(h) = h} \\
 				&= \set{g \in G}{\con{g} = \Id} \\
@@ -970,9 +970,9 @@ em que $\Iso{\Homo}(\bm H)$ é o grupo dos automorfismos de grupo de $\bm H$.
 Sejam $\bm G$ e $\bm H$ grupos e $A\colon \bm G \age \bm H$ uma ação do grupo $\bm G$ sobre o grupo $\bm H$.
 	\begin{enumerate}
 		\item O produto semidireto $\bm G \ltimes_A \bm H$ é um grupo.
-		
+
 		\item $\bm G \simeq \bm G \ltimes \bm{\{\id_H\}} \leq \bm G \ltimes \bm H$, e $\bm G \ltimes \bm{\{\id_H\}} \ide \bm G \ltimes \bm H$ se, e somente se, $\bm G \ltimes \bm H = \bm G \times \bm H$ (ou $A=\Id_H$);
-		
+
 		\item $\bm H \simeq \bm{\{\id_G\}} \ltimes \bm H \ide \bm G \ltimes \bm H$;
 	\end{enumerate}
 \end{exercise}
@@ -1043,7 +1043,7 @@ Sejam $\bm G$ um grupo e $\bm M \ide \bm G$ um subgrupo normal. Então $\bm M$ �
 	\end{align*}
 	\begin{enumerate}
 		\item [($\Rightarrow$)] Suponhamos que $\bm M$ é maximal. Então $\bm M$ é um subgrupo próprio, o implica que $\bm{G/M}$ é não-trivial. Seja $\bm N \ide \bm{G/M}$. Sabemos que $\bm{\pi^{-1}(N)} \ide \bm G$ (\ref{alge:prop.gru.hominv}). Como $[e] \in N$, então $\pi^{-1}(1) \subseteq \pi^{-1}(N)$. Notando que $\pi^{-1}([1])=\nuc(\pi) = M$, segue que $M \subseteq \pi^{-1}(N)$. Como $\bm M$ é maximal, segue que $\pi^{-1}(N) = N$ ou $\pi^{-1}(N) = G$. Notemos que $N=\pi(\pi^{-1}(N))$, pois $\pi$ é sobrejetiva. No primeiro caso, $N = \pi(\pi^{-1}(N)) = \pi(M) = \{[1]\}$. No segundo caso, $N = \pi(\pi^{-1}(N)) = \pi(G) = G/M$. Portanto $\bm{G/M}$ é simples.
-		
+
 		\item [($\Leftarrow$)] Suponhamos que $\bm{G/M}$ é simples. Seja $\bm N \ide \bm G$ tal que $M \subseteq N$. Como $\pi$ é homomorfismo de grupos sobrejetivo, segue que $\pi(N) \ide \bm{G/M}$ (\ref{alge:prop.gru.hom}). Como $\bm{G/M}$ é simples, então $\pi(N) = \{[e]\}$ ou $\pi(N) = G/M$. No primeiro caso, $N = \nuc(\pi) = M$. No segundo caso, $N = \pi^{-1}(\pi(N)) = \pi^{-1}(N) = G$. Logo $\bm M$ é maximal.
 	\end{enumerate}
 \end{proof}
@@ -1052,7 +1052,7 @@ Sejam $\bm G$ um grupo e $\bm M \ide \bm G$ um subgrupo normal. Então $\bm M$ �
 Sejam $\bm G$ um grupo e $\bm N \idepro \bm G$ um subgrupo normal próprio. Então $\bm G$ tem subgrupo normal maximal.
 \end{conjecture}
 \begin{proof}
-Usaremos o lema de Zorn. Seja $P \subseteq \p(G)$ o conjunto de todos os subconjuntos $S \subset G$ tais que $\bm S \idepro \bm G$. Então $(P,\subseteq)$ é um conjunto parcialmente ordenado com a contenção de conjuntos usual. Agora, seja $(C)_{i \in I}$ uma cadeia de $(P,\subseteq)$. Consideremos o conjunto $C := \bigcup_{i \in I} C_i$. Como 
+Usaremos o lema de Zorn. Seja $P \subseteq \p(G)$ o conjunto de todos os subconjuntos $S \subset G$ tais que $\bm S \idepro \bm G$. Então $(P,\subseteq)$ é um conjunto parcialmente ordenado com a contenção de conjuntos usual. Agora, seja $(C)_{i \in I}$ uma cadeia de $(P,\subseteq)$. Consideremos o conjunto $C := \bigcup_{i \in I} C_i$. Como
 
 Notemos que $P$ não é vazio, pois $N \in P$. Seja
 
@@ -1080,7 +1080,7 @@ Uma sequência subnormal \emph{estrita} de $\bm G$ é uma sequência subnormal $
 	\begin{equation*}
 	\bm{\{1\}} = \bm{N_0} \idepro \cdots \idepro \bm{N_{n-1}} = \bm G.
 	\end{equation*}
-	
+
 O \emph{comprimento} de uma sequência subnormal estrita é o número $n$.
 \end{definition}
 
@@ -1379,21 +1379,21 @@ Ainda, $h$
 \begin{definition}
 	Sejam $n \in \N$, $p \in \sime_n$ e $m \in [n]$. A \emph{órbita de $m$ sob $p$} é o conjunto
 	\begin{equation*}
-	\orb_p(m) := \set{p^k(m)}{k \in \Z}.
+	\Orb_p(m) := \set{p^k(m)}{k \in \Z}.
 	\end{equation*}
-O \emph{período} da órbita $\orb_p(m)$ é o número $\card{\orb_p(m)}$. Uma \emph{órbita trivial} é uma órbita de período $1$. Uma órbita de $p$ é a órbita de um elemento $m \in [n]$ sob $p$.
+O \emph{período} da órbita $\Orb_p(m)$ é o número $\card{\Orb_p(m)}$. Uma \emph{órbita trivial} é uma órbita de período $1$. Uma órbita de $p$ é a órbita de um elemento $m \in [n]$ sob $p$.
 
 	O \emph{conjunto de órbitas} de $p$ é o conjunto
 	\begin{equation*}
-	\orb_p := \set{\orb_p(m)}{m \in [n]}.
+	\Orb_p := \set{\Orb_p(m)}{m \in [n]}.
 	\end{equation*}
 \end{definition}
 
 \begin{proposition}
-	Sejam $n \in \N$ e $p \in \sime_n$. O conjunto $\orb_p$ é uma partição de $[n]$.
+	Sejam $n \in \N$ e $p \in \sime_n$. O conjunto $\Orb_p$ é uma partição de $[n]$.
 \end{proposition}
 \begin{proof}
-	Primeiro, notemos que $m \in \orb_p(m)$ e, portanto, $\emptyset \nsubseteq \orb_p$. Ainda, $\bigcup_{m \in [n]} \orb_p(m) = [n]$, já que, para todo $m \in [n]$, $m \in \orb_p(m)$, o que mostra que $[n] \subseteq \bigcup_{m \in [n]}$ e, para todo $l \in \bigcup_{m \in [n]} \orb_p(m)$, existe $m \in [n]$ tal que $l \in \orb_p(m)$ e, portanto, existe $k \in \N$ tal que $l=p^k(m) \in [n]$, o que mostra que $\bigcup_{m \in [n]} \subseteq [n]$. Por fim, sejam $o_1,o_2 \in \orb_p$. Então existem $m_1,m_2 \in [n]$ tais que $o_1=\orb_p(m_1)$ e $o_2=\orb_p(m_2)$. Se existe $l \in \orb_p(m_1) \cap \orb_p(m_2)$, então existem $k_1,k_2 \in \Z$ tais que $l=p^{k_1}(m_1)=p^{k_2}(m_2)$. Assim, segue que $m_1=p^{k_2-k_1}(m_2)$ e, portanto, $m_1 \in \orb_p(m_2)$. Mas isso implica que $\orb_p(m_1) \subseteq \orb_p(m_2)$; a inclusão contrária é análoga e concluímos que $\orb_p(m_1) = \orb_p(m_2)$. Logo $\orb_p$ é uma partição de $[n]$.
+	Primeiro, notemos que $m \in \Orb_p(m)$ e, portanto, $\emptyset \nsubseteq \Orb_p$. Ainda, $\bigcup_{m \in [n]} \Orb_p(m) = [n]$, já que, para todo $m \in [n]$, $m \in \Orb_p(m)$, o que mostra que $[n] \subseteq \bigcup_{m \in [n]}$ e, para todo $l \in \bigcup_{m \in [n]} \Orb_p(m)$, existe $m \in [n]$ tal que $l \in \Orb_p(m)$ e, portanto, existe $k \in \N$ tal que $l=p^k(m) \in [n]$, o que mostra que $\bigcup_{m \in [n]} \subseteq [n]$. Por fim, sejam $o_1,o_2 \in \Orb_p$. Então existem $m_1,m_2 \in [n]$ tais que $o_1=\Orb_p(m_1)$ e $o_2=\Orb_p(m_2)$. Se existe $l \in \Orb_p(m_1) \cap \Orb_p(m_2)$, então existem $k_1,k_2 \in \Z$ tais que $l=p^{k_1}(m_1)=p^{k_2}(m_2)$. Assim, segue que $m_1=p^{k_2-k_1}(m_2)$ e, portanto, $m_1 \in \Orb_p(m_2)$. Mas isso implica que $\Orb_p(m_1) \subseteq \Orb_p(m_2)$; a inclusão contrária é análoga e concluímos que $\Orb_p(m_1) = \Orb_p(m_2)$. Logo $\Orb_p$ é uma partição de $[n]$.
 \end{proof}
 
 \subsubsection{Ciclos e transposições}
@@ -1417,7 +1417,7 @@ O \emph{período} da órbita $\orb_p(m)$ é o número $\card{\orb_p(m)}$. Uma \e
 	Seja $n \in \N$ e $p \in \sime_n$. Então existem únicos ciclos $c_1,\ldots,c_k \in \sime_n$ disjuntos dois a dois tais que $p=c_1 \circ \cdots \circ c_k$.
 \end{proposition}
 \begin{proof}
-	Seja $k := \card{\orb_p}$. O conjunto $\orb_p$ particiona $[n]$. Sejam $(o_k)_{i \in [k]}$ uma indexação de $\orb_p$ e $m_1,\cdot,m_k \in [n]$ tais que $o_i=\orb_p(m_i)$ para todo $i \in [k]$, e seja $k_i := \card{\orb_p(m_i)}$. Definamos $c_i :=  \bigl( m_i \ \cdots \  p^{k_i-1}(m_i)\bigr)$. Então segue que
+	Seja $k := \card{\Orb_p}$. O conjunto $\Orb_p$ particiona $[n]$. Sejam $(o_k)_{i \in [k]}$ uma indexação de $\Orb_p$ e $m_1,\cdot,m_k \in [n]$ tais que $o_i=\Orb_p(m_i)$ para todo $i \in [k]$, e seja $k_i := \card{\Orb_p(m_i)}$. Definamos $c_i :=  \bigl( m_i \ \cdots \  p^{k_i-1}(m_i)\bigr)$. Então segue que
 	\begin{equation*}
 	p = \bigtimes_{i=1}^k \bigl( m_i \ \cdots \  p^{k_i-1}(m_i)\bigr) = \bigtimes_{i=1}^k c_i.
 	\end{equation*}
