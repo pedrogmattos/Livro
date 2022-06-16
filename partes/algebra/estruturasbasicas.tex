@@ -57,14 +57,14 @@ Sejam $X$ um conjunto e $+$ uma operação binária em $X$. Uma operação biná
 \section{Conjuntos numéricos}
 
 %\begin{figure}[!ht]
-%\centering 
+%\centering
 %\includegraphics[width=10cm]{./Imagens/Numeros}
 %\end{figure}
 
 \subsection{Números naturais}
 
 \begin{definition}
-	Um \emph{modelo de números naturais} é uma tripla $\bm N = (N,0,\suce)$ em que 
+	Um \emph{modelo de números naturais} é uma tripla $\bm N = (N,0,\suce)$ em que
 	\begin{enumerate}
 	\item $N$ é um conjunto, o \emph{conjunto de números naturais};
 	\item $0 \in N$, o \emph{zero} de $\bm N$;
@@ -250,7 +250,7 @@ o que implica que $\suce(k) \in I$ e, portanto, que $I=N$.
 		&= 0 + 0															\tag{$A_1$} \\
 		&= (n \times 0) + (m \times 0).							\tag{$M_1$}
 	\end{align*}
-Agora, seja $k \in I$. Então	
+Agora, seja $k \in I$. Então
 	\begin{align*}
 	(n + m) \times \suce(k) &= ((n+m) \times k) + (n+m)	\tag{$M_2$}\\
 		&= ((n \times k) + (m \times k)) + (n+m)			\tag{$k \in I$}\\
@@ -297,7 +297,7 @@ o que implica que $\suce(k) \in I$ e, portanto, que $I=N$.
 	0 \times \suce(n) = (0 \times n) + 0 = 0 + 0 = 0,
 	\end{equation*}
 o que mostra que $\suce(n) \in N$ e, portanto, $I=N$.
-	
+
 	\item Seja $n \in N$. Então
 	\begin{equation*}
 	n \times 1 = (n \times 0) + n = 0+ n = n.
@@ -345,7 +345,7 @@ o que implica que $\suce(m) \in I$ e, portanto, que $I=N$.
 \begin{proof}
 	\begin{enumerate}
 	\item Seja $I := \{k \in N: \forall n,m \in N \quad n+k=m+k \entao n=m\}$. Primeiro, notemos que $0 \in I$, pois, para todos $n,m \in N$, se $n+0=m+0$, então $n=m$. Agora, seja $k \in I$ e $n,m \in N$. Se $n+\suce(k)=m+\suce(k)$, então $\suce(n+k)=\suce(m+k)$ e, como $\suce$ é injetiva, $n+k=m+k$, o que implica que $n=m$ e, assim, temos que $\suce(k) \in I$ e, portanto, $I=N$.
-	
+
 	\item Suponhamos, por absurdo, que $n \neq 0$ ou $m \neq 0$. Notemos que $n+m=m+n$; então, sem perda de generalidade, seja $m \neq 0$. Então existe $k \in N$ tal que $m=\suce(k)$ e segue que $n+m=n+\suce(k)=\suce(n+k)=0$, o que é absurdo, pois $\suce\inv(\{0\})=\emptyset$. Logo $n=m=0$.
 	\end{enumerate}
 \end{proof}
@@ -389,11 +389,11 @@ então $I=N$.
 	Seja $\bm N$ um modelo de números naturais. Então
 	\begin{equation*}
 	\forall n_1,n_2,m_1,m_2 \in N \qquad
-	\begin{cases}	
+	\begin{cases}
 	n_1 \leq m_1 \\
-	n_2 \leq m_2 
+	n_2 \leq m_2
 	\end{cases}
-	\entao 
+	\entao
 	\begin{cases}
 	n_1+n_2 \leq m_1+m_2 \\
 	n_1 \times n_2 \leq m_1 \times m_2.
@@ -444,31 +444,31 @@ Na base doze, os caracteres que usamos são:
 \begin{tabular}{|c|c|}
 \hline
 Símbolo & Nome \\
-\hline 
-0 & Zero \\ 
+\hline
+0 & Zero \\
 
-1 & Um \\ 
+1 & Um \\
 
-2 & Dois \\ 
+2 & Dois \\
 
-3 & Três \\ 
+3 & Três \\
 
-4 & Quatro \\ 
+4 & Quatro \\
 
-5 & Cinco \\ 
+5 & Cinco \\
 
-6 & Seis \\ 
+6 & Seis \\
 
-7 & Sete \\ 
+7 & Sete \\
 
-8 & Oito \\ 
+8 & Oito \\
 
-9 & Nove \\ 
+9 & Nove \\
 
-\dez & Dez \\ 
+\dez & Dez \\
 
-\onze & Onze \\ 
-\hline 
+\onze & Onze \\
+\hline
 \end{tabular}
 \caption{Nomenclatura dos algarismos}
 \label{tab:alg.nomenclatura.algarismos}
@@ -479,33 +479,33 @@ A tabela de multiplicação é:
 \begin{table}
 \centering
 \begin{tabular}{|c|cccccccccccc|}
-\hline 
-0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & \dez & \onze & 10 \\ 
-\hline 
-1 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & \dez & \onze & 10\\ 
+\hline
+0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & \dez & \onze & 10 \\
+\hline
+1 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & \dez & \onze & 10\\
 
-2 & 2 & 4 & 6 & 8 & \dez & 10 & 12 & 14 & 16 & 18 & 1\dez & 20 \\ 
+2 & 2 & 4 & 6 & 8 & \dez & 10 & 12 & 14 & 16 & 18 & 1\dez & 20 \\
 
-3 & 3 & 6 & 9 & 10 & 13 & 16 & 19 & 20 & 23 & 26 & 29 & 30 \\ 
+3 & 3 & 6 & 9 & 10 & 13 & 16 & 19 & 20 & 23 & 26 & 29 & 30 \\
 
-4 & 4 & 8 & 10 & 14 & 18 & 20 & 24 & 28 & 30 & 34 & 38 & 40 \\ 
+4 & 4 & 8 & 10 & 14 & 18 & 20 & 24 & 28 & 30 & 34 & 38 & 40 \\
 
-5 & 5 & \dez & 13 & 18 & 21 & 26 & 2\onze & 34 & 39 & 42 & 47 & 50 \\ 
+5 & 5 & \dez & 13 & 18 & 21 & 26 & 2\onze & 34 & 39 & 42 & 47 & 50 \\
 
-6 & 6 & 10 & 16 & 20 & 26 & 30 & 36 & 40 & 46 & 50 & 56 & 60 \\ 
+6 & 6 & 10 & 16 & 20 & 26 & 30 & 36 & 40 & 46 & 50 & 56 & 60 \\
 
-7 & 7 & 12 & 19 & 24 & 2\onze & 36 & 41 & 48 & 53 & 5\dez & 65 & 70 \\ 
+7 & 7 & 12 & 19 & 24 & 2\onze & 36 & 41 & 48 & 53 & 5\dez & 65 & 70 \\
 
-8 & 8 & 14 & 20 & 28 & 34 & 40 & 48 & 54 & 60 & 68 & 74 & 80 \\ 
+8 & 8 & 14 & 20 & 28 & 34 & 40 & 48 & 54 & 60 & 68 & 74 & 80 \\
 
-9 & 9 & 16 & 23 & 30 & 39 & 46 & 53 & 60 & 69 & 76 & 83 & 90 \\ 
+9 & 9 & 16 & 23 & 30 & 39 & 46 & 53 & 60 & 69 & 76 & 83 & 90 \\
 
-\dez & \dez & 18 & 26 & 34 & 42 & 50 & 5\dez & 68 & 76 & 84 & 92 & \dez0 \\ 
+\dez & \dez & 18 & 26 & 34 & 42 & 50 & 5\dez & 68 & 76 & 84 & 92 & \dez0 \\
 
-\onze & \onze & 1\dez & 29 & 38 & 47 & 56 & 65 & 74 & 83 & 92 & \dez1 & \onze0 \\ 
+\onze & \onze & 1\dez & 29 & 38 & 47 & 56 & 65 & 74 & 83 & 92 & \dez1 & \onze0 \\
 
-10 & 10 & 20 & 30 & 40 & 50 & 60 & 70 & 80 & 90 & \dez0 & \onze0 & 100 \\ 
-\hline 
+10 & 10 & 20 & 30 & 40 & 50 & 60 & 70 & 80 & 90 & \dez0 & \onze0 & 100 \\
+\hline
 \end{tabular}
 \caption{Tabela de multiplicação}
 \label{tab:alg.tabela.multiplicacao}
@@ -529,7 +529,7 @@ A tabela de multiplicação é:
 \end{proof}
 
 \begin{definition}
-	Seja $\bm N$ um modelo de números naturais com a equivalência $\sim$. O \emph{modelo de números inteiros} associado a $\bm N$ é o par $\bm Z = (\bm N,Z)$, em que $Z$ é o conjunto 
+	Seja $\bm N$ um modelo de números naturais com a equivalência $\sim$. O \emph{modelo de números inteiros} associado a $\bm N$ é o par $\bm Z = (\bm N,Z)$, em que $Z$ é o conjunto
 	\begin{equation*}
 	Z := \quo{N \times N}{\sim},
 	\end{equation*}
@@ -587,7 +587,7 @@ e, portanto, $(n_1+m_1,n_2+m_2) \sim (n'_1+m'_1,n'_2+m'_2)$, o que mostra que a 
 \begin{proof} Sejam $n,m,k \in Z$ e $(n_1,n_2) \in n,(m_1,m_2) \in m,(k_1,k_2) \in k$.
 	\begin{enumerate}
 	\item Como $(0,0) \in 0$, então $(n_1,n_2)+(0,0)=(n_1,n_2)$, logo $n+0=n$.
-	
+
 	\item Notemos que
 	\begin{align*}
 	((n_1,n_2)+(m_1,m_2))+(k_1,k_2) &= (n_1+m_1,n_2+m_2)+(k_1,k_2) \\
@@ -668,11 +668,12 @@ e, portanto, $(n_1 m_1 + n_2 m_2,n_2 m_1+n_1 m_2) \sim (n'_1 m'_1 + n'_2 m'_2,n'
 \end{exercise}
 
 
-\section{Grupoide e semigrupo}
+\section{Grupoides}
+%\section{Grupoide e semigrupo}
 
 \subsection{Grupoide}
 
-Grupoides\footnote{Essas estruturas são às vezes chamadas na literatura de `magmas' para distinguí-las de objetos distintos da teoria de categorias que também são chamados `grupoides'.} são talvez a estrutura algébrica mais simples que se pode estudar. Eles consistem em um conjunto e uma operação binária nesse conjunto, sem que nenhuma propriedade adicional seja esperada dessa operação binária. O nome `grupoide' vem por sua semelhança aos grupos, estruturas algébricas muito importantes que serão estudadas detalhadamente mais à frente. O sufixo `-oide' vem do latim e indica semelhança.
+Grupoides\footnote{Essas estruturas são às vezes chamadas na literatura de `magmas' para distingui-las de objetos distintos da teoria de categorias que também são chamados `grupoides'.} são talvez a estrutura algébrica mais simples que se pode estudar. Eles consistem em um conjunto e uma operação binária nesse conjunto, sem que nenhuma propriedade adicional seja esperada dessa operação binária. O nome `grupoide' vem por sua semelhança aos grupos, estruturas algébricas muito importantes que serão estudadas detalhadamente mais à frente. O sufixo `-oide' vem do grego e indica semelhança.
 
 \begin{definition}
 Um \emph{grupoide} é um par $\bm G=(G,\opb)$ em que $G$ é um conjunto e $\opb$ é uma operação binária em $G$.
@@ -689,7 +690,7 @@ Considere os seguintes exemplos.
 \end{example}
 
 \begin{example}
-O jogo de pedra-papel-tesoura define um grupoide cuja operação é comutativa, mas não associativa. Representamos pedra por $r$, papel por $p$ e tesoura por $t$. A operação entre dois elementos distintos resulta no elemento que vence e entre um elemento com ele mesmo resulta nele mesmo. As regras de operação estão resumidas na tabela \ref{tab:operacao.pedrapapeltesousa}. 
+O jogo de pedra-papel-tesoura define um grupoide cuja operação é comutativa, mas não associativa. Representamos pedra (rocha) por $r$, papel por $p$ e tesoura por $t$. A operação entre dois elementos distintos resulta no elemento que vence e entre um elemento com ele mesmo resulta nele mesmo. As regras de operação estão resumidas na tabela \ref{tab:operacao.pedrapapeltesousa}.
 \end{example}
 
 \begin{table}
@@ -758,8 +759,11 @@ Sejam $\bm G$ um grupoide, $S,S' \subseteq G$ subconjuntos. Denota-se
 Para todo $x \in G$, denotam-se $x \opb S := \{x\} \opb S$ e $S \opb x := S \opb \{x\}$.
 \end{definition}
 
+\subsubsection{Identidades}
+
 Em um grupoide, pode-se ter um elemento que é neutro com relação à operação binária no sentido que qualquer elemento do grupoide é levado em si mesmo quando operado com esse elemento neutro. Esses elementos são chamados de `identidades'.
 
+\begin{comment}
 \begin{definition}[Identidade]
 Seja $\bm G=(G,\opb)$ um grupoide.
 	\begin{itemize}
@@ -777,6 +781,25 @@ Seja $\bm G=(G,\opb)$ um grupoide.
 		\end{equation*}
 	\end{itemize}
 \end{definition}
+\end{comment}
+
+\begin{definition}[Identidade]
+Seja $\bm G=(G,\opb)$ um grupoide.
+	\begin{itemize}
+	\item Uma \emph{identidade à esquerda} de $\bm G$ é um elemento $i \in G$ que satisfaz, para todo $x \in G$,
+		\begin{equation*}
+		i \opb x = x;
+		\end{equation*}
+	\item Uma \emph{identidade à direita} de $\bm G$ é um elemento $i \in G$ que satisfaz, para todo $x \in G$,
+		\begin{equation*}
+		x \opb i = x;
+		\end{equation*}
+	\item Uma \emph{identidade} de $\bm G$ é um elemento $i \in G$ que satisfaz, para todo $x \in G$,
+		\begin{equation*}
+		i \opb x = x = x \opb i.
+		\end{equation*}
+	\end{itemize}
+\end{definition}
 
 \begin{example}
 Considere os seguintes exemplos.
@@ -789,8 +812,9 @@ Considere os seguintes exemplos.
 	\end{enumerate}
 \end{example}
 
-As identidade são elementos importantes de qualquer grupoide e pode-se mostrar que, se existem identidades aos dois lados, elas são a mesma e a identidade nesse grupoide é única. Em particular, isso implica que identidades à esquerda ou à direita são únicas se a operação binária por comutativa.
+As identidade são elementos importantes de qualquer grupoide e pode-se mostrar que, se existem identidades aos dois lados, elas são a mesma e a identidade nesse grupoide é única. Em particular, isso implica que identidades à esquerda ou à direita são únicas se a operação binária for comutativa.
 
+\begin{comment}
 \begin{proposition}
 \label{prop:unic.elem.neut}
 Seja $\bm G = (G,\opb)$ um grupoide. Se $\id$ é uma identidade à esquerda e $\id'$ é uma identidade à direita de $\bm G$, então $\id = \id'$ e $\id$ é a única identidade de $\bm G$.
@@ -802,7 +826,23 @@ Como $\id'$ é identidade à direita e $\id$ é identidade à esquerda de $\bm G
 	\end{equation*}
 A unicidade segue pois qualquer identidade de $\bm G$ é identidade à esquerda.
 \end{proof}
+\end{comment}
 
+\begin{proposition}
+\label{prop:unic.elem.neut}
+Seja $\bm G = (G,\opb)$ um grupoide. Se $i$ é uma identidade à esquerda e $i'$ é uma identidade à direita de $\bm G$, então $i = i'$ e $i$ é a única identidade de $\bm G$.
+\end{proposition}
+\begin{proof}
+Como $i'$ é identidade à direita e $i$ é identidade à esquerda de $\bm G$, segue que
+	\begin{equation*}
+	i = i \opb i' = i'.
+	\end{equation*}
+A unicidade segue pois qualquer identidade de $\bm G$ é identidade à esquerda.
+\end{proof}
+
+\subsubsection{Nulidades}
+
+\begin{comment}
 \begin{definition}[Nulidade]
 Seja $\bm G=(G,\opb)$ um grupoide.
 	\begin{itemize}
@@ -820,6 +860,26 @@ Seja $\bm G=(G,\opb)$ um grupoide.
 		\end{equation*}
 	\end{itemize}
 \end{definition}
+\end{comment}
+
+\begin{definition}[Nulidade]
+Seja $\bm G=(G,\opb)$ um grupoide.
+	\begin{itemize}
+	\item Uma \emph{nulidade à esquerda} de $\bm G$ é um elemento $o \in G$ que satisfaz, para todo $x \in G$,
+		\begin{equation*}
+		o \opb x = o;
+		\end{equation*}
+	\item Uma \emph{nulidade à direita} de $\bm G$ é um elemento $o \in G$ que satisfaz, para todo $x \in G$,
+		\begin{equation*}
+		x \opb o = o;
+		\end{equation*}
+	\item Uma \emph{nulidade} de $\bm G$ é um elemento $o \in G$ que satisfaz, para todo $x \in G$,
+		\begin{equation*}
+		o \opb x = o = x \opb o.
+		\end{equation*}
+	\end{itemize}
+\end{definition}
+
 
 \begin{example}
 Considere os seguintes exemplos.
@@ -832,6 +892,7 @@ Considere os seguintes exemplos.
 	\end{enumerate}
 \end{example}
 
+\begin{comment}
 \begin{proposition}
 \label{prop:unic.nulidade}
 Seja $\bm G = (G,\opb)$ um grupoide. Se $\nulo$ é uma nulidade à esquerda e $\nulo'$ é uma nulidade à direita de $\bm G$, então $\nulo = \nulo'$ e $\nulo$ é a única nulidade de $\bm G$.
@@ -840,6 +901,19 @@ Seja $\bm G = (G,\opb)$ um grupoide. Se $\nulo$ é uma nulidade à esquerda e $\
 Como $\nulo'$ é nulidade à direita e $\nulo$ é nulidade à esquerda de $\bm G$, segue que
 	\begin{equation*}
 	\nulo = \nulo \opb \nulo' = \nulo'.
+	\end{equation*}
+A unicidade segue pois qualquer nulidade de $\bm G$ é nulidade à esquerda.
+\end{proof}
+\end{comment}
+
+\begin{proposition}
+\label{prop:unic.nulidade}
+Seja $\bm G = (G,\opb)$ um grupoide. Se $o$ é uma nulidade à esquerda e $o'$ é uma nulidade à direita de $\bm G$, então $o = o'$ e $o$ é a única nulidade de $\bm G$.
+\end{proposition}
+\begin{proof}
+Como $o'$ é nulidade à direita e $o$ é nulidade à esquerda de $\bm G$, segue que
+	\begin{equation*}
+	o = o \opb o' = o'.
 	\end{equation*}
 A unicidade segue pois qualquer nulidade de $\bm G$ é nulidade à esquerda.
 \end{proof}
@@ -877,19 +951,410 @@ Para todos $x,x' \in G$,
 Um \emph{semigrupo} (ou \emph{grupoide associativo}) é um grupoide $\bm G=(G,\opb)$ cuja operação binária $\opb$ é associativa. Um semigrupo \emph{comutativo} é um semigrupo cuja operação binária $\opb$ é comutativa.
 \end{definition}
 
-\begin{definition}
-Sejam $\bm G=(G,\opb)$ um semigrupo, $n \in \N \setminus \{0\}$ e $(x_i)_{i \in [n]}$ elementos de $G$. O \emph{operatório} desses elementos é definido indutivamente por
+\begin{example}
+$(\N,+)$, $(\N,\times)$, $(\N,\opmin)$ e $(\N,\opmax)$ são semigrupos.
+\end{example}
+
+\subsubsection{Associatividade generalizada}
+
+Existem $2$ maneiras de multiplicar $3$ elementos $x_0, x_1, x_2 \in G$ de um grupoide mantendo a ordem dos índices:
+	\begin{align*}
+	& (x_0 \opb x_1) \opb x_2, \\
+	& x_0 \opb (x_1 \opb x_2).
+	\end{align*}
+Vamos no referir a cada maneira de escolher os parênteses nessas operações com uma \textit{associação} dos elementos $x_0, x_1, x_2$. A associatividade é propriedade que afirma que ambas associações de $3$ elementos produzem o mesmo elemento, ou seja,
 	\begin{equation*}
-	\bigopb _{i \in [n]} x_i :=
+	(x_0 \opb x_1) \opb x_2 = x_0 \opb (x_1 \opb x_2).
+	\end{equation*}
+
+Podemos generalizar essa propriedade considerando $4$ elementos e todas as possíveis maneiras de multiplicá-los. Sejam. Existem $5$ maneiras de multiplicar $4$ elementos $x_0, x_1, x_2, x_3 \in G$ mantendo a ordem dos índices:
+	\begin{align*}
+	& ((x_0 \opb x_1) \opb x_2) \opb x_3, \\
+	& (x_0 \opb (x_1 \opb x_2)) \opb x_3, \\
+	& (x_0 \opb x_1) \opb (x_2 \opb x_3), \\
+	& x_0 \opb ((x_1 \opb x_2) \opb x_3), \\
+	& x_0 \opb (x_1 \opb (x_2 \opb x_3)).
+	\end{align*}
+
+Uma possível propriedade de associatividade generalizada seria estabelecer que essas $5$ expressões são todas iguais. No entanto, como é de se esperar, a associatividade implica a associatividade generalizada, tanto para $4$ elementos como para qualquer outra quantidade de elementos. Para demonstrar isso, devemos introduzir uma codificação para cada umas das associações de $n$ elementos de um grupoide através da operação binária. Podemos estabelecer uma relação bijetiva entre sequências de $0$s e $1$s que têm certa propriedade com associações de elementos. Chamaremos tais sequências de \textit{sequências de associação}.
+
+Notemos que, escrevendo cada uma das associações de $3$ elementos usando a notação de função para $\opb$, obtemos
+	\begin{align*}
+	& \opb(\opb(x_0,x_1),x_2) \\
+	& \opb(x_0,\opb(x_1,x_2))
+	\end{align*}
+e, escrevendo cada uma das associações de $4$ elementos usando a notação de função para $\opb$, obtemos
+	\begin{align*}
+	& \opb(\opb(\opb(x_0,x_1),x_2),x_3) \\
+	& \opb(\opb(x_0,\opb(x_1,x_2)),x_3) \\
+	& \opb(\opb(x_0,x_1),\opb(x_2,x_3)) \\
+	& \opb(x_0,\opb(\opb(x_1,x_2),x_3)) \\
+	& \opb(x_0,\opb(x_1,\opb(x_2,x_3))).
+	\end{align*}
+
+Se nos atentarmos à ordem em que os símbolos `$\opb$' e `$,$' aparecem nas expressões, obtemos as sequências
+	\begin{align*}
+	& (0,0,1,1) \\
+	& (0,1,0,1)
+	\end{align*}
+e
+	\begin{align*}
+	& (0,0,0,1,1,1) \\
+	& (0,0,1,0,1,1) \\
+	& (0,0,1,1,0,1) \\
+	& (0,1,0,0,1,1) \\
+	& (0,1,0,1,0,1).
+	\end{align*}
+
+Podemos estabelecer uma regra indutiva de como gerar as próximas sequências a partir das anteriores da seguinte forma. Notemos que à associação vazia de $1$ elemento $x_0 \in G$ podemos atribuir a sequência vazia $\emptyset \in \{0,1\}^{0}$ e, à única associação de $2$ elementos $x_0, x_1 \in G$, a saber $x_0 \opb x_1$ ou $\opb(x_0,x_1)$, podemos atribuir a sequência $(0,1) \in \{0,1\}^{2}$ seguindo o mesmo padrão explicitado nos casos de $3$ e $4$ elementos. Então notemos que, com a notação de função, o primeiro símbolo a aparecer na expressão de uma associação $a$ é sempre `$\opb$', e, como a operação $\opb$ é uma operação binária, devemos ter associações $a_0$ e $a_1$ de modo que a associação $a$ será escrita $\opb(a_0,a_1)$. Isso significa que, dadas sequências $s^{(0)}$ e $s^{(1)}$ atribuídas às associações $a_0$ e $a_1$, podemos atribuir a sequência $s = (0,s^{(0)},1,s^{(1)})$ à associação $a$. Essa regra descreve indutivamente como atribuir uma sequência de $0$s e $1$s a cada associação diferente de elementos do grupoide.
+
+O que acabou de ser apresentado foi uma motivação informal da relação entre a escolha de parênteses ao escrever uma expressão que envolve a operação entre elementos de um grupoide e uma sequência de $0$s e $1$s que a codifica. Definimos a seguir formalmente uma sequência de associação para então, a partir dessas sequências, definir uma operação entre vários elementos do grupoide.
+
+\begin{definition}
+Define-se indutivamente para todo $n \in \N \setminus \{0\}$:
+Uma \emph{sequência de $n$-associação} é
+	\begin{enumerate}
+	\item ($n=1$) a sequência vazia $\emptyset \in \{0,1\}^{0}$;
+	\item ($n>1$) uma sequência finita $s \in \{0,1\}^{2(n-1)}$ para a qual únicos $n_0, n_1 \in \N \setminus \{0\}$ e únicas sequências $s^{(0)} \in \{0,1\}^{2(n_0-1)}$ de $n_0$-associação e $s^{(1)} \in \{0,1\}^{2(n_1-1)}$ de $n_1$-associação satisfazem
+		\begin{equation*}
+		s=(0,s^{(0)},1,s^{(1)}).
+		\end{equation*}
+	A sequência $s^{(0)}$ é a \emph{subsequência formadora à esquerda} de $s$ e a sequência $s^{(1)}$ é a \emph{subsequência formadora à direita} de $s$.
+	\end{enumerate}
+\end{definition}
+
+Como consequência da definição, para toda sequência de $n$-associação $s=(0,s^{(0)},1,s^{(1)})$, vale que $1 + 2(n_0-1) + 1 + 2(n_1-1) + 1 = 2(n-1)$, portanto
+	\begin{equation*}
+	n_0 + n_1 = n.
+	\end{equation*}
+Exibimos na tabela~\ref{tab:sequenciasdeassociacao} as sequências de $n$-associação para $n$ pequeno, ressaltando em vermelho e azul as subsequências $s^{(0)}$ e $s^{(1)}$ respectivas.
+
+\begin{table}
+	\centering
+
+	\begin{tabular}{c c c @{}}
+		\toprule
+		$n$		& $s$				& $(0,{\color{vermelho} s^{(0)}},1,{\color{azul} s^{(1)}})$	\\
+		\midrule
+		$1$		& $\emptyset$		& $\emptyset$	\\
+		$2$		& $(0,1)$			& $(0,{\color{vermelho} \emptyset},1,{\color{azul} \emptyset})$	\\
+		$3$		& $(0,0,1,1)$		& $(0,{\color{vermelho} 0,1},1,{\color{azul} \emptyset})$	\\
+				& $(0,1,0,1)$		& $(0,{\color{vermelho} \emptyset},1,{\color{azul} 0,1})$	\\
+		$4$		& $(0,0,0,1,1,1)$	& $(0,{\color{vermelho} 0,0,1,1},1,{\color{azul} \emptyset})$	\\
+				& $(0,0,1,0,1,1)$	& $(0,{\color{vermelho} 0,1,0,1},1,{\color{azul} \emptyset})$	\\
+				& $(0,0,1,1,0,1)$	& $(0,{\color{vermelho} 0,1},1,{\color{azul} 0,1})$		\\
+				& $(0,1,0,0,1,1)$	& $(0,{\color{vermelho} \emptyset},1,{\color{azul} 0,0,1,1})$	\\
+				& $(0,1,0,1,0,1)$	& $(0,{\color{vermelho} \emptyset},1,{\color{azul} 0,1,0,1})$	\\
+		\bottomrule
+	\end{tabular}
+
+	\caption[Sequências de associação]{Sequências de $n$-associação $s \in \{0,1\}^{2(n-1)}$ e suas subsequências de associação formadoras para $n \in \{1,2,3,4\}$.}
+	\label{tab:sequenciasdeassociacao}
+\end{table}
+
+Pode-se mostrar que as sequências de associação são aquelas que satisfazem uma certa propriedade sobre a quantidade de entradas $1$. Para isso, relembremos que denotamos, para todo $n \in \N$, $[n] = \{0,\ldots,n-1\}$ e lembremos também que uma sequência finita de $0$s e $1$s é uma função $\fun{s}{[m]}{\{0, 1\}}$, ou seja, um elemento $s \in \{0,1\}^m$. O conjunto dos índices $i$ de $s$ tais que $s_i=1$ é
+	\begin{equation*}
+	s\inv(1) = \set{i \in [m]}{s_i=1}.
+	\end{equation*}
+
+\begin{exercise}
+Seja $n \in \N$. Uma sequência $s \in \{0,1\}^{2(n-1)}$ é uma sequência de $n$-associação se, e somente se,
+	\begin{enumerate}
+	\item $\card{s\inv(1)} = n-1$;
+	\item Para todo $m \in [n-1]$,
+		\begin{enumerate}
+%		\item $\card{\set{i \in [2m]}{s_i=1}} \leq m$;
+		\item $\card{s\inv(1) \cap [2m]} \leq m$;
+%		\item $\card{\set{i \in [2m+1]}{s_i=1}} \leq m$.
+		\item $\card{s\inv(1) \cap [2m+1]} \leq m$.
+		\end{enumerate}
+%		\begin{enumerate}
+%		\item $\card{s\inv(1) \cap \{0,\ldots,2m-1\}} \leq m$;
+%		\item $\card{s\inv(1) \cap \{0,\ldots,2m\}} \leq m$.
+%		\end{enumerate}
+	\end{enumerate}
+\end{exercise}
+% NOTA: A princípio, eu tinha definido sequências de associação como as sequências que satisfazem a propriedade do exercício acima sobre a quantidade de entradas $1$ na sequência e depois tinha demonstrado que cada sequência desse tipo satisfazia a decomposição única da forma $s=(0,u,1,v)$. No entanto, percebi que seria mais simples definir as sequências diretamente de modo indutivo como satisfazendo essa decomposição e então deixar como exercício mostrar que elas têm a propriedade do exercício. Não fiz a resolução do exercício, mas acredito que ela seja semelhante à demonstração da proposição abaixo no comentário.
+\begin{comment}
+A seguir, notaremos que cada sequência $s$ de associação de grau $(n+1)$ pode ser escrita unicamente da forma $(0,s^{(0)},1,s^{(1)})$, em que $s^{(0)}$ e $s^{(1)}$ são sequências de associação de graus $n_0$ e $n_1$, respectivamente, com $n_0+n_1=n$. Isso inclui o caso da sequência vazia, que é uma sequência de associação de grau $0$.
+
+\begin{proposition}
+Sejam $n \in \N$ e $s$ uma sequência de associação de grau $(n+1)$. Existem únicas sequências de associação $s^{(0)} \in \{0,1\}^{2n_0}$ e $s^{(1)} \in \{0,1\}^{2n_1}$ tais que $s=(0,s^{(0)},1,s^{(1)})$. Nesse caso vale $n_0+n_1=n$.
+\end{proposition}
+\begin{proof}
+Primeiro construiremos sequências $s^{(0)}$ e $s^{(1)}$ de modo que $s = (0,s^{(0)},1,s^{(1)})$. A sequência $s$ sempre começa com um $0$; ou seja, $s_0=0$. Consideremos dois casos, de acordo com o valor de $s_1$.
+	\begin{enumerate}
+	\item ($s_1=0$) Nesse caso, definimos
+%		\begin{equation*}
+%		n_0 := \min\set{m}{\card{\set{i \in \{1,\ldots,2m+1\}}{s_i=1}} > m}
+%		\end{equation*}
+		\begin{equation*}
+		n_0 := \min\set{m}{\card{\set{i \in \{0,\ldots,2m\}}{s_{i+1}=1}} > m}
+		\end{equation*}
+	e $s^{(0)} := (s_1,\ldots, s_{2n_0})$; ou seja, para todo $i \in [2n_0]$ vale $s^{(0)}_i = s_{i+1}$. Por definição de $n_0$, segue que a sequência $s^{(0)}$ é de associação
+%		\begin{equation*}
+%		\card{\set{i \in \{0,\ldots,2n_0-1)\}}{s^{(0)}_i=1}} = \card{\set{i \in \{1,\ldots,2n_0\}}{s_{i+1}=1}} \leq n_0-1
+%		\end{equation*}
+	% PROVAR
+%	e $s_{2n_0+1} = 1$ ou $s_{2n_0}$.
+	% PROVAR
+	e vale $s_{2n_0+1} = 1$ e $s_{2n_0+2} = 0$.
+	% PROVAR
+	Definindo $s^{(1)} := (s_{2n_0+2}, \ldots, s_{2n+1})$, segue que $s = (0,s^{(0)},1,s^{(1)})$ e $n = n_0 + n_1$.
+
+	\item ($s_1=1$) Nesse caso, definimos a sequência $s^{(1)} := (s_2,\ldots, s_{2n+1}) \in \{0,1\}^{2n}$; ou seja, para todo $i \in [2n]$ vale $s^{(1)}_i = s_{i+2}$.  é uma sequência de associação de grau $n$. Para mostrar isso, primeiro notamos que, como $s$ é sequência de associação de grau $n+1$, vale $\card{s\inv(1)} = n+1$;
+%		\begin{equation*}
+%		\card{\set{i \in [2n+2]}{s_i=1}} = n+1;
+%		\end{equation*}
+	assim, como $s_0=0$ e $s_1=1$, segue que
+%		\begin{equation*}
+%		\card{\set{i \in [2n]}{s^{(1)}_i=1}} = \card{\set{i \in \{2, \ldots, 2n+1\}}{s_i=1}} = n.
+%		\end{equation*}
+		\begin{equation*}
+		\card{(s^{(1)})\inv(1)} = \card{s\inv(1) \cap \{2, \ldots, 2n+1\}} = n.
+		\end{equation*}
+	Além disso, para todo $m \in [n]$, vale $m+1 \in [n+1]$ e, como $s$ é sequência de associação de grau $n+1$, vale
+%		\begin{enumerate}
+%		\item $\card{\set{i \in [2(m+1)]}{s_i=1}} \leq m+1$;
+%		\item $\card{\set{i \in [2(m+1)+1]}{s_i=1}} \leq m+1$;
+%		\end{enumerate}
+		\begin{enumerate}
+		\item $\card{s\inv(1) \cap [2(m+1)]} \leq m+1$;
+		\item $\card{s\inv(1) \cap [2(m+1)+1]} \leq m+1$;
+		\end{enumerate}
+	assim, como $s_0=0$ e $s_1=1$, segue que
+%		\begin{enumerate}
+%		\item $\card{\set{i \in \{1,\cdots,2m+1\}}{s_i=1}} = \card{\set{i \in [2m]}{s^{(1)}_i=1}} \leq m$;
+%		\item $\card{\set{i \in \{1,\ldots,2m+2\}}{s_i=1}} = \card{\set{i \in [2m+1]}{s^{(1)}_i=1}} \leq m$.
+%		\end{enumerate}
+		\begin{enumerate}
+		\item $\card{s\inv(1) \cap  \{1,\cdots,2m+1\}} = \card{(s^{(1)})\inv(1) \cap  [2m]} \leq m$;
+		\item $\card{s\inv(1) \cap  \{1,\cdots,2m+2\}} = \card{(s^{(1)})\inv(1) \cap  [2m+1]} \leq m$.
+		\end{enumerate}
+
+	Definindo então $s^{(0)} := \emptyset$, vale $s = (0,s^{(0)},1,s^{(1)})$ e $n = n_0 + n_1$.
+	\end{enumerate}
+
+Agora, resta mostrar a unicidade. Sejam $s^{(0)}, s^{(1)}, z^{(0)}, z^{(1)}$ sequência de associação tais que $s = (0,s^{(0)},1,s^{(1)}) = (0,z^{(0)},1,z^{(1)})$. Primeiro mostremos que $s^{(0)} = z^{(0)}$. Sejam $n_0$ e $m_0$ seus respectivos graus. Se $n_0 = m_0$, segue que $s^{(0)}=z^{(0)}$ pois, para todo $i \in [n_0]$ vale $s^{(0)}_i = s_{i+1} = z^{(0)}_i$; o caso em que $n_0 \neq m_0$ não ocorre, pois consideremos sem perda de generalidade que $n_0 < m_0$. Então, como para todo $i \in [n_0]$ valeria $s^{(0)}_i = s_{i+1} = z^{(0)}_i$, deveria valer que $1 = s_{n_0} = z^{(0)}_{n_0}$. Mas, como $s^{(0)}$ é sequência de associação, valeria
+	\begin{equation*}
+	\card{\set{i \in [2n_0]}{s^{(0)}_i=1}} = n_0,
+	\end{equation*}
+e isso implicaria que
+	\begin{equation*}
+	\card{\set{i \in [2n_0+1]}{z^{(0)}_i=1}} = n_0 + 1 > n_0
+	\end{equation*}
+o que significaria que $z^{(0)}$ não é sequência de associação, uma contradição. Assim concluímos que $s^{(0)}=z^{(0)}$ e, portanto, segue que $s^{(1)}=z^{(1)}$.
+\end{proof}
+
+%Agora argumentemos por que uma sequência desse tipo nos dá uma
+\end{comment}
+
+O exercício diz que uma sequência de $n$-associação deve ser composta por $n-1$ entradas $0$ e $n-1$ entradas $1$ de modo que suas primeiras entradas nunca consistam em mais entradas $1$ do que entradas $0$.
+
+\begin{definition}
+Define-se indutivamente para todo $n \in \N \setminus \{0\}$:
+
+A \emph{sequência de $n$-associação à esquerda} é
+	\begin{equation*}
+	a_n :=
 		\begin{cases}
-		x_0, & n=1\\
-		x_{n-1} \opb \displaystyle \bigopb_{i \in [n-1]} x_i, & n>1.
+		\emptyset,					& n=1 \\
+		(0,a_{n-1},1,\emptyset),	& n>1
+		\end{cases}
+	\end{equation*}
+
+A \emph{sequência de $n$-associação à direita} é
+	\begin{equation*}
+	z_n :=
+		\begin{cases}
+		\emptyset,					& n=1 \\
+		(0,\emptyset,1,z_{n-1}),	& n>1.
+		\end{cases}
+	\end{equation*}
+
+\begin{comment}
+%: para todo $i \in [n-1]$ vale $(a_m)_{i} = 0$, $(a_m)_{m-1+i} = 1$, $(z_m)_{2i} = 0$ e $(z_m)_{2i+1} = 0$.
+	\begin{equation*}
+	(a_m)_i :=
+		\begin{cases}
+		0,	& 0 \leq i < m-1 \\
+		1,	& m-1 \leq i < 2(m-1)
+		\end{cases}
+	\end{equation*}
+e
+	\begin{equation*}
+	(z_m)_i :=
+		\begin{cases}
+		0,	& i \in \set{2j}{j \in \{0,\cdots,m-2\}} \\
+		1,	& i \in \set{2j+1}{j \in \{0,\cdots,m-2\}}.
+		\end{cases}
+	\end{equation*}
+\end{comment}
+\end{definition}
+
+Essas sequências têm a forma para $n>1$
+	\begin{equation*}
+	a_n = ((0)^{n-1},(1)^{n-1}) =  (0,\ldots,0,1\ldots,1)
+	\end{equation*}
+e
+	\begin{equation*}
+	z_n = (0,1)^{n-1} = (0,1,\ldots,0,1).
+	\end{equation*}
+
+
+Usando as sequências de associação, vamos definir indutivamente, como nos exemplos motivadores apresentados anteriormente, o operatório $\displaystyle\bigopb\nolimits^{s}$ de $n$ elementos do grupoide relativo a cada sequência de $n$-associação $s$.
+
+\begin{definition}
+Sejam $\bm G=(G,\opb)$ um grupoide, $n \in \N \setminus \{0\}$, $(x_i)_{i \in [n]} \in G^n$ e $s \in \{0,1\}^{2(n-1)}$ uma sequência de $n$-associação. O \emph{$s$-operatório} de $(x_i)_{i \in [n]}$ é definido indutivamente por
+	\begin{equation*}
+	\bigopb\nolimits^{s} (x_i)_{i \in [n]} :=
+		\begin{cases}
+		x_0, & s = \emptyset; \\
+		\left( \displaystyle\bigopb\nolimits^{s^{(0)}} (x_i)_{i \in [n_0]} \right) \opb \left( \displaystyle\bigopb\nolimits^{s^{(1)}} (x_{n_0+i})_{i \in [n_1]} \right), & s = (0,s^{(0)},1,s^{(1)}).
 		\end{cases}
 	\end{equation*}
 \end{definition}
 
-O símbolo usado para a soma $+$ é o \emph{somatório} $\displaystyle\bigplus$ e o símbolo usado para o produto $\times$ é o \emph{produtório} $\displaystyle\bigtimes$. Essa definição considera que as operações vão sendo feitas à esquerda, mas uma mesma definição poderia ter sido feita para operações à direita --- todas demonstrações ainda valeriam, considerando que as ordens fossem devidamente trocadas.
+A tabela~\ref{tab:associacoesesequencias} mostra a relação entre as sequências de $n$-associação e as respectivas associações de $n$ elementos para $n$ pequeno.
 
+\begin{table}
+	\centering
+
+	\begin{tabular}{c c c @{}}
+		\toprule
+		$n$	& $s=(0,{\color{vermelho} s^{(0)}},1,{\color{azul} s^{(1)}})$	& $\displaystyle\bigopb\nolimits^{s} (x_i)_{i \in [n]}$	\\
+		\midrule
+		$1$	& $\emptyset$						& $x_0$		\\
+		$2$	& $(0,{\color{vermelho} \emptyset},1,{\color{azul} \emptyset})$	& ${\color{vermelho} x_0} \opb {\color{azul} x_1}$	\\
+		$3$	& $(0,{\color{vermelho} 0,1},1,{\color{azul} \emptyset})$		& ${\color{vermelho} (x_0 \opb x_1)} \opb {\color{azul} x_2}$	\\
+			& $(0,{\color{vermelho} \emptyset},1,{\color{azul} 0,1})$		& ${\color{vermelho} x_0} \opb {(\color{azul} x_1 \opb x_2)}$	\\
+		$4$	& $(0,{\color{vermelho} 0,0,1,1},1,{\color{azul} \emptyset})$	& ${\color{vermelho} ((x_0 \opb x_1) \opb x_2)} \opb {\color{azul} x_3}$	\\
+			& $(0,{\color{vermelho} 0,1,0,1},1,{\color{azul} \emptyset})$	& ${\color{vermelho} (x_0 \opb (x_1 \opb x_2))} \opb {\color{azul} x_3}$	\\
+			& $(0,{\color{vermelho} 0,1},1,{\color{azul} 0,1})$				& ${\color{vermelho} (x_0 \opb x_1)} \opb {\color{azul} (x_2 \opb x_3)} $	\\
+			& $(0,{\color{vermelho} \emptyset},1,{\color{azul} 0,0,1,1})$	& ${\color{vermelho} x_0} \opb {\color{azul} ((x_1 \opb x_2) \opb x_3)}$	\\
+			& $(0,{\color{vermelho} \emptyset},1,{\color{azul} 0,1,0,1})$	& ${\color{vermelho} x_0} \opb {\color{azul} (x_1 \opb (x_2 \opb x_3))}$	\\
+		\bottomrule
+	\end{tabular}
+
+	\caption[Sequências de associação]{Sequências de $n$-associação e suas respectivas associações de $n$ elementos para $n \in \{1,2,3,4\}$.}
+	\label{tab:associacoesesequencias}
+\end{table}
+
+As sequências de associação $a_n$ e $z_n$ são as sequências que descrevem, sob certo ponto de vista, a maneira mais simples de como associar elementos. Os operatórios relativos a elas têm a forma
+	\begin{align*}
+	\bigopb\nolimits^{a_n} (x_i)_{i \in [n]} &= (((x_0 \opb x_1) \cdots ) \opb x_{n-1}), \\
+	\bigopb\nolimits^{z_n} (x_i)_{i \in [n]} &=  (x_{0} \opb ( \cdots (x_{n-2} \opb x_{n-1}))).
+	\end{align*}
+
+Quando multiplicamos operatórios desse tipo um pelo outro, a associatividade permite transformar um em outro. A proposição a seguir se trata disso, e vai ser utilizada como lema para a demonstração da associatividade generalizada.
+
+\begin{proposition}
+\label{prop:lema.associatividade.generalizada}
+Sejam $\bm G=(G,\opb)$ um semigrupo (grupoide associativo), $n_0,n_1 \in \N \setminus \{0\}$ e $(x_i)_{i \in [n_0+n_1]} \in G^{n_0+n_1}$. Então
+	\begin{equation*}
+	\bigopb\nolimits^{a_{n_0+n_1}} (x_i)_{i \in [n_0+n_1]} = \left( \bigopb\nolimits^{a_{n_0}} (x_i)_{i \in [n_0]} \right) \opb \left( \bigopb\nolimits^{z_{n_1}} (x_{n_0+i})_{i \in [n_1]} \right).
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+Vamos demonstrar a proposição por indução em $n_1$. Para $n_1=1$,
+	\begin{equation*}
+	\bigopb\nolimits^{z_{1}} (x_{n_0+i})_{i \in [1]} = x_{n_0}
+	\end{equation*}
+e, por definição da sequência $a_{n_0+1}$ e do $a_{n_0+1}$-operatório,
+	\begin{equation*}
+	\bigopb\nolimits^{a_{n_0+1}} (x_i)_{i \in [n_0+1]} = \left( \bigopb\nolimits^{a_{n_0}} (x_i)_{i \in [n_0]} \right) \opb x_{n_0}
+	\end{equation*}
+portanto
+	\begin{align*}
+	\bigopb\nolimits^{a_{n_0+1}} (x_i)_{i \in [n_0+1]} &= \left( \bigopb\nolimits^{a_{n_0}} (x_i)_{i \in [n_0]} \right) \opb x_{n_0} \\
+		&= \left( \bigopb\nolimits^{a_{n_0}} (x_i)_{i \in [n_0]} \right) \opb \left( \bigopb\nolimits^{z_{1}} (x_{n_0+i})_{i \in [1]} \right).
+	\end{align*}
+
+Para o passo indutivo, suponhamos que a proposição vale para todo $m \in \{1,\ldots, n_1-1\}$ e mostremos que vale também para $n_1$. Pela hipótese do passo indutivo para $n_0+1$ e $n_1-1$,
+	\begin{align*}
+	\bigopb\nolimits^{a_{n_0+n_1}} (x_i)_{i \in [n_0+n_1]} &= \bigopb\nolimits^{a_{(n_0+1)+(n_1-1)}} (x_i)_{i \in [(n_0+1)+(n_1-1)]} \\
+		&= \left( \bigopb\nolimits^{a_{n_0+1}} (x_i)_{i \in [n_0+1]} \right) \opb \left( \bigopb\nolimits^{z_{n_1-1}} (x_{n_0+1+i})_{i \in [n_1-1]} \right).
+	\end{align*}
+Mas, por definição da sequência $z_{n_1}$ e do $z_{n_1}$-operatório, vale que
+	\begin{equation*}
+	\bigopb\nolimits^{z_{n_1}} (x_{n_0+i})_{i \in [n_1]} = x_{n_0} \opb \left( \bigopb\nolimits^{z_{n_1-1}} (x_{n_0+1+i})_{i \in [n_1-1]} \right).
+	\end{equation*}
+Segue então da associatividade de $\opb$ que
+	\begin{align*}
+	\bigopb\nolimits^{a_{n_0+n_1}} (x_i)_{i \in [n_0+n_1]} &= \left( \bigopb\nolimits^{a_{n_0+1}} (x_i)_{i \in [n_0+1]} \right) \opb \left( \bigopb\nolimits^{z_{n_1-1}} (x_{n_0+1+i})_{i \in [n_1-1]} \right) \\
+		&= \left( \left( \bigopb\nolimits^{a_{n_0}} (x_i)_{i \in [n_0]} \right) \opb x_{n_0} \right) \opb \left( \bigopb\nolimits^{z_{n_1-1}} (x_{n_0+1+i})_{i \in [n_1-1]} \right) \\
+		&= \left( \bigopb\nolimits^{a_{n_0}} (x_i)_{i \in [n_0]} \right) \opb \left( x_{n_0} \opb \left( \bigopb\nolimits^{z_{n_1-1}} (x_{n_0+1+i})_{i \in [n_1-1]} \right) \right) \\
+		&= \left( \bigopb\nolimits^{a_{n_0}} (x_i)_{i \in [n_0]} \right) \opb \left( \bigopb\nolimits^{z_{n_1}} (x_{n_0+i})_{i \in [n_1]} \right).
+		\qedhere
+	\end{align*}
+\end{proof}
+
+Podemos finalmente enunciar a propriedade de associatividade generalizada e demonstrar que um grupoide associativo a satisfaz.
+
+\begin{proposition}[Associatividade generalizada]
+Sejam $\bm G=(G,\opb)$ um semigrupo (grupoide associativo), $n \in \N \setminus \{0\}$, $(x_i)_{i \in [n]} \in G^n$ e $s,s' \in \{0,1\}^{2(n-1)}$ sequências de $n$-associação. Então
+	\begin{equation*}
+	\bigopb\nolimits^{s} (x_i)_{i \in [n]} = \bigopb\nolimits^{s'} (x_i)_{i \in [n]}.
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+Vamos demonstrar uma versão simplificada da proposição para as sequências de associação à esquerda e à direita, $a_n$ e $z_n$. Essa versão implicará a proposição. Mostraremos por indução em $n$ que qualquer sequência de $n$-associação $s \in \{0,1\}^{2(n-1)}$ satisfaz
+	\begin{equation}
+	\label{eq:sequencia.associacao.inducao}
+	\bigopb\nolimits^{s} (x_i)_{i \in [n]} = \bigopb\nolimits^{a_n} (x_i)_{i \in [n]} = \bigopb\nolimits^{z_n} (x_i)_{i \in [n]}.
+	\end{equation}
+
+Para isso, usaremos indução em $n$. Para $n=1$, a equação~\ref{eq:sequencia.associacao.inducao} é válida já que a única sequência de $1$-associação é $\emptyset = a_1 = z_1$. Suponhamos agora, para o passo indutivo, que a equação~\ref{eq:sequencia.associacao.inducao} valha para toda sequência de $m$-associação para $m \in \{1, \ldots, n-1\}$ e mostremos que a equação~\ref{eq:sequencia.associacao.inducao} vale também para todas sequências de $n$-associação. Seja $s \in \{0,1\}^{2(n-1)}$ uma sequência de $n$-associação e $s^{(0)} \in \{0,1\}^{2(n_0-1)}$ e $s^{(1)} \in \{0,1\}^{2(n_0-1)}$ suas subsequências de associação formadoras que satisfazem $s=(0,s^{(0)},1,s^{(1)})$. Como $n_0+n_1=n$ e $n_0, n_1 \in \N \setminus \{0\}$, então $n_0 < n$ e $n_1 < n$, e segue da hipótese de indução que
+	 \begin{align*}
+	\bigopb\nolimits^{s^{(0)}} (x_i)_{i \in [n_0]} &= \bigopb\nolimits^{a_{n_0}} (x_i)_{i \in [n_0]} \\
+	\bigopb\nolimits^{s^{(1)}} (x_{n_0+i})_{i \in [n_1]} &= \bigopb\nolimits^{z_{n_1}} (x_{n_0+i})_{i \in [n_1]}.
+	 \end{align*}
+Segue então da definição do operatório que
+	\begin{align*}
+	\bigopb\nolimits^{s} (x_i)_{i \in [n]} &= \left( \bigopb\nolimits^{s^{(0)}} (x_i)_{i \in [n_0]} \right) \opb \left( \bigopb\nolimits^{s^{(1)}} (x_{n_0+i})_{i \in [n_1]} \right) \\
+		&= \left( \bigopb\nolimits^{a_{n_0}} (x_i)_{i \in [n_0]} \right) \opb \left( \bigopb\nolimits^{z_{n_1}} (x_{n_0+i})_{i \in [n_1]} \right).
+	\end{align*}
+Pela associatividade de $\opb$, segue da proposição~\ref{prop:lema.associatividade.generalizada} que
+	\begin{equation*}
+	\left( \bigopb\nolimits^{a_{n_0}} (x_i)_{i \in [n_0]} \right) \opb \left( \bigopb\nolimits^{z_{n_1}} (x_{n_0+i})_{i \in [n_1]} \right) = \bigopb\nolimits^{a_{n_0+n_1}} (x_i)_{i \in [n_0+n_1]},
+	\end{equation*}
+o que implica
+	\begin{equation*}
+	\bigopb\nolimits^{s} (x_i)_{i \in [n]} = \bigopb\nolimits^{a_{n_0+n_1}} (x_i)_{i \in [n_0+n_1]} = \bigopb\nolimits^{a_n} (x_i)_{i \in [n]}.
+	\end{equation*}
+Como isso vale para qualquer sequência de $n$-associação, segue que
+	\begin{equation*}
+	\bigopb\nolimits^{z_n} (x_i)_{i \in [n]} = \bigopb\nolimits^{a_n} (x_i)_{i \in [n]}.
+	\end{equation*}
+Isso conclui a demonstração da equação~\ref{eq:sequencia.associacao.inducao} e, finalmente, obtemos que, para todas sequência de $n$-associação $s,s' \in \{0,1\}^{2(n-1)}$ vale que
+	\begin{equation*}
+	\bigopb\nolimits^{s} (x_i)_{i \in [n]} = \bigopb\nolimits^{a_n} (x_i)_{i \in [n]} = \bigopb\nolimits^{s'} (x_i)_{i \in [n]}. \qedhere
+	\end{equation*}
+\end{proof}
+
+Essa proposição diz que, em um semigrupo (grupoide associativo), podemos colocar os parênteses como quisermos que o resultado será o mesmo. Sendo assim, definiremos o operatório de uma sequência finita de elementos do grupoide independente da escolha de parênteses, ou seja, da sequência de associação.
+
+\begin{definition}
+Sejam $\bm G=(G,\opb)$ um semigrupo, $n \in \N \setminus \{0\}$ e $(x_i)_{i \in [n]} \in G^n$. O \emph{operatório} de $(x_i)_{i \in [n]}$ é% definido indutivamente por
+%	\begin{equation*}
+%	\bigopb _{i \in [n]} x_i :=
+%		\begin{cases}
+%		x_0, & n=1\\
+%		\left( \displaystyle\bigopb_{i \in [n-1]} x_i \right) \opb x_{n-1}, & n>1.
+%		\end{cases}
+%	\end{equation*}
+	\begin{equation*}
+	\bigopb _{i \in [n]} x_i := \bigopb\nolimits^{a_n} (x_i)_{i \in [n]} = (((x_0 \opb x_1) \cdots ) \opb x_{n-1}).
+	\end{equation*}
+Denota-se também $x_0 \opb \cdots \opb x_{n-1} := \bigopb _{i \in [n]} x_i$.
+\end{definition}
+
+Por causa da associatividade generalizada, a notação $x_0 \opb \cdots \opb x_{n-1}$ não gera ambiguidade. Essa definição considera que as operações vão sendo feitas à direita, mas uma mesma definição poderia ter sido feita para operações à esquerda.% --- todas demonstrações ainda valeriam, considerando que as ordens fossem devidamente trocadas.
+
+O símbolo usado para a soma $+$ é o \emph{somatório} $\displaystyle\bigplus$ e o símbolo usado para o produto $\times$ é o \emph{produtório} $\displaystyle\bigtimes$.
+
+% NOTA: As proposições no comentário a seguir eram tentativas de propor uma associatividade generalizada que fiz quando escrevi inicialmente essa seção, mas que não cobriam exatamente todos os casos possíveis de escolha de parênteses. Agora que defini tudo melhor acima, elas são proposições inúteis e deselegantes.
+\begin{comment}
 \begin{proposition}
 Sejam $\bm G=(G,\opb)$ um semigrupo, $n,k \in \N \setminus \{0\}$ e $(x_i)_{i \in [n+k]}$ elementos de $G$. Então
 	\begin{equation*}
@@ -930,9 +1395,20 @@ e a partição $(k_j)_{j \in [p]}$ determina essa separação.
 \begin{notation}
 Por causa da associatividade generalizada, denota-se essa operação por
 	\begin{equation*}
-	x_{n-1} \opb \cdots \opb x_0 := \bigopb_{i \in [n]} x_i = (x_{n-1} \opb ( \cdots (x_1 \opb x_0)))
+	x_{n-1} \opb \cdots \opb x_0 := \bigopb_{i \in [n]} x_i = (x_{n-1} \opb ( \cdots (x_1 \opb x_0))).
 	\end{equation*}
 \end{notation}
+\end{comment}
+
+\begin{definition}[Operatório de conjuntos]
+Sejam $\bm G=(G,\opb)$ um semigrupo, $n \in \N \setminus \{0\}$ e $(C_i)_{i \in [n]}$ uma família de subgrupos de $G$. Define-se
+	\begin{equation*}
+	\bigopb _{i \in [n]} C_i := \set{\bigopb _{i \in [n]} x_i}{\forall_{i \in [n]} x_i \in C_i}.
+	\end{equation*}
+\end{definition}
+
+\begin{comment}
+\subsubsection{Comutatividade generalizada}
 
 Além da associatividade generalizada, também vale a comutatividade generalizada se o semigrupo é comutativo. Pode-se enunciar uma comutatividade generalizada para grupoides comutativos, sem supor associatividade, mas a associatividade em geral vale quando a comutatividade vale e ela facilita a notação.
 
@@ -965,17 +1441,7 @@ Da associatividade generalizada, da comutatividade e da hipótese para $n$, segu
 	\end{align*}
 \end{proof}
 
-
-\begin{definition}[Operatório de conjuntos]
-Sejam $\bm G=(G,\opb)$ um semigrupo, $n \in \N \setminus \{0\}$ e $(C_i)_{i \in [n]}$ uma família de subgrupos de $G$. Define-se
-	\begin{equation*}
-	\bigopb _{i \in [n]} C_i := \set{\bigopb _{i \in [n]} x_i}{\forall_{i \in [n]} x_i \in C_i}.
-	\end{equation*}
-\end{definition}
-
-\begin{example}
-$(\N,+)$, $(\N,\times)$, $(\N,\opmin)$ e $(\N,\opmax)$ são semigrupos.
-\end{example}
+\end{comment}
 
 \subsubsection{Homomorfismo de semigrupo}
 
@@ -993,7 +1459,7 @@ A mesma demonstração de \ref{comp.hom.grupoide}.
 
 
 
-\section{Grupídeo e monoide}
+%\section{Grupídeo e monoide}
 
 \subsection{Grupídeo}
 
@@ -1003,24 +1469,24 @@ Um \emph{grupídeo} é uma tripla $\bm G = (G,\opb,\id)$ em que $(G,\opb)$ é um
 
 A motivação para o nome `grupídeo' vem da biologia, mas está ligada à estrutura algébrica em si. Na biologia, existe um conjunto de espécies chamado de superfamília dos Hominoides\footnote{O nome em latim é \textit{Hominoidea} \url{https://pt.wikipedia.org/wiki/Hominoidea}.}, que são primatas próximos aos humanos. Dentro dessa superfamília, há um subconjunto de espécies chamado de família dos Hominídeos\footnote{O nome em latim é \textit{Hominidae} \url{https://pt.wikipedia.org/wiki/Hominoidea}.}, que contém orangotangos, gorilas, chipanzés e humanos.
 
-Pode-se adotar por analogia o nome `grupídeo' para um tipo específico de grupoide, aqueles que têm um elemento identidade. A nomenclatura é especialmente conveniente pois na palavra `grup\textbf{íd}eo', as letras `id' remetem ao fato de que a estrutura se trata de um grupoide com identidade.
+Pode-se adotar por analogia o nome `grupídeo' para um tipo específico de grupoide, aqueles que têm um elemento identidade. A nomenclatura é especialmente conveniente pois na palavra `grup\textbf{íd}eo', as letras `id' remetem ao fato de que a estrutura se trata de um grupoide com \textbf{id}entidade.
 
 \begin{definition}[Inverso]
 Sejam $\bm G = (G,\opb,\id)$ um grupídeo e $g \in G$.
 	\begin{itemize}
-	\item Um \emph{inverso à esquerda} de $g$ em $\bm G$ é um elemento $g \vid \in G$ que satisfaz
+	\item Um \emph{inverso à esquerda} de $g$ em $\bm G$ é um elemento $g' \in G$ que satisfaz
 		\begin{equation*}
-		(g \vid) \opb g = \id;
+		g' \opb g = \id;
 		\end{equation*}
-	
-	\item Um \emph{inverso à direita} de $g$ em $\bm G$ é um elemento $\div g \in G$ que satisfaz
+
+	\item Um \emph{inverso à direita} de $g$ em $\bm G$ é um elemento $g' \in G$ que satisfaz
 		\begin{equation*}
-		g \opb (\div g) = \id;
+		g \opb g' = \id;
 		\end{equation*}
-	
-	\item Um \emph{inverso} de $g$ em $\bm G$ é um elemento $\div g \in G$ que satisfaz
+
+	\item Um \emph{inverso} de $g$ em $\bm G$ é um elemento $g' \in G$ que satisfaz
 		\begin{equation*}
-		(\div g) \opb g = \id = g \opb (\div g).
+		g' \opb g = \id = g \opb g'.
 		\end{equation*}
 	\end{itemize}
 \end{definition}
@@ -1028,23 +1494,23 @@ Sejam $\bm G = (G,\opb,\id)$ um grupídeo e $g \in G$.
 \begin{proposition}
 Sejam $\bm G = (G,\opb,\id)$ um grupídeo e $g \in G$.
 	\begin{enumerate}
-		\item Se $g$ tem inverso à direita $\div g$ em $\bm G$, então $g$ é inverso à esquerda de $\div g$ em $\bm G$;
-		\item Se $g$ tem inverso à esquerda $g \vid$ em $\bm G$, então $g$ é inverso à direita de $g \vid$ em $\bm G$;
-		\item Se $g$ tem inverso $\div g$ em $\bm G$, então $g$ é inverso de $\div g$ em $\bm G$.
+		\item Se $g$ tem inverso à direita $g'$ em $\bm G$, então $g$ é inverso à esquerda de $g'$ em $\bm G$;
+		\item Se $g$ tem inverso à esquerda $g'$ em $\bm G$, então $g$ é inverso à direita de $g'$ em $\bm G$;
+		\item Se $g$ tem inverso $g'$ em $\bm G$, então $g$ é inverso de $g'$ em $\bm G$.
 	\end{enumerate}
 \end{proposition}
 \begin{proof}
 	\begin{enumerate}
-	\item Como $\div g$ é inverso à direita de $g$,
+	\item Como $g'$ é inverso à direita de $g$,
 		\begin{equation*}
-		g \opb (\div g) = \id,
+		g \opb g' = \id,
 		\end{equation*}
-	o que mostra que $g$ é inverso à esquerda de $\div g$.
+	o que mostra que $g$ é inverso à esquerda de $g'$.
 	\item Como $g \vid$ é inverso à esquerda de $g$,
 		\begin{equation*}
-		(g \vid) \opb g = \id,
+		g' \opb g = \id,
 		\end{equation*}
-	o que mostra que $g$ é inverso à direita de $g \vid$.
+	o que mostra que $g$ é inverso à direita de $g'$.
 	\item Segue dos itens anteriores.
 	\qedhere
 	\end{enumerate}
@@ -1057,19 +1523,25 @@ Sejam $\bm G = (G,\opb,\id)$ um grupídeo.
 		\begin{align*}
 		\func{\vid}{G}{G}{g}{g \vid}
 		\end{align*}
-	tal que, para todo $g \in G$, $g \vid$ é o inverso à esquerda de $g$ em $\bm G$;
+	tal que, para todo $g \in G$, $g \vid$ é o inverso à esquerda de $g$ em $\bm G$. Para todos $g_0,g_1 \in G$, denota-se
+		\begin{equation*}
+		g_0 \vid g_1 := (g_0 \vid) \opb g_1;
+		\end{equation*}
 
 	\item Uma \emph{inversão à direita} de $\bm G$ é uma operação unária
 		\begin{align*}
 		\func{\div}{G}{G}{g}{\div g}
 		\end{align*}
-	tal que, para todo $g \in G$, $\div g$ é o inverso à direita de $g$ em $\bm G$;
+	tal que, para todo $g \in G$, $\div g$ é o inverso à direita de $g$ em $\bm G$. Para todos $g_0,g_1 \in G$, denota-se
+		\begin{equation*}
+		g_1 \div g_0 := (g_1 \div) \opb g_0;
+		\end{equation*}
 
 	\item Uma \emph{inversão} de $\bm G$ é uma operação unária
 		\begin{align*}
-		\func{\div}{G}{G}{g}{\div g}
+		\func{\div}{G}{G}{g}{g\inv}
 		\end{align*}
-	tal que, para todo $g \in G$, $\div g$ é o inverso de $g$ em $\bm G$.
+	tal que, para todo $g \in G$, $g\inv$ é o inverso de $g$ em $\bm G$.
 	\end{itemize}
 \end{definition}
 
@@ -1121,24 +1593,25 @@ Então $(G,\opb,1) = (G,\opb',1')$ e $\opb$ é associativa e comutativa.
 A demonstração é direta.
 	\begin{itemize}
 		\item ($1=1'$) Da identidade e da lei da troca segue que
-		\begin{align*}
+		\begin{equation*}
 		1 = 1 \opb 1 = (1' \opb' 1) \opb (1 \opb' 1') = (1' \opb 1) \opb' (1 \opb 1') = 1' \opb' 1' = 1'.
-		\end{align*}
-		
+		\end{equation*}
+
 		\item ($\opb = \opb'$) Para todos $g,g' \in G$, da identidade, da lei da troca e de $1=1'$ segue que
-		\begin{align*}
+		\begin{equation*}
 		g \opb g' = (g \opb' 1) \opb (1 \opb' g') = (g \opb 1) \opb' (1 \opb g) = g \opb' g'.
-		\end{align*}
+		\end{equation*}
 
 		\item (Associatividade) Para todos $g,g',g'' \in G$, da identidade, da lei da troca e de $(G,\opb,1) = (G,\opb',1')$ segue que
-		\begin{align*}
+		\begin{equation*}
 		(g \opb g') \opb g'' = (g \opb g') \opb (1 \opb g'') = (g \opb 1) \opb (g' \opb g'') = g \opb (g' \opb g'').
-		\end{align*}
+		\end{equation*}
 
 		\item (Comutatividade) Para todos $g,g' \in G$, da identidade, da lei da troca e de $(G,\opb,1) = (G,\opb',1')$ segue que
-		\begin{align*}
+		\begin{equation*}
 		g \opb g' = (1 \opb g) \opb (g' \opb 1) = (1 \opb g') \opb (g \opb 1) = g' \opb g.
-		\end{align*}
+		\qedhere
+		\end{equation*}
 	\end{itemize}
 \end{proof}
 
@@ -1153,7 +1626,7 @@ Equivalentemente, um monoide é uma tripla $\bm M=(M,\opb,\id)$ em que $(M,\opb)
 \begin{notation}
 Denotaremos a identidade de um monoide $\bm M$ por $\id_M$ quando houver ambiguidade. Ainda, como existe identidade, definimos o operatório vazio
 	\begin{equation*}
-	\bigopb_{i \in [0]} x_i = \id.
+	\bigopb_{i \in [0]} x_i := \id.
 	\end{equation*}
 \end{notation}
 
@@ -1228,6 +1701,7 @@ Seja $\bm G = (G,\opb,1)$ um monoide.
 			&= g \opb 1 \opb (\div g) \\
 			&= g \opb (\div g) \\
 			&= 1.
+			\qedhere
 		\end{align*}
 	\end{enumerate}
 \end{proof}
@@ -1252,7 +1726,7 @@ A unicidade segue pois qualquer inverso de $m$ em $\bm M$ é inverso à esquerda
 \end{proof}
 
 \begin{notation}
-A unicidade do inverso nos permite denotar o inverso de um elemento $m \in M$ de algum modo fixo. Quando a operação binária é a adição (denotada $+$), denotamos o inverso por $-m$; quando é a multiplicação (denotada $\times$, $\cdot$, $\circ$), denotamo-lo por $\div m$, $m^{-}$ ou, mais comumente, por $m\inv$. Para $m \in M$ com inverso $\div m$ e $m'$, denota-se $m' \div m := m' \opb (\div m)$ por simplicidade. O conjunto de elementos invertíveis de $M$ é denotado $M^{\div}$.
+A unicidade do inverso nos permite denotar o inverso de um elemento $m \in M$ de algum modo fixo. Quando a operação binária é a adição (denotada $+$), denotamos o inverso por $-m$; quando é a multiplicação (denotada $\times$, $\cdot$, $\circ$), denotamo-lo por $\div m$, $m^{-}$ ou, mais comumente, por $m\inv$. Para todo $m \in M$ com inverso $\div m$ e todo $m' \in M$, denota-se $m' \div m := m' \opb (\div m)$ por simplicidade. O conjunto de elementos invertíveis de $M$ é denotado $M^{\div}$.
 \end{notation}
 
 \begin{proposition}
@@ -1640,7 +2114,7 @@ Um \emph{grupíneo} é uma lista $\bm G = (G,\times,\div,\id)$ em que $(G,\times
 
 Como no caso de grupídeos, a motivação para o nome `grupíneo' vem da biologia, mas está ligada à estrutura algébrica em si. Dentro da família dos Hominídeos, há um subconjunto de espécies chamado de subfamília dos Hominíneos\footnote{O nome em latim é \textit{Homininae} \url{https://pt.wikipedia.org/wiki/Hominidae\#Subfam\%C3\%ADlia_Homininae}.}, que contém gorilas, chipanzés e humanos.
 
-Da mesma forma, pode-se adotar por analogia o nome `grupíneo' para um tipo específico de grupídeo, aqueles que têm uma inversão. A nomenclatura é novamente conveniente pois na palavra `grup\textbf{ín}eo', as letras `in' remetem ao fato de que a estrutura se trata de um grupídeo com inversão.
+Da mesma forma, pode-se adotar por analogia o nome `grupíneo' para um tipo específico de grupídeo, aqueles que têm uma inversão. A nomenclatura é novamente conveniente pois na palavra `grup\textbf{ín}eo', as letras `in' remetem ao fato de que a estrutura se trata de um grupídeo com \textbf{in}versão.
 
-Não estudaremos grupíneos aqui, pois os grupíneos associativos, chamados grupos, são estruturas muito importantes às quais se dedicará um capítulo específico.
+Não estudaremos grupíneos aqui, pois os grupíneos associativos, chamados grupos, são estruturas muito importantes às quais dedicaremos um capítulo específico.
 
