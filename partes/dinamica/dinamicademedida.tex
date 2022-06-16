@@ -42,17 +42,17 @@ Como comentado anteriormente, podemos considerar $\phi$ como definida de $X_1$ p
 \label{teo:sd.poincare}
 Sejam $(\bm X,f)$ um sistema dinâmico de medida finita e $M \in \mens$ um conjunto mensurável. Então quase todo ponto de $M$ retorna infinitamente a $M$:
 %	\begin{equation*}
-%	\med\left( \set{x \in M}{\card{\orb^+(x) \cap M} = \card{\N}} \right) = \med(M).
+%	\med\left( \set{x \in M}{\card{\Orb^+(x) \cap M} = \card{\N}} \right) = \med(M).
 %	\end{equation*}
 	\begin{equation*}
-	\set{x \in M}{\card{\orb^+(x) \cap M} = \card{\N}} \qeq M.
+	\set{x \in M}{\card{\Orb^+(x) \cap M} = \card{\N}} \qeq M.
 	\end{equation*}
 \end{theorem}
 \begin{proof}
 Se $M \qeq \emptyset$, a proposição é evidente. Suponhamos $M \not\qeq \emptyset$.
 Notemos que
 	\begin{equation*}
-	\set{x \in M}{\card{\orb^+(x) \cap M} = \card{\N}} = M \cap \limsup_{t \in \I^+} f^{-t}(M).
+	\set{x \in M}{\card{\Orb^+(x) \cap M} = \card{\N}} = M \cap \limsup_{t \in \I^+} f^{-t}(M).
 	\end{equation*}
 Esse é o conjunto dos pontos de $M$ que retornam infinitamente para $M$. Queremos provar que esse conjunto tem a mesma medida de $M$. Consideremos os conjuntos
 	\begin{equation*}
@@ -227,7 +227,7 @@ Seja $\bm\Sist=(\bm X,f)$ um sistema dinâmico de medida. São equivalentes
 	\item Todo conjunto quase invariante de $\bm\Sist$ é quase vazio ou quase total (para todo $M \in \mens$ tal que $f^{-1}(M) \qeq M$, $M \qeq \emptyset$ ou $M \qeq X$);
 	\item A semiórbita positiva de quase todo ponto passa por qualquer conjunto de medida positiva: para todo $M \in \mens$ tal que $M \not\qeq \emptyset$,
 		\begin{equation*}
-		\bigcup_{n \in \I^+} f^{-n}(M) = \set{x \in X}{\orb^+(x) \cap M \neq \emptyset} \qeq X;
+		\bigcup_{n \in \I^+} f^{-n}(M) = \set{x \in X}{\Orb^+(x) \cap M \neq \emptyset} \qeq X;
 		\end{equation*}
 	\item Se a semiórbita positiva de quase nenhum ponto de um conjunto mensurável passa por um outro conjunto mensurável, algum dos conjuntos é quase vazio: para todos $N,M \in \mens$ tais que
 	\begin{equation*}

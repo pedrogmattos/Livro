@@ -17,16 +17,16 @@ Seja $\bm\Sist = (\bm X,f)$ um sistema dinâmico topológico. São equivalentes
 	\begin{enumerate}
 	\item Não existe partição $X = P \cup P'$ cujas partes têm interior vazio e umas delas é positivamente invariante;
 
-	\item Para todos abertos não vazios $A,A' \subseteq X$, existe $t \in \I^+$ tal que $f^t(A) \cap A' \neq \emptyset$;
+	\item Para todos abertos não vazios $A,A' \subseteq X$, existe $t \in \Z_{\geq 0}$ tal que $f^t(A) \cap A' \neq \emptyset$;
 
 	\item Para todo aberto não vazio $A \subseteq X$,
 		\begin{equation*}
-		\Fec{\orb^+(A)} = X;
+		\Fec{\Orb^+(A)} = X;
 		\end{equation*}
 
 	\item Para todo aberto não vazio $A \subseteq X$,
 		\begin{equation*}
-		\Fec{\orb^-(A)} = X.
+		\Fec{\Orb^-(A)} = X.
 		\end{equation*}
 	\end{enumerate}
 \end{proposition}
@@ -34,7 +34,7 @@ Seja $\bm\Sist = (\bm X,f)$ um sistema dinâmico topológico. São equivalentes
 Essas propriedades são importantes e recebem o nome de transitividade topológica.
 
 \begin{definition}
-Um  sistema dinâmico \emph{topologicamente transitivo} é um sistema dinâmico topológico $\bm\Sist = (\bm X,f)$ tal que, para todos abertos não vazios $A,A' \subseteq X$, existe $t \in \I^+$ tal que $f^t(A) \cap A' \neq \emptyset$.
+Um  sistema dinâmico \emph{topologicamente transitivo} é um sistema dinâmico topológico $\bm\Sist = (\bm X,f)$ tal que, para todos abertos não vazios $A,A' \subseteq X$, existe $t \in \Z_{\geq 0}$ tal que $f^t(A) \cap A' \neq \emptyset$.
 \end{definition}
 
 \begin{proposition}
@@ -48,7 +48,7 @@ Segue diretamente das últimas equivalências da proposição anterior.
 \begin{proposition}
 Sejam $\bm X$ um espaço métrico sem pontos isolados e $\bm\Sist = (\bm X,f)$ um sistema dinâmico topológico.
 	\begin{enumerate}
-	\item Se $x \in X$ tem órbita densa, então, para todo $t \in \I^+$, $f^t(x)$ também tem;
+	\item Se $x \in X$ tem órbita densa, então, para todo $t \in \Z_{\geq 0}$, $f^t(x)$ também tem;
 	\item Se existe $x \in X$ cuja órbita é densa em $X$, então $\bm\Sist$ é topologicamente transitivo.
 	\end{enumerate}
 \end{proposition}
@@ -103,24 +103,24 @@ Seja $\bm G$ um grupo topológico, $\alpha \in G$ e $E_\alpha\colon G \to G$ a t
 \begin{definition}
 Seja $\bm{\Sist}=(\bm X,f)$ um sistema dinâmico topológico. Um ponto \emph{errante} do sistema é um ponto $p \in X$ para o qual existe vizinhança $V \subseteq X$ de $p$ satisfazendo
 	\begin{equation*}
-	V \cap \bigcup_{t \in \I^+_*}f^t(V) = \emptyset.
+	V \cap \bigcup_{t \in \Z_{>0}}f^t(V) = \emptyset.
 	\end{equation*}
 Um ponto \emph{não-errante} do sistema é um ponto $p \in X$ que não é errante: para toda vizinhança $V \subseteq X$ de $p$,
 	\begin{equation*}
-	V \cap \bigcup_{t \in \I^+_*}f^t(V) \neq \emptyset.
+	V \cap \bigcup_{t \in \Z_{>0}}f^t(V) \neq \emptyset.
 	\end{equation*}
 O conjunto dos pontos não-errantes do sistema $\Sist$ é denotado $\Nerr(\Sist)$ (ou $\Nerr$, ou ainda $\Nerr(f)$, de acordo com o que for mais relevante ressaltar).
 \end{definition}
 
 %MSOTRAR QUE A DEFINIÇÃO ACIMA E A ABAIXO SÃO EQUIVALENTES. Acredito que basta tirar os pontos $f(x),...,f^N-1(x) de V.$
 %\begin{definition}
-%Seja $\bm{\Sist}=(\bm X,f)$ um sistema dinâmico topológico. Um ponto \emph{errante} do sistema é um ponto $p \in X$ para o qual existem vizinhança $V \subseteq X$ de $p$ e inteiro positivo $N \in \I^+$ tais que
+%Seja $\bm{\Sist}=(\bm X,f)$ um sistema dinâmico topológico. Um ponto \emph{errante} do sistema é um ponto $p \in X$ para o qual existem vizinhança $V \subseteq X$ de $p$ e inteiro positivo $N \in \Z_{\geq 0}$ tais que
 %	\begin{equation*}
-%	V \cap \bigcup_{t \in \I^+}f^{N+t}(V) = \emptyset.
+%	V \cap \bigcup_{t \in \Z_{\geq 0}}f^{N+t}(V) = \emptyset.
 %	\end{equation*}
-%Um ponto \emph{não-errante} do sistema é um ponto $p \in X$ que não é errante: para toda vizinhança $V \subseteq X$ de $p$ e inteiro positivo $N \in \I^+$,
+%Um ponto \emph{não-errante} do sistema é um ponto $p \in X$ que não é errante: para toda vizinhança $V \subseteq X$ de $p$ e inteiro positivo $N \in \Z_{\geq 0}$,
 %	\begin{equation*}
-%	V \cap \bigcup_{t \in \I^+}f^{N+t}(V) \neq \emptyset.
+%	V \cap \bigcup_{t \in \Z_{\geq 0}}f^{N+t}(V) \neq \emptyset.
 %	\end{equation*}
 %\end{definition}
 
@@ -138,7 +138,7 @@ Seja $\bm{\Sist}=(\bm X,f)$ um sistema dinâmico topológico. Todo ponto periód
 Seja $p \in X$ um ponto $t$-periódico. Para toda vizinhança de $V$ de $p$,  segue que $V \cap f^t(V) \neq \emptyset$, pois $p = f^t(p) \in f^t(V)$, logo $p$ é não-errante.
 %Mostraremos a contrapositiva. Seja $p \in X$ um ponto errante e $V$ uma vizinhança de $p$ tal que
 %	\begin{equation*}
-%	V \cap \bigcup_{t \in \I^+}f^t(V) = \emptyset.
+%	V \cap \bigcup_{t \in \Z_{\geq 0}}f^t(V) = \emptyset.
 %	\end{equation*}
 %Então $V \cap f(V) = \emptyset$, e como $p \in V$, segue que $p \notin f(V)$, portanto $p$ não é periódico.
 \end{proof}
@@ -155,17 +155,17 @@ Seja $\bm{\Sist}=(\bm X,f)$ um sistema dinâmico topológico.
 	\begin{enumerate}
 	\item O conjunto de pontos errantes é aberto, pois se $p$ é um ponto não-errante, existe vizinhança $V$ de $p$ tal que
 	\begin{equation*}
-	V \cap \bigcup_{t \in \I^+_*}f^t(V) = \emptyset,
+	V \cap \bigcup_{t \in \Z_{>0}}f^t(V) = \emptyset,
 	\end{equation*}
 logo todo $q \in \Int{V}$ também é não-errante. Isso implica que o complementar desse conjunto, o conjunto $\Nerr$, é fechado.
 
-	\item Sejam $p \in \Nerr$. Para toda vizinhança $V$ de $f(p)$, $V' := f\inv(V)$ é vizinhança de $p$. Como $p$ é não-errante, existe $t \in \I^+_*$ tal que $V' \cap f^t(V') \neq \emptyset$. Disso segue que
+	\item Sejam $p \in \Nerr$. Para toda vizinhança $V$ de $f(p)$, $V' := f\inv(V)$ é vizinhança de $p$. Como $p$ é não-errante, existe $t \in \Z_{>0}$ tal que $V' \cap f^t(V') \neq \emptyset$. Disso segue que
 	\begin{equation*}
 	\emptyset \neq f(V' \cap f^t(V')) \subseteq f(V') \cap f(f^t(V')) = f(V') \cap f^t(f(V')) \subseteq V \cap f^t(V),
 	\end{equation*}
 portanto $f(p)$ é não-errante, o que mostra que $f(\Nerr) \subseteq \Nerr$.
 
-	\item Seja $p \in \Nerr(f)$. Para toda vizinhança $V$ de $p$, existe $t \in \I^+_*$ tal que $ V \cap f^t(V) \neq \emptyset$. Assim, segue da injetividade de $f$(usada na segunda contenção) que
+	\item Seja $p \in \Nerr(f)$. Para toda vizinhança $V$ de $p$, existe $t \in \Z_{>0}$ tal que $ V \cap f^t(V) \neq \emptyset$. Assim, segue da injetividade de $f$(usada na segunda contenção) que
 	\begin{equation*}
 	\emptyset \neq f^{-t}(f^t(V) \cap V) \subseteq f^{-t}(f^t(V)) \cap f^{-t}(V) \subseteq V \cap f^{-t}(V),
 	\end{equation*}
@@ -181,17 +181,17 @@ portanto $\Nerr = f(\Nerr)$, e conclui-se da injetividade de $f$ que $\Nerr$ é 
 \subsection{Pontos limite}
 
 \begin{definition}
-Sejam $\bm{\Sist}=(\bm X,f)$ um sistema dinâmico topológico e $p \in X$. O \emph{conjunto limite positivo}\footnote{Chamado comumente de $\omega$-limite e denotado $\omega_f(p)$.} de $p$ é o conjunto de pontos limites\footnote{O conjunto de pontos limites de um conjunto é às vezes chamado de o \emph{derivado} do conjunto.} de $\orb^+(p)$, dado por
+Sejam $\bm{\Sist}=(\bm X,f)$ um sistema dinâmico topológico e $p \in X$. O \emph{conjunto limite positivo}\footnote{Chamado comumente de $\omega$-limite e denotado $\omega_f(p)$.} de $p$ é o conjunto de pontos limites\footnote{O conjunto de pontos limites de um conjunto é às vezes chamado de o \emph{derivado} do conjunto.} de $\Orb^+(p)$, dado por
 	\begin{equation*}
-	\Lim^+_f(p) := \bigcap_{t \in \I^+}\Fec{\set{f^{t'}(p)}{t'>t}}.
-%	 = \bigcap_{n \in \N} \Fec{\orb^+(f^n(p))}.
+	\Lim^+_f(p) := \bigcap_{t \in \Z_{\geq 0}}\Fec{\set{f^{t'}(p)}{t'>t}}.
+%	 = \bigcap_{n \in \N} \Fec{\Orb^+(f^n(p))}.
 	\end{equation*}
 %	\begin{equation*}
-%	\Lim^+_f(p) := \set{q \in X}{\exists (t_n)_{n \in \N} \in (\I^+)^\N,\ f^{t_n}(p) \conv q}.
+%	\Lim^+_f(p) := \set{q \in X}{\exists (t_n)_{n \in \N} \in (\Z_{\geq 0})^\N,\ f^{t_n}(p) \conv q}.
 %	\end{equation*}
 Se $\Sist$ é revertível, então o \emph{conjunto limite negativo}\footnote{Chamado comumente de $\alpha$-limite e denotado $\alpha_f(p)$.} de $p$ é o conjunto $\Lim^-_f(p) := \Lim^+_{f\inv}(p)$.
 %	\begin{equation*}
-%	\Lim^-_f(p) := \set{q \in X}{\exists (t_n)_{n \in \N} \in (\I^+)^\N,\ f^{-t_n}(p) \conv q}.
+%	\Lim^-_f(p) := \set{q \in X}{\exists (t_n)_{n \in \N} \in (\Z_{\geq 0})^\N,\ f^{-t_n}(p) \conv q}.
 %	\end{equation*}
 
 O \emph{conjunto limite positivo} do sistema é o conjunto
@@ -208,13 +208,13 @@ e o \emph{conjunto limite} é o conjunto
 	\end{equation*}
 \end{definition}
 
-Ou seja, os pontos de $\Lim^+_f(p)$ são aqueles que são limites de $(f^{t_n}(p))_{n \in \N}$ para alguma sequência $(t_n)_{n \in \N} \in (\I^+)^\N$ que tende ao infinito.
+Ou seja, os pontos de $\Lim^+_f(p)$ são aqueles que são limites de $(f^{t_n}(p))_{n \in \N}$ para alguma sequência $(t_n)_{n \in \N} \in (\Z_{\geq 0})^\N$ que tende ao infinito.
 
 %Note que
 %	\begin{align*}
-%	\omega_f(p) &= \set{q \in X}{\exists (t_n)_{n \in \N} \in (\I^+)^\N,\ f^{t_n}(p) \conv q} \\
-%		&= \set{\lim_{t_n \conv \infty} (f^{t_n}(p))}{(t_n)_{n \in \N} \in (\I^+)^\N} \\
-%		&= \bigcup_{t \in (\I^+)^\N} \{\lim_t (f^t(p)\}.
+%	\omega_f(p) &= \set{q \in X}{\exists (t_n)_{n \in \N} \in (\Z_{\geq 0})^\N,\ f^{t_n}(p) \conv q} \\
+%		&= \set{\lim_{t_n \conv \infty} (f^{t_n}(p))}{(t_n)_{n \in \N} \in (\Z_{\geq 0})^\N} \\
+%		&= \bigcup_{t \in (\Z_{\geq 0})^\N} \{\lim_t (f^t(p)\}.
 %	\end{align*}
 %Por isso, algumas notações possíveis são
 %	\begin{equation*}
@@ -235,9 +235,9 @@ Seja $\bm{\Sist}=(\bm X,f)$ um sistema dinâmico topológico. Todo ponto periód
 	\end{equation*}
 \end{proposition}
 \begin{proof}
-Para a primeira inclusão, seja $p \in X$ um ponto periódico. Então existe $t \in \I^+$ tal que $f^t(p)=p$. Tomando a sequência $(nt)_{n \in \N}$, segue que $f^{nt}(p) = p$, logo $f^{nt}(p) \conv p$, o que mostra que $p \in \Lim(f)$.
+Para a primeira inclusão, seja $p \in X$ um ponto periódico. Então existe $t \in \Z_{\geq 0}$ tal que $f^t(p)=p$. Tomando a sequência $(nt)_{n \in \N}$, segue que $f^{nt}(p) = p$, logo $f^{nt}(p) \conv p$, o que mostra que $p \in \Lim(f)$.
 
-Agora, seja $q \in \Lim(f)$. Consideraremos o caso em que $q \in \Lim^+(f)$. Existe $p \in X$ tal que $q \in \Lim^+_f(p)$. Assim,  para toda vizinhança $V$ de $q$, existem $t,t' \in \I^+$, $t'>t$, tais que $f^t(p) \in V$ e $f^{t'}(p) \in V$. Como $f^{t'-t}(f^t(p)) = f^t(p)$, isso implica que
+Agora, seja $q \in \Lim(f)$. Consideraremos o caso em que $q \in \Lim^+(f)$. Existe $p \in X$ tal que $q \in \Lim^+_f(p)$. Assim,  para toda vizinhança $V$ de $q$, existem $t,t' \in \Z_{\geq 0}$, $t'>t$, tais que $f^t(p) \in V$ e $f^{t'}(p) \in V$. Como $f^{t'-t}(f^t(p)) = f^t(p)$, isso implica que
 	\begin{equation*}
 	V \cap f^{t'-t}(V) \neq \emptyset,
 	\end{equation*}
@@ -336,30 +336,30 @@ Seja $p \in W^+(C)$. Para todo $s \in T^+$, temos que $f^t(f^s(p)) = f^{t+s}(p) 
 
 \subsection{Topologia dos deslocamentos}
 
-Queremos definir uma topologia para os espaços de sequências $N^{\I^+}$ e $N^\I$ de modo que os deslocamentos $\sigma$ neles definidos sejam contínuos. Para isso, vamos induzir o espaço produto $N^\I$ com a topologia discreta de $N$, pois essa é uma abordagem bem natural. A princípio, não sabemos se isso garantirá que o deslocamento $\sigma$ é contínuo, mas veremos que ele de fato será. Construiremos a seguir a topologia de $N^\I$, mas o caso de $N^{\I^+}$ é análogo.
+Queremos definir uma topologia para os espaços de sequências $N^{\Z_{\geq 0}}$ e $N^\Z$ de modo que os deslocamentos $\sigma$ neles definidos sejam contínuos. Para isso, vamos induzir o espaço produto $N^\Z$ com a topologia discreta de $N$, pois essa é uma abordagem bem natural. A princípio, não sabemos se isso garantirá que o deslocamento $\sigma$ é contínuo, mas veremos que ele de fato será. Construiremos a seguir a topologia de $N^\Z$, mas o caso de $N^{\Z_{\geq 0}}$ é análogo.
 
-A topologia discreta em $N$ é a topologia em que todo subconjunto de $N$ é aberto. Uma base para essa topologia é o conjunto dos conjuntos da forma $\{k\}$, com $k \in N=\{0,\ldots,N-1\}$. Essa topologia é o conjunto $\p(N)$. A topologia induzida em $N^\I$ é a topologia puxada pelas projeções na $t$-ésima entrada $\pi_t: N^\I \to N$ (também conhecida como topologia produto ou topologia inicial com respeito às projeções), ou seja,
+A topologia discreta em $N$ é a topologia em que todo subconjunto de $N$ é aberto. Uma base para essa topologia é o conjunto dos conjuntos da forma $\{k\}$, com $k \in N=\{0,\ldots,N-1\}$. Essa topologia é o conjunto $\p(N)$. A topologia induzida em $N^\Z$ é a topologia puxada pelas projeções na $t$-ésima entrada $\pi_t: N^\Z \to N$ (também conhecida como topologia produto ou topologia inicial com respeito às projeções), ou seja,
 	\begin{equation*}
-	\ger{\bigcup_{t \in \I} {\pi_t}\pux(\p(N))}.
+	\ger{\bigcup_{t \in \Z} {\pi_t}\pux(\p(N))}.
 	\end{equation*}
-Uma sub-base da topologia produto de $N^\I$ são os conjuntos
+Uma sub-base da topologia produto de $N^\Z$ são os conjuntos
 	\begin{equation*}
-	C_t[k] := {\pi_t}\inv(\{k\}) = \set{x \in N^\I}{x_t=k}
+	C_t[k] := {\pi_t}\inv(\{k\}) = \set{x \in N^\Z}{x_t=k}
 	\end{equation*}
-para cada $t \in \I$ e $k \in N$ (chamados às vezes de \emph{cilindros abertos}). Uma base para essa topologia são interseções finitas de conjuntos da sub-base, ou seja, conjuntos da forma
+para cada $t \in \Z$ e $k \in N$ (chamados às vezes de \emph{cilindros abertos}). Uma base para essa topologia são interseções finitas de conjuntos da sub-base, ou seja, conjuntos da forma
 	\begin{equation*}
-	C_{t_0,\ldots,t_n}(k_0,\ldots,k_n) := \bigcap_{i=0}^n C_{t_i}[k_i] = \set{x \in N^\I}{x_{t_0}=k_0,\ldots,x_{t_n}=k_n}
+	C_{t_0,\ldots,t_n}(k_0,\ldots,k_n) := \bigcap_{i=0}^n C_{t_i}[k_i] = \set{x \in N^\Z}{x_{t_0}=k_0,\ldots,x_{t_n}=k_n}
 	\end{equation*}
-para cada $t_0,\ldots,t_n \in \I$ e $k_0,\ldots,k_n \in N$, chamados de \emph{cilindros}.
+para cada $t_0,\ldots,t_n \in \Z$ e $k_0,\ldots,k_n \in N$, chamados de \emph{cilindros}.
 
-Estando assim definida a topologia de $N^\I$, vamos agora mostrar que $\sigma$ é contínua. Seja $C_t[k]$ um cilindro sub-básico. Então
+Estando assim definida a topologia de $N^\Z$, vamos agora mostrar que $\sigma$ é contínua. Seja $C_t[k]$ um cilindro sub-básico. Então
 	\begin{equation*}
 	\sigma\inv(C_t[k]) = \sigma\inv({\pi_t}\inv(\{k\})) = (\pi_t \circ \sigma)\inv(\{k\}) = {\pi_{t-1}}\inv(\{k\}) = C_{t-1}[k],
 	\end{equation*}
 que é aberto pois é um cilindro sub-básico. Isso mostra que $\sigma$ é contínua. Está provado, assim, a seguinte proposição.
 
 \begin{proposition}
-Os sistemas $(N^{\I^+},\sigma)$ e $(N^\I,\sigma)$ são sistemas dinâmicos topológicos.
+Os sistemas $(N^{\Z_{\geq 0}},\sigma)$ e $(N^\Z,\sigma)$ são sistemas dinâmicos topológicos.
 \end{proposition}
 
 \subsection{Itinerários topológicos}
@@ -407,7 +407,7 @@ Analogamente, a \textit{variedade instável} de $[p]$ é o conjunto
 	\end{equation*}
 \end{definition}
 
-Note que as variedades estável e instável estão bem definidas pois, para todo $q \in [p]$, temos $q = p + m$, com $m \in \I^2$. Assim, $[q + \alpha v_{\lambda_-}] = [p + m + \alpha v_{\lambda_-}] = [p + \alpha v_{\lambda_-}]$ e $[q + \alpha v_{\lambda_+}] = [p + m + \alpha v_{\lambda_+}] = [p + \alpha v_{\lambda_+}]$, e segue que $W^-([q]) = W^-([p])$ e $W^+([q]) = W^+([p])$. A próxima proposição justifica a nomeação dos conjuntos $W^-([p])$ e $W^+([p])$.
+Note que as variedades estável e instável estão bem definidas pois, para todo $q \in [p]$, temos $q = p + m$, com $m \in \Z^2$. Assim, $[q + \alpha v_{\lambda_-}] = [p + m + \alpha v_{\lambda_-}] = [p + \alpha v_{\lambda_-}]$ e $[q + \alpha v_{\lambda_+}] = [p + m + \alpha v_{\lambda_+}] = [p + \alpha v_{\lambda_+}]$, e segue que $W^-([q]) = W^-([p])$ e $W^+([q]) = W^+([p])$. A próxima proposição justifica a nomeação dos conjuntos $W^-([p])$ e $W^+([p])$.
 
 \begin{theorem}
 	Seja $[p]$ um ponto do toro. Então, para um ponto $[p'] \in W^s([p])$,
@@ -457,10 +457,10 @@ Seja $[p]=[(p_1,p_2)]$ um ponto de $\T^2$. Na demosntração, usaremos $W([p])$ 
 
 Consideremos o conjunto $C := \{[(t_1,r)] : r \in \R \}$. Esse conjunto é um subconjunto de $\T^2$ e auxiliará na demonstração. Acharemos o ponto $[w]$ nesse conjunto, considerando o conjunto $W([p]) \cap C$. Esse conjunto interseção é interessante pois a distância entre seus potos pode ser calculada usando a distância do círculo. Tomemos $[c] \in C$, com $c=(t_1,r) \in S^1 \times S^1$ sem perda de generalidade. Notamos que
 	\begin{align*}
-		d_{\T^2}([t],[c])& = \min\{ d_{\R^2}(t+m,c+n) : m,n \in \I^2 \} \\
-			& = \min\{ \sqrt{(t_1+m_1-t_1-n_1)^2 + (t_2+m_2-r-n_2)^2} : m_1,m_2,n_1,n_2 \in \I \} \\
-			& = \min\{ \sqrt{(t_2-r-z)^2} : z \in \I \} \\
-			& = \min\{ |t_2-r-z| : z \in \I \} \\
+		d_{\T^2}([t],[c])& = \min\{ d_{\R^2}(t+m,c+n) : m,n \in \Z^2 \} \\
+			& = \min\{ \sqrt{(t_1+m_1-t_1-n_1)^2 + (t_2+m_2-r-n_2)^2} : m_1,m_2,n_1,n_2 \in \Z \} \\
+			& = \min\{ \sqrt{(t_2-r-z)^2} : z \in \Z \} \\
+			& = \min\{ |t_2-r-z| : z \in \Z \} \\
 			& = d_{S^1}(t_2,r),
 	\end{align*}
 pois $t_2, r \in S^1$. Isso mostra que a distância de um ponto de $C$ ao ponto $[t]$ é igual à distância de suas segundas coordenadas no círculo.
@@ -469,7 +469,7 @@ Agora, definamos $l := \frac{\lambda - a_{11}}{a_{12}}$, sendo $\lambda$ o autov
 	\begin{equation*}
 	[p + \alpha v_\lambda] = [(p_1 + \alpha, p_2 + \alpha l)],
 	\end{equation*}
-de modo que $p_1 + \alpha = t_1 + k$, com $k \in \I$; ou seja, definindo $m := p_2 - (p_1 - t_1)l \bmod 1$, temos pontos da forma
+de modo que $p_1 + \alpha = t_1 + k$, com $k \in \Z$; ou seja, definindo $m := p_2 - (p_1 - t_1)l \bmod 1$, temos pontos da forma
 	\begin{equation*}
 	[(t_1,m + kl)].
 	\end{equation*}
