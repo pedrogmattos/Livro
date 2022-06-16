@@ -118,19 +118,19 @@
 	% Conectivos
 	\renewcommand{\implies}{\rightarrow}
 	\renewcommand{\iff}{\leftrightarrow}
-%	\renewcommand{\forall}{{\textstyle\bigwedge}}
-%	\renewcommand{\exists}{{\textstyle\bigvee}}
-	\renewcommand{\forall}{\bigwedge\nolimits}
-	\renewcommand{\exists}{\bigvee\nolimits}
+%%	\renewcommand{\forall}{{\textstyle\bigwedge}}
+%%	\renewcommand{\exists}{{\textstyle\bigvee}}
+%	\renewcommand{\forall}{\bigwedge\nolimits}
+%	\renewcommand{\exists}{\bigvee\nolimits}
 	\newcommand{\bigforall}{\bigwedge}
 	\newcommand{\bigexists}{\bigvee}
 
 	% Símbolos Lógicos Formais
 	\newcommand{\lver}{\top}
 	\newcommand{\lfals}{\bot}
-	
+
 	\newcommand{\lnao}{\lnot}
-	
+
 	\newcommand{\lee}{\land}
 	\newcommand{\lou}{\lor}
 	\newcommand{\limplica}{\rightarrow}
@@ -147,7 +147,7 @@
 
 %	\newcommand{\ou}{\text{\ \ ou\ \ }}
 %	\newcommand{\e}{\text{\ \ e\ \ }}
-	
+
 	% Desigualdade
 	\renewcommand\neq{\mathrel{\vphantom{|}\mathpalette\xsneq\relax}}
 	\newcommand\xsneq[2]{%
@@ -172,7 +172,7 @@
 	% Conjunto das partes
 %	\newcommand{\p}{\scalebox{1.1}{\ensuremath{\mathsf{P}}}}
 	\newcommand{\p}{\raisebox{.25em}{\scalebox{1.1}{\ensuremath{\wp}}}}
-	
+
 	% Diferença de conjuntos
 	\renewcommand{\setminus}{\smallsetminus}
 	% Diferença simétrica
@@ -269,7 +269,7 @@
 			{% \scriptstyle
 				#1\,/\,#2
 			}
-			{% \scriptscriptstyle  
+			{% \scriptscriptstyle
 				#1\,/\,#2
 			}
 	}
@@ -293,16 +293,16 @@
 	\providecommand{\bigdoublewedge}{}
 	\renewcommand{\bigdoublewedge}{\mathop{\mathpalette\composeform@xmin\bigwedge}}
 
-%	\newcommand{\newmax}{\mathop{\doublevee}}
-%	\newcommand{\newmin}{\mathop{\doublewedge}}
-	\renewcommand{\max}{\bigdoublevee}
-	\renewcommand{\min}{\bigdoublewedge}
+%%	\newcommand{\newmax}{\mathop{\doublevee}}
+%%	\newcommand{\newmin}{\mathop{\doublewedge}}
+%	\renewcommand{\max}{\bigdoublevee}
+%	\renewcommand{\min}{\bigdoublewedge}
 	% NOTA: Escrevi um pouco mais complexo porque queria que os comandos binários \doublewedge e \doublevee estivessem disponíveis, e que fossem redefinidos caso existissem em outro pacote.
-	
+
 	% Mínimo e máximo como operação binária entre elementos (na verdade são \sup e \inf, mas para dois números coincide)
 	\newcommand{\opmax}{\mathbin{\vee}}
 	\newcommand{\opmin}{\mathbin{\wedge}}
-	
+
 	% Supremo e ínfimo como encontro e junta
 %	\newcommand{\newsup}{
 %		\mathop{
@@ -316,8 +316,8 @@
 %	}
 %	\renewcommand{\sup}{\newsup}
 %	\renewcommand{\inf}{\newinf}
-	\renewcommand{\sup}{\bigvee}
-	\renewcommand{\inf}{\bigwedge}
+%	\renewcommand{\sup}{\bigvee}
+%	\renewcommand{\inf}{\bigwedge}
 
 	% Álgebra indicadora
 	\newcommand{\Dois}{\mathbbm{2}}
@@ -418,7 +418,7 @@
 	\vphantom{\bigoplus}%
 	}
 	% NOTA: Copiei o \bigplus
-	
+
 	% Somatório
 	\newcommand{\bigplus}{%
 	\DOTSB\mathop{\mathpalette\mattos@bigplus\relax}\slimits@
@@ -481,7 +481,7 @@
 %	\mathcode`*="8000
 %	{\catcode`\*=\active
 %	\global\let*\times}
-	
+
 	% Elemento identidade
 %	\newcommand{\id}{\textsc{i}}
 	\newcommand{\id}{1}
@@ -540,9 +540,6 @@
 	\newcommand{\cicc}[1]{\mathfrak{C}(#1)}
 	\newcommand{\cicl}{\mathfrak{C}}
 
-	% Órbita
-	\newcommand{\orb}{\mathcal{O}}
-
 	% Paridade de uma permutação
 %	\newcommand{\prd}{\epsilon}
 	\newcommand{\prd}{\mathord{\pm}}
@@ -553,7 +550,7 @@
 	\newcommand{\acao}[3]{{#1}\colon {#2} \curvearrowright {#3}}
 %	\newcommand{\pt}{\mathord{\centerdot}\ }
 	\newcommand{\pt}{\bm{\cdot}}
-	
+
 	% Grupos lineares
 	\DeclareMathOperator{\GL}{GL}
 	\DeclareMathOperator{\SL}{SL}
@@ -607,7 +604,7 @@
 	\newcommand{\ords}[1]{\left\vert{#1}\right\vert_{\circ}}
 
 	% Relação binária de divisão em um anel
-	\newcommand{\dleq}{\preceq} 
+	\newcommand{\dleq}{\preceq}
 	\newcommand{\ndleq}{\npreceq}
 
 	% Máximo divisor comum e mínimo múltiplo comum como encontro e junta da relação de divisão
@@ -654,10 +651,10 @@
 	% Funções chão, teto e arredondamento
 	\newcommand{\chao}[1]{\left\lfloor{#1}\right\rfloor}
 	\newcommand{\teto}[1]{\left\lceil{#1}\right\rceil}
-	
+
 	\newcommand{\resto}[2]{\left\llbracket{#1}\right\rrbracket_{#2}}
 	\newcommand{\resfra}[1]{\left\llbracket{#1}\right\rrbracket}
-	
+
 	\newcommand{\arrecim}[1]{\left\lfloor{#1}\right\rceil}
 	\newcommand{\arrebai}[1]{\left\lceil{#1}\right\rfloor}
 
@@ -698,7 +695,7 @@
 	\DeclareMathOperator{\uu}{u}
 	\DeclareMathOperator{\su}{su}
 	\DeclareMathOperator{\ssp}{sp}
-	
+
 	% Álgebra afim
 	\DeclareMathOperator{\af}{af}
 
@@ -729,25 +726,25 @@
 	%\newcommand{\fro}[1]{\mathrm{fro}#1}
 	%\DeclareMathOperator{\fro}{fro}
 	\newcommand{\viz}{\mathcal{V}}
-	
+
 	% Funções contínuas e homeomorfismos
 	\newcommand{\Cont}{\mathscr{C}}
 	\newcommand{\Homeo}{\accentset{\leftrightarrow\ }{\Cont}}
 	% Suporte topológico
 	\newcommand{\supptop}{\supp^{\bullet}}
-	
+
 	\newcommand{\emp}{_\star} % Objeto empurrado
 	\newcommand{\pux}{^\star} % Objeto puxado
-	
+
 	\let\S\relax
 	\newcommand{\S}{\mathbb{S}} % Esfera
 	\newcommand{\pro}{\mathbb{P}} % Espaço Projetivo
 	\newcommand{\Hip}{\mathbb{H}} % Espaço Hiperbólico
 	\newcommand{\T}{\mathbb{T}} % Toro
-	
+
 	% Coberturas abertas
 	\newcommand{\Cobera}{\scalebox{1.1}{\ensuremath{\mathsf{C}^\circ}}}
-	
+
 	% Somatório pontual
 	\newcommand{\bigdotplus}{%
 	\DOTSB\mathop{\mathpalette\mattos@bigdotplus\relax}\slimits@
@@ -798,11 +795,11 @@
 			\sbox\z@{$#1\Delta$}%
 			\resizebox{1.1\dimexpr\ht\z@+\dp\z@}{\dimexpr\ht\z@+\dp\z@}{$\m@th#1\mathbbol{\Delta}$}%
 		}%
-	}	
+	}
 
 	\newcommand{\Sxger}[2][1]{\left[{#2}\right]_{\Sx^{#1}}}
 	\newcommand{\Sxgera}[2][1]{\left]{#2}\right[_{\Sx^{#1}}}
-	
+
 
 	% Limites inferior e superior
 	\renewcommand{\limsup}{\varlimsup}
@@ -813,7 +810,7 @@
 	% Distância
 %	\newcommand{\dist}[2]{d\left({#1},{#2}\right)}
 	\newcommand{\dist}[2]{\left\vert{#1},{#2}\right\vert}
-	
+
 	% Diâmetro
 %	\DeclareFontEncoding{LS1}{}{}
 %	\DeclareFontSubstitution{LS1}{stix}{m}{n}
@@ -868,7 +865,7 @@
 	\newcommand{\toplin}{\mathscr{L}}
 	\newcommand{\Isolin}{\accentset{\leftrightarrow\ }{\mathscr{L}}}
 	% Espaço das funções lineares isométricas
-	\newcommand{\Linmet}{\toplin_{\scalebox{0.5}{\ensuremath{\nor{}}}}} 
+	\newcommand{\Linmet}{\toplin_{\scalebox{0.5}{\ensuremath{\nor{}}}}}
 
 % Espaços com produto interno
 %------------------------------------
@@ -920,20 +917,20 @@
 	% Volume / medida de Lebesgue
 	\DeclareMathOperator{\vol}{vol}
 %	\newcommand{\vol}{\mathrm{v}}
-	
+
 	% Funções mensuráveis
 	\newcommand{\Men}{\mathscr{M}}
 	% Boreliano
 	\newcommand{\bor}{\mathscr{B}}
 	% Quase funções mensuráveis
 	\newcommand{\Menq}{\mathscr{M}_{\qeq}}
-	
+
 	% Espaço das Medidas
 	\newcommand{\Med}{\mathfrak{M}}
-	
+
 	% Supremo essencial
 	\DeclareMathOperator{\supess}{sup\,ess}
-	
+
 	% Quase relações
 	\newcommand{\qforall}{\overset{{\mbox{\smaller[4]$\circ$}}}{\forall}}
 	\newcommand{\qsubset}{\overset{{\mbox{\smaller[4]$\circ$}}}{\subseteq}}
@@ -951,7 +948,7 @@
 	\newcommand{\Intg}{\mathscr{I}}
 	\newcommand{\dd}{\mathrm{d}}
 	\newcommand{\Smvl}{\mathscr{S}}
-	
+
 
 % Diferenciação
 %------------------------------------
@@ -961,7 +958,7 @@
 
 	%	\newcommand{\dder}{\ddot{d}} % Segunda derivada (aceleração)
 	\newcommand{\dder}{\ddot{\partial}} % Segunda derivada (aceleração)
-	
+
 	% Derivada com variável explícita
 	%NOTA: Resolvi não usar mais esse comando por simplicidade. Quando preciso explicitar a variável escrevo \der_t f(t)|_{t=t'}
 %	\newcommand{\dervar}[3]{\dot{\partial}_{#1} \left. {#2} \right|_{#1 = #3}}
@@ -969,11 +966,11 @@
 	% Derivada com notação fracionária
 	\newcommand{\derfrac}[2][]{\frac{\der {#1}}{\der {#2}}}
 %	\newcommand{\derfracvar}[3][.]{\left. \frac{\mathrm{d}}{\mathrm{d}{#2}}{#3} \right#1}
-	
+
 	% Derivada direcional
 	\newcommand{\dir}[1]{\partial_{#1}}
 	\newcommand{\dirfrac}[2]{\frac{\partial {#1}}{\partial {#2}}}
-	
+
 	% Diferencial
 	\newcommand{\D}{\mathrm{D}}
 %	\newcommand[1][]{\D}{\mathrm{D}^{(#1)}}
@@ -986,7 +983,7 @@
 %	\newcommand{\derantiga}[2]{\partial_{#1}{#2}}
 	\newcommand{\res}[1]{\left.{#1}\right|}
 	\newcommand{\derr}[1]{\res{\derantiga{}{#1}}}
-	
+
 	% Derivada direcional
 	\newcommand{\Dir}{\nabla}
 
@@ -1058,8 +1055,12 @@
 %------------------------------------
 	% Sitema dinâmico
 	\newcommand{\Sist}{\mathcal{S}}
+	% Órbita
+	\newcommand{\orb}[1]{\widetilde{#1}}
+	\newcommand{\Orb}{\mathcal{O}}
 	% Pontos periódicos
-	\newcommand{\Per}{\mathrm{P}}
+%	\newcommand{\Per}{\mathrm{P}}
+	\newcommand{\Per}[1][]{\mathrm{P}^{#1}}
 
 % Sistemas dinâmicos topológicos
 %------------------------------------
@@ -1093,11 +1094,11 @@
 	% Entropia métrica (de medida)
 	\newcommand{\Enm}[1][\med]{H_{#1}}
 	\newcommand{\enm}[1][\med]{h_{#1}}
-	
+
 	% Entropia topológica
 	\newcommand{\Ent}[1][\topo]{H_{#1}}
 	\newcommand{\ent}[1][\topo]{h_{#1}}
-	
+
 	% Entropia uniforme
 	\newcommand{\Enu}[1][\mathcal{U}]{H_{#1}}
 	\newcommand{\enu}[1][\mathcal{U}]{h_{#1}}
