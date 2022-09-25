@@ -83,6 +83,9 @@
 %------------------------------------
 \RequirePackage[greek,french,italian,main=brazilian]{babel}
 \addto\captionsbrazilian{\renewcommand\proofname{$\square$ Demonstração}}
+%\hyphenation{pré--de-ter-mi-na-dos}
+% Para resolver o problema de separação de palavras quando tem um hífen adicionado, como em 'pré-determinados', descobri que pode ser adicionado um símbolo " antes do hífen. Isso faz com que a palavra seguinte, 'determinados', seja tratada com a hifenização automática. Na referência foi sugerido usar o comando \shorthandon{"}, mas não usei e deu certo...
+% REFERÊNCIA: https://tex.stackexchange.com/questions/40381/using-breakable-hyphen-in-newcommand
 
 % Símbolos especiais
 %------------------------------------
@@ -147,7 +150,7 @@
 %	notindex	Não adiciona o índice ao sumário
 
 % Inclui subsubseção no Sumário.
-%\setcounter{tocdepth}{3}
+\setcounter{tocdepth}{3}
 % NOTA: Esse é o padrão para a classe 'article', mas não para as classes 'book' e 'report', que numeram até subseção, nível 2.
 
 % Bibliografia
@@ -296,6 +299,9 @@
 
 % Ligações
 %------------------------------------
+\RequirePackage{xurl}
+% Permite a quebra do URL muito longo
+% REFERÊNCIA: https://tex.stackexchange.com/questions/372321/handling-an-url-underfull-hbox-problem
 \RequirePackage[colorlinks,urlcolor=blue,linktocpage]{hyperref}
 %	hidelinks		Esconde as ligações coloridas
 % NOTA: Deve vir por último, com algumas exceções: glossaries, glossaries-extra, cleveref.

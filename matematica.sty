@@ -168,7 +168,7 @@
 	%\renewcommand{\emptyset}{\varnothing}
 
 	% Conjunto dado propriedade
-	\newcommand{\set}[2]{\left\{{#1}\;\middle\vert\;{#2}\right\}}
+	\newcommand{\set}[2]{\left\{ #1 \;\middle\vert\; #2 \right\}}
 	% Conjunto das partes
 %	\newcommand{\p}{\scalebox{1.1}{\ensuremath{\mathsf{P}}}}
 	\newcommand{\p}{\raisebox{.25em}{\scalebox{1.1}{\ensuremath{\wp}}}}
@@ -202,9 +202,11 @@
 	% Coberturas
 	\newcommand{\cober}{\mathcal{C}}
 	\newcommand{\Cober}{\scalebox{1.1}{\ensuremath{\mathsf{C}}}}
+%	\newcommand{\Cober}{\mathfrak{C}}
 	% Partições
 	\newcommand{\parti}{\mathcal{P}}
 	\newcommand{\Parti}{\scalebox{1.1}{\ensuremath{\mathsf{P}}}}
+%	\newcommand{\Parti}{\mathfrak{P}}
 	% Relação de refinamento
 	\newcommand{\refin}{\preceq}
 	% Operação de correfinamento
@@ -221,17 +223,22 @@
 	{#4} &\longmapsto #5%
 	}
 	\newcommand{\funclin}[5]{{#1} \colon {#2} \to {#3}; {#4} \mapsto #5}
-	\newcommand{\fun}[3]{{#1}\colon {#2} \longrightarrow {#3}}
+	\newcommand{\fun}[3]{#1\colon \allowbreak #2 \longrightarrow #3}
 	% Símbolo de variável numa função: f(•)
 	\newcommand{\var}{\bm{\cdot}}
 	% Função identidade
 	\newcommand{\Id}{\mathrm{I}}
 	% Inversa de função
 	\newcommand{\inv}{^{-1}}
+%	\newcommand{\inv}[1][1]{^{-#1}}
 	% Gráfico de função
 	\DeclareMathOperator{\graf}{graf}
 	% Categoria das funções
 	\newcommand{\Func}{\mathcal{F}}
+
+	% Domínio e imagem
+	\DeclareMathOperator{\dom}{dom}
+%	\DeclareMathOperator{\im}{im}
 
 	% Injeções, sobrejeções e bijeções (Mono, Epi, Iso)
 %	\makeatletter
@@ -275,10 +282,10 @@
 	}
 
 	% Intervalos abertos, fechados e outros
-	\newcommand{\intaa}[2]{\left]{#1},{#2}\right[}
-	\newcommand{\intaf}[2]{\left]{#1},{#2}\right]}
-	\newcommand{\intfa}[2]{\left[{#1},{#2}\right[}
-	\newcommand{\intff}[2]{\left[{#1},{#2}\right]}
+	\newcommand{\intaa}[2]{\left]#1,\allowbreak #2\right[}
+	\newcommand{\intaf}[2]{\left]#1,\allowbreak #2\right]}
+	\newcommand{\intfa}[2]{\left[#1,\allowbreak #2\right[}
+	\newcommand{\intff}[2]{\left[#1,\allowbreak #2\right]}
 	% Mínimo e máximo "como encontro e junta" (operador de um conjunto)
 	\def\composeform@xmin#1#2{\m@th\ooalign{$\hfil#1\mkern4mu#2\hfil$\crcr$#1#2$}}
 	\providecommand{\doublevee}{}
@@ -339,7 +346,8 @@
 	% REFERÊNCIA: https://tex.stackexchange.com/questions/525405/new-symbol-of-infinity-similar-to-a-w-or-omega/525407?noredirect=1#comment1329000_525407
 
 	% Cardinalidade
-	\newcommand{\card}[1]{\#\left\lvert{#1}\right\rvert}
+%	\newcommand{\card}[1]{\#\left\lvert{#1}\right\rvert}
+	\newcommand{\card}[1]{\#\left({#1}\right)}
 
 % Conjuntos numéricos
 %------------------------------------
@@ -488,10 +496,28 @@
 	% Elemento nulidade
 	\newcommand{\nulo}{0}
 
+	% Quociente à direita
+	\newcommand{\quoD}[2]{
+	\mathchoice
+		{% \displaystyle
+			{\left. \raisebox{.2em}{$#2$} \middle\backslash \raisebox{-.2em}{$#1$}\right.}
+		}
+		{% \textstyle
+			{\left.{#1} \middle\backslash {#2}\right.}
+		}
+		{% \scriptstyle
+			#1\,\backslash\,#2
+		}
+		{% \scriptscriptstyle
+			#1\,\backslash\,#2
+		}
+	}
+
 
 	% Translação e conjugação por elemento do grupo
 	\newcommand{\trE}[1]{E_{#1}}
 	\newcommand{\trD}[1]{D_{#1}}
+	\newcommand{\con}[1]{C_{#1}}
 %	\newcommand{\con}{
 %		\mathord{
 %			\mathpalette\superimpose{
@@ -499,7 +525,7 @@
 %			}
 %		}
 %	}
-	\newcommand{\con}[1]{\left({#1}\right|}
+%	\newcommand{\con}[1]{\left({#1}\right|}
 
 	% Grupos normais, análogo ao ideal
 	\newcommand{\ide}{\mathrel{\unlhd}}
@@ -643,10 +669,10 @@
 	% Traço
 	\DeclareMathOperator{\tr}{tr}
 	\newcommand{\newtr}[1]{\left\langle\!\left\langle{#1}\right\rangle\!\right\rangle}
-	\renewcommand{\tr}[1]{\newtr{#1}}
+%	\renewcommand{\tr}[1]{\newtr{#1}}
 	% Determinante
 	\newcommand{\newdet}[1]{\left\llbracket{#1}\right\rrbracket}
-	\renewcommand{\det}[1]{\newdet{#1}}
+%	\renewcommand{\det}[1]{\newdet{#1}}
 
 	% Funções chão, teto e arredondamento
 	\newcommand{\chao}[1]{\left\lfloor{#1}\right\rfloor}
@@ -719,8 +745,8 @@
 	\newcommand{\topo}{\mathcal{T}}
 
 	\newcommand{\Int}[1]{{#1}^\circ} % \mathring é um comando iteressante, mas não serve tão bem aos meus propósitos.
-%	\newcommand{\Fec}[1]{\overline{#1}}
-	\newcommand{\Fec}[1]{{#1}^\bullet} % Análogo ao \Int
+	\newcommand{\Fec}[1]{\overline{#1}}
+%	\newcommand{\Fec}[1]{{#1}^\bullet} % Análogo ao \Int
 	\newcommand{\Fecrel}[2]{{#1}^{\bullet_{#2}}} % Fecho relativo a um espaço
 	\newcommand{\fro}[1]{\partial{#1}}
 	%\newcommand{\fro}[1]{\mathrm{fro}#1}
@@ -820,16 +846,25 @@
 %	\newcommand{\diam}{\diameter}
 	\newcommand{\diam}{\Theta}
 %	\DeclareMathOperator{\diam}{diam}
+	% Função limitada
+	\newcommand{\Boun}{\mathscr{B}}
+
 	% Convergência/ convergência pontual
 	\newcommand{\conv}{\rightarrow}
 	% Convergência uniforme
 	\newcommand{\uconv}{\rightrightarrows}
+
 	% Bola aberta e bola fechada de espaço métrico
 %	\newcommand{\bola}{\mathrm{B}}
 %	\newcommand{\bola}{\mbox{\larger[1]$\odot$}}
-	\newcommand{\bola}[2]{\mathrm{B}\left[{#1};{#2}\right[}
+%	\newcommand{\bola}[2]{\mathrm{B}\left[{#1};{#2}\right[}
+	\newcommand{\bola}[2]{\mathrm{B}\left(#1; #2\right)}
 %	\newcommand{\bolafec}{\Fec{\bola}} % A notação é diferente, e não simplesmente denotamos uma como o fecho da outra, porque nem sempre em um espaço métrico ao fecho da bola aberta é a bola fechada de mesmo raio e centro.
-	\newcommand{\bolafec}[2]{\mathrm{B}\left[{#1};{#2}\right]}
+%	\newcommand{\bolafec}[2]{\mathrm{B}\left[{#1};{#2}\right]}
+	\newcommand{\bolafec}[2]{\bar{\mathrm{B}}\left(#1; #2\right)}
+	% Intervalos-bolas na reta real
+	\newcommand{\inter}[2]{\mathrm{I}\left(#1; #2\right)}
+	\newcommand{\interfec}[2]{\bar{\mathrm{I}}\left(#1; #2\right)}
 
 	% Funções métricas: controladas, homometrias
 %	\newcommand{\Met}{\mathrm{Met}}
@@ -837,10 +872,14 @@
 	\newcommand{\Met}{\Cont_{\vert \var \vert}}
 %	\newcommand{\Isomet}{\Cont_{\vert \var \vert}}
 	% Distorção
-	\newcommand{\distor}[1]{\left\Vert{#1}\right\Vert}
+%	\newcommand{\distor}[1]{\left\Vert{#1}\right\Vert}
+	\newcommand{\distor}[1]{\langle\!\langle{#1}\rangle\!\rangle}
 
 	% Comprimento de caminhos
 	\newcommand{\compr}[1]{L(#1)}
+	% Partição por intervalos
+%	\newcommand{\Partinter}{\Parti_{\mathrm{I}}}
+	\newcommand{\Partinter}{\Parti_{[,]}}
 
 % Grupos topológicos
 %------------------------------------
@@ -860,6 +899,10 @@
 	\newcommand{\E}{\mathbb{E}}
 	% Bola Unitária de espaço normado
 	\newcommand{\B}{\mathbb{B}}
+
+	% Norma do supremo
+%	\newcommand{\norsup}[1]{\nor{#1}_{\sup}}
+	\newcommand{\norsup}[1]{\nor{#1}_{\infty}}
 
 	% Espaço das funções lineares contínuas (funções limitadas lineares)
 	\newcommand{\toplin}{\mathscr{L}}
@@ -949,6 +992,16 @@
 	\newcommand{\dd}{\mathrm{d}}
 	\newcommand{\Smvl}{\mathscr{S}}
 
+% (Em Espaços Normados)
+	% Trajetórias constantes por partes
+%	\newcommand{\Constp}{\mathscr{E}}
+%	\newcommand{\Constp}{\mathcal{C}_{\ast}}
+	\newcommand{\Constp}{\Intg_{c}}
+	% Trajetórias regulares
+%	\newcommand{\Regu}{\mathcal{R}}
+%	\newcommand{\Regu}{\overline{\Constp}}
+	\newcommand{\Regu}{\bar{\Intg}_{c}}
+
 
 % Diferenciação
 %------------------------------------
@@ -987,6 +1040,15 @@
 	% Derivada direcional
 	\newcommand{\Dir}{\nabla}
 
+	% Fluxo de campo vetorial
+	\newcommand{\Flux}[1][v]{\Phi^{#1}}
+	\newcommand{\Fluxo}[1][]{\Phi^{#1}}
+	% Eventualmente eu quero consertar essas duas definições usando um IF ou algo assim, para que eu possa ter somente uma. Eu quero que \Flux{}{}{} resulte em \Fluxo.
+%	\newcommand{\flux}[2][v]{\phi^{#2 #1}}
+	\newcommand{\flux}{\phi}
+	\newcommand{\fluxo}[3][]{#1{\Phi}^{{#2}{#3}}} % O argumento opcional #1 é para adicionar o comando \dot e termos a derivada do fluxo.
+	% \fluxo É O COMANDO ANTIGO
+
 % Variedades
 %------------------------------------
 	\newcommand{\atlas}{\mathcal{A}}
@@ -999,10 +1061,6 @@
 
 	% Difeomorfismos
 	\DeclareMathOperator{\Diff}{Diff}
-
-	% Fluxo de campo vetorial
-%	\newcommand{\flux}{\Phi}
-	\newcommand{\flux}[3][]{#1{\Phi}^{{#2}{#3}}} % O argumento opcional #1 é para adicionar o comando \dot e termos a derivada do fluxo.
 
 	% Campos tensoriais
 	\newcommand{\tens}{\mathfrak{T}}
@@ -1060,7 +1118,8 @@
 	\newcommand{\Orb}{\mathcal{O}}
 	% Pontos periódicos
 %	\newcommand{\Per}{\mathrm{P}}
-	\newcommand{\Per}[1][]{\mathrm{P}^{#1}}
+%	\newcommand{\Per}[1][]{\mathrm{P}^{#1}}
+	\newcommand{\Per}[1][]{\Pi^{#1}}
 
 % Sistemas dinâmicos topológicos
 %------------------------------------
