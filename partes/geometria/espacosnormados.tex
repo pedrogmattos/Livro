@@ -4598,7 +4598,7 @@ Segue de \ref{prop:multidiferenciabilidade.composicao} e do fato de que composi�
 % 	\D(f' \circ f)|_x = \D f'|_{f(x)} \circ \D f|_x.
 % 	\end{equation*}
 %
-% Para mostrar que $f' \circ f$ é $(m+1)$-diferenciável, mostraremos que sua diuferencial $\D(f' \circ f)$ é $m$-diferenciável. Note que $\D(f' \circ f)$ é composição de duas funções. A primeira é a composição de funções
+% Para mostrar que $f' \circ f$ é $(m+1)$-diferenciável, mostraremos que sua diferencial $\D(f' \circ f)$ é $m$-diferenciável. Note que $\D(f' \circ f)$ é composição de duas funções. A primeira é a composição de funções
 % 	\begin{align*}
 % 	\func{\circ}{\toplin(E',E'') \times \toplin(E,E')}{\toplin(E,E'')}{(l',l)}{l' \circ l},
 % 	\end{align*}
@@ -4606,7 +4606,7 @@ Segue de \ref{prop:multidiferenciabilidade.composicao} e do fato de que composi�
 % 	\begin{align*}
 % 	\func{g}{X}{\toplin(E',E'') \times \toplin(E,E')}{x}{(\D f'|_{f(x)}, \D f|_x)}.
 % 	\end{align*}
-% A função $f$ é $(m+1)$-diferenciável por hipótese, logo $m$-diferebciável; a função $\D f'$ é $m$-diferenciável pois por hipótese $f'$ é $(m+1)$-diferenciável. Assim, por hipótese de indução, a primeira componente de $g$, que é a composição $\D f' \circ f$, é $m$-diferenciável. A segunda componente de $g$ é a função $\D f$, que é $m$-diferenciável pois por hipótese $f$ é $(m+1)$-diferenciável. Assim segue que a função $g$ é $m$-diferenciável, pois cada uma de suas componentes é $m$-diferenciável.
+% A função $f$ é $(m+1)$-diferenciável por hipótese, logo $m$-diferenciável; a função $\D f'$ é $m$-diferenciável pois por hipótese $f'$ é $(m+1)$-diferenciável. Assim, por hipótese de indução, a primeira componente de $g$, que é a composição $\D f' \circ f$, é $m$-diferenciável. A segunda componente de $g$ é a função $\D f$, que é $m$-diferenciável pois por hipótese $f$ é $(m+1)$-diferenciável. Assim segue que a função $g$ é $m$-diferenciável, pois cada uma de suas componentes é $m$-diferenciável.
 %
 % Agora, novamente pela hipótese de indução, a diferencial $\D(f' \circ f)$ é $m$-diferenciável, pois é composição de duas funções $m$-diferenciáveis, e portanto $f' \circ f$ é $(m+1)$-diferenciável.
 \end{proof}
@@ -4762,7 +4762,7 @@ Sejam $\bm E$ um espaço normado, $A \subseteq E$ aberto e $\fun{f}{A}{\R}$ um c
 	\begin{equation*}
 	\fun{\D^2 f|_x}{E}{E\dual}
 	\end{equation*}
-não é um isomorfismo de espaços lineares topológicos. %Umponto crítico  \emph{não-degenerado} de $f$ é um ponto crítico $x \in A$ de $f$ tal que $f$ é $2$-diferenciável em $x$ e $x$ não é degenerado, ou seja, $\fun{\D^2 f|_x}{E}{E\dual}$ é isomorfismo de espaços lineares topológicos.
+não é um isomorfismo de espaços lineares topológicos. %Um ponto crítico  \emph{não-degenerado} de $f$ é um ponto crítico $x \in A$ de $f$ tal que $f$ é $2$-diferenciável em $x$ e $x$ não é degenerado, ou seja, $\fun{\D^2 f|_x}{E}{E\dual}$ é isomorfismo de espaços lineares topológicos.
 Um ponto crítico \emph{não-degenerado} de $f$ é um ponto crítico $x \in A$ de $f$ que não é degenerado.
 \end{definition}
 
@@ -5437,7 +5437,7 @@ Sejam $I \subseteq \R$ um intervalo, $\bm E$ um espaço normado, $\fun{\gamma}{I
 		\begin{equation*}
 		\der(\Gamma - \Gamma_0)(t) = \dot \Gamma(t) - \dot \Gamma_0(t) = \gamma(t) - \gamma(t) = 0.
 		\end{equation*}
-	Assim, a difrencial de $\Gamma - \Gamma_0$ deve ser nula, portanto segue da proposição \ref{prop:diferencial.zero.constante} que, para algum $c \in E$, $\Gamma - \Gamma_0 = c$ em $\Int{I}$. Como $\Gamma_0$ e $\Gamma$ são contínuas, segue que vale $\Gamma - \Gamma_0 = c$ em $I$.
+	Assim, a diferencial de $\Gamma - \Gamma_0$ deve ser nula, portanto segue da proposição \ref{prop:diferencial.zero.constante} que, para algum $c \in E$, $\Gamma - \Gamma_0 = c$ em $\Int{I}$. Como $\Gamma_0$ e $\Gamma$ são contínuas, segue que vale $\Gamma - \Gamma_0 = c$ em $I$.
 
 	\item ($\Leftarrow$) Basta notar que, para todo $t \in \Int{I}$,
 		\begin{equation*}
@@ -5766,7 +5766,7 @@ Note que $F(X) \subseteq X$, pois, para toda $\gamma \in X$, vale $F(\gamma)(t_0
 	\nor{F(\gamma)(t) - x_0} = \nor{\int_{t_0}^{t} v|_{\gamma(s)} \dd s} \leq \abs{\int_{t_0}^{t} \nor{v|_{\gamma(s)}} \dd s} \leq l\abs{t-t_0} \leq l\varepsilon < r,
 	\end{equation*}
 o que mostra que $F(\gamma)(\Fec{I}) \subseteq B$. Assim concluímos que $F(\gamma) \in X$, portanto $\fun{F}{X}{X}$.
-% MOTARAR QUE F É CONTÍNUA ANTES DE USAR A PROPOSIÇÃO COROLÁRIA DA CONTRAÇÃO DO PONTO FIXO.
+% MOSTRAR QUE F É CONTÍNUA ANTES DE USAR A PROPOSIÇÃO COROLÁRIO DA CONTRAÇÃO DO PONTO FIXO.
 
 Seja $n \in \N$. Mostraremos por indução em $n$ que, para todos $\gamma, \gamma' \in X$ e todo $t \in \Fec{I}$,
 	\begin{equation*}
@@ -5807,7 +5807,7 @@ Isso mostra que $F$ é contínua, pois é controlada. Além disso, como $\frac{(
 	\begin{equation*}
 	\frac{(c\varepsilon)^n}{n!} < 1,
 	\end{equation*}
-o que implica que $F^n$ é uma contração. Segue então da proposição~\ref{prop:ponto.fixo.iterada.contracao} que $F$ tem único ponto fixo $\bar\phi$. Por definição de $F$, esssa trajetória satisfaz, para todo $t \in \Fec{I}$,
+o que implica que $F^n$ é uma contração. Segue então da proposição~\ref{prop:ponto.fixo.iterada.contracao} que $F$ tem único ponto fixo $\bar\phi$. Por definição de $F$, essa trajetória satisfaz, para todo $t \in \Fec{I}$,
 	\begin{equation*}
 	\bar\phi(t) = F(\bar\phi)(t) = x_0 + \int_{t_0}^{t} v|_{\bar\phi(s)} \dd s.
 	\end{equation*}
@@ -5894,7 +5894,7 @@ e o \emph{fluxo total de $v$} é a função
 	\end{align*}
 \end{definition}
 
-Consideremos para a proposição seguinte um espaço normado completo $\bm E$ e uma transformação linear contínua $L \in \toplin(\bm E, \bm E)$. Essa transofrmação é um campo vetorial em $E$. Esse campo vetorial é controlado, pois a continuidade significa que, para todos $x,x' \in E$,
+Consideremos para a proposição seguinte um espaço normado completo $\bm E$ e uma transformação linear contínua $L \in \toplin(\bm E, \bm E)$. Essa transformação é um campo vetorial em $E$. Esse campo vetorial é controlado, pois a continuidade significa que, para todos $x,x' \in E$,
 	\begin{equation*}
 	\nor{L(x') - L(x)} \leq \nor{L}\nor{x'-x}.
 	\end{equation*}

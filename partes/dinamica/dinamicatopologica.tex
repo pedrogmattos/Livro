@@ -112,7 +112,7 @@ Um ponto \emph{não-errante} do sistema é um ponto $p \in X$ que não é errant
 O conjunto dos pontos não-errantes do sistema $\Sist$ é denotado $\Nerr(\Sist)$ (ou $\Nerr$, ou ainda $\Nerr(f)$, de acordo com o que for mais relevante ressaltar).
 \end{definition}
 
-%MSOTRAR QUE A DEFINIÇÃO ACIMA E A ABAIXO SÃO EQUIVALENTES. Acredito que basta tirar os pontos $f(x),...,f^N-1(x) de V.$
+%MOSTRAR QUE A DEFINIÇÃO ACIMA E A ABAIXO SÃO EQUIVALENTES. Acredito que basta tirar os pontos $f(x),...,f^N-1(x) de V.$
 %\begin{definition}
 %Seja $\bm{\Sist}=(\bm X,f)$ um sistema dinâmico topológico. Um ponto \emph{errante} do sistema é um ponto $p \in X$ para o qual existem vizinhança $V \subseteq X$ de $p$ e inteiro positivo $N \in \Z_{\geq 0}$ tais que
 %	\begin{equation*}
@@ -229,7 +229,7 @@ Sejam $\bm{\Sist}=(\bm X,f)$ um sistema dinâmico topológico e $p \in X$. Entã
 \end{proposition}
 
 \begin{proposition}
-Seja $\bm{\Sist}=(\bm X,f)$ um sistema dinâmico topológico. Todo ponto periódico do sistema é um ponto limite e todo ponto limite é um ponto não-errrante:
+Seja $\bm{\Sist}=(\bm X,f)$ um sistema dinâmico topológico. Todo ponto periódico do sistema é um ponto limite e todo ponto limite é um ponto não-errante:
 	\begin{equation*}
 	\Per(f) \subseteq \Lim(f) \subseteq \Nerr(f).
 	\end{equation*}
@@ -431,10 +431,10 @@ e segue o enunciado.
 \end{proof}
 
 \begin{proposition}
-As variedades estável e instável de um ponto $[p]$ do toro são invariavéis sob ação do automorfismo $[A]$ no sentido que valem $[A](W^s([p])) = W^s([A]([p]))$ e $[A](W^u([p])) = W^u([A]([p]))$.
+As variedades estável e instável de um ponto $[p]$ do toro são invariáveis sob ação do automorfismo $[A]$ no sentido que valem $[A](W^s([p])) = W^s([A]([p]))$ e $[A](W^u([p])) = W^u([A]([p]))$.
 	\end{proposition}
 \begin{proof}
-	Na demosntração, usaremos $W$ para representar qualquer uma das duas variedades estável e instável. Da mesma forma, $v$ para o autovetor e $\lambda$ para o autovalor associado à respectiva variedade.
+	Na demonstração, usaremos $W$ para representar qualquer uma das duas variedades estável e instável. Da mesma forma, $v$ para o autovetor e $\lambda$ para o autovalor associado à respectiva variedade.
 
 	Primeiro demonstraremos que
 		\begin{equation*}
@@ -460,7 +460,7 @@ e, portanto, $x \in [A](W^s(p))$.
 \begin{proposition}
 As variedades estável e instável de um ponto do toro são densas em $\T^2$.	\end{proposition}
 \begin{proof}
-Seja $[p]=[(p_1,p_2)]$ um ponto de $\T^2$. Na demosntração, usaremos $W([p])$ para representar qualquer uma das duas variedades de $[p]$. Queremos mostrar que, dado $\varepsilon > 0$ e $[t]=[(t_1,t_2)] \in \T^2$, existe $[w]=[w_1,w_2] \in W([p])$ tal que $d_{\T^2}([t],[w]) \leq \varepsilon$. Sem perda de generalidade, consideraremos que $p,t,w \in S^1 \times S^1$ para facilitar a demonstração.
+Seja $[p]=[(p_1,p_2)]$ um ponto de $\T^2$. Na demonstração, usaremos $W([p])$ para representar qualquer uma das duas variedades de $[p]$. Queremos mostrar que, dado $\varepsilon > 0$ e $[t]=[(t_1,t_2)] \in \T^2$, existe $[w]=[w_1,w_2] \in W([p])$ tal que $d_{\T^2}([t],[w]) \leq \varepsilon$. Sem perda de generalidade, consideraremos que $p,t,w \in S^1 \times S^1$ para facilitar a demonstração.
 
 Consideremos o conjunto $C := \{[(t_1,r)] : r \in \R \}$. Esse conjunto é um subconjunto de $\T^2$ e auxiliará na demonstração. Acharemos o ponto $[w]$ nesse conjunto, considerando o conjunto $W([p]) \cap C$. Esse conjunto interseção é interessante pois a distância entre seus potos pode ser calculada usando a distância do círculo. Tomemos $[c] \in C$, com $c=(t_1,r) \in S^1 \times S^1$ sem perda de generalidade. Notamos que
 	\begin{align*}
@@ -482,7 +482,7 @@ de modo que $p_1 + \alpha = t_1 + k$, com $k \in \Z$; ou seja, definindo $m := p
 	[(t_1,m + kl)].
 	\end{equation*}
 
-Isso significa que os pontos de $W([p]) \cap C$ podem ser obtido atráves de uma rotação irracional $R_l$ aplicada em $m \in S^1$. Como sabemos pelo teorema \ref{teo:orbita.densa} que as rotações irracionais são densas em $S^1$ para qualquer ponto do círculo, dados $\varepsilon > 0$ e $t_2 \in S^1$, existe inteiro $a$ tal que
+Isso significa que os pontos de $W([p]) \cap C$ podem ser obtido através de uma rotação irracional $R_l$ aplicada em $m \in S^1$. Como sabemos pelo teorema \ref{teo:orbita.densa} que as rotações irracionais são densas em $S^1$ para qualquer ponto do círculo, dados $\varepsilon > 0$ e $t_2 \in S^1$, existe inteiro $a$ tal que
 	\begin{equation*}
 	d_{S^1}(t_2,m + al) = d_{S^1}(t_2,R_l^a(m)) \leq \varepsilon \text{.}
 	\end{equation*}

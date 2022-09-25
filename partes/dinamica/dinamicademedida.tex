@@ -69,7 +69,7 @@ Como comentado anteriormente, podemos considerar $\phi$ como definida de $X_1$ p
 
 \section{Recorrência}
 
-O resultado a seguir fala sobre o conjunto dos pontos de um conjunto $M$ que retornam infinitamente para $M$. Como comnetado anteriormente (\ref{prop:nucleo.recorrencia}), considerando um espaço $X$ e um conjunto $M$, esse conjunto é dado por
+O resultado a seguir fala sobre o conjunto dos pontos de um conjunto $M$ que retornam infinitamente para $M$. Como comentado anteriormente (\ref{prop:nucleo.recorrencia}), considerando um espaço $X$ e um conjunto $M$, esse conjunto é dado por
 	\begin{equation*}
 	M \cap \limsup_{t \in \Z_{\geq 0}} f^{-t}(M).
 	\end{equation*}
@@ -325,7 +325,7 @@ para todo $n \in \Z_{\geq 0}$, o que implica por (4) que $M \qeq \emptyset$ ou $
 	Se $\alpha \notin \Q$, então a rotação é densa em $\T$. Sendo assim, seja $M \subseteq \T$ invariante sob $R_\alpha$. Podemos escolher, para todo $\varepsilon$ uma função $f$  contínua no toro tal que $\Vert f-\idc_M \Vert_1 < \varepsilon$ e da invariância de $M$ segue que $\Vert f\circ R^n_\alpha-f\Vert_1<2\varepsilon$. Da continuidade de $f$, segue que, para todo $t \in \R$, $\Vert f\circ R_t-f\Vert_1\leq2\varepsilon$. Agora, como a medida é invariante por rotação, usando o teorema de Fubini e a desigualdade triangular para integrais temos que
 	\begin{align*}
 	\left\Vert f-\int f(t) dt\right\Vert_1 &= \int\left|\int (f(x)-f(x+t))dt \right|dx \\
-	&\leq \int \int |f(x)-f(x+t)|dxdt \\
+	&\leq \int \int |f(x)-f(x+t)|dx dt \\
 	&\leq 2\varepsilon.
 	\end{align*}
 Mas então
@@ -403,14 +403,14 @@ quando $n \conv \infty$
 	Embora o conceito de sistema misturador como definido acima é mais natural, a noção levemente modificada abaixo é, muitas vezes, mais útil e simples de se aplicar. Esse é o conceito de fracamente misturador.
 
 \begin{definition}
-	Um sistema \emph{fracamante misturador} é um sistema $(X,\mens,\med,T)$ tal que, para todos $M,N \in \mens$,
+	Um sistema \emph{fracamente misturador} é um sistema $(X,\mens,\med,T)$ tal que, para todos $M,N \in \mens$,
 	\begin{equation*}
 	\frac{1}{n} \sum_{i=0}^{n-1} \left|\med(M \cap T^{-i}(N)) - \med(M)\med(N)\right| \conv 0
 	\end{equation*}
 quando $n \conv \infty$
 \end{definition}
 
-	É interessante comentar algo sobre os diferentes tipos de convergência aqui considerados. Além da convegência tradicional, $a_n \conv a$, existem outras noções de convergência de uma sequência. Uma delas é convergência de Cesàro, que considera a convergência da sequência $\frac{1}{n} \sum_{i=0}^{n-1} a_n$ das $n$-ésimas médias da sequência original. Pelas definições e proposições anteriores, considrando a sequência $a_i := \med(M \cap T^{-i}(N)) - \med(M)\med(N)$, temos que um sistema é \emph{ergódico} se, e somente se, $a_n$ converge a $0$ pela convergência de Cesàro, é \emph{misturador} se, e somente se, $a_n$ converge a $0$ no sentido tradicional, e é \emph{fracamente misturador} se $|a_n|$ converge a $0$ pela convergência de Cesàro. Assim, como, para qualquer sequência $a_n$ que converge a $0$, vale que $|a_n|$ converge a $0$ por Cesàro e, então, $a_n$ converge a $0$ por Cesàro, segue a proposição abaixo.
+	É interessante comentar algo sobre os diferentes tipos de convergência aqui considerados. Além da convergência tradicional, $a_n \conv a$, existem outras noções de convergência de uma sequência. Uma delas é convergência de Cesàro, que considera a convergência da sequência $\frac{1}{n} \sum_{i=0}^{n-1} a_n$ das $n$-ésimas médias da sequência original. Pelas definições e proposições anteriores, considerando a sequência $a_i := \med(M \cap T^{-i}(N)) - \med(M)\med(N)$, temos que um sistema é \emph{ergódico} se, e somente se, $a_n$ converge a $0$ pela convergência de Cesàro, é \emph{misturador} se, e somente se, $a_n$ converge a $0$ no sentido tradicional, e é \emph{fracamente misturador} se $|a_n|$ converge a $0$ pela convergência de Cesàro. Assim, como, para qualquer sequência $a_n$ que converge a $0$, vale que $|a_n|$ converge a $0$ por Cesàro e, então, $a_n$ converge a $0$ por Cesàro, segue a proposição abaixo.
 
 \begin{proposition}
 	Seja $(X,\mens,\med,T)$ um sistema que preserva medida. Então
@@ -472,7 +472,7 @@ Vamos mostrar que $a_i$ converge a $0$ para $n \notin C$ e que $C$ tem densidade
 	\end{equation}
 e, portanto, $C$ tem densidade zero.
 
-Agora, vamos mostrar que (2) implica (1). Como a sequêcia é limitada, seja $L>0$ tal que $a_n \leq L$ para todo $n \geq 1$. Como $a_n$ converge para zero fora de $C$ e o conjunto $C$ tem densidade zero, podemos escolher, para cada $k \geq 1$, $n_k \in \N$ tal que, para todo $n \notin C$, $n \geq n_k$, temos que $a_n < \frac{1}{k}$ e, para todo $n \geq n_k$, $\frac{1}{n}|C \cap [0,n)| \leq \frac{1}{k}$. Sendo assim, para todo $n \geq kn_k$, temos que
+Agora, vamos mostrar que (2) implica (1). Como a sequência é limitada, seja $L>0$ tal que $a_n \leq L$ para todo $n \geq 1$. Como $a_n$ converge para zero fora de $C$ e o conjunto $C$ tem densidade zero, podemos escolher, para cada $k \geq 1$, $n_k \in \N$ tal que, para todo $n \notin C$, $n \geq n_k$, temos que $a_n < \frac{1}{k}$ e, para todo $n \geq n_k$, $\frac{1}{n}|C \cap [0,n)| \leq \frac{1}{k}$. Sendo assim, para todo $n \geq kn_k$, temos que
 	\begin{align*}
 	\frac{1}{n} \sum_{i=0}^{n-1} a_i &= \frac{1}{n} \left(\sum_{i=0}^{n_k-1} a_i   +   \sum_{i \in C \cap [n_k,n)} a_i    +    \sum_{i \in C^\complement \cap [n_k,n)} a_i \right) \\
 	& < \frac{1}{n} \left(Ln_k + L |C \cap [0,n)| + n\frac{1}{k}\right) \\
@@ -753,8 +753,8 @@ pois $f$ preserva medida, e isso mostra que $\phi$ preserva medida.
 
 \begin{proposition}
 	\begin{enumerate}
-	\item A rotação $R_\alpha$ em $\T^1$ preserva a medida topológica completa (de Lesbegue).
-	\item A expansão $E_m$ em $\T^1$ preserva a medida topológica completa (de Lesbegue).
+	\item A rotação $R_\alpha$ em $\T^1$ preserva a medida topológica completa (de Lebesgue).
+	\item A expansão $E_m$ em $\T^1$ preserva a medida topológica completa (de Lebesgue).
 	\end{enumerate}
 \end{proposition}
 \begin{proof}
@@ -772,7 +772,7 @@ pois $f$ preserva medida, e isso mostra que $\phi$ preserva medida.
 \end{proof}
 
 \begin{proposition}
-	Seja o sistema de Bernoulli $(\Sigma,\mathcal{B},\med,\sigma)$, em que $\Sigma := \{0,1\}^\N$, $\mathcal{B}$ é a $\sigma$-álgebra de Borel de $\Sigma$, $\sigma$ é o shift de Bernoullie $\med$ é a medida produto $\med := \prod_{\N} \nu$, em que $\nu$ é a medida em $\{0,1\}$ definida por $\nu(\{0\})=\nu(\{1\})=\frac{1}{2}$. Então o mapa
+	Seja o sistema de Bernoulli $(\Sigma,\mathcal{B},\med,\sigma)$, em que $\Sigma := \{0,1\}^\N$, $\mathcal{B}$ é a $\sigma$-álgebra de Borel de $\Sigma$, $\sigma$ é o shift de Bernoulli e $\med$ é a medida produto $\med := \prod_{\N} \nu$, em que $\nu$ é a medida em $\{0,1\}$ definida por $\nu(\{0\})=\nu(\{1\})=\frac{1}{2}$. Então o mapa
 	\begin{align*}
 	\func{\phi}{\Sigma}{\T}{(x_n)_{n \in \N}}{\sum_{n \in \N} \frac{x_n}{2^{n+1}}}
 	\end{align*}
