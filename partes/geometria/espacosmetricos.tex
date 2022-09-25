@@ -187,7 +187,7 @@ Seja $d \in \N$. A \emph{métrica reta} sobre $\R^d$ é a função
 
 
 
-\subsection{Diâmetro, bolas e conjuntos e funções limitadas}
+\subsection{Diâmetro, bolas e limitação}
 
 \begin{definition}
 Sejam $\bm M$ um espaço métrico e $C \subseteq M$. O \emph{diâmetro} de $C$ é
@@ -213,6 +213,14 @@ A \emph{bola fechada} de centro $c$ e raio $r$ em $M$ é o conjunto
 	\begin{equation*}
 	\bolafec{c}{r} := \set{p \in M}{\dist{c}{p} \leq r}.
 	\end{equation*}
+No caso em que $M = \R$, o \emph{intervalo aberto} de centro $c$ e raio $r$ é o conjunto
+	\begin{equation*}
+	\inter{c}{r} := \bola{c}{r} = \intaa{c-r}{c+r}
+	\end{equation*}
+e o \emph{intervalo fechado} de centro $c$ e raio $r$ é o conjunto
+	\begin{equation*}
+	\interfec{c}{r} := \bolafec{c}{r} = \intff{c-r}{c+r}.
+	\end{equation*}
 \end{definition}
 
 \begin{figure}
@@ -229,6 +237,7 @@ A \emph{bola fechada} de centro $c$ e raio $r$ em $M$ é o conjunto
 \end{figure}
 
 \begin{proposition}
+\label{prop:criterio.limitacao.bola}
 Sejam $\bm M$ um espaço métrico e $C \subseteq M$ um conjunto. Então $C$ é um conjunto limitado se, e somente se, existe bola $\bolafec{c}{r}$ tal que $C \subseteq \bolafec{c}{r}$.
 \end{proposition}
 \begin{proof}
@@ -271,8 +280,14 @@ Sejam $M$ um conjunto, $\dist{\var}{\var}$ uma métrica em $M$ e $\dist{\var}{\v
 \end{exercise}
 
 \begin{definition}
-Seja $\bm M$ um espaço métrico. Uma função \emph{limitada} em $\bm M$ é uma função $f\colon X \to M$ de um conjunto $X$ para $M$ cuja imagem $f(X)$ é limitada.
+Sejam $X$ um conjunto e $\bm M$ um espaço métrico. Uma função \emph{limitada} de $X$ para $\bm M$ é uma função $\fun{f}{X}{M}$ de $X$ para $M$ cuja imagem $f(X)$ é limitada.
+O conjunto das funções limitadas de $X$ para $M$ é denotado $\Boun(X,M)$.
 \end{definition}
+
+\begin{exercise}
+Sejam $X$ um conjunto e $\bm M$ e $\bm M'$ espaços métricos. Para todas funções limitadas $\fun{f}{X}{M}$ e $\fun{f'}{M}{M'}$, a composição $\fun{f' \circ f}{X}{M'}$ é limitada.
+\end{exercise}
+
 
 \section{Topologia dos espaços métricos}
 
@@ -498,7 +513,10 @@ Sejam $\bm M$ um espaço métrico e $C \subseteq M$. Se $C$ é compacto, então 
 Seja $p \in M$ e consideremos a cobertura $\set{\bola{p}{r}}{r \in \intaa{0}{\infty}}$ de $C$. Pela compacidade, existe subcobertura finita $\{\bola{p}{r_0},\ldots,\bola{p}{r_{n-1}}\}$ de $C$. Tomando $r := \max\set{r_i}{i \in [n]}$, segue que $\bola{p}{r_i} \subseteq \bola{p}{r}$ para todo $i \in [n]$, logo $C \subseteq \bola{p}{r}$, o que implica que $\diam(C) \leq 2r < \infty$.
 \end{proof}
 
-A recíproca nem sempre é verdade. Nos espaços $\R^d$, $ d \in \N$, vale que um conjunto é compacto se, e somente se, é fechado e limitado. Esse resultado é conhecido como Teorema de Heine-Borel. No entanto, isso não vale em qualquer espaço métrico\footnote{Para mais detalhes, conferir \url{https://math.stackexchange.com/questions/674982/difference-between-closed-bounded-and-compact-sets}.}.
+A recíproca nem sempre é verdade. Nos espaços $\R^d$, $d \in \N$, vale que um conjunto é compacto se, e somente se, é fechado e limitado. Esse resultado é conhecido como Teorema de Heine-Borel. No entanto, isso não vale em qualquer espaço métrico%
+	\footnote{
+		Para mais detalhes, conferir \url{https://math.stackexchange.com/questions/674982/difference-between-closed-bounded-and-compact-sets}.
+	}.
 
 \begin{exercise}
 Seja $\bm M$ um espaço métrico e $C \subseteq M$. Então $C$ é compacto se, e somente se, é sequencialmente compacto.
@@ -1290,7 +1308,34 @@ e como $\distor{f}<1$ isso implica $\dist{\bar p}{p}=0$, logo $\bar p=p$.
 
 Esse resultado pode parecer trivial por sua demonstração, mas suas consequências na matemática são enormes. Como consequência dessa proposição seguem por exemplo o teorema da função inversa do cálculo diferencial e o teorema de existência e unicidade de equações diferenciais.
 
+Como coraolário direto da proposição~\ref{prop:ponto.fixo.contracao}, temos a seguinte proposição.
 
+\begin{proposition}
+\label{prop:ponto.fixo.iterada.contracao}
+Sejam $\bm M$ um espaço métrico completo não vazio e $\fun{f}{M}{M}$ uma função contínua tal que, para algum $m \in \N \setminus \{0\}$, $f^m$ é contração. Existe único ponto fixo $\bar p \in M$ para $f$ e, para todo $p \in M$,
+	\begin{equation*}
+	\lim_{n \to \infty} f^n(p) = \bar p.
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+Exercício.
+\end{proof}
+
+\begin{comment}
+% DEMONSTRAÇÃO:
+Como $f^n$ é contração, pela proposição~\ref{prop:ponto.fixo.contracao} ela tem único ponto fixo $\bar p$ e vale que, para todo $p \in M$
+	\begin{equation*}
+	\lim_{n \to \infty} f^{mn}(p) = \bar p.
+	\end{equation*}
+Em particular, para $f(p)$ vale
+	\begin{equation*}
+	\bar p = \lim_{n \to \infty} f^{mn}(f(p)) = \lim_{n \to \infty} f(f^{mn}(p)) = f(\bar p),
+	\end{equation*}
+o que mostra que $\bar p$ é ponto fixo de $f$. Agora, para todo $n \in \N$, sejam $q, r \in \N$ tais que $n = mq+r$, com $0 \leq < m$. Para todo $p \in M$, segue que
+	\begin{equation*}
+	f^n(p) = (f^m)^q(f^r(p))
+	\end{equation*}
+\end{comment}
 
 
 
@@ -1365,8 +1410,7 @@ Sejam $\bm{M}$ e $\bm{M'}$ espaços métricos e $\fun{f}{M}{M'}$ uma função co
 
 
 
-
-\subsection{Funções $\alpha$-controladas}
+\subsection{Funções \texorpdfstring{$\alpha$}{alfa}-controladas}
 
 Nesta seção, espandimos o conceito de uma função controlada usando um parâmetro.
 
@@ -1683,7 +1727,7 @@ Sejam $\intff{a}{a'} \subseteq \R$ um intervalo compacto não degenerado e $n \i
 	\begin{equation*}
 	a = t_0 < \cdots < t_n = a'.
 	\end{equation*}
-O conjunto dessas partições é denotado $\parti_{\intff{a}{a'}}$.
+O conjunto dessas partições é denotado $\Partinter(\intff{a}{a'})$.
 \end{definition}
 
 Claramente, o conjunto $\{\intfa{t_0}{t_1},\ldots,\intfa{t_{n-2}}{t_{n-1}},\intff{t_{n-1}}{t_{n}}\}$ é uma partição de $\intff{a}{a'}$ e qualquer partição desse tipo define uma $n$-partição por intervalos de $\intff{a}{a'}$.
@@ -1691,7 +1735,7 @@ Claramente, o conjunto $\{\intfa{t_0}{t_1},\ldots,\intfa{t_{n-2}}{t_{n-1}},\intf
 \begin{definition}
 Sejam $\bm M$ um espaço métrico e $\fun{c}{\intff{a}{a'}}{M}$ um caminho em $\bm M$. O \emph{comprimento} de $c$ é
 	\begin{equation*}
-	\compr{c} := \sup\set{\sum_{i \in [n]} \dist{c(t_i)}{c(t_{i+1})}}{(t_i)_{i \in [n+1]} \in \parti_{\intff{a}{a'}}}.
+	\compr{c} := \sup\set{\sum_{i \in [n]} \dist{c(t_i)}{c(t_{i+1})}}{(t_i)_{i \in [n+1]} \in \Partinter(\intff{a}{a'})}.
 	\end{equation*}
 Um caminho \emph{retificável} é um caminho cujo comprimento é finito.
 \end{definition}
@@ -1706,7 +1750,7 @@ Sejam $\bm M$ um espaço métrico e $\fun{c}{\intff{a}{a'}}{M}$, $\fun{c'}{\intf
 \end{proposition}
 \begin{proof}
 	\begin{itemize}
-	\item ($\leq$) Seja $(t''_i)_{i \in [n''+1]} \in \parti_{\intff{a}{a''}}$ uma partição por intervalos. Defina $n := \min\set{i \in [n'']}{a' \leq t_i}$, de modo que valha $t_{n-1} < a' \leq t_n$. Defina a partição por intervalos $(t_i)_{i \in [n+1]}$ de $\intff{a}{a'}$ por
+	\item ($\leq$) Seja $(t''_i)_{i \in [n''+1]} \in \Partinter(\intff{a}{a''})$ uma partição por intervalos. Defina $n := \min\set{i \in [n'']}{a' \leq t_i}$, de modo que valha $t_{n-1} < a' \leq t_n$. Defina a partição por intervalos $(t_i)_{i \in [n+1]}$ de $\intff{a}{a'}$ por
 		\begin{equation*}
 		t_i := \begin{cases}
 				t''_i,	& 0 \leq i \leq n-1 \\
@@ -1737,7 +1781,7 @@ Sejam $\bm M$ um espaço métrico e $\fun{c}{\intff{a}{a'}}{M}$, $\fun{c'}{\intf
 		\end{align*}
 	Disso concluímos que $\compr{c \conca c'} \leq \compr{c} + \compr{c'}$.
 
-	\item ($\geq$) Sejam $(t_i)_{i \in [n+1]} \in \parti_{\intff{a}{a'}}$ e $(t'_i)_{i \in [n'+1]} \in \parti_{\intff{a'}{a''}}$ partições por intervalos. Defina $n'' := n+n'$ e a partição por intervalos $(t''_i)_{i \in [n''+1]}$ de $\intff{a}{a''}$ por
+	\item ($\geq$) Sejam $(t_i)_{i \in [n+1]} \in \Partinter(\intff{a}{a'})$ e $(t'_i)_{i \in [n'+1]} \in \Partinter(\intff{a'}{a''})$ partições por intervalos. Defina $n'' := n+n'$ e a partição por intervalos $(t''_i)_{i \in [n''+1]}$ de $\intff{a}{a''}$ por
 		\begin{equation*}
 		t''_i := \begin{cases}
 				t_i,	& 0 \leq i \leq n \\
@@ -1767,7 +1811,7 @@ Basta mostrar que $\compr{c \circ h} \leq \compr{c}$ pois, como $h$ é homeomorf
 	\end{equation*}
 logo $\compr{c \circ h} = \compr{c}$.
 
-Seja $(t_i)_{i \in [n+1]} \in \parti_{\intff{b}{b'}}$ uma partição por intervalos. Como $h$ é homeomorfismo, existem duas possibilidades: $h(b)=a$ ou $h(b)=a'$. No primeiro caso, em que $h(b)=a$, vale
+Seja $(t_i)_{i \in [n+1]} \in \Partinter(\intff{b}{b'})$ uma partição por intervalos. Como $h$ é homeomorfismo, existem duas possibilidades: $h(b)=a$ ou $h(b)=a'$. No primeiro caso, em que $h(b)=a$, vale
 	\begin{equation*}
 	a = h(t_0) < \cdots < h(t_n) = a',
 	\end{equation*}

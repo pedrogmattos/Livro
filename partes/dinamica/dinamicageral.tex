@@ -414,15 +414,18 @@ O espaço de fase sempre pode ser particionado em partes invariantes, embora o c
 Ressaltamos na proposição a seguir algumas equivalências para um conjunto bem importante na teoria de sistemas dinâmicos.
 
 \begin{proposition}
-Sejam $\Sist=(X,f)$ um sistema dinâmico discreto e $C \subseteq X$. O limite superior de $\{f^{-t}(C)\}_{t \in \Z_{\geq 0}}$ é o conjunto dos pontos cujas órbitas positivas passam infinitamente por $C$:
-		\begin{align*}
-		\limsup_{t \in \Z_{\geq 0}} f^{-t}(C) &= \bigcap_{n=0}^\infty\bigcup_{t=n}^\infty f^{-t}(C) \\
-			&= \bigcap_{t \in \Z_{\geq 0}} \Orb^-(f^{-t}(C)) \\
-			&= \set{x \in X}{\card{\Orb^+(x) \cap C} = \card{\N}}.
-		\end{align*}
+\label{prop:nucleo.recorrencia}
+Sejam $\Sist=(X,f)$ um sistema dinâmico discreto e $C \subseteq X$.% O limite superior de $\{f^{-t}(C)\}_{t \in \Z_{\geq 0}}$ é o conjunto dos pontos cujas órbitas positivas passam infinitamente por $C$:
+%		\begin{align*}
+%		\limsup_{t \in \Z_{\geq 0}} f^{-t}(C) &= \bigcap_{n=0}^\infty\bigcup_{t=n}^\infty f^{-t}(C) \\
+%			&= \bigcap_{t \in \Z_{\geq 0}} \Orb^-(f^{-t}(C)) \\
+%			&= \set{x \in X}{\card{\Orb^+(x) \cap C} = \card{\N}}.
+%		\end{align*}
+Para todo $x \in X$, $x \in \limsup_{t \in \Z_{\geq 0}} f^{-t}(C)$ se, e somente se, alguma uma sequência $(t_n)_{n \in \N}$ de inteiros positivos estritamente crescente ($t_0 < t_1 < \cdots$) satisfaz que, para todo $n \in \N$, $f^{t_n}(x) \in C$.
 \end{proposition}
 \begin{proof}
-O conjunto $\limsup_{t \in \Z_{\geq 0}} f^{-t}(C)$ é o conjunto dos pontos que pertencem a infinitos dos conjuntos $f^{-t}(C)$, ou seja, os pontos cujas órbitas intersecionam $C$ infinitas vezes.
+O conjunto $\limsup_{t \in \Z_{\geq 0}} f^{-t}(C)$ é o conjunto dos pontos que pertencem a infinitos dos conjuntos $f^{-t}(C)$, ou seja, os pontos $x \in X$ %cujas órbitas intersecionam $C$ infinitas vezes.
+para os quais existem uma sequência $(t_n)_{n \in \N}$ de inteiros positivos estritamente crescente ($t_0 < t_1 < \cdots$) tal que, para todo $n \in \N$, $f^{t_n}(x) \in C$.
 \end{proof}
 
 \subsection{Periodicidade}
@@ -446,7 +449,7 @@ Por consequência da definição, vale
 	\Per(f) = \bigcup_{i \in \Z_{\geq 0}} \Per[i](f).
 	\end{equation*}
 
-Na proposição a seguir usamos a relação de divisão $\dleq$.% e o mínimo dessa relação, o máximo divisor comum $\mdc$.
+Na proposição a seguir usamos a relação de divisão $\dleq$ entre números inteiros --- um número inteiro $i \in \Z_{>0}$ divide outro $i' \in \Z_{>)}$, denotado $i \dleq i'$, quando para algum $q \in \Z_{>)}$ vale $iq=i'$.% e o mínimo dessa relação, o máximo divisor comum $\mdc$.
 
 \begin{proposition}
 Sejam $(X,f)$ um sistema dinâmico discreto e $i \in \Z_{>0}$.
@@ -599,14 +602,12 @@ Como $\phi(x)$ é $n$-periódico, segue que seu período mínimo divide $n$.
 
 \section{Translação em grupos}
 
-\begin{definition}
-Sejam $\bm G$ um grupo e $\alpha \in G$. A \emph{translação à esquerda} por $\alpha$ é a função
+Sejam $\bm G$ um grupo e $\alpha \in G$. A translação à esquerda por $\alpha$ é a função
 	\begin{align*}
 	\func{E_\alpha}{G}{G}{g}{\alpha g.}
 	\end{align*}
-\end{definition}
 
-\subsection{Translação no toro $1$-dimensional}
+\subsection{Translação no \texorpdfstring{$\T^1$}{toro 1 dimensional}}
 
 \begin{definition}
 Seja $[\alpha] \in \T$. A \emph{rotação} por $[\alpha]$ em $\T^1$ é a função
@@ -637,7 +638,7 @@ o que mostra que $[x]$ é $q$-periódico.
 	\end{enumerate}
 \end{proof}
 
-\subsection{Translação no toro $d$-dimensional}
+\subsection{Translação no \texorpdfstring{$\T^d$}{toro d dimensional}}
 
 Um caso mais geral que a rotação no círculo $\T^1$ é o caso da translação no toro $\T^d$. Ela é basicamente uma rotação em cada entrada e é chamada de translação pois é a transformação induzida no espaço quociente $\T^d$ de uma translação em $\R^d$. Ela é também um caso específico de translações em grupos topológicos.
 
@@ -656,7 +657,7 @@ Seja $[\alpha] \in \T^d$. A \emph{translação} por $[\alpha]$ em $\T^d$ é a fu
 %	\end{enumerate}
 %\end{proposition}
 
-\section{Expansão em \ensuremath{\T^1}}
+\section{Expansão no \texorpdfstring{$\T^1$}{toro 1 dimensional}}
 
 \begin{definition}
 Seja $N \in \Z_{\geq 0}$. A \emph{expansão por $N$} em $\T^1$ é a função
@@ -705,7 +706,11 @@ Se vale $x_i = x_{i+k}$ para todo $i \in \Z_{\geq 0}$, a sequência $(x_i)_{i \i
 	\sigma^k((x_i)_{i \in \Z_{\geq 0}}) = (x_{i+k})_{i \in \Z_{\geq 0}} = (x_i)_{i \in \Z_{\geq 0}}.
 	\end{equation*}
 
-Por outro lado, se $(x_i)_{i \in \Z_{\geq 0}}$ tiver órbita periódica, valerá $\sigma^k((x_i)_{i \in \Z_{\geq 0}}) = (x_i)_{i \in \Z_{\geq 0}}$ para algum $k$. Nesse caso, teremos que $x_i = x_{i+k}$ para todo $i \in \Z_{\geq 0}$.
+Por outro lado, se $(x_i)_{i \in \Z_{\geq 0}}$ tiver órbita periódica, valerá
+	\begin{equation*}
+	\sigma^k((x_i)_{i \in \Z_{\geq 0}}) = (x_i)_{i \in \Z_{\geq 0}}
+	\end{equation*}
+para algum $k$. Nesse caso, teremos que $x_i = x_{i+k}$ para todo $i \in \Z_{\geq 0}$.
 \end{proof}
 
 \begin{proposition}
@@ -1007,7 +1012,7 @@ Mas isso implica que $f(x) \in R_{(x_{n-1})_{n \in \Z}}$ e, portanto, pela bijet
 %%%%%%%%%%%%%%%%%%%COMENTÁRIO%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Automorfismos hiperbólicos em \ensuremath{\T^2}}
+\subsection{Automorfismos hiperbólicos no \texorpdfstring{$\T^2$}{toro 2-dimensional}}
 
 Após o estudo de duas dinâmicas envolvendo o círculo, a dinâmica de rotação na  e a de expansão, voltamos nossa atenção nesta seção a um novo objeto geométrico: o toro. O sistema dinâmico a ser estudado nesta seção tem como conjunto o toro $\T^2$, descrito acima, e a dinâmica que age nele é chamada de automorfismo hiperbólico. Essa função é dada por uma matriz de dimensão $2 \times 2$ com algumas características específicas. Como a próxima definição dependente muito da utilização de matrizes, convém definir algumas coisas sobre elas antes de abordarmos a dinâmica no toro. Denotaremos uma matriz sempre com uma letra maiúscula e seus elementos com a respectiva letra minúscula acompanhados dos índices; escrevemos $A = [a_{i,j}]$. A dimensão de uma matriz será explicitada somente quando necessário e será simplificada para matrizes quadradas, como em $A_{2x2}=A_{2}$. Denotaremos o determinante de uma matriz $A$ por $|A|$ ou $\det(A)$ e sua matriz inversa por $A^{-1}$. Convenções esclarecidas, definimos o automorfismo.
 
@@ -1080,7 +1085,7 @@ Mas $(a_{11}+a_{22})^2 - 4$ é inteiro e sabemos que a raiz de um número inteir
 	\begin{equation*}
 	x^2 - y^2 = 4.
 	\end{equation*}
-De fato, para achar uma solução inteira da equação acima, notamos que $x^2 - y^2 = (x+y)(x-y)$ e temos três opções, já que $4=2 \cdot 2 = 4 \cdot 1$. A primeira é $x+y = 2$ e $x-y = 2$. Isso implica $x+y = x-y$, que implica $y=0$ e, por fim, $a_{11}+a_{22} = x = 2$, o que contradiz a proposição \ref{prop:autovalores.A}. As outras duas opções são $x+y = 4$ e $x-y = 1$ ou $x+y = 1$ e $x-y = 4$. Ambas, no entanto, implicam $x = \frac{5}{2}$, o que é um absurdo porque $x = a_{11}+a_{22}$ é um número inteiro. Assim, concluímos que o autovalor $\lambda_{+}$ é irracional. Como $\lambda_- = \frac{1}{\lambda_+}$, ambos autovalores são ambos irracionais.
+De fato, para achar uma solução inteira da equação acima, notamos que $x^2 - y^2 = (x+y)(x-y)$ e temos três opções, já que $4=2 \cdot 2 = 4 \cdot 1$. A primeira é $x+y = 2$ e $x-y = 2$. Isso implica $x+y = x-y$, que implica $y=0$ e, por fim, $a_{11}+a_{22} = x = 2$, o que contradiz o item anterior da proposição. As outras duas opções são $x+y = 4$ e $x-y = 1$ ou $x+y = 1$ e $x-y = 4$. Ambas, no entanto, implicam $x = \frac{5}{2}$, o que é um absurdo porque $x = a_{11}+a_{22}$ é um número inteiro. Assim, concluímos que o autovalor $\lambda_{+}$ é irracional. Como $\lambda_- = \frac{1}{\lambda_+}$, ambos autovalores são ambos irracionais.
 
 	\item Para calcular os autovalores de $A$, devemos resolver o sistema de equações $(A-\lambda I)v = 0$, em que $\lambda$ representa qualquer um dos dois autovalores. De fato,
 	\begin{equation*}

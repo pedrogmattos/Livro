@@ -55,7 +55,7 @@ Essa definição é equivalente a dizer que $\atlas \cup \bar \atlas$ é um atla
 Seja $V$ um conjunto. A relação de $\Cont^k$-compatibilidade de atlas de $V$ é uma relação de equivalência.
 \end{proposition}
 \begin{proof}
-A reflexividade e a simetria são evidentes, pois valem entre cartas. Para conferir a transitividade, sejam $\atlas,\bar\atlas$ e $\{(A_i,\x_i)\}_{i \in I}$ atlas de $V$ e sejam $(A,\x) \in \atlas$ e $(\bar A,\bar\x) \in \bar\atlas$ cartas. 
+A reflexividade e a simetria são evidentes, pois valem entre cartas. Para conferir a transitividade, sejam $\atlas,\bar\atlas$ e $\{(A_i,\x_i)\}_{i \in I}$ atlas de $V$ e sejam $(A,\x) \in \atlas$ e $(\bar A,\bar\x) \in \bar\atlas$ cartas.
 Como $\atlas$ e $\bar\atlas$ são compatíveis com $\{(A_i,\x_i)\}_{i \in I}$, segue que para todo $i \in I$, $\x(A \cap A_i)$ e $\x_i(A_i \cap \bar A)$ são abertos de $\R^d$ e as transições de coordenadas
 	\begin{equation*}
 	\x_i \circ \x\inv: \x(A \cap A_i) \to \x_i(A \cap A_i).
@@ -72,7 +72,7 @@ são difeomorfismos $\Cont^k$. Compondo essas transições de coordenada, e nota
 	\begin{equation*}
 	(\bar\x \circ \x_i\inv) \circ (\x_i \circ \x\inv): \x(A \cap A_i \cap \bar A) \to \bar\x(A \cap A_i \cap \bar A)
 	\end{equation*}
-e é um difeomorfismo $\Cont^k$. 
+e é um difeomorfismo $\Cont^k$.
 
 Agora, notemos que o conjunto $\x(A \cap A_i \cap \bar A)$ é um aberto de $\R^d$ já que $\x(A \cap A_i)$ e $\x_i(A_i \cap \bar A)$ são abertos e $\x_i \circ \x\inv$ é contínua. Como
 	\begin{equation*}
@@ -352,21 +352,21 @@ Uma variedade definida como acima não precisa necessariamente ser um espaço se
 Seja $\bm V = (V,\atlas)$ uma variedade. Então
 	\begin{enumerate}
 	\item $\bm V$ é um espaço topológico acessível (T$_1$);
-	
-	\item $\bm V$ é um espaço topológico separado (T$_2$) se, e somente se, para todo $p,p' \in V$ distintos, existe $(A,\x) \in \atlas$ tal que $p,p' \in A$ ou existem cartas $(A,\x), (A',\x) \in \atlas$ tais que $A \cap A' = \emptyset$, $p \in A$ e $p' \in A'$;
-	
+
+	\item $\bm V$ é um espaço topológico separado (T$_2$) se, e somente se, para todo $p$, $p' \in V$ distintos, existe $(A,\x) \in \atlas$ tal que $p$, $p' \in A$ ou existem cartas $(A,\x)$, $(A',\x) \in \atlas$ tais que $A \cap A' = \emptyset$, $p \in A$ e $p' \in A'$;
+
 	\item $\bm V$ tem base topológica enumerável se, e somente se, existe um subatlas enumerável de $\atlas$;
-	
+
 	\item Cada componente conexa de $\bm V$ é conexa por caminhos.
 	\end{enumerate}
 \end{proposition}
 \begin{proof}
 	\begin{enumerate}
 	\item Sejam $p,\bar p$ pontos distintos de $V$. Queremos mostrar que existe vizinhança de cada um que não contém o outro. Para isso, tomamos carta $(A,\x)$ em $p$. Se $A$ não contém $\bar p$, então $A$ é vizinhança de $p$ que não contém $\bar p$; caso contrário, como $\x(p)$ e $\x(\bar p)$ são distintos, pois $\x$ é injetiva, segue que existe vizinhança $U$ de $\x(p)$ que não contém $\x(p)$, pois $\R^d$ é acessível, logo $\x\inv(p)$ é uma vizinhança de $p$ que não contém $\bar p$. Analogamente, mostramos o mesmo para $\bar p$, portanto $V$ eles são separados e concluímos que $\bm V$ é um espaço topológico acessível.
-	
+
 	\item Exercício.
 %($\Rightarrow$) Suponhamos que $\bm V$ é separado. Para todos $p,p' \in V$ distintos, existem vizinhanças abertas $U$ de $p$ e $U'$ de $p'$ tais que $U \cap U' = \emptyset$.
-	
+
 	\item ($\Rightarrow$) Como $\bm V$ tem base enumerável, então toda cobertura de $V$ tem subcobertura enumerável. Sendo assim, dada a cobertura por abertos das cartas de $\atlas$, tomamos uma subcobertura enumerável e segue que esse é um subatlas enumerável de $\atlas$.
 
 ($\Leftarrow$) Seja $\bar \atlas$ um subatlas enumerável de $\atlas$. Para cada $(A,\x) \in \bar \atlas$, consideramos as bolas $\bola{x}{r} \subseteq \x(A) \subseteq \R^d$ tais que $r \in \Q$ e $x \in \Q^d$. A união das imagens inversas dessas bolas pelos mapas de coordenadas é o conjunto enumerável
@@ -374,7 +374,7 @@ Seja $\bm V = (V,\atlas)$ uma variedade. Então
 	\bar{\mathcal B} = \bigcup_{(A,\x) \in \bar \atlas} \set{\x\inv(\bola{x}{r})}{\bola{x}{r} \subseteq \x(A),  r \in \Q, x \in \Q^d}.
 	\end{equation*}
 Esse conjunto é uma base de $\bm V$: (1) O conjunto $\bar{\mathcal B}$ cobre $V$, pois os domínios das cartas de $\bar\atlas$ cobrem $V$ e as imagens inversas das bolas de centro e raio racionais cobrem o domínio de cada carta de $\bar\atlas$; (2) Sejam $A_1$ e $A_2 \in \bar{\mathcal B}$. Então $A_1 \cap A_2$ é aberto e, para todo $p \in A_1 \cap A_2$, existem $r \in \Q$ e $x \in \Q^d$ tais que $\x_1(p) \in \bola{x}{r} \subseteq \x_1(A_1 \cap A_2)$, logo $p \in {\x_1}\inv(\bola{x}{r}) \subseteq A_1 \cap A_2$.
-	
+
 	\item Sejam $C(p)$ uma componente conexa de $\bm V$ em $p$ e $U$ o conjunto de todos pontos de $C(p)$ ligados por um caminho a $p$. Mostraremos que $U$ é aberto e fechado, portanto igual a $C(p)$. Mostremos primeiro que $U$ é aberto. Seja $q \in C(p)$ e $A$ uma vizinhança de $q$ homeomorfa a uma bola de $\R^d$. Como a bola é conexa por caminhos e homeomorfa a $A$, segue que $A$ é conexa por caminhos. Portanto todo ponto de $A$ está em $C(p)$, já que existe caminho do um ponto de $A$ a $q$ e caminho de $q$ a $p$. Isso mostra que $U$ é aberto. Agora, seja $q \in U^\complement$. Novamente, tomamos uma vizinhança $A$ de $q$ homeomorfa a uma bola de $\R^d$ e segue que $A$ é conexa por caminhos. Nesse caso, nenhum ponto de $A$ está em $C(p)$, caso contrário existiria caminho ligando $q$ a $p$, o que contradiz a hipótese. Isso mostra que $U^\complement$ é fechado, portanto $U$ aberto. Assim, como $U$ é aberto e fechado, $C(p)$ é conexo e $p \in U$, segue que $C(p)=U$.
 		\end{enumerate}
 \end{proof}
@@ -385,14 +385,12 @@ Esse conjunto é uma base de $\bm V$: (1) O conjunto $\bar{\mathcal B}$ cobre $V
 
 \begin{definition}
 Sejam $\bm{V_0}$ e $\bm{V_1}$ $\Cont^k$-variedades de dimensões $d_0$ e $d_1$, respectivamente. Uma função \emph{$\Cont^k$-diferenciável} de $\bm{V_0}$ para $\bm{V_1}$ é uma função
-% contínua 
+% contínua
  $F\colon V_0 \to V_1$ que satisfaz: para todo $p \in V_0$, existem cartas $(A_0,\x_0) \in \atlas_0$ em $p$ e $(A_1,\x_1) \in \atlas_1$ em $F(p)$ tais que $F(A_0) \subseteq A_1$ e
 		\begin{equation*}
 		\x_1 \circ F \circ \x_0\inv: \x_0(A_0) \to \x_1(A_1)
 		\end{equation*}
-é uma função $\Cont^k$-diferenciável de $\x_0(A_0) \subseteq \R^{d_0}$ para $\x_1(A_1) \subseteq \R^{d_1}$.
-
-Denota-se $F\colon \bm{V_0} \to \bm{V_1}$. O conjunto de todas essas funções é denotado $\Cont^k(\bm{V_0},\bm{V_1})$. Quando $V_1=\R$, denota-se simplesmente $\Cont^k(\bm V_0)$.
+é uma função $\Cont^k$-diferenciável de $\x_0(A_0) \subseteq \R^{d_0}$ para $\x_1(A_1) \subseteq \R^{d_1}$. Denota-se $F\colon \bm{V_0} \to \bm{V_1}$. O conjunto das funções $\Cont^k$-diferenciáveis de $\bm{V_0}$ para $\bm{V_1}$ é denotado $\Cont^k(\bm{V_0},\bm{V_1})$. %Quando $V_1=\R$, denota-se simplesmente $\Cont^k(\bm V_0)$.
 \end{definition}
 
 A diferenciabilidade independe da carta escolhida no seguinte sentido.
@@ -572,7 +570,7 @@ Para isso, primeiro notamos que claramente $\Tg V|_p$ não é vazio, pois o func
 %		\end{aligned}
 %		}
 %	\end{align*}
-%e 
+%e
 %	\begin{align*}
 %	\func{\cdot}{\R \times \Tg_p V}{\Tg_p V}{(c,v)}{
 %		\begin{aligned}[t]
@@ -706,7 +704,7 @@ portanto $\D(F' \circ F)|_{p}v = (\D F'|_{F(p)} \circ \D F|_{p})v$ para todo $v 
 	\end{equation*}
 \end{proof}
 
-\subsubsection{Vetores tangentes e espaços tangentes a $\R^d$}
+\subsubsection{Vetores tangentes e espaços tangentes ao \texorpdfstring{$\R^d$}{espaço real d-dimensional}}
 
 Os vetores dos espaços tangentes a $\R^d$ podem ser descritos como derivações. Seja $f \in \tens^0(\R^d)$ uma função escalar e consideremos sua diferencial $\D f|_p\colon \R^d \to \R$. Essa diferencial pode ser aplicada no vetor canônico $e_i \in \R^d$, definindo
 	\begin{equation*}
@@ -791,7 +789,7 @@ Seja $\bm V$ um variedade diferencial. O \emph{fibrado tangente} de $\bm V$ é
 	\begin{equation*}
 	\Tg V := \coprod_{p \in V} \Tg V|_p = \set{(p,v)}{p \in V,v \in \Tg V|_p},
 	\end{equation*}
-a união disjunta dos espaços tangentes a $\bm V$ em todos pontos de $V$. 
+a união disjunta dos espaços tangentes a $\bm V$ em todos pontos de $V$.
 \end{definition}
 
 \subsubsection{Referencial local coordenado}
@@ -978,7 +976,7 @@ Seja $d \in \N$. O conjunto de conjuntos nulos é um $\sigma$-ideal:
 	\sum_{n \in \N} \vol^d(\emptyset) = 0 < \varepsilon,
 	\end{equation*}
 o que mostra que $\emptyset \qeq \emptyset$.
-	
+
 	\item Seja $\varepsilon > 0$. Como $N \qeq \emptyset$, existe cobertura $(C_n)_{n \in \N}$ de $N$ por cubos tal que $\sum_{n \in \N} \vol^d(C_n) < \varepsilon$. Como $S \subseteq N$, essa cobertura é também uma cobertura de $S$, logo $S \qeq \emptyset$.
 
 	\item Seja $\varepsilon > 0$. Para cada $n \in \N$, existe cobertura $(C^n_i)_{i \in \N}$ de $N_n$ por cubos tal que $\sum_{i \in \N} \vol^d(C^n_i) < \varepsilon2^{-(n+1)}$, logo $(C^n_i)_{(n,i) \in \N^2}$ é uma cobertura de $(N_n)_{n \in \N}$ e
@@ -1171,7 +1169,7 @@ Mais adiante introduziremos um produto bilinear nesse espaço linear de modo a l
 		\begin{aligned}[t]
 		\func{fv}{V}{\Tg V}{p}{f(p)v|_p.}
 		\end{aligned}
-	}	
+	}
 	\end{align*}
 Isso é uma ação do anel $\tens^0(\bm V)$ que dá ao espaço $\tens^1(\bm V)$ uma estrutura de módulo.
 
@@ -1301,7 +1299,7 @@ O espaço $\tens (\bm V)$ é uma álgebra sobre $\tens^0(\bm V)$. A soma e o pro
 
 As demonstrações dessa serão omitidas, mas podem ser encontradas em \citetitle{liv:Lee-IntroductionSmoothManifolds} \cite{liv:Lee-IntroductionSmoothManifolds}.
 
-Consideremos uma curva diferenciável $\gamma\colon I \to V$ definida em um intervalo aberto $I$. Como, para todo $t \in I$, $\Tg I|_t \simeq \R$, segue que sua diferencial em $t \in I$ é uma função linear $\fun{\D \gamma|_t}{\Tg \R|_{t_0}}{\Tg V|_{\gamma(t)}}$, o que significa que $\D \gamma|_t$ pode ser identificada com um vetor $\dot \gamma(t) \in \Tg V|_{\gamma(t)}$. O vetor velocidade de tal curva no ponto $t$ por
+Consideremos uma curva diferenciável $\gamma\colon I \to V$ definida em um intervalo aberto $I$. Como, para todo $t \in I$, $\Tg I|_t \simeq \R$, segue que sua diferencial em $t \in I$ é uma função linear $\fun{\D \gamma|_t}{\Tg \R|_{t_0}}{\Tg V|_{\gamma(t)}}$, o que significa que $\D \gamma|_t$ pode ser identificada com um vetor $\dot \gamma(t) \in \Tg V|_{\gamma(t)}$. O vetor velocidade de tal curva no ponto $t$ é dado por
 	\begin{equation*}
 	\dot \gamma(t_0) := \D \gamma \left( \left. \frac{\dd}{\dd t}\right|_{t_0} \right) \in \Tg|_{\gamma(t_0)} V,
 	\end{equation*}
@@ -1309,7 +1307,7 @@ Consideremos uma curva diferenciável $\gamma\colon I \to V$ definida em um inte
 %	\begin{equation*}
 %	\frac{\dd}{\dd t} \gamma (t_0) := \D \gamma \left( \left. \frac{\dd}{\dd t}\right|_{t_0} \right),
 %	\end{equation*}
-em que $\left. \frac{\dd}{\dd t}\right|_{t_0}$ é a base padrão em $\Tg \R|_{t_0} \simeq \R$.% Mas então $\D \gamma$ é uma curva no fibrado tangente $\Tg V$. 
+em que $\left. \frac{\dd}{\dd t}\right|_{t_0}$ é a base padrão em $\Tg \R|_{t_0} \simeq \R$.% Mas então $\D \gamma$ é uma curva no fibrado tangente $\Tg V$.
 
 \begin{definition}
 Sejam $\bm V$ um variedade diferencial e $v \in \tens^1(\bm V)$. Uma \emph{curva integral de $v$} é uma curva diferenciável $\gamma\colon I \to V$ tal que, para todo $t \in I$,
@@ -1342,7 +1340,7 @@ Sejam $\bm V$ um variedade diferencial, $v \in \tens^1(\bm V)$ e $\gamma\colon I
 		\func{\gamma \circ (c +)}{-c + I}{V}{t}{\gamma(c+t)}
 		\end{align*}
 é uma curva integral de $v$;
-	
+
 	\item (Reescala) Para todo $c \in \R \setminus \{0\}$, a curva
 		\begin{align*}
 		\func{\gamma \circ (c \times)}{c\inv I}{M}{t}{\gamma(ct)}
@@ -1432,7 +1430,7 @@ Para todo $t \in \R$, a \emph{translação} por $t$ ao longo de $\Phi$ é a fun�
 	\begin{align*}
 	\func{\Phi^t}{V_t}{V}{p}{\Phi^t(p)},
 	\end{align*}
-em que $V_t := \set{p \in V}{(t,p) \in \mathscr{D}}$.	
+em que $V_t := \set{p \in V}{(t,p) \in \mathscr{D}}$.
 \end{definition}
 
 Temos as relações
@@ -1440,7 +1438,7 @@ Temos as relações
 	p \in V_t \sse t \in \intaa{e_p}{\bar e_p} \sse (t,p) \in \mathscr{D}.
 	\end{equation*}
 
-Para ressaltar a diferença conceitual, às vezes chama-se um fluxo de \textit{fluxo global}. Claro que, se $\Phi$ é um fluxo é um fluxo local em que, para todos $p \in V$ e $t \in \R$, $\intaa{e_p}{\bar e_p} = \R$ e $V_t=V$. Assim como no caso do fluxo, um fluxo local pode ser contínuo ou diferenciável. 
+Para ressaltar a diferença conceitual, às vezes chama-se um fluxo de \textit{fluxo global}. Claro que, se $\Phi$ é um fluxo é um fluxo local em que, para todos $p \in V$ e $t \in \R$, $\intaa{e_p}{\bar e_p} = \R$ e $V_t=V$. Assim como no caso do fluxo, um fluxo local pode ser contínuo ou diferenciável.
 
 % TENTATIVA DE MOSTRAR QUE V_{-t} é contradomínio de $\Phi^t$
 %Note que, se $p \in V_t$, então $(t,p) \in \mathscr{D}$ e existe $\Phi^t(p)$.
@@ -1464,7 +1462,7 @@ Sejam $\bm V$ um variedade diferencial e $\Phi\colon \mathscr{D} \to V$ um fluxo
 Seja $\bm V$ uma variedade diferencial.
 	\begin{enumerate}
 	\item Um \emph{fluxo local máximo} em $\bm V$ é um fluxo local em $\bm V$ que não admite extensão para um domínio de fluxo local maior.
-	
+
 	\item Uma \emph{curva integral máxima} é uma curva integral de um campo vetorial que não admite extensão para um intervalo maior.
 	\end{enumerate}
 \end{definition}
@@ -1473,37 +1471,37 @@ Seja $\bm V$ uma variedade diferencial.
 Sejam $\bm V$ um variedade diferencial e $v \in \tens^1(\bm V)$. Existe único fluxo diferencial máximo $\Phi\colon \mathscr{D} \to V$ gerado por $v$ e o fluxo $\Phi$ satisfaz
 	\begin{enumerate}
 	\item Para todo $p \in V$, a curva de fluxo $\Phi_{(p)}\colon \intaa{e_p}{\bar e_p} \to V$ é uma curva integral máxima de $v$ iniciada em $p$;
-	
+
 	\item Para todo $p \in V$ e todo $t \in \intaa{e_p}{\bar e_p}$,
 	\begin{equation*}
 	\left.]e_{\Phi^t(p)},\bar e_{\Phi^t(p)}[\right. = \left.]e_p,\bar e_p[\right. - t = \set{t'-t}{t' \in \left.]e_p,\bar e_p[\right.};
 	\end{equation*}
-	
+
 	\item Para todo $t \in \R$, $V_t$ é aberto em $V$ e $\Phi^t\colon V_t \to V_{-t}$ é um difeomorfismo com inversa $\Phi^{-t}$.
 	\end{enumerate}
 \end{proposition}
 
 Esse fluxo gerado por $v \in \tens^1(\bm V)$ será denotado
 	\begin{align*}
-	\func{\flux{(\var)}{v}(\var)}{\mathscr{D}}{V}{(t,p)}{\flux{t}{v}(p)},
+	\func{\fluxo{(\var)}{v}(\var)}{\mathscr{D}}{V}{(t,p)}{\fluxo{t}{v}(p)},
 	\end{align*}
 de modo que valem as seguintes propriedades. Pela propriedade de curvas integrais maximais, para todo $p \in V$,
 	\begin{equation*}
-	\frac{\dd}{\dd t} \flux{t}{v}(p) = v \circ \flux{t}{v}(p) = v|_{\flux{t}{v}(p)}.
+	\frac{\dd}{\dd t} \fluxo{t}{v}(p) = v \circ \fluxo{t}{v}(p) = v|_{\fluxo{t}{v}(p)}.
 	\end{equation*}
 Pela propriedades de fluxo local,
 	\begin{equation*}
-	\flux{0}{v}(p) = \Id(p) = p
+	\fluxo{0}{v}(p) = \Id(p) = p
 	\end{equation*}
 e
 	\begin{equation*}
-	\flux{(t+t')}{v}(p) = \flux{t}{v} \circ \flux{t'}{v}(p)
+	\fluxo{(t+t')}{v}(p) = \fluxo{t}{v} \circ \fluxo{t'}{v}(p)
 	\end{equation*}
 Além disso, pelo lema de reescala, temos que, para todo $t' \in \R$, o fluxo de do campo vetorial $t'v$ é dado por
 	\begin{equation*}
-	\flux{t}{(t'v)}(p) = \flux{(tt')}{v}(p),
+	\fluxo{t}{(t'v)}(p) = \fluxo{(tt')}{v}(p),
 	\end{equation*}
-o que significa que a notação $\flux{tt'}{v}$ não é ambígua. Essas similaridades de propriedades com a exponencial justificam a notação. Além da similaridade, a função exponencial de grupos diferenciais é de fato definida a partir do fluxo de um campo vetorial invariante, e como um caso particular, a função exponencial em álgebras normadas está também relacionada ao fluxo acima definido.
+o que significa que a notação $\fluxo{tt'}{v}$ não é ambígua. Essas similaridades de propriedades com a exponencial justificam a notação. Além da similaridade, a função exponencial de grupos diferenciais é de fato definida a partir do fluxo de um campo vetorial invariante, e como um caso particular, a função exponencial em álgebras normadas está também relacionada ao fluxo acima definido.
 
 \subsection{Espaço cotangente}
 
@@ -1535,7 +1533,7 @@ são uma base ordenada de $\Tg^* V|_p$. Essas funções são lineares porque, pa
 
 A base $\left( \dd \x^i|_p \right)_{i \in [d]}$ de $\Tg^* V|_p$ é a base dual de $\left( \derr{\x^i}_{p} \right)_{i \in [d]}$, pois
 	\begin{equation*}
-	\dd x^i|_p\left(\derr{\x^j}_{p}\right) = \derr{\x^j}_{p}\x^i = \partial_j(\x^i \circ \x\inv)|_{\x(p)} = \partial_j(\pi^i)|_{\x(p)} = 
+	\dd x^i|_p\left(\derr{\x^j}_{p}\right) = \derr{\x^j}_{p}\x^i = \partial_j(\x^i \circ \x\inv)|_{\x(p)} = \partial_j(\pi^i)|_{\x(p)} =
 		\begin{cases}
 			1,& i=j \\
 			0,& i \neq j
@@ -1714,7 +1712,7 @@ ao definirmos que, para todas $\omega \in \form^k (A)$ e $\omega' \in \form^{k'}
 	\begin{equation*}
 	\dd(\omega + \omega') := \dd\omega + \dd\omega'.
 	\end{equation*}
-A derivada exterior satisfaz as seguintes propriedades. 
+A derivada exterior satisfaz as seguintes propriedades.
 
 \begin{proposition}
 Sejam $d \in \N$ e $A \subseteq \R^d$ um aberto. A derivada exterior $\dd\colon \form (A) \to \form (A)$ satisfaz
@@ -1736,7 +1734,7 @@ Sejam $d \in \N$ e $A \subseteq \R^d$ um aberto. A derivada exterior $\dd\colon 
 	\item Sejam $\omega,\omega' \in \form^k (A)$ e $c \in \R$. Então
 	\begin{equation*}
 	c\omega + \omega' = \sum_{I \in [d]^{\uparrow k}} (c\omega_I + \omega'_I) \wedge \dd\pi^I,
-	\end{equation*}	
+	\end{equation*}
 portanto
 		\begin{align*}
 		\dd (c\omega + \omega') &= \dd \left( \sum_{I \in [d]^{\uparrow k}} (c\omega_I + \omega'_I) \wedge \dd\pi^I \right) \\
@@ -1746,7 +1744,7 @@ portanto
 			&= c\dd\omega + \dd\omega'.
 		\end{align*}
 Para $\omega \in \form^k (A)$ e $\omega' \in \form^{k'} (A)$, segue da definição de $\dd$ em $\form (A)$.
-	
+
 	\item Basta considerar as formas $f \dd\pi^i \in \form^k (A)$ e $f' \dd\pi^{I'} \in \form^{k'} (A)$, em que $f,f' \in \Cont^\infty(A)$ são campos escalares, pois por linearidade a propriedade valerá para todas formas. Temos que mostrar que $\dd(f \dd\pi^I)=\dd f \wedge \dd\pi^I$ para todo multi-índice $I \in [d]^k$, não somente os crescentes $I \in [d]^{\uparrow k}$. Se $I$ tem alguma entrada repetida, $\dd\pi^I = 0$, portanto $\dd(f \dd\pi^I) = 0 = \dd f \wedge \dd\pi^I$. Caso contrário, existe permutação $\sigma \in [k]$ tal que $\sigma(I) = (i_{\sigma(0)},\ldots,i_{\sigma(k-1)})$ é um multi-índice crescente, portanto
 		\begin{equation*}
 		\dd(f \dd\pi^I) = \dd(\prd(\sigma)f \dd\pi^{\sigma(I)}) = \prd(\sigma) \dd f \wedge \dd\pi^{\sigma(I)} = \dd f \wedge \dd\pi^I.
@@ -1761,7 +1759,7 @@ Assim, segue que
 		&= \dd (f \dd\pi^I) \wedge (f' \dd\pi^{I'}) + (-1)^k (f \dd\pi^I) \wedge \dd (f' \dd\pi^{I'}),
 	\end{align*}
 pois $\dd f' \wedge \dd\pi^I = (-1)^k \dd\pi^I \wedge \dd f'$.
-	
+
 	\item Provaremos primeiros para $0$-formas. Para $f \in \form^0 (A)$,
 		\begin{align*}
 		\dd(\dd f) &= \dd\left( \sum_{i \in [d]} \D_i f \dd\pi^i \right) \\
@@ -1775,7 +1773,7 @@ pois $\D_{i,j} f = \D_{j,i} f$. Agora, para uma $k$-forma $\omega \in \form^k(A)
 	&\qquad + \sum_{I \in [d]^{\uparrow k}}\sum_{j \in [k]}(-1)^j \dd \omega_I \wedge \dd\pi^{i_0} \wedge \cdots \wedge \dd(\dd\pi^{i_j}) \wedge \cdots \wedge \dd\pi^{i_{k-1}} \\
 	&= 0.
 	\end{align*}
-	
+
 	\item Novamente, basta considerar $f \dd\pi^I \in \form^k (A')$, pois $F\pux$ é linear. Da definição de forma puxada, segue que
 		\begin{align*}
 		F\pux (\dd(f \dd\pi^I)) &= F\pux (\dd f \wedge \dd\pi^I) \\
@@ -1825,12 +1823,12 @@ Como a função é avaliada em um espaço vetorial, o ponto $p$ e o vetor de des
 
 \subsubsection{Derivada de campos escalares}
 
-Denotamos o fluxo local do campo vetorial $v \in \tens^1(\bm V)$ no tempo $t$ por $\flux{t}{v}$.
+Denotamos o fluxo local do campo vetorial $v \in \tens^1(\bm V)$ no tempo $t$ por $\fluxo{t}{v}$.
 
 \begin{definition}
 Sejam $\bm V$ uma variedade diferencial, $v \in \tens^1(\bm V)$ um campo vetorial e $f \in \tens^0(\bm V)$ um campo escalar. A \emph{derivada por fluxo} de $f$ ao longo de $v$ (ou na direção de $v$) é
 	\begin{equation*}
-	\Dir_v f(p) := \frac{f(\flux{t}{v}(p))-f(p)}{t}.
+	\Dir_v f(p) := \frac{f(\fluxo{t}{v}(p))-f(p)}{t}.
 	\end{equation*}
 \end{definition}
 
@@ -1843,7 +1841,7 @@ Sejam $\bm V$ uma variedade diferencial, $v \in \tens^1(\bm V)$ um campo vetoria
 
 %\subsubsection{Derivada de campos tensoriais}
 
-%Dado um campo vetorial $v \in \tens^1(\bm V)$, denotamos seu fluxo local por $\flux{t}{v}$. Para cada $t \in \R$, a função $\fun{\flux{t}{v}}{V_t}{V_{-t}}$ é um difeomorfismo
+%Dado um campo vetorial $v \in \tens^1(\bm V)$, denotamos seu fluxo local por $\fluxo{t}{v}$. Para cada $t \in \R$, a função $\fun{\fluxo{t}{v}}{V_t}{V_{-t}}$ é um difeomorfismo
 
 \subsubsection{Definição algébrica}
 
@@ -1864,7 +1862,7 @@ tal que
 		\end{equation*}
 	\item (Contração) Para todos $T \in \tens^{(k,l)}(\bm V)$, $v_0,\ldots,v_{k-1} \in \tens^1(\bm V)$ e $\nu_0,\ldots,\nu_{l-1} \in \tens^{*1}(\bm V)$,
 		\begin{align*}
-		\Dir_v (T(v_0,\ldots,v_{k-1},\nu_0,\ldots,\nu_{l-1})) &= (\Dir_v T)(v_0,\ldots,v_{k-1},\nu_0,\ldots,\nu_{l-1}) \\
+		\Dir_v &(T(v_0,\ldots,v_{k-1},\nu_0,\ldots,\nu_{l-1})) = (\Dir_v T)(v_0,\ldots,v_{k-1},\nu_0,\ldots,\nu_{l-1}) \\
 			&+ \sum_{i \in [k]} T(v_0,\ldots,(\Dir_v v_i),\ldots,v_{k-1},\nu_0,\ldots,\nu_{l-1}) \\
 			&+ \sum_{i \in [l]} T(v_0,\ldots,v_{k-1},\nu_0,\ldots,(\Dir_v \nu_i),\ldots,\nu_{l-1}).
 		\end{align*}
@@ -1926,7 +1924,7 @@ O conjunto de orientações de $\bm L$ é denotado $\orient(L)$.
 
 Em geral, pode-se considerar que $O$ está definida em $\mathcal{B}(L)$ por simplicidade de notação, pois teremos $O(b) \in \S^0$ em vez de $O([b]) \in \S^0$.
 
-A classe de orientações gerada por uma base ordenada $b$ é o conjunto de todas as bases ordenadas de $\bm L$ que são coorientadas com essa base, a classe de equivalência dessa base com respeito à relação de coorientação. 
+A classe de orientações gerada por uma base ordenada $b$ é o conjunto de todas as bases ordenadas de $\bm L$ que são coorientadas com essa base, a classe de equivalência dessa base com respeito à relação de coorientação.
 
 A pergunta a ser feita então é: quantas orientações tem um espaço linear? A resposta intuitiva para $\R^1$, $\R^2$ e $\R^3$ é $2$, e essa é de fato a resposta para qualquer espaço linear finito. Uma orientação determina qual é a orientação positiva e qual é a orientação negativa. Mostraremos a seguir que, no caso de $d \geq 1$, essa função é uma bijeção e, no caso de $d=0$, é uma escolha de $+1$ ou $-1$ para a orientação do ponto, pois $\emptyset$ é a única base de $\{0\}$.
 
@@ -1937,20 +1935,20 @@ Seja $\bm L$ um espaço linear finito sobre um corpo $\bm C$. Então
 	\end{equation*}
 \end{proposition}
 \begin{proof}
-Separamos a demonstração em dois casos: $\dim(L)=0$ e $\dim(L)>0$. No primeiro caso, a única base de $\bm L$ é $\emptyset$, o que implica que existem duas funções injetivas do conjunto de classes de orientação de bases para $\{+1,-1\}$: a função $O(\emptyset) = +1$ e a função $O(\emptyset) = -1$. Portanto $\card{\orient(L)}=2$.
+Separamos a demonstração em dois casos: o primeiro em que $\dim(L) = 0$ e o segundo em que $\dim(L) > 0$. No primeiro caso, a única base de $\bm L$ é $\emptyset$, o que implica que existem duas funções injetivas do conjunto de classes de orientação de bases para $\{+1,-1\}$: a função $O(\emptyset) = +1$ e a função $O(\emptyset) = -1$. Portanto $\card{\orient(L)}=2$.
 
 No segundo caso, se $\dim(L)>0$, denotemos $d = \dim(L)$ e seja $b = (b_0,\ldots,b_{d-1})$ uma base ordenada de $\bm L$. Definimos a base $\bar b := (-b_0,\ldots,b_{d-1})$. Mostraremos que as únicas classes de orientação de $\bm L$ são $[b]$ e $[\bar b]$. Seja $b'$ uma base de $\bm L$. Se $\det{[\Id]^b_{b'}} > 0$, então $[b'] = [b]$; caso contrário, $\det{[\Id]^b_{b'}} < 0$. Mas
 	\begin{align*}
 	\det{[\Id]^b_{b'}} &= \det{[[b_0]_{b'} \cdots [b_{d-1}]_{b'}]} \\
 %		\begin{bmatrix}
-%		\vdots &   & \vdots \\ 
-%		[b_0]_{b'} & \cdots & [b_{d-1}]_{b'} \\ 
+%		\vdots &   & \vdots \\
+%		[b_0]_{b'} & \cdots & [b_{d-1}]_{b'} \\
 %		\vdots &   & \vdots
 %		\end{bmatrix}} \\
 	&=	- \det{[[-b_0]_{b'} \cdots [b_{d-1}]_{b'}]} \\
 %		\begin{bmatrix}
-%		\vdots &   & \vdots \\ 
-%		[-b_0]_{b'} & \cdots & [b_{d-1}]_{b'} \\ 
+%		\vdots &   & \vdots \\
+%		[-b_0]_{b'} & \cdots & [b_{d-1}]_{b'} \\
 %		\vdots &   & \vdots
 %		\end{bmatrix}} \\
 	&= -\det{[\Id]^{\bar b}_{b'}},
@@ -2077,7 +2075,7 @@ Seja $\bm V$ uma variedade diferencial orientável com $n$ componentes conexas. 
 \end{proposition}
 \begin{comment}
 \begin{proof}
-Mostraremos que uma variedade diferencial orientável conexa pode ter $2$ orientações diferentes. Disso segue que cada componente conexa de $\bm V$ pode ter $2$ orientações, portanto $\bm V$ pode ter $2^n$ orientações diferentes. Suponhamos que $\bm V$ é conexa. Primeiro mostraremos que isso vale localmente. 
+Mostraremos que uma variedade diferencial orientável conexa pode ter $2$ orientações diferentes. Disso segue que cada componente conexa de $\bm V$ pode ter $2$ orientações, portanto $\bm V$ pode ter $2^n$ orientações diferentes. Suponhamos que $\bm V$ é conexa. Primeiro mostraremos que isso vale localmente.
 Sejam $p \in V$ e $(A,\x)$ uma carta em $p$. Sejam $b,b' \in \mathcal{B}(\Tg V|_p)$ bases orientadas e consideremos as bases orientadas $\D\x|_p(b), \D\x|_p(b') \in \mathcal{B}(\R^d)$ e a mudança de base $[\Id]^{b}_{b'}$ em $\Tg V|_p$. Notemos que a função
 	\begin{equation*}
 	[\Id]^{\D\x|_p(b)}_{\D\x|_p(b')} = \D\x|_p \circ [\Id]^{b}_{b'} \circ \D\x\inv|_{\x(p)}\colon \R^d \to \R^d
@@ -2120,7 +2118,7 @@ Para todo $y \in B_{\tran}$, a \emph{placa} (\emph{tangencial}) de $(A,\x)$ rela
 Os símbolos $\tang$ e $\tran$ são lidos \emph{tangente} e \emph{transverso}, respectivamente.
 
 \begin{proposition}
-Seja $\bm V = (V,\atlas)$ uma variedade $\Cont^r$ $d$-dimensional e $(A,\x) \in \atlas$ uma carta $k$-folheada de $\bm V$. As placas $\{P_y\}_{y \in B_{\tran}}$ são uma partição do domínio $A$ de $(A,\x)$.
+Seja $\bm V = (V,\atlas)$ uma variedade $\Cont^r$ $d$-\! dimensional e $(A,\x) \in \atlas$ uma carta $k$-folheada de $\bm V$. As placas $\{P_y\}_{y \in B_{\tran}}$ são uma partição do domínio $A$ de $(A,\x)$.
 \end{proposition}
 \begin{proof}
 Para mostrar isso, primeiro notamos que $P_y = \x\inv(B_{\tang} \times \{y\}) \neq \emptyset$, pois $\x$ é sobrejetiva. Segundo, como $\x(A) = B_{\tang} \times B_{\tran}$, então
@@ -2128,7 +2126,7 @@ Para mostrar isso, primeiro notamos que $P_y = \x\inv(B_{\tang} \times \{y\}) \n
 	A &= \x\inv(B_{\tang} \times B_{\tran}) \\
 		&=  \x\inv\left(B_{\tang} \times \bigcup_{y \in B_{\tran}}\{y\}\right) \\
 		&= \bigcup_{y \in B_{\tran}} \x\inv(B_{\tang} \times \{y\}) \\
-		&= \bigcup_{y \in B_{\tran}} P_y.		
+		&= \bigcup_{y \in B_{\tran}} P_y.
 	\end{align*}
 Por fim, notemos que, para todos $y,y' \in B_{\tran}$, temos
 	\begin{align*}
@@ -2143,7 +2141,7 @@ portanto, se $y=y'$, $P_y = P_{y'}$ e, se $y \neq y'$, $P_y \cap P_{y'} = \empty
 Seja $\bm V = (V,\atlas)$ uma variedade $\Cont^r$ $d$-dimensional. Cartas folheadas de $\bm V$ \emph{coerentemente folheadas} são cartas folheadas $(A,\x), (A',\x') \in \atlas$ tais que, para todas placas $P$ de $(A,\x)$ e $P'$ de $(A',\x')$, a interseção $P \cap P'$ é aberta em $P$ e em $P'$. Denota-se $(A,\x) \coerfol (A',\x')$.
 \end{definition}
 
-Por definição, as cartas têm que ser ambas folheadas com placas de mesma dimensão caso tenham interseção não vazia, caso contrário a interseção de duas placas não seria aberta na placa de dimensão maior. Note que a relação de coerência de folheação é simétrica por definição e é reflexiva pois, para todos $y,y' \in B_{\tran}$ com placas relativas $P_y,P_{y'} \subseteq A$ de uma carta folheada $(A,\x)$, temos $P_y = P_{y'}$, se, e somente se, $y=y'$, logo $P_y \cap P_{y'}$ é $P_y$ se $y=y'$, ou $\emptyset$ se $y \neq y'$. Como $P_y$ é aberto em si mesmo e $\emptyset$ é aberto, segue que $(A,\x)$ é coerentemente folheada consigo mesma. Para mostrar que a relação é transitiva, no entanto, precisamos de um atlas de cartas coerentemente folheadas. 
+Por definição, as cartas têm que ser ambas folheadas com placas de mesma dimensão caso tenham interseção não vazia, caso contrário a interseção de duas placas não seria aberta na placa de dimensão maior. Note que a relação de coerência de folheação é simétrica por definição e é reflexiva pois, para todos $y,y' \in B_{\tran}$ com placas relativas $P_y,P_{y'} \subseteq A$ de uma carta folheada $(A,\x)$, temos $P_y = P_{y'}$, se, e somente se, $y=y'$, logo $P_y \cap P_{y'}$ é $P_y$ se $y=y'$, ou $\emptyset$ se $y \neq y'$. Como $P_y$ é aberto em si mesmo e $\emptyset$ é aberto, segue que $(A,\x)$ é coerentemente folheada consigo mesma. Para mostrar que a relação é transitiva, no entanto, precisamos de um atlas de cartas coerentemente folheadas.
 
 \begin{definition}
 Seja $\bm V = (V,\atlas)$ uma variedade $\Cont^r$ $d$-dimensional. Um \emph{atlas $k$-folheado\footnote{Novamente, ou \emph{$k$-dimensionalmente folheado}.}} de $\bm V$ é um subatlas $\atlas' \subseteq \atlas$ cujas cartas são cartas $k$-folheadas e coerentemente folheadas duas a duas.
@@ -2281,7 +2279,7 @@ em que $c \in B_{\tran}$.
 		\begin{equation*}
 		\x\inv|_{B_{\tang} \times \{c\}}\colon B_{\tang} \times \{c\} \to A
 		\end{equation*}
-é um mergulho $\Cont^r$. Portanto as placas são subvariedades $\Cont^r$ $k$-dimensionais.
+é um mergulho $\Cont^r$. Portanto as placas são subvariedades $\Cont^r$ $k$"-dimensionais.
 	\item As placas baseadas em $(A,\x)$ são disjuntas duas a duas.
 	\end{enumerate}
 \end{proposition}

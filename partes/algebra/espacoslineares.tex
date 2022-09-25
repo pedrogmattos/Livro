@@ -753,7 +753,7 @@ Seja $(\bm{V_i})_{i \in I} = ((V_i,+_i,\cdot_i))_{i \in I}$ uma família de espa
 \begin{proof}
 	\begin{enumerate}
 	\item $(V,+)$ é um grupo pois tem a mesma operação do produto de grupos (\ref{alge:prop.gru.prod}).
-	
+
 	\item Seja $v \in V$. Então
 	\begin{equation*}
 	1v = (1v_i)_{i \in I} = (v_i)_{i \in I} = v.
@@ -765,7 +765,7 @@ Seja $(\bm{V_i})_{i \in I} = ((V_i,+_i,\cdot_i))_{i \in I}$ uma família de espa
 		&= c_1(c_2v_i)_{i \in I} \\
 		&= c_1(c_2v).
 	\end{align*}
-	
+
 	\item (Distributividades) Sejam $c \in C$ e $v,v' \in V$. Então
 	\begin{align*}
 	c(v+v') &= c(v_i+v'_i)_{i \in I} \\
@@ -905,13 +905,13 @@ Seja $\bm V$ um espaço linear sobre um corpo $\bm C$. Uma \emph{projeção line
 Sejam $\bm V$ um espaço linear sobre um corpo $\bm C$ e $p\colon V \to V$ uma projeção linear.
 	\begin{enumerate}
 	\item $p|_{p(V)} = \Id|_{p(V)}$;
-	
+
 	\item $(\Id-p) \colon V \to V$ é uma projeção linear em $\bm V$;
-	
+
 	\item $(\Id-p)\inv(0) = p(V)$ e $(\Id-p)(V) = p\inv(0)$;
-	
+
 	\item $V = p(V) \oplus p\inv(0) = p(V) \oplus (\Id-p)(V)$;
-	
+
 	\item Para todo $\lambda \in C \setminus \{0,1\}$,
 		\begin{equation*}
 		(\lambda\Id-p)\inv = \frac{1}{\lambda}\Id + \frac{1}{\lambda(1-\lambda)}p
@@ -924,12 +924,12 @@ portanto $\Esp(p) \subseteq \{0,1\}$;
 	\end{enumerate}
 \end{proposition}
 \begin{proof}
-	\begin{enumerate}	
+	\begin{enumerate}
 	\item Seja $v \in p(V)$. Então existe $v' \in V$ tal que $v=p(v')$, logo
 		\begin{equation*}
 		p(v) = p(p(v')) = p^2(v') = p(v') = v.
 		\end{equation*}
-	
+
 	\item A função $\Id-p$ é linear pois é uma diferença de funções lineares. Basta mostrar que ela é idempotente. Basta notar que% Para todo $v \in V$,
 %		\begin{align*}
 %		(\Id-p)^2(v) &= (\Id-p)(v-p(v)) \\
@@ -944,7 +944,7 @@ portanto $\Esp(p) \subseteq \{0,1\}$;
 		(\Id-p)^2 = \Id-p-p+p^2 = \Id-p-p+p = \Id-p.
 		\end{equation*}
 % INTERESSANTE poder multiplicar funções lineares assim, como se fosse a distributividade de multiplicação e adição. Provar isso generalizando depois.
-	
+
 	\item Seja $v \in (\Id-p)\inv(0)$. Então $(\Id-p)(v)=0$, logo $v=p(v)$, o que implica que $v \in p(V)$. Reciprocamente, seja $v \in p(V)$. Então do item 1 segue que $p(v) = v$, logo $(\Id-p)(v) = v-p(v) = v-v = 0$.
 
 A outra relação segue de $(\Id-p)$ ser projeção e $p = \Id - (\Id-p)$.
@@ -955,9 +955,9 @@ A outra relação segue de $(\Id-p)$ ser projeção e $p = \Id - (\Id-p)$.
 %		0 = p(0) = p(cv+c'v') = cp(v)+c'p(v') = cv
 %		\end{equation*}
 %logo $c=0$, portanto $0 = cv+c'v'=c'v'$, o que implica que $c'=0$.
-	
+
 	Seja $v \in V$. Então $p(v) \in p(V)$ e $(\Id-p)(v) \in p\inv(0)$ (pois $(\Id-p)(V) = p\inv(0)$), logo $v = p(v) + (\Id-p)(v)$, o que mostra que $V = p(V) + p\inv(V)$.
-	
+
 	\item Note que
 		\begin{equation*}
 		\frac{1}{1-\lambda} - \frac{1}{\lambda} - \frac{1}{\lambda(1-\lambda)} = \frac{\lambda - (\lambda - 1) - 1}{\lambda(1-\lambda)} = 0,
@@ -973,7 +973,7 @@ e
 	\begin{equation*}
 	\left( \frac{1}{\lambda}\Id + \frac{1}{\lambda(1-\lambda)}p \right) \circ (\lambda\Id - p) = \Id - \frac{1}{\lambda}p + \frac{1}{1-\lambda}p - \frac{1}{\lambda(1-\lambda)}p^2 = \Id.
 	\end{equation*}
-	
+
 	\item Se $p$ é invertível, $V=p(V)$, logo
 		\begin{equation*}
 		p = p|_{V} = p|_{p(V)} = \Id|_{p(V)} = \Id|_V = \Id.
@@ -981,7 +981,7 @@ e
 A recíproca é evidente.
 
 	\item Evidente.
-	
+
 	\end{enumerate}
 \end{proof}
 
@@ -1054,7 +1054,7 @@ Portanto a função $L$ está determinada pelos valores que tem nos elementos
 Sejam $\bm{V_0},\cdots,\bm{V_{k-1}}$ e $\bm W$ espaços lineares sobre um corpo $\bm C$. Então
 	\begin{equation*}
 	\lin(\bm{V_0},\ldots,\bm{V_{k-1}};\bm W) := (\lin(V_0,\ldots,V_{k-1};W),+,\cdot),
-	\end{equation*}	
+	\end{equation*}
 em que $+$ e $\cdot$ são a soma e o produto escalar pontuais induzidos por $\bm W$, é um espaço linear sobre $\bm C$.
 \end{proposition}
 
@@ -1091,7 +1091,7 @@ Sejam $\bm V$ e $\bm W$ espaços lineares sobre um corpo $\bm C$ e $f \in \lin^k
 	\item A função $f$ é alternada se, e somente se, para todos $v_0$, $\ldots$, $v_{k-1} \in V$ tais que existem $i,j \in [k]$ distintos satisfazendo $v_i = v_j$,
 	\begin{equation*}
 	f(v_0,\ldots,v_{k-1})=0.
-	\end{equation*} 
+	\end{equation*}
 	\item Se $f$ é alternada, então é antissimétrica. Se $\car(\bm C) \neq 2$ e $f$ é antissimétrica, então é alternada.
 	\item Se $\car(\bm C) = 2$, então $f$ é antissimétrica se, e somente se, é simétrica.
 	\end{enumerate}
@@ -1145,7 +1145,7 @@ Um exemplo de uma função multilinear que é antissimétrica mas não é altern
 	\func{f}{\Z_2 \times \Z_2}{\Z_2}{(0,0)}{0 \\
 															(0,1) &\mapsto 0 \\
 															(1,0) &\mapsto 0 \\
-															(1,1) &\mapsto 1												
+															(1,1) &\mapsto 1
 														}
 	\end{align*}
 Pode-se verificar que essa função é bilinear e antissimétrica, mas não é alternada porque $f(1,1)=1 \neq 0$.
@@ -1293,7 +1293,7 @@ Seja $\bm V$ um espaço linear sobre um corpo $\bm C$.
 			&= \prd(\bar p\inv)\frac{1}{k!k'!} \sum_{p \in \sime_{k+k'}} \prd(p) (f \otimes f')(v_{p(i)})_{i \in [k+k']} \\
 			&= \prd(\bar p)(f \wedge f')(v_i)_{i \in [k+k']}.
 		\end{align*}
-	\item	 
+	\item
 	\end{enumerate}
 \end{proof}
 
@@ -1469,7 +1469,7 @@ Seja $\bm V$ um espaço linear sobre um corpo $\bm C$ de característica diferen
 			&= \frac{2\qua{v}}{2} \\
 			&= \qua{v}.
 		\end{align*}
-	
+
 	\item Primeiro mostramos que $\qua{\var}$ é forma quadrática.
 		\begin{itemize}
 			\item ($2$-Homogeneidade) Para todos $c \in C$ e $v \in V$, segue da bilinearidade de $\inte{\var}{\var}$ que
@@ -1495,9 +1495,9 @@ Seja $\bm V$ um espaço linear sobre um corpo $\bm C$ de característica diferen
 \end{proof}
 
 
-\subsubsection{\ensuremath{2}-Formas reais e os espaços \ensuremath{\R^{p,q}}}
+\subsubsection{2-Formas reais e os espaços \texorpdfstring{\ensuremath{\R^{p,q}}}{(p,q)-hiperbólicos reais}}
 
-Definimos agora espaços reais munidos de formas bilineares simétricas não-degeneradas. Todas formas bilineares simétricas não-degeneradas em $\R^d$ são equivalentes a uma dessas formas.
+Definimos agora espaços reais munidos de formas bilineares simétricas não"-degeneradas. Todas formas bilineares simétricas não-degeneradas em $\R^d$ são equivalentes a uma dessas formas.
 
 \begin{definition}
 Sejam $p,q \in \N$. A \emph{$2$-forma simétrica canônica de assinatura $(p,q)$} é a $2$-forma
@@ -1557,7 +1557,7 @@ Sejam $X$ um conjunto, $\bm C$ um corpo e $f: X \to C$ uma função. O \emph{sup
 %	\end{equation*}
 %\end{definition}
 
-\begin{definition} Sejam $I$ um conjunto e $\bm C$ um corpo. O \emph{espaço linear livre em $I$} sobre $\bm C$ é o conjunto 
+\begin{definition} Sejam $I$ um conjunto e $\bm C$ um corpo. O \emph{espaço linear livre em $I$} sobre $\bm C$ é o conjunto
 	\begin{equation*}
 	\liv(I) := \set{v \in C^I}{\card{\supp(v)}<\card{\N}}.
 	\end{equation*}
@@ -1571,7 +1571,7 @@ A \emph{inclusão} de $I$ em $\liv(I)$ é a função
 							1,& i = v \\
 							0,& i \neq v.
 						\end{cases}}
-		\end{aligned}	
+		\end{aligned}
 	}
 	\end{align*}
 Denotaremos os elementos $\delta_v$ por $v$ quando não houver necessidade de diferenciá-los.
@@ -1580,7 +1580,7 @@ Denotaremos os elementos $\delta_v$ por $v$ quando não houver necessidade de di
 Note que $\liv(I) = \coprod_{i \in I} \bm C$ e, portanto,
 	\begin{equation*}
 	\bm{\liv(I)} := (\liv(I)),+,\cdot),
-	\end{equation*}	
+	\end{equation*}
 em que $+$ e $\cdot$ são a soma e o produto escalar pontuais induzidos por $\bm W$, é um espaço linear sobre $\bm C$ com base $\set{\delta_v}{v \in I}$. Por isso, definido $c_i := v(i) \in C$, uma função $v: I \to C$ de suporte finito é uma soma
 	\begin{equation*}
 	v = \sum_{i \in I} c_i \delta_i = \sum_{i \in I} c_i v_i,
@@ -1673,10 +1673,10 @@ Sejam $\bm V_0,$ $\ldots,$ $\bm V_{n-1},$ $\bm W$ espaços lineares sobre um cor
 \begin{proof}
 	\begin{enumerate}
 	\item Vale por definição.
-	
+
 	\item Pela propriedade característica de espaços lineares livres, existe única função linear $\tilde L: \liv(V_0 \times \cdots \times V_{n-1}) \to W$ tal que $\tilde L \circ \iota = L$. Mas como $L$ é multilinear, o subespaço $\mathcal R$ está contido no núcleo de $\tilde L$, pois, para todos $v_i,v'_i \in V_i$, com $i \in [n]$, e $c \in C$,
 	\begin{align*}
-	\tilde L(v_0,\ldots,v_i+v'_i,\ldots,v_{n-1}) &= L(v_0,\ldots,v_i+v'_i,\ldots,v_{n-1}) \\
+	\tilde L(v_0,\ldots,v_i+v'_i,&\ldots,v_{n-1}) = L(v_0,\ldots,v_i+v'_i,\ldots,v_{n-1}) \\
 		&=L(v_0,\ldots,v_i,\ldots,v_{n-1}) + L(v_0,\ldots,v'_i,\ldots,v_{n-1}) \\
 		&=\tilde L(v_0,\ldots,v_i,\ldots,v_{n-1}) + \tilde L(v_0,\ldots,v'_i,\ldots,v_{n-1}) \\
 		&=\tilde L((v_0,\ldots,v_i,\ldots,v_{n-1}) + (v_0,\ldots,v'_i,\ldots,v_{n-1}))

@@ -65,9 +65,13 @@ e
 	\item Exercício simples.
 	\item Exercício simples.
 	\item Se existe $c \in C$ tal que $v'=cv$, então
-		\begin{equation*}
-		\abs{\inte{v}{v'}}^2 =\abs{\inte{v}{cv}}^2 = \abs{c}^2\abs{\inte{v}{v}}^2 = c\conju{c}\abs{\inte{v}{v}}^2 = \inte{v}{v}\inte{cv}{cv} = \inte{v}{v}\inte{v'}{v'}.
-		\end{equation*}
+		\begin{align*}
+		\abs{\inte{v}{v'}}^2 &= \abs{\inte{v}{cv}}^2 \\
+			&= \abs{c}^2\abs{\inte{v}{v}}^2 \\
+			&= c\conju{c}\abs{\inte{v}{v}}^2 \\
+			&= \inte{v}{v}\inte{cv}{cv} \\
+			&= \inte{v}{v}\inte{v'}{v'}.
+		\end{align*}
 	\end{enumerate}
 
 Caso contrário, se $v'-cv \neq 0$ para todo $c \in C$, então para $c=\frac{\inte{v'}{v}}{\inte{v}{v}}$ segue que
@@ -510,7 +514,7 @@ Seja $(\bm V,\inte{\var}{\var})$ um espaço com produto interno sobre um corpo $
 	\end{enumerate}
 \end{proposition}
 
-\begin{proposition}[Propriedades de complemento perpendicular]
+\begin{proposition}
 Seja $(\bm V,\inte{\var}{\var})$ um espaço com produto interno sobre um corpo $\bm C \subseteq \R^2$.
 	\begin{enumerate}
 	\item Para todo $U \subseteq V$, $U^\perp$ é um subespaço linear de $V$.
@@ -889,7 +893,7 @@ e, se $cc' < 0$, então
 		\begin{equation*}
 			\ang{v}{v} = \cos\inv\left(\frac{\inte{v}{v}}{\nor{v}\nor{v}}\right) = \cos\inv(1) = 0.
 		\end{equation*}
-Notemos também que $\cos\inv\colon \intff{-1}{1} \to \intff{0}{\frac{\tau}{2}}$ é uma bijeção tal que $\cos\inv(1)=0$ e $\cos\inv(-1) = \frac{\tau}{2}$.
+Notemos também que $\cos\inv\colon \intff{-1}{1} \to \intff{0}{\tau/2}$ é uma bijeção tal que $\cos\inv(1)=0$ e $\cos\inv(-1) = \tau/2$.
 
 Suponhamos agora que existe $c \in \R \setminus \{0\}$ tal que $v'=cv$. Nesse caso, pelo item anterior segue que, relacionando $\ang{v}{v'}$ com $\ang{v}{v}$,
 		\begin{equation*}
@@ -1115,9 +1119,11 @@ Os casos em que $v=0$ ou $v'=0$ são todos imediatos, portanto assumiremos que o
 					\begin{enumerate}
 						\item ($c=0$) Esse caso é trivial.
 						\item ($c>0$) Segue da homogeneidade do ângulo que
-							\begin{equation*}
-								\inte{cv}{v'} = \nor{cv}\nor{v'}\cos(\ang{cv}{v'}) = c\nor{v}\nor{v'}\cos(\ang{v}{v'}) = c\inte{v}{v'}.
-							\end{equation*}
+							\begin{align*}
+								\inte{cv}{v'} &= \nor{cv}\nor{v'}\cos(\ang{cv}{v'}) \\
+									&= c\nor{v}\nor{v'}\cos(\ang{v}{v'}) \\
+									&= c\inte{v}{v'}.
+							\end{align*}
 						\item ($c<0$) Segue das propriedades de homogeneidade e suplementação do ângulo e da fórmula do cosseno de ângulo suplementar que
 							\begin{align*}
 								\inte{cv}{v'} &= \nor{cv}\nor{v'}\cos(\ang{cv}{v'}) \\
@@ -1376,7 +1382,11 @@ Seja $(\bm V, \nor{\var},\angf)$ um espaço angulado.
 \end{proposition}
 \begin{proof}
 	\begin{enumerate}
-	\item Como $\nor{v'}=\nor{w'}$, temos $\nor{-v'}=\nor{-w'}$; como $\ang{v}{v'}=\ang{w}{w'}$, segue da suplementação e da simetria que
+	\item Como $\nor{v'}=\nor{w'}$, temos $\nor{-v'}=\nor{-w'}$; como
+		\begin{equation*}
+		\ang{v}{v'} = \ang{w}{w'},
+		\end{equation*}
+	segue da suplementação e da simetria que
 		\begin{equation*}
 		\ang{v}{-v'} = \tau \div 2 - \ang{v}{v'} = \tau \div 2 - \ang{w}{w'} = \ang{w}{-w'}.
 		\end{equation*}
@@ -1418,11 +1428,18 @@ Seja $(\bm V, \nor{\var},\angf)$ um espaço angulado.
 			&< \ang{v}{v-v'}.
 		\end{align*}
 
-	Assumindo que $\nor{v'} < \nor{v}$, por simetria do enunciado segue que $\ang{v}{v-v'} < \ang{v'}{v-v'}$.
+	Assumindo que $\nor{v'} < \nor{v}$, por simetria do enunciado segue que
+		\begin{equation*}
+	\ang{v}{v-v'} < \ang{v'}{v-v'}.
+	\end{equation*}
 
 	Assim, se $\ang{v}{v-v'} = \ang{v'}{v-v'}$, então $\nor{v}=\nor{v'}$ e, da proposição do triângulo isósceles segue a recíproca.
 
-	\item Como $\ang{v}{v'} < \ang{w}{w'}$, tomamos\footnote{Isso segue da continuidade da função ângulo $\ang{w}{w+kw'}$ para achar $k$ que satisfaça a condição do ângulo, e então por normalização para igualar a norma de $v'$.} $c,c' \in \intaa{0}{\infty}$ tais que $\nor{v'} = \nor{cw+c'w'}$ e $\ang{v}{v'} = \ang{w}{cw+c'w'}$ e definimos $u := cw+c'w'$. Por LAL (negativo) segue que $\nor{v-v'} = \nor{w-u}$.
+	\item Como $\ang{v}{v'} < \ang{w}{w'}$, tomamos\footnote{Isso segue da continuidade da função ângulo $\ang{w}{w+kw'}$ para achar $k$ que satisfaça a condição do ângulo, e então por normalização para igualar a norma de $v'$.} $c,c' \in \intaa{0}{\infty}$ tais que
+		\begin{equation*}
+		\nor{v'} = \nor{cw+c'w'}
+		\end{equation*}
+e $\ang{v}{v'} = \ang{w}{cw+c'w'}$ e definimos $u := cw+c'w'$. Por LAL (negativo) segue que $\nor{v-v'} = \nor{w-u}$.
 
 	Para estimar a norma de $w-u$, consideramos $3$ casos.
 		\begin{itemize}
@@ -1597,7 +1614,7 @@ Denota-se $v \perp v'$.
 \end{definition}
 
 \begin{proposition}[Perpendicular]
-Seja $(\bm V, \nor{\var},\angf)$ um espaço angulado. Para todos $v,v' \in V \setminus \{0\}$ linearmente independentes, a função
+Sejam $(\bm V, \nor{\var},\angf)$ um espaço angulado e $v,v' \in V \setminus \{0\}$ linearmente independentes. A função
 	\begin{align*}
 		\func{d}{\R}{\intfa{0}{\infty}}{c}{\nor{v'-cv}}
 	\end{align*}
@@ -1679,7 +1696,7 @@ A última proposição nos dá para cada par $v,v' \in V \setminus \{0\}$ de vet
 
 \begin{proposition}
 \label{prop:geo.cperpfuncaonormaangulo}
-Seja $(\bm V, \nor{\var},\angf)$ um espaço angulado. Para todos $v,v',w,w' \in V \setminus \{0\}$, $v,v'$ e $w,w'$ linearmente independentes, respectivamente, tais que $\nor{v}=\nor{w}$, $\nor{v'}=\nor{w'}$ e $\ang{v}{v'} = \ang{w}{w'}$, vale
+Seja $(\bm V, \nor{\var},\angf)$ um espaço angulado. Para todos $v,v' \in V \setminus \{0\}$ e $w,w' \in V \setminus \{0\}$, sendo $\{v,v'\}$ e $\{w,w'\}$ linearmente independentes, tais que $\nor{v}=\nor{w}$, $\nor{v'}=\nor{w'}$ e $\ang{v}{v'} = \ang{w}{w'}$, vale
 	\begin{equation*}
 	c_{\perp}(v,v') = c_{\perp}(w,w').
 	\end{equation*}
@@ -1754,7 +1771,7 @@ Da unicidade de $c_{\perp}(cv,c'v')$ segue que
 
 \begin{proposition}
 \label{prop:geo.cperpfuncaoangulo}
-Seja $(\bm V, \nor{\var},\angf)$ um espaço angulado. Para todos $v,v',w,w' \in V \setminus \{0\}$ tais que $\ang{v}{v'}=\ang{w}{w'}$,
+Seja $(\bm V, \nor{\var},\angf)$ um espaço angulado. Para todos $v,v' \in V \setminus \{0\}$ e $w,w' \in V \setminus \{0\}$ tais que $\ang{v}{v'}=\ang{w}{w'}$,
 	\begin{equation*}
 	\frac{\nor{v}}{\nor{v'}}c_{\perp}(v,v') = \frac{\nor{w}}{\nor{w'}}c_{\perp}(w,w').
 	\end{equation*}
@@ -1969,7 +1986,7 @@ tal que
 				\angf(v,v',v'') = 0
 			\end{equation*}
 		se, e somente se, $\{v,v',v''\}$ é conicamente dependente (existem $c,c',c'' \in \intaa{0}{\infty}$ tais que $cv+c'v'+c''v''=0$);
-		\item (Simetria) Para todos $v,v',v'' \in V \setminus \{0\}$ e bijeção $\fun{f}{\{v,v',v''\}}{\{v,v',v''\}}$,
+		\item (Simetria) Para todos $v,v',v'' \in V \setminus \{0\}$ e toda bijeção $\fun{f}{\{v,v',v''\}}{\{v,v',v''\}}$,
 			\begin{equation*}
 				\angf(f(v),f(v'),f(v'')) = \angf(v,v',v'');
 			\end{equation*}
@@ -2190,7 +2207,11 @@ Uma função \emph{conforme} de $\bm V$ para $\bm V'$ é uma função linear $f\
 O conjunto dessas funções é $\toplin_{\sphericalangle}(\bm V,\bm V')$.
 \end{definition}
 
-Note que, na definição de uma função conforme, está implícito que $\sphericalangle'(f(v),f(v'))$ existe, portanto $f(v) \neq 0$ para todo $v \in V \setminus \{0\}$, o que significa que $f$ é injetiva.
+Note que, na definição de uma função conforme, está implícito que
+	\begin{equation*}
+	\sphericalangle'(f(v),f(v'))
+	\end{equation*}
+existe, portanto $f(v) \neq 0$ para todo $v \in V \setminus \{0\}$, o que significa que $f$ é injetiva.
 
 \begin{proposition}
 Sejam $(\bm V,\inte{\var}{\var})$ e $(\bm V',\inte{\var}{\var}')$ espaços com produto interno sobre um corpo $\bm C$ de característica diferente de $2$ e $f\colon V \to V'$ uma função linear.

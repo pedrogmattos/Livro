@@ -141,7 +141,7 @@ Mostremos que $\dist{\var}{\var}_\alpha$ é uma distância.
 	\begin{equation*}
 	U = \prod_{i \in I} U_i,
 	\end{equation*}
-	e existe um conjunto finito $F \subseteq I$ tal que, para todo $i \notin F$, $U_i = G$. Se $U = \emptyset$, % então, para algum $i \in F$, $U_i = \emptyset$. Nesse caso, 
+	e existe um conjunto finito $F \subseteq I$ tal que, para todo $i \notin F$, $U_i = G$. Se $U = \emptyset$, % então, para algum $i \in F$, $U_i = \emptyset$. Nesse caso,
 	definindo $c := 0 \in G^{I}$ e $r := 0 \in \R$, segue que $\bola{c}{r} = \emptyset \subseteq U$. Caso contrário, seja $u \in U$. Se $F = \emptyset$, então $U = G^{I}$; definindo $r:=1 \in \R$, segue que $u \in \bola{u}{r} \subseteq G^{I} = U$. Se $F \neq \emptyset$, defina
 		\begin{equation*}
 		r := \alpha^{\max\abs{F}} = \alpha^{\max\set{\abs{i}}{i \in F}}.
@@ -157,7 +157,7 @@ Mostremos que $\dist{\var}{\var}_\alpha$ é uma distância.
 		\begin{equation*}
 		U := \prod_{i \in I} U_i,
 		\end{equation*}
-	em que $U_i := \{c_i\}$ se $i \in F$ e $U_i = G$ se $i \notin F$. %Mostremos que $u \in U \subseteq \bola{c}{r}$. Seja $x \in U$. Então, para todo $i \in F$, $x_i=c_i$. 
+	em que $U_i := \{c_i\}$ se $i \in F$ e $U_i = G$ se $i \notin F$. %Mostremos que $u \in U \subseteq \bola{c}{r}$. Seja $x \in U$. Então, para todo $i \in F$, $x_i=c_i$.
 	%Mostremos que $U = \bola{c}{r}$, o que em particular implica $u \in U \subseteq \bola{c}{r}$. Seja $x \in G^{I}$. Então $x \in U$ se, e somente se, para todo $i \in F$, $x_i=c_i$.
 	%Mas $x \neq c$ satisfaz $\ords{x-c} > k$ se, e somente se, para todo $i \in F$, $x_i - c_i = 0$, ou seja, $x_i = c_i$. Isso significa que $\dist{c}{x}_\alpha < \alpha^k$ se, e somente se, para todo $i \in F$, $x_i = c_i$. Como $\alpha \in \intaa{0}{1}$, $k = \teto{\log_{\alpha}(r)} \geq \log_{\alpha}(r)$ é equivalente a $\alpha^k \leq \alpha^{\log_{\alpha}(r)} = r$.
 
@@ -188,7 +188,7 @@ Seja $\bm G$ um grupo. Um \emph{sistema de vizinhanças da identidade} em $\bm G
 	\item Para todos $A,A' \in \viz$, $A \cap A' \in \viz$;
 	\item Para todo $A \in \viz$, existe $B \in \viz$ tal que $B^2 \subseteq A$;
 	\item	 Para todo $A \in \viz$, $A\inv \in \viz$;
-	\item Para todos $A \in \viz$, $g \in G$, $gAg\inv \in \viz$.	
+	\item Para todos $A \in \viz$, $g \in G$, $gAg\inv \in \viz$.
 	\end{enumerate}
 \end{definition}
 
@@ -273,16 +273,18 @@ Seja $\bm G$ um grupo topológico e $\bm S$ um subgrupo de $\bm G$. Então $\bm 
 \end{proposition}
 \begin{proof}
 Temos que mostrar que as operações $\times|_S$ e $\div|_S$ são contínuas.
-	\begin{enumerate}[wide, labelwidth=!, labelindent=0pt]
-	\item[($\times|_S$ é contínua)]
+%	\begin{enumerate}[wide, labelwidth=!, labelindent=0pt]
+	\begin{itemize}
+	\item ($\times|_S$ é contínua)
 		Seja $C \subseteq G$. Como
 		\begin{equation*}
 		\times|_S \inv (C \cap S) = \times \inv (C) \cap (S \times S),
 		\end{equation*}
 		portanto para todo aberto $A \cap S$ de $S$, com $A \subseteq G$ aberto de $G$, segue que $\times|_S \inv (A \cap S) = \times \inv (A) \cap (S \times S)$ é aberto em $S \times S$, logo $\times|_S$ é contínua.
-	\item[($\div|_S$ é contínua)]
+	\item ($\div|_S$ é contínua)
 		Análogo ao caso do produto. \qedhere
-	\end{enumerate}
+	\end{itemize}
+%	\end{enumerate}
 \end{proof}
 
 \begin{proposition}
@@ -302,8 +304,8 @@ Sejam $\bm G$ um grupo topológico e $\bm S$ é subgrupo topológico de $\bm G$.
 \end{proposition}
 \begin{proof}
 	\begin{enumerate}
-		\item Seja $g \in S$. Para todo $g' \in S$, o conjunto $g'g\inv S$ é aberto e $g'\in g'g\inv S \subseteq S$, 
-		\item 
+		\item Seja $g \in S$. Para todo $g' \in S$, o conjunto $g'g\inv S$ é aberto e $g'\in g'g\inv S \subseteq S$,
+		\item
 		\end{enumerate}
 \end{proof}
 
@@ -325,7 +327,7 @@ Seja $\bm G$ um grupo topológico.
 		\begin{equation*}
 		G = \bigcup_{n \in \N} A^n.
 		\end{equation*}
-	\end{enumerate} 
+	\end{enumerate}
 \end{proposition}
 
 \section{Grupo de homeomorfismos}
@@ -408,7 +410,7 @@ Nesse caso, temos um homomorfismo de grupos topológicos (homomorfismo contínuo
 \begin{proof}
 \begin{enumerate}
 	\item [($\Rightarrow$)] Suponhamos que a ação $\fun{\varphi}{G \times X}{X}$ seja contínua e mostremos que a ação $\fun{\phi}{G}{\Iso{\Cont}(X)}$ é contínua. Para isso,
- 
+
 	\item [($\Leftarrow$)]
 \end{enumerate}
 \end{proof}

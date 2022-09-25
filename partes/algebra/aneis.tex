@@ -28,11 +28,11 @@ O símbolo de multiplicação $\times$ será suprimido sempre que possível, de 
 	\begin{equation*}
 	\sum \text{\ \ e\ \ } \bigtimes.
 	\end{equation*}
-O elemento $a$ multiplicado por si mesmo $n$ vezes será denotado $a^n$. Denotaremos o inverso de um elemento $a \in A$ com respeito a $\times$ por $a\inv$ ou $\div a$, se ele existir, pois sabemos que é único (\ref{prop:unic.inv}).
+O elemento $a$ multiplicado por si mesmo $n$ vezes será denotado $a^n$. Denotaremos o inverso de um elemento $a \in A$ com respeito a $\times$ por $a\inv$ ou $\div a$, se ele existir, pois sabemos que é único (\ref{prop:unicidade.inverso.grupideo}).
 \end{notation}
 
 %\begin{notation}
-%Como $(A,+)$ é um grupo, denotaremos o inverso de um elemento $a \in A$ sob $+$ por $-a$, e escreveremos $a_1 - a_2$ para $a_1 + (-a_2)$. Ainda, a multiplicação tem preferência na notação; ou seja, $a_1a_2+a_3 = (a_1 \cdot a_2)+a_3$ e $-a_1a_2 = -(a_1 \cdot a_2)$. Denotaremos o inverso de um elemento $a \in A$ sob $\cdot$ por $a^{-1}$, se ele existir, pois sabemos que é único (\ref{prop:unic.inv}). Os símbolos operatórios relativos à adição e à multiplicação serão, respectivamente, $\sum$ e $\bigtimes$. Caso não haja ambiguidade, denotaremos um anel pelo símbolo que denota seu conjunto escrito em negrito, como em $\bm A=(A,+,\cdot)$.
+%Como $(A,+)$ é um grupo, denotaremos o inverso de um elemento $a \in A$ sob $+$ por $-a$, e escreveremos $a_1 - a_2$ para $a_1 + (-a_2)$. Ainda, a multiplicação tem preferência na notação; ou seja, $a_1a_2+a_3 = (a_1 \cdot a_2)+a_3$ e $-a_1a_2 = -(a_1 \cdot a_2)$. Denotaremos o inverso de um elemento $a \in A$ sob $\cdot$ por $a^{-1}$, se ele existir, pois sabemos que é único (\ref{prop:unicidade.inverso.grupideo}). Os símbolos operatórios relativos à adição e à multiplicação serão, respectivamente, $\sum$ e $\bigtimes$. Caso não haja ambiguidade, denotaremos um anel pelo símbolo que denota seu conjunto escrito em negrito, como em $\bm A=(A,+,\cdot)$.
 %\end{notation}
 
 Na definição de anel aqui adotada, consideramos anéis que têm multiplicação comutativa e unidade. Em contextos mais gerais, esses objetos são chamados de \emph{anéis comutativos unitários}.
@@ -67,12 +67,12 @@ Seja $\bm A$ um anel. Então, para todos $a,a' \in A$,
 			&= 0 a - 0 a \\
 			&= 0.
 		\end{align*}
-	
+
 	\item Se $0=1$, então, para todo $a \in A$,
 		\begin{equation*}
 		a = 1a = 0a = 0;
-		\end{equation*}	
-	
+		\end{equation*}
+
 	\item
 %		\begin{align*}
 %		-(a \cdot b) &= -(a \cdot b) + 0 \\
@@ -134,17 +134,17 @@ Sejam $\bm A=(A,+,-,0,\times,1)$ um anel e $S \subseteq A$. Então
 	\begin{itemize}
 	\item [($\Rightarrow$)] Suponhamos que $\bm S$ é um anel.
 		\begin{enumerate}
-		\item (Subgrupo) Como $S \subseteq A$ e $\bm S^+$ um grupo comutativo, então é um subgrupo de $\bm A^+$ por definição de subgrupo (o que é equivalente às propriedades listadas) e é comutativo (\ref{alge:prop.subgru})).
-		
-		\item (Submonoide) Como $S \subseteq A$ e $\bm S^\times$ é um monoide comutativo com $1 \in S$, então é um submonoide de $(A,\times)$ por definição de submonoide (o que é equivalente às propriedades listadas) e é comutativo (\ref{alge:prop.submon}).
+		\item (Subgrupo) Como $S \subseteq A$ e $\bm S^+$ um grupo comutativo, então é um subgrupo de $\bm A^+$ por definição de subgrupo (o que é equivalente às propriedades listadas) e é comutativo (\ref{prop:propriedade.subgrupo})).
+
+		\item (Submonoide) Como $S \subseteq A$ e $\bm S^\times$ é um monoide comutativo com $1 \in S$, então é um submonoide de $(A,\times)$ por definição de submonoide (o que é equivalente às propriedades listadas) e é comutativo (\ref{prop:propriedade.subgrupideo}).
 		\end{enumerate}
 
 	\item [($\Leftarrow$)] Suponhamos, agora, que $\bm S^+$ é subgrupo comutativo de $\bm A^+$ e $\bm S^\times$ é submonoide comutativo de $\bm A^\times$.
 		\begin{enumerate}
 		\item (Grupo comutativo) Como $(S,+|_{S \times S})$ é subgrupo comutativo, então é um grupo comutativo por definição de subgrupo.
-		
+
 		\item (Monoide comutativo) Como $(S,\times|_{S \times S})$ é submonoide comutativo, então é um monoide comutativo por definição de monoide.
-		
+
 		\item (Distributividade) Sejam $s_1,s_2,s_3 \in S$. Então
 	\begin{align*}
 	s_1 \mathrel{\times|_{S \times S}} (s_2 \mathrel{+|_{S \times S}} s_3) &= s_1 \times (s_2 + s_3) \\
@@ -341,7 +341,7 @@ Ainda, $1+I$ é elemento neutro, pois
 
 	Por fim, como $\cdot$ é distributiva sobre $+$, temos que
 	\begin{align*}
-	(a+1+I)\odot((a_2+I)\oplus(a_3+I)) &= (a+1+I)\odot((a_2+a_3)+I) \\
+	(a_1+I)\odot((a_2+I)\oplus(a_3+I)) &= (a_1+I)\odot((a_2+a_3)+I) \\
 		&= (a_1 \cdot (a_2+a_3))+I \\
 		&= ((a_1 \cdot a_2) + (a_1 \cdot a_3))+I \\
 		&= ((a_1 \cdot a_2)+I) \oplus ((a_1 \cdot a_3)+I) \\
@@ -481,12 +481,14 @@ e $\pi(1)=1+I=1_{\quo{A}{I}}$.
 
 \begin{corollary}[Composição de homomorfismos é homomorfismo]
 \label{prop:comp.hom.ane}
-	Sejam $\bm{A_1}=(A_1,+_1,\cdot_1)$, $\bm{A_2}=(A_2,+_2,\cdot_2)$ e $\bm{A_3}=(A_3,+_3,\cdot_3)$ três anéis e $\phi \in \Homo(\bm{A_1},\bm{A_2})$ e $\psi \in \Homo(\bm{A_2},\bm{A_3})$. Então $(\psi \circ \phi) \in \Homo(\bm{A_1},\bm{A_3})$.
+Sejam $\bm{A_1}$, $\bm{A_2}$ e $\bm{A_3}$ anéis e $\phi \in \Homo(\bm{A_1},\bm{A_2})$ e $\psi \in \Homo(\bm{A_2},\bm{A_3})$. Então $(\psi \circ \phi) \in \Homo(\bm{A_1},\bm{A_3})$.
 \end{corollary}
-\begin{proof} As duas propriedades de homomorfismo de anéis para $(\psi \circ \phi)$ seguem de propriedades análogas na seção de grupos e monoides.
+\begin{proof}
+%Denotemos $\bm{A_1}=(A_1,+_1,\cdot_1)$, $\bm{A_2}=(A_2,+_2,\cdot_2)$ e $\bm{A_3}=(A_3,+_3,\cdot_3)$.
+As duas propriedades de homomorfismo de anéis para $(\psi \circ \phi)$ seguem de propriedades análogas na seção de grupos e monoides.
 	\begin{enumerate}
 	\item Como $\phi$ é um homomorfismo de grupos entre $(A_1,+_1)$ e $(A_2,+_2)$ e $\psi$ é homomorfismos de grupos entre $(A_2,+_2)$ e $(A_3,+_3)$, segue da proposição de composição de homomorfismos da seção de grupos (\ref{comp.hom.gru}) que $(\psi \circ \phi)$ é homomorfismo de grupos entre $(A_1,+_1)$ e $(A_3,+_3)$.
-	\item Como $\phi$ é um homomorfismo de monoides entre $(A_1,\cdot_1)$ e $(A_2,\cdot_2)$ e $\psi$ é homomorfismos de monoides entre $(A_2,\cdot_2)$ e $(A_3,\cdot_3)$, segue da proposição de composição de homomorfismos da seção de monoides (\ref{comp.hom.mon}) que $(\psi \circ \phi)$ é homomorfismo de monoides entre $(A_1,\cdot_1)$ e $(A_3,\cdot_3)$.
+	\item Como $\phi$ é um homomorfismo de monoides entre $(A_1,\cdot_1)$ e $(A_2,\cdot_2)$ e $\psi$ é homomorfismos de monoides entre $(A_2,\cdot_2)$ e $(A_3,\cdot_3)$, segue da proposição de composição de homomorfismos da seção de monoides (\ref{prop:composicao.morfismo.grupideo}) que $(\psi \circ \phi)$ é homomorfismo de monoides entre $(A_1,\cdot_1)$ e $(A_3,\cdot_3)$.
 	\end{enumerate}
 \end{proof}
 
@@ -588,7 +590,7 @@ e, como $\phi(1_A)=1_B$, temos $\phi^{-1}(1_B)=1_A$.
 
 \begin{definition}
 	Sejam $\bm A$ e $\bm B$ dois anéis. Dizemos que $\bm A$ é \emph{isomorfo} a $\bm B$, e denotamos isso por $\bm A \simeq \bm B$, sse existe $\phi \in \Iso{\Homo}(\bm A,\bm B)$.
-\end{definition}	
+\end{definition}
 
 \begin{proposition}
 	Sejam $\bm{A_1}$, $\bm{A_2}$ e $\bm{A_3}$ três anéis. Então
@@ -719,7 +721,7 @@ Essa função é um homomorfismo de anéis. Sejam $b_1,b_2 \in B$. Então $\phi(
 	\begin{align*}
 	\func{\phi}{\quo{A}{I}}{\quo{A}{J}}{a+I}{a+J.}
 	\end{align*}
-	
+
 	Primeiro, notemos que $\phi$ é bem definida, pois, se $a_1+I=a_2+I$, então $a_1-a_2 \in I \subseteq J$, o que implica $a_1+J=a_2+J$. Agora, provemos que $\phi$ é homomorfismo de anéis. Sejam $a_1+I,a_2+I \in A/I$. Então
 	\begin{align*}
 	\phi((a_1+I)+(a_2+I))&=\phi((a_1+a_2)+I) \\
@@ -936,19 +938,19 @@ Sejam $\bm A$ um anel e $I \ide A$.
 \begin{proof}
 	\begin{enumerate}
 	\item Seja $i \in I$. Como $i=i^1$ e $1 \in \N$, segue que $i \in \rad{I}$, logo $i \subseteq \rad{I}$.
-	
+
 	\item Demonstramos por partes.
 		\begin{enumerate}
 		\item (Não-vacuidade) Como $0 \in I$, segue que $0 \in \rad{I}$.
-		
+
 		\item (Fechamento da soma) Sejam $r,r' \in \rad{I}$ e $n,n' \in \N$ tais que $r^n, {r'}^{n'} \in I$. Temos
 		\begin{equation*}
 		(r+r')^{n+n'+1} = \sum_{k=0}^{n+n'+1}  \binom{n+n'+1}{k} r^k {r'}^{n+n'+1-k}.
 		\end{equation*}
 Como para todo $k$ vale $k \geq n$ ou $n+n'+1-k \geq n'$, segue que $r^k {r'}^{n+n'+1-k} \in I$, portanto $(r+r')^{n+n'+1} \in I$, o que implica que $r+r' \in \rad{I}$.
-		
+
 		\item (Invertibilidade) Sejam $r \in \rad{I}$ e $n \in \N$ tal que $r^n \in I$. Então $(-r)^n = (-1)^n r^n \in I$, portanto $-r \in \rad{I}$.
-		
+
 		\item (Absorção da multiplicação) Sejam $a \in A$, $r \in \rad{I}$ e $n \in \N$ tal que $r^n \in I$. Então $(ar)^n = a^n r^n \in I$, portanto $ar \in \rad{I}$.
 		\qedhere
 		\end{enumerate}
@@ -968,7 +970,7 @@ Seja $\bm A$ um anel.
 \begin{proof}
 	\begin{itemize}
 	\item [($\subseteq$)] Sejam $r \in \rad{0}$ e $n \in \N$ tal que $r^n=0$. Para todo ideal primo $P \in \Esp(\bm A)$, segue que $r^n \in P$; como $P$ é primo, segue que $r \in P$, o que implica que $r \in \bigcap_{P \in \Esp(\bm A)} P$.
-	
+
 	\item [($\supseteq$)] Seja $r \notin \rad{0}$. Consideremos o conjunto $\Sigma$ de ideais $I \idepro A$ tais que, para todo $n \in \N$, $r^n \notin I$. Notemos que $\Sigma$ não é vazio, pois $\{0\} \in \Sigma$, já que $r \notin \{0\}$. Pelo lema de Zorn, $\Sigma$ tem elemento maximal $P \in \Sigma$. Mostremos que $P$ é primo. Sejam $a,a' \in P^ \complement$. Os ideais $P+aA$ e $P+a'A$ contém $P$ estritamente, portanto não pertencem a $\Sigma$, o que implica, para alguns $n,n' \in \N$, $r^n \in P+aA$ e $r^{n'} \in P+a'A$. Segue que $r^{n+n'} \in P + aa'A$, logo que $P+aa'A \notin \Sigma$, o que implica que $aa' \in P^\complement$, logo que $P$ é primo. Como em particular $r =r^1\notin P$, pois $P \in \Sigma$, segue que $r \notin \bigcap_{P \in \Esp(\bm A)} P$.
 	\end{itemize}
 \end{proof}
@@ -990,7 +992,7 @@ Seja $\bm A$ um anel.
 %Provamos a contenção inversa por complementação.
 %	\begin{enumerate}
 %	\item ($\subseteq$) Seja $r \in \rad{I}$ e $n \in \N$ tal que $r^n \in I$. Para todo $j \in J$, temos que $r^n \in I \subseteq P_j$; como $P_j$ é primo, $r \in P_j$. Assim, concluímos que $r \in \bigcap_{j \in J} P_j$.
-		
+
 %	\item ($\supseteq$) Sejam $r \in A \setminus \rad{I}$ e
 %		\begin{equation*}
 %		S := \set{r^n}{n \in \N}.
@@ -1267,7 +1269,7 @@ Lembremos que  $\bm A^\times = (A,\times,1)$ é o monoide multiplicativo de um a
 \begin{definition}
 Sejam $\bm A$ um anel e $\bm D$ um submonoide multiplicativo de $\bm A$. A \emph{equivalência fracionária} em $A \times D$ é a relação $\simfra$ em $A \times D$ definida por
 	\begin{equation*}
-	(a,d) \simfra (a',d') \Leftrightarrow \exists_{u \in D} (ad'-a'd)u = 0. 
+	(a,d) \simfra (a',d') \Leftrightarrow \exists_{u \in D} (ad'-a'd)u = 0.
 	\end{equation*}
 \end{definition}
 
@@ -1358,41 +1360,41 @@ Sejam $\bm A$ um anel e $\bm D$ um submonoide multiplicativo de $\bm A$.  O anel
 			&= \frac{a}{d} + \frac{a'd''+a''d'}{d'd''} \\
 			&= \frac{a}{d} + \left( \frac{a'}{d'} + \frac{a''}{d''}  \right).
 			\end{align*}
-		
+
 		\item (Identidade) Seja $\frac{a}{d} \in A \olddiv D$. Então
 			\begin{equation*}
 			0 + \frac{a}{d} = \frac{0}{1} + \frac{a}{d} = \frac{0d+a1}{1d} = \frac{a}{d}.
 			\end{equation*}
-		
+
 		\item (Invertibilidade) Seja $\frac{a}{d} \in A \olddiv D$. Então
 			\begin{equation*}
 			\frac{a}{d} + (- \frac{a}{d}) = \frac{a}{d} + \frac{-a}{d} = \frac{ad-ad}{dd} = \frac{0}{dd} = 0.
 			\end{equation*}
-		
+
 		\item (Comutatividade) Sejam $\frac{a}{d},\frac{a'}{d'} \in A \olddiv D$. Então
 			\begin{equation*}
 			\frac{a}{d} + \frac{a'}{d'}= \frac{ad'+a'd}{dd'} = \frac{a'd+ad'}{d'd} = \frac{a'}{d'} + \frac{a}{d}.
 			\end{equation*}
 		\end{enumerate}
-	
+
 	\item ($(A \olddiv D,\times,1)$ é monoide comutativo)
 		\begin{enumerate}
 		\item (Associatividade) Sejam $\frac{a}{d},\frac{a'}{d'},\frac{a''}{d''} \in A \olddiv D$. Então
 			\begin{equation*}
 			\left( \frac{a}{d}\frac{a'}{d'} \right)\frac{a''}{d''} = \frac{aa'}{dd'}\frac{a''}{d''} = \frac{(aa')a''}{(dd')d''} =  \frac{a(a'a'')}{d(d'd'')} = \frac{a}{d}\frac{a'a''}{d'd''} = \frac{a}{d} \left( \frac{a'}{d'}\frac{a''}{d''} \right).
 			\end{equation*}
-		
+
 		\item (Identidade) Seja $\frac{a}{d} \in A \olddiv D$. Então
 			\begin{equation*}
 			1\frac{a}{d} = \frac{1}{1}\frac{a}{d} = \frac{1a}{1d} = \frac{a}{d}.
 			\end{equation*}
-		
+
 		\item (Comutatividade) Sejam $\frac{a}{d},\frac{a'}{d'} \in A \olddiv D$. Então
 			\begin{equation*}
 			\frac{a}{d}\frac{a'}{d'}= \frac{aa'}{dd'} = \frac{a'a}{d'd} = \frac{a'}{d'}\frac{a}{d}.
 			\end{equation*}
 		\end{enumerate}
-	
+
 	\item (Distributividade de $\times$ sobre $+$) Sejam $\frac{a}{d},\frac{a'}{d'},\frac{a''}{d''} \in A \olddiv D$. Então
 		\begin{align*}
 		\frac{a}{d} \left( \frac{a'}{d'} + \frac{a''}{d''} \right) &= \frac{a}{d}\frac{a'd''+a''d'}{d'd''} \\
@@ -1409,12 +1411,12 @@ Sejam $\bm A$ um anel e $\bm D$ um submonoide multiplicativo de $\bm A$.  O anel
 Seja $\bm{A \olddiv D}$ um anel de frações.
 	\begin{enumerate}
 	\item $\bm{A \olddiv D}$ é trivial se, e somente se, $0 \in D$;
-	
+
 	\item Para todo $d \in D$,
 		\begin{equation*}
 		\frac{d}{d} =1;
 		\end{equation*}
-	
+
 	\item Para todo $d \in D$,
 		\begin{equation*}
 		\frac{1}{d} = \left( \frac{d}{1} \right)\inv.
@@ -1424,9 +1426,9 @@ Seja $\bm{A \olddiv D}$ um anel de frações.
 \begin{proof}
 	\begin{enumerate}
 	\item A trivialidade do anel de frações é equivalente a $\frac{0}{1}=\frac{1}{1}$, que ocorre se, e somente se, existe $u \in D$ tal que $(01-11)u = 0$. Como $(01-11)u=-u$, isso é equivalente a $0 \in D$.
-	
+
 	\item Basta notar que $(d1-1d)1=0$.
-	
+
 	\item Basta notar que
 		\begin{equation*}
 		\frac{1}{d} \frac{d}{1} = \frac{d}{d} = 1.
@@ -1451,14 +1453,14 @@ Seja $\bm{A \olddiv D}$ um anel de frações. O homomorfismo quociente é um hom
 		\begin{equation*}
 		\frac{\Id}{1}(a+a') = \frac{a+a'}{1} = \frac{a1+a'1}{1 \times 1} = \frac{a}{1} + \frac{a'}{1} = \frac{\Id}{1}(a) + \frac{\Id}{1}(a').
 		\end{equation*}
-	
+
 	\item (Homomorfismo de monoide)
 		\begin{enumerate}
 		\item Sejam $a,a' \in A$. Então
 		\begin{equation*}
 		\frac{\Id}{1}(aa') = \frac{aa'}{1} = \frac{a}{1}\frac{a'}{1} = \frac{\Id}{1}(a)\frac{\Id}{1}(a').
 		\end{equation*}
-		
+
 		\item Por definição da unidade do anel de frações,
 			\begin{equation*}
 			\frac{\Id}{1}(1) = \frac{1}{1} = 1.
@@ -1505,7 +1507,7 @@ Agora, mostremos que $h'$ é homomorfismo de anel.
 			&= h(a)h(d)\inv + h(a')h(d')\inv \\
 			&= h' \left( \frac{a}{d} \right) + h \left( \frac{a'}{d'} \right).
 		\end{align*}
-	
+
 	\item (Homomorfismo de monoide)
 		\begin{enumerate}
 		\item Sejam $\frac{a}{d},\frac{a'}{d'} \in A \olddiv D$. Então
@@ -1516,7 +1518,7 @@ Agora, mostremos que $h'$ é homomorfismo de anel.
 			&= h(a)h(d)\inv h(a')h(d')\inv \\
 			&= h' \left( \frac{a}{d} \right) h \left( \frac{a'}{d'} \right).
 		\end{align*}
-		
+
 		\item Segue de
 			\begin{equation*}
 			h' \left( \frac{1}{1} \right) = h(1)h(1)\inv = 1.
@@ -1540,15 +1542,15 @@ o que mostra que $h''=h'$.
 Sejam $\bm A$ e $\bm A'$ anéis, $\bm D$ um submonoide multiplicativo de $\bm A$ e $\fun{q}{A}{A'}$ um homomorfismo de anel tal que
 	\begin{enumerate}
 	\item Para todo $d \in D$, $q(d) \in A'$ é invertível;
-	
+
 	\item Para todo $a \in A$ tal que $q(a)=0$, existe $u \in D$ tal que $au=0$;
-	
+
 	\item Para todo $a' \in A'$, existem $a \in A$ e $d \in D$ tais que $a' = q(a)q(d)\inv$.
 	\end{enumerate}
 Existe único isomorfismo de anel $\fun{h}{A \olddiv D}{A'}$ tal que $q = h \circ \frac{\Id}{1}$.
 \end{exercise}
 
-\subsection{Corpo de frações e números racionais \ensuremath{\Q}}
+\subsection{Corpo de frações e números racionais \texorpdfstring{$\Q$}{}}
 
 \begin{exercise}
 Seja $\bm A$ um anel. Então $A \setminus \{0\}$ é um submonoide multiplicativo de $\bm A$ se, e somente se, $\bm A$ é um domínio.
@@ -1720,7 +1722,7 @@ Como $d \neq 0$ e $d' \neq 0$, segue que $h(nd'-dn')=0$, e da injetividade de $h
 \end{comment}
 
 
-\subsubsection{Os números racionais \ensuremath{\Q}}
+\subsubsection{Os números racionais \texorpdfstring{$\Q$}{}}
 
 A construção de corpo de frações de um domínio aplicada ao anel dos números inteiros $\Z$ é o conjunto dos números racionais.
 
@@ -1790,7 +1792,7 @@ Para todo $x, x' \in \R$ e todo $i \in \Z$,
 \begin{exercise}
 Para todos $x,x' \in \R$, $x'>0$ e todos $i,i' \in \Z$, $i>0$,
 	\begin{enumerate}
-	\item 
+	\item
 		\begin{align*}
 		\chao{\frac{\chao{x}+i'}{i}} &= \chao{\frac{x+i'}{i}} \\
 		\teto{\frac{\teto{x}+i'}{i}} &= \teto{\frac{x+i'}{i}};
@@ -1802,12 +1804,12 @@ Para todos $x,x' \in \R$, $x'>0$ e todos $i,i' \in \Z$, $i>0$,
 		\chao{\frac{i'}{i}} + 1 &= \teto{\frac{i'+1}{i}};
 		\end{align*}
 
-	\item	
+	\item
 		\begin{align*}
-		\chao{\frac{\chao{x \div x'}}{i}} &= \chao{\frac{x}{x'i}} \\	
+		\chao{\frac{\chao{x \div x'}}{i}} &= \chao{\frac{x}{x'i}} \\
 		\teto{\frac{\teto{\frac{x}{x'}}}{i}} &= \teto{\frac{x}{x'i}}.
 		\end{align*}
-	
+
 	\end{enumerate}
 \end{exercise}
 
@@ -1881,7 +1883,7 @@ A função \emph{arredondamento meio para cima} é a função
 	\end{align*}
 \end{definition}
 
-\subsection{Números reais \ensuremath{\R}}
+\subsection{Números reais \texorpdfstring{$\R$}{}}
 
 Definiremos o conjunto dos números reais, suas operações de corpo e sua relação de ordem total pela construção usando cortes de números racionais.
 
@@ -1912,7 +1914,7 @@ Agora, seja $C \subseteq \R$ um conjunto não-vazio limitado superiormente. Most
 Primeiro mostremos que $\sup C \in \R$.
 	\begin{itemize}
 	\item (Finitude) Como $C$ é não-vazio, algum $c \in C$. Como $c \in \R$, $c \neq \emptyset$, portanto algum $q \in c$. Assim segue que $q \in c \subseteq \bigcup C = \sup C$, portanto $\sup C \neq \emptyset$.
-	
+
 	Como $C$ é limitado superiormente, algum $l \in \R$ satisfaz que, para todo $c \in C$, $c \leq l$, ou seja, $c \subseteq l$. Como $l \in \R$, $l \neq \Q$, portanto algum $q \in \Q \setminus l$. Como, para todo $c \in C$, $c \subseteq l$, segue que $q \notin c$, logo $q \notin \bigcup C$, o qu implica que $\sup C \neq \Q$.
 
 	\item (Fechamento inferior) Sejam $q,q' \in \Q$ tais que $q < q'$ e $q' \in \sup C = \bigcup C$. Então, para algum $c \in \sup C$, $q' \in c$. Pelo fechamento inferior, segue que $q \in c$, portanto $q \in \bigcup C = \sup C$.
@@ -1957,27 +1959,37 @@ As operações $+$ e $-$ estão bem definidas, $0 \in \R$, o grupo aditivo dos n
 \begin{definition}
 O \emph{monoide multiplicativo dos números reais} é a lista
 	\begin{equation*}
-	\R_\times := (\R,\times,1)
+	\R^\times := (\R,\times,1)
 	\end{equation*}
 e o \emph{grupo multiplicativo dos números reais} é a lista
 	\begin{equation*}
-	\R_{\div}:= (\R \setminus \{0\},\times,\div,1),
+	\R^{\div}:= (\R \setminus \{0\},\times,\div,1),
 	\end{equation*}
 em que
 	\begin{enumerate}
-	\item $\times$ é a \emph{multiplicação} de $\R$, definida por
-		\begin{align*}
-		\func{\times}{\R \times \R}{\R}{(c,c')}{
-			c \times c' :=
+	\item $\fun{\times}{\R \times \R}{\R}$ é a \emph{multiplicação} de $\R$, definida para todos $c, c' \in \R$ por
+%		\begin{align*}
+%		\func{\times}{\R \times \R}{\R}{(c,c')}{
+%			c \times c' :=
+%			\begin{cases}
+%			\set{qq'}{q \in c_{\geq 0} \land q' \in c'_{\geq 0}} \cup 0_{\R},	& c \geq 0_{\R} \land c' \geq 0_{\R}, \\
+%			c \times (-c'),			& c \geq 0_{\R} \land c' < 0_{\R}, \\
+%			(-c) \times c',			& c < 0_{\R} \land c' \geq 0_{\R}, \\
+%			(-c) \times (-c'),		& c < 0_{\R} \land c' < 0_{\R};
+%			\end{cases}
+%		}
+%		\end{align*}
+		\begin{equation*}
+		c \times c' :=
 			\begin{cases}
 			\set{qq'}{q \in c_{\geq 0} \land q' \in c'_{\geq 0}} \cup 0_{\R},	& c \geq 0_{\R} \land c' \geq 0_{\R}, \\
 			c \times (-c'),			& c \geq 0_{\R} \land c' < 0_{\R}, \\
 			(-c) \times c',			& c < 0_{\R} \land c' \geq 0_{\R}, \\
 			(-c) \times (-c'),		& c < 0_{\R} \land c' < 0_{\R};
 			\end{cases}
-		}
-		\end{align*}
-	\item $0$ é o \emph{um} de $\R$, definido por
+		\end{equation*}
+
+\item $1$ é o \emph{um} de $\R$, definido por
 		\begin{equation*}
 		1_{\R} := \set{q \in \Q}{q < 1};
 		\end{equation*}
@@ -2063,11 +2075,11 @@ Sejam $n \in \Z_{>}$ e $c \in \R_{\geq}$.
 \begin{proof}
 	\begin{enumerate}
 	\item Nesse caso, $1 \opmax c = c$, portanto $c$ é limitante superior de $\set{x \in \R_{\geq}}{x^n \leq c}$; como $\sqrt[n]{c}$ é supremo dese conjunto, é o menor limitante superior, e segue que $\sqrt[n]{c} \leq c$.
-	
+
 	Como $1 \leq c$ e $1^n = 1$, então $1^n \leq c$, e segue que $1 \in \set{x \in \R_{\geq}}{x^n \leq c}$; como $\sqrt[n]{c}$ é supremo dese conjunto, é limitante superior, e segue que $1 \leq \sqrt[n]{c}$.
 
 	\item Nesse caso, $1 \opmax c = 1$, portanto $1$ é limitante superior de $\set{x \in \R_{\geq}}{x^n \leq c}$; como $\sqrt[n]{c}$ é supremo dese conjunto, é o menor limitante superior, e segue que $\sqrt[n]{c} \leq 1$.
-	
+
 	Como $c \leq 1$, então $c^n \leq c$, e segue que $c \in \set{x \in \R_{\geq}}{x^n \leq c}$; como $\sqrt[n]{c}$ é supremo dese conjunto, é limitante superior, e segue que $c \leq \sqrt[n]{c}$.
 
 	\item Segue dos itens anteriores que $\sqrt[n]{1} \leq 1$ e $\sqrt[n]{1} \geq 1$, portanto $\sqrt[n]{1} = 1$. Além disso, $\set{x \in \R_{\geq}}{x^n \leq 0} = \{0\}$, portanto $\sqrt[n]{0} = 0$. A recíproca é exercício.
@@ -2467,7 +2479,7 @@ Sejam $\bm D$ um domínio e $i \in D$ irredutível. Para todo $i' \in D$ tal que
 \end{proposition}
 \begin{proof}
 Se $i \sim i'$, existe $u\in D^*$ tal que $i'=ui$. Primeiro, devemos mostrar que $ui \notin (D^* \cup \{0\})$. Como $u \neq 0$ e $i \neq 0$ e $\bm D$ é domínio, então $ui \neq 0$. Supondo que $ui \in D^*$, então existe $u' \in D^*$ tal que $u'(ui)=1$. Mas então $u'u=i\inv$, uma contradição porque $i \notin D^*$. Logo $ui \notin D^*$.
-	
+
 Agora, sejam $d,d' \in D$ tais que $ui=dd'$. Então $i=u\inv dd'$. Se $d \notin D^*$ e $d' \notin D^*$, então $u\inv d \notin D^*$ e $u\inv d' \neq 0$. Logo segue que $i=(u\inv d)d'$, uma contradição porque $i$ é irredutível.
 \end{proof}
 
@@ -2489,15 +2501,15 @@ Sejam $\bm D$ um domínio e $p$ primo.
 \begin{proof}
 	\begin{enumerate}
 	\item Se $p \sim p'$, existe $u \in D^*$ tal que $p'=up$. Primeiro, devemos mostrar que $up \notin (D^* \cup \{0\})$. Como $u \neq 0$, $p \neq 0$ e $\bm D$ é domínio, então $up \neq 0$. Supondo que $up \in D^*$, então existe $u' \in D^*$ tal que $u'(up)=1$. Mas isso implica $u'u=p\inv$, uma contradição porque $p \notin D^*$. Logo $p'=up \notin D^*$.
-	
+
 Agora, usaremos a comutatividade. Sejam $d,d' \in D$ tais que $up \dleq dd'$. Então
 	\begin{equation*}
 	p = u\inv up \dleq u\inv dd'.
 	\end{equation*}
 Como $p$ é primo, $p \dleq u\inv d$ ou $p \dleq d'$. No primeiro caso, $up \dleq uu\inv d=d$; no segundo caso, segue pela comutatividade que $p'=up \dleq d'$.
-	
+
 	\item Vamos mostrar por indução em $n$. O caso base é trivial. Para demonstrar o passo indutivo, suponhamos que a propriedade vale para um natural $n$. Então, se $p \dleq d_0 \cdots d_n$, então como $p$ é primo, $p \dleq d_0 \cdots d_{n-1}$ ou $p \dleq d_n$. Se $p \dleq d_0 \cdots d_{n-1}$, pela hipótese de indução, existe $i \in [n]$ tal que $p \dleq d_i$; caso contrário, $p \dleq d_n$. Logo existe $i \in [n+1]$ tal que $p \dleq d_i$.
-	
+
 	\item Se existem $d,d' \in D$ tais que $p=dd'$, então $p \dleq dd'$. Como $p$ é primo, então $p \dleq d$ ou $p \dleq d'$. Se $p \dleq d$, então existe $q \in D$ tal que $pq=d$. Assim, segue que $p=dd'=pqd'$ e, como $\bm D$ é domínio, $1=qd'$. Logo $d' \in D^*$. Analogamente, se $p \dleq d'$, segue que $d \in D^*$ (usamos a comutatividade). Portanto $p$ é irredutível.
 	\end{enumerate}
 \end{proof}
@@ -2690,7 +2702,7 @@ pois, para todo $j \in [n']$, existe $k \in [n]$ tal que $I_j = P_k$ e, como $j 
 	d \sim \bigtimes_{i \in [n']} p'_i = \bigtimes_{k \in [n]} \bigtimes_{i \in P_k} p'_i.
 	\end{equation*}
 
-Sendo assim, seja $k \in [n]$. Definamos $p_k := p'_{\min P_k}$ e $e_k := \card{P_k}$. Segue claramente que $p_k$ é irredutível e que $e_k \in \N^*$. Como, para todo $i \in P_k$, vale $p'_i \sim p_k$, 
+Sendo assim, seja $k \in [n]$. Definamos $p_k := p'_{\min P_k}$ e $e_k := \card{P_k}$. Segue claramente que $p_k$ é irredutível e que $e_k \in \N^*$. Como, para todo $i \in P_k$, vale $p'_i \sim p_k$,
 %então existe $u'_i \in A^{\div}$ tal que $p'_i = u'_ip_k$. Assim, definindo $u_k := \displaystyle\bigtimes_{i \in P_k} u'_i$, temos que $u_k \in A^{\div}$ e
 %	\begin{equation*}
 %	\bigtimes_{i \in P_k} p'_i = \bigtimes_{i \in P_k} u'_ip_k = \left( \bigtimes_{i \in P_k}u'_i \right) p_k^{\alpha_k} = u_kp_k^{\alpha_k}.
@@ -2723,7 +2735,7 @@ Como $\bm D$ é domínio de fatoração única, existem fatorações $(p_i)_{i \
 
 Se $k=0$, mostraremos que $\mdc(a,b) = D^*$. Para isso, mostraremos que $1 \in \mdc(a,b)$. Notamos que $1 \in D^* \subseteq \divv(a,b)$. Agora, seja $d \in \divv(a,b)$. Como $0 \notin \{a,b\}$, então $0 \notin \divv(a,b)$. Se $d \in D^*$, então $d \dleq 1$, logo $1 \in \mdc(a,b)$. Se $d \in D \setminus (D^* \cup \{0\})$, então existe $p$ irredutível tal que $p \dleq d$, portanto $p \dleq a$ e $p \dleq b$. Como $\bm D$ é domínio de fatoração única, $p$ é primo. Então segue que existem $i$ e $j$ tais que $p \dleq p_i$ e $p \dleq q_j$. Como esses elementos são irredutíveis, $p \sim p_i$ e $p \sim q_j$, portanto $p_i \sim q_j$, o que é uma contradição. Logo $1 \in \mdc(a,b)$. Como todos os máximos divisores comuns são associados, então $D^* = \mdc(a,b)$.
 
-Se $k \geq 1$, mostraremos que $p_1 \cdots p_k \in \mdc(a,b)$. Primeiro, notamos que $p_1 \cdots p_k \dleq a$ e $q_1 \cdots q_k \dleq b$. Como $p_i \sim q_i$ para todo $i \leq k$, então $p_1 \cdots p_k \sim q_1 \cdots q_k$. Logo $p_1 \cdots p_k \dleq q_1 \cdots q_k$ e, da transitividade de $\dleq$, segue que $p_1 \cdots p_k \dleq b$. Logo $p_1 \cdots p_k \in \divv(a,b)$. Então, seja $d \in \divv(a,b)$. Se $d \in D^*$, então $d \dleq p_1 \cdots p_k$. Logo $p_1 \cdots p_k \in \mdc(a,b)$. Se $d \in D \setminus (D^* \cup \{0\})$, então existem $r_1,\ldots,r_l$ irredutíveis tais que $d = r_1 \cdots r_l$. Por $\bm D$ ser domínio, $r_1,\ldots,r_l$ são primos. Como $d \dleq a$, então $r_1 \dleq p_1 \cdots p_k$. Como $r_1$ é primo, existe $i_1 \in \{1,\ldots,k\}$ tal que $r_1 \dleq p_{i_1}$. Seja $s_1 \in D$ tal que $r_1s_1 = p_{i_1}$. Como $r_1$ e $p_{i_1}$ são irredutíveis, então $r_1 \sim p_{i_1}$, o que implica $s_1 \in D^*$. Então $r_2 \cdots r_l \dleq p_1 \cdots p_{i_1-1} \cdot s_1 \cdot p_{i_1+1} \cdots p_k$, pois $\bm D$ é domínio. Repetindo o processo indutivamente, conclui-se que existem $i_1, \ldots,i_m$ tais que $r_j \sim p_{i_j}$ para todo $j \in \{1,\ldots,l\}$.
+Se $k \geq 1$, mostraremos que $p_1 \cdots p_k \in \mdc(a,b)$. Primeiro, notamos que $p_1 \cdots p_k\allowbreak \dleq a$ e $q_1 \cdots q_k \dleq b$. Como $p_i \sim q_i$ para todo $i \leq k$, então $p_1 \cdots p_k \sim q_1 \cdots q_k$. Logo $p_1 \cdots p_k \dleq q_1 \cdots q_k$ e, da transitividade de $\dleq$, segue que $p_1 \cdots p_k \dleq b$. Logo $p_1 \cdots p_k \in \divv(a,b)$. Então, seja $d \in \divv(a,b)$. Se $d \in D^*$, então $d \dleq p_1 \cdots p_k$. Logo $p_1 \cdots p_k \in \mdc(a,b)$. Se $d \in D \setminus (D^* \cup \{0\})$, então existem $r_1,\ldots,r_l$ irredutíveis tais que $d = r_1 \cdots r_l$. Por $\bm D$ ser domínio, $r_1,\ldots,r_l$ são primos. Como $d \dleq a$, então $r_1 \dleq p_1 \cdots p_k$. Como $r_1$ é primo, existe $i_1 \in \{1,\ldots,k\}$ tal que $r_1 \dleq p_{i_1}$. Seja $s_1 \in D$ tal que $r_1s_1 = p_{i_1}$. Como $r_1$ e $p_{i_1}$ são irredutíveis, então $r_1 \sim p_{i_1}$, o que implica $s_1 \in D^*$. Então $r_2 \cdots r_l \dleq p_1 \cdots p_{i_1-1} \cdot s_1 \cdot p_{i_1+1} \cdots p_k$, pois $\bm D$ é domínio. Repetindo o processo indutivamente, conclui-se que existem $i_1, \ldots,i_m$ tais que $r_j \sim p_{i_j}$ para todo $j \in \{1,\ldots,l\}$.
 %(MELHORAR ARGUMENTAÇÃO DA INDUÇÃO).
 Da mesma forma, conclui-se que que existem $i'_1, \ldots,i'_m$ tais que $r_j \sim q_{i'_j}$ para todo $j \in \{1,\ldots,l\}$. Portanto, da reflexividade e transitividade de $\sim$, segue que $p_{i_j} \sim q_{i'_j}$ para todo $i,j$. Então $d \sim p_{i_1} \cdots p_{i_m} \sim q_{i'_1} \cdots q_{i'_m}$. Como $p_{i_1} \cdots p_{i_m} \dleq p_1 \cdots p_k$ e $q_{i'_1} \cdots q_{i'_m} \dleq q_1 \cdots q_k$, então $d \dleq p_1 \cdots p_k$.
 %(MELHORAR ARGUMENTAÇÃO FINAL)
@@ -2821,7 +2833,7 @@ Antes disso, mostraremos que $A[x]$ é um anel, o que justifica seu nome.
 Seja $\bm A$ um anel. O anel de polinômios $\bm{A[x]}$ em $\bm A$ é um anel.
 \end{proposition}
 \begin{proof}
-Sabemos que $(A[x],+,-,0)$ é um grupo comutativo, pois $(A,+,-,0)$ o é. Mostremos que $(A[x],\times,1)$ é um monoide comutativo. Como $(A,\times,1)$ é um monoide comutativo, segue que
+Sabemos que $(A[x],+,-,0)$ é um grupo comutativo, pois o grupo $(A,+,-,0)$ é comutativo. Mostremos que $(A[x],\times,1)$ é um monoide comutativo. Como $(A,\times,1)$ é um monoide comutativo, segue que
 	\begin{enumerate}
 	\item (Associatividade) Para todos $p,q,r \in A[x]$,
 		\begin{align*}
@@ -2851,7 +2863,7 @@ Por fim, mostremos que vale a distributividade. Para todos $p,q,r \in A[x]$,
 		&=  \left(\sum_{i=0}^n p_i q_{n-i} + \sum_{i=0}^n p_i r_{n-i}\right)_{n \in \N} \\
 		&= \left(\sum_{i=0}^n p_i q_{n-i}\right)_{n \in \N} + \left(\sum_{i=0}^n p_i r_{n-i}\right)_{n \in \N} \\
 		&= pq+pr.
-	\end{align*}	
+	\end{align*}
 \end{proof}
 
 \begin{definition}
@@ -3157,7 +3169,7 @@ Já demos a definição de um corpo, mas agora pretendemos ressaltar essa defini
 %	\begin{enumerate}
 %	\item $(C,+,-,0,\times,1)$ é um anel;
 %	\item $(C \setminus \{0\},\times,\inv,1)$ é um grupo (comutativo).
-%	\end{enumerate} 
+%	\end{enumerate}
 %\end{definition}
 
 %\begin{definition}
@@ -3165,7 +3177,7 @@ Já demos a definição de um corpo, mas agora pretendemos ressaltar essa defini
 %	\begin{enumerate}
 %	\item $(C,+,-,0,\times,1)$ é um anel;
 %	\item $(C \setminus \{0\},\times,\div,1)$ é um grupo (comutativo).
-%	\end{enumerate} 
+%	\end{enumerate}
 %\end{definition}
 
 \begin{definition}
@@ -3437,14 +3449,14 @@ Sejam $X$ um conjunto e $\bm G$ um grupo comutativo. Então
 				&= 0 \\
 				&= f(x)+(-f(x)) \\
 				&= f(x) + (-f)(x) \\
-				&= (f+(-f))(x);				
+				&= (f+(-f))(x);
 			\end{align*}
 		\item Para todos $f_0,f_1 \in \Func(X,G)$ e $x \in X$,
 			\begin{align*}
 			(f_0+f_1)(x) = f_0(x)+f_1(x) = f_1(x) + f_0(x) = (f_1+f_0)(x).
 			\end{align*}
 		\end{enumerate}
-	
+
 	\item $(\Func(X,G),\circ,\Id)$ é um monoide.
 		\begin{enumerate}
 		\item Para todos $f_0,f_1,f_2 \in \Func(X,G)$ e $x \in X$,

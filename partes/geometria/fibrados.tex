@@ -151,7 +151,7 @@ Sejam $p \in V$ e $(A,\x)$ uma carta de $\bm V$ em $p$. Definimos a função
 Claramente $\proj_A \circ h = \proj$, e $h|_p\colon \Tg V|_p \to \Tg V|_p$ é linear. Seja $(\Tg V|_A,\varphi)$ a carta de $\Tg V$ induzida de $(A,\x)$. Então temos que $\varphi = (\x,\Id) \circ h\colon \Tg V|_A \to \x(A) \times \R^d$. Como $\varphi$ e $(\x,\Id)$ são difeomorfismos, $h$ também é, o que mostra que $(A,h)$ é uma trivialização local em $p$. Isso conclui a demonstração.
 \end{proof}
 
-\subsubsection{Funções de transição}
+\subsection{Funções de transição}
 
 Relembremos que $\Iso{\toplin}(\R^n)$ é o grupo de homeomorfismos lineares de $\R^n$ para $\R^n$.
 
@@ -205,7 +205,7 @@ No caso do fibrado tangente $\Tg \bm V$ de uma variedade diferencial $\bm V$, da
 	\func{\D(\x' \circ x\inv)}{A \cap A'}{\Iso{\toplin}(\R^n)}{p}{\D(\x' \circ \x\inv)|_p}.
 	\end{align*}
 
-\begin{proposition}[Construção por Atlas Fibrado]
+\begin{proposition}[Atlas Fibrado]
 \label{topo:atlas.fibrado}
 Sejam $\bm V$ uma variedade diferencial $d$-dimensional, $(E|_p)_{p \in V}$ uma família de espaços lineares reais $n$-dimensionais, $E := \coprod_{p \in V} E|_p$, $\proj\colon E \to V$ uma função tal que $\proj(E|_p) = \{p\}$ e $\atlas$ um conjunto de pares $(A,h)$ tais que
 	\begin{enumerate}
@@ -711,14 +711,14 @@ Mostremos que $\sim$ é relação de equivalência.
 	\item (Reflexividade) Primeiro notemos que, pelo mesmo argumento de \ref{topo:prop.func.trans}, para todo $i \in I$ vale que $T^i_i|_p = \Id_{\R^n}$. Seja $(i,p,v) \in E$. %Da identidade de $\{T^i_{i'}\}_{(i,i') \in I^2}$
 Disso segue que $T^i_i|_p v = v$, portanto $(i,p,v) \sim (i,p,v)$.
 
-	\item (Simetria) Sejam $(i,p,v), (i',p',v') \in E'$ tais que $(i,p,v) \sim (i',p',v')$. Então $p=p'$ e $v'=T^i_{i'}|_p v$. Da % identidade e a
+	\item (Simetria) Sejam $(i,p,v)$, $(i',p',v') \in E'$ tais que $(i,p,v) \sim (i',p',v')$. Então $p=p'$ e $v'=T^i_{i'}|_p v$. Da % identidade e a
 cociclicidade de $\{T^i_{i'}\}_{(i,i') \in I^2}$ segue que
 	\begin{equation*}
 	v = T^i_i|_p v = T^{i'}_i|_p \circ T^i_{i'}|_p v = T^{i'}_i|_p v'.
 	\end{equation*}
 Como $p'=p$, segue que $(i',p',v') \sim (i,p,v)$.
 
-	\item (Transitividade) Sejam $(i,p,v), (i',p',v'), (i'',p'',v'') \in E'$ tais que $(i,p,v) \sim (i',p',v')$ e $(i',p',v') \sim (i'',p'',v'')$. Então $p=p'$, $p'=p''$, $v'=T^i_{i'}|_p v$ e $v''=T^{i'}_{i''}|_p v'$. Da cociclicidade de $\{T^i_{i'}\}_{(i,i') \in I^2}$ segue que
+	\item (Transitividade) Sejam $(i,p,v)$, $(i',p',v')$, $(i'',p'',v'') \in E'$ tais que $(i,p,v) \sim (i',p',v')$ e $(i',p',v') \sim (i'',p'',v'')$. Então $p=p'$, $p'=p''$, $v'=T^i_{i'}|_p v$ e $v''=T^{i'}_{i''}|_p v'$. Da cociclicidade de $\{T^i_{i'}\}_{(i,i') \in I^2}$ segue que
 	\begin{equation*}
 	T^i_{i''}|_p v = T^{i'}_{i''}|_p \circ T^i_{i'}|_p v = T^{i'}_{i''}|_p v' = v''.
 	\end{equation*}

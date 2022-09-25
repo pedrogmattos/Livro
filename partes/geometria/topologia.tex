@@ -69,12 +69,12 @@ A noção de topologia que será abordada nesta parte do livro é a topologia ba
 	\begin{equation*}
 	(F_i)_{i \in I} \subseteq \topo_{\bullet} \Rightarrow \bigcap_{i \in I} F_i  \in \topo_{\bullet}
 	\end{equation*}
-	
+
 	\item União finita de fechados é fechado.
 	\begin{equation*}
 	(F_i)_{i \in [n]} \subseteq \topo_{\bullet} \Rightarrow \bigcup_{i=0}^{n-1} F_i \in \topo_{\bullet}
 	\end{equation*}
-	
+
 
 %	\item $F_1,F_2 \in \topo_{\bullet} \Rightarrow F_1 \cup F_2 \in \topo_{\bullet}$ se, e somente se, $(F_i)_{i \in [n]} \subseteq \topo_{\bullet} \Rightarrow \displaystyle\bigcup_{i=1}^n F_i \in \topo_{\bullet}$.
 	\end{enumerate}
@@ -82,12 +82,12 @@ A noção de topologia que será abordada nesta parte do livro é a topologia ba
 \begin{proof} Todas as demonstrações dependem de propriedades básicas de teoria de conjuntos.
 	\begin{enumerate}
 	\item Como $\emptyset,X \in \topo$, $\emptyset^\complement = X$ e $X^\complement = \emptyset$, segue que $\emptyset,X \in \topo_{\bullet}$.
-	
+
 	\item  Seja $(F_i)_{i \in I} \subseteq \topo_{\bullet}$. Então $((F_i)^\complement)_{i \in I} \subseteq \topo$, o que implica que $\bigcup_{i \in I} (F_i)^\complement \in \topo$. Para concluir a demonstração, basta notar que
 	\begin{equation*}
 	\left( \bigcup_{i \in I} (F_i)^\complement \right)^\complement = \bigcap_{i \in I} F_i.
 	\end{equation*}
-	
+
 	\item Seja $(F_i)_{i \in [n]} \subseteq \topo_{\bullet}$. Então $((F_i)^\complement)_{i \in [n]} \subseteq \topo$, o que implica que $\bigcap_{i=0}^{n-1} (F_i)^\complement \in \topo$. Para concluir a demonstração, basta notar que
 	\begin{equation*}
 	\left( \bigcap_{i=0}^{n-1} (F_i)^\complement \right)^\complement = \bigcup_{i=0}^{n-1} F_i.
@@ -99,9 +99,9 @@ A noção de topologia que será abordada nesta parte do livro é a topologia ba
 \subsubsection{Interior e fecho}
 
 	Intuitivamente, sabemos dizer quais pontos de um subconjunto da reta, do plano ou do espaço estão dentro do conjunto, quais estão fora e quais formam uma espécie de fronteira entre a parte de dentro e a de fora. Para uma bola aberta de raio unitário e centro na origem, é claro que os pontos de norma menor que 1 são os pontos do interior da bola, os pontos de norma igual a 1 são os pontos de fronteira e os pontos com norma maior que 1 são os pontos do exterior. Para conjuntos mais complicados, no entanto, parece ser mais difícil dizer o que está dentro e o que está fora. Se analisamos o conjunto dos racionais na reta, não é óbvio o que está dentro, o que está fora, o que é fronteira.
-	
+
 	Além disso, a nossa intuição usa a ideia de norma ou distância no caso da bola e em espaços topológicos gerais isso não é possível. Para continuar a generalização dos conceitos topológicos existentes na reta, plano e espaço, devemos tentar formular a ideia de ponto interior usando os conceitos topológicos gerais, e fazemos isso notando que, no caso da bola e de conjuntos simples dos espaços tradicionais, um ponto está dentro do conjunto se existe um aberto em torno do ponto que está inteiramente contido no conjunto. Esse conceito não é o conceito que usaremos para definir o interior de um conjunto, mas é equivalente.
-	
+
 	No começo dessa seção, o foco será o conceito de interior de um conjunto. A definição de interior que usaremos é a de que o interior de um conjunto é o maior conjunto aberto contido no conjunto. Maior, nesse caso, significa maior em relação à ordem parcial de contenção de conjuntos abertos. Como união de abertos é aberto, sabemos que a união de todos abertos contidos em um conjunto é aberto e, portanto, é o maior aberto contido no conjunto. Podemos perceber, ainda, que essa definição é equivalente à comentada acima pois, se um ponto está em um aberto do conjunto, ele está na união de todos eles e, se ele está na união, está, em particular, em algum aberto. Seguem abaixo a definição formal de interior de um conjunto e, em seguida, algumas propriedades básicas.
 
 %\begin{definition}
@@ -132,13 +132,13 @@ De acordo com essa definição, o interior de um conjunto é o maior aberto cont
 \begin{proof} Sejam $(A_i)_{i \in I}$, $(B_j)_{j \in J}$ e $(C_k)_{k \in K}$ indexações dos subconjuntos abertos de $A$, $B$ e $A \cap B$, respectivamente.
 	\begin{enumerate}
 	\item Seja $a \in \Int{A}$. Então existe $j \in I$ tal que $a \in A_j$. Como $A_i \subseteq A$ para todo $i \in I$, então $a \in A$, o que mostra que $\Int{A} \subseteq A$.
-	
+
 	\item Suponha que $A$ um aberto. Como $\Int{A} \subseteq A$ para todo $A \subseteq X$, basta mostrar que $A \subseteq \Int{A}$. Seja $a \in A$.	Se $A$ é aberto, então existe $i \in I$ tal que $A_i = A$, o que implica $a \in A_i$ e, portanto, que $a \in \Int{A}$, o que mostra que $A \subseteq \Int{A}$. Assim, concluímos que $\Int{A}=A$. Reciprocamente, suponha que $\Int{A}=A$. Como $\Int{A}$ é união de abertos, é um conjunto aberto e isso implica que $A$ é aberto.
-	
+
 	\item Vamos mostrar a inclusão $\Int{(A \cap B)} \subseteq \Int{A} \cap \Int{B}$. Seja $a \in \Int{(A \cap B)}$. Então existe $k \in K$ tal que $a \in C_k$. Como $C_k$ é subconjunto aberto de $A \cap B$, então $C_k$ é subconjunto aberto de $A$ e de $B$, o que implica que $a \in \Int{A}$ e $a \in \Int{B}$. Assim, concluímos que $a \in \Int{A} \cap \Int{B}$. Reciprocamente, vamos mostrar a inclusão $\Int{A} \cap \Int{B} \subseteq \Int{(A \cap B)}$. Seja $a \in \Int{A} \cap \Int{B}$. Então $a \in \Int{A}$ e $a \in \Int{B}$, o que implica que existem $i \in I$ e $j \in J$ tais que $a \in A_i$ e $a \in B_j$; ou seja, $a \in A_i \cap B_j$. Como $A_i$ e $B_j$ são abertos, sua interseção é aberto e, como $A_i \subseteq A$ e $B_j \subseteq B$, segue que $A_i \cap B_j \subseteq A \cap B$, e isso implica que $a \in \Int{(A \cap B)}$.
-	
+
 	\item Como $\Int{A}$ é um conjunto aberto, pelo item 2 segue que $\Int{(\Int{A})} = \Int{A}$.
-\qedhere	
+\qedhere
 	\end{enumerate}
 \end{proof}
 
@@ -150,24 +150,24 @@ De acordo com essa definição, o interior de um conjunto é o maior aberto cont
 	\item $\mathcal I(A \cap B) = \mathcal I(A) \cap \mathcal I(B)$;
 	\item $\mathcal I(\mathcal I(A)) = \mathcal I(A)$.
 	\end{enumerate}
-	
+
 Então o conjunto $\topo := \set{C \subseteq X}{C = \mathcal I(C)}$ é uma topologia de $X$ e $\mathcal I(C) = \Int{C}$ para cada $C \subseteq X$.
 \end{proposition}
 \begin{proof}
-	Primeiro, notemos que, pela primeira propriedade, $X \in \topo$ e, pela segunda propriedade, como $\mathcal I(\emptyset) \subseteq \emptyset$, concluímos que $\mathcal I(\emptyset)=\emptyset$, o que significa que $\emptyset \in \topo$. 	
-	
+	Primeiro, notemos que, pela primeira propriedade, $X \in \topo$ e, pela segunda propriedade, como $\mathcal I(\emptyset) \subseteq \emptyset$, concluímos que $\mathcal I(\emptyset)=\emptyset$, o que significa que $\emptyset \in \topo$.
+
 	Vamos mostrar a seguinte propriedade: para todos $A,B \subseteq X$,
 	\begin{equation*}
 	A \subseteq B \Rightarrow \mathcal I(A) \subseteq \mathcal I(B)
 	\end{equation*}
-Supondo que $A \subseteq B$, temos que $A = A \cap B$. Então, pela terceira propriedade, $\mathcal I(A) = \mathcal I(A) \cap \mathcal I(B)$. Assim, segue que $\mathcal I(A) \subseteq \mathcal I(B)$.	
-	
+Supondo que $A \subseteq B$, temos que $A = A \cap B$. Então, pela terceira propriedade, $\mathcal I(A) = \mathcal I(A) \cap \mathcal I(B)$. Assim, segue que $\mathcal I(A) \subseteq \mathcal I(B)$.
+
 Agora, seja $(A_i)_{i \in I}$ uma família de conjuntos em $\topo$. Então, para cada $j \in I$, $A_j \subseteq \bigcup_{i \in I} A_i$ e, portanto, $\mathcal I(A_j) \subseteq \mathcal I(\bigcup_{i \in I} A_i)$. Mas a família satisfaz $\mathcal I(A_i) = A_i$. Assim, concluímos que
 	\begin{equation*}
 	\bigcup_{i \in I} \mathcal I(A_i) = \bigcup_{i \in I} A_i \subseteq \mathcal I \left( \bigcup_{i \in I} A_i \right)
 	\end{equation*}
 Pela segunda propriedade, $\mathcal I(\bigcup_{i \in I} A_i) \subseteq \bigcup_{i \in I} A_i$. Portanto $\bigcup_{i \in I} A_i = \mathcal I(\bigcup_{i \in I} A_i )$, e concluímos que $\bigcup_{i \in I} A_i \in \topo$.
-	
+
 	Então, seja $(A_i)_{i \in [n]}$ uma família finita de conjuntos em $\topo$. Usando a terceira propriedade e indução, provaremos que $\bigcap_{i=0}^{n-1} A_i \in \topo$. Para $0$, a propriedade é trivialmente verdade. Suponhamos que vale para $k$. Então, pela terceira propriedade,
 	\begin{align*}
 	\mathcal I \left( \bigcap_{i=0}^{k} A_i \right)
@@ -182,7 +182,7 @@ Devemos, por fim, mostrar que $\mathcal I(C)=\Int{C}$ para todo $C \subseteq X$.
 	\begin{equation*}
 	\Int{C} = \bigcup_{i \in I} C_i \subseteq \mathcal I(C).
 	\end{equation*}
-	Por outro lado, notemos que $\mathcal I(C)$ é um aberto, pois, pela quarta propriedade, $\mathcal I(\mathcal I(C))= \mathcal I(C)$. Pela segunda propriedade, $\mathcal I(C) \subseteq C$, e segue que $\mathcal I(C)$ é um dos subconjuntos abertos $C_i$ de $C$. Portanto	
+	Por outro lado, notemos que $\mathcal I(C)$ é um aberto, pois, pela quarta propriedade, $\mathcal I(\mathcal I(C))= \mathcal I(C)$. Pela segunda propriedade, $\mathcal I(C) \subseteq C$, e segue que $\mathcal I(C)$ é um dos subconjuntos abertos $C_i$ de $C$. Portanto
 	\begin{equation*}
 	\mathcal I(C) \subseteq \bigcup_{i \in I} C_i = \Int{C}.
 	\end{equation*}
@@ -196,9 +196,9 @@ Devemos, por fim, mostrar que $\mathcal I(C)=\Int{C}$ para todo $C \subseteq X$.
 \end{proposition}
 \begin{proof}
 	Se o único aberto contido em $C$ é $\emptyset$, então $\Int{C}=\emptyset$ e segue que, para todo $x \in X$, todo aberto $A \in \topo$ tal que $x \in A$ não está contido em $C$. Então os conjuntos são iguais.
-	Se $\Int{C}=\emptyset$, então o único aberto contido em 
-	
-	
+	Se $\Int{C}=\emptyset$, então o único aberto contido em
+
+
 	Se $x \in \Int{C}$, então existe
 \end{proof}
 
@@ -219,7 +219,7 @@ Sejam $(X,\topo)$ um espaço topológico e $C \subseteq X$. O \emph{fecho de $C$
 
 \begin{proposition}
 	Seja $\bm X$ um espaço topológico. Então
-	\begin{enumerate}	
+	\begin{enumerate}
 	\item Para todo $A \subseteq X$, $A \subseteq \Fec{A}$;
 	\item Um conjunto $A$ é fechado se, e somente se, $\Fec{A}=A$;
 	\item $\Fec{(A \cup B)} = \Fec{A} \cup \Fec{B}$;
@@ -240,7 +240,7 @@ Sejam $(X,\topo)$ um espaço topológico e $C \subseteq X$. O \emph{fecho de $C$
 	\item $\mathcal F(A \cup B) = \mathcal F(A) \cup \mathcal F(B)$.
 	\item $\mathcal F(\mathcal F(A)) = \mathcal F(A)$.
 	\end{enumerate}
-	
+
 Então o conjunto $\topo_{\bullet} := \set{C \subseteq X}{C = \mathcal F(C)}$ é o conjunto de fechados de uma topologia $\topo$ de $X$ e $\mathcal F(C) = \Fec{C}$ para cada $C \subseteq X$.
 \end{proposition}
 \begin{proof}
@@ -300,7 +300,7 @@ Então o conjunto $\topo_{\bullet} := \set{C \subseteq X}{C = \mathcal F(C)}$ é
 %	\fro{C} = \Fec{C} \setminus \Int{C} \Leftrightarrow \Fec{C} = \Int{C} \cup \fro{C}
 %	\end{equation*}
 %	\item
-%	\item 
+%	\item
 %	\begin{equation*}
 %	\fro{C} = \Fec{C} \setminus \Int{C} = \Fec{C} \cap (\Int{C})^\complement = \Fec{C} \cap \Fec{C^\complement}
 %	\end{equation*}
@@ -332,7 +332,7 @@ Então o conjunto $\topo_{\bullet} := \set{C \subseteq X}{C = \mathcal F(C)}$ é
 % A conjectura a seguir parece ser FALSA pois precisaríamos achar o máximo de uma sequência infinita de índices naturais.
 
 %CONJECTURA
-%	Sejam $X$ um conjunto e $(\topo_i)_{i \in \N}$ uma sequência crescente de topologias de $X$; ou seja, $\topo_1 \subseteq \topo_2 \subseteq \cdots \subseteq \topo_i \subseteq \cdots$. Então 
+%	Sejam $X$ um conjunto e $(\topo_i)_{i \in \N}$ uma sequência crescente de topologias de $X$; ou seja, $\topo_1 \subseteq \topo_2 \subseteq \cdots \subseteq \topo_i \subseteq \cdots$. Então
 %	\begin{equation*}
 %	\topo := \displaystyle\bigcup_{i \in \N} \topo_i
 %	\end{equation*}
@@ -381,7 +381,7 @@ Denota-se $f: \bm X \to \bm Y$. O conjunto dessas funções é denotado por $\Co
 \begin{proof}
 \begin{enumerate}
 	\item Seja $A \in \topo$. Então $\Id_X\inv(A)=A \in \topo$, logo $\Id_x$ é contínua.
-	
+
 	\item Seja $A \in \topo_2$. Como $f_1$ é contínua, $f_1\inv(A) \in \topo_1$. Como $f_0$ é contínua, $f_0\inv(f_1\inv(A)) \in \topo_0$. Portanto
 		\begin{equation*}
 		(f_1 \circ f_0)\inv(A) = f_1\inv \circ f_0\inv (A) = f_0\inv(f_1\inv(A)) \in \topo_0.
@@ -701,10 +701,11 @@ em que $\sim$ é a menor equivalência tal que, para todos $i,i' \in I$, $(i,x_i
 
 \paragraph{Exemplo de topologia quociente para soma pontual de esferas}
 
-Consideremos uma esfera $d$-dimensional $\S^d$ e o espaço $\S^s \dotplus \S^d$, dado aqui por
+Consideremos uma esfera $d$-dimensional $\S^d$ e o espaço $\S^d \dotplus \S^d$, dado aqui por
 	\begin{align*}
-	\S^d \dotplus \S^d &= (\frac{1}{2}\S^d + (\frac{1}{2},0,\ldots,0)) \cup (\frac{1}{2}\S^d - (\frac{1}{2},0,\ldots,0)) \\
-		&= \set{x \in \R^{d+1}}{\nor{x-(\frac{1}{2},0,\ldots,0)}=\frac{1}{2}} \cup \set{x \in \R^{d+1}}{\nor{x+(\frac{1}{2},0,\ldots,0)}=\frac{1}{2}}.
+	\S^d \dotplus \S^d &= \left(\frac{1}{2}\S^d + \left(\frac{1}{2},0,\ldots,0\right)\right) \cup \left(\frac{1}{2}\S^d - \left(\frac{1}{2},0,\ldots,0\right)\right) \\
+		&= \set{x \in \R^{d+1}}{\nor{x-\left(\frac{1}{2},0,\ldots,0\right)}=\frac{1}{2}} \\
+		&\qquad \cup \set{x \in \R^{d+1}}{\nor{x+\left(\frac{1}{2},0,\ldots,0\right)}=\frac{1}{2}}.
 	\end{align*}
 
 Definimos assim a função
@@ -712,7 +713,7 @@ Definimos assim a função
 	\func{\mathrm{q}}{\S^d}{\S^d \dotplus \S^d}{(x_0,\ldots,x_d)}{\left( x_0, \left( \frac{\abs{x_0}-{x_0}^2}{1-{x_0}^2} \right)^{\frac{1}{2}} x_1, \ldots, \left( \frac{\abs{x_0}-{x_0}^2}{1-{x_0}^2} \right)^{\frac{1}{2}} x_d \right)}
 	\end{align*}
 
-Essa função é uma função quociente. Primeiro, mostremos que ela está bem definida. Seja $x \in \S^d$.
+Essa função é uma função quociente.% Primeiro, mostremos que ela está bem definida. Seja $x \in \S^d$.
 
 \subsection{Topologia de ordem}
 
@@ -775,7 +776,7 @@ e
 	\end{equation*}
 que são ambos abertos, o que mostra que $-$ é contínua.
 
-Para mostrar que $\times$ é contínua, consideramos dois casos. 
+Para mostrar que $\times$ é contínua, consideramos dois casos.
 
 (1) Se $e=0$ e $c \times c' > e=0$, então $c \neq 0$, logo se $c > 0$ então $c'>0$ e, se $c < 0$, então $c' < 0$, logo
 	\begin{equation*}
@@ -836,7 +837,7 @@ de $c$ e $c'$, respectivamente, separam $c$ e $c'$.
 %	F = \left( \bigcup_{i \in I} \intaa{e_i}{e'_i} \right)^\complement &= \bigcap_{i \in I} \big( \intaa{e_i}{e'_i} \big)^\complement \\
 %		&= \bigcap_{i \in I} \big( \intaa{-\infty}{e_i} \cup \intaa{e'_i}{\infty} \big) \\
 %%		&= \left( \bigcap_{i \in I} \intaa{-\infty}{e_i} \right) \cup \left( \bigcap_{i \in I}\intaa{e'_i}{\infty} \right) \\
-%%		&= 
+%%		&=
 %	\end{align*}
 %
 %Agora, seja $c \notin F$. Então $c \in \bigcup_{i \in I} \intaa{e_i}{e'_i}$, o que significa que existe algum $i \in I$ tal que $c \in \intaa{e_i}{e'_i}$.
@@ -877,7 +878,7 @@ que são ambos abertos, o que mostra que $\abs{\var}$ é contínua.
 
 
 \begin{proposition}
-Seja $(\bm C,\leq)$ um corpo ordenado. O corpo $\bm C$ é não-infinitesimal se, e somente se, $\Q_C$ é denso em $C$.
+Seja $(\bm C,\leq)$ um corpo ordenado. O corpo $\bm C$ é não"-infinitesimal se, e somente se, $\Q_C$ é denso em $C$.
 \end{proposition}
 
 \section{Separação}
@@ -897,11 +898,11 @@ Sejam $\bm X$ um espaço topológico e $A,B \subseteq X$. Definimos as seguintes
 	\begin{equation*}
 	V_A \cap V_B = \emptyset.
 	\end{equation*}
-	\item (\emph{Separação por função contínua}) Existe uma função contínua $f \in \Cont(X,[0,1])$ tal que
+	\item (\emph{Separação por função contínua}) Existe $f \in \Cont(X,[0,1])$ tal que
 	\begin{equation*}
 	f(A)=\{0\} \text{\ \ e\ \ } f(B)=\{1\}.
 	\end{equation*}
-	\item (\emph{Separação precisa por função contínua}) Existe uma função contínua $f \in \Cont(X,[0,1])$ tal que
+	\item (\emph{Separação precisa por função contínua}) Existe $f \in \Cont(X,[0,1])$ tal que
 	\begin{equation*}
 	f\inv(\{0\})=A \text{\ \ e\ \ } f\inv(\{1\})=B.
 	\end{equation*}
@@ -956,7 +957,7 @@ Seja $\bm X$ um espaço topológico. São equivalentes as seguintes propriedades
 	\item $\bm X$ é distinguível.
 	\item $\forall x,y \in X \quad x \neq y \quad \Rightarrow \quad \viz_x \nsubseteq \viz_y \text{\ \ ou\ \ } \viz_y \nsubseteq \viz_x$.
 	\item $\forall x,y \in X \quad x \neq y \quad \Rightarrow \quad x \notin \Fec{\{y\}} \text{\ \ ou\ \ } y \notin \Fec{\{x\}}$.
-	\item $\forall x,y \in X \quad x \neq y \quad \Rightarrow \quad \Fec{\{x\}} \neq \Fec{\{y\}}$.	
+	\item $\forall x,y \in X \quad x \neq y \quad \Rightarrow \quad \Fec{\{x\}} \neq \Fec{\{y\}}$.
 \end{enumerate}
 \end{proposition}
 
@@ -1108,7 +1109,7 @@ Seja $(X_i)_{i \in I}$ uma família não vazia de espaços topológicos não vaz
 
 \begin{definition}
 Um espaço topológico \emph{normal} é um espaço topológico
-% $\bm X$ 
+% $\bm X$
 em que todo par de conjuntos fechados disjuntos é separado por vizinhanças.
 % : para todos fechados $F,G \subseteq X$,
 %	\begin{equation*}
@@ -1400,7 +1401,7 @@ Seja $\bm X$ um espaço topológico. São equivalentes
 \end{exercise}
 
 \begin{exercise}
-Seja $\bm X$ um espaço topológico. 
+Seja $\bm X$ um espaço topológico.
 	\begin{enumerate}
 	\item Para todo $C \subseteq X$ e todo $F \subseteq X$, se $C$ é compacto e $F$ é fechado, então $F$ é compacto;
 	\item Para todo $S \subseteq X$ e todo $C \subseteq X'$, $C$ é compacto em $\bm S$ se, e somente se, é compacto em $\bm X$.
@@ -1431,11 +1432,15 @@ Seja $\bm X$ um espaço topológico separado.
 Sejam $\bm X_0$ e $\bm X_1$ espaços topológicos e $f\colon X_0 \to X_1$ uma função contínua. Se $\bm X_0$ é compacto, então $f(\bm X_0)$ é compacto.
 \end{proposition}
 \begin{proof}
-Seja $(C_I)_{i \in I}$ uma cobertura aberta de $f(\bm X_0)$. A família $(f\inv(C_i))_{i \in I}$ é  uma cobertura de $X_1$, pois
+Seja $(C_I)_{i \in I}$ uma cobertura aberta de $f(\bm X_0)$. A família
+	\begin{equation*}
+	(f\inv(C_i))_{i \in I}
+	\end{equation*}
+é  uma cobertura de $X_1$, pois
 	\begin{equation*}
 	\bigcup_{i \in I}f\inv(C_i) = f\inv\left(\bigcup_{i \in I}C_i\right) = f\inv(X_1) = X_0.
 	\end{equation*}
-A cobertura é aberta pois $f$ é contínua. Como $\bm X_0$ é compacto, existem $i_0, \ldots, i_{n-1} \in I$ tal que $(f\inv(A_{i_k}))_{k \in [n]}$ é uma cobertura aberta de $\bm X_0$. Então $(A_{i_k})_{k \in [n]}$ é uma cobertura aberta de $f(\bm X_0)$, pois
+A cobertura é aberta pois $f$ é contínua. Como $\bm X_0$ é compacto, existem $i_0$, $\ldots$, $i_{n-1} \in I$ tal que $(f\inv(A_{i_k}))_{k \in [n]}$ é uma cobertura aberta de $\bm X_0$. Então $(A_{i_k})_{k \in [n]}$ é uma cobertura aberta de $f(\bm X_0)$, pois
 	\begin{equation*}
 	f(X_0) = f\left(\bigcup_{k \in [n]} f \inv(A_{i_k})\right) = \bigcup_{k \in [n]} f(f\inv(A_{i_k})) \subseteq  \bigcup_{k \in [n]} A_{i_k}.
 	\end{equation*}
@@ -1599,7 +1604,7 @@ Sejam $\bm X$ e $\bm X'$ espaços topológicos. A relação de homotopia é uma 
 		\func{H}{\intff{0}{1} \times X}{X'}{(t,x)}{f(x)}
 		\end{align*}
 Então $H$ é uma função contínua, pois $f$ é contínua, e vale que $H_0 = H_1 = f$, portanto $f \homot f$.
-	
+
 	\item (Simetria) Sejam $f,f' \in \Cont(X,X')$ tais que $f \homot f'$ e $\fun{H}{\intff{0}{1} \times X}{X'}$ uma homotopia de $f$ para $f'$. Consideremos a função
 		\begin{align*}
 		\func{H'}{\intff{0}{1} \times X}{X'}{(t,x)}{H_{1-t}(x)}.
@@ -1706,13 +1711,13 @@ Sejam $X$ um espaço métrico e $c_1,c_2: \intff{0}{1} \to X$ caminhos em $X$ ta
 		(x,t) &\mapsto l(x).
 		\end{align*}
 Sabemos que $H$ é uma homotopia entre $l_1$ e $l_1$. Basta notar que, para todo $t \in \intff{0}{1}$, $H(0,t)=H(1,t)=l(0)$, o que termina a demonstração de que $H$ é uma homotopia de laços entre $l_1$ e $l_1$.
-	
+
 	\item Simetria: $l_1 \approx l_2 \Rightarrow l_2 \approx l_1$. \\
 	Seja $H: S^1 \times \intff{0}{1} \to X$ uma homotopia de laços entre $l_1$ e $l_2$. Então consideremos a função
 	\begin{align*}
 	H': S^1 \times \intff{0}{1} &\to X \\
 		(x,t) &\mapsto H(x,1-t).
-	\end{align*}		
+	\end{align*}
 Sabemos que $H$ é uma homotopia entre $l_2$ e $l_1$. Basta notar que, para todo $t \in \intff{0}{1}$, $H'(0,t)=H(0,1-t)=l(0)=H(1,1-t)=H'(1,t)$, o que termina a demonstração de que $H'$ é uma homotopia de laços entre $l_2$ e $l_1$.
 
 	\item Transitividade: $l_1 \approx l_2 \text{\ \ e\ \ } l_2 \approx l_3 \Rightarrow l_1 \approx l_3$. \\
@@ -1724,7 +1729,7 @@ Sabemos que $H$ é uma homotopia entre $l_2$ e $l_1$. Basta notar que, para todo
 						H_2(x,2t-1) &\text{se $\frac{1}{2} \leq t \leq 1$}.
 						\end{cases}
 	\end{align*}
-Sabemos que $H$ é uma homotopia entre $l_1$ e $l_3$. Basta notar que, como $H_1$ é homotopia de laços, para todo $t \in [0,\frac{1}{2}]$, $H(0,t)=H_1(0,2t)=l_1(0)$ e, como $H_2$ é homotopia de laços entre $l_2$ e $l_3$, para todo $t \in [\frac{1}{2},1]$, $H(0,t)=H_2(0,2t-1)=l_2(0)=l_1(0)$ o que termina a demonstração de que $H$ é uma homotopia de laços entre $l_1$ e $l_3$. 
+Sabemos que $H$ é uma homotopia entre $l_1$ e $l_3$. Basta notar que, como $H_1$ é homotopia de laços, para todo $t \in [0,\frac{1}{2}]$, $H(0,t)=H_1(0,2t)=l_1(0)$ e, como $H_2$ é homotopia de laços entre $l_2$ e $l_3$, para todo $t \in [\frac{1}{2},1]$, $H(0,t)=H_2(0,2t-1)=l_2(0)=l_1(0)$ o que termina a demonstração de que $H$ é uma homotopia de laços entre $l_1$ e $l_3$.
 	\end{enumerate}
 \end{proof}
 
@@ -1770,7 +1775,7 @@ Consideremos, assim, a função
 		(s,t) &\mapsto c_1((1-t)\phi(s)).
 	\end{align*}
 	Temos que $H$ é contínua, pois $c_1$, $1-t$ e $\phi$ são contínuas. Agora, notemos que, para todo $s,t \in [0,1]$, $1-t \in [0,1]$ e $\phi(s) \in [0,1]$, o que mostra que $(1-t)\phi(s) \in [0,1]$ e, portanto, que $H$ está bem definida. Ainda, para todo $s \in [0,1]$, $H(s,0)=c_1(\phi(s))=c_1 \comp (c_1)^{-1}(s)$ e $H(s,1)=c_1(0)=x_0$. Portanto $H$ é homotopia entre $c_1 \comp (c_1)^{-1}$ e $e_{x_0}$.	Para mostrar que $H$ é homotopia de caminhos, note que, para todo $t \in [0,1]$,	$H(0,t)=c_1((1-t)\phi(0))=c_1(0)$ e $H(1,t)=c_1((1-t)\phi(1))=c_1(0)$, o que termina a demonstração.
-	
+
 	\item Análogo ao item anterior, mas considerando a parametrização $\phi: [0,1] \to [0,1]$
 	\begin{equation*}
 	\phi(s)
@@ -1780,8 +1785,8 @@ Consideremos, assim, a função
 				2s-1 &\text{se $s \in [\frac{1}{2},1]$}.
 			\end{cases}
 	\end{equation*}
-	
-	\item Análogo ao item anterior, mas considerando as parametrizações $\phi,\phi': [0,1] \to [0,1]$
+
+	\item Análogo ao item anterior, mas considerando as parametrizações $\phi$, $\fun{\phi'}{[0,1]}{[0,1]}$
 	\begin{equation*}
 	\phi(s)
 		=
@@ -1798,7 +1803,7 @@ Consideremos, assim, a função
 				0 &\text{se $s \in [\frac{1}{2},1]$}.
 			\end{cases}
 	\end{equation*}
-	
+
 	\item Notemos que
 	\begin{align*}
 	(c_1 \comp c_2) \comp c_3 &=
@@ -1814,7 +1819,7 @@ Consideremos, assim, a função
 		c_3(4s-3) &\text{se $s \in [\frac{3}{4},1]$}.
 		\end{cases}
 	\end{align*}
-	
+
 	Assim, considerando a parametrização $\phi: [0,1] \to [0,1]$
 	\begin{equation*}
 	\phi(s)
@@ -1824,7 +1829,7 @@ Consideremos, assim, a função
 				s + \frac{1}{4} &\text{se $s \in [\frac{1}{4},\frac{1}{2}]$} \\
 				\frac{s}{2}+\frac{1}{2} &\text{se $s \in [\frac{1}{2},1]$}.
 			\end{cases}
-	\end{equation*}	
+	\end{equation*}
 segue que $((c_1 \comp c_2) \comp c_3)(s) = (c_1 \comp (c_2 \comp c_3)) (\phi(s))$. Consideremos, assim, a função
 	\begin{align*}
 	H: [0,1] \times [0,1] &\to X \\
@@ -1853,7 +1858,7 @@ segue que $((c_1 \comp c_2) \comp c_3)(s) = (c_1 \comp (c_2 \comp c_3)) (\phi(s)
 								H_2(2s-1,t) &\text{se $\frac{1}{2} \leq s \leq 1$}.
 								\end{cases}
 	\end{align*}
-	
+
 	Primeiro, notemos que $H$ é uma homotopia entre $c_1$ e $c_2$. Pa Como $H_1$ e $H_2$ são contínuas, basta mostrar que $H$ é contínua nos pontos em que $s=\frac{1}{2}$. Para isso, notemos que, para todo $t \in [0,1]$, $H_1(2\frac{1}{2},t)=H_1(1,t)=c'_1(1)$, pois $H_1$ é homotopia de caminhos, e $H_2(2\frac{1}{2}-1,t) = H_2(0,t) = c_2(0)$, pois $H_2$ é homotopia de caminhos. Assim, segue que as funções nesses pontos são iguais e, portanto, $H$ é contínua. Ainda, para todo $s \in [0,1]$,
 	\begin{equation*}
 	H(s,0) = \begin{cases}
@@ -1869,7 +1874,7 @@ o que mostra que $H(s,0)= (c_1 \comp c_2)(s)$, e
 o que mostra que $H(s,0)= (c'_1 \comp c'_2)(s)$ e, portanto, que $H$ é homotopia.
 
 	Agora, devemos mostrar que $H$ é homotopia de caminhos. Notemos que, para todo $t \in [0,1]$, $H(0,t) = H_1(0,t) = c_1(0) = (c_1 \comp c_2)(0)$, pois $H_1$ é homotopia de caminhos, e $H(1,t) = H_2(1,t) = c'_2(1) = (c'_1 \comp c'_2)(1)$, o que mostra que $H$ é homotopia de caminhos.
-	
+
 	\item Seja $H$ uma homotopia de caminhos entre $c_1$ e $c'_1$. Consideremos a função
 	\begin{align*}
 	H': [0,1] \times [0,1] &\to X \\
@@ -1884,7 +1889,7 @@ e
 	H'(s,1)=H(1-s,1)=c'_1(1-s)=(c'_1)^{-1}(s),
 	\end{equation*}
 pois $H$ é homotopia. Assim, mostramos que $H'$ é homotopia entre $(c_1)^{-1}$ e $(c'_1)^{-1}$.
-	
+
 	Agora, mostremos que $H'$ é homotopia de caminhos. Para todo $t \in [0,1]$, $H'(0,t)=H(1,t)=c'_1(1)=(c'_1)^{-1}(0)$ e $H'(1,t)=H(0,t)=c_1(0)=(c_1)^{-1}(1)$, pois $H$ é homotopia de caminhos. Assim, mostramos que $H'$ é homotopia de caminhos entre $(c_1)^{-1}$ e $(c'_1)^{-1}$.
 	\end{enumerate}
 \end{proof}
@@ -1911,7 +1916,7 @@ Como $\approx$ é uma relação de equivalência em $L(X,x_0)$, podemos consider
 Notemos que a composição de caminhos está bem definida por causa da proposição \ref{prop:equiv}.
 
 \begin{theorem}
-	Sejam $X$ um espaço métrico conexo por caminhos e $x_0 \in X$. Então  $(\pi_1(X),\comp)$ é um grupo.	
+	Sejam $X$ um espaço métrico conexo por caminhos e $x_0 \in X$. Então  $(\pi_1(X),\comp)$ é um grupo.
 \end{theorem}
 \begin{proof}
 	Segue direto das proposições  \ref{prop:homo} e \ref{prop:equiv}.

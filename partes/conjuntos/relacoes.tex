@@ -59,9 +59,9 @@ Seja $f: A \to B$ uma função. Então
 \begin{proof}
 	\begin{enumerate}
 	\item Suponhamos que $A=\emptyset$. Primeiro, notemos que $f=\emptyset$ é uma função de $\emptyset$ em $B$. Claramente, $f = \emptyset \subseteq \emptyset \times B$. Ainda, se $f$ não fosse função de $\emptyset$ em $B$, existiria $a \in \emptyset$ tal que não existe único $b \in B$ satisfazendo $(a,b) \in f$. Mas existir $a \in \emptyset$ é uma contradição. Logo $f$ é função. Por fim, se $g: \emptyset \times B$ é uma função, como $\emptyset \times B = \emptyset$, então $g \subseteq \emptyset \times B = \emptyset$, logo $g=\emptyset=f$.
-	
+
 Reciprocamente, suponhamos $f=\emptyset$. Se $A \neq \emptyset$, seja $a \in A$. Como $f$ é função, existe $b \in B$ tal que $(a,b) \in f=\emptyset$, o que é contradição. Portanto $A=\emptyset$.
-	
+
 	\item Suponhamos que $A \neq \emptyset$. Então existe $a \in A$ e, como $f$ é função, existe único $b \in \emptyset$ tal que $(a,b) \in f$. Mas $b \in \emptyset$ é absurdo, o que mostra que $A = \emptyset$.
 	\end{enumerate}
 \end{proof}
@@ -74,7 +74,7 @@ Sejam $f: A \to B$ e $g:A' \to B'$. Então
 \end{proposition}
 \begin{proof}
 Suponhamos que $f=g$. Se $A=\emptyset$, então $f=\emptyset$ e $g=f=\emptyset$, o que implica $A'=\emptyset$. Ainda, para todo $a \in A$, $f(a)=g(a)$ pois, se isso fosse falso, existiria $a \in \emptyset$ tal que $f(a)\neq g(a)$, mas existir $a \in \emptyset$ é absurdo. Se $A \neq \emptyset$, seja $a \in A$. Então existe $b \in B$ tal que $(a,b) \in f$ e, como $f=g$, $(a,b) \in g$. Isso implica $a \in A'$ e concluímos que $A \subseteq A'$. Por outro lado, seja $a \in A'$. Então existe $b \in B'$ tal que $(a,b) \in g$ e, como $f=g$, $(a,b) \in f$. Isso implica $a \in A$ e concluímos que $A' \subseteq A$. Portanto $A=A'$. Agora, seja $a \in A$. Então existem $f(a) \in B$ e $g(a) \in B'$. Como $(a,f(a)) \in f$ e $f=g$, então $(a,f(a)) \in g$. Como $f$ é função, existe único $b \in B$ tal que $(a,b) \in f$, o que implica $f(a)=g(a)$.
-	
+
 Reciprocamente, suponhamos que $A=A'$ e que, para todo $a \in A$, $f(a)=g(a)$. Se $A=\emptyset$, então $f=\emptyset$ e $g=\emptyset$, logo $f=g$. Se $A \neq \emptyset$, então seja $p \in f$. Existe $a \in A$ tal que $p=(a,f(a))$. Como $f(a)=g(a)$, então $p=(a,g(a))$; mas $(a,g(a)) \in g$, o que implica $p \in g$ e, portanto, $f \subseteq g$. Agora, seja $p \in g$. Existe $a \in A'$ tal que $p=(a,g(a))$. Como $f(a)=g(a)$, então $p=(a,f(a))$; mas $(a,f(a)) \in f$, o que implica $p \in f$ e, portanto, $f \subseteq g$. Assim, concluímos que $f=g$.
 \end{proof}
 
@@ -125,7 +125,7 @@ Sejam $f: A \to B$ uma função e $A' \subseteq A$ um conjunto. A \emph{restriç
 	\begin{equation*}
 	(h \circ (g \circ f))(a) = h((g \circ f)(a)) = h(g(f(a))) = (h \circ g)(f(a)) = ((h \circ g) \circ f)(a),
 	\end{equation*}
-o que mostra que $h \circ (g \circ f) = (h \circ g) \circ f$. 
+o que mostra que $h \circ (g \circ f) = (h \circ g) \circ f$.
 \end{proof}
 
 \begin{proposition}
@@ -189,8 +189,8 @@ Seja $f\colon A \to B$. Então $f$ é injetiva se, e somente se, existe $g\colon
 \begin{proof}
 Suponhamos que $f$ é injetiva. Se $A = \emptyset$. Então $f=\emptyset$ e, portanto, tomando $g=\Id_B$, temos que $g \circ f = \Id_B \circ \emptyset = \Id_\emptyset = \emptyset$.
 	Se $A \neq \emptyset$, seja $a \in A$.
-	
-	
+
+
 \end{proof}
 
 \begin{proposition}
@@ -207,7 +207,7 @@ Suponhamos que $f$ é sobrejetiva sobre $B$. Então $B=f(A)$; ou seja, para todo
 %\begin{proof}
 %	Primeiro, notemos que os domínios de $g$ e $g'$ são os mesmos. Agora, se $A=\emptyset$, então $f=\emptyset$. Mas isso significa que $\Id_A = \emptyset$ e, como $g$ e $g'$ são inversas de $f$, segue que $g$
 %	 (NÃO SEI SE ROLA COM A=0).
-	
+
 %	Se $A \neq \emptyset$, seja $a \in A$. Então $g \circ f = \Id_B$
 %\end{proof}
 
@@ -273,7 +273,7 @@ Suponhamos que $f$ é sobrejetiva sobre $B$. Então $B=f(A)$; ou seja, para todo
 	\item Suponha, por absurdo, que existe $c \in f(\emptyset)$. Nesse caso, existe $d \in \emptyset$ tal que $f(d) = c$, o que é absurdo. Logo $f(\emptyset) = \emptyset$.
 	\item Se$f(D)=\emptyset$, então vale a proposição. Caso contrário, seja $c \in f(D)$. Então existe $d \in D$ tal que $f(d)=c \in C$.
 	\item Se $f \left( \bigcup_{i \in I} C_i \right) = \emptyset$, então $\bigcup_{i \in I} C_i = \emptyset$. Assim, segue que, para todo $i \in I$, $C_i = \emptyset$ e temos que $f(C_i)=\emptyset$. Portanto $\bigcup_{i \in I} f(C_i) = \emptyset$. Caso contrário, seja $d \in f \left( \bigcup_{i \in I} C_i \right)$. Então existe $c \in \bigcup_{i \in I} C_i$ tal que $f(c)=d$ e, consequentemente, existe $i \in I$ tal que $c \in C_i$. Assim, segue que $d=f(c) \in f(C_i) \subseteq \bigcup_{i \in I} f(C_i)$.
-	
+
 	Reciprocamente, se $\bigcup_{i \in I} f(C_i) = \emptyset$, então, para todo $i \in I$, $f(C_i) = \emptyset$, o que implica $C_i = \emptyset$. Assim, segue que $\bigcup_{i \in I} C_i = \emptyset$ e, portanto, $f\left(\bigcup_{i \in I} C_i \right) = \emptyset$. Caso contrário, seja $d \in \bigcup_{i \in I} f(C_i)$. Então existe $i \in I$ tal que $d \in f(C_i)$ e, consequentemente, existe $c \in C_i$ tal que $f(c)=d$. Assim, segue que $c \in \bigcup_{i \in I} C_i$ e, portanto, que $d \in f\left(\bigcup_{i \in I} C_i \right)$.
 	\end{enumerate}
 \end{proof}
@@ -290,11 +290,11 @@ Sejam $f: D \to C$ uma função, $X \subseteq D$ e $Y \subseteq C$. Então
 \begin{proof}
 	\begin{enumerate}
 	\item Seja $x \in X$. Então $f(x) \in f(X)$, o que implica que $x \in f^{-1}(f(X))$.
-	
+
 	\item Seja $x \in f^{-1}(f(X))$. Então $f(x) \in f(X)$. Portanto existe $x' \in X$ tal que $f(x)=f(x')$. Da injetividade, segue que $x=x' \in X$.
-	
+
 	\item Seja $y \in f(f^{-1}(Y))$. Então existe $x \in f^{-1}(Y)$ tal que $f(x)=y$. Mas então $f(x) \in Y$, portanto $y \in Y$.
-	
+
 	\item Seja $y \in Y$. Da sobrejetividade, existe $x \in X$ tal que $f(x)=y \in Y$. Isso implica que $x \in f^{-1}(Y)$ e, portanto, $y=f(x)=f(f^{-1}(Y))$.
 	\end{enumerate}
 \end{proof}
@@ -320,7 +320,7 @@ Sendo assim, elas satisfazem as seguintes propriedades funtoriais.
 	\begin{enumerate}
 	\item Para todo conjunto $C$,
 		\begin{equation*}
-		\p\emp(\Id_C) = \Id_{\begin{footnotesize}\p\end{footnotesize}(C)};
+		\p\emp(\Id_C) = \Id_{\p(C)};
 		\end{equation*}
 	\item Para todos conjuntos $C,C',C''$ e todas funções $f\colon C \to C'$ e $f'\colon C' \to C''$,
 		\begin{equation*}
@@ -334,7 +334,7 @@ Sendo assim, elas satisfazem as seguintes propriedades funtoriais.
 		\begin{equation*}
 		\p\emp(\Id_c)(A) = \set{\Id_C(a)}{a \in A} = \set{a}{a \in A} = A,
 		\end{equation*}
-portanto $\p\emp(\Id_C) = \Id_{\begin{footnotesize}\p\end{footnotesize}(C)}$.
+portanto $\p\emp(\Id_C) = \Id_{\p(C)}$.
 
 	\item Para todo $A \in \p(C)$,
 		\begin{align*}
@@ -349,10 +349,11 @@ portanto $\p\emp(f' \circ f) = \p\emp(f') \circ \p\emp(f)$.
 \end{proof}
 
 \begin{proposition}[Imagem inversa é funtor contravariante]
+	Valem as seguintes propriedades:
 	\begin{enumerate}
 	\item Para todo conjunto $C$,
 		\begin{equation*}
-		\p\emp(\Id_C) = \Id_{\begin{footnotesize}\p\end{footnotesize}(C)};
+		\p\emp(\Id_C) = \Id_{\p(C)};
 		\end{equation*}
 	\item Para todos conjuntos $C,C',C''$ e todas funções $f\colon C \to C'$ e $f'\colon C' \to C''$,
 		\begin{equation*}
@@ -366,7 +367,7 @@ portanto $\p\emp(f' \circ f) = \p\emp(f') \circ \p\emp(f)$.
 		\begin{equation*}
 		\p\pux(\Id_c)(A) = \set{c \in C}{\Id_C(c) \in A} = \set{c \in C}{c \in A} = A,
 		\end{equation*}
-portanto $\p\pux(\Id_C) = \Id_{\begin{footnotesize}\p\end{footnotesize}(C)}$.
+portanto $\p\pux(\Id_C) = \Id_{\p(C)}$.
 
 	\item Para todo $A \in \p(C'')$,
 		\begin{align*}
@@ -420,7 +421,7 @@ Seja $\sim$ uma relação de equivalência em $A$ e $\parti := \quo{A}{\sim}$. C
 	\bigcup_{\cla{a} \in \parti} \cla{a} = A.
 	\end{equation*}
 Por fim, sejam $\cla{a_1},\cla{a_2} \in \parti$ tais que $\cla{a_1} \neq \cla{a_2}$. Se existir $a \in \cla{a_1} \cap \cla{a_2}$, então, para todo $b \in \cla{a_1}$, $b \sim a_1$ e $a_1 \sim a$, o que implica $b \sim a$. Ainda, $a \sim a_2$. Então $b \in \cla{a_2}$; ou seja, $\cla{a_1} \subseteq \cla{a_2}$. Por outro lado, $b \sim a_2 \sim a \sim a_1$, o que implica $\cla{a_2} \subseteq \cla{a_1}$. Isso implica $\cla{a_1}=\cla{a_2}$, contradição. Logo $\cla{a_1} \cap \cla{a_2}=\emptyset$. Assim, concluímos que $\parti$ é uma partição de $A$.
-	
+
 Seja $\parti$ uma partição de $A$. A relação binária $\sim$ em $A$, definida por
 	\begin{equation*}
 	\forall a_1,a_2 \in A \qquad a_1 \sim a_2 \Leftrightarrow \exists Q \in \parti \quad a_1,a_2 \in Q,
@@ -431,28 +432,28 @@ Seja $\parti$ uma partição de $A$. A relação binária $\sim$ em $A$, definid
 \subsection{Funções bem definidas}
 
 \begin{definition}
-	Sejam $(E,\sim)$ e $(E',\sim')$ conjuntos com equivalência. Uma \emph{função bem definida} (ou \emph{função que preserva equivalência}) de $(E,\sim)$ para $(E',\sim')$ é uma função $\fun{f}{E}{E'}$ tal que, para todos $x_0,x_1 \in E$ tais que $x_0 \sim x_1$,
-		\begin{equation*}
-			f(x_0) \sim' f(x_1).
-		\end{equation*}
+Sejam $(E,\sim)$ e $(E',\sim')$ conjuntos com equivalência. Uma \emph{função bem definida} (ou \emph{função que preserva equivalência}) de $(E,\sim)$ para $(E',\sim')$ é uma função $\fun{f}{E}{E'}$ tal que, para todos $x_0,x_1 \in E$ tais que $x_0 \sim x_1$,
+	\begin{equation*}
+	f(x_0) \sim' f(x_1).
+	\end{equation*}
 \end{definition}
 
 \begin{proposition}
-	Sejam $(E,\sim)$ e $(E',\sim')$ conjuntos com equivalência e $\fun{f}{E}{E'}$ uma função. A função $f$ é bem definida se, e somente se, a relação
-		\begin{equation*}
-			\cla{f} := \set{(\cla{x},\cla{x'}') \in \quo{E}{\sim} \times \quo{E'}{\sim'}}{\exists_{x_0 \in \cla{x}} f(x_0) \in \cla{x'}'}
-		\end{equation*}
+Sejam $(E,\sim)$ e $(E',\sim')$ conjuntos com equivalência e $\fun{f}{E}{E'}$ uma função. A função $f$ é bem definida se, e somente se, a relação
+	\begin{equation*}
+	\cla{f} := \set{(\cla{x},\cla{x'}') \in \quo{E}{\sim} \times \quo{E'}{\sim'}}{\exists_{x_0 \in \cla{x}} f(x_0) \in \cla{x'}'}
+	\end{equation*}
 	é uma função.
 \end{proposition}
 \begin{proof}
 	\begin{enumerate}
-		\item [($\Rightarrow$)] Suponhamos que $f$ é bem definida e seja $\cla{x} \in \quo{E}{\sim}$. Para todo $x_0 \in \cla{x}$, $x_0 \sim x$, portanto $f(x_0) \sim' f(x)$, o que mostra que $\cla{f(x_0)}' = \cla{f(x)}'$, portanto existe única classe $\cla{f(x)}' \in \quo{E'}{\sim'}$ tal que $(\cla{x},\cla{f(x)'}) \in \cla{f}$.
-		
-		\item [($\Leftarrow$)] Suponhamos que $\cla{f}$ é função e sejam $x_0,x_1 \in E$ tais que $x_0 \sim x_1$, temos que $\cla{x_0} = \cla{x_1}$, portanto
-			\begin{equation*}
-				\cla{f(x_0)}' = \cla{f}(\cla{x_0}) = \cla{f}(\cla{x_1}) = \cla{f(x_1)}',
-			\end{equation*}
-		o que mostra que $f(x_0) \sim' f(x_1)$.
+	\item [($\Rightarrow$)] Suponhamos que $f$ é bem definida e seja $\cla{x} \in \quo{E}{\sim}$. Para todo $x_0 \in \cla{x}$, $x_0 \sim x$, portanto $f(x_0) \sim' f(x)$, o que mostra que $\cla{f(x_0)}' = \cla{f(x)}'$, portanto existe única classe $\cla{f(x)}' \in \quo{E'}{\sim'}$ tal que $(\cla{x},\cla{f(x)'}) \in \cla{f}$.
+
+	\item [($\Leftarrow$)] Suponhamos que $\cla{f}$ é função e sejam $x_0,x_1 \in E$ tais que $x_0 \sim x_1$, temos que $\cla{x_0} = \cla{x_1}$, portanto
+		\begin{equation*}
+			\cla{f(x_0)}' = \cla{f}(\cla{x_0}) = \cla{f}(\cla{x_1}) = \cla{f(x_1)}',
+		\end{equation*}
+	o que mostra que $f(x_0) \sim' f(x_1)$.
 	\end{enumerate}
 \end{proof}
 
@@ -472,7 +473,7 @@ Em geral, a função $\cla{f}$ também é denotada $f$ por simplicidade. Comumen
 \end{definition}
 
 	Costumamos denotar uma relação de ordem com símbolos $\leq, \subseteq, \unlhd$ ou outros símbolos semelhantes.
-	
+
 \begin{example}
 	Seja $A$ um conjunto. Então a relação $\subseteq$ entre elementos de $\p(A)$ é uma relação de ordem parcial em $\p(A)$.
 \end{example}
@@ -598,7 +599,11 @@ Dualmente, se $Y$ e $Z$ têm menor elemento,
 	\end{equation*}
 \end{proposition}
 \begin{proof}
-	Vamos mostrar que $\max Y \in \{\max Z\} \cup (Y \setminus Z)$. Como $\max Y \in Y$, $\max Y \notin (Y \setminus Z)$ implica que $\max Y \in Z$. Portanto $\max Y \leq \max Z$; por outro lado, como $Z \subseteq Y$, então $\max Z \leq \max Y$, o que implica $\max Y = \max Z$ e, assim, concluímos que $\max Y \in \{\max Z\} \cup (Y \setminus Z)$. Agora vamos mostrar que $\{\max Z\} \cup (Y \setminus Z)$ tem maior elemento $\max Y$. Seja $y \in \{\max Z\} \cup (Y \setminus Z)$. Se $y = \max Z$, como $Z \subseteq Y$, então $y \leq \max Y$. Se $y \in (Y \setminus Z)$, como $(Y \setminus Z) \in Y$, então $y \leq \max Y$. Portanto $\max Y = \max(\{\max Z\} \cup (Y \setminus Z))$.
+	Vamos mostrar que
+		\begin{equation*}
+		\max Y \in \{\max Z\} \cup (Y \setminus Z).
+		\end{equation*}
+	Como $\max Y \in Y$, $\max Y \notin (Y \setminus Z)$ implica que $\max Y \in Z$. Portanto $\max Y \leq \max Z$; por outro lado, como $Z \subseteq Y$, então $\max Z \leq \max Y$, o que implica $\max Y = \max Z$ e, assim, concluímos que $\max Y \in \{\max Z\} \cup (Y \setminus Z)$. Agora vamos mostrar que $\{\max Z\} \cup (Y \setminus Z)$ tem maior elemento $\max Y$. Seja $y \in \{\max Z\} \cup (Y \setminus Z)$. Se $y = \max Z$, como $Z \subseteq Y$, então $y \leq \max Y$. Se $y \in (Y \setminus Z)$, como $(Y \setminus Z) \in Y$, então $y \leq \max Y$. Portanto $\max Y = \max(\{\max Z\} \cup (Y \setminus Z))$.
 \end{proof}
 
 \begin{definition}[Elementos maximal e minimal]
@@ -633,7 +638,7 @@ Um conjunto \emph{limitado por cima} é um  conjunto que possui limitante superi
 
 \begin{proposition}
 	Sejam $(X,\leq)$ um conjunto parcialmente ordenado e $Y$ e $Z$ conjuntos tais que $Z \subseteq Y \subseteq X$. Então, se $L_Z$ é o conjunto dos limitantes superiores de $Z$
-	
+
 	...
 \end{proposition}
 
@@ -652,7 +657,7 @@ Dualmente, se $Y$ e $Z$ têm ínfimo,
 	\end{equation*}
 \end{proposition}
 \begin{proof}
-	Seja $y \in \{\sup Z\} \cup (Y \setminus Z)$. Se $y = \sup Z$, como $Z \subseteq Y$, então $\sup Z \leq \sup Y$; 
+	Seja $y \in \{\sup Z\} \cup (Y \setminus Z)$. Se $y = \sup Z$, como $Z \subseteq Y$, então $\sup Z \leq \sup Y$;
 \end{proof}
 
 \subsection{Funções monótonas}
@@ -676,7 +681,7 @@ Dualmente, se $Y$ e $Z$ têm ínfimo,
 \begin{proof}
 	\begin{enumerate}
 		\item [($\Rightarrow$)] Suponhamos que $f$ é monótona e injetiva e sejam $x_0,x_1 \in X$ tais que $x_0 < x_1$. Como $x_0 \leq x_1$, segue da monotonicidade que $f(x_0) \leq f(x_1)$. Como $x_0 \neq x_1$, segue da injetividade que $f(x_0) \neq f(x_1)$, portanto $f(x_0) < f(x_1)$.
-		
+
 		\item [($\Leftarrow$)] Suponhamos que $f$ é monótona estrita e sejam $x_0,x_1 \in X$ tais que $x_0 \leq x_1$. Se $x_0 = x_1$, então $f(x_0) = f(x_1)$, logo $f(x_0) \leq f(x_1)$. Caso contrário, $x_0 < x_1$, e segue da monotonicidade estrita que $f(x_0) < f(x_1)$. logo $f(x_0) \leq f(x_1)$, o que mostra que $f$ é monótona.
 	\end{enumerate}
 \end{proof}
@@ -729,7 +734,7 @@ em que $\binom{[d]}{k} = \set{I \subseteq [d]}{\card{I}=k}$.
 
 \begin{definition}
 	Seja $(X,\leq)$ um conjunto totalmente ordenado. Um \emph{intervalo} de $X$ é um conjunto $I \subseteq X$ tal que, para todos $i,i' \in I$ e $x \in X$ tal que $i \leq x \leq i'$, vale $x \in I$. Para $e,e' \in X$, definimos:
-	
+
 	O \emph{intervalo aberto} de extremos $e$ e $e'$ é o conjunto
 		\begin{equation*}
 			\intaa{e}{e'} := \set{x \in X}{e < x < e'}.
@@ -834,7 +839,7 @@ Um \emph{conjunto bem ordenado} é um conjunto totalmente ordenado $(X,\leq)$ ta
 		\begin{equation*}
 			f := \set{(x,x') \in X \times X'}{[x] \simeq [x']'}.
 		\end{equation*}
-	Mostremos que $f$ é uma função injetiva. 
+	Mostremos que $f$ é uma função injetiva.
 	\begin{enumerate}
 		\item (Funtorialidade) Sejam $x_0,x_1 \in X$ e $x' \in X'$ tais que $[x_0] \simeq [x']'$ e $[x_1] \simeq [x']'$. Então $[x_0] \simeq [x_1]$ e, como $x_0 \leq x_1$ ou $x_1 \leq x_0$, e não existe isomorfismo de um conjunto bem ordenado com um segmento inicial, segue que $x_0 = x_1$.
 
@@ -901,12 +906,12 @@ Seja $(X,\preceq)$ um conjunto pré-ordenado. A relação $\sim$ em $A$ é uma e
 		\item (Equivalência $\sim$)
 			\begin{enumerate}
 				\item (Reflexividade) Para todo $x \in X$, vale que $x \preceq x$, portanto $x \sim x$.
-				
+
 				\item (Simetria) Para todos $x,x' \in X$, se $x \preceq x'$ e $x' \preceq x$, então $x \sim x'$ por definição.
-				
+
 				\item (Transitividade) Para todos $x,x',x'' \in X$, se $x \sim x'$ e $x' \sim x''$, então se $x \preceq x'$, $x' \preceq x$, $x' \preceq x''$ e $x'' \preceq x'$, o que implica pela transitividade de $\preceq$ que $x \preceq x''$ e $x'' \preceq x$, portanto $x \sim x''$.
 			\end{enumerate}
-		
+
 		\item (Ordem $\leq$) Primeiro devemos mostrar que a relação está bem definida. Sejam $[x],[x'] \in X$. Tomemos $x,y \in [x]$ e $x',y' \in [x']$; queremos mostrar que se $x \preceq x'$, então $y \preceq y'$. Como $x \sim y$, então $y \preceq x$, e como $x' \sim y'$, então $x' \preceq y'$; assim, da transitividade de $\preceq$ segue que
 	\begin{equation*}
 	y \preceq x \preceq x' \preceq y'.
@@ -941,7 +946,7 @@ Um reticulado também pode ser entendido como uma estrutura algébrica. As defin
 Um \emph{reticulado} é uma tripla $(R,\vee,\wedge)$ em que
 	\begin{enumerate}
 	\item $(R,\vee)$ e $(R,\wedge)$ são semigrupos comutativos;
-	\item Valem as propriedades de \emph{absorção}: para todos $a,b \in R$, 
+	\item Valem as propriedades de \emph{absorção}: para todos $a,b \in R$,
 		\begin{enumerate}
 		\item $a \vee (a \wedge b) = a$;
 		\item $a \wedge (a \vee b) = a$.
@@ -1128,7 +1133,7 @@ Sejam $X$ um conjunto, $A,B \subseteq X$, $n \in \N$ $(A_i)_{i \in [n]} \subsete
 %			&=\idc_A+\idc_B-2\idc_A\idc_B-(\idc_A\idc_B-\idc_A\idc_B-\idc_A\idc_B+\idc_A\idc_B) \\
 %			&=\idc_A+\idc_B-2\idc_A\idc_B.
 %	\end{align*}
-%	
+%
 %	\begin{align*}
 %	\idc_{A \difsim B \difsim C} &= \idc_{A \difsim B}+\idc_C-2\idc_{A \difsim B}\idc_C \\
 %			&= \idc_A+\idc_B-2\idc_A\idc_B+\idc_C-2(\idc_A+\idc_B-2\idc_A\idc_B)\idc_C \\
@@ -1192,7 +1197,7 @@ Seja $X$ um conjunto. A relação de refinamento $\refin$ é uma relação de pr
 Devemos mostrar que a relação é reflexiva e transitiva.
 	\begin{itemize}
 	\item (Reflexividade) Seja $\cober \in \Cober(X)$ uma cobertura. Para todo $C \in \cober$, vale $C \subseteq C$, portanto $\cober \refin \cober$.
-	
+
 	\item (Transitividade) Sejam $\cober, \cober', \cober'' \in \Cober(X)$. Para todo $C'' \in \cober''$, algum $C' \in \cober'$ satisfaz $C'' \subseteq C'$, pois $\cober' \refin \cober''$; além disso, algum $C \in \cober$ satisfaz $C' \subseteq C$, pois $\cober \refin \cober'$, o que implica $C'' \subseteq C' \subseteq C$, e isso mostra que $\cober \refin \cober''$.
 	\qedhere
 	\end{itemize}
@@ -1243,14 +1248,14 @@ Sejam $X$ um conjunto e $\cober$ e $\cober'$ coberturas de $X$. O \emph{correfin
 	\begin{equation*}
 	\cober \corref \cober' := \set{C \cap C'}{C \in \cober, C' \in \cober'}.
 	\end{equation*}
-	
+
 Seja $(\cober_i)_{i \in I}$ uma família de coberturas de $X$. O \emph{correfinamento} de $(\cober_i)_{i \in I}$ é o conjunto
 	\begin{equation*}
 	\bigcorref_{i \in I} \cober_i := \set{\bigcap_{i \in I} C_i}{\forall_{i \in I} C_i \in \cober_i}.
 	\end{equation*}
 \end{definition}
 
-As definições coincidem se consideramos uma família de duas coberturas $(\cober_0, \cober_1)$. Nesse caso,
+As definições coincidem se consideramos uma família $(\cober_0, \cober_1)$ de duas coberturas. Nesse caso,
 	\begin{equation*}
 	\bigcorref_{i \in [2]} \cober_i = \set{\bigcap_{i \in [2]} C_i}{\forall_{i \in [2]} C_i \in \cober_i} = \set{C_0 \cap C_1}{C_0 \in \cober_0, C_1 \in \cober_1} = \cober_0 \corref \cober_1.
 	\end{equation*}
@@ -1335,7 +1340,7 @@ Seja $X$ um conjunto.
 
 O correfinamento pode ser calculado repetidas vezes entre várias coberturas e a ordem em que ele é calculado não importa por causa da associatividade; por isso, podemos usar, para coberturas $\cober_0, \ldots, \cober_{n-1} \in \Cober(X)$, a notação
 	\begin{equation*}
-	\cober_0 \corref \cdots \corref \cober_{n-1} := \bigcorref_{i \in [n]} \cober_i. 
+	\cober_0 \corref \cdots \corref \cober_{n-1} := \bigcorref_{i \in [n]} \cober_i.
 	\end{equation*}
 
 %O mesmo vale para qualquer conjunto de coberturas, mesmo que infinito ou até não enumerável, mas esses refinamentos nem sempre são úteis na prática.
@@ -1476,7 +1481,7 @@ Sejam $X$ um conjunto e $\parti,\parti'$ partições de $X$ tais que $\parti \re
 	\func{f}{\parti'}{\parti}{P'}{P_{P'}}.
 	\end{align*}
 Mostremos que essa função é sobrejetiva. Para isso, seja $P \in \parti$. Como $\bigcup \parti' = X$, para todo $x \in P \subseteq X$ existe $P' \in \parti'$ tal que $x \in P'$. Como $P \neq \emptyset$, existe $x \in P$, logo existe $P' \in \parti'$ tal que $x \in P'$. Por definição de refinamento, existe $Q \in \parti$ tal que $P' \subseteq Q$, o que implica $x \in Q$. Como $x \in Q \cap P$, segue que $P=Q$, e concluímos que $P' \subseteq P$. Isso mostra que $f(P')=P$, logo que $f$ é sobrejetiva. Concluímos, então, que $\card{\parti} \leq \card{\parti'}$.
-	
+
 	\item As propriedades de não coincidência e não vacuidade são evidentes porque $\parti'$ é partição. Para a propriedade de cobertura, seja $P \in \parti$ e $U := \bigcup \set{P' \in \parti'}{P' \subseteq P}$. Notemos que $P=U$. Para mostrar isso, seja $x \in P$. Então existe $P' \in \parti'$ tal que $x \in P'$, pois $\bigcup \parti=X$. Por definição de refinamento, existe $Q \in \parti$ tal que $P' \subseteq Q$, portanto $x \in Q$. Como $x \in Q \cap P$, segue que $P=Q$. Concluímos que $P' \subseteq P$, portanto que $x \in U$, o que mostra $P \subseteq U$. Reciprocamente, para todo $P' \in U$, $P' \subseteq P$, portanto $U \subseteq P$, e concluímos que $P=U$.
 	\qedhere
 	\end{enumerate}
@@ -1505,11 +1510,11 @@ Sejam $X$ um conjunto e $(\parti_i)_{i \in I}$ uma família de partições de $X
 Denotemos $\parti := \bigcorref_{i \in I} \parti_i$ por simplicidade. Primeiro, mostremos que $\parti$ é uma partição.
 	\begin{itemize}
 	\item (Cobertura) Seja $x \in X$. Para todo $i \in I$, como $X = \bigcup \parti_i$, segue que algum $P_i \in \parti_i$ satisfaz $x \in P_i$. Sendo assim, $x \in \bigcap_{i \in I} P_i$, portanto $X \subseteq \bigcup \parti$, e segue que $X = \bigcup \parti$.
-	
+
 	\item (Não vacuidade) Por definição, $\emptyset \notin \parti$.
-	
+
 	\item (Não coincidência) Sejam $P = \bigcap_{i \in I} P_i, P' = \bigcap_{i \in I} P'_i \in \parti$. Se $P \neq P'$, então existe $x \in P \setminus P'$ ou existe $x \in P' \setminus P$. Sem perda de generalidade, suponhamos o primeiro. Então, existe $i \in I$ tal que $x \notin P'_i$. Como $x \in P$, então $x \in P_i$, portanto $P_i \neq P'_i$. Mas então, como $\parti_i$ é partição, $P_i \cap P'_i = \emptyset$. Por fim, como $P \subseteq P_i$ e $P' \subseteq P'_i$, segue que $P \cap P' = \emptyset$.
-	\end{itemize}  
+	\end{itemize}
 
 Agora mostraremos que, para todo $i \in I$, $\parti_i \refin \parti$. Sejam $i \in I$ e $P \in \parti$. Então $P = \bigcap_{i \in I} P_i$, com $P_i \in \parti_i$. Isso significa que, para todo $i \in I$, $P \subseteq P_i$, portanto $\parti_i \refin \parti$.
 

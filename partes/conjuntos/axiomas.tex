@@ -258,7 +258,7 @@ A lógica de ordem $1$ é uma linguagem formal. O \emph{alfabeto} é composto po
 %	\begin{equation*}
 %	\mathscr{A B C D E F G H I J K L M N O P Q R S T U V W X Y Z}
 %	\end{equation*}
-	
+
 	\item letras gregas
 		\begin{equation*}
 	\alpha,\beta,\gamma,\delta,\epsilon,\zeta,\eta,\theta,\iota,\kappa,\lambda,\mu,\nu,\xi,o,\pi,\rho,\sigma,\tau,\upsilon,\phi,\chi,\psi,\omega
@@ -266,29 +266,29 @@ A lógica de ordem $1$ é uma linguagem formal. O \emph{alfabeto} é composto po
 	\begin{equation*}
 	\Gamma, \Delta, \Theta, \Lambda, \Xi, \Pi, \Sigma, \Upsilon, \Phi, \Psi, \Omega
 	\end{equation*}
-		
+
 	\item numerais arábicos
 	\begin{equation*}
 	0, 1, 2, 3, 4, 5, 6, 7, 8, 9
 	\end{equation*}
-	
+
 	\item símbolos lógicos (ou \emph{operadores})
 	\begin{equation*}
 	 \lnao, \lee, \lou, \limplica, \lequiv, \forall, \exists
 	 \end{equation*}
-	
+
 	\item outros símbolos gráficos
 	\begin{equation*}
 	(, ), [, ], \{, \}, |, ', ,
 	\end{equation*}
 	\end{enumerate}
- 
+
 A \emph{expressões básicas} podem ser
 	\begin{enumerate}
 	\item as \emph{variáveis}, (em uma quantidade contável), representadas aqui por letras dos alfabetos latino e grego, possivelmente indexadas por outras letras ou numerais, ou pelo apóstrofe ';
-	
+
 	\item as \emph{constantes (individuais)} (em uma quantidade contável), representadas aqui por letras dos alfabetos latino e grego, possivelmente indexadas por outras letras ou numerais, ou pelo apóstrofe ', ou representadas por símbolos específicos;
-	
+
 	\item para cada número natural $n$, os \emph{predicados} $n$-ários (em uma quantidade contável), representadas aqui por letras dos alfabetos latino e grego, possivelmente indexadas por outras letras ou numerais, ou pelo apóstrofe ', ou representadas por símbolos específicos. Os predicados $0$-ários são as \emph{proposições} (ou \emph{letras sentenciais}), os predicados $1$-ários são as \emph{propriedades} e os predicados $2$-ários são as \emph{relações}.
 	\end{enumerate}
 
@@ -297,15 +297,15 @@ Não restringiremos quais letras representam o que, isso sempre ficará claro pe
 As \emph{expressões bem formadas} da linguagem são
 	\begin{enumerate}
 	\item Os \emph{termos}, que são as variáveis ou constantes individuais;
-	
+
 	\item As \emph{fórmulas}, expressões definidas recursivamente por
 		\begin{enumerate}
 		\item (Fórmulas simples ou atômicas) Para um predicado $n$-ário $P$ e termos $t_1, \cdots, t_n$, $P(t_1,\cdots,t_n)$ é uma fórmula;
-		
+
 		\item (Fórmulas moleculares) Para fórmulas $F$ e $F'$, $\lnao F$, $(F \lee F')$, $(F \lou F')$, $(F \limplica F')$ e $(F \lequiv F')$ são fórmulas. As fórmulas $F$ e $F'$ são \emph{subfórmulas} dessas fórmulas;
-		
+
 		\item (Fórmulas gerais) Para fórmula $F$ e variável $v$ que ocorre em $F$, $(\forall v F)$ e $(\exists v F)$ são fórmulas. A fórmula $F$ é uma \emph{subfórmula} dessas fórmulas;
-		
+
 		\item Nenhuma outra expressão é uma fórmula.
 		\end{enumerate}
 	\end{enumerate}
@@ -313,9 +313,9 @@ As \emph{expressões bem formadas} da linguagem são
 Uma \emph{variável livre} de uma fórmula é definida recursivamente como
 	\begin{enumerate}
 	\item Para uma fórmula simples $F$ e $v$ uma variável, $v$ é livre em $F$ se, e somente se, $v$ ocorre em $F$;
-	
+
 	\item Para uma fórmula $F$ da forma $\lnao F'$, $(F' \lee F'')$, $(F' \lou F'')$, $(F' \limplica F'')$, $(F' \lequiv F'')$, e $v$ uma variável, $v$ é livre em $F$ se, e somente se, é livre em $F'$ ou em $F''$;
-	
+
 	\item Para uma fórmula composta $F$ da forma $\forall v' F'$ ou $\exists v' F'$ e $v$ uma variável, $v$ é livre em $F$ se, e somente se, $v$ é livre em $F'$ e $v$ é diferente de $v'$. No caso em que $v$ é livre em $F'$ mas $v$ é igual a $v'$, a variável $v$ está \emph{ligada} ao quantificador $\forall$ ou $\exists$, respectivamente.
 	\end{enumerate}
 
@@ -489,7 +489,7 @@ e
 
 A noção de um \emph{conjunto} é uma noção primitiva na matemática. Intuitivamente, um conjunto é um objeto que tem \emph{elementos}. Cada elemento tem para com o conjunto em que está a relação de \emph{pertencimento}. Abstraindo mais essa noção, pensamos que todas as propriedades de um conjunto se resumem aos elementos que a ele pertencem, de modo que um conjunto é, de fato, seus elementos. A \emph{Teoria de Conjuntos} é uma teoria da lógica formal que procura formalizar essas ideias e estudar suas consequências. Neste livro, o tratamento da teoria de conjuntos será um tratamento parcialmente formal, parcialmente informal, embora muita ênfase seja dada nos axiomas que constituem uma base para a teoria de conjuntos.
 
-A lógica formal estuda sentenças formadas a partir de símbolos pré-determinados e fixos e as regras que dizem como essas sentenças se relacionam para formar novas sentenças. No tratamento formal da teoria de conjuntos, não há distinção entre conjunto e elemento. Ambos são somente denotados por letras de um alfabeto específico, e a relação de pertencimento é geralmente denotada pelo o símbolo $\in$. Se $X$ e $Y$ são conjuntos, a sentença ``o conjunto $C$ pertence ao conjunto $C'$'' ou ``o conjunto $C$ é elemento do conjunto $C'$'' é denotada por 
+A lógica formal estuda sentenças formadas a partir de símbolos pré"-determinados e fixos e as regras que dizem como essas sentenças se relacionam para formar novas sentenças. No tratamento formal da teoria de conjuntos, não há distinção entre conjunto e elemento. Ambos são somente denotados por letras de um alfabeto específico, e a relação de pertencimento é geralmente denotada pelo o símbolo $\in$. Se $C$ e $C'$ são conjuntos, a sentença ``o conjunto $C$ pertence ao conjunto $C'$'' ou ``o conjunto $C$ é elemento do conjunto $C'$'' é denotada por
 	\begin{equation*}
 	C \in C'.
 	\end{equation*}
@@ -611,7 +611,7 @@ Para todo conjunto $C$,
 \begin{proof}
 	\begin{enumerate}
 	\item Suponha que $\emptyset$ não é subconjunto de $C$. Então existe $x \in \emptyset$ tal que $x \notin C$. Mas $x \in \emptyset$ é uma contradição, o que mostra que $\emptyset \subseteq C$.
-	
+
 	\item Exercício.
 	\end{enumerate}
 \end{proof}
@@ -786,7 +786,7 @@ A união do par $\{C,C'\}$ e denotada $C \cup C'$.
 		\begin{equation*}
 		\forall C \forall C' (C \subseteq C' \limplica \bigcup C \subseteq \bigcup C')
 		\end{equation*}
-	
+
 	\item Todo elemento de um conjunto é subconjunto da união do conjunto.
 		\begin{equation*}
 		\forall C \forall X (X \in C \limplica X \subseteq \bigcup C)
@@ -799,7 +799,7 @@ A união do par $\{C,C'\}$ e denotada $C \cup C'$.
 \begin{proof}
 	\begin{enumerate}
 	\item Suponha que $x \in \bigcup \emptyset$. Então $\exists X \in \emptyset$ tal que $x \in X$, o que é absurdo porque não pode existir $X \in \emptyset$.
-	
+
 	\item Seja $x \in \bigcup C$. Então existe $X \in C$ tal que $x \in X$. Como $C \subseteq C'$, segue que $X \in C'$, portanto $x \in \bigcup C'$. \qedhere
 	\end{enumerate}
 \end{proof}
@@ -946,7 +946,7 @@ A existência desse conjunto depende da união de pares, do conjunto das partes 
 %	\end{equation*}
 %De modo mais geral, sejam $A_1, \ldots, A_n$ $n$ conjuntos e $I := \{1,\ldots,n\}$. A \emph{n-upla (ordenada)} dos elementos $a_i \in A_i$, para todo $i \in I$, é definida indutivamente por
 %	\begin{equation*}
-%	(a_1,\ldots,a_n) := ((a_1,\ldots,a_{n-1}),a_n)	
+%	(a_1,\ldots,a_n) := ((a_1,\ldots,a_{n-1}),a_n)
 %	\end{equation*}
 %\end{definition}
 %
@@ -992,9 +992,9 @@ que é subconjunto de $Y$. Diz-se que o conjunto $f(X)$ é a \emph{imagem} de $f
 \begin{proof}
 	\begin{enumerate}
 	\item Suponhamos que $A=\emptyset$. Primeiro, notemos que $f=\emptyset$ é uma função de $\emptyset$ em $B$. Claramente, $f = \emptyset \subseteq \emptyset \times B$. Ainda, se $f$ não fosse função de $\emptyset$ em $B$, existiria $a \in \emptyset$ tal que não existe único $b \in B$ satisfazendo $(a,b) \in f$. Mas existir $a \in \emptyset$ é um absurdo. Logo $f$ é função. Por fim, se $g: \emptyset \times B$ é uma função, como $\emptyset \times B = \emptyset$, então $g \subseteq \emptyset \times B = \emptyset$, logo $g=\emptyset=f$.
-	
+
 	Reciprocamente, suponhamos $f=\emptyset$. Se $A \neq \emptyset$, seja $a \in A$. Como $f$ é função, existe $b \in B$ tal que $(a,b) \in f=\emptyset$, o que é absurdo. Portanto $A=\emptyset$.
-	
+
 	\item Suponhamos que $A \neq \emptyset$. Então existe $a \in A$ e, como $f$ é função, existe único $b \in \emptyset$ tal que $(a,b) \in f$. Mas $b \in \emptyset$ é absurdo, o que mostra que $A = \emptyset$.
 	\end{enumerate}
 \end{proof}
@@ -1021,7 +1021,7 @@ Seja $C$ um conjunto. Então
 \begin{proof}
 	\begin{enumerate}
 	\item Como $C=\emptyset$, então $\bigcup \emptyset = \emptyset$. A função $\emptyset: \emptyset \to \emptyset$ é uma função em $\prod C$, pois satisfaz por vacuidade que $\forall X \in C \quad f(X) \in X$. Se não satisfizesse, existiria $X \in \emptyset$ tal que $f(X) \notin X$, o que é contradição. Isso mostra que $\emptyset \in \prod \emptyset$. Agora, seja $f \in \prod \emptyset$ função de $\emptyset$ em $\emptyset$. Como o domínio de $f$ é $\emptyset$, segue que $f=\emptyset$.
-	
+
 	\item Suponha que existe $f \in \prod C$. Então $f: C \to \bigcup C$ satisfaz que $\forall X \in C \quad f(X) \in X$. Como $\emptyset \in C$, existe $f(\emptyset) \in \bigcup C$ e, pela propriedade, $f(\emptyset) \in \emptyset$, contradição. Portanto $\prod C = \emptyset$.
 	\end{enumerate}
 \end{proof}

@@ -38,9 +38,13 @@ Sejam $\bm A=(A,+,-,0,\times,1)$ um anel e $I \ide A$ um ideal. Então $\bm I = 
 	\end{align*}
 é a ação multiplicativa induzida pela multiplicação $\times$ de $\bm A$. Note que, para cada $a \in A$, a função $\fun{a \pt}{I}{I}$ está bem definida pois $I$ é um ideal, o que implica que, para todo $i \in I$, $ai \in I$.
 \end{example}
-	
+
 \begin{example}
-Seja $\bm G=(G,+,-,0)$ um grupo comutativo. Então $(G,+,-,0,\pt)$ é um módulo sobre $\Z$, em que
+Seja $\bm G=(G,+,-,0)$ um grupo comutativo. Então
+	\begin{equation*}
+	(G,+,-,0,\pt)
+	\end{equation*}
+é um módulo sobre $\Z$, em que
 	\begin{align*}
 	\func{\pt}{\Z}{\Homo(G)}{n}{
 		\begin{aligned}[t]
@@ -76,7 +80,7 @@ Sejam $\bm M$ e $\bm M'$ módulos sobre um anel $\bm A$. Um \emph{homomorfismo d
 		\begin{equation*}
 		h(m_0 + m_1) = h(m_0) + h(m_1);
 		\end{equation*}
-	
+
 	\item (Homogeneidade) %(Comutatividade com ação)
 	Para todos $a \in A$, $m \in M$,
 		\begin{equation*}
@@ -90,9 +94,13 @@ Denota-se $\fun{h}{\bm M}{\bm M'}$. O conjunto dos homomorfismos de módulo de $
 Sejam $\bm M$ , $\bm M'$ e $\bm M''$ módulos sobre um anel $\bm A$, $h \in \Homo(\bm M, \bm M')$ e $h' \in \Homo(\bm M', \bm M'')$ homomorfismos. Então $h' \circ h \in  \Homo(\bm M, \bm M'')$.
 \end{exercise}
 
-\subsubsection{Módulo de homomorfismos de módulo}
+\subsection{Módulo de homomorfismos de módulo}
 
-Por definição de homomorfismo de módulo, temos que $\Homo(\bm M,\bm M') \subseteq \Homo(\bm M^+,{\bm M'}^+)$, ou seja, que todo homomorfismo de módulo é em particular um homomorfismo de grupo entre as estruturas de grupo $\bm M^+$ e ${\bm M'}^+$ de seus respectivos módulos. O conjunto de homomorfismos de grupo $\Homo(\bm M^+,{\bm M'}^+)$ é um grupo com a adição, subtração e função nula puxadas das respectivas operações de ${\bm M'}^+$. Dotado dessa estrutura de grupo, o conjunto $\Homo(\bm M,\bm M')$ é de fato um subgrupo de $\Homo(\bm M^+,{\bm M'}^+)$, que denotamos por
+Por definição de homomorfismo de módulo, temos que
+	\begin{equation*}
+	\Homo(\bm M,\bm M') \subseteq \Homo(\bm M^+,{\bm M'}^+),
+	\end{equation*}
+ou seja, que todo homomorfismo de módulo é em particular um homomorfismo de grupo entre as estruturas de grupo $\bm M^+$ e ${\bm M'}^+$ de seus respectivos módulos. O conjunto de homomorfismos de grupo $\Homo(\bm M^+,{\bm M'}^+)$ é um grupo com a adição, subtração e função nula puxadas das respectivas operações de ${\bm M'}^+$. Dotado dessa estrutura de grupo, o conjunto $\Homo(\bm M,\bm M')$ é de fato um subgrupo de $\Homo(\bm M^+,{\bm M'}^+)$, que denotamos por
 	\begin{equation*}
 	\bm{\Homo}(\bm M,\bm M')^+ := (\Homo(\bm M,\bm M'),+,-,0).
 	\end{equation*}
@@ -121,7 +129,7 @@ Sejam $\bm M$ e $\bm M'$ módulos sobre um anel $\bm A$.
 			h(a m) = 0 = a0 = ah(m).
 			\end{equation*}
 		\end{enumerate}
-	
+
 	\item (Fechamento) Para todos $h,h' \in \Homo(\bm M,\bm M')$, $h+h' \in \Homo(\bm M,\bm M')$:
 		\begin{enumerate}
 		\item (Aditividade) Segue direto de $h+h' \in  \Homo(\bm M^+,{\bm M'}^+)$;
@@ -133,7 +141,7 @@ Sejam $\bm M$ e $\bm M'$ módulos sobre um anel $\bm A$.
 				&= a(h+h')(m).
 			\end{align*}
 		\end{enumerate}
-	
+
 	\item (Invertibilidade) Para todo $h \in \Homo(\bm M,\bm M')$, $-h \in \Homo(\bm M,\bm M')$:
 		\begin{enumerate}
 		\item (Aditividade) Segue direto de $-h \in  \Homo(\bm M^+,{\bm M'}^+)$;

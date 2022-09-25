@@ -7,11 +7,21 @@
 %\end{definition}
 
 \begin{definition}
-Seja $\bm C$ um corpo. Uma \emph{álgebra} sobre $\bm C$ é uma lista $\bm{A} := ((A,+,-,0,\times),\cdot)$ tal que $((A,+,-,0),\cdot)$ é um espaço linear sobre $\bm C$ e $\fun{\times}{A \times A}{A}$ é uma função bilinear. Uma álgebra é \emph{associativa, comutativa, alternativa} ou \emph{antissimétrica} conforme a respectiva propriedade de $\times$.
+Seja $\bm C$ um corpo. Uma \emph{álgebra} sobre $\bm C$ é uma lista
+	\begin{equation*}
+	\bm{A} := ((A,+,-,0,\times),\cdot)                                                                                                       \end{equation*}
+tal que $((A,+,-,0),\cdot)$ é um espaço linear sobre $\bm C$ e $\fun{\times}{A \times A}{A}$ é uma função bilinear. Uma álgebra é \emph{associativa, comutativa, alternativa} ou \emph{antissimétrica} conforme a respectiva propriedade de $\times$.
 
-Uma \emph{álgebra unitária} sobre $\bm C$ é uma lista $((A,+,-,0,\times,1),\cdot)$ tal $((A,+,-,0,\times),\cdot)$ é uma álgebra sobre $\bm C$ e $1 \in A$ é identidade de $(A,\times)$.
+Uma \emph{álgebra unitária} sobre $\bm C$ é uma lista
+	\begin{equation*}
+	((A,+,-,0,\times,1),\cdot)
+	\end{equation*}
+tal $((A,+,-,0,\times),\cdot)$ é uma álgebra sobre $\bm C$ e $1 \in A$ é identidade de $(A,\times)$.
 
-Uma \emph{álgebra de divisão associativa} sobre $\bm C$ é uma lista $((A,+,-,0,\times,1,\div),\cdot)$ tal $((A,+,-,0,\times,1),\cdot)$ é uma álgebra unitária associativa sobre $\bm C$ e $\fun{\div}{A \setminus \{0\}}{A \setminus \{0\}}$ é uma inversão de $(A,\times,1)$.
+Uma \emph{álgebra de divisão associativa} sobre $\bm C$ é uma lista
+	\begin{equation*}
+	((A,+,-,0,\times,1,\div),\cdot)                                                                                                    \end{equation*}
+tal $((A,+,-,0,\times,1),\cdot)$ é uma álgebra unitária associativa sobre $\bm C$ e $\fun{\div}{A \setminus \{0\}}{A \setminus \{0\}}$ é uma inversão de $(A,\times,1)$.
 \end{definition}
 
 Por simplicidade, denotamos uma álgebra por $(\bm A,\times)$ se queremos ressaltar a notação para a multiplicação de $A$.
@@ -136,8 +146,8 @@ Reciprocamente, suponhamos que $\col{\var}{\var}=0$. Então, para todos $a,a' \i
 		\end{equation*}
 	\end{enumerate}
 \end{proof}
-	
-	
+
+
 
 \subsection{Derivação}
 
@@ -313,7 +323,10 @@ Já demonstramos que $(\bm A,\col{\var}{\var})$ é uma álgebra alternativa, res
 	\end{align*}
 \end{proof}
 
-Isso mostra, em particular, que a álgebra de funções lineares em um espaço linear $\bm V$ com composição $((\lin(\bm V),+,-,0,\circ),\cdot)$ gera uma álgebra derivativa $((\lin(\bm V),+,-,0,\col{\var}{\var}),\cdot)$, em que o colchete comutador da álgebra é dado, para todas $L,L' \in \lin(\bm V)$, por
+Isso mostra, em particular, que a álgebra de funções lineares em um espaço linear $\bm V$ com composição $((\lin(\bm V),+,-,0,\circ),\cdot)$ gera uma álgebra derivativa
+	\begin{equation*}
+	((\lin(\bm V),+,-,0,\col{\var}{\var}),\cdot),                                                                                                                                                                                                                  \end{equation*}
+em que o colchete comutador da álgebra é dado, para todas $L,L' \in \lin(\bm V)$, por
 	\begin{equation*}
 	\col{L}{L'} = L \circ L' - L' \circ L.
 	\end{equation*}
@@ -392,7 +405,7 @@ Então,
 			&\qquad + (D(a)a')(aD'(a')) + (aD(a'))(aD'(a')) \\
 		&= (D(a)a'D'(a))a' + a(D(a')D'(a)a') \\
 			&\qquad + (D(a)a')(aD'(a')) + (aD(a'))(aD'(a')) \\
-		&= (D \times D')(a)a' - 
+		&= (D \times D')(a)a' -
 	\end{align*}
 e
 	\begin{align*}
@@ -594,7 +607,7 @@ Seja $\bm A$ uma álgebra involutiva sobre um corpo involutivo $\bm C$. O produt
 \begin{proof}
 Basta mostrar as propriedades de multiplicação, involução e unidade, pois o produto de espaços lineares é espaço linear.
 	\begin{itemize}
-	\item (Bilinearidade) Para todos 
+	\item (Bilinearidade) Para todos
 	\end{itemize}
 \end{proof}
 
@@ -682,7 +695,7 @@ Por outro lado,
 %		&= (y_1y_0 + y_1\invol{y_0})(x_0x_0-\invol{x_1}x_1) + (x_1x_0 + x_1\invol{x_0})(\invol{y_0}\invol{y_0}-\invol{y_1}y_1) \\
 %		&= (y_1y_0)(x_0x_0) - (y_1y_0)(\invol{x_1}x_1) + (y_1\invol{y_0})(x_0x_0) - (y_1\invol{y_0})(\invol{x_1}x_1) \\
 %		&+ (x_1x_0)(\invol{y_0}\invol{y_0}) - (x_1x_0)(\invol{y_1}y_1) + (x_1\invol{x_0})(\invol{y_0}\invol{y_0}) - (x_1\invol{x_0})(\invol{y_1}y_1) \\
-%		&= 
+%		&=
 %	\end{align*}
 
 \end{comment}
@@ -718,7 +731,7 @@ Por outro lado,
 
 Nesta seção, descreveremos algumas álgebras sobre o corpo dos números reais $\R$. A álgebra real $\R$ é simplesmente o corpo $\R$. Analisaremos com detalhes os casos das álgebras dos complexos $\R^2$ e dos quatérnios $\R^4$. Descreveremos brevemente os números $2$-hiperbólicos $\R^{1,1}$, às vezes chamados de `complexos hiperbólicos', e os números $4$-hiperbólicos $\R^{1,3}$.
 
-\subsection{Complexos \ensuremath{\R^2}}
+\subsection{Complexos \texorpdfstring{$\R^2$}{}}
 
 Consideremos o espaço linear $\R^2$ com a norma $2$
 	\begin{align*}
@@ -779,14 +792,50 @@ Como $(\R^2,+,-,0,\cdot)$ é um espaço linear sobre $\R$, basta mostrar as prop
 			&= c(x_0y_0-x_1y_1,x_0y_1+x_1y_0) + (x'_0y_0-x'_1y_1,x'_0y_1x'_1y_0) \\
 			&= c(xy) + x'y.
 		\end{align*}
-	\item (Associatividade) Para todos $x,y,z \in \R^2$,
+	\item %(Associatividade) Para todos $x,y,z \in \R^2$,
+%		\begin{align*}
+%		(xy)z &= (x_0y_0-x_1y_1,x_0y_1+x_1y_0)z \\
+%			&= ((x_0y_0-x_1y_1)z_0 - (x_0y_1+x_1y_0)z_1 , (x_0y_0-x_1y_1)z_1 + (x_0y_1+x_1y_0)z_0 ) \\
+%			&= (x_0(y_0z_0-y_1z_1)-x_1(y_0z_1+y_1z_0),x_0(y_0z_1+y_1z_0)+x_1(y_0z_0-y_1z_1)) \\
+%			&= x(y_0z_0-y_1z_1,y_0z_1+y_1z_0) \\
+%			&= x(yz).
+%		\end{align*}
+	(Associatividade) Faremos as contas por coordenadas. Para todos $x,y,z \in \R^2$, segue da definição do produto que as coordenadas de $xy$ são
 		\begin{align*}
-		(xy)z &= (x_0y_0-x_1y_1,x_0y_1+x_1y_0)z \\
-			&= ((x_0y_0-x_1y_1)z_0 - (x_0y_1+x_1y_0)z_1 , (x_0y_0-x_1y_1)z_1 + (x_0y_1+x_1y_0)z_0 ) \\
-			&= (x_0(y_0z_0-y_1z_1)-x_1(y_0z_1+y_1z_0),x_0(y_0z_1+y_1z_0)+x_1(y_0z_0-y_1z_1)) \\
-			&= x(y_0z_0-y_1z_1,y_0z_1+y_1z_0) \\
-			&= x(yz).
+		(xy)_0 &= x_0y_0 - x_1y_1 \\
+		(xy)_1 &= x_0y_1 + x_1y_0
 		\end{align*}
+	e que as coordenadas de $yz$ são
+		\begin{align*}
+		(yz)_0 &= y_0z_0 - y_1z_1 \\
+		(yz)_1 &= y_0z_1 + y_1z_0.
+		\end{align*}
+	Ainda da definição do produto, as coordenadas de $(xy)z$ são
+		\begin{align*}
+		((xy)z)_0 &= (x_0y_0 - x_1y_1)z_0 - (x_0y_1 + x_1y_0)z_1 \\
+		((xy)z)_1 &= (x_0y_0 - x_1y_1)z_1 + (x_0y_1 + x_1y_0)z_0
+		\end{align*}
+	e as coordenadas de $x(yz)$ são
+		\begin{align*}
+		(x(yz))_0 &= x_0(y_0z_0-y_1z_1) - x_1(y_0z_1+y_1z_0) \\
+		(x(yz))_1 &= x_0(y_0z_1+y_1z_0) + x_1(y_0z_0-y_1z_1).
+		\end{align*}
+	Para a coordenada $0$, segue que
+		\begin{align*}
+		((xy)z)_0 &= (x_0y_0 - x_1y_1)z_0 - (x_0y_1 + x_1y_0)z_1 \\
+			&= x_0(y_0z_0-y_1z_1) - x_1(y_0z_1+y_1z_0) \\
+			&= (x(yz))_0
+		\end{align*}
+	e para a coordenada $1$ segue que
+		\begin{align*}
+		((xy)z)_1 &= (x_0y_0 - x_1y_1)z_1 + (x_0y_1 + x_1y_0)z_0 \\
+			&= x_0(y_0z_1+y_1z_0) + x_1(y_0z_0-y_1z_1) \\
+			&= (x(yz))_1.
+		\end{align*}
+	Portanto
+		\begin{equation*}
+		x(yz) = ((xy)z)_0 1 + ((xy)z)_1 \ii = (x(yz))_0 1 + (x(yz))_1 \ii = x(yz).
+		\end{equation*}
 	\item (Identidade) Para todo $x \in \R^2$,
 		\begin{equation*}
 		1x = (1x_0-0x_1,1x_1+0x_0) = (x_0,x_1) = x.
@@ -885,7 +934,7 @@ Da definição de $\theta$ segue que $x_0 = \nor{x}\cos(\theta)$ e $x_1 = \nor{x
 		\begin{equation*}
 		\sin(\theta) = \sin(\phi) = \frac{\abs{x_1}}{\nor{x}} = \frac{x_1}{\nor{x}}.
 		\end{equation*}
-	
+
 	\item ($x_1 < 0$ ou $x_0 = -1$) Nesse caso, $\abs{x_1}=-x_1$ e $\theta = \tau - \phi$, portanto
 		\begin{equation*}
 		\cos(\theta) = \cos(\tau - \phi) = \cos(-\phi) = \cos (\phi)= \frac{x_0}{\nor{x}}
@@ -1006,7 +1055,7 @@ Isso mostra que
 
 
 
-\subsection{Quatérnios \ensuremath{\R^4}}
+\subsection{Quatérnios \texorpdfstring{$\R^4$}{}}
 
 \subsubsection{Multiplicação quaterniônica}
 
@@ -1099,7 +1148,7 @@ Como a notação acima sugere, omitiremos o símbolo de multiplicação $\times$
 	\centering
 
 	\begin{tikzpicture}
-	
+
 	\def \raio{1.5cm}
 
 	\coordinate (A) at (-90:\raio);
@@ -1152,6 +1201,8 @@ A lista
 		\end{equation*}
 \end{enumerate}
 \end{proposition}
+\begingroup
+\allowdisplaybreaks
 \begin{proof}
 Como $(\R^4,+,-,0,\cdot)$ é um espaço linear sobre $\R$, basta mostrar as propriedades de $\times$.
 \begin{itemize}
@@ -1175,7 +1226,7 @@ Como $(\R^4,+,-,0,\cdot)$ é um espaço linear sobre $\R$, basta mostrar as prop
 			&= (x_0,x_1,x_2,x_3) \\
 			&= x.
 		\end{align*}
-	
+
 	\item (Bilinearidade) Para mostrar que o produto é bilinear, primeiro mostremos quais são seus valores na base $\{1,\ii_2,\ii_2,\ii_3\}$. Como $1$ é identidade do produto, basta calcular os valores do produto $\ii_1$, $\ii_2$ e $\ii_3$. Cálculos simples mostram que
 		\begin{align*}
 		\ii_1 \ii_1 &= -1 &\ii_1 \ii_2 = \ii_3 = -\ii_2 \ii_1 \\
@@ -1204,28 +1255,28 @@ Como $(\R^4,+,-,0,\cdot)$ é um espaço linear sobre $\R$, basta mostrar as prop
 			&= xy.
 		\end{align*}
 
-	\item (Associatividade) Faremos as contas por coordenadas para que seja tipograficamente possível apresentar os resultados. Para todos $x,y,z \in \R^4$, segue da definição do produto que as coordenadas de $xy$ são
+	\item (Associatividade) Faremos as contas por coordenadas. Para todos $x,y,z \in \R^4$, segue da definição do produto que as coordenadas de $xy$ são
 		\begin{align*}
-		(xy)_0 &= (x_0y_0 - x_1y_1 - x_2y_2 - x_3y_3) \\
-		(xy)_1 &= (x_0y_1 + x_1y_0 + x_2y_3 - x_3y_2) \\
-		(xy)_2 &= (x_0y_2 - x_1y_3 + x_2y_0 + x_3y_1) \\
-		(xy)_3 &= (x_0y_3 + x_1y_2 - x_2y_1 + x_3y_0)
+		(xy)_0 &= x_0y_0 - x_1y_1 - x_2y_2 - x_3y_3 \\
+		(xy)_1 &= x_0y_1 + x_1y_0 + x_2y_3 - x_3y_2 \\
+		(xy)_2 &= x_0y_2 - x_1y_3 + x_2y_0 + x_3y_1 \\
+		(xy)_3 &= x_0y_3 + x_1y_2 - x_2y_1 + x_3y_0
 		\end{align*}
 	e que as coordenadas de $yz$ são
 		\begin{align*}
-		(yz)_0 &= (y_0z_0 - y_1z_1 - y_2z_2 - y_3z_3) \\
-		(yz)_1 &= (y_0z_1 + y_1z_0 + y_2z_3 - y_3z_2) \\
-		(yz)_2 &= (y_0z_2 - y_1z_3 + y_2z_0 + y_3z_1) \\
-		(yz)_3 &= (y_0z_3 + y_1z_2 - y_2z_1 + y_3z_0).
+		(yz)_0 &= y_0z_0 - y_1z_1 - y_2z_2 - y_3z_3 \\
+		(yz)_1 &= y_0z_1 + y_1z_0 + y_2z_3 - y_3z_2 \\
+		(yz)_2 &= y_0z_2 - y_1z_3 + y_2z_0 + y_3z_1 \\
+		(yz)_3 &= y_0z_3 + y_1z_2 - y_2z_1 + y_3z_0.
 		\end{align*}
-	Ainda da definição do produto, as que as coordenadas de $(xy)z$ são
+	Ainda da definição do produto, as coordenadas de $(xy)z$ são
 		\begin{align*}
 		((xy)z)_0 &= (xy)_0z_0 - (xy)_1z_1 - (xy)_2z_2 - (xy)_3z_3 \\
 		((xy)z)_1 &= (xy)_0z_1 + (xy)_1z_0 + (xy)_2z_3 - (xy)_3z_2 \\
 		((xy)z)_2 &= (xy)_0z_2 - (xy)_1z_3 + (xy)_2z_0 + (xy)_3z_1 \\
 		((xy)z)_3 &= (xy)_0z_3 + (xy)_1z_2 - (xy)_2z_1 + (xy)_3z_0 \\
 		\end{align*}
-	e as que as coordenadas de $x(yz)$ são
+	e as coordenadas de $x(yz)$ são
 		\begin{align*}
 		(x(yz))_0 &= x_0(yz)_0 - x_1(yz)_1 - x_2(yz)_2 - x_3(yz)_3 \\
 		(x(yz))_1 &= x_0(yz)_1 + x_1(yz)_0 + x_2(yz)_3 - x_3(yz)_2 \\
@@ -1274,7 +1325,7 @@ Como $(\R^4,+,-,0,\cdot)$ é um espaço linear sobre $\R$, basta mostrar as prop
 			&= x_0(yz)_2 - x_1(yz)_3 + x_2(yz)_0 + x_3(yz)_1 \\
 			&= (x(yz))_2;
 		\end{align*}
-	e para a coordenada $3$, segue que
+	e, para a coordenada $3$, segue que
 		\begin{align*}
 		((xy)z)_3 &= (xy)_0z_3 + (xy)_1z_2 - (xy)_2z_1 + (xy)_3z_0 \\
 			&= (x_0y_0 - x_1y_1 - x_2y_2 - x_3y_3)z_3 \\
@@ -1294,7 +1345,7 @@ Como $(\R^4,+,-,0,\cdot)$ é um espaço linear sobre $\R$, basta mostrar as prop
 			&= (x(yz))_0 1 + (x(yz))_1 \ii_1 + (x(yz))_2 \ii_2 + (x(yz))_3 \ii_3 \\
 			&= (x(yz)).
 		\end{align*}
-	
+
 	\item (Inversa) Para todo $x \in \R^4 \setminus \{0\}$,
 		\begin{align*}
 		x\inv x &= \nor{x}^{-2} (x_0,-x_1,-x_2,-x_3)(x_0,x_1,x_2,x_3) \\
@@ -1319,7 +1370,7 @@ Como $(\R^4,+,-,0,\cdot)$ é um espaço linear sobre $\R$, basta mostrar as prop
 		\end{align*}
 \end{itemize}
 \begin{itemize}
-	\item (Submultiplicatividade) Demonstramos de fato a multiplicatividade da norma, que implica a submultiplicatividade. Para todos $x,y \in \R^4$,
+	\item (Submultiplicatividade) Demonstramos de fato a multiplicatividade da nor\-ma, que implica a submultiplicatividade. Para todos $x,y \in \R^4$,
 		\begin{align*}
 		\nor{xy}^2 &= (x_0y_0 - x_1y_1 - x_2y_2 - x_3y_3)^2 \\
 			&+ (x_0y_1 + x_1y_0 + x_2y_3 - x_3y_2)^2 \\
@@ -1328,19 +1379,23 @@ Como $(\R^4,+,-,0,\cdot)$ é um espaço linear sobre $\R$, basta mostrar as prop
 %			&= (x_0y_0)^2 + (x_1y_1)^2 + (x_2y_2)^2 + (x_3y_3)^2 \\
 %			&+ 2 (-x_0y_0x_1y_1 - x_0y_0x_2y_2 - x_0y_0x_3y_3 + x_1y_1x_2y_2 + x_1y_1x_3y_3 + x_2y_2x_3y_3) \\
 			&= (x_0y_0)^2 + (x_1y_1)^2 + (x_2y_2)^2 + (x_3y_3)^2 \\
-			&- 2 (x_0y_0x_1y_1 + x_0y_0x_2y_2 + x_0y_0x_3y_3 - x_1y_1x_2y_2 - x_1y_1x_3y_3 - x_2y_2x_3y_3) \\
+			&- 2 (x_0y_0x_1y_1 + x_0y_0x_2y_2 + x_0y_0x_3y_3 \\
+			&\qquad- x_1y_1x_2y_2 - x_1y_1x_3y_3 - x_2y_2x_3y_3) \\
 %			&+ (x_0y_1)^2 + (x_1y_0)^2 + (x_2y_3)^2 + (x_3y_2)^2 \\
 %			&+ 2 (x_0y_1x_1y_0 + x_0y_1x_2y_3 - x_0y_1x_3y_2 + x_1y_0x_2y_3 - x_1y_0x_3y_2 - x_2y_3x_3y_2) \\
 			&+ (x_0y_1)^2 + (x_1y_0)^2 + (x_2y_3)^2 + (x_3y_2)^2 \\
-			&+ 2 (x_0y_1x_1y_0 + x_0y_1x_2y_3 - x_0y_1x_3y_2 + x_1y_0x_2y_3 - x_1y_0x_3y_2 - x_2y_3x_3y_2) \\
+			&+ 2 (x_0y_1x_1y_0 + x_0y_1x_2y_3 - x_0y_1x_3y_2 \\
+			&\qquad+ x_1y_0x_2y_3 - x_1y_0x_3y_2 - x_2y_3x_3y_2) \\
 %			&+ (x_0y_2)^2 + (x_1y_3)^2 + (x_2y_0)^2 + (x_3y_1)^2 \\
 %			&+ 2 (-x_0y_2x_1y_3 + x_0y_2x_2y_0 + x_0y_2x_3y_1 - x_1y_3x_2y_0 - x_1y_3x_3y_1 + x_2y_0x_3y_1) \\
 			&+ (x_0y_2)^2 + (x_1y_3)^2 + (x_2y_0)^2 + (x_3y_1)^2 \\
-			&- 2 (x_0y_2x_1y_3 - x_0y_2x_2y_0 - x_0y_2x_3y_1 + x_1y_3x_2y_0 + x_1y_3x_3y_1 - x_2y_0x_3y_1) \\
+			&- 2 (x_0y_2x_1y_3 - x_0y_2x_2y_0 - x_0y_2x_3y_1 \\
+			&\qquad+ x_1y_3x_2y_0 + x_1y_3x_3y_1 - x_2y_0x_3y_1) \\
 %			&+ (x_0y_3)^2 + (x_1y_2)^2 + (x_2y_1)^2 + (x_3y_0)^2 \\
 %			&+ 2 (x_0y_3x_1y_2 - x_0y_3x_2y_1 + x_0y_3x_3y_0 - x_1y_2x_2y_1 + x_1y_2x_3y_0 - x_2y_1x_3y_0) \\
 			&+ (x_0y_3)^2 + (x_1y_2)^2 + (x_2y_1)^2 + (x_3y_0)^2 \\
-			&+ 2 (x_0y_3x_1y_2 - x_0y_3x_2y_1 + x_0y_3x_3y_0 - x_1y_2x_2y_1 + x_1y_2x_3y_0 - x_2y_1x_3y_0) \\
+			&+ 2 (x_0y_3x_1y_2 - x_0y_3x_2y_1 + x_0y_3x_3y_0 \\
+			&\qquad- x_1y_2x_2y_1 + x_1y_2x_3y_0 - x_2y_1x_3y_0) \\
 			&= (x_0y_0)^2 + (x_1y_1)^2 + (x_2y_2)^2 + (x_3y_3)^2 \\
 			&+ (x_0y_1)^2 + (x_1y_0)^2 + (x_2y_3)^2 + (x_3y_2)^2 \\
 			&+ (x_0y_2)^2 + (x_1y_3)^2 + (x_2y_0)^2 + (x_3y_1)^2 \\
@@ -1352,12 +1407,12 @@ Como $(\R^4,+,-,0,\cdot)$ é um espaço linear sobre $\R$, basta mostrar as prop
 			&= ({x_0}^2+{x_1}^2+{x_2}^2+{x_3}^2)({y_0}^2+{y_1}^2+{y_2}^2+{y_3}^2) \\
 			&= \nor{x}^2\nor{y}^2.
 		\end{align*}
-	
+
 	\item (Unitariedade)
 		\begin{equation*}
 		\nor{1} = (1^2+0^2+0^2+0^2)^{\frac{1}{2}} = 1.
 		\end{equation*}
-	
+
 	\item (Invertibilidade) Para todo $x \in \R^4 \setminus \{0\}$,
 		\begin{align*}
 		\nor{x\inv} &= \left(\left(\frac{x_0}{\nor{x}^2}\right)^2 + \left(\frac{-x_1}{\nor{x}^2}\right)^2 + \left(\frac{-x_2}{\nor{x}^2}\right)^2 + \left(\frac{-x_3}{\nor{x}^2}\right)^2\right)^{\frac{1}{2}} \\
@@ -1368,6 +1423,7 @@ Como $(\R^4,+,-,0,\cdot)$ é um espaço linear sobre $\R$, basta mostrar as prop
 		\end{align*}
 \end{itemize}
 \end{proof}
+\endgroup
 
 Demonstramos de fato a multiplicatividade da norma, mas a submultiplicatividade, junto às outras propriedades da norma, implica que, para todos $x,x' \in \R^4$,
 	\begin{equation*}
@@ -1564,11 +1620,11 @@ O produto interno quaterniônico difere do produto interno usual em $\R^4$, mas 
 		\end{equation*}
 
 	\item O produto escalar $\pesc{}{}\colon \vec{\R}^3 \times \vec{\R}^3 \to \R$ é um produto interno no subespaço vetorial $\vec{\R}^3$;
-	
+
 	\item O produto vetorial $\pvec{}{}\colon \vec{\R}^3 \times \vec{\R}^3 \to \vec{\R}^3$ é uma função bilinear alternada tal que, para todos $\vec{x},\vec{y} \in \vec{\R}^3$,
 		\begin{enumerate}
 		\item $\pesc{(\pvec{\vec{x}}{\vec{y}})}{\vec{x}} = \pesc{(\pvec{\vec{x}}{\vec{y}})}{\vec{y}} = 0$;
-		
+
 		\item $\pesc{(\pvec{\vec{x}}{\vec{y}})}{(\pvec{\vec{x}}{\vec{y}})} =
 				\det{
 					\begin{bmatrix}
@@ -1577,12 +1633,12 @@ O produto interno quaterniônico difere do produto interno usual em $\R^4$, mas 
 					\end{bmatrix}
 				}$.
 		\end{enumerate}
-	
+
 	\item Para todos $\vec{x},\vec{y},\vec{z} \in \vec{\R}^3$,
 		\begin{equation*}
 		\pvec{(\pvec{\vec{x}}{\vec{y}})}{\vec{z}} = (\pesc{\vec{x}}{\vec{z}})\vec{y} - (\pesc{\vec{y}}{\vec{z}})\vec{x};
 		\end{equation*}
-	
+
 	\item A função
 		\begin{align*}
 		\func{\vol_{\Yup}}{\vec{\R}^3 \times \vec{\R}^3 \times \vec{\R}^3}{\vec{\R}^3}{(\vec{x},\vec{y},\vec{z})}{\pesc{(\pvec{\vec{x}}{\vec{y}})}{\vec{z}}}
@@ -1604,18 +1660,18 @@ O produto interno quaterniônico difere do produto interno usual em $\R^4$, mas 
 		xy = \esc{x}\esc{y} - \pesc{\vec{x}}{\vec{y}} + \esc{x}\vec{y} + \esc{y}\vec{x} + \pvec{\vec{x}}{\vec{y}},
 		\end{equation*}
 sendo
-		\begin{align*}	
+		\begin{align*}
 		\esc{(xy)} &= \esc{x}\esc{y} - \pesc{\vec{x}}{\vec{y}}, \\
 		\vec{(xy)} &= \esc{x}\vec{y} + \esc{y}\vec{x} + \pvec{\vec{x}}{\vec{y}}.
 		\end{align*}
-	
+
 	\item Para todos $x,y \in \R^4$, $xy=yx$ se, e somente se, $\pvec{\vec{x}}{\vec{y}}=0$;% (ou seja, $\vec{x} \parallel \vec{y}$);
-	
+
 	\item Para todo $x \in \R^4 \setminus \{0\}$,
 		\begin{equation*}
 		x\inv = \frac{\conju{x}}{\nor{x}^2};
 		\end{equation*}
-	
+
 	\item $\vec{\S}^2 = \set{x \in \R^4}{x^2 = -1}$;
 
 	\item Para todos $x \in \R^4 \setminus \{0\}$ e $y \in \R^4$,
@@ -1649,7 +1705,7 @@ sendo
 		&= \esc{x}\esc{y}+\esc{x}\vec{y}+\esc{y}\vec{x}+(-\pesc{\vec{x}}{\vec{y}} + \pvec{\vec{x}}{\vec{y}}) \\
 		&= (\esc{x}\esc{y} - \pesc{\vec{x}}{\vec{y}}) + (\esc{x}\vec{y}+\esc{y}\vec{x}+\pvec{\vec{x}}{\vec{y}}).
 	\end{align*}
-	
+
 	\item Para todos $x,y \in \R^4$,
 		\begin{align*}
 		xy - yx &= \esc{x}\esc{y} - \pesc{\vec{x}}{\vec{y}}+\esc{x}\vec{y}+\esc{y}\vec{x}+\pvec{\vec{x}}{\vec{y}} \\
@@ -1687,7 +1743,7 @@ Segue que $\esc{x}=0$ e $\nor{\vec{x}}=1$ se, e somente se, $x^2=-1$.
 e
 		\begin{align*}
 		\vec{(xyx\inv)} &= \esc{(xy)}\vec{(x\inv)} + \esc{(x\inv)}\vec{(xy)} + \pvec{\vec{(xy)}}{\vec{(x\inv)}} \\
-			&= (\esc{x}\esc{y} - \pesc{\vec{x}}{\vec{y}})\frac{(-\vec{x})}{\nor{x}^2} 
+			&= (\esc{x}\esc{y} - \pesc{\vec{x}}{\vec{y}})\frac{(-\vec{x})}{\nor{x}^2}
 			+ \frac{\esc{x}}{\nor{x}^2}(\esc{x}\vec{y} + \esc{y}\vec{x} + \pvec{\vec{x}}{\vec{y}}) \\
 				&\qquad + \pvec{(\esc{x}\vec{y} + \esc{y}\vec{x} + \pvec{\vec{x}}{\vec{y}})}{\frac{(-\vec{x})}{\nor{x}^2}} \\
 			&= \frac{(\pesc{\vec{x}}{\vec{y}})\vec{x} + \esc{x}^2\vec{y} + \esc{x}(\pvec{\vec{x}}{\vec{y}})}{\nor{x}^2} \\
@@ -1867,7 +1923,8 @@ Como
 segue que da fórmula de conjugação por quatérnio que
 	\begin{align*}
 	\e^{\phi \hat{u}}x\e^{-\phi \hat{u}} &= 2(\pesc{\vec{u}}{x})\vec{u} + \inteq{u}{u}x + 2\esc{u}(\pvec{\vec{u}}{x}) \\
-		&= 2\sin(\phi)(\pesc{\hat{u}}{x})(\sin(\phi)\hat{u}) + (\cos(\phi)^2-\sin(\phi)^2)x + 2\cos(\phi)\sin(\phi)(\pvec{\hat{u}}{x}) \\
+		&= 2\sin(\phi)(\pesc{\hat{u}}{x})(\sin(\phi)\hat{u}) \\
+		&\qquad+ (\cos(\phi)^2-\sin(\phi)^2)x + 2\cos(\phi)\sin(\phi)(\pvec{\hat{u}}{x}) \\
 		&= (1-\cos(2\phi))(\pesc{x}{\hat{u}})\hat{u} + \cos(2\phi)x + \sin(2\phi)(\pvec{\hat{u}}{x}) \\
 		&= (\pesc{x}{\hat{u}})\hat{u} + \cos(2\phi)(x-(\pesc{x}{\hat{u}})\hat{u}) + \sin(2\phi)(\pvec{\hat{u}}{x}) \\
 		&= \proj_{\parallel \hat{u}}(x) + \cos(2\phi)\proj_{\perp \hat{u}}(x) + \sin(2\phi)(x) \\
@@ -1950,42 +2007,60 @@ e
 	\end{equation*}
 
 Matricialmente, $[R_u]$ é dada por
-	\begin{equation*}
-	\begin{bmatrix}
-			{u_1}^2 & u_1u_2 & u_1u_3 \\ 
-			u_1u_2 & {u_2}^2 & u_2u_3 \\ 
-			u_1u_3 & u_2u_3 & {u_3}^2
-	\end{bmatrix}
-	+\cos(\theta)
-	\begin{bmatrix}
-		1-{u_1}^2 & -u_1u_2 & -u_1u_3 \\ 
-		-u_1u_2 & 1-{u_2}^2 & -u_2u_3 \\ 
-		-u_1u_3 & -u_2u_3 & 1-{u_3}^2
-	\end{bmatrix}
-	+ \sin(\theta)
-	\begin{bmatrix}
-			0 & -u_3 & u_2 \\ 
-			u_3 & 0 & -u_1 \\ 
-			-u_2 & u_1 & 0
-	\end{bmatrix}
-	\end{equation*}
-ou
-	\begin{equation*}
+%	\begin{align*}
+%	[R_u] &=
+%	\begin{bmatrix}
+%			{u_1}^2 & u_1u_2 & u_1u_3 \\
+%			u_1u_2 & {u_2}^2 & u_2u_3 \\
+%			u_1u_3 & u_2u_3 & {u_3}^2
+%	\end{bmatrix} \\
+%	&\qquad+\cos(\theta)
+%	\begin{bmatrix}
+%		1-{u_1}^2 & -u_1u_2 & -u_1u_3 \\
+%		-u_1u_2 & 1-{u_2}^2 & -u_2u_3 \\
+%		-u_1u_3 & -u_2u_3 & 1-{u_3}^2
+%	\end{bmatrix}
+%	+ \sin(\theta)
+%	\begin{bmatrix}
+%			0 & -u_3 & u_2 \\
+%			u_3 & 0 & -u_1 \\
+%			-u_2 & u_1 & 0
+%	\end{bmatrix}
+%	\end{align*}
+%ou
+%	\begin{equation*}
+%	(1-\cos(\theta))
+%	\begin{bmatrix}
+%			{u_1}^2 & u_1u_2 & u_1u_3 \\
+%			u_1u_2 & {u_2}^2 & u_2u_3 \\
+%			u_1u_3 & u_2u_3 & {u_3}^2
+%	\end{bmatrix}
+%	+
+%	\cos(\theta)\Id + \sin(\theta)
+%	\begin{bmatrix}
+%			0 & -u_3 & u_2 \\
+%			u_3 & 0 & -u_1 \\
+%			-u_2 & u_1 & 0
+%	\end{bmatrix}
+%	\end{equation*}
+%
+	\begin{align*}
+	[R_u] &= [\proj_{\parallel u}] + \cos(\theta)[\proj_{\perp u}] + \sin(\theta)[\pvec{u\!}{}] \\
+	&=
 	(1-\cos(\theta))
 	\begin{bmatrix}
-			{u_1}^2 & u_1u_2 & u_1u_3 \\ 
-			u_1u_2 & {u_2}^2 & u_2u_3 \\ 
+			{u_1}^2 & u_1u_2 & u_1u_3 \\
+			u_1u_2 & {u_2}^2 & u_2u_3 \\
 			u_1u_3 & u_2u_3 & {u_3}^2
 	\end{bmatrix}
 	+
 	\cos(\theta)\Id + \sin(\theta)
 	\begin{bmatrix}
-			0 & -u_3 & u_2 \\ 
-			u_3 & 0 & -u_1 \\ 
+			0 & -u_3 & u_2 \\
+			u_3 & 0 & -u_1 \\
 			-u_2 & u_1 & 0
 	\end{bmatrix}
-	\end{equation*}
-
+	\end{align*}
 
 
 
@@ -2013,27 +2088,27 @@ Isso significa que
 	\end{equation*}
 As funções $\proj_{\parallel u}$, $\proj_{\perp u}$ e $u \times$ são funções lineares e, na base canônica de $\R^3$, são dadas pelas matrizes
 	\begin{equation*}
-	[\proj_{\parallel u}] = 
+	[\proj_{\parallel u}] =
 	\begin{bmatrix}
-		{u_1}^2 & u_1u_2 & u_1u_3 \\ 
-		u_1u_2 & {u_2}^2 & u_2u_3 \\ 
+		{u_1}^2 & u_1u_2 & u_1u_3 \\
+		u_1u_2 & {u_2}^2 & u_2u_3 \\
 		u_1u_3 & u_2u_3 & {u_3}^2
 	\end{bmatrix}
 	\end{equation*}
 	\begin{equation*}
-	[\proj_{\perp u}] = 
+	[\proj_{\perp u}] =
 	\begin{bmatrix}
-		1-{u_1}^2 & -u_1u_2 & -u_1u_3 \\ 
-		-u_1u_2 & 1-{u_2}^2 & -u_2u_3 \\ 
+		1-{u_1}^2 & -u_1u_2 & -u_1u_3 \\
+		-u_1u_2 & 1-{u_2}^2 & -u_2u_3 \\
 		-u_1u_3 & -u_2u_3 & 1-{u_3}^2
 	\end{bmatrix}
 	\end{equation*}
 e
 	\begin{equation*}
-	[u \times] = 
+	[u \times] =
 	\begin{bmatrix}
-			0 & -u_3 & u_2 \\ 
-			u_3 & 0 & -u_1 \\ 
+			0 & -u_3 & u_2 \\
+			u_3 & 0 & -u_1 \\
 			-u_2 & u_1 & 0
 	\end{bmatrix}
 	\end{equation*}
@@ -2092,7 +2167,7 @@ Por fim, notemos que
 		&= \esc{q}\esc{q}\vec{v}+2\esc{q}\vec{q}\times \vec{v} + \inte{\vec{v}}{\vec{q}}\vec{q} - \inte{\vec{q}}{\vec{q}}\vec{v} + \inte{\vec{q}}{\vec{v}}\vec{q} \\
 		&= (\esc{q}\esc{q} - \inte{\vec{q}}{\vec{q}})\vec{v}+2\esc{q}\vec{q}\times \vec{v} + 2\inte{\vec{v}}{\vec{q}}\vec{q}.
 	\end{align*}
-	
+
 Como $\nor{q}^2 = \esc{q}^2 + \nor{\vec{q}}^2$, podemos tomar $\theta \in \intff{0}{\tau}$ tal que
 	\begin{equation*}
 	\esc{q} = \cos(\theta \div 2)
@@ -2112,7 +2187,7 @@ temos $\nor{u}=1$ e
 
 Segue então que
 	\begin{align*}
-	qvq\inv 
+	qvq\inv
 %		&= \left(\left(\cos\frac{\theta}{2}\right)^2-\left(\sin\frac{\theta}{2}\right)^2\right)v + 2\cos\frac{\theta}{2}\sin\frac{\theta}{2}{u \times v} + 2\left(\sin\frac{\theta}{2}\right)^2\inte{v}{u}u \\
 		&= (\cos(\theta \div 2)^2-\sin(\theta \div 2)^2)v + 2\cos(\theta \div 2)\sin(\theta \div 2){u \times v} + 2\sin(\theta \div 2)^2\inte{v}{u}u \\
 		&= \cos(\theta) v + \sin(\theta) u \times v + (1-\cos(\theta))\inte{v}{u}u \\
@@ -2135,10 +2210,10 @@ Segue então que
 
 %Explicitamente, a matriz de $R_q$ na base canônica é
 %	\begin{equation*}
-%	[R_q] = 
+%	[R_q] =
 %	\begin{bmatrix}
-%		1-2({q_2}^2+{q_3}^2) & 2(q_1q_2-q_3q_0) & 2(q_1q_3+q_2q_0) \\ 
-%		2(q_1q_2+q_3q_0) & 1-2({q_1}^2+{q_3}^2) & 2(q_2q_3-q_1q_0) \\ 
+%		1-2({q_2}^2+{q_3}^2) & 2(q_1q_2-q_3q_0) & 2(q_1q_3+q_2q_0) \\
+%		2(q_1q_2+q_3q_0) & 1-2({q_1}^2+{q_3}^2) & 2(q_2q_3-q_1q_0) \\
 %		2(q_1q_3-q_2q_0) & 2(q_2q_3+q_1q_0) & 1-2({q_1}^2+{q_2}^2).
 %	\end{bmatrix}
 %	\end{equation*}
@@ -2146,8 +2221,8 @@ Segue então que
 
 %	\begin{equation*}
 %	\begin{bmatrix}
-%			1-2\sin(\theta \div 2)^2({u_2}^2+{u_3}^2) & 2(u_1u_2\sin(\theta \div 2)^2-u_3\sin(\theta \div 2)\cos(\theta \div 2)) & 2(u_1u_3\sin(\theta \div 2)^2+u_2\sin(\theta \div 2)\cos(\theta \div 2)) \\ 
-%			2(u_1u_2\sin(\theta \div 2)^2+u_3\sin(\theta \div 2)\cos(\theta \div 2)) & 1-2\sin(\theta \div 2)^2({u_1}^2+{u_3}^2) & 2(u_2u_3\sin(\theta \div 2)^2-u_1\sin(\theta \div 2)\cos(\theta \div 2)) \\ 
+%			1-2\sin(\theta \div 2)^2({u_2}^2+{u_3}^2) & 2(u_1u_2\sin(\theta \div 2)^2-u_3\sin(\theta \div 2)\cos(\theta \div 2)) & 2(u_1u_3\sin(\theta \div 2)^2+u_2\sin(\theta \div 2)\cos(\theta \div 2)) \\
+%			2(u_1u_2\sin(\theta \div 2)^2+u_3\sin(\theta \div 2)\cos(\theta \div 2)) & 1-2\sin(\theta \div 2)^2({u_1}^2+{u_3}^2) & 2(u_2u_3\sin(\theta \div 2)^2-u_1\sin(\theta \div 2)\cos(\theta \div 2)) \\
 %			2(u_1u_3\sin(\theta \div 2)^2-u_2\sin(\theta \div 2)\cos(\theta \div 2)) & 2(u_2u_3\sin(\theta \div 2)^2+u_1\sin(\theta \div 2)\cos(\theta \div 2)) & 1-2\sin(\theta \div 2)^2({u_1}^2+{u_2}^2)
 %	\end{bmatrix}
 %	\end{equation*}
@@ -2155,31 +2230,31 @@ Segue então que
 %Definindo $c:= \cos(\theta \div 2)$ e $s:=\sin(\theta \div 2)$ e tomando $q=\e^{\frac{\theta}{2}u}=c+su$, temos
 %	\begin{equation*}
 %	\begin{bmatrix}
-%			1-2s^2({u_2}^2+{u_3}^2) & 2(u_1u_2s^2-u_3sc) & 2(u_1u_3s^2+u_2sc) \\ 
-%			2(u_1u_2s^2+u_3sc) & 1-2s^2({u_1}^2+{u_3}^2) & 2(u_2u_3s^2-u_1sc) \\ 
+%			1-2s^2({u_2}^2+{u_3}^2) & 2(u_1u_2s^2-u_3sc) & 2(u_1u_3s^2+u_2sc) \\
+%			2(u_1u_2s^2+u_3sc) & 1-2s^2({u_1}^2+{u_3}^2) & 2(u_2u_3s^2-u_1sc) \\
 %			2(u_1u_3s^2-u_2sc) & 2(u_2u_3s^2+u_1sc) & 1-2s^2({u_1}^2+{u_2}^2)
 %	\end{bmatrix}
 %	\end{equation*}
 %Mas ${u_2}^2+{u_3}^2 = 1-{u_1}^2$, etc...
 %	\begin{equation*}
 %	\begin{bmatrix}
-%			1-2s^2(1-{u_1}^2) & 2(u_1u_2s^2-u_3sc) & 2(u_1u_3s^2+u_2sc) \\ 
-%			2(u_1u_2s^2+u_3sc) & 1-2s^2(1-{u_2}^2) & 2(u_2u_3s^2-u_1sc) \\ 
+%			1-2s^2(1-{u_1}^2) & 2(u_1u_2s^2-u_3sc) & 2(u_1u_3s^2+u_2sc) \\
+%			2(u_1u_2s^2+u_3sc) & 1-2s^2(1-{u_2}^2) & 2(u_2u_3s^2-u_1sc) \\
 %			2(u_1u_3s^2-u_2sc) & 2(u_2u_3s^2+u_1sc) & 1-2s^2(1-{u_3}^2)
 %	\end{bmatrix}
 %	\end{equation*}
 %e, definindo $C:= \cos\theta$ e $S:=\sin\theta$, temos $2s^2 = 1-C$ e $2sc=S$, logo
 %	\begin{equation*}
 %	\begin{bmatrix}
-%			1-(1-C)(1-{u_1}^2) & u_1u_2(1-C)-u_3S & u_1u_3(1-C)+u_2S \\ 
-%			u_1u_2(1-C)+u_3S & 1-(1-C)(1-{u_2}^2) & u_2u_3(1-C)-u_1S \\ 
+%			1-(1-C)(1-{u_1}^2) & u_1u_2(1-C)-u_3S & u_1u_3(1-C)+u_2S \\
+%			u_1u_2(1-C)+u_3S & 1-(1-C)(1-{u_2}^2) & u_2u_3(1-C)-u_1S \\
 %			u_1u_3(1-C)-u_2S & u_2u_3(1-C)+u_1S & 1-(1-C)(1-{u_3}^2)
 %	\end{bmatrix}
 %	\end{equation*}
 %	\begin{equation*}
 %	\begin{bmatrix}
-%			{u_1}^2(1-C)+C & u_1u_2(1-C)-u_3S & u_1u_3(1-C)+u_2S \\ 
-%			u_1u_2(1-C)+u_3S & {u_2}^2(1-C)+C & u_2u_3(1-C)-u_1S \\ 
+%			{u_1}^2(1-C)+C & u_1u_2(1-C)-u_3S & u_1u_3(1-C)+u_2S \\
+%			u_1u_2(1-C)+u_3S & {u_2}^2(1-C)+C & u_2u_3(1-C)-u_1S \\
 %			u_1u_3(1-C)-u_2S & u_2u_3(1-C)+u_1S & {u_3}^2(1-C)+C
 %	\end{bmatrix}
 %	\end{equation*}
@@ -2187,15 +2262,15 @@ Segue então que
 %	\begin{equation*}
 %	(1-C)
 %	\begin{bmatrix}
-%			{u_1}^2 & u_1u_2 & u_1u_3 \\ 
-%			u_1u_2 & {u_2}^2 & u_2u_3 \\ 
+%			{u_1}^2 & u_1u_2 & u_1u_3 \\
+%			u_1u_2 & {u_2}^2 & u_2u_3 \\
 %			u_1u_3 & u_2u_3 & {u_3}^2
 %	\end{bmatrix}
 %	+
 %	C\Id + S
 %	\begin{bmatrix}
-%			0 & -u_3 & u_2 \\ 
-%			u_3 & 0 & -u_1 \\ 
+%			0 & -u_3 & u_2 \\
+%			u_3 & 0 & -u_1 \\
 %			-u_2 & u_1 & 0
 %	\end{bmatrix}
 %	\end{equation*}
@@ -2205,20 +2280,20 @@ Segue então que
 Matricialmente, $[R_q]$ é dada por
 	\begin{equation*}
 	\begin{bmatrix}
-			{u_1}^2 & u_1u_2 & u_1u_3 \\ 
-			u_1u_2 & {u_2}^2 & u_2u_3 \\ 
+			{u_1}^2 & u_1u_2 & u_1u_3 \\
+			u_1u_2 & {u_2}^2 & u_2u_3 \\
 			u_1u_3 & u_2u_3 & {u_3}^2
 	\end{bmatrix}
 	+\cos(\theta)
 	\begin{bmatrix}
-		1-{u_1}^2 & -u_1u_2 & -u_1u_3 \\ 
-		-u_1u_2 & 1-{u_2}^2 & -u_2u_3 \\ 
+		1-{u_1}^2 & -u_1u_2 & -u_1u_3 \\
+		-u_1u_2 & 1-{u_2}^2 & -u_2u_3 \\
 		-u_1u_3 & -u_2u_3 & 1-{u_3}^2
 	\end{bmatrix}
 	+ \sin(\theta)
 	\begin{bmatrix}
-			0 & -u_3 & u_2 \\ 
-			u_3 & 0 & -u_1 \\ 
+			0 & -u_3 & u_2 \\
+			u_3 & 0 & -u_1 \\
 			-u_2 & u_1 & 0
 	\end{bmatrix}
 	\end{equation*}
@@ -2226,15 +2301,15 @@ ou
 	\begin{equation*}
 	(1-\cos(\theta))
 	\begin{bmatrix}
-			{u_1}^2 & u_1u_2 & u_1u_3 \\ 
-			u_1u_2 & {u_2}^2 & u_2u_3 \\ 
+			{u_1}^2 & u_1u_2 & u_1u_3 \\
+			u_1u_2 & {u_2}^2 & u_2u_3 \\
 			u_1u_3 & u_2u_3 & {u_3}^2
 	\end{bmatrix}
 	+
 	\cos(\theta)\Id + \sin(\theta)
 	\begin{bmatrix}
-			0 & -u_3 & u_2 \\ 
-			u_3 & 0 & -u_1 \\ 
+			0 & -u_3 & u_2 \\
+			u_3 & 0 & -u_1 \\
 			-u_2 & u_1 & 0
 	\end{bmatrix}
 	\end{equation*}
@@ -2265,9 +2340,12 @@ A função
 \end{definition}
 \begin{proof}
 A função $R$ é diferenciável porque $R_u(x)$ é um polinômio em cada entrada. Primeiro, vamos mostrar que $R$ de fato está bem definida, ou seja, que, para todos $u,v \in \S^3$, $R_{u,v} \in \SO(4)$. Sejam $u,v \in \S^3$. A função $R_{u,v}$ é linear, pois, para todos $x,x' \in \vec{\R}^3$ e $c \in \R$, segue da bilinearidade do produto quaterniônico que
-	\begin{equation*}
-	R_{u,v}(cx+x') = u(cx+x')v\inv = (cux+ux')v\inv = cuxv\inv + ux'v\inv = cR_{u,v}(x) + R_{u,v}(x').
-	\end{equation*}
+	\begin{align*}
+	R_{u,v}(cx+x') &= u(cx+x')v\inv \\
+		&= (cux+ux')v\inv \\
+		&= cuxv\inv + ux'v\inv \\
+		&= cR_{u,v}(x) + R_{u,v}(x').
+	\end{align*}
 Isso mostra que $R_{u,v} \in \GL(4,\R)$. Além disso, $R_{u,v}$ preserva norma, pois
 	\begin{equation*}
 	\nor{R_{u,v}(x)} = \nor{uxv\inv} = \nor{u}\nor{x}\nor{v}\inv = \nor{x}.
@@ -2409,7 +2487,7 @@ Consideramos por fim cada um dos 3 casos.
 
 
 
-\subsection{Octônios \ensuremath{\R^8}}
+\subsection{Octônios \texorpdfstring{$\R^8$}{}}
 
 \subsubsection{Multiplicação octoniônica}
 
@@ -2595,7 +2673,7 @@ Pela definição da multiplicação, vale que
 	\centering
 
 	\begin{tikzpicture}
-	
+
 	\def \raio{1.5cm}
 
 	\coordinate (O) at (0,0);
@@ -2644,7 +2722,7 @@ Pela definição da multiplicação, vale que
 	\centering
 
 	\begin{tikzpicture}
-	
+
 	\def \raio{1.5cm}
 
 	\coordinate (O) at (0,0);
@@ -2812,7 +2890,7 @@ A lista
 
 
 
-\subsection{$2$-Hiperbólicos \ensuremath{\R^{1,1}}}
+\subsection{$2$-Hiperbólicos \texorpdfstring{$\R^{1,1}$}{}}
 
 Definiremos o `produto hiperbólico' no espaço linear $\R^2$, cuja base canônica denotaremos por
 	\begin{align*}
@@ -2859,7 +2937,7 @@ A lista
 		\begin{equation*}
 		xy = (x_0y_0 + x_1y_1,x_0y_1+x_1y_0) = (y_0x_0 + y_1x_1, y_0x_1+y_1x_0) = yx.
 		\end{equation*}
-	\item (Associatividade) Para todos $x,y,z \in \R^{1,1}$,
+	\item %(Associatividade) Para todos $x,y,z \in \R^{1,1}$,
 %		\begin{align*}
 %		(xy)z &= ((x_0y_0 + x_1y_1) + (x_0y_1+x_1y_0)\jj)(z_0+z_1\jj) \\
 %				&= ((x_0y_0 + x_1y_1)z_0 + (x_0y_1+x_1y_0)z_1) + ((x_0y_0 + x_1y_1)z_1 + (x_0y_1+x_1y_0)z_0)\jj \\
@@ -2867,13 +2945,54 @@ A lista
 %				&= (x_0(y_0z_0+y_1z_1) + x_1(y_0z_1+y_1z_0)) + (x_0(y_0z_1+y_1z_0) + x_1(y_0z_0+y_1z_1))\jj \\
 %				&= x(yz).
 %		\end{align*}
-		\begin{align*}
-		(xy)z &= (x_0y_0 + x_1y_1, x_0y_1+x_1y_0)(z_0,z_1) \\
-				&= ((x_0y_0 + x_1y_1)z_0 + (x_0y_1+x_1y_0)z_1, (x_0y_0 + x_1y_1)z_1 + (x_0y_1+x_1y_0)z_0) \\
-				&= (x_0y_0z_0 + x_1y_1z_0 + x_0y_1z_1+x_1y_0z_1, x_0y_0z_1 + x_1y_1z_1 + x_0y_1z_0+x_1y_0z_0) \\
-				&= (x_0(y_0z_0+y_1z_1) + x_1(y_0z_1+y_1z_0), x_0(y_0z_1+y_1z_0) + x_1(y_0z_0+y_1z_1)) \\
-				&= x(yz).
-		\end{align*}
+%		\begin{align*}
+%		(xy)z &= (x_0y_0 + x_1y_1, x_0y_1+x_1y_0)(z_0,z_1) \\
+%				&= ((x_0y_0 + x_1y_1)z_0 + (x_0y_1+x_1y_0)z_1, (x_0y_0 + x_1y_1)z_1 + (x_0y_1+x_1y_0)z_0) \\
+%				&= (x_0y_0z_0 + x_1y_1z_0 + x_0y_1z_1+x_1y_0z_1, x_0y_0z_1 + x_1y_1z_1 + x_0y_1z_0+x_1y_0z_0) \\
+%				&= (x_0(y_0z_0+y_1z_1) + x_1(y_0z_1+y_1z_0), x_0(y_0z_1+y_1z_0) + x_1(y_0z_0+y_1z_1)) \\
+%				&= x(yz).
+%		\end{align*}
+		(Associatividade) Faremos as contas por coordenadas. Para todos $x,y,z \in \R^{1,1}$, segue da definição do produto que as coordenadas de $xy$ são
+			\begin{align*}
+			(xy)_0 &= x_0y_0 + x_1y_1 \\
+			(xy)_1 &= x_0y_1+x_1y_0
+			\end{align*}
+		e que as coordenadas de $yz$ são
+			\begin{align*}
+			(yz)_0 &= y_0z_0+y_1z_1 \\
+			(yz)_1 &= y_0z_1+y_1z_0.
+			\end{align*}
+		Ainda da definição do produto, as coordenadas de $(xy)z$ são
+			\begin{align*}
+			((xy)z)_0 &= (x_0y_0 + x_1y_1)z_0 + (x_0y_1+x_1y_0)z_1 \\
+			((xy)z)_1 &= (x_0y_0 + x_1y_1)z_1 + (x_0y_1+x_1y_0)z_0)
+			\end{align*}
+		e as coordenadas de $x(yz)$ são
+			\begin{align*}
+			(x(yz))_0 &= x_0(y_0z_0+y_1z_1) + x_1(y_0z_1+y_1z_0) \\
+			(x(yz))_1 &= x_0(y_0z_1+y_1z_0) + x_1(y_0z_0+y_1z_1).
+			\end{align*}
+		Para a coordenada $0$, segue que
+			\begin{align*}
+			((xy)z)_0 &= (x_0y_0 + x_1y_1)z_0 + (x_0y_1+x_1y_0)z_1 \\
+				&= x_0y_0z_0 + x_1y_1z_0 + x_0y_1z_1+x_1y_0z_1 \\
+				&= x_0(y_0z_0+y_1z_1) + x_1(y_0z_1+y_1z_0) \\
+				&= (x(yz))_0
+			\end{align*}
+		e, para a coordenada $1$, segue que
+			\begin{align*}
+			((xy)z)_1 &= (x_0y_0 + x_1y_1)z_1 + (x_0y_1+x_1y_0)z_0) \\
+				&= x_0y_0z_1 + x_1y_1z_1 + x_0y_1z_0+x_1y_0z_0 \\
+				&= x_0(y_0z_1+y_1z_0) + x_1(y_0z_0+y_1z_1) \\
+				&= (x(yz))_1.
+			\end{align*}
+		Portanto
+			\begin{equation*}
+			(xy)z = ((xy)z)_0 1 + ((xy)z)_1 \jj = (x(yz))_0 1 + (x(yz))_1 \jj = x(yz).
+			\end{equation*}
+
+
+
 	\item (Bilinearidade) Como o produto é comutativo, basta mostrar a linearidade na primeira entrada. Para todos $x,x',y \in \R^{1,1}$ e $c \in \R$,
 %		\begin{align*}
 %		(cx+x')y &= ((cx_0+x'_0)y_0 + (cx_1+x'_1)y_1) + ((cx_0+x'_0)y_1 + (cx_1+x'_1)y_0)\jj \\
@@ -2906,7 +3025,7 @@ A lista
 \end{proof}
 
 \begin{definition}
-Seja $x \in \R^{1,1}$. O \emph{conjugado} de $x$ é $\conju{x} := x_0 - x_1\jj$. A 
+Seja $x \in \R^{1,1}$. O \emph{conjugado} de $x$ é $\conju{x} := x_0 - x_1\jj$. A
 \end{definition}
 
 \begin{exercise}
@@ -2916,7 +3035,7 @@ Seja $x \in \R^{1,1}$. Então $x\conju{x} = {x_0}^2 - {x_1}^2 = \inte{x}{x}_{1,1
 
 
 
-\subsection{$4$-Hiperbólicos \ensuremath{\R^{1,3}}}
+\subsection{$4$-Hiperbólicos \texorpdfstring{$\R^{1,3}$}{}}
 
 Definiremos o `produto hiperbólico' no espaço linear $\R^4$, cuja base canônica denotaremos por
 	\begin{align*}

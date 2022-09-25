@@ -275,7 +275,6 @@ Esse conjunto é o complementar do conjunto de pontos do espaço que passam por 
 	\end{equation*}
 
 Agora, notemos que o complementar da união dos $\tilde{U_i}$ é o conjunto $\Rec(f)$ dos pontos recorrentes de $f$. Para isso, primeiro notemos que
-e notemos que
 	\begin{align*}
 	R &:= \left( \bigcup_{i \in \N} \tilde U_i \right)^\complement \\
 		&= \bigcap_{i \in \N} {\tilde U_i}^\complement \\
@@ -437,13 +436,21 @@ As variedades estável e instável de um ponto $[p]$ do toro são invariavéis s
 \begin{proof}
 	Na demosntração, usaremos $W$ para representar qualquer uma das duas variedades estável e instável. Da mesma forma, $v$ para o autovetor e $\lambda$ para o autovalor associado à respectiva variedade.
 
-	Primeiro demonstraremos que $[A](W([p])) \subset W([A]([p]))$. Seja $[x] \in [A](W([p]))$. Então existe $\alpha \in \R$ tal que $[x] = [A]([p + \alpha v])$. Logo
+	Primeiro demonstraremos que
+		\begin{equation*}
+		[A](W([p])) \subset W([A]([p])).
+		\end{equation*}
+Seja $[x] \in [A](W([p]))$. Então existe $\alpha \in \R$ tal que $[x] = [A]([p + \alpha v])$. Logo
 	\begin{equation*}
 	[x] = [A(p + \alpha v)] = [Ap + \alpha Av] = [Ap + \alpha \lambda v].
 	\end{equation*}
 Fazendo $\beta := \alpha \lambda$, temos $\beta \in \R$ e $[x] = [Ap + \beta v] = [[A]([p]) + \beta v]$. Portanto $[x] \in W([A]([p])$.
 
-	Agora demonstramos que $W([A]([p])) \subset [A](W([p]))$. Tomamos $[x] \in W([A]([p]))$. Então existe $\alpha \in \R$ tal que $[x] = [[A]([p]) + \alpha v]$. Como $\lambda \neq 0$, fazemos $\beta := \frac{\alpha}{\lambda}$. Então temos $\beta \in \R$ e
+	Agora demonstramos que
+		\begin{equation*}
+		W([A]([p])) \subset [A](W([p])).
+		\end{equation*}
+Tomamos $[x] \in W([A]([p]))$. Então existe $\alpha \in \R$ tal que $[x] = [[A]([p]) + \alpha v]$. Como $\lambda \neq 0$, fazemos $\beta := \frac{\alpha}{\lambda}$. Então temos $\beta \in \R$ e
 	\begin{equation*}
 	[x] = [Ap + \beta \lambda v] = [Ap + \beta Av] = [A(p + \beta v)] = [A]([p + \beta v])
 		\end{equation*}
@@ -457,10 +464,11 @@ Seja $[p]=[(p_1,p_2)]$ um ponto de $\T^2$. Na demosntração, usaremos $W([p])$ 
 
 Consideremos o conjunto $C := \{[(t_1,r)] : r \in \R \}$. Esse conjunto é um subconjunto de $\T^2$ e auxiliará na demonstração. Acharemos o ponto $[w]$ nesse conjunto, considerando o conjunto $W([p]) \cap C$. Esse conjunto interseção é interessante pois a distância entre seus potos pode ser calculada usando a distância do círculo. Tomemos $[c] \in C$, com $c=(t_1,r) \in S^1 \times S^1$ sem perda de generalidade. Notamos que
 	\begin{align*}
-		d_{\T^2}([t],[c])& = \min\{ d_{\R^2}(t+m,c+n) : m,n \in \Z^2 \} \\
-			& = \min\{ \sqrt{(t_1+m_1-t_1-n_1)^2 + (t_2+m_2-r-n_2)^2} : m_1,m_2,n_1,n_2 \in \Z \} \\
-			& = \min\{ \sqrt{(t_2-r-z)^2} : z \in \Z \} \\
-			& = \min\{ |t_2-r-z| : z \in \Z \} \\
+		d_{\T^2}([t],[c])& = \min\set{d_{\R^2}(t+m,c+n)}{m,n \in \Z^2} \\
+			& = \min \left\{ \big((t_1+m_1-t_1-n_1)^2 + (t_2+m_2-r-n_2)^2 \big)^{\frac{1}{2}} \right| \\
+			&\qquad \left| m_1,m_2,n_1,n_2 \in \Z \right\} \\
+			& = \min\set{((t_2-r-z)^2)^{\frac{1}{2}}}{z \in \Z} \\
+			& = \min\set{\abs{t_2-r-z}}{z \in \Z} \\
 			& = d_{S^1}(t_2,r),
 	\end{align*}
 pois $t_2, r \in S^1$. Isso mostra que a distância de um ponto de $C$ ao ponto $[t]$ é igual à distância de suas segundas coordenadas no círculo.

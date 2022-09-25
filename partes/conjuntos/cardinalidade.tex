@@ -30,18 +30,18 @@
 \end{proof}
 
 	De certa forma, essa proposição mostra que a noção de cardinalidades iguais se comporta como uma relação de equivalência. Não podemos dizer que $=$ é, de fato, uma relação de equivalência porque nao existe um conjunto de todos os conjuntos no qual defini-la. Todas proposições sobre cardinalidades são, na verdade, proposições sobre funções entre conjuntos e convém saber que as propriedades acima valem.
-	
+
 \subsection{Ordenação de cardinais}
 
 \begin{definition}
 	Sejam $X$ e $Y$ conjuntos não vazios.
 	\begin{enumerate}
 	\item Diz-se que $\card{X} \leq \card{Y}$ (a \emph{cardinalidade de $X$ é menor ou igual à cardinalidade de $Y$}) se, e somente se, existe função injetiva $C:X \to Y$.
-	
+
 	Diz-se que $\card{X} \geq \card{Y}$ (a \emph{cardinalidade de $X$ é maior ou igual à cardinalidade de $Y$}) se, e somente se, existe função sobrejetiva $C:X \to Y$.
-	
+
 	\item Diz-se que $\card{X} < \card{Y}$ (a \emph{cardinalidade de $X$ é menor que a cardinalidade de $Y$}) se, e somente se, $\card{X} \leq \card{Y}$ e $\card{X} \neq \card{Y}$.
-	
+
 	Diz-se que $\card{X} > \card{Y}$ (a \emph{cardinalidade de $X$ é maior que a cardinalidade de $Y$}) se, e somente se, $\card{X} \geq \card{Y}$ e $\card{X} \neq \card{Y}$.
 	\end{enumerate}
 \end{definition}
@@ -53,7 +53,7 @@
 \begin{definition}
 	Um conjunto \emph{finito} é um conjunto $X$ tal que $\# X < \aleph_0$. Um conjunto \emph{infinito} é um conjunto que não é finito.
 \end{definition}
-	
+
 	A seguir, demonstraremos algumas proposições para mostrar que o símbolo $\leq$ se comporta como uma relação de ordem total. Novamente, não podemos dizer formalmente que $\leq$ é uma relação, pois não existe o conjunto de todos os conjuntos no qual defini-la. No entanto, as propriedades acima são bem úteis de se ter em mente e serão usadas na demonstração de outras proposições. As propriedades análogas à reflexividade e transitividade de uma relação de ordem são bem triviais. A antissimetria, por outro lado, é bem difícil, tanto que é um conhecido teorema, o Teorema de Cantor-Schröder-Bernstein. Ainda, é possível demonstrar que $\leq$ se comporta como uma relação total; ou seja, todo conjunto pode ser comparado. Vamos demonstrar primeiro as propriedades triviais. Em seguida, demonstraremos separadamente as outras duas.
 
 \begin{proposition}
@@ -134,7 +134,11 @@ Seja $(C_i)_{i \in I}$ uma família não vazia de conjuntos. Se existem $\min_{i
 \end{equation*}
 \end{theorem}
 \begin{proof}
-Mostremos a primeira desigualdade. Seja $j \in I$ tal que $\card{C_j} := \min_{i \in I}{\card{C_i}}$ e $C := C_j$. Para cada $i \in I$, existe função injetiva $f_i: C \to C_i$. Considere a função
+Mostremos a primeira desigualdade. Seja $j \in I$ tal que
+	\begin{equation*}
+	\card{C_j} := \min_{i \in I}{\card{C_i}}
+	\end{equation*}
+e $C := C_j$. Para cada $i \in I$, existe função injetiva $f_i: C \to C_i$. Considere a função
 	\begin{align*}
 	\func{f}{I \times C}{\coprod_{i \in I} C_i}{(i,c)}{(f_i(c),i)}.
 	\end{align*}
@@ -144,5 +148,5 @@ Mostremos agora a segunda desigualdade. Seja $j \in I$ tal que $\card{C_j} := \m
 	\begin{align*}
 	\func{f}{\coprod_{i \in I} C_i}{I \times C}{(c,i)}{(i,f_i(c))}.
 	\end{align*}
-Mostremos que $f$ é sobrejetiva. Seja $(i,c) \in I \times C$. Como $f_i$ é sobrejetiva, existe $c' \in C_i$ tal que $f_i(c')=c$. Portanto $f(c',i)=(i,f_i(c'))=(i,c)$.	
+Mostremos que $f$ é sobrejetiva. Seja $(i,c) \in I \times C$. Como $f_i$ é sobrejetiva, existe $c' \in C_i$ tal que $f_i(c')=c$. Portanto $f(c',i)=(i,f_i(c'))=(i,c)$.
 \end{proof}
