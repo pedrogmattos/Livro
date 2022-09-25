@@ -1,10 +1,47 @@
 \chapter{Sistemas dinâmicos de medida}
 
+\section{Definições gerais}
+
 \begin{definition}
 Um \emph{sistema dinâmico de medida} (ou \emph{sistema que preserva medida}) é uma dupla $\bm{\Sist}=(\bm X,f)$ em que $\bm X$ é um espaço de medida, $(X,f)$ é um sistema dinâmico e $f$ é uma ação que preserva medida em $\bm X$.
 \end{definition}
 
 Como estudaremos somente o caso \textbf{discreto}, a função $f$ é no caso um morfismo de medida, uma função que preserva a medida do espaço. Ainda, estudaremos somente \textbf{espaços de probabilidade}. Introduzimos agora noções de morfismo de sistemas dinâmicos de probabilidade. Em geral, quando tratamos da teoria da medida, podemos considerar funções que são iguais a menos de um conjunto de medida nula.
+
+\subsection{Quase invariância}
+
+\begin{definition}
+Seja $\bm\Sist = (\bm X,f)$ um sistema dinâmico de medida. Um conjunto \emph{quase invariante} de $\bm \Sist$ é um conjunto $M \in \mens$ tal que $f\inv(M) \qeq M$.
+\end{definition}
+
+\begin{proposition}\label{prop:quase.inv}
+Sejam $\bm\Sist = (\bm X,f)$ um sistema dinâmico de medida e $M \in \mens$ um conjunto quase invariante de $\bm \Sist$. Então existe um conjunto invariante $N \in \mens$ tal que $M \qeq N$.
+\end{proposition}
+\begin{proof}
+Consideremos o limite superior
+	\begin{equation*}
+	N := \limsup_{n \in \N} f^{-n}(M) = \bigcap_{m=0}^{\infty} \bigcup_{n=m}^\infty f^{-n}(M),
+	\end{equation*}
+o conjunto dos pontos que pertencem a infinitos dos conjuntos $f^{-n}(M)$. Notemos que, para todo $m \in \N$,
+	\begin{equation*}
+	M \difsim \bigcup_{n=m}^\infty f^{-n}(M) \subseteq \bigcup_{n=m}^\infty M \difsim f^{-n}(M),
+	\end{equation*}
+pois, se $x$ é elemento do primeiro, então (1) é elemento de $M$ mas não da união dos $f^{-n}(M)$ ou (2) é elemento da união mas não de $M$. No primeiro caso, ele não é elemento de nenhum dos $f^{-n}(M)$, logo é elemento de todos $M \difsim f^{-n}(M)$ e, portanto, da união; no segundo caso, é elemento de algum $f^{-n}(M)$ e, portanto, de algum $M \difsim f^{-n}(M)$, logo da união. Ainda, para todo $n \in \N$ vale
+	\begin{equation*}
+	M \difsim f^{-n}(M) \subseteq \bigcup_{i=0}^{n-1} f^{-i}(M) \difsim f^{-(i+1)}(M).
+	\end{equation*}
+Para ver isso, seja $x \in M \difsim f^{-n}(M)$. Suponhamos que $x \in M$. Então não pertence a $f^{-n}(M)$. Então, se $x \notin f^{-1}(M)$, temos que $x \in M \difsim f^{-1}(M)$ e, se $x \in f^{-1}(M)$, repetimos o processo com $f^{-2}(M)$ chegando, no máximo, até a $x \in f^{-(n-1)}(M)$, o que implicará $x \in f^{-(n-1)}(M) \difsim f^{-n}(M)$; em todos os casos, $x$ pertence à união acima. Se $x \in f^{-n}(M)$, o mesmo processo se aplica, mas na ordem inversa. Isso implica que  $\med(M \difsim f^{-n}(M))=0$, pois o termo à direita tem medida zero.
+
+	Definamos $N_m := \bigcup_{n=m}^\infty f^{-n}(M)$, e temos que $N = \bigcap_{m=0}^\infty N_m$ e, claramente,
+	\begin{equation*}
+	N_0 \supseteq N_1 \supseteq N_2 \supseteq \cdots.
+	\end{equation*}
+Mas de $\med(M \cap N_m)=0$, então, segue que $\med(N \difsim M)=0$, logo que $\med(N)=\med(M)$. Por fim, notando que
+	\begin{equation*}
+	f^{-1}(N) = \bigcap_{m=0}^{\infty} \bigcup_{n=m}^\infty f^{-(n+1)}(M) = \bigcap_{m=0}^{\infty} \bigcup_{n=m+1}^\infty f^{-n}(M)=N,
+	\end{equation*}
+segue que $N$ é invariante.
+\end{proof}
 
 \section{Conjugação que preserva medida}
 
@@ -32,29 +69,28 @@ Como comentado anteriormente, podemos considerar $\phi$ como definida de $X_1$ p
 
 \section{Recorrência}
 
-%\begin{theorem}\label{teo:recorrencia.poincare}
-%Seja $(\bm X,f)$ um sistema dinâmico que preserva medida. Para todo conjunto mensurável $E \in \mens$ com $\med(E)>0$, existe um conjunto mensurável $F \subseteq E$, com $\med(F)=\med(E)$, tal que se $x \in F$, então existe uma sequência de inteiros $0<n_0<n_1< n_2 < \ldots$ satisfazendo que, para todo $i \in \N$
-%	\begin{equation*}
-%	f^{n_i}(x) \in E.
-%	\end{equation*}
-%\end{theorem}
-\begin{theorem}[Recorrência]
-\label{teo:sd.poincare}
-Sejam $(\bm X,f)$ um sistema dinâmico de medida finita e $M \in \mens$ um conjunto mensurável. Então quase todo ponto de $M$ retorna infinitamente a $M$:
-%	\begin{equation*}
-%	\med\left( \set{x \in M}{\card{\Orb^+(x) \cap M} = \card{\N}} \right) = \med(M).
-%	\end{equation*}
+O resultado a seguir fala sobre o conjunto dos pontos de um conjunto $M$ que retornam infinitamente para $M$. Como comnetado anteriormente (\ref{prop:nucleo.recorrencia}), considerando um espaço $X$ e um conjunto $M$, esse conjunto é dado por
 	\begin{equation*}
-	\set{x \in M}{\card{\Orb^+(x) \cap M} = \card{\N}} \qeq M.
+	M \cap \limsup_{t \in \Z_{\geq 0}} f^{-t}(M).
+	\end{equation*}
+Lembremos que o limite superior de uma sequência de conjuntos $(A_n)_{n \in \N}$ é o conjunto dos pontos que pertencem a infinitos dos conjuntos $A_n$. Esse conjunto é dado por
+	\begin{equation*}
+	\limsup_{n \in \N} A_n := \bigcap_{N=0}^{\infty} \bigcup_{n=N}^{\infty} A_n.
+	\end{equation*}
+No exemplo acima, um ponto $x \in X$ pertencer a $f^{-t}(M)$ equivale a valer $f^t(x) \in M$, ou seja, $x$ passa por $M$ no instante $t \in \Z_{\geq 0}$. Assim, pertencer ao limite superior $\limsup_{t \in \Z_{\geq 0}} f^{-t}(M)$ significa passar infinitas vezes por $M$. Se tomamos a interseção desse limite superior com $M$, temos os pontos de $M$ que retornam infinitamente a $M$. Isso equivale a dizer que, para todo conjunto mensurável $M \in \mens$ (com $\med(M)>0$) existe um conjunto mensurável $F \subseteq M$ com $\med(F)=\med(M)$ tal que, se $x \in F$, então existe uma sequência de inteiros positivos $t_0 < t_1 < \cdots$ satisfazendo que, para todo $i \in \N$
+	\begin{equation*}
+	f^{t_i}(x) \in M.
+	\end{equation*}
+
+\begin{theorem}[Recorrência]
+\label{teo:recorrencia.poincare}
+Sejam $(\bm X,f)$ um sistema dinâmico de medida finita e $M \in \mens$ um conjunto mensurável. Então quase todo ponto de $M$ retorna infinitamente a $M$:
+	\begin{equation*}
+	M \cap \limsup_{t \in \Z_{\geq 0}} f^{-t}(M) \qeq M.
 	\end{equation*}
 \end{theorem}
 \begin{proof}
-Se $M \qeq \emptyset$, a proposição é evidente. Suponhamos $M \not\qeq \emptyset$.
-Notemos que
-	\begin{equation*}
-	\set{x \in M}{\card{\Orb^+(x) \cap M} = \card{\N}} = M \cap \limsup_{t \in \I^+} f^{-t}(M).
-	\end{equation*}
-Esse é o conjunto dos pontos de $M$ que retornam infinitamente para $M$. Queremos provar que esse conjunto tem a mesma medida de $M$. Consideremos os conjuntos
+Se $M \qeq \emptyset$, a proposição é evidente. Suponhamos $M \not\qeq \emptyset$. O conjunto $M \cap \limsup_{t \in \Z_{\geq 0}} f^{-t}(M)$ é conjunto dos pontos de $M$ que retornam infinitamente para $M$. Queremos provar que esse conjunto tem a mesma medida de $M$. Consideremos os conjuntos
 	\begin{equation*}
 	M_N := \bigcup_{n=N}^\infty f^{-n}(M).
 	\end{equation*}
@@ -63,9 +99,9 @@ Temos que $f^{-1}(M_N)=M_{N+1}$, e, como $f$ preserva $\med$, segue que $\med(M_
 	\begin{equation*}
 	\med\left( \bigcap_{N=0}^\infty M_N \right) = \lim_{N \to \infty} \med(M_N) = \med(M_0).
 	\end{equation*}
-Notando que $\bigcap_{N=0}^\infty M_N = \limsup_{t \in \I^+} f^{-t}(M)$, consequentemente segue que
+Notando que $\bigcap_{N=0}^\infty M_N = \limsup_{t \in \Z_{\geq 0}} f^{-t}(M)$, consequentemente segue que
 	\begin{equation*}
-	\med(F)= \med\left(M \cap \limsup_{t \in \I^+} f^{-t}(M) \right) =\med(M\cap M_0)=\med(M).
+	\med(F)= \med\left(M \cap \limsup_{t \in \Z_{\geq 0}} f^{-t}(M) \right) =\med(M\cap M_0)=\med(M).
 	\end{equation*}
 A segunda igualdade segue de $\bigcap_{N=0}^\infty M_N = M_0$ quase sempre, e a terceira vem de $M \subseteq M_0$.
 \end{proof}
@@ -88,13 +124,13 @@ Seja $\bm{\Sist}=(\bm X,f)$ um sistema dinâmico topológico de medida. Se a top
 	\end{equation*}
 \end{theorem}
 \begin{proof}
-Seja $(A_i)_{i \in \N}$ uma base enumerável da topologia de $\bm X$. Pelo teorema~\ref{teo:sd.poincare}, existe $\tilde A_i \subseteq A_i$ tal que $\med(\tilde A_i) = 0$, o conjunto dos $x \in A_i$ que retornam para $A_i$ finitas vezes. Defina
+Seja $(A_i)_{i \in \N}$ uma base enumerável da topologia de $\bm X$. Pelo teorema~\ref{teo:recorrencia.poincare}, existe $\tilde A_i \subseteq A_i$ tal que $\med(\tilde A_i) = 0$, o conjunto dos $x \in A_i$ que retornam para $A_i$ finitas vezes. Defina
 	\begin{equation*}
-	\tilde M := M \setminus \bigcup_{i \in \N} \tilde A_i.
+	X' := X \setminus \bigcup_{i \in \N} \tilde A_i.
 	\end{equation*}
-Temos que $\med(\tilde M) = 1$, pois $\med(\bigcup_{i \in \N} \tilde A_i) \leq \sum_{i \in \N} \med(\tilde A_i) = 0$.
+Temos que $\med(X') = 1$, pois $\med(\bigcup_{i \in \N} \tilde A_i) \leq \sum_{i \in \N} \med(\tilde A_i) = 0$.
 
-Queremos mostrar que $\tilde M \subseteq \Rec(f)$. Seja $x \in \tilde M$. Dado vizinhança $A$ de $x$, queremos encontrar $n \in \N$ tal que $f^n(x) \in A$. Como $(A_i)_{i \in \N}$ é base, existe $i \in \N$ tal que $x \in A_i \subseteq A$. Como $x \in \tilde M$, então $x \notin \tilde A_i$, portanto existe $n \in \N$ tal que $f^n(x) \in A_i$, logo $f^n(x) \in A$.
+Queremos mostrar que $X' \subseteq \Rec(f)$. Seja $x \in X'$. Para toda vizinhança $A$ de $x$, queremos encontrar $n \in \N$ tal que $f^n(x) \in A$. Como $(A_i)_{i \in \N}$ é base, existe $i \in \N$ tal que $x \in A_i \subseteq A$. Como $x \in X'$, então $x \notin \tilde A_i$, portanto existe $n \in \N$ tal que $f^n(x) \in A_i$, logo $f^n(x) \in A$.
 \end{proof}
 
 
@@ -227,14 +263,14 @@ Seja $\bm\Sist=(\bm X,f)$ um sistema dinâmico de medida. São equivalentes
 	\item Todo conjunto quase invariante de $\bm\Sist$ é quase vazio ou quase total (para todo $M \in \mens$ tal que $f^{-1}(M) \qeq M$, $M \qeq \emptyset$ ou $M \qeq X$);
 	\item A semiórbita positiva de quase todo ponto passa por qualquer conjunto de medida positiva: para todo $M \in \mens$ tal que $M \not\qeq \emptyset$,
 		\begin{equation*}
-		\bigcup_{n \in \I^+} f^{-n}(M) = \set{x \in X}{\Orb^+(x) \cap M \neq \emptyset} \qeq X;
+		\bigcup_{n \in \Z_{\geq 0}} f^{-n}(M) = \set{x \in X}{\Orb^+(x) \cap M \neq \emptyset} \qeq X;
 		\end{equation*}
 	\item Se a semiórbita positiva de quase nenhum ponto de um conjunto mensurável passa por um outro conjunto mensurável, algum dos conjuntos é quase vazio: para todos $N,M \in \mens$ tais que
 	\begin{equation*}
-	N \cap \bigcup_{n \in \I^+}f^{-n}(M) \qeq \emptyset,
+	N \cap \bigcup_{n \in \Z_{\geq 0}}f^{-n}(M) \qeq \emptyset,
 	\end{equation*}
 $N \qeq \emptyset$ ou $M \qeq \emptyset$.
-%	Para todos $M,N \in \mens$ tais que $M \not\qeq \emptyset$ e $N \not\qeq \emptyset$, existe $n \in \I^+$ tal que
+%	Para todos $M,N \in \mens$ tais que $M \not\qeq \emptyset$ e $N \not\qeq \emptyset$, existe $n \in \Z_{\geq 0}$ tal que
 %		\begin{equation*}
 %		N \cap f^{-n}(M) \not\qeq \emptyset;
 %		\end{equation*}
@@ -245,7 +281,7 @@ $N \qeq \emptyset$ ou $M \qeq \emptyset$.
 
 (2) $\Rightarrow$ (3) Seja $M \in \mens$ com $\med(M)>0$ e definamos
 	\begin{equation*}
-	N := \bigcup_{n \in \I^+} f^{-n}(M).
+	N := \bigcup_{n \in \Z_{\geq 0}} f^{-n}(M).
 	\end{equation*}
 Segue que $f\inv(N) \subseteq N$. Isso implica que $f\inv(N) \cup N= N$ e que $f\inv(N) \cap N = f\inv(N)$. Portanto, como $\med(f\inv(N))=\med(N)$, pois $f$ preserva medida, segue que
 	\begin{align*}
@@ -256,19 +292,19 @@ Assim, temos que $f\inv(N) \qeq N$, e de (2) segue que $N \qeq \emptyset$ ou $N 
 
 (3) $\Rightarrow$ (4) Vamos provar a recíproca. Sejam $M,N \in \mens$ tais que $M \not\qeq \emptyset$ e $N \not\qeq \emptyset$. Por (3), sabemos que
 	\begin{equation*}
-	\med\left(\bigcup_{n \in \I^+} f^{-n}(M)\right)=1,
+	\med\left(\bigcup_{n \in \Z_{\geq 0}} f^{-n}(M)\right)=1,
 	\end{equation*}
 e disso segue que
 	\begin{equation*}
-	0 < \med(N) = \med\left(\bigcup_{n \in \I^+} N \cap f^{-n}(M)\right) \leq \sum_{n \in \I^+} \med(N \cap f^{-n}(M)).
+	0 < \med(N) = \med\left(\bigcup_{n \in \Z_{\geq 0}} N \cap f^{-n}(M)\right) \leq \sum_{n \in \Z_{\geq 0}} \med(N \cap f^{-n}(M)).
 	\end{equation*}
-Logo, existe $n \in \I^+$ tal que $\med(N \cap f^{-n}(M))>0$.
+Logo, existe $n \in \Z_{\geq 0}$ tal que $\med(N \cap f^{-n}(M))>0$.
 
-(4) $\Rightarrow$ (1) Seja $M \in \mens$ tal que $f\inv(M)=M$. Então segue que $f^{-n}(M)=M$ para todo $n \in \I^+$, logo
+(4) $\Rightarrow$ (1) Seja $M \in \mens$ tal que $f\inv(M)=M$. Então segue que $f^{-n}(M)=M$ para todo $n \in \Z_{\geq 0}$, logo
 	\begin{equation*}
 	0=\med(M \cap M^\complement)=\med(f^{-n}(M) \cap M^\complement)
 	\end{equation*}
-para todo $n \in \I^+$, o que implica por (4) que $M \qeq \emptyset$ ou $M^\complement \qeq \emptyset$, logo $M \qeq \emptyset$ ou $M \qeq X$, e a ergodicidade está provada.
+para todo $n \in \Z_{\geq 0}$, o que implica por (4) que $M \qeq \emptyset$ ou $M^\complement \qeq \emptyset$, logo $M \qeq \emptyset$ ou $M \qeq X$, e a ergodicidade está provada.
 \end{proof}
 
 \begin{proposition}
@@ -307,9 +343,11 @@ para algum $m$ e $F \subseteq \{0,1,\cdots,n\}^{\{-m,\cdots,m\}}$. Assim, para t
 	\sigma^{-k}(M)=\{x \in X: x_{k-m}\cdots x_{k+m} \in F\}.
 	\end{equation*}
 Como esse dois conjuntos são independentes, segue que
-	\begin{equation*}
-	\med\left(\sigma^{-k}(M) \setminus M\right) = \med\left(\sigma^{-k}(M) \cap M^ \complement\right)=\med\left(\sigma^{-k}(M)\right)\med\left(M^\complement\right)=\med(M)\med\left(M^\complement\right).
-	\end{equation*}
+	\begin{align*}
+	\med\left(\sigma^{-k}(M) \setminus M\right) &= \med\left(\sigma^{-k}(M) \cap M^ \complement\right) \\
+		&=\med\left(\sigma^{-k}(M)\right)\med\left(M^\complement\right) \\
+		&=\med(M)\med\left(M^\complement\right).
+	\end{align*}
 	Como $N$ é invariante, temos que $\med(N \difsim \sigma^{-1}(M))$, e então
 	\begin{equation*}
 	\med(\sigma^{-k}(M) \difsim N) =\med(\sigma^{-k}(M) \difsim \sigma^{-k}(N))=\med(M \difsim N)<\varepsilon
@@ -372,7 +410,7 @@ quando $n \conv \infty$
 quando $n \conv \infty$
 \end{definition}
 
-	É interessante comentar algo sobre os diferentes tipos de convergência aqui considerados. Além da convegência tradicional, $a_n \conv a$, existem outras noções de convergência de uma sequência. Uma delas é convergência de Cesàro, que considera a convergência da sequência $\frac{1}{n} \sum_{i=0}^{n-1} a_n$ das $n$-ésimas médias da sequência original. Pelas definições e proposições anteriores, considrando a sequência $a_i\coloneqq\med(M \cap T^{-i}(N)) - \med(M)\med(N)$, temos que um sistema é \emph{ergódico} se, e somente se, $a_n$ converge a $0$ pela convergência de Cesàro, é \emph{misturador} se, e somente se, $a_n$ converge a $0$ no sentido tradicional, e é \emph{fracamente misturador} se $|a_n|$ converge a $0$ pela convergência de Cesàro. Assim, como, para qualquer sequência $a_n$ que converge a $0$, vale que $|a_n|$ converge a $0$ por Cesàro e, então, $a_n$ converge a $0$ por Cesàro, segue a proposição abaixo.
+	É interessante comentar algo sobre os diferentes tipos de convergência aqui considerados. Além da convegência tradicional, $a_n \conv a$, existem outras noções de convergência de uma sequência. Uma delas é convergência de Cesàro, que considera a convergência da sequência $\frac{1}{n} \sum_{i=0}^{n-1} a_n$ das $n$-ésimas médias da sequência original. Pelas definições e proposições anteriores, considrando a sequência $a_i := \med(M \cap T^{-i}(N)) - \med(M)\med(N)$, temos que um sistema é \emph{ergódico} se, e somente se, $a_n$ converge a $0$ pela convergência de Cesàro, é \emph{misturador} se, e somente se, $a_n$ converge a $0$ no sentido tradicional, e é \emph{fracamente misturador} se $|a_n|$ converge a $0$ pela convergência de Cesàro. Assim, como, para qualquer sequência $a_n$ que converge a $0$, vale que $|a_n|$ converge a $0$ por Cesàro e, então, $a_n$ converge a $0$ por Cesàro, segue a proposição abaixo.
 
 \begin{proposition}
 	Seja $(X,\mens,\med,T)$ um sistema que preserva medida. Então
@@ -382,13 +420,17 @@ quando $n \conv \infty$
 	\end{enumerate}
 \end{proposition}
 \begin{proof}
-	Basta considerar a sequência $a_i\coloneqq\med(M \cap T^{-i}(N)) - \med(M)\med(N)$ e os comentários do parágrafo anterior.
+	Basta considerar a sequência
+	\begin{equation*}
+	a_i := \med(M \cap T^{-i}(N)) - \med(M)\med(N)
+	\end{equation*}
+	e os comentários do parágrafo anterior.
 \end{proof}
 
 \begin{definition}
 	A \emph{densidade} de um conjunto $C \subseteq \N$ é o número
 	\begin{equation*}
-	d(C) \coloneqq \lim_{n \to \infty} \frac{1}{n} \left|\{k \in C: 0 \leq k < n\}\right| = \frac{1}{n} \left|(C \cap [0,n)\right|
+	d(C) := \lim_{n \to \infty} \frac{1}{n} \left|\{k \in C: 0 \leq k < n\}\right| = \frac{1}{n} \left|(C \cap [0,n)\right|
 	\end{equation*}
 quando o limite existir.
 \end{definition}
@@ -404,7 +446,7 @@ quando o limite existir.
 	\end{enumerate}
 \end{lemma}
 \begin{proof}
-Vamos mostrar que (1) implica (2). Definamos $C_k \coloneqq \{j \in \N:a_j>\frac{1}{k}\}$. Então temos que
+Vamos mostrar que (1) implica (2). Definamos $C_k := \{j \in \N:a_j>\frac{1}{k}\}$. Então temos que
 	\begin{equation}
 	C_1 \subseteq C_2 \subseteq C_3 \subseteq \cdots,
 	\end{equation}
@@ -422,7 +464,7 @@ quando $n \conv \infty$. Logo, para todo $k \geq 1$, $C_k$ tem densidade $0$. Co
 	\end{equation}
 Basta escolher $l_1$ e tomar um $l_2$ suficientemente grande e assim por diante. Definimos então o conjunto
 	\begin{equation}
-	C \coloneqq \bigcup_{k \in \N} \left(C_k \cap [l_k,l_{k+1})\right).
+	C := \bigcup_{k \in \N} \left(C_k \cap [l_k,l_{k+1})\right).
 	\end{equation}
 Vamos mostrar que $a_i$ converge a $0$ para $n \notin C$ e que $C$ tem densidade $0$. Primeiro, notamos que $C_k \cap [l_k,\infty) \subseteq C$, pois, se $x \in C_k$, então está em todo $C_p$ para $p \geq k$, e, então, se estiver em $[l_p,l_{p+1})$, estará em $C_p \cap [l_p,l_{p+1})$, logo em $C$. Assim, para todo $n \geq l_k$, então se $n \notin C$, temos $n \notin C_k$ e, portanto, $a_n \leq \frac{1}{k}$, logo $a_n \conv 0$. Agora, para mostrar que $C$ tem densidade zero, notemos que, para todo $n \in [l+k,l_{k+1})$ temos que $C \cap [0,n) \subseteq C_k \cap [0,n)$, pois se $x \in C \cap [0,n)$, está em algum $[l_p,l_{p+1})$ e, por consequência, em $C_k \cap [0,n)$, já que todo $C_p$ está contido no $C_k$ para $p \leq k$. Isso implica que
 	\begin{equation}
@@ -465,22 +507,25 @@ quando $n \conv \infty$.
 	 \med(M_1 \cap T^{-n}(N_1)) &\conv \med(M_1)\med(N_1) \text{\ \ para $n \notin C_1$} \\
 	 \med(M_2 \cap T^{-n}(N_2)) &\conv \med(M_2)\med(N_2) \text{\ \ para $n \notin C_2$}. \\
 	 \end{align*}
-	Seja $C \coloneqq C_1 \cup C_2$. Então $C$ tem densidade zero, pois $C \cap [0,n) = (C_2 \cap [0,n)) \cap (C_2 \cap [0,n))$, o que implica
+	Seja $C := C_1 \cup C_2$. Então $C$ tem densidade zero, pois $C \cap [0,n) = (C_2 \cap [0,n)) \cap (C_2 \cap [0,n))$, o que implica
 	\begin{equation*}
 	\frac{1}{n} |C \cap [0,n)| \leq \frac{1}{n}(|C_1 \cap [0,n)|+|C_2 \cap [0,n)|) \conv 0.
 	\end{equation*}
 Assim, temos que, para todo $n \notin C$,
 	\begin{align*}
-	&\big((\med\times\mu)(M_1 \times M_2) \cap (T \times T)^{-n}(N_1 \times N_2) - (\med\times\mu)(M_1 \times M_2)(\med\times\mu)(N_1\times N_2) \big) \\
-	&=\big(\med(M_1 \cap T^{-n}(N_1))\med(M_2 \cap T^{-n}(N_2))-\med(M_1)\med(M_2)\med(N_1)\med(N_2) \big) \conv 0.
+	&\big((\med\times\med)(M_1 \times M_2) \cap (T \times T)^{-n}(N_1 \times N_2) \\
+		&\qquad- (\med\times\med)(M_1 \times M_2)(\med\times\med)(N_1\times N_2) \big) \\
+		&=\big(\med(M_1 \cap T^{-n}(N_1))\med(M_2 \cap T^{-n}(N_2))-\med(M_1)\med(M_2)\med(N_1)\med(N_2) \big) \\
+		&\conv 0.
 	\end{align*}
 Isso mostra que $T \times T$ é fracamente misturadora, pois os retângulos geram $\mens \otimes \mens$.
 
 (3) $\Rightarrow$ (1). Sejam $M,N \in \mens$. Então, para $M \times X,N\times X \in \mens \otimes \mens$ e um conjunto com densidade zero $C \subseteq \N$, e para todo $n \notin C$,
 	\begin{align*}
-	0&=\lim_{n \notin C} \big((\med\times\mu)(M \times X) \cap (T \times T)^{-n}(N \times X) - (\med\times\mu)(M \times X)(\med\times\mu)(N\times X) \big) \\
-	&=\lim_{n \notin C} \big(\med(M \cap T^{-n}(N))\med(X \cap T^{-n}(X))-\med(M)\med(X)\med(N)\med(X) \big) \\
-	&= \lim_{n \notin C} \big(\med(M \cap T^{-n}(N)) - \med(M)\med(N) \big),
+	0 &=\lim_{n \notin C} \big((\med\times\med)(M \times X) \cap (T \times T)^{-n}(N \times X) \\
+		&\qquad- (\med\times\med)(M \times X)(\med\times\med)(N\times X) \big) \\
+		&=\lim_{n \notin C} \big(\med(M \cap T^{-n}(N))\med(X \cap T^{-n}(X))-\med(M)\med(X)\med(N)\med(X) \big) \\
+		&= \lim_{n \notin C} \big(\med(M \cap T^{-n}(N)) - \med(M)\med(N) \big),
 	\end{align*}
 pois $\med(X)=1$ e $T$ é invariante, o que implica que $T$ é fracamente misturadora.
 
@@ -498,8 +543,8 @@ Mas a primeira parcela dessa soma final é $\med(M_1)\med(N_1)\nu(M_1)\nu(N_2)$,
 (2) $\Rightarrow$ (6). Sejam $M,N \in \mens$. Pela ergodicidade de $T \times T$, temos que
 	\begin{align*}
 	&\frac{1}{n} \sum_{i=0}^{n-1} \med(M \cap T^{-i}(N))\\
-	&=\frac{1}{n} \sum_{i=0}^{n-1} \big( (\med\times\mu)(M \times X \cap (T \times T)^{-i}(N \times X))\big) \\
-	& \conv (\med\times\mu)(M\times X)(\med\times\mu)(N\times X)=\med(M)\med(N)
+	&=\frac{1}{n} \sum_{i=0}^{n-1} \big( (\med\times\med)(M \times X \cap (T \times T)^{-i}(N \times X))\big) \\
+	& \conv (\med\times\med)(M\times X)(\med\times\med)(N\times X)=\med(M)\med(N)
 	\end{align*}
 e, analogamente,
 	\begin{equation*}
@@ -654,9 +699,9 @@ Já que $\med$ é probabilidade, $\med(\{p\}) \leq 1$, o que mostra que $\med(\{
 
 \subsection{Medida dos deslocamentos}
 
-Definimos nos conjuntos $N^{\I^+}$ e $N^\I$ uma topologia, a topologia produto, de modo que os sistemas $(N^{\I^+},\sigma)$ e $(N^\I,\sigma)$ se tornaram sistemas dinâmicos topológicos. Temos agora dois modos de definir uma $\sigma$-álgebra nesses conjuntos. A primeira é definirmos uma $\sigma$-álgebra de conjuntos mensuráveis em $N^{\I^+}$ ou $N^\I$ da mesma forma que definimos sua topologia, usando a $\sigma$-álgebra discreta em $N$, que é gerada pelos conjuntos da forma $\{k\}$ com $k \in N$, e tomando a $\sigma$-álgebra produto. A segunda maneira é consideramos a $\sigma$-álgebra gerada pela topologia de $N^{\I^+}$ ou $N^\I$, a $\sigma$-álgebra topológica ou $\sigma$-álgebra de Borel. Esse dois metodos, a princípio, não são equivalentes, pois gerado pelos cilindros sub-básicos é ser uma união qualquer de interseções finitas de cilindros sub-básicos, enquanto um conjunto mesurável gerados pelos cilindros sub-básicos não são uniões quaisquer e sua forma é mais delicada de se descrever. Não discutiremos por ora mais detalhes sobre essa $\sigma$-álgebras, mas o que podemos dizer é que a $\sigma$-álegbra produto está contida na $\sigma$-álgebra topológica. Adotaremos, no momento, a primeira construção, pois estudaremos somente a estrutura mensurável desses sistemas a princípio. Como anteriormente, a seguir consideraremos o conjunto $N^\I$, mas a construção é análoga para $N^{\I^+}$.
+Definimos nos conjuntos $N^{\Z_{\geq 0}}$ e $N^\Z$ uma topologia, a topologia produto, de modo que os sistemas $(N^{\Z_{\geq 0}},\sigma)$ e $(N^\Z,\sigma)$ se tornaram sistemas dinâmicos topológicos. Temos agora dois modos de definir uma $\sigma$-álgebra nesses conjuntos. A primeira é definirmos uma $\sigma$-álgebra de conjuntos mensuráveis em $N^{\Z_{\geq 0}}$ ou $N^\Z$ da mesma forma que definimos sua topologia, usando a $\sigma$-álgebra discreta em $N$, que é gerada pelos conjuntos da forma $\{k\}$ com $k \in N$, e tomando a $\sigma$-álgebra produto. A segunda maneira é consideramos a $\sigma$-álgebra gerada pela topologia de $N^{\Z_{\geq 0}}$ ou $N^\Z$, a $\sigma$-álgebra topológica ou $\sigma$-álgebra de Borel. Esse dois metodos, a princípio, não são equivalentes, pois gerado pelos cilindros sub-básicos é ser uma união qualquer de interseções finitas de cilindros sub-básicos, enquanto um conjunto mesurável gerados pelos cilindros sub-básicos não são uniões quaisquer e sua forma é mais delicada de se descrever. Não discutiremos por ora mais detalhes sobre essa $\sigma$-álgebras, mas o que podemos dizer é que a $\sigma$-álegbra produto está contida na $\sigma$-álgebra topológica. Adotaremos, no momento, a primeira construção, pois estudaremos somente a estrutura mensurável desses sistemas a princípio. Como anteriormente, a seguir consideraremos o conjunto $N^\Z$, mas a construção é análoga para $N^{\Z_{\geq 0}}$.
 
-Para definirmos uma probabilidade no conjunto $N^\I$ com a $\sigma$-álgebra produto, consideramos antes um vetor de probabilidade $p=(p_0,\cdots,p_{N-1}) \in \Delta^{N-1}$, e definimos a medida $\med_p$ na $\sigma$-álgebra de $N$ como $\med(\{k\}) := p_k$ para todo $k \in N$. Essa medida é uma probabilidade em $N$. A partir dessa probabilidade, definimos uma probabilidade em $N^\I$ como a medida produto, que é dada da seguinte forma. Para cada cilindro $C_{t_0,\ldots,t_n}[k_0,\ldots,k_n]$, definimos
+Para definirmos uma probabilidade no conjunto $N^\Z$ com a $\sigma$-álgebra produto, consideramos antes um vetor de probabilidade $p=(p_0,\cdots,p_{N-1}) \in \Delta^{N-1}$, e definimos a medida $\med_p$ na $\sigma$-álgebra de $N$ como $\med(\{k\}) := p_k$ para todo $k \in N$. Essa medida é uma probabilidade em $N$. A partir dessa probabilidade, definimos uma probabilidade em $N^\Z$ como a medida produto, que é dada da seguinte forma. Para cada cilindro $C_{t_0,\ldots,t_n}[k_0,\ldots,k_n]$, definimos
 	\begin{equation*}
 	\med(C_{t_0,\ldots,t_n}[k_0,\ldots,k_n]) := \med_p(\{k_0\}) \cdots \med_p(\{k_n\}) = p_{k_0} \cdots p_{k_n}.
 	\end{equation*}
@@ -673,7 +718,7 @@ que é mensurável pois $C_{t-1}[k]$ é um cilindro gerador. Isso mostra que $\s
 portanto $\med$ preserva medida. Assim, provamos a seguinte proposição.
 
 \begin{proposition}
-Os sistemas $(N^{\I^+},\sigma)$ e $(N^\I,\sigma)$ são sistemas dinâmicos de medida.
+Os sistemas $(N^{\Z_{\geq 0}},\sigma)$ e $(N^\Z,\sigma)$ são sistemas dinâmicos de medida.
 \end{proposition}
 
 \subsection{Itinerários de medida}
