@@ -1,6 +1,8 @@
 \chapter{Espaços normados}
 
-\section{Norma em corpos (valor absoluto)}
+\section{Normas}
+
+\subsection{Norma em corpos (valor absoluto)}
 
 Consideremos um corpo $\bm C$. Queremos definir uma função $\abs{\var}\colon C \to \intfa{0}{\infty}$ que satisfaça a propriedade de multiplicatividade para todos $c,c' \in C$,
 	\begin{equation*}
@@ -163,8 +165,6 @@ A continuidade das outras operações é análoga.
 	\end{enumerate}
 \end{proof}
 
-\section{Normas}
-
 \subsection{Seminormas}
 
 \begin{definition}
@@ -258,7 +258,7 @@ que satisfaz
 		\begin{equation*}
 		\nor{cv} = \abs{c}\nor{v};
 		\end{equation*}
-	\item (Subaditividade\footnote{Esta propriedade recebe diferentes nomes, incluindo `Desigualdade Triangular'.}) Para todos $v,v' \in E$,
+	\item (Subaditividade\footnote{Esta propriedade recebe diferentes nomes, incluindo `Desigualdade triangular'.}) Para todos $v,v' \in E$,
 		\begin{equation*}
 		\nor{v + v'} \leq \nor{v} + \nor{v'}.
 		\end{equation*}
@@ -387,6 +387,73 @@ Agora, mostremos que a métrica $\dist{\var}{\var}'$ induzida por essa norma é 
 	\end{equation*}
 \end{proof}
 
+\subsubsection{Funções limitadas e norma do supremo}
+
+\begin{proposition}
+\label{prop:criterio.limitacao.normada}
+Sejam $\bm E$ um espaço normado e $C \subseteq E$ um conjunto. O conjunto $C$ é limitado se, e somente se, o conjunto $\nor{C} \subseteq \R$ é limitado.
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item ($\Rightarrow$) Suponhamos que $C$ é limitado. Por~\ref{prop:criterio.limitacao.bola} tomando $x \in C$ e $r := \diam(C)$ segue que $C \subseteq \bola{x}{r}$. Isso implica que, para todo $x' \in C$,
+		\begin{equation*}
+		\nor{x'} = \nor{x'-0} \leq \nor{x'-x} + \nor{x-0} \leq \diam(C) + \nor{x},
+		\end{equation*}
+	portanto $C \subseteq \bola{0}{\diam(C) + \nor{x}}$, o que implica que $\nor{C}$ é limitado.
+
+	\item ($\Leftarrow$) Suponhamos que $\nor{C}$. Vale então que $\diam(\nor{C}) = \sup\nor{C}$ e portanto que $C \subseteq \bola{0}{\diam{\nor{C}}}$, logo segue de (\ref{prop:criterio.limitacao.bola}) que $C$ é limitado.
+	\qedhere
+	\end{enumerate}
+\end{proof}
+
+
+Consideremos um conjunto $X$ e um espaço normado $\bm E$. Como $\bm E$ tem estrutura de espaço métrico, podemos considerar o conjunto das funções limitadas de $X$ para $\bm E$, denotado $\Boun(X,\bm E)$. Como $\bm E$ tem estrutura de espaço linear, o conjunto $\Func(X,E)$ das funções $\fun{f}{X}{E}$ é um espaço linear, com a adição, a inversa aditiva, o zero e a ação por escalar dadas pontualmente: para todas $f,f' \in \Func(X,E)$, todo $c \in \R$ e todo $x \in X$, definem-se $(f+f')(x) = f(x) + f'(x)$, $(-f)(x) = -f(x)$, $0(x) = 0$ e $(cf)(x) = cf(x)$.
+%	\begin{align*}
+%	(f+f')(x) &= f(x) + f'(x), \\
+%	(-f)(x) &= -f(x), \\
+%	0(x) &= 0 \\
+%	(cf)(x) &= cf(x).
+%	\end{align*}
+Para mostrar que o espaço das funções limitadas também é um espaço linear, basta mostrarmos que ele é subespaço de $\Func(X,E)$.
+
+\begin{proposition}
+Sejam $X$ um conjunto e $\bm E$ um espaço normado. O conjunto $\Boun(X,\bm E)$ das funções limitadas é subespaço linear de $\Func(X,E)$.
+\end{proposition}
+\begin{proof}
+Sejam $f,f' \in \Boun(X,\bm E)$ e $c \in \R$. Como $f$ e $f'$ são limitadas, os conjuntos imagem $f(X)$ e $f'(X)$ são limitados. Isso implica que $(cf+f')(X)$ também é limitado.
+\end{proof}
+
+Além da estrutura linear, podemos definir no espaço $\Boun(X,\bm E)$ uma norma, pois para cada função limitada, como sua imagem é limitada, podemos considerar o supremo de seus valores no espaço normado.
+
+\begin{definition}
+Sejam $X$ um conjunto e $\bm E = (E, \nor{\var})$ um espaço normado. A \emph{norma do supremo} em $\Boun(X,E)$ é
+	\begin{align*}
+	\func{\norsup{\var}}{\Boun(X,E)}{\intff{0}{\infty}}{f}{\norsup{f} := \sup_{x \in X} \nor{f(x)}}.
+	\end{align*}
+\end{definition}
+
+A norma do supremo assume somente valores finitos pois como a imagem de $f(X)$ é limitada, sua imagem em $\R$ pela norma do espaço normado $\bm E$ também é limitada e assim, como $\R$ é completo, esse conjunto tem supremo finito, como mostra a proposição~\ref{prop:criterio.limitacao.normada}.
+
+\begin{exercise}
+Sejam $X$ um conjunto e $\bm E$ um espaço normado. A norma do supremo $\norsup{\var}$ é uma norma.
+\end{exercise}
+%Dada uma função limitada $\fun{f}{X}{E}$, consideramos a função
+%	\begin{align*}
+%	\func{F}{X}{\R}{x}{\nor{f(x)}}.
+%	\end{align*}
+%Como $f(X) \subseteq E$ é limitado, então $F(X) \subseteq \R$ também é, e portanto o supremo de $f$
+
+\begin{proposition}
+\label{prop:funcao.continua.compacto.limitada}
+Sejam $\bm K$ um espaço topológico compacto e $\bm E$ um espaço normado. Então
+	\begin{equation*}
+	\Cont(\bm K,\bm E) \subseteq \Boun(K, \bm E).
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+Seja $f \in \Cont(\bm K, \bm E)$. Como $f$ é contínua e $K$ é compacto, então $f(K) \subseteq E$ é compacto. Como $\nor{\var}$ é contínua e $f(K)$ é compacto, então $\nor{f(K)} \subseteq \R$ é compacto. Mas, como $\R$ é completo, isso significa que $\nor{f(K)}$ tem supremo, portanto segue de (\ref{prop:criterio.limitacao.normada}) que $f$ é limitada.
+\end{proof}
+
 \subsection{Bolas e esferas unitárias e topologia}
 
 \begin{definition}
@@ -485,7 +552,11 @@ Basta mostrar que as bases de bolas são equivalentes. Para isso, mostramos prim
 pois se $v' \in \bola{v}{rC\inv}'$, então $\nor{v'-v} < rC\inv$, logo $C\nor{v'-v} < r$, o que implica que $\nor{v'-v} < r$, portanto $v' \in \bola{v}{r}$.
 
 Sendo assim, tomemos uma bola $\bola{v}{r}$ da norma $\nor{\var}$ e $x \in \bola{v}{r}$. Então temos que $\bola{x}{r-\nor{x-v}} \subseteq \bola{v}{r}$
-e portanto temos que, pelo argumento do parágrafo anterior, $\bola{x}{(r-\nor{x-v})C\inv}' \subseteq \bola{x}{r-\nor{x-v}}$, logo
+e portanto temos que, pelo argumento do parágrafo anterior,
+	\begin{equation*}
+	\bola{x}{(r-\nor{x-v})C\inv}' \subseteq \bola{x}{r-\nor{x-v}},
+	\end{equation*}
+logo
 	\begin{equation*}
 	\bola{x}{(r-\nor{x-v})C\inv}' \subseteq \bola{v}{r}.
 	\end{equation*}
@@ -769,7 +840,10 @@ em $E$. Para $m>1$,
 	\end{equation*}
 Como as somas parciais de $\sum_{n \in \N} \nor{v_n}$ formam uma sequência convergente (e portanto aproximante), pois $(v_n)_{n \in \N}$ é absolutamente somável, $\sum_{k=n}^{m-1} \nor{v_k} \conv 0$ quando $n,m \conv \infty$. Isso mostra que $(s_n)_{n \in \N}$ é aproximante, e da completude de $(\bm E,\nor{\var})$ segue que é convergente, o que significa que $(v_n)_{n \in \N}$ é somável.
 
-Reciprocamente, suponha que toda sequência absolutamente somável em $(\bm E,\nor{\var})$ é somável. Seja $(v_n)_{n \in \N}$ uma sequência aproximante. Para mostrar que essa sequência converge, basta achar uma subsequência que converge. Escolha $(v_{n_k})_{k \in \N}$ tal que, para todo $k \in \N$, $\nor{v_{n_{k+1}} - v_{n_k}} < 2^{-k}$. Então $\sum_{k \in \N} \nor{v_{n_{k+1}} - v_{n_k}}$ converge, o que implica que $\sum_{k \in \N} \left( v_{n_{k+1}} - v_{n_k} \right)$ converge, já que toda sequência absolutamente somável é somável. Isso implica que a sequência $v_{n_m} = v_{n_0} + \sum_{k \in [m]} \left( v_{n_{k+1}} - v_{n_k} \right)$ converge. Portanto $(v_n)_{n \in \N}$ converge.
+Reciprocamente, suponha que toda sequência absolutamente somável no espaço $(\bm E,\nor{\var})$ é somável. Seja $(v_n)_{n \in \N}$ uma sequência aproximante. Para mostrar que essa sequência converge, basta achar uma subsequência que converge. Escolha $(v_{n_k})_{k \in \N}$ tal que, para todo $k \in \N$, $\nor{v_{n_{k+1}} - v_{n_k}} < 2^{-k}$. Então $\sum_{k \in \N} \nor{v_{n_{k+1}} - v_{n_k}}$ converge, o que implica que $\sum_{k \in \N} \left( v_{n_{k+1}} - v_{n_k} \right)$ converge, já que toda sequência absolutamente somável é somável. Isso implica que a sequência
+	\begin{equation*}
+	v_{n_m} = v_{n_0} + \sum_{k \in [m]} \left( v_{n_{k+1}} - v_{n_k} \right)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               \end{equation*}
+converge. Portanto $(v_n)_{n \in \N}$ converge.
 \end{proof}
 
 \subsection{Espaços normados de dimensão finita}
@@ -964,13 +1038,13 @@ Sejam $\bm X$ um espaço de medida, $(\bm C,\abs{\var})$ um corpo normado e $p \
 	\begin{equation*}
 	\int \abs{f}^p \dd\med < \infty.
 	\end{equation*}
-O conjunto das quase funções absolutamente $p$-integráveis é denotado $\Intg^p(\bm X,\bm C)$.
+O conjunto das quase funções absolutamente $p$-integráveis de $\bm X$ para $\bm C$ é denotado $\Intg^p(\bm X,\bm C)$.
 
 Uma função \emph{absolutamente $\infty$-integrável} é uma função $f \in \Men(\bm X,\bm C)$ tal que
 	\begin{equation*}
 	\supess(\abs{f}) < \infty.
 	\end{equation*}
-O conjunto das quase-funções absolutamente $\infty$-integráveis é denotado $\Intg^\infty(\bm X,\bm C)$.
+O conjunto das quase-funções absolutamente $\infty$-integráveis de $\bm X$ para $\bm C$ é denotado $\Intg^\infty(\bm X,\bm C)$.
 \end{definition}
 
 Note que, os espaços $\Intg^p(\bm X,\bm C)$ são espaços de quase funções, ou seja, espaços de classes de equivalência de funções, cuja equivalência é ser igual a menos de um conjunto de medida nula. Na prática, trataremos essas quase funções como funções, mas esse detalhe tem que estar sempre claro para o leitor.
@@ -1685,7 +1759,7 @@ Consideremos uma álgebra normada unitária completa $\mathbb A$. Para todo $x \
 	\begin{equation*}
 	e_n(x) := \sum_{i=0}^{n} \frac{x^i}{i!}
 	\end{equation*}
-é uma sequência aproximante\footnote{Sequência de Cauchy.}, já que, para todos $n,n' \in \N^*$ com $n' > n$,
+é uma sequência aproximante,\footnote{Sequência de Cauchy.} já que, para todos $n,n' \in \N$ com $n' > n$,
 	\begin{equation*}
 	\nor{e_{n'}(x)-e_n(x)} = \nor{\sum_{i=n+1}^{n'} \frac{x^i}{i!}} \leq \sum_{i=n+1}^{n'} \frac{\nor{x}^i}{i!}.
 	\end{equation*}
@@ -1704,7 +1778,7 @@ Seja $\mathbb A$ uma álgebra unitária normada completa. A \emph{função expon
 \begin{proposition}
 Seja $\mathbb A$ uma álgebra unitária normada completa.
 	\begin{enumerate}
-	\item Para todo $x \in A$, $\nor{\exp(x)} \leq \e^{\nor{x}}$;
+	\item Para todo $x \in A$, $\nor{\exp(x)} \leq \exp(\nor{x})$;
 	\item A função exponencial $\exp\colon A \to A$ é contínua;
 	\item $\exp(0) = 1$;
 	\item Para todos $x,y \in A$ tais que $xy=yx$,
@@ -1721,7 +1795,7 @@ Seja $\mathbb A$ uma álgebra unitária normada completa.
 		\begin{equation*}
 		\nor{e_n(x)} = \nor{\sum_{i=0}^{n} \frac{x^i}{i!}} \leq \sum_{i=0}^{n} \frac{\nor{x}^i}{i!} = e_n(\nor{x}),
 		\end{equation*}
-logo $\nor{\exp(x)} \leq \e^{\nor{x}}$.
+logo $\nor{\exp(x)} \leq \exp(\nor{x})$.
 
 	\item Primeiro notamos que, para todos $x,y \in A$,
 		\begin{align*}
@@ -1792,7 +1866,7 @@ Portanto
 \end{proof}
 
 
-\subsubsection{Exponencial dos complexos $\R^2$}
+\subsubsection{Exponencial dos complexos}
 
 Seja $x = x_0 + x_1 \ii \in \R^2$. Como $\R^2$ é comutativo,
 	\begin{equation*}
@@ -1837,7 +1911,7 @@ No entanto, é importante notar que, para todo $n \in \N$,
 	\e^{(\theta+n\tau) \ii} = \cos(\theta+n\tau)+\sin(\theta+n\tau) \ii = \cos(\theta)+\sin(\theta) \ii = \e^{\theta \ii}
 	\end{equation*}
 
-\subsubsection{Exponencial dos quatérnios $\R^4$}
+\subsubsection{Exponencial dos quatérnios}
 
 Seja $x = \esc{x} + \vec{x} \in \R^4$, em que $\esc{x} = x_0$ e $\vec{x} = x_1 \ii_1 + x_2 \ii_2 + x_3 \ii_3$. Como $\esc{x}\vec{x} = \vec{x}\esc{x}$, segue que
 	\begin{equation*}
@@ -1961,14 +2035,17 @@ Lembremos que para espaços lineares $\bm V$ e $\bm V'$, definimos indutivamente
 Cada espaço $\lin^m(\bm V, \bm V')$ é linearmente isomorfo ao espaço $\lin^{(m)}(\bm V, \bm V')$ das funções $m$-lineares de $V^m$ para $V'$. O isomorfismo é dado por $I^{(m)}$, que é definida indutivamente por
 	\begin{itemize}
 	\item Para $m=1$, $I^{(1)} := \fun{\Id}{\lin^1(\bm V, \bm V')}{\lin^{(1)}(\bm V, \bm V')}$;
-	\item Para $m>1$,
+	\item Para $m>1$, $\fun{I^{(m)}}{\lin^m(\bm V, \bm V')}{\lin^{(m)}(\bm V, \bm V')}$ é definida, para cada $T \in \lin^m(\bm V, \bm V')$, por
 		\begin{align*}
-		\func{I^{(m)}}{\lin^m(\bm V, \bm V')}{\lin^{(m)}(\bm V, \bm V')}{T}{
-			\begin{aligned}[t]
-			\func{I^{(m)}(T)}{V \times \cdots \times V}{V'}{(v_0,\ldots, v_{m-1})}{I^{(m-1)}(T(v_0))(v_1,\ldots, v_{m-1})}
-			\end{aligned}
-		}
+		\func{I^{(m)}(T)}{V \times \cdots \times V}{V'}{(v_0,\ldots, v_{m-1})}{I^{(m-1)}(T(v_0))(v_1,\ldots, v_{m-1})}.
 		\end{align*}
+%		\begin{align*}
+%		\func{I^{(m)}}{\lin^m(\bm V, \bm V')}{\lin^{(m)}(\bm V, \bm V')}{T}{
+%			\begin{aligned}[t]
+%			\func{I^{(m)}(T)}{V \times \cdots \times V}{V'}{(v_0,\ldots, v_{m-1})}{I^{(m-1)}(T(v_0))(v_1,\ldots, v_{m-1})}
+%			\end{aligned}
+%		}
+%		\end{align*}
 	\end{itemize}
 
 Isso nos dá a relação
@@ -2617,12 +2694,15 @@ Sejam $\bm E$ um espaço normado, $I \subseteq \R$ um intervalo aberto, $X \subs
 \end{proposition}
 \begin{proof}
 Basta notar que, para todo $t \in X$,
-	\begin{align*}
-	\lim_{\delta \to 0} (\gamma(t+\delta)-\gamma(t)) &= \lim_{\delta \to 0} \delta\frac{\gamma(t+\delta)-\gamma(t)}{\delta} \\
-%		&= \left( \lim_{\delta \to 0} \delta \right) \left( \lim_{\delta \to 0}\frac{\gamma(t+\delta)-\gamma(t)}{\delta} \right) \\
-		&= 0\dot \gamma(t) \\
-		&= 0,
-	\end{align*}
+%	\begin{align*}
+%	\lim_{\delta \to 0} (\gamma(t+\delta)-\gamma(t)) &= \lim_{\delta \to 0} \delta\frac{\gamma(t+\delta)-\gamma(t)}{\delta} \\
+%%		&= \left( \lim_{\delta \to 0} \delta \right) \left( \lim_{\delta \to 0}\frac{\gamma(t+\delta)-\gamma(t)}{\delta} \right) \\
+%		&= 0\dot \gamma(t) \\
+%		&= 0,
+%	\end{align*}
+	\begin{equation*}
+	\lim_{\delta \to 0} (\gamma(t+\delta)-\gamma(t)) = \lim_{\delta \to 0} \delta\frac{\gamma(t+\delta)-\gamma(t)}{\delta} = 0\dot \gamma(t) = 0,
+	\end{equation*}
 portanto $\lim_{\delta \to 0} \gamma(t+\delta) = \gamma(t)$, o que mostra que $\gamma$ é contínua em $t$.
 \end{proof}
 
@@ -2680,12 +2760,39 @@ Sejam $\bm E$ um espaço normado, $I \subseteq \R$ um intervalo aberto e $X \sub
 \end{proof}
 
 \begin{exercise}
-Se $\fun{p}{\R}{\R}$ é uma função polinomial dada por $p(x) = \sum_{i=0}^n c_ix^i$, então $\dot{p}(x) = \sum_{i=0}^{n-1} ic_ix^{i-1}$.
+Se $\fun{p}{\R}{\R}$ é uma função polinomial dada por $p(x) = \sum_{i=0}^n c_ix^i$, então $\dot{p}(x) = \sum_{i=0}^{n-1} c_i i x^{i-1}$.
 \end{exercise}
+
+\begin{proposition}
+\label{prop:derivada.exponencial}
+Sejam $\bm A$ uma álgebra unitária normada completa e $x \in A$.
+%	\begin{equation*}
+%	\der \exp(tx) = x \exp(tx) = \exp(tx) x.
+%	\end{equation*}
+	\begin{equation*}
+	\der \e^{tx} = x \e^{tx} = \e^{tx} x.
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+Como para todos $t,\delta \in \R$ vale
+	\begin{equation*}
+	\e^{(t+\delta)x} - \e^{tx} = \e^{tx} \e^{\delta x} - \e^{tx} = \e^{tx} (\e^{\delta x} - \Id_E) = \e^{tx} \left( \sum_{n=1}^{\infty} \frac{\delta^n x^n}{n!} \right),
+	\end{equation*}
+segue que
+	\begin{equation*}
+	\frac{\e^{(t+\delta)x} - \e^{tx}}{\delta} = \e^{tx} \left(x + \sum_{n=2}^{\infty} \frac{\delta^{n-1} x^n}{n!} \right),
+	\end{equation*}
+o que implica que
+	\begin{equation*}
+	\der \e^{tx} = \lim_{\delta \to 0} \frac{\e^{(t+\delta)x} - \e^{tx}}{\delta} = \e^{tx} x.
+	\end{equation*}
+Como $x$ comuta com todo elemento da forma $\frac{\delta^n x^n}{n!}$ da série de $\e^{tx}$, segue que $\e^{tx} x = x \e^{tx}$.
+\end{proof}
+
 
 \subsubsection{Diferenciabilidade e derivabilidade}
 
-A proposição a seguir mostra que os conceitos de diferenciabilidade e derivabilidade coincidem para trajetórias. Mais à frente, definiremos as derivadas direcionais de uma função entre espaços normados, que estendem o conceito de derivação de trajetórias para essas funções. Nesse caso, nem toda função derivável em todas as direções será será diferenciável, mas a recíproca ainda valerá.
+A proposição a seguir mostra que os conceitos de diferenciabilidade e derivabilidade coincidem para trajetórias. Mais à frente, definiremos as derivadas direcionais de uma função entre espaços normados, que estendem o conceito de derivação de trajetórias para essas funções. Nesse caso, nem toda função derivável em todas as direções será diferenciável, mas a recíproca será verdadeira.
 
 \begin{proposition}
 \label{prop:diferenciabilidade.derivabilidade}
@@ -2729,34 +2836,55 @@ e portanto
 
 Note que as proposições sobre derivabilidade implicar continuidade e propriedades de derivação demonstradas nesta seção seguem diretamente como corolário dessa caracterização da derivada de uma trajetória pela diferencial e das respectivas propriedades da diferencial, mas elas foram demonstradas independentemente para motivar o conceito de derivada.
 
+Usando essa proposição, segue da regra da cadeia~(\ref{prop:diferenciabilidade.composicao}) as seguintes versões da regra da cadeia para trajetórias.
+
+\begin{exercise}[Regra da cadeia para trajetórias reparametrizadas]
+\label{prop:diferenciabilidade.composicao.trajetorias.reparametrizadas}
+Sejam $\bm E$ um espaço normado, $I, I' \subseteq \R$ abertos, $X \subseteq I$, $\fun{\alpha}{I}{\R}$ derivável em $X$ tal que $\alpha(I) \subseteq I'$ e $\fun{\gamma}{I'}{E}$ derivável em $\alpha(X)$. A trajetória composta $\fun{\gamma \circ \alpha}{I}{E}$ é derivável em $X$ e, para todo $t \in X$,
+	\begin{equation*}
+	\der (\gamma \circ \alpha)(t) = \dot\alpha(t)\dot\gamma(\alpha(t)).
+	\end{equation*}
+\end{exercise}
+
+\begin{exercise}[Regra da cadeia para trajetórias empurradas]
+\label{prop:diferenciabilidade.composicao.trajetorias.empurrada}
+Sejam $\bm E$ e $\bm E'$ espaços normados, $I \subseteq \R$ e $A \subseteq E$ abertos, $X \subseteq I$, $\fun{\gamma}{I}{\R}$ derivável em $X$ tal que $\gamma(I) \subseteq A$ e $\fun{f}{A}{E'}$ diferenciável em $\gamma(X)$. A trajetória composta $\fun{f \circ \gamma}{I}{E}$ é derivável em $X$ e, para todo $t \in X$,
+	\begin{equation*}
+	\der (f \circ \gamma)(t) = \D f|_{\gamma(t)} (\dot\gamma(t)).
+	\end{equation*}
+\end{exercise}
+
+
+
+
 \subsection{Derivabilidade direcional}
 
 Antes de definirmos a derivada direcional, definiremos o fluxo em um espaço normado $E$ por um vetor $v \in E$. Essa ferramenta a princípio parece trivial, mas o benefício de introduzir a ideia de um fluxo é que quando os conceitos de derivação forem generalizados para variedades o uso do fluxo, que não será trivial como neste caso, será essencial.
 
-\subsubsection{Fluxo linear}
+\subsubsection{Fluxo constante}
 
 \begin{definition}
 Sejam $\bm E$ um espaço normado e $v \in E$. O \emph{fluxo de $v$} em $\bm E$ é a função
 	\begin{align*}
-	\func{\flux{}{v}}{\R}{\Cont(\bm E,\bm E)}{t}{
+	\func{\fluxo{}{v}}{\R}{\Cont(\bm E,\bm E)}{t}{
 		\begin{aligned}[t]
-		\func{\flux{(t)}{v}}{E}{E}{x}{\flux{(t)}{v}(x) := x+tv}.
+		\func{\fluxo{(t)}{v}}{E}{E}{x}{\fluxo{(t)}{v}(x) := x+tv}.
 		\end{aligned}
 	}
 	\end{align*}
-Para todo $x \in E$, a \emph{trajetória} de $\flux{}{v}$ baseada em $x$ é a trajetória
+Para todo $x \in E$, a \emph{trajetória} de $\fluxo{}{v}$ baseada em $x$ é a trajetória
 	\begin{align*}
-	\func{\flux{(\var)}{v}_{x}}{\R}{E}{t}{\flux{(t)}{v}(x)}.
+	\func{\fluxo{(\var)}{v}_{x}}{\R}{E}{t}{\fluxo{(t)}{v}(x)}.
 	\end{align*}
 \end{definition}
 
 O fluxo de $v$ também pode ser visto como uma função
 	\begin{align*}
-	\func{\flux{}{v}}{\R \times E}{E}{(t,x)}{\flux{(t)}{v}(x) = x+tv}.
+	\func{\fluxo{}{v}}{\R \times E}{E}{(t,x)}{\fluxo{(t)}{v}(x) = x+tv}.
 	\end{align*}
-Esse ponto de vista será importante na generalização dos fluxos. Dado $x \in E$, denotaremos a derivada da trajetória $\flux{(\var)}{v}_{x}$ em $t \in \R$ por
+Esse ponto de vista será importante na generalização dos fluxos. Dado $x \in E$, denotaremos a derivada da trajetória $\fluxo{(\var)}{v}_{x}$ em $t \in \R$ por
 	\begin{equation*}
-	\flux[\dot]{(t)}{v}_{x} := \der \flux{(t)}{v}_{x} = \lim_{\delta \to 0} \frac{\flux{(t+\delta)}{v}_{x} - \flux{(t)}{v}_{x}}{\delta}.
+	\fluxo[\dot]{(t)}{v}_{x} := \der \fluxo{(t)}{v}_{x} = \lim_{\delta \to 0} \frac{\fluxo{(t+\delta)}{v}_{x} - \fluxo{(t)}{v}_{x}}{\delta}.
 	\end{equation*}
 
 Ressaltamos na proposição seguinte as principais propriedades do fluxo.
@@ -2766,23 +2894,23 @@ Seja $\bm E$ um espaço normado.
 	\begin{enumerate}
 	\item Para todo $v \in E$ e todos $t,t' \in \R$,
 		\begin{equation*}
-		\flux{(t)}{t'v} = \flux{(tt')}{v};
+		\fluxo{(t)}{t'v} = \fluxo{(tt')}{v};
 		\end{equation*}
 	\item Para todo $v \in E$,
 		\begin{equation*}
-		\flux{(0)}{v} = \Id;
+		\fluxo{(0)}{v} = \Id;
 		\end{equation*}
 	\item Para todo $v \in E$ e todos $t,t' \in \R$,
 		\begin{equation*}
-		\flux{(t+t')}{v} = \flux{(t)}{v} \circ \flux{(t')}{v};
+		\fluxo{(t+t')}{v} = \fluxo{(t)}{v} \circ \fluxo{(t')}{v};
 		\end{equation*}
 	\item Para todo $v \in E$, todo $x \in E$ e todo $t \in \R$,
 		\begin{equation*}
-		\flux[\dot]{(t)}{v}_{x} = v;
+		\fluxo[\dot]{(t)}{v}_{x} = v;
 		\end{equation*}
 	\item Para todos $v,v' \in E$ e todo $t \in \R$,
 		\begin{equation*}
-		\flux{(t)}{(v+v')} = \flux{(t)}{v} \circ \flux{(t)}{v'}.
+		\fluxo{(t)}{(v+v')} = \fluxo{(t)}{v} \circ \fluxo{(t)}{v'}.
 		\end{equation*}
 	\end{enumerate}
 \end{proposition}
@@ -2790,22 +2918,22 @@ Seja $\bm E$ um espaço normado.
 	\begin{enumerate}
 	\item Para todo $x \in E$,
 		\begin{equation*}
-		\flux{(t)}{(t'v)}(x) = x + t(t'v) = x + (tt')v = \flux{(tt')}{v}(x).
+		\fluxo{(t)}{(t'v)}(x) = x + t(t'v) = x + (tt')v = \fluxo{(tt')}{v}(x).
 		\end{equation*}
 
 	\item Para todo $x \in E$,
 		\begin{equation*}
-		\flux{(0)}{v}(x) = x + 0v = x = \Id(x).
+		\fluxo{(0)}{v}(x) = x + 0v = x = \Id(x).
 		\end{equation*}
 
 	\item Para todo $x \in E$,
 		\begin{equation*}
-		\flux{(t+t')}{v}(x) = x + (t + t')v = (x + tv) + t'v = \flux{(t)}{v} \circ \flux{(t')}{v}(x).
+		\fluxo{(t+t')}{v}(x) = x + (t + t')v = (x + tv) + t'v = \fluxo{(t)}{v} \circ \fluxo{(t')}{v}(x).
 		\end{equation*}
 
 	\item Para todo $x \in E$,
 		\begin{align*}
-		\flux[\dot]{(t)}{v}_{x} &= \lim_{\delta \to 0} \frac{\flux{(t+\delta)}{v}_{x} - \flux{(t)}{v}_{x}}{\delta} \\
+		\fluxo[\dot]{(t)}{v}_{x} &= \lim_{\delta \to 0} \frac{\fluxo{(t+\delta)}{v}_{x} - \fluxo{(t)}{v}_{x}}{\delta} \\
 			&= \lim_{\delta \to 0} \frac{x + (t + \delta)v - (x + tv)}{\delta} \\
 			&= \lim_{\delta \to 0} \frac{\delta v}{\delta} \\
 			&= v.
@@ -2813,29 +2941,29 @@ Seja $\bm E$ um espaço normado.
 
 	\item Para todo $x \in E$ e todo $t \in \R$,
 		\begin{align*}
-		\flux{t}{(v+v')}(x) &= \flux{t}{(v'+v)}(x) \\
+		\fluxo{t}{(v+v')}(x) &= \fluxo{t}{(v'+v)}(x) \\
 			&= x + t(v'+v) \\
 			&= x + tv' + tv \\
-			&= \flux{t}{v}(x+tv') \\
-			&= \flux{t}{v}(\flux{t}{v'}(x)) \\
-			&= \flux{t}{v} \circ \flux{t}{v} (x),
+			&= \fluxo{t}{v}(x+tv') \\
+			&= \fluxo{t}{v}(\fluxo{t}{v'}(x)) \\
+			&= \fluxo{t}{v} \circ \fluxo{t}{v} (x),
 		\end{align*}
-	o que mostra que $\flux{t}{(v+v')} = \flux{t}{v} \circ \flux{t}{v}$.
+	o que mostra que $\fluxo{t}{(v+v')} = \fluxo{t}{v} \circ \fluxo{t}{v}$.
 	\qedhere
 	\end{enumerate}
 \end{proof}
 
 A primeira proposição esclarece uma possível ambiguidade de notação e serve como justificativa para a escolha de notação de fluxo. Como para todo $v \in E$ e todos $t,t' \in \R$ vale
 	\begin{equation*}
-	\flux{(t)}{(t'v)} = \flux{(tt')}{v},
+	\fluxo{(t)}{(t'v)} = \fluxo{(tt')}{v},
 	\end{equation*}
-então a notação $\flux{tt'}{v}$ não é ambígua e podemos em geral denotar
+então a notação $\fluxo{tt'}{v}$ não é ambígua e podemos em geral denotar
 	\begin{equation*}
-	\flux{t}{v} := \flux{(t)}{v}.
+	\fluxo{t}{v} := \fluxo{(t)}{v}.
 	\end{equation*}
-A segunda e a terceira proposições são de fato a propriedade de um fluxo. Elas significam que $\flux{}{v}$ é um homomorfismo de grupos de $\R$ para $\Cont(\bm E, \bm E)$, o que mostra que na verdade temos
+A segunda e a terceira proposições são de fato a propriedade de um fluxo. Elas significam que $\fluxo{}{v}$ é um homomorfismo de grupos de $\R$ para $\Cont(\bm E, \bm E)$, o que mostra que na verdade temos
 	\begin{align*}
-	\func{\flux{}{v}}{\R}{\Homeo(\bm E)}{t}{\flux{t}{v}}
+	\func{\fluxo{}{v}}{\R}{\Homeo(\bm E)}{t}{\fluxo{t}{v}}
 	\end{align*}
 
 Consideremos espaços normados $\bm E$ e $\bm E'$, $A \subseteq E$ um aberto, $v \in E$ e $x \in A$. Como $A$ é aberto, para algum $r \in \intaa{0}{\infty}$ vale que $\bola{x}{r} \subseteq A$, o que implica que, para todo $t \in \intaa{-r}{r}$, $x + tv \in \bola{x}{r}$ se, e somente $\nor{(x+tv)-x}<r$; como
@@ -2844,7 +2972,7 @@ Consideremos espaços normados $\bm E$ e $\bm E'$, $A \subseteq E$ um aberto, $v
 	\end{equation*}
 isso equivale a $t \in \intaa{-r \nor{v}\inv}{r \nor{v}\inv}$. Tomando $\varepsilon := r \nor{v}\inv$, para toda função $\fun{f}{A}{E'}$ a função
 	\begin{align*}
-	\func{f \circ \flux{(\var)}{v}(x)}{\intaa{-\varepsilon}{\varepsilon}}{E'}{t}{f \circ \flux{t}{v}(x) = f(x+tv)}
+	\func{f \circ \fluxo{(\var)}{v}(x)}{\intaa{-\varepsilon}{\varepsilon}}{E'}{t}{f \circ \fluxo{t}{v}(x) = f(x+tv)}
 	\end{align*}
 está bem definida.
 
@@ -2877,13 +3005,13 @@ Nesse caso, a \emph{derivada direcional de $f$ em $x$ na direção $v$} é
 \begin{definition}[Derivabilidade direcional]
 Sejam $\bm E$ e $\bm E'$ espaços normados, $A \subseteq E$ um aberto, $v \in E$ e $X \subseteq A$. Uma função de $A$ para $E'$ \emph{derivável em $X$ na direção $v$} (ou \emph{derivável em $x$ na direção $v$} para $X=\{x\}$) é uma função $\fun{f}{A}{E'}$ tal que, para todo $x \in X$, a trajetória
 	\begin{align*}
-	\func{f \circ \flux{(\var)}{v}_{x}}{\intaa{-\varepsilon}{\varepsilon}}{E'}{t}{f \circ \flux{t}{v}(x) = f(x+tv)}
+	\func{f \circ \fluxo{(\var)}{v}_{x}}{\intaa{-\varepsilon}{\varepsilon}}{E'}{t}{f \circ \fluxo{t}{v}(x) = f(x+tv)}
 	\end{align*}
 é derivável em $0$.
 
 Nesse caso, para todo $x \in X$, a \emph{derivada direcional de $f$ em $x$ na direção $v$} é
 	\begin{equation*}
-	\dir{v} f(x) := \der_{t}( f \circ \flux{(t)}{v}(x))|_{t=0} = \lim_{t \to 0} \frac{f(x+tv)-f(x)}{t}.
+	\dir{v} f(x) := \der_{t}( f \circ \fluxo{(t)}{v}(x))|_{t=0} = \lim_{t \to 0} \frac{f(x+tv)-f(x)}{t}.
 	\end{equation*}
 \end{definition}
 
@@ -3074,7 +3202,7 @@ e o interior desse simplexo é
 	\end{equation*}
 \end{comment}
 
-Para a proposição seguinte, usaremos o conceito de conjunto convexo.% e de $1$-simplexo.
+Para a proposição seguinte, usaremos o conceito de conjunto convexo. % e de $1$-simplexo.
 Lembremos que% o $1$-simplexo unitário é o conjunto $\simp^1 = \set{(1-t,t)}{t \in \intff{0}{1}}$ e
 , dados $x,x' \in E$, o $1$-simplexo (ou intervalo) de vértices $x,x'$ é o conjunto
 	\begin{equation*}
@@ -3415,11 +3543,18 @@ Uma outra consequência é que se a derivada de uma trajetória é limitada (por
 
 \begin{proposition}[Controle diferencial de trajetória]
 \label{prop:derivada.limitada.trajetoria.controlada}
-Sejam $I \subseteq \R$ um intervalo, $\bm E$ um espaço normado e $\fun{\gamma}{I}{E}$ uma trajetória contínua que é diferenciável em $\Int{I}$. Se $\dot \gamma$ é limitada por alguma constante $c \in \R$ (para todo $t \in \Int{I}$, $\nor{\dot \gamma(t)} \leq c$), então $\gamma$ é controlada e sua distorção satisfaz $\distor{\gamma} \leq c$; isto é, para todos $x,x' \in I$,
+Sejam $I \subseteq \R$ um intervalo, $\bm E$ um espaço normado e $\fun{\gamma}{I}{E}$ uma trajetória contínua que é diferenciável em $\Int{I}$. Se $\dot \gamma$ é limitada por alguma constante $c \in \R_{\geq 0}$ (para todo $t \in \Int{I}$, $\nor{\dot \gamma(t)} \leq c$), então $\gamma$ é controlada e sua distorção satisfaz $\distor{\gamma} \leq c$; isto é, para todos $x,x' \in I$,
 	\begin{equation*}
 	\nor{\gamma(x') - \gamma(x)} \leq c\nor{x' - x}.
 	\end{equation*}
 \end{proposition}
+%\begin{proposition}[Controle diferencial de trajetória]
+%\label{prop:derivada.limitada.trajetoria.controlada}
+%Sejam $I \subseteq \R$ um intervalo, $\bm E$ um espaço normado e $\fun{\gamma}{I}{E}$ uma trajetória contínua que é diferenciável em $\Int{I}$. Se $\dot \gamma$ é limitada, então $\gamma$ é controlada e sua distorção satisfaz
+%	\begin{equation*}
+%	\distor{\gamma} \leq \norsup{\dot \gamma}.
+%	\end{equation*}
+%\end{proposition}
 \begin{proof}
 Sejam $x,x' \in I$. Se $x=x'$, a desigualdade segue trivialmente. Se $x \neq x'$, consideremos o caso $x < x'$ e o intervalo compacto $\intff{x}{x'}$, a restrição $\gamma|_{\intff{x}{x'}}$ e a função $\funclin{f}{\intff{x}{x'}}{\R}{t}{ct}$. Como é um múltiplo da identidade, a função $f$ é contínua em $\intff{x}{x'}$, diferenciável em $\intaa{x}{x'}$ e, para todo $t \in \intaa{x}{x'}$, vale $\dot f(t) = c$. Portanto $\nor{\dot \gamma(t)} \leq c = \dot f(t)$ e segue de \ref{prop:majoracao.trajetoria} que
 	\begin{equation*}
@@ -3466,11 +3601,18 @@ Um corolário imediato é uma versão multidimensional de \ref{prop:derivada.lim
 
 \begin{proposition}[Controle diferencial de função]
 \label{prop:diferencial.limitada.funcao.controlada}
-Sejam $\bm E$ e $\bm E'$ espaços normados, $A \subseteq E$ um aberto convexo e $\fun{f}{A}{E'}$ uma função diferenciável. Se, para algum $c \in \intfa{0}{\infty}$, todo $x \in A$ satisfaz $\nor{\D f|_x} \leq c$, então $f$ é controlada e sua distorção satisfaz $\nor{f} \leq c$; isto é, para todos $x,x' \in A$,
+Sejam $\bm E$ e $\bm E'$ espaços normados, $A \subseteq E$ um aberto convexo e $\fun{f}{A}{E'}$ uma função diferenciável. Se, para algum $c \in \intfa{0}{\infty}$, todo $x \in A$ satisfaz $\nor{\D f|_x} \leq c$, então $f$ é controlada e sua distorção satisfaz $\distor{f} \leq c$; isto é, para todos $x,x' \in A$,
 	\begin{equation*}
 	\nor{f(x') - f(x)} \leq c \nor{x'-x}.
 	\end{equation*}
 \end{proposition}
+%\begin{proposition}[Controle diferencial de função]
+%\label{prop:diferencial.limitada.funcao.controlada}
+%Sejam $\bm E$ e $\bm E'$ espaços normados, $A \subseteq E$ um aberto convexo e $\fun{f}{A}{E'}$ uma função diferenciável. Se $\D f$ é limitada, então $f$ é controlada e sua distorção satisfaz
+%	\begin{equation*}
+%	\distor{f} \leq \norsup{\D f}.
+%	\end{equation*}
+%\end{proposition}
 \begin{proof}
 Sejam $x,x' \in A$. Como $A$ é convexo, $\Sxger{x,x'} \subseteq A$; como $f$ é diferenciável, é contínua em $\Sxger{x,x'}$ e diferenciável em $\Sxgera{x,x'}$. Pela hipótese da norma da diferencial, segue de \ref{prop:desigualdade.valor.medio} que
 	\begin{equation*}
@@ -3977,7 +4119,7 @@ Segue de \ref{prop:continuamente.diferenciavel.parcialmente} que $l$ é $\Cont^1
 
 
 
-\subsubsection{Diferenciabilidade das normas $p$}
+\subsubsection{Diferenciabilidade das normas \texorpdfstring{$p$}{p}}
 
 Nesta seção, analisamos o caso das normas $p$ em $\R^d$. Consideraremos $\R^d$ como produto de $d$ espaços $\R$ para poder calcular as diferenciais parciais $\D_k$. As demonstrações não serão apresentadas, mas podem ser conferidas em \cite[\textsection 2.6]{liv:Coleman-CalculusNormedVectorSpaces}.
 
@@ -4117,7 +4259,7 @@ Para $m=1$ é direto. Consideremos $m \geq 2$.
 		\D (\D^{(m-1)} f)|_x = \D (I^{(m-1)} \circ \D^{m-1} f)|_x = I^{(m-1)} \circ \D^m f|_x.
 		\end{equation*}
 
-	\item ($\Leftarrow$) Suponhamos que, para alguma vizinhança $V$ de $X$, $f$ é $(m-1)$-diferenciável em $V$ e $\D^{(m-1)} f$ é diferenciável em $X$. Para todo $x' \in V$, vale que $\D^{m-1} f|_{x'} = (I^{(m)})\inv \circ \D^{(m-1)} f|_{x'}$, portanto $\D^{m-1} f = (I^{(m)})\inv \circ \D^{(m-1)} f$ e segue da linearidade e continuidade de $(I^{(m)})\inv$ que $\D^{m-1} f$ é diferenciável em $X$ e, pela regra da cadeia, para todo $x \in X$,
+	\item ($\Leftarrow$) Suponhamos que, para alguma vizinhança $V$ de $X$, $f$ é $(m-1)$"-diferenciável em $V$ e $\D^{(m-1)} f$ é diferenciável em $X$. Para todo $x' \in V$, vale que $\D^{m-1} f|_{x'} = (I^{(m)})\inv \circ \D^{(m-1)} f|_{x'}$, portanto $\D^{m-1} f = (I^{(m)})\inv \circ \D^{(m-1)} f$ e segue da linearidade e continuidade de $(I^{(m)})\inv$ que $\D^{m-1} f$ é diferenciável em $X$ e, pela regra da cadeia, para todo $x \in X$,
 		\begin{equation*}
 		\D^m f|_x = \D (\D^{m-1} f)|_x = \D ((I^{(m)})\inv \circ \D^{(m-1)} f)|_x = (I^{(m)})\inv \circ \D(\D^{(m-1)} f)|_x.
 		\end{equation*}
@@ -4252,7 +4394,7 @@ portanto
 	\end{align*}
 o que implica que $\D^{(2)} f|_x(v_0,v_1) = \D^{(2)} f|_x(v_1,v_0)$.
 
-Agora, consideramos o caso em que $m>2$. Suponhamos que $f$ é $m$-diferenciável em $x$ e que toda função $(m-1)$-diferenciável tem $(m-1)$-diferencial simétrica. Seja $V \subseteq A$ uma vizinhança convexa de $x$ tal que $f$ é $(m-1)$-diferenciável em $V$ e $\fun{\D^{(m-1)} f}{V}{\toplin(\bm E, \bm E')}$ é diferenciável em $x$.
+Agora, consideramos o caso em que $m>2$. Suponhamos que $f$ é $m$"-diferenciável em $x$ e que toda função $(m-1)$-diferenciável tem $(m-1)$-diferencial simétrica. Seja $V \subseteq A$ uma vizinhança convexa de $x$ tal que $f$ é $(m-1)$-diferenciável em $V$ e $\fun{\D^{(m-1)} f}{V}{\toplin(\bm E, \bm E')}$ é diferenciável em $x$.
 
 Por hipótese de indução, $\D^{(m-1)} f|_x$ é uma função $(m-1)$-linear simétrica. Como $\toplin_{S}^{(m-1)}(\bm E, \bm E')$ é um subespaço fechado de $\toplin^{(m-1)}(\bm E, \bm E')$ e $(I^{(m-1)})\inv$ é isomorfismo isométrico, então
 	\begin{equation*}
@@ -4344,7 +4486,7 @@ que é função bilinear, logo $\infty$-diferenciável e portanto $m$-diferenci�
 	\end{align*}
 A função $f$ é $(m+1)$-diferenciável por hipótese, logo $m$-diferenciável; a função $\D f'$ é $m$-diferenciável pois por hipótese $f'$ é $(m+1)$-diferenciável. Assim, por hipótese de indução, a primeira componente de $g$, que é a composição $\D f' \circ f$, é $m$-diferenciável. A segunda componente de $g$ é a função $\D f$, que é $m$-diferenciável pois por hipótese $f$ é $(m+1)$-diferenciável. Assim segue que a função $g$ é $m$-diferenciável, pois cada uma de suas componentes é $m$-diferenciável.
 
-Agora, novamente pela hipótese de indução, a diferencial $\D(f' \circ f)$ é $m$-diferenciável, pois é composição de duas funções $m$-diferenciáveis, e portanto $f' \circ f$ é $(m+1)$-diferenciável.
+Agora, novamente pela hipótese de indução, a diferencial $\D(f' \circ f)$ é $m$"-diferenciável, pois é composição de duas funções $m$-diferenciáveis, e portanto $f' \circ f$ é $(m+1)$-diferenciável.
 \end{proof}
 
 \subsubsection{Multidiferenciabilidade contínua}
@@ -4375,16 +4517,16 @@ Sejam $\bm E$ e $\bm E'$ espaços normados, $A \subseteq E$ um aberto e $X \subs
 \begin{definition}[Multidiferenciabilidade contínua]
 Sejam $\bm E$ e $\bm E'$ espaços normados, $A \subseteq E$ um aberto e $X \subseteq A$. Para todo $m \in \NN$, definimos indutivamente:
 	\begin{enumerate}
-	\item Uma função de $A$ para $E'$ \emph{$\Cont^0$-diferenciável} (ou \emph{continuamente $0$-diferenciável}) \emph{em $X$} (ou \emph{em $x$} para $X = \{x\}$) é uma função $\fun{f}{A}{E'}$ contínua em $X$.
+	\item Uma função de $A$ para $E'$ \emph{$\Cont^0$-diferenciável} (ou \emph{continuamente $0$"-diferenciável}) \emph{em $X$} (ou \emph{em $x$} para $X = \{x\}$) é uma função $\fun{f}{A}{E'}$ contínua em $X$.
 
 	Uma função \emph{$\Cont^0$-diferenciável} (ou \emph{continuamente $0$-diferenciável}) de $A$ para $E'$ é uma função contínua $\fun{f}{A}{E'}$ e o conjunto dessas funções é denotado $\Cont^0(\bm A,\bm E') := \Cont(\bm A,\bm E')$;
 
-	\item Uma função de $A$ para $E'$ \emph{$\Cont^m$-diferenciável} (ou \emph{continuamente $m$-diferenciável}) \emph{em $X$} (ou \emph{em $x$} para $X = \{x\}$) é uma função $\fun{f}{A}{E'}$ tal que, para alguma vizinhança $V \subseteq A$ de $X$, $f$ é $m$-diferenciável em $V$ e %sua diferencial $m$-composta
+	\item Uma função de $A$ para $E'$ \emph{$\Cont^m$-diferenciável} (ou \emph{continuamente $m$"-diferenciável}) \emph{em $X$} (ou \emph{em $x$} para $X = \{x\}$) é uma função $\fun{f}{A}{E'}$ tal que, para alguma vizinhança $V \subseteq A$ de $X$, $f$ é $m$-diferenciável em $V$ e %sua diferencial $m$-composta
 	$\fun{\D^m f}{V}{\toplin^m(\bm E, \bm E')}$ é contínua em $X$.
 
 	Uma função \emph{$\Cont^m$-diferenciável} (ou \emph{continuamente $m$-diferenciável}) de $A$ para $E'$ é uma função $\fun{f}{A}{E'}$ $\Cont^m$-diferenciável em $A$ e o conjunto dessas funções é denotado $\Cont^m(\bm A,\bm E')$;
 
-	\item Uma função de $A$ para $E'$ \emph{$\Cont^\infty$-diferenciável} (ou \emph{continuamente $\infty$-diferenciável} ou \emph{suave}) \emph{em $X$} (ou \emph{em $x$} para $X = \{x\}$) é uma função $\fun{f}{A}{E'}$ tal que, para todo $m \in \N$, $f$ é $\Cont^{m}$-diferenciável em $X$.
+	\item Uma função de $A$ para $E'$ \emph{$\Cont^\infty$-diferenciável} (ou \emph{continuamente $\infty$"-diferenciável} ou \emph{suave}) \emph{em $X$} (ou \emph{em $x$} para $X = \{x\}$) é uma função $\fun{f}{A}{E'}$ tal que, para todo $m \in \N$, $f$ é $\Cont^{m}$-diferenciável em $X$.
 
 	Uma função \emph{$\Cont^\infty$-diferenciável} (ou \emph{continuamente $\infty$-diferenciável} ou \emph{suave}) de $A$ para $E'$ é uma função $\fun{f}{A}{E'}$ $\Cont^{\infty}$-diferenciável em $A$ e o conjunto dessas funções é denotado $\Cont^\infty(\bm A,\bm E')$.
 	\end{enumerate}
@@ -4555,7 +4697,7 @@ Por \ref{prop:multidiferenciabilidade.multiderivabilidade}, a notação $\Cont^m
 
 \subsection{Extremos locais e pontos críticos degenerados}
 
-Na seção \ref{ssec:extremos.locais.pontos.criticos}, analisamos pontos extremos locais de campos escalares usando informações sobre a primeira diferencial do campo no ponto. Definimos o conceito de ponto crítico e o relacioamos aos pontos extremos locais. Nesta seção, o objetivo é analisar pontos extremos locais com informações sobre a segunda diferencial do campo escalar; além disso, definimos o conceito de ponto degenerado. As demonstrações serão omitidas, mas podem ser encontradas em \cite[p.115]{liv:Coleman-CalculusNormedVectorSpaces}.
+Na seção \ref{ssec:extremos.locais.pontos.criticos}, analisamos pontos extremos locais de campos escalares usando informações sobre a primeira diferencial do campo no ponto. Definimos o conceito de ponto crítico e o relacionamos aos pontos extremos locais. Nesta seção, o objetivo é analisar pontos extremos locais com informações sobre a segunda diferencial do campo escalar; além disso, definimos o conceito de ponto degenerado. As demonstrações serão omitidas, mas podem ser encontradas em \cite[p.115]{liv:Coleman-CalculusNormedVectorSpaces}.
 
 \subsubsection{Extremos locais e a segunda diferencial}
 
@@ -4777,7 +4919,7 @@ portanto vale que
 	\end{equation*}
 em que $\fun{(\var)\inv}{\Isolin(E,E')}{\Isolin(E',E)}$ é a inversão de função. Como $f$ é $\Cont^1$-diferenciável, então $\D f$ é contínua, logo $\D (f\inv)$ é composição de funções contínuas. Isso implica que $f\inv$ é $\Cont^1$-diferenciável, o que significa que $f$ é um $\Cont^1$-difeomorfismo.
 
-Para demonstrarmos o passo indutivo, seja $m \in \N$ e suponhamos que a proposição vale para $m$. Suponhamos que $f$ seja um difeomorfismo $\Cont^{m+1}$-diferenciável. Devemos mostrar que $f\inv$ é também $\Cont^{m+1}$-diferenciável. Como $f$ é $\Cont^{m+1}$-diferenciável, é também $\Cont^m$-diferenciável, portanto segue da hipótese de indução que $f\inv$ é $\Cont^m$-diferenciável. Além disso, $\D f$ é $\Cont^m$-diferenciável e a inversão de função $\fun{\inv}{\Isolin(E,E')}{\Isolin(E',E)}$ é $\Cont^m$-diferenciável (\ref{prop:suavidade.inversao.funcao}). Como vale $\D (f\inv) = (\var)\inv \circ \D f \circ f\inv$ e todas a funções da composição são $\Cont^m$-diferenciáveis, segue que $\D (f\inv)$ é $\Cont^m$-diferenciável, logo $f\inv$ é $\Cont^{m+1}$-diferenciável.
+Para demonstrarmos o passo indutivo, seja $m \in \N$ e suponhamos que a proposição vale para $m$. Suponhamos que $f$ seja um difeomorfismo $\Cont^{m+1}$-diferenciável. Devemos mostrar que $f\inv$ é também $\Cont^{m+1}$-diferenciável. Como $f$ é uma função $\Cont^{m+1}$-diferenciável, é também $\Cont^m$-diferenciável, portanto segue da hipótese de indução que $f\inv$ é $\Cont^m$-diferenciável. Além disso, $\D f$ é $\Cont^m$-diferenciável e a inversão de função $\fun{\inv}{\Isolin(E,E')}{\Isolin(E',E)}$ é $\Cont^m$-diferenciável (\ref{prop:suavidade.inversao.funcao}). Como vale $\D (f\inv) = (\var)\inv \circ \D f \circ f\inv$ e todas a funções da composição são $\Cont^m$-diferenciáveis, segue que $\D (f\inv)$ é $\Cont^m$-diferenciável, logo $f\inv$ é $\Cont^{m+1}$-diferenciável.
 \end{proof}
 
 \subsubsection{Teorema da Função Inversa}
@@ -4860,7 +5002,11 @@ portanto
 	\begin{equation*}
 	\frac{\nor{v}}{\nor{v'}} \leq \frac{\nor{(\D f|_x)\inv}}{1-\nor{(\D f|_x)\inv \left(\frac{r(v)}{\nor{v}}\right)}}.
 	\end{equation*}
-Como $\lim_{v \to 0} r(v)/\nor{v} = 0$ e $(\D f|_x)\inv$ é contínua, segue que $\lim_{v \to 0} (\D f|_x)\inv \left(\frac{r(v)}{\nor{v}}\right) = 0$, logo
+Como $\lim_{v \to 0} r(v)/\nor{v} = 0$ e $(\D f|_x)\inv$ é contínua, segue que
+	\begin{equation*}
+	\lim_{v \to 0} (\D f|_x)\inv \left(\frac{r(v)}{\nor{v}}\right) = 0,
+	\end{equation*}
+logo
 	\begin{equation*}
 	\lim_{v \to 0} \frac{\nor{v}}{\nor{v'}} \leq \nor{(\D f|_x)\inv}.
 	\end{equation*}
@@ -4987,84 +5133,1023 @@ também $\Cont^m$-diferenciável, portanto $f$ é um $\Cont^m$-difeomorfismo loc
 
 \subsubsection{Teorema da Função Implícita}
 
+%\begin{theorem}[Função Implícita]
+%Sejam $\bm E_0$, $\bm E_1$ e $\bm E'$ espaços normados completos, $A \subseteq E_0 \times E_1$ um aberto, $m \in \N \setminus \{0\}$, $\fun{f}{A}{E'}$ uma função $\Cont^m$-diferenciável, $x=(x_0,x_1) \in A$ e $c := f(x) \in E'$. Se a diferencial parcial $\fun{\D_1 f|_{x}}{E_1}{E'}$ é invertível, então alguma vizinhança aberta $V \subseteq A$ de $x$, alguma vizinhança $U \subseteq E_0$ de $x_0$ e alguma função $\Cont^m$-diferenciável $\fun{\phi}{U}{E_1}$ satisfazem
+%	\begin{equation*}
+%	V \cap f\inv(\{c\}) = \graf(\phi)
+%	\end{equation*}
+%e, para todo $x'=(x'_0,x'_1) \in V$,
+%	\begin{equation*}
+%	\D \phi|_{x'_0} = - (\D_1 f|_{x'})\inv \circ \D_0 f|_{x'}.
+%	\end{equation*}
+%\end{theorem}
 \begin{theorem}[Função Implícita]
-Sejam $\bm E_0$, $\bm E_1$ e $\bm E'$ espaços normados completos, $A \subseteq E_0 \times E_1$ um aberto, $m \in \N \setminus \{0\}$, $\fun{f}{A}{E'}$ uma função $\Cont^m$-diferenciável, $x=(x_0,x_1) \in A$ e $c := f(x) \in E'$. Se a diferencial parcial $\fun{\D_1 f|_{x}}{E_1}{E'}$ é invertível, então alguma vizinhança aberta $V \subseteq A$ de $x$,  alguma vizinhança $U \subseteq E_0$ de $x_0$ e alguma função $\Cont^m$-diferenciável $\fun{\phi}{U}{E_1}$ satisfazem
+\label{prop:teorema.funcao.implicita}
+Sejam $\bm E_0$, $\bm E_1$ e $\bm E'$ espaços normados completos, $A \subseteq E_0 \times E_1$ um aberto, $a = (a_0,a_1) \in A$, $m \in \N \setminus \{0\}$ e  $\fun{f}{A}{E'}$ uma função $\Cont^m$-diferenciável. Se a diferencial parcial $\fun{\D_1 f|_a}{E_1}{E'}$ é invertível, então alguma vizinhança aberta $V \subseteq A$ de $a$, alguma vizinhança $U \subseteq E_0$ de $a_0$ e alguma função $\Cont^m$-diferenciável $\fun{\phi}{U}{E_1}$ satisfazem
 	\begin{equation*}
-	V \cap f\inv(\{c\}) = \graf(\phi)
+	\graf(\phi) = V \cap f\inv(f(a))
 	\end{equation*}
-e, para todo $x'=(x'_0,x'_1) \in V$,
+e, para todo $x = (x_0,x_1) \in V$,
 	\begin{equation*}
-	\D \phi|_{x'_0} = - \D_1 f|_{x'} \circ \D_0 f|_{x'}.
+	\D \phi|_{x_0} = - (\D_1 f|_x)\inv \circ \D_0 f|_x.
 	\end{equation*}
 \end{theorem}
+\begin{proof}
+Definamos a função
+	\begin{align*}
+	\func{g}{A}{E_0 \times E'}{(x_0,x_1)}{(x_0, f(x_0,x_1))}.
+	\end{align*}
+A função $g$ é $\Cont^m$-diferenciável e vale% $\D g|_x = (\proj_{E_0}, \D f|_x)$.
+, para todo $x = (x_0,x_1) \in A$ e todo $u = (u_0,u_1) \in E_0 \times E_1$,
+	\begin{equation*}
+	\D g|_x(u) = (u_0, \D f|_x(u)) = (u_0, \D_0 f|_x(u_0) + \D_1 f|_x(u_1)).
+	\end{equation*}
+Em particular, para $x=a$,
+	\begin{equation*}
+	\D g|_a(u) = (u_0, \D_0 f|_x(u_0) + \D_1 f|_x(u_1)),
+	\end{equation*}
+o que implica que $\D g|_a$ é invertível, pois sua inversa é
+	\begin{equation*}
+	(\D g|_a)\inv(u) = (u_0, (\D_1 f|_a)\inv (u_1 - \D_0 f|_a(u_0))).
+	\end{equation*}
+
+Segue então do teorema da função inversa (\ref{prop:teorema.funcao.inversa}) que, para alguma vizinhança $V' \subseteq A$ de $a$, a função $\fun{g|_{V'}}{V'}{g(V')}$ é um $\Cont^m$-difeomorfismo. Vamos restringir um pouco mais o conjunto $V'$. Como $f$ é $\Cont^m$-diferenciável, a diferencial parcial $\fun{\D_1 f}{A}{\toplin(E_1, E')}$ é uma função contínua. Ainda, como o conjunto $\Iso{\toplin}(E_1, E')$ dos elementos invertíveis de $\toplin(E_1, E')$ é aberto e $\D_1 f|_a \in \Iso{\toplin}(E_1, E')$, alguma vizinhança aberta $V'' \subseteq A$ de $a$ satisfaz $\D_1 f(V'') \subseteq \Iso{\toplin}(E_1, E')$ (basta tomar a imagem inversa pela função $\D_1 f$ de uma vizinhança aberta de $\D_1 f|_a$ em $\Iso{\toplin}(E_1, E')$). Definindo $V := V' \cap V''$, segue que $V \subseteq A$ é aberto e $a \in V$. A restrição $\fun{g|_V}{V}{g(V)}$ é um $\Cont^m$-difeomorfismo de $V \subseteq E_0 \times E_1$ para $g(V) \subseteq E_0 \times E'$.
+
+Definamos $h := \fun{\proj_1 \circ (g|_V)\inv}{g(V)}{E_1}$, %, de modo que, para todo $x \in V'$,
+%	\begin{equation*}
+%	(x_0, x_1) = (g|_{V'})\inv \circ g(x_0, x_1) = (g|_{V'})\inv(x_0, f(x_0, x_1)) = (x_0, h(x_0, f(x_0, x_1))).
+%	\end{equation*}
+%A função $\fun{h}{g(V)}{E_1}$
+que é $\Cont^m$-diferenciável pois é composição de funções $\Cont^m$-diferenciáveis, e o aberto
+	\begin{equation*}
+	U := \set{x_0 \in E_0}{(x_0, f(a)) \in g(V)}.%\proj_{E_0} (\proj_{E'}\inv(f(a))).
+	\end{equation*}
+Definimos a inclusão (na notação de inclusão transladada)
+	\begin{align*}
+	\iota := \func{\inclu_{0,(0,f(a))}}{E_0}{E_0 \times E'}{x_0}{(x_0,f(a))}.
+	\end{align*}
+Vale que $U = \iota\inv(g(V))$, o que mostra que $U \subseteq E_0$ é aberto, e que $a_0 \in U$. Finalmente, definimos a função $\phi := \fun{h \circ \iota}{U}{E_1}$, que é $\Cont^m$-diferenciável pois é composição de funções $\Cont^m$-diferenciáveis. Mostremos que essa função satisfaz
+	\begin{equation*}
+	\graf(\phi) = V \cap f\inv(f(a)).
+	\end{equation*}
+\begin{itemize}
+\item ($\subseteq$) Seja $x = (x_0,x_1) \in \graf(\phi)$. Então $x_0 \in U$ e $x_1 = \phi(x_0)$. A primeira relação implica que $\iota(x_0) = (x_0,f(a)) \in g(V)$, então, para algum $x' = (x'_0, x'_1) \in V$, vale que% $g(x') = (x_0, f(a))$.
+	\begin{equation*}
+	(x'_0, f(x')) = g(x') = (x_0,f(a)) = \iota(x_0).
+	\end{equation*}
+Disso segue que $x'_0 = x_0$ e $f(x') = f(a)$; segue portanto da segunda relação que
+	\begin{equation*}
+	x_1 = \phi(x_0) = h \circ \iota(x_0) = \proj_1 \circ (g|_{V})\inv \circ g(x') = x'_1.
+	\end{equation*}
+Assim, concluímos que $x = x' \in V$ e, finalmente, que
+	\begin{equation*}
+	f(a) = f(x') = f(x),
+	\end{equation*}
+o que mostra que $x \in V \cap f\inv(f(a))$.
+
+\item ($\supseteq$) Seja $x = (x_0, x_1) \in V \cap f\inv(f(a))$. Então $x \in V$ e $f(x) = f(a)$. Da primeira relação, segue que $g(x) \in g(V)$; da segunda relação, que
+	\begin{equation*}
+	\iota(x_0) = (x_0, f(a)) = (x_0, f(x)) = g(x).
+	\end{equation*}
+Isso implica que $x_0 \in \iota\inv(g(V)) = U$. Sendo assim, podemos calcular a imagem de $x_0$ sob $\phi$, obtendo
+	\begin{equation*}
+	\phi(x_0) = h \circ \iota (x_0) = h \circ g(x) = \proj_1 (x) = x_1,
+	\end{equation*}
+portanto $x \in \graf(\phi)$.
+\end{itemize}
+
+Agora que está demonstrado que o gráfico da função $\phi$ é o conjunto de nível $f\inv(f(a))$ restrito a uma vizinhança de $a$, calculemos a diferencial de $\phi$ a partir das diferenciais parciais de $f$. Como para todo $x_0 \in U$ vale $f(x_0,\phi(x_0)) = f(a)$, e $f(a)$ é constante, diferenciando essa igualdade segue que
+	\begin{equation*}
+	\D_0 f|_x + \D_1 f|_x \circ \D \phi|_{x_0} = 0.
+	\end{equation*}
+Como para $x \in V$ a diferencial $\D_1 f|_x$ é invertível, segue que
+	\begin{equation*}
+	\D \phi|_{x_0} = - (\D_1 f|_x)\inv \circ \D_0 f|_x.
+	\qedhere
+	\end{equation*}
+\end{proof}
 
 
 
 
 
+\subsubsection{Teorema do Posto}
 
 
 
 
 
+\subsubsection{Extremos locais com restrições}
 
 
 
 
+\section{Integração em espaço normados}
 
+\subsection{Integração de trajetórias}
 
+\subsubsection{Integração em intervalos}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-\cleardoublepage
-
-\subsection{Campos tensoriais}
-
-\subsubsection{Campos vetoriais}
+Consideraremos a partir de agora um intervalo compacto $I \subseteq \R$ e um espaço normado $\bm E$. O conjunto das trajetórias $\fun{\gamma}{I}{E}$ limitadas, denotado $\Boun(I,E)$, é um espaço normado com a norma do supremo definida para $\gamma \in \Boun(I,E)$ por
+	\begin{equation*}
+	\norsup{\gamma} = \sup_{t \in I} \nor{\gamma(t)}.
+	\end{equation*}
+Vamos considerar um subconjunto das funções limitadas, as funções constantes por partes. Para isso relembramos que uma $n$-partição por intervalos de $I = \intff{a}{a'}$ é uma lista $(t_i)_{i \in [n+1]} \in \R^{n+1}$ tal que
+	\begin{equation*}
+	a = t_0 < \cdots < t_n = a'
+	\end{equation*}
+e que o conjunto dessas partições é denotado $\Partinter(\intff{a}{a'})$.
 
 \begin{definition}
-Sejam $\bm E$ um espaço normado e $A \subseteq E$ um aberto. Um \emph{campo vetorial} em $A$ é uma função $\fun{v}{A}{E}$. Para todo $x \in A$, o \emph{vetor tangente a $A$ de $v$ em $x$} é
+Seja $I \subseteq \R$ um intervalo limitado com extremos inferior $a$ e superior $a'$. O \emph{comprimento} de $I$ é
+	\begin{equation*}
+	\vol^1(I) = a'-a.
+	\end{equation*}
+\end{definition}
+
+Isso vale para qualquer um dos intervalos $\intaa{a}{a'}$, $\intfa{a}{a'}$, $\intaf{a}{a'}$ e $\intff{a}{a'}$, com $a \leq a'$.
+
+Note que dada uma partição por intervalos de $I$ como acima, vale
+	\begin{equation*}
+	\vol^1(I) = \sum_{i \in [n]} (t_{i+1}-t_i).
+	\end{equation*}
+%	\begin{equation*}
+%	\vol^1(I) = \sum_{i \in [n]} \vol^1(I_i).
+%	\end{equation*}
+
+\begin{definition}
+Sejam $I \subseteq \R$ um intervalo compacto e $\bm E$ um espaço normado. Uma \emph{trajetória constante por partes}%
+	\footnote{Também chamada de função `escada' ou função `degrau'.}
+de $I$ para $\bm E$ é uma trajetória $\fun{\gamma}{I}{E}$ para a qual alguma $n$-partição por intervalos $(t_i)_{i \in [n+1]} \in \Partinter(I)$ satisfaz que, para todo $i \in [n]$, $\gamma|_{\intaa{t_i}{t_{i+1}}}$ é constante.
+O conjunto das trajetórias constantes por partes de $I$ para $E$ é denotado $\Constp(I,E)$.
+\end{definition}
+
+Claramente uma trajetória constante por partes definida em um intervalo compacto é limitada, pois sua imagem tem finitos valores.
+
+Para qualquer trajetória constante por partes $\gamma$, existem $x_0, \ldots, x_{n-1} \in E$ e partição por intervalos $(t_i)_{i \in [n+1]} \in \Partinter(I)$ tais que, para todo $i \in [n]$ e todo $t \in \intaa{t_i}{t_{i+1}}$ vale $\gamma(t) = x_i$.
+
+\begin{exercise}
+Sejam $I \subseteq \R$ um intervalo compacto e $\bm E$ um espaço normado. O espaço das trajetórias constantes por partes $\Constp(I,E)$ é um subespaço linear de $\Boun(I,E)$.
+\end{exercise}
+
+Sendo assim, podemos considerar o fecho de $\Constp(I,E)$ em $\Boun(I,E)$. As trajetórias $\gamma$ pertencentes a esse fecho satisfazem que, para alguma sequência $(\gamma_n)_{n \in \N}$ de trajetórias constantes por partes,
+	\begin{equation*}
+	\gamma = \lim_{n \to \infty} \gamma_n.
+	\end{equation*}
+Nesse caso, consideramos um espaço normado completo.
+% NOTA: Naõ sei se é necessário ser um espaço completo para a definição de trajetória regulada, tem que pensar melhor.
+
+\begin{definition}
+Seja $\bm E$ um espaço normado completo. Uma \emph{trajetória regulada} em $\bm E$ é uma trajetória $\fun{\gamma}{I}{E}$ que é limite de alguma sequência de trajetórias constantes por partes. O conjunto das trajetórias reguladas de $I$ para $E$ é denotado $\Regu(I,E)$.
+\end{definition}
+
+As trajetórias reguladas podem ser caracterizadas como as funções que têm pontos limites à esquerda e à direita.
+% NOTA: Definir pontos limites à esquerda/direita (superior/inferior) na seção de derivabilidade de trajetórias...
+\begin{exercise}
+Sejam $I = \intff{a}{a'} \subseteq \R$ um intervalo compacto e $\bm E$ um espaço normado completo. Uma trajetória $\gamma$ é regulada se, e somente se, para todo $t \in \intaf{a}{a'}$, $\gamma$ tem ponto limite à esquerda (inferior) em $t$ e, para todo $t \in \intfa{a}{a'}$, $\gamma$ tem ponto limite à direita (superior) em $t$.
+\end{exercise}
+
+Como consequência, toda trajetória contínua é regulada. Agora vamos definir a integral de uma trajetória regulada. Antes definimos a integral para funções constantes por partes.
+
+\begin{definition}
+Sejam $I \subseteq \R$ um intervalo compacto, $\bm E$ um espaço normado e $\fun{\gamma}{I}{E}$ uma trajetória constante por partes com $n$-partição por por intervalos $(t_i)_{i \in [n+1]} \in \Partinter(I)$ e $x_0, \ldots, x_{n-1} \in E$ tais que, para todo $i \in [n]$ e todo $t \in \intaa{t_i}{t_{i+1}}$ vale $\gamma(t) = x_i$.
+A \emph{integral de $\gamma$ em $I$} é
+	\begin{equation*}
+	\int_I \gamma := \sum_{i \in [n]} (t_{i+1} - t_i) x_i.
+	\end{equation*}
+%	\begin{equation*}
+%	\int_I \gamma := \sum_{i \in [n]} \vol^1(I_i) x_i.
+%	\end{equation*}
+%	\begin{equation*}
+%	\int_I \gamma := \sum_{i \in [n]} \vol^1(I_i) \gamma(I_i).
+%	\end{equation*}
+A \emph{integração} em $\Constp(I,E)$ é a função
+	\begin{align*}
+	\func{\textstyle\int_I}{\Constp(I,E)}{E}{\gamma}{\int_I \gamma}.
+	\end{align*}
+\end{definition}
+
+Vale notar que a definição é independente da escolha de partição por intervalos para $\gamma$.
+
+\begin{proposition}
+Sejam $I \subseteq \R$ um intervalo compacto e $\bm E$ um espaço normado. A integração
+	\begin{equation*}
+	\fun{\textstyle\int_I}{\Constp(I,E)}{E}
+	\end{equation*}
+é linear e contínua e
+	\begin{equation*}
+	\nor{\textstyle\int_I(\gamma)} \leq \vol^1(I) \norsup{\gamma}.
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+A linearidade é exercício.
+%Primeiro demonstramos a linearidade. Sejam $c \in \R$ e $\gamma \in \Constp(I,E)$ uma trajetória constante por partes com $n$-partição por por intervalos $(t_i)_{i \in [n+1]} \in \Partinter(I)$ e $x_0, \ldots, x_{n-1} \in E$ tais que, para todo $i \in [n]$, $\gamma|_{\intaa{t_i}{t_{i+1}} = x_i$. Note que essa partição por intervalos de $\gamma$ também pode ser usada para $c\gamma$ com os valores $cx_0, \ldots, cx_{n-1} \in E$, de modo que
+%	\begin{equation*}
+%	\int_I c\gamma = \sum_{i \in [n]} (t_{i+1}-t_i) cx_i = c\sum_{i \in [n]} (t_{i+1} - t_i)  x_i= c\int_I \gamma.
+%	\end{equation*}
+%
+%Agora, seja $\gamma' \in \Constp(I,E)$ uma trajetória constante por partes com $n'$-partição por por intervalos $(t'_i)_{i \in [n'+1]} \in \Partinter(I)$ e $x_0, \ldots, x_{n'-1} \in E$ tais que, para todo $i \in [n']$, $\gamma|_{\intaa{t'_i}{t'_{i+1}} = x'_i$. Seja $(t''_i)_{i \in [n''+1]}$ o correfinamento das partições de $\gamma$ e $\gamma'$ e note que
+%
+%	\begin{align*}
+%	\int_I (\gamma+\gamma') &= \sum_{i \in [n'']} (t''_{i+1}-t''_i) x''_i \\
+%		&= \sum_{i \in [n'']} (t''_{i+1}-t''_i) x''_i \\
+%		&= \sum_{i \in [n'']} (t''_{i+1}-t''_i) (x_i + x'_i) \\
+%	\end{align*}
+%
+Para mostrar a continuidade, basta notar que
+	\begin{equation*}
+	\nor{\textstyle\int_I(\gamma)} \leq \sum_{i \in [n]} (t_{i+1}-t_i) \nor{x_i} \leq \vol^1(I)\norsup{\gamma}.
+	\qedhere
+	\end{equation*}
+\end{proof}
+
+A desigualdade que prova a continuidade equivale a dizer que $\nor{\textstyle\int_I} \leq \vol^1(I)$ e se analisamos trajetórias constantes concluímos que de fato
+	\begin{equation*}
+	\nor{\textstyle\int_I} = \vol^1(I).
+	\end{equation*}
+
+Agora, estendemos a definição para trajetórias reguladas. Consideramos um espaço normado completo $\bm E$. Seja $\fun{\gamma}{I}{E}$ uma trajetória regulada e $(\gamma_n)_{n \in \N}$ uma sequência de trajetórias constantes por partes tal que $\gamma = \lim_{n \to \infty} \gamma_n$. Como $\int_I$ é linear e contínua, a sequência $(\int_I \gamma_n)_{n \in \N}$ é uma sequência aproximante em $E$ e portanto, da completude do espaço, tem limite. Além disso, se $(\gamma'_n)_{n \in \N}$ é uma sequência de trajetórias constantes por partes tal que $\gamma = \lim_{n \to \infty} \gamma'_n$, então
+	\begin{equation*}
+	\nor{\gamma'_n - \gamma_n} \leq \nor{\gamma'_n - \gamma} + \nor{\gamma - \gamma_n},
+	\end{equation*}
+portanto a sequência $(\gamma'_n - \gamma_n)$ converge para $0$, o que implica que% a sequência $(\int_I \gamma_n)_{n \in \N}$ tem o mesmo limite que $(\int_I \gamma_n)_{n \in \N}$.
+	\begin{equation*}
+	\lim_{n \to \infty} \int_I \gamma_n = \lim_{n \to \infty} \int_I \gamma'_n.
+	\end{equation*}
+Definimos então a integral de uma trajetória regulada como esse limite.
+
+\begin{definition}[Integração]
+Sejam $I \subseteq \R$ um intervalo compacto, $\bm E$ um espaço normado completo e $\fun{\gamma}{I}{E}$ uma trajetória regulada e $(\gamma_n)_{n \in \N}$ uma sequência de trajetórias constantes por partes tais que $\gamma = \lim_{n \to \infty} \gamma_n$.
+A \emph{integral de $\gamma$ em $I$} é
+	\begin{equation*}
+	\int_I \gamma := \lim_{n \to \infty} \int_I \gamma_n.
+	\end{equation*}
+Caso seja necessário explicitar a variável da trajetória $\gamma$, denota-se
+	\begin{equation*}
+	\int_I \gamma(t) \dd t := \int_I \gamma.
+	\end{equation*}
+A \emph{integração} em $\Regu(I,E)$ é a função
+	\begin{align*}
+	\func{\textstyle\int_I}{\Regu(I,E)}{E}{\gamma}{\int_I \gamma}.
+	\end{align*}
+\end{definition}
+
+A integração $\fun{\int_I}{\Regu(I,E)}{E}$ é linear e contínua e
+	\begin{equation*}
+	\nor{\textstyle\int_I(\gamma)} \leq \vol^1(I) \norsup{\gamma}.
+	\end{equation*}
+Isso ocorre pela unicidade da extensão de uma função em um subespaço linear para o fecho desse subespaço.
+
+\begin{exercise}
+Sejam $I \subseteq \R$ um intervalo compacto e $\bm E$ um espaço normado completo. Para toda trajetória regulada $\fun{\gamma}{I}{E}$,
+	\begin{equation*}
+	\nor{\int_I \gamma(t) \dd t} \leq \int_I \nor{\gamma(t)} \dd t.
+	\end{equation*}
+\end{exercise}
+
+\subsubsection{Trajetórias primitivas}
+
+Definimos uma primitiva de uma trajetória como uma trajetória cuja derivada é a trajetória original. Em seguida, mostraremos como usar a ferramenta da integração para calcular primitivas de uma trajetória.
+
+\begin{definition}
+Sejam $I \subseteq \R$ um intervalo, $\bm E$ um espaço normado e $\fun{\gamma}{I}{E}$ uma trajetória. Uma trajetória \emph{primitiva de $\gamma$} é uma trajetória contínua $\fun{\Gamma}{I}{E}$, diferenciável em $\Int{I}$, tal que $\dot \Gamma = \gamma$.
+\end{definition}
+
+É fácil notar que somar um vetor constante a uma trajetória primitiva resulta em uma trajetória primitiva. É relevante notar que a recíproca também é válida. Isso ocorre pois as derivadas de ambas primitivas coincidem em um aberto conexo.
+
+%\begin{proposition}
+%\label{prop:trajetoria.continua.primitiva.unicidade}
+%Sejam $I \subseteq \R$ um intervalo, $\bm E$ um espaço normado e $\fun{\gamma}{I}{E}$ uma trajetória. Se $\fun{\Gamma_0, \Gamma_1}{I}{E}$ são primitivas de $\gamma$, então, para algum $c \in E$,
+%	\begin{equation*}
+%	\Gamma_1 = \Gamma_0 + c.
+%	\end{equation*}
+%\end{proposition}
+\begin{proposition}
+\label{prop:trajetoria.continua.primitiva.unicidade}
+Sejam $I \subseteq \R$ um intervalo, $\bm E$ um espaço normado, $\fun{\gamma}{I}{E}$ uma trajetória e $\fun{\Gamma_0}{I}{E}$ uma trajetória primitiva de $\gamma$. Uma trajetória $\fun{\Gamma}{I}{E}$ é primitiva de $\gamma$ se, e somente se, para algum $c \in E$, vale
+	\begin{equation*}
+	\Gamma = \Gamma_0 + c.
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+	\begin{itemize}
+	\item ($\Rightarrow$) Como $\Gamma_0$ e $\Gamma$ são primitivas de $\gamma$, então, para todo $t \in \Int{I}$
+		\begin{equation*}
+		\der(\Gamma - \Gamma_0)(t) = \dot \Gamma(t) - \dot \Gamma_0(t) = \gamma(t) - \gamma(t) = 0.
+		\end{equation*}
+	Assim, a difrencial de $\Gamma - \Gamma_0$ deve ser nula, portanto segue da proposição \ref{prop:diferencial.zero.constante} que, para algum $c \in E$, $\Gamma - \Gamma_0 = c$ em $\Int{I}$. Como $\Gamma_0$ e $\Gamma$ são contínuas, segue que vale $\Gamma - \Gamma_0 = c$ em $I$.
+
+	\item ($\Leftarrow$) Basta notar que, para todo $t \in \Int{I}$,
+		\begin{equation*}
+		\dot \Gamma(t) = \der (\Gamma_0(t) + c) = \dot \Gamma_0(t) = \gamma(t),
+		\end{equation*}
+	o que mostra que $\Gamma$ é primitiva de $\gamma$. \qedhere
+	\end{itemize}
+\end{proof}
+
+\subsubsection{Integração orientada}
+
+Para relacionar a integração com a trajetória primitiva e, portanto, com a derivação, devemos definir a integral orientada.
+
+\begin{definition}[Integração orientada]
+Sejam $I \subseteq \R$ um intervalo compacto, $\bm E$ um espaço normado completo, $\fun{\gamma}{I}{E}$ uma trajetória regulada e $t,t' \in I$ tais que $t \leq t'$. A \emph{integral orientada de $\gamma$ de $t$ a $t'$} é
+%	\begin{equation*}
+%	\int_{t}^{t'} \gamma :=
+%		\begin{cases}
+%		\displaystyle \int_{\intff{t}{t'}} \gamma,	& t \leq t' \\
+%		\displaystyle -\int_{\intff{t'}{t}} \gamma,	& t > t'.
+%		\end{cases}
+%	\end{equation*}
+	\begin{equation*}
+	\int_{t}^{t'} \gamma := \int_{\intff{t}{t'}} \gamma
+	\end{equation*}
+e a \emph{integral orientada de $\gamma$ de $t'$ a $t$} é
+	\begin{equation*}
+	\int_{t'}^{t} \gamma := - \int_{\intff{t}{t'}} \gamma.
+	\end{equation*}
+\end{definition}
+
+Em particular, isso implica as seguintes propriedades.
+
+\begin{exercise}
+Sejam $I \subseteq \R$ um intervalo compacto, $\bm E$ um espaço normado completo e $\fun{\gamma}{I}{E}$ uma trajetória regulada.
+	\begin{enumerate}
+	\item Para todo $t \in I$,
+		\begin{equation*}
+		\int_t^t \gamma = 0.
+		\end{equation*}
+	\item Para todos $t,t',t'' \in I$,
+		\begin{equation*}
+		\int_{t}^{t''} \gamma = \int_{t}^{t'} \gamma + \int_{t'}^{t''} \gamma.
+		\end{equation*}
+	\end{enumerate}
+\end{exercise}
+
+Usando a definição de integral orientada, podemos relacionar a noção de trajetória primitiva com a ferramenta de integração. Para isso, começamos com a seguinte proposição.
+
+% NOTA: Usa que o espaço é completo aqui? Acho que não, pois supomos que $\gamma$ é regulada.
+\begin{proposition}
+\label{prop:trajetoria.regulada.primitiva}
+Sejam $I \subseteq \R$ um intervalo compacto, $\bm E$ um espaço normado completo, $\fun{\gamma}{I}{E}$ uma trajetória regulada e $t_0 \in I$. A trajetória
+	\begin{align*}
+	\func{\Gamma}{I}{E}{t}{\int_{t_0}^{t} \gamma}
+	\end{align*}
+é contínua. Para todo $t \in \Int{I}$ tal que $\gamma$ é contínua em $t$, a trajetória $\Gamma$ é derivável em $t$ e
+%	\begin{equation*}
+%	\der\Gamma(t) = \gamma(t).
+%	\end{equation*}
+	\begin{equation*}
+	\dot\Gamma(t) = \gamma(t).
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+Note que, para todo $t \in I$ e todo $\delta \in \R$ tal que $t+\delta \in I$, vale
+	\begin{equation*}
+	\Gamma(t+\delta) - \Gamma(t) = \int_{t_0}^{t+\delta} \gamma - \int_{t_0}^t \gamma = \int_t^{t+\delta} \gamma,
+	\end{equation*}
+portanto
+	\begin{equation*}
+	\nor{\Gamma(t+\delta) - \Gamma(t)} \leq \abs{\delta}\sup_{t' \in \intff{t}{t+\delta}} \nor{\gamma(t')} \leq \abs{\delta}\norsup{\gamma},
+	\end{equation*}
+o que mostra que $\Gamma$ é contínua.
+
+Agora, seja $t \in \Int{I}$ em que $\gamma$ é contínua. Como
+	\begin{equation*}
+	\frac{\Gamma(t+\delta) - \Gamma(t)}{\delta} - \gamma(t) = \frac{1}{\delta} \int_t^{t+\delta} \gamma(t') \dd t' - \gamma(t) = \frac{1}{\delta} \int_t^{t+\delta} (\gamma(t') - \gamma(t)) \dd t',
+	\end{equation*}
+então
+	\begin{equation*}
+	\nor{\frac{\Gamma(t+\delta) - \Gamma(t)}{\delta} - \gamma(t)} \leq \sup_{t' \in \intff{t}{t+\delta}} \nor{\gamma(t') - \gamma(t)},
+	\end{equation*}
+portanto segue da continuidade de $\gamma$ que $\dot \Gamma (t) = \gamma(t)$.
+\end{proof}
+
+A última proposição tem a seguinte consequência.
+
+% NOTA: Usa que o espaço é completo aqui? Sim, pois como mostramos que uma trajetória contínua é regulada e, portanto, integrável, foi usando que o espaço é completo na proposição que caracteriza as trajetórias reguladas.
+\begin{proposition}[Teorema Fundamental do Cálculo]
+\label{prop:trajetoria.TFC}
+Sejam $I \subseteq \R$ um intervalo compacto, $\bm E$ um espaço normado completo, $\fun{\gamma}{I}{E}$ uma trajetória contínua.
+	\begin{enumerate}
+	\item Para todo $t_0$, a trajetória
+		\begin{align*}
+		\func{\Gamma_0}{I}{E}{t}{\int_{t_0}^{t} \gamma}
+		\end{align*}
+	é uma primitiva de $\gamma$.
+
+	\item Para todos $a,a' \in I$ e toda primitiva $\fun{\Gamma}{I}{E}$ de $\gamma$,
+		\begin{equation*}
+		\int_{a}^{a'} \gamma = \Gamma(a') - \Gamma(a).
+		\end{equation*}
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item Segue direto de \ref{prop:trajetoria.regulada.primitiva} pois toda trajetória contínua é regulada.
+
+	\item Seja $t_0 \in I$. Pelo item anterior, a trajetória
+		\begin{align*}
+		\func{\Gamma_0}{I}{E}{t}{\int_{t_0}^{t} \gamma}
+		\end{align*}
+	é uma primitiva de $\gamma$ e, pela proposição~\ref{prop:trajetoria.continua.primitiva.unicidade}, para algum $c \in E$ vale $\Gamma = \Gamma_0 + c$. Disso segue que
+		\begin{equation*}
+		\Gamma_0(a') - \Gamma_0(a) = \Gamma_0(a') + c - \Gamma_0(a) - c = \Gamma(a') - \Gamma(a),
+		\end{equation*}
+	portanto
+		\begin{equation*}
+		\int_{a}^{a'} \gamma = \int_{t_0}^{a'} \gamma - \int_{t_0}^{a} \gamma = \Gamma_0(a') - \Gamma_0(a) = \Gamma(a') - \Gamma(a).
+		\qedhere
+		\end{equation*}
+	\end{enumerate}
+\end{proof}
+
+%\subsubsection{Diferenciação sob sinal de integração}
+
+
+
+
+
+
+
+
+
+\subsection{Campos vetoriais}
+
+Nesta seção estudaremos campos vetoriais, que devem ser imaginados como um conjunto de vetores, cada um preso a um ponto de um aberto do espaço normado. A definição é dada a seguir.
+
+\begin{definition}
+Sejam $\bm E$ um espaço normado e $A \subseteq E$ um aberto. Um \emph{campo vetorial} em $A$ é uma função $\fun{v}{A}{E}$. Para todo $x \in A$, o \emph{vetor de $v$ tangente a $A$ em $x$} é
 	\begin{equation*}
 	v|_x := v(x).
 	\end{equation*}
 \end{definition}
 
+Na definição, não exigimos que a função seja contínua, mas em geral consideraremos campos vetoriais que são contínuos ou com alguma regularidade ainda maior, como controlado ou diferenciável.
+
+
+Além dessa definição, poderíamos considerar também campos vetoriais que variam no tempo, ou seja, uma família de campos vetoriais indexados por um intervalo de números reais.
+
 \begin{definition}
-Sejam $\bm E$ um espaço normado, $A \subseteq E$ um aberto e $\fun{v}{A}{E}$ um campo vetorial em $A$. Uma \emph{trajetória integral} de $v$ é uma trajetória derivável $\fun{\gamma}{I}{A}$ tal que, para todo $t \in I$,
+Sejam $\bm E$ um espaço normado e $A \subseteq E$ um aberto e $I \subseteq \R$ um intervalo aberto. Um \emph{campo vetorial temporal} em $I \times A$ é uma função $\fun{v}{I \times A}{E}$. Para todo $(t,x) \in I \times A$, o \emph{vetor de $v$ tangente a $A$ em $(t,x)$} é
 	\begin{equation*}
-	\dot \gamma(t) = v|_{\gamma(t)}.
+	v_t|_x := v(t,x).
 	\end{equation*}
-Uma \emph{trajetória integral maximal} de $v$ é uma trajetória integral $\fun{\gamma}{I}{A}$ de $v$ tal que, para todo intervalo aberto $I' \subseteq \R$ tal que $I \subseteq I'$, não existe trajetória integral $\fun{\gamma'}{I'}{A}$ de $v$ tal que, para todo $t \in I$, $\gamma'(t) = \gamma(t)$.
 \end{definition}
 
-Em outras palavras, uma trajetória integral é uma solução da equação diferencial ordinária
+Focaremos no estudos dos campos vetoriais e não nos campos vetoriais temporais.
+
+
+\subsubsection{Trajetórias integrais}
+
+\begin{definition}
+Sejam $\bm E$ um espaço normado, $A \subseteq E$ um aberto e $\fun{v}{A}{E}$ um campo vetorial em $A$. Uma \emph{trajetória integral} de $v$ é uma trajetória derivável $\fun{\phi}{I}{A}$ tal que $I$ é aberto e, para todo $t \in I$,
+	\begin{equation*}
+	\dot \phi(t) = v|_{\phi(t)}.
+	\end{equation*}
+Uma \emph{trajetória integral maximal} de $v$ é uma trajetória integral $\fun{\phi}{I}{A}$ de $v$ tal que, para todo intervalo aberto $I' \subseteq \R$ tal que $I \subset I'$, não existe trajetória integral $\fun{\phi'}{I'}{A}$ de $v$ tal que $\phi'|_{I} = \phi$.%, para todo $t \in I$, $\phi'(t) = \phi(t)$.
+\end{definition}
+
+Isso significa que a trajetória $\phi$ satisfaz $\dot \phi = v \circ \phi$. Isso também pode ser compreendido com a linguagem de equações diferenciais. Uma trajetória integral é uma solução da equação diferencial ordinária
 	\begin{equation*}
 	\dot x = v(x).
 	\end{equation*}
 
+\begin{exercise}
+Sejam $\bm E$ um espaço normado, $A \subseteq E$ um aberto, $\fun{v}{A}{E}$ um campo vetorial em $A$ e $\fun{\phi}{I}{A}$ uma trajetória integral de $v$. Se $v$ é $\Cont^m$-diferenciável, então $\phi$ é $\Cont^{m+1}$-diferenciável.
+\end{exercise}
+
+Podemos também descrever uma trajetória integral em termos de uma integral, o que justifica seu nome.
+
 \begin{proposition}
-Sejam $\bm E$ um espaço normado, $A \subseteq E$ um aberto, $\fun{v}{A}{E}$ um campo vetorial em $A$ e $\fun{\gamma}{I}{A}$ uma trajetória integral de $v$. Se $v$ é $\Cont^m$-diferenciável, então $\gamma$ é $\Cont^{m+1}$-diferenciável.
+\label{prop:equivalencia.trajetoria.integral}
+Sejam $\bm E$ um espaço normado, $I \subseteq \R$ um intervalo aberto, $A \subseteq E$ um aberto, $\fun{v}{A}{E}$ um campo vetorial contínuo, $(t_0,x_0) \in I \times A$ e $\fun{\phi}{I}{A}$ uma trajetória diferenciável. A trajetória $\phi$ é uma trajetória integral de $v$ tal que $\phi(t_0) = x_0$ se, e somente se, para todo $t \in I$,
+	\begin{equation*}
+	\phi(t) = x_0 + \int_{t_0}^{t} v|_{\phi(s)} \dd s.
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+Notemos primeiro que, como o campo $v$ e a trajetória $\phi$ são contínuos, a composição $v \circ \phi$ é uma trajetória contínua e portanto integrável.
+	\begin{itemize}
+	\item ($\Rightarrow$) Suponhamos que $\phi$ é uma trajetória integral de $v$ tal que $\phi(t_0) = x_0$. Nesse caso, para todo $t \in I$ vale que $\dot \phi(t) = v|_{\phi(t)}$, o que significa que $\phi$ é uma primitiva de $v \circ \phi$, portanto segue da parte 2 do teorema fundamental do cálculo~(\ref{prop:trajetoria.TFC}) que
+		\begin{equation*}
+		\phi(t) = \phi(t_0) + \phi(t) - \phi(t_0) %= x_0 + \int_{t_0}^{t} \dot \phi(s) \dd s
+		= x_0 + \int_{t_0}^{t} v|_{\phi(s)} \dd s.
+		\end{equation*}
+
+	\item ($\Leftarrow$) Suponhamos que $\phi$ satisfaz a equação do enunciado. Então, pela parte 1 do teorema fundamental do cálculo~(\ref{prop:trajetoria.TFC}), $\phi$ é uma primitiva de $v \circ \phi$, portanto segue que, para todo $t \in I$,
+		\begin{equation*}
+		\dot \phi(t) = v|_{\phi(t)}.
+		\end{equation*}
+	Além disso, vale que
+		\begin{equation*}
+		\phi(t_0) = x_0 + \int_{t_0}^{t_0} v|_{\phi(s)} \dd s = x_0.
+		\qedhere
+		\end{equation*}
+	\end{itemize}
+\end{proof}
+
+A partir de uma trajetória integral, podemos achar outras trajetórias através de uma mudança de variável por translação.
+
+\begin{proposition}[Reparametrização de trajetória]
+	\item \label{prop:trajetoria.integral.reparametrizada}
+Sejam $\bm E$ um espaço normado, $A \subseteq E$ um aberto, $\fun{v}{A}{E}$ um campo vetorial em $A$ e $\fun{\phi}{I}{A}$ uma trajetória integral de $v$.
+	\begin{enumerate}
+	\item (Translação) Para todo $c \in \R$, a trajetória
+		\begin{align*}
+		\func{\phi \circ T_{c}}{I-c}{A}{t}{\phi(t+c)}
+		\end{align*}
+	é uma trajetória integral de $v$. Se $\phi$ é maximal, então $\phi \circ T_{c}$ é maximal.
+
+	\item (Dilatação) Para todo $c \in \R \setminus \{0\}$, a trajetória
+		\begin{align*}
+		\func{\phi \circ E_{c}}{c\inv I}{A}{t}{\phi(ct)}
+		\end{align*}
+	é uma trajetória integral de $cv$. Se $\phi$ é maximal, então $\phi \circ E_{c}$ é maximal.
+
+	A trajetória
+		\begin{align*}
+		\func{\phi \circ E_{0}}{\R}{A}{t}{\phi(0t)}
+		\end{align*}
+	é uma trajetória integral de $0v$. Se $\phi$ é maximal, então $\phi \circ E_{0}$ é maximal.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item Como $\dot T_{c}(t) = 1$, segue da regra da cadeia para trajetórias reparametrizadas~(\ref{prop:diferenciabilidade.composicao.trajetorias.reparametrizadas}) que
+		\begin{equation*}
+		\der(\phi \circ T_{c})(t) = \dot T_{c}(t) \dot \phi(T_{c}(t)) = \dot \phi(t+c) = v|_{\phi(t+c)} = v|_{\phi \circ T_{c}(t)}.
+		\end{equation*}
+	Suponhamos agora que $\phi$ é maximal. Por absurdo, suponhamos que $\phi \circ T_{c}$ não fosse maximal. Nesse caso, alguma trajetória integral $\fun{\phi'}{I'}{E}$ do campo $v$ satisfaria que $(I-c) \subset I'$ e $\phi'|_{I-c} = \phi \circ T_{c}$. Nesse caso, valeria que $I \subset (I'+c)$ e, para todo $t \in I$,
+		\begin{equation*}
+		\phi' \circ T_{-c}(t) = \phi \circ T_{c} \circ T_{-c} (t) = \phi(t),
+		\end{equation*}
+	o que contradiria a maximalidade de $\phi$.
+
+	\item Para $c=0$, o campo $0v$ é nulo e a trajetória $\phi \circ E_{0}$, é constante, portanto a afirmação é válida. Consideremos o caso em que $c \in \R \setminus \{0\}$.
+
+	Como $\dot E_{c}(t) = c$, segue da regra da cadeia para trajetórias reparametrizadas~(\ref{prop:diferenciabilidade.composicao.trajetorias.reparametrizadas}) que
+		\begin{equation*}
+		\der(\phi \circ E_{c})(t) = \dot E_{c}(t) \dot \phi(E_{c}(t)) = c\dot \phi(ct) = cv|_{\phi(ct)} = (cv)|_{\phi \circ E_{c}(t)}.
+		\end{equation*}
+	Suponhamos agora que $\phi$ é maximal. Por absurdo, suponhamos que $\phi \circ E_{c}$ não fosse maximal. Nesse caso, alguma trajetória integral $\fun{\phi'}{I'}{E}$ do campo $cv$ satisfaria que $(c\inv I) \subset I'$ e $\phi'|_{c\inv I} = \phi \circ E_{c}$. Nesse caso, valeria que $I \subset (cI')$ e, para todo $t \in I$,
+		\begin{equation*}
+		\phi' \circ E_{c\inv}(t) = \phi \circ E_{c} \circ E_{c\inv} (t) = \phi(t),
+		\end{equation*}
+	o que contradiria a maximalidade de $\phi$.
+	\qedhere
+	\end{enumerate}
+\end{proof}
+
+\subsubsection{Existência e unicidade de trajetórias integrais}
+
+Para mostrar a existência e unicidade de trajetórias integrais de um campo vetorial $\fun{v}{A}{E}$, vamos supor que ele seja localmente controlado, ou seja, que para todo ponto $x_0 \in A$, o campo $v$ restrito a alguma vizinhança $V \subseteq A$ de $x$ é controlado: para algum $c \in \R_{\geq 0}$, todos $x,x' \in V$ satisfazem
+	\begin{equation*}
+	\nor{v|_{x'} - v|_{x}} \leq c \nor{x'-x}.
+	\end{equation*}
+Isso em particular vale para campos $\Cont^1$-diferenciáveis pois, como $\D v$ é contínua, é limitada em uma bola aberta, então pela proposição~\ref{prop:diferencial.limitada.funcao.controlada} segue que $v$ é controlado na bola aberta, portanto localmente controlado.
+
+Para a proposição seguinte, lembremos que $\bola{x_0}{r}$ denota a bola aberta de centro $x_0 \in A$ e raio $r \in \R_{>0}$ e que $\inter{t_0}{\varepsilon} = \intaa{t_0-\varepsilon}{t_0+\varepsilon}$ denota o intervalo aberto de centro $t_0 \in \R$ e raio $r \in \R_{>0}$.
+
+\begin{comment}
+\begin{proposition}[Existência e unicidade local de trajetória integral]
+\label{prop:existencia.unicidade.local.trajetoria.integral}
+%Sejam $\bm E$ um espaço normado completo, $A \subseteq E$ um aberto, $\fun{v}{A}{E}$ um campo vetorial localmente controlado e $(t_0,x_0) \in \R \times A$. Para algum intervalo aberto $I \subseteq \R$ tal que $t_0 \in I$ e algum $r \in \R_{>0}$ tal que $\bolafec{x_0}{r} \subseteq A$, uma única trajetória integral $\fun{\phi}{I}{A}$ de $v$ (definida em $I$) satisfaz $\phi(t_0) = x_0$ e $\phi(I) \subseteq \bola{x_0}{r}$.
+Sejam $\bm E$ um espaço normado completo, $A \subseteq E$ um aberto, $\fun{v}{A}{E}$ um campo vetorial localmente controlado e $(t_0,x_0) \in \R \times A$. Para algum intervalo aberto $I \subseteq \R$ tal que $t_0 \in I$,% uma única%
+%	\footnote{A unicidade é entre trajetórias definidas no mesmo $I$.}
+%trajetória integral $\fun{\phi}{I}{A}$ de $v$ satisfaz $\phi(t_0) = x_0$.
+	\begin{enumerate}
+	\item Alguma trajetória integral $\fun{\phi}{I}{A}$ de $v$ satisfaz $\phi(t_0) = x_0$;
+	\item Se $\fun{\phi'}{I}{A}$ é uma trajetória integral de $v$ tal que $\phi'(t_0) = x_0$, então $\phi' = \phi$.
+	\end{enumerate}
+\end{proposition}
+\end{comment}
+\begin{proposition}[Existência e unicidade local de trajetória integral]
+\label{prop:existencia.unicidade.local.trajetoria.integral}
+Sejam $\bm E$ um espaço normado completo, $A \subseteq E$ um aberto, $\fun{v}{A}{E}$ um campo vetorial localmente controlado e $(t_0,x_0) \in \R \times A$. Para algum $r \in \R_{>0}$ tal que $\bola{x_0}{r} \subseteq A$ e algum $\varepsilon \in \R_{>0}$,
+	\begin{enumerate}
+	\item Alguma trajetória integral $\fun{\phi}{\inter{t_0}{\varepsilon}}{\bola{x_0}{r}}$ de $v$ satisfaz $\phi(t_0) = x_0$;
+	\item Se $\fun{\phi'}{\inter{t_0}{\varepsilon}}{\bola{x_0}{r}}$ é uma trajetória integral de $v$ tal que $\phi'(t_0) = x_0$, então $\phi' = \phi$.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+Como $v$ é localmente controlado, para algum $r \in \R_{>0}$ o campo $v$ é controlado em $\bolafec{x_0}{r}$. Denotemos $B := \bola{x_0}{r}$. Podemos então considerar a constante de distorção $c := \distor{v|_{\Fec{B}}}$, que satisfaz, para todos $x, x' \in \Fec{B}$,
+	\begin{equation*}
+	\nor{v|_{x'} - v|_x} \leq c\nor{x'-x}.
+	\end{equation*}
+Como a bola $\Fec{B}$ é limitada, isso implica que $v$ é limitado em $\Fec{B}$ e podemos considerar a constante $l := \norsup{v|_{\Fec{B}}}$, que satisfaz, para todo $x \in \Fec{B}$,
+	\begin{equation*}
+	\nor{v|_x} \leq l.
+	\end{equation*}
+Seja $\varepsilon \in \R_{>0}$ tal que $l\varepsilon < r$. Denotemos $I := \inter{t_0}{\varepsilon}$.
+
+Consideremos o espaço linear $\Cont(\Fec{I}, \bm E)$ das trajetórias contínuas de $\Fec{I}$ para $E$ e a norma do supremo $\norsup{\gamma} = \sup_{t \in \Fec{I}} \nor{\gamma(t)}$. Esse espaço é um espaço normado completo (\ref{prop:funcao.continua.compacto.limitada}). Definamos o conjunto
+	\begin{equation*}
+	X := \set{\gamma \in \Cont(\Fec{I}, \bm E)}{\gamma(\Fec{I}) \subseteq \Fec{B},\ \gamma(t_0) = x_0}.
+	\end{equation*}
+Esse conjunto é fechado, não-vazio e é um subespaço métrico completo de $\Cont(\Fec{I}, \bm E)$ no qual a distância entre duas trajetórias é dada pela norma da diferença das trajetórias. Definimos a função
+	\begin{align*}
+	\func{F}{X}{\Cont(\Fec{I}, \bm E)}{\gamma}{
+		\begin{aligned}[t]
+		\func{F(\gamma)}{\Fec{I}}{E}{t}{F(\gamma)(t) := x_0 + \int_{t_0}^{t} v|_{\gamma(s)} \dd s}.
+		\end{aligned}
+	}
+	\end{align*}
+Note que $F(X) \subseteq X$, pois, para toda $\gamma \in X$, vale $F(\gamma)(t_0) = x_0$ e, além disso, para todo $t \in \Fec{I}$,
+%	\begin{align*}
+%	\nor{F(\gamma)(t) - x_0} &= \nor{\int_{t_0}^{t} v|_{\gamma(s)} \dd s} \\
+%		&\leq \abs{\int_{t_0}^{t} \nor{v|_{\gamma(s)}} \dd s} \\
+%		&\leq \norsup{v|_{\Fec{B}}}\abs{t-t_0} \\
+%		&\leq \norsup{v|_{\Fec{B}}}\varepsilon \\
+%		&< r,
+%	\end{align*}
+	\begin{equation*}
+	\nor{F(\gamma)(t) - x_0} = \nor{\int_{t_0}^{t} v|_{\gamma(s)} \dd s} \leq \abs{\int_{t_0}^{t} \nor{v|_{\gamma(s)}} \dd s} \leq l\abs{t-t_0} \leq l\varepsilon < r,
+	\end{equation*}
+o que mostra que $F(\gamma)(\Fec{I}) \subseteq B$. Assim concluímos que $F(\gamma) \in X$, portanto $\fun{F}{X}{X}$.
+% MOTARAR QUE F É CONTÍNUA ANTES DE USAR A PROPOSIÇÃO COROLÁRIA DA CONTRAÇÃO DO PONTO FIXO.
+
+Seja $n \in \N$. Mostraremos por indução em $n$ que, para todos $\gamma, \gamma' \in X$ e todo $t \in \Fec{I}$,
+	\begin{equation*}
+	\nor{F^n(\gamma')(t) - F^n(\gamma)(t)} \leq \frac{c^n\abs{t-t_0}^n}{n!} \norsup{\gamma' - \gamma}.
+	\end{equation*}
+Para $n=0$,% segue direto de $\nor{\gamma'(t) - \gamma(t)} \leq \nor{\gamma' - \gamma}$.
+	\begin{align*}
+	\nor{F^0(\gamma')(t) - F^0(\gamma)(t)} = \nor{\gamma'(t) - \gamma(t)} \leq \norsup{\gamma' - \gamma} = \frac{c^0\abs{t-t_0}^0}{0!} \norsup{\gamma' - \gamma}.
+	\end{align*}
+%Para $n=1$, vale
+%	\begin{align*}
+%	\nor{F(\gamma')(t) - F(\gamma)(t)} &\leq \abs{\int_{t_0}^{t} \nor{v|_{\gamma'(s)} - v|_{\gamma(s)}} \dd s } \\
+%		&\leq c \abs{\int_{t_0}^{t} \nor{\gamma'(s) - \gamma(s)} \dd s} \\
+%		&\leq c\abs{t-t_0}\norsup{\gamma' - \gamma}.
+%	\end{align*}
+Agora, suponhamos para o passo indutivo que a inequação vale para $n \in \N$. Então,% pelo caso para $n=1$ para $F^n(\gamma)$ e $F^n(\gamma')$, e
+usando a hipótese de indução, segue que
+%	\begin{align*}
+%	\nor{F^{n+1}(\gamma')(t) - F^{n+1}(\gamma)(t)} &\leq c \abs{\int_{t_0}^{t} \nor{F^n(\gamma')(s) - F^n(\gamma)(s)} \dd s } \\
+%		&\leq c \abs{\int_{t_0}^{t} \frac{c^n\abs{s-t_0}^n}{n!} \nor{\gamma' - \gamma} \dd s } \\
+%		&= \frac{c^{n+1}}{n!}\frac{\abs{t-t_0}^{n+1}}{n+1} \nor{\gamma' - \gamma} \\
+%		&= \frac{c^{n+1}\abs{t-t_0}^{n+1}}{(n+1)!} \nor{\gamma' - \gamma}.
+%	\end{align*}
+	\begin{align*}
+	\nor{F^{n+1}(\gamma')(t) - F^{n+1}(\gamma)(t)} %&= \nor{F(F^{n}(\gamma'))(t) - F(F^{n}(\gamma))(t)} \\
+		&=\nor{\int_{t_0}^{t} v|_{F^n(\gamma')(s)} - v|_{F^n(\gamma)(s)} \dd s} \\
+		&\leq \abs{\int_{t_0}^{t} \nor{v|_{F^n(\gamma')(s)} - v|_{F^n(\gamma)(s)}} \dd s} \\
+		&\leq c \abs{\int_{t_0}^{t} \nor{F^n(\gamma')(s) - F^n(\gamma)(s)} \dd s} \\
+		&\leq c \abs{\int_{t_0}^{t} \frac{c^n\abs{s-t_0}^n}{n!} \norsup{\gamma' - \gamma} \dd s } \\
+%		&= \frac{c^{n+1}}{n!}\frac{\abs{t-t_0}^{n+1}}{n+1} \norsup{\gamma' - \gamma} \\
+		&= \frac{c^{n+1}\abs{t-t_0}^{n+1}}{(n+1)!} \norsup{\gamma' - \gamma}.
+	\end{align*}
+Disso segue que, para todos $\gamma, \gamma' \in X$,
+	\begin{equation*}
+	\norsup{F^n(\gamma') - F^n(\gamma)} \leq \frac{(c\varepsilon)^n}{n!} \norsup{\gamma' - \gamma}.
+	\end{equation*}
+Isso mostra que $F$ é contínua, pois é controlada. Além disso, como $\frac{(c\varepsilon)^n}{n!}$ é um termo da série exponencial de $\e^{c\varepsilon}$, deve valer que, para algum $n \in \N \setminus \{0\}$,
+	\begin{equation*}
+	\frac{(c\varepsilon)^n}{n!} < 1,
+	\end{equation*}
+o que implica que $F^n$ é uma contração. Segue então da proposição~\ref{prop:ponto.fixo.iterada.contracao} que $F$ tem único ponto fixo $\bar\phi$. Por definição de $F$, esssa trajetória satisfaz, para todo $t \in \Fec{I}$,
+	\begin{equation*}
+	\bar\phi(t) = F(\bar\phi)(t) = x_0 + \int_{t_0}^{t} v|_{\bar\phi(s)} \dd s.
+	\end{equation*}
+Definimos a restrição $\phi := \bar\phi|_{I}$. A trajetória $\phi$ então % satisfaz, para todo $t \in I$,
+%	\begin{equation*}
+%	\dot \phi (t) = v|_{\phi(t)},
+%	\end{equation*}
+%logo
+é uma trajetória integral de $v$ tal que $\phi(t_0) = x_0$ (\ref{prop:equivalencia.trajetoria.integral}) e cuja imagem está contida em $B$, pois %, para todo $t \in I$,
+%	\begin{equation*}
+%	\nor{\phi(t) - x_0} = \nor{F(\phi)(t) - x_0} < r.
+%	\end{equation*}
+	\begin{equation*}
+	\phi(I) \subseteq \bar\phi(\Fec{I}) = F(\bar\phi)(\Fec{I}) \subseteq B.
+	\end{equation*}
+
+Devemos agora mostrar a unicidade de $\phi$, pois temos somente a unicidade de $\bar\phi$. Suponha que $\fun{\phi'}{I}{B}$ seja uma trajetória integral de $v$ tal que $\phi'(t_0) = x_0$. Para todo $t \in I$, vale que $\dot \phi'(t) = v|_{\phi'(t)}$, logo pela desigualdade do valor médio~(\ref{prop:desigualdade.valor.medio}) segue que, para todos $t, t' \in I$ tais que $t < t'$,
+	\begin{equation*}
+	\nor{\phi'(t') - \phi'(t)} \leq \sup_{s \in \intaa{t}{t'}} \nor{\dot\phi'(s)}\abs{t'-t} = \sup_{s \in \intaa{t}{t'}} \nor{v|_{\phi'(s)}}\abs{t'-t} \leq l(t'-t).
+	\end{equation*}
+Isso implica que $\phi'$ pode ser estendida para uma trajetória contínua $\fun{\bar\phi'}{\Fec{I}}{A}$. %Argumentar!
+Ainda, pelo critério da proposição~\ref{prop:equivalencia.trajetoria.integral} segue que
+	\begin{equation*}
+	\phi'(t) = x_0 + \int_{t_0}^{t} v|_{\phi'(s)} \dd s.
+	\end{equation*}
+Então, pela continuidade de $\bar\phi'$ segue que
+	\begin{align*}
+	\bar\phi'(t_0+\varepsilon) &= \lim_{t \to \varepsilon} \phi(t_0+t) \\
+		&= x_0 + \lim_{t \to \varepsilon} \int_{t_0}^{t_0+t} v|_{\phi'(s)} \dd s \\
+		&= x_0 + \int_{t_0}^{t_0+\varepsilon} v|_{\phi'(s)} \dd s \\
+		&= F(\bar\phi')(t_0+\varepsilon)
+	\end{align*}
+e, analogamente, que
+	\begin{equation*}
+	\bar\phi'(t_0-\varepsilon) = %\lim_{t \to \varepsilon} \phi(t_0-t) = x_0 + \lim_{t \to \varepsilon} \int_{t_0}^{t_0-t} v|_{\phi'(s)} \dd s =
+	x_0 + \int_{t_0}^{t_0-\varepsilon} v|_{\phi'(s)} \dd s = F(\bar\phi')(t_0-\varepsilon),
+	\end{equation*}
+o que implica que para todo $t \in \Fec{I}$ vale $\bar\phi'(t) = F(\bar\phi')(t)$, ou seja, que $\bar\phi'$ é ponto fixo de $F$. Assim concluímos que $\bar\phi' = \bar\phi$, logo $\phi' = \phi$.
+\end{proof}
+
+%Sem levar em consideração os valores das estimativas evolvendo $r$ e $\varepsilon$, essa proposição também pode ser enunciada da seguinte forma.
+
+%Sejam $\bm E$ um espaço normado completo, $A \subseteq E$ um aberto, $\fun{v}{A}{E}$ um campo vetorial localmente controlado e $(t_0,x_0) \in \R \times A$. Para algum intervalo aberto $I \subseteq \R$ tal que $t_0 \in I$, uma única trajetória integral $\fun{\phi}{I}{A}$ de $v$ satisfaz $\phi(t_0) = x_0$.
+
+Uma implicação direta é a unicidade das trajetórias integrais.
+
+\begin{proposition}[Unicidade de trajetória integral]
+\label{prop:unicidade.trajetoria.integral}
+Sejam $\bm E$ um espaço normado completo, $A \subseteq E$ um aberto, $\fun{v}{A}{E}$ um campo vetorial localmente controlado e $\fun{\phi, \phi'}{I}{A}$ trajetórias integrais de $v$. Se para algum $t_0 \in I$ vale que $\phi(t_0) = \phi'(t_0)$, então $\phi = \phi'$.
+\end{proposition}
+%\begin{proof}
+%Seja $\mathcal I$ o conjunto dos intervalos abertos $I_0 \subseteq I$ tais que $t_0 \in I_0$ e $\phi|_{I_0} = \phi'|_{I_0}$. Pela proposição~\ref{prop:existencia.unicidade.local.trajetoria.integral}, esse conjunto não é vazio. Seja $I'$ a união de todos os intervalos de $\mathcal I$. O conjunto $I' \subseteq I$ é um intervalo aberto não vazio tal que $t_0 \in I'$ e $\phi|_{I'} = \phi'|_{I'}$. Suponhamos, por absurdo, que $I \neq I'$. Escrevendo $I = \intaa{a}{b}$ e $I' = \intaa{a'}{b'}$, valeria $a < a'$ ou $b' < b$. Sem perda de generalidade, consideremos o caso em que $b' < b$. Como $\phi$ e $\phi'$ são contínuas, $\phi(b') = \phi'(b')$. Pela proposição~\ref{prop:existencia.unicidade.local.trajetoria.integral}, algum intervalo $I_1 \subseteq I$ tal que $b' \in I_1$ satisfaria que $\phi|_{I_1} = \phi'|_{I_1}$. Isso significaria que $I'' := I' \cup I_1 \subseteq I$ é um intervalo aberto tal que $t_0 \in I''$ e $\phi|_{I''} = \phi'|_{I''}$ e $I' \subset I''$, o que seria uma contradição. Isso mostra que $I = I'$ e portanto que $\phi = \phi'$.
+%\end{proof}
+\begin{proof}
+Seja $I' := \set{t \in I}{\phi(t) = \phi'(t)}$. Por hipótese $t_0 \in I'$. Mostraremos que $I'$ é aberto e fechado em $I$, o que implica que $I'=I$, pois $I$ é conexo e $I' \neq \empty$. Primeiro notemos que $I' = (\phi'-\phi)\inv(0)$. Como $\phi$ e $\phi'$ são contínuas e $\{0\}$ é fechado, segue que $I'$ é fechado. Agora, seja $t \in I'$. Pela existência e unicidade locais da proposição~\ref{prop:existencia.unicidade.local.trajetoria.integral} vale que, para algum $\varepsilon \in \R_{>0}$ as trajetórias $\phi$ e $\phi'$ coincidem em $J := I \cap \inter{t}{\varepsilon}$; isto é, $\phi|_J = \phi'|_J$, ou seja, $J \subseteq I'$. Isso mostra que $I'$ é aberto em $I$, portanto que $I = I'$.
+\end{proof}
+
+
+\begin{proposition}[Existência e unicidade de trajetória integral maximal]
+\label{prop:existencia.unicidade.trajetoria.integral}
+Sejam $\bm E$ um espaço normado completo, $A \subseteq E$ um aberto, $\fun{v}{A}{E}$ um campo vetorial localmente controlado e $(t_0, x_0) \in \R \times A$. Uma única trajetória integral maximal $\fun{\phi}{I}{E}$ de $v$ satisfaz $\phi(t_0) = x_0$.
+\end{proposition}
+\begin{proof}
+Seja $\mathcal I$ o conjunto dos intervalos abertos $I' \subseteq \R$ tais que $t_0 \in I'$ e uma única trajetória integral $\fun{\phi'}{I'}{E}$ de $v$ satisfaz $\phi'(t_0) = x_0$. Pela proposição~\ref{prop:existencia.unicidade.local.trajetoria.integral}, esse conjunto não é vazio. Seja $I$ a união de todos os intervalos de $\mathcal I$. O conjunto $I$ é um intervalo aberto não vazio tal que $t_0 \in I$. Definamos a trajetória $\fun{\phi}{I}{E}$, para $t \in I'$, por $\phi(t) := \phi'(t)$. Pela proposição~\ref{prop:unicidade.trajetoria.integral} a trajetória $\phi$ está bem definida em cada $I'$. Por definição de $I$, a trajetória $\phi$ é maximal e $\phi(t_0) = x_0$. Seja $\fun{\psi}{J}{E}$ uma trajetória integral maximal de $v$ tal que $\psi(t_0) = x_0$. Por definição de $I$, vale $J \subseteq I$ e, como $\psi$ é maximal, $J = I$. Pela proposição~\ref{prop:unicidade.trajetoria.integral}, segue que $\phi = \psi$.
+\end{proof}
+
+
+\subsubsection{Fluxo de um campo vetorial}
+
+Pela proposição~\ref{prop:existencia.unicidade.trajetoria.integral}, dado um campo vetorial localmente controlado $\fun{v}{A}{E}$ e $(t_0, x_0) \in \R \times A$, uma única trajetória integral maximal $\fun{\phi}{I}{A}$ de $v$ satisfaz $\phi(t_0) = x_0$. Podemos portanto definir trajetórias maximais e intervalos para cada par $(t_0, x_0)$.
+
+\begin{definition}
+Sejam $\bm E$ um espaço normado completo, $A \subseteq E$ um aberto, $\fun{v}{A}{E}$ um campo vetorial localmente controlado e $(t_0, x_0) \in \R \times A$. A \emph{trajetória integral maximal de $v$ passando por $x_0$ em $t_0$} é a trajetória integral maximal $\fun{\phi}{I}{E}$ de $v$ que satisfaz $\phi(t_0) = x_0$. Denota-se $I^v_{(t_0, x_0)} := I$ e, para todo $t \in I^v_{(t_0, x_0)}$,
+	\begin{equation*}
+	\Flux[v](t, t_0, x_0) := \phi(t).
+	\end{equation*}
+O \emph{domínio do fluxo total de $v$} é o conjunto
+	\begin{equation*}
+	\dom(\Flux[v]) := \bigcup_{(t_0, x_0) \in \R \times A} I^v_{(t_0, x_0)} \times \{t_0\} \times \{x_0\} \subseteq \R \times \R \times A.
+	\end{equation*}
+e o \emph{fluxo total de $v$} é a função
+	\begin{align*}
+	\func{\Flux[v]}{\dom(\Flux[v])}{A}{(t,t_0,x_0)}{\Flux[v](t, t_0, x_0)}.
+	\end{align*}
+\end{definition}
+
+Consideremos para a proposição seguinte um espaço normado completo $\bm E$ e uma transformação linear contínua $L \in \toplin(\bm E, \bm E)$. Essa transofrmação é um campo vetorial em $E$. Esse campo vetorial é controlado, pois a continuidade significa que, para todos $x,x' \in E$,
+	\begin{equation*}
+	\nor{L(x') - L(x)} \leq \nor{L}\nor{x'-x}.
+	\end{equation*}
+
+\begin{proposition}
+Sejam $\bm E$ um espaço normado completo e $L \in \toplin(\bm E, \bm E)$ uma transformação linear. O fluxo total de $L$ é
+	\begin{align*}
+	\func{\Flux[L]}{\R \times \R \times E}{E}{(t,t_0,x_0)}{\e^{(t-t_0)L}(x_0)}.
+	\end{align*}
+\end{proposition}
+\begin{proof}
+Definamos, para todo $t \in \R$, $\gamma(t) := \e^{tL}$. Pela proposição~\ref{prop:derivada.exponencial},
+	\begin{equation*}
+	\dot\gamma(t) = \e^{tL} \circ L = L \circ \e^{tL}.
+	\end{equation*}
+%Para isso, primeiro notamos que
+%	\begin{align*}
+%	\e^{(t+\delta)L} - \e^{tL} &= \e^{tL} \circ \e^{\delta L} - \e^{tL} \\
+%		&= \e^{tL} \circ (\e^{\delta L} - \Id_E) \\
+%		&= \e^{tL} \circ \left( \sum_{n=1}^{\infty} \frac{\delta^n L^n}{n!} \right),
+%	\end{align*}
+%logo
+%	\begin{equation*}
+%	\frac{\e^{(t+\delta)L} - \e^{tL}}{\delta} = \e^{tL} \circ \left(L + \sum_{n=2}^{\infty} \frac{\delta^{n-1} L^n}{n!} \right),
+%	\end{equation*}
+%o que implica que
+%	\begin{equation*}
+%	\dot\gamma(t) = \lim_{\delta \to 0} \frac{\e^{(t+\delta)L} - \e^{tL}}{\delta} = \e^{tL} \circ L.
+%	\end{equation*}
+%Como $L$ comuta com todo elemento da forma $\frac{\delta^n L^n}{n!}$ da série de $\e^{tL}$, segue que $\e^{tL} \circ L = L \circ \e^{tL}$.
+Agora, seja $x_0 \in E$ e considere
+	\begin{align*}
+	\func{\phi}{\R}{E}{t}{\e^{tL}(x_0)}.
+	\end{align*}
+Essa trajetória é a trajetória maximal de $L$ passando por $x_0$ em $t_0 = 0$. Claramente $\phi(0) = \e^{0L}x_0 = x_0$. Além disso, $\phi(t) = \gamma(t)(x_0)$, portanto segue do resultado anterior que
+	\begin{equation*}
+	\dot\phi(t) = \der(\gamma(t)(x_0)) = \dot \gamma(t)(x_0) = L \circ \e^{tL} (x_0) = L(\phi(t)),
+	\end{equation*}
+o que mostra que $\phi$ é trajetória integral de $L$. A trajetória $\phi$ é maximal pois está definida em $\R$.
+
+Por fim, para todo $t_0 \in \R$, segue da proposição~\ref{prop:trajetoria.integral.reparametrizada} que a trajetória maximal de $L$ passando por $x_0$ em $t_0$ é
+	\begin{equation*}
+	\phi \circ T_{-t_0}(t) = \e^{(t-t_0)L}(x_0).
+	\qedhere
+	\end{equation*}
+\end{proof}
+
+Algumas propriedades do fluxo total seguem facilmente.
+
+\begin{proposition}
+\label{prop:fluxo.total.campo.vetorial}
+Sejam $\bm E$ um espaço normado completo, $A \subseteq E$ um aberto e $\fun{v}{A}{E}$ um campo vetorial localmente controlado.
+	\begin{enumerate}
+	\item Para todo $(t_0, x_0) \in \R \times A$, $(t_0, t_0, x_0) \in \dom(\Flux[v])$ e
+		\begin{equation*}
+		\Flux(t_0, t_0, x_0) = x_0;
+		\end{equation*}
+	\item Para todo $(t_1, t_0, x_0) \in \dom(\Flux[v])$ e todo $t \in \R$, vale que $(t,t_0,x_0) \in \dom(\Flux[v])$ se, e somente se, $(t, t_1, \Flux(t_1, t_0, x_0)) \in \dom(\Flux[v])$; nesse caso,
+		\begin{equation*}
+		\Flux(t,t_0,x_0) = \Flux(t, t_1, \Flux(t_1, t_0, x_0));
+		\end{equation*}
+	\item Para todo $(t_1,t_0, x_0) \in \dom(\Flux[v])$, vale que $(t_0, t_1, \Flux(t_1, t_0, x_0)) \in \dom(\Flux[v])$ e
+		\begin{equation*}
+		\Flux(t_0, t_1, \Flux(t_1, t_0, x_0)) = x_0;
+		\end{equation*}
+	\item Para todo $x_0 \in A$ e todos $t_0, t_1, t \in \R$, vale que $(t, t_1, x_0) \in \dom(\Flux[v])$ se, e somente se, $(t-(t_1-t_0), t_0, x_0) \in \dom(\Flux[v])$; nesse caso,
+		\begin{equation*}
+		\Flux(t, t_1, x_0) = \Flux(t-(t_1-t_0), t_0, x_0);
+		\end{equation*}
+	\item Para todos $c \in \R$, $(t_0, x_0) \in \R \times A$ e $t \in \R$, vale que $(t, t_0, x_0) \in \dom(\Phi^{cv})$ se, e somente se, $(ct, ct_0, x_0) \in \dom(\Flux[v])$; nesse caso,
+		\begin{equation*}
+		\Flux[cv](t, t_0, x_0) = \Flux(ct, ct_0, x_0).
+		\end{equation*}
+	\item Para todos $(t_0, x_0) \in \R \times A$ e todo $t \in \R$, vale que $(t, t_0, x_0) \in \dom(\Flux[v])$ se, e somente se, $(1, 0, x_0) \in \dom(\Flux[(t-t_0)v])$; nesse caso,
+		\begin{equation*}
+		\Flux[(t-t_0)v](1, 0, x_0) = \Flux[v](t, t_0, x_0).
+		\end{equation*}
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+Segue direto da definição de fluxo pela unicidade das trajetórias maximais (\ref{prop:existencia.unicidade.trajetoria.integral}) e das proposições de reparametrização de trajetórias integrais por translação e dilatação (\ref{prop:trajetoria.integral.reparametrizada}).
+
+\begin{comment}
+
+Notemos agora que, tomando $t_1 = 0$ no item 4 da proposição anterior, obtemos que, para todos $(t_0, x_0) \in \R \times A$ e todo $t \in \R$, vale que $(t, t_0, x_0) \in \dom(\Flux[v])$ se, e somente se, $(t-t_0, 0, x_0) \in \dom(\Flux[v])$ e, nesse caso,
+	\begin{equation*}
+	\Flux(t, t_0, x_0) = \Flux(t-t_0, 0, x_0).
+	\end{equation*}
+Isso também significa que $I^v_{(t_1,x_0)} = I^v_{(0,x_0)}+t_1$.  Além disso, pelo item 5 da proposição anterior, obtemos que, para todo $t \in \R \setminus \{0\}$ e todo $x_0 \in A$, vale que $(1, 0, x_0) \in \dom(\Flux[tv])$ se, e somente se, $(t, 0, x_0) \in \dom(\Flux[v])$ e, nesse caso,
+	\begin{equation*}
+	\Flux[tv](1, 0, x_0) = \Flux(t, 0, x_0).
+	\end{equation*}
+
+\end{comment}
+
+\end{proof}
+
+Pelo item 6 da proposição anterior, podemos definir o fluxo (local) de $v$.
+
+\begin{definition}
+Sejam $\bm E$ um espaço normado completo, $A \subseteq E$ um aberto e $\fun{v}{A}{E}$ um campo vetorial localmente controlado. O \emph{domínio do fluxo} de $v$ é o conjunto
+	\begin{equation*}
+	\dom(\flux^{v}) := \bigcup_{x \in A} I^v_{(0,x)} \times \{x\} \subseteq \R \times A.
+	\end{equation*}
+O \emph{fluxo} de $v$ é a função
+	\begin{align*}
+	\func{\flux^{v}}{\dom(\phi^v)}{E}{(t,x)}{\flux^{(t)v}(x) := \Flux[tv](1, 0, x).}
+	\end{align*}
+Para todo $x \in A$, o \emph{intervalo maximal da trajetória integral} de $v$ por $x$ é $I^v_x := I^v_{(0,x)}$ a \emph{trajetória integral maximal de $v$ por $x$} é a função
+	\begin{align*}
+	\func{\flux^{v}_x}{I^v_x}{E}{t}{\flux^{(t)v}_x := \flux^{(t)v}(x)}.
+	\end{align*}
+\end{definition}
+
+Denota-se $\flux^{tv}(x)$ por simplicidade. Pelos comentários anteriores, essa definição nos dá as seguintes relações.
+	\begin{align*}
+	\flux^{(t-t_0)v}(x_0) &= \Flux[(t-t_0)v](1, 0, x_0) \\
+		&= \Flux[v](t-t_0, 0, x_0) \\
+		&= \Flux[v](t, t_0, x_0).
+	\end{align*}
+
+Valem propriedades análogas às do fluxo total de $v$.
+
+\begin{comment}
+
+\begin{proposition}
+\label{prop:fluxo.campo.vetorial}
+Sejam $\bm E$ um espaço normado completo, $A \subseteq E$ um aberto e $\fun{v}{A}{E}$ um campo vetorial localmente controlado.
+	\begin{enumerate}
+	\item Para todo $x \in A$, $(0, x) \in \dom(\flux^{v})$ e
+		\begin{equation*}
+		\flux^{0v}(x) = x;
+		\end{equation*}
+%		\begin{equation*}
+%		\flux^{0v} = \Id;
+%		\end{equation*}
+	\item Para todo $(t,x) \in \dom(\flux^{v})$ e todo $t' \in \R$ tal que $(t', \flux^{tv}(x)) \in \dom(\flux^{v})$, vale que $(t'+t, x) \in \dom(\flux^{v})$ e
+		\begin{equation*}
+		\flux^{(t'+t)v}(x) = \flux^{t'v} (\flux^{tv}(x));
+		\end{equation*}
+%		\begin{equation*}
+%		\flux^{(t'+t)v} = \flux^{t'v} \circ \flux^{tv};
+%		\end{equation*}
+	\item Para todo $(t, x) \in \dom(\flux^{v})$, vale que $(-t, \flux^{tv}(x)) \in \dom(\flux^{v})$ e
+		\begin{equation*}
+		\flux^{-tv}(\flux^{tv}(x)) = x;
+		\end{equation*}
+%		\begin{equation*}
+%		\flux^{-tv} \circ \flux^{tv} = \Id.
+%		\end{equation*}
+	\item Para todo $x \in A$ e todos $t_0, t, t'_0, t' \in \R$ tais que $t-t_0 = t'-t'_0$, vale que $(t - t_0, x) \in \dom(\flux^{v})$ se, e somente se, $(t' - t'_0, x) \in \dom(\flux^{v})$; nesse caso,
+		\begin{equation*}
+		\flux^{(t - t_0)v}(x) = \flux^{(t' - t'_0)v}(x);
+		\end{equation*}
+%	\item Para todo $x \in A$ e todos $t, t' \in \R$ tais que $(t, x), (t',x) \in \dom(\flux^{v})$, vale que $(t'-t, x) \in \dom(\flux^{v})$; nesse caso,
+%		\begin{equation*}
+%		\flux^{t'v - tv}(x) = \flux^{(t' - t)v}(x);
+%		\end{equation*}
+	\item Para todo $x \in A$ e todos $t, t' \in \R$, vale que $(t, x) \in \dom(\flux^{t'v})$ se, e somente se, $(tt', x) \in \dom(\flux^{v})$; nesse caso,
+		\begin{equation*}
+		\flux^{t(t'v)}(x) = \flux^{(tt')v}(x).
+		\end{equation*}
+	\end{enumerate}
+\end{proposition}
+
+\end{comment}
+
+\begin{proposition}
+\label{prop:fluxo.campo.vetorial}
+Sejam $\bm E$ um espaço normado completo, $A \subseteq E$ um aberto e $\fun{v}{A}{E}$ um campo vetorial localmente controlado.
+	\begin{enumerate}
+	\item Para todo $x \in A$, vale que $0 \in I^v_x$ e
+		\begin{equation*}
+		\flux^{0v}(x) = x.
+		\end{equation*}
+%		\begin{equation*}
+%		\flux^{0v} = \Id.
+%		\end{equation*}
+	\item Para todo $x \in A$, todo $t \in I^v_x$ e todo $t' \in I^v_{\flux^{tv}(x)}$, vale que $(t'+t) \in I^v_x$ e
+		\begin{equation*}
+		\flux^{(t'+t)v}(x) = \flux^{t'v} (\flux^{tv}(x)).
+		\end{equation*}
+%		\begin{equation*}
+%		\flux^{(t'+t)v} = \flux^{t'v} \circ \flux^{tv}.
+%		\end{equation*}
+	\item Para todo $x \in A$ e todo $t \in I^v_x$, vale que $-t \in I^v_{\flux^{tv}(x)}$ e
+		\begin{equation*}
+		\flux^{-tv}(\flux^{tv}(x)) = x.
+		\end{equation*}
+%		\begin{equation*}
+%		\flux^{-tv} \circ \flux^{tv} = \Id.
+%		\end{equation*}
+	\item Para todo $x \in A$ e todos $t_0, t, t'_0, t' \in \R$ tais que $t-t_0 = t'-t'_0$ e $t-t_0 \in I^v_x$,
+		\begin{equation*}
+		\flux^{(t - t_0)v}(x) = \flux^{(t' - t'_0)v}(x).
+		\end{equation*}
+	\item Para todo $x \in A$ e todos $t, t' \in \R$ tais que $t, t' \in I^v_x$, vale que $t' + t \in I^v_x$ se, e somente se, $1 \in I^{t'v + tv}_x$; nesse caso,
+		\begin{equation*}
+		\flux^{t'v + tv}(x) = \flux^{(t' + t)v}(x);
+		\end{equation*}
+	\item Para todo $x \in A$ e todos $t, t' \in \R$, vale que $t' \in I^{tv}_x$ se, e somente se, $t't \in I^{v}_x$; nesse caso,
+		\begin{equation*}
+		\flux^{t'(tv)}(x) = \flux^{(t't)v}(x).
+		\end{equation*}
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+Segue direto de \ref{prop:fluxo.total.campo.vetorial}.
+\end{proof}
+
+A notação $\flux^{tv}_x$ é boa pois ela compartilha com a exponencial o seguinte comportamento:
+	\begin{equation*}
+	\dot \flux^{tv}_{x} = v|_{\flux^{tv}_{x}} = v \circ \flux^{tv}_{x},
+	\end{equation*}
+ou seja, quando derivamos o fluxo de um campo $v$, a ``constante'' $v$ cai ``multiplicando'' o fluxo.
+
+\subsubsection{Propriedades das condições iniciais}
+
+A primeira proposição que apresentamos diz como estimar a distância entre dois pontos transportados pelo fluxo com respeito à distância original dos pontos. Ela afirma que o fluxo tem um comportamento controlado e sua distorção é majorada pela exponencial da distorção do campo.
+
+%\begin{proposition}
+%Sejam $\bm E$ um espaço normado completo, $I \subseteq \R$ um intervalo aberto, $t_0 \in I$, $A \subseteq E$ um aberto, $x_0, x'_0 \in A$, $\fun{v}{A}{E}$ um campo vetorial controlado e $\fun{\phi,\phi'}{I}{A}$ trajetórias integrais de $v$ tais que $\phi(t_0) = x_0$ e $\phi'(t_0) = x'_0$. Para todo $t \in I$,
+%	\begin{equation*}
+%	\nor{\phi'(t) = \phi(t)} \leq \e^{\abs{t-t_0}\distor{v}}\nor{x'_0-x_0}.
+%	\end{equation*}
+%\end{proposition}
+\begin{proposition}
+Sejam $\bm E$ um espaço normado completo, $A \subseteq E$ um aberto, $\fun{v}{A}{E}$ um campo vetorial controlado. Para todos $x, x' \in A$ e todo $t \in I^v_{x} \cap I^v_{x'}$
+	\begin{equation*}
+	\nor{\flux^{tv}(x') - \flux^{tv}(x)} \leq \e^{\abs{t}\distor{v}}\nor{x'-x}.
+	\end{equation*}
+\end{proposition}
+
+Podemos pensar que, como comentado anteriormente, esse resultado mostra que o fluxo é controlado e satisfaz
+	\begin{equation*}
+	\distor{\flux^{tv}} \leq \e^{\distor{tv}}.
+	\end{equation*}
+No entanto, isso não é tecnicamente correto porque o fluxo $\flux^{tv}$ não necessariamente está definido para todos $x, x' \in A$ quando mantemos um $t$ fixo.
+
+\begin{proposition}
+Sejam $\bm E$ um espaço normado completo, $A \subseteq E$ um aberto, $\fun{v}{A}{E}$ um campo vetorial controlado. Sejam $x_0 \in A$ e $t_0 \in \R$ e $I \subseteq I^v_{(t_0,x_0)}$ um intervalo fechado. Para alguma bola aberta $\bola{x_0}{r} \subseteq A$ vale que, para todos $x \in \bola{x_0}{r}$, $I \subseteq I^v_{(t_0,x)}$.
+\end{proposition}
+
+\begin{proposition}
+Sejam $\bm E$ um espaço normado completo, $A \subseteq E$ um aberto, $\fun{v}{A}{E}$ um campo vetorial controlado, $x \in A$ e $I \subseteq I^v_x$ um intervalo fechado. Para algum $r \in \R_{>0}$ tal que $\bola{x}{r} \subseteq A$, todo $x' \in \bola{x}{r}$ satisfaz que $I \subseteq I^v_{x'}$.
 \end{proposition}
 
 
 
 
 
+\subsubsection{Propriedades geométricas do fluxo}
+
+
+\subsubsection{Continuidade e diferenciabilidade do fluxo}
 
 
 
