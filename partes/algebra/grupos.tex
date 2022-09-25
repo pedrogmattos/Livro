@@ -4,111 +4,144 @@
 
 \subsection{Grupo e subgrupo}
 
+%\begin{definition}
+%Um \emph{grupo} é um grupíneo $\bm G=(G,\times,\div,1)$ cuja operação binária $\times$ associativa. Um \emph{grupo comutativo} é um grupo cuja operação binária é comutativa.
+%\end{definition}
+
 \begin{definition}
-Um \emph{grupo} é uma quádrupla $\bm G=(G,\times,\div,1)$ em que $G$ é um conjunto, $\times \colon G \times G \to G$ é uma operação binária associativa, $1 \in G$ é a identidade com respeito a $\times$ e $\div \colon G \to G$ é a operação unária inversa com respeito a $\times$ e $1$; isto é, $\times$, $1$ e $\div$ satisfazem
+Um \emph{grupo} é uma quádrupla $\bm G=(G,\times,\div,1)$ em que $G$ é um conjunto, $\fun{\times }{G \times G}{G}$ é uma operação binária associativa, $1 \in G$ é identidade de $(G,\times)$ e $\fun{\div}{G}{G}$ é inversa%
+	\footnote{
+	O uso do símbolo `$\div$' para representar a função inversa de $\times$ não é usual, mas é bastante útil termos um símbolo para denotar essa função e o uso de uma barra como sinal de divisão é bastante comum. Pode-se pensar que, assim como o símbolo `$\times$' é o símbolo `$+$' rotacionado um oitavo de volta, o símbolo `$\div$' é o símbolo `$-$' rotacionado do mesmo tanto.
+	}
+de $(G,\times,1)$. Um grupo \emph{comutativo} é um grupo cuja operação binária $\times$ é comutativa.
+\end{definition}
+
+Isto é, as operações de um grupo satisfazem
 	\begin{enumerate}[label=\textbf{G\arabic*.},ref={G\arabic*}]
-	\item \label{G1}(Associatividade) Para todos $g_1,g_2,g_3 \in G$,
+	\item \label{G1}(Associatividade) Para todos $g,g',g'' \in G$,
 		\begin{equation*}
-		(g_1 \times g_2) \times g_3 = g_1 \times (g_2 \times g_3);
+		(g \times g') \times g'' = g \times (g' \times g'');
 		\end{equation*}
 	\item \label{G2} (Identidade) Para todo $g \in G$,
 		\begin{equation*}
 		1 \times g = g =g \times 1;
 		\end{equation*}
-	\item \label{G3} (Invertibilidade) Para todo $g \in G$,
+	\item \label{G3} (Invertibilidade) Para todo $g \in G$, (denotando $g\inv := \div(g)$)
 		\begin{equation*}
-		(\div g) \times g = 1 = g \times (\div g).
+		g\inv \times g = 1 = g \times g\inv.
 		\end{equation*}
 	\end{enumerate}
-\noindent
-Um grupo \emph{comutativo} é um grupo cuja operação binária $\times$ é comutativa; isto é, satisfaz
-	\begin{enumerate}[label=\textbf{G\arabic*.},ref={G\arabic*}]
-	\setcounter{enumi}{3}
-	\item \label{G4} (Comutatividade) Para todos $g_1,g_2 \in G$,
-	\begin{equation*}
-	g_1 \times g_2 = g_2 \times g_1.
-	\end{equation*}
+e, no caso de um grupo comutativo,
+	\begin{enumerate}[label=\textbf{G\arabic*.},ref={G\arabic*}] \setcounter{enumi}{3}
+	\item \label{G4} (Comutatividade) Para todos $g,g' \in G$,
+		\begin{equation*}
+		g \times g' = g' \times g.
+		\end{equation*}
 	\end{enumerate}
-\end{definition}
 
 \begin{notation}
-Denotam-se $g_1g_2 := g_1 \times g_2$ e $g\inv := \div g$ por simplicidade. Quando o grupo é comutativo, em geral denotam-se a operação binária por $+$, a operação unária por $-$ e a constante por $0$, de modo que o grupo é $(G,+,-,0)$.
+O símbolo da operação binária $\times$ será omitido sempre que possível, denotando-se $gg' := g \times g$. Além disso, a barra da inversa será substituída pelo expoente $-1$, denotando-se $g\inv := \div(g)$.
+
+Quando o grupo é comutativo, em geral denotam-se a operação binária por $+$, a operação unária por $-$ e a constante por $0$, de modo que o grupo seja denotado $(G,+,-,0)$.
 \end{notation}
 
-O uso do símbolo `$\div$' para representar a função inversa de $\times$ não é usual, mas termos um símbolo para denotar essa função é bastante útil e uma barra como sinal de divisão é bastante comum. Pode-se pensar que, assim como o símbolo `$\times$' é o símbolo `$+$' rotacionado um oitavo de volta, o símbolo `$\div$' é o símbolo `$-$' rotacionado do mesmo tanto.
+Em vista das definições introdutórias do capítulo anterior, um grupo é um grupíneo associatvo, ou seja, um monoide $\bm G=(G, \times, \id)$ cujos elementos têm inverso sob $\times$ e um grupo comutativo é um grupo cuja operação binária $\times$ é comutativa.
 
-Em vista das definições introdutórias do capítulo anterior, um grupo é um monoide $\bm G=(G, \times)$ cujos elementos têm inverso sob $\times$ e um grupo comutativo é um grupo cuja operação binária $\times$ é comutativa.
+\begin{example}
+$(\Z,+,-,0)$ é um grupo.
+\end{example}
+
+Como definido no capítulo anterior, a $n$-ésima potência de um elemento $g \in G$ é
+	\begin{equation*}
+	g^n = \bigtimes_{i \in [n]} g.
+	\end{equation*}
+No caso de um grupo, a inversa $g\inv$ do elemento está definida, portanto podemos definir potências negativas de um elemento do grupo.
 
 \begin{definition}
-Sejam $\bm G = (G,\times,\div,1)$ um grupo, $g \in G$ e $n \in \N$. Definimos
+Sejam $\bm G = (G,\times,\div,1)$ um grupo, $n \in \N \setminus \{0\}$ e $g \in G$. A \emph{$n$-ésima potência inversa} de $g$ é
 	\begin{equation*}
-	g^n := \bigtimes_{i=1}^n g \text{\ \ e\ \ } g^{-n} := \bigtimes_{i=1}^n g^{-1}.
+	g^{-n} := (g\inv)^n.
 	\end{equation*}
 \end{definition}
 
-\begin{proposition}[Leis de corte e inversão]
-	Seja $\bm G$ um grupo. Então
+\begin{exercise}
+Seja $\bm G$ um grupo.
 	\begin{enumerate}
-	\item Para todos $g,g_1,g_2 \in G$
+	\item Para todos $i,i' \in \Z$ e todo $g \in G$,
 		\begin{align*}
-		gg_1 = gg_2 &\entao g_1 = g_2 \\
-		g_1g = g_2g &\entao g_1 = g_2;
+		g^i g^{i'} &= g^{i+i'} \\
+		(g^i)^{i'} &= g^{ii'}.
 		\end{align*}
-	\item Para todos $g_1,\ldots,g_n \in G$, $(g_1 \cdots g_n)^{-1}=g_n^{-1} \cdots g_1^{-1}$.
+	\item Para todo $i \in \Z$ e todos $g,g' \in G$ tais que $gg'=g'g$,
+		\begin{equation*}
+		(gg')^i = g^i(g')^i.
+		\end{equation*}
+	\item Para todos $g_0, \ldots, g_{n-1} \in G$,% $(g_i)_{i \in [n]} \in G^n$,
+		\begin{equation*}
+		(g_0 \cdots g_{n-1})\inv = g_{n-1}\inv \cdots g_0\inv
+		\end{equation*}
+%		\begin{equation*}
+%		\left( \bigtimes_{i \in [n]} g_i \right)\inv = \bigtimes_{i \in [n]} g_{n-1-i}\inv
+%		\end{equation*}
 	\end{enumerate}
-\end{proposition}
-\begin{proof}
-	Se $g g_1 = g g_2$, então
-	\begin{equation*}
-	g_1 = (g^{-1}g)g_1 = g^{-1}(gg_1) = g^{-1}(gg_2) = (g^{-1}g)g_2 = g_2.
-	\end{equation*}
-A demonstração da segunda implicação é análoga.
-\end{proof}
+\end{exercise}
+
+\begin{exercise}[Cancelamento]
+Seja $\bm G$ um grupo.
+	\begin{enumerate}
+	\item Para todos $g,g_0,g_0 \in G$, se $gg_0 = gg_1$ então $g_0 = g_1$.
+	\item Para todos $g,g_0,g_1 \in G$, se $g_0g = g_1g$ então $g_0 = g_1$.
+	\end{enumerate}
+\end{exercise}
 
 \begin{definition}
 Seja $\bm G = (G,\times,\div,1)$ um grupo. Um \emph{subgrupo} de $\bm G$ é um grupo $\bm S=(S,\times_S,\div_S,1_S)$ em que $S \subseteq G$, $\times_S=\times|_{S \times S}$, $\div = \div|_S$ e $1_S=1$. Denota-se $\bm S \leq \bm G$.
-
 Um subgrupo \emph{próprio} de $\bm G$ é um subgrupo $\bm S \leq \bm G$ tal que $S$ é um conjunto próprio de $G$ ($S  \subset G$). Denota-se $\bm S < \bm G$.
 \end{definition}
 
 \begin{proposition}
-\label{alge:prop.subgru}
-Sejam $\bm G$ um grupo e $S \subseteq G$ que satisfaz
+\label{prop:propriedade.subgrupo}
+Sejam $\bm G$ um grupo e $S \subseteq G$ um conjunto que satisfaz
 	\begin{enumerate}[label=\textbf{SG\arabic*.},ref={SG\arabic*}]
 	\item \label{SG1} (Não-vacuidade) $S \neq \emptyset$;
-	\item \label{SG2} (Fechamento) Para todos $s_1,s_2 \in S$, $s_1s_2 \in S$;
+	\item \label{SG2} (Fechamento) Para todos $s,s' \in S$, $ss' \in S$;
 	\item \label{SG3} (Invertibilidade) Para todo $s \in S$,  $s\inv \in S$.
 	\end{enumerate}
 \noindent
 Então $\bm S=(S,\times|_{S \times S}, \div|_S,1)$ é um grupo. Ainda, se $\bm G$ é comutativo, então $\bm S$ é comutativo.
 \end{proposition}
 \begin{proof}
-Por simplicidade, definamos $\star := \times|_{S \times S}$.
+Denotemos $\times_S := \times|_{S \times S}$.
+	\begin{enumerate}
+	\item (Operação binária) Segue de \ref{prop:propriedade.subgrupideo}.
+%	Pela primeira e segunda propriedades de $S$, segue que $\times_S$ é uma operação binária (\ref{prop:fechamento.operacao.binaria}).
 
-%($\Rightarrow$) (\ref{SG1}) Como $\bm S$ é um grupo, $e \in S$, portanto $S \neq \emptyset$.
-%(\ref{SG2}) Como $\bm S$ é grupo, $\star$ é uma operação binária, portanto segue que, para todo $s_1,s_2 \in S$, $s_1s_2 \in S$ (\ref{prop:restri.op.bin}).
-%(\ref{SG3}) Seja $s \in S$. Como $\bm S$ é grupo, existe $s^{-1} \in S$ inverso de $s$ em $\bm S$. Como $s^ {-1} \in G$, segue da unicidade do inverso que $s^{-1}$ é o inverso de $s$ em $\bm G$.
+	\item (Associatividade) Segue de \ref{prop:propriedade.subgrupideo}.
+%	(\ref{G1}) Sejam $s_1,s_2,s_3 \in S$. Então
+%		\begin{equation*}
+%		(s_1 \times_S s_2) \times_S s_3 = (s_1 \times s_2) \times s_3 = s_1 \times (s_2 \times s_3) = s_1 \times_S (s_2 \times_S s_3).
+%		\end{equation*}
 
-%($\Leftarrow$)
-(Operação binária) Pela primeira e segunda propriedades de $S$, segue que $\star$ é uma operação binária (\ref{prop:restri.op.bin}).\\
-(\ref{G1}) Sejam $s_1,s_2,s_3 \in S$. Então
-	\begin{equation*}
-	(s_1 \star s_2) \star s_3 = (s_1 \times s_2) \times s_3 = s_1 \times (s_2 \times s_3) = s_1 \star (s_2 \star s_3).
-	\end{equation*}
-(\ref{G2}) Como $S \neq \emptyset$, existe $s \in S$, portanto $s\inv \in S$. Isso implica que $1=s \times s\inv \in S$ e, como $1$ é identidade de $\bm G$, segue que, para todo $s \in S$,
-	\begin{equation*}
-	1 \star s = 1 \times s = s = s \times 1 = s \star 1.
-	\end{equation*}
-(\ref{G3}) Seja $s \in S$. Pela terceira propriedade de $S$, segue que o inverso de $s$ em $\bm G$ pertence a $S$. Então
-	\begin{equation*}
-	s\inv \star s = s\inv \times s = e = s \times s\inv = s \star s\inv,
-	\end{equation*}
-portanto $s\inv$ é o inverso de $s$ em $\bm S$.
+	\item (Identidade) Como $S \neq \emptyset$, existe $s \in S$, portanto $s\inv \in S$. Isso implica que $1=s \times s\inv \in S$ e então segue de \ref{prop:propriedade.subgrupideo}.
+%	(\ref{G2}) 	como $1$ é identidade de $\bm G$, segue que, para todo $s \in S$,
+%		\begin{equation*}
+%		1 \times_S s = 1 \times s = s = s \times 1 = s \times_S 1.
+%		\end{equation*}
 
-(\ref{G4}) Por fim, suponhamos que $\bm G$ é um grupo comutativo. Sejam $s_1,s_2 \in S$. Como $\times$ é comutativa, então
-	\begin{equation*}
-	s_1 \star s_2 = s_1 \times s_2 = s_2 \times s_1 = s_2 \star s_1.
-	\end{equation*}
+%	\item (\ref{G3})
+	\item (Invertibilidade) Seja $s \in S$. Pela terceira propriedade de $S$, segue que o inverso de $s$ em $\bm G$ pertence a $S$. Então
+		\begin{equation*}
+		s\inv \times_S s = s\inv \times s = e = s \times s\inv = s \times_S s\inv,
+		\end{equation*}
+	portanto $s\inv$ é o inverso de $s$ em $\bm S$.
+
+	\item (Comutatividade) Segue de \ref{prop:propriedade.subgrupideo}.
+%	(\ref{G4}) Por fim, suponhamos que $\bm G$ é um grupo comutativo. Sejam $s_1,s_2 \in S$. Como $\times$ é comutativa, então
+%		\begin{equation*}
+%		s_1 \times_S s_2 = s_1 \times s_2 = s_2 \times s_1 = s_2 \times_S s_1.
+%		\qedhere
+%		\end{equation*}
+	\end{enumerate}
 \end{proof}
 
 \begin{proposition}
@@ -170,7 +203,7 @@ Portanto
 	\begin{equation*}
 	(m_1m_2)(m_2^{-1}m_1^{-1}) = m_1(m_2m_2^{-1})m_1^{-1} = m_1m_1^{-1} = 1,
 	\end{equation*}
-o que mostra que $m_1m_2 \in M^{\div}$. Ainda, note que $1 \in M^{\div}$, pois $1 \times 1 = 1$. Como $M^{\div}$ é contém a identidade e é fechado sob $\times$, segue que $(M^{\div},\times,1)$ é um monoide (\ref{alge:prop.submon}). Por fim, $\bm{M^{\div}}$ é um grupo pois, por definição, todo elemento tem inverso e ele é único, o que define a operação $\div$.
+o que mostra que $m_1m_2 \in M^{\div}$. Ainda, note que $1 \in M^{\div}$, pois $1 \times 1 = 1$. Como $M^{\div}$ é contém a identidade e é fechado sob $\times$, segue que $(M^{\div},\times,1)$ é um monoide (\ref{prop:propriedade.subgrupideo}). Por fim, $\bm{M^{\div}}$ é um grupo pois, por definição, todo elemento tem inverso e ele é único, o que define a operação $\div$.
 \end{proof}
 
 \begin{comment}
@@ -270,19 +303,19 @@ Primeiro vamos demonstrar as três propriedades de relação de equivalência. (
 Agora, seja $g \in G$. Vamos mostrar que $[g]=gS$. Seja $s \in [g]$. Então $s \sim g$, o que implica que $g^{-1}s \in S$, que por sua vez implica que existe $s' \in S$ tal que $s'=g^{-1}s$ e, portanto, $s=gs'$. Logo $s \in gS$. Agora, seja $s \in gS$. Então existe $s' \in S$ tal que $s=gs'$, o que implica $g^{-1}s=s'$, que por sua ve implica $g^{-1}s \in S$ e, portanto, $s \sim g$. Logo $s \in [g]$.
 \end{proof}
 
-Como $\sim$ é relação de equivalência, particiona $G$, e essas partições são as coclasses de $\bm S$ em $\bm G$. Assim, podemos considerar o conjunto $G/S$ das classes de equivalências como o conjunto das coclasses de $S$ em $\bm G$. É importante notar que esse conjunto ainda não possui estrutura de grupo. Isso será possível mais à frente, mas não para qualquer subgrupo, somente subgrupos que chamamos de normais.
+Como $\sim$ é relação de equivalência, particiona $G$, e essas partições são as coclasses de $\bm S$ em $\bm G$. Assim, podemos considerar o conjunto $\quo{G}{S}$ das classes de equivalências como o conjunto das coclasses de $S$ em $\bm G$. É importante notar que esse conjunto ainda não possui estrutura de grupo. Isso será possível mais à frente, mas não para qualquer subgrupo, somente subgrupos que chamamos de normais.
 
 \begin{definition}
 Sejam $\bm G$ um grupo e $\bm S \leq \bm G$ um subgrupo. O \emph{conjunto quociente} de $\bm G$ por $\bm S$ é o conjunto
 	\begin{equation*}
-	G/S := G/\sim.
+	\quo{G}{S} := \quo{G}{\sim}.
 	\end{equation*}
 \end{definition}
 
 \begin{definition}
 Seja $\bm G$ um grupo e $\bm S \leq \bm G$ subgrupo. O \emph{índice} de $\bm S$ em $\bm G$ é número cardinal
 	\begin{equation*}
-	[G : S] := \card{G/S}.
+	[G : S] := \card{\quo{G}{S}}.
 	\end{equation*}
 \end{definition}
 
@@ -291,22 +324,33 @@ Sejam $\bm G$ um grupo e $\bm S \leq \bm G$ um subgrupo. Então
 	\begin{equation*}
 	\card{G}=[G:S] \times \card{S}.
 	\end{equation*}
+%	\begin{equation*}
+%	\card{G}=\card{\quo{G}{S}} \times \card{S}.
+%	\end{equation*}
 \end{proposition}
 \begin{proof}
-O conjunto $G/S$ é uma partição de $G$, pois é um conjunto quociente (\ref{conj:teo.rel.equiv.part}). Isso implica que $G/S$ é uma família de conjuntos não vazios, disjuntos dois a dois, e que $G = \bigcup_{[g] \in G/S} gS$. Da terceira condição temos que
+O conjunto $\quo{G}{S}$ é uma partição de $G$, pois é um conjunto quociente (\ref{conj:teo.rel.equiv.part}). Isso implica que $\quo{G}{S}$ é uma família de conjuntos não vazios, disjuntos dois a dois, e que $G = \bigcup_{[g] \in \quo{G}{S}} gS$. Da terceira condição temos que
 	\begin{equation*}
-	\card{G} = \card{\bigcup_{[g] \in G/S} gS}.
+	\card{G} = \card{\bigcup_{[g] \in \quo{G}{S}} gS}.
 	\end{equation*}
 Da segunda condição, temos por \ref{conj:prop.un.dis} que
 	\begin{equation*}
-	\card{\bigcup_{[g] \in G/S} gS} = \card{\bigsqcup_{[g] \in G/S} gS}.
+	\card{\bigcup_{[g] \in \quo{G}{S}} gS} = \card{\bigsqcup_{[g] \in \quo{G}{S}} gS}.
 	\end{equation*}
 Por fim, da primeira condição e do fato de que as coclasses de $S$ têm a mesma cardinalidade, concluímos por \ref{conj:prop.card.un.dis} que
 	\begin{equation*}
-	\card{\bigsqcup_{[g] \in G/S} gS} = \card{G/S} \times \card{S}.
+	\card{\bigsqcup_{[g] \in \quo{G}{S}} gS} = \card{\quo{G}{S}} \times \card{S}.
 	\end{equation*}
 Disso segue que $\card{G}=[G:S] \times \card{S}$.
 \end{proof}
+
+\begin{exercise}
+Sejam $\bm G$ um grupo, $\bm S \leq \bm G$ um subgrupo e $\bm S' \leq \bm S$ um subgrupo. Então
+	\begin{equation*}
+	[G : S'] = [G : S][S : S'].
+	\end{equation*}
+\end{exercise}
+
 
 \subsection{Subgrupo normal e grupo quociente}
 
@@ -368,10 +412,10 @@ Seja $\bm G$ um grupo e $\bm N \ide \bm G$ um subgrupo normal. O \emph{grupo quo
 e $(gN)\inv=g\inv N$.
 \end{definition}
 
-Uma notação um pouco mais cuidadosa ressaltaria que as operações binárias de $\bm G$ e de $\bm{G/N}$ não são a mesma e, se denotarmos a primeira como $\times$ e a segunda como $\star$, teríamos a definição acima nos dando $g_1N \star g_2N := (g_1 \times g_2)N$. No entanto, como $\times$ de $G/N$ está sempre relacionada a $\times$ de $G$, mantemos a mesma notação para ambas e a mesma convenção de omiti-la quando possível. Vale notar, também, que pela associatividade da $\times$ de $\bm G$, temos que $g_1g_2N=g_1(g_2N)=(g_1g_2)N$. O mesmo vale para a inversa $\div$.
+Uma notação um pouco mais cuidadosa ressaltaria que as operações binárias de $\bm G$ e de $\bm{\quo{G}{N}}$ não são a mesma e, se denotarmos a primeira como $\times$ e a segunda como $\star$, teríamos a definição acima nos dando $g_1N \star g_2N := (g_1 \times g_2)N$. No entanto, como $\times$ de $\quo{G}{N}$ está sempre relacionada a $\times$ de $G$, mantemos a mesma notação para ambas e a mesma convenção de omiti-la quando possível. Vale notar, também, que pela associatividade da $\times$ de $\bm G$, temos que $g_1g_2N=g_1(g_2N)=(g_1g_2)N$. O mesmo vale para a inversa $\div$.
 
 \begin{proposition}
-Seja $\bm G$ um grupo e $\bm N \ide \bm G$ um subgrupo normal. Então $\bm{G/N}$ é um grupo.
+Seja $\bm G$ um grupo e $\bm N \ide \bm G$ um subgrupo normal. Então $\bm{\quo{G}{N}}$ é um grupo.
 \end{proposition}
 \begin{proof}
 Para simplificar as contas, usaremos a notação $[g]=gN$ quando conveniente.
@@ -400,7 +444,7 @@ Sejam $\bm{G_1}$ e $\bm{G_2}$ grupos. Um \emph{homomorfismo de grupos} de $\bm{G
 	\begin{equation*}
 	h(g_1g_2)=h(g_1)h(g_2).
 	\end{equation*}
-Denota-se $h: \bm{G_1} \to \bm{G_2}$. O conjunto desses homomorfismos é denotado $\Homo(\bm{G_1},\bm{G_2})$.
+Denota-se $h: \bm{G_1} \to \bm{G_2}$. O conjunto dos homomorfismos de $\bm{G_1}$ para $\bm{G_2}$ é denotado $\Homo(\bm{G_1},\bm{G_2})$.
 \end{definition}
 
 Note que a propriedade de homomorfismos de semigrupos e de grupos é a mesma.
@@ -414,14 +458,13 @@ Sejam $\bm{G_1}$ e $\bm{G_2}$ grupos $h: \bm{G_1} \to \bm{G_2}$ um homomorfismo 
 	\end{enumerate}
 \end{proposition}
 \begin{proof}
-Seja $g \in G_1$. Então
 	\begin{enumerate}
 	\item
 		\begin{align*}
 		h(1_1) &= h(1_1) 1_2 \\
-			&= h(1_1) h(g) h(g)\inv \\
-			&= h(1_1 g) h(g)\inv \\
-			&= h(g) h(g)\inv \\
+			&= h(1_1) h(1_1) h(1_1)\inv \\
+			&= h(1_1 1_1) h(1_1)\inv \\
+			&= h(1_1) h(1_1)\inv \\
 			&= 1_2.
 		\end{align*}
 	\item
@@ -443,13 +486,13 @@ Seja $g \in G_1$. Então
 Sejam $\bm{G_1}$, $\bm{G_2}$ e $\bm{G_3}$ grupos e $h_1: \bm{G_1} \to \bm{G_2}$ e $h_2: \bm{G_2} \to \bm{G_3}$ homomorfismos de grupos. Então $(h_2 \circ h_1): \bm{G_1} \to \bm{G_3}$ é um homomorfismo de grupos.
 \end{proposition}
 \begin{proof}
-Como um homomorfismo de grupos é um homomorfismo de semigrupos, o resultado segue da proposição na seção de semigrupos que afirma que composição de homomorfismos é homomorfismo (\ref{comp.hom.sem}).
+Como um homomorfismo de grupos é um homomorfismo de semigrupos, o resultado segue da proposição na seção de semigrupos que afirma que composição de homomorfismos é homomorfismo (\ref{prop:composicao.morfismo.grupoide}).
 \end{proof}
 
 \begin{proposition}
 Sejam $\bm G$ um grupo e $\bm N \ide \bm G$ um subgrupo normal. A projeção canônica $\pi: G \to \quo{G}{N}$, definida por
 	\begin{align*}
-	\func{\pi}{G}{G/N}{g}{gN},
+	\func{\pi}{G}{\quo{G}{N}}{g}{gN},
 	\end{align*}
 é um homomorfismo de grupos sobrejetivo.
 \end{proposition}
@@ -458,7 +501,7 @@ Sejam $g_1,g_2 \in G$. Então, da definição de produto em $\bm{\quo{G}{N}}$, s
 	\begin{equation*}
 	\pi(g_1g_2) = g_1g_2N = g_1Ng_2N = \pi(g_1)\pi(g_2).
 	\end{equation*}
-(Sobrejetividade) Seja $gN \in G/N$. Então, $g \in G$, temos que $h(g)=gN$.
+(Sobrejetividade) Seja $gN \in \quo{G}{N}$. Então, $g \in G$, temos que $h(g)=gN$.
 \end{proof}
 
 \begin{proposition}
@@ -583,8 +626,8 @@ Sejam $\bm G$ um grupo, $\bm S \leq \bm G$ um subgrupo e $\bm N \ide \bm G$ um s
 \begin{theorem}[3º teorema de isomorfismo]
 Sejam $\bm G$ um grupo e $\bm N \ide \bm G$ um subgrupo normal. Então
 	\begin{enumerate}
-	\item Se $\bm S \leq \bm G$ tal que $N \subseteq S \subseteq G$, então $\bm{S/N} \leq \bm{G/N}$. Por outro lado, se $\bm S' \leq \bm{G/N}$, existe $\bm S \leq \bm G$ tal que $\bm S' = \bm{S/N}$.
-	\item Se $\bm S \ide \bm G$ tal que $N \subseteq S \subseteq G$, então $\bm{S/N} \ide \bm{G/N}$. Por outro lado, se $\bm S' \ide \bm{G/N}$, existe $\bm S \leq \bm G$ tal que $\bm S' = \bm{S/N}$.
+	\item Se $\bm S \leq \bm G$ tal que $N \subseteq S \subseteq G$, então $\bm{\quo{S}{N}} \leq \bm{\quo{G}{N}}$. Por outro lado, se $\bm S' \leq \bm{\quo{G}{N}}$, existe $\bm S \leq \bm G$ tal que $\bm S' = \bm{\quo{S}{N}}$.
+	\item Se $\bm S \ide \bm G$ tal que $N \subseteq S \subseteq G$, então $\bm{\quo{S}{N}} \ide \bm{\quo{G}{N}}$. Por outro lado, se $\bm S' \ide \bm{\quo{G}{N}}$, existe $\bm S \leq \bm G$ tal que $\bm S' = \bm{\quo{S}{N}}$.
 	\item Se $\bm N' \ide \bm G$ tal que $N \subseteq N' \subseteq G$, então
 		\begin{equation*}
 		\quo{\left(\quo{\bm G}{\bm N}\right)}{\left(\quo{\bm N'}{\bm N}\right)} \simeq \quo{\bm G}{\bm N'}.
@@ -867,7 +910,7 @@ e
 Sejam $\bm G$ um grupo e $g \in G$. A conjugação $\con{g}$ é isomorfismo de grupo.
 \end{proposition}
 \begin{proof}
-Como $\con{g}$ é bijeção, basta mostrar que é homomorfismo de grupo. Para todos $h,h' \in G$,
+Como $\con{g}$ é bijeção, basta mostrar que é homomorfismo de gru\-po. Para todos $h$, $h' \in G$,
 	\begin{equation*}
 		\con{g}(hh') = ghh'g\inv = ghg\inv gh'g\inv = \con{g}(h)\con{g}(h').
 	\end{equation*}
