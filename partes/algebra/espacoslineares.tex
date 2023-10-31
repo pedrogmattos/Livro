@@ -1735,20 +1735,22 @@ Segue facilmente de \ref{prop:caracteristica.tensorial} e \ref{prop:isomorfismo.
 \subsection{Tensores}
 
 \begin{definition}
-Seja $\bm V$ um espaço linear sobre um corpo $\bm C$. A $k$-\emph{potência tensorial} de $\bm V$ é o espaço
+Sejam $\bm V$ um espaço linear sobre um corpo $\bm C$ e $k \in \N$. A \emph{potência tensorial de tipo $k$} (ou \emph{potência $k$-tensorial}) de $\bm V$ é o espaço
 	\begin{equation*}
 	V^{\otimes k} := \bigotimes_{i \in [k]} V = \underbrace{V \otimes \cdots \otimes V}_{k}.
 	\end{equation*}
 Um $k$-vetor de $\bm V$ é um elemento de $V^{\otimes k}$ e um $k$-covetor de $\bm V$ é um elemento de $(V\dual)^{\otimes k}$.
 
-A \emph{$(p,q)$-potência tensorial} de $\bm V$ é o espaço
+A \emph{potência tensorial de tipo $(k,k')$} (ou \emph{potência $(k,k')$-tensorial}) de $\bm V$ é o espaço
 	\begin{equation*}
-	V^{\otimes (p,q)} := V^{\otimes p} \otimes (V\dual)^{\otimes q}.
+	V^{\otimes (k,k')} := (V\dual)^{\otimes k} \otimes V^{\otimes k'}.
 	\end{equation*}
 %	\begin{equation*}
 %	V^{\otimes p*q} := V^{\otimes p} \otimes (V\dual)^{\otimes q}.
 %	\end{equation*}
-Um $(p,q)$-tensor de $\bm V$ é um elemento de $V^{\otimes (p,q)}$. A \emph{álgebra tensorial} de $\bm V$ é o espaço
+Um $(k,k')$-tensor de $\bm V$ é um elemento de $V^{\otimes (p,q)}$.
+
+A \emph{álgebra tensorial} de $\bm V$ é o espaço
 	\begin{equation*}
 	V^{\otimes} := \bigoplus_{(p,q) \in \N \times \N} V^{\otimes (p,q)}.
 	\end{equation*}
@@ -1756,9 +1758,9 @@ Um $(p,q)$-tensor de $\bm V$ é um elemento de $V^{\otimes (p,q)}$. A \emph{álg
 
 Temos as identificações
 	\begin{align*}
-	V^{\otimes (0,0)} &= C \\
-	V^{\otimes (1,0)} &= V \\
-	V^{\otimes (0,1)} &= V\dual \\
-	V^{\otimes (1,1)} &= \lin(V,V). \\
+	V^{\otimes (0,0)} &\simeq C \\
+	V^{\otimes (1,0)} &\simeq V\dual \\
+	V^{\otimes (0,1)} &\simeq V \\
+	V^{\otimes (1,1)} &\simeq \lin(V,V). \\
 %	V^{\otimes (p,q)} &= \lin(V^{\otimes q},V^{\otimes p})
 	\end{align*}

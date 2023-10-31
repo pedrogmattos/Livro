@@ -1130,8 +1130,8 @@ Seja $\bm V$ uma variedade diferencial. Um \emph{campo tensorial} de tipo $(k,l)
 	\end{align*}
 tal que, para todo $p \in V$, $T|_p \in \Tg V^{\otimes(k,l)}|_p$. O conjunto dos campos tensoriais diferenciáveis\footnote{Aqui diferenciável quer dizer $\Cont^\infty$.} de tipo $(k,l)$ em $\bm V$ é denotado $\tens^{(k,l)}(\bm V)$.
 
-Um campo tensorial diferenciável de tipo $(k,0)$ é também denotado $\tens^k(\bm V)$ e um de tipo $(0,l)$ é também denotado $\tens^{* l}(\bm V)$.
-Um \emph{campo vetorial} é um campo tensorial de tipo $(1,0)$ e um \emph{campo covetorial} é um campo tensorial de tipo $(0,1)$.
+Um campo tensorial diferenciável de tipo $(0,k)$ é também denotado $\tens^k(\bm V)$ e um de tipo $(k,0)$ é também denotado $\tens^{* k}(\bm V)$.
+Um \emph{campo vetorial} é um campo tensorial de tipo $(0,1)$ e um \emph{campo covetorial} é um campo tensorial de tipo $(1,0)$.
 \end{definition}
 
 Como já definido anteriormente, um campo escalar é uma função $f \in \tens^0(\bm V) \simeq \Cont^{\infty}(\bm V,\R)$. O conjunto $\tens^1(\bm V)$ é um espaço linear sobre $\R$ com a soma e o produto por escalar induzidos pontualmente pela soma e produto por escalar de $\Tg V|_p$: a \emph{adição} é dada por
@@ -1208,7 +1208,9 @@ Além disso, ela é uma derivação em $\tens^0(\bm V)$, pois
 	\partial_v(ff')(p) = v|_p(ff') = v|_p(f)f'(p) + f(p) v|_p(f') = (\partial_v(f)f'+f\partial_v(f'))(p).
 	\end{equation*}
 
-Pode-se mostrar que existe uma bijeção entre o conjunto dos campos vetoriais diferenciáveis $\tens^1(\bm V)$ e o conjunto das derivações $\Der(\bm{\tens^0(\bm V)})$. Por esse motivo, é comum se ignorar a notação $\partial_v f$ da derivação e denotar-se simplesmente $vf$. É importante notar, no entanto, que $fv$ e $vf$ são objetos distintos, o primeiro sendo um elemento de $\tens^1(\bm V)$, resultado da multiplicação de uma função escalar por um campo vetorial, uma operação da estrutura de $\tens^0(\bm V)$-módulo de $\tens^1(\bm V)$, e a segunda é um elemento de $\tens^0(\bm V)$, um campo escalar, resultado de uma derivação na álgebra $\bm{\tens^0(\bm V)}$.
+Pode-se mostrar que existe uma bijeção entre o conjunto dos campos vetoriais diferenciáveis $\tens^1(\bm V)$ e o conjunto das derivações $\Der(\bm{\tens^0(\bm V)})$.
+% ATENÇÃO, ESSA BIJEÇÃO PROVAVELMENTE SÓ VALE PARA ESPAÇOS DE DIMESÃO FINITA.
+ Por esse motivo, é comum se ignorar a notação $\partial_v f$ da derivação e denotar-se simplesmente $vf$. É importante notar, no entanto, que $fv$ e $vf$ são objetos distintos, o primeiro sendo um elemento de $\tens^1(\bm V)$, resultado da multiplicação de uma função escalar por um campo vetorial, uma operação da estrutura de $\tens^0(\bm V)$-módulo de $\tens^1(\bm V)$, e a segunda é um elemento de $\tens^0(\bm V)$, um campo escalar, resultado de uma derivação na álgebra $\bm{\tens^0(\bm V)}$.
 
 Definiremos agora o \textit{colchete}\footnote{Comumente chamado de `colchete de Lie' na literatura.} de campos vetoriais. Esse colchete é um produto bilinear que dará, como comentado anteriormente, uma estrutura de álgebra sobre $\R$ a $\tens^1(\bm V)$. O conjunto $\Der(\tens^0(\bm V))$ tem um produto $\circ$ dado pela composição de funções, induzido do produto de composição de $\toplin(\bm{\tens^0(\bm V)},\R)$. Esse produto é associativo, mas não faz de $\Der(\tens^0(\bm V))$ uma álgebra de derivação adjunta\footnote{Álgebra de Lie}, pois nem é fechado; ou seja, a composição de quaisquer duas derivações não é uma derivação. Podemos formar uma álgebra de derivação adjunta a partir de uma álgebra associativa de um modo bem conhecido usando o colchete. Definamos, portanto, para duas derivações $\partial_v,\partial_{v'} \in \Der(\tens^0(\bm V))$, o produto
 	\begin{equation*}
