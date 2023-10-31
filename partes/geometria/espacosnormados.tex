@@ -4098,6 +4098,7 @@ No caso em que $\fun{f}{A \subseteq \R^d}{E'}$, as diferenciais parciais estão 
 Uma consequência direta desses resultados é a diferenciabilidade contínua de uma função multilinear.
 
 \begin{proposition}[Diferencial de função multilinear]
+\label{prop:diferencial.multilinear}
 Sejam $\bm E_0, \ldots, \bm E_{n-1}$ e $\bm E'$ espaços normados e $\fun{l}{E_0 \times \cdots \times E_{n-1}}{E'}$ uma função $n$-linear. A função $l$ é $\Cont^1$-diferenciável e, para todos $x,v \in E_0 \times \cdots \times E_{n-1}$,
 	\begin{equation*}
 	\D l|_x(v) = \sum_{k \in [n]} l(x_0,\ldots,x_{k-1},v_k,x_{k+1},\ldots,x_{n-1}).
@@ -5244,6 +5245,107 @@ Como para $x \in V$ a diferencial $\D_1 f|_x$ é invertível, segue que
 
 
 
+\section{Campos tensoriais}
+
+Campos tensoriais devem ser imaginados como um conjunto de tensores, cada um preso a um ponto de um aberto do espaço normado. A definição é dada a seguir.
+
+\begin{definition}
+	Sejam $\bm E$ um espaço normado, $A \subseteq E$ um aberto e $k,l \in \N$. Um \emph{campo tensorial de tipo $(k,k')$} (ou \emph{campo $(k,l)$-tensorial}) em $A$ é uma função $\fun{T}{A}{E^{\otimes(k,k')}}$. Para todo $x \in A$, o \emph{tensor de $T$ tangente a $A$ em $x$} é
+	\begin{equation*}
+		T|_x := T(x).
+	\end{equation*}
+	
+	Um \emph{campo escalar} é um campo tensorial de tipo $(0,0)$, um \emph{campo $k$-vetorial} é um campo tensorial de tipo $(0,k)$ (para $k=1$, \emph{campo vetorial}) e um \emph{campo $k$-covetorial} é  um campo tensorial de tipo $(k,0)$ (para $k=1$, \emph{campo covetorial}).
+	
+	Para $k \in \N$, o conjunto dos campos $(k,k')$-tensoriais $\Cont^r$-diferenciáveis é denotado $\tens^{(k,k')}_r(A)$ e, o conjunto dos campos $(k,k')$-tensoriais $\Cont^\infty$-diferenciáveis é denotado $\tens^{(k,k')}(A)$.
+\end{definition}
+
+Na definição, não exigimos que a função seja contínua, mas em geral consideraremos campos tensoriais que são contínuos ou com alguma regularidade ainda maior.
+
+
+Além dessa definição, poderíamos considerar também campos tensoriais que variam no tempo, ou seja, uma família de campos tensoriais indexados por um intervalo de números reais.
+
+\begin{definition}
+	Sejam $\bm E$ um espaço normado e $A \subseteq E$ um aberto, $I \subseteq \R$ um intervalo aberto e $k,k' \in \N$. Um \emph{campo tensorial temporal de tipo $(k,k')$} (ou \emph{campo temporal $(k,l)$-tensorial}) em $I \times A$ é uma função $\fun{T}{I \times A}{E^{\otimes(k,k')}}$. Para todo $(t,x) \in I \times A$, o \emph{tensor de $T$ tangente a $A$ em $(t,x)$} é
+	\begin{equation*}
+		T_t|_x := T(t,x).
+	\end{equation*}
+\end{definition}
+
+Focaremos no estudo dos campos tensoriais e não nos campos tensoriais temporais.
+
+Considere 
+Essa transformação é bilinear, portanto segue de \ref{prop:diferencial.multilinear} que ela é diferenciável e
+	\begin{equation*}
+	\D \langle \cdot, \cdot \rangle|_{(\phi,v)}(\phi',v') = \langle \phi', v \rangle + \langle \phi, v' \rangle.
+	\end{equation*}
+
+\begin{proposition}[Contração tensorial]
+	Sejam $\bm E$ um espaço normado, $A \subseteq E$ um aberto, $\fun{\phi}{A}{E\dual}$ um campo covetorial diferenciável e $\fun{v}{A}{E}$ um campo vetorial diferenciável. O campo escalar
+	\begin{align*}
+		\func{\langle \phi, v \rangle}{A}{\R}{x}{\langle \phi, v \rangle(x) := \phi|_x(v|_x)}
+	\end{align*}
+	é diferenciável e, para todo $u \in E$,
+	\begin{equation*}
+		\D \langle \phi, v \rangle|_x(u) = \D \phi|_x(u)(v|x) + \phi|_x \circ \D v|_x(u).
+	\end{equation*}
+	\begin{equation*}
+		\D \langle \phi, v \rangle|_x(u) = \D \phi|_x(u)(v(x)) + \phi(x) \circ \D v|_x(u).
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+	Note que $\langle \phi, v \rangle = \langle \cdot, \cdot \rangle \circ (\phi,v)$, em que
+	\begin{align*}
+		\func{\langle \cdot, \cdot \rangle}{E\dual \times E}{\R}{(\phi,v)}{\phi(v)}.
+	\end{align*}
+	é a a contração tensorial e
+	\begin{align*}
+		\func{(\phi, v)}{A}{E\dual \times E}{x}{(\D f|_x, v(x))}.
+	\end{align*}
+	
+	A contração é uma transformação bilinear, portanto segue de \ref{prop:diferencial.multilinear} que ela é diferenciável e
+	\begin{equation*}
+		\D \langle \cdot, \cdot \rangle|_{(\phi,v)}(\phi',v') = \langle \phi', v \rangle + \langle \phi, v' \rangle.
+	\end{equation*}
+	A função $(\phi,v)$ é diferenciável pela proposiãço~\ref{prop:diferenciabilidade.componentes}, pois $\phi$ e $v$ o são, e
+	\begin{equation*}
+		\D (\phi,v)|_x = (\D \phi|_x, \D v|_x).
+	\end{equation*}
+	Portanto, pela regra da cadeia segue que, para todo $u \in E$,
+	\begin{align*}
+		\D \langle \phi, v \rangle|_x(u) &= \D \langle \cdot, \cdot \rangle|_{(\phi,v)(x)} \circ \D (\phi,v)|_x(u) \\
+			&= \D \langle \cdot, \cdot \rangle|_{(\phi(x),v(x))} \circ (\D\phi|_x,\D v|_x)(u) \\
+			&= \D \langle \cdot, \cdot \rangle|_{(\phi(x),v(x))} (\D\phi|_x(u),\D v|_x(u)) \\
+			&= \langle \D\phi|_x(u), v(x) \rangle + \langle \D\phi|_x, \D v|_x(u) \rangle \\
+			&= \D \phi|_x(u)(v(x)) + \phi(x) \circ \D v|_x(u).
+			\qedhere
+	\end{align*}
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \section{Integração em espaço normados}
 
 \subsection{Integração de trajetórias}
@@ -5573,7 +5675,7 @@ Sejam $I \subseteq \R$ um intervalo compacto, $\bm E$ um espaço normado complet
 
 
 
-\subsection{Campos vetoriais}
+\subsection{Integração de campos vetoriais}
 
 Nesta seção estudaremos campos vetoriais, que devem ser imaginados como um conjunto de vetores, cada um preso a um ponto de um aberto do espaço normado. A definição é dada a seguir.
 
@@ -6150,6 +6252,53 @@ Sejam $\bm E$ um espaço normado completo, $A \subseteq E$ um aberto, $\fun{v}{A
 
 
 \subsubsection{Continuidade e diferenciabilidade do fluxo}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
