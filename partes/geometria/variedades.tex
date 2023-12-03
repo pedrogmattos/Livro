@@ -38,7 +38,7 @@ Seja $V$ um conjunto. Um \emph{atlas} $\Cont^k$ $d$-dimensional de $V$ é um con
 	\begin{equation*}
 	V = \displaystyle\bigcup_{(A,\x) \in \atlas} A;
 	\end{equation*}
-	\item (Compatibilidade) Todas cartas $(A,\x), (\bar A,\x) \in \atlas$  são $\Cont^k$-compatíveis.
+	\item (Compatibilidade $\Cont^k$) Todas cartas $(A,\x), (\bar A,\x) \in \atlas$  são $\Cont^k$-compatíveis.
 	\end{enumerate}
 Para $k=0$, $\atlas$ é um atlas \emph{topológico}, para $k>0$, um atlas \emph{diferencial}, sendo para $k=\infty$ um atlas \emph{suave}.
 \end{definition}
@@ -489,7 +489,313 @@ Sejam $\bm V$ uma variedade (suave) e $\mathcal C = (C_i)_{i \in I}$ uma cobertu
 
 \section{Espaço tangente}
 
-A partir desta seção, não estudaremos mais com detalhes os casos de variedades $\Cont^k$-diferenciais para cada $k \in \N \cup \{\infty\}$. Nos referiremos somente a \emph{variedades} ou \emph{variedades diferenciais}, sendo que o primeiro termo se refere a qualquer variedade topológica e o segundo a variedades suaves, isto é, $\Cont^\infty$-diferenciais, e a mesma nomenclatura será usada para funções diferenciáveis.
+%A partir desta seção, não estudaremos mais com detalhes os casos de variedades $\Cont^k$-diferenciais para cada $k \in \N \cup \{\infty\}$. Nos referiremos somente a \emph{variedades} ou \emph{variedades diferenciais}, sendo que o primeiro termo se refere a qualquer variedade topológica e o segundo a variedades suaves, isto é, $\Cont^\infty$-diferenciais, e a mesma nomenclatura será usada para funções diferenciáveis.
+
+Nesta seção, consideraremos somente variedade diferenciais, ou seja, variedades $\Cont^r$ para $r \geq 1$. Denotaremos isso dizendo que a variedade é $\Cont^{1+r}$, sem referência a $r$, ficando implícito que $r \geq 0$, logo $1+r \geq 1$.
+
+\subsection{Espaço tangente em um ponto}
+
+Para definir a noção de um espaço tangente a uma variedade em um ponto, pensamos localmente através de cartas. Um vetor tangente é puxado do espaço normado modelo para a variedade usando uma carta, mas para que essa definição seja independente da carta escolhida devemos estabelecer uma relação de equivalência entre vetores tangentes da variedade modelo. Para ter a informação de que um vetor veio de uma carta, consideramos primeiro a noção de \emph{vetor coordenado}.
+
+\begin{definition}[Vetores coordenados]
+Seja $\bm V$ uma variedade $\Cont^{1+r}$ modelada num um espaço normado $\bm E$. Um \emph{vetor coordenado} de $\bm V$ é uma tripla $(A,\x,u)$, em que $(A,\x) \in \atlas$ é uma carta de $\bm V$ e $u \in E$ é um vetor.
+	
+Seja $p \in V$. Vetores coordenados \emph{equivalentes em $p$} são vetores coordenados $(A,\x,u)$ e $(A',\x',u')$ tais que $p \in A \cap A'$ e
+	\begin{equation*}
+	\D (\x' \circ x\inv)|_{\x(p)}(u) = u'.
+	\end{equation*}
+Denota-se $(A,\x,u) \asymp_p (A',\x',u')$.
+\end{definition}
+
+Para mostrar que $\asymp_p$ é uma relação de equivalência, devemos considerar o conjunto $\atlas|_p$ das cartas em torno de $p$:
+	\begin{equation*}
+	\atlas|_p = \set{(A,\x) \in \atlas}{p \in A}.
+	\end{equation*}
+
+\begin{proposition}
+Sejam $\bm V$ uma variedade $\Cont^{1+r}$ modelada num um espaço normado $\bm E$ e $p \in V$. A equivalência de vetores coordenados é uma relação de equivalência em $\atlas|_p \times E$.
+\end{proposition}
+\begin{proof}
+	Devemos demonstrar reflexividade, simetria e transitividade.
+	\begin{enumerate}
+	\item (Reflexividade) Para todo $(A,\x,u) \in \atlas|_p \times E$, vale $p \in A \cap A$ e
+		\begin{equation*}
+			\D (\x \circ \x\inv)|_{\x(p)}(u) = \Id(u) = u,
+		\end{equation*}
+	portanto  $(A,\x,u) \asymp_p (A,\x,u)$.
+	
+	\item (Simetria) Para todos $(A,\x,u)$ e $(A',\x',u') \in \atlas|_p \times E$ tais que $(A,\x,u) \asymp_p (A',\x',u')$, vale $p \in A \cap A' = A' \cap A$ e
+		\begin{equation*}
+			\D (\x' \circ x\inv)|_{\x(p)}(u) = u',
+		\end{equation*}
+	logo, como $\x' \circ \x\inv$ é difeomorfismo,
+		\begin{equation*}
+			\D (\x \circ {\x'}\inv)|_{\x'(p)}(u') = u,
+		\end{equation*}
+	portanto $(A',\x',u') \asymp_p (A,\x,u)$.
+	
+	\item (Transitividade) Para todos $(A,\x,u)$, $(A',\x',u')$ e $(A'',\x'',u'') \in \atlas|_p \times E$ tais que $(A,\x,u) \asymp_p (A',\x',u')$ e $(A',\x',u') \asymp_p (A'',\x'',u'')$, vale $p \in A \cap A''$ e $p \in A' \cap A''$, logo $p \in A \cap A''$, e vale também $\D (\x' \circ x\inv)|_{\x(p)}(u) = u'$ e $\D (\x'' \circ {\x'}\inv)|_{\x'(p)}(u') = u''$, logo segue da regra da cadeia que
+	\begin{align*}
+		\D (\x'' \circ x\inv)|_{\x(p)}(u) &= \D (\x'' \circ {\x'}\inv)|_{\x'(p)} \circ \D (\x' \circ x\inv)|_{\x(p)}(u) \\
+			&= \D (\x'' \circ {\x'}\inv)|_{\x'(p)}(u') \\
+			&= u'',
+	\end{align*}
+	portanto $(A,\x,u) \asymp_p (A'',\x'',u'')$.
+	\qedhere
+	\end{enumerate}
+\end{proof}
+
+Como $\asymp_p$ é uma relação de equivalência, podemos definir o conjunto quociente. Este será nosso espaço tangente à variedade no ponto $p$.
+
+\begin{definition}[Espaço tangente]
+Sejam $\bm V$ uma variedade $\Cont^{1+r}$ modelada num um espaço normado $\bm E$ e $p \in V$. O \emph{espaço tangente a $\bm V$ em $p$} é o conjunto de classes de equivalência
+%	\begin{equation*}
+%	\Tg \bm V|_p := (\Tg V|_p,+,-,0,\cdot),
+%	\end{equation*}
+%em que
+	\begin{equation*}
+	\Tg V|_p := \quo{(\atlas|_p \times E)}{\asymp_p}.
+	\end{equation*}
+
+Um \emph{vetor tangente a $\bm V$ em $p$} é um elemento de $v \in \Tg V|_p$. Denota-se $[u]_{\x}|_p := [(A,\x,u)]_{\asymp_p}$.
+\end{definition}
+
+Podemos puxar a estrutura linear de $\bm E$ para $\Tg V|_p$ usando a carta $(A,\x)$ para relacionar $[(A,\x,u)]_{\asymp_p}$ com $u$. Essa identificação não é independente da carta, mas a estrutura linear induzida no espaço tangente é. Primeiro, provemos que um vetor tangente à variedade em um ponto sempre tem um único representante em qualquer carta em torno daquele ponto.
+
+\begin{proposition}
+Sejam $\bm V$ uma variedade $\Cont^{1+r}$ modelada num um espaço normado $\bm E$, $p \in V$ e $v \in \Tg V|_p$. Para toda carta $(A,\x) \in \atlas|_p$, existe um único $u \in E$ tal que $v = [u]_{\x}|_p$. A função
+	\begin{align*}
+	\func{\D\x|_p}{\Tg V|_p}{E}{[u]_{\x}|_p}{u}
+	\end{align*}
+está bem definida e é uma bijeção.
+\end{proposition}
+\begin{proof}
+Como $v \in \Tg V|_p$, existe vetor coordenado $(A',\x',u') \in \atlas|_p \times E$ tal que $v = [(A',\x',u')]_{\asymp_p}$. Como $p \in A \cap A'$, basta definir $u := \D(\x \circ {\x'}\inv)|_{\x'(p)}(u')$, e então segue que $(A',\x',u') \asymp_p (A,\x,u)$. Como $\x \circ {\x'}\inv$ é difeomorfismo, então $\D(\x \circ {\x'}\inv)|_{\x'(p)}$ é um isomorfismo linear, portanto tal $u$ é único.
+
+Isso mostra que a função $\fun{\D\x|_p}{\Tg V|_p}{E}$ está bem definida. (Injetividade) Sejam $v,v' \in \Tg V|_p$ tais que $\D \x|_p(v) = \D \x|_p(v') \in E$. Pelo que foi demonstrado, existem $u, u' \in E$ tais que $v = [u]_{\x}|_p$ e $v' = [u']_{\x}|_p$. Mas então
+	\begin{equation*}
+	u = \D \x|_p([u]_{\x}|_p) = \D \x|_p(v) = \D \x|_p(v') = \D \x|_p([u']_{\x}|_p) = u',
+	\end{equation*}
+portanto $v = [u]_{\x}|_p = [u']_{\x}|_p = v'$. (Sobrejetividade) Seja $u \in E$. Se definirmos $v := [u]_{\x}|_p$, segue que $\D \x|_{p}(v) = u$.
+
+
+
+\end{proof}
+
+\begin{definition}
+Sejam $\bm V$ uma variedade $\Cont^{1+r}$ modelada num um espaço normado $\bm E$ e $p \in V$. A \emph{adição} em $\Tg V|_p$ é
+	\begin{align*}
+	\func{+}{\Tg V|_p \times \Tg V|_p}{\Tg V|_p}{([u]_{\x}|_p, [u']_{\x}|_p)}{[u+u']_{\x}|_p}.
+	\end{align*}
+A \emph{inversão aditiva} em $\Tg V|_p$ é
+	\begin{align*}
+	\func{-}{\Tg V|_p}{\Tg V|_p}{[u]_{\x}|_p}{[-u]_{\x}|_p}.
+	\end{align*}
+O \emph{zero} em $\Tg V|_p$ é
+	\begin{align*}
+	0 := [0]_{\x}|_p.
+	\end{align*}
+A \emph{multiplicação por escalar} em $\Tg V|_p$ é
+	\begin{align*}
+	\func{\cdot}{\R \times \Tg V|_p}{\Tg V|_p}{(c, [u]_{\x}|_p)}{[cu]_{\x}|_p}.
+	\end{align*}
+Denota-se $\bm {\Tg V|_p} := (\Tg V|_p,+,-,0,\cdot)$. 
+\end{definition}
+
+\begin{exercise}
+Prove que as operações em $\Tg V|_p$ estão bem definidas (independem do representante na carta $(A,\x)$ escolhida) e que $\bm {\Tg V|_p}$ é um espaço linear sobre $\R$.
+\end{exercise}
+
+
+\subsection{Diferencial de uma função}
+
+Para definir a diferencial de uma função diferenciável, como de costume usamos cartas para diferenciar a função localmente, e então puxamos essa estrutura de volta para a variedade.
+
+\begin{definition}
+Sejam $\bm V$ e $\bm V'$ variedades $\Cont^{1+r}$ modeladas em espaços normados $\bm E$ e $\bm E'$, respectivamente, $p \in V$ e $\fun{f}{V}{V'}$ uma função $\Cont^{1+r}$-diferenciável. A \emph{diferencial de $f$ em $p$} é a função
+	\begin{align*}
+		\func{\D f|_p}{\Tg V|_p}{\Tg V'|_{f(p)}}{[u]_{\x}|_p}{[\D(\x' \circ f \circ \x\inv)|_p(u)]_{\x'}|_{f(p)}}
+	\end{align*}
+\end{definition}
+
+
+\begin{proposition}
+Sejam $\bm V$ e $\bm V'$ variedades $\Cont^{1+r}$ modeladas em espaços normados $\bm E$ e $\bm E'$, respectivamente, $p \in V$ e $\fun{f}{V}{V'}$ uma função $\Cont^{1+r}$-diferenciável. A diferencial $\fun{\D f|_p}{\Tg V|_p}{\Tg V'|_{f(p)}}$ está bem definida e é uma função linear.
+\end{proposition}
+
+\begin{proposition}[Regra da Cadeia]
+Sejam $\bm V$, $\bm V'$ e $\bm V''$ variedades $\Cont^{1+r}$ modeladas em espaços normados $\bm E$, $\bm E'$ e $\bm E''$, respectivamente, $p \in V$ e $\fun{f}{V}{V'}$ e $\fun{f'}{V'}{V''}$ funções $\Cont^{1+r}$-diferenciáveis. Então
+	\begin{equation*}
+	\D (f' \circ f)|_{p} = \D f'|_{f(p)} \circ \D f|_{p}.
+	\end{equation*}
+\end{proposition}
+
+Note que uma carta $\fun{\x}{A \subseteq V}{E}$ é diferenciável e que
+	\begin{align*}
+	\func{\D\x|_p}{\Tg V|_p}{E}{[u]_{\x}|_p}{u}
+	\end{align*}
+estabelece um isomorfismo entre $\Tg V|_p$ e $E$ que associa a cada vetor tangente $v \in \Tg V|_p$ o vetor $\D\x|_p(v) \in E$, e a cada vetor $u \in E$, o vetor $[u]_{\x}|_p = \D \x\inv|_{\x(p)}(u) \in \Tg V|_p$. Em particular isso mostra que os espaços tangentes de uma variedade têm a mesma dimensão que o espaço normado no qual a variedade é modelada.
+
+
+
+
+\subsection{Fibrado tangente}
+
+\begin{definition}
+Seja $\bm V = (V, \atlas)$ uma variedade $\Cont^{1+r}$ modelada num um espaço normado $\bm E$. O \emph{fibrado tangente} de $\bm V$ é
+	\begin{equation*}
+	\Tg V := \coprod_{p \in V} \Tg V|_p = \set{(p,v)}{p \in V,v \in \Tg V|_p},
+	\end{equation*}
+a união disjunta dos espaços tangentes a $\bm V$ em todos pontos de $V$. A \emph{projeção canônica} do fibrado $\Tg V$ é a função
+	\begin{align*}
+	\func{\proj}{\Tg A}{A}{(p, v)}{p}.
+	\end{align*}
+
+Seja $(A,\x) \in \atlas$. A \emph{carta de $\Tg V$ induzida por $(A,\x)$} é o par $(\Tg A, \bar \x)$, em que
+	\begin{equation*}
+	\Tg A := \set{(p,v)}{p \in A, v \in \Tg V|_p} \subseteq \Tg V
+	\end{equation*}
+e
+	\begin{align*}
+		\func{\bar \x}{\Tg A}{E \times E}{(p, v)}{(\x(p), \D\x|_p(v))}.
+	\end{align*}
+O \emph{atlas de $\Tg V$ induzido por $\atlas$} é o conjunto
+	\begin{equation*}
+	\bar \atlas := \set{(\Tg A, \bar \x)}{(A,\x) \in \atlas}.
+	\end{equation*}
+\end{definition}
+
+\begin{proposition}
+Seja $\bm V = (V, \atlas)$ uma variedade $\Cont^{1+r}$ modelada num um espaço normado $\bm E$. O atlas induzido $\bar \atlas$ é atlas $\Cont^r$ de $\Tg V$ modelado em $\bm E \times \bm E$.
+\end{proposition}
+\begin{proof}
+Primeiro mostremos que, para toda carta $(A,\x) \in \atlas$, a carta induzida $(\Tg A, \bar x) \in \bar \atlas$ é um carta de $\Tg V$ modelada em $\bm E \times \bm E$.
+	\begin{itemize}
+%		\item ($\fun{\bar \x}{\Tg A}{E \times E}$ é injetiva)
+		\item ($\bar \x$ é injetiva) Sejam $(p,v), (p',v') \in \Tg A$ tais que $\bar \x(p, v) = \bar \x(p', v')$. Então $\x(p) = \x(p')$ e $\D \x|_p(v) = \D \x|_{p'}(v')$. Como $(A,\x)$ é carta, $\x$ é injetiva, portanto $p = p'$, o que implica que $\D \x|_p(v) = \D \x|_p(v')$; como $\D \x|_p$ é injetiva, então $v=v'$, portanto $(p,v) = (p',v')$.
+		
+		\item ($\bar \x(\Tg A)$ é aberto em $E \times E$) Notemos que
+			\begin{equation*}
+			\bar \x(\Tg A) = \x(A) \times E.
+			\end{equation*}
+		Seja $(y,u) \in E \times E$. Note que $(y, u) \in \bar \x(\Tg A)$ se, e somente se, $(p,v) \in \Tg A$ tal que $\bar \x(p,v) = (y,u)$. Como $\bar \x(p,v) = (\x(p), \D\x|_p(v))$, isso é equivalente a existirem $p \in A$ e $v \in \Tg V|_p$ tais que $y = \x(p)$ e $u = \D\x|_p(v)$. Como $\fun{\D \x|_p}{\Tg V|_p}{E}$ é isomorfismo, isso é o mesmo que existir $p \in A$ tal que $y=\x(p)$, o que equivale a $(y,u) \in \x(A) \times E$.
+%		\begin{itemize}
+%		\item ($\subseteq$) Seja $(y, u) \in \bar \x(\Tg A)$. Então existe $(p, v) \in \Tg A$ tal que $\bar \x(p,v) = (y,u)$. Então $p \in A$, logo $\x(p) \in \x(A)$, e $v \in \Tg V|_p$, logo $\D \x|_p(v) \in E$, portanto $\bar \x(p,v) = (\x(p), \D \x|_p(v)) \in \x(A) \times E$.
+%		
+%		\item ($\supseteq$) Seja $(y, u) \in \x(A) \times E$. Como $y \in \x(A)$, existe $p \in A$ tal que $\x(p) = y$. Tomando $[u]_{\x}|_p \in \Tg V|_p$, segue que $(p, [u]_{\x}|_p) \in \Tg A$ e $\D \x|_p([u]_{\x}|_p) = u \in E$, portanto $(y,u) = \bar \x(p,[u]_{\x}|_p) \in \x(\Tg A)$.
+%%		$(y,v) = (\x(p), \D \x|_p([v]_{\x}|_p)) = \bar \x(p, [v]_{\x}|_p) \in \bar \x(\Tg A)$.
+%		\end{itemize}			
+		Sendo assim, como $(A, \x)$ é carta, $\x(A)$ é aberto em $E$, portanto $\bar \x(\Tg A) = \x(A) \times E$ é aberto em $E \times E$.
+	\end{itemize}
+
+Agora, devemos mostrar que $\bar \atlas$ é um atlas.
+	\begin{itemize}
+	\item (Cobertura) Por definição temos $\bigcup_{(\Tg A,\bar x) \in \bar \atlas} \Tg A \subseteq \Tg V$. Para a inclusão contrária, seja $(p, v) \in \Tg V$. Como $p \in V$ e $\atlas$ é atlas, existe carta $(A, \x)$ tal que $p \in A$. Como e $v \in \Tg V|_p$, então $\D \x|_p(v) \in E$, portanto $v = [\D \x|_p(v)]|_{\x}|_p$, o que mostra que $(p,v) \in \Tg A$.	
+	
+	\item (Compatibilidade $\Cont^{1+r}$) Sejam $(\Tg A, \bar \x)$ e $(\Tg A', \bar \x') \in \bar \atlas$ cartas induzidas por $(A, \x)$ e $(A', \x') \in \atlas$, respectivamente. Como $\atlas$ é atlas $\Cont^{1+r}$, as cartas $(A, \x)$ e $(A', \x')$ são $\Cont^{1+r}$-compatíveis.
+
+	Primeiro mostremos que os conjuntos $\bar x(\Tg A \cap \Tg A')$  e $\bar x'(\Tg A \cap \Tg A')$ são abertos em $E \times E$. Notemos que
+		\begin{equation*}
+		\bar \x(\Tg A \cap \Tg A') = \x(A \cap A') \times E.
+		\end{equation*}
+	Seja $(y,u) \in E \times E$. Note que $(y, u) \in \bar \x(\Tg A \cap \Tg A')$ se, e somente se, existe $(p,v) \in \Tg A \cap \Tg A'$ tal que $\bar \x(p,v) = (y,u)$. Como $\bar \x(p,v) = (\x(p), \D\x|_p(v))$, isso é equivalente a existirem $p \in V$ e $v \in \Tg V|_p$ tais que $p \in A$, $p \in A'$, $y = \x(p)$ e $u = \D\x|_p(v)$. Como $\fun{\D \x|_p}{\Tg V|_p}{E}$ é isomorfismo, isso é o mesmo que existir $p \in A \cap A'$ tal que $y=\x(p)$, o que equivale a $(y,u) \in \x(A \cap A') \times E$.
+%	\begin{itemize*}
+%	\item [($\subseteq$)] Seja $(p,v) \in \Tg A \cap \Tg A'$. Então $p \in A$ e $p \in A'$, logo $p \in A \cap A'$, o que implica $\x(p) \in \x(A \cap A')$; além disso, $\D \x|_p(v) \in E$, logo $(\x(p), \D \x|_p(v)) \in \x(A \cap A') \times E$ e $\bar \x(p,v) = (\x(p), \D \x|_p(v))$.
+%	
+%	\item [($\supseteq$)] Seja $(y,v) \in \x(A \cap A') \times E$. Então $y \in \x(A \cap A')$, logo existe $p \in A \cap A'$ tal que $\x(p) = y$, e $v \in E$, logo $\D \x|_p([v]_{\x}|_p) = v \in E$, portanto $(p, [v]_{\x}|_p) \in \Tg A \cap \Tg A'$ e $(y,v) = \bar\x(p, [v]_{\x}|_p)$.
+%	\end{itemize*}
+	Da mesma forma, vale $\bar \x'(\Tg A \cap \Tg A') = \x'(A \cap A') \times E$. Sendo assim, como $(A, \x)$ e $(A', \x')$ são $\Cont^{1+r}$-compatíveis, os conjuntos $x(A \cap A')$ e $x'(A \cap A')$ são abertos em $E$, portanto os conjuntos $\bar \x(\Tg A \cap \Tg A')$ e $\bar \x'(\Tg A \cap \Tg A')$ são abertos em $E \times E$.
+	
+	Agora mostremos que a transição de coordenadas $\fun{\bar \x' \circ \bar \x\inv}{\bar x(\Tg A \cap \Tg A')}{\bar x'(\Tg A \cap \Tg A')}$ é um difeomorfismo $\Cont^{1+r}$. Como $\bar \x(\Tg A \cap \Tg A') = \x(A \cap A') \times E$, a inversa de $\bar \x$ em $\Tg A \cap \Tg A'$ é dada por
+		\begin{align*}
+		\func{\bar \x\inv}{\x(A \cap A') \times E}{\Tg A \cap \Tg A'}{(y,v)}{(\x\inv(y),[v]|_{\x}|_{\x\inv(y)})}.
+		\end{align*}
+	Portanto, para todo $(y,v) \in \x(A \cap A') \times E$,
+		\begin{align*}
+		\bar x' \circ \bar \x\inv(y,v) &= \bar \x' ((\x\inv(y),[v]|_{\x}|_{\x\inv(y)}) \\
+			&= (\x'(\x\inv(y)), \D \x'|_{\x\inv(p)} ([v]|_{\x}|_{\x\inv(y)})) \\
+			&= (\x' \circ \x\inv(y), \D (\x' \circ \x\inv)|_y(u))
+		\end{align*}
+	Sendo assim, como $(A, \x)$ e $(A', \x')$ são $\Cont^{1+r}$-compatíveis, a transição de coordenadas $\fun{\x' \circ \x\inv}{x(A \cap A')}{x'(A \cap A')}$ é um difeomorfismo $\Cont^{1+r}$, portanto sua diferencial $\fun{\D (\x' \circ \x\inv)}{x(A \cap A')}{\toplin(E,E)}$ é um difeomorfismo $\Cont^r$,
+	% e sua diferencial $\D (\x' \circ \x\inv)$ também? ou $\D (\x' \circ \x\inv)|_y$, pois é $\Cont^\infty$?
+	o que implica que $\bar x' \circ \bar \x\inv$ é um difeomorfismo $\Cont^r$, portanto as cartas $(\Tg A, \bar \x)$ e $(\Tg A', \bar \x')$ são $\Cont^r$-compatíveis.
+	\qedhere
+	\end{itemize}
+\end{proof}
+
+
+
+
+% A projeção é contínua! e $\Cont^r$?
+
+
+
+
+
+
+
+
+
+
+
+
+\subsubsection{Referencial local coordenado}
+
+Dada uma carta $(A,\x)$ de $V$, as funções $\left( \derr{\x^i}_p \right)_{i \in [d]}$, definidas por
+\begin{align*}
+	\func{\derr{\x^i}_p}{\tens^0(\bm V)}{\R}{f}{\partial_i(f \circ \x\inv)|_{\x(p)}}
+\end{align*}
+são uma base ordenada de $\Tg V|_p$. Essas funções são lineares porque, para todas $f,f' \in \tens^0(\bm V)$ e $c \in \R$,
+\begin{align*}
+	\derr{\x^i}_p(cf+f') &= \partial_i((cf+f') \circ \x\inv)|_{x(p)} \\
+	&= \partial_i((cf \circ \x\inv) + (f' \circ \x\inv))|_{x(p)} \\
+	&= c\partial_i(f \circ \x\inv)|_{x(p)} + \partial_i(f' \circ \x\inv))|_{x(p)} \\
+	&= c\derr{\x^i}_p f + \derr{\x^i}_p f,
+\end{align*}
+e são derivações porque, para todas $f,f' \in \tens^0(\bm V)$,
+\begin{align*}
+	\derr{\x^i}_p(ff') &= \partial_i ((ff') \circ \x\inv)|_{\x(p)} \\
+	&= \partial_i ((f \circ \x\inv)(f' \circ \x\inv))|_{\x(p)} \\
+	&= (f \circ \x\inv)|_{x(p)}(\partial_i (f' \circ \x\inv)|_{\x(p)} \\
+	&\qquad + (f' \circ \x\inv)|_{\x(p)}(\partial_i (f \circ \x\inv)|_{\x(p)} \\
+	&= f(p)\derr{\x^i}_p f +  f'(p)\derr{\x^i}_p f'.
+\end{align*}
+Vale lembrar que $\partial_i f(p)$ é a derivada direcional da função $f$ na direção de $e_i$ no ponto $p$ (também identificada com a derivada parcial $\D_i f(p)$) e
+\begin{equation*}
+	\partial_i f(p) = \D f(p) \cdot e_i.
+\end{equation*}
+
+A motivação da notação $\derantiga{}{\x^i}$, além do uso histórico, vem da ideia de que vale a regra da cadeia
+\begin{align*}
+	\partial_i(f \circ \x\inv)|_{x(p)} \text{`='} \partial_i f|_{\x\inv(\x(p))} \circ \partial_i(\x\inv)|_{x(p)} \text{`='} \partial_i f|_p \circ (\partial_i \x|_p)\inv \text{`='} \left.\frac{\partial_i f}{\partial_i \x}\right|_p.
+\end{align*}
+%	\begin{align*}
+	%	\partial_i(f \circ \x\inv)|_{x(p)} &= \partial_i f|_{\x\inv(\x(p))} \circ \partial_i(\x\inv)|_{x(p)} \\
+	%		&= \partial_i f|_p \circ (\partial_i \x|_{\x\inv(\x(p)})\inv \\
+	%		&= \partial_i f|_p \circ (\partial_i \x|_p)\inv \\
+	%		&\text{`='} \left.\frac{\partial_i f}{\partial_i \x}\right|_p.
+	%	\end{align*}
+
+A função
+\begin{align*}
+	\func{\derantiga{}{\x^i}}{A}{\Tg V|_A}{p}{\derr{\x^i}_p}
+\end{align*}
+é um campo vetorial em $A$ --- uma seção de $\Tg V|_A$ --- e $\derantiga{}{\x} = \left( \derantiga{}{\x^i} \right)_{i \in [d]}$ é um referencial local de $A$.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \subsection{Álgebra dos campos escalares}
 
@@ -543,7 +849,7 @@ Seja $\bm V$ uma variedade diferencial. A lista
 é um anel.
 \end{proposition}
 
-\subsection{Espaço tangente e a diferencial}
+\subsection{Definições alternativas do espaço tangente}
 
 \subsubsection{Derivações em pontos}
 
@@ -782,61 +1088,7 @@ o que implica que
 
 Essa proposição mostra que $\left( \partial_i|_p \right)_{i \in [d]}$ é uma base ordenada do espaço tangente $\Tg \R^d|_p$, o qual é isomorfo a $\R^d$ e deve ser visto como o espaço dos vetores tangentes a $\R^d$ em $p$.
 
-\subsection{Fibrado tangente}
-
-\begin{definition}
-Seja $\bm V$ um variedade diferencial. O \emph{fibrado tangente} de $\bm V$ é
-	\begin{equation*}
-	\Tg V := \coprod_{p \in V} \Tg V|_p = \set{(p,v)}{p \in V,v \in \Tg V|_p},
-	\end{equation*}
-a união disjunta dos espaços tangentes a $\bm V$ em todos pontos de $V$.
-\end{definition}
-
-\subsubsection{Referencial local coordenado}
-
-Dada uma carta $(A,\x)$ de $V$, as funções $\left( \derr{\x^i}_p \right)_{i \in [d]}$, definidas por
-	\begin{align*}
-	\func{\derr{\x^i}_p}{\tens^0(\bm V)}{\R}{f}{\partial_i(f \circ \x\inv)|_{\x(p)}}
-	\end{align*}
-são uma base ordenada de $\Tg V|_p$. Essas funções são lineares porque, para todas $f,f' \in \tens^0(\bm V)$ e $c \in \R$,
-	\begin{align*}
-	\derr{\x^i}_p(cf+f') &= \partial_i((cf+f') \circ \x\inv)|_{x(p)} \\
-		&= \partial_i((cf \circ \x\inv) + (f' \circ \x\inv))|_{x(p)} \\
-		&= c\partial_i(f \circ \x\inv)|_{x(p)} + \partial_i(f' \circ \x\inv))|_{x(p)} \\
-		&= c\derr{\x^i}_p f + \derr{\x^i}_p f,
-	\end{align*}
-e são derivações porque, para todas $f,f' \in \tens^0(\bm V)$,
-	\begin{align*}
-	\derr{\x^i}_p(ff') &= \partial_i ((ff') \circ \x\inv)|_{\x(p)} \\
-		&= \partial_i ((f \circ \x\inv)(f' \circ \x\inv))|_{\x(p)} \\
-		&= (f \circ \x\inv)|_{x(p)}(\partial_i (f' \circ \x\inv)|_{\x(p)} \\
-		&\qquad + (f' \circ \x\inv)|_{\x(p)}(\partial_i (f \circ \x\inv)|_{\x(p)} \\
-		&= f(p)\derr{\x^i}_p f +  f'(p)\derr{\x^i}_p f'.
-	\end{align*}
-Vale lembrar que $\partial_i f(p)$ é a derivada direcional da função $f$ na direção de $e_i$ no ponto $p$ (também identificada com a derivada parcial $\D_i f(p)$) e
-	\begin{equation*}
-	\partial_i f(p) = \D f(p) \cdot e_i.
-	\end{equation*}
-
-A motivação da notação $\derantiga{}{\x^i}$, além do uso histórico, vem da ideia de que vale a regra da cadeia
-	\begin{align*}
-	\partial_i(f \circ \x\inv)|_{x(p)} \text{`='} \partial_i f|_{\x\inv(\x(p))} \circ \partial_i(\x\inv)|_{x(p)} \text{`='} \partial_i f|_p \circ (\partial_i \x|_p)\inv \text{`='} \left.\frac{\partial_i f}{\partial_i \x}\right|_p.
-	\end{align*}
-%	\begin{align*}
-%	\partial_i(f \circ \x\inv)|_{x(p)} &= \partial_i f|_{\x\inv(\x(p))} \circ \partial_i(\x\inv)|_{x(p)} \\
-%		&= \partial_i f|_p \circ (\partial_i \x|_{\x\inv(\x(p)})\inv \\
-%		&= \partial_i f|_p \circ (\partial_i \x|_p)\inv \\
-%		&\text{`='} \left.\frac{\partial_i f}{\partial_i \x}\right|_p.
-%	\end{align*}
-
-A função
-	\begin{align*}
-	\func{\derantiga{}{\x^i}}{A}{\Tg V|_A}{p}{\derr{\x^i}_p}
-	\end{align*}
-é um campo vetorial em $A$ --- uma seção de $\Tg V|_A$ --- e $\derantiga{}{\x} = \left( \derantiga{}{\x^i} \right)_{i \in [d]}$ é um referencial local de $A$.
-
-
-\subsection{Curvas equivelozes}
+\subsubsection{Curvas equivelozes}
 
 O espaço tangente pode ser alternativamente descrito com curvas.
 
@@ -1212,7 +1464,7 @@ Pode-se mostrar que existe uma bijeção entre o conjunto dos campos vetoriais d
 % ATENÇÃO, ESSA BIJEÇÃO PROVAVELMENTE SÓ VALE PARA ESPAÇOS DE DIMESÃO FINITA.
  Por esse motivo, é comum se ignorar a notação $\partial_v f$ da derivação e denotar-se simplesmente $vf$. É importante notar, no entanto, que $fv$ e $vf$ são objetos distintos, o primeiro sendo um elemento de $\tens^1(\bm V)$, resultado da multiplicação de uma função escalar por um campo vetorial, uma operação da estrutura de $\tens^0(\bm V)$-módulo de $\tens^1(\bm V)$, e a segunda é um elemento de $\tens^0(\bm V)$, um campo escalar, resultado de uma derivação na álgebra $\bm{\tens^0(\bm V)}$.
 
-Definiremos agora o \textit{colchete}\footnote{Comumente chamado de `colchete de Lie' na literatura.} de campos vetoriais. Esse colchete é um produto bilinear que dará, como comentado anteriormente, uma estrutura de álgebra sobre $\R$ a $\tens^1(\bm V)$. O conjunto $\Der(\tens^0(\bm V))$ tem um produto $\circ$ dado pela composição de funções, induzido do produto de composição de $\toplin(\bm{\tens^0(\bm V)},\R)$. Esse produto é associativo, mas não faz de $\Der(\tens^0(\bm V))$ uma álgebra de derivação adjunta\footnote{Álgebra de Lie}, pois nem é fechado; ou seja, a composição de quaisquer duas derivações não é uma derivação. Podemos formar uma álgebra de derivação adjunta a partir de uma álgebra associativa de um modo bem conhecido usando o colchete. Definamos, portanto, para duas derivações $\partial_v,\partial_{v'} \in \Der(\tens^0(\bm V))$, o produto
+Definiremos agora o \textit{colchete}\footnote{Comumente chamado de `colchete de Lie' na literatura.} de campos vetoriais. Esse colchete é um produto bilinear que dará, como comentado anteriormente, uma estrutura de álgebra sobre $\R$ a $\tens^1(\bm V)$. O conjunto $\Der(\tens^0(\bm V))$ tem um produto $\circ$ dado pela composição de funções, induzido do produto de composição de $\toplin(\bm{\tens^0(\bm V)},\R)$. Esse produto é associativo, mas não faz de $\Der(\tens^0(\bm V))$ uma álgebra de derivação adjunta\footnote{Álgebra de Lie}, pois não é fechado; ou seja, a composição de quaisquer duas derivações não é uma derivação. Podemos formar uma álgebra de derivação adjunta a partir de uma álgebra associativa de um modo bem conhecido usando o colchete. Definamos, portanto, para duas derivações $\partial_v,\partial_{v'} \in \Der(\tens^0(\bm V))$, o produto
 	\begin{equation*}
 	\col{\partial_v}{\partial_{v'}} := \partial_v \circ \partial_{v'} - \partial_{v'} \circ \partial_v.
 	\end{equation*}
@@ -2109,7 +2361,7 @@ Seja $d \in \N$. Um \emph{retângulo aberto} $d$-dimensional é um conjunto $R \
 \end{definition}
 
 \begin{definition}
-Sejam $\bm V = (V,\atlas)$ uma variedade $\Cont^r$ $d$-dimensional e $k \in [d]$. Uma \emph{carta $k$-folheada} (ou \emph{$k$-dimensionalmente folheada}) de $\bm V$ é uma carta $(A,\x) \in \atlas$ para a qual existem retângulos abertos $B_{\tang} \subseteq \R^k$ e $B_{\tran} \subseteq \R^{d-k}$ tais que
+Sejam $\bm V = (V,\atlas)$ uma variedade $\Cont^{1+r}$ $d$-dimensional e $k \in [d]$. Uma \emph{carta $k$-folheada} (ou \emph{$k$-dimensionalmente folheada}) de $\bm V$ é uma carta $(A,\x) \in \atlas$ para a qual existem retângulos abertos $B_{\tang} \subseteq \R^k$ e $B_{\tran} \subseteq \R^{d-k}$ tais que
 	\begin{equation*}
 	\x(A) = B_{\tang} \times B_{\tran}.
 	\end{equation*}
@@ -2120,7 +2372,7 @@ Para todo $y \in B_{\tran}$, a \emph{placa} (\emph{tangencial}) de $(A,\x)$ rela
 Os símbolos $\tang$ e $\tran$ são lidos \emph{tangente} e \emph{transverso}, respectivamente.
 
 \begin{proposition}
-Seja $\bm V = (V,\atlas)$ uma variedade $\Cont^r$ $d$-\! dimensional e $(A,\x) \in \atlas$ uma carta $k$-folheada de $\bm V$. As placas $\{P_y\}_{y \in B_{\tran}}$ são uma partição do domínio $A$ de $(A,\x)$.
+Seja $\bm V = (V,\atlas)$ uma variedade $\Cont^{1+r}$ $d$-\! dimensional e $(A,\x) \in \atlas$ uma carta $k$-folheada de $\bm V$. As placas $\{P_y\}_{y \in B_{\tran}}$ são uma partição do domínio $A$ de $(A,\x)$.
 \end{proposition}
 \begin{proof}
 Para mostrar isso, primeiro notamos que $P_y = \x\inv(B_{\tang} \times \{y\}) \neq \emptyset$, pois $\x$ é sobrejetiva. Segundo, como $\x(A) = B_{\tang} \times B_{\tran}$, então
@@ -2140,23 +2392,23 @@ portanto, se $y=y'$, $P_y = P_{y'}$ e, se $y \neq y'$, $P_y \cap P_{y'} = \empty
 \end{proof}
 
 \begin{definition}
-Seja $\bm V = (V,\atlas)$ uma variedade $\Cont^r$ $d$-dimensional. Cartas folheadas de $\bm V$ \emph{coerentemente folheadas} são cartas folheadas $(A,\x), (A',\x') \in \atlas$ tais que, para todas placas $P$ de $(A,\x)$ e $P'$ de $(A',\x')$, a interseção $P \cap P'$ é aberta em $P$ e em $P'$. Denota-se $(A,\x) \coerfol (A',\x')$.
+Seja $\bm V = (V,\atlas)$ uma variedade $\Cont^{1+r}$ $d$-dimensional. Cartas folheadas de $\bm V$ \emph{coerentemente folheadas} são cartas folheadas $(A,\x), (A',\x') \in \atlas$ tais que, para todas placas $P$ de $(A,\x)$ e $P'$ de $(A',\x')$, a interseção $P \cap P'$ é aberta em $P$ e em $P'$. Denota-se $(A,\x) \coerfol (A',\x')$.
 \end{definition}
 
 Por definição, as cartas têm que ser ambas folheadas com placas de mesma dimensão caso tenham interseção não vazia, caso contrário a interseção de duas placas não seria aberta na placa de dimensão maior. Note que a relação de coerência de folheação é simétrica por definição e é reflexiva pois, para todos $y,y' \in B_{\tran}$ com placas relativas $P_y,P_{y'} \subseteq A$ de uma carta folheada $(A,\x)$, temos $P_y = P_{y'}$, se, e somente se, $y=y'$, logo $P_y \cap P_{y'}$ é $P_y$ se $y=y'$, ou $\emptyset$ se $y \neq y'$. Como $P_y$ é aberto em si mesmo e $\emptyset$ é aberto, segue que $(A,\x)$ é coerentemente folheada consigo mesma. Para mostrar que a relação é transitiva, no entanto, precisamos de um atlas de cartas coerentemente folheadas.
 
 \begin{definition}
-Seja $\bm V = (V,\atlas)$ uma variedade $\Cont^r$ $d$-dimensional. Um \emph{atlas $k$-folheado\footnote{Novamente, ou \emph{$k$-dimensionalmente folheado}.}} de $\bm V$ é um subatlas $\atlas' \subseteq \atlas$ cujas cartas são cartas $k$-folheadas e coerentemente folheadas duas a duas.
+Seja $\bm V = (V,\atlas)$ uma variedade $\Cont^{1+r}$ $d$-dimensional. Um \emph{atlas $k$-folheado\footnote{Novamente, ou \emph{$k$-dimensionalmente folheado}.}} de $\bm V$ é um subatlas $\atlas' \subseteq \atlas$ cujas cartas são cartas $k$-folheadas e coerentemente folheadas duas a duas.
 \end{definition}
 
 \begin{definition}
-Seja $\bm V$ uma variedade $\Cont^r$ $d$-dimensional. Atlas \emph{coerentemente folheados} de $\bm V$ são atlas folheados $\atlas$ e $\atlas'$ de $\bm V$ tais que todas cartas $(A,\x) \in \atlas$ e $(A',\x') \in \atlas'$ são coerentemente folheadas. Denota-se $\atlas \coerfol \atlas'$.
+Seja $\bm V$ uma variedade $\Cont^{1+r}$ $d$-dimensional. Atlas \emph{coerentemente folheados} de $\bm V$ são atlas folheados $\atlas$ e $\atlas'$ de $\bm V$ tais que todas cartas $(A,\x) \in \atlas$ e $(A',\x') \in \atlas'$ são coerentemente folheadas. Denota-se $\atlas \coerfol \atlas'$.
 \end{definition}
 
 Essa definição é equivalente a dizer que $\atlas \cup \atlas$ é um atlas folheado.
 
 \begin{proposition}
-Seja $\bm V$ uma variedade $\Cont^r$ $d$-dimensional. A relação de coerência de folheação de atlas é uma relação de equivalência.
+Seja $\bm V$ uma variedade $\Cont^{1+r}$ $d$-dimensional. A relação de coerência de folheação de atlas é uma relação de equivalência.
 \end{proposition}
 \begin{proof}
 A reflexividade e a simetria são evidentes, pois valem entre cartas folheadas. Para conferir a transitividade, basta mostrar que, se $\atlas = \{(A_i,\x_i)\}_{i \in I}$ é um atlas $k$-folheado de $\bm V$ e $(A,\x), (A',\x')$ são cartas $k$-folheadas de $\bm V$ que são coerentemente folheadas com cada carta de $\atlas$, então as cartas $(A,\x)$ e $(A',\x')$ são coerentemente folheadas. Sejam $P$ e $P'$ placas de $(A,\x)$ e $(A',\x')$, respectivamente. Se $P \cap P' = \emptyset$, $P \cap P'$ é aberto em $P$ e em $P'$. Caso contrário, seja $p \in P \cap P'$. Como $\atlas$ é atlas, existe $i \in I$ tal que $p \in A_i$. Seja $Q_p$ a placa de $(A_i,\x)$ tal que $p \in Q_p$. Como $(A,\x) \coerfol (A_i,\x_i)$, segue que $P \cap Q_p$ é aberto em $P$ e em $Q_p$ e, como $(A_i,\x_i) \coerfol (A',\x')$ que $Q_p \cap P'$ é aberto em $Q_p$ e em $P'$. Assim, segue que $P \cap Q_p \cap P'$ é aberto em $Q_p$ e, por uma mudança de parametrização%\footnote{
@@ -2172,7 +2424,7 @@ concluímos que $P \cap P'$ é aberto em $P$ e em $P'$, pois é união de aberto
 \subsection{Componentes tangencial e transversal da carta}
 
 \begin{definition}
-Sejam $\bm V = (V,\atlas)$ uma variedade $\Cont^r$ $d$-dimensional e $(A,\x) \in \atlas$ uma carta $k$-folheada de $\bm V$. A \emph{projeção tangencial} de $(A,\x)$ é a projeção canônica $\proj_{\tang}\colon B_{\tang} \times B_{\tran} \to B_{\tang}$ e a \emph{componente tangencial} de $\x$ é a função $\x_{\tang} := \proj_{\tang} \circ \x\colon A \to B_{\tang}$. A \emph{projeção transversal} de $(A,\x)$ é a projeção canônica $\proj_{\tran}\colon B_{\tang} \times B_{\tran} \to B_{\tran}$ e a \emph{componente transversal} de $\x$ é a função $\x_{\tran} := \proj_{\tran} \circ \x\colon A \to B_{\tran}$.
+Sejam $\bm V = (V,\atlas)$ uma variedade $\Cont^{1+r}$ $d$-dimensional e $(A,\x) \in \atlas$ uma carta $k$-folheada de $\bm V$. A \emph{projeção tangencial} de $(A,\x)$ é a projeção canônica $\proj_{\tang}\colon B_{\tang} \times B_{\tran} \to B_{\tang}$ e a \emph{componente tangencial} de $\x$ é a função $\x_{\tang} := \proj_{\tang} \circ \x\colon A \to B_{\tang}$. A \emph{projeção transversal} de $(A,\x)$ é a projeção canônica $\proj_{\tran}\colon B_{\tang} \times B_{\tran} \to B_{\tran}$ e a \emph{componente transversal} de $\x$ é a função $\x_{\tran} := \proj_{\tran} \circ \x\colon A \to B_{\tran}$.
 \end{definition}
 
 %%%%%%%%%%%%%%% Equivalência de definição de coerentemente folheada
@@ -2181,7 +2433,7 @@ Sejam $\bm V = (V,\atlas)$ uma variedade $\Cont^r$ $d$-dimensional e $(A,\x) \in
 Mostraremos uma equivalência da definição de coerência de folheação que será útil.
 
 \begin{proposition}
-Sejam $\bm V = (V,\atlas)$ uma variedade $\Cont^r$ $d$-dimensional e $(A,\x)$, $(A',\x') \in \atlas$ cartas $k$-folheadas de $\bm V$. As cartas são coerentemente folheadas se, e somente se, todo ponto $p \in A \cap A'$ tem vizinhança em que a transição de coordenadas
+Sejam $\bm V = (V,\atlas)$ uma variedade $\Cont^{1+r}$ $d$-dimensional e $(A,\x)$, $(A',\x') \in \atlas$ cartas $k$-folheadas de $\bm V$. As cartas são coerentemente folheadas se, e somente se, todo ponto $p \in A \cap A'$ tem vizinhança em que a transição de coordenadas
 	\begin{equation*}
 	\x' \circ \x\inv\colon \x(A \cap A') \to \x'(A \cap A')
 	\end{equation*}
@@ -2222,11 +2474,11 @@ ou seja, $\x'_{\tran} \circ \x\inv$ independe de $B_{\tang}$. Definindo $h_{\tan
 \subsection{Folheação}
 
 \begin{definition}
-Seja $\bm V$ uma variedade $\Cont^r$ $d$-dimensional. Uma \emph{$k$-folheação} de $\bm V$ é uma partição $\Fol$ de $V$ em subvariedades $k$-dimensionais imersas\footnote{Isso quer dizer que a subvariedade é imagem de uma imersão injetiva em $V$.} de $V$, as \emph{folhas} de $\Fol$, para a qual existe atlas $k$-folheado $\atlas_\Fol$ de $V$ satisfazendo que, para toda carta folheada $(A,\x) \in \atlas_\Fol$ e toda $F \in \Fol$, $F \cap A$ é uma união de placas de $\atlas_\Fol$.
+Seja $\bm V$ uma variedade $\Cont^{1+r}$ $d$-dimensional. Uma \emph{$k$-folheação} de $\bm V$ é uma partição $\Fol$ de $V$ em subvariedades $k$-dimensionais imersas\footnote{Isso quer dizer que a subvariedade é imagem de uma imersão injetiva em $V$.} de $V$, as \emph{folhas} de $\Fol$, para a qual existe atlas $k$-folheado $\atlas_\Fol$ de $V$ satisfazendo que, para toda carta folheada $(A,\x) \in \atlas_\Fol$ e toda $F \in \Fol$, $F \cap A$ é uma união de placas de $\atlas_\Fol$.
 \end{definition}
 
 \begin{proposition}
-Sejam $\bm V$ uma variedade $\Cont^r$ $d$-dimensional e $\Fol$ uma $k$-folheação de $\bm V$. As folhas de $\Fol$ são conexas.
+Sejam $\bm V$ uma variedade $\Cont^{1+r}$ $d$-dimensional e $\Fol$ uma $k$-folheação de $\bm V$. As folhas de $\Fol$ são conexas.
 \end{proposition}
 %\begin{proof}
 %Basta notar que, por definição, para toda folha $F \in \Fol$ e para toda carta folheada $(A,\x) \in \atlas_\Fol$, $F \cap A$ é uma união de placas de $\atlas_\Fol$.
@@ -2239,7 +2491,7 @@ Sejam $\bm V$ uma variedade $\Cont^r$ $d$-dimensional e $\Fol$ uma $k$-folheaç�
 \paragraph{Folheações (baseado em Camacho)}
 
 \begin{definition}
-Seja $\bm V$ uma variedade $\Cont^r$ $d$-dimensional. Uma \emph{folheação $\Cont^{s}$} $k$-dimensional de $\bm V$ (para $s \leq r$ e $k \leq d$) é um atlas $\Cont^{s}$ $\mathcal F$ de $\bm V$ que é maximal segundo as propriedades:
+Seja $\bm V$ uma variedade $\Cont^{1+r}$ $d$-dimensional. Uma \emph{folheação $\Cont^{s}$} $k$-dimensional de $\bm V$ (para $s \leq r$ e $k \leq d$) é um atlas $\Cont^{s}$ $\mathcal F$ de $\bm V$ que é maximal segundo as propriedades:
 	\begin{enumerate}
 	\item Para toda carta $(A,\x) \in \mathcal F$, existem bolas abertas $B_{\tang} \subseteq \R^{k}$ e $B_{\tran} \subseteq \R^{d-k}$ tais que
 		\begin{equation*}
@@ -2268,7 +2520,7 @@ Nesse caso, a variedade $\bm V$ é \emph{folheada} por $\mathcal F$ e as cartas 
 \end{definition}
 
 \begin{definition}
-Sejam $\bm V$ uma variedade $\Cont^r$ $d$-dimensional, $\mathcal F$ uma folheação $\Cont^{s}$ $k$-dimensional de $\bm V$, $(A,\x) \in \mathcal F$ uma carta de folheação e $\x(A) = B_{\tang} \times B_{\tran}$. Uma \emph{placa} de $\mathcal F$ baseada em $(A,\x)$ é um conjunto
+Sejam $\bm V$ uma variedade $\Cont^{1+r}$ $d$-dimensional, $\mathcal F$ uma folheação $\Cont^{s}$ $k$-dimensional de $\bm V$, $(A,\x) \in \mathcal F$ uma carta de folheação e $\x(A) = B_{\tang} \times B_{\tran}$. Uma \emph{placa} de $\mathcal F$ baseada em $(A,\x)$ é um conjunto
 	\begin{equation*}
 	P_c = \x\inv(B_{\tang} \times \{c\}),
 	\end{equation*}
@@ -2281,7 +2533,7 @@ em que $c \in B_{\tran}$.
 		\begin{equation*}
 		\x\inv|_{B_{\tang} \times \{c\}}\colon B_{\tang} \times \{c\} \to A
 		\end{equation*}
-é um mergulho $\Cont^r$. Portanto as placas são subvariedades $\Cont^r$ $k$"-dimensionais.
+é um mergulho $\Cont^{1+r}$. Portanto as placas são subvariedades $\Cont^{1+r}$ $k$"-dimensionais.
 	\item As placas baseadas em $(A,\x)$ são disjuntas duas a duas.
 	\end{enumerate}
 \end{proposition}

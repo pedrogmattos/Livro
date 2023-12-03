@@ -2776,7 +2776,7 @@ Sejam $\bm A$ uma álgebra unitária normada completa e $x \in A$.
 \begin{proof}
 Como para todos $t,\delta \in \R$ vale
 	\begin{equation*}
-	\e^{(t+\delta)x} - \e^{tx} = \e^{tx} \e^{\delta x} - \e^{tx} = \e^{tx} (\e^{\delta x} - \Id_E) = \e^{tx} \left( \sum_{n=1}^{\infty} \frac{\delta^n x^n}{n!} \right),
+	\e^{(t+\delta)x} - \e^{tx} = \e^{tx} \e^{\delta x} - \e^{tx} = \e^{tx} (\e^{\delta x} - \id_A) = \e^{tx} \left( \sum_{n=1}^{\infty} \frac{\delta^n x^n}{n!} \right),
 	\end{equation*}
 segue que
 	\begin{equation*}
@@ -5245,106 +5245,6 @@ Como para $x \in V$ a diferencial $\D_1 f|_x$ é invertível, segue que
 
 
 
-\section{Campos tensoriais}
-
-Campos tensoriais devem ser imaginados como um conjunto de tensores, cada um preso a um ponto de um aberto do espaço normado. A definição é dada a seguir.
-
-\begin{definition}
-	Sejam $\bm E$ um espaço normado, $A \subseteq E$ um aberto e $k,l \in \N$. Um \emph{campo tensorial de tipo $(k,k')$} (ou \emph{campo $(k,l)$-tensorial}) em $A$ é uma função $\fun{T}{A}{E^{\otimes(k,k')}}$. Para todo $x \in A$, o \emph{tensor de $T$ tangente a $A$ em $x$} é
-	\begin{equation*}
-		T|_x := T(x).
-	\end{equation*}
-	
-	Um \emph{campo escalar} é um campo tensorial de tipo $(0,0)$, um \emph{campo $k$-vetorial} é um campo tensorial de tipo $(0,k)$ (para $k=1$, \emph{campo vetorial}) e um \emph{campo $k$-covetorial} é  um campo tensorial de tipo $(k,0)$ (para $k=1$, \emph{campo covetorial}).
-	
-	Para $k \in \N$, o conjunto dos campos $(k,k')$-tensoriais $\Cont^r$-diferenciáveis é denotado $\tens^{(k,k')}_r(A)$ e, o conjunto dos campos $(k,k')$-tensoriais $\Cont^\infty$-diferenciáveis é denotado $\tens^{(k,k')}(A)$.
-\end{definition}
-
-Na definição, não exigimos que a função seja contínua, mas em geral consideraremos campos tensoriais que são contínuos ou com alguma regularidade ainda maior.
-
-
-Além dessa definição, poderíamos considerar também campos tensoriais que variam no tempo, ou seja, uma família de campos tensoriais indexados por um intervalo de números reais.
-
-\begin{definition}
-	Sejam $\bm E$ um espaço normado e $A \subseteq E$ um aberto, $I \subseteq \R$ um intervalo aberto e $k,k' \in \N$. Um \emph{campo tensorial temporal de tipo $(k,k')$} (ou \emph{campo temporal $(k,l)$-tensorial}) em $I \times A$ é uma função $\fun{T}{I \times A}{E^{\otimes(k,k')}}$. Para todo $(t,x) \in I \times A$, o \emph{tensor de $T$ tangente a $A$ em $(t,x)$} é
-	\begin{equation*}
-		T_t|_x := T(t,x).
-	\end{equation*}
-\end{definition}
-
-Focaremos no estudo dos campos tensoriais e não nos campos tensoriais temporais.
-
-Considere 
-Essa transformação é bilinear, portanto segue de \ref{prop:diferencial.multilinear} que ela é diferenciável e
-	\begin{equation*}
-	\D \langle \cdot, \cdot \rangle|_{(\phi,v)}(\phi',v') = \langle \phi', v \rangle + \langle \phi, v' \rangle.
-	\end{equation*}
-
-\begin{proposition}[Contração tensorial]
-	Sejam $\bm E$ um espaço normado, $A \subseteq E$ um aberto, $\fun{\phi}{A}{E\dual}$ um campo covetorial diferenciável e $\fun{v}{A}{E}$ um campo vetorial diferenciável. O campo escalar
-	\begin{align*}
-		\func{\langle \phi, v \rangle}{A}{\R}{x}{\langle \phi, v \rangle(x) := \phi|_x(v|_x)}
-	\end{align*}
-	é diferenciável e, para todo $u \in E$,
-	\begin{equation*}
-		\D \langle \phi, v \rangle|_x(u) = \D \phi|_x(u)(v|x) + \phi|_x \circ \D v|_x(u).
-	\end{equation*}
-	\begin{equation*}
-		\D \langle \phi, v \rangle|_x(u) = \D \phi|_x(u)(v(x)) + \phi(x) \circ \D v|_x(u).
-	\end{equation*}
-\end{proposition}
-\begin{proof}
-	Note que $\langle \phi, v \rangle = \langle \cdot, \cdot \rangle \circ (\phi,v)$, em que
-	\begin{align*}
-		\func{\langle \cdot, \cdot \rangle}{E\dual \times E}{\R}{(\phi,v)}{\phi(v)}.
-	\end{align*}
-	é a a contração tensorial e
-	\begin{align*}
-		\func{(\phi, v)}{A}{E\dual \times E}{x}{(\D f|_x, v(x))}.
-	\end{align*}
-	
-	A contração é uma transformação bilinear, portanto segue de \ref{prop:diferencial.multilinear} que ela é diferenciável e
-	\begin{equation*}
-		\D \langle \cdot, \cdot \rangle|_{(\phi,v)}(\phi',v') = \langle \phi', v \rangle + \langle \phi, v' \rangle.
-	\end{equation*}
-	A função $(\phi,v)$ é diferenciável pela proposiãço~\ref{prop:diferenciabilidade.componentes}, pois $\phi$ e $v$ o são, e
-	\begin{equation*}
-		\D (\phi,v)|_x = (\D \phi|_x, \D v|_x).
-	\end{equation*}
-	Portanto, pela regra da cadeia segue que, para todo $u \in E$,
-	\begin{align*}
-		\D \langle \phi, v \rangle|_x(u) &= \D \langle \cdot, \cdot \rangle|_{(\phi,v)(x)} \circ \D (\phi,v)|_x(u) \\
-			&= \D \langle \cdot, \cdot \rangle|_{(\phi(x),v(x))} \circ (\D\phi|_x,\D v|_x)(u) \\
-			&= \D \langle \cdot, \cdot \rangle|_{(\phi(x),v(x))} (\D\phi|_x(u),\D v|_x(u)) \\
-			&= \langle \D\phi|_x(u), v(x) \rangle + \langle \D\phi|_x, \D v|_x(u) \rangle \\
-			&= \D \phi|_x(u)(v(x)) + \phi(x) \circ \D v|_x(u).
-			\qedhere
-	\end{align*}
-\end{proof}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 \section{Integração em espaço normados}
 
@@ -5810,7 +5710,7 @@ Para mostrar a existência e unicidade de trajetórias integrais de um campo vet
 	\end{equation*}
 Isso em particular vale para campos $\Cont^1$-diferenciáveis pois, como $\D v$ é contínua, é limitada em uma bola aberta, então pela proposição~\ref{prop:diferencial.limitada.funcao.controlada} segue que $v$ é controlado na bola aberta, portanto localmente controlado.
 
-Para a proposição seguinte, lembremos que $\bola{x_0}{r}$ denota a bola aberta de centro $x_0 \in A$ e raio $r \in \R_{>0}$ e que $\inter{t_0}{\varepsilon} = \intaa{t_0-\varepsilon}{t_0+\varepsilon}$ denota o intervalo aberto de centro $t_0 \in \R$ e raio $r \in \R_{>0}$.
+Para a proposição seguinte, lembremos que $\bola{x_0}{r}$ denota a bola aberta de centro $x_0 \in A$ e raio $r \in \R_{>0}$ e que $\inter{t_0}{\varepsilon} = \intaa{t_0-\varepsilon}{t_0+\varepsilon}$ denota o intervalo aberto de centro $t_0 \in \R$ e raio $\varepsilon \in \R_{>0}$.
 
 \begin{comment}
 \begin{proposition}[Existência e unicidade local de trajetória integral]
@@ -6266,6 +6166,74 @@ Sejam $\bm E$ um espaço normado completo, $A \subseteq E$ um aberto, $\fun{v}{A
 
 
 
+\section{Campos tensoriais}
+
+Campos tensoriais devem ser imaginados como um conjunto de tensores, cada um preso a um ponto de um aberto do espaço normado. A definição é dada a seguir.
+
+\begin{definition}
+Sejam $\bm E$ um espaço normado, $A \subseteq E$ um aberto e $k,k' \in \N$. Um \emph{campo tensorial de tipo $(k,k')$} (ou \emph{campo $(k,k')$-tensorial}) em $A$ é uma função $\fun{T}{A}{E^{\otimes(k,k')}}$. Para todo $x \in A$, o \emph{tensor de $T$ tangente a $A$ em $x$} é
+	\begin{equation*}
+	T|_x := T(x).
+	\end{equation*}
+	
+Um \emph{campo escalar} é um campo tensorial de tipo $(0,0)$, um \emph{campo $k$-vetorial} é um campo tensorial de tipo $(0,k)$ (para $k=1$, \emph{campo vetorial}) e um \emph{campo $k$-covetorial} é  um campo tensorial de tipo $(k,0)$ (para $k=1$, \emph{campo covetorial}).
+	
+O conjunto dos campos $(k,k')$-tensoriais $\Cont^r$-diferenciáveis é denotado $\tens^{(k,k')}_{\Cont^r}(A)$ e, em particular, $\tens^{(k,k')}(A) := \tens^{(k,k')}_{\Cont^\infty}(A)$.
+\end{definition}
+
+Na definição, não exigimos que a função seja contínua, mas em geral consideraremos campos tensoriais que são contínuos ou com alguma regularidade ainda maior.
+
+Além dessa definição, poderíamos considerar também campos tensoriais que variam no tempo, ou seja, uma família de campos tensoriais indexados por um intervalo de números reais.
+
+\begin{definition}
+Sejam $\bm E$ um espaço normado e $A \subseteq E$ um aberto, $I \subseteq \R$ um intervalo aberto e $k,k' \in \N$. Um \emph{campo tensorial temporal de tipo $(k,k')$} (ou \emph{campo temporal $(k,l)$-tensorial}) em $I \times A$ é uma função $\fun{T}{I \times A}{E^{\otimes(k,k')}}$. Para todo $(t,x) \in I \times A$, o \emph{tensor de $T$ tangente a $A$ em $(t,x)$} é
+	\begin{equation*}
+	T_t|_x := T(t,x).
+	\end{equation*}
+\end{definition}
+
+Focaremos no estudo dos campos tensoriais e não nos campos tensoriais temporais.
+
+O conjunto dos campos tensoriais $\tens^{(k,k')}_{\Cont^r}(A)$ é um subconjunto das funções $\Func(A, E^{\otimes(k,k')})$, que é um espaço linear com as operações puxadas do espaço linear $E^{\otimes(k,k')}$ (definidas ponto a ponto). Para definir uma estrutura de espaço linear em  $\tens^{(k,k')}_{\Cont^r}(A)$, basta mostrar que ele é um subespaço. Mas isso ocorre pois todas as operações algébricas preservam o tipo do tensor e a classe de diferenciabilidade dos campos.
+
+Estudaremos a seguir campos escalares, vetoriais e covetoriais, mas antes ressaltamos um resultado geral sobre a diferenciabilidade da avaliação de uma transformação bilinear em um par de funções diferenciáveis, que segue diretamente da diferenciabilidade da transformação bilinear e da regra da cadeia. Nas seções seguintes, aplicaremos esse resultado em casos específicos para campos vetoriais, covetoriais, entre outros.
+
+\begin{proposition}
+\label{prop:diferenciabilidade.avaliacao.bilinear}
+Sejam $\bm E$, $\bm E'$, $\bm F$ e $\bm F'$ espaços normados, $A \subseteq E$ um aberto, $\fun{B}{F \times F'}{E'}$ uma função bilinear e $\fun{f}{A}{F}$ e $\fun{f'}{A}{F'}$ funções diferenciáveis. A função
+	\begin{align*}
+	\func{B(f,f')}{A}{E'}{x}{B(f,f')(x) := B(f(x),f'(x))}
+	\end{align*}
+é diferenciável e, para todo $u \in E$,
+	\begin{equation*}
+	\D B(f,f')|_x(u) = B(\D f|_x(u),f'(x)) + B(f(x), \D f'|_x(u)).
+	\end{equation*}
+Se $f$ é $\Cont^r$-diferenciável e $f'$ é $\Cont^{r'}$-diferenciável, então $B(f,f')$ é $\Cont^{r \opmin r'}$-diferenciável.
+\end{proposition}
+\begin{proof}
+Note que $B(f,f') = B \circ (\phi,v)$, em que
+	\begin{align*}
+	\func{(f, f')}{A}{E\dual \times E}{x}{(f(x), f'(x))}.
+	\end{align*}
+
+Como $B$ é uma transformação bilinear, segue de \ref{prop:diferencial.multilinear} que ela é diferenciável e, para todos $(x,x'), (v,v') \in F \times F'$,
+	\begin{equation*}
+	\D B|_{(x,x')}(v,v') = B(v,x') + B(x,v').
+	\end{equation*}
+A função $(f,f')$ é diferenciável pela proposição~\ref{prop:diferenciabilidade.componentes}, pois $f$ e $f'$ o são, e
+	\begin{equation*}
+	\D (f,f')|_x = (\D f|_x, \D f'|_x).
+	\end{equation*}
+Portanto, pela regra da cadeia segue que, para todo $u \in E$,
+	\begin{align*}
+	\D B(f,f')|_x(u) &= \D B|_{(f,f')(x)} \circ \D (f,f')|_x(u) \\
+		&= \D B|_{(f(x),f'(x))} \circ (\D f|_x,\D f'|_x)(u) \\
+		&= \D B|_{(f(x),f'(x))} (\D f|_x(u),\D f'|_x(u)) \\
+		&= B(\D f|_x(u), f'(x)) + B(\D f|_x, \D f'|_x(u)).
+	\end{align*}
+
+Finalmente, como $B$ é bilinear, é $\Cont^\infty$-diferenciável, portanto se $f$ é $\Cont^r$-diferenciável e $f'$ é $\Cont^{r'}$-diferenciável, a função $(f,f')$ é tão diferenciável quanto o mínimo entre $r$ e $r'$, e então a composição $B \circ (f,f')$ é $\Cont^{r \opmin r'}$-diferenciável.
+\end{proof}
 
 
 
@@ -6273,6 +6241,401 @@ Sejam $\bm E$ um espaço normado completo, $A \subseteq E$ um aberto, $\fun{v}{A
 
 
 
+
+\begin{comment}
+
+\begin{proposition}[Contração tensorial]
+\label{prop:diferenciabilidade.contracao.tensorial}
+Sejam $\bm E$ um espaço normado, $A \subseteq E$ um aberto, $\fun{\phi}{A}{E\dual}$ um campo covetorial diferenciável e $\fun{v}{A}{E}$ um campo vetorial diferenciável. O campo escalar
+	\begin{align*}
+	\func{\langle \phi, v \rangle}{A}{\R}{x}{\langle \phi, v \rangle(x) := \phi(x)(v(x))}
+	\end{align*}
+é diferenciável e, para todo $u \in E$,
+	\begin{equation*}
+	\D \langle \phi, v \rangle|_x(u) = \D \phi|_x(u)(v(x)) + \phi(x) \circ \D v|_x(u).
+	\end{equation*}
+Se $\phi$ é $\Cont^r$-diferenciável e $v$ é $\Cont^{r'}$-diferenciável, então $\langle \phi, v \rangle$ é $\Cont^{r \opmin s}$-diferenciável.
+\end{proposition}
+\begin{proof}
+Note que $\langle \phi, v \rangle = \langle \cdot, \cdot \rangle \circ (\phi,v)$, em que
+	\begin{align*}
+	\func{\langle \cdot, \cdot \rangle}{E\dual \times E}{\R}{(\phi,v)}{\phi(v)}.
+	\end{align*}
+é a contração tensorial e
+	\begin{align*}
+	\func{(\phi, v)}{A}{E\dual \times E}{x}{(\phi(x), v(x))}.
+	\end{align*}
+	
+A contração é uma transformação bilinear, portanto segue de \ref{prop:diferencial.multilinear} que ela é diferenciável e
+	\begin{equation*}
+	\D \langle \cdot, \cdot \rangle|_{(\phi,v)}(\phi',v') = \langle \phi', v \rangle + \langle \phi, v' \rangle.
+	\end{equation*}
+A função $(\phi,v)$ é diferenciável pela proposição~\ref{prop:diferenciabilidade.componentes}, pois $\phi$ e $v$ o são, e
+	\begin{equation*}
+	\D (\phi,v)|_x = (\D \phi|_x, \D v|_x).
+	\end{equation*}
+Portanto, pela regra da cadeia segue que, para todo $u \in E$,
+	\begin{align*}
+	\D \langle \phi, v \rangle|_x(u) &= \D \langle \cdot, \cdot \rangle|_{(\phi,v)(x)} \circ \D (\phi,v)|_x(u) \\
+		&= \D \langle \cdot, \cdot \rangle|_{(\phi(x),v(x))} \circ (\D\phi|_x,\D v|_x)(u) \\
+		&= \D \langle \cdot, \cdot \rangle|_{(\phi(x),v(x))} (\D\phi|_x(u),\D v|_x(u)) \\
+		&= \langle \D\phi|_x(u), v(x) \rangle + \langle \D\phi|_x, \D v|_x(u) \rangle \\
+		&= \D \phi|_x(u)(v(x)) + \phi(x) \circ \D v|_x(u).
+	\end{align*}
+
+Finalmente, como $\langle \cdot, \cdot \rangle$ é bilinear, é $\Cont^\infty$-diferenciável, portanto se $\phi$ é $\Cont^r$-diferenciável e $v$ é $\Cont^{r'}$-diferenciável, a função $(\phi,v)$ é tão diferenciável quanto o mínimo entre $r$ e $s$, e então a composição $\langle \cdot, \cdot \rangle \circ (\phi,v)$ é $\Cont^{r \opmin s}$-diferenciável.
+\end{proof}
+
+Analogamente, obtemos o seguinte resultado.
+
+\begin{proposition}
+\label{prop:diferenciabilidade.contracao.tensorial2}
+Sejam $\bm E$ um espaço normado, $A \subseteq E$ um aberto, $\fun{\phi}{A}{\toplin(E,E)}$ um campo $(1,1)$-tensorial diferenciável e $\fun{v}{A}{E}$ um campo vetorial diferenciável. O campo vetorial
+	\begin{align*}
+	\func{\phi(v)}{A}{E}{x}{\phi(v)(x) := \phi(x)(v(x))}
+	\end{align*}
+é diferenciável e, para todo $u \in E$,
+	\begin{equation*}
+	\D \phi(v)|_x(u) = \D \phi|_x(u)(v(x)) + \phi(x) (\D v|_x(u)).
+	\end{equation*}
+Se $\phi$ é $\Cont^r$-diferenciável e $v$ é $\Cont^{r'}$-diferenciável, então $\langle \phi, v \rangle$ é $\Cont^{r \opmin s}$-diferenciável.
+\end{proposition}
+
+\end{comment}
+
+%Essa proposições são consequências da seguinte proposição, mais geral:
+
+
+
+
+
+\subsection{Campos escalares}
+
+\subsubsection{Álgebra dos campos escalares}
+
+Consideraremos aqui o conjunto dos campos escalares $\Cont^r(A,\R)$.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection{Campos vetoriais}
+
+\subsubsection{Álgebra dos campos vetoriais}
+
+Além das operações da estrutura de espaço linear em $\Cont^r(A,E)$, podemos multiplicar um campo escalar $\fun{f}{A}{E}$ por um campo vetorial $\fun{v}{A}{E}$ pontualmente, resultando em um novo campo vetorial
+	\begin{align*}
+	\func{fv}{A}{E}{x}{f(x)v(x)}.
+	\end{align*}
+
+A diferenciabilidade desse novo campo vetorial segue do resultado geral sobre a diferenciabilidade da aplicação de uma transformação bilinear em um par de funções diferenciáveis.
+
+\begin{proposition}
+\label{prop:diferenciabilidade.contracao.escalar.vetor}
+Sejam $\bm E$ um espaço normado, $A \subseteq E$ um aberto, $\fun{f}{A}{\R}$ um campo escalar diferenciável e $\fun{v}{A}{E}$ um campo vetorial diferenciável. O campo vetorial $\fun{fv}{A}{E}$ é diferenciável e, para todo $u \in E$,
+\begin{equation*}
+	\D (fv)|_x(u) = \D f|_x(u) v(x) + f(x) \D v|_x(u).
+\end{equation*}
+Se $f$ é $\Cont^r$-diferenciável e $v'$ é $\Cont^{r'}$-diferenciável, então $fv$ é $\Cont^{r \opmin r'}$-diferenciável.
+\end{proposition}
+\begin{proof}
+Consideremos a multiplicação por escalar dada por
+	\begin{align*}
+	\func{\cdot\ }{\R \times E}{E}{(c,v)}{cv}.
+	\end{align*}
+Essa função é bilinear, e $f(v) = \cdot \circ (f, v)$. Portanto segue da proposição~\ref{prop:diferenciabilidade.avaliacao.bilinear} que, para todo $u \in E$,
+	\begin{align*}
+	\D (fv)|_x(u) &= \D f|_x(u) \cdot v(x) + f(x) \cdot \D v|_x(u).
+	\qedhere
+	\end{align*}
+%
+%Se $f$ é $\Cont^r$-diferenciável, então $\D f$ é $\Cont^r$-diferenciável, portanto segue que $\D f(v)$ é $\Cont^{r \opmin r'}$-diferenciável.
+\end{proof}
+
+
+\subsubsection{Derivada ao longo de um campo vetorial}
+
+Definiremos agora uma operação de um campo vetorial no espaço dos campos escalares. Para isso, notemos primeiro que, se temos um campo escalar $\fun{f}{A}{\R}$, sua diferencial $\fun{\D f}{A}{\toplin(E,\R)}$ é um campo covetorial, pois $\toplin(E, \R) = E\dual$. A diferencial de um campo escalar é uma função que, para cada ponto $x \in A$, retorna um covetor $\fun{\D f|_x}{E}{\R}$. Sendo assim, dado um campo vetorial $\fun{v}{A}{E}$, podemos avaliar pontualmente a diferencial $\D f$ no campo $v$, de modo a termos um novo campo escalar
+	\begin{align*}
+	\func{\D f(v)}{A}{\R}{x}{\D f|_x(v(x))}.
+	\end{align*}
+
+A diferenciabilidade desse novo campo escalar segue do resultado geral sobre a diferenciabilidade da aplicação de uma transformação bilinear em um par de funções diferenciáveis.
+
+\begin{proposition}
+\label{prop:diferenciabilidade.contracao.covetor.vetor}
+Sejam $\bm E$ um espaço normado, $A \subseteq E$ um aberto, $\fun{f}{A}{\R}$ um campo escalar $2$-diferenciável e $\fun{v}{A}{E}$ um campo vetorial diferenciável. O campo escalar $\fun{\D f(v)}{A}{\R}$ é diferenciável e, para todo $u \in E$,
+	\begin{equation*}
+	\D (\D f(v))|_x(u) = \D^{(2)} f|_x(u, v(x)) + \D f|_x \circ \D v|_x(u).
+	\end{equation*}
+Se $f$ é $\Cont^{1+r}$-diferenciável e $v$ é $\Cont^{r'}$-diferenciável, então $\D f(v)$ é $\Cont^{r \opmin r'}$-diferenciável.
+\end{proposition}
+\begin{proof}
+Consideremos a avaliação de um covetor em um vetor, dada por
+	\begin{align*}
+	\func{B}{E\dual \times E}{E}{(\phi,v)}{\phi(v)}.
+	\end{align*}
+Essa função é bilinear, e $\D f(v) = B \circ (\D f, v)$. Portanto segue da proposição~\ref{prop:diferenciabilidade.avaliacao.bilinear} que, para todo $u \in E$,
+	\begin{align*}
+	\D (\D f(v))|_x(u) &= \D \D f|_x(u)(v(x)) + \D f|_x (\D v|_x(u)) \\
+		&= \D^2 f|_x(u)(v(x)) + \D f|_x \circ \D v|_x(u) \\
+		&= \D^{(2)} f|_x(u, v(x)) + \D f|_x \circ \D v|_x(u).		
+	\end{align*}
+
+Se $f$ é $\Cont^{1+r}$-diferenciável, então $\D f$ é $\Cont^r$-diferenciável, portanto segue que $\D f(v)$ é $\Cont^{r \opmin r'}$-diferenciável.
+\end{proof}
+
+Dadas tais considerações, podemos definir a derivada ao longo de um campo vetorial.
+
+\begin{definition}
+Sejam $\bm E$ um espaço normado, $A \subseteq E$ um aberto, $\fun{v}{A}{E}$ um campo vetorial e $\fun{f}{A}{\R}$ um campo escalar diferenciável. A \emph{derivada direcional de $f$ ao longo de $v$} é o campo escalar
+	\begin{equation*}
+	\dir{v}f := \D f(v),
+	\end{equation*}
+dado pontualmente, para todo $x \in A$, por
+	\begin{equation*}
+	\dir{v}f(x) := \D f|_x(v(x)).
+	\end{equation*}
+
+Para um campo vetorial $v$ ($\Cont^r$-diferenciável), a \emph{derivação ao longo de $v$} é a função
+	\begin{align*}
+	\func{\dir{v}}{\Cont^{1+r}(A,\R)}{\Cont^r(A,\R)}{f}{\dir{v}f}.
+	\end{align*}
+\end{definition}
+
+\begin{proposition}
+Sejam $\bm E$ um espaço normado, $A \subseteq E$ um aberto e $\fun{v}{A}{E}$ um campo vetorial $\Cont^r$-diferenciável.
+	\begin{enumerate}
+	\item Se $\dir{v} = 0$, então $v=0$.
+	
+	\item (Derivação) Para todos campos escalares $f,f' \in \Cont^{1+r}(A, \R)$,
+		\begin{equation*}
+		\dir{v}(ff') = (\dir{v}f)f' + f(\dir{v}f').
+		\end{equation*}
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item Se $\dir{v} = 0$, então, para todo campo escalar $f \in \Cont^{1+r}$ vale $\dir{v} f = 0$, o que por sua vez significa que, para todo $x \in A$,
+		\begin{equation*}
+		0 = \dir{v}f(x) = \D f|_x (v(x)).
+		\end{equation*}
+	Suponhamos que $v \neq 0$. Então, para algum $x \in A$, $v(x) \neq 0$. Como $v(x) \in E$, segue do teorema de Hahn-Banach que existe funcional linear contínuo $f \in \toplin(E, \R)$ tal que $f(v(x)) \neq 0$. Como $f$ é linear, $\D f|_x = f$, portanto
+		\begin{equation*}
+		\dir{v}f(x) = \D f|_x (v(x)) = f(v(x)) \neq 0,
+		\end{equation*}
+	o que mostra que $\dir{v}f \neq 0$. Como $f \neq 0$, segue que $\dir{v} \neq 0$.
+	 
+	\item Para todo $x \in A$, segue da regra do produto para a diferencial que
+		\begin{align*}
+		\dir{v}(ff')(x) &= \D (ff')|_x(v(x)) \\
+			&= \D f|_x(v(x)) f'(x) + f(x) \D f'|_x(v(x)) \\
+			&= (\dir{v}f(x)) f'(x) + f(x)(\dir{v} f'(x)).
+		\qedhere
+		\end{align*}
+	\end{enumerate}
+\end{proof}
+
+
+\subsubsection{Colchete de campos vetoriais}
+
+Definimos agora uma operação entre dois campos que vetoriais que dará ao espaço linear dos campos vetoriais suaves uma estrutura de álgebra. Para isso, notemos que, dado um campo vetorial diferenciável $\fun{v}{A}{E}$, sua diferencial $\fun{\D v}{A}{\toplin(E,E)}$ pode ser entendida como um campo $(1,1)$-tensorial através do isomorfismo $\toplin(E,E) \simeq E\dual \otimes E$. A diferencial é uma função que, para cada ponto $x \in A$, retorna uma transformação linear contínua $\fun{\D v|_x}{E}{E}$. Essa transformação linear pode, portanto, ser avaliada em um vetor. Sendo assim, dado outro campo vetorial $\fun{v'}{A}{E}$, podemos avaliar pontualmente a diferencial $\D v$ no campo $v'$, de modo a termos um novo campo vetorial
+	\begin{align*}
+	\func{\D v(v')}{A}{E}{x}{\D v(v')(x) = \D v|_x (v'(x))}.
+	\end{align*}
+
+A diferenciabilidade desse novo campo vetorial segue do resultado sobre a diferenciabilidade da aplicação de uma função bilinear em um par de funções diferenciáveis.
+
+\begin{proposition}
+\label{prop:diferenciabilidade.contracao.tensor.vetor}
+Sejam $\bm E$ um espaço normado, $A \subseteq E$ um aberto, $\fun{v}{A}{E}$ um campo vetorial $2$-diferenciável e $\fun{v'}{A}{E}$ um campo vetorial diferenciável. O campo vetorial $\fun{\D v(v')}{A}{E}$ é diferenciável e, para todo $u \in E$,
+	\begin{equation*}
+	\D (\D v(v'))|_x(u) = \D^{(2)} v|_x(u, v'(x)) + \D v|_x \circ \D v'|_x(u).
+	\end{equation*}
+Se $v$ é $\Cont^{1+r}$-diferenciável e $v'$ é $\Cont^{r'}$-diferenciável, então $\D v(v')$ é $\Cont^{r \opmin r'}$-diferenciável.
+\end{proposition}
+\begin{proof}
+Consideremos a avaliação de uma transformação linear em um vetor, dada por
+	\begin{align*}
+	\func{B}{\toplin(E,E) \times E}{E}{(l,v)}{l(v)}.
+	\end{align*}
+Essa função é bilinear, e $\D v(v') = B \circ (\D v, v')$. Portanto segue da proposição~\ref{prop:diferenciabilidade.avaliacao.bilinear} que, para todo $u \in E$,
+	\begin{align*}
+	\D (\D v(v'))|_x(u) &= \D \D v|_x(u)(v'(x)) + \D v|_x(\D v'|_x(u)) \\
+	&= \D^{(2)} v|_x(u, v'(x)) + \D v|_x \circ \D v'|_x(u).
+	\end{align*}
+
+Se $v$ é $\Cont^{1+r}$-diferenciável, então $\D v$ é $\Cont^r$-diferenciável, portanto segue que $\D v(v')$ é $\Cont^{r \opmin r'}$-diferenciável.
+\end{proof}
+
+\begin{definition}
+Seja $\bm E$ um espaço normado, $A \subseteq E$ um aberto e $\fun{v,v'}{A}{E}$ campos vetoriais diferenciáveis. O \emph{colchete entre $v$ e $v'$} é o campo vetorial
+	\begin{equation*}
+	\col{v}{v'} := \D v'(v) - \D v(v''),
+	\end{equation*}
+dado pontualmente, para todo $x \in A$, por
+	\begin{equation*}
+	\col{v}{v'}(x) := \D v'|_x(v(x)) - \D v|_x(v'(x)).
+	\end{equation*}
+\end{definition}
+
+%Note que se $v$ é $\Cont^{1+r}$-diferenciável e $v'$ é $\Cont^{1+r'}$-diferenciável, então $[v,v']$ é $\Cont^{r \opmin r'}$-diferenciável. % Por simplicidade, vamos assumir que os campos são ambos $\Cont^\infty$.
+
+Apresentamos a seguir algumas propriedades básicas do colchete de campos vetoriais.
+
+\begin{proposition}
+Seja $\bm E$ um espaço normado e $A \subseteq E$ um aberto.
+	\begin{enumerate}
+	\item (Bilinearidade) Para todos campos vetoriais $v,v' \in \Cont^{1+r}(A,E)$ e todo $c \in \R$,
+		\begin{align*}
+		\col{cv+v'}{v''} &= c\col{v}{v'} + \col{v'}{v''}, \\
+		\col{v}{cv'+v''} &= c\col{v}{v'} + \col{v}{v''}.
+		\end{align*}
+		
+	\item (Alternatividade) Para todo campo vetorial $v \in \Cont^{1+r}(A,E)$,
+		\begin{equation*}
+		\col{v}{v} = 0.
+		\end{equation*}
+	
+	\item (Derivação adjunta) Para todos campos vetoriais $v,v', v'' \in \Cont^{2+r}(A,E)$,
+		\begin{equation*}
+		\col{v}{\col{v'}{v''}} = \col{\col{v}{v'}}{v''} + \col{v'}{\col{v}{v''}}.
+		\end{equation*}
+	
+	\item  Para todos campos vetoriais $v,v' \in \Cont^{1+r}(A,E)$ e todo campo escalar $f \in \Cont^{1+r}(A,\R)$,
+		\begin{align*}
+		\col{v}{fv'} &= \dir{v}f v' + f\col{v}{v}, \\
+		\col{fv}{v'} &= f\col{v}{v} - \dir{v'}f v.
+		\end{align*}
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item Segue da linearidade da diferencial e da bilinearidade da avaliação de uma transformação linear em um vetor.
+	
+	\item Segue direto da definição que, para todo $x \in A$,
+		\begin{equation*}
+		\col{v}{v}(x) = \D v|_x (v(x)) - \D v|_x (v(x)) = 0.
+		\end{equation*}
+	
+	\item Da definição do colchete de campos vetoriais,
+	\begin{align*}
+		\col{v}{\col{v'}{v''}}(x) &= \D \col{v'}{v''}|_x(v(x)) - \D v|_x(\col{v'}{v''}(x)) \\
+		&= \D \col{v'}{v''}|_x(v(x)) - \D v|_x(\D v''|_x(v'(x)) - \D v'|_x(v''(x))) \\
+		&= \D \col{v'}{v''}|_x(v(x)) - \D v|_x \circ \D v''|_x(v'(x)) + \D v|_x \circ \D v'|_x(v''(x)).
+	\end{align*}
+	
+	Da proposição~\ref{prop:diferenciabilidade.contracao.tensor.vetor} segue que, para todo $u \in E$,
+		\begin{equation*}
+		\D (\D v''(v'))|_x(u) = \D^{(2)} v''|_x(u, v'(x)) + \D v''|_x \circ \D v'|_x(u),
+		\end{equation*}
+	portanto, como $\col{v'}{v''} = \D v''(v) - \D v'(v'')$,
+		\begin{align*}
+		\D \col{v'}{v''}|_x(v(x)) &= \D (\D v''(v'))|_x(v(x)) - \D (\D v'(v''))|_x(v(x)) \\
+			&= \D^{(2)} v''|_x(v(x), v'(x)) + \D v''|_x \circ \D v'|_x(v(x)) \\
+			&- \D^{(2)} v'|_x(v(x), v''(x)) - \D v'|_x \circ \D v''|_x(v(x)).
+		\end{align*}
+	
+	Segue então que
+		\begin{align*}
+		\col{v}{\col{v'}{v''}}(x) &= \D^{(2)} v''|_x (v(x),v'(x)) - \D^{(2)}v'|_x (v(x),v''(x)) \\
+				&+ \D v''|_x \circ \D v'|_x (v(x)) - \D v'|_x \circ \D v''|_x (v(x)) \\
+				&- \D v|_x \circ \D v''|_x (v'(x)) + \D v|_x \circ \D v'|_x (v''(x)).
+		\end{align*}
+	
+	Como consequência dos itens anteriores, o colchete é antissimétrico,  portanto $\col{\col{v}{v''}}{v''} = \col{v''}{\col{v'}{v}}$. Permutando $v$, $v'$ e $v''$ na fórmula anterior, obtêm-se
+		\begin{align*}
+		\col{\col{v}{v''}}{v''}(x) &= \D^{(2)} v|_x (v''(x),v'(x)) - \D^{(2)}v'|_x (v''(x),v(x)) \\
+			&+ \D v|_x \circ \D v'|_x (v''(x)) - \D v'|_x \circ \D v|_x (v'(x)) \\
+			&- \D v''|_x \circ \D v|_x (v'(x)) + \D v''|_x \circ \D v'|_x (v(x))
+		\end{align*}
+	e
+		\begin{align*}
+		\col{v'}{\col{v}{v''}}(x) &= \D^{(2)} v''|_x (v'(x),v(x)) - \D^{(2)}v|_x (v'(x),v''(x)) \\
+			&+ \D v''|_x \circ \D v|_x (v'(x)) - \D v|_x \circ \D v''|_x (v'(x)) \\
+			&- \D v'|_x \circ \D v''|_x (v(x)) + \D v'|_x \circ \D v|_x (v''(x)).
+		\end{align*}
+	
+	Finalmente, como $v$, $v'$ e $v''$ são $\Cont^2$-diferenciáveis, as diferenciais segundas $\D^{(2)} v|_x$, $\D^{(2)} v'|_x$ e $\D^{(2)} v''|_x$ são simétricas, portanto somando as fórmulas anteriores e cancelando os termos repetidos,
+		\begin{equation*}
+		\col{v}{\col{v'}{v''}}(x) = \col{\col{v}{v'}}{v''}(x) + \col{v'}{\col{v}{v''}}(x).
+		\end{equation*}
+	
+	\item Segue da proposição~\ref{prop:diferenciabilidade.contracao.escalar.vetor} que
+		\begin{align*}
+		\col{v}{fv'}(x) &= \D(fv')|_x(v(x)) - \D v|_x(f(x)v'(x)) \\
+			&= \D f|_x(v(x)) v'(x) + f(x) \D v'|_x(v(x)) - f(x) \D v|_x(v'(x)) \\
+			&= \dir{v}f(x) v'(x) + f(x)\col{v}{v'}(x).
+		\qedhere
+		\end{align*}
+\end{enumerate}
+\end{proof}
+
+
+
+
+Agora relacionamos o colchete de campos vetoriais com a derivada ao longo de um campo vetorial.
+
+\begin{proposition}
+Seja $\bm E$ um espaço normado, $A \subseteq E$ um aberto e $\fun{v,v'}{A}{E}$ campos vetoriais $\Cont^{2+r}$-diferenciáveis. Então
+	\begin{equation*}
+	\dir{\col{v}{v'}} = \dir{v} \circ \dir{v'} - \dir{v'} \circ \dir{v}.
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+Sejam $f \in \Cont^{2+r}(A,\R)$ e $x \in A$. Por definição, $\dir{v'} f = \D f(v')$. Segue então da proposição~\ref{prop:diferenciabilidade.contracao.covetor.vetor} que, para todo $u \in E$,
+	\begin{equation*}
+	\D (\D f(v'))|_x(u) = \D^{(2)} f|_x(u, v'(x)) + \D f|_x \circ \D v'|_x(u),
+	\end{equation*}
+portanto,
+	\begin{align*}
+	\dir{v} \circ \dir{v'} f(x) &= \dir{v}(\D f(v'))(x) \\
+		&= \D (\D f(v'))|_x (v(x)) \\
+		&= \D^{(2)} f|_x(v(x), v'(x)) + \D f|_x \circ \D v'|_x(v(x)).
+	\end{align*}
+Permutando $v$ e $v'$, obtemos
+	\begin{equation*}
+	\dir{v'} \circ \dir{v} f(x) = \D^{(2)} f|_x(v'(x), v(x)) + \D f|_x \circ \D v|_x(v'(x)).
+	\end{equation*}
+Como  $f$ é $\Cont^{2+r}$-diferenciável, $\D^{(2)} f|_x$ é simétrica, logo
+	\begin{equation*}
+	\dir{v} \circ \dir{v'} f(x) - \dir{v'} \circ \dir{v} f(x) = \D f|_x \circ \D v'|_x(v(x)) - \D f|_x \circ \D v|_x(v'(x)).
+	\end{equation*}
+Assim concluímos que
+	\begin{align*}
+	\dir{\col{v}{v'}}f(x) &= \D f|_x(\col{v}{v'}(x)) \\
+		&= \D f|_x (\D v'|_x(v(x)) - \D v|_x(v'(x))) \\
+		&= \D f|_x \circ \D v'|_x(v(x)) - \D f|_x \circ \D v|_x(v'(x)) \\
+		&= \dir{v} \circ \dir{v'} f(x) - \dir{v'} \circ \dir{v} f(x).
+		\qedhere
+	\end{align*}
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection{Álgebra dos campos covetoriais alternados}
 
 
 
@@ -6702,7 +7065,7 @@ Isso nos permite escrever uma função $r$-linear avaliada em uma soma como
 
 
 
-\subsection{Derivadas direcionais e a geometria da diferenciabilidade}
+\subsection{Derivadas direcionais e a geometria da diferenciabilidade}\label{sec:derivadas-direcionais-e-a-geometria-da-diferenciabilidade}
 
 A partir dessa seção, consideraremos funções $\fun{f}{A}{\R^{d'}}$, em que $A \subseteq \R^d$ é um aberto. Toda a discussão feita na seção anterior considerou a diferenciabilidade em pontos do domínio. Agora, consideraremos a diferenciabilidade em conjuntos. A definição de diferenciabilidade da seção anterior pode ser facilmente adaptada para funções $\fun{f}{A}{\R^{d'}}$ pois essa função pode ser definida em $\R^d$ todo escolhendo qualquer valor para $f$ em $A^\complement$. Como as definições e resultados trataram de pontos, isso não é um problema. Os abertos serão necessários agora pois consideraremos curvas numa vizinhança de um ponto e relacionaremos as derivadas por essas curvas com derivadas parciais da função $f$.
 
