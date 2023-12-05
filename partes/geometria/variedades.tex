@@ -648,77 +648,89 @@ Seja $\bm V = (V, \atlas)$ uma variedade $\Cont^{1+r}$ modelada num um espaço n
 	\end{equation*}
 a união disjunta dos espaços tangentes a $\bm V$ em todos pontos de $V$. A \emph{projeção canônica} do fibrado $\Tg V$ é a função
 	\begin{align*}
-	\func{\proj}{\Tg A}{A}{(p, v)}{p}.
+	\func{\proj_{\Tg V}}{\Tg V}{V}{(p, v)}{p}.
 	\end{align*}
 
-Seja $(A,\x) \in \atlas$. A \emph{carta de $\Tg V$ induzida por $(A,\x)$} é o par $(\Tg A, \bar \x)$, em que
+Seja $(A,\x) \in \atlas$. A \emph{carta de $\Tg V$ induzida por $(A,\x)$} é o par $(\Tg A, \Tg \x)$, em que
 	\begin{equation*}
 	\Tg A := \set{(p,v)}{p \in A, v \in \Tg V|_p} \subseteq \Tg V
 	\end{equation*}
 e
 	\begin{align*}
-		\func{\bar \x}{\Tg A}{E \times E}{(p, v)}{(\x(p), \D\x|_p(v))}.
+		\func{\Tg \x}{\Tg A}{E \times E}{(p, v)}{(\x(p), \D\x|_p(v))}.
 	\end{align*}
 O \emph{atlas de $\Tg V$ induzido por $\atlas$} é o conjunto
 	\begin{equation*}
-	\bar \atlas := \set{(\Tg A, \bar \x)}{(A,\x) \in \atlas}.
+	\Tg \atlas := \set{(\Tg A, \Tg \x)}{(A,\x) \in \atlas}.
 	\end{equation*}
 \end{definition}
+
+Note que valem as seguintes propriedades.
+
+\begin{exercise}
+Seja $\bm V = (V, \atlas)$ uma variedade $\Cont^{1+r}$ modelada num um espaço normado $\bm E$.
+	\begin{enumerate}
+	\item $\Tg A = \proj_{\Tg V}\inv(A)$;
+	\item $\Tg \x(\Tg A \cap \Tg A') = \x(A \cap A') \times E$;
+%	\item $(\Tg \x)\inv = \Tg \x\inv$.
+	\end{enumerate}
+\end{exercise}
 
 \begin{proposition}
 Seja $\bm V = (V, \atlas)$ uma variedade $\Cont^{1+r}$ modelada num um espaço normado $\bm E$. O atlas induzido $\bar \atlas$ é atlas $\Cont^r$ de $\Tg V$ modelado em $\bm E \times \bm E$.
 \end{proposition}
 \begin{proof}
-Primeiro mostremos que, para toda carta $(A,\x) \in \atlas$, a carta induzida $(\Tg A, \bar x) \in \bar \atlas$ é um carta de $\Tg V$ modelada em $\bm E \times \bm E$.
+Primeiro mostremos que, para toda carta $(A,\x) \in \atlas$, a carta induzida $(\Tg A, \bar x) \in \Tg \atlas$ é um carta de $\Tg V$ modelada em $\bm E \times \bm E$.
 	\begin{itemize}
-%		\item ($\fun{\bar \x}{\Tg A}{E \times E}$ é injetiva)
-		\item ($\bar \x$ é injetiva) Sejam $(p,v), (p',v') \in \Tg A$ tais que $\bar \x(p, v) = \bar \x(p', v')$. Então $\x(p) = \x(p')$ e $\D \x|_p(v) = \D \x|_{p'}(v')$. Como $(A,\x)$ é carta, $\x$ é injetiva, portanto $p = p'$, o que implica que $\D \x|_p(v) = \D \x|_p(v')$; como $\D \x|_p$ é injetiva, então $v=v'$, portanto $(p,v) = (p',v')$.
+%		\item ($\fun{\Tg \x}{\Tg A}{E \times E}$ é injetiva)
+		\item ($\Tg \x$ é injetiva) Sejam $(p,v), (p',v') \in \Tg A$ tais que $\Tg \x(p, v) = \Tg \x(p', v')$. Então $\x(p) = \x(p')$ e $\D \x|_p(v) = \D \x|_{p'}(v')$. Como $(A,\x)$ é carta, $\x$ é injetiva, portanto $p = p'$, o que implica que $\D \x|_p(v) = \D \x|_p(v')$; como $\D \x|_p$ é injetiva, então $v=v'$, portanto $(p,v) = (p',v')$.
 		
-		\item ($\bar \x(\Tg A)$ é aberto em $E \times E$) Notemos que
+		\item ($\Tg \x(\Tg A)$ é aberto em $E \times E$) Notemos que
 			\begin{equation*}
-			\bar \x(\Tg A) = \x(A) \times E.
+			\Tg \x(\Tg A) = \x(A) \times E.
 			\end{equation*}
-		Seja $(y,u) \in E \times E$. Note que $(y, u) \in \bar \x(\Tg A)$ se, e somente se, $(p,v) \in \Tg A$ tal que $\bar \x(p,v) = (y,u)$. Como $\bar \x(p,v) = (\x(p), \D\x|_p(v))$, isso é equivalente a existirem $p \in A$ e $v \in \Tg V|_p$ tais que $y = \x(p)$ e $u = \D\x|_p(v)$. Como $\fun{\D \x|_p}{\Tg V|_p}{E}$ é isomorfismo, isso é o mesmo que existir $p \in A$ tal que $y=\x(p)$, o que equivale a $(y,u) \in \x(A) \times E$.
+		Seja $(y,u) \in E \times E$. Note que $(y, u) \in \Tg \x(\Tg A)$ se, e somente se, $(p,v) \in \Tg A$ tal que $\Tg \x(p,v) = (y,u)$. Como $\Tg \x(p,v) = (\x(p), \D\x|_p(v))$, isso é equivalente a existirem $p \in A$ e $v \in \Tg V|_p$ tais que $y = \x(p)$ e $u = \D\x|_p(v)$. Como $\fun{\D \x|_p}{\Tg V|_p}{E}$ é isomorfismo, isso é o mesmo que existir $p \in A$ tal que $y=\x(p)$, o que equivale a $(y,u) \in \x(A) \times E$.
 %		\begin{itemize}
-%		\item ($\subseteq$) Seja $(y, u) \in \bar \x(\Tg A)$. Então existe $(p, v) \in \Tg A$ tal que $\bar \x(p,v) = (y,u)$. Então $p \in A$, logo $\x(p) \in \x(A)$, e $v \in \Tg V|_p$, logo $\D \x|_p(v) \in E$, portanto $\bar \x(p,v) = (\x(p), \D \x|_p(v)) \in \x(A) \times E$.
+%		\item ($\subseteq$) Seja $(y, u) \in \Tg \x(\Tg A)$. Então existe $(p, v) \in \Tg A$ tal que $\Tg \x(p,v) = (y,u)$. Então $p \in A$, logo $\x(p) \in \x(A)$, e $v \in \Tg V|_p$, logo $\D \x|_p(v) \in E$, portanto $\Tg \x(p,v) = (\x(p), \D \x|_p(v)) \in \x(A) \times E$.
 %		
-%		\item ($\supseteq$) Seja $(y, u) \in \x(A) \times E$. Como $y \in \x(A)$, existe $p \in A$ tal que $\x(p) = y$. Tomando $[u]_{\x}|_p \in \Tg V|_p$, segue que $(p, [u]_{\x}|_p) \in \Tg A$ e $\D \x|_p([u]_{\x}|_p) = u \in E$, portanto $(y,u) = \bar \x(p,[u]_{\x}|_p) \in \x(\Tg A)$.
-%%		$(y,v) = (\x(p), \D \x|_p([v]_{\x}|_p)) = \bar \x(p, [v]_{\x}|_p) \in \bar \x(\Tg A)$.
+%		\item ($\supseteq$) Seja $(y, u) \in \x(A) \times E$. Como $y \in \x(A)$, existe $p \in A$ tal que $\x(p) = y$. Tomando $[u]_{\x}|_p \in \Tg V|_p$, segue que $(p, [u]_{\x}|_p) \in \Tg A$ e $\D \x|_p([u]_{\x}|_p) = u \in E$, portanto $(y,u) = \Tg \x(p,[u]_{\x}|_p) \in \x(\Tg A)$.
+%%		$(y,v) = (\x(p), \D \x|_p([v]_{\x}|_p)) = \Tg \x(p, [v]_{\x}|_p) \in \Tg \x(\Tg A)$.
 %		\end{itemize}			
-		Sendo assim, como $(A, \x)$ é carta, $\x(A)$ é aberto em $E$, portanto $\bar \x(\Tg A) = \x(A) \times E$ é aberto em $E \times E$.
+		Sendo assim, como $(A, \x)$ é carta, $\x(A)$ é aberto em $E$, portanto $\Tg \x(\Tg A) = \x(A) \times E$ é aberto em $E \times E$.
 	\end{itemize}
 
-Agora, devemos mostrar que $\bar \atlas$ é um atlas.
+Agora, devemos mostrar que $\Tg \atlas$ é um atlas $\Cont^r$.
 	\begin{itemize}
 	\item (Cobertura) Por definição temos $\bigcup_{(\Tg A,\bar x) \in \bar \atlas} \Tg A \subseteq \Tg V$. Para a inclusão contrária, seja $(p, v) \in \Tg V$. Como $p \in V$ e $\atlas$ é atlas, existe carta $(A, \x)$ tal que $p \in A$. Como e $v \in \Tg V|_p$, então $\D \x|_p(v) \in E$, portanto $v = [\D \x|_p(v)]|_{\x}|_p$, o que mostra que $(p,v) \in \Tg A$.	
 	
-	\item (Compatibilidade $\Cont^{1+r}$) Sejam $(\Tg A, \bar \x)$ e $(\Tg A', \bar \x') \in \bar \atlas$ cartas induzidas por $(A, \x)$ e $(A', \x') \in \atlas$, respectivamente. Como $\atlas$ é atlas $\Cont^{1+r}$, as cartas $(A, \x)$ e $(A', \x')$ são $\Cont^{1+r}$-compatíveis.
+	\item (Compatibilidade $\Cont^r$) Sejam $(\Tg A, \Tg \x)$ e $(\Tg A', \Tg \x') \in \Tg \atlas$ cartas induzidas por $(A, \x)$ e $(A', \x') \in \atlas$, respectivamente. Como $\atlas$ é atlas $\Cont^{1+r}$, as cartas $(A, \x)$ e $(A', \x')$ são $\Cont^{1+r}$-compatíveis.
 
-	Primeiro mostremos que os conjuntos $\bar x(\Tg A \cap \Tg A')$  e $\bar x'(\Tg A \cap \Tg A')$ são abertos em $E \times E$. Notemos que
+	Primeiro mostremos que os conjuntos $\Tg \x(\Tg A \cap \Tg A')$  e $\Tg \x'(\Tg A \cap \Tg A')$ são abertos em $E \times E$. Notemos que
 		\begin{equation*}
-		\bar \x(\Tg A \cap \Tg A') = \x(A \cap A') \times E.
+		\Tg \x(\Tg A \cap \Tg A') = \x(A \cap A') \times E.
 		\end{equation*}
-	Seja $(y,u) \in E \times E$. Note que $(y, u) \in \bar \x(\Tg A \cap \Tg A')$ se, e somente se, existe $(p,v) \in \Tg A \cap \Tg A'$ tal que $\bar \x(p,v) = (y,u)$. Como $\bar \x(p,v) = (\x(p), \D\x|_p(v))$, isso é equivalente a existirem $p \in V$ e $v \in \Tg V|_p$ tais que $p \in A$, $p \in A'$, $y = \x(p)$ e $u = \D\x|_p(v)$. Como $\fun{\D \x|_p}{\Tg V|_p}{E}$ é isomorfismo, isso é o mesmo que existir $p \in A \cap A'$ tal que $y=\x(p)$, o que equivale a $(y,u) \in \x(A \cap A') \times E$.
+	Seja $(y,u) \in E \times E$. Note que $(y, u) \in \Tg \x(\Tg A \cap \Tg A')$ se, e somente se, existe $(p,v) \in \Tg A \cap \Tg A'$ tal que $\Tg \x(p,v) = (y,u)$. Como $\Tg \x(p,v) = (\x(p), \D\x|_p(v))$, isso é equivalente a existirem $p \in V$ e $v \in \Tg V|_p$ tais que $p \in A$, $p \in A'$, $y = \x(p)$ e $u = \D\x|_p(v)$. Como $\fun{\D \x|_p}{\Tg V|_p}{E}$ é isomorfismo, isso é o mesmo que existir $p \in A \cap A'$ tal que $y=\x(p)$, o que equivale a $(y,u) \in \x(A \cap A') \times E$.
 %	\begin{itemize*}
-%	\item [($\subseteq$)] Seja $(p,v) \in \Tg A \cap \Tg A'$. Então $p \in A$ e $p \in A'$, logo $p \in A \cap A'$, o que implica $\x(p) \in \x(A \cap A')$; além disso, $\D \x|_p(v) \in E$, logo $(\x(p), \D \x|_p(v)) \in \x(A \cap A') \times E$ e $\bar \x(p,v) = (\x(p), \D \x|_p(v))$.
+%	\item [($\subseteq$)] Seja $(p,v) \in \Tg A \cap \Tg A'$. Então $p \in A$ e $p \in A'$, logo $p \in A \cap A'$, o que implica $\x(p) \in \x(A \cap A')$; além disso, $\D \x|_p(v) \in E$, logo $(\x(p), \D \x|_p(v)) \in \x(A \cap A') \times E$ e $\Tg \x(p,v) = (\x(p), \D \x|_p(v))$.
 %	
 %	\item [($\supseteq$)] Seja $(y,v) \in \x(A \cap A') \times E$. Então $y \in \x(A \cap A')$, logo existe $p \in A \cap A'$ tal que $\x(p) = y$, e $v \in E$, logo $\D \x|_p([v]_{\x}|_p) = v \in E$, portanto $(p, [v]_{\x}|_p) \in \Tg A \cap \Tg A'$ e $(y,v) = \bar\x(p, [v]_{\x}|_p)$.
 %	\end{itemize*}
-	Da mesma forma, vale $\bar \x'(\Tg A \cap \Tg A') = \x'(A \cap A') \times E$. Sendo assim, como $(A, \x)$ e $(A', \x')$ são $\Cont^{1+r}$-compatíveis, os conjuntos $x(A \cap A')$ e $x'(A \cap A')$ são abertos em $E$, portanto os conjuntos $\bar \x(\Tg A \cap \Tg A')$ e $\bar \x'(\Tg A \cap \Tg A')$ são abertos em $E \times E$.
+	Da mesma forma, vale $\Tg \x'(\Tg A \cap \Tg A') = \x'(A \cap A') \times E$. Sendo assim, como $(A, \x)$ e $(A', \x')$ são $\Cont^{1+r}$-compatíveis, os conjuntos $\x(A \cap A')$ e $\x'(A \cap A')$ são abertos em $E$, portanto os conjuntos $\Tg \x(\Tg A \cap \Tg A')$ e $\Tg \x'(\Tg A \cap \Tg A')$ são abertos em $E \times E$.
 	
-	Agora mostremos que a transição de coordenadas $\fun{\bar \x' \circ \bar \x\inv}{\bar x(\Tg A \cap \Tg A')}{\bar x'(\Tg A \cap \Tg A')}$ é um difeomorfismo $\Cont^{1+r}$. Como $\bar \x(\Tg A \cap \Tg A') = \x(A \cap A') \times E$, a inversa de $\bar \x$ em $\Tg A \cap \Tg A'$ é dada por
+	Vamos denotar $\Tg \x \inv := (\Tg x)\inv$. Agora mostremos que a transição de coordenadas $\fun{\Tg \x' \circ \Tg \x\inv}{\Tg \x(\Tg A \cap \Tg A')}{\Tg \x'(\Tg A \cap \Tg A')}$ é um difeomorfismo $\Cont^{1+r}$. Como $\Tg \x(\Tg A \cap \Tg A') = \x(A \cap A') \times E$, a inversa de $\Tg \x$ em $\Tg A \cap \Tg A'$ é dada por
 		\begin{align*}
-		\func{\bar \x\inv}{\x(A \cap A') \times E}{\Tg A \cap \Tg A'}{(y,v)}{(\x\inv(y),[v]|_{\x}|_{\x\inv(y)})}.
+		\func{\Tg \x\inv}{\x(A \cap A') \times E}{\Tg A \cap \Tg A'}{(y,u)}{(\x\inv(y),[u]_{\x}|_{\x\inv(y)})}.
 		\end{align*}
-	Portanto, para todo $(y,v) \in \x(A \cap A') \times E$,
+	Portanto, para todo $(y,u) \in \x(A \cap A') \times E$,
 		\begin{align*}
-		\bar x' \circ \bar \x\inv(y,v) &= \bar \x' ((\x\inv(y),[v]|_{\x}|_{\x\inv(y)}) \\
-			&= (\x'(\x\inv(y)), \D \x'|_{\x\inv(p)} ([v]|_{\x}|_{\x\inv(y)})) \\
+		\Tg \x' \circ \Tg \x\inv(y,u) &= \Tg \x' ((\x\inv(y),[u]_{\x}|_{\x\inv(y)}) \\
+			&= (\x'(\x\inv(y)), \D \x'|_{\x\inv(p)} ([u]_{\x}|_{\x\inv(y)})) \\
 			&= (\x' \circ \x\inv(y), \D (\x' \circ \x\inv)|_y(u))
 		\end{align*}
-	Sendo assim, como $(A, \x)$ e $(A', \x')$ são $\Cont^{1+r}$-compatíveis, a transição de coordenadas $\fun{\x' \circ \x\inv}{x(A \cap A')}{x'(A \cap A')}$ é um difeomorfismo $\Cont^{1+r}$, portanto sua diferencial $\fun{\D (\x' \circ \x\inv)}{x(A \cap A')}{\toplin(E,E)}$ é um difeomorfismo $\Cont^r$,
+	Sendo assim, como $(A, \x)$ e $(A', \x')$ são $\Cont^{1+r}$-compatíveis, a transição de coordenadas $\fun{\x' \circ \x\inv}{\x(A \cap A')}{\x'(A \cap A')}$ é um difeomorfismo $\Cont^{1+r}$, portanto sua diferencial $\fun{\D (\x' \circ \x\inv)}{x(A \cap A')}{\toplin(E,E)}$ é um difeomorfismo $\Cont^r$,
 	% e sua diferencial $\D (\x' \circ \x\inv)$ também? ou $\D (\x' \circ \x\inv)|_y$, pois é $\Cont^\infty$?
-	o que implica que $\bar x' \circ \bar \x\inv$ é um difeomorfismo $\Cont^r$, portanto as cartas $(\Tg A, \bar \x)$ e $(\Tg A', \bar \x')$ são $\Cont^r$-compatíveis.
+	% É verdade que a trnsição de coordenadas será $\Cont^{1+r}$-diferenciável, mas essa última parte precisa ser explicada melhor, pois a função $\D (\x' \circ \x\inv)|_y(u)$ na segunda entrada da expressão para a transição de coordenadas não é função só de $y$, mas de $u$ também; é uma função de $(y,u)$ com domínio $\x(A \cap A') \times E$. Essa função é de fato difereniável, pois sua diferencial parcial na primeira entrada é
+	o que implica que $\Tg \x' \circ \Tg \x\inv$ é um difeomorfismo $\Cont^r$, portanto as cartas $(\Tg A, \Tg \x)$ e $(\Tg A', \Tg \x')$ são $\Cont^r$-compatíveis.
 	\qedhere
 	\end{itemize}
 \end{proof}
