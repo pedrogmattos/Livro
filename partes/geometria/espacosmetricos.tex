@@ -63,30 +63,235 @@ Seja $\bm M$ um espaço métrico. Então
 	\end{enumerate}
 \end{proof}
 
-Alguns exemplos de métricas seguem. Podemos definir distâncias a partir de distâncias já conhecidas no espaço.
+Podemos definir distâncias a partir de distâncias já conhecidas no espaço. Um jeito geral de se fazer isso é usar uma função $\fun{\phi}{\intfa{0}{\infty}}{\intfa{0}{\infty}}$ que satisfaz certas propriedades e definir, a partir de uma métrica $\dist{\var}{\var}$ a função $\dist{\var}{\var}_\phi := \phi \circ \dist{\var}{\var}$, dada explicitamente por
+	\begin{align*}
+	\func{\dist{\var}{\var}_\phi = \phi \circ \dist{\var}{\var}}{M \times M}{\intfa{0}{\infty}}{(p,p')}{\phi(\dist{p}{p'})}
+	\end{align*}
+
+\begin{proposition}
+\label{prop:funcao.subaditiva.crescente.preserva.metrica}
+Sejam $(M, \dist{\var}{\var})$ um espaço métrico e $\fun{\phi}{\intfa{0}{\infty}}{\intfa{0}{\infty}}$ uma função que satisfaz
+	\begin{enumerate}
+	\item (Mediabilidade\footnote{Uma função que satisfaz essa propriedade é chamada às vezes em inglês de `ameanable'}) Para todo $c \in \intfa{0}{\infty}$, $\phi(c) = 0$ se, e somente se, $c=0$;
+	\item (Subaditividade) Para todos $c,c' \in \intfa{0}{\infty}$, $\phi(c+c') \leq \phi(c) + \phi(c')$;
+	\item (Monotonicidade crescente) Para todos $c,c' \in \intfa{0}{\infty}$, se $c < c'$ então $\phi(c) < \phi(c')$.
+	\end{enumerate}
+A função $\dist{\var}{\var}_\phi := \phi \circ \dist{\var}{\var}$
+%	\begin{align*}
+%	\func{\dist{\var}{\var}_\phi}{M \times M}{\intfa{0}{\infty}}{(p,p')}{\phi(\dist{p}{p'})}
+%	\end{align*}
+é uma métrica em $M$.
+\end{proposition}
+\begin{proof}
+%Note que a monotonicidade crescente estrita de $\phi$ implica que, para todo $c \in \intfa{0}{\infty}$, se $\phi(c) = 0$ então $c=0$.
+	\begin{enumerate}
+	\item (Separação) Sejam $p,p' \in M$. %Se $\phi(\dist{p}{p'}) = 0$, da mediabilidade segue que $\dist{p}{p'} = 0$, e da separação de $\dist{\var}{\var}$ segue que $p=p'$.
+%	Se $p=p'$, então da separação de $\dist{\var}{\var}$ segue que $\dist{p}{p'} = 0$, portanto
+%		\[
+%		\dist{p}{p'}_\phi = \phi(\dist{p}{p'}) = \phi (0) = 0.
+%		\]
+	Da separação de $\dist{\var}{\var}$ segue que $p=p'$ se, e somente se, $\dist{p}{p'} = 0$; da mediabilidade de $\phi$ segue que $\dist{p}{p'}=0$ se, e somente se,
+		\[
+		\dist{p}{p'}_\phi = \phi(\dist{p}{p'}) = \phi (0) = 0.
+		\]
+	
+	\item (Simetria) Sejam $p,p' \in M$. Da simetria de $\dist{\var}{\var}$ segue que
+		\[
+		\dist{p}{p'}_\phi = \phi(\dist{p}{p'}) = \phi(\dist{p'}{p}) = \dist{p'}{p}_\phi.
+		\]
+	
+	\item (Desigualdade triangular) Sejam $p,p',p'' \in M$. Da desigualdade triangular de $\dist{\var}{\var}$ segue que
+		\[
+		\dist{p}{p''} \leq \dist{p}{p'} + \dist{p'}{p''}.
+		\]
+	Segue então da monotonicidade crescente e da subaditividade de $\phi$ que
+		\begin{align*}
+		\dist{p}{p''}_\phi &= \phi (\dist{p}{p''}) \\
+			&\leq \phi(\dist{p}{p'} + \dist{p'}{p''}) \\			
+			&\leq \phi(\dist{p}{p'}) + \phi(\dist{p'}{p''}) \\
+			&= \dist{p}{p'}_\phi+ \dist{p'}{p''}_\phi.
+		\qedhere
+		\end{align*}
+	\end{enumerate}
+\end{proof}
+
+Note que, para provar que uma função diferenciável $\fun{\phi}{\intfa{0}{\infty}}{\intfa{0}{\infty}}$ é subaditiva, basta mostrar que sua derivada $\dot \phi$ é decrescente, pois nesse caso, para todos $c, t \in \intfa{0}{\infty}$, vale que $\dot\phi(c+c') \leq \dot\phi(c)$, portanto para todos $c, c' \in \intfa{0}{\infty}$ segue que
+	\begin{align*}
+	\phi(c+c') &= \phi(c) + \phi(c+c') - \phi(c) \\
+		&= \phi(c) + \int_0^{c'} \dot\phi(c+t) \dd t \\
+		&\leq \phi(c) + \int_0^{c'} \dot\phi(t) \dd t \\
+		&= \phi(c) + \phi(c').
+	\end{align*}
+
+A seguir, apresentamos alguns lemas que permitem demonstrar que uma função $\phi$ que é mediável e côncava também define uma métrica. Para isso mostraremos que, quando $\phi$ é mediável, concavidade implica tanto subaditividade como monotonicidade crescente. Primeiro mostramos a subaditividade, que é consequência de uma simples escolha de constantes na propriedade de concavidade.
+
+\begin{lemma}
+\label{lema:concavidade.implica.subaditividade}
+Seja $\fun{\phi}{\intfa{0}{\infty}}{\R}$ uma função satisfazendo
+	\begin{itemize}
+	\item $\phi(0) \geq 0$;
+	\item (Concavidade) Para todos $c,c' \in \intfa{0}{\infty}$ e $t \in \intff{0}{1}$,
+		\[
+		\phi((1-t)c + tc') \geq (1-t)\phi(c) + t\phi(c').
+		\]
+	\end{itemize}
+Então $\phi$ é subaditiva.
+\end{lemma}
+\begin{proof}
+Sejam $c,c' \in \intfa{0}{\infty}$. Da concavidade segue que
+	\[
+	\frac{c'}{c+c'}\phi(0) + \frac{c}{c+c'}\phi(c+c') \leq \phi\left(\frac{c'}{c+c'}0 + \frac{c}{c+c'}(c+c')\right) = \phi(c).
+	\]
+Como $\phi(0) \geq 0$, segue que
+	\[
+	\frac{c}{c+c'}\phi(c+c') \leq \phi(c).
+	\]
+Trocando $c$ e $c'$, vale que $\frac{c'}{c+c'}\phi(c+c') \leq \phi(c')$. Adicionando essas duas desigualdades, obtemos
+	\[
+	\phi(c+c') = \frac{c}{c+c'}\phi(c+c') + \frac{c'}{c+c'}\phi(c+c') \leq \phi(c) + \phi(c').
+	\qedhere
+	\]
+\end{proof}
+
+Para mostrar que concavidade implica subaditividade, primeiro vale explicitar a seguinte caracterização alternativa de concavidade.
+
+\begin{lemma}
+\label{prop:concavidade.alternativa}
+Sejam $I \subseteq \R$ um intervalo e $\fun{\phi}{I}{\R}$ uma função côncava. Então, para todos $c,c',c'' \in I$ tais que $c<c'<c''$,
+%Seja $\fun{\phi}{\intfa{0}{\infty}}{\intfa{0}{\infty}}$ uma função côncava. Então, para todos $c,c',c'' \in \intfa{0}{\infty}$ tais que $c<c'<c''$,
+	\[
+	\frac{\phi(c'') - \phi(c')}{c''-c'} \leq \frac{\phi(c'') - \phi(c)}{c''-c} \leq \frac{\phi(c') - \phi(c)}{c'-c}
+	\]
+e
+	\[
+	\phi(c'') \leq \frac{\phi(c') - \phi(c)}{c'-c}(c''-c') + \phi(c').
+	\]
+\end{lemma}
+\begin{proof}
+%Sejam $c,c',c'' \in \intfa{0}{\infty}$ tais que $c<c'<c''$
+Sejam $c,c',c'' \in I$ tais que $c<c'<c''$ e defina $t:=\frac{c'-c}{c''-c}$. Como $0<c'-c<c''-c$, então $0<t<1$. Ainda, vale que $1-t = \frac{c''-c'}{c''-c}$ e
+	\[
+	(1-t)c + tc'' = \frac{c''-c'}{c''-c}c + \frac{c'-c}{c''-c}c'' = c'.
+	\]
+Da concavidade de $\phi$ segue que
+
+	\begin{align*}
+	\phi(c') &= \phi((1-t)c + tc'') \\
+		&\geq (1-t)\phi(c) + t\phi(c'') \\
+		&= 
+			\begin{cases}
+			\phi(c) + t(\phi(c'')-\phi(c)) \\
+			(1-t)(\phi(c)-\phi(c'')) + \phi(c'')
+			\end{cases} \\
+		&=
+			\begin{cases}
+%			\displaystyle
+			\phi(c) + \frac{c'-c}{c''-c}(\phi(c'')-\phi(c)) \\
+%			\displaystyle
+			\frac{c''-c'}{c''-c}(\phi(c)-\phi(c'')) + \phi(c''),
+			\end{cases}	
+	\end{align*}
+portanto
+	\[
+	\frac{\phi(c'') - \phi(c')}{c''-c'} \leq \frac{\phi(c'') - \phi(c)}{c''-c} \leq \frac{\phi(c') - \phi(c)}{c'-c},
+	\]
+e disso também segue que
+	\[
+	\phi(c'') \leq \frac{\phi(c') - \phi(c)}{c'-c}(c''-c') + \phi(c').
+	\qedhere
+	\]
+\end{proof}
+
+A interpretação geométrica dessa proposição é que o ponto $(c'',\phi(c''))$ sempre está abaixo da secante que liga $(c,\phi(c))$ a $(c',\phi(c'))$ no gráfico de $\phi$. Agora, mostramos que concavidade implica monotonicidade crescente.
+
+\begin{lemma}
+\label{lema:concavidade.implica.monotonicidade}
+Seja $\fun{\phi}{\intfa{0}{\infty}}{\intfa{0}{\infty}}$ uma função satisfazendo
+	\begin{itemize}
+	\item (Mediabilidade) Para todo $c \in \intfa{0}{\infty}$, $\phi(c) = 0$ se, e somente se, $c=0$;
+	\item (Concavidade) Para todos $c,c' \in \intfa{0}{\infty}$ e $t \in \intff{0}{1}$,
+		\[
+		\phi((1-t)c + tc') \geq (1-t)\phi(c) + t\phi(c').
+		\]
+	\end{itemize}
+Então $\phi$ é crescente.
+\end{lemma}
+\begin{proof}
+Suponhamos, por absurdo, que existam $c,c' \in \intfa{0}{\infty}$ tais que $c<c'$ e $\phi(c') < \phi(c)$. Nesse caso $\frac{c'-c}{\phi(c')-\phi(c)} < 0$ e, pela mediabilidade, $\phi(c') > 0$, logo
+	\[
+	c'' := c' - \frac{c'-c}{\phi(c')-\phi(c)}\phi(c') > c'.
+	\]
+Assim, segue do lema~\ref{prop:concavidade.alternativa} que
+	\[
+	\phi(c'') \leq \frac{\phi(c') - \phi(c)}{c'-c}(c''-c') + \phi(c') = 0,
+	\]
+o que implica que $\phi(c'')=0$. Como $c''>0$, isso contradiz a mediabilidade.
+\end{proof}
+
+Finalmente, dos lemas~\ref{lema:concavidade.implica.subaditividade} e \ref{lema:concavidade.implica.monotonicidade} e da proposição~\ref{prop:funcao.subaditiva.crescente.preserva.metrica}, segue a proposição a seguir.
+
+\begin{proposition}
+\label{prop:funcao.concava.preserva.metrica}
+Sejam $(M, \dist{\var}{\var})$ um espaço métrico e $\fun{\phi}{\intfa{0}{\infty}}{\intfa{0}{\infty}}$ uma função que satisfaz
+\begin{enumerate}
+	\item (Mediabilidade) Para todo $c \in \intfa{0}{\infty}$, $\phi(c) = 0$ se, e somente se, $c=0$;
+	\item (Concavidade) Para todos $c,c' \in \intfa{0}{\infty}$ e $t \in \intff{0}{1}$,
+		\[
+		\phi((1-t)c + tc') \geq (1-t)\phi(c) + t\phi(c').
+		\]
+\end{enumerate}
+A função $\dist{\var}{\var}_\phi := \phi \circ \dist{\var}{\var}$
+%	\begin{align*}
+%	\func{\dist{\var}{\var}_\phi}{M \times M}{\intfa{0}{\infty}}{(p,p')}{\phi(\dist{p}{p'})}
+%	\end{align*}
+é uma métrica em $M$.
+\end{proposition}
+
+É possível mostrar que se uma função $\fun{\phi}{\intfa{0}{\infty}}{\intfa{0}{\infty}}$ torna $\dist{\var}{\var}_\phi$ uma métrica para toda métrica $\dist{\var}{\var}$, então ela deve ser mediável e subaditiva. No entanto, existe uma tal função $\phi$ que é contínua, mas não é crescente.
+
+Alguns exemplos de métricas seguem como exercício. Fica a cargo do leitor decidir se convém provar diretamente que a função definida em cada item é uma métrica, ou usar as proposições~\ref{prop:funcao.subaditiva.crescente.preserva.metrica} e \ref{prop:funcao.concava.preserva.metrica}.
 
 \begin{exercise}
-Seja $M$ um conjunto.
+Seja $(M,\dist{\var}{\var})$ um espaço métrico.
 	\begin{enumerate}
 	\item A \emph{métrica discreta}
 		\begin{align*}
 		\func{\dist{\var}{\var}_d}{M \times M}{\R}{(p,p')}{
 			\begin{cases}
-				0,& p = p' \\
-				1,& p \neq p'
+			0,& p = p' \\
+			1,& p \neq p'
 			\end{cases}
 		}
 		\end{align*}
-é uma métrica sobre $M$.
-
-	\item Se $\dist{\var}{\var}$ é uma métrica em $M$, então
+	é uma métrica sobre $M$.
+	
+	\item A função% a \emph{métrica limitada induzida por $\dist{\var}{\var}$}
+		\begin{align*}
+		\func{\dist{\var}{\var} \opmin 1}{M \times M}{\R}{(p,p')}{\dist{p}{p'} \opmin 1}
+		\end{align*}
+	é uma métrica sobre $M$.
+	
+	\item A função
 		\begin{align*}
 		\func{\dist{\var}{\var}'}{M \times M}{\intfa{0}{\infty}}{(p,p')}{\frac{\dist{p}{p'}}{1+\dist{p}{p'}}}
 		\end{align*}
 	é uma métrica sobre $M$.
+	
+	\item Para todo $b \in \intaa{1}{\infty}$, a função
+		\begin{align*}
+		\func{\dist{\var}{\var}'}{M \times M}{\intfa{0}{\infty}}{(p,p')}{\log_b(1+\dist{p}{p'})}
+		\end{align*}
+	é uma métrica sobre $M$.
+	
+	\item Para todo $\alpha \in \intaf{0}{1}$, a função
+		\begin{align*}
+		\func{\dist{\var}{\var}'}{M \times M}{\intfa{0}{\infty}}{(p,p')}{\dist{p}{p'}^\alpha}
+		\end{align*}
+	é uma métrica sobre $M$.	
 	\end{enumerate}
 \end{exercise}
 
+Além de criar novas métricas a partir de uma que se tem usando uma função $\fun{\phi}{\intfa{0}{\infty}}{\intfa{0}{\infty}}$, podemos usar várias métricas diferentes.
 
 \begin{proposition}
 Sejam $M$ um conjunto e $\dist{\var}{\var}_0, \ldots, \dist{\var}{\var}_{n-1}$ métricas em $M$. Então a função
@@ -152,14 +357,6 @@ Então $\dist{p}{p'}_1=0$ ou $\dist{p}{p'}_2=0$. Em ambos os casos, temos $p=p'$
 	\end{equation*}
 	\end{enumerate}
 \end{proof}
-
-\begin{exercise}[Métrica Limitada]
-Seja $(M,\dist{\var}{\var})$ um espaço métrico. A função
-	\begin{align*}
-	\func{\dist{\var}{\var} \opmin 1}{M \times M}{\R}{(p,p')}{\dist{p}{p'} \opmin 1}
-	\end{align*}
-é uma métrica sobre $M$, a \emph{métrica limitada induzida por $\dist{\var}{\var}$}.
-\end{exercise}
 
 \begin{exercise}[Métricas $p$]
 Sejam $\bm M$ e $\bm M'$ espaços métricos e $p \in \intfa{1}{\infty}$.
@@ -1041,7 +1238,7 @@ Sejam $\bm M, \bm M'$ e $\bm M''$ espaços métricos e $\fun{f}{M}{M'}$ e $\fun{
 \begin{proof}
 Para todos $p,p' \in M$,
 	\begin{equation*}
-	\dist{f' \circ f(p)}{f' \circ f(p'))} \leq \distor{f'} \dist{f(p)}{f(p')} \leq \distor{f'}\distor{f}\dist{p}{p'},
+	\dist{f' \circ f(p)}{f' \circ f(p')} \leq \distor{f'} \dist{f(p)}{f(p')} \leq \distor{f'}\distor{f}\dist{p}{p'},
 	\end{equation*}
 o que mostra que $f' \circ f$ é controlada e $\distor{f' \circ f} \leq \distor{f'}\distor{f}$.
 \end{proof}
@@ -1478,9 +1675,91 @@ o que mostra que $f(x) = f(x')$, logo $f$ é constante.
 
 
 
+\subsection{Equivalência de métricas}
+
+\begin{definition}
+Seja $M$ um conjunto. Métricas em $M$ \emph{topologicamente equivalentes} são métricas $\dist{\var}{\var}$ e $\dist{\var}{\var}'$ em $M$ tais que $\fun{\Id}{(M,\dist{\var}{\var})}{(M,\dist{\var}{\var}')}$ é um homeomorfismo.
+\end{definition}
+
+\begin{proposition}
+Sejam $M$ um conjunto e $\dist{\var}{\var}$ e $\dist{\var}{\var}'$ métricas em $M$. São equivalentes as seguintes afirmações:
+	\begin{itemize}
+	\item As métricas $\dist{\var}{\var}$ e $\dist{\var}{\var}'$ são topologicamente equivalentes.
+	\item As topologias induzidas em $M$ por $\dist{\var}{\var}$ e $\dist{\var}{\var}'$ são iguais.
+	\item Para todo $p \in M$ e todo $\varepsilon \in \R_{>0}$, algum $\delta \in \R_{>0}$ e algum $\delta' \in \R_{>0}$ satisfazem $\bola[']{p}{\delta'} \subseteq \bola{p}{\varepsilon}$ e $\bola{p}{\delta} \subseteq \bola[']{p}{\varepsilon}$.
+	\item $(M,\dist{\var}{\var})$ e $(M,\dist{\var}{\var}')$ têm as mesmas sequências convergentes.
+	\end{itemize}
+\end{proposition}
+
+\begin{definition}
+Seja $M$ um conjunto. Métricas em $M$ \emph{uniformemente equivalentes} são métricas $\dist{\var}{\var}$ e $\dist{\var}{\var}'$ em $M$ tais que $\fun{\Id}{(M,\dist{\var}{\var})}{(M,\dist{\var}{\var}')}$ é um homeomorfismo biuniforme.
+\end{definition}
+
+\begin{proposition}
+Sejam $M$ um conjunto e $\dist{\var}{\var}$ e $\dist{\var}{\var}'$ métricas em $M$. São equivalentes as seguintes afirmações:
+	\begin{itemize}
+	\item As métricas $\dist{\var}{\var}$ e $\dist{\var}{\var}'$ são uniformemente equivalentes.
+%	\item As estruturas uniformes induzidas em $M$ por $\dist{\var}{\var}$ e $\dist{\var}{\var}'$ são iguais.
+	\item Para todo $\varepsilon \in \R_{>0}$, algum $\delta \in \R_{>0}$ e algum $\delta' \in \R_{>0}$ satisfazem que, para todo $p \in M$, $\bola[']{p}{\delta'} \subseteq \bola{p}{\varepsilon}$ e $\bola{p}{\delta} \subseteq \bola[']{p}{\varepsilon}$.
+%	\item $(M,\dist{\var}{\var})$ e $(M,\dist{\var}{\var}')$ têm as mesmas sequências convergentes.
+	\end{itemize}
+\end{proposition}
+
+\begin{proposition}
+Sejam $M$ um conjunto e $\dist{\var}{\var}$ e $\dist{\var}{\var}'$ métricas uniformemente equivalentes em $M$. As métricas são topologicamente equivalentes.
+\end{proposition}
+
+\begin{proposition}
+%\label{prop:funcao.subaditiva.crescente.preserva.metrica}
+Sejam $(M, \dist{\var}{\var})$ um espaço métrico e $\fun{\phi}{\intfa{0}{\infty}}{\intfa{0}{\infty}}$ uma função que satisfaz
+	\begin{enumerate}
+	\item (Mediabilidade\footnote{Uma função que satisfaz essa propriedade é chamada às vezes em inglês de `ameanable'}) Para todo $c \in \intfa{0}{\infty}$, $\phi(c) = 0$ se, e somente se, $c=0$;
+	\item (Subaditividade) Para todos $c,c' \in \intfa{0}{\infty}$, $\phi(c+c') \leq \phi(c) + \phi(c')$;
+	\item (Monotonicidade crescente) Para todos $c,c' \in \intfa{0}{\infty}$, se $c < c'$ então $\phi(c) < \phi(c')$;
+	\item (Continuidade) $\phi$ é contínua em $0$.
+	\end{enumerate}
+As métricas $\dist{\var}{\var}$ e $\phi \circ \dist{\var}{\var}$  são uniformemente equivalentes.
+\end{proposition}
+\begin{proof}
+Seja $\varepsilon \in \intaa{0}{\infty}$. Como $\phi$ é contínua em $0$, existe $\delta \in \intaa{0}{\infty}$ tal que, para todo $t \in \intfa{0}{\delta}$, $\phi(t) < \varepsilon$. Isso significa que, para todos $p,p' \in M$, se $\dist{p}{p'} < \delta$, então
+	\[
+	\dist{p}{p'}_\phi = \phi(\dist{p}{p'}) < \varepsilon.
+	\]
+Isso mostra que $\fun{\Id}{(M,\dist{\var}{\var})}{(M,\dist{\var}{\var}_\phi)}$ é uniformemente contínua.
+
+Seja $\varepsilon \in \intaa{0}{\infty}$ e defina $\delta := \phi(\varepsilon)$. Pela mediabilidade de $\phi$ segue que $\delta > 0$. Como $\phi$ é crescente, vale que, para todo $t \in \intfa{0}{\infty}$, $t \geq \varepsilon$ implica $\phi(t) \geq \delta$, o que equivale a $\phi(t) < \delta$ implicar $t<\varepsilon$. Assim, segue que, para todos $p,p' \in M$, se
+	\[
+	\phi(\dist{p}{p'}) = \dist{p}{p'}_\phi < \delta,
+	\]
+então $\dist{p}{p'} < \varepsilon$. Isso mostra que $\fun{\Id}{(M,\dist{\var}{\var}_\phi)}{(M,\dist{\var}{\var})}$ é uniformemente contínua.
+\end{proof}
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{definition}
+Seja $M$ um conjunto. Métricas em $M$ \emph{fortemente equivalentes} são métricas $\dist{\var}{\var}$ e $\dist{\var}{\var}'$ em $M$ tais que $\fun{\Id}{(M,\dist{\var}{\var})}{(M,\dist{\var}{\var}')}$ é um homeomorfismo bicontrolado.
+\end{definition}
+
+Isto quer dizer que para algum $c \in \R_{>0}$ e algum $c' \in \R_{>0}$ vale que, para todos $p_0,p_1 \in M$, $\dist{p_0}{p_1} \leq c'\dist{p_0}{p_1}'$ e $\dist{p_0}{p_1}' \leq c\dist{p_0}{p_1}$.; ou, equivalentemente,
+	\[
+	c\inv\dist{p_0}{p_1}' \leq \dist{p_0}{p_1} \leq c\dist{p_0}{p_1}'.
+	\]
+
+\begin{proposition}
+Sejam $M$ um conjunto e $\dist{\var}{\var}$ e $\dist{\var}{\var}'$ métricas fortemente equivalentes em $M$. As métricas são uniformemente equivalentes.
+\end{proposition}
 
 \section{Medida em espaços métricos}
 
